@@ -22,153 +22,20 @@
 // Pure: inputs are an adapter config, a Map of repo-relative path -> source
 // text, and an optional overlay. No file system, network or clock access.
 
+import { compact, kdocBefore, matchClose, skipLiteralOrComment, splitArgs, stripComments, topLevelCalls } from './vexboard-kotlin-source.mjs';
+import { REALIZATION_READER_VERSION, composableIndex, primitiveCatalog, realizeScreen, stringConstants } from './vexboard-android-realization.mjs';
+import { readSourceExamples } from './vexboard-android-examples.mjs';
+
 export const SCREEN_LENS_ADAPTER_SCHEMA = 'vexboard.screen-lens-adapter/v1';
 export const SCREEN_LENS_OVERLAY_SCHEMA = 'vexboard.screen-lens-overlay/v1';
-export const ADAPTER_VERSION = 'vexlife-android-adapter/3';
+export const ADAPTER_VERSION = 'vexlife-android-adapter/5';
+export { REALIZATION_READER_VERSION, compact, kdocBefore, matchClose, splitArgs, stripComments, topLevelCalls };
 
 function fail(message) {
   throw new TypeError(`screen lens adapter: ${message}`);
 }
 
-/* ---------- Kotlin reading helpers (just enough for the VexLife DSL) ---------- */
-
-function skipLiteralOrComment(text, i) {
-  if (text.startsWith('"""', i)) {
-    const end = text.indexOf('"""', i + 3);
-    return end < 0 ? text.length : end + 3;
-  }
-  const c = text[i];
-  if (c === '"' || c === "'") {
-    let j = i + 1;
-    while (j < text.length && text[j] !== c) j += text[j] === '\\' ? 2 : 1;
-    return j + 1;
-  }
-  if (text.startsWith('//', i)) {
-    const end = text.indexOf('\n', i);
-    return end < 0 ? text.length : end;
-  }
-  if (text.startsWith('/*', i)) {
-    const end = text.indexOf('*/', i + 2);
-    return end < 0 ? text.length : end + 2;
-  }
-  return -1;
-}
-
-// Index of the bracket that closes the one at `open`.
-export function matchClose(text, open) {
-  const pairs = { '(': ')', '{': '}', '[': ']', '<': '>' };
-  const opener = text[open];
-  const closer = pairs[opener];
-  if (!closer) fail(`matchClose needs an opening bracket at ${open}`);
-  let depth = 0;
-  for (let i = open; i < text.length; i += 1) {
-    const skipped = skipLiteralOrComment(text, i);
-    if (skipped >= 0) { i = skipped - 1; continue; }
-    if (text[i] === opener) depth += 1;
-    else if (text[i] === closer) {
-      depth -= 1;
-      if (depth === 0) return i;
-    }
-  }
-  return fail(`unbalanced ${opener} at ${open}`);
-}
-
-export function stripComments(text) {
-  let out = '';
-  for (let i = 0; i < text.length; i += 1) {
-    if (text.startsWith('//', i) || text.startsWith('/*', i)) { i = skipLiteralOrComment(text, i) - 1; continue; }
-    const skipped = skipLiteralOrComment(text, i);
-    if (skipped >= 0) { out += text.slice(i, skipped); i = skipped - 1; continue; }
-    out += text[i];
-  }
-  return out;
-}
-
-export const compact = (value) => String(value ?? '').replace(/\s+/g, ' ').replace(/\(\s+/g, '(').replace(/\s+\)/g, ')').replace(/,\s*\)/g, ')').trim();
-
-// Top-level comma split that respects brackets, strings and comments.
-export function splitArgs(text) {
-  const parts = [];
-  let depth = 0;
-  let start = 0;
-  for (let i = 0; i < text.length; i += 1) {
-    const skipped = skipLiteralOrComment(text, i);
-    if (skipped >= 0) { i = skipped - 1; continue; }
-    const c = text[i];
-    if ('({['.includes(c)) depth += 1;
-    else if (')}]'.includes(c)) depth -= 1;
-    else if (c === ',' && depth === 0) { parts.push(text.slice(start, i)); start = i + 1; }
-  }
-  parts.push(text.slice(start));
-  return parts.map((part) => stripComments(part).trim()).filter(Boolean).map((part) => {
-    const named = /^([A-Za-z_]\w*)\s*=(?!=)\s*([\s\S]*)$/.exec(part);
-    return named ? { name: named[1], value: compact(named[2]) } : { name: null, value: compact(part) };
-  });
-}
-
-const KEYWORDS = new Set(['if', 'else', 'when', 'for', 'while', 'return', 'val', 'var', 'fun', 'try', 'catch', 'object', 'class', 'override', 'private', 'internal']);
-
-// Call expressions at the top level of `body`: name(args) { lambda }.
-export function topLevelCalls(body) {
-  const calls = [];
-  const ident = /[A-Za-z_][\w.]*/y;
-  for (let i = 0; i < body.length;) {
-    const skipped = skipLiteralOrComment(body, i);
-    if (skipped >= 0) { i = skipped; continue; }
-    ident.lastIndex = i;
-    const match = /[A-Za-z_]/.test(body[i]) && (i === 0 || !/[\w.]/.test(body[i - 1])) ? ident.exec(body) : null;
-    if (match) {
-      let j = i + match[0].length;
-      while (/\s/.test(body[j] ?? '')) j += 1;
-      if (!KEYWORDS.has(match[0]) && (body[j] === '(' || body[j] === '{')) {
-        let args = '';
-        if (body[j] === '(') {
-          const close = matchClose(body, j);
-          args = body.slice(j + 1, close);
-          j = close + 1;
-          let k = j;
-          while (/\s/.test(body[k] ?? '')) k += 1;
-          if (body[k] === '{') j = k;
-        }
-        let lambda = null;
-        if (body[j] === '{') {
-          const close = matchClose(body, j);
-          lambda = body.slice(j + 1, close);
-          j = close + 1;
-        }
-        calls.push({ name: match[0], args, body: lambda, start: i });
-        i = j;
-        continue;
-      }
-      i += match[0].length;
-      continue;
-    }
-    if ('({['.includes(body[i])) { i = matchClose(body, i) + 1; continue; }
-    i += 1;
-  }
-  return calls;
-}
-
-// First paragraph of the KDoc directly above `index`, if any.
-export function kdocBefore(text, index) {
-  let end = index;
-  for (;;) {
-    const before = text.slice(0, end).replace(/\s+$/, '');
-    const annotation = /(@\w+(\([^)]*\))?|\b(internal|private|public|protected|data|sealed|abstract|open|enum|inline|value))$/.exec(before);
-    if (annotation) { end = annotation.index; continue; }
-    if (!before.endsWith('*/')) return null;
-    const start = before.lastIndexOf('/**');
-    if (start < 0) return null;
-    const lines = before.slice(start + 3, before.length - 2).split('\n').map((line) => line.replace(/^\s*\*\s?/, '').trim());
-    const paragraph = [];
-    for (const line of lines) {
-      if (!line && paragraph.length) break;
-      if (line) paragraph.push(line);
-    }
-    const summary = paragraph.join(' ').replace(/\[([^\]]+)\]/g, '$1').trim();
-    return summary || null;
-  }
-}
+/* ---------- Kotlin reading helpers live in vexboard-kotlin-source.mjs (re-exported for existing callers) ---------- */
 
 function blockAfter(text, pattern) {
   const match = pattern.exec(text);
@@ -266,6 +133,8 @@ function parseRefs(text) {
       labelRes: named(args, 'labelRes') ?? named(args, 'textRes'),
       intent: named(args, 'intent'),
       style: named(args, 'style'),
+      icon: named(args, 'icon'),
+      defaultChild: named(args, 'defaultChild') ?? (match[2] === 'swappableRef' ? args.filter((arg) => !arg.name)[1]?.value ?? null : null),
     });
   }
   return refs;
@@ -296,8 +165,21 @@ function parseScreen(path, text) {
     refs: parseRefs(text),
     layout: layout ? layout.body : null,
     customRender: /override\s+fun\s+renderContent\(/.test(text),
+    toolbarActions: toolbarActionsOf(text),
   };
 }
+
+// `override val toolbarActions get() = listOf(A, B)`: registered controls the shared app toolbar
+// realizes while this Screen is current. They are Screen-owned semantic elements placed outside the
+// registered tree (AppScreenBlueprint.appRegistration additionalPlacements).
+function toolbarActionsOf(text) {
+  const match = /override\s+val\s+toolbarActions\b\s*(?::[^=\n]+)?\s*(?:get\(\)\s*)?=\s*listOf\(/.exec(text);
+  if (!match) return [];
+  const open = match.index + match[0].length - 1;
+  return splitArgs(text.slice(open + 1, matchClose(text, open))).map((arg) => arg.value.trim()).filter((value) => /^\w+$/.test(value));
+}
+
+const lastSegment = (value, prefix) => (value ? String(value).replace(new RegExp(`^${prefix}\\.`), '') : undefined);
 
 // Every `appAction(action = AppActions.X) { ... }` in every file, with the locals
 // and parameters of the function that encloses it. Registrations may live in a
@@ -811,11 +693,15 @@ export function adapterReadPlan(adapterInput) {
   const prefixes = (adapter.read ?? []).map((entry) => resolve(entry).replace(/\/?$/, '/'));
   const resources = [...(adapter.stringResources ?? [])];
   const includes = (path) => resources.includes(path) || (path.endsWith('.kt') && prefixes.some((prefix) => path.startsWith(prefix)));
-  return { prefixes, resources, includes };
+  // Listings name files whose existence is evidence (golden reference renders). Their bytes are never read.
+  const listingPrefixes = (adapter.listings ?? []).map((entry) => resolve(entry).replace(/\/?$/, '/'));
+  const lists = (path) => listingPrefixes.some((prefix) => path.startsWith(prefix));
+  return { prefixes, resources, includes, listingPrefixes, lists };
 }
 
-export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay = null, observedAt = null, overlayMode = 'STRICT' }) {
+export function projectAndroidScreenLens({ adapter: adapterInput, files, listing = [], overlay = null, observedAt = null, overlayMode = 'STRICT' }) {
   const adapter = normalizeAdapter(adapterInput);
+  if (!Array.isArray(listing)) fail('listing must be an array of repo-relative paths');
   if (!['STRICT', 'LENIENT'].includes(overlayMode)) fail('overlayMode must be STRICT or LENIENT');
   if (!(files instanceof Map)) fail('files must be a Map of repo-relative path -> text');
   const cat = catalog(adapter, files);
@@ -1195,6 +1081,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
   };
 
   /* chrome */
+  const chromeIds = new Map();
   const chromeConfig = adapter.chrome;
   const chromeElements = [];
   if (chromeConfig) {
@@ -1206,6 +1093,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       objects.set(match[1], { name: match[1], cls: match[2], id: stringArg(args), labelRes: named(args, 'labelRes'), intent: named(args, 'intent'), style: named(args, 'style') });
     }
     const localRefs = new Map([...objects.values()].map((object) => [object.name, object.id]));
+    for (const object of objects.values()) if (object.id) chromeIds.set(object.name, object.id);
     const blueprint = blockAfter(shell, /val\s+blueprint\s*=\s*column\(\s*Elements\.(\w+)\s*\)\s*\{/);
     const rootName = /val\s+blueprint\s*=\s*column\(\s*Elements\.(\w+)/.exec(shell)?.[1];
     const kindOf = (object) => chromeConfig.kinds?.[object.id] ?? ({ Column: 'COLUMN', Row: 'ROW', Stack: 'STACK', Image: 'IMAGE', Text: 'TEXT', Button: 'BUTTON', Fab: /FabOption/.test(object.style ?? '') ? 'MENU_ITEM' : 'FAB' })[object.cls] ?? 'REGION';
@@ -1266,6 +1154,8 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
           declared: decl ? `${decl.fn}(id = "${decl.id}")` : `${call.name}("${localId}")`,
           labelRes: labelRes ?? undefined,
           textRole: kind === 'TEXT' ? named(args, 'role')?.replace(/^TextRole\./, '').toUpperCase() : undefined,
+          icon: lastSegment(decl?.icon, 'ElementIcon'),
+          style: lastSegment(named(args, 'style') ?? decl?.style, 'VexElementStyles'),
         };
         if (kind === 'SHEET' || kind === 'DIALOG') element.visibleWhen = `runtime.presentation.isOpen(${refName ?? localId})`;
         elementFromIntent(element, decl?.intent, screen.screenKey, screen, localRefs);
@@ -1274,6 +1164,24 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       }
     };
     if (screen.layout) build(screen.layout, '', null);
+    for (const name of screen.toolbarActions ?? []) {
+      const decl = screen.refs.get(name);
+      if (!decl?.id || elements.some((element) => element.ref === `${prefix}.${decl.id}`)) continue;
+      const element = {
+        ref: `${prefix}.${decl.id}`,
+        kind: REF_KINDS[decl.fn] ?? 'BUTTON',
+        label: textOf(decl.labelRes, decl.id.split('.').at(-1)),
+        parentRef: null,
+        symbol: `${screen.object}.${decl.name}`,
+        declared: `${decl.fn}(id = "${decl.id}")`,
+        labelRes: decl.labelRes ?? undefined,
+        slot: 'TOOLBAR',
+        icon: lastSegment(decl.icon, 'ElementIcon'),
+        style: lastSegment(decl.style, 'VexElementStyles'),
+      };
+      elementFromIntent(element, decl.intent, screen.screenKey, screen, localRefs);
+      elements.push(element);
+    }
     const pathwayCount = elements.filter((element) => element.pathwayRef).length;
     screens.push({
       screenRef: `screen.${screen.screenKey}`,
@@ -1288,6 +1196,145 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     report.elements += elements.length;
   }
   report.screens = screens.length;
+
+  /* realization: how registered and runtime coordinates become presentation, and why */
+  const knownRefs = new Set([...chromeElements.map((element) => element.ref), ...screens.flatMap((screen) => [screen.screenRef, ...screen.elements.map((element) => element.ref)])]);
+  const rootElementOf = (object) => screens.find((screen) => screen.symbol === object)?.elements.find((element) => !element.parentRef)?.ref ?? null;
+  const resolveRef = (expression) => {
+    const expr = compact(stripComments(String(expression ?? ''))).replace(/\s*\.\s*/g, '.').replace(/^\w+\s*=\s*/, '').replace(/\.elementId$/, '').trim();
+    if (!expr) return null;
+    let match = /^(\w+)\.screenId$/.exec(expr);
+    if (match) return screenRefOf(match[1]);
+    match = /^(\w+)\.content(?:\.element)?$/.exec(expr);
+    if (match) return rootElementOf(match[1]);
+    match = /^(?:AppShell\.)?Elements\.(\w+)$/.exec(expr);
+    if (match) return chromeIds.get(match[1]) ?? null;
+    match = /^(\w+)\.(\w+)$/.exec(expr);
+    if (match) {
+      const owner = screenObjects.get(match[1]);
+      const decl = owner?.refs.get(match[2]);
+      if (owner && decl?.id) return `element.${owner.screenKey}.${decl.id}`;
+    }
+    match = /^(\w+Screen)$/.exec(expr);
+    if (match) return screenRefOf(match[1]);
+    return null;
+  };
+  // Presence the static Blueprint already declares: modal presentation and swappable selection.
+  // Custom realization may add the renderer; the relationship itself is source-declared here.
+  const realizeBlueprintPresence = (screen) => {
+    const parsed = screenObjects.get(screen.symbol);
+    const key = screen.screenRef.replace(/^screen\./, '');
+    const localOf = (ref) => ref.replace(`element.${key}.`, '').replace(/[^A-Za-z0-9]+/g, '-');
+    const presence = [];
+    const byRef = new Map(screen.elements.map((element) => [element.ref, element]));
+    for (const element of screen.elements) {
+      const declName = element.symbol?.split('.').pop();
+      const decl = declName ? parsed?.refs.get(declName) : null;
+      if (element.kind === 'SHEET' || element.kind === 'DIALOG') {
+        presence.push({
+          ref: `presence.${key}.${localOf(element.ref)}-open`,
+          kind: 'PRESENTATION',
+          subjectRef: element.ref,
+          owner: 'runtime.presentation',
+          condition: element.visibleWhen ?? `runtime.presentation.isOpen(${declName ?? element.ref})`,
+          realizedBy: null,
+          realizes: screen.elements.filter((child) => child.parentRef === element.ref).map((child) => child.ref),
+          source: screen.source,
+          declaredBy: 'BLUEPRINT',
+        });
+      }
+      if (decl?.fn === 'swappableRef') {
+        const children = screen.elements.filter((child) => child.parentRef === element.ref);
+        const named = decl.defaultChild ? resolveRef(decl.defaultChild.includes('.') ? decl.defaultChild : `${screen.symbol}.${decl.defaultChild}`) : null;
+        presence.push({
+          ref: `presence.${key}.${localOf(element.ref)}-selection`,
+          kind: 'SELECTION',
+          subjectRef: element.ref,
+          owner: 'runtime.presentation',
+          defaultRef: named && byRef.has(named) ? named : children[0]?.ref ?? null,
+          choices: children.map((child) => ({ condition: `selected(${declName}) == ${child.symbol?.split('.').pop() ?? child.ref}`, kind: 'SELECTION', targetRef: child.ref, realizedBy: null, realizes: [child.ref], source: null })),
+          realizedBy: null,
+          source: screen.source,
+          declaredBy: 'BLUEPRINT',
+        });
+      }
+    }
+    return presence;
+  };
+  const rootPrefix = (logical) => {
+    if (!logical) return null;
+    const match = /^([a-z][a-z0-9-]*):(.*)$/.exec(logical);
+    if (!match) return logical.replace(/\/?$/, '/');
+    if (adapter.repository.roots[match[1]] === undefined) fail(`unknown root ${match[1]} in ${logical}`);
+    return `${adapter.repository.roots[match[1]]}${match[2]}`.replace(/\/?$/, '/');
+  };
+  const realizationConfig = adapter.realization ?? null;
+  const examplesConfig = adapter.examples ?? null;
+  let composables = null;
+  let primitives = null;
+  let constants = null;
+  if (realizationConfig || examplesConfig) {
+    const primitivePrefix = rootPrefix(realizationConfig?.primitives ?? examplesConfig?.primitives);
+    composables = composableIndex(files);
+    constants = stringConstants(files);
+    primitives = primitiveCatalog(files, (path) => Boolean(primitivePrefix) && path.startsWith(primitivePrefix));
+    report.primitives = primitives.size;
+  }
+  const toSource = (path) => toRootRef(adapter, path);
+  if (realizationConfig) {
+    report.realization = { projected: 0, partial: 0, opaque: 0, presence: 0, templates: 0, held: 0 };
+    for (const screen of screens) {
+      const parsed = screenObjects.get(screen.symbol);
+      if (!parsed) continue;
+      const realization = realizeScreen({ screen: { ...parsed, source: screen.source }, files, composables, primitives, resolveRef, toSource, knownRefs, constants });
+      if (realization.status === 'BLUEPRINT') {
+        screen.realization = { status: 'BLUEPRINT', entry: null, rendersRegisteredTree: screen.elements.find((element) => !element.parentRef)?.ref ?? null, presence: realizeBlueprintPresence(screen), templates: [], elements: [], opaque: [], held: [] };
+        continue;
+      }
+      screen.realization = { status: realization.status, entry: realization.entry, rendersRegisteredTree: realization.rendersRegisteredTree, realizers: realization.calls, presence: realization.presence, templates: realization.templates, elements: realization.elements, opaque: realization.opaque, held: realization.held };
+      for (const entry of realizeBlueprintPresence(screen)) {
+        const existing = screen.realization.presence.find((candidate) => candidate.kind === entry.kind && candidate.subjectRef === entry.subjectRef);
+        if (!existing) { screen.realization.presence.push(entry); continue; }
+        existing.declaredBy = 'BLUEPRINT';
+        if (entry.defaultRef && !existing.defaultRef) existing.defaultRef = entry.defaultRef;
+        if (entry.realizes) existing.realizes = [...new Set([...(existing.realizes ?? []), ...entry.realizes])];
+      }
+      report.realization[realization.status === 'PROJECTED' ? 'projected' : realization.status === 'PARTIAL' ? 'partial' : 'opaque'] += 1;
+      report.realization.presence += screen.realization.presence.length;
+      report.realization.templates += realization.templates.length;
+      report.realization.held += realization.held.length;
+    }
+  }
+  let examples = [];
+  let examplesHeld = [];
+  if (examplesConfig) {
+    const previewPrefix = rootPrefix(examplesConfig.previews);
+    const goldenPrefix = rootPrefix(examplesConfig.goldens);
+    const journeyPrefix = rootPrefix(examplesConfig.journeys);
+    const read = readSourceExamples({
+      files,
+      listing,
+      resolveRef,
+      screenRefFor: (expression) => screenRefOf(String(expression).trim()),
+      toSource,
+      composables,
+      primitives,
+      knownRefs,
+      isPreviewSource: (path) => Boolean(previewPrefix) && path.startsWith(previewPrefix),
+      isGoldenSource: (path) => Boolean(goldenPrefix) && path.startsWith(goldenPrefix),
+      isJourneySource: (path) => Boolean(journeyPrefix) && path.startsWith(journeyPrefix),
+      referencePrefix: rootPrefix(examplesConfig.goldenReferences) ?? '',
+    });
+    examples = read.examples.filter((example) => !example.subjectRef || knownRefs.has(example.subjectRef));
+    for (const example of examples) {
+      example.screens = example.screens.filter((ref) => knownRefs.has(ref));
+      for (const step of [...example.setup, ...example.steps]) {
+        for (const key of ['targetRef', 'containerRef', 'behavesLikeRef']) if (step[key] && !knownRefs.has(step[key])) step[key] = null;
+      }
+    }
+    examplesHeld = read.held;
+    report.examples = { total: examples.length, held: examplesHeld.length };
+  }
   report.elements += chromeElements.length;
 
   const clean = (value) => JSON.parse(JSON.stringify(value));
@@ -1315,6 +1362,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     screens,
     pathways: [...pathways.values()],
     annotations: [],
+    ...(examplesConfig ? { examples, examplesHeld } : {}),
   };
   lens = clean(lens);
   report.overlayMisses = [];

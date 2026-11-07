@@ -406,6 +406,80 @@ D39 Depth is an existing Screen Lens face; Scenario Playground remains separate 
               would be an effect-free simulation experience with a different question
     boundary   these interaction/presentation refinements do not activate
               work.vexboard.later.screen-lens-scenario-playground or grant simulation/source-mutation authority
+D40 Realization is a second source relationship beside registration, read once
+    why       for custom-rendered Screens the registered tree is a manifest; drawing it literally showed
+              VexStream's per-row menu actions as a visible column (lived screenshot)
+    how       src/core/vexboard-android-realization.mjs reads presence + templates; every face resolves it
+              through src/shared/vexboard-screen-lens-realization.mjs (see SCREEN-LENS-PROJECTABILITY.md)
+    boundary   additive optional sections; a lens generated before them stays valid
+D41 Presence kinds keep their owners; no single visibleWhen
+    why       presentation, selection, population, branch, cases and alternative answer different questions
+    how       normalizer fails closed on unknown kinds and dangling refs; nested relationships carry gates
+D42 Vex primitives are learned from their own signatures, not a list
+    why       a new Vex primitive must not need a VexBoard change; feature nouns must never appear
+    proof     the realization test forbids product nouns in the generic readers
+D43 Source-authored examples compose existing identities; no descriptor
+    why       Preview / Golden / Journey already carry id, subject, setup and fixture provenance
+    how       preview:<id>, golden:<case>, journey:<id>; shared fixture functions relate examples
+    held      duplicate ids, host-derived ids, KDoc-less goldens, foreign semantic roots
+D44 Scenario is a context over all four faces, not a third face
+    why       a face would hide the Surface exactly when the reader wants to watch it change
+    how       an immutable in-page context value (example + overrides); never stored or sent. Since D49
+              the human picks it as an expression, not through a side-head control
+    boundary   SCENARIO != SOURCE TRUTH; no simulated transitions; journeys are listed, not simulated
+D45 Closed modals are reached as expressions (was: a latent dock of handles)
+    why       a closed sheet should not be drawn under the phone just so a human knows it exists, and a
+              dock of handles was one more bulky signal on the Surface (lived feedback)
+    how       each presentation is an expression; double-clicking its opener goes there
+D46 VexBoard never claims the current runtime instance
+    why       it has no live device data; SOURCE means source defaults, DEPENDS means unobserved data
+D47 Projector provenance binds its support modules
+    why       D34 bound the adapter bytes; realization/examples readers change meaning just as much
+    how       provenance.projectorSupportSha256 over the support modules' Git-blob SHA-1s
+D48 Golden reference renders are evidence at the pinned commit, labeled expected
+    why       an accepted screenshot reference is not an observed device run
+    how       listing paths only (bytes never fetched by the adapter); images load from the repository's
+              /raw/<commit>/ route in the browser
+D49 Expressions: one dimension both sides share
+    why       "you chose this screen; swipe through what it can become while its structure stays" and
+              "a change in state reflects both sides, not screen here and logic there" (lived feedback)
+    how       src/shared/vexboard-screen-lens-source-expressions.mjs derives the linear set from relationships
+              source already declares: Source, source-authored examples, then each selection child,
+              opened presentation, population rows / declared empty content and feature-condition
+              choice, depth first. An expression is identified by what it presents (same presentation,
+              another path = alias). The expression rail sits above both sides; the Surface is a
+              carousel of phones (current interactive, neighbours inert); Structure marks what the
+              expression presents beyond Source; Behavior / Depth draw how it is reached (control →
+              intent → runtime presentation state → place → realizer; data binding chain to its owner;
+              preview fixture) whenever no control is picked; the bridge joins both
+    gesture   swipe / ← → / rail; double-click goes where a thing is exposed (a typed intent goes where
+              it leads; a latent element to the nearest expression presenting it); URL ?expression=
+    boundary   no new descriptor, no stored state, no product nouns; custom (hand-set) contexts are still
+              one expression; the count is never observed and template rows are placeholders
+D50 Realization refinements earned by expressions
+    nested     an inner relationship decides over the one enclosing it (a sheet realizes both panels, its
+              selection presents one); a scenario that opens the enclosing choice is why the inner presents
+    agreeing   every choice of an exhaustive relationship realizing a ref is presence, not dependence
+    placement  an element's own realization site wins over its registration parent; the Surface draws
+              what a selected child realizes inside it (tabs in a list header, player controls in a
+              sheet), and a registration group only lends identity
+    reader     a newline still ends a statement inside a named lambda argument (raw argument text kept)
+D51 Design structure is read from composable structure, by name only
+    why       "does the composable structure implicate design structure … like how the ids append"
+              (lived feedback); a song row was drawn as a list of slot names
+    how       readers record named content regions (`bottomBar = { … }` → region), popup layers
+              (`expanded =`), text role / typography names; the adapter records element icon / style
+              and toolbarActions (Screen-owned registered controls, AppScreenBlueprint additionalPlacements).
+              The Lens lays rows out by template nesting, icons by ElementIcon name, chips by style
+    boundary   names only, never values; plain Compose without Vex identity stays skeleton
+D52 An `if` with no `else` can also not hold
+    why       the connected VexStream (connection setup absent) was a missed state
+    how       NONE_CHOICE for non-exhaustive conditions; the expression is phrased as the negation
+D53 The Surface draws what the expression presents
+    how       latent content is not drawn (it is another expression); content that depends on a feature
+              condition folds into one `if` line; placement by selection, by whole registration group, by
+              co-realization in one feature choice, and within the nearest registered element;
+              Shift-click combines expressions (custom)
 ```
 
 ## Data contract
@@ -424,8 +498,19 @@ pathways[]       disposition, nodes (face BEHAVIOR | DEPTH, role, label, symbol,
 annotations[]    subjectRef + text + detail
 ```
 
+Optional, additive sections (SCREEN-LENS-PROJECTABILITY.md):
+
+```text
+screens[].realization  status, entry, rendersRegisteredTree, realizers, presence[], templates[],
+                       elements[] (facts), opaque[], held[]
+examples[]             PREVIEW | GOLDEN | JOURNEY with subject, setup, fixture provenance,
+                       configurations, evidence, steps, related
+examplesHeld[]         examples source does not let VexBoard address yet, with the reason
+```
+
 `normalizeScreenLens` fails closed on unknown roles, faces, kinds, dispositions, broken parent or
 pathway references, containment cycles, unknown navigation targets and unknown annotation subjects.
+Unknown presence kinds, dangling subject/template/example refs and undeclared templates also fail closed.
 
 ## Kotlin annotations as bondables (proposal for VexLife-Android)
 
@@ -603,9 +688,14 @@ DONE   projects entry, Lens-subject catalog, Stable/Main pointers, any-commit pr
 DONE   currentness/projection-truth completion + hosted lived proof     PR #238
 DONE   durable Screen Lens Work closure                                PR #250
 
-WAKE   first real Main move only when VexLife-Android main advances beyond Stable:
-       npm run lens:main -> review Differences -> npm run lens:promote with acceptance evidence
-       Current observation: live main == Stable == 305a09eac1fabebcf2241bd207386950f41121f2; no action now.
+SUPERSEDED lifecycle-only closure #272 after lived regression evidence showed the source-realization
+       experience had been replaced by a two-fixture approximation and non-expression Screens could collapse.
+ACTIVE work.vexboard.screen-lens-realization-recovery
+       -> restore source-owned realization / examples / expressions and the VexArchitecture presentation bridge
+       -> Android PR #218 restores production semantic roots and crawler evidence semantics
+       -> Stable stays pinned to 305a09eac1fabebcf2241bd207386950f41121f2 and is regenerated from that source epoch
+       -> Main recovery candidate projects exact Android source separately; Stable promotion remains held until
+          exact source proof + lived browser proof make the human experience truthful again.
 
 ACTIVE broader canonical VexWork foreground (not unfinished Screen Lens completion):
        work.vexboard.vexstream-screenshot-pilot + work.vexboard.source-projectors

@@ -25,6 +25,9 @@ test('stable VexStream reference keeps Claude direct-registration meaning beside
 test('reference preserves Claude generated VexStream screen and existing pathways except the one intentional Play/Pause bond', () => {
   const generatedScreen = structuredClone(generatedSource.screens.find((screen) => screen.screenRef === 'screen.vexstream-music'));
   const referenceScreen = structuredClone(source.screens[0]);
+  // The reference preserves REGISTRATION (element tree + pathways). Realization is an additive projection
+  // section with its own regression surface (test/vexboard-android-realization.test.mjs).
+  delete generatedScreen.realization;
   generatedScreen.elements.find((element) => element.ref === PLAY_PAUSE).pathwayRef = PLAYBACK;
   assert.deepEqual(referenceScreen, generatedScreen);
 

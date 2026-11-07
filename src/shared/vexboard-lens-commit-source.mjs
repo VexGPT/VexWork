@@ -132,11 +132,13 @@ export async function projectCommit({ adapter, overlay = null, ref, resolved = n
     return body;
   });
   const files = new Map(paths.map((path, index) => [path, texts[index]]));
+  // Listed evidence paths (for example golden reference renders): existence only, never downloaded.
+  const listing = typeof plan.lists === 'function' ? (tree.tree ?? []).filter((entry) => entry.type === 'blob' && plan.lists(entry.path)).map((entry) => entry.path).sort() : [];
   onProgress({ phase: 'PROJECT', done: paths.length, total: paths.length });
   const pinned = { ...adapter, repository: { ...adapter.repository, commit: commit.sha } };
   let projected;
   try {
-    projected = project({ adapter: pinned, files, overlay, observedAt: commit.date ? commit.date.slice(0, 10) : null, overlayMode: 'LENIENT' });
+    projected = project({ adapter: pinned, files, listing, overlay, observedAt: commit.date ? commit.date.slice(0, 10) : null, overlayMode: 'LENIENT' });
   } catch (error) {
     throw new CommitSourceError(`The adapter could not read ${commit.sha.slice(0, 7)}: ${error?.message ?? error}. This commit's source shape is probably older or newer than the adapter understands.`, 'SHAPE');
   }

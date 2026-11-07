@@ -1297,4 +1297,40 @@ Scenario Playground remains:
 
 Victor's 2026-11-06/07 continuation explicitly activated this bounded implementation. The successor plan remains the membrane: Android/VexBoard changes outside its earned relationships require a new justification rather than silent scope widening.
 
+## 2026-11-07 — lived regression correction
+
+The prior completion judgment is preserved as history but is **superseded**, not treated as the current terminal truth.
+
+Victor's lived Debug Menu screenshot exposed a concrete presentation regression: the later Lens used a five-row
+layout while making the expression rail conditional on a two-Screen fixture registry. A non-fixture Screen therefore
+placed the two-face main body into an auto row, collapsing the actual Surface/Behavior experience while the inspector
+occupied the flexible row.
+
+The deeper source review also proved that PRs #265/#270/#271 had substituted a VexStream/Events fixture pipeline for
+the supplied source-realization body. PR #270 truthfully described its result as interaction/composition restoration,
+not full source-realization/template parity. That distinction invalidates #272's broader completion claim.
+
+Current completion obligation:
+
+```text
+VexArchitecture purpose -> source relationship -> realization -> expression -> lived presentation -> proof
+
+Android-owned source/evidence
+  -> production semantic roots and exact evidence semantics
+
+VexBoard
+  -> generic realization/examples readers
+  -> source-derived expressions for every Screen
+  -> realization-aware Surface / Structure / Behavior / Depth
+  -> Stable and Main generated from their rightful source epochs
+
+proof
+  -> source/projector checks
+  -> materially different Screens: Debug Menu, VexStream, Events, Conversation
+  -> desktop + phone-width lived browser
+  -> no Stable promotion until the actual human experience is accepted
+```
+
+The fixture contract remains addressable historical/contract evidence, but it no longer owns the Lens UI.
+
 <!-- [VXG RealForever][VEXBOARD][SCREEN-LENS][PROJECTABILITY][EXPRESSIONS][SUCCESSOR-PLAN] -->

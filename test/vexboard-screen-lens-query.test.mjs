@@ -97,7 +97,7 @@ test('search needs every token, ranks identifiers over prose, and respects limit
   const ranked = searchLens(lens, 'dark');
   for (let i = 1; i < ranked.length; i += 1) assert.ok(ranked[i - 1].score >= ranked[i].score);
   assert.equal(searchLens(lens, 'e', { limit: 3 }).length, 3);
-  assert.deepEqual(SEARCH_KINDS, ['ELEMENT', 'STEP', 'SCREEN', 'PATHWAY', 'NOTE']);
+  assert.deepEqual(SEARCH_KINDS, ['ELEMENT', 'STEP', 'SCREEN', 'PATHWAY', 'PRESENCE', 'EXAMPLE', 'NOTE']);
   const helper = searchLens(lens, 'events simulator helper');
   assert.ok(helper.some((result) => result.ref === 'element.debug-menu.body.events-simulator.helper'));
   const prose = searchLens(lens, 'supersedes an older one');
@@ -233,5 +233,19 @@ test('the control brief handles chrome owners without a source path and controls
   assert.match(brief, /appears on: no projected screen/);
   assert.match(brief, /owner: AppShell\n/);
 });
+
+test('realization relationships and source-authored examples are findable by their source coordinates', async () => {
+  const fs = await import('node:fs');
+  const generated = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8')));
+  const byCondition = searchLens(generated, 'isOpen ConnectionMenuSheet');
+  assert.ok(byCondition.some((result) => result.kind === 'PRESENCE' && result.target.elementRef === 'element.vexstream-music.body.connection.menu'));
+  const byChain = searchLens(generated, 'playableTracks');
+  assert.ok(byChain.some((result) => result.kind === 'PRESENCE' && result.target.screenRef === 'screen.vexstream-music'), 'a population is found through its provenance chain');
+  const byFixture = searchLens(generated, 'debugHistoryPreviewFixture');
+  assert.deepEqual(byFixture.filter((result) => result.kind === 'EXAMPLE').map((result) => [result.ref, result.target.screenRef]), [['preview:debug-history-open', 'screen.debug-menu']]);
+  const golden = searchLens(generated, 'vexstream.library.songs').find((result) => result.kind === 'EXAMPLE');
+  assert.equal(golden.target.screenRef, 'screen.vexstream-music', 'a held-subject golden still lands on the screen its realizer renders');
+});
+
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][QUERY-TEST]

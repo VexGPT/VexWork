@@ -95,7 +95,7 @@ a{color:var(--focus)}
 .mapped.MAPPED{background:var(--ink)}.mapped.CHROME_ONLY{background:linear-gradient(90deg,var(--ink) 50%,transparent 50%)}.mapped.HELD{background:transparent}
 .screen-chip .visits{font-size:11px;color:var(--muted)}
 
-.main{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:28px;padding:12px 18px 14px;min-height:0}
+.main{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding:12px 18px 14px;min-height:0}
 .side{display:grid;grid-template-rows:auto minmax(0,1fr);min-height:0;perspective:1800px}
 .side-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .side-head h2{margin:0;font-size:13px;font-weight:600;color:var(--muted)}
@@ -155,46 +155,155 @@ a{color:var(--focus)}
 .travel.right{left:calc(100% + 8px);top:50%;transform:translateY(-50%)}
 .travel.badge{left:auto;right:-8px;top:-10px;transform:none;height:20px;padding:0 8px;font-size:11px}
 
-/* Source-backed Screen expressions: one shared dimension over the four existing faces. */
+/* Realization: one presence relationship, many projections (see vexboard-screen-lens-realization.mjs) */
+:root{--pres-latent:#8a93a6;--pres-depends:#0e7490;--pres-example:#7c3aed;--pres-scenario:#d97706;--pres-untraced:#b9c1cf;--pres-held:#be123c}
+.palette-high-contrast{--pres-latent:#000;--pres-depends:#000;--pres-example:#000;--pres-scenario:#000;--pres-untraced:#000;--pres-held:#000}
+.pres-LATENT{opacity:.62;outline:1.5px dashed var(--pres-latent);outline-offset:2px}
+.pres-DEPENDS{outline:1.5px dotted var(--pres-depends);outline-offset:2px}
+.pres-DEPENDS::after{content:'if';position:absolute;top:-8px;left:-6px;padding:0 4px;border-radius:5px;background:var(--pres-depends);color:#fff;font:600 9.5px/14px var(--sans)}
+.pres-EXAMPLE{box-shadow:0 0 0 2px color-mix(in srgb,var(--pres-example) 70%,transparent)}
+.pres-SCENARIO{box-shadow:0 0 0 2px color-mix(in srgb,var(--pres-scenario) 80%,transparent)}
+.pres-UNTRACED{outline:1px dashed var(--pres-untraced);outline-offset:3px}
+.reg-group{position:relative;display:flex;flex-direction:column;gap:6px;padding:16px 8px 8px;border:1px dashed var(--pres-untraced);border-radius:12px;background:repeating-linear-gradient(135deg,transparent 0 7px,#f3f5f8 7px 8px)}
+.reg-group > .reg-label{position:absolute;top:-1px;left:8px;transform:translateY(-50%);padding:0 6px;background:#fbfbfd;color:var(--faint);font:500 10.5px/16px var(--mono)}
+.per-item{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border:1px dashed var(--pres-latent);border-radius:999px;background:#fff;font-size:12px;color:var(--muted)}
+.per-item::before{content:'↻';font-size:11px}
+.pop-stub{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;width:100%;min-height:30px;padding:5px 9px;border:1.5px dashed var(--pres-latent);border-radius:10px;background:#fff;font-size:11px;color:var(--muted);text-align:left}
+.pop-stub b{color:var(--ink);font-weight:600}
+.pop-stub code{font-size:10.5px;color:var(--r-STORE);overflow-wrap:anywhere}
+.pop{display:flex;flex-direction:column;gap:6px;padding:9px;border:1.5px dashed var(--pres-latent);border-radius:12px;background:#fff}
+.pop.SCENARIO{border-style:solid;border-color:var(--pres-scenario)}
+.pop-head{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;font-size:11px;color:var(--muted)}
+.pop-head b{color:var(--ink);font-weight:600}
+.pop-head code{font-size:10.5px;color:var(--r-STORE);overflow-wrap:anywhere}
+.pop-tag{padding:0 5px;border-radius:5px;background:#eef1f5;font:600 9.5px/16px var(--mono);color:var(--muted)}
+.pop-tag.held{background:color-mix(in srgb,var(--pres-held) 12%,#fff);color:var(--pres-held)}
+.tcard{display:flex;flex-direction:column;gap:3px;padding:8px;border:1px solid #e3e7ee;border-radius:10px;background:#fbfbfd}
+/* Realized design, drawn from source: registered style + icon, named content regions, row templates */
+.vx-icon{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.el-iconbtn{position:relative;display:inline-grid;place-items:center;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:none;color:var(--ink);flex:none}
+.el-button{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.el-button .vx-icon{width:17px;height:17px}
+.el-button.style-PrimaryAction{background:var(--ink);border-color:var(--ink);color:#fff}
+.el-button.style-SecondaryAction{background:#efeafb;border-color:#efeafb;color:#2b2140}
+.el-button.style-DangerAction{background:#f7e1dd;border-color:#f7e1dd;color:#5b1a12}
+.el-chip{position:relative;flex:none;height:32px;padding:0 15px;border:1px solid #cfd5df;border-radius:999px;background:#fff;font-size:13px;font-weight:500;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.el-chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.el-chip .vx-icon{width:16px;height:16px}
+.el-row.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px}
+.el-row.icons{flex-wrap:nowrap;justify-content:space-around}
+.phone-actions{display:flex;gap:0;margin-left:auto}
+.region-bottom{display:flex;flex-direction:column;gap:8px;padding:8px 12px 10px;border-top:1px solid #eceff4;background:#f4f5f8}
+.region-bottom > .el-column{gap:6px;padding:10px;border:1px solid #e3e7ee;border-radius:16px;background:#fff}
+.region-fab{position:absolute;right:14px;bottom:74px;z-index:5;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.region-fab .el-fab{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#e9e3fb;color:#2b2140;font-size:0}
+.dep-stub{position:relative;display:flex;align-items:center;gap:6px;width:100%;min-height:28px;padding:4px 9px;border:1.5px dotted var(--pres-depends);border-radius:10px;background:#fff;font-size:11.5px;color:var(--muted);text-align:left}
+.dep-stub .dep-if{flex:none;padding:0 4px;border-radius:5px;background:var(--pres-depends);color:#fff;font:600 9.5px/14px var(--sans)}
+.dep-stub .dep-cond{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:10.5px var(--mono)}
+.dep-stub b{flex:none;color:var(--ink);font-weight:600;font-size:12px}
+.dep-stub .dep-n{flex:none;color:var(--faint);font:10.5px var(--mono)}
+.t-list{display:flex;flex-direction:column;gap:6px}
+.t-item{display:block}
+.t-card{position:relative;display:flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid #e3e7ee;border-radius:14px;background:#fff;text-align:left}
+.t-plain{display:flex;flex-direction:column;gap:5px;padding:2px 0}
+.t-plain i{display:block;height:8px;border-radius:4px;background:#e3e7ee}
+.t-plain i:first-child{height:10px;background:#d3d8e1}
+.t-row{display:flex;align-items:center;gap:10px;min-width:0}
+.t-col{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.t-stack{position:relative;display:inline-flex;align-items:center;flex:none}
+.t-thumb{position:relative;display:grid;place-items:center;width:48px;height:48px;flex:none;border-radius:11px;background:#eceef3;color:#5d6675;overflow:hidden}
+.t-thumb.img{background:linear-gradient(135deg,hsl(var(--hue) 70% 72%),hsl(calc(var(--hue) + 70) 60% 58%))}
+.t-thumb .vx-icon{width:22px;height:22px}
+.t-text{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px;color:var(--ink)}
+.t-text.titleMedium,.t-text.titleLarge,.t-text.titleSmall{font-size:14px;font-weight:600}
+.t-text.Supporting,.t-text.bodySmall{font-size:12px;color:var(--muted)}
+.t-text.Label,.t-text.labelSmall{font:11px var(--mono);color:var(--muted)}
+.t-text::before{content:'⟨';color:var(--faint);font-weight:400}.t-text::after{content:'⟩';color:var(--faint);font-weight:400}
+.t-if{outline:1px dotted var(--pres-depends);outline-offset:2px;border-radius:4px}
+.t-opq{font:10.5px var(--mono);color:var(--faint)}
+.t-pop{position:absolute;top:-4px;right:-6px;padding:0 4px;border-radius:6px;background:#eef1f5;color:var(--muted);font:600 9.5px/14px var(--mono)}
+.placed-group{margin:0}
+.tslot{display:flex;flex-wrap:wrap;align-items:center;gap:5px;min-height:20px;font-size:11.5px;color:var(--muted)}
+.tslot .bar{display:inline-block;height:7px;border-radius:4px;background:#dfe4ec}
+.tslot .alt{display:inline-flex;gap:3px;align-items:center}
+.tslot .alt i{font-style:normal;padding:0 5px;border:1px solid #dfe4ec;border-radius:5px;font:10.5px/16px var(--mono)}
+.tslot .cond{font:10.5px var(--mono);color:var(--pres-depends)}
+.tslot .pill{height:22px;padding:0 8px;border:1px solid #cfd5df;border-radius:999px;background:#fff;font-size:11.5px}
+.tslot .opq{font:10.5px var(--mono);color:var(--faint)}
+.empty-alt{padding:8px;border:1px dashed var(--pres-latent);border-radius:9px;color:var(--muted);font-size:12px}
+
+/* Expressions: one shared dimension of both sides (see vexboard-screen-lens-expressions.mjs) */
 .xrail{display:flex;align-items:center;gap:8px;min-width:0;padding:6px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}
-.xrail .xlabel{flex:none;font-size:12px;font-weight:650;color:var(--muted)}
+.xrail .xlabel{flex:none;font-size:12px;font-weight:600;color:var(--muted)}
 .xrail .xstep{flex:none;width:28px;height:28px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:16px;line-height:1}
-.xrail .xstep:disabled{opacity:.35;cursor:default}
+.xrail .xstep:disabled{opacity:.35}
+.xrail .xcount{flex:none;font:12px var(--mono);color:var(--faint)}
+.xrail .tool{flex:none;height:28px}
 .xchips{flex:1;min-width:0;display:flex;align-items:center;gap:5px;overflow-x:auto;padding:3px 2px;scrollbar-width:thin}
-.xchip{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:280px;height:28px;padding:0 9px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:12px;white-space:nowrap}
+.xchip{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:280px;height:28px;padding:0 9px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:12px}
+.xchip.sub{height:24px;border-style:dashed;color:var(--muted);font-size:11.5px}
+.xchip .xw{font-weight:600;white-space:nowrap}
 .xchip .xt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.xchip[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px color-mix(in srgb,var(--ink) 14%,transparent);font-weight:650}
-.xrail .xcount{flex:none;font:11.5px var(--mono);color:var(--faint)}
 .xk{flex:none;padding:0 4px;border-radius:4px;background:#eef1f5;color:var(--muted);font:600 9.5px/15px var(--mono)}
-.xcap{display:flex;align-items:center;gap:6px;max-width:100%;min-height:20px;color:var(--muted);font-size:12px;white-space:nowrap}
-.xcap b{color:var(--ink);font-weight:650}.xcap .xwhat{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.kind-EXAMPLE .xk{background:color-mix(in srgb,var(--pres-example) 14%,#fff);color:var(--pres-example)}
+.kind-SELECTION .xk,.kind-PRESENTATION .xk{background:color-mix(in srgb,var(--r-NAVIGATION) 14%,#fff);color:var(--r-NAVIGATION)}
+.kind-POPULATION .xk,.kind-CONDITION .xk{background:color-mix(in srgb,var(--pres-depends) 12%,#fff);color:var(--pres-depends)}
+.kind-CUSTOM .xk{background:color-mix(in srgb,var(--pres-scenario) 14%,#fff);color:var(--pres-scenario)}
+.xchip.on{border:1px solid var(--ink);box-shadow:0 0 0 2px color-mix(in srgb,var(--ink) 14%,transparent);color:var(--ink)}
+.xsep{flex:none;width:1px;height:18px;margin:0 3px;background:var(--rule-strong)}
 .xstage{position:relative;flex:1;min-width:0;min-height:0;display:flex;justify-content:center}
 .xslot{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;width:min(340px,100%);min-height:0}
-.xslot>.phone{width:100%;flex:1;height:auto}
-.xpeek{position:absolute;top:28px;bottom:0;z-index:1;display:flex;flex-direction:column;width:min(340px,100%);opacity:.42;cursor:pointer;transition:opacity .15s}
-.xpeek:hover{opacity:.74}.xpeek.prev{right:calc(50% + 186px);transform:scale(.84);transform-origin:right top}.xpeek.next{left:calc(50% + 186px);transform:scale(.84);transform-origin:left top}
-.xpeek>.phone{flex:1;height:auto;pointer-events:none}.xpeek-label{position:absolute;bottom:calc(100% + 6px);left:0;right:0;display:flex;align-items:center;gap:5px;overflow:hidden;color:var(--muted);font-size:12px;white-space:nowrap}.xpeek.prev .xpeek-label{justify-content:flex-end}
+.xslot > .phone{width:100%;flex:1;height:auto}
+.xcap{display:flex;align-items:center;gap:6px;max-width:100%;min-height:20px;font-size:12px;color:var(--muted);white-space:nowrap}
+.xcap b{color:var(--ink);font-weight:600}
+.xcap .xwhat{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.xcap .xdelta{flex:none;font:600 10.5px var(--mono);color:var(--faint)}
+.xpeek{position:absolute;top:28px;bottom:0;z-index:1;display:flex;flex-direction:column;width:min(340px,100%);opacity:.45;cursor:pointer;transition:opacity .15s}
+.xpeek:hover{opacity:.75}
+.xpeek.prev{right:calc(50% + 186px);transform:scale(.84);transform-origin:right top}
+.xpeek.next{left:calc(50% + 186px);transform:scale(.84);transform-origin:left top}
+.xpeek > .phone{flex:1;height:auto;pointer-events:none}
+.xpeek-label{position:absolute;bottom:calc(100% + 6px);left:0;right:0;display:flex;align-items:center;gap:5px;overflow:hidden;font-size:12px;color:var(--muted);white-space:nowrap}
+.xpeek.prev .xpeek-label{justify-content:flex-end}
 @keyframes x-in-next{from{transform:translateX(64px);opacity:.25}to{transform:none;opacity:1}}
 @keyframes x-in-prev{from{transform:translateX(-64px);opacity:.25}to{transform:none;opacity:1}}
-.xstage.enter-next .xslot{animation:x-in-next .26s cubic-bezier(.2,.7,.2,1)}.xstage.enter-prev .xslot{animation:x-in-prev .26s cubic-bezier(.2,.7,.2,1)}
-@media (prefers-reduced-motion:reduce){.xstage .xslot{animation:none!important}}
-.x-part{outline:2px solid color-mix(in srgb,var(--focus) 55%,transparent);outline-offset:2px}
-.x-unclaimed{opacity:.34;filter:saturate(.55)}
-.x-unclaimed.x-part{opacity:1;filter:none}
-.srow.x-part{outline:0;box-shadow:inset 3px 0 0 color-mix(in srgb,var(--focus) 70%,transparent)}
-.x-runtime{display:flex;flex-direction:column;gap:6px;margin-top:7px;padding:7px;border:1px dashed var(--rule-strong);border-radius:10px;background:#fff}
-.x-runtime::before{content:'runtime representatives · source values only';color:var(--faint);font:600 9.5px var(--mono);text-transform:uppercase}
-.x-runtime-item{display:flex;flex-direction:column;gap:1px;min-height:38px;padding:7px 9px;border:1px solid #e3e7ee;border-radius:10px;background:#fbfbfd;color:var(--ink);font-size:11.5px}
-.x-runtime-label{font-weight:650}.x-runtime-ref{color:var(--faint);font:10px var(--mono);overflow-wrap:anywhere}
-.x-runtime-count{flex:none;margin-left:auto;color:var(--muted);font:10.5px var(--mono)}
-.xstruct,.xgraph-context{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px;padding:8px 10px;border:1px solid var(--rule);border-radius:10px;background:#fff;color:var(--muted);font-size:12px}
-.xstruct b,.xgraph-context b{color:var(--ink)}
-.xgraph-context{margin:10px 12px 0}
-.xpaths{display:flex;align-items:center;gap:4px;min-width:0;margin-left:auto;overflow-x:auto;scrollbar-width:none}
-.xpaths .label{flex:none;font-size:11px;color:var(--faint)}
-.xpath{flex:none;height:25px;padding:0 8px;border:1px solid var(--rule);border-radius:7px;background:#fff;color:var(--muted);font-size:11px;white-space:nowrap;max-width:210px;overflow:hidden;text-overflow:ellipsis}
-.xpath[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
-@media (max-width:900px){.xrail{flex-wrap:nowrap;padding:6px 12px}.xrail .xlabel,.xrail .xcount{display:none}.xchips{order:initial;flex:1;flex-basis:auto;overflow:hidden;justify-content:center;padding:2px}.xchip{display:none}.xchip[aria-pressed="true"]{display:inline-flex;width:100%;max-width:100%;justify-content:center}.xpeek{display:none}.xslot{width:min(390px,100%)}.xgraph-context .xpaths{flex-basis:100%;margin-left:0;padding-top:4px}}
+.xstage.enter-next .xslot{animation:x-in-next .26s cubic-bezier(.2,.7,.2,1)}
+.xstage.enter-prev .xslot{animation:x-in-prev .26s cubic-bezier(.2,.7,.2,1)}
+@keyframes x-flash{0%,45%{box-shadow:0 0 0 4px color-mix(in srgb,var(--focus) 55%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
+.flash{animation:x-flash 1.3s ease 1}
+@media (prefers-reduced-motion:reduce){.xstage .xslot,.flash{animation:none!important}}
+.golden-shot{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;margin:0;background:#0b0f19;cursor:pointer}
+.golden-shot img{flex:1;min-height:0;width:100%;object-fit:contain}
+.golden-shot figcaption{padding:6px 10px;background:#fff;color:var(--muted);font-size:11px}
+.xstruct{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:12px;padding:8px 12px;border:1px solid var(--rule);border-radius:10px;background:#fff;font-size:12px;color:var(--muted)}
+.xstruct b{color:var(--ink)}
+.srow.rev{background:color-mix(in srgb,var(--pres-scenario) 8%,transparent)}
+.srow.hid{opacity:.55}
+.xnote{margin:6px 0 0;padding:6px 9px;border:1px dashed var(--pres-latent);border-radius:8px;color:var(--muted);font-size:12px}
+.scenario-chip{border-color:var(--pres-scenario)!important;color:var(--pres-scenario)}
+.example-chip{border-color:var(--pres-example)!important;color:var(--pres-example)}
+.pres-chip{display:inline-flex;align-items:center;height:16px;padding:0 5px;border-radius:5px;font:600 9.5px var(--mono);letter-spacing:.02em;border:1px solid currentColor}
+.pres-chip.SOURCE{color:var(--muted)}.pres-chip.LATENT{color:var(--pres-latent);border-style:dashed}.pres-chip.DEPENDS{color:var(--pres-depends);border-style:dotted}
+.pres-chip.EXAMPLE{color:var(--pres-example)}.pres-chip.SCENARIO{color:var(--pres-scenario)}.pres-chip.UNTRACED{color:var(--faint);border-style:dashed}.pres-chip.HELD{color:var(--pres-held)}.pres-chip.ITEM{color:var(--muted);border-style:dashed}
+.srow .spres{grid-column:2;display:flex;flex-wrap:wrap;gap:4px}
+.tray .cause{border-left:3px solid var(--rule-strong);padding:2px 0 4px 10px;margin-bottom:8px;font-size:12.5px}
+.tray .cause .actions{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.tray .chain{margin:4px 0 6px;padding-left:16px;font:11.5px/1.5 var(--mono);color:var(--muted)}
+.tray .chain li{overflow-wrap:anywhere}
+.examples-body{flex:1;overflow:auto;padding:14px 16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-content:start}
+.examples-body > h3{grid-column:1/-1;margin:6px 0 0;font-size:12.5px;color:var(--muted)}
+.xcard{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid var(--rule);border-radius:12px;background:#fff;font-size:12.5px}
+.xcard.applied{border-color:var(--pres-example);box-shadow:0 0 0 1.5px var(--pres-example)}
+.xcard header{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.xcard header b{font-weight:600;font-size:13px}
+.xcard .muted{color:var(--muted)}.xcard code{font-size:11.5px;overflow-wrap:anywhere}
+.xcard .tags{display:flex;flex-wrap:wrap;gap:4px}
+.xcard .tags span{padding:0 6px;border:1px solid var(--rule);border-radius:6px;font-size:11px;color:var(--muted)}
+.xcard img{max-width:100%;max-height:300px;object-fit:contain;align-self:flex-start;border:1px solid var(--rule);border-radius:8px;background:#0b0f1a}
+.xcard .held{color:var(--pres-held)}
+.xcard ol{margin:0;padding-left:18px;font-size:12px}.xcard li{margin:1px 0;overflow-wrap:anywhere}
+.xkind{padding:0 6px;border-radius:5px;font:600 10px/18px var(--mono);background:#eef1f5;color:var(--muted)}
+.xkind.PREVIEW{background:color-mix(in srgb,var(--pres-example) 12%,#fff);color:var(--pres-example)}.xkind.GOLDEN{background:#fdf2e3;color:#9a3412}.xkind.JOURNEY{background:#e6f4f1;color:#0f766e}
 
 /* Structure face */
 .structure{flex:1;overflow:auto;padding:16px 16px 28px}
@@ -400,6 +509,8 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
   .main{padding:12px}
   .side-head{flex-wrap:wrap}.side-head .hint{display:none}
   .surface{padding:12px}
+  .xpeek{display:none}
+  .xrail{padding:6px 12px}.xrail .xlabel,.xrail .xcount{display:none}
 }
 </style>
 </head>
@@ -417,15 +528,12 @@ import * as Presentation from './ui/presentation.mjs';
 import * as Query from '../src/shared/vexboard-screen-lens-query.mjs';
 import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
 import * as Revision from '../src/shared/vexboard-screen-lens-revision.mjs';
-import * as Expressions from '../src/shared/vexboard-screen-lens-expressions.mjs';
+import * as Realization from '../src/shared/vexboard-screen-lens-realization.mjs';
+import * as Expressions from '../src/shared/vexboard-screen-lens-source-expressions.mjs';
 
 const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const LENS_DIR = '../projects/vexboard/lens/';
 const CATALOG_URL = `${LENS_DIR}catalog.json`;
-const EXPRESSION_FIXTURE_URLS = Object.freeze({
-  'screen.vexstream-music': '../projects/vexboard/examples/vexlife-android-vexstream.screen-lens-expressions.fixture.json',
-  'screen.events': '../projects/vexboard/examples/vexlife-android-events.screen-lens-expressions.fixture.json',
-});
 const params = new URLSearchParams(location.search);
 const app = document.getElementById('app');
 const SVG = 'http://www.w3.org/2000/svg';
@@ -527,7 +635,6 @@ function renderToast() {
 async function openRequest(request, { onProgress = () => {}, announce = true } = {}) {
   const keepScreen = state.lens ? screenRef() : null;
   const keepElement = state.anchorElementRef;
-  const keepExpression = state.expressionRef;
   const loaded = await lensForRequest(request, onProgress);
   state.request = request;
   state.lens = loaded.lens;
@@ -539,10 +646,7 @@ async function openRequest(request, { onProgress = () => {}, announce = true } =
   state.cameras.clear();
   const start = keepScreen && state.lens.screens.some((screen) => screen.screenRef === keepScreen) ? keepScreen : state.lens.entryScreenRef;
   state.walk = Lens.createScreenWalk(state.lens, start);
-  try { await loadExpressionFixtureSourcesForUi(); }
-  catch (error) { expressionFixturesLoaded = false; state.expressionError = error.message; }
-  bindExpressionsForCurrentScreen({ requestedRef: keepExpression });
-  resetScreenSelection();
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
   if (state.overlay === 'CHANGES' && !state.compare) state.overlay = null;
   if (keepElement && Lens.elementsForScreen(state.lens, start).some((element) => element.ref === keepElement)) selectElement(keepElement);
   else render();
@@ -618,6 +722,42 @@ function s(tag, attrs = {}) {
   for (const [key, value] of Object.entries(attrs)) if (value !== null && value !== undefined) node.setAttribute(key, String(value));
   return node;
 }
+// The design system's icon names (ElementIcon), drawn simply: a registered element's `icon =`.
+const GLYPHS = {
+  Search: [['circle', { cx: 10, cy: 10, r: 6 }], ['path', { d: 'M14.5 14.5 20 20' }]],
+  Menu: [['path', { d: 'M4 6h16M4 12h16M4 18h16' }]],
+  Settings: [['circle', { cx: 12, cy: 12, r: 3 }], ['path', { d: 'M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1' }]],
+  Play: [['path', { d: 'M8 5l11 7-11 7z', fill: 'currentColor' }]],
+  Pause: [['path', { d: 'M8 5v14M16 5v14', 'stroke-width': 3 }]],
+  PlayPause: [['path', { d: 'M8 5v14M16 5v14', 'stroke-width': 3 }]],
+  Next: [['path', { d: 'M6 5l9 7-9 7z', fill: 'currentColor' }], ['path', { d: 'M18 5v14' }]],
+  Previous: [['path', { d: 'M18 5l-9 7 9 7z', fill: 'currentColor' }], ['path', { d: 'M6 5v14' }]],
+  Shuffle: [['path', { d: 'M4 7h4l8 10h4M4 17h4l8-10h4M17 4l3 3-3 3M17 14l3 3-3 3' }]],
+  Repeat: [['path', { d: 'M4 11V9a2 2 0 0 1 2-2h13M16 4l3 3-3 3M20 13v2a2 2 0 0 1-2 2H5M8 20l-3-3 3-3' }]],
+  Queue: [['path', { d: 'M4 6h12M4 11h12M4 16h7' }], ['circle', { cx: 17, cy: 17, r: 2 }], ['path', { d: 'M19 17V8' }]],
+  Download: [['path', { d: 'M12 4v11M7 10l5 5 5-5M5 20h14' }]],
+  RemoveDownload: [['path', { d: 'M5 7h14M9 7V5h6v2M7 7l1 13h8l1-13', fill: 'currentColor', 'fill-opacity': 0.9 }]],
+  Close: [['path', { d: 'M6 6l12 12M18 6 6 18' }]],
+  Music: [['circle', { cx: 8, cy: 17, r: 3 }], ['circle', { cx: 17, cy: 15, r: 3 }], ['path', { d: 'M11 17V5l9-2v12' }]],
+  Person: [['circle', { cx: 12, cy: 8, r: 4 }], ['path', { d: 'M4 20c1-4 4-6 8-6s7 2 8 6' }]],
+  PlayNext: [['path', { d: 'M4 6l7 6-7 6z', fill: 'currentColor' }], ['path', { d: 'M14 8h6M14 12h6M14 16h6' }]],
+  Add: [['path', { d: 'M12 5v14M5 12h14' }]],
+  Back: [['path', { d: 'M15 5l-7 7 7 7' }]],
+  Home: [['path', { d: 'M4 11l8-7 8 7M6 10v10h12V10' }]],
+  Reset: [['path', { d: 'M4 12a8 8 0 1 0 3-6.2M4 4v5h5' }]],
+  Location: [['path', { d: 'M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z' }], ['circle', { cx: 12, cy: 9, r: 2.5 }]],
+  History: [['circle', { cx: 12, cy: 12, r: 8 }], ['path', { d: 'M12 8v4l3 2' }]],
+  Save: [['path', { d: 'M5 4h11l3 3v13H5zM8 4v5h7' }]],
+  Help: [['circle', { cx: 12, cy: 12, r: 8 }], ['path', { d: 'M10 9.5a2 2 0 1 1 2.5 2c-.5.2-.5.8-.5 1.5M12 16.5v.5' }]],
+  Events: [['path', { d: 'M5 6h14v13H5zM5 10h14M9 4v4M15 4v4' }]],
+  Gallery: [['path', { d: 'M4 5h16v14H4zM4 16l5-5 4 4 3-3 4 4' }]],
+  Debug: [['path', { d: 'M8 8h8v10H8zM12 8V5M5 12h3M16 12h3M5 17h3M16 17h3' }]],
+};
+function glyph(name) {
+  const svg = s('svg', { class: 'vx-icon', viewBox: '0 0 24 24', 'aria-hidden': 'true' });
+  for (const [tag, attrs] of GLYPHS[name] ?? [['circle', { cx: 12, cy: 12, r: 4 }]]) svg.append(s(tag, attrs));
+  return svg;
+}
 const DISPOSITION_NAMES = { SCAE_FAMILY: 'SCAE Family', TYPED_PRESENTATION: 'Typed presentation', TYPED_NAVIGATION: 'Typed navigation', DIRECT_REGISTRATION: 'Direct registration' };
 function breakable(value) { const out = []; String(value).split(/(?<=[.(,>_/])/).forEach((part, i) => { if (i) out.push(h('wbr')); out.push(part); }); return out; }
 function chip(role) { const info = Lens.roleFor(role); return h('span', { class: `chip role-${role}`, title: `${info.label} · ${Lens.LENS_BANDS[info.band].label}` }, info.chip); }
@@ -645,13 +785,13 @@ const state = {
   marks: true,
   menu: null, // 'PROJECT' | 'COMMIT'
   commitForm: { value: '', busy: false, progress: null, error: null, recent: null, recentError: null },
-  expressionFixture: null,
-  expressionRef: null,
-  expressionResolution: null,
-  expressionPathwayRef: null,
-  expressionError: null,
-  expressionMotion: null,
   toast: null,
+  // Which realization context the faces show: source defaults, one source-authored example, plus
+  // browser-local scenario overrides. A plain value; never persisted, never sent anywhere. The
+  // expression on screen is whichever one this context equals (or a custom one).
+  realization: Realization.emptyRealizationContext(),
+  motion: null, // 'next' | 'prev' for one render after the expression changes
+  flashRef: null, // the element to bring into view after the expression changes
 };
 let refs = {};
 
@@ -660,242 +800,18 @@ function writePalette(mode) { try { localStorage.setItem(Presentation.VEXBOARD_P
 
 const screenRef = () => Lens.currentWalkScreen(state.walk);
 const currentScreen = () => Lens.screenFor(state.lens, screenRef());
-const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef);
+// With no control picked, the Behavior side reads the same expression the Surface shows.
+const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? (state.anchorElementRef ? null : expressionPathway());
 const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
 const pathwayNode = (ref) => currentPathway()?.nodes.find((node) => node.ref === ref) ?? null;
 function doorwayCollapsible(pathway) {
-  if (!pathway) return false;
+  if (!pathway || pathway.disposition === 'EXPRESSION') return false;
   const behavior = Lens.faceGraph(pathway, 'BEHAVIOR');
   const doorway = behavior.nodes.filter((node) => Lens.roleFor(node.role).band === 'DOORWAY').length;
   return doorway > 0 && behavior.nodes.length - doorway >= 2;
 }
 const doorwayCollapsed = () => state.hideDoorway && doorwayCollapsible(currentPathway());
 const hideBandsFor = (face) => (face === 'BEHAVIOR' && doorwayCollapsed() ? ['DOORWAY'] : []);
-
-const expressionFixtureSources = new Map();
-let expressionFixturesLoaded = false;
-async function loadExpressionFixtureSourcesForUi() {
-  if (expressionFixturesLoaded) return;
-  const loaded = await Promise.all(Object.entries(EXPRESSION_FIXTURE_URLS).map(async ([expectedScreenRef, url]) => {
-    const source = await fetchJson(url);
-    if (source.screenRef !== expectedScreenRef) {
-      throw new Error(`${url} claims ${source.screenRef}; expected ${expectedScreenRef}`);
-    }
-    return [expectedScreenRef, source];
-  }));
-  expressionFixtureSources.clear();
-  for (const [screen, source] of loaded) expressionFixtureSources.set(screen, source);
-  expressionFixturesLoaded = true;
-}
-function clearExpressionBinding() {
-  state.expressionFixture = null;
-  state.expressionRef = null;
-  state.expressionResolution = null;
-  state.expressionPathwayRef = null;
-  state.expressionError = null;
-}
-function bindExpressionsForCurrentScreen({ requestedRef = state.expressionRef } = {}) {
-  clearExpressionBinding();
-  const source = expressionFixtureSources.get(screenRef()) ?? null;
-  if (!source) return;
-  if (source.lensRef !== state.lens.lensRef || source.lensSourceCommit !== state.lens.sourceSnapshot.commit) return;
-  try {
-    state.expressionFixture = Expressions.normalizeScreenLensExpressionFixture(state.lens, source);
-    const fallback = state.expressionFixture.expressions[0]?.expressionRef ?? null;
-    state.expressionRef = state.expressionFixture.expressions.some((entry) => entry.expressionRef === requestedRef) ? requestedRef : fallback;
-    state.expressionResolution = state.expressionRef
-      ? Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, state.expressionRef)
-      : null;
-  } catch (error) {
-    clearExpressionBinding();
-    state.expressionError = error.message;
-  }
-}
-function expressionAvailable() {
-  return Boolean(state.expressionFixture && state.walk && screenRef() === state.expressionFixture.screenRef);
-}
-function expressionList() { return expressionAvailable() ? state.expressionFixture.expressions : []; }
-function activeExpression() { return expressionList().find((entry) => entry.expressionRef === state.expressionRef) ?? null; }
-function expressionResolutionFor(expressionRef) {
-  if (!expressionAvailable() || !expressionRef) return null;
-  return Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, expressionRef);
-}
-function expressionElementParticipates(ref, resolution = state.expressionResolution) {
-  return Boolean(expressionAvailable() && resolution?.surface.elementRefs.includes(ref));
-}
-function expressionRuntimeItemsFor(ref, resolution = state.expressionResolution) {
-  return expressionAvailable()
-    ? (resolution?.surface.runtimeItems ?? []).filter((item) => item.realizationRef === ref)
-    : [];
-}
-function expressionKind(entry) {
-  if (!entry) return 'SRC';
-  if (entry.basis === 'SOURCE_DEFAULT') return 'SRC';
-  if (entry.basis === 'EVIDENCE') return 'EV';
-  const relationshipRefs = [...entry.relationshipRefs].reverse();
-  for (const relationshipRef of relationshipRefs) {
-    if (!Object.hasOwn(entry.assignments, relationshipRef)) continue;
-    const relationship = state.expressionFixture.relationships.find((candidate) => candidate.relationshipRef === relationshipRef);
-    return { SELECTS: 'SEL', PRESENTS: 'OPEN', POPULATES: 'ROWS', CONDITIONED_BY: 'IF' }[relationship?.kind] ?? 'AX';
-  }
-  return entry.basis === 'SOURCE_COUPLED' ? 'CO' : 'AX';
-}
-function expressionCaption(entry) {
-  if (!entry) return null;
-  const resolution = expressionResolutionFor(entry.expressionRef);
-  const delta = resolution
-    ? `${resolution.surface.elementRefs.length} static · ${resolution.surface.runtimeItems.length} runtime`
-    : '';
-  return h('div', { class: 'xcap', title: entry.summary ?? entry.label },
-    h('span', { class: 'xk' }, expressionKind(entry)),
-    h('b', {}, entry.label),
-    entry.summary ? h('span', { class: 'xwhat' }, entry.summary) : null,
-    delta ? h('span', { class: 'xcount' }, delta) : null);
-}
-function expressionExposingElement(elementRef) {
-  if (!expressionAvailable()) return null;
-  const active = state.expressionRef;
-  const candidates = expressionList()
-    .filter((entry) => entry.expressionRef !== active)
-    .map((entry) => ({ entry, resolution: expressionResolutionFor(entry.expressionRef) }))
-    .filter(({ resolution }) => resolution?.surface.elementRefs.includes(elementRef));
-  return candidates.find(({ entry }) => entry.basis !== 'SOURCE_DEFAULT')?.entry ?? candidates[0]?.entry ?? null;
-}
-function setExpressionPathway(pathwayRef, { renderNow = true } = {}) {
-  if (!expressionAvailable()) return;
-  const paths = state.expressionResolution?.behavior.pathwayRefs ?? [];
-  if (!paths.includes(pathwayRef)) return;
-  state.expressionPathwayRef = pathwayRef;
-  if (state.pathwayRef !== pathwayRef) {
-    state.pathwayRef = pathwayRef;
-    state.cameras.delete('BEHAVIOR');
-    state.cameras.delete('DEPTH');
-  }
-  const onScreen = Lens.elementsForScreen(state.lens, screenRef());
-  const participants = new Set(state.expressionResolution.surface.elementRefs);
-  const anchor = onScreen.find((element) => participants.has(element.ref) && element.pathwayRef === pathwayRef)
-    ?? onScreen.find((element) => element.pathwayRef === pathwayRef)
-    ?? null;
-  state.anchorElementRef = anchor?.ref ?? null;
-  state.selected = anchor ? { kind: 'ELEMENT', ref: anchor.ref } : null;
-  if (renderNow) render();
-}
-function preferredExpressionPathway(expressionRef) {
-  const expression = Expressions.expressionFor(state.expressionFixture, expressionRef);
-  // Patient-zero presentation focus only: relationshipRefs is the expression's explicit ordered list.
-  // JSON assignment key order carries no meaning and is never used as semantic priority.
-  const assignedRelationshipRefs = expression.relationshipRefs
-    .filter((relationshipRef) => Object.hasOwn(expression.assignments, relationshipRef))
-    .reverse();
-  for (const relationshipRef of assignedRelationshipRefs) {
-    const valueRef = expression.assignments[relationshipRef];
-    const relationship = state.expressionFixture.relationships.find((entry) => entry.relationshipRef === relationshipRef);
-    const value = relationship?.values.find((entry) => entry.valueRef === valueRef);
-    const pathwayRef = value?.pathwayRefs?.[0] ?? null;
-    if (pathwayRef && state.expressionResolution.behavior.pathwayRefs.includes(pathwayRef)) return pathwayRef;
-  }
-  return state.expressionResolution.behavior.pathwayRefs[0] ?? null;
-}
-function setExpression(expressionRef, { renderNow = true } = {}) {
-  if (!expressionAvailable()) return;
-  if (!state.expressionFixture.expressions.some((entry) => entry.expressionRef === expressionRef)) return;
-  const changedExpression = state.expressionRef !== expressionRef;
-  state.expressionRef = expressionRef;
-  state.expressionResolution = expressionResolutionFor(expressionRef);
-  const paths = state.expressionResolution.behavior.pathwayRefs;
-  if (paths.length) {
-    const preserveCurrent = !changedExpression && paths.includes(state.expressionPathwayRef);
-    const chosen = preserveCurrent ? state.expressionPathwayRef : preferredExpressionPathway(expressionRef);
-    setExpressionPathway(chosen, { renderNow: false });
-  } else {
-    state.expressionPathwayRef = null;
-    state.pathwayRef = null;
-    state.anchorElementRef = null;
-    state.selected = null;
-  }
-  if (renderNow) render();
-}
-function resetScreenSelection({ preferExpression = true } = {}) {
-  state.selected = null;
-  state.anchorElementRef = null;
-  state.pathwayRef = null;
-  state.cameras.delete('BEHAVIOR');
-  state.cameras.delete('DEPTH');
-  if (preferExpression && expressionAvailable() && state.expressionRef) {
-    setExpression(state.expressionRef, { renderNow: false });
-  }
-}
-function stepExpression(delta) {
-  const list = expressionList();
-  const index = list.findIndex((entry) => entry.expressionRef === state.expressionRef);
-  const next = list[index + delta];
-  if (next) {
-    state.expressionMotion = delta > 0 ? 'next' : 'prev';
-    setExpression(next.expressionRef);
-  }
-}
-const expressionSwipe = { wheel: 0, lock: 0 };
-function wireExpressionSwipe(surface) {
-  let start = null;
-  let swiped = false;
-  surface.addEventListener('wheel', (event) => {
-    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) * 1.2) return;
-    event.preventDefault();
-    if (event.timeStamp < expressionSwipe.lock) return;
-    expressionSwipe.wheel += event.deltaX;
-    if (Math.abs(expressionSwipe.wheel) > 60) {
-      const delta = Math.sign(expressionSwipe.wheel);
-      expressionSwipe.wheel = 0;
-      expressionSwipe.lock = event.timeStamp + 650;
-      stepExpression(delta);
-    }
-  }, { passive: false });
-  surface.addEventListener('pointerdown', (event) => {
-    if (event.button === 0) {
-      start = { x: event.clientX, y: event.clientY };
-      swiped = false;
-    }
-  });
-  surface.addEventListener('pointerup', (event) => {
-    if (!start) return;
-    const dx = event.clientX - start.x;
-    const dy = event.clientY - start.y;
-    start = null;
-    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      swiped = true;
-      stepExpression(dx < 0 ? 1 : -1);
-    }
-  });
-  surface.addEventListener('click', (event) => {
-    if (!swiped) return;
-    swiped = false;
-    event.stopPropagation();
-    event.preventDefault();
-  }, true);
-}
-function renderExpressionRail() {
-  if (!expressionAvailable()) return null;
-  const list = expressionList();
-  const active = activeExpression();
-  const index = list.findIndex((entry) => entry.expressionRef === active?.expressionRef);
-  return h('nav', {
-    class: 'xrail',
-    'aria-label': `Expressions of ${currentScreen().label}`,
-    title: 'Every source-backed context this Screen can be viewed through. Swipe the Surface, use the arrows, or double-click an element to move to an expression that exposes it.',
-  },
-    h('span', { class: 'xlabel' }, 'Expressions'),
-    h('button', { class: 'xstep', type: 'button', 'aria-label': 'Previous expression', disabled: index <= 0, onclick: () => stepExpression(-1) }, '‹'),
-    h('div', { class: 'xchips', role: 'list' }, list.map((entry) => h('button', {
-      class: 'xchip',
-      type: 'button',
-      role: 'listitem',
-      'aria-pressed': entry.expressionRef === active?.expressionRef ? 'true' : 'false',
-      title: entry.summary ?? entry.label,
-      onclick: () => setExpression(entry.expressionRef),
-    }, h('span', { class: 'xk' }, expressionKind(entry)), h('span', { class: 'xt' }, entry.label)))),
-    h('button', { class: 'xstep', type: 'button', 'aria-label': 'Next expression', disabled: index < 0 || index >= list.length - 1, onclick: () => stepExpression(1) }, '›'),
-    h('span', { class: 'xcount' }, `${index + 1} / ${list.length}`));
-}
 
 function selectElement(elementRef, { keepFaces = true } = {}) {
   const element = Lens.elementFor(state.lens, elementRef);
@@ -925,16 +841,15 @@ function travel(element) {
   if (!element?.navigatesTo) return;
   if (element.navigatesTo === Lens.BACK) { state.walk = Lens.backScreenWalk(state.walk); }
   else state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: element.navigatesTo, viaElementRef: element.ref });
-  bindExpressionsForCurrentScreen({ requestedRef: null });
-  resetScreenSelection();
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  state.realization = Realization.emptyRealizationContext();
   render();
 }
 function jumpTo(target, how = 'JUMP') {
   if (target === screenRef() && how !== 'REVISIT') { state.overlay = null; render(); return; }
   state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target, how });
-  bindExpressionsForCurrentScreen({ requestedRef: null });
-  resetScreenSelection();
-  state.overlay = null;
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; state.overlay = null;
+  state.realization = Realization.emptyRealizationContext();
   render();
 }
 
@@ -946,7 +861,7 @@ function flip(side) {
 }
 
 /* ---------- search and navigation ---------- */
-const SEARCH_GROUPS = [['ELEMENT', 'Controls and elements'], ['STEP', 'Pathway steps'], ['SCREEN', 'Screens'], ['PATHWAY', 'Pathways'], ['NOTE', 'Notes']];
+const SEARCH_GROUPS = [['ELEMENT', 'Controls and elements'], ['STEP', 'Pathway steps'], ['SCREEN', 'Screens'], ['PATHWAY', 'Pathways'], ['PRESENCE', 'Realization'], ['EXAMPLE', 'Source-authored examples'], ['NOTE', 'Notes']];
 const searchState = { query: '', active: 0, results: [] };
 function whereText(target) {
   if (!target.screenRef) return 'no projected screen';
@@ -958,23 +873,23 @@ function whereText(target) {
 }
 function goToResult(result) {
   const target = result.target;
-  const changesScreen = Boolean(target.screenRef && target.screenRef !== screenRef());
-  if (changesScreen) {
-    state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target.screenRef, how: 'JUMP' });
-    bindExpressionsForCurrentScreen({ requestedRef: null });
-  }
+  if (target.screenRef && target.screenRef !== screenRef()) state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target.screenRef, how: 'JUMP' });
   state.overlay = null;
-  const explicitTarget = Boolean(target.elementRef || target.pathwayRef || target.nodeRef);
-  if (!explicitTarget) resetScreenSelection();
-  state.anchorElementRef = target.elementRef ?? state.anchorElementRef ?? null;
-  state.selected = target.elementRef ? { kind: 'ELEMENT', ref: target.elementRef } : state.selected;
-  if (target.pathwayRef !== undefined && target.pathwayRef !== null && target.pathwayRef !== state.pathwayRef) { state.pathwayRef = target.pathwayRef; state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH'); }
+  state.anchorElementRef = target.elementRef ?? null;
+  state.selected = target.elementRef ? { kind: 'ELEMENT', ref: target.elementRef } : null;
+  if ((target.pathwayRef ?? null) !== state.pathwayRef) { state.pathwayRef = target.pathwayRef ?? null; state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH'); }
   let reveal = null;
   if (target.nodeRef) {
     const node = pathwayNode(target.nodeRef);
     state.selected = { kind: 'NODE', ref: target.nodeRef };
     state.faces.BEHAVIOR = node.face;
     reveal = node;
+  }
+  if (target.presenceRef) state.selected = { kind: 'PRESENCE', ref: target.presenceRef };
+  if (target.exampleRef) {
+    const found = Expressions.expressionFor(Expressions.expressionsFor(state.lens, screenRef()), `expression:${target.exampleRef}`);
+    state.realization = found ? found.context : Realization.emptyRealizationContext();
+    if (!found) state.overlay = 'EXAMPLES';
   }
   searchState.query = '';
   render();
@@ -992,7 +907,7 @@ function renderSearchResults(list) {
     list.append(h('h4', {}, title));
     for (const result of group) {
       const position = index++;
-      const badge = result.role ? chip(result.role) : h('span', { class: 'chip note-chip' }, 'Note');
+      const badge = result.role ? chip(result.role) : h('span', { class: 'chip note-chip' }, result.kind === 'EXAMPLE' ? 'Ex' : 'Note');
       list.append(h('button', {
         class: `result${position === searchState.active ? ' active' : ''}`, type: 'button', role: 'option', id: `result-${position}`,
         'aria-selected': position === searchState.active,
@@ -1200,14 +1115,14 @@ function renderAtlas() {
   const steps = state.walk.steps;
   const label = (ref) => Lens.screenFor(state.lens, ref).label;
   const walk = h('nav', { class: 'walk', 'aria-label': 'Walk' },
-    h('button', { class: 'back', disabled: steps.length <= 1, onclick: () => { state.walk = Lens.backScreenWalk(state.walk); bindExpressionsForCurrentScreen({ requestedRef: null }); resetScreenSelection(); render(); } }, 'Back'),
+    h('button', { class: 'back', disabled: steps.length <= 1, onclick: () => { state.walk = Lens.backScreenWalk(state.walk); state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); } }, 'Back'),
     ...steps.flatMap((step, i) => {
       const via = step.viaElementRef ? Lens.elementFor(state.lens, step.viaElementRef)?.label : null;
       const button = h('button', {
         class: `step${i === steps.length - 1 ? ' current' : ''}`,
         title: via ? `Reached via ${via}` : step.how === 'START' ? 'Start' : step.how.toLowerCase(),
         'aria-current': i === steps.length - 1 ? 'step' : null,
-        onclick: () => { if (i < steps.length - 1) { state.walk = Lens.revisitScreenWalk(state.lens, state.walk, step.sequence); bindExpressionsForCurrentScreen({ requestedRef: null }); resetScreenSelection(); render(); } },
+        onclick: () => { if (i < steps.length - 1) { state.walk = Lens.revisitScreenWalk(state.lens, state.walk, step.sequence); state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); } },
       }, label(step.screenRef));
       return i ? [h('span', { class: 'sep', 'aria-hidden': 'true' }, '›'), button] : [button];
     }),
@@ -1234,27 +1149,17 @@ function selectionPathRefs() {
   const path = Lens.elementPath(state.lens, anchor);
   return { selected: anchor, ancestors: new Set(path.slice(0, -1).map((element) => element.ref)) };
 }
-function markElement(node, element, marks, { resolution = state.expressionResolution, interactive = true } = {}) {
-  if (interactive) node.dataset.ref = element.ref;
-  else node.dataset.peekRef = element.ref;
-  if (interactive && marks.selected === element.ref) node.classList.add('sel');
-  if (interactive && marks.ancestors.has(element.ref)) node.classList.add('anc');
+function markElement(node, element, marks) {
+  node.dataset.ref = element.ref;
+  if (marks.selected === element.ref) node.classList.add('sel');
+  if (marks.ancestors.has(element.ref)) node.classList.add('anc');
   if (element.pathwayRef) node.classList.add('has-path');
   const delta = deltaClass(element).trim();
   if (delta) node.classList.add(delta);
-  const participates = expressionElementParticipates(element.ref, resolution);
-  if (participates) node.classList.add('x-part');
-  else if (resolution && element.ownerRef === screenRef()) node.classList.add('x-unclaimed');
   node.title = `${element.label} · ${element.ref}${delta ? `\n${delta === 'delta-added' ? 'Not in Stable' : delta === 'delta-changed' ? 'Differs from Stable' : 'Its pathway differs from Stable'}` : ''}`;
-  if (!interactive) return node;
   node.addEventListener('click', (event) => { event.stopPropagation(); selectElement(element.ref); });
-  const exposing = element.navigatesTo ? null : expressionExposingElement(element.ref);
-  if (element.navigatesTo) {
-    node.addEventListener('dblclick', (event) => { event.stopPropagation(); travel(element); });
-  } else if (exposing) {
-    node.title += `\nDouble-click to show expression: ${exposing.label}`;
-    node.addEventListener('dblclick', (event) => { event.stopPropagation(); setExpression(exposing.expressionRef); });
-  }
+  // Double-click travels along a navigation, or goes to the expression where this is exposed.
+  node.addEventListener('dblclick', (event) => { event.stopPropagation(); if (element.navigatesTo) travel(element); else exposeElement(element.ref); });
   return node;
 }
 function travelButton(element) {
@@ -1264,171 +1169,573 @@ function travelButton(element) {
   const order = slot === 'BOTTOM' ? 'above' : slot === 'FAB' ? 'left above' : 'below above right left';
   return h('button', { class: `travel ${order.split(' ')[0]}`, type: 'button', title: to, 'aria-label': to, dataset: { order }, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
 }
-function renderSurfaceElement(tree, marks, context, view) {
+/* ---------- realization: why each thing is, or is not, presented ---------- */
+const presenceCache = { lens: null, map: new Map() };
+function presenceFor(context) {
+  if (presenceCache.lens !== state.lens || presenceCache.map.size > 240) { presenceCache.lens = state.lens; presenceCache.map.clear(); }
+  const key = `${screenRef()}|${context.exampleRef ?? ''}|${JSON.stringify(context.overrides)}`;
+  if (!presenceCache.map.has(key)) presenceCache.map.set(key, Realization.resolvePresence(state.lens, screenRef(), context));
+  return presenceCache.map.get(key);
+}
+const presenceNow = () => presenceFor(state.realization);
+const presenceOf = (ref) => presenceNow().elements.get(ref) ?? null;
+const presenceEntry = (presenceRef) => Realization.realizationOf(state.lens, screenRef())?.presence.find((entry) => entry.ref === presenceRef) ?? null;
+const labelOf = (ref) => (ref ? Lens.elementFor(state.lens, ref)?.label ?? (ref.startsWith('screen.') ? Lens.screenFor(state.lens, ref)?.label : null) ?? ref.split('.').slice(-1)[0] : '');
+function presChip(stateName, text = null) {
+  const info = Realization.PRESENCE_STATES[stateName];
+  return h('span', { class: `pres-chip ${stateName}`, title: info?.question ?? '' }, (text ?? info?.label ?? stateName).toLowerCase());
+}
+function setScenario(presenceRef, value) { state.realization = Realization.withOverride(state.realization, presenceRef, value); render(); }
+function applyExample(exampleRef) { state.overlay = null; setExpression(exampleRef ? `expression:${exampleRef}` : Expressions.SOURCE_EXPRESSION_REF); }
+function resetScenario() { setExpression(Expressions.SOURCE_EXPRESSION_REF); }
+
+/* ---------- expressions: the one dimension both sides share ---------- */
+// The Screen keeps one structure; an expression is one source-derived context its surface can be
+// seen in. Swiping changes the context, and every face reads it: the Surface and Structure resolve
+// presence in it, the Behavior and Depth faces draw how it is reached and what realizes it.
+const expressionCache = { lens: null, screenRef: null, list: [] };
+function expressionsNow() {
+  if (expressionCache.lens !== state.lens || expressionCache.screenRef !== screenRef()) Object.assign(expressionCache, { lens: state.lens, screenRef: screenRef(), list: Expressions.expressionsFor(state.lens, screenRef()) });
+  return expressionCache.list;
+}
+const customCache = { key: null, value: null };
+function activeExpression() {
+  const found = Expressions.expressionMatching(expressionsNow(), state.realization);
+  if (found) return found;
+  const key = `${screenRef()}|${JSON.stringify(state.realization)}`;
+  if (customCache.key !== key || customCache.lens !== state.lens) Object.assign(customCache, { key, lens: state.lens, value: Expressions.customExpression(state.lens, screenRef(), state.realization) });
+  return customCache.value;
+}
+const expressionIndex = () => expressionsNow().findIndex((expression) => expression.ref === activeExpression().ref);
+const graphCache = { key: null, value: null };
+function expressionPathway() {
+  const expression = activeExpression();
+  const key = `${screenRef()}|${expression.ref}|${JSON.stringify(state.realization)}`;
+  if (graphCache.key !== key || graphCache.lens !== state.lens) Object.assign(graphCache, { key, lens: state.lens, value: Expressions.expressionGraph(state.lens, screenRef(), expression) });
+  return graphCache.value;
+}
+function setExpression(ref, { flash = null } = {}) {
+  const list = expressionsNow();
+  const target = Expressions.expressionFor(list, ref);
+  if (!target) return;
+  const from = expressionIndex();
+  const to = list.indexOf(target);
+  state.motion = from < 0 || to === from ? null : to > from ? 'next' : 'prev';
+  state.realization = target.context;
+  // The expression becomes the subject of both sides until a control is picked again.
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
+  state.flashRef = flash ?? target.focusRef;
+  render();
+}
+// Combine: keep what is shown and add another expression's choices on top (a later choice for the
+// same relationship wins). The result is a custom expression both sides read like any other.
+function combineExpression(ref) {
+  const target = Expressions.expressionFor(expressionsNow(), ref);
+  if (!target) return;
+  state.realization = Object.freeze({ exampleRef: target.exampleRef ?? state.realization.exampleRef, overrides: Object.freeze({ ...state.realization.overrides, ...target.context.overrides }) });
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
+  state.motion = null;
+  state.flashRef = target.focusRef;
+  render();
+}
+function stepExpression(delta) {
+  const list = expressionsNow();
+  const index = expressionIndex();
+  const next = index < 0 ? list[0] : list[Math.max(0, Math.min(list.length - 1, index + delta))];
+  if (next && (index < 0 || next !== list[index])) setExpression(next.ref);
+}
+// Double-click: go to the expression where this is exposed. A control with a typed presentation
+// intent goes where its intent leads (a tab to its panel, an opener to its sheet); anything this
+// expression does not present goes to the nearest expression that does.
+function exposeElement(ref) {
+  const list = expressionsNow();
+  const info = currentScreen().realization ? presenceOf(ref) : null;
+  const presented = !info || ['SOURCE', 'EXAMPLE', 'SCENARIO'].includes(info.state);
+  const viaIntent = Expressions.expressionForControl(state.lens, screenRef(), list, ref);
+  const target = viaIntent ?? (presented ? null : Expressions.expressionExposing(list, ref));
+  if (!target || target.ref === activeExpression().ref) { flashElement(viaIntent?.focusRef ?? ref); return; }
+  setExpression(target.ref, { flash: viaIntent ? target.focusRef : ref });
+}
+function flashElement(ref) {
+  const phone = document.querySelector('.face[data-face="SURFACE"] .current-phone');
+  const node = (state.faces.EXPERIENCE === 'SURFACE' ? phone : document.querySelector('.face[data-face="STRUCTURE"]'))?.querySelector(`[data-ref="${CSS.escape(ref ?? '')}"]`);
+  if (!node) return;
+  const body = node.closest('.phone-body') ?? node.closest('.structure');
+  if (body) {
+    const box = node.getBoundingClientRect(); const view = body.getBoundingClientRect();
+    if (box.top < view.top + 8 || box.bottom > view.bottom - 8) body.scrollTop += box.top - view.top - Math.max(16, (view.height - box.height) / 3);
+  }
+  node.classList.remove('flash'); void node.offsetWidth; node.classList.add('flash');
+}
+const swipe = { wheel: 0, lock: 0 };
+function wireSwipe(surface) {
+  let start = null;
+  let swiped = false;
+  surface.addEventListener('wheel', (event) => {
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) * 1.2) return; // vertical stays a scroll
+    event.preventDefault();
+    if (event.timeStamp < swipe.lock) return;
+    swipe.wheel += event.deltaX;
+    if (Math.abs(swipe.wheel) > 60) { const delta = Math.sign(swipe.wheel); swipe.wheel = 0; swipe.lock = event.timeStamp + 650; stepExpression(delta); }
+  }, { passive: false });
+  surface.addEventListener('pointerdown', (event) => { if (event.button === 0) { start = { x: event.clientX, y: event.clientY }; swiped = false; } });
+  surface.addEventListener('pointerup', (event) => {
+    if (!start) return;
+    const dx = event.clientX - start.x; const dy = event.clientY - start.y;
+    start = null;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) { swiped = true; stepExpression(dx < 0 ? 1 : -1); }
+  });
+  surface.addEventListener('click', (event) => { if (swiped) { swiped = false; event.stopPropagation(); event.preventDefault(); } }, true);
+}
+const KIND_CHIP = { SOURCE: 'SRC', EXAMPLE: 'EX', SELECTION: 'SEL', PRESENTATION: 'OPEN', POPULATION: 'ROWS', CONDITION: 'IF', CUSTOM: 'SET' };
+const kindChip = (expression) => h('span', { class: 'xk', title: Expressions.EXPRESSION_KINDS[expression.kind].question }, KIND_CHIP[expression.kind]);
+function expressionTitle(expression) {
+  const info = Expressions.EXPRESSION_KINDS[expression.kind];
+  const lines = [`${info.label} · ${expression.where} · ${expression.what}`, info.question];
+  if (expression.steps.length) lines.push(`Reached by: ${expression.steps.map((step) => step.phrase).join(' › ')}`);
+  if (expression.reveals.length || expression.hides.length) lines.push(`Beyond Source: ${expression.reveals.length} presented, ${expression.hides.length} stepped aside`);
+  if (expression.also.length) lines.push(`${expression.also.length} other source path${expression.also.length === 1 ? '' : 's'} present the same thing`);
+  return lines.join('\n');
+}
+function renderExpressionRail() {
+  const list = expressionsNow();
+  const active = activeExpression();
+  const index = list.indexOf(active);
+  const chips = [];
+  list.forEach((expression, i) => {
+    if (i > 0 && !expression.depth && (expression.kind !== list[i - 1].kind || ['SELECTION', 'PRESENTATION'].includes(expression.kind))) chips.push(h('span', { class: 'xsep', 'aria-hidden': 'true' }));
+    chips.push(h('button', {
+      class: `xchip kind-${expression.kind}${expression.depth ? ' sub' : ''}${i === index ? ' on' : ''}`, type: 'button', role: 'listitem',
+      'aria-current': i === index ? 'true' : null, dataset: { expression: expression.ref }, title: `${expressionTitle(expression)}\nShift-click to combine it with what is shown.`,
+      onclick: (event) => (event.shiftKey ? combineExpression(expression.ref) : setExpression(expression.ref)),
+    }, kindChip(expression), h('span', { class: 'xw' }, expression.where), h('span', { class: 'xt' }, expression.what)));
+  });
+  return h('nav', { class: 'xrail', 'aria-label': `Expressions of ${currentScreen().label}` },
+    h('span', { class: 'xlabel', title: 'Every context this screen can be seen in, derived from relationships source already declares. Swipe the Surface, use ← →, or double-click something to go where it is exposed. Shift-click a chip to combine it with what is shown. Both sides follow.' }, 'Expressions'),
+    h('button', { class: 'xstep', type: 'button', 'aria-label': 'Previous expression', disabled: index === 0, onclick: () => stepExpression(-1) }, '‹'),
+    h('div', { class: 'xchips', role: 'list' }, chips),
+    h('button', { class: 'xstep', type: 'button', 'aria-label': 'Next expression', disabled: index === list.length - 1, onclick: () => stepExpression(1) }, '›'),
+    h('span', { class: 'xcount' }, index >= 0 ? `${index + 1} / ${list.length}` : `custom · ${list.length}`),
+    index < 0 ? h('button', { class: 'tool scenario-chip', type: 'button', title: expressionTitle(active), onclick: resetScenario }, 'Custom · Reset') : null,
+    h('button', { class: 'tool', type: 'button', 'aria-pressed': state.overlay === 'EXAMPLES' ? 'true' : 'false', title: 'Source-authored examples, journeys and the realization inventory of this screen', onclick: () => { state.overlay = state.overlay === 'EXAMPLES' ? null : 'EXAMPLES'; render(); } }, 'Examples & journeys'));
+}
+function expressionCaption(expression) {
+  const info = Expressions.EXPRESSION_KINDS[expression.kind];
+  return h('div', { class: `xcap kind-${expression.kind}`, title: expressionTitle(expression) },
+    kindChip(expression), h('b', {}, expression.where), h('span', { class: 'xwhat' }, expression.what),
+    info.truth === 'SOURCE' ? null : presChip(info.truth, info.truth === 'SCENARIO' ? 'chosen here' : 'source-authored'),
+    expression.reveals.length || expression.hides.length ? h('span', { class: 'xdelta' }, [expression.reveals.length ? `+${expression.reveals.length}` : '', expression.hides.length ? `−${expression.hides.length}` : ''].filter(Boolean).join(' ')) : null);
+}
+const CONTAINER_KINDS = new Set(['COLUMN', 'ROW', 'STACK', 'CARD', 'REGION', 'MENU']);
+const truncate = (text, size) => (String(text ?? '').length > size ? `${String(text).slice(0, size - 1)}…` : String(text ?? ''));
+
+// A population's repeated template. Source draws one compact line (the count is never observed);
+// an expression with rows draws the template the way its nesting lays it out; an expression with
+// no items draws the empty content source declares.
+function renderPopulation({ presence, placement }, marks, context) {
+  const template = Realization.templateOf(state.lens, screenRef(), presence.templateRef);
+  const outcome = context.presence.presence.get(presence.ref);
+  if (outcome?.gate === false) return null;
+  const value = outcome?.value ?? 'UNKNOWN';
+  const held = placement !== 'LIST_IDENTITY' ? h('span', { class: 'pop-tag held', title: presence.held ?? 'Placed by the realizer that renders this panel; the list itself carries no registered identity.' }, placement === 'REALIZER_BY_ELIMINATION' ? 'no list identity · by elimination' : 'no list identity') : null;
+  const inspect = (event) => { event.stopPropagation(); state.selected = { kind: 'PRESENCE', ref: presence.ref }; render(); };
+  const actions = (template?.realizes ?? []).length;
+  if (value === 'UNKNOWN') {
+    const rows = expressionsNow().find((expression) => expression.kind === 'POPULATION' && expression.context.overrides[presence.ref] === 'ITEMS');
+    const stub = h('button', { class: 'pop-stub', type: 'button', title: `${outcome?.why ?? ''}${rows ? '\nDouble-click to see its rows.' : ''}` },
+      h('b', {}, `↻ ${template?.symbol ?? 'item'}`), h('span', {}, 'for each of'), h('code', {}, truncate(presence.items, 32)),
+      actions ? h('span', {}, `· ${actions} registered action${actions === 1 ? '' : 's'} per row`) : null, held);
+    stub.addEventListener('click', inspect);
+    if (rows) stub.addEventListener('dblclick', (event) => { event.stopPropagation(); setExpression(rows.ref); });
+    return stub;
+  }
+  const head = h('div', { class: 'pop-head', title: outcome?.why ?? '' }, h('b', {}, `↻ ${template?.symbol ?? 'item'}`), h('span', {}, value === 'EMPTY' ? 'no items here' : 'rows here · values never observed'), held);
+  head.addEventListener('click', inspect);
+  if (value === 'EMPTY') {
+    const empty = presence.empty.length ? presence.empty.map(labelOf).join(' · ') : presence.emptyRealization === 'DECLARED' ? "the list's declared empty content" : 'no empty content is declared to the list (a sibling branch may render one)';
+    return h('div', { class: 't-list' }, head, h('div', { class: 'empty-alt' }, `Empty: ${empty}`));
+  }
+  const list = h('div', { class: 't-list' }, head);
+  if (template) for (let index = 0; index < 3; index += 1) list.append(renderTemplateItem(template, marks, index));
+  return list;
+}
+
+// One row, laid out by the template's own nesting: CARD / ROW / COLUMN / STACK are the layout,
+// TEXT slots keep their source path and typography, registered buttons draw from their declared
+// style and icon, an `if / else` slot shows one alternative per sample row, and content behind an
+// `expanded` argument (a dropdown) stays folded into a count on the layer that opens it.
+const LAYOUT_SLOTS = new Set(['CARD', 'ROW', 'COLUMN', 'STACK', 'REGION']);
+const showsAlternative = (slot, index) => {
+  if (!slot.alternative) return true;
+  const [k, n] = slot.alternative.split('/').map(Number);
+  return k === (index % n) + 1;
+};
+function renderTemplateItem(template, marks, index) {
+  const root = h('div', { class: 't-item' });
+  const stack = [{ depth: -1, node: root }];
+  const popups = new Map(); // layer node -> slots behind an `expanded` argument
+  let skipBelow = null;
+  template.slots.forEach((slot, at) => {
+    if (skipBelow !== null && slot.depth > skipBelow) return;
+    skipBelow = null;
+    while (stack.length > 1 && stack.at(-1).depth >= slot.depth) stack.pop();
+    const parent = stack.at(-1).node;
+    if (slot.popup) { popups.set(parent, [...(popups.get(parent) ?? []), slot]); skipBelow = slot.depth; return; }
+    if (!showsAlternative(slot, index)) { skipBelow = slot.depth; return; }
+    const node = templateSlotNode(slot, template.slots, at, marks, index);
+    if (slot.condition && slot.condition !== 'else' && !slot.alternative) { node.classList.add('t-if'); node.title = `${node.title ? `${node.title}\n` : ''}if ${slot.condition}`; }
+    parent.append(node);
+    if (LAYOUT_SLOTS.has(slot.kind)) stack.push({ depth: slot.depth, node });
+    else skipBelow = slot.depth;
+  });
+  for (const [layer, items] of popups) {
+    const labels = items.map((item) => labelOf(item.realizes ?? item.oneOf?.[0] ?? '') || item.primitive);
+    layer.append(h('span', { class: 't-pop', title: `Opens while ${items[0].popup}: ${labels.join(', ')}` }, `▾${items.length}`));
+  }
+  return root;
+}
+function templateSlotNode(slot, slots, at, marks, index) {
+  const registered = slot.realizes ?? (slot.oneOf?.length ? slot.oneOf[index % slot.oneOf.length] : null);
+  const element = registered ? Lens.elementFor(state.lens, registered) : null;
+  const children = [];
+  for (let next = at + 1; next < slots.length && slots[next].depth > slot.depth; next += 1) if (slots[next].depth === slot.depth + 1) children.push(slots[next]);
+  let node;
+  if (slot.kind === 'CARD') node = h('div', { class: 't-card' });
+  else if (slot.kind === 'ROW') node = h('div', { class: 't-row' });
+  else if (slot.kind === 'COLUMN') node = h('div', { class: 't-col' });
+  else if (slot.kind === 'STACK' || slot.kind === 'REGION') {
+    // A stack holding an image or icon alternative is the item's artwork; sample rows take turns.
+    const artwork = children.filter((child) => child.kind === 'OPAQUE' && /Image|Icon/.test(child.primitive ?? ''));
+    const shown = artwork.find((child) => showsAlternative(child, index));
+    node = h('div', { class: artwork.length ? `t-thumb${/Image/.test(shown?.primitive ?? '') ? ' img' : ''}` : 't-stack', style: artwork.length ? `--hue:${(index * 97 + 210) % 360}` : null });
+  } else if (slot.kind === 'TEXT') {
+    node = h('span', { class: `t-text ${slot.textStyle ?? ''} ${slot.role ?? ''}`.trim(), title: `${slot.path} · ${slot.primitive}${slot.role ? ` · role ${slot.role}` : ''}${slot.textStyle ? ` · ${slot.textStyle}` : ''}` }, slot.path?.split('.').pop() ?? 'text');
+  } else if (slot.kind === 'OPAQUE') {
+    const icon = /ElementIcon\.(\w+)/.exec(slot.primitive ?? '')?.[1];
+    if (/Image/.test(slot.primitive ?? '')) node = h('span', { class: 't-img', title: `${slot.primitive}${slot.condition ? ` · if ${slot.condition}` : ''}` });
+    else if (icon) node = glyph(icon);
+    else if ((slot.primitives ?? [slot.primitive]).every((primitive) => /^Text$/.test(primitive))) {
+      // Plain Compose text: present, but with no Vex identity its role and value are not readable.
+      node = h('span', { class: 't-plain', title: `${slot.count} plain Compose Text (no Vex id: not addressable)` }, Array.from({ length: slot.count }, (_, line) => h('i', { style: `width:${[78, 56, 64, 44][(line + index) % 4]}%` })));
+    } else node = h('span', { class: 't-opq', title: (slot.primitives ?? [slot.primitive]).join(', ') }, `${(slot.primitives ?? [slot.primitive]).join(', ')}${slot.count > 1 ? ` ×${slot.count}` : ''}`);
+  } else if (element) {
+    node = renderButton(element, null, { iconOnly: slot.primitive === 'VexIconButton' || element.style === 'ToolbarIcon' });
+    if (slot.oneOf?.length > 1) node.title = `one of: ${slot.oneOf.map(labelOf).join(' / ')}`;
+  } else node = h('span', { class: 't-opq' }, slot.primitive ?? slot.kind);
+  if (element) {
+    markElement(node, element, marks);
+    if (slot.kind === 'CARD') node.title = `The whole item realizes ${element.label}`;
+  }
+  return node;
+}
+
+// How a registered button asks to be drawn: its declared style and icon (registration facts).
+// Navigation-style buttons are chips; a chip whose swapTo child is the selected one is on.
+function renderButton(element, presence, { iconOnly = false } = {}) {
+  const style = element.style ?? 'Default';
+  if (iconOnly) return h('button', { class: 'el-iconbtn', type: 'button', 'aria-label': element.label }, element.icon ? glyph(element.icon) : element.label.slice(0, 1));
+  if (style === 'Navigation') return h('button', { class: `el-chip${tabSelected(element, presence) ? ' on' : ''}`, type: 'button' }, element.icon ? glyph(element.icon) : null, element.label);
+  return h('button', { class: `el-button style-${style}`, type: 'button' }, element.icon ? glyph(element.icon) : null, element.label);
+}
+function tabSelected(element, presence) {
+  const match = /\bswapTo\(\s*container\s*=\s*(?:\w+\.)?(\w+)\s*,\s*child\s*=\s*(?:\w+\.)?(\w+)\s*\)/.exec(element.intent ?? '');
+  if (!match || !presence) return false;
+  const local = (ref) => Lens.elementFor(state.lens, ref)?.symbol?.split('.').pop();
+  const selection = Realization.realizationOf(state.lens, screenRef())?.presence.find((entry) => entry.kind === 'SELECTION' && local(entry.subjectRef) === match[1]);
+  const outcome = selection ? presence.presence.get(selection.ref) : null;
+  return Boolean(outcome?.value && local(outcome.value) === match[2]);
+}
+
+const PRESENTED = new Set(['SOURCE', 'EXAMPLE', 'SCENARIO']);
+// Where realization puts registered elements: what the selected choice of a selection realizes is
+// drawn inside the child it selects, even when registration groups it elsewhere (tabs in a list
+// header, player controls in a sheet). When everything a registration group holds lands in one
+// place, the group itself goes there, so its layout (a row of tabs) comes along.
+const placementCache = new WeakMap();
+function placementsOf(presence) {
+  if (!presence) return { byTarget: new Map(), placed: new Map(), within: () => false };
+  if (placementCache.has(presence)) return placementCache.get(presence);
+  const elements = currentScreen().elements;
+  const parentOf = new Map(elements.map((element) => [element.ref, element.parentRef]));
+  const within = (ref, ancestor) => { for (let at = parentOf.get(ref); at; at = parentOf.get(at)) if (at === ancestor) return true; return false; };
+  const byTarget = new Map();
+  const placed = new Map(); // ref -> the child it is drawn inside
+  for (const entry of Realization.realizationOf(state.lens, screenRef())?.presence ?? []) {
+    const outcome = entry.kind === 'SELECTION' ? presence.presence.get(entry.ref) : null;
+    if (!outcome || outcome.gate === false || !outcome.value) continue;
+    const choice = outcome.choices?.find((candidate) => candidate.resolvedTargetRef === outcome.value);
+    if (!choice) continue;
+    const target = outcome.value;
+    const refs = choice.realizes.filter((ref) => ref !== target && !within(ref, target) && !within(target, ref) && !presence.elements.get(ref)?.perInstance && PRESENTED.has(presence.elements.get(ref)?.state));
+    let roots = refs.filter((ref) => !refs.includes(parentOf.get(ref)));
+    for (const group of new Set(roots.map((ref) => parentOf.get(ref)))) {
+      const members = elements.filter((element) => element.parentRef === group).map((element) => element.ref);
+      if (group && members.length > 1 && presence.elements.get(group)?.state === 'UNTRACED' && members.every((ref) => roots.includes(ref))) roots = [...roots.filter((ref) => !members.includes(ref)), group];
+    }
+    if (roots.length) { byTarget.set(target, roots); for (const ref of roots) placed.set(ref, target); }
+  }
+  // A feature condition's choice that realizes one container plus controls registered only in a
+  // registration group draws those controls inside the container (a player's queue button).
+  const containers = new Set(elements.filter((element) => CONTAINER_KINDS.has(element.kind)).map((element) => element.ref));
+  for (const entry of Realization.realizationOf(state.lens, screenRef())?.presence ?? []) {
+    if (!['BRANCH', 'CASES', 'ALTERNATIVE'].includes(entry.kind)) continue;
+    const outcome = presence.presence.get(entry.ref);
+    if (!outcome || outcome.gate === false) continue;
+    entry.choices.forEach((choice, index) => {
+      if (outcome.value !== 'UNKNOWN' && Number(outcome.value) !== index) return;
+      const roots = choice.realizes.filter((ref) => !choice.realizes.includes(parentOf.get(ref)));
+      const hosts = roots.filter((ref) => containers.has(ref));
+      if (hosts.length !== 1) return;
+      for (const ref of roots) {
+        if (ref === hosts[0] || placed.has(ref) || presence.elements.get(parentOf.get(ref))?.state !== 'UNTRACED') continue;
+        byTarget.set(hosts[0], [...(byTarget.get(hosts[0]) ?? []), ref]);
+        placed.set(ref, hosts[0]);
+      }
+    });
+  }
+  const value = { byTarget, placed, within };
+  placementCache.set(presence, value);
+  return value;
+}
+// Named content regions a screen's realization hands its content into (Compose Scaffold's
+// `topBar`, `bottomBar`, `floatingActionButton`): that content is drawn in the phone's matching
+// region, not in the body flow.
+const REGION_ZONES = Object.freeze({ topBar: 'TOP', bottomBar: 'BOTTOM', floatingActionButton: 'FAB' });
+const regionCache = { key: null, value: null };
+function regionsOf(screen) {
+  const key = `${screen.screenRef}`;
+  if (regionCache.key === key && regionCache.lens === state.lens) return regionCache.value;
+  const zoneOf = new Map();
+  for (const entry of screen.realization?.presence ?? []) {
+    const zone = REGION_ZONES[entry.region?.slot];
+    if (!zone) continue;
+    for (const ref of [...entry.realizes, ...entry.choices.flatMap((choice) => choice.realizes), ...entry.empty]) if (!zoneOf.has(ref)) zoneOf.set(ref, zone);
+  }
+  const parentOf = new Map(screen.elements.map((element) => [element.ref, element.parentRef]));
+  const roots = new Map();
+  for (const [ref, zone] of zoneOf) if (zoneOf.get(parentOf.get(ref)) !== zone) roots.set(zone, [...(roots.get(zone) ?? []), ref]);
+  const value = { zoneOf, roots, rootRefs: new Set([...roots.values()].flat()) };
+  Object.assign(regionCache, { key, lens: state.lens, value });
+  return value;
+}
+// What a depending element waits on, in source's words (shortened for display).
+function dependsOn(info) {
+  for (const cause of info.causes) {
+    if (cause.realized !== null) continue;
+    const entry = presenceEntry(cause.presenceRef);
+    if (!entry) continue;
+    if (entry.kind === 'POPULATION') return `${entry.items ?? 'items'} has items`;
+    const conditions = entry.choices.filter((choice) => choice.realizes.includes(info.ref)).map((choice) => choice.condition).filter(Boolean);
+    if (conditions.length) return conditions.join(' / ');
+    if (entry.gate) return presenceEntry(entry.gate.presenceRef)?.choices[entry.gate.choice]?.condition ?? 'an enclosing condition';
+    return entry.condition ?? 'a feature condition';
+  }
+  return 'its container depends on data';
+}
+const shortCondition = (text) => String(text).replace(/\b[A-Z]\w*\.(?=[A-Z])/g, '');
+function renderSurfaceElement(tree, marks, context) {
   const { element, children } = tree;
-  const kids = () => children
-    .filter((child) => child.element.kind !== 'SHEET' && child.element.kind !== 'DIALOG')
-    .map((child) => renderSurfaceElement(child, marks, context, view));
+  const presence = context.presence;
+  const info = presence?.elements.get(element.ref) ?? null;
+  // The Surface draws what this expression presents: content it does not present (latent) is
+  // another expression, reachable from the rail or by double-clicking it in Structure. A picked
+  // latent element stays visible as a ghost so the selection is never invisible.
+  if (info?.state === 'LATENT' && marks.selected !== element.ref && !marks.ancestors.has(element.ref)) return null;
+  // What depends on unobserved feature data folds into one honest line until an expression decides it.
+  if (info?.state === 'DEPENDS' && !info.perInstance && context.parentState !== 'DEPENDS' && context.inZone !== 'FAB') {
+    const condition = dependsOn(info);
+    const count = (function countIn(trees) { return trees.reduce((n, entry) => n + 1 + countIn(entry.children), 0); })(children);
+    const stub = h('button', { class: 'dep-stub', type: 'button' }, h('span', { class: 'dep-if' }, 'if'), h('span', { class: 'dep-cond' }, shortCondition(condition)), h('b', {}, Expressions.expressionName(element)), count ? h('span', { class: 'dep-n' }, `+${count}`) : null);
+    markElement(stub, element, marks);
+    stub.title = `${element.label} is presented only if ${condition}. VexBoard does not evaluate it; double-click to see it presented.`;
+    return stub;
+  }
+  const selection = presence ? Realization.realizationOf(state.lens, screenRef())?.presence.find((entry) => entry.kind === 'SELECTION' && entry.subjectRef === element.ref) : null;
+  // A container shows the child its selection presents; the other children are other expressions.
+  const unselected = (child) => selection && presence.presence.get(selection.ref)?.latentRefs.has(child.element.ref);
+  const placements = placementsOf(presence);
+  const regions = presence ? regionsOf(currentScreen()) : null;
+  // A child that realization places deeper in this container, or that only a registration group
+  // holds, is drawn where it is placed, not here; so is content handed to a named region.
+  const placedAway = (child) => placements.placed.has(child.element.ref) && (info?.state === 'UNTRACED' || placements.within(placements.placed.get(child.element.ref), element.ref));
+  const regionAway = (child) => !context.inZone && regions?.rootRefs.has(child.element.ref);
+  const shown = children.filter((child) => child.element.kind !== 'SHEET' && child.element.kind !== 'DIALOG' && !unselected(child) && !placedAway(child) && !regionAway(child));
+  const iconRow = (element.kind === 'ROW' || element.kind === 'STACK') && shown.length >= 3 && shown.every((child) => child.element.kind === 'BUTTON' && child.element.icon);
+  const childContext = { ...context, parentState: info?.state ?? null, iconRow, placedRef: null };
+  const kids = () => shown.map((child) => {
+    const childInfo = presence?.elements.get(child.element.ref);
+    // A registered element realized once per item is drawn inside its rows, not in this bucket.
+    if (childInfo?.perInstance && !child.children.length) return null;
+    return renderSurfaceElement(child, marks, childContext);
+  }).filter(Boolean);
   let node;
   switch (element.kind) {
     case 'COLUMN': case 'REGION': node = h('div', { class: 'el-column' }, kids()); break;
     case 'CARD': node = h('div', { class: 'el-card' }, kids()); break;
-    case 'ROW': case 'STACK': node = h('div', { class: 'el-row' }, kids()); break;
+    case 'ROW': case 'STACK': node = h('div', { class: `el-row${shown.length && shown.every((child) => child.element.style === 'Navigation') ? ' chips' : ''}${iconRow ? ' icons' : ''}` }, kids()); break;
     case 'TEXT': node = h('p', { class: `el-text ${element.textRole ?? ''}` }, element.label); break;
     case 'IMAGE': node = h('span', { class: 'el-image' }, element.label); break;
     case 'TOGGLE': node = h('button', { class: 'el-toggle', type: 'button' }, element.label, h('span', { class: 'switch', 'aria-hidden': 'true' })); break;
-    case 'BUTTON': node = h('button', { class: 'el-button', type: 'button' }, element.label); break;
+    case 'BUTTON': node = context.inZone === 'FAB' ? h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.icon ? glyph(element.icon) : element.label.slice(0, 1)) : renderButton(element, presence, { iconOnly: context.iconRow || element.style === 'ToolbarIcon' }); break;
     case 'FAB': node = element.label.length <= 2 ? h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.label) : h('button', { class: 'el-button', type: 'button' }, element.label); break;
     case 'MENU': node = h('div', { class: `el-menu${context.fabOpen ? '' : ' closed'}` }, kids()); break;
     case 'MENU_ITEM': node = h('button', { class: 'el-menuitem', type: 'button' }, element.label); break;
     case 'FIELD': node = h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
     default: node = h('div', {}, element.label);
   }
-  markElement(node, element, marks, view);
-  const runtimeItems = expressionRuntimeItemsFor(element.ref, view.resolution);
-  if (runtimeItems.length) {
-    node.append(h('div', { class: 'x-runtime', 'aria-label': 'Runtime representative items' },
-      runtimeItems.map((item) => h('span', {
-        class: 'x-runtime-item',
-        title: `${item.itemRef} · runtime identity, not a static Screen element`,
-      },
-        h('span', { class: 'x-runtime-label' }, item.label ?? item.itemRef),
-        h('code', { class: 'x-runtime-ref' }, item.itemRef)))));
+  for (const ref of placements.byTarget.get(element.ref) ?? []) {
+    const placedTree = findTree(context.trees ?? [], ref);
+    const drawn = placedTree ? renderSurfaceElement(placedTree, marks, { ...childContext, placedRef: ref }) : null;
+    if (drawn) { drawn.classList.add('placed'); node.append(drawn); }
   }
-  if (view.interactive) {
-    const go = travelButton(element);
-    if (go) node.append(go);
+  if (presence && CONTAINER_KINDS.has(element.kind)) {
+    for (const entry of Realization.populationsAt(state.lens, screenRef(), element.ref)) { const drawn = renderPopulation(entry, marks, context); if (drawn) node.append(drawn); }
   }
+  // A registered container nothing realizes is a registration group, not a visible box (unless
+  // realization placed it somewhere whole: then it is drawn as the layout it registers).
+  if (info?.state === 'UNTRACED' && CONTAINER_KINDS.has(element.kind) && children.length && element.parentRef && context.placedRef !== element.ref) {
+    if (!node.childNodes.length) return null; // everything it groups is drawn elsewhere in this expression
+    if ([...node.childNodes].every((child) => child.classList?.contains('dep-stub'))) { markElement(node, element, marks); return node; }
+    const group = h('div', { class: 'reg-group', title: 'Registered grouping. Source realizes its children elsewhere (or not yet traced); it is not a visible container.' }, h('span', { class: 'reg-label' }, `${element.label} · registered group`), ...node.childNodes);
+    node = group;
+  }
+  markElement(node, element, marks);
+  if (info && info.state !== 'SOURCE' && !(info.state === 'UNTRACED' && context.placedRef === element.ref)) node.classList.add(`pres-${info.state}`);
+  const go = travelButton(element);
+  if (go) node.append(go);
   return node;
 }
-function treeForRef(trees, ref) {
+function findTree(trees, ref) {
   for (const tree of trees) {
     if (tree.element.ref === ref) return tree;
-    const nested = treeForRef(tree.children, ref);
-    if (nested) return nested;
+    const inner = findTree(tree.children, ref);
+    if (inner) return inner;
   }
   return null;
 }
-function renderPhone(expressionRef = state.expressionRef, { interactive = true } = {}) {
+// One phone: the Screen's one structure, realized in one expression. Only the current phone is
+// interactive; its neighbours are the same structure in the previous and next expressions.
+function renderPhone(expression, { interactive }) {
   const screen = currentScreen();
-  const resolution = expressionRef ? expressionResolutionFor(expressionRef) : null;
-  const view = { resolution, interactive };
   const marks = interactive ? selectionPathRefs() : { selected: null, ancestors: new Set() };
   const elements = Lens.elementsForScreen(state.lens, screen.screenRef);
   const bySlot = (slot) => Lens.elementTree(elements.filter((element) => element.ownerRef !== screen.screenRef)).filter((tree) => tree.element.slot === slot);
   const anchor = interactive ? anchorElement() : null;
+  const realization = screen.realization;
+  const presence = realization ? presenceFor(expression.context) : null;
   const fabRefs = new Set(elements.filter((element) => element.ref === 'element.shell.fab-cluster' || Lens.elementPath(state.lens, element.ref).some((step) => step.slot === 'FAB')).map((element) => element.ref));
-  const context = { fabOpen: Boolean(anchor && fabRefs.has(anchor.ref)) };
-
+  // Controls the shared toolbar realizes for this Screen are drawn in the top bar, not the body.
+  const toolbar = screen.elements.filter((element) => element.slot === 'TOOLBAR');
+  const own = Lens.elementTree(screen.elements.filter((element) => element.slot !== 'TOOLBAR'));
+  const context = { fabOpen: Boolean(anchor && fabRefs.has(anchor.ref)), presence, trees: own };
   const top = bySlot('TOP')[0];
   const topBar = h('div', { class: 'phone-top' });
   if (top) {
-    for (const child of top.children) {
-      if (child.element.navigatesTo === Lens.BACK && state.walk.steps.length <= 1) continue;
-      if (child.element.kind === 'BUTTON') {
-        const button = markElement(h('button', { class: 'el-back', type: 'button' }, `‹ ${child.element.label}`), child.element, marks, view);
-        if (interactive) {
-          const go = travelButton(child.element);
-          if (go) button.append(go);
-        }
-        topBar.append(button);
-      } else {
-        topBar.append(renderSurfaceElement(child, marks, context, view));
-      }
-    }
-    markElement(topBar, top.element, marks, view);
+    for (const child of top.children) if (child.element.navigatesTo !== Lens.BACK || state.walk.steps.length > 1) topBar.append(child.element.kind === 'BUTTON'
+      ? (() => { const button = markElement(h('button', { class: 'el-back', type: 'button' }, `‹ ${child.element.label}`), child.element, marks); const go = travelButton(child.element); if (go) button.append(go); return button; })()
+      : renderSurfaceElement(child, marks, { ...context, presence: null }));
+    markElement(topBar, top.element, marks);
   }
   topBar.append(h('span', { class: 'phone-title' }, screen.label));
-
+  if (toolbar.length) topBar.append(h('span', { class: 'phone-actions' }, toolbar.map((element) => markElement(renderButton(element, presence, { iconOnly: true }), element, marks))));
   const body = h('div', { class: 'phone-body' });
-  const ownTrees = Lens.elementTree(screen.elements);
-  const bodyTrees = ownTrees.filter((tree) => !['SHEET', 'DIALOG'].includes(tree.element.kind));
-  if (bodyTrees.length) {
-    for (const tree of bodyTrees) body.append(renderSurfaceElement(tree, marks, context, view));
-  } else {
-    body.append(h('div', { class: 'phone-held' },
-      h('strong', {}, screen.mapped === 'CHROME_ONLY' ? `${screen.label} content is held` : `${screen.label} is not projected yet`),
-      h('br'),
-      screen.summary ?? ''));
-  }
-
-  const phone = h('div', {
-    class: `phone${interactive && marks.selected ? ' dimmed' : ''}`,
-    'aria-label': `${screen.label}${expressionRef ? ` · ${Expressions.expressionFor(state.expressionFixture, expressionRef)?.label ?? expressionRef}` : ''} surface`,
-  }, topBar, body);
-
+  if (own.length) for (const tree of own) { const drawn = renderSurfaceElement(tree, marks, context); if (drawn) body.append(drawn); }
+  else body.append(h('div', { class: 'phone-held' }, h('strong', {}, screen.mapped === 'CHROME_ONLY' ? `${screen.label} content is held` : `${screen.label} is not projected yet`), h('br'), screen.summary ?? ''));
+  const phone = h('div', { class: `phone${interactive ? ' current-phone' : ''}${marks.selected ? ' dimmed' : ''}`, 'aria-label': `${screen.label} surface · ${expression.where} · ${expression.what}` }, topBar, body);
+  // Content a realization hands to named regions: a bottom bar docks above the navigation, a
+  // floating action button floats over the body.
+  const regions = presence ? regionsOf(screen) : null;
+  const zonePlacements = placementsOf(presence);
+  const zone = (name) => (regions?.roots.get(name) ?? []).filter((ref) => !zonePlacements.placed.has(ref)).map((ref) => findTree(own, ref)).filter(Boolean).map((tree) => renderSurfaceElement(tree, marks, { ...context, inZone: name })).filter(Boolean);
+  const docked = zone('BOTTOM');
+  if (docked.length) phone.append(h('div', { class: 'region-bottom' }, docked));
+  const floating = zone('FAB');
+  if (floating.length) phone.append(h('div', { class: 'region-fab' }, floating));
   const bottom = bySlot('BOTTOM')[0];
   if (bottom) {
     const bar = h('div', { class: 'phone-bottom' });
     for (const child of bottom.children) {
-      const button = markElement(h('button', { class: `el-nav${child.element.navigatesTo === screen.screenRef ? ' here' : ''}`, type: 'button' },
-        h('span', { class: 'glyph', 'aria-hidden': 'true' }), child.element.label), child.element, marks, view);
-      if (interactive) {
-        const go = travelButton(child.element);
-        if (go) button.append(go);
-      }
+      const button = markElement(h('button', { class: `el-nav${child.element.navigatesTo === screen.screenRef ? ' here' : ''}`, type: 'button' }, h('span', { class: 'glyph', 'aria-hidden': 'true' }), child.element.label), child.element, marks);
+      const go = travelButton(child.element); if (go) button.append(go);
       bar.append(button);
     }
-    markElement(bar, bottom.element, marks, view);
+    markElement(bar, bottom.element, marks);
     phone.append(bar);
   }
-
   const fab = bySlot('FAB')[0];
   if (fab) {
-    const zone = h('div', { class: 'fab-zone' }, fab.children.map((child) => renderSurfaceElement(child, marks, context, view)));
-    markElement(zone, fab.element, marks, view);
+    const zone = h('div', { class: 'fab-zone' }, fab.children.map((child) => renderSurfaceElement(child, marks, { ...context, presence: null })));
+    markElement(zone, fab.element, marks);
     phone.append(zone);
   }
-
-  const participating = new Set(resolution?.surface.elementRefs ?? []);
-  for (const overlay of screen.elements.filter((element) => ['SHEET', 'DIALOG'].includes(element.kind) && participating.has(element.ref))) {
-    const overlayTree = treeForRef(ownTrees, overlay.ref);
-    const contents = (overlayTree?.children ?? []).map((child) => renderSurfaceElement(child, marks, context, view));
-    const zone = overlay.kind === 'DIALOG'
-      ? h('div', { class: 'dialog-zone opened', role: 'presentation' },
-        h('p', { class: 'el-text TITLE' }, overlay.label),
-        overlay.visibleWhen ? h('p', { class: 'el-text' }, overlay.visibleWhen) : null,
-        ...contents)
-      : h('div', { class: 'sheet-zone opened' },
-        h('div', { class: 'grab' }),
-        h('p', { class: 'el-text TITLE' }, overlay.label),
-        overlay.visibleWhen ? h('p', { class: 'el-text' }, overlay.visibleWhen) : null,
-        h('div', { class: 'el-column', style: 'max-height:46vh;overflow:auto' }, contents));
-    markElement(zone, overlay, marks, view);
+  // A sheet or dialog shows when this expression presents it. A screen whose source declares no
+  // presence relationship (the generic Blueprint renderer) keeps showing what the picked control opens.
+  const overlays = screen.elements.filter((element) => element.kind === 'SHEET' || element.kind === 'DIALOG');
+  const opened = (overlay) => {
+    const why = presence?.elements.get(overlay.ref);
+    if (!why || !PRESENTED.has(why.state)) return false;
+    return why.state !== 'SOURCE' || why.causes.some((cause) => cause.realized && presenceEntry(cause.presenceRef)?.kind === 'PRESENTATION');
+  };
+  const opensFromAnchor = (overlay) => overlay.symbol && anchor?.intent && new RegExp(`\\b(open|toggle)\\(${overlay.symbol.split('.').pop()}\\)`).test(anchor.intent);
+  const declaresPresence = Boolean(realization?.presence.length);
+  const realized = overlays.filter(opened);
+  const sheet = declaresPresence
+    ? realized.find((element) => element.ref === expression.focusRef) ?? realized.at(-1)
+    : overlays.find((element) => anchor?.ref === element.ref || opensFromAnchor(element));
+  if (sheet) {
+    const subtree = findTree(own, sheet.ref);
+    const placements = placementsOf(presence);
+    const contents = (subtree?.children ?? [])
+      .filter((child) => !(placements.placed.has(child.element.ref) && placements.within(placements.placed.get(child.element.ref), sheet.ref)))
+      .map((child) => renderSurfaceElement(child, marks, context)).filter(Boolean);
+    const why = presence?.elements.get(sheet.ref);
+    const cause = why?.causes.find((entry) => presenceEntry(entry.presenceRef)?.kind === 'PRESENTATION');
+    const opener = why?.state === 'EXAMPLE' ? `Opened by ${expression.exampleRef ?? 'the example'}` : why?.state === 'SCENARIO' ? 'Opened in this expression' : null;
+    const caption = h('p', { class: 'el-text', title: presence?.presence.get(cause?.presenceRef ?? '')?.why ?? '' }, [opener, sheet.visibleWhen].filter(Boolean).join(' · '));
+    const zone = sheet.kind === 'DIALOG'
+      ? h('div', { class: 'dialog-zone opened', role: 'presentation' }, h('p', { class: 'el-text TITLE' }, Expressions.expressionName(sheet)), caption, ...contents)
+      : h('div', { class: 'sheet-zone opened' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, Expressions.expressionName(sheet)), caption, h('div', { class: 'el-column', style: 'max-height:46vh;overflow:auto' }, contents));
+    markElement(zone, sheet, marks);
+    if (why && why.state !== 'SOURCE' && why.state !== 'LATENT') zone.classList.add(`pres-${why.state}`);
     phone.append(zone);
   }
-
-  if (!interactive) phone.inert = true;
+  // A golden's accepted reference render is this expression's surface as source expects it.
+  const evidence = expression.kind === 'EXAMPLE' ? (expression.evidence ?? []).find((entry) => entry.kind === 'GOLDEN_REFERENCE') : null;
+  const shotUrl = evidence ? Realization.evidenceUrl(state.lens, evidence.path) : null;
+  if (shotUrl && interactive) {
+    const shot = h('figure', { class: 'golden-shot', title: 'Click to show the projection instead' },
+      h('img', { src: shotUrl, alt: `${expression.what} reference render`, loading: 'lazy' }),
+      h('figcaption', {}, `Accepted reference render at ${short(state.lens.sourceSnapshot.commit)} · ${evidence.meaning ?? 'expected render'}`));
+    shot.querySelector('img').addEventListener('error', () => { shot.replaceWith(h('p', { class: 'xnote', style: 'position:absolute;left:12px;right:12px;bottom:70px;z-index:20;background:#fff' }, 'The accepted reference render could not load here; showing the projection.')); });
+    shot.addEventListener('click', (event) => { event.stopPropagation(); shot.remove(); });
+    phone.append(shot);
+  }
+  if (!interactive) {
+    // A neighbour is a picture of another expression: no addresses, no focus, no events.
+    for (const node of phone.querySelectorAll('[data-ref]')) { node.dataset.peekRef = node.dataset.ref; delete node.dataset.ref; }
+    phone.inert = true;
+  }
   return phone;
 }
 function renderSurface() {
-  if (!expressionAvailable()) {
-    return h('div', { class: 'surface', onclick: () => clearSelection() }, renderPhone(null, { interactive: true }));
-  }
-  const list = expressionList();
+  const list = expressionsNow();
   const active = activeExpression();
-  const index = list.findIndex((entry) => entry.expressionRef === active?.expressionRef);
-  const current = h('div', { class: 'xslot' }, expressionCaption(active), renderPhone(active.expressionRef, { interactive: true }));
-  const peek = (entry, side) => {
-    if (!entry) return null;
-    const wrap = h('div', {
-      class: `xpeek ${side}`,
-      role: 'button',
-      title: entry.summary ?? entry.label,
-      'aria-label': `${side === 'prev' ? 'Previous' : 'Next'} expression: ${entry.label}`,
-    }, h('span', { class: 'xpeek-label' }, h('span', { class: 'xk' }, expressionKind(entry)), h('b', {}, entry.label)),
-      renderPhone(entry.expressionRef, { interactive: false }));
-    wrap.addEventListener('click', (event) => { event.stopPropagation(); setExpression(entry.expressionRef); });
+  const index = list.indexOf(active);
+  const current = h('div', { class: 'xslot' }, expressionCaption(active), renderPhone(active, { interactive: true }));
+  const peek = (expression, side) => {
+    if (!expression) return null;
+    const wrap = h('div', { class: `xpeek ${side} kind-${expression.kind}`, role: 'button', title: expressionTitle(expression), 'aria-label': `${side === 'prev' ? 'Previous' : 'Next'} expression: ${expression.where} · ${expression.what}` },
+      h('span', { class: 'xpeek-label' }, kindChip(expression), h('b', {}, expression.where), h('span', {}, truncate(expression.what, 30))),
+      renderPhone(expression, { interactive: false }));
+    wrap.addEventListener('click', (event) => { event.stopPropagation(); setExpression(expression.ref); });
     return wrap;
   };
-  const motion = state.expressionMotion;
-  state.expressionMotion = null;
-  const stage = h('div', { class: `xstage${motion ? ` enter-${motion}` : ''}` },
-    current,
-    peek(index > 0 ? list[index - 1] : null, 'prev'),
-    peek(index >= 0 && index < list.length - 1 ? list[index + 1] : null, 'next'));
+  const stage = h('div', { class: `xstage${state.motion ? ` enter-${state.motion}` : ''}` },
+    current, peek(index < 0 ? null : list[index - 1], 'prev'), peek(index < 0 ? list[0] : list[index + 1], 'next'));
   const surface = h('div', { class: 'surface', onclick: () => clearSelection() }, stage);
-  wireExpressionSwipe(surface);
+  wireSwipe(surface);
   return surface;
 }
 
@@ -1437,18 +1744,13 @@ function renderStructure() {
   const marks = selectionPathRefs();
   const elements = Lens.elementsForScreen(state.lens, screen.screenRef);
   const sections = [];
-  if (expressionAvailable()) {
-    const expression = activeExpression();
-    const resolution = state.expressionResolution;
-    sections.push(h('div', {
-      class: 'xstruct',
-      title: 'The same expression shown on Surface; marked rows participate, unmarked rows are not claimed absent.',
-    },
-      h('span', { class: 'xk' }, expressionKind(expression)),
-      h('b', {}, expression.label),
-      expression.summary ? h('span', {}, expression.summary) : null,
-      h('span', { class: 'xcount' }, `${resolution.surface.elementRefs.length} static · ${resolution.surface.runtimeItems.length} runtime`)));
-  }
+  // The same expression the Surface shows: what it presents beyond Source, what steps aside.
+  const expression = activeExpression();
+  const revealed = new Set(expression.reveals);
+  const hidden = new Set(expression.hides);
+  sections.push(h('div', { class: `xstruct kind-${expression.kind}`, title: expressionTitle(expression) }, kindChip(expression), h('b', {}, expression.where), h('span', {}, expression.what),
+    expression.steps.length ? h('span', {}, `· reached by ${expression.steps.map((step) => step.phrase).join(' › ')}`) : null,
+    h('span', {}, expression.kind === 'SOURCE' ? '· presence under source defaults' : `· ${revealed.size} presented beyond Source, ${hidden.size} stepped aside`)));
   const owners = [...state.lens.chrome.filter((entry) => elements.some((element) => element.ownerRef === entry.chromeRef)), screen];
   for (const owner of owners) {
     const isScreen = owner === screen;
@@ -1464,21 +1766,15 @@ function renderStructure() {
     const rows = [];
     const walkTree = (tree, depth) => {
       const { element } = tree;
-      const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}${deltaClass(element)}${expressionElementParticipates(element.ref) ? ' x-part' : ''}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
+      const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}${revealed.has(element.ref) ? ' rev' : ''}${hidden.has(element.ref) ? ' hid' : ''}${deltaClass(element)}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
         onclick: () => selectElement(element.ref),
         onkeydown: (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectElement(element.ref); } },
-        ondblclick: () => {
-          if (element.navigatesTo) travel(element);
-          else {
-            const exposing = expressionExposingElement(element.ref);
-            if (exposing) setExpression(exposing.expressionRef);
-          }
-        } },
+        ondblclick: () => (element.navigatesTo ? travel(element) : exposeElement(element.ref)) },
         elementChip(element),
         h('span', { class: 'slabel' }, element.label, element.pathwayRef && Lens.pathwayFor(state.lens, element.pathwayRef).label !== element.label ? h('span', { style: 'color:var(--faint);font-weight:400' }, ` · ${Lens.pathwayFor(state.lens, element.pathwayRef).label}`) : null),
         element.declared || element.symbol ? h('span', { class: 'sdecl' }, element.symbol && element.declared && element.symbol !== element.declared ? `${element.symbol} = ${element.declared}` : (element.declared ?? element.symbol)) : null,
         element.intent ? h('span', { class: 'sintent' }, `${element.intent}${element.actionKey ? `  ⟶ ${element.actionKey}` : ''}${element.navigatesTo && element.navigatesTo !== Lens.BACK ? `  ⟶ ${element.navigatesTo}` : ''}`) : null,
-        expressionRuntimeItemsFor(element.ref).length ? h('span', { class: 'x-runtime-count', title: 'Runtime representatives; not static Screen elements' }, `${expressionRuntimeItemsFor(element.ref).length} runtime`) : null,
+        isScreen ? structurePresence(element) : null,
         h('span', { class: 'sref' }, element.ref));
       rows.push(row);
       tree.children.forEach((child) => walkTree(child, depth + 1));
@@ -1487,13 +1783,44 @@ function renderStructure() {
     if (!rows.length) rows.push(h('p', { class: 'hint', style: 'white-space:normal' }, owner.summary ?? 'Nothing projected yet.'));
     sections.push(h('section', { class: 'struct-section', role: 'tree', 'aria-label': header.textContent }, header, rows));
   }
+  if (screen.realization) sections.push(realizationSection(screen));
   return h('div', { class: 'structure' }, sections);
+}
+function structurePresence(element) {
+  const info = currentScreen().realization ? presenceOf(element.ref) : null;
+  if (!info) return null;
+  const chips = [];
+  if (info.state !== 'SOURCE') chips.push(presChip(info.state));
+  if (info.perInstance) chips.push(presChip('ITEM', 'per item'));
+  for (const cause of info.causes) {
+    const entry = presenceEntry(cause.presenceRef);
+    if (entry) chips.push(h('span', { class: 'pres-chip SOURCE', title: presenceNow().presence.get(entry.ref)?.why ?? '' }, entry.kind.toLowerCase()));
+  }
+  return chips.length ? h('span', { class: 'spres' }, chips) : null;
+}
+function realizationSection(screen) {
+  const realization = screen.realization;
+  const counts = {};
+  for (const entry of presenceNow().elements.values()) counts[entry.state] = (counts[entry.state] ?? 0) + 1;
+  const header = h('header', {}, chip('REALIZATION'), h('h3', {}, 'Realization'), h('code', { class: 'mono', style: 'font-size:11.5px;color:var(--faint)' }, realization.entry?.symbol ?? (realization.rendersRegisteredTree ? 'VexElementTree' : 'blueprint')),
+    h('p', {}, realization.rendersRegisteredTree ? 'The registered tree is the visible body; presence relationships below still decide what shows.' : realization.status === 'BLUEPRINT' ? 'Rendered by the generic Blueprint renderer.' : 'Custom realization read from source. Registered elements above are identity; this is how they become presentation.'));
+  const rows = [h('div', { class: 'srow', style: '--d:0;--guide:none' }, h('span', {}), h('span', { class: 'spres' }, Object.entries(counts).map(([name, count]) => presChip(name, `${count} ${Realization.PRESENCE_STATES[name]?.label ?? name}`))))];
+  for (const entry of realization.presence) {
+    rows.push(h('div', { class: `srow${state.selected?.ref === entry.ref ? ' sel' : ''}`, style: '--d:0;--guide:none', role: 'treeitem', tabindex: '0', onclick: () => { state.selected = { kind: 'PRESENCE', ref: entry.ref }; render(); } },
+      h('span', { class: 'pres-chip SOURCE' }, entry.kind.toLowerCase()),
+      h('span', { class: 'slabel' }, entry.subjectRef ? labelOf(entry.subjectRef) : entry.realizedBy ?? entry.ref),
+      h('span', { class: 'sdecl' }, entry.condition ?? entry.items ?? entry.subject ?? (entry.choices.length ? `${entry.choices.length} choices` : '')),
+      entry.held ? h('span', { class: 'sintent', style: 'color:var(--pres-held)' }, `held: ${entry.held}`) : null,
+      h('span', { class: 'sref' }, entry.ref)));
+  }
+  for (const boundary of realization.opaque) rows.push(h('div', { class: 'srow', style: '--d:0;--guide:none' }, h('span', { class: 'pres-chip HELD' }, 'opaque'), h('span', { class: 'slabel' }, boundary.symbol), h('span', { class: 'sdecl' }, `${boundary.reason ?? ''} · ${boundary.source ?? ''}`)));
+  return h('section', { class: 'struct-section', role: 'tree', 'aria-label': 'Realization' }, header, rows);
 }
 
 function renderExperienceSide() {
   const front = h('div', { class: 'face front', dataset: { face: 'SURFACE' } }, renderSurface(), h('span', { class: 'spine' }, 'Back: Structure'));
   const back = h('div', { class: 'face back', dataset: { face: 'STRUCTURE' } }, renderStructure(), h('span', { class: 'spine' }, 'Back: Surface'));
-  return renderSide('EXPERIENCE', 'Experience', ['SURFACE', 'STRUCTURE'], front, back, 'Right-click to flip', null);
+  return renderSide('EXPERIENCE', 'Experience', ['SURFACE', 'STRUCTURE'], front, back, 'Swipe for expressions · right-click to flip');
 }
 
 /* ---------- Behavior side ---------- */
@@ -1501,26 +1828,6 @@ function renderGraphFace(face) {
   const pathway = currentPathway();
   const anchor = anchorElement();
   const wrap = h('div', { class: 'face', dataset: { face } });
-  if (expressionAvailable()) {
-    const expression = activeExpression();
-    const paths = state.expressionResolution?.behavior.pathwayRefs ?? [];
-    wrap.append(h('div', { class: 'xgraph-context', title: expression.summary ?? expression.label },
-      h('span', { class: 'xk' }, expressionKind(expression)),
-      h('b', {}, expression.label),
-      expression.summary ? h('span', {}, expression.summary) : null,
-      paths.length ? h('div', { class: 'xpaths', 'aria-label': 'Expression pathways' },
-        h('span', { class: 'label' }, 'Pathway'),
-        paths.map((ref) => {
-          const candidate = Lens.pathwayFor(state.lens, ref);
-          return h('button', {
-            class: 'xpath',
-            type: 'button',
-            'aria-pressed': state.pathwayRef === ref ? 'true' : 'false',
-            title: candidate?.summary ?? candidate?.label ?? ref,
-            onclick: (event) => { event.stopPropagation(); setExpressionPathway(ref); },
-          }, candidate?.label ?? ref);
-        })) : null));
-  }
   if (!pathway) {
     const message = anchor
       ? (anchor.role === 'ELEMENT'
@@ -1532,10 +1839,27 @@ function renderGraphFace(face) {
   }
   const graph = Lens.faceGraph(pathway, face, { hideBands: hideBandsFor(face) });
   const shared = Lens.elementsUsingPathway(state.lens, pathway.pathwayRef).length;
+  if (pathway.disposition === 'EXPRESSION') {
+    // The expression the Surface shows, read from this side: how it is reached, what realizes it.
+    const expression = activeExpression();
+    const info = Expressions.EXPRESSION_KINDS[expression.kind];
+    const line = face === 'BEHAVIOR' ? info.question : 'Underneath: the composables that realize it, the data bindings it repeats, the fixtures an example uses.';
+    wrap.append(h('div', { class: `disposition kind-${expression.kind}` },
+      kindChip(expression), ' ', h('span', { class: 'k' }, `${expression.where} · ${expression.what}`), ' ',
+      h('span', { class: 'hint' }, `${info.label} expression${expression.also.length ? `, also reached ${expression.also.length} other way${expression.also.length === 1 ? '' : 's'}` : ''}`),
+      h('p', { title: line }, line)));
+    if (!graph.nodes.length) {
+      wrap.append(h('div', { class: 'empty' }, face === 'DEPTH'
+        ? [h('strong', {}, 'Nothing underneath'), 'Source names no realizer, data binding or fixture for this expression.']
+        : [h('strong', {}, 'Nothing to reach'), 'This expression is how source renders the screen by default.']));
+      return wrap;
+    }
+  } else
   wrap.append(h('div', { class: 'disposition' },
     h('span', { class: 'k' }, pathway.label), ' ',
     h('span', { class: 'hint', title: Lens.PATHWAY_DISPOSITIONS[pathway.disposition] }, `${DISPOSITION_NAMES[pathway.disposition]}${shared > 1 ? `, shared by ${shared} controls` : ''}`),
     (() => { const line = face === 'BEHAVIOR' ? (pathway.summary ?? Lens.PATHWAY_DISPOSITIONS[pathway.disposition]) : `Returns to the human: ${pathway.returns ?? 'nothing visible'}`; return h('p', { title: line }, line); })(),
+    anchor && currentScreen().realization && ['LATENT', 'DEPENDS'].includes(presenceOf(anchor.ref)?.state) ? h('p', { class: 'xnote' }, `${anchor.label} is ${presenceOf(anchor.ref).state === 'LATENT' ? 'not presented' : 'only conditionally presented'} in this expression. Double-click it to go where it is.`) : null,
     face === 'BEHAVIOR' && graph.hidden.length ? h('div', { class: 'doorway', 'aria-label': 'Doorway steps' }, h('span', { class: 'lead' }, pathway.disposition === 'SCAE_FAMILY' ? 'Doorway: how the touch reaches the Family' : 'Doorway: how the touch reaches the runtime'),
       graph.hidden.flatMap((node, i) => [i ? h('span', { class: 'sep', 'aria-hidden': 'true' }, '›') : null,
         h('button', { class: `role-${node.role}${state.selected?.ref === node.ref ? ' sel' : ''}`, dataset: { nodeRef: node.ref }, title: `${node.label}\n${node.summary ?? ''}`, onclick: (event) => { event.stopPropagation(); selectNode(node.ref); } }, chip(node.role), h('span', { class: 't' }, node.label))])) : null));
@@ -1612,6 +1936,12 @@ function entryRefForFace(face) {
   if (!pathway) return null;
   const graph = Lens.faceGraph(pathway, face, { hideBands: hideBandsFor(face) });
   if (!graph.nodes.length) return null;
+  // An expression is entered where the Surface shows it: the node for its focus element.
+  if (pathway.disposition === 'EXPRESSION' && face === 'BEHAVIOR') {
+    const focus = activeExpression().focusRef;
+    const node = graph.nodes.find((candidate) => candidate.elementRef && candidate.elementRef === focus);
+    if (node) return node.ref;
+  }
   if (face === 'DEPTH') return (graph.portsIn[0]?.to) ?? graph.nodes[0].ref;
   const targets = new Set(graph.edges.map((edge) => edge.to));
   return (graph.nodes.find((node) => !targets.has(node.ref)) ?? graph.nodes[0]).ref;
@@ -1622,7 +1952,8 @@ function renderBehaviorSide() {
   const doorway = doorwayCollapsible(currentPathway())
     ? h('button', { class: 'tool', 'aria-pressed': !state.hideDoorway, title: 'Show the declared intent and dispatch steps as full nodes', onclick: () => { state.hideDoorway = !state.hideDoorway; state.cameras.delete('BEHAVIOR'); render(); } }, state.hideDoorway ? 'Expand doorway' : 'Collapse doorway')
     : null;
-  return renderSide('BEHAVIOR', 'Behavior', ['BEHAVIOR', 'DEPTH'], front, back, 'Right-click to flip', doorway);
+  const back2 = state.anchorElementRef ? h('button', { class: 'tool', title: 'Show how the current expression is reached instead of the picked control', onclick: () => clearSelection() }, 'Show expression') : null;
+  return renderSide('BEHAVIOR', 'Behavior', ['BEHAVIOR', 'DEPTH'], front, back, 'Right-click to flip', [doorway, back2].filter(Boolean));
 }
 
 function renderSide(side, title, faces, front, back, hint, extra) {
@@ -1680,6 +2011,20 @@ function zoomFace(face, factor, anchor = null) {
   const k = zoom / camera.zoom;
   state.cameras.set(face, { zoom, x: ax - (ax - camera.x) * k, y: ay - (ay - camera.y) * k });
   applyCamera(face);
+}
+// A freshly fitted expression graph keeps the node the Surface points at in view, with the chain
+// that reaches it above.
+function keepInView(face, ref) {
+  const viewport = document.querySelector(`[data-graph-face="${face}"]`);
+  const placed = state.layouts.get(face)?.nodes.find((node) => node.ref === ref);
+  const camera = state.cameras.get(face);
+  if (!viewport || !placed || !camera) return;
+  const next = { ...camera };
+  const bottom = camera.y + (placed.y + placed.height) * camera.zoom;
+  if (bottom > viewport.clientHeight - 16) next.y = viewport.clientHeight - 28 - (placed.y + placed.height) * camera.zoom;
+  const left = camera.x + placed.x * camera.zoom;
+  if (left < 8 || left + placed.width * camera.zoom > viewport.clientWidth - 8) next.x = viewport.clientWidth / 2 - (placed.x + placed.width / 2) * camera.zoom;
+  if (next.x !== camera.x || next.y !== camera.y) { state.cameras.set(face, next); applyCamera(face); }
 }
 function revealNode(face, ref) {
   const viewport = document.querySelector(`[data-graph-face="${face}"]`);
@@ -1745,7 +2090,7 @@ function visibleRect(node, clip) {
 function bridgeExit(leftFace, anchorRef, from, preferAbove) {
   const direct = { detour: 0 };
   if (state.faces.EXPERIENCE !== 'SURFACE') return direct;
-  const phone = leftFace.querySelector('.phone');
+  const phone = leftFace.querySelector('.current-phone');
   const anchorNode = leftFace.querySelector(`[data-ref="${CSS.escape(anchorRef)}"]`);
   if (!phone || !anchorNode) return direct;
   const a = anchorNode.getBoundingClientRect();
@@ -1770,14 +2115,15 @@ function drawBridge() {
   const svg = refs.bridge;
   if (!svg) return;
   svg.replaceChildren();
-  const anchor = anchorElement();
   const pathway = currentPathway();
-  if (!anchor || !pathway || window.matchMedia('(max-width:900px)').matches) return;
+  // The bridge leaves the picked control, or, with none picked, where the Surface shows the expression.
+  const anchorRef = state.anchorElementRef ?? (pathway?.disposition === 'EXPRESSION' ? activeExpression().focusRef : null);
+  if (!anchorRef || !pathway || window.matchMedia('(max-width:900px)').matches) return;
   const main = refs.main.getBoundingClientRect();
   const leftFace = document.querySelector(`.flipper[data-side="EXPERIENCE"] .face[data-face="${state.faces.EXPERIENCE}"]`);
   const rightFace = document.querySelector(`.flipper[data-side="BEHAVIOR"] .face[data-face="${state.faces.BEHAVIOR}"]`);
   if (!leftFace || !rightFace) return;
-  const from = visibleRect(leftFace.querySelector(`[data-ref="${CSS.escape(anchor.ref)}"]`), leftFace);
+  const from = visibleRect(leftFace.querySelector(`[data-ref="${CSS.escape(anchorRef)}"]`), leftFace);
   const entry = entryRefForFace(state.faces.BEHAVIOR);
   const viewport = rightFace.querySelector('.graph');
   const stripTarget = state.faces.BEHAVIOR === 'BEHAVIOR' ? rightFace.querySelector('.doorway button') : null;
@@ -1789,7 +2135,7 @@ function drawBridge() {
   const stopA = s('stop', { offset: '0' }); stopA.style.stopColor = 'var(--r-ELEMENT)';
   const stopB = s('stop', { offset: '1' }); stopB.style.stopColor = `var(--r-${entryNode.role})`;
   gradient.append(stopA, stopB); defs.append(gradient); svg.append(defs);
-  const exit = bridgeExit(leftFace, anchor.ref, from, state.faces.BEHAVIOR === 'BEHAVIOR' && Boolean(pathway.returnRef));
+  const exit = bridgeExit(leftFace, anchorRef, from, state.faces.BEHAVIOR === 'BEHAVIOR' && Boolean(pathway.returnRef));
   const sideX = Math.min(from.right, from.clip.right) - main.left;
   let x1 = sideX;
   let y1 = from.midY - main.top;
@@ -1807,7 +2153,7 @@ function drawBridge() {
   let d;
   if (stripTarget) {
     // Run level until clear of the phone, so the curve never climbs across other controls.
-    const phoneBox = state.faces.EXPERIENCE === 'SURFACE' ? leftFace.querySelector('.phone')?.getBoundingClientRect() : null;
+    const phoneBox = state.faces.EXPERIENCE === 'SURFACE' ? leftFace.querySelector('.current-phone')?.getBoundingClientRect() : null;
     const px = phoneBox ? Math.max(x1, Math.min(phoneBox.right + 8, from.clip.right) - main.left) : x1;
     const bend = Math.max(60, (x2 - px) * 0.45);
     d = `${start}${px > x1 ? ` H${px}` : ''} C${px + bend},${y1} ${x2 - bend},${y2} ${x2},${y2}`;
@@ -1902,7 +2248,16 @@ function renderTray() {
         h('div', {}, h('h3', {}, 'Reached from'), reachList(screen.screenRef),
           coverage.untraced.length ? [h('h3', { style: 'margin-top:10px' }, 'Controls with no pathway yet'), h('div', { class: 'links' }, coverage.untraced.map((ref) => linkButton(Lens.elementFor(state.lens, ref).label, () => selectElement(ref), 'ELEMENT')))] : null,
           !coverage.contentProjected ? h('p', { class: 'hint', style: 'white-space:normal;margin-top:8px' }, screen.mapped === 'CHROME_ONLY' ? 'Only shared chrome is projected; this screen\'s own content is held.' : 'This screen is not projected yet.') : null),
-        h('div', {}, notesBlock(screen.screenRef), h('h3', {}, 'How to read this'), h('p', {}, 'Click a control to see its pathway. Right-click either side to flip its face; Shift + right-click keeps the browser menu. Press / to find anything by name, key, symbol or file.'))));
+        expressionBlock(),
+        screenRealizationBlock(screen),
+        h('div', {}, notesBlock(screen.screenRef), h('h3', {}, 'How to read this'), h('p', {}, 'Swipe the Surface (or press ← →) to see this screen in each of its expressions; both sides follow. Double-click anything to go where it is exposed. Click a control to see its pathway. Right-click either side to flip its face; Shift + right-click keeps the browser menu. Press / to find anything by name, key, symbol or file.'))));
+    return tray;
+  }
+  if (selected.kind === 'PRESENCE') {
+    const entry = presenceEntry(selected.ref);
+    if (!entry) { state.selected = null; return renderTray(); }
+    tray.append(head(h('span', { class: 'pres-chip SOURCE' }, entry.kind.toLowerCase()), h('h2', {}, entry.subjectRef ? labelOf(entry.subjectRef) : entry.realizedBy ?? entry.ref), h('span', { class: 'ref' }, entry.ref)),
+      h('div', { class: 'tray-body' }, presenceDetail(entry), presenceProvenance(entry)));
     return tray;
   }
   if (selected.kind === 'ELEMENT') {
@@ -1922,12 +2277,14 @@ function renderTray() {
           pathway ? h('p', { style: 'margin-top:8px' }, h('b', {}, `${pathway.label}. `), pathway.summary ?? '') : null,
           pathway ? [h('h3', { style: 'margin-top:10px' }, 'Result for the human'), h('p', {}, pathway.returns ?? '')] : null,
           element.navigatesTo ? h('button', { class: 'go', onclick: () => travel(element) }, element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`) : null),
+        elementPresenceBlock(element),
         elementImpact(element),
         notesBlock(element.ref)));
     return tray;
   }
   const node = pathwayNode(selected.ref);
   const pathway = currentPathway();
+  if (!node) { state.selected = null; return renderTray(); }
   const related = (list, pick) => list.map((edge) => {
     const other = pathwayNode(pick(edge));
     return h('button', { class: 'link', onclick: () => selectNode(other.ref, { reveal: true }) }, chip(other.role), h('span', {}, `${edge.label ? `${edge.label}: ` : ''}${other.label}${other.face !== node.face ? ` (on ${Lens.LENS_FACES[other.face].title})` : ''}`));
@@ -1935,6 +2292,21 @@ function renderTray() {
   const incoming = pathway.edges.filter((edge) => edge.to === node.ref);
   const outgoing = pathway.edges.filter((edge) => edge.from === node.ref);
   const info = Lens.roleFor(node.role);
+  if (pathway.disposition === 'EXPRESSION') {
+    const element = node.elementRef ? Lens.elementFor(state.lens, node.elementRef) : null;
+    tray.append(head(chip(node.role), h('h2', {}, node.label), h('span', { class: 'ref' }, node.ref)),
+      h('div', { class: 'tray-body' },
+        h('div', {}, h('h3', {}, `${info.label} · ${Lens.LENS_BANDS[info.band].label}`), h('p', {}, node.summary ?? ''), dl([['Symbol', node.symbol ? h('code', {}, node.symbol) : null], ['Face', Lens.LENS_FACES[node.face].title], ['Expression', pathway.label]]),
+          h('div', { class: 'links', style: 'margin-top:8px' },
+            element ? linkButton(`Pick ${element.label}`, () => selectElement(element.ref), 'ELEMENT') : null,
+            node.presenceRef ? linkButton('Relationship details', () => { state.selected = { kind: 'PRESENCE', ref: node.presenceRef }; render(); }) : null)),
+        h('div', {}, h('h3', {}, 'Relationships'),
+          incoming.length ? h('div', { class: 'links' }, related(incoming, (edge) => edge.from)) : h('p', { class: 'hint' }, 'Nothing arrives here.'),
+          h('div', { style: 'height:6px' }),
+          outgoing.length ? h('div', { class: 'links' }, related(outgoing, (edge) => edge.to)) : h('p', { class: 'hint' }, 'Nothing leaves here.')),
+        h('div', {}, node.role === 'PROJECTION' && node.symbol === 'GOLDEN_REFERENCE' ? null : h('div', { class: 'links' }, sourceLink(node.source)))));
+    return tray;
+  }
   tray.append(head(chip(node.role), h('h2', {}, node.label), h('span', { class: 'ref' }, node.ref)),
     h('div', { class: 'tray-body' },
       h('div', {}, h('h3', {}, `${info.label} · ${Lens.LENS_BANDS[info.band].label}`), h('p', {}, node.summary ?? ''), dl([['Symbol', node.symbol ? h('code', {}, node.symbol) : null], ['Face', Lens.LENS_FACES[node.face].title], ['Pathway', pathway.label]]), notesBlock(node.ref)),
@@ -1945,6 +2317,160 @@ function renderTray() {
       stepImpact(node),
       h('div', {}, node.code ? [h('h3', {}, 'Source excerpt'), h('pre', {}, node.code)] : null, h('div', { class: 'links' }, sourceLink(node.source)))));
   return tray;
+}
+function scenarioActions(entry, element = null) {
+  const outcome = presenceNow().presence.get(entry.ref);
+  const override = state.realization.overrides[entry.ref];
+  const buttons = [];
+  const button = (label, value, active = false) => h('button', { class: 'link', type: 'button', 'aria-pressed': String(active), style: active ? 'border-color:var(--pres-scenario);color:var(--pres-scenario)' : '', onclick: () => setScenario(entry.ref, active ? null : value) }, h('span', {}, label));
+  if (entry.kind === 'PRESENTATION') { buttons.push(button('Open in scenario', 'OPEN', override === 'OPEN'), button('Close in scenario', 'CLOSED', override === 'CLOSED')); }
+  else if (entry.kind === 'SELECTION' && element && element.parentRef === entry.subjectRef) buttons.push(button(`Select ${element.label} in scenario`, element.ref, override === element.ref));
+  else if (entry.kind === 'SELECTION') for (const child of Lens.elementsForScreen(state.lens, screenRef()).filter((candidate) => candidate.parentRef === entry.subjectRef)) buttons.push(button(`Select ${child.label}`, child.ref, override === child.ref));
+  else if (entry.kind === 'POPULATION') buttons.push(button('No items', 'EMPTY', override === 'EMPTY'), button('Some items', 'ITEMS', override === 'ITEMS'));
+  else entry.choices.forEach((choice, index) => buttons.push(button(choice.condition === 'else' ? 'otherwise' : truncate(choice.condition, 42), String(index), override === String(index))));
+  return h('div', { class: 'actions', title: outcome?.why ?? '' }, buttons);
+}
+function presenceDetail(entry) {
+  const outcome = presenceNow().presence.get(entry.ref);
+  const openers = entry.kind === 'PRESENTATION' && entry.subjectRef ? Realization.openersOf(state.lens, screenRef(), entry.subjectRef) : [];
+  return h('div', {},
+    h('h3', {}, `${entry.kind.toLowerCase()} · ${Realization.PRESENCE_KINDS.includes(entry.kind) ? '' : ''}${outcome?.why ?? ''}`),
+    dl([
+      ['Owner', entry.owner ? h('code', {}, entry.owner) : null],
+      ['Condition', entry.condition ? h('code', {}, entry.condition) : null],
+      ['Subject', entry.subject ? h('code', {}, entry.subject) : null],
+      ['Realized by', entry.realizedBy ? h('code', {}, entry.realizedBy) : null],
+      ['Default', entry.defaultRef ? labelOf(entry.defaultRef) : null],
+      ['Declared by', entry.declaredBy ? entry.declaredBy.toLowerCase() : null],
+      ['Held', entry.held ? h('span', { style: 'color:var(--pres-held)' }, entry.held) : null],
+    ]),
+    openers.length ? [h('h3', { style: 'margin-top:8px' }, 'Opened by'), h('div', { class: 'links' }, openers.map((opener) => linkButton(opener.label, () => selectElement(opener.ref), 'ELEMENT')))] : null,
+    entry.choices.length ? [h('h3', { style: 'margin-top:8px' }, 'Choices in source'), h('ol', { class: 'chain' }, entry.choices.map((choice) => h('li', {}, `${choice.condition || '…'}${choice.realizedBy ? ` → ${choice.realizedBy}` : ''}${choice.realizes.length ? ` · ${choice.realizes.map(labelOf).join(', ')}` : ''}`)))] : null,
+    h('h3', { style: 'margin-top:8px' }, 'Scenario (browser-local, effect-free)'), scenarioActions(entry),
+    h('div', { class: 'links', style: 'margin-top:8px' }, sourceLink(entry.source)));
+}
+function presenceProvenance(entry) {
+  if (entry.kind !== 'POPULATION') return null;
+  const template = Realization.templateOf(state.lens, screenRef(), entry.templateRef);
+  return h('div', {},
+    h('h3', {}, 'Populated from'),
+    dl([['Items', h('code', {}, entry.items ?? '…')], ['Item key', entry.itemKey ? h('code', {}, entry.itemKey) : null], ['List identity', `${(entry.list?.identity ?? 'NONE').toLowerCase()}${entry.list?.ref ? ` · ${entry.list.ref}` : ''}`], ['Empty', entry.emptyRealization?.toLowerCase()]]),
+    entry.provenance.length ? h('ol', { class: 'chain' }, entry.provenance.map((step) => h('li', { title: step.source ?? '' }, `${step.via === 'call' ? '⇠ ' : '← '}${step.expression}`))) : null,
+    template ? [h('h3', { style: 'margin-top:8px' }, `Repeated as ${template.symbol ?? 'item'}`), dl([['Instance identity', template.instanceFormation ? h('code', {}, template.instanceFormation) : 'not read from source'], ['Realizes per item', template.realizes.length ? template.realizes.map(labelOf).join(', ') : null], ['Used by', `${template.usedBy.length} population${template.usedBy.length === 1 ? '' : 's'}`]]), h('div', { class: 'links', style: 'margin-top:6px' }, sourceLink(template.source))] : null);
+}
+function elementPresenceBlock(element) {
+  if (!currentScreen().realization || element.ownerRef !== screenRef()) return null;
+  const info = presenceOf(element.ref);
+  if (!info) return null;
+  const headline = {
+    SOURCE: 'Presented under source defaults.',
+    LATENT: 'Current source can present this; this context does not.',
+    DEPENDS: 'Whether this is presented depends on feature data VexBoard has not observed.',
+    EXAMPLE: `Presented because ${state.realization.exampleRef} sets it.`,
+    SCENARIO: 'Presented because of a browser-local scenario override.',
+    UNTRACED: 'Registered identity; no realization was traced from source (a registration grouping, or a path the reader does not follow yet).',
+    HELD: 'Known but not projectable yet.',
+  }[info.state];
+  const causes = info.causes.map((cause) => {
+    const entry = presenceEntry(cause.presenceRef);
+    if (!entry) return null;
+    return h('div', { class: 'cause' },
+      h('div', {}, h('span', { class: 'pres-chip SOURCE' }, entry.kind.toLowerCase()), ' ', presenceNow().presence.get(entry.ref)?.why ?? ''),
+      entry.condition ? h('div', {}, h('code', {}, truncate(entry.condition, 90))) : null,
+      scenarioActions(entry, element),
+      h('div', { class: 'actions' }, linkButton('Details', () => { state.selected = { kind: 'PRESENCE', ref: entry.ref }; render(); })));
+  });
+  const templates = info.templates.map((ref) => Realization.templateOf(state.lens, screenRef(), ref)).filter(Boolean);
+  const examples = Realization.examplesForScreen(state.lens, screenRef()).filter((example) => example.setup.some((step) => step.targetRef === element.ref || step.containerRef === element.ref));
+  const exposing = PRESENTED.has(info.state) ? null : Expressions.expressionExposing(expressionsNow(), element.ref);
+  return h('div', {},
+    h('h3', {}, 'Why it is, or is not, presented'),
+    h('p', {}, presChip(info.state), ' ', headline),
+    exposing ? h('div', { class: 'actions' }, linkButton(`Go to ${exposing.where} · ${truncate(exposing.what, 40)}`, () => setExpression(exposing.ref, { flash: element.ref }))) : null,
+    causes,
+    templates.length ? h('p', {}, `Realized inside each item of ${templates.map((template) => template.symbol).join(', ')}.`, ' ', ...info.populations.map((ref) => linkButton('population', () => { state.selected = { kind: 'PRESENCE', ref }; render(); }))) : null,
+    examples.length ? [h('h3', { style: 'margin-top:8px' }, 'Examples that realize it'), h('div', { class: 'links' }, examples.map((example) => linkButton(example.label, () => applyExample(example.ref))))] : null);
+}
+function expressionBlock() {
+  const expression = activeExpression();
+  const info = Expressions.EXPRESSION_KINDS[expression.kind];
+  const list = (refs) => capped(refs, 6, (ref) => linkButton(labelOf(ref), () => selectElement(ref), Lens.elementFor(state.lens, ref)?.role ?? 'ELEMENT'));
+  return h('div', {},
+    h('h3', {}, 'This expression'),
+    h('p', {}, kindChip(expression), ' ', h('b', {}, `${expression.where} · ${expression.what}`)),
+    h('p', { class: 'hint', style: 'white-space:normal' }, info.question),
+    dl([
+      ['Reached by', expression.steps.length ? h('span', {}, expression.steps.map((step) => step.phrase).join(' › ')) : expression.kind === 'EXAMPLE' ? 'the example\'s own setup' : 'source defaults'],
+      ['Truth', presChip(info.truth, info.truth === 'SCENARIO' ? 'chosen here, not observed' : info.truth === 'EXAMPLE' ? 'source-authored' : 'source defaults')],
+      ['Same as', expression.also.length ? `${expression.also.length} other source path${expression.also.length === 1 ? '' : 's'}` : null],
+    ]),
+    expression.reveals.length ? [h('h3', { style: 'margin-top:8px' }, `Presented beyond Source · ${expression.reveals.length}`), h('div', { class: 'links' }, list(expression.reveals))] : null,
+    expression.hides.length ? [h('h3', { style: 'margin-top:8px' }, `Stepped aside · ${expression.hides.length}`), h('div', { class: 'links' }, list(expression.hides))] : null);
+}
+function screenRealizationBlock(screen) {
+  if (!screen.realization) return null;
+  const realization = screen.realization;
+  const counts = {};
+  for (const entry of presenceNow().elements.values()) counts[entry.state] = (counts[entry.state] ?? 0) + 1;
+  const examples = Realization.examplesForScreen(state.lens, screen.screenRef);
+  return h('div', {},
+    h('h3', {}, 'Realization'),
+    dl([
+      ['Status', realization.status.toLowerCase()],
+      ['Entry', realization.entry?.symbol ? h('code', {}, realization.entry.symbol) : null],
+      ['Body', realization.rendersRegisteredTree ? 'the registered tree itself' : 'custom realization'],
+      ['Presence', `${realization.presence.length} relationship${realization.presence.length === 1 ? '' : 's'}`],
+      ['Elements', h('span', { class: 'spres' }, Object.entries(counts).map(([name, count]) => presChip(name, `${count} ${name}`)))],
+      ['Opaque', realization.opaque.length ? realization.opaque.map((entry) => entry.symbol).join(', ') : null],
+      ['Held', realization.held.length ? `${realization.held.length}` : null],
+    ]),
+    h('p', { class: 'hint', style: 'white-space:normal;margin-top:6px' }, 'VexBoard shows source capability, source-authored examples and browser-local scenarios. It never claims the live runtime instance.'),
+    h('div', { class: 'links' }, linkButton(`${examples.length} example${examples.length === 1 ? '' : 's'} & realization`, () => { state.overlay = 'EXAMPLES'; render(); })));
+}
+function renderExamples() {
+  const screen = currentScreen();
+  const all = Realization.examplesForScreen(state.lens, screen.screenRef);
+  const checkpoints = all.filter((example) => example.kind !== 'JOURNEY');
+  const journeys = all.filter((example) => example.kind === 'JOURNEY');
+  const close = h('button', { class: 'tool', onclick: () => { state.overlay = null; render(); } }, 'Close');
+  const atSource = activeExpression().kind === 'SOURCE';
+  const sourceCard = h('article', { class: `xcard${atSource ? ' applied' : ''}` },
+    h('header', {}, h('span', { class: 'xkind' }, 'SOURCE'), h('b', {}, 'Source defaults')),
+    h('p', { class: 'muted' }, 'Default selections, closed modals, unconditional content. Data-dependent realization stays marked as depending on data.'),
+    h('div', {}, h('button', { class: 'tool', onclick: () => applyExample(null) }, atSource ? 'Showing' : 'Show source defaults')));
+  const card = (example) => {
+    const applied = state.realization.exampleRef === example.ref;
+    const subject = example.subjectRef ? labelOf(example.subjectRef) : null;
+    return h('article', { class: `xcard${applied ? ' applied' : ''}` },
+      h('header', {}, h('span', { class: `xkind ${example.kind}` }, example.kind), h('b', {}, example.label), h('code', { class: 'muted' }, example.ref)),
+      example.summary ? h('p', { class: 'muted' }, example.summary) : null,
+      subject ? h('div', {}, 'Subject: ', h('b', {}, subject)) : example.subjectHeld ? h('div', { class: 'held' }, `Subject held: ${example.subjectHeld}`) : null,
+      example.setup.length ? h('div', {}, 'Sets: ', example.setup.map((step) => `${step.op.toLowerCase()} ${labelOf(step.targetRef) || step.target}`).join(' · ')) : null,
+      example.fixture?.functions.length ? h('div', {}, 'Fixture: ', h('code', {}, example.fixture.functions.join(', ')), h('span', { class: 'muted' }, ' (typed Kotlin, not serialized)')) : null,
+      example.renders ? h('div', {}, 'Renders: ', h('code', {}, example.renders)) : null,
+      example.configurations.length ? h('div', { class: 'tags' }, example.configurations.map((name) => h('span', {}, name))) : null,
+      example.related.length ? h('div', { class: 'muted' }, 'Same authored fixture as ', example.related.map((entry) => `${entry.ref} (${entry.via.join(', ')})`).join(', ')) : null,
+      ...example.evidence.map((evidence) => {
+        const url = Realization.evidenceUrl(state.lens, evidence.path);
+        return h('figure', { style: 'margin:0;display:flex;flex-direction:column;gap:4px' }, url ? h('img', { src: url, alt: `${example.label} reference render`, loading: 'lazy' }) : null, h('figcaption', { class: 'muted' }, evidence.meaning ?? evidence.kind));
+      }),
+      h('div', { style: 'display:flex;gap:6px;flex-wrap:wrap' },
+        example.kind !== 'JOURNEY' && Expressions.expressionFor(expressionsNow(), `expression:${example.ref}`) ? h('button', { class: 'tool', onclick: () => applyExample(example.ref) }, applied ? 'Showing' : 'Show as expression') : null,
+        example.subjectRef && example.kind === 'GOLDEN' && example.subjectRef.startsWith('element.') ? h('button', { class: 'tool', onclick: () => { state.overlay = null; selectElement(example.subjectRef); } }, 'Show subject') : null,
+        sourceLink(example.source)));
+  };
+  const journeyCard = (example) => h('article', { class: 'xcard' },
+    h('header', {}, h('span', { class: 'xkind JOURNEY' }, 'JOURNEY'), h('b', {}, example.label), h('code', { class: 'muted' }, example.ref)),
+    h('p', { class: 'muted' }, 'A transition proved by execution, not a checkpoint VexBoard can apply.'),
+    h('ol', {}, example.steps.map((step) => h('li', {}, step.op === 'externalCause' ? [h('b', {}, 'external cause '), h('code', {}, step.target ?? ''), step.code ? [' · ', h('code', {}, truncate(step.code, 80))] : null] : `${step.op} ${labelOf(step.targetRef ?? step.behavesLikeRef) || step.target || ''}${step.runtimeIdentity ? ' (runtime identity)' : ''}`))),
+    h('div', {}, sourceLink(example.source)));
+  const held = (state.lens.examplesHeld ?? []).filter((entry) => entry.source && screen.source && entry.source.split('/').slice(-1)[0] === screen.source.split('/').slice(-1)[0]);
+  return h('section', { class: 'overlay', role: 'dialog', 'aria-label': 'Examples and realization' },
+    h('div', { class: 'overlay-head' }, h('h2', {}, `${screen.label} · examples & realization`), h('p', {}, 'Source-authored examples are checkpoints authors already cared about. Apply one to see the same source relationships realize it.'), close),
+    h('div', { class: 'examples-body' },
+      h('h3', {}, 'Realize the faces as…'), sourceCard, ...checkpoints.map(card),
+      held.length ? [h('h3', {}, 'Held examples'), ...held.map((entry) => h('article', { class: 'xcard' }, h('b', {}, entry.ref ?? 'example'), h('div', { class: 'held' }, entry.reason)))] : null,
+      journeys.length ? [h('h3', {}, `Journeys that touch ${screen.label}`), ...journeys.map(journeyCard)] : null));
 }
 function reachList(target) {
   const near = Lens.screenNeighborhood(state.lens, target);
@@ -2160,8 +2686,10 @@ function renderLegend() {
       h('li', {}, 'Right-click either side to flip it: Experience toggles Surface / Structure; Behavior toggles Behavior / Depth. Shift + right-click opens the browser menu. ', h('kbd', {}, '['), ' and ', h('kbd', {}, ']'), ' remain keyboard equivalents.'),
       h('li', {}, 'Drag to pan. Scroll to zoom at the pointer. Use the − / + / Fit controls for explicit camera changes.'),
       h('li', {}, h('kbd', {}, '/'), ' finds any control, step, screen or note by label, ref, action key, Kotlin symbol or file name.'),
-      h('li', {}, 'On a Screen with expressions, swipe horizontally on Surface or use ', h('kbd', {}, '←'), ' / ', h('kbd', {}, '→'), '. Double-click a non-navigation element to move to an expression that exposes it.'),
       h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.')),
+    h('h3', {}, 'Presence: why something is, or is not, presented'),
+    h('ul', {}, Object.values(Realization.PRESENCE_STATES).map((entry) => h('li', {}, presChip(entry.state), ` ${entry.question}`))),
+    h('p', { style: 'font-size:12px;margin:4px 0 0;color:var(--muted)' }, 'Presence kinds keep their owners: presentation and selection (runtime presentation state), population (source-owned items), branch / cases / alternative (feature conditions, never evaluated here).'),
     h('h3', {}, 'Dots on the screen chips'),
     h('ul', {}, h('li', {}, 'Filled: fully projected. Half: shared chrome only. Hollow: held, not projected yet.')),
     h('button', { class: 'tool', style: 'margin-top:12px', onclick: () => { state.overlay = null; render(); } }, 'Close'));
@@ -2171,8 +2699,14 @@ function renderLegend() {
 function boxesOverlap(a, b, pad = 0) { return a.left < b.right + pad && b.left < a.right + pad && a.top < b.bottom + pad && b.top < a.bottom + pad; }
 function placeSurfaceFloaters() {
   if (state.faces.EXPERIENCE !== 'SURFACE') return;
-  const phone = document.querySelector('.face[data-face="SURFACE"] .phone');
+  const phone = document.querySelector('.face[data-face="SURFACE"] .current-phone');
   if (!phone) return;
+  for (const each of document.querySelectorAll('.face[data-face="SURFACE"] .phone')) {
+    const floating = each.querySelector('.region-fab');
+    if (!floating) continue;
+    const below = [each.querySelector('.region-bottom'), each.querySelector('.phone-bottom')].reduce((sum, part) => sum + (part?.offsetHeight ?? 0), 0);
+    floating.style.bottom = `${below + 14}px`;
+  }
   const body = phone.querySelector('.phone-body');
   const anchorNode = state.anchorElementRef ? phone.querySelector(`[data-ref="${CSS.escape(state.anchorElementRef)}"]`) : null;
   // An opened sheet keeps the control that opened it in view, above the sheet.
@@ -2225,11 +2759,17 @@ function syncUrl() {
   next.set('screen', screenRef());
   if (state.anchorElementRef) next.set('element', state.anchorElementRef); else next.delete('element');
   next.set('left', state.faces.EXPERIENCE); next.set('right', state.faces.BEHAVIOR);
-  if (expressionAvailable() && state.expressionRef) next.set('expression', state.expressionRef); else next.delete('expression');
+  const expression = activeExpression();
+  if (expression.kind !== 'SOURCE' && expression.kind !== 'CUSTOM') next.set('expression', expression.ref); else next.delete('expression');
+  next.delete('example');
   history.replaceState(null, '', `${location.pathname}?${next}`);
 }
+// The phone and Structure keep their scroll while the expression stays: a click that re-renders must
+// not move what sits under the pointer (a double-click's second click lands on the same thing).
+let renderedExpressionKey = null;
 function render() {
   const focusedRef = document.activeElement?.dataset?.ref ?? document.activeElement?.dataset?.nodeRef ?? null;
+  const kept = { phone: document.querySelector('.current-phone .phone-body')?.scrollTop ?? 0, structure: document.querySelector('.face[data-face="STRUCTURE"] .structure')?.scrollTop ?? 0 };
   const root = h('div', { class: 'lens' });
   const main = h('main', { class: 'main' }, renderExperienceSide(), renderBehaviorSide());
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
@@ -2238,18 +2778,31 @@ function render() {
   if (state.overlay === 'RELATED') main.append(renderRelatedBoards());
   if (state.overlay === 'CHANGES' && state.compare?.count) main.append(renderChanges());
   if (state.overlay === 'LEGEND') main.append(renderLegend());
-  root.append(renderBar(), renderAtlas());
-  const expressionRail = renderExpressionRail();
-  if (expressionRail) root.append(expressionRail);
-  root.append(main, renderTray());
+  if (state.overlay === 'EXAMPLES') main.append(renderExamples());
+  root.append(renderBar(), renderAtlas(), renderExpressionRail(), main, renderTray());
   app.replaceChildren(root);
+  const expressionKey = `${screenRef()}|${activeExpression().ref}`;
+  if (expressionKey === renderedExpressionKey) {
+    const phoneBody = root.querySelector('.current-phone .phone-body');
+    const structure = root.querySelector('.face[data-face="STRUCTURE"] .structure');
+    if (phoneBody) phoneBody.scrollTop = kept.phone;
+    if (structure) structure.scrollTop = kept.structure;
+  }
+  renderedExpressionKey = expressionKey;
   refs = { main, bridge };
   applyPalette();
   applyFlipState();
   requestAnimationFrame(() => {
+    const freshBehavior = !state.cameras.has('BEHAVIOR');
     applyCamera('BEHAVIOR'); applyCamera('DEPTH'); if (state.overlay === 'MAP') applyCamera('MAP');
+    if (freshBehavior && currentPathway()?.disposition === 'EXPRESSION') keepInView('BEHAVIOR', entryRefForFace('BEHAVIOR'));
     if (state.selected?.kind === 'ELEMENT') document.querySelector(`.face[data-face="${state.faces.EXPERIENCE}"] [data-ref="${CSS.escape(state.selected.ref)}"]`)?.scrollIntoView({ block: 'nearest' });
     if (focusedRef) document.querySelector(`.face:not([inert]) [data-ref="${CSS.escape(focusedRef)}"], .face:not([inert]) [data-node-ref="${CSS.escape(focusedRef)}"]`)?.focus({ preventScroll: true });
+    const chips = root.querySelector('.xchips');
+    const on = chips?.querySelector('.xchip.on');
+    if (on) chips.scrollLeft = on.offsetLeft - chips.offsetLeft - (chips.clientWidth - on.offsetWidth) / 2;
+    if (state.flashRef) { flashElement(state.flashRef); state.flashRef = null; }
+    state.motion = null;
     placeSurfaceFloaters();
     drawBridge();
   });
@@ -2262,10 +2815,9 @@ window.addEventListener('keydown', (event) => {
   if (event.target.closest?.('input,textarea')) return;
   if (event.key === '[') { flip('EXPERIENCE'); }
   else if (event.key === ']') { flip('BEHAVIOR'); }
-  else if (event.key === 'ArrowLeft' && expressionAvailable() && state.faces.EXPERIENCE === 'SURFACE' && !state.overlay) { event.preventDefault(); stepExpression(-1); }
-  else if (event.key === 'ArrowRight' && expressionAvailable() && state.faces.EXPERIENCE === 'SURFACE' && !state.overlay) { event.preventDefault(); stepExpression(1); }
   else if (event.key === '/') { event.preventDefault(); document.getElementById('lens-search')?.focus(); }
   else if (event.key === 'm' || event.key === 'M') { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); }
+  else if ((event.key === 'ArrowRight' || event.key === 'ArrowLeft') && !state.overlay && !state.menu && !event.target.closest?.('.graph,[role="tree"]')) { event.preventDefault(); stepExpression(event.key === 'ArrowRight' ? 1 : -1); }
   else if (event.key === 'Escape') { if (state.menu) { state.menu = null; renderBarInPlace(); } else if (state.overlay) { state.overlay = null; render(); } else clearSelection(); }
 });
 window.addEventListener('keydown', (event) => {
@@ -2303,13 +2855,12 @@ async function boot() {
   else if (state.request.mode === 'COMMIT' && state.commit.misses.length) showToast(`${state.commit.misses.length} overlay ${state.commit.misses.length === 1 ? 'note does' : 'notes do'} not apply at ${short(state.commit.sha)}.`);
   const startScreen = params.get('screen');
   state.walk = Lens.createScreenWalk(state.lens, startScreen && state.lens.screens.some((screen) => screen.screenRef === startScreen) ? startScreen : state.lens.entryScreenRef);
-  const requestedExpression = params.get('expression');
-  try { await loadExpressionFixtureSourcesForUi(); }
-  catch (error) { expressionFixturesLoaded = false; state.expressionError = error.message; }
-  bindExpressionsForCurrentScreen({ requestedRef: requestedExpression });
-  if (expressionAvailable()) setExpression(state.expressionRef, { renderNow: false });
   if (params.get('left') && Lens.LENS_FACES[params.get('left')]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = params.get('left');
   if (params.get('right') && Lens.LENS_FACES[params.get('right')]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = params.get('right');
+  // An expression link (or an older example link) opens the screen in that expression.
+  const requestedExpression = params.get('expression') ?? (params.get('example') ? `expression:${params.get('example')}` : null);
+  const opening = requestedExpression ? Expressions.expressionFor(Expressions.expressionsFor(state.lens, screenRef()), requestedExpression) : null;
+  if (opening) { state.realization = opening.context; state.flashRef = opening.focusRef; }
   const requested = params.get('element') ?? (startScreen ? null : state.lens.entryElementRef);
   if (requested && Lens.elementsForScreen(state.lens, screenRef()).some((element) => element.ref === requested)) selectElement(requested);
   else render();

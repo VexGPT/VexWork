@@ -8,6 +8,8 @@
 // lifecycle, identity or execution; it only makes existing relationships
 // traversable without duplicate pages or copied subtrees.
 
+import { normalizeExamples, normalizeScreenRealization } from './vexboard-screen-lens-realization.mjs';
+
 export const SCREEN_LENS_SCHEMA = 'vexboard.screen-lens/v1';
 
 export const LENS_SIDES = Object.freeze({ EXPERIENCE: 'EXPERIENCE', BEHAVIOR: 'BEHAVIOR' });
@@ -116,6 +118,8 @@ function normalizeElement(input, owner, refs) {
     alwaysVisible: input.alwaysVisible === true,
     slot: optionalText(input.slot, `${ref} slot`),
     textRole: optionalText(input.textRole, `${ref} textRole`),
+    icon: optionalText(input.icon, `${ref} icon`),
+    style: optionalText(input.style, `${ref} style`),
     ownerRef: owner,
   };
 }
@@ -239,6 +243,16 @@ export function normalizeScreenLens(input) {
     return { ref, subjectRef, text: text(entry.text, `${ref} text`), detail: optionalText(entry.detail, `${ref} detail`) };
   });
 
+  // Realization and source-authored examples are optional, additive sections: a lens generated
+  // before they existed stays valid, and every ref they name must already be a lens ref.
+  const lensRefs = new Set([...refs, ...screenRefs]);
+  for (const screen of screens) {
+    const raw = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.realization;
+    screen.realization = normalizeScreenRealization(raw, { screenRef: screen.screenRef, knownRefs: lensRefs });
+  }
+  const examples = normalizeExamples(input.examples, { knownRefs: lensRefs });
+  const examplesHeld = (input.examplesHeld || []).map((entry) => ({ ref: optionalText(entry.ref, 'examplesHeld ref'), source: optionalText(entry.source, 'examplesHeld source'), reason: text(entry.reason, 'examplesHeld reason') }));
+
   const entryScreenRef = text(input.entryScreenRef ?? screens[0].screenRef, 'entryScreenRef');
   if (!screenRefs.has(entryScreenRef)) fail(`entryScreenRef ${entryScreenRef} is not a screen`);
   const entryElementRef = optionalText(input.entryElementRef, 'entryElementRef');
@@ -264,6 +278,8 @@ export function normalizeScreenLens(input) {
     screens,
     pathways,
     annotations,
+    examples,
+    examplesHeld,
   });
 }
 

@@ -65,7 +65,22 @@ test('the projects page and the any-commit adapter load in a browser without Nod
     for (const child of staticImports(fs.readFileSync(url, 'utf8'))) pending.push({ specifier: child, parent: url });
   }
   assert.ok([...seen].every((href) => !href.includes('/src/core/')), 'projects.html stays on shared modules');
-  assert.deepEqual(staticImports(adapterSource), [], 'the adapter is pure, so lens.html can load it for any commit');
+  // The adapter may compose other pure projector modules, but its whole import closure must stay
+  // repository-relative and free of Node-only imports, so lens.html can load it for any commit.
+  const adapterUrl = new URL('../src/core/vexboard-screen-lens-android-adapter.mjs', import.meta.url);
+  const closure = [{ url: adapterUrl, source: adapterSource }];
+  const visited = new Set([adapterUrl.href]);
+  for (let index = 0; index < closure.length; index += 1) {
+    for (const specifier of staticImports(closure[index].source)) {
+      assert.ok(specifier.startsWith('.'), `${specifier} in ${closure[index].url.pathname} must be repository-relative, not a Node-only or package import`);
+      const url = new URL(specifier, closure[index].url);
+      assert.ok(url.href.startsWith(repositoryRoot.href), `${specifier} stays inside the repository`);
+      if (visited.has(url.href)) continue;
+      visited.add(url.href);
+      closure.push({ url, source: fs.readFileSync(url, 'utf8') });
+    }
+  }
+  for (const { url, source } of closure) assert.doesNotMatch(source, /\bfrom\s+['"]node:|\brequire\(|\bprocess\.|\bfs\./, `${url.pathname} is pure: no Node-only APIs`);
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][PROJECTS][UI-TEST]
