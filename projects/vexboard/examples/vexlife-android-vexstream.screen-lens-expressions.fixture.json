@@ -88,7 +88,6 @@
         }
       ],
       "elementRefs": [
-        "element.vexstream-music.body.library-tabs",
         "element.vexstream-music.body.library"
       ]
     },
