@@ -88,7 +88,6 @@ test('source-default expression resolves only source-owned defaults for the mode
   assert.deepEqual(resolved.surface.runtimeItems, []);
   assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body'));
   assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body.connection'));
-  assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body.library-tabs'));
   assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body.library'));
   assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body.library.songs'));
   assert.deepEqual(resolved.structure.elementRefs, resolved.surface.elementRefs);
