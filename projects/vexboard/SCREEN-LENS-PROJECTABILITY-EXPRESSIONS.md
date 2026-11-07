@@ -1172,6 +1172,7 @@ POPULATES
 
 SOURCE_DEFAULT
 SOURCE_AXIS
+EVIDENCE
 ~~~
 
 The source-authored Events Attention Preview provides three stable runtime identities:
@@ -1183,6 +1184,15 @@ event.preview.map.003
 ~~~
 
 No attention Scenario state is imported into the Screen Expression fixture.
+
+The source-authored Attention Preview is `EVIDENCE`, not a production `SOURCE_AXIS`: the three
+`event.preview.*` rows prove stable runtime identity and population rendering, but they are not
+canonical current Events State.
+
+This PR is a **second consumer of the expression contract/source-currentness layer**. It does not yet
+claim Events is a second fully lived carousel Screen. After this portability proof, the next useful
+human-facing edge is multi-fixture Screen Lens consumption so opening Events can actually expose these
+expressions through the accepted UI before any shared source-currentness abstraction is extracted.
 
 ### Held portability pressure — Family Conversation
 
@@ -1244,7 +1254,7 @@ DONE
   -> VexWork PR #268
 
 ACTIVE
-  Events materially-different second consumer
+  Events materially-different contract/source consumer
   -> exact three-file source reader
   -> source default preserves Unobserved != Empty
   -> preview eventRef runtime identity anchors to existing element.events.body
@@ -1258,8 +1268,8 @@ HELD
 
 THEN
   prove Events source/fixture portability
-  -> decide whether multi-fixture UI consumption is the next useful edge
-  -> only after second-consumer evidence consider any shared source-currentness abstraction
+  -> multi-fixture Screen Lens consumption so Events is human-visible through the accepted carousel
+  -> only after that lived second-Screen pressure consider any shared source-currentness abstraction
 
 Scenario Playground remains:
   CAPTURED / PARKED / NO_AUTHORITY / NO_EFFECTS
