@@ -197,4 +197,37 @@ VEXLOGGER != LOG_SYNC
 ANNOUNCEMENT_EXISTS != NOTIFICATION_SHOULD_FIRE
 ```
 
+## M. Contract-driven Cloud Connectivity Lab
+
+- [ ] A service-feature library opens the exact selected contract workbench without raw-endpoint menu archaeology.
+- [ ] The Lab identifies the accepted contract/version and the semantic question it serves.
+- [ ] Minimum valid and maximum/richest valid expressions are derived from one contract source rather than manually duplicated UI rules.
+- [ ] Required fields cannot be removed; lawful optional fields can be included/omitted within the session.
+- [ ] Enum fields render only exact lawful members rather than arbitrary text.
+- [ ] Bounded strings, identifiers, numbers, lists, variants and conditional fields expose and enforce their exact contract constraints.
+- [ ] Clicking a field explains meaning, owner/consumer, type, constraints, conditional rule and contract/version source.
+- [ ] Current field fragments and whole expressions are copyable for human/AI use.
+- [ ] The outward-expression face is a projection of the current composed draft rather than another truth owner.
+- [ ] Only error forms admitted by the selected feature contract can be selected/generated.
+- [ ] Delivery/outward scope remains separate from feature payload and exposes only lawful target shapes.
+- [ ] Local contract validation distinguishes schema validity from authority and successful delivery.
+- [ ] The initial Lab dispatches only to synthetic realizations or stages exact expressions; it does not imply real device/cloud delivery.
+- [ ] Session-local drafts may change values and lawful optional fields without durable Lab storage.
+- [ ] A brand-new field/enum/range/rule is treated as contract evolution requiring deliberate API/server + Android compatibility work before becoming valid in the Lab.
+- [ ] The Lab prefers projection from an existing OpenAPI / JSON Schema / code-owned contract source before introducing a Vex-specific schema.
+- [ ] Human UI and AI-readable contract representation resolve from the same accepted contract truth.
+- [ ] A selected feature/run can descend into the bounded VexBoard architecture/evidence neighborhood.
+
+Permanent:
+
+```text
+LAB UI != CONTRACT OWNER
+SESSION DRAFT != CONTRACT EVOLUTION
+ENUM != FREE TEXT
+OPTIONAL != ALWAYS LAWFUL
+OUTWARD_SCOPE != FEATURE_PAYLOAD
+SCHEMA_VALID != CURRENTLY_AUTHORIZED
+VALID_TARGET_SHAPE != AUTHORIZED_SEND
+```
+
 <!-- [VXG RealForever][CLOUD-CONNECTIVITY][CHECKLIST] -->
