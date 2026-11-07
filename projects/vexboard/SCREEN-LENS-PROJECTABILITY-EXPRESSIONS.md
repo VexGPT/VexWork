@@ -1262,13 +1262,15 @@ DONE
   -> preview eventRef runtime identity anchors to existing element.events.body
   -> no new relationship kinds / expression bases / Scenario state
 
-ACTIVE
-  multi-fixture Screen Lens consumption
+DONE
+  lived multi-fixture Screen Lens consumption
+  -> VexWork PR #271
   -> current Screen selects its accepted expression fixture
   -> VexStream keeps seven accepted expressions
   -> Events exposes Source defaults / Observed empty / Preview populated through the same carousel
   -> navigation rebinds fixture on travel / atlas / search / Back / Revisit
-  -> no fixture registry or shared source-currentness abstraction yet
+  -> exact Brave desktop/mobile Events proof before READY
+  -> deployed Pages bytes exact to the proven candidate
 
 HELD
   Family Conversation custom runtime realization
@@ -1276,10 +1278,18 @@ HELD
   -> non-static "$screenId.messages" host
   -> insufficient repeated pressure for contract widening
 
-THEN
-  prove multi-fixture UI with real desktop/mobile Events lived evidence
-  -> compare VexStream and Events human usefulness through the same Lens
-  -> only after that lived second-Screen pressure consider any shared source-currentness abstraction
+COMPLETION JUDGMENT
+  the bounded successor outcome is complete
+  -> VexStream and Events both use the same accepted expression contract and carousel
+  -> two materially different consumers did not expose a missing shared source-currentness relationship
+  -> therefore no additional abstraction is extracted merely for symmetry
+
+  work.vexboard.screen-lens-projectability-expressions
+  -> VERIFYING
+  -> COMPLETED
+
+  any richer source-realization fidelity, Family Conversation non-static realization,
+  Scenario Playground, Maps-specific behavior, or future consumer pressure keeps its own earned edge
 
 Scenario Playground remains:
   CAPTURED / PARKED / NO_AUTHORITY / NO_EFFECTS
