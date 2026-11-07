@@ -70,7 +70,15 @@
     "github.pull.vextreme.570",
     "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906",
     "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
-    "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+    "github.pull.vexwork.267",
+    "github.pull.vexlife-android.219",
+    "github.pull.vextreme.591",
+    "repo.vexlife-android:architecture/widget/README.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
+    "repo.vexlife-android:app/src/main/AndroidManifest.xml"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }
