@@ -93,11 +93,11 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T17:25:00.000-08:00",
-      "updatedAt": "2026-11-06T18:19:00.000-08:00",
+      "updatedAt": "2026-11-06T18:40:00.000-08:00",
       "workRef": "work.cloud-connectivity.synthetic-cloud",
       "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
-      "label": "Build the deterministic synthetic cloud and network demonstrator",
-      "purpose": "Provide a no-real-cloud simulation of online/offline/timeout/response-loss/outage/rate-limit/version/currentness conditions behind provider-neutral product-facing contracts so scenarios can be proved without external infrastructure.",
+      "label": "Build the deterministic synthetic cloud as a Vex Home hosted capability",
+      "purpose": "Provide a no-real-cloud Vex Home hosted-capability realization of online/offline/timeout/response-loss/outage/rate-limit/version/currentness conditions behind provider-neutral product-facing contracts, initially module-bounded behind the current VexLife HTTP/lifecycle substrate so the human does not manage another terminal topology.",
       "workClass": "TASK",
       "state": "DECOMPOSED",
       "priorityClass": "IMMEDIATE",
@@ -111,12 +111,17 @@
       "repositoryRefs": [
         "repo.vexlife-prod",
         "repo.vexlife-android",
-        "repo.vexwork"
+        "repo.vexwork",
+        "repo.vexlife"
       ],
       "sourceRefs": [
         "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
         "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md",
-        "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md"
+        "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md",
+        "projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md",
+        "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md",
+        "repo.vexlife:scripts/macos-lifecycle.mjs",
+        "repo.vexlife:scripts/serve-browser.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -127,7 +132,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T17:25:00.000-08:00",
-      "updatedAt": "2026-11-06T18:10:32.000-08:00",
+      "updatedAt": "2026-11-06T18:40:00.000-08:00",
       "workRef": "work.cloud-connectivity.operation-attempt-idempotency",
       "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
       "label": "Prove operation identity, attempts, timeout ambiguity and idempotency",
@@ -136,7 +141,8 @@
       "state": "DECOMPOSED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
-        "work.cloud-connectivity.synthetic-cloud"
+        "work.cloud-connectivity.synthetic-cloud",
+        "work.cloud-connectivity.secured-connected-operation-patient-zero"
       ],
       "repositoryRefs": [
         "repo.vexlife-prod",
@@ -272,11 +278,11 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T17:25:00.000-08:00",
-      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T18:40:00.000-08:00",
       "workRef": "work.cloud-connectivity.full-security-integration",
       "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
       "label": "Integrate Full Security boundaries without duplicating its ontology",
-      "purpose": "Map cloud operations onto current principal/device/session/capability, token/secret custody, service identity, revocation, replay, key-management and evidence questions from project.full-security while leaving distributed-systems correctness in Cloud Connectivity.",
+      "purpose": "Map Cloud Connectivity operations onto canonical current VexLife Home principal/device/session/capability/service-identity security owners and the Full Security read/synthetic seams so security admission can hold or admit an effect without becoming network/service connectivity or duplicating Full Security ontology.",
       "workClass": "TASK",
       "state": "DECOMPOSED",
       "priorityClass": "HIGH",
@@ -292,7 +298,10 @@
       "sourceRefs": [
         "projects/cloud-connectivity/README.md",
         "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
-        "project.full-security"
+        "project.full-security",
+        "projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md",
+        "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md",
+        "github.pull.vexwork.256"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -536,6 +545,40 @@
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T18:40:00.000-08:00",
+      "updatedAt": "2026-11-06T18:40:00.000-08:00",
+      "workRef": "work.cloud-connectivity.secured-connected-operation-patient-zero",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Prove the first secured connected-operation circuit",
+      "purpose": "Compose one accepted Global Announcement service-feature contract through the Cloud Connectivity Lab, device/service connectivity, Full Security synthetic principal/device/session/capability admission, the Vex Home hosted synthetic capability, provider/domain observation and semantic projection so a denied security condition holds the operation without being misclassified as network/service failure.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.cloud-connectivity.contract-workbench-lab",
+        "work.cloud-connectivity.synthetic-cloud",
+        "work.cloud-connectivity.full-security-integration"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md",
+        "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md",
+        "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md",
+        "project.full-security",
+        "github.pull.vexwork.256"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     }
   ],
   "transitions": [],
@@ -545,7 +588,8 @@
     "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
     "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
     "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md",
-    "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md"
+    "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md",
+    "projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md"
   ],
   "formedAt": "2026-11-06T17:25:00.000-08:00"
 }
