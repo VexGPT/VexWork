@@ -518,7 +518,7 @@ async function openRequest(request, { onProgress = () => {}, announce = true } =
   const start = keepScreen && state.lens.screens.some((screen) => screen.screenRef === keepScreen) ? keepScreen : state.lens.entryScreenRef;
   state.walk = Lens.createScreenWalk(state.lens, start);
   await bindExpressionsForLens({ requestedRef: keepExpression });
-  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  resetScreenSelection();
   if (state.overlay === 'CHANGES' && !state.compare) state.overlay = null;
   if (keepElement && Lens.elementsForScreen(state.lens, start).some((element) => element.ref === keepElement)) selectElement(keepElement);
   else render();
@@ -726,6 +726,16 @@ function setExpression(expressionRef, { renderNow = true } = {}) {
   }
   if (renderNow) render();
 }
+function resetScreenSelection({ preferExpression = true } = {}) {
+  state.selected = null;
+  state.anchorElementRef = null;
+  state.pathwayRef = null;
+  state.cameras.delete('BEHAVIOR');
+  state.cameras.delete('DEPTH');
+  if (preferExpression && expressionAvailable() && state.expressionRef) {
+    setExpression(state.expressionRef, { renderNow: false });
+  }
+}
 function stepExpression(delta) {
   const list = expressionList();
   const index = list.findIndex((entry) => entry.expressionRef === state.expressionRef);
@@ -801,13 +811,14 @@ function travel(element) {
   if (!element?.navigatesTo) return;
   if (element.navigatesTo === Lens.BACK) { state.walk = Lens.backScreenWalk(state.walk); }
   else state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: element.navigatesTo, viaElementRef: element.ref });
-  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  resetScreenSelection();
   render();
 }
 function jumpTo(target, how = 'JUMP') {
   if (target === screenRef() && how !== 'REVISIT') { state.overlay = null; render(); return; }
   state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target, how });
-  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; state.overlay = null;
+  resetScreenSelection();
+  state.overlay = null;
   render();
 }
 
@@ -833,9 +844,11 @@ function goToResult(result) {
   const target = result.target;
   if (target.screenRef && target.screenRef !== screenRef()) state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target.screenRef, how: 'JUMP' });
   state.overlay = null;
-  state.anchorElementRef = target.elementRef ?? null;
-  state.selected = target.elementRef ? { kind: 'ELEMENT', ref: target.elementRef } : null;
-  if ((target.pathwayRef ?? null) !== state.pathwayRef) { state.pathwayRef = target.pathwayRef ?? null; state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH'); }
+  const explicitTarget = Boolean(target.elementRef || target.pathwayRef || target.nodeRef);
+  if (!explicitTarget) resetScreenSelection();
+  state.anchorElementRef = target.elementRef ?? state.anchorElementRef ?? null;
+  state.selected = target.elementRef ? { kind: 'ELEMENT', ref: target.elementRef } : state.selected;
+  if (target.pathwayRef !== undefined && target.pathwayRef !== null && target.pathwayRef !== state.pathwayRef) { state.pathwayRef = target.pathwayRef; state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH'); }
   let reveal = null;
   if (target.nodeRef) {
     const node = pathwayNode(target.nodeRef);
@@ -1067,14 +1080,14 @@ function renderAtlas() {
   const steps = state.walk.steps;
   const label = (ref) => Lens.screenFor(state.lens, ref).label;
   const walk = h('nav', { class: 'walk', 'aria-label': 'Walk' },
-    h('button', { class: 'back', disabled: steps.length <= 1, onclick: () => { state.walk = Lens.backScreenWalk(state.walk); state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); } }, 'Back'),
+    h('button', { class: 'back', disabled: steps.length <= 1, onclick: () => { state.walk = Lens.backScreenWalk(state.walk); resetScreenSelection(); render(); } }, 'Back'),
     ...steps.flatMap((step, i) => {
       const via = step.viaElementRef ? Lens.elementFor(state.lens, step.viaElementRef)?.label : null;
       const button = h('button', {
         class: `step${i === steps.length - 1 ? ' current' : ''}`,
         title: via ? `Reached via ${via}` : step.how === 'START' ? 'Start' : step.how.toLowerCase(),
         'aria-current': i === steps.length - 1 ? 'step' : null,
-        onclick: () => { if (i < steps.length - 1) { state.walk = Lens.revisitScreenWalk(state.lens, state.walk, step.sequence); state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); } },
+        onclick: () => { if (i < steps.length - 1) { state.walk = Lens.revisitScreenWalk(state.lens, state.walk, step.sequence); resetScreenSelection(); render(); } },
       }, label(step.screenRef));
       return i ? [h('span', { class: 'sep', 'aria-hidden': 'true' }, '›'), button] : [button];
     }),
@@ -2024,7 +2037,7 @@ async function boot() {
   state.walk = Lens.createScreenWalk(state.lens, startScreen && state.lens.screens.some((screen) => screen.screenRef === startScreen) ? startScreen : state.lens.entryScreenRef);
   const requestedExpression = params.get('expression');
   await bindExpressionsForLens({ requestedRef: requestedExpression });
-  if (requestedExpression && expressionAvailable()) setExpression(state.expressionRef, { renderNow: false });
+  if (expressionAvailable()) setExpression(state.expressionRef, { renderNow: false });
   if (params.get('left') && Lens.LENS_FACES[params.get('left')]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = params.get('left');
   if (params.get('right') && Lens.LENS_FACES[params.get('right')]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = params.get('right');
   const requested = params.get('element') ?? (startScreen ? null : state.lens.entryElementRef);
