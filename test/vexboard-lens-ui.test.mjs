@@ -189,6 +189,25 @@ test('screen travel resets presentation context without inventing cross-Screen S
 
 // [VXG RealForever]
 
+
+test('lived usability keeps the inspector out of the way and makes expressions searchable', () => {
+  assert.match(page, /trayCollapsed: window\.matchMedia\('\(min-width:901px\)'\)\.matches/, 'desktop starts with the inspector collapsed');
+  assert.match(page, /Collapse inspector to give Experience and Behavior more room/);
+  assert.match(page, /function renderExpressionFinder\(list\)/);
+  assert.match(page, /placeholder: 'Find expression…'/);
+  assert.match(page, /function expressionSearchText\(expression\)/);
+  assert.match(page, /renderExpressionFinder\(list\)/);
+});
+
+test('selected controls preview the screen or expression they lead to before traversal', () => {
+  assert.match(page, /function destinationForElement\(element\)/);
+  assert.match(page, /function expressionTargetForElement\(ref\)/);
+  assert.match(page, /Expressions\.expressionForControl\(state\.lens, screenRef\(\), list, ref\)/);
+  assert.match(page, /Follow → \$\{destination\.title\}/);
+  assert.match(page, /Show \$\{expression\.where\} · \$\{truncate\(expression\.what, 34\)\}/);
+  assert.match(page, /destination\.go\(\)/);
+});
+
 test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
   // The browser sweep in PR #221 checks all 119 traced controls; this pins the wiring that makes it hold.
   assert.match(page, /function placeSurfaceFloaters\(\)/);
