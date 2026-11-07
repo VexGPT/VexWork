@@ -212,6 +212,98 @@ combine              Shift-click a chip to add its choices to what is shown (con
                      result is a custom expression both sides read like any other
 ```
 
+## Partner circuits: project deeper source, not another descriptor
+
+The Partner patient zero extends the Android source reader with one reusable relationship shape:
+
+~~~text
+VexPartner<Partner>
+-> Signal<Partner>
+-> Connection<Partner, Signal>
+   -> Id<Partner>
+   -> Decoder
+   -> Observation
+   -> Receiver
+
+Receiver -> domain Store
+Store Flow -> VexExecution.observe(exact source, live owner)
+-> Family.observeStore(...)
+-> Family State / DisplayState
+~~~
+
+The reader follows the actual custom-Screen `localEffect` call into the lab/runtime source, then follows
+receiver **type + function** through wrapper layers. It does not choose a global function merely because
+its name matches. That matters for source where a Screen lab and its child runtime both expose
+`requestSyntheticPumpDelivery()`: the receiver coordinate is the relationship.
+
+Fail-closed laws:
+
+~~~text
+localEffect with no source-proven deeper relationship
+    -> HELD
+
+ambiguous receiver/function ownership
+    -> HELD
+
+Partner name without VexPartner<same Partner> root
+    -> HELD
+
+Connection without source-proven Decoder / Observation / Receiver
+    -> HELD
+
+Family request that cannot prove Control / Effect / bound Method / Partner Connection
+    -> HELD
+~~~
+
+The Lens keeps the existing four faces. Partner is additional **Depth**, not a new face:
+
+~~~text
+Behavior
+    Family semantic meaning
+
+Depth
+    Method / VexExecution
+    Partner Connection / Decoder / Receiver
+    Partner / Signal / Observation / Store
+    source-addressed maintained listener
+    return to Family State
+~~~
+
+A feedback circuit remains projectable without inventing a cross-Family descriptor:
+
+~~~text
+CgmFamily.State
+-> VexExecution.observe(cgmFamily::states)
+-> source-authored convergence / lab rule
+-> InsulinFamily.Control
+-> InsulinFamily Act / Effect
+-> Method
+-> Pump Partner Connection
+-> Partner acknowledgement
+
+later, separately:
+Pump Partner Signal
+-> Observation / Receiver
+-> Store
+-> InsulinFamily State
+~~~
+
+The two execution identities stay distinct in the projection:
+
+~~~text
+maintained Flow listener
+    exact Flow source + live execution owner
+
+Family consequence
+    Control kind (+ typed ResourceId only when earned)
+    -> RelationshipId -> Job(s)
+~~~
+
+The current Partner-depth projector is proven against a bounded non-medical fixture and can also
+project the source shape of the draft VexLife-Android Partner patient zero. Stable/Main Lens source
+must **not** be repinned to an unaccepted Android PR merely to display the candidate; accepted source
+currentness still governs the production Lens.
+
 ## What a new feature does to become projectable
 
 ```text
