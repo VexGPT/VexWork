@@ -264,13 +264,17 @@ Do not permanently flood the interface with tutorial prose.
 ```text
 full demonstration checklist
 -> provider-neutral system topology
+-> device NetworkConnectivityRelay pressure
+-> per-service ServiceConnectivityRelay pressure
+-> candidate VexService graduation pressure
+-> background automation patient zeros
 -> deterministic synthetic cloud
--> VexLife-Android operation/sync consumer
+-> VexLife-Android operation/sync consumer using stable VexFamily grammar
 -> VexLife-Prod selected-app surface
 -> failure + version + multi-device scenarios
 -> Full Security boundary integration
 -> optional AWS realization
--> VexBoard projection
+-> VexBoard fractal projection
 -> Vex-guided explanation
 -> lived Android/host/cloud proof when exact effect authority is earned
 ```
