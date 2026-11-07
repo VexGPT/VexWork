@@ -304,12 +304,12 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
   );
   requirePattern(
     fullPlayer,
-    /VexColumn\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen[\s\S]*?\.FullPlayerNowPlayingPanel/,
+    /VexColumn\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen\s*\.\s*FullPlayerNowPlayingPanel/,
     'Full Player renders FullPlayerNowPlayingPanel',
   );
   requirePattern(
     fullPlayer,
-    /VexIconButton\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen[\s\S]*?\.CloseFullPlayer\b/,
+    /VexIconButton\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen\s*\.\s*CloseFullPlayer\b/,
     'Full Player renders CloseFullPlayer',
   );
 
@@ -333,7 +333,7 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
   ]) {
     requirePattern(
       connectionMenu,
-      new RegExp(`element\\s*=\\s*VexStreamMusicScreen\\.${control}\\b`),
+      new RegExp(`element\\s*=\\s*VexStreamMusicScreen\\s*\\.\\s*${control}\\b`),
       `Connection Menu renders ${control}`,
     );
   }
