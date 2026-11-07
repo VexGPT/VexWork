@@ -78,7 +78,8 @@
     "repo.vexlife-android:architecture/widget/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
-    "repo.vexlife-android:app/src/main/AndroidManifest.xml"
+    "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+    "github.pull.vexwork.280"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }
