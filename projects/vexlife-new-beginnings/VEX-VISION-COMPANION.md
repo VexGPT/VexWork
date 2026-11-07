@@ -144,6 +144,240 @@ This grounding did **not** establish a current production VLM worker already con
 Do not turn registry vocabulary, synthetic tests or training candidates into a claim that Vex can
 currently interpret pixels.
 
+## Partner / Family / Observation architecture pressure
+
+Current VexCgmLabs / VexPartner work adds a newer relationship pattern that materially improves the
+Vision design:
+
+~~~text
+VexWork PR #267
+VexLife-Android PR #219
+~~~
+
+Those sources are currently **draft / working architecture pressure**, not an accepted universal
+VexArchitecture foundation. Vision should consume the distinctions they have earned without
+prematurely declaring that every outside relationship must inherit one new root hierarchy.
+
+The important current pattern is:
+
+~~~text
+Partner
+-> Signal
+-> Connection
+   -> typed Partner Id
+   -> Decoder
+   -> Observation
+   -> Receiver
+-> Store when durable admitted truth is actually earned
+-> Family State
+-> Projection / Surface
+~~~
+
+and, for a lawful outward request:
+
+~~~text
+Family Control + CURRENT State
+-> Act
+-> Effect
+-> Act.Method
+-> VexExecution
+-> Partner Connection
+-> Partner acknowledgement
+
+later outside evidence
+-> Signal
+-> Observation
+-> Receiver
+-> durable truth if admitted
+-> Family State
+~~~
+
+Permanent distinctions from that work that apply directly to Vision:
+
+~~~text
+Partner != Family
+Signal != Family State
+Connection != Family
+Observation != interpretation
+Store != Partner
+Store != Family
+
+EFFECT_REQUESTED
+!= PARTNER_ACKNOWLEDGED
+!= OUTSIDE_OUTCOME
+!= DURABLE_DOMAIN_TRUTH
+~~~
+
+### Vision mapping under that pressure
+
+For the first real-browser Vision slice, the type walk should be read approximately as:
+
+~~~text
+selected independently-owned browser/window reality
+    = candidate Partner-side participant
+
+macOS screen/window capture realization
+    = Connection
+
+selected source/window identity
+    = typed Connection.Id<Partner> pressure
+      (do not flatten the reusable identity to an arbitrary String)
+
+platform frame / capture representation
+    -> Decoder
+    -> Vision-owned Signal
+
+one exact capture occurrence
+    -> Observation
+       request identity
+       selected source / region
+       capture time/currentness
+       Signal identity
+
+Safety + scope + cardinality admission
+    -> Receiver
+
+Vision semantic owner
+    -> Family State
+
+human-facing state
+    -> Projection / VexLife Vision control
+
+derived admitted visual observation
+    -> Conversation Context
+    -> Heretic Vex
+~~~
+
+The exact Kotlin/root names remain held until the existing Vex Vision source and the first physical
+capture implementation show what genuinely repeats. In particular:
+
+~~~text
+SELECTED_BROWSER_WINDOW_IS_PARTNER
+    = architectural pressure, not yet a frozen type name
+
+SCREEN_CAPTURE_CONNECTION
+    = relationship role, not Family meaning
+
+SCREEN_FRAME_SIGNAL
+    != VISUAL_INTERPRETATION
+    != CONVERSATION_CONTEXT
+~~~
+
+### No Store is earned merely because a frame exists
+
+The Partner work defines Store as the owner of **durable admitted domain truth**. The first Vision
+slice explicitly forbids raw screenshot retention.
+
+Therefore:
+
+~~~text
+RAW FRAME OBSERVED
+!= STORE REQUIRED
+
+raw pixels
+    ephemeral
+
+first derived visual observation
+    bounded / turn-scoped unless another owner later earns durability
+
+Memory
+    not implied
+
+training
+    not implied
+~~~
+
+Do not create a Vision Store merely for architectural symmetry. If later product pressure earns
+durable visual-observation provenance, then form the smallest rightful Store and prove what survives
+restart. Until then, Store = NOT_EARNED_FOR_RAW_PIXELS is a valid architecture result.
+
+### Vision Family and outward request semantics
+
+The VexLife Vision control should eventually emit typed Family Controls rather than directly invoking
+the capture API. Candidate semantic pressure is:
+
+~~~text
+VisionFamily.State
+    OFF
+    PERMISSION_NEEDED
+    READY
+    ENABLED(selected source)
+    LOOKING
+    HELD
+
+VisionFamily.Control
+    Enable
+    Disable
+    SelectSource
+    LookNow
+~~~
+
+Then:
+
+~~~text
+Control.LookNow + CURRENT Vision State
+-> accepted Act
+-> Effect
+-> bound Method
+-> VexExecution
+-> exact screen Connection request
+-> host / Partner acknowledgement
+
+later:
+frame Signal
+-> Observation
+-> Receiver
+-> derived visual observation
+-> Family / Conversation consequence
+~~~
+
+This preserves:
+
+~~~text
+LOOK_NOW_REQUESTED
+!= HOST_PERMISSION_GRANTED
+!= CAPTURE_ACKNOWLEDGED
+!= FRAME_OBSERVED
+!= FRAME_INTERPRETED
+!= VEX_RECEIVED_CONTEXT
+~~~
+
+The existing SCREEN permission agent is therefore an enabling relationship/effect owner, not the
+Vision Family itself.
+
+### Partnership and listener restraint
+
+The current Partner work keeps **Partnership** as relational language until relationship-owned
+identity, lifecycle, custody, authorization or reconciliation truth appears that neither Family nor
+Partner can own.
+
+Vision should do the same:
+
+~~~text
+real-browser witness relationship
+!= automatically VexPartnership object
+~~~
+
+Likewise, the first Vision slice is on-demand snapshot, so it does **not** earn a sustained capture
+listener. If continuous observation is ever separately admitted:
+
+~~~text
+MAINTAINED_CAPTURE_LISTENER
+!= FAMILY_RELATIONSHIP_ID
+~~~
+
+must remain preserved, matching the newer source-addressed listener lesson.
+
+Finally:
+
+~~~text
+VEX CAN WITNESS BROWSER
+!= VEX CAN CONTROL BROWSER
+~~~
+
+A future browser-action capability would require its own Family Control / Act / Effect / Method /
+Partner acknowledgement / later-observation circuit. Vision observation alone cannot grant it.
+
 ## First bounded product slice
 
 The smallest useful active experience is **not continuous screen sharing**.
@@ -269,9 +503,14 @@ effects            NO_EFFECTS
 current implementation edge:
   github.issue.vextreme-sdk.1914
   github.pull.vextreme-sdk.1915
-  candidate 02779b8e34f42169bde3e8e55f954a0f170b32b8
-  candidate tree e641e9ee4b23c1e24d11c36b13065b12b46c64d3
-  SourceOwner proof PENDING
+  corrected candidate a79e1704bb3dcb6f319faac80be597c233ca7059
+  corrected tree 103ea27400d5b7857b196c186aa8bce947d63248
+  focused SCREEN owner-binding proof 12/12 PASS
+  focused macOS permission-agent proof 17/17 PASS
+  repository-wide SourceOwner clearance HELD on separately-owned sdk-check baseline currentization
+  baseline dependency github.issue.vextreme-sdk.1919 / github.pull.vextreme-sdk.1920
+  baseline candidate 74d02ea8b60a28ae23a5c40db0933de79abf0579
+  baseline tree e8bdab37cdd54234fe9c83e9285131da260967d5
 ~~~
 
 It is READY as work because the human outcome and source owners are sufficiently clear.
@@ -327,5 +566,7 @@ Vision must earn lived superiority before it replaces any existing product pathw
 - `docs/private-continuity/vexlocalbridge/model-runtime-adapter-registry.json`
 - `lib/vexlocalbridge/mlx-persistent-runtime-owner.js`
 - VexWork Security Assurance: `projects/vex-security-assurance/ADVERSARIAL-LENS.md`
+- current Partner architecture pressure: VexWork PR #267 / head `8b6732fa20c8c72bf99faa0c237f580b74813adc`
+- current executable Partner candidate: VexLife-Android PR #219 / head `356baa6fe4ef1577a287da48de0ce758ed793653`
 
 <!-- [VXG RealForever][VEXLIFE][NEW-BEGINNINGS][VISION-COMPANION][REAL-BROWSER-WITNESS] -->
