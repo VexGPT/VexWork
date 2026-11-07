@@ -51,6 +51,7 @@ test('data model separates sequence, time, provenance and gap classes', () => {
 test('Partner Connection Signal seam stays distinct from CGM semantic ownership', () => {
   assert.match(readme, /VexPartner<Partner>/);
   assert.match(readme, /Connection<Partner, Signal>/);
+  assert.doesNotMatch(readme, /CgmDeviceFamily\.Signal/);
   assert.match(charter, /CONNECTION STATE != SIGNAL/);
   assert.match(charter, /SIGNAL != FAMILY STATE/);
   assert.match(charter, /SIGNAL RECEIVED != STATE CHANGED/);
@@ -160,7 +161,8 @@ test('accepted VexBoard Partner projector is durable source while draft Android 
 
 // [VXG RealForever][VEX-CGM-LABS][PROJECT]
 
-test('POC charter preserves the external-signal causal sequence without freezing the current hypothesis', () => {
+test('architecture charter preserves the external-signal causal sequence while keeping superseded hypotheses held', () => {
+  assert.match(charter, /VEXCGMLABS PARTNER ARCHITECTURE STABILITY POINT/);
   assert.match(charter, /VexSignal\.Of<Meaning>\s+= HELD/);
   assert.match(charter, /VexEntity\.Of<Meaning>\s+= HELD/);
   assert.match(charter, /EntityForm<Domain, Entity>\s+= HELD/);
@@ -189,7 +191,7 @@ test('durable continuity work reuses existing Work instead of inventing a duplic
   assert.ok(continuity.sourceRefs.includes('projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md'));
 });
 
-test('project source map includes the working POC charter without granting effects', () => {
+test('project source map includes the Partner architecture charter without granting effects', () => {
   assert.ok(project.sourceRefs.includes('projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md'));
   for (const item of segment.items) {
     assert.equal(item.authorityDisposition, 'NO_AUTHORITY');
