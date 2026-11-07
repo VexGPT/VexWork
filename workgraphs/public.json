@@ -4573,13 +4573,13 @@
       "label": "Screen Lens projectability and expressions",
       "purpose": "Advance the accepted Living Screen Lens through a simultaneous VexLife-Android ↔ VexBoard projectability effort: derive bounded expression contexts from source-owned Screen, realization, selection, presentation, population, provider and evidence relationships; align only Android structures whose existing meaning is not lawfully projectable; then extend VexBoard's read-only mapping language, four-face expression experience and bounded source adapter without turning expressions into Scenario truth, inventing a second list/runtime ontology, rewriting evidence identity for easier joins, or replacing already-accepted Screen Lens relationships. The 2026-11-06 Claude handoff is preserved as evidence/design pressure and must be re-proven against accepted VexArchitecture before implementation.",
       "workClass": "TASK",
-      "state": "PLAN_VALIDATED",
+      "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexboard.screen-lens-currentness"
       ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "formationProcessRefOrNull": null,
       "workDisposition": "ACTIVE",
       "repositoryRefs": [
@@ -4599,11 +4599,12 @@
         "repo.vexlife-android:architecture/elements/README.md",
         "repo.vexlife-android:docs/foundation/F1-UI-BLUEPRINT-HOME.md",
         "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
-        "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "response.victor.screen-lens-projectability-expressions.start.20261107a"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T01:04:00.000Z",
-      "updatedAt": "2026-11-07T01:04:00.000Z"
+      "updatedAt": "2026-11-07T01:18:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -10387,6 +10388,34 @@
         "work.vexboard.source-projectors"
       ],
       "createdAt": "2026-11-07T01:04:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.screen-lens-projectability-expressions.ready.20261107a",
+      "workRef": "work.vexboard.screen-lens-projectability-expressions",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Victor explicitly authorized starting the preserved Screen Lens projectability/expressions implementation, with best judgment anchored in VexLife culture and VexArchitecture integrity. The bounded implementation scope is the successor plan; Claude's handoff remains reference evidence rather than overwrite authority.",
+      "actorRef": "actor.chatgpt.vexboard.screen-lens-projectability-expressions",
+      "sourceRefs": [
+        "projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md",
+        "response.victor.screen-lens-projectability-expressions.start.20261107a"
+      ],
+      "createdAt": "2026-11-07T01:17:59.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.screen-lens-projectability-expressions.running.20261107a",
+      "workRef": "work.vexboard.screen-lens-projectability-expressions",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin the smallest earned implementation slice: align VexLife-Android projectability where existing source meaning is not lawfully addressable, starting with VexStream repeated-item mechanics and collection-card semantic continuity; preserve Screen Lens accepted relationships and keep Scenario Playground separate.",
+      "actorRef": "actor.chatgpt.vexboard.screen-lens-projectability-expressions",
+      "sourceRefs": [
+        "projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md",
+        "response.victor.screen-lens-projectability-expressions.start.20261107a"
+      ],
+      "createdAt": "2026-11-07T01:18:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

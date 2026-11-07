@@ -82,7 +82,7 @@ What remains open in VexBoard is narrower and consumer-driven:
 
 ~~~text
 Source Projectors + lived comparison         RUNNING · Screen Lens substrate complete; broader lived comparison remains
-Screen Lens projectability + expressions     PLAN_VALIDATED / NO_AUTHORITY / NO_EFFECTS · successor plan preserved
+Screen Lens projectability + expressions     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND · Android projectability patient zero active
 Fractal semantic composition / spatial       RUNNING when real consumers pressure it
 VexStream living Origin screenshot pilot     RUNNING · source projection accepted; expected/observed evidence comparison still open
 AI BoardPatch authoring                      READY / NO_AUTHORITY / NO_EFFECTS
