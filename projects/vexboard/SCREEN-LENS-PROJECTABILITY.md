@@ -218,17 +218,18 @@ The Partner patient zero extends the Android source reader with one reusable rel
 
 ~~~text
 VexPartner<Partner>
+-> Source<Partner>
 -> Signal<Partner>
 -> Connection<Partner, Signal>
    -> Id<Partner>
-   -> Decoder
+   -> Conversion<Input, Partner, Signal>
    -> Observation
    -> Receiver<Partner, Signal, exact Observation>
 
 custom Screen/local source
 -> VexExecution.beginQueued(live Connection owner, private runtime RelationshipId)
 -> exact receipt operation
--> Decoder / Observation / suspend Receiver
+-> concrete Conversion / Observation / suspend Receiver
 -> domain Store
 
 Store Flow -> VexExecution.observe(exact source, live Family owner)
@@ -275,6 +276,26 @@ Depth
     source-addressed Store listener
     return to Family State
 ~~~
+
+Two CGM provider representations are now independently source-proven through the same downstream
+relationship:
+
+~~~text
+BLE-like input
+-> CgmPartner.Connection.BleDecoder
+                         \
+                          -> CgmPartner.Source / Signal
+                         /
+HTTP-like input
+-> CgmPartner.Connection.HttpDecoder
+
+then identically:
+-> Observation -> Receiver -> CgmStore -> CgmFamily
+~~~
+
+The Lens projects those concrete classes under the reusable `CONVERSION` role. It does not invent a
+generic Mapper node, and it does not erase the distinct Connection occurrence that delivered an
+otherwise-equivalent Signal.
 
 A feedback circuit remains projectable without inventing a cross-Family descriptor:
 
