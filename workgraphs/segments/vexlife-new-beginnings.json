@@ -444,7 +444,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T08:06:00.000Z",
-      "updatedAt": "2026-11-07T11:22:04.000Z",
+      "updatedAt": "2026-11-07T11:43:08.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "High — Vex Vision companion for real-browser witnessing",
@@ -503,7 +503,14 @@
         "github.issue.vextreme-sdk.232.comment.6030760130",
         "github.issue.vextreme-sdk.241.comment.6030757448",
         "github.issue.vextreme-sdk.232.comment.6706210561",
-        "github.issue.vextreme-sdk.241.comment.6706211040"
+        "github.issue.vextreme-sdk.241.comment.6706211040",
+        "github.commit.vexwork.ca9a87a3f9086bd97b736bd08ee94de446cb39d0",
+        "github.issue.vextreme-sdk.1923",
+        "github.pull.vextreme-sdk.1924",
+        "github.commit.vextreme-sdk.27eafee3f2cec8e2a013fae42631762456255ca9",
+        "github.issue.vextreme-sdk.232.comment.6706492909",
+        "github.issue.vextreme-sdk.241.comment.6706493382",
+        "github.issue.vextreme-sdk.1923.comment.6706549140"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
