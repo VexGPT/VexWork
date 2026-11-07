@@ -51,11 +51,13 @@ It does not need to become the forever-browser architecture before this Vision e
 
 ## Current accepted Vex Vision source
 
-Current Vextreme-SDK main observed during this formation:
+Current accepted Vextreme-SDK source after the repository baseline repair:
 
 ~~~text
 vgong24/Vextreme-SDK
-main 1a1495b6d42831c08a61405e682a330f223bbbcb
+main       ba62378289faa7c72e595793839389f71ba21923
+checkpoint ba62378289faa7c72e595793839389f71ba21923
+source PR  #1920 accepted / merged
 ~~~
 
 Relevant accepted/current source already establishes:
@@ -92,24 +94,38 @@ SCREEN CAPTURE IS ACTIVE
 
 ## Current authority/currentness boundary
 
-The source-managed SCREEN binding currently stored at:
+The historical October SCREEN grant remains provenance only. The resumed Vision trajectory has now
+formed a fresh bounded Safety currentization candidate under SDK PR #1915.
+
+Current source-managed receipt on that exact candidate:
 
 ~~~text
-docs/private-continuity/vex-body/vision/screen-permission/current.json
+humanAuthorityRef
+  authority.human.victor.vexlife-vision-companion.screen-reachability.20261107A
+
+formedAt
+  2026-11-07T09:14:00.000Z
+
+expiresAtOrNull
+  2026-11-08T09:14:00.000Z
 ~~~
 
-contains a receipt whose `expiresAtOrNull` is:
+That receipt is still **Safety-layer currentness**, not host OS permission and not capture.
 
 ~~~text
-2026-10-07T12:15:00.000Z
+CURRENT SCREEN SAFETY BINDING
+!= HOST OS SCREEN RECORDING GRANT
+!= SCREENSHOT
+!= ACTIVE VISUAL OBSERVATION
+!= VISUAL MODEL INPUT
 ~~~
 
-Therefore that historical grant is useful provenance but **not current authority on November 7, 2026**.
+PR #1915 has been currentized over accepted SDK baseline merge #1920. Its fresh exact-head proof now
+checks the source-managed Safety binding against the actual execution clock and must fail closed if
+the receipt expires before proof/lifecycle consumption.
 
-This VexWork formation does not renew it.
-
-A future active capture attempt must re-form current human/Safety authority and then establish the
-macOS host permission/current active-adapter predicates required by the accepted SDK architecture.
+A future active capture attempt still requires the separately-owned macOS host permission and active
+adapter/capture predicates required by the accepted SDK architecture.
 
 ## Current model/runtime boundary
 
@@ -562,15 +578,15 @@ effects            NO_EFFECTS
 current implementation edge:
   github.issue.vextreme-sdk.1914
   github.pull.vextreme-sdk.1915
-  corrected candidate a79e1704bb3dcb6f319faac80be597c233ca7059
-  corrected tree 103ea27400d5b7857b196c186aa8bce947d63248
-  focused SCREEN owner-binding proof 12/12 PASS
-  focused macOS permission-agent proof 17/17 PASS
-  repository-wide SourceOwner clearance HELD on separately-owned sdk-check baseline currentization
-  baseline dependency github.issue.vextreme-sdk.1919 / github.pull.vextreme-sdk.1920
-  integrated baseline candidate 26f74ea4b5a9d4e37aa9e1fb09ae18d3f0e51180
-  integrated baseline tree 4193597cbcd4af7aefd33f0af318f8da48337a3c
-  SourceOwner A003 PENDING on exact integrated baseline
+  accepted baseline github.pull.vextreme-sdk.1920
+  accepted baseline merge ba62378289faa7c72e595793839389f71ba21923
+  currentized candidate fb71627dd1a5d7b58b98a0457876e2b49f86d58c
+  currentized tree 8f70bc979d5b262a6eddb367aea7ef2df8c38b0f
+  provider diff 4 exact Vision/Safety paths
+  historical focused SCREEN owner-binding proof 12/12 PASS
+  historical focused macOS permission-agent proof 17/17 PASS
+  fresh SourceOwner A003 formed against accepted repaired baseline
+  live Safety currentness is part of the proof and may fail closed on expiry
 ~~~
 
 It is READY as work because the human outcome and source owners are sufficiently clear.
@@ -615,9 +631,11 @@ Vision must earn lived superiority before it replaces any existing product pathw
 
 ## Source grounding
 
-- Vextreme-SDK current main: `1a1495b6d42831c08a61405e682a330f223bbbcb`
+- Vextreme-SDK accepted main/checkpoint: `ba62378289faa7c72e595793839389f71ba21923`
 - accepted held SCREEN integration merge:
   `4e8f2fca496269cadc7710e5134ed45d9ecae3e0`
+- accepted SDK baseline repair: Vextreme-SDK PR #1920 / merge `ba62378289faa7c72e595793839389f71ba21923`
+- current SCREEN Safety candidate: Vextreme-SDK PR #1915 / head `fb71627dd1a5d7b58b98a0457876e2b49f86d58c`
 - `docs/architecture/vex-body-vision-screen-held-integration.md`
 - `docs/architecture/perception-session-screen-owner-binding.md`
 - `docs/architecture/macos-screen-permission-agent.md`
