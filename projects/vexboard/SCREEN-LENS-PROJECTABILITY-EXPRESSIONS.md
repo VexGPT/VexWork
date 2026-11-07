@@ -1068,6 +1068,7 @@ read plan
   VexStreamConnectionPresentation.kt
   VexStreamMusicState.kt
   VexStreamPlaybackDisplayState.kt
+  VexStreamPlayerPresentation.kt
   VexStableLazyList.kt
 ~~~
 
@@ -1081,15 +1082,22 @@ node scripts/check-screen-lens-vexstream-expression-source.mjs \
   --source <exact VexLife-Android checkout at ecbb6987d1da338fa0adf7297456d3f652f04155>
 ~~~
 
-The first exact-source preflight exposed and corrected one hand-authored fixture drift:
+The exact-source preflight exposed two useful currentness corrections:
 
 ~~~text
-Android:
-  library region / tabs are outside the !Paired connection-setup guard
+1. Android connection setup:
+     library region continues outside the !Paired guard
+   therefore:
+     connection.paired does not own the library container
+     library.selection owns the library container
+     selected tab/panel participation stays value-owned
 
-therefore:
-  connection.paired does not own those containers
-  library.selection owns their always-participating relationship
+2. Android player presentation:
+     Playback-active and Full Player relationships name exact participating controls
+   therefore:
+     current VexStreamPlayerPresentation.kt is part of the rightful read membrane
+     the projector proves those controls from current Android source
+     rather than borrowing their currentness from the older Stable Lens snapshot
 ~~~
 
 The exact Android source round-trip now resolves:
