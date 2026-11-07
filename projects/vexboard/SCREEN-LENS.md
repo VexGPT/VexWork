@@ -70,8 +70,8 @@ differences and the high-contrast palette.
 EXPERIENCE  what the human meets        SCREEN · CONTAINER · CONTENT · ELEMENT · NAVIGATION
 DOORWAY     how a touch reaches owner   INTENT · DISPATCH
 SEMANTIC    what the owner decides      CONTROL · STATE · ACT · EFFECT · PROJECTION
-RUNTIME     what runs / realizes        METHOD · RESULT · EXECUTION · REALIZATION
-OUTSIDE     what reality says           STORE · OBSERVATION
+RUNTIME     what runs / realizes        METHOD · RESULT · EXECUTION · REALIZATION · CONNECTION · DECODER · RECEIVER
+OUTSIDE     what reality says           PARTNER · SIGNAL · STORE · OBSERVATION
 SUPPORT     beside the path             CHRONOLOGY · CONSTRUCTION
 ```
 
@@ -85,10 +85,97 @@ Each pathway also carries an honest disposition, so the lens never implies SCAE 
 
 ```text
 SCAE_FAMILY          source earns a semantic owner and explicit State / Control / Act / Effect / Projection relationships
+PARTNER_CIRCUIT      source proves Partner / Connection / Signal / Observation / Receiver depth and its lawful Store / Family return
 TYPED_PRESENTATION   Open / Close / Toggle already says everything (Show log, + FAB)
 TYPED_NAVIGATION     NavigateTo(ScreenId) already says everything (bottom nav, FAB options)
 DIRECT_REGISTRATION  registration calls owners directly; no Family yet (Reset log, Events lab)
 ```
+
+
+### Partner depth is a deeper relationship, not a fifth face
+
+The Partner patient zero adds depth to the existing Behavior side rather than another Lens surface:
+
+```text
+Behavior                         Depth
+
+Family Control / State / Act     Family Method / VexExecution
+Family Effect                    Partner Connection / Conversion
+                                 Partner / Source / Signal / Observation / Receiver
+                                 Store
+Family State  <----------------- source-addressed Store observation
+```
+
+For inbound Partner activity, the pathway may begin on Depth and return to Family State:
+
+```text
+Partner
+-> Connection
+-> VexExecution · Queued inbound RelationshipId lane
+-> concrete Conversion
+-> Signal
+-> Observation
+-> suspend Receiver
+-> Store
+-> VexExecution.observe(exact Store Flow source, live Family owner)
+-> Family State
+-> Projection
+```
+
+For outbound work, Behavior remains the semantic owner:
+
+```text
+Family Control + CURRENT State
+-> Act
+-> Begin(Approach · Effect)
+-> Method
+-> VexExecution consumes accepted Act RelationshipId / Approach
+-> Partner Connection
+-> Partner acknowledgement
+
+acknowledgement != later Partner Signal != durable outcome State
+```
+
+The Lens keeps three different coordinates visibly separate:
+
+```text
+Connection.Id
+    durable/source observation provenance
+    != runtime sequencing identity
+
+queued inbound receipt/admission
+    live Connection owner + private runtime RelationshipId
+    -> ordered receipt/admission Jobs
+
+sustained Store listener
+    exact Flow property/function reference + live Family owner
+    -> one source-addressed observation Job
+
+Family consequence
+    accepted Control relationship
+    -> Family-derived RelationshipId
+    -> authored Earliest / Latest / Queued Approach
+```
+
+Do not persist a runtime RelationshipId as Partner history and do not mint a Family ResourceId merely
+to keep a Store listener alive.
+
+Provider representation divergence ends at Conversion when source proves equivalence:
+
+```text
+BLE-like ByteArray -> CgmPartner.Connection.BleDecoder  --\
+                                                        +-> CgmPartner.Source + Signal
+HTTP-like body    -> CgmPartner.Connection.HttpDecoder --/
+                                                        -> same Observation / Receiver / Store / Family
+```
+
+`SOURCE` is projected as carried lineage/data, not another execution hop. Distinct Connection IDs
+remain visible even when the Partner Signal values are equal.
+
+A cross-Family feedback rule must also preserve ownership. Source-derived State from one Family may
+cause a convergence/lab rule to activate another Family's Control; the projector must never shorten
+that into `listener -> foreign Partner Connection` merely because the concrete code eventually reaches
+that Partner.
 
 ## Annotations are attached, never floating
 

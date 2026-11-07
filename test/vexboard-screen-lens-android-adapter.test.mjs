@@ -730,3 +730,72 @@ test('lenient historical overlay never injects current structural nodes or edge 
   assert.ok(misses.includes('note.future'));
   normalizeScreenLens(lens);
 });
+
+test('source-proven Partner circuits project through the existing Behavior / Depth lens', () => {
+  const variant = new Map(files);
+  variant.set(APP + 'screens/AppScreens.kt', files.get(APP + 'screens/AppScreens.kt').replace('SettingsScreen,', 'SettingsScreen,\n        PartnerScreen,'));
+  variant.set('app/src/main/res/values/strings.xml', files.get('app/src/main/res/values/strings.xml').replace('</resources>', [
+    '    <string name="partner_title">Partner Lab</string>',
+    '    <string name="partner_receive">Receive sensor</string>',
+    '    <string name="partner_request">Request pump</string>',
+    '    <string name="partner_auto">Enable rule</string>',
+    '</resources>',
+  ].join('\n')));
+  variant.set(APP + 'screens/shared/partner/PartnerScreen.kt', "object PartnerScreen : AppScreenBlueprint(\n    screenKey = \"partner\",\n    titleRes = R.string.partner_title,\n) {\n    val Receive = buttonRef(id = \"body.receive\", labelRes = R.string.partner_receive, intent = localEffect())\n    val Request = buttonRef(id = \"body.request\", labelRes = R.string.partner_request, intent = localEffect())\n    val Automation = toggleRef(id = \"body.auto\", labelRes = R.string.partner_auto, intent = localEffect())\n\n    override val content = layout {\n        scrollableColumn(\"body\") {\n            button(Receive)\n            button(Request)\n            toggle(Automation)\n        }\n    }\n}\n\n@Composable\nfun PartnerScreenContent(runtime: VexRuntime) {\n    val lab = remember { PartnersLab() }\n    val handler = ElementActionHandler { element ->\n        when (element) {\n            PartnerScreen.Receive -> lab.receivePartnerPacket()\n            PartnerScreen.Request -> lab.requestPartnerPump()\n            PartnerScreen.Automation -> lab.toggleRule()\n        }\n    }\n}\n");
+  variant.set(APP + 'ui/SensorPartner.kt', "object SensorPartner : VexPartner<SensorPartner> {\n    data class Source(val sensorRef: String) : VexPartner.Source<SensorPartner>\n    sealed interface Signal : VexPartner.Signal<SensorPartner> {\n        data class Value(val source: Source, val value: Int) : Signal\n        data class Temperature(val source: Source, val value: Int) : Signal\n    }\n\n    class Connection(\n        override val id: Id,\n        private val conversion: VexPartner.Connection.Conversion<ByteArray, SensorPartner, Signal>,\n        private val receiver: Receiver,\n    ) : VexPartner.Connection<SensorPartner, Signal> {\n        data class Id(val raw: Int) : VexPartner.Connection.Id<SensorPartner>\n        class Decoder : VexPartner.Connection.Conversion<ByteArray, SensorPartner, Signal> {\n            override fun convert(input: ByteArray): List<Signal> = emptyList()\n        }\n        data class Observation(\n            override val connectionId: Id,\n            override val signal: Signal,\n            override val observedAtEpochMillis: Long,\n        ) : VexPartner.Connection.Observation<SensorPartner, Signal>\n        class Receiver(\n            private val store: SensorStore,\n        ) : VexPartner.Connection.Receiver<SensorPartner, Signal, Observation> {\n            override suspend fun receive(observation: Observation) {\n                store.commit(observation)\n            }\n        }\n        suspend fun receive(bytes: ByteArray, observedAtEpochMillis: Long) {}\n    }\n}\n");
+  variant.set(APP + 'ui/SensorStore.kt', "class SensorStore {\n    val snapshots: StateFlow<Snapshot> = MutableStateFlow(Snapshot())\n    data class Snapshot(val value: Int = 0)\n    fun commit(observation: Any) {}\n}\n");
+  variant.set(APP + 'ui/SensorFamily.kt', "class SensorFamily :\n    VexFamily<SensorFamily, SensorFamily.State, SensorFamily.Control, SensorFamily.Effect>(\n        initialState = State.Waiting,\n    ) {\n    sealed interface State : VexFamily.State<SensorFamily> {\n        data object Waiting : State\n        data class Ready(val value: Int) : State\n    }\n    sealed interface Control : VexFamily.Control<SensorFamily>\n    sealed interface Effect : VexFamily.Effect<SensorFamily>\n    sealed interface DisplayState : VexFamily.DisplayState<SensorFamily, State> {\n        data object Waiting : DisplayState\n        data class Ready(val value: Int) : DisplayState\n    }\n    fun observeStore(snapshot: SensorStore.Snapshot): State = observe(State.Ready(snapshot.value))\n}\n");
+  variant.set(APP + 'ui/SensorLab.kt', "@file:OptIn(VexExecution.RelationshipFoundationApi::class)\n\nclass SensorLab(\n    val store: SensorStore = SensorStore(),\n    val family: SensorFamily = SensorFamily(),\n) {\n    private object InboundAdmission : VexExecution.RelationshipId\n\n    private val connection =\n        SensorPartner.Connection(\n            id = SensorPartner.Connection.Id(7),\n            conversion = SensorPartner.Connection.Decoder(),\n            receiver = SensorPartner.Connection.Receiver(store),\n        )\n\n    init {\n        VexExecution.observe(\n            executionRoot = executionRoot,\n            owner = family,\n            source = store::snapshots,\n        ) { snapshot ->\n            family.observeStore(snapshot)\n        }\n    }\n\n    fun receivePacket() =\n        VexExecution.beginQueued(\n            executionRoot = executionRoot,\n            owner = connection,\n            relationshipId = InboundAdmission,\n            operation = ::receivePacketAndAwait,\n            argument = Unit,\n        )\n\n    private suspend fun receivePacketAndAwait(unit: Unit) {\n        connection.receive(byteArrayOf(1), observedAtEpochMillis = 1L)\n    }\n}\n");
+  variant.set(APP + 'ui/PumpPartner.kt', "object PumpPartner : VexPartner<PumpPartner> {\n    data class Source(val pumpRef: String) : VexPartner.Source<PumpPartner>\n    sealed interface Signal : VexPartner.Signal<PumpPartner> {\n        data class Delivery(val source: Source, val units: Int) : Signal\n    }\n    class Connection(\n        override val id: Id,\n        private val conversion: VexPartner.Connection.Conversion<ByteArray, PumpPartner, Signal>,\n        private val receiver: Receiver,\n    ) : VexPartner.Connection<PumpPartner, Signal> {\n        data class Id(val raw: Int) : VexPartner.Connection.Id<PumpPartner>\n        class Decoder : VexPartner.Connection.Conversion<ByteArray, PumpPartner, Signal> {\n            override fun convert(input: ByteArray): List<Signal> = emptyList()\n        }\n        data class Observation(\n            override val connectionId: Id,\n            override val signal: Signal,\n            override val observedAtEpochMillis: Long,\n        ) : VexPartner.Connection.Observation<PumpPartner, Signal>\n        class Receiver(\n            private val store: PumpStore,\n        ) : VexPartner.Connection.Receiver<PumpPartner, Signal, Observation> {\n            override suspend fun receive(observation: Observation) {}\n        }\n        suspend fun request(units: Int): Boolean = true\n    }\n}\nclass PumpStore\n");
+  variant.set(APP + 'ui/PumpFamily.kt', "class PumpFamily :\n    VexFamily<PumpFamily, PumpFamily.State, PumpFamily.Control, PumpFamily.Effect>(\n        initialState = State.Idle,\n    ) {\n    sealed interface Parameter : VexFamily.Parameter<PumpFamily> {\n        data class Amount(val units: Int) : Parameter\n    }\n    sealed interface State : VexFamily.State<PumpFamily> {\n        data object Idle : State\n    }\n    sealed interface Control : VexFamily.Control<PumpFamily> {\n        data class Request(val amount: Parameter.Amount) : Control\n    }\n    sealed interface Effect : VexFamily.Effect<PumpFamily> {\n        data class Request(val amount: Parameter.Amount) : Effect\n    }\n    object Act {\n        sealed class Method<out S, out F> : VexFamily.Act.Method<PumpFamily, S, F> {\n            class Request(\n                private val connection: PumpPartner.Connection,\n                val parameter: Parameter.Amount,\n            ) : Method<Boolean, Unit>() {\n                override suspend fun invoke() =\n                    if (connection.request(parameter.units)) {\n                        VexMethod.Result.Success(output = true)\n                    } else {\n                        VexMethod.Result.Failure(output = Unit)\n                    }\n            }\n        }\n    }\n    override fun act(currentState: State, control: Control) =\n        when (control) {\n            is Control.Request -> stay(beginQueued(Effect.Request(control.amount)))\n        }\n}\n");
+  variant.set(APP + 'ui/PumpLab.kt', "class PumpLab(\n    val family: PumpFamily = PumpFamily(),\n) {\n    private val pumpConnection =\n        PumpPartner.Connection(\n            id = PumpPartner.Connection.Id(9),\n            conversion = PumpPartner.Connection.Decoder(),\n            receiver = PumpPartner.Connection.Receiver(PumpStore()),\n        )\n\n    fun requestPump() {\n        val parameter = PumpFamily.Parameter.Amount(1)\n        val act = checkNotNull(\n            family.activate(\n                PumpFamily.Control.Request(parameter),\n            ),\n        )\n        val effect = checkNotNull(act.effect as? PumpFamily.Effect.Request)\n        val method =\n            PumpFamily.Act.Method.Request(\n                connection = pumpConnection,\n                parameter = effect.amount,\n            )\n        act.launchWith(executionRoot)?.method(method)\n    }\n}\n");
+  variant.set(APP + 'ui/PartnersLab.kt', "class PartnersLab(\n    val sensor: SensorLab = SensorLab(),\n    val insulin: PumpLab = PumpLab(),\n) {\n    init {\n        VexExecution.observe(\n            executionRoot = executionRoot,\n            owner = this,\n            source = sensor.family::states,\n        ) { state ->\n            evaluateSensorState(state)\n        }\n    }\n\n    fun receivePartnerPacket() {\n        sensor.receivePacket()\n    }\n\n    fun requestPartnerPump() {\n        insulin.requestPump()\n    }\n\n    fun toggleRule() {\n        evaluateSensorState(sensor.family.currentState)\n    }\n\n    private fun evaluateSensorState(\n        state: SensorFamily.State,\n    ) {\n        insulin.requestPump()\n    }\n}\n");
+
+  const { lens, report } = project({ files: variant });
+  const screen = lens.screens.find((entry) => entry.screenRef === 'screen.partner');
+  assert.ok(screen);
+  const receive = screen.elements.find((element) => element.symbol === 'PartnerScreen.Receive');
+  const request = screen.elements.find((element) => element.symbol === 'PartnerScreen.Request');
+  const automation = screen.elements.find((element) => element.symbol === 'PartnerScreen.Automation');
+  assert.ok(receive?.pathwayRef);
+  assert.ok(request?.pathwayRef);
+  assert.ok(automation?.pathwayRef);
+
+  const ingress = lens.pathways.find((pathway) => pathway.pathwayRef === receive.pathwayRef);
+  assert.equal(ingress.disposition, 'PARTNER_CIRCUIT');
+  assert.deepEqual(ingress.nodes.filter((node) => node.face === 'DEPTH').map((node) => node.role), ['PARTNER', 'CONNECTION', 'EXECUTION', 'CONVERSION', 'SOURCE', 'SIGNAL', 'OBSERVATION', 'RECEIVER', 'STORE', 'EXECUTION']);
+  assert.ok(ingress.nodes.some((node) => node.role === 'EXECUTION' && /Queued inbound admission/.test(node.label)));
+  assert.ok(ingress.nodes.some((node) => node.role === 'CONVERSION' && /SensorPartner\.Connection\.Decoder/.test(node.label)));
+  assert.ok(ingress.nodes.some((node) => node.role === 'SOURCE' && node.label === 'SensorPartner.Source'));
+  assert.ok(ingress.edges.some((edge) => edge.from.endsWith('.listener') && edge.to.endsWith('.state') && edge.kind === 'RETURN'));
+
+  const outbound = lens.pathways.find((pathway) => pathway.pathwayRef === request.pathwayRef);
+  assert.equal(outbound.disposition, 'PARTNER_CIRCUIT');
+  assert.ok(outbound.nodes.some((node) => node.role === 'CONTROL' && /Control\.Request/.test(node.label)));
+  assert.ok(outbound.nodes.some((node) => node.role === 'EFFECT' && /Begin\(Queued/.test(node.label)));
+  assert.ok(outbound.nodes.some((node) => node.role === 'METHOD'));
+  assert.ok(outbound.nodes.some((node) => node.role === 'CONNECTION'));
+  assert.ok(outbound.nodes.some((node) => node.role === 'PARTNER'));
+  assert.match(outbound.summary, /durable outcome truth must return later/);
+
+  const feedback = lens.pathways.find((pathway) => pathway.pathwayRef === automation.pathwayRef);
+  assert.equal(feedback.disposition, 'PARTNER_CIRCUIT');
+  assert.ok(feedback.nodes.some((node) => node.role === 'EXECUTION' && /observe\(SensorFamily\.states\)/.test(node.label)));
+  assert.ok(feedback.nodes.some((node) => node.role === 'CONTROL' && /PumpFamily\.Control\.Request/.test(node.label)));
+  assert.ok(feedback.nodes.some((node) => node.role === 'EFFECT' && /Begin\(Queued/.test(node.label)));
+  assert.ok(feedback.nodes.some((node) => node.role === 'PARTNER' && node.label === 'PumpPartner'));
+  assert.match(feedback.summary, /never bypasses directly to the Partner/);
+
+  assert.ok(report.bonds.some((bond) => bond.via === 'PARTNER_INGRESS' && bond.partner === 'SensorPartner' && bond.executionApproach === 'Queued' && bond.conversion === 'SensorPartner.Connection.Decoder' && bond.source === 'SensorPartner.Source'));
+  assert.ok(report.bonds.some((bond) => bond.via === 'PARTNER_FAMILY_REQUEST' && bond.partner === 'PumpPartner'));
+  assert.ok(report.bonds.some((bond) => bond.via === 'PARTNER_AUTOMATION' && bond.sourceFamily === 'SensorFamily' && bond.targetFamily === 'PumpFamily'));
+  assert.equal(report.held.some((entry) => entry.elementRef?.startsWith('element.partner.')), false);
+
+  const normalized = normalizeScreenLens(lens);
+  for (const pathway of normalized.pathways.filter((entry) => entry.disposition === 'PARTNER_CIRCUIT')) {
+    for (const face of ['BEHAVIOR', 'DEPTH']) {
+      const graph = faceGraph(pathway, face);
+      if (graph.nodes.length) assert.deepEqual(layoutCollisions(layoutLensFace(graph)), [], pathway.pathwayRef + ' ' + face);
+    }
+  }
+});

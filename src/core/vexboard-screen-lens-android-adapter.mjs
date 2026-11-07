@@ -317,10 +317,11 @@ function sealedMembers(text, interfaceName) {
 }
 
 function parseFamily(cat, adapter, familyName) {
-  const [path] = cat.find(new RegExp(`class\\s+${familyName}\\s*\\(`));
+  const classPattern = new RegExp(`class\\s+${familyName}\\s*(?:\\(|:)`);
+  const [path] = cat.find(classPattern);
   if (!path) return null;
   const text = cat.files.get(path);
-  const classMatch = new RegExp(`class\\s+${familyName}\\s*\\(`).exec(text);
+  const classMatch = classPattern.exec(text);
   const stateEnum = new RegExp(`enum\\s+class\\s+(\\w+)\\s*:\\s*VexFamily\\.State<${familyName}>\\s*\\{([^}]*)\\}`).exec(text);
   const act = blockAfter(text, /object\s+Act\s*\{/);
   const methods = [];
@@ -643,6 +644,330 @@ function followBehaviorPort(cat, adapter, screen, element) {
     displayType, display,
     listenerType, publishObserved,
   };
+}
+
+
+// One source-proven VexPartner shape. Unknown or ambiguous hops stay held.
+function sourceFunction(cat, adapter, functionName, ownerType = null) {
+  const candidates = [];
+  for (const [path, text] of cat.files) {
+    if (ownerType && !new RegExp('(?:class|object)\\s+' + escapeRegex(ownerType) + '\\b').test(text)) continue;
+    const spans = functionSpans(text).filter((span) => span.name === functionName);
+    for (const span of spans) {
+      candidates.push({
+        path,
+        text,
+        source: toRootRef(adapter, path),
+        name: functionName,
+        body: text.slice(span.bodyStart, span.end),
+        params: span.params,
+        ownerType,
+      });
+    }
+  }
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function receiverTypeInSource(sourceText, receiver) {
+  const typed = new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*:\\s*([A-Z]\\w*)\\b').exec(sourceText)?.[1] ?? null;
+  if (typed) return typed;
+
+  /*
+   * Compose construction may be:
+   *   remember { Type() }
+   *   remember(key) { Type() }
+   *   remember(keys...) { if (...) Type.production(...) else Type() }
+   *
+   * The receiver type is still source-readable; do not fall back to global function-name matching.
+   */
+  const remembered = new RegExp(
+    '\\bval\\s+' + escapeRegex(receiver) +
+      '\\s*=\\s*remember(?:\\s*\\([^)]*\\))?\\s*\\{[\\s\\S]{0,900}?([A-Z]\\w*)(?:\\.production)?\\s*\\(',
+  ).exec(sourceText)?.[1] ?? null;
+  if (remembered) return remembered;
+
+  return new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*=\\s*([A-Z]\\w*)\\s*\\(').exec(sourceText)?.[1] ?? null;
+}
+
+function partnerRoot(cat, adapter, partnerType) {
+  return uniqueSource(
+    cat,
+    adapter,
+    new RegExp('object\\s+' + escapeRegex(partnerType) + '\\s*:\\s*VexPartner\\s*<\\s*' + escapeRegex(partnerType) + '\\s*>'),
+  );
+}
+
+function familyRoot(cat, adapter, familyType) {
+  return uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(familyType) + '\\s*:'))
+    ?? uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(familyType) + '\\s*\\('));
+}
+
+function storeRoot(cat, adapter, storeType) {
+  return uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(storeType) + '\\b'))
+    ?? uniqueSource(cat, adapter, new RegExp('interface\\s+' + escapeRegex(storeType) + '\\b'));
+}
+
+function localEffectDoorway(screen, element) {
+  const declaration = element.symbol?.split('.').at(-1) ?? null;
+  if (!screen || !declaration) return null;
+  const pattern = new RegExp(
+    escapeRegex(screen.object) + '\\s*\\.\\s*' + escapeRegex(declaration) +
+      '\\s*->[\\s\\S]{0,420}?([a-z]\\w*)\\s*\\.\\s*(\\w+)\\s*\\(',
+  );
+  const match = pattern.exec(screen.text);
+  if (!match) return null;
+  return {
+    receiver: match[1],
+    receiverType: receiverTypeInSource(screen.text, match[1]),
+    functionName: match[2],
+    source: screen.source,
+  };
+}
+
+function directMemberCalls(body) {
+  const calls = [];
+  for (const match of String(body).matchAll(/\b([a-z]\w*)\s*(?:\?\.)?\.\s*(\w+)\s*\(/g)) {
+    calls.push({ receiver: match[1], functionName: match[2], index: match.index });
+  }
+  return calls;
+}
+
+function executionOperationReferences(body) {
+  const refs = [];
+  const pattern =
+    /VexExecution\.(begin|beginEarliest|beginLatest|beginQueued)\s*\(([\s\S]{0,1800}?)operation\s*=\s*::(\w+)/g;
+  for (const match of String(body).matchAll(pattern)) {
+    const api = match[1];
+    const args = match[2];
+    refs.push({
+      api,
+      approach:
+        api === 'beginQueued' ? 'Queued'
+          : api === 'beginLatest' ? 'Latest'
+            : api === 'beginEarliest' ? 'Earliest'
+              : 'Independent',
+      owner: /\bowner\s*=\s*([a-z]\w*)/.exec(args)?.[1] ?? null,
+      relationshipId: /\brelationshipId\s*=\s*([A-Z]\w*)/.exec(args)?.[1] ?? null,
+      functionName: match[3],
+      index: match.index,
+    });
+  }
+  return refs;
+}
+
+
+function connectionPartnerForLocal(sourceText, localName) {
+  const pattern = new RegExp(
+    '(?:private\\s+|internal\\s+|public\\s+)?val\\s+' + escapeRegex(localName) +
+      '\\s*=\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection\\s*\\(',
+  );
+  return pattern.exec(sourceText)?.[1] ?? null;
+}
+
+function connectionConversionForLocal(sourceText, localName) {
+  const startPattern = new RegExp(
+    '(?:private\\s+|internal\\s+|public\\s+)?val\\s+' + escapeRegex(localName) +
+      '\\s*=\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection\\s*\\(',
+  );
+  const start = startPattern.exec(sourceText);
+  if (!start) return null;
+  const localSlice = sourceText.slice(start.index, start.index + 1800);
+  const conversion =
+    /\bconversion\s*=\s*([A-Z]\w*Partner)\s*\.\s*Connection\s*\.\s*(\w+)\s*\(/.exec(localSlice);
+  return conversion
+    ? {
+        partnerType: conversion[1],
+        concreteName: conversion[2],
+        symbol: conversion[1] + '.Connection.' + conversion[2],
+      }
+    : null;
+}
+
+function partnerHasSource(partnerText, partnerType) {
+  return new RegExp(
+    'data\\s+class\\s+Source\\s*\\([\\s\\S]{0,700}?VexPartner\\.Source\\s*<\\s*' +
+      escapeRegex(partnerType) +
+      '\\s*>',
+  ).test(partnerText);
+}
+
+function signalsCarryPartnerSource(partnerText) {
+  const signalBlock = blockAfter(partnerText, /sealed\s+interface\s+Signal\b/);
+  return Boolean(signalBlock && /\bval\s+source\s*:\s*Source\b/.test(signalBlock.body));
+}
+
+
+function familyTypeForLab(sourceText) {
+  return /\bval\s+family\s*:\s*([A-Z]\w*Family)\b/.exec(sourceText)?.[1] ?? null;
+}
+
+function partnerStoreType(partnerText) {
+  return /class\s+Receiver\s*\([\s\S]{0,700}?\bstore\s*:\s*([A-Z]\w*Store)\b/.exec(partnerText)?.[1] ?? null;
+}
+
+function storeObservationIsMaintained(labText) {
+  return /VexExecution\.observe\s*\([\s\S]{0,1200}?source\s*=\s*store\s*::\s*snapshots[\s\S]{0,1200}?family\s*\.\s*observeStore\s*\(/.test(labText);
+}
+
+function resolvePartnerIngress(cat, adapter, functionName, ownerType = null, visited = new Set()) {
+  const visitKey = (ownerType ?? '?') + ':' + functionName;
+  if (visited.has(visitKey) || visited.size > 5) return null;
+  const nextVisited = new Set(visited);
+  nextVisited.add(visitKey);
+  const fn = sourceFunction(cat, adapter, functionName, ownerType);
+  if (!fn) return null;
+
+  for (const call of directMemberCalls(fn.body)) {
+    if (call.functionName !== 'receive') continue;
+    const partnerType = connectionPartnerForLocal(fn.text, call.receiver);
+    if (!partnerType) continue;
+    const partner = partnerRoot(cat, adapter, partnerType);
+    if (!partner) continue;
+    const storeType = partnerStoreType(partner.text);
+    const store = storeType ? storeRoot(cat, adapter, storeType) : null;
+    const familyType = familyTypeForLab(fn.text);
+    const family = familyType ? familyRoot(cat, adapter, familyType) : null;
+    if (!storeType || !store || !familyType || !family) continue;
+    const signals = sealedMembers(partner.text, 'Signal');
+    const conversion = connectionConversionForLocal(fn.text, call.receiver);
+    const hasConversion = /\bclass\s+\w+\b[\s\S]{0,900}?VexPartner\.Connection\.Conversion\s*</.test(partner.text);
+    const source = partnerHasSource(partner.text, partnerType) && signalsCarryPartnerSource(partner.text)
+      ? partnerType + '.Source'
+      : null;
+    const hasObservation = /\bdata\s+class\s+Observation\b[\s\S]{0,700}?VexPartner\.Connection\.Observation\s*</.test(partner.text);
+    const hasReceiver = /\bclass\s+Receiver\b[\s\S]{0,900}?VexPartner\.Connection\.Receiver\s*</.test(partner.text);
+    if (!conversion || !hasConversion || !hasObservation || !hasReceiver || !storeObservationIsMaintained(fn.text)) continue;
+    return {
+      kind: 'INGRESS',
+      functionName,
+      functionSource: fn.source,
+      labSource: fn,
+      partnerType,
+      partner,
+      connectionLocal: call.receiver,
+      conversion,
+      source,
+      signals,
+      storeType,
+      store,
+      familyType,
+      family,
+      observeStore: /fun\s+observeStore\s*\(/.test(family.text) ? 'observeStore' : null,
+    };
+  }
+
+  for (const execution of executionOperationReferences(fn.body)) {
+    if (!sourceFunction(cat, adapter, execution.functionName, ownerType)) continue;
+    const resolved = resolvePartnerIngress(cat, adapter, execution.functionName, ownerType, nextVisited);
+    if (resolved) {
+      return {
+        ...resolved,
+        ingressExecution: execution,
+        doorwayChain: [functionName, execution.functionName, ...(resolved.doorwayChain ?? [resolved.functionName])],
+      };
+    }
+  }
+
+  for (const call of directMemberCalls(fn.body)) {
+    if (['toString', 'copy', 'also', 'let', 'map', 'filter'].includes(call.functionName)) continue;
+    const nestedOwner = receiverTypeInSource(fn.text, call.receiver);
+    if (!sourceFunction(cat, adapter, call.functionName, nestedOwner)) continue;
+    const resolved = resolvePartnerIngress(cat, adapter, call.functionName, nestedOwner, nextVisited);
+    if (resolved) return { ...resolved, doorwayChain: [functionName, ...(resolved.doorwayChain ?? [resolved.functionName])] };
+  }
+  return null;
+}
+
+function resolvePartnerFamilyRequest(cat, adapter, functionName, ownerType = null, visited = new Set()) {
+  const visitKey = (ownerType ?? '?') + ':' + functionName;
+  if (visited.has(visitKey) || visited.size > 5) return null;
+  const nextVisited = new Set(visited);
+  nextVisited.add(visitKey);
+  const fn = sourceFunction(cat, adapter, functionName, ownerType);
+  if (!fn) return null;
+
+  const activation = /\b([a-z]\w*)\s*\.\s*activate\s*\(\s*([A-Z]\w*Family)\s*\.\s*Control\s*\.\s*(\w+)\s*\(/.exec(fn.body);
+  if (activation) {
+    const familyType = activation[2];
+    const control = activation[3];
+    const family = familyRoot(cat, adapter, familyType);
+    const parsed = family ? parseFamily(cat, adapter, familyType) : null;
+    if (!family || !parsed) return null;
+    const effect = parsed.effects.includes(control) ? control : parsed.effects.length === 1 ? parsed.effects[0] : null;
+    const method = parsed.methods.find((entry) => entry.name === control) ?? (parsed.methods.length === 1 ? parsed.methods[0] : null);
+    if (!effect || !method) return null;
+    const partnerPattern = new RegExp(
+      'class\\s+' + escapeRegex(method.name) +
+        '\\s*\\([\\s\\S]{0,1000}?connection\\s*:\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection',
+    );
+    const partnerType = partnerPattern.exec(family.text)?.[1] ?? null;
+    const partner = partnerType ? partnerRoot(cat, adapter, partnerType) : null;
+    if (!partnerType || !partner) return null;
+    const authoredApproach =
+      new RegExp(
+        'begin(Earliest|Latest|Queued)?\\s*\\([\\s\\S]{0,800}?Effect\\s*\\.\\s*' + escapeRegex(effect) + '\\s*\\(',
+      ).exec(family.text)?.[1] ?? 'Independent';
+
+    return {
+      kind: 'FAMILY_REQUEST',
+      functionName,
+      functionSource: fn.source,
+      labSource: fn,
+      familyType,
+      family,
+      parsedFamily: parsed,
+      control,
+      effect,
+      method,
+      approach: authoredApproach,
+      partnerType,
+      partner,
+      signals: sealedMembers(partner.text, 'Signal'),
+    };
+  }
+
+  for (const call of directMemberCalls(fn.body)) {
+    const nestedOwner = receiverTypeInSource(fn.text, call.receiver);
+    if (!sourceFunction(cat, adapter, call.functionName, nestedOwner)) continue;
+    const resolved = resolvePartnerFamilyRequest(cat, adapter, call.functionName, nestedOwner, nextVisited);
+    if (resolved) return { ...resolved, doorwayChain: [functionName, ...(resolved.doorwayChain ?? [resolved.functionName])] };
+  }
+  return null;
+}
+
+function resolvePartnerAutomation(cat, adapter, doorway) {
+  if (!/toggle|enable|automation|rule/i.test(doorway.functionName)) return null;
+  const fn = sourceFunction(cat, adapter, doorway.functionName, doorway.receiverType);
+  if (!fn || !/VexExecution\.observe\s*\(/.test(fn.text)) return null;
+  const sourceFamilyType = /evaluate\w*State\s*\(\s*state\s*:\s*([A-Z]\w*Family)\.State/.exec(fn.text)?.[1] ?? null;
+  const requestMatch = /\b([a-z]\w*)\s*\.\s*(request\w+)\s*\(/.exec(fn.text);
+  const requestReceiver = requestMatch?.[1] ?? null;
+  const requestFunction = requestMatch?.[2] ?? null;
+  const requestOwner = requestReceiver ? receiverTypeInSource(fn.text, requestReceiver) : null;
+  const sourceFamily = sourceFamilyType ? familyRoot(cat, adapter, sourceFamilyType) : null;
+  const request = requestFunction ? resolvePartnerFamilyRequest(cat, adapter, requestFunction, requestOwner) : null;
+  if (!sourceFamilyType || !sourceFamily || !request) return null;
+  return {
+    kind: 'AUTOMATION',
+    functionName: doorway.functionName,
+    functionSource: fn.source,
+    labSource: fn,
+    sourceFamilyType,
+    sourceFamily,
+    request,
+  };
+}
+
+function followPartnerCircuit(cat, adapter, screen, element) {
+  const doorway = localEffectDoorway(screen, element);
+  if (!doorway) return null;
+  const automation = resolvePartnerAutomation(cat, adapter, doorway);
+  if (automation) return { ...doorway, ...automation };
+  const request = resolvePartnerFamilyRequest(cat, adapter, doorway.functionName, doorway.receiverType);
+  if (request) return { ...doorway, ...request };
+  const ingress = resolvePartnerIngress(cat, adapter, doorway.functionName, doorway.receiverType);
+  if (ingress) return { ...doorway, ...ingress };
+  return null;
 }
 
 /* ---------- pathway templates ---------- */
@@ -981,6 +1306,376 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     return ref;
   };
 
+
+  const partnerRef = (screen, element) => {
+    const local = element.symbol?.split('.').at(-1) ?? element.ref.split('.').at(-1);
+    return 'pathway.' + screen.screenKey + '.partner.' + typedRefToken(local);
+  };
+
+  const partnerIngressPathway = (screen, element, bond) => {
+    const ref = partnerRef(screen, element);
+    if (pathways.has(ref)) return ref;
+    const builder = new PathwayBuilder(
+      ref,
+      bond.partnerType.replace(/Partner$/, '') + ' · ' + (element.label ?? humanize(bond.functionName)),
+      'PARTNER_CIRCUIT',
+    );
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'The registered Lab control injects source activity; it is not a fake Family Control.',
+      source: screen.source,
+    });
+    const doorwayLabel = (bond.doorwayChain ?? [bond.functionName]).join(' → ') + '()';
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', doorwayLabel, {
+      symbol: bond.functionName,
+      summary: 'Screen-local lab doorway into the source-proven Partner relationship.',
+      source: bond.functionSource,
+    });
+    const state = builder.node('state', 'BEHAVIOR', 'STATE', bond.familyType + '.State', {
+      symbol: bond.familyType + '.State',
+      summary: 'Family semantic truth is interpreted only after Partner evidence has crossed Store.',
+      source: bond.family.source,
+    });
+    const projection = builder.node('projection', 'BEHAVIOR', 'PROJECTION', bond.familyType + '.DisplayState', {
+      symbol: bond.familyType + '.displayStateFor',
+      summary: 'The Family projects the admitted semantic result back toward the human-facing Surface.',
+      source: bond.family.source,
+    });
+
+    const partner = builder.node('partner', 'DEPTH', 'PARTNER', bond.partnerType, {
+      symbol: bond.partnerType,
+      summary: 'Independently owned external participant. Source/Target are directional roles, not its permanent identity.',
+      source: bond.partner.source,
+    });
+    const connection = builder.node('connection', 'DEPTH', 'CONNECTION', bond.partnerType + '.Connection', {
+      symbol: bond.partnerType + '.Connection',
+      summary: 'Live typed relationship for this Partner and its Signal vocabulary.',
+      source: bond.partner.source,
+    });
+    const admissionExecution = bond.ingressExecution
+      ? builder.node('admission-execution', 'DEPTH', 'EXECUTION', 'VexExecution · ' + bond.ingressExecution.approach + ' inbound admission', {
+          symbol: 'VexExecution.' + bond.ingressExecution.api,
+          summary:
+            'The live Connection owns an active runtime relationship lane (' +
+            (bond.ingressExecution.relationshipId ?? 'private relationship') +
+            '). It sequences receipt/admission work but is not the persisted Connection.Id.',
+          source: adapter.sources.vexExecution ?? bond.labSource.source,
+        })
+      : null;
+
+    const conversion = builder.node('conversion', 'DEPTH', 'CONVERSION', bond.conversion.symbol, {
+      symbol: bond.conversion.symbol,
+      summary: 'Concrete provider representation becomes zero or more Signals in the same Partner vocabulary.',
+      source: bond.partner.source,
+    });
+    const source = bond.source
+      ? builder.node('source', 'DEPTH', 'SOURCE', bond.source, {
+          symbol: bond.source,
+          summary: 'Partner-owned origin coordinate carried by the external statement; transport does not own it.',
+          source: bond.partner.source,
+        })
+      : null;
+    const signalLabel = bond.signals.length
+      ? bond.partnerType + '.Signal · ' + bond.signals.join(' | ')
+      : bond.partnerType + '.Signal';
+    const signal = builder.node('signal', 'DEPTH', 'SIGNAL', signalLabel, {
+      symbol: bond.partnerType + '.Signal',
+      summary: 'What the Partner communicated in its domain vocabulary; not Family State.',
+      source: bond.partner.source,
+    });
+    const observation = builder.node('observation', 'DEPTH', 'OBSERVATION', bond.partnerType + '.Connection.Observation', {
+      symbol: bond.partnerType + '.Connection.Observation',
+      summary: 'One encounter of one Signal through one exact typed Connection identity.',
+      source: bond.partner.source,
+    });
+    const receiver = builder.node('receiver', 'DEPTH', 'RECEIVER', bond.partnerType + '.Connection.Receiver', {
+      symbol: bond.partnerType + '.Connection.Receiver',
+      summary: 'Partner-side inbound handoff before domain Store admission.',
+      source: bond.partner.source,
+    });
+    const store = builder.node('store', 'DEPTH', 'STORE', bond.storeType, {
+      symbol: bond.storeType,
+      summary: 'Admitted domain truth persists independently of both Partner and Family semantics.',
+      source: bond.store.source,
+    });
+    const listener = builder.node('listener', 'DEPTH', 'EXECUTION', 'VexExecution.observe(store::snapshots)', {
+      symbol: 'VexExecution.observe',
+      summary: 'Sustained listener custody is source-addressed by the exact Flow + live owner; it does not mint a Family ResourceId.',
+      source: adapter.sources.vexExecution ?? bond.labSource.source,
+    });
+
+    builder.edge(intent, doorway, 'lab control');
+    builder.edge(doorway, partner, 'synthetic source');
+    builder.edge(partner, connection, 'representation');
+    builder.edge(connection, admissionExecution ?? conversion, admissionExecution ? bond.ingressExecution.approach : 'convert');
+    if (admissionExecution) builder.edge(admissionExecution, conversion, 'invoke receipt');
+
+    builder.edge(conversion, signal, '0..N Signals');
+    if (source) {
+      builder.edge(partner, source, 'owns', 'SIDE');
+      builder.edge(source, signal, 'origin', 'DATA');
+    }
+    builder.edge(signal, observation, 'encounter');
+    builder.edge(observation, receiver, 'receive');
+    builder.edge(receiver, store, 'commit');
+    builder.edge(store, listener, 'Flow');
+    builder.edge(listener, state, bond.observeStore ?? 'interpret', 'RETURN');
+    builder.edge(state, projection, 'projects');
+
+    builder.pathway.summary =
+      'Partner ingress stays outside Family semantics until Observation / Receiver / Store make truthful domain evidence available.';
+    builder.pathway.returnRef = projection;
+    builder.pathway.returns = 'Family DisplayState projects the admitted Store truth back toward the same Lab Surface.';
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({
+      elementRef: element.ref,
+      via: 'PARTNER_INGRESS',
+      partner: bond.partnerType,
+      family: bond.familyType,
+      store: bond.storeType,
+      conversion: bond.conversion.symbol,
+      source: bond.source,
+      ...(bond.ingressExecution
+        ? {
+            executionApproach: bond.ingressExecution.approach,
+            executionRelationship: bond.ingressExecution.relationshipId,
+          }
+        : {}),
+    });
+    return ref;
+  };
+
+  const partnerFamilyRequestPathway = (screen, element, bond) => {
+    const ref = partnerRef(screen, element);
+    if (pathways.has(ref)) return ref;
+    const family = bond.parsedFamily;
+    const builder = new PathwayBuilder(
+      ref,
+      bond.familyType.replace(/Family$/, '') + ' · ' + bond.control,
+      'PARTNER_CIRCUIT',
+    );
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'The custom Lab Surface forwards a real Family request rather than writing Partner truth directly.',
+      source: screen.source,
+    });
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', (bond.doorwayChain ?? [bond.functionName]).join(' → ') + '()', {
+      symbol: bond.functionName,
+      summary: 'Lab doorway into the existing Family semantic circuit.',
+      source: bond.functionSource,
+    });
+    const parameter = family.parameters[0]
+      ? builder.node('parameter', 'BEHAVIOR', 'CONTROL', 'Parameter.' + family.parameters[0], {
+          symbol: bond.familyType + '.Parameter.' + family.parameters[0],
+          summary: 'Family-owned semantic value carried through Control, Effect and bound Method.',
+          source: bond.family.source,
+        })
+      : null;
+    const control = builder.node('control', 'BEHAVIOR', 'CONTROL', 'Control.' + bond.control, {
+      symbol: bond.familyType + '.Control.' + bond.control,
+      summary: 'Family-owned semantic request.',
+      source: bond.family.source,
+    });
+    const state = builder.node('state', 'BEHAVIOR', 'STATE', 'CURRENT ' + bond.familyType + '.State', {
+      symbol: bond.familyType + '.State',
+      summary: 'Exact current semantic truth against which the Control is resolved.',
+      source: bond.family.source,
+    });
+    const act = builder.node('act', 'BEHAVIOR', 'ACT', bond.familyType + '.act(State, Control)', {
+      symbol: 'VexFamily.activate',
+      summary: SUMMARY.act,
+      source: bond.family.source,
+    });
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + bond.approach + ' · Effect.' + bond.effect + ')', {
+      symbol: bond.familyType + '.Effect.' + bond.effect,
+      summary: 'The accepted Act already authored this Effect and its ' + bond.approach + ' overlap/order law before VexExecution runs.',
+      source: bond.family.source,
+    });
+    const diagnostic = builder.node('diagnostic', 'BEHAVIOR', 'PROJECTION', 'Partner acknowledgement · lab diagnostic', {
+      symbol: 'PumpRequestStatus',
+      summary: 'Method success is shown as provider acknowledgement only; Family delivery State remains unchanged.',
+      source: bond.labSource.source,
+    });
+
+    const method = builder.node('method', 'DEPTH', 'METHOD', 'Act.Method.' + bond.method.name + '(connection, parameter)', {
+      symbol: bond.familyType + '.Act.Method.' + bond.method.name,
+      summary: 'Fully bound Family Method carrying the same semantic Parameter into the Partner relationship.',
+      source: bond.family.source,
+    });
+    const execution = builder.node('execution', 'DEPTH', 'EXECUTION', 'act.launchWith(executionRoot).method(…)', {
+      symbol: 'VexExecution',
+      summary: 'Job custody for the accepted Family Act. Relationship identity comes from Family Control semantics.',
+      source: adapter.sources.vexExecution ?? bond.labSource.source,
+    });
+    const connection = builder.node('connection', 'DEPTH', 'CONNECTION', bond.partnerType + '.Connection', {
+      symbol: bond.partnerType + '.Connection',
+      summary: 'Concrete Partner relationship used by the bound Method.',
+      source: bond.partner.source,
+    });
+    const partner = builder.node('partner', 'DEPTH', 'PARTNER', bond.partnerType, {
+      symbol: bond.partnerType,
+      summary: 'Partner acts as target of the attempted Effect in this direction.',
+      source: bond.partner.source,
+    });
+    const result = builder.node('result', 'DEPTH', 'RESULT', 'VexMethod.Result · Partner acknowledgement', {
+      symbol: 'VexMethod.Result',
+      summary: 'Acknowledgement reports the Method attempt only. It does not manufacture a later Partner Signal.',
+      source: bond.family.source,
+    });
+
+    builder.edge(intent, doorway, 'custom handler');
+    if (parameter) builder.edge(doorway, parameter, 'forms');
+    builder.edge(parameter ?? doorway, control, 'Control');
+    builder.edge(state, act, 'CURRENT', 'DATA');
+    builder.edge(control, act, 'resolve');
+    builder.edge(act, effect, 'begins');
+    builder.edge(effect, method, 'binds');
+    builder.edge(method, execution, 'launch');
+    builder.edge(execution, connection, 'runs');
+    builder.edge(connection, partner, 'request');
+    builder.edge(partner, result, 'acknowledges');
+    builder.edge(result, diagnostic, 'status', 'RETURN');
+
+    builder.pathway.summary =
+      'Family semantics author the request; the Partner may acknowledge it, but durable outcome truth must return later through a Partner Signal pathway.';
+    builder.pathway.returnRef = diagnostic;
+    builder.pathway.returns = 'The Lab may show acknowledgement while Store and delivered-outcome Family State remain unchanged.';
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({
+      elementRef: element.ref,
+      via: 'PARTNER_FAMILY_REQUEST',
+      family: bond.familyType,
+      control: bond.control,
+      partner: bond.partnerType,
+    });
+    return ref;
+  };
+
+  const partnerAutomationPathway = (screen, element, bond) => {
+    const ref = partnerRef(screen, element);
+    if (pathways.has(ref)) return ref;
+    const request = bond.request;
+    const family = request.parsedFamily;
+    const builder = new PathwayBuilder(
+      ref,
+      'Partner feedback · ' + bond.sourceFamilyType.replace(/Family$/, '') + ' → ' + request.familyType.replace(/Family$/, ''),
+      'PARTNER_CIRCUIT',
+    );
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'This Lab toggle enables a synthetic cross-Family rule; it is not itself a product Family Control.',
+      source: screen.source,
+    });
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', bond.functionName + '()', {
+      symbol: bond.functionName,
+      summary: 'Enables or disables the lab-owned feedback rule.',
+      source: bond.functionSource,
+    });
+    const sourceState = builder.node('source-state', 'BEHAVIOR', 'STATE', bond.sourceFamilyType + '.State', {
+      symbol: bond.sourceFamilyType + '.State',
+      summary: 'Semantic source truth observed by the feedback rule.',
+      source: bond.sourceFamily.source,
+    });
+    const rule = builder.node('rule', 'BEHAVIOR', 'DISPATCH', 'synthetic threshold rule · lab only', {
+      symbol: 'SyntheticRule',
+      summary: 'Fixture-only convergence rule. It does not own either Family and is not clinical policy.',
+      source: bond.labSource.source,
+    });
+    const targetControl = builder.node('control', 'BEHAVIOR', 'CONTROL', request.familyType + '.Control.' + request.control, {
+      symbol: request.familyType + '.Control.' + request.control,
+      summary: 'Cross-Family reaction enters the target semantic owner through its lawful Control.',
+      source: request.family.source,
+    });
+    const targetState = builder.node('target-state', 'BEHAVIOR', 'STATE', 'CURRENT ' + request.familyType + '.State', {
+      symbol: request.familyType + '.State',
+      summary: 'Target Family resolves the Control against its own exact current State.',
+      source: request.family.source,
+    });
+    const act = builder.node('act', 'BEHAVIOR', 'ACT', request.familyType + '.act(State, Control)', {
+      symbol: 'VexFamily.activate',
+      summary: SUMMARY.act,
+      source: request.family.source,
+    });
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + request.approach + ' · Effect.' + request.effect + ')', {
+      symbol: request.familyType + '.Effect.' + request.effect,
+      summary: 'The target Family authors the Effect and its ' + request.approach + ' overlap/order law before realization.',
+      source: request.family.source,
+    });
+    const diagnostic = builder.node('diagnostic', 'BEHAVIOR', 'PROJECTION', 'AutomationStatus · acknowledgement only', {
+      symbol: 'AutomationStatus',
+      summary: 'Visible lab status distinguishes requested/acknowledged from later observed outcome.',
+      source: bond.labSource.source,
+    });
+
+    const listener = builder.node('listener', 'DEPTH', 'EXECUTION', 'VexExecution.observe(' + bond.sourceFamilyType + '.states)', {
+      symbol: 'VexExecution.observe',
+      summary: 'Long-lived listener uses exact Flow source + live owner. No Family ResourceId is minted for listener custody.',
+      source: adapter.sources.vexExecution ?? bond.labSource.source,
+    });
+    const method = builder.node('method', 'DEPTH', 'METHOD', 'Act.Method.' + request.method.name + '(connection, parameter)', {
+      symbol: request.familyType + '.Act.Method.' + request.method.name,
+      summary: 'Target Family Method realizes the authored Effect through the Partner Connection.',
+      source: request.family.source,
+    });
+    const execution = builder.node('execution', 'DEPTH', 'EXECUTION', 'act.launchWith(executionRoot).method(…)', {
+      symbol: 'VexExecution',
+      summary: 'Family-authored active-work identity controls the Method Job; this is distinct from listener source addressing.',
+      source: adapter.sources.vexExecution ?? request.labSource.source,
+    });
+    const connection = builder.node('connection', 'DEPTH', 'CONNECTION', request.partnerType + '.Connection', {
+      symbol: request.partnerType + '.Connection',
+      summary: 'Concrete relationship to the target Partner.',
+      source: request.partner.source,
+    });
+    const partner = builder.node('partner', 'DEPTH', 'PARTNER', request.partnerType, {
+      symbol: request.partnerType,
+      summary: 'Partner is the target of this attempted Effect; physical outcome remains independently observed later.',
+      source: request.partner.source,
+    });
+    const result = builder.node('result', 'DEPTH', 'RESULT', 'Partner acknowledgement', {
+      symbol: 'VexMethod.Result',
+      summary: 'Acknowledgement is not physical outcome and does not update durable delivery truth.',
+      source: request.family.source,
+    });
+
+    builder.edge(intent, doorway, 'enable');
+    builder.edge(doorway, rule, 'rule state');
+    builder.edge(sourceState, listener, 'Flow', 'DATA');
+    builder.edge(listener, rule, 'State change', 'RETURN');
+    builder.edge(rule, targetControl, 'threshold met');
+    builder.edge(targetState, act, 'CURRENT', 'DATA');
+    builder.edge(targetControl, act, 'resolve');
+    builder.edge(act, effect, 'begins');
+    builder.edge(effect, method, 'binds');
+    builder.edge(method, execution, 'launch');
+    builder.edge(execution, connection, 'runs');
+    builder.edge(connection, partner, 'request');
+    builder.edge(partner, result, 'acknowledges');
+    builder.edge(result, diagnostic, 'status', 'RETURN');
+
+    builder.pathway.summary =
+      'A source-addressed listener reacts to one Family State but may influence another domain only by entering that Family through Control; it never bypasses directly to the Partner.';
+    builder.pathway.returnRef = diagnostic;
+    builder.pathway.returns =
+      'The Screen can show requested/acknowledged status; physical outcome still requires the separate Partner Signal return pathway.';
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({
+      elementRef: element.ref,
+      via: 'PARTNER_AUTOMATION',
+      sourceFamily: bond.sourceFamilyType,
+      targetFamily: request.familyType,
+      partner: request.partnerType,
+    });
+    return ref;
+  };
+
+  const partnerCircuitPathway = (screen, element, bond) => {
+    if (bond.kind === 'INGRESS') return partnerIngressPathway(screen, element, bond);
+    if (bond.kind === 'FAMILY_REQUEST') return partnerFamilyRequestPathway(screen, element, bond);
+    if (bond.kind === 'AUTOMATION') return partnerAutomationPathway(screen, element, bond);
+    return null;
+  };
+
   const directPathway = (actionKey, registration) => {
     const ref = `pathway.${actionKey.replace(/^action\./, '')}`;
     const builder = new PathwayBuilder(ref, humanize(registration.actionName), 'DIRECT_REGISTRATION');
@@ -1050,9 +1745,14 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       return element;
     }
     if (steps.length === 1 && steps[0].op === 'localEffect') {
-      const bond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
-      if (bond) {
-        element.pathwayRef = behaviorPortPathway(screen, element, bond);
+      const behaviorBond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
+      if (behaviorBond) {
+        element.pathwayRef = behaviorPortPathway(screen, element, behaviorBond);
+        return element;
+      }
+      const partnerBond = screen ? followPartnerCircuit(cat, adapter, screen, element) : null;
+      if (partnerBond) {
+        element.pathwayRef = partnerCircuitPathway(screen, element, partnerBond);
         return element;
       }
       report.held.push({ elementRef: element.ref, reason: 'localEffect relationship is declared but its deeper semantic relationship is not source-proven' });

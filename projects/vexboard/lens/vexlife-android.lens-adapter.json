@@ -33,7 +33,11 @@
     "app:preview/",
     "arch:elements/src/main/kotlin/",
     "golden:",
-    "journey:testing/journey/catalog/"
+    "journey:testing/journey/catalog/",
+    "app:cgm/",
+    "app:insulin/",
+    "app:partnerlab/",
+    "app:data/cgm/"
   ],
   "stringResources": [
     "app/src/main/res/values/strings.xml"
