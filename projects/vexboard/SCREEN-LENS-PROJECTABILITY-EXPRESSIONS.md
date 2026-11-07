@@ -1234,6 +1234,12 @@ DONE
   -> VexWork PR #265 / #266
 
 DONE
+  expression interaction/composition restored to the takeover packet's carousel shape
+  -> VexWork PR #270
+  -> exact Brave desktop/mobile lived proof before READY
+  -> deployed Pages bytes exact to the proven candidate
+
+DONE
   bounded Android-derived VexStream expression currentness
   -> VexWork PR #268
 
