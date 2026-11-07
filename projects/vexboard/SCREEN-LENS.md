@@ -100,8 +100,8 @@ The Partner patient zero adds depth to the existing Behavior side rather than an
 Behavior                         Depth
 
 Family Control / State / Act     Family Method / VexExecution
-Family Effect                    Partner Connection / Decoder
-                                 Partner / Signal / Observation / Receiver
+Family Effect                    Partner Connection / Conversion
+                                 Partner / Source / Signal / Observation / Receiver
                                  Store
 Family State  <----------------- source-addressed Store observation
 ```
@@ -112,7 +112,7 @@ For inbound Partner activity, the pathway may begin on Depth and return to Famil
 Partner
 -> Connection
 -> VexExecution · Queued inbound RelationshipId lane
--> Decoder
+-> concrete Conversion
 -> Signal
 -> Observation
 -> suspend Receiver
@@ -159,6 +159,18 @@ Family consequence
 
 Do not persist a runtime RelationshipId as Partner history and do not mint a Family ResourceId merely
 to keep a Store listener alive.
+
+Provider representation divergence ends at Conversion when source proves equivalence:
+
+```text
+BLE-like ByteArray -> CgmPartner.Connection.BleDecoder  --\
+                                                        +-> CgmPartner.Source + Signal
+HTTP-like body    -> CgmPartner.Connection.HttpDecoder --/
+                                                        -> same Observation / Receiver / Store / Family
+```
+
+`SOURCE` is projected as carried lineage/data, not another execution hop. Distinct Connection IDs
+remain visible even when the Partner Signal values are equal.
 
 A cross-Family feedback rule must also preserve ownership. Source-derived State from one Family may
 cause a convergence/lab rule to activate another Family's Control; the projector must never shorten
