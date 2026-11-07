@@ -11,47 +11,66 @@ cloud services, time, retries, versions and multiple devices?
 
 The first demonstrator should not require real AWS or public network infrastructure.
 
+The architecture is fractal by scope rather than one generic cloud manager:
+
 ```text
-VexLife-Android
+VexLife-Android / process composition
 │
-├─ product/domain operation
+├─ NetworkConnectivityRelay
+│      device-level network relationship truth
 │
-├─ local durable projection
+├─ VexService(service.cloud.synthetic)        [candidate graduated component]
+│   ├─ ServiceConnectivityRelay
+│   ├─ synthetic protocol/API realization
+│   └─ service-local observers / automation inputs where earned
 │
-└─ pending-operation / outbox boundary
-        │
-        │ attempt
-        v
-Cloud Connectivity Port
-        │
-        v
+└─ product Family
+    ├─ CURRENT State + Control
+    ├─ Family.act(...)
+    ├─ admitted semantic State + Begin(Effect, Approach)
+    └─ bound Family.Act.Method
+             │
+             v
+        VexExecution
+             │
+             v
+        exact VexService/API realization
+             │
+             v
 Synthetic Network
   online / offline / timeout / flap / latency / response loss
-        │
-        v
+             │
+             v
 Synthetic Cloud API Ingress
   contract + version + auth envelope
-        │
-        v
+             │
+             v
 Synthetic Domain Service
   validates current operation
   owns cloud-domain effect meaning
-        │
-        ├─ Structured Store
-        └─ Object Store
-        │
-        v
-Cloud Observation
-        │
-        v
-Android Reconciliation
-        │
-        v
-Current local projection
+             │
+             ├─ Structured Store
+             └─ Object Store
+             │
+             v
+validated provider / cloud observation
+             │
+             v
+rightful currentness + semantic interpretation
+             │
+             ├─ Family.observe(already-semantic State)
+             └─ Relay input where relationship truth changed
+             │
+             v
+Projection / VexBoard / UI
 ```
 
 Full Security intersects at the identity/session/capability/secret/service-trust boundaries; it does
 not own sync semantics.
+
+Cloud Connectivity design uses the accepted stable `VexFamily.act(...) -> admit(State, Begin)` grammar.
+VexStream remains pressure evidence for delayed-provider reconciliation and local/offline truth rather
+than the source of a second chained semantic grammar.
 
 ## Important identities
 
@@ -62,8 +81,8 @@ principalRef
 deviceRef
 installationRef
 
-operationRef          stable human/product operation
-attemptRef            one carriage attempt
+operationRef          stable human/product operation when retry/restart/deduplication requires it
+attempt occurrence    active Job + VexLogger chronology first; durable/public attempt ID only if later earned
 idempotencyKey        operation-scoped duplicate protection when appropriate
 
 apiContractRef
@@ -82,6 +101,67 @@ correlation/evidence refs
 ```
 
 Do not require these exact field names in implementation. Preserve the semantic distinctions.
+
+## Reusable scope map
+
+```text
+DEVICE
+    NetworkConnectivityRelay
+        shared current device/network relationship
+
+SERVICE
+    VexService(serviceRef) candidate
+    + ServiceConnectivityRelay(serviceRef)
+        one independently-scoped external service relationship
+
+OPERATION
+    rightful Family
+    + admitted semantic State
+    + Family.Act.Method
+    + VexMethod.Result
+        one operation/attempt meaning without poisoning shared service truth
+```
+
+Simultaneous truth must be representable:
+
+```text
+NetworkConnectivity = Available
+
+VexCloud = Available
+    Measurement M1 = Failure(ValidationRejected)
+    Conversation C1 = Success(Appended)
+
+VexStream Desktop = Unavailable
+    Media refresh cannot currently proceed
+```
+
+### Background automation
+
+```text
+OS schedule / timer observation ----\
+NetworkConnectivity -----------------\
+ServiceConnectivity ------------------+-> service/background convergence
+pending durable work ----------------/
+OS power/background eligibility -----/
+                                        |
+                                        v
+                              work currently eligible
+```
+
+When the work has semantic Family meaning:
+
+```text
+hidden/debug human action --------\
+periodic automation condition -----+-> same Family Control
+                                     -> Family.act(...)
+                                     -> admitted State + Begin
+```
+
+When no semantic Family question exists, infrastructure work may use `VexMethod + VexExecution +
+VexService` directly without manufacturing a Family.
+
+See `VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md` for the complete ownership map and VexLogger /
+announcement examples.
 
 ## Core laws
 
