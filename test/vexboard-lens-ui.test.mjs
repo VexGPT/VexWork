@@ -180,6 +180,19 @@ test('expression carousel preserves the lived desktop and phone-width interactio
   assert.match(page, /ondblclick: \(\) => \(element\.navigatesTo \? travel\(element\) : exposeElement\(element\.ref\)\)/, 'Structure double-click traverses to that source-derived expression');
 });
 
+test('expression stepping animates the whole three-card carousel handoff instead of teleporting neighbours', () => {
+  assert.match(page, /--x-shift:356px/);
+  assert.match(page, /@keyframes x-center-from-next/);
+  assert.match(page, /@keyframes x-center-to-prev/);
+  assert.match(page, /@keyframes x-center-to-next/);
+  assert.match(page, /@keyframes x-outer-from-next/);
+  assert.match(page, /@keyframes x-outer-from-prev/);
+  assert.match(page, /\.xstage\.enter-next \.xpeek\.prev\{animation:x-center-to-prev/);
+  assert.match(page, /\.xstage\.enter-prev \.xpeek\.next\{animation:x-center-to-next/);
+  assert.match(page, /prefers-reduced-motion:reduce\)[\s\S]*\.xstage \.xpeek/);
+  assert.doesNotMatch(page, /translateX\(64px\)/, 'the old center-only nudge is gone');
+});
+
 test('screen travel resets presentation context without inventing cross-Screen State', () => {
   assert.match(page, /function travel\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
   assert.match(page, /function jumpTo\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
