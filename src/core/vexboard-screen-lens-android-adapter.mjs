@@ -793,7 +793,7 @@ function partnerHasSource(partnerText, partnerType) {
 
 function signalsCarryPartnerSource(partnerText) {
   const signalBlock = blockAfter(partnerText, /sealed\s+interface\s+Signal\b/);
-  return Boolean(signalBlock && /\bval\s+source\s*:\s*Source\b/.test(signalBlock));
+  return Boolean(signalBlock && /\bval\s+source\s*:\s*Source\b/.test(signalBlock.body));
 }
 
 
