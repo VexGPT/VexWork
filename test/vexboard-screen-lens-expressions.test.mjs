@@ -88,8 +88,29 @@ test('source-default expression resolves only source-owned defaults for the mode
   assert.deepEqual(resolved.surface.runtimeItems, []);
   assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body'));
   assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body.connection'));
+  assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body.library-tabs'));
+  assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body.library'));
   assert.ok(resolved.surface.elementRefs.includes('element.vexstream-music.body.library.songs'));
   assert.deepEqual(resolved.structure.elementRefs, resolved.surface.elementRefs);
+});
+
+test('library containers belong to library selection rather than the Paired condition', () => {
+  const sourceDefaults = resolve(SOURCE_DEFAULTS);
+  const paired = resolve('expression.vexstream.paired');
+
+  for (const ref of [
+    'element.vexstream-music.body.library-tabs',
+    'element.vexstream-music.body.library',
+  ]) {
+    assert.ok(sourceDefaults.surface.elementRefs.includes(ref));
+    assert.ok(paired.surface.elementRefs.includes(ref));
+  }
+
+  const connection = fixture.relationships.find(
+    (entry) => entry.relationshipRef === 'relationship.vexstream.connection.state',
+  );
+  const pairedValue = connection.values.find((entry) => entry.valueRef === 'connection.paired');
+  assert.deepEqual(pairedValue.elementRefs, []);
 });
 
 test('Songs populated keeps runtime track identity outside static Screen registration', () => {
