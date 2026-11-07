@@ -178,6 +178,11 @@ AUTHORIZED != SYNCHRONIZED
 API_VERSION != APP_VERSION
 PARSEABLE != COMPATIBLE
 OBSERVABILITY != AUTHORITY
+
+LAB_UI != CONTRACT_OWNER
+SESSION_DRAFT != CONTRACT_EVOLUTION
+OUTWARD_SCOPE != FEATURE_PAYLOAD
+SCHEMA_VALID != CURRENTLY_AUTHORIZED
 ```
 
 ## Scenario set
@@ -416,6 +421,49 @@ VexStream Desktop ServiceConnectivity = Unavailable
 One operation failure must not poison shared service/network truth, and one service failure must not
 poison sibling services.
 
+### C37 — contract workbench composes only admitted protocol shapes
+
+```text
+human selects:
+    VexCloud
+    -> Global Announcement
+    -> contract announcement/vN
+
+Lab derives:
+    minimum valid fields
+    richer / maximum valid fields
+    exact enum members / ranges / patterns / conditional rules
+    lawful error forms
+    lawful outward scopes
+
+human:
+    starts from minimum
+    adds admitted optional fields
+    edits values
+    selects Device(deviceRef)
+    validates
+    dispatches to synthetic realization
+
+synthetic API:
+    consumes the same accepted contract shape
+    returns lawful provider/domain observation
+
+Lab:
+    projects result
+    offers VexBoard descent
+```
+
+A session-local attempt to invent `newField` is not accepted merely because JSON can represent it:
+
+```text
+newField typed in Lab
+!= accepted API contract evolution
+```
+
+Changing field vocabulary, enum members, constraints or request/error structure requires deliberate
+contract/version work across the rightful server/API and Android consumers before it becomes a valid
+Lab option.
+
 ## VexLife-Prod AppSelector experience pressure
 
 Current source doorway:
@@ -440,6 +488,8 @@ selected workspace application
 Cloud Connectivity may eventually expose projections such as:
 
 ```text
+Service Feature Library
+Contract Workbench
 Topology
 Operations
 Sync
