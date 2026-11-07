@@ -4,9 +4,9 @@
 
 **Work:** work.vexboard.screen-lens-projectability-expressions  
 **Parent:** work.vexboard.source-projectors  
-**Plan state:** PLAN_VALIDATED  
-**Implementation authority:** NO_AUTHORITY  
-**Implementation effects:** NO_EFFECTS
+**Plan state:** RUNNING  
+**Implementation authority:** AUTHORIZED_BOUNDED  
+**Implementation effects:** EFFECTS_BOUND
 
 This source preserves the current intention and implementation reasoning for the next Living Screen Lens evolution without reopening the completed Screen Lens currentness/projection-truth work and without activating the parked Scenario Playground.
 
@@ -559,7 +559,7 @@ VexArchitecture at Vextreme main dac1378f95b9c77091b4a63b0ceba8705e018572:
 ## Current continuation
 
 ~~~text
-PLAN_VALIDATED / implementation NO_AUTHORITY / NO_EFFECTS
+RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
 
 next:
   preserve baseline invariants
@@ -575,6 +575,6 @@ Scenario Playground remains:
   CAPTURED / PARKED / NO_AUTHORITY / NO_EFFECTS
 ~~~
 
-This work becomes implementation-active only through a later exact authority-bearing transition. Recording the plan does not authorize Android or VexBoard product mutation.
+Victor's 2026-11-06/07 continuation explicitly activated this bounded implementation. The successor plan remains the membrane: Android/VexBoard changes outside its earned relationships require a new justification rather than silent scope widening.
 
 <!-- [VXG RealForever][VEXBOARD][SCREEN-LENS][PROJECTABILITY][EXPRESSIONS][SUCCESSOR-PLAN] -->
