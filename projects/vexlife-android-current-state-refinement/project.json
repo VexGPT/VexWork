@@ -35,7 +35,11 @@
     "work.vexlife-android.current-state-refinement.semantic-family-convergence.maps-mode",
     "github.pull.vexlife-android.220",
     "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorBlueprint.kt",
-    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "work.vexlife-android.current-state-refinement.semantic-family-convergence.repeat",
+    "github.pull.vexlife-android.221",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatFamily.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/Media3VexStreamRepeatConnection.kt"
   ],
   "formedAt": "2026-10-24T08:50:00.000Z"
 }
