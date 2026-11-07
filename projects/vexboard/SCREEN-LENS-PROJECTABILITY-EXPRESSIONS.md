@@ -248,6 +248,226 @@ arbitrary Kotlin
 
 The existing Screen Lens direction still points toward Android eventually exposing more of its own lawful projection from rightful runtime/source registries when repeated pressure earns that source contract.
 
+## Behavior face convergence boundary — two accepted Android grammars
+
+A later architecture review exposed one material constraint for the Screen Lens **Behavior** face.
+
+Current VexLife-Android main at
+305a09eac1fabebcf2241bd207386950f41121f2 intentionally contains two accepted behavior
+foundations:
+
+~~~text
+Direct VexFamily
+    newer direct model
+    CURRENT State + Control
+    -> act(...)
+    -> exact admitted State VALUE
+    -> optional Begin(Effect, Approach)
+
+existing VexBehaviorFamily / SCAE
+    still has production consumers
+    current State + Act
+    -> Effect + admitted State KIND
+    -> concrete Connection constructs the admitted State VALUE
+~~~
+
+This coexistence is **not** treated as accidental stale code by current repository source.
+architecture/behavior/README.md explicitly says:
+
+~~~text
+existing VexBehaviorFamily / SCAE
+    accepted
+    still has production consumers
+
+Direct VexFamily
+    accepted
+    owns the newer direct State + Control -> Act relationship model
+
+migration/evolution remains consumer-driven
+~~~
+
+At the same time, architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md still calls the
+VexBehaviorBlueprint/SCAE package construction the canonical pattern for one local SCAE Behavior
+family, while the package front door says conflicting older exposition yields to
+FAMILY-CIRCUIT.md, VexFamily.kt, and current tests.
+
+The public VexArchitecture guide makes the intended authority distinction explicit:
+
+~~~text
+ThemeMode
+    accepted patient zero / stable body
+
+VexStream Playback
+    current-source exemplar
+
+VexMaps Distribution
+    current-source exemplar
+
+VexStream + Maps
+    useful pressure surfaces
+    NOT declared migrated by the stable-body guide
+~~~
+
+### What differs materially
+
+Direct VexFamily owns exact semantic admission at the semantic decision point:
+
+~~~kotlin
+override fun act(
+    currentState: ThemeMode,
+    control: Control,
+): Act? =
+    ...
+        admit(
+            control.mode.mode,
+            begin = beginLatest(effect),
+        )
+~~~
+
+So the accepted Act can answer:
+
+~~~text
+exact CURRENT State
++ exact Control
+-> exact admitted State VALUE
++ Effect
++ execution Approach
+~~~
+
+The existing VexBehaviorBlueprint instead authors:
+
+~~~kotlin
+state<Current> {
+    on(
+        act = Act,
+        effect = Effect,
+    ).admit<NextState>()
+}
+~~~
+
+and its relationship stores:
+
+~~~text
+from State KIND
+Act
+Effect
+admitted State KIND
+condition
+~~~
+
+The concrete Connection may then construct the actual admitted State value from runtime data and
+checks that the value matches admittedStateKind.
+
+That is a real ownership difference, not merely alternate Kotlin syntax.
+
+### Screen Lens projection rule
+
+Until consumer-driven convergence establishes otherwise, Screen Lens must **not collapse these two
+grammars into one invented canonical Behavior schema**.
+
+Instead, project what each rightful source actually proves.
+
+For Direct VexFamily:
+
+~~~text
+Behavior
+    Control + exact CURRENT State
+    -> accepted Act
+    -> exact admitted State value if authored
+    -> Effect / Approach / RelationshipId where present
+~~~
+
+For existing SCAE / VexBehaviorBlueprint consumers:
+
+~~~text
+Behavior
+    current State
+    -> resolved Act
+    -> Effect
+    -> admitted State kind constraint
+
+Depth / realization
+    concrete Connection
+    -> constructs the actual admitted State value
+    -> realizes provider Effect
+    -> reconciles provider observation
+~~~
+
+Permanent projection distinction:
+
+~~~text
+ADMITTED_STATE_VALUE
+!=
+ADMITTED_STATE_KIND
+
+SEMANTIC_ADMISSION_OWNER
+!=
+CONNECTION_REALIZATION_OWNER
+
+CURRENT_SOURCE_EXEMPLAR
+!=
+STABLE_BODY_MIGRATED_CONSUMER
+~~~
+
+If the source reader sees VexBehaviorBlueprint.admittedStateKind, it must not manufacture an
+exact State value or imply that the stable Direct-Family ownership law is present there.
+
+If a future Android migration moves VexStream/Maps onto Direct VexFamily, the adapter should
+observe that source change naturally rather than carrying a permanent translation fiction.
+
+### What this means for the current Android patient zero
+
+The first Android implementation slice under PR #212 remains valid and intentionally independent of
+this convergence question.
+
+That candidate changes only:
+
+~~~text
+stable repeated-item mechanics
+Songs / Downloads repeated-item realization
+VexStream collection-card semantic presentation continuity
+~~~
+
+It does not alter:
+
+~~~text
+VexBehaviorBlueprint
+VexBehaviorFamily
+VexPort
+Media3VexStreamPlaybackConnection
+VexStream Playback behavior admission
+ThemeMode / Direct VexFamily
+~~~
+
+Therefore the SourceOwner proof for that four-path candidate may proceed without first resolving
+the dual behavior foundation.
+
+However, **Phase 2 / Phase 3 Behavior-face expression mapping is now gated by this distinction**:
+the VexBoard contract must preserve exact-value versus kind-only admission rather than normalizing
+both into one field.
+
+### Future convergence pressure
+
+Do not migrate VexStream merely to make Screen Lens simpler.
+
+A VexStream/Maps migration is earned only if product/architecture consumer pressure shows that
+Direct VexFamily expresses their richer runtime requirements more truthfully while preserving
+requirements already discovered by the current SCAE body, including:
+
+~~~text
+pending semantic intent surviving stale/delayed provider observation
+provider-specific currentness/reconciliation
+same-State-kind data/flavor changes
+conditional relationships over exact current values
+connection lifetime and provider reality
+~~~
+
+Those requirements are evidence. The older mechanism is not automatically the future template.
+
+For a new semantic family such as Cloud/Network Connectivity, architecture formation should start
+from the accepted Direct VexFamily body and pressure its exact State-value admission model against
+the real provider/runtime requirements before borrowing VexBehaviorBlueprint mechanics.
+
 ## Shared projectability language
 
 Before changing many components, implementation should stabilize the **questions** that both repositories need to answer.
