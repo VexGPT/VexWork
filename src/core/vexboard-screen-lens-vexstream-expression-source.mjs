@@ -25,6 +25,8 @@ export const VEXSTREAM_EXPRESSION_SOURCE_FILES = Object.freeze({
     'app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt',
   playbackDisplay:
     'app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackDisplayState.kt',
+  playerPresentation:
+    'app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt',
   stableList:
     'architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt',
 });
@@ -36,6 +38,7 @@ const SOURCE_REFS = Object.freeze({
   connectionPresentation: 'app:screens/shared/vexstream/VexStreamConnectionPresentation.kt',
   musicState: 'app:data/vexstream/VexStreamMusicState.kt',
   playbackDisplay: 'app:vexstream/playback/VexStreamPlaybackDisplayState.kt',
+  playerPresentation: 'app:screens/shared/vexstream/VexStreamPlayerPresentation.kt',
   stableList: 'arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt',
 });
 
@@ -57,6 +60,16 @@ function requiredFile(files, path) {
 
 function requirePattern(text, pattern, label) {
   if (!pattern.test(text)) fail(`source shape not proven: ${label}`);
+}
+
+function functionBody(text, functionName) {
+  const match = new RegExp(`\\bfun\\s+${functionName}\\s*\\(`).exec(text);
+  if (!match) fail(`source shape not proven: fun ${functionName}(...)`);
+  const paramsOpen = text.indexOf('(', match.index + match[0].length - 1);
+  const paramsClose = matchClose(text, paramsOpen);
+  const bodyOpen = text.indexOf('{', paramsClose);
+  if (bodyOpen < 0) fail(`source shape not proven: fun ${functionName} body`);
+  return text.slice(bodyOpen + 1, matchClose(text, bodyOpen));
 }
 
 function callArgsForVal(text, valName, callee) {
@@ -165,6 +178,7 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
   const connectionPresentation = requiredFile(files, VEXSTREAM_EXPRESSION_SOURCE_FILES.connectionPresentation);
   const musicState = requiredFile(files, VEXSTREAM_EXPRESSION_SOURCE_FILES.musicState);
   const playbackDisplay = requiredFile(files, VEXSTREAM_EXPRESSION_SOURCE_FILES.playbackDisplay);
+  const playerPresentation = requiredFile(files, VEXSTREAM_EXPRESSION_SOURCE_FILES.playerPresentation);
   const stableList = requiredFile(files, VEXSTREAM_EXPRESSION_SOURCE_FILES.stableList);
 
   requirePattern(
@@ -238,6 +252,25 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
     'Active presents mini player',
   );
 
+  const miniPlayer = functionBody(playerPresentation, 'VexStreamMiniPlayer');
+  requirePattern(
+    miniPlayer,
+    /VexContainer\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen\.PlayerSection/,
+    'Mini Player renders PlayerSection',
+  );
+  requirePattern(
+    miniPlayer,
+    /\.vex\(\s*VexStreamMusicScreen\.OpenFullPlayer\s*,?\s*\)[\s\S]*?runtime\.activate\(\s*VexStreamMusicScreen\.OpenFullPlayer\s*,?\s*\)/,
+    'Mini Player exposes OpenFullPlayer',
+  );
+  for (const control of ['PreviousTrack', 'TogglePlayback', 'NextTrack', 'ShuffleQueue']) {
+    requirePattern(
+      miniPlayer,
+      new RegExp(`VexIconButton\\s*\\([\\s\\S]*?element\\s*=\\s*VexStreamMusicScreen\\.${control}\\b`),
+      `Mini Player renders ${control}`,
+    );
+  }
+
   const openFullPlayerIntent = compact(namedArg(callArgsForVal(musicScreen, 'OpenFullPlayer', 'buttonRef'), 'intent'));
   if (!/swapTo\(container = FullPlayerContent, child = FullPlayerNowPlayingPanel\)\.then\(open\(FullPlayerSheet\)\)/.test(openFullPlayerIntent)) {
     fail('OpenFullPlayer must select now-playing then open FullPlayerSheet');
@@ -246,6 +279,27 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
     librarySurface,
     /runtime\.presentation\.isOpen\(\s*VexStreamMusicScreen\.FullPlayerSheet\s*,?\s*\)\s*&&\s*playbackExperience\s*!=\s*null[\s\S]*?VexStreamFullPlayerSheet\s*\(/,
     'FullPlayerSheet presentation gate',
+  );
+  const fullPlayer = functionBody(playerPresentation, 'VexStreamFullPlayerSheet');
+  requirePattern(
+    fullPlayer,
+    /VexModalBottomSheet\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen\.FullPlayerSheet/,
+    'Full Player renders FullPlayerSheet',
+  );
+  requirePattern(
+    fullPlayer,
+    /runtime\.presentation\.selected\(\s*VexStreamMusicScreen\.FullPlayerContent\s*,?\s*\)/,
+    'Full Player reads FullPlayerContent selection',
+  );
+  requirePattern(
+    fullPlayer,
+    /VexColumn\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen[\s\S]*?\.FullPlayerNowPlayingPanel/,
+    'Full Player renders FullPlayerNowPlayingPanel',
+  );
+  requirePattern(
+    fullPlayer,
+    /VexIconButton\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen[\s\S]*?\.CloseFullPlayer\b/,
+    'Full Player renders CloseFullPlayer',
   );
 
   const manageConnectionIntent = compact(namedArg(callArgsForVal(musicScreen, 'ManageConnection', 'buttonRef'), 'intent'));
@@ -346,7 +400,7 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
       relationshipRef: 'relationship.vexstream.player.display',
       kind: 'CONDITIONED_BY',
       subjectRef: player.ref,
-      sourceRefs: [SOURCE_REFS.librarySurface, SOURCE_REFS.playbackDisplay],
+      sourceRefs: [SOURCE_REFS.librarySurface, SOURCE_REFS.playbackDisplay, SOURCE_REFS.playerPresentation],
       defaultValueRef: 'player.inactive',
       values: [
         value('player.inactive'),
@@ -368,7 +422,7 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
       relationshipRef: 'relationship.vexstream.full-player.presentation',
       kind: 'PRESENTS',
       subjectRef: fullPlayerSheet.ref,
-      sourceRefs: [SOURCE_REFS.musicScreen, SOURCE_REFS.librarySurface],
+      sourceRefs: [SOURCE_REFS.musicScreen, SOURCE_REFS.librarySurface, SOURCE_REFS.playerPresentation],
       defaultValueRef: 'full-player.closed',
       values: [
         value('full-player.closed'),
