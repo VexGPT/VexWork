@@ -180,6 +180,19 @@ test('expression carousel preserves the lived desktop and phone-width interactio
   assert.match(page, /ondblclick: \(\) => \(element\.navigatesTo \? travel\(element\) : exposeElement\(element\.ref\)\)/, 'Structure double-click traverses to that source-derived expression');
 });
 
+test('expression stepping animates the whole three-card carousel handoff instead of teleporting neighbours', () => {
+  assert.match(page, /--x-shift:356px/);
+  assert.match(page, /@keyframes x-center-from-next/);
+  assert.match(page, /@keyframes x-center-to-prev/);
+  assert.match(page, /@keyframes x-center-to-next/);
+  assert.match(page, /@keyframes x-outer-from-next/);
+  assert.match(page, /@keyframes x-outer-from-prev/);
+  assert.match(page, /\.xstage\.enter-next \.xpeek\.prev\{animation:x-center-to-prev/);
+  assert.match(page, /\.xstage\.enter-prev \.xpeek\.next\{animation:x-center-to-next/);
+  assert.match(page, /prefers-reduced-motion:reduce\)[\s\S]*\.xstage \.xpeek/);
+  assert.doesNotMatch(page, /translateX\(64px\)/, 'the old center-only nudge is gone');
+});
+
 test('screen travel resets presentation context without inventing cross-Screen State', () => {
   assert.match(page, /function travel\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
   assert.match(page, /function jumpTo\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
@@ -188,6 +201,31 @@ test('screen travel resets presentation context without inventing cross-Screen S
 });
 
 // [VXG RealForever]
+
+
+test('lived usability gives the inspector a resizable attention boundary and makes expressions searchable', () => {
+  assert.match(page, /trayHeight: Math\.round\(Math\.min\(280, Math\.max\(180, window\.innerHeight \* 0\.24\)\)\)/);
+  assert.match(page, /function wireTrayResize\(handle, tray\)/);
+  assert.match(page, /role: 'separator'/);
+  assert.match(page, /'aria-label': 'Resize inspector'/);
+  assert.match(page, /drag\.height \+ drag\.y - event\.clientY/);
+  assert.match(page, /event\.key === 'ArrowUp'/);
+  assert.match(page, /event\.key === 'ArrowDown'/);
+  assert.doesNotMatch(page, /trayCollapsed|Details ▴|Details ▾/, 'the inspector is resized rather than opened or closed');
+  assert.match(page, /function renderExpressionFinder\(list\)/);
+  assert.match(page, /placeholder: 'Find expression…'/);
+  assert.match(page, /function expressionSearchText\(expression\)/);
+  assert.match(page, /renderExpressionFinder\(list\)/);
+});
+
+test('selected controls preview the screen or expression they lead to before traversal', () => {
+  assert.match(page, /function destinationForElement\(element\)/);
+  assert.match(page, /function expressionTargetForElement\(ref\)/);
+  assert.match(page, /Expressions\.expressionForControl\(state\.lens, screenRef\(\), list, ref\)/);
+  assert.match(page, /Follow → \$\{destination\.title\}/);
+  assert.match(page, /Show \$\{expression\.where\} · \$\{truncate\(expression\.what, 34\)\}/);
+  assert.match(page, /destination\.go\(\)/);
+});
 
 test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
   // The browser sweep in PR #221 checks all 119 traced controls; this pins the wiring that makes it hold.

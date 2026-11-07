@@ -239,6 +239,21 @@ a{color:var(--focus)}
 .xrail .xstep:disabled{opacity:.35}
 .xrail .xcount{flex:none;font:12px var(--mono);color:var(--faint)}
 .xrail .tool{flex:none;height:28px}
+.xfind{position:relative;flex:none}
+.xfind>summary{display:flex;align-items:center;height:28px;padding:0 10px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:12px;cursor:pointer;list-style:none;user-select:none}
+.xfind>summary::-webkit-details-marker{display:none}
+.xfind[open]>summary{border-color:var(--rule-strong);background:#f8f9fb}
+.xfind-pop{position:absolute;right:0;top:34px;z-index:80;width:min(460px,calc(100vw - 32px));padding:8px;background:var(--sheet);border:1px solid var(--rule-strong);border-radius:12px;box-shadow:0 24px 50px -24px #18213a88}
+.xfind-pop input{width:100%;height:34px;padding:0 10px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:13px}
+.xfind-pop input:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.xfind-results{display:flex;flex-direction:column;gap:3px;max-height:min(52vh,480px);overflow:auto;margin-top:7px}
+.xfind-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 8px;align-items:center;width:100%;padding:7px 8px;border:0;border-radius:8px;background:none;color:var(--ink);text-align:left}
+.xfind-row:hover,.xfind-row.current{background:#eef2f8}
+.xfind-copy{display:flex;gap:5px;min-width:0;font-size:12.5px}
+.xfind-copy b{flex:none;font-weight:600}
+.xfind-copy span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}
+.xfind-step{grid-column:2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--faint);font-size:11px}
+.xfind-none{padding:10px 8px;color:var(--muted);font-size:12px}
 .xchips{flex:1;min-width:0;display:flex;align-items:center;gap:5px;overflow-x:auto;padding:3px 2px;scrollbar-width:thin}
 .xchip{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:280px;height:28px;padding:0 9px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:12px}
 .xchip.sub{height:24px;border-style:dashed;color:var(--muted);font-size:11.5px}
@@ -251,8 +266,8 @@ a{color:var(--focus)}
 .kind-CUSTOM .xk{background:color-mix(in srgb,var(--pres-scenario) 14%,#fff);color:var(--pres-scenario)}
 .xchip.on{border:1px solid var(--ink);box-shadow:0 0 0 2px color-mix(in srgb,var(--ink) 14%,transparent);color:var(--ink)}
 .xsep{flex:none;width:1px;height:18px;margin:0 3px;background:var(--rule-strong)}
-.xstage{position:relative;flex:1;min-width:0;min-height:0;display:flex;justify-content:center}
-.xslot{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;width:min(340px,100%);min-height:0}
+.xstage{--x-shift:356px;position:relative;flex:1;min-width:0;min-height:0;display:flex;justify-content:center}
+.xslot{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;width:min(340px,100%);min-height:0;transform-origin:center top}
 .xslot > .phone{width:100%;flex:1;height:auto}
 .xcap{display:flex;align-items:center;gap:6px;max-width:100%;min-height:20px;font-size:12px;color:var(--muted);white-space:nowrap}
 .xcap b{color:var(--ink);font-weight:600}
@@ -265,13 +280,42 @@ a{color:var(--focus)}
 .xpeek > .phone{flex:1;height:auto;pointer-events:none}
 .xpeek-label{position:absolute;bottom:calc(100% + 6px);left:0;right:0;display:flex;align-items:center;gap:5px;overflow:hidden;font-size:12px;color:var(--muted);white-space:nowrap}
 .xpeek.prev .xpeek-label{justify-content:flex-end}
-@keyframes x-in-next{from{transform:translateX(64px);opacity:.25}to{transform:none;opacity:1}}
-@keyframes x-in-prev{from{transform:translateX(-64px);opacity:.25}to{transform:none;opacity:1}}
-.xstage.enter-next .xslot{animation:x-in-next .26s cubic-bezier(.2,.7,.2,1)}
-.xstage.enter-prev .xslot{animation:x-in-prev .26s cubic-bezier(.2,.7,.2,1)}
+/* Carousel handoff: the clicked neighbour becomes center while the old center becomes the opposite peek.
+   The DOM is rebuilt for the new expression, so each new role animates from the position that same
+   expression occupied immediately before the step instead of merely fading the center into place. */
+@keyframes x-center-from-next{
+  from{transform:translateX(var(--x-shift)) scale(.84);opacity:.45}
+  to{transform:translateX(0) scale(1);opacity:1}
+}
+@keyframes x-center-from-prev{
+  from{transform:translateX(calc(-1 * var(--x-shift))) scale(.84);opacity:.45}
+  to{transform:translateX(0) scale(1);opacity:1}
+}
+@keyframes x-center-to-prev{
+  from{transform:translateX(var(--x-shift)) scale(1);opacity:1}
+  to{transform:translateX(0) scale(.84);opacity:.45}
+}
+@keyframes x-center-to-next{
+  from{transform:translateX(calc(-1 * var(--x-shift))) scale(1);opacity:1}
+  to{transform:translateX(0) scale(.84);opacity:.45}
+}
+@keyframes x-outer-from-next{
+  from{transform:translateX(150px) scale(.78);opacity:0}
+  to{transform:translateX(0) scale(.84);opacity:.45}
+}
+@keyframes x-outer-from-prev{
+  from{transform:translateX(-150px) scale(.78);opacity:0}
+  to{transform:translateX(0) scale(.84);opacity:.45}
+}
+.xstage.enter-next .xslot{animation:x-center-from-next .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-next .xpeek.prev{animation:x-center-to-prev .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-next .xpeek.next{animation:x-outer-from-next .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-prev .xslot{animation:x-center-from-prev .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-prev .xpeek.next{animation:x-center-to-next .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-prev .xpeek.prev{animation:x-outer-from-prev .34s cubic-bezier(.2,.72,.2,1)}
 @keyframes x-flash{0%,45%{box-shadow:0 0 0 4px color-mix(in srgb,var(--focus) 55%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
 .flash{animation:x-flash 1.3s ease 1}
-@media (prefers-reduced-motion:reduce){.xstage .xslot,.flash{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.xstage .xslot,.xstage .xpeek,.flash{animation:none!important}}
 .golden-shot{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;margin:0;background:#0b0f19;cursor:pointer}
 .golden-shot img{flex:1;min-height:0;width:100%;object-fit:contain}
 .golden-shot figcaption{padding:6px 10px;background:#fff;color:var(--muted);font-size:11px}
@@ -365,13 +409,16 @@ a{color:var(--focus)}
 .bridge .cap{stroke:#fff;stroke-width:2}
 
 /* Inspector tray */
-.tray{border-top:1px solid var(--rule);background:var(--sheet);max-height:25vh;overflow:auto}
-.tray.collapsed .tray-body{display:none}
-.tray-head{display:flex;align-items:center;gap:10px;padding:10px 18px;position:sticky;top:0;background:var(--sheet);border-bottom:1px solid #eef1f5;z-index:1}
+.tray{position:relative;display:flex;flex-direction:column;height:var(--tray-height,220px);min-height:56px;max-height:60vh;border-top:1px solid var(--rule);background:var(--sheet);overflow:hidden}
+.tray-resize{flex:none;height:12px;display:flex;align-items:center;justify-content:center;border:0;border-bottom:1px solid #eef1f5;background:var(--sheet);cursor:ns-resize;touch-action:none}
+.tray-resize::before{content:'';width:52px;height:4px;border-radius:999px;background:var(--rule-strong);transition:background .12s}
+.tray-resize:hover::before,.tray-resize.dragging::before,.tray-resize:focus-visible::before{background:var(--ink)}
+.tray-resize:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.tray-head{display:flex;align-items:center;gap:10px;padding:8px 18px;background:var(--sheet);border-bottom:1px solid #eef1f5;z-index:1}
 .tray-head h2{margin:0;font-size:14px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tray-head .ref{font:12px var(--mono);color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .tray-head .tool{height:28px}.tray-head .push{margin-left:auto}
-.tray-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px 28px;padding:10px 18px 14px}
+.tray-body{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));align-content:start;gap:14px 28px;padding:10px 18px 14px}
 .tray h3{margin:0 0 6px;font-size:12px;font-weight:600;color:var(--muted)}
 .tray dl{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;font-size:12.5px}
 .tray dt{color:var(--muted)}.tray dd{margin:0;overflow-wrap:anywhere}
@@ -496,8 +543,9 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
   .main{grid-template-columns:1fr;gap:18px}
   .side{min-height:640px}
   .bridge{display:none}
-  .tray-body{grid-template-columns:1fr}
-  .tray{max-height:none}
+  .tray-body{grid-template-columns:1fr;overflow:visible}
+  .tray{height:auto!important;min-height:0;max-height:none;overflow:visible}
+  .tray-resize{display:none}
   .snapshot{display:none}
   .screens{margin-left:0}
   body{overflow-x:hidden}
@@ -774,7 +822,7 @@ const state = {
   cameras: new Map(),
   layouts: new Map(),
   overlay: null, // 'MAP' | 'LEGEND'
-  trayCollapsed: false,
+  trayHeight: Math.round(Math.min(280, Math.max(180, window.innerHeight * 0.24))),
   palette: 'STANDARD',
   // Which project and build is on screen, and how it differs from Stable.
   catalog: null,
@@ -1149,6 +1197,23 @@ function selectionPathRefs() {
   const path = Lens.elementPath(state.lens, anchor);
   return { selected: anchor, ancestors: new Set(path.slice(0, -1).map((element) => element.ref)) };
 }
+function expressionTargetForElement(ref) {
+  const list = expressionsNow();
+  const info = currentScreen().realization ? presenceOf(ref) : null;
+  const presented = !info || ['SOURCE', 'EXAMPLE', 'SCENARIO'].includes(info.state);
+  const viaIntent = Expressions.expressionForControl(state.lens, screenRef(), list, ref);
+  return viaIntent ?? (presented ? null : Expressions.expressionExposing(list, ref));
+}
+function destinationForElement(element) {
+  if (element.navigatesTo) {
+    const label = element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`;
+    return { label, title: label, go: () => travel(element) };
+  }
+  const expression = expressionTargetForElement(element.ref);
+  if (!expression || expression.ref === activeExpression().ref) return null;
+  const label = `Show ${expression.where} · ${truncate(expression.what, 34)}`;
+  return { label, title: `${element.label} leads to ${expression.where} · ${expression.what}`, go: () => setExpression(expression.ref, { flash: expression.focusRef ?? element.ref }) };
+}
 function markElement(node, element, marks) {
   node.dataset.ref = element.ref;
   if (marks.selected === element.ref) node.classList.add('sel');
@@ -1156,18 +1221,20 @@ function markElement(node, element, marks) {
   if (element.pathwayRef) node.classList.add('has-path');
   const delta = deltaClass(element).trim();
   if (delta) node.classList.add(delta);
-  node.title = `${element.label} · ${element.ref}${delta ? `\n${delta === 'delta-added' ? 'Not in Stable' : delta === 'delta-changed' ? 'Differs from Stable' : 'Its pathway differs from Stable'}` : ''}`;
+  const destination = destinationForElement(element);
+  node.title = `${element.label} · ${element.ref}${delta ? `\n${delta === 'delta-added' ? 'Not in Stable' : delta === 'delta-changed' ? 'Differs from Stable' : 'Its pathway differs from Stable'}` : ''}${destination ? `\nFollow → ${destination.title}` : ''}`;
   node.addEventListener('click', (event) => { event.stopPropagation(); selectElement(element.ref); });
   // Double-click travels along a navigation, or goes to the expression where this is exposed.
   node.addEventListener('dblclick', (event) => { event.stopPropagation(); if (element.navigatesTo) travel(element); else exposeElement(element.ref); });
   return node;
 }
 function travelButton(element) {
-  if (!element.navigatesTo || state.anchorElementRef !== element.ref) return null;
-  const to = element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`;
+  if (state.anchorElementRef !== element.ref) return null;
+  const destination = destinationForElement(element);
+  if (!destination) return null;
   const slot = Lens.elementPath(state.lens, element.ref).find((step) => step.slot)?.slot;
   const order = slot === 'BOTTOM' ? 'above' : slot === 'FAB' ? 'left above' : 'below above right left';
-  return h('button', { class: `travel ${order.split(' ')[0]}`, type: 'button', title: to, 'aria-label': to, dataset: { order }, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
+  return h('button', { class: `travel ${order.split(' ')[0]}`, type: 'button', title: destination.title, 'aria-label': destination.label, dataset: { order }, onclick: (event) => { event.stopPropagation(); destination.go(); } }, destination.label);
 }
 /* ---------- realization: why each thing is, or is not, presented ---------- */
 const presenceCache = { lens: null, map: new Map() };
@@ -1250,13 +1317,9 @@ function stepExpression(delta) {
 // intent goes where its intent leads (a tab to its panel, an opener to its sheet); anything this
 // expression does not present goes to the nearest expression that does.
 function exposeElement(ref) {
-  const list = expressionsNow();
-  const info = currentScreen().realization ? presenceOf(ref) : null;
-  const presented = !info || ['SOURCE', 'EXAMPLE', 'SCENARIO'].includes(info.state);
-  const viaIntent = Expressions.expressionForControl(state.lens, screenRef(), list, ref);
-  const target = viaIntent ?? (presented ? null : Expressions.expressionExposing(list, ref));
-  if (!target || target.ref === activeExpression().ref) { flashElement(viaIntent?.focusRef ?? ref); return; }
-  setExpression(target.ref, { flash: viaIntent ? target.focusRef : ref });
+  const target = expressionTargetForElement(ref);
+  if (!target || target.ref === activeExpression().ref) { flashElement(target?.focusRef ?? ref); return; }
+  setExpression(target.ref, { flash: target.focusRef ?? ref });
 }
 function flashElement(ref) {
   const phone = document.querySelector('.face[data-face="SURFACE"] .current-phone');
@@ -1299,6 +1362,34 @@ function expressionTitle(expression) {
   if (expression.also.length) lines.push(`${expression.also.length} other source path${expression.also.length === 1 ? '' : 's'} present the same thing`);
   return lines.join('\n');
 }
+function expressionSearchText(expression) {
+  const info = Expressions.EXPRESSION_KINDS[expression.kind];
+  return [info.label, expression.kind, expression.where, expression.what, ...expression.steps.map((step) => step.phrase)].filter(Boolean).join(' ').toLowerCase();
+}
+function renderExpressionFinder(list) {
+  const wrap = h('details', { class: 'xfind' });
+  const input = h('input', { type: 'search', placeholder: 'Find expression…', autocomplete: 'off', spellcheck: 'false', 'aria-label': 'Find expression' });
+  const results = h('div', { class: 'xfind-results', role: 'listbox' });
+  const draw = () => {
+    const query = input.value.trim().toLowerCase();
+    const matches = query ? list.filter((expression) => expressionSearchText(expression).includes(query)) : list;
+    results.replaceChildren(...(matches.length ? matches.map((expression) => h('button', {
+      class: `xfind-row${expression.ref === activeExpression().ref ? ' current' : ''}`, type: 'button', role: 'option',
+      'aria-selected': expression.ref === activeExpression().ref ? 'true' : 'false',
+      onclick: (event) => { event.preventDefault(); wrap.removeAttribute('open'); setExpression(expression.ref); },
+    }, kindChip(expression),
+    h('span', { class: 'xfind-copy' }, h('b', {}, expression.where), h('span', {}, expression.what)),
+    h('span', { class: 'xfind-step' }, expression.steps.length ? `Reached by ${expression.steps.map((step) => step.phrase).join(' › ')}` : Expressions.EXPRESSION_KINDS[expression.kind].question))) : [h('div', { class: 'xfind-none' }, 'No matching expressions.')]));
+  };
+  input.addEventListener('input', draw);
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') { event.stopPropagation(); wrap.removeAttribute('open'); input.value = ''; draw(); }
+  });
+  wrap.addEventListener('toggle', () => { if (wrap.open) { draw(); queueMicrotask(() => input.focus()); } });
+  wrap.append(h('summary', { title: 'Search this Screen’s source-derived expressions' }, 'Find'),
+    h('div', { class: 'xfind-pop' }, input, results));
+  return wrap;
+}
 function renderExpressionRail() {
   const list = expressionsNow();
   const active = activeExpression();
@@ -1318,6 +1409,7 @@ function renderExpressionRail() {
     h('div', { class: 'xchips', role: 'list' }, chips),
     h('button', { class: 'xstep', type: 'button', 'aria-label': 'Next expression', disabled: index === list.length - 1, onclick: () => stepExpression(1) }, '›'),
     h('span', { class: 'xcount' }, index >= 0 ? `${index + 1} / ${list.length}` : `custom · ${list.length}`),
+    renderExpressionFinder(list),
     index < 0 ? h('button', { class: 'tool scenario-chip', type: 'button', title: expressionTitle(active), onclick: resetScenario }, 'Custom · Reset') : null,
     h('button', { class: 'tool', type: 'button', 'aria-pressed': state.overlay === 'EXAMPLES' ? 'true' : 'false', title: 'Source-authored examples, journeys and the realization inventory of this screen', onclick: () => { state.overlay = state.overlay === 'EXAMPLES' ? null : 'EXAMPLES'; render(); } }, 'Examples & journeys'));
 }
@@ -2234,10 +2326,66 @@ function stepImpact(node) {
     impact.sameSymbol.length ? [h('p', { class: 'count', style: 'margin-top:8px' }, 'Same symbol in other pathways'), h('div', { class: 'links' }, capped(impact.sameSymbol, 4, stepLink))] : null,
     impact.sameSource.length ? [h('p', { class: 'count', style: 'margin-top:8px' }, `Same file in ${impact.sameSource.length} other step${impact.sameSource.length === 1 ? '' : 's'}`), h('div', { class: 'links' }, capped(impact.sameSource, 3, stepLink))] : null);
 }
+function trayHeightBounds() {
+  const min = 56;
+  const max = Math.max(min, Math.round(window.innerHeight * 0.60));
+  return { min, max };
+}
+function clampTrayHeight(value) {
+  const { min, max } = trayHeightBounds();
+  return Math.max(min, Math.min(max, Math.round(value)));
+}
+function wireTrayResize(handle, tray) {
+  let drag = null;
+  const apply = (height) => {
+    state.trayHeight = clampTrayHeight(height);
+    tray.style.setProperty('--tray-height', `${state.trayHeight}px`);
+    handle.setAttribute('aria-valuenow', String(state.trayHeight));
+    scheduleBridge();
+  };
+  handle.addEventListener('pointerdown', (event) => {
+    if (event.button !== 0 || window.matchMedia('(max-width:900px)').matches) return;
+    event.preventDefault();
+    drag = { y: event.clientY, height: tray.getBoundingClientRect().height, pointerId: event.pointerId };
+    handle.setPointerCapture(event.pointerId);
+    handle.classList.add('dragging');
+  });
+  handle.addEventListener('pointermove', (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    apply(drag.height + drag.y - event.clientY);
+  });
+  const stop = (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    drag = null;
+    handle.classList.remove('dragging');
+    placeSurfaceFloaters();
+    scheduleBridge();
+  };
+  handle.addEventListener('pointerup', stop);
+  handle.addEventListener('pointercancel', stop);
+  handle.addEventListener('keydown', (event) => {
+    const { min, max } = trayHeightBounds();
+    const step = event.shiftKey ? 80 : 24;
+    let next = null;
+    if (event.key === 'ArrowUp') next = state.trayHeight + step;
+    else if (event.key === 'ArrowDown') next = state.trayHeight - step;
+    else if (event.key === 'Home') next = min;
+    else if (event.key === 'End') next = max;
+    if (next !== null) { event.preventDefault(); apply(next); }
+  });
+}
 function renderTray() {
-  const tray = h('section', { class: `tray${state.trayCollapsed ? ' collapsed' : ''}`, 'aria-label': 'Inspector' });
-  const toggle = h('button', { class: 'tool', 'aria-expanded': !state.trayCollapsed, onclick: () => { state.trayCollapsed = !state.trayCollapsed; render(); } }, state.trayCollapsed ? 'Show details' : 'Hide details');
-  const head = (...children) => h('div', { class: 'tray-head' }, ...children, ...briefButtons(), toggle);
+  const bounds = trayHeightBounds();
+  state.trayHeight = clampTrayHeight(state.trayHeight);
+  const tray = h('section', { class: 'tray', style: `--tray-height:${state.trayHeight}px`, 'aria-label': 'Inspector' });
+  const resize = h('div', {
+    class: 'tray-resize', role: 'separator', tabindex: '0', 'aria-orientation': 'horizontal',
+    'aria-label': 'Resize inspector', 'aria-valuemin': String(bounds.min), 'aria-valuemax': String(bounds.max),
+    'aria-valuenow': String(state.trayHeight), title: 'Drag to give the inspector or the Lens more room',
+  });
+  wireTrayResize(resize, tray);
+  const head = (...children) => h('div', { class: 'tray-head' }, ...children, ...briefButtons());
+  tray.append(resize);
   const selected = state.selected;
   if (!selected) {
     const screen = currentScreen();
