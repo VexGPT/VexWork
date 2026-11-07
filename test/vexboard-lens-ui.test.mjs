@@ -136,29 +136,46 @@ test('search, impact, coverage and briefs are wired from the shared query module
 });
 // [VXG RealForever]
 
-test('source-backed expressions share one coordinate across the existing four Screen Lens faces', () => {
+test('source-backed expressions are a top-level Lens dimension shared by all four faces', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-expressions\.mjs'/);
   assert.match(page, /vexlife-android-vexstream\.screen-lens-expressions\.fixture\.json/);
   assert.match(page, /Expressions\.normalizeScreenLensExpressionFixture\(state\.lens, source\)/);
   assert.match(page, /Expressions\.resolveScreenLensExpression\(state\.lens, state\.expressionFixture, expressionRef\)/);
+  assert.match(page, /grid-template-rows:auto auto auto minmax\(0,1fr\) auto/, 'Expressions owns its own top-level Lens row');
+  assert.match(page, /const main = h\('main', \{ class: 'main' \}, renderExperienceSide\(\), renderBehaviorSide\(\)\)/);
+  assert.match(page, /const expressionRail = renderExpressionRail\(\);\s*if \(expressionRail\) root\.append\(expressionRail\);\s*root\.append\(main, renderTray\(\)\)/);
   assert.match(page, /aria-label': `Expressions of \$\{currentScreen\(\)\.label\}`/);
   assert.match(page, /'Previous expression'/);
   assert.match(page, /'Next expression'/);
-  assert.match(page, /aria-label': 'Expression pathways'/);
-  assert.match(page, /setExpressionPathway\(ref\)/);
-  assert.match(page, /state\.pathwayRef = pathwayRef/, 'expression pathways reuse the existing Behavior\/Depth pathway owner');
-  assert.match(page, /expressionElementParticipates\(element\.ref\)/, 'Surface and Structure mark participation from the same resolution');
-  assert.match(page, /expressionRuntimeItemsFor\(element\.ref\)/);
-  assert.match(page, /runtime identity, not a static Screen element/);
-  assert.match(page, /next\.set\('expression', state\.expressionRef\)/, 'expression coordinates are shareable without becoming stored app state');
+  assert.match(page, /state\.pathwayRef = pathwayRef/, 'expression pathways still reuse the existing Behavior\/Depth pathway owner');
+  assert.match(page, /class: 'xstruct'/, 'Structure receives the same expression context');
+  assert.match(page, /class: 'xgraph-context'/, 'Behavior and Depth receive the same expression context');
+  assert.match(page, /aria-label': 'Expression pathways'/, 'pathway choice is local to the graph side rather than cluttering the rail');
+  assert.match(page, /next\.set\('expression', state\.expressionRef\)/, 'expression coordinates remain shareable without becoming stored app state');
   assert.doesNotMatch(page, /localStorage\.setItem\([^)]*expression/i);
-  assert.doesNotMatch(page, /BoardScenario|scenario state/i, 'the read-only expression rail does not import Scenario ownership');
+  assert.doesNotMatch(page, /BoardScenario|scenario state/i, 'the read-only expression experience does not import Scenario ownership');
 });
 
-test('expression participation is additive perception rather than a visibility claim', () => {
-  assert.match(page, /Highlighted elements participate in the selected expression; unmarked elements are not claimed absent/);
-  assert.doesNotMatch(page, /filter\([^\n]*expressionElementParticipates/, 'the existing Screen element tree is not filtered into a second visibility owner');
+test('Surface restores the expression carousel instead of treating the rail as a dashboard card', () => {
+  assert.match(page, /function renderPhone\(expressionRef = state\.expressionRef/);
+  assert.match(page, /class: 'xslot'/, 'the active expression owns the centered phone');
+  assert.match(page, /class: `xpeek \$\{side\}`/, 'adjacent expressions render as inert phone peeks');
+  assert.match(page, /renderPhone\(entry\.expressionRef, \{ interactive: false \}\)/);
+  assert.match(page, /phone\.inert = true/);
+  assert.match(page, /function wireExpressionSwipe\(surface\)/);
+  assert.match(page, /Math\.abs\(dx\) > 70/);
+  assert.match(page, /event\.key === 'ArrowLeft'/);
+  assert.match(page, /event\.key === 'ArrowRight'/);
+  assert.match(page, /@media \(max-width:900px\)[\s\S]*\.xpeek\{display:none\}/, 'phone width hides neighbours rather than creating horizontal page scroll');
+  assert.match(page, /Double-click to show expression:/, 'an element can jump to an expression that exposes it');
+});
+
+test('expression participation stays additive even while the carousel makes the active context perceptually dominant', () => {
+  assert.match(page, /else if \(resolution && element\.ownerRef === screenRef\(\)\) node\.classList\.add\('x-unclaimed'\)/);
+  assert.match(page, /\.x-unclaimed\{opacity:\.34;filter:saturate\(\.55\)\}/);
+  assert.doesNotMatch(page, /filter\([^\n]*expressionElementParticipates/, 'the registered Screen tree is never filtered into a second visibility owner');
   assert.match(page, /source\.lensSourceCommit !== state\.lens\.sourceSnapshot\.commit\) return;/, 'the fixture fails closed on a different Lens source snapshot');
+  assert.match(page, /runtime identity, not a static Screen element/);
 });
 
 test('screen-level arrival activates the selected expression across Behavior and Depth without overriding explicit targets', () => {
