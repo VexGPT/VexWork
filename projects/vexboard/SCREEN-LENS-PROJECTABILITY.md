@@ -223,10 +223,15 @@ VexPartner<Partner>
    -> Id<Partner>
    -> Decoder
    -> Observation
-   -> Receiver
+   -> Receiver<Partner, Signal, exact Observation>
 
-Receiver -> domain Store
-Store Flow -> VexExecution.observe(exact source, live owner)
+custom Screen/local source
+-> VexExecution.beginQueued(live Connection owner, private runtime RelationshipId)
+-> exact receipt operation
+-> Decoder / Observation / suspend Receiver
+-> domain Store
+
+Store Flow -> VexExecution.observe(exact source, live Family owner)
 -> Family.observeStore(...)
 -> Family State / DisplayState
 ~~~
@@ -263,9 +268,11 @@ Behavior
 
 Depth
     Method / VexExecution
-    Partner Connection / Decoder / Receiver
+    Partner Connection
+    queued inbound RelationshipId execution lane
+    Decoder / Receiver
     Partner / Signal / Observation / Store
-    source-addressed maintained listener
+    source-addressed Store listener
     return to Family State
 ~~~
 
@@ -288,19 +295,36 @@ Pump Partner Signal
 -> InsulinFamily State
 ~~~
 
-The two execution identities stay distinct in the projection:
+The source now proves three execution/provenance coordinates, and the projection keeps them distinct:
 
 ~~~text
-maintained Flow listener
-    exact Flow source + live execution owner
+Partner Connection.Id
+    source/observation provenance
+    != VexExecution RelationshipId
+
+inbound receipt/admission
+    live Connection owner
+    + private runtime RelationshipId
+    + Queued
+    -> ordered Jobs
+
+maintained Store Flow listener
+    exact Flow source + live Family owner
+    -> source-addressed observation Job
 
 Family consequence
-    Control kind (+ typed ResourceId only when earned)
-    -> RelationshipId -> Job(s)
+    accepted Control kind (+ typed ResourceId only when earned)
+    + authored Approach
+    -> Family-derived RelationshipId -> Job(s)
 ~~~
 
-The current Partner-depth projector is proven against a bounded non-medical fixture and can also
-project the source shape of the draft VexLife-Android Partner patient zero. Stable/Main Lens source
+For the Pump patient zero, Behavior visibly says `Begin(Queued · Effect.RequestPumpDelivery)`;
+Depth shows the accepted Act continuing through Method/VexExecution into the Pump Connection.
+
+The current Partner-depth projector is proven against a bounded non-medical fixture and the current
+draft VexLife-Android patient zero. The ordinary VexLife adapter read plan includes CGM, insulin,
+Partner-lab and durable CGM data roots; the proof no longer depends on a special harness-only read
+set. Stable/Main Lens source
 must **not** be repinned to an unaccepted Android PR merely to display the candidate; accepted source
 currentness still governs the production Lens.
 
