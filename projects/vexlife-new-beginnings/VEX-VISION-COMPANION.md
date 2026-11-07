@@ -128,6 +128,81 @@ the receipt expires before proof/lifecycle consumption.
 A future active capture attempt still requires the separately-owned macOS host permission and active
 adapter/capture predicates required by the accepted SDK architecture.
 
+## Current macOS stable-requester prerequisite
+
+The accepted SCREEN Safety source and host permission-agent source are now complete enough to expose the
+next physical prerequisite without collapsing it into Vision source work.
+
+Fresh current-host signer observation:
+
+~~~text
+MACOS_STABLE_REQUESTER_SIGNER_CURRENT=false
+signingAuthorityClass=NONE
+privateKeyUsableForCodesign=false
+credentialSerialized=false
+~~~
+
+This is current evidence about the qualified `macos-victor` codesigning identity surface. It does not
+claim that an eligible certificate cannot exist in another Keychain, backup, or Mac.
+
+The existing accepted permission-agent contract already defines the required stable requester classes:
+
+~~~text
+APPLE_DEVELOPMENT
+or
+DEVELOPER_ID_APPLICATION
+
+SIGNED
+adHoc=false
+stableDesignatedRequirement=true
+credentialSerialized=false
+~~~
+
+Security / host classification is now:
+
+~~~text
+HOST_OWNER_APPLE_SIGNER_PROVISIONING_REQUIRED
+
+preferred local proof class
+  APPLE_DEVELOPMENT
+
+new SDK signer foundation
+  NOT_REQUIRED
+
+ad-hoc / self-signed fallback
+  FORBIDDEN
+~~~
+
+The human-only prerequisite is local Apple signing identity provisioning through Xcode. It is not a
+Screen Recording decision and must not export private-key material into Relay or VexWork.
+
+After the stable signer becomes current:
+
+~~~text
+recover historical A005 terminal evidence
+-> do not replay A005
+-> rotate a fresh attempt / request / correlation / package
+-> re-ground current SDK + current SCREEN Safety
+-> fresh permission-only F07
+-> one separately bounded host Screen Recording permission execution
+~~~
+
+If the current SCREEN Safety receipt expires before that effect, currentize only the source-managed
+Safety binding first.
+
+Permanent:
+
+~~~text
+SIGNER_PROVISIONED != HOST_OS_SCREEN_PERMISSION
+HOST_OS_SCREEN_PERMISSION != SCREEN_CAPTURED
+SCREEN_CAPTURED != ACTIVE_VISUAL_OBSERVATION
+ACTIVE_VISUAL_OBSERVATION != VISUAL_MODEL_INPUT
+~~~
+
+Durable owner evidence:
+- `github.issue.vextreme-sdk.232.comment.6706210561`
+- `github.issue.vextreme-sdk.241.comment.6706211040`
+
 ## Current model/runtime boundary
 
 The currently qualified Heretic runtime owner in Vextreme-SDK identifies:
