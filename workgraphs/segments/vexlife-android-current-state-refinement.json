@@ -178,6 +178,61 @@
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T12:47:02.000Z",
+      "updatedAt": "2026-11-07T12:47:02.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.outcome",
+      "label": "Compatibility semantic-family convergence",
+      "purpose": "Converge bounded production consumers of the accepted VexBehaviorBlueprint/VexPort compatibility path onto Direct VexFamily only where current source proves the semantic question can become smaller without moving provider truth, runtime custody, Relay ownership, or stable human behavior. Do not force immediate provider work through VexExecution merely for symmetry; each next consumer must be earned by the preceding proof.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-android-current-state-refinement/README.md",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorBlueprint.kt",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/README.md",
+        "github.pull.vexlife-android.220"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T12:47:02.000Z",
+      "updatedAt": "2026-11-07T12:47:02.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence.maps-mode",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "label": "Prove VexMaps Distribution Mode as Direct VexFamily",
+      "purpose": "Use the provider-free Distribution Mode semantic owner as the first migration proof: preserve Regular/Distribution and Toggle/UseDistribution meaning, replace the compatibility Behavior/Connection/VexPort semantic owner with Direct VexFamily, let convergence consume Mode State directly, and prove that no provider, Connection, Effect realization, or VexExecution machinery is needed.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.220",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/mode/VexMapsDistributionModeFamily.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/convergence/VexMapsDistributionModeDeliveryRouteConvergenceRelay.kt"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [],
