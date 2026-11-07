@@ -135,8 +135,9 @@ is a later presentation/product consumer.
 
 ## Exact direct source packet
 
-Use these exact links as the entry packet. They are pinned to the observed source heads at handoff
-formation so the successor does not have to search for the files. Before any mutation, re-ground the
+Use these links as the entry packet. Repository source links are pinned to observed source heads where
+possible; the handoff itself uses its live PR-branch URL so the link resolves to the source-complete
+version rather than the commit immediately before its own final edit. Before any mutation, re-ground the
 repository's current head and reopen any source that changed after these pins.
 
 ### Cloud Connectivity — VexWork PR #257
@@ -150,7 +151,7 @@ e59efe96830ba9247baa14cad28392422bbfe6cc
 Read in this order:
 
 1. Coordinated build handoff — this file
-   https://github.com/VexGPT/VexWork/blob/e59efe96830ba9247baa14cad28392422bbfe6cc/projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md
+   https://github.com/VexGPT/VexWork/blob/cloud-connectivity/foundation-a001/projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md
 
    Why:
    owns the cross-Project sequencing, first-instance mission and integrated acceptance test.
