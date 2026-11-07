@@ -143,14 +143,66 @@ function sourceFiles(overrides = {}) {
       )
     `,
     [VEXSTREAM_EXPRESSION_SOURCE_FILES.connectionPresentation]: `
-      when (connection) {
-        VexStreamConnectionState.NotPaired -> {
+      internal fun VexStreamConnectionSetup(
+        state: VexStreamMusicState,
+        runtime: VexRuntime,
+      ) {
+        VexContainer(
+          element = VexStreamMusicScreen.ConnectionSection,
+        ) {
+          when (val connection = state.connectionState) {
+            VexStreamConnectionState.NotPaired -> {
+              VexText(
+                id = "intro",
+                text = "intro",
+              )
+              VexButton(
+                element = VexStreamMusicScreen.FindNearby,
+                handler = runtime,
+              )
+            }
+            is VexStreamConnectionState.Paired -> Unit
+          }
+        }
+      }
+
+      internal fun VexStreamConnectionMenuSheet(
+        state: VexStreamMusicState,
+        runtime: VexRuntime,
+        offlineCopyConnection: Any,
+      ) {
+        VexModalBottomSheet(
+          element = VexStreamMusicScreen.ConnectionMenuSheet,
+        ) {
           VexButton(
-            element = VexStreamMusicScreen.FindNearby,
+            element = VexStreamMusicScreen.RefreshCatalog,
+            handler = runtime,
+          )
+          VexButton(
+            element = VexStreamMusicScreen.Reconnect,
+            handler = runtime,
+          )
+          VexButton(
+            element =
+              VexStreamMusicScreen
+                .DownloadAllMissingSongs,
+            handler = libraryActionHandler,
+          )
+          VexButton(
+            element =
+              VexStreamMusicScreen
+                .RemoveAllDownloadedSongs,
+            handler = libraryActionHandler,
+          )
+          VexButton(
+            element = VexStreamMusicScreen.RequestForgetPaired,
+            handler = runtime,
+          )
+          VexButton(
+            element = VexStreamMusicScreen.CloseConnectionMenu,
             handler = runtime,
           )
         }
-        is VexStreamConnectionState.Paired -> Unit
       }
     `,
     [VEXSTREAM_EXPRESSION_SOURCE_FILES.musicState]: `
