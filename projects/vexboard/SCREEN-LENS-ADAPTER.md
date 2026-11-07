@@ -77,6 +77,19 @@ relationships until their own source earns a truthful traversal.
 | `isOpen(Screen.Sheet)) { View(repository = …) }` | what a sheet renders and reads | renderer step + Depth store |
 | `context.closure` → `closure = { fn(…) }` → `fun fn` → `XFamily.Control.Y(` | the hop through a captured closure | Family bond (no annotation needed) |
 | `XFamily`: State enum, sealed Parameter / Control / Effect / DisplayState, `object Act { class M(store: S) }`, `begin<Approach>`, `observe*Store`, `XFamilyProvider` | the Family vocabulary | one SCAE + Depth template |
+| `if/when/?.let` + `presentation.isOpen` / `selected` | presence relationships with their owners | `realization.presence[]` |
+| `fun Vex*` signatures in the elements module | which primitive carries which relationship | learned, never listed |
+| `VexStableLazyColumn(listRef, items, itemRef, emptyContent) { … }` / `items(…)` | population, provenance chain, row template | `realization.presence[]` + `templates[]` |
+| `VexPreviewHost(...)`, `@PreviewTest` KDoc case, `vexJourney(...)` | source-authored examples | `examples[]` |
+| `app/src/screenshotTestDebug/reference/**` (listing only) | accepted golden reference renders | `examples[].evidence` |
+| `override val toolbarActions get() = listOf(A, B)` | Screen-owned controls the shared toolbar realizes | elements with `slot: TOOLBAR` |
+| `buttonRef(…, style = VexElementStyles.X, icon = ElementIcon.Y)` | how a registered control asks to be drawn | element `style`, `icon` |
+| `Scaffold(bottomBar = { … })`, `DropdownMenu(expanded = x) { … }`, `VexText(role =, style = typography.X)` | named content regions, popup layers, text hierarchy (names only) | presence `region`, template slot `popup` / `role` / `textStyle` |
+
+Realization and examples readers live in `src/core/vexboard-android-realization.mjs` and
+`src/core/vexboard-android-examples.mjs`; both are pure and run in the browser for any-commit
+projection. `listings` in the adapter name paths whose existence is evidence; their bytes are never
+read. See `SCREEN-LENS-PROJECTABILITY.md`.
 
 The SCAE builder is reusable only where source earns an unambiguous Family relationship. Multiple candidate Effects or Methods are held rather than selected by list order. The Lens faces are question-first; ThemeMode is one concrete shape, not the universal definition:
 
