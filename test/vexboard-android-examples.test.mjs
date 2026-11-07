@@ -183,10 +183,18 @@ test('the committed lens catalogs source-authored examples from the real Android
   assert.ok(byRef.get('preview:vexstream-music').related.some((entry) => entry.ref === 'golden:vexstream.library.songs'), 'preview and golden share one authored fixture');
   assert.equal(byRef.get('golden:vexstream.library.songs').evidence.length, 1);
   for (const ref of ['golden:conversation.family-room.baseline', 'golden:conversation.family-room.multi-human', 'golden:conversation.family-room.home-unavailable']) {
-    assert.equal(byRef.get(ref).subjectRef, 'screen.family-conversation', `${ref} attaches to the production Conversation Screen`);
-    assert.equal(byRef.get(ref).subjectHeld ?? null, null, `${ref} no longer carries a foreign test-only semantic root`);
+    assert.match(byRef.get(ref).subjectHeld, /golden\.conversation\.family-room/, `${ref} preserves the historical Stable semantic root at its accepted source epoch`);
   }
   assert.deepEqual(byRef.get('preview:events-attention').configurations, ['Phone · Dark', 'Phone · Light', 'Compact · Large text']);
+});
+
+test('Main carries the merged Android Conversation golden semantic-root repair without rewriting Stable', () => {
+  const main = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.main.screen-lens.json', import.meta.url), 'utf8')));
+  const byRef = new Map(main.examples.map((example) => [example.ref, example]));
+  for (const ref of ['golden:conversation.family-room.baseline', 'golden:conversation.family-room.multi-human', 'golden:conversation.family-room.home-unavailable']) {
+    assert.equal(byRef.get(ref).subjectRef, 'screen.family-conversation', `${ref} attaches to the production Conversation Screen on Main`);
+    assert.equal(byRef.get(ref).subjectHeld ?? null, null, `${ref} no longer carries a foreign test-only semantic root on Main`);
+  }
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][EXAMPLES-TEST]
