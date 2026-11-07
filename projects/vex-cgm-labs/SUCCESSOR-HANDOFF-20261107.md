@@ -5,7 +5,7 @@
 ## Entry
 
 This handoff resumes the current VexCgmLabs trajectory after the Partner architecture crossed the
-following source-formation threshold:
+following reusable architecture stability point:
 
 ~~~text
 VexPartner<Partner>
@@ -18,7 +18,9 @@ VexPartner<Partner>
    └─ Receiver<Partner, Signal, exact Observation>
 ~~~
 
-Do not restart this work from a generic Signal/Entity/Mapper hypothesis.
+Treat this Partner relationship as the current architecture baseline for this trajectory. Do not
+restart the work from a generic Signal/Entity/Mapper hypothesis, and do not mistake pending Android
+repository proof/lifecycle for architectural uncertainty.
 
 ## Accepted threshold
 
@@ -103,10 +105,11 @@ Pump request
 Pump outcome
 ~~~
 
-## Why #219 is held instead of merged
+## Why #219 integration is held instead of merged
 
-The source shape has strong source-level evidence, but this exact candidate has not yet received the
-repository-owned proof required for a safe Android-main stability point:
+The Partner architecture is already earned by the cross-domain/source pressure. This exact Android
+candidate still needs the repository-owned proof required for an Android-main implementation
+stability point:
 
 ~~~text
 ./gradlew vexVerifyLocal
@@ -207,7 +210,7 @@ Do not rerun the same formed carrier. Return the canonical RETURN ZIP whether PA
 7. Update VexWork with the accepted Android merge commit and advance the current edge to real provider
    realization.
 
-## Next architecture pressure after Android proof
+## Next implementation pressure after Android proof
 
 Do not invent another generic abstraction first.
 
