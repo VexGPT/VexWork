@@ -648,18 +648,32 @@ function followBehaviorPort(cat, adapter, screen, element) {
 
 
 // One source-proven VexPartner shape. Unknown or ambiguous hops stay held.
-function sourceFunction(cat, adapter, functionName) {
-  const source = sourceForFunction(cat, adapter, functionName);
-  if (!source) return null;
-  const spans = functionSpans(source.text).filter((span) => span.name === functionName);
-  if (spans.length !== 1) return null;
-  const span = spans[0];
-  return {
-    ...source,
-    name: functionName,
-    body: source.text.slice(span.bodyStart, span.end),
-    params: span.params,
-  };
+function sourceFunction(cat, adapter, functionName, ownerType = null) {
+  const candidates = [];
+  for (const [path, text] of cat.files) {
+    if (ownerType && !new RegExp('(?:class|object)\\s+' + escapeRegex(ownerType) + '\\b').test(text)) continue;
+    const spans = functionSpans(text).filter((span) => span.name === functionName);
+    for (const span of spans) {
+      candidates.push({
+        path,
+        text,
+        source: toRootRef(adapter, path),
+        name: functionName,
+        body: text.slice(span.bodyStart, span.end),
+        params: span.params,
+        ownerType,
+      });
+    }
+  }
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function receiverTypeInSource(sourceText, receiver) {
+  const typed = new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*:\\s*([A-Z]\\w*)\\b').exec(sourceText)?.[1] ?? null;
+  if (typed) return typed;
+  const remembered = new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*=\\s*remember\\s*\\{\\s*([A-Z]\\w*)\\s*\\(').exec(sourceText)?.[1] ?? null;
+  if (remembered) return remembered;
+  return new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*=\\s*([A-Z]\\w*)\\s*\\(').exec(sourceText)?.[1] ?? null;
 }
 
 function partnerRoot(cat, adapter, partnerType) {
@@ -689,7 +703,12 @@ function localEffectDoorway(screen, element) {
   );
   const match = pattern.exec(screen.text);
   if (!match) return null;
-  return { receiver: match[1], functionName: match[2], source: screen.source };
+  return {
+    receiver: match[1],
+    receiverType: receiverTypeInSource(screen.text, match[1]),
+    functionName: match[2],
+    source: screen.source,
+  };
 }
 
 function directMemberCalls(body) {
@@ -720,11 +739,12 @@ function storeObservationIsMaintained(labText) {
   return /VexExecution\.observe\s*\([\s\S]{0,1200}?source\s*=\s*store\s*::\s*snapshots[\s\S]{0,1200}?family\s*\.\s*observeStore\s*\(/.test(labText);
 }
 
-function resolvePartnerIngress(cat, adapter, functionName, visited = new Set()) {
-  if (visited.has(functionName) || visited.size > 5) return null;
+function resolvePartnerIngress(cat, adapter, functionName, ownerType = null, visited = new Set()) {
+  const visitKey = (ownerType ?? '?') + ':' + functionName;
+  if (visited.has(visitKey) || visited.size > 5) return null;
   const nextVisited = new Set(visited);
-  nextVisited.add(functionName);
-  const fn = sourceFunction(cat, adapter, functionName);
+  nextVisited.add(visitKey);
+  const fn = sourceFunction(cat, adapter, functionName, ownerType);
   if (!fn) return null;
 
   for (const call of directMemberCalls(fn.body)) {
@@ -762,18 +782,20 @@ function resolvePartnerIngress(cat, adapter, functionName, visited = new Set()) 
 
   for (const call of directMemberCalls(fn.body)) {
     if (['toString', 'copy', 'also', 'let', 'map', 'filter'].includes(call.functionName)) continue;
-    if (!sourceFunction(cat, adapter, call.functionName)) continue;
-    const resolved = resolvePartnerIngress(cat, adapter, call.functionName, nextVisited);
+    const nestedOwner = receiverTypeInSource(fn.text, call.receiver);
+    if (!sourceFunction(cat, adapter, call.functionName, nestedOwner)) continue;
+    const resolved = resolvePartnerIngress(cat, adapter, call.functionName, nestedOwner, nextVisited);
     if (resolved) return { ...resolved, doorwayChain: [functionName, ...(resolved.doorwayChain ?? [resolved.functionName])] };
   }
   return null;
 }
 
-function resolvePartnerFamilyRequest(cat, adapter, functionName, visited = new Set()) {
-  if (visited.has(functionName) || visited.size > 5) return null;
+function resolvePartnerFamilyRequest(cat, adapter, functionName, ownerType = null, visited = new Set()) {
+  const visitKey = (ownerType ?? '?') + ':' + functionName;
+  if (visited.has(visitKey) || visited.size > 5) return null;
   const nextVisited = new Set(visited);
-  nextVisited.add(functionName);
-  const fn = sourceFunction(cat, adapter, functionName);
+  nextVisited.add(visitKey);
+  const fn = sourceFunction(cat, adapter, functionName, ownerType);
   if (!fn) return null;
 
   const activation = /\b([a-z]\w*)\s*\.\s*activate\s*\(\s*([A-Z]\w*Family)\s*\.\s*Control\s*\.\s*(\w+)\s*\(/.exec(fn.body);
@@ -811,8 +833,9 @@ function resolvePartnerFamilyRequest(cat, adapter, functionName, visited = new S
   }
 
   for (const call of directMemberCalls(fn.body)) {
-    if (!sourceFunction(cat, adapter, call.functionName)) continue;
-    const resolved = resolvePartnerFamilyRequest(cat, adapter, call.functionName, nextVisited);
+    const nestedOwner = receiverTypeInSource(fn.text, call.receiver);
+    if (!sourceFunction(cat, adapter, call.functionName, nestedOwner)) continue;
+    const resolved = resolvePartnerFamilyRequest(cat, adapter, call.functionName, nestedOwner, nextVisited);
     if (resolved) return { ...resolved, doorwayChain: [functionName, ...(resolved.doorwayChain ?? [resolved.functionName])] };
   }
   return null;
@@ -820,12 +843,15 @@ function resolvePartnerFamilyRequest(cat, adapter, functionName, visited = new S
 
 function resolvePartnerAutomation(cat, adapter, doorway) {
   if (!/toggle|enable|automation|rule/i.test(doorway.functionName)) return null;
-  const fn = sourceFunction(cat, adapter, doorway.functionName);
+  const fn = sourceFunction(cat, adapter, doorway.functionName, doorway.receiverType);
   if (!fn || !/VexExecution\.observe\s*\(/.test(fn.text)) return null;
   const sourceFamilyType = /evaluate\w*State\s*\(\s*state\s*:\s*([A-Z]\w*Family)\.State/.exec(fn.text)?.[1] ?? null;
-  const requestFunction = /\binsulin\s*\.\s*(request\w+)\s*\(/.exec(fn.text)?.[1] ?? null;
+  const requestMatch = /\b([a-z]\w*)\s*\.\s*(request\w+)\s*\(/.exec(fn.text);
+  const requestReceiver = requestMatch?.[1] ?? null;
+  const requestFunction = requestMatch?.[2] ?? null;
+  const requestOwner = requestReceiver ? receiverTypeInSource(fn.text, requestReceiver) : null;
   const sourceFamily = sourceFamilyType ? familyRoot(cat, adapter, sourceFamilyType) : null;
-  const request = requestFunction ? resolvePartnerFamilyRequest(cat, adapter, requestFunction) : null;
+  const request = requestFunction ? resolvePartnerFamilyRequest(cat, adapter, requestFunction, requestOwner) : null;
   if (!sourceFamilyType || !sourceFamily || !request) return null;
   return {
     kind: 'AUTOMATION',
@@ -843,9 +869,9 @@ function followPartnerCircuit(cat, adapter, screen, element) {
   if (!doorway) return null;
   const automation = resolvePartnerAutomation(cat, adapter, doorway);
   if (automation) return { ...doorway, ...automation };
-  const request = resolvePartnerFamilyRequest(cat, adapter, doorway.functionName);
+  const request = resolvePartnerFamilyRequest(cat, adapter, doorway.functionName, doorway.receiverType);
   if (request) return { ...doorway, ...request };
-  const ingress = resolvePartnerIngress(cat, adapter, doorway.functionName);
+  const ingress = resolvePartnerIngress(cat, adapter, doorway.functionName, doorway.receiverType);
   if (ingress) return { ...doorway, ...ingress };
   return null;
 }
