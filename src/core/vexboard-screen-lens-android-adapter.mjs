@@ -317,10 +317,11 @@ function sealedMembers(text, interfaceName) {
 }
 
 function parseFamily(cat, adapter, familyName) {
-  const [path] = cat.find(new RegExp(`class\\s+${familyName}\\s*\\(`));
+  const classPattern = new RegExp(`class\\s+${familyName}\\s*(?:\\(|:)`);
+  const [path] = cat.find(classPattern);
   if (!path) return null;
   const text = cat.files.get(path);
-  const classMatch = new RegExp(`class\\s+${familyName}\\s*\\(`).exec(text);
+  const classMatch = classPattern.exec(text);
   const stateEnum = new RegExp(`enum\\s+class\\s+(\\w+)\\s*:\\s*VexFamily\\.State<${familyName}>\\s*\\{([^}]*)\\}`).exec(text);
   const act = blockAfter(text, /object\s+Act\s*\{/);
   const methods = [];
