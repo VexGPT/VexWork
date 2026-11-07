@@ -31,6 +31,12 @@ import { layoutCollisions, layoutLensFace } from '../src/shared/vexboard-lens-la
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PROJECTOR_SOURCE = path.join(ROOT, 'src/core/vexboard-screen-lens-android-adapter.mjs');
+// Modules the projector imports. Their bytes change projected meaning as much as the adapter's do (D34).
+const PROJECTOR_SUPPORT_SOURCES = [
+  'src/core/vexboard-kotlin-source.mjs',
+  'src/core/vexboard-android-realization.mjs',
+  'src/core/vexboard-android-examples.mjs',
+].map((relative) => path.join(ROOT, relative));
 const LENS_DIR = 'projects/vexboard/lens';
 const CATALOG = `${LENS_DIR}/catalog.json`;
 
@@ -49,6 +55,8 @@ function parseArgs(argv) {
 const sha256 = (text) => crypto.createHash('sha256').update(text).digest('hex');
 const gitBlobSha1 = (text) => crypto.createHash('sha1').update(`blob ${Buffer.byteLength(text)}\0`).update(text).digest('hex');
 const projectorBlobSha1 = () => gitBlobSha1(fs.readFileSync(PROJECTOR_SOURCE, 'utf8'));
+// One scalar over the support modules' Git-blob SHA-1s, in a fixed order.
+const projectorSupportSha256 = () => sha256(PROJECTOR_SUPPORT_SOURCES.map((file) => `${path.relative(ROOT, file)} ${gitBlobSha1(fs.readFileSync(file, 'utf8'))}`).join('\n'));
 const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const stable = (value) => `${JSON.stringify(value, null, 2)}\n`;
 const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
@@ -63,7 +71,7 @@ function fetchCheckout(adapter, commit) {
   git(dir, 'init', '-q');
   git(dir, 'remote', 'add', 'origin', adapter.repository.url);
   git(dir, 'config', 'core.sparseCheckout', 'true');
-  fs.writeFileSync(path.join(dir, '.git', 'info', 'sparse-checkout'), `${[...adapter.read.map((entry) => `/${rootPath(adapter, entry)}`), ...(adapter.stringResources ?? []).map((resource) => `/${resource}`)].join('\n')}\n`);
+  fs.writeFileSync(path.join(dir, '.git', 'info', 'sparse-checkout'), `${[...adapter.read.map((entry) => `/${rootPath(adapter, entry)}`), ...(adapter.listings ?? []).map((entry) => `/${rootPath(adapter, entry)}`), ...(adapter.stringResources ?? []).map((resource) => `/${resource}`)].join('\n')}\n`);
   git(dir, 'fetch', '-q', '--depth', '1', 'origin', commit);
   git(dir, 'checkout', '-q', 'FETCH_HEAD');
   return dir;
@@ -90,6 +98,23 @@ function readSources(adapter, source) {
   return files;
 }
 
+// Paths whose existence is evidence. Bytes are never read.
+function readListing(adapter, source) {
+  const plan = adapterReadPlan(adapter);
+  const listing = [];
+  const walk = (relative) => {
+    const absolute = path.join(source, relative);
+    if (!fs.existsSync(absolute)) return;
+    for (const entry of fs.readdirSync(absolute, { withFileTypes: true })) {
+      const next = path.posix.join(relative, entry.name);
+      if (entry.isDirectory()) walk(next);
+      else if (plan.lists(next)) listing.push(next);
+    }
+  };
+  for (const prefix of plan.listingPrefixes) walk(prefix.replace(/\/$/, ''));
+  return listing.sort();
+}
+
 // Scale guarantee: every generated face must lay out with no overlap.
 function verifyLayouts(lens) {
   const problems = [];
@@ -113,6 +138,7 @@ export function provenanceFor(adapter, overlay) {
   return {
     generator: ADAPTER_VERSION,
     projectorBlobSha1: projectorBlobSha1(),
+    projectorSupportSha256: projectorSupportSha256(),
     adapterSha256: sha256(stable(adapter)),
     overlaySha256: overlay ? sha256(stable(overlay)) : null,
     sourceCommit: adapter.repository.commit,
@@ -273,7 +299,7 @@ function main() {
   if (!/^[0-9a-f]{40}$/.test(commit)) throw new Error(`could not resolve ${commit} to a full commit SHA`);
 
   const pinned = pinTo(adapter, commit);
-  const { lens, report } = projectAndroidScreenLens({ adapter: pinned, files: readSources(pinned, source), overlay, observedAt });
+  const { lens, report } = projectAndroidScreenLens({ adapter: pinned, files: readSources(pinned, source), listing: readListing(pinned, source), overlay, observedAt });
   normalizeScreenLens(lens);
   const problems = verifyLayouts(lens);
   if (problems.length) throw new Error(`generated lens has layout overlaps:\n${problems.join('\n')}`);
@@ -298,7 +324,7 @@ function main() {
       nextCatalog = stable(moved.catalog);
     }
   }
-  const summary = { state: 'PASS', subject: ctx.subject?.slug ?? null, build: build?.buildRef ?? null, lens: path.relative(ROOT, outFile), sourceCommit: commit, sharesStable: shared, screens: report.screens, elements: report.elements, pathways: report.pathways, familyBonds: report.bonds.length, held: report.held.length, unknownCalls: report.unknownCalls.length };
+  const summary = { state: 'PASS', subject: ctx.subject?.slug ?? null, build: build?.buildRef ?? null, lens: path.relative(ROOT, outFile), sourceCommit: commit, sharesStable: shared, screens: report.screens, elements: report.elements, pathways: report.pathways, familyBonds: report.bonds.length, held: report.held.length, unknownCalls: report.unknownCalls.length, ...(report.realization ? { realization: report.realization } : {}), ...(report.examples ? { examples: report.examples } : {}) };
   const current = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf8') : '';
   const catalogText = ctx.legacy ? null : fs.readFileSync(path.join(ROOT, CATALOG), 'utf8');
   const adapterChanged = repinAdapter && stable(adapter) !== stable(pinned);
