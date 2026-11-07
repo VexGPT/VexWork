@@ -179,6 +179,114 @@ Synthetic Cloud / later remote cloud realization
 If they repeatedly require the same service identity + connectivity/currentness + lifetime
 relationship, extract the smallest common `VexService` contract.
 
+## 2A. Current VexLife Home as the first host substrate
+
+Current VexLife already demonstrates a useful product/lifecycle truth:
+
+```text
+ONE HUMAN FRONT DOOR
+!= ONE PROCESS
+```
+
+The current Mac route converges owned processes beneath one lifecycle entry:
+
+```text
+human setup/start
+-> VexLife lifecycle owner
+   -> establish/reuse Heretic runtime
+      numeric loopback :8765
+   -> establish/reuse VexLife browser/API process
+      numeric loopback :18110
+   -> wait for Companion readiness
+   -> open the human interface
+```
+
+The human should not have to maintain parallel terminals merely because the product uses multiple
+processes.
+
+Current VexLife also already defines Vex Home as the durable hosting/custody boundary for hosted
+capabilities:
+
+```text
+Vex Home
+    core identity / lifecycle / recovery
+    hosted capabilities
+        Conversation
+        Maps
+        Stream
+        future capabilities...
+```
+
+with the permanent distinction:
+
+```text
+CAPABILITY_CONTRACT != DEPLOYMENT_TOPOLOGY
+```
+
+Cloud Connectivity should consume that existing placement law rather than invent a separate synthetic
+"cloud host" product.
+
+### First realization
+
+The first synthetic Cloud Connectivity server may live as a bounded hosted-capability module behind
+the existing VexLife HTTP/server process:
+
+```text
+VexLife browser/API process
+    existing UI / Companion routes
+    +
+    CloudConnectivityHostedCapability
+        contract ingress
+        synthetic domain owner
+        synthetic durable state
+        perturbation/fault realization
+```
+
+The browser/server process is transport/lifetime composition only:
+
+```text
+HTTP ROUTE != CLOUD DOMAIN OWNER
+SERVE_BROWSER != CLOUD CONNECTIVITY SEMANTIC OWNER
+```
+
+### Deployment evolution
+
+If later resource/lifetime/failure pressure earns a separate process, keep the same capability
+contract:
+
+```text
+Stage 1
+    same VexLife process
+    + module boundary
+
+Stage 2
+    sibling Vex Home service process
+
+Stage 3
+    another owned host / self-hosted cloud / managed cloud realization
+```
+
+Moving between those stages must not require Android/Lab product semantics to change merely because
+deployment topology changed.
+
+Permanent:
+
+```text
+NEW CAPABILITY != NEW HUMAN-MANAGED TERMINAL
+IN_PROCESS != SEMANTICALLY LOCAL-ONLY
+SIBLING_PROCESS != NEW PRODUCT MEANING
+REMOTE_HOST != NEW CAPABILITY CONTRACT BY DEFINITION
+```
+
+Current VexLife source anchors:
+
+```text
+repo.vexlife:README.md
+repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md
+repo.vexlife:scripts/macos-lifecycle.mjs
+repo.vexlife:scripts/serve-browser.mjs
+```
+
 ## 3. Per-service ServiceConnectivityRelay
 
 Each service relationship remains independently scoped:
