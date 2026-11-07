@@ -141,6 +141,52 @@ Vex
   later explanation of admitted current scenario/context
 ```
 
+## Reusable connectivity architecture
+
+The current architecture pressure has separated three scopes that must remain independently true:
+
+```text
+DEVICE NETWORK
+    NetworkConnectivityRelay
+
+SERVICE RELATIONSHIP
+    candidate VexService
+    + per-service ServiceConnectivityRelay
+
+OPERATION
+    rightful VexFamily
+    -> act(...)
+    -> admitted semantic State + Begin
+    -> bound Family.Act.Method
+    -> VexExecution
+    -> service/API realization
+```
+
+The detailed map, automation grammar, VexLogger upload example, announcement example and VexBoard
+projection rules live in:
+
+```text
+projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md
+```
+
+Cloud Connectivity uses the accepted stable `VexFamily.act(...) -> admit(State, Begin)` ownership law
+as the design baseline. VexStream and Maps remain valuable pressure/evidence, but Cloud Connectivity
+does not copy the parallel chained relationship-builder form as its semantic foundation.
+
+Permanent:
+
+```text
+DEVICE_NETWORK != SERVICE_CONNECTIVITY
+SERVICE_CONNECTIVITY != OPERATION_OUTCOME
+ONE_OPERATION_FAILURE != SHARED_SERVICE_FAILURE
+ONE_SERVICE_FAILURE != DEVICE_NETWORK_FAILURE
+
+SERVICE != FAMILY BY DEFAULT
+AUTOMATION_OBSERVATION != CONTROL BY DEFAULT
+RELAY MAY REQUEST A FAMILY CONTROL
+RELAY MUST NOT ADMIT ANOTHER FAMILY'S STATE
+```
+
 ## Provider-neutral first
 
 The architecture must not be named after AWS.
