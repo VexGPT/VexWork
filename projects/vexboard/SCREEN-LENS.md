@@ -111,12 +111,13 @@ For inbound Partner activity, the pathway may begin on Depth and return to Famil
 ```text
 Partner
 -> Connection
+-> VexExecution · Queued inbound RelationshipId lane
 -> Decoder
 -> Signal
 -> Observation
--> Receiver
+-> suspend Receiver
 -> Store
--> VexExecution.observe(exact Flow source, live owner)
+-> VexExecution.observe(exact Store Flow source, live Family owner)
 -> Family State
 -> Projection
 ```
@@ -126,19 +127,38 @@ For outbound work, Behavior remains the semantic owner:
 ```text
 Family Control + CURRENT State
 -> Act
--> Effect
+-> Begin(Approach · Effect)
 -> Method
--> VexExecution
+-> VexExecution consumes accepted Act RelationshipId / Approach
 -> Partner Connection
 -> Partner acknowledgement
 
 acknowledgement != later Partner Signal != durable outcome State
 ```
 
-A sustained listener uses the exact Flow property/function reference as VexExecution's local source
-address. It does **not** mint a Family ResourceId merely to stay alive. Family RelationshipId / typed
-ResourceId remain the semantic active-work address for Earliest / Latest / Queued consequences. The
-Lens keeps those two execution questions visibly separate.
+The Lens keeps three different coordinates visibly separate:
+
+```text
+Connection.Id
+    durable/source observation provenance
+    != runtime sequencing identity
+
+queued inbound receipt/admission
+    live Connection owner + private runtime RelationshipId
+    -> ordered receipt/admission Jobs
+
+sustained Store listener
+    exact Flow property/function reference + live Family owner
+    -> one source-addressed observation Job
+
+Family consequence
+    accepted Control relationship
+    -> Family-derived RelationshipId
+    -> authored Earliest / Latest / Queued Approach
+```
+
+Do not persist a runtime RelationshipId as Partner history and do not mint a Family ResourceId merely
+to keep a Store listener alive.
 
 A cross-Family feedback rule must also preserve ownership. Source-derived State from one Family may
 cause a convergence/lab rule to activate another Family's Control; the projector must never shorten
