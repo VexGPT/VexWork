@@ -997,4 +997,78 @@ export function summarizeRealization(tree, { screenKey, knownRefs, screenRef }) 
 // `object Owner { … const val NAME = "literal" … }` across the read sources.
 export function stringConstants(files) {
   const constants = new Map();
-  for (const [path, text] of files) {
+  for (const [path, text] of files) {    if (!path.endsWith('.kt') || !text.includes('const val')) continue;
+    for (const object of text.matchAll(/\bobject\s+(\w+)[^{]*\{/g)) {
+      const open = object.index + object[0].length - 1;
+      let close;
+      try { close = matchClose(text, open); } catch { continue; }
+      for (const constant of text.slice(open, close).matchAll(/const\s+val\s+(\w+)\s*(?::\s*String\s*)?=\s*"([^"$]*)"/g)) {
+        if (!constants.has(`${object[1]}.${constant[1]}`)) constants.set(`${object[1]}.${constant[1]}`, constant[2]);
+      }
+    }
+  }
+  return constants;
+}
+
+export function realizeScreen({ screen, files, composables, primitives, resolveRef, toSource, knownRefs, constants = null, renderSymbol = 'renderContent' }) {
+  const result = { status: 'BLUEPRINT', entry: null, rendersRegisteredTree: null, presence: [], templates: [], elements: [], opaque: [], held: [], calls: [] };
+  if (!screen.customRender) return result;
+  const text = files.get(screen.path);
+  const objectMatch = new RegExp(`object\\s+${screen.object}\\s*:`).exec(text);
+  const render = new RegExp(`override\\s+fun\\s+${renderSymbol}\\s*\\(`, 'g');
+  render.lastIndex = objectMatch?.index ?? 0;
+  const match = render.exec(text);
+  if (!match) { result.status = 'HELD'; result.held.push({ reason: `${renderSymbol} override not found`, source: screen.source }); return result; }
+  const open = match.index + match[0].length - 1;
+  const close = matchClose(text, open);
+  const bodyOpen = text.indexOf('{', close);
+  const body = text.slice(bodyOpen + 1, matchClose(text, bodyOpen));
+  const walker = new RealizationWalker({ composables, primitives, resolveRef, toSource, constants, rootRef: `screen.${screen.screenKey}` });
+  const scope = new Scope();
+  for (const param of paramList(text.slice(open + 1, close))) scope.define(param.name, { kind: 'PARAM', type: param.type, arg: null, callee: renderSymbol, source: toSource(screen.path, `${screen.object}.${renderSymbol}`) });
+  const source = toSource(screen.path, `${screen.object}.${renderSymbol}`);
+  const tree = walker.walk(parseKotlinBlock(body), { scope, source, path: screen.path, stack: [`${screen.object}.${renderSymbol}`], parentRef: null, templatePath: null, inTemplate: false, inLazy: false });
+  const summary = summarizeRealization(tree, { screenKey: screen.screenKey, knownRefs, screenRef: `screen.${screen.screenKey}` });
+  const firstCall = tree.find((node) => node.type === 'CALL');
+  visit(tree, (node) => { if (node.type === 'TREE' && node.ref && knownRefs.has(node.ref) && !result.rendersRegisteredTree) result.rendersRegisteredTree = node.ref; });
+  result.entry = { symbol: firstCall?.symbol ?? `${screen.object}.${renderSymbol}`, source: firstCall?.source ?? source };
+  result.presence = summary.presence;
+  result.templates = summary.templates;
+  result.elements = summary.elements;
+  result.opaque = dedupe(walker.opaque.map((entry) => ({ symbol: entry.symbol, source: entry.source, reason: entry.reason })), (entry) => `${entry.symbol}|${entry.source}`);
+  result.held = dedupe([...walker.held, ...summary.presence.filter((entry) => entry.held).map((entry) => ({ reason: entry.held, source: entry.source, symbol: entry.realizedBy ?? null }))], (entry) => `${entry.reason}|${entry.source}|${entry.symbol}`);
+  result.calls = [...walker.calls].sort();
+  const realizedCount = summary.elements.length + summary.presence.length + (result.rendersRegisteredTree ? 1 : 0);
+  result.status = result.opaque.length && !realizedCount ? 'OPAQUE' : realizedCount ? (result.held.length || result.opaque.length ? 'PARTIAL' : 'PROJECTED') : 'OPAQUE';
+  return result;
+}
+
+// Semantic roots a rendered example composable carries: registered/known refs and literal roots the
+// production source does not share. Used to bind a source-authored example to its subject.
+export function semanticRootsOf({ body, path, symbol, composables, primitives, resolveRef, toSource, knownRefs }) {
+  const walker = new RealizationWalker({ composables, primitives, resolveRef, toSource });
+  const source = toSource(path, symbol);
+  const tree = walker.walk(parseKotlinBlock(body), { scope: new Scope(), source, path, stack: [symbol], parentRef: null, templatePath: null, inTemplate: false, inLazy: false });
+  const known = [];
+  const foreign = [];
+  const rendered = [];
+  // The subject is the outermost semantic ROOT: a scope, a repeated list or an identified container.
+  // A registered action or text inside the example is content, never the subject.
+  const rootKinds = new Set(['COLUMN', 'ROW', 'STACK', 'CARD', 'REGION', 'SHEET', 'DIALOG']);
+  visit(tree, (node, trail) => {
+    if (node.type === 'CALL' && !trail.some((entry) => entry.ref || entry.listRef)) rendered.push(node.symbol);
+    if (trail.some((entry) => (entry.ref && knownRefs.has(entry.ref)) || (entry.listRef && knownRefs.has(entry.listRef)) || entry.literal)) return;
+    const candidate = node.type === 'REPEAT' ? node.listRef : (node.type === 'SCOPE' || node.type === 'LAZY' || (node.type === 'SLOT' && rootKinds.has(node.kind))) ? node.ref : null;
+    if (candidate && knownRefs.has(candidate)) known.push(candidate);
+    else if (node.type === 'REPEAT' && node.listExpr && !node.listRef) foreign.push(node.listExpr);
+    else if (node.type === 'SCOPE' && !node.ref && node.literal) foreign.push(node.literal);
+  });
+  return { known: [...new Set(known)], foreign: [...new Set(foreign)], rendered: [...new Set(rendered)], calls: [...walker.calls].sort() };
+}
+
+function dedupe(list, keyOf) {
+  const seen = new Set();
+  return list.filter((entry) => { const key = keyOf(entry); if (seen.has(key)) return false; seen.add(key); return true; });
+}
+
+// [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][REALIZATION]
