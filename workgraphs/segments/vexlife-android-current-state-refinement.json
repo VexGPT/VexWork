@@ -201,7 +201,8 @@
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorBlueprint.kt",
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
         "repo.vexlife-android:architecture/behavior/README.md",
-        "github.pull.vexlife-android.220"
+        "github.pull.vexlife-android.220",
+        "github.pull.vexlife-android.222"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -287,6 +288,36 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubPartner.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubContract.kt"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T13:23:07.000Z",
+      "updatedAt": "2026-11-07T13:23:07.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence.queue",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "label": "Prove provider-backed VexStream Queue as Direct VexFamily",
+      "purpose": "Prove that finite Queue State/Control/Effect semantics can move from the compatibility Blueprint/VexPort projection to Direct VexFamily while the real Media3 provider Connection and typed Queue Play/Reorder occurrence boundaries remain independent. Reuse one Queue State availability law across Family resolution, Compose and widget consumers; preserve request != provider outcome and do not admit Playback migration by analogy.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "github.pull.vexlife-android.221"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.222",
+        "github.pull.vexlife-android.221",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueFamily.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/Media3VexStreamQueueConnection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackReadState.kt"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
