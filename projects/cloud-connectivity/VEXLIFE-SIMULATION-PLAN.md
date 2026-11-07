@@ -24,6 +24,10 @@ VexLife-Android / process composition
 │   ├─ synthetic protocol/API realization
 │   └─ service-local observers / automation inputs where earned
 │
+├─ current VexLife Home hosted-capability substrate
+│   └─ first realization may share the existing VexLife HTTP process
+│      while Cloud Connectivity domain ownership stays module-bounded
+│
 └─ product Family
     ├─ CURRENT State + Control
     ├─ Family.act(...)
@@ -71,6 +75,45 @@ not own sync semantics.
 Cloud Connectivity design uses the accepted stable `VexFamily.act(...) -> admit(State, Begin)` grammar.
 VexStream remains pressure evidence for delayed-provider reconciliation and local/offline truth rather
 than the source of a second chained semantic grammar.
+
+## Host/deployment realization sequence
+
+The synthetic "server" does not require another human-managed terminal topology.
+
+Current VexLife already provides the first host/lifecycle substrate:
+
+```text
+human start
+-> VexLife lifecycle
+   -> owned Heretic runtime
+   -> owned VexLife browser/API process
+   -> Companion/interface readiness
+```
+
+Cloud Connectivity uses Vex Home as the first hosted-capability boundary:
+
+```text
+Stage 1
+    existing VexLife HTTP process
+    + bounded Cloud Connectivity hosted-capability module
+
+Stage 2 — only when earned
+    sibling Vex Home service process
+    started/reconciled by product lifecycle
+
+Stage 3
+    remote/self-hosted/managed cloud realization
+    behind the same admitted capability contract
+```
+
+Permanent:
+
+```text
+ONE PRODUCT != ONE PROCESS
+NEW CAPABILITY != NEW HUMAN-MANAGED TERMINAL
+CAPABILITY_CONTRACT != DEPLOYMENT_TOPOLOGY
+HTTP_ROUTE != CLOUD_DOMAIN_OWNER
+```
 
 ## Important identities
 
