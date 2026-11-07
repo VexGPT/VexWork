@@ -13655,7 +13655,16 @@
           "artifact.vexlife-prod.vexweb.spatial.proof.a002.return.sha256.7e9066f9aacbd535a9e75a67b99d13014cdafab51fe52bd22cc12858e55ace8b",
           "github.pull.vexlife-prod.11.comment.6570644957",
           "github.commit.vexlife-prod.e0e8ad6a95f3c73cd7f79216b3ae1802ba9b54f9",
-          "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+          "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea",
+          "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md",
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md",
+          "board.vexlife-prod.perceivability-alignment",
+          "github.commit.vexlife-prod.30e37a531edfc17b6959e13482149e249927ed69",
+          "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+          "github.commit.vexlife-android.ecbb6987d1da338fa0adf7297456d3f652f04155",
+          "artifact.vexlife-prod.a022.host-lifetime.return.sha256.ac1a135a780aa737b5c06267af38bf5e707713545c3ecfd181a78bda741a21fa",
+          "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5",
+          "human.witness.vexlife-prod.manifestation-parity-gap.20261106"
         ],
         "formedAt": "2026-11-02T02:28:00.000Z"
       },
@@ -13718,6 +13727,58 @@
               "createdAt": "2026-11-06T07:12:17.000Z"
             }
           ]
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.experience-manifestation-parity",
+          "label": "Immediate — restore VexLife experience manifestation with architecture integrity",
+          "purpose": "Carry the now-proven live VexLife-Prod body into a faithful VexLife human experience by reconciling original VexLife experience source, design tokens and reference browser behavior with VexLife-Prod's accepted Blueprint/VexWeb relationships. Preserve canonical semantic/runtime owners, Conversation/Context currentness and VexBoard-projectable identity; do not copy historical implementation wholesale, hand-edit generated artifacts, or reduce the work to cosmetic CSS parity.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.new-beginnings.p3.lived-context-aware-browser-conversation",
+            "work.vexlife.new-beginnings.local-runtime-foundation"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod",
+            "repo.vexlife",
+            "repo.vexlife-android",
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md",
+            "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md",
+            "board.vexlife-prod.perceivability-alignment",
+            "human.witness.vexlife-prod.manifestation-parity-gap.20261106",
+            "github.commit.vexlife-prod.30e37a531edfc17b6959e13482149e249927ed69",
+            "artifact.vexlife-prod.a022.host-lifetime.return.sha256.ac1a135a780aa737b5c06267af38bf5e707713545c3ecfd181a78bda741a21fa",
+            "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5",
+            "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+            "repo.vexlife:docs/EXPERIENCE-FOUNDATION.md",
+            "repo.vexlife:docs/EXPERIENCE-GUIDANCE.md",
+            "repo.vexlife:docs/INTERFACE-BUILDER.md",
+            "repo.vexlife:blueprint/design-tokens.json",
+            "repo.vexlife:blueprint/fragments/screens/shell.json",
+            "repo.vexlife:blueprint/fragments/screens/chat.json",
+            "repo.vexlife:reference/browser/index.html",
+            "repo.vexlife:reference/browser/app.css",
+            "repo.vexlife:reference/browser/modules/chat-controller.js",
+            "repo.vexlife-prod:docs/foundation/VEXWEB-COMPLETED-VIEW-BLUEPRINT.md",
+            "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
+            "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexWebArtifacts.kt",
+            "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+            "github.commit.vexlife-android.ecbb6987d1da338fa0adf7297456d3f652f04155"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T02:40:00.000Z",
+          "updatedAt": "2026-11-07T02:40:00.000Z",
+          "transitionHistory": []
         },
         {
           "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
@@ -13861,6 +13922,7 @@
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vexlife.new-beginnings.evolution-live-bridge",
+            "work.vexlife.new-beginnings.experience-manifestation-parity",
             "work.vexlife.new-beginnings.later.settings-capability-mapping",
             "work.vexlife.new-beginnings.local-runtime-foundation",
             "work.vexlife.new-beginnings.p0.repository-front-door",
@@ -13892,14 +13954,16 @@
             "github.commit.vexlife-prod.1a1745547558110fdbc420d4c15896cd353f5c46",
             "artifact.vexlife-prod.new-beginnings.a065.return.sha256.16de85d00a4fdc9b62e71c8286d59d6918b33f5e06844dc02b45670b355d61ad",
             "github.pull.vexlife-prod.37.comment.6679191516",
-            "github.pull.vexlife-prod.37.comment.6679020522"
+            "github.pull.vexlife-prod.37.comment.6679020522",
+            "github.commit.vexlife-prod.30e37a531edfc17b6959e13482149e249927ed69",
+            "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-02T02:28:00.000Z",
-          "updatedAt": "2026-11-06T07:12:00.000Z",
+          "updatedAt": "2026-11-07T02:40:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.new-beginnings.outcome.plan-validated-ready.p0-front-door",
@@ -14670,6 +14734,7 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
+            "work.vexlife.new-beginnings.experience-manifestation-parity",
             "work.vexlife.new-beginnings.evolution-live-bridge"
           ]
         },
@@ -14722,10 +14787,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 12,
-        "openWorkItemCount": 3,
+        "workItemCount": 13,
+        "openWorkItemCount": 4,
         "outcomeCount": 1,
-        "taskCount": 10,
+        "taskCount": 11,
         "defectCount": 0,
         "potentialCount": 1,
         "needsHumanCount": 0,
@@ -14743,6 +14808,7 @@
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vexlife.new-beginnings.evolution-live-bridge",
+            "work.vexlife.new-beginnings.experience-manifestation-parity",
             "work.vexlife.new-beginnings.later.settings-capability-mapping",
             "work.vexlife.new-beginnings.local-runtime-foundation",
             "work.vexlife.new-beginnings.p0.repository-front-door",
@@ -14774,14 +14840,16 @@
             "github.commit.vexlife-prod.1a1745547558110fdbc420d4c15896cd353f5c46",
             "artifact.vexlife-prod.new-beginnings.a065.return.sha256.16de85d00a4fdc9b62e71c8286d59d6918b33f5e06844dc02b45670b355d61ad",
             "github.pull.vexlife-prod.37.comment.6679191516",
-            "github.pull.vexlife-prod.37.comment.6679020522"
+            "github.pull.vexlife-prod.37.comment.6679020522",
+            "github.commit.vexlife-prod.30e37a531edfc17b6959e13482149e249927ed69",
+            "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-02T02:28:00.000Z",
-          "updatedAt": "2026-11-06T07:12:00.000Z",
+          "updatedAt": "2026-11-07T02:40:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.new-beginnings.outcome.plan-validated-ready.p0-front-door",
