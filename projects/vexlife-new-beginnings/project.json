@@ -11,7 +11,8 @@
     "repo.vexlife-prod",
     "repo.vexlife-android",
     "repo.vexlife",
-    "repo.vextreme"
+    "repo.vextreme",
+    "repo.vextreme-sdk"
   ],
   "sourceRefs": [
     "projects/vexlife-new-beginnings/README.md",
@@ -108,7 +109,19 @@
     "github.commit.vexlife-android.ecbb6987d1da338fa0adf7297456d3f652f04155",
     "artifact.vexlife-prod.a022.host-lifetime.return.sha256.ac1a135a780aa737b5c06267af38bf5e707713545c3ecfd181a78bda741a21fa",
     "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5",
-    "human.witness.vexlife-prod.manifestation-parity-gap.20261106"
+    "human.witness.vexlife-prod.manifestation-parity-gap.20261106",
+    "projects/vexlife-new-beginnings/VEX-VISION-COMPANION.md",
+    "human.intent.vexlife.vision-companion.real-browser-witness.20261107",
+    "github.commit.vextreme-sdk.1a1495b6d42831c08a61405e682a330f223bbbcb",
+    "github.commit.vextreme-sdk.4e8f2fca496269cadc7710e5134ed45d9ecae3e0",
+    "repo.vextreme-sdk:docs/architecture/vex-body-vision-screen-held-integration.md",
+    "repo.vextreme-sdk:docs/architecture/perception-session-screen-owner-binding.md",
+    "repo.vextreme-sdk:docs/architecture/macos-screen-permission-agent.md",
+    "repo.vextreme-sdk:docs/architecture/perception-broker-screen-adapter.md",
+    "repo.vextreme-sdk:docs/private-continuity/vex-body/vision/screen-permission/current.json",
+    "repo.vextreme-sdk:docs/private-continuity/vexlocalbridge/model-runtime-adapter-registry.json",
+    "repo.vextreme-sdk:lib/vexlocalbridge/mlx-persistent-runtime-owner.js",
+    "github.pull.vexlife-prod.53"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }

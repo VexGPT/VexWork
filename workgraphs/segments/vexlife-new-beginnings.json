@@ -440,6 +440,51 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-07T08:06:00.000Z",
+      "updatedAt": "2026-11-07T08:06:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "High — Vex Vision companion for real-browser witnessing",
+      "purpose": "Let Victor use a normal browser with normal site/session behavior while Vex can be explicitly invited to witness one selected browser window through the existing Vex Vision / Perception architecture. Begin with visible, on-demand one-request/at-most-one-capture observation and ephemeral raw pixels; derive bounded visual context for canonical Conversation without making VexLife UI the sensor owner, treating screen content as authority, fabricating a VLM path, or enabling continuous/background monitoring.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.local-runtime-foundation",
+        "work.vexlife.new-beginnings.p2.vex-conversation-reintegration"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-new-beginnings/VEX-VISION-COMPANION.md",
+        "human.intent.vexlife.vision-companion.real-browser-witness.20261107",
+        "github.commit.vextreme-sdk.1a1495b6d42831c08a61405e682a330f223bbbcb",
+        "github.commit.vextreme-sdk.4e8f2fca496269cadc7710e5134ed45d9ecae3e0",
+        "github.issue.vextreme-sdk.243.comment.6015765339",
+        "github.issue.vextreme-sdk.226.comment.6016045614",
+        "github.issue.vextreme-sdk.241.comment.6016412763",
+        "repo.vextreme-sdk:docs/architecture/vex-body-vision-screen-held-integration.md",
+        "repo.vextreme-sdk:docs/architecture/perception-session-screen-owner-binding.md",
+        "repo.vextreme-sdk:docs/architecture/macos-screen-permission-agent.md",
+        "repo.vextreme-sdk:docs/architecture/perception-broker-screen-adapter.md",
+        "repo.vextreme-sdk:docs/private-continuity/vex-body/vision/screen-permission/current.json",
+        "repo.vextreme-sdk:docs/private-continuity/vexlocalbridge/model-runtime-adapter-registry.json",
+        "repo.vextreme-sdk:lib/vexlocalbridge/mlx-persistent-runtime-owner.js",
+        "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+        "github.pull.vexlife-prod.53",
+        "work.vexlife.new-beginnings.experience-manifestation-parity"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
