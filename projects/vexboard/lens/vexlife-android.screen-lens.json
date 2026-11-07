@@ -18161,7 +18161,7 @@
   "provenance": {
     "generator": "vexlife-android-adapter/5",
     "projectorBlobSha1": "9c8f41180cc9e8d8c7793524cd85f790d706ff33",
-    "projectorSupportSha256": "5ef8db9c4d59d96debce3ebcc32e8eef31a1c21902483cf72ac69ce51d8af48a",
+    "projectorSupportSha256": "6667392107cc131d8330231edbccacfff6d50e9a2a54b58c27972041adabb7b5",
     "adapterSha256": "eb01781d044e2255e0f8f4d9f4d0eca9dfedb5a24f54bcd9d64c9aa0a38268cc",
     "overlaySha256": "b90f9037a67e7f9d6e4fac6cc455b036fe1a7128d8f4601ed66aa7be2825efd0",
     "sourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2"
