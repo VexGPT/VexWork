@@ -307,7 +307,6 @@ test('connection owns its setup condition while library selection owns always-pa
     (entry) => entry.relationshipRef === 'relationship.vexstream.library.selection',
   );
   assert.deepEqual(library.elementRefs, [
-    'element.vexstream-music.body.library-tabs',
     'element.vexstream-music.body.library',
   ]);
 });
@@ -393,7 +392,6 @@ test('the source comparison catches the prior hand-authored Paired/library-conta
   );
   const paired = connection.values.find((entry) => entry.valueRef === 'connection.paired');
   paired.elementRefs = [
-    'element.vexstream-music.body.library-tabs',
     'element.vexstream-music.body.library',
   ];
   const library = staleSource.relationships.find(
