@@ -48,8 +48,9 @@ test('data model separates sequence, time, provenance and gap classes', () => {
   assert.match(dataModel, /DETECTABLE_GAP != RECOVERABLE_GAP/);
 });
 
-test('Connection Signal seam stays distinct from CGM semantic ownership', () => {
-  assert.match(readme, /Connection<CgmDeviceFamily\.Signal>/);
+test('Partner Connection Signal seam stays distinct from CGM semantic ownership', () => {
+  assert.match(readme, /VexPartner<Partner>/);
+  assert.match(readme, /Connection<Partner, Signal>/);
   assert.match(charter, /CONNECTION STATE != SIGNAL/);
   assert.match(charter, /SIGNAL != FAMILY STATE/);
   assert.match(charter, /SIGNAL RECEIVED != STATE CHANGED/);
@@ -102,6 +103,8 @@ test('Cloud and Full Security are later integrations rather than CGM owners', ()
 
 
 test('Partner foundation survives execution ordering and Room restart pressure without ownership collapse', () => {
+  const model = byRef.get('work.vex-cgm-labs.data-model-foundation');
+
   assert.match(charter, /VexPartner<Partner>[\s\S]*Source<Partner>[\s\S]*Conversion<Input, Partner, Signal>[\s\S]*Receiver<Partner, Signal, exact Observation>/);
   assert.match(charter, /suspend Receiver\.receive/);
   assert.match(charter, /CgmPartner\.Connection\.BleDecoder[\s\S]*CgmPartner\.Connection\.HttpDecoder/);
