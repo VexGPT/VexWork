@@ -48,14 +48,7 @@
         },
         {
           "valueRef": "connection.paired",
-          "label": "Paired",
-          "elementRefs": [
-            "element.vexstream-music.body.library-tabs",
-            "element.vexstream-music.body.library"
-          ],
-          "sourceRefs": [
-            "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
-          ]
+          "label": "Paired"
         }
       ]
     },
@@ -93,6 +86,10 @@
             "pathway.vexstream-music.swap-to-child-albums-panel-container-library-content"
           ]
         }
+      ],
+      "elementRefs": [
+        "element.vexstream-music.body.library-tabs",
+        "element.vexstream-music.body.library"
       ]
     },
     {
