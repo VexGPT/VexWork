@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.cloud-connectivity",
+  "label": "Cloud Connectivity",
+  "purpose": "Demonstrate mobile/cloud correctness across APIs, local/offline state, transport attempts, synchronization, retries, idempotency, multi-device convergence, API versioning, backward compatibility, cloud-provider realization and observability through VexLife-Android, VexLife-Prod, VexBoard and Vex while reusing Full Security for security-boundary meaning.",
+  "rootWorkRefs": [
+    "work.cloud-connectivity.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife",
+    "repo.vexlife-prod",
+    "repo.vexlife-android",
+    "repo.vexstream-music"
+  ],
+  "sourceRefs": [
+    "projects/cloud-connectivity/README.md",
+    "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
+    "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+  ],
+  "formedAt": "2026-11-06T17:25:00.000-08:00"
+}
