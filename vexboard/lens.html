@@ -709,14 +709,27 @@ function setExpressionPathway(pathwayRef, { renderNow = true } = {}) {
   state.selected = anchor ? { kind: 'ELEMENT', ref: anchor.ref } : null;
   if (renderNow) render();
 }
+function preferredExpressionPathway(expressionRef) {
+  const expression = Expressions.expressionFor(state.expressionFixture, expressionRef);
+  const assigned = Object.entries(expression.assignments).reverse();
+  for (const [relationshipRef, valueRef] of assigned) {
+    const relationship = state.expressionFixture.relationships.find((entry) => entry.relationshipRef === relationshipRef);
+    const value = relationship?.values.find((entry) => entry.valueRef === valueRef);
+    const pathwayRef = value?.pathwayRefs?.[0] ?? null;
+    if (pathwayRef && state.expressionResolution.behavior.pathwayRefs.includes(pathwayRef)) return pathwayRef;
+  }
+  return state.expressionResolution.behavior.pathwayRefs[0] ?? null;
+}
 function setExpression(expressionRef, { renderNow = true } = {}) {
   if (!expressionAvailable()) return;
   if (!state.expressionFixture.expressions.some((entry) => entry.expressionRef === expressionRef)) return;
+  const changedExpression = state.expressionRef !== expressionRef;
   state.expressionRef = expressionRef;
   state.expressionResolution = Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, expressionRef);
   const paths = state.expressionResolution.behavior.pathwayRefs;
   if (paths.length) {
-    const chosen = paths.includes(state.expressionPathwayRef) ? state.expressionPathwayRef : paths[0];
+    const preserveCurrent = !changedExpression && paths.includes(state.expressionPathwayRef);
+    const chosen = preserveCurrent ? state.expressionPathwayRef : preferredExpressionPathway(expressionRef);
     setExpressionPathway(chosen, { renderNow: false });
   } else {
     state.expressionPathwayRef = null;
