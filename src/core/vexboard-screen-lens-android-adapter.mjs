@@ -671,8 +671,21 @@ function sourceFunction(cat, adapter, functionName, ownerType = null) {
 function receiverTypeInSource(sourceText, receiver) {
   const typed = new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*:\\s*([A-Z]\\w*)\\b').exec(sourceText)?.[1] ?? null;
   if (typed) return typed;
-  const remembered = new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*=\\s*remember\\s*\\{\\s*([A-Z]\\w*)\\s*\\(').exec(sourceText)?.[1] ?? null;
+
+  /*
+   * Compose construction may be:
+   *   remember { Type() }
+   *   remember(key) { Type() }
+   *   remember(keys...) { if (...) Type.production(...) else Type() }
+   *
+   * The receiver type is still source-readable; do not fall back to global function-name matching.
+   */
+  const remembered = new RegExp(
+    '\\bval\\s+' + escapeRegex(receiver) +
+      '\\s*=\\s*remember(?:\\s*\\([^)]*\\))?\\s*\\{[\\s\\S]{0,900}?([A-Z]\\w*)(?:\\.production)?\\s*\\(',
+  ).exec(sourceText)?.[1] ?? null;
   if (remembered) return remembered;
+
   return new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*=\\s*([A-Z]\\w*)\\s*\\(').exec(sourceText)?.[1] ?? null;
 }
 
