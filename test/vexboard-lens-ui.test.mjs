@@ -166,6 +166,7 @@ test('Surface restores the expression carousel instead of treating the rail as a
   assert.match(page, /Math\.abs\(dx\) > 70/);
   assert.match(page, /event\.key === 'ArrowLeft'/);
   assert.match(page, /event\.key === 'ArrowRight'/);
+  assert.match(page, /@media \(max-width:900px\)[\s\S]*\.xchip\{display:none\}[\s\S]*\.xchip\[aria-pressed="true"\]\{display:inline-flex/, 'phone width collapses the rail to the active expression instead of wrapping every chip');
   assert.match(page, /@media \(max-width:900px\)[\s\S]*\.xpeek\{display:none\}/, 'phone width hides neighbours rather than creating horizontal page scroll');
   assert.match(page, /Double-click to show expression:/, 'an element can jump to an expression that exposes it');
 });
