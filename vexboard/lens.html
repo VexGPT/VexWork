@@ -1414,6 +1414,18 @@ function renderStructure() {
   const marks = selectionPathRefs();
   const elements = Lens.elementsForScreen(state.lens, screen.screenRef);
   const sections = [];
+  if (expressionAvailable()) {
+    const expression = activeExpression();
+    const resolution = state.expressionResolution;
+    sections.push(h('div', {
+      class: 'xstruct',
+      title: 'The same expression shown on Surface; marked rows participate, unmarked rows are not claimed absent.',
+    },
+      h('span', { class: 'xk' }, expressionKind(expression)),
+      h('b', {}, expression.label),
+      expression.summary ? h('span', {}, expression.summary) : null,
+      h('span', { class: 'xcount' }, `${resolution.surface.elementRefs.length} static · ${resolution.surface.runtimeItems.length} runtime`)));
+  }
   const owners = [...state.lens.chrome.filter((entry) => elements.some((element) => element.ownerRef === entry.chromeRef)), screen];
   for (const owner of owners) {
     const isScreen = owner === screen;
@@ -1432,7 +1444,13 @@ function renderStructure() {
       const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}${deltaClass(element)}${expressionElementParticipates(element.ref) ? ' x-part' : ''}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
         onclick: () => selectElement(element.ref),
         onkeydown: (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectElement(element.ref); } },
-        ondblclick: () => travel(element) },
+        ondblclick: () => {
+          if (element.navigatesTo) travel(element);
+          else {
+            const exposing = expressionExposingElement(element.ref);
+            if (exposing) setExpression(exposing.expressionRef);
+          }
+        } },
         elementChip(element),
         h('span', { class: 'slabel' }, element.label, element.pathwayRef && Lens.pathwayFor(state.lens, element.pathwayRef).label !== element.label ? h('span', { style: 'color:var(--faint);font-weight:400' }, ` · ${Lens.pathwayFor(state.lens, element.pathwayRef).label}`) : null),
         element.declared || element.symbol ? h('span', { class: 'sdecl' }, element.symbol && element.declared && element.symbol !== element.declared ? `${element.symbol} = ${element.declared}` : (element.declared ?? element.symbol)) : null,
@@ -1460,6 +1478,26 @@ function renderGraphFace(face) {
   const pathway = currentPathway();
   const anchor = anchorElement();
   const wrap = h('div', { class: 'face', dataset: { face } });
+  if (expressionAvailable()) {
+    const expression = activeExpression();
+    const paths = state.expressionResolution?.behavior.pathwayRefs ?? [];
+    wrap.append(h('div', { class: 'xgraph-context', title: expression.summary ?? expression.label },
+      h('span', { class: 'xk' }, expressionKind(expression)),
+      h('b', {}, expression.label),
+      expression.summary ? h('span', {}, expression.summary) : null,
+      paths.length ? h('div', { class: 'xpaths', 'aria-label': 'Expression pathways' },
+        h('span', { class: 'label' }, 'Pathway'),
+        paths.map((ref) => {
+          const candidate = Lens.pathwayFor(state.lens, ref);
+          return h('button', {
+            class: 'xpath',
+            type: 'button',
+            'aria-pressed': state.pathwayRef === ref ? 'true' : 'false',
+            title: candidate?.summary ?? candidate?.label ?? ref,
+            onclick: (event) => { event.stopPropagation(); setExpressionPathway(ref); },
+          }, candidate?.label ?? ref);
+        })) : null));
+  }
   if (!pathway) {
     const message = anchor
       ? (anchor.role === 'ELEMENT'
@@ -2169,14 +2207,17 @@ function syncUrl() {
 function render() {
   const focusedRef = document.activeElement?.dataset?.ref ?? document.activeElement?.dataset?.nodeRef ?? null;
   const root = h('div', { class: 'lens' });
-  const main = h('main', { class: 'main' }, renderExpressionRail(), renderExperienceSide(), renderBehaviorSide());
+  const main = h('main', { class: 'main' }, renderExperienceSide(), renderBehaviorSide());
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
   if (state.overlay === 'RELATED') main.append(renderRelatedBoards());
   if (state.overlay === 'CHANGES' && state.compare?.count) main.append(renderChanges());
   if (state.overlay === 'LEGEND') main.append(renderLegend());
-  root.append(renderBar(), renderAtlas(), main, renderTray());
+  root.append(renderBar(), renderAtlas());
+  const expressionRail = renderExpressionRail();
+  if (expressionRail) root.append(expressionRail);
+  root.append(main, renderTray());
   app.replaceChildren(root);
   refs = { main, bridge };
   applyPalette();
@@ -2197,6 +2238,8 @@ window.addEventListener('keydown', (event) => {
   if (event.target.closest?.('input,textarea')) return;
   if (event.key === '[') { flip('EXPERIENCE'); }
   else if (event.key === ']') { flip('BEHAVIOR'); }
+  else if (event.key === 'ArrowLeft' && expressionAvailable() && state.faces.EXPERIENCE === 'SURFACE' && !state.overlay) { event.preventDefault(); stepExpression(-1); }
+  else if (event.key === 'ArrowRight' && expressionAvailable() && state.faces.EXPERIENCE === 'SURFACE' && !state.overlay) { event.preventDefault(); stepExpression(1); }
   else if (event.key === '/') { event.preventDefault(); document.getElementById('lens-search')?.focus(); }
   else if (event.key === 'm' || event.key === 'M') { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); }
   else if (event.key === 'Escape') { if (state.menu) { state.menu = null; renderBarInPlace(); } else if (state.overlay) { state.overlay = null; render(); } else clearSelection(); }
