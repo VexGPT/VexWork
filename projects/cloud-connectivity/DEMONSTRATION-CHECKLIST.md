@@ -167,4 +167,34 @@ The Project should be understandable even if the realization is later replaced.
 - [ ] "Show architecture" descends to a bounded VexBoard neighborhood.
 - [ ] The primary experience still looks/behaves like a real product surface rather than a tutorial.
 
+## L. Reusable network / service / automation architecture
+
+- [ ] Device-level NetworkConnectivity truth is shared without carrying service- or operation-specific failures.
+- [ ] Two services can have different current connectivity while consuming the same device network truth.
+- [ ] Multiple Families can use one service simultaneously without sharing operation outcome state.
+- [ ] One operation failure does not mark the shared service or device network unavailable by itself.
+- [ ] One service failure does not mark sibling services unavailable.
+- [ ] A candidate VexService can be injected as one long-lived external-service relationship without becoming a Family, executor, logger, security authority or universal API manager.
+- [ ] Family-triggered service work uses the stable `Family.act(...) -> admitted State + Begin -> Family.Act.Method -> VexExecution` path.
+- [ ] One Method attempt uses `VexMethod.Result.Success / Failure / Error` rather than inventing another generic API-result hierarchy.
+- [ ] Attempt occurrences are observable without requiring a public/durable attempt ID unless a real cross-process ambiguity earns one.
+- [ ] Background scheduling/network/service observations can converge into work eligibility without pretending timer events are Controls.
+- [ ] When synchronization has real product semantics, automation and human/debug actions request the same lawful Family Control.
+- [ ] Pure infrastructure background work can remain service/process-owned when no Family semantic question exists.
+- [ ] Process-lifetime service composition does not pretend to survive Android process death; OS-owned scheduling re-enters the same semantics/realization path.
+- [ ] VexLogger remains chronology owner while log synchronization/database upload remains separately owned.
+- [ ] Announcement service polling becomes UI meaning only after validated provider truth is interpreted by the rightful Announcement Family.
+- [ ] Notification decision remains a convergence question over announcement truth, permissions, foreground state and preferences rather than part of service fetching.
+- [ ] VexBoard distinguishes authored Family behavior, Relay convergence, Method realization, provider observation and Logger chronology.
+
+Permanent:
+
+```text
+SERVICE != FAMILY BY DEFAULT
+TIMER_FIRED != CONTROL
+SERVICE_FETCH != UI STATE
+VEXLOGGER != LOG_SYNC
+ANNOUNCEMENT_EXISTS != NOTIFICATION_SHOULD_FIRE
+```
+
 <!-- [VXG RealForever][CLOUD-CONNECTIVITY][CHECKLIST] -->
