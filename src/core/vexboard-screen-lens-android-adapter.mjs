@@ -719,6 +719,30 @@ function directMemberCalls(body) {
   return calls;
 }
 
+function executionOperationReferences(body) {
+  const refs = [];
+  const pattern =
+    /VexExecution\.(begin|beginEarliest|beginLatest|beginQueued)\s*\(([\s\S]{0,1800}?)operation\s*=\s*::(\w+)/g;
+  for (const match of String(body).matchAll(pattern)) {
+    const api = match[1];
+    const args = match[2];
+    refs.push({
+      api,
+      approach:
+        api === 'beginQueued' ? 'Queued'
+          : api === 'beginLatest' ? 'Latest'
+            : api === 'beginEarliest' ? 'Earliest'
+              : 'Independent',
+      owner: /\bowner\s*=\s*([a-z]\w*)/.exec(args)?.[1] ?? null,
+      relationshipId: /\brelationshipId\s*=\s*([A-Z]\w*)/.exec(args)?.[1] ?? null,
+      functionName: match[3],
+      index: match.index,
+    });
+  }
+  return refs;
+}
+
+
 function connectionPartnerForLocal(sourceText, localName) {
   const pattern = new RegExp(
     '(?:private\\s+|internal\\s+|public\\s+)?val\\s+' + escapeRegex(localName) +
@@ -780,6 +804,18 @@ function resolvePartnerIngress(cat, adapter, functionName, ownerType = null, vis
     };
   }
 
+  for (const execution of executionOperationReferences(fn.body)) {
+    if (!sourceFunction(cat, adapter, execution.functionName, ownerType)) continue;
+    const resolved = resolvePartnerIngress(cat, adapter, execution.functionName, ownerType, nextVisited);
+    if (resolved) {
+      return {
+        ...resolved,
+        ingressExecution: execution,
+        doorwayChain: [functionName, execution.functionName, ...(resolved.doorwayChain ?? [resolved.functionName])],
+      };
+    }
+  }
+
   for (const call of directMemberCalls(fn.body)) {
     if (['toString', 'copy', 'also', 'let', 'map', 'filter'].includes(call.functionName)) continue;
     const nestedOwner = receiverTypeInSource(fn.text, call.receiver);
@@ -815,6 +851,11 @@ function resolvePartnerFamilyRequest(cat, adapter, functionName, ownerType = nul
     const partnerType = partnerPattern.exec(family.text)?.[1] ?? null;
     const partner = partnerType ? partnerRoot(cat, adapter, partnerType) : null;
     if (!partnerType || !partner) return null;
+    const authoredApproach =
+      new RegExp(
+        'begin(Earliest|Latest|Queued)?\\s*\\([\\s\\S]{0,800}?Effect\\s*\\.\\s*' + escapeRegex(effect) + '\\s*\\(',
+      ).exec(family.text)?.[1] ?? 'Independent';
+
     return {
       kind: 'FAMILY_REQUEST',
       functionName,
@@ -826,6 +867,7 @@ function resolvePartnerFamilyRequest(cat, adapter, functionName, ownerType = nul
       control,
       effect,
       method,
+      approach: authoredApproach,
       partnerType,
       partner,
       signals: sealedMembers(partner.text, 'Signal'),
@@ -1258,6 +1300,17 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       summary: 'Live typed relationship for this Partner and its Signal vocabulary.',
       source: bond.partner.source,
     });
+    const admissionExecution = bond.ingressExecution
+      ? builder.node('admission-execution', 'DEPTH', 'EXECUTION', 'VexExecution · ' + bond.ingressExecution.approach + ' inbound admission', {
+          symbol: 'VexExecution.' + bond.ingressExecution.api,
+          summary:
+            'The live Connection owns an active runtime relationship lane (' +
+            (bond.ingressExecution.relationshipId ?? 'private relationship') +
+            '). It sequences receipt/admission work but is not the persisted Connection.Id.',
+          source: adapter.sources.vexExecution ?? bond.labSource.source,
+        })
+      : null;
+
     const decoder = builder.node('decoder', 'DEPTH', 'DECODER', bond.partnerType + '.Connection.Decoder', {
       symbol: bond.partnerType + '.Connection.Decoder',
       summary: 'Provider representation becomes zero or more domain Partner Signals.',
@@ -1295,7 +1348,9 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     builder.edge(intent, doorway, 'lab control');
     builder.edge(doorway, partner, 'synthetic source');
     builder.edge(partner, connection, 'representation');
-    builder.edge(connection, decoder, 'decode');
+    builder.edge(connection, admissionExecution ?? decoder, admissionExecution ? bond.ingressExecution.approach : 'decode');
+    if (admissionExecution) builder.edge(admissionExecution, decoder, 'invoke receipt');
+
     builder.edge(decoder, signal, '0..N Signals');
     builder.edge(signal, observation, 'encounter');
     builder.edge(observation, receiver, 'receive');
@@ -1315,6 +1370,12 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       partner: bond.partnerType,
       family: bond.familyType,
       store: bond.storeType,
+      ...(bond.ingressExecution
+        ? {
+            executionApproach: bond.ingressExecution.approach,
+            executionRelationship: bond.ingressExecution.relationshipId,
+          }
+        : {}),
     });
     return ref;
   };
@@ -1360,9 +1421,9 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       summary: SUMMARY.act,
       source: bond.family.source,
     });
-    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Effect.' + bond.effect, {
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + bond.approach + ' · Effect.' + bond.effect + ')', {
       symbol: bond.familyType + '.Effect.' + bond.effect,
-      summary: 'Requested outside transformation. It is not Partner acknowledgement or physical outcome.',
+      summary: 'The accepted Act already authored this Effect and its ' + bond.approach + ' overlap/order law before VexExecution runs.',
       source: bond.family.source,
     });
     const diagnostic = builder.node('diagnostic', 'BEHAVIOR', 'PROJECTION', 'Partner acknowledgement · lab diagnostic', {
@@ -1470,9 +1531,9 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       summary: SUMMARY.act,
       source: request.family.source,
     });
-    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Effect.' + request.effect, {
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + request.approach + ' · Effect.' + request.effect + ')', {
       symbol: request.familyType + '.Effect.' + request.effect,
-      summary: 'The target Family authors the requested outside transformation.',
+      summary: 'The target Family authors the Effect and its ' + request.approach + ' overlap/order law before realization.',
       source: request.family.source,
     });
     const diagnostic = builder.node('diagnostic', 'BEHAVIOR', 'PROJECTION', 'AutomationStatus · acknowledgement only', {
