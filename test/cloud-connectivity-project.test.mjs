@@ -12,6 +12,7 @@ const segment = read('workgraphs/segments/cloud-connectivity.json');
 const readme = readText('projects/cloud-connectivity/README.md');
 const checklist = readText('projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md');
 const simulation = readText('projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md');
+const serviceArchitecture = readText('projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md');
 
 const byRef = new Map(segment.items.map((item) => [item.workRef, item]));
 
@@ -19,7 +20,7 @@ test('Cloud Connectivity forms a bounded no-authority Project', () => {
   assert.equal(project.projectRef, 'project.cloud-connectivity');
   assert.deepEqual(project.rootWorkRefs, ['work.cloud-connectivity.outcome']);
   assert.equal(segment.segmentRef, 'segment.cloud-connectivity');
-  assert.equal(segment.items.length, 14);
+  assert.equal(segment.items.length, 17);
 
   for (const item of segment.items) {
     assert.equal(item.authorityDisposition, 'NO_AUTHORITY');
@@ -93,6 +94,48 @@ test('canonical discoverability stays held while shared surfaces are occupied', 
   const discoverability = byRef.get('work.cloud-connectivity.discoverability');
   assert.equal(discoverability.state, 'WAITING_RESOURCE');
   assert.match(discoverability.purpose, /do not race PR #253\/#256/);
+});
+
+
+test('stable VexFamily grammar is the Cloud Connectivity semantic baseline', () => {
+  assert.match(serviceArchitecture, /VexFamily\.act\(\.\.\.\) -> admit\(State, Begin\)/);
+  assert.match(serviceArchitecture, /ADMITTED_STATE = FAMILY SEMANTIC TRUTH/);
+  assert.match(serviceArchitecture, /Cloud Connectivity does \*\*not\*\* use the parallel chained relationship-builder form/);
+});
+
+test('network, service and operation scopes remain independently true', () => {
+  assert.match(serviceArchitecture, /DEVICE_NETWORK != SERVICE_CONNECTIVITY/);
+  assert.match(serviceArchitecture, /SERVICE_CONNECTIVITY != OPERATION_OUTCOME/);
+  assert.match(serviceArchitecture, /ONE_OPERATION_FAILURE != SHARED_NETWORK_FAILURE/);
+  assert.ok(byRef.has('work.cloud-connectivity.network-service-connectivity-relays'));
+  assert.ok(byRef.has('work.cloud-connectivity.vexservice-candidate-foundation'));
+});
+
+test('VexService remains a candidate graduated component rather than a super-owner', () => {
+  assert.match(serviceArchitecture, /VexService != VexFamily/);
+  assert.match(serviceArchitecture, /VexService != VexExecution/);
+  assert.match(serviceArchitecture, /VexService != VexLogger/);
+  assert.match(serviceArchitecture, /VexService != universal API client/);
+  assert.match(serviceArchitecture, /If removing the candidate VexService abstraction loses no required correctness\/reuse/);
+});
+
+test('background automation reuses semantic Controls only when semantics exist', () => {
+  assert.match(serviceArchitecture, /TIMER_FIRED != CONTROL/);
+  assert.match(serviceArchitecture, /periodic policy says due/);
+  assert.match(serviceArchitecture, /same Family Control/);
+  assert.match(serviceArchitecture, /Pure infrastructure work may remain/);
+  assert.ok(byRef.has('work.cloud-connectivity.background-service-automation'));
+});
+
+test('logger upload and announcements preserve source ownership', () => {
+  assert.match(serviceArchitecture, /VEXLOGGER != LOG_SYNC/);
+  assert.match(serviceArchitecture, /ANNOUNCEMENT_EXISTS != NOTIFICATION_SHOULD_FIRE/);
+  assert.match(serviceArchitecture, /AnnouncementFamily\.observe/);
+});
+
+test('attempt occurrence does not automatically mint another durable identity', () => {
+  assert.match(simulation, /active Job \+ VexLogger chronology first/);
+  assert.match(serviceArchitecture, /ATTEMPT_OBSERVABILITY != AUTOMATIC ATTEMPT_ID/);
 });
 
 // [VXG RealForever][CLOUD-CONNECTIVITY][PROJECT]
