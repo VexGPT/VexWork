@@ -174,9 +174,11 @@ test('screen-level arrival activates the selected expression across Behavior and
   assert.match(page, /await bindExpressionsForLens\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression\(state\.expressionRef, \{ renderNow: false \}\);/, 'direct screen entry activates the expression pathway even without an explicit expression query parameter');
 });
 
-test('changing expressions focuses Behavior and Depth on the most specific source-backed assigned pathway', () => {
+test('changing expressions focuses Behavior and Depth from explicit relationship order, not JSON assignment key order', () => {
   assert.match(page, /function preferredExpressionPathway\(expressionRef\)/);
-  assert.match(page, /Object\.entries\(expression\.assignments\)\.reverse\(\)/, 'later explicit assignments are the more specific expression pressure');
+  assert.match(page, /expression\.relationshipRefs\s*\.filter\(\(relationshipRef\) => Object\.hasOwn\(expression\.assignments, relationshipRef\)\)\s*\.reverse\(\)/);
+  assert.doesNotMatch(page, /Object\.entries\(expression\.assignments\)/, 'JSON object key insertion order is not a semantic priority contract');
+  assert.match(page, /const valueRef = expression\.assignments\[relationshipRef\]/);
   assert.match(page, /const pathwayRef = value\?\.pathwayRefs\?\.\[0\] \?\? null/);
   assert.match(page, /const changedExpression = state\.expressionRef !== expressionRef/);
   assert.match(page, /const preserveCurrent = !changedExpression && paths\.includes\(state\.expressionPathwayRef\)/, 'a user-selected pathway is preserved only while staying within the same expression');
