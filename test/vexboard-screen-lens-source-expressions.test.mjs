@@ -156,7 +156,7 @@ test('Maps keeps its native map opaque: no expression reveals inside the boundar
 });
 
 test('expressions stay effect-free: no storage, network or clock (product nouns: see the realization law test)', () => {
-  const text = fs.readFileSync(new URL('../src/shared/vexboard-screen-lens-expressions.mjs', import.meta.url), 'utf8');
+  const text = fs.readFileSync(new URL('../src/shared/vexboard-screen-lens-source-expressions.mjs', import.meta.url), 'utf8');
   assert.doesNotMatch(text, /localStorage|sessionStorage|fetch\(|Date\.now/);
 });
 
