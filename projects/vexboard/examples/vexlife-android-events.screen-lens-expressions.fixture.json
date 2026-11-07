@@ -116,8 +116,8 @@
     {
       "expressionRef": "expression.events.preview-populated",
       "label": "Preview populated",
-      "basis": "SOURCE_AXIS",
-      "summary": "The source-authored Events attention preview supplies three stable runtime event identities without promoting them into static Screen elements.",
+      "basis": "EVIDENCE",
+      "summary": "The source-authored Events attention Preview evidences three stable runtime event identities without promoting them into static Screen elements or claiming that these exact Preview rows are production State.",
       "relationshipRefs": [
         "relationship.events.screen.registered",
         "relationship.events.repeated-realization",
