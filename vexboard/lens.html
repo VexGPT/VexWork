@@ -16,8 +16,8 @@
   --r-INTENT:#4338ca;--r-DISPATCH:#6366f1;
   --r-CONTROL:#9333ea;--r-STATE:#0f766e;--r-ACT:#7c3aed;--r-EFFECT:#b45309;--r-PROJECTION:#0369a1;
   --r-METHOD:#c2410c;--r-RESULT:#9a3412;--r-EXECUTION:#ea580c;--r-REALIZATION:#b45309;
-  --r-CONNECTION:#c2410c;--r-DECODER:#d97706;--r-RECEIVER:#ea580c;
-  --r-PARTNER:#166534;--r-SIGNAL:#3f6212;--r-STORE:#15803d;--r-OBSERVATION:#4d7c0f;
+  --r-CONNECTION:#c2410c;--r-CONVERSION:#d97706;--r-DECODER:#d97706;--r-RECEIVER:#ea580c;
+  --r-PARTNER:#166534;--r-SOURCE:#15803d;--r-SIGNAL:#3f6212;--r-STORE:#15803d;--r-OBSERVATION:#4d7c0f;
   --r-CHRONOLOGY:#57534e;--r-CONSTRUCTION:#92400e;
   --edge:#8892a6;--edge-return:#0f766e;--edge-side:#b3bac7;
   --delta:#e11d48;--delta-ink:#9f1239;
@@ -26,12 +26,12 @@
   --r-SCREEN:#0072b2;--r-CONTAINER:#0072b2;--r-CONTENT:#0072b2;--r-ELEMENT:#0072b2;--r-NAVIGATION:#0072b2;
   --r-INTENT:#3b8fc4;--r-DISPATCH:#3b8fc4;
   --r-CONTROL:#a8467f;--r-STATE:#a8467f;--r-ACT:#a8467f;--r-EFFECT:#a8467f;--r-PROJECTION:#a8467f;
-  --r-METHOD:#c75100;--r-RESULT:#c75100;--r-EXECUTION:#c75100;--r-REALIZATION:#c75100;--r-CONNECTION:#c75100;--r-DECODER:#c75100;--r-RECEIVER:#c75100;--r-PARTNER:#00845f;--r-SIGNAL:#00845f;--r-STORE:#00845f;--r-OBSERVATION:#00845f;--r-CHRONOLOGY:#555;--r-CONSTRUCTION:#555;
+  --r-METHOD:#c75100;--r-RESULT:#c75100;--r-EXECUTION:#c75100;--r-REALIZATION:#c75100;--r-CONNECTION:#c75100;--r-CONVERSION:#c75100;--r-DECODER:#c75100;--r-RECEIVER:#c75100;--r-PARTNER:#00845f;--r-SOURCE:#00845f;--r-SIGNAL:#00845f;--r-STORE:#00845f;--r-OBSERVATION:#00845f;--r-CHRONOLOGY:#555;--r-CONSTRUCTION:#555;
 }
 .palette-high-contrast{
   --delta:#000;--delta-ink:#000;
   --rule:#000;--rule-strong:#000;--muted:#222;--faint:#333;--edge:#000;--edge-return:#000;--edge-side:#000;
-  --r-SCREEN:#000;--r-CONTAINER:#000;--r-CONTENT:#000;--r-ELEMENT:#000;--r-NAVIGATION:#000;--r-INTENT:#000;--r-DISPATCH:#000;--r-CONTROL:#000;--r-STATE:#000;--r-ACT:#000;--r-EFFECT:#000;--r-PROJECTION:#000;--r-METHOD:#000;--r-RESULT:#000;--r-EXECUTION:#000;--r-REALIZATION:#000;--r-CONNECTION:#000;--r-DECODER:#000;--r-RECEIVER:#000;--r-PARTNER:#000;--r-SIGNAL:#000;--r-STORE:#000;--r-OBSERVATION:#000;--r-CHRONOLOGY:#000;--r-CONSTRUCTION:#000;
+  --r-SCREEN:#000;--r-CONTAINER:#000;--r-CONTENT:#000;--r-ELEMENT:#000;--r-NAVIGATION:#000;--r-INTENT:#000;--r-DISPATCH:#000;--r-CONTROL:#000;--r-STATE:#000;--r-ACT:#000;--r-EFFECT:#000;--r-PROJECTION:#000;--r-METHOD:#000;--r-RESULT:#000;--r-EXECUTION:#000;--r-REALIZATION:#000;--r-CONNECTION:#000;--r-CONVERSION:#000;--r-DECODER:#000;--r-RECEIVER:#000;--r-PARTNER:#000;--r-SOURCE:#000;--r-SIGNAL:#000;--r-STORE:#000;--r-OBSERVATION:#000;--r-CHRONOLOGY:#000;--r-CONSTRUCTION:#000;
 }
 *{box-sizing:border-box}html,body{height:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.45 var(--sans);-webkit-font-smoothing:antialiased}
@@ -44,7 +44,7 @@ a{color:var(--focus)}
 .role-SCREEN{--rc:var(--r-SCREEN)}.role-CONTAINER{--rc:var(--r-CONTAINER)}.role-CONTENT{--rc:var(--r-CONTENT)}.role-ELEMENT{--rc:var(--r-ELEMENT)}.role-NAVIGATION{--rc:var(--r-NAVIGATION)}
 .role-INTENT{--rc:var(--r-INTENT)}.role-DISPATCH{--rc:var(--r-DISPATCH)}
 .role-CONTROL{--rc:var(--r-CONTROL)}.role-STATE{--rc:var(--r-STATE)}.role-ACT{--rc:var(--r-ACT)}.role-EFFECT{--rc:var(--r-EFFECT)}.role-PROJECTION{--rc:var(--r-PROJECTION)}
-.role-METHOD{--rc:var(--r-METHOD)}.role-RESULT{--rc:var(--r-RESULT)}.role-EXECUTION{--rc:var(--r-EXECUTION)}.role-REALIZATION{--rc:var(--r-REALIZATION)}.role-CONNECTION{--rc:var(--r-CONNECTION)}.role-DECODER{--rc:var(--r-DECODER)}.role-RECEIVER{--rc:var(--r-RECEIVER)}.role-PARTNER{--rc:var(--r-PARTNER)}.role-SIGNAL{--rc:var(--r-SIGNAL)}.role-STORE{--rc:var(--r-STORE)}.role-OBSERVATION{--rc:var(--r-OBSERVATION)}.role-CHRONOLOGY{--rc:var(--r-CHRONOLOGY)}.role-CONSTRUCTION{--rc:var(--r-CONSTRUCTION)}
+.role-METHOD{--rc:var(--r-METHOD)}.role-RESULT{--rc:var(--r-RESULT)}.role-EXECUTION{--rc:var(--r-EXECUTION)}.role-REALIZATION{--rc:var(--r-REALIZATION)}.role-CONNECTION{--rc:var(--r-CONNECTION)}.role-CONVERSION{--rc:var(--r-CONVERSION)}.role-DECODER{--rc:var(--r-DECODER)}.role-RECEIVER{--rc:var(--r-RECEIVER)}.role-PARTNER{--rc:var(--r-PARTNER)}.role-SOURCE{--rc:var(--r-SOURCE)}.role-SIGNAL{--rc:var(--r-SIGNAL)}.role-STORE{--rc:var(--r-STORE)}.role-OBSERVATION{--rc:var(--r-OBSERVATION)}.role-CHRONOLOGY{--rc:var(--r-CHRONOLOGY)}.role-CONSTRUCTION{--rc:var(--r-CONSTRUCTION)}
 .chip{display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:5px;background:color-mix(in srgb,var(--rc,#64748b) 13%,#fff);color:var(--rc,#64748b);font:600 10.5px/1 var(--sans);letter-spacing:.02em;white-space:nowrap;flex:none}
 .palette-high-contrast .chip{background:#000;color:#fff}
 
