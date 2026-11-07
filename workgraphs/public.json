@@ -4568,6 +4568,45 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.screen-lens-projectability-expressions",
+      "parentWorkRefOrNull": "work.vexboard.source-projectors",
+      "label": "Screen Lens projectability and expressions",
+      "purpose": "Advance the accepted Living Screen Lens through a simultaneous VexLife-Android ↔ VexBoard projectability effort: derive bounded expression contexts from source-owned Screen, realization, selection, presentation, population, provider and evidence relationships; align only Android structures whose existing meaning is not lawfully projectable; then extend VexBoard's read-only mapping language, four-face expression experience and bounded source adapter without turning expressions into Scenario truth, inventing a second list/runtime ontology, rewriting evidence identity for easier joins, or replacing already-accepted Screen Lens relationships. The 2026-11-06 Claude handoff is preserved as evidence/design pressure and must be re-proven against accepted VexArchitecture before implementation.",
+      "workClass": "TASK",
+      "state": "PLAN_VALIDATED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexboard.screen-lens-currentness"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md",
+        "projects/vexboard/SCREEN-LENS.md",
+        "projects/vexboard/SCREEN-LENS-ADAPTER.md",
+        "projects/vexboard/SCENARIO-PLAYGROUND.md",
+        "work.vexboard.source-projectors",
+        "work.vexboard.screen-lens-currentness",
+        "work.vexboard.vexstream-screenshot-pilot",
+        "github.commit.vexwork.dd03cabfb181cdbbe0232d292c2d12b13c8621f3",
+        "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+        "repo.vexlife-android:architecture/elements/README.md",
+        "repo.vexlife-android:docs/foundation/F1-UI-BLUEPRINT-HOME.md",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-07T01:04:00.000Z",
+      "updatedAt": "2026-11-07T01:04:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Tech debt — Origin rename propagation through mapped descendants",
@@ -10318,6 +10357,36 @@
         "github.issue.vexwork.238.comment.6677190552"
       ],
       "createdAt": "2026-11-06T04:49:47.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.screen-lens-projectability-expressions.decomposed.20261107a",
+      "workRef": "work.vexboard.screen-lens-projectability-expressions",
+      "priorState": "CAPTURED",
+      "nextState": "DECOMPOSED",
+      "reason": "Victor asked to preserve the current Screen Lens trajectory, Claude handoff pressure and the simultaneous VexLife-Android ↔ VexBoard reasoning as durable Work rather than letting a fresh instance rediscover or overwrite the accepted body.",
+      "actorRef": "actor.chatgpt.vexboard.screen-lens-projectability-expressions",
+      "sourceRefs": [
+        "projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md",
+        "projects/vexboard/SCREEN-LENS.md",
+        "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2"
+      ],
+      "createdAt": "2026-11-07T01:03:59.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.screen-lens-projectability-expressions.plan-validated.20261107a",
+      "workRef": "work.vexboard.screen-lens-projectability-expressions",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "Architecture review reconciled the Claude handoff with the accepted Living Screen Lens, VexLife-Android Elements/Vex Compose contracts and VexArchitecture: preserve accepted identities, decouple Expression Context from Scenario state, treat repeated items as feature-owned stable runtime identity rather than fake static registration, and stage Android alignment -> expression derivation -> VexBoard contract/components -> bounded adapter/JSON -> round-trip proof. Product implementation remains ungranted.",
+      "actorRef": "actor.chatgpt.vexboard.screen-lens-projectability-expressions",
+      "sourceRefs": [
+        "projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md",
+        "work.vexboard.screen-lens-currentness",
+        "work.vexboard.source-projectors"
+      ],
+      "createdAt": "2026-11-07T01:04:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

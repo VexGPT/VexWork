@@ -82,11 +82,20 @@ What remains open in VexBoard is narrower and consumer-driven:
 
 ~~~text
 Source Projectors + lived comparison         RUNNING · Screen Lens substrate complete; broader lived comparison remains
+Screen Lens projectability + expressions     PLAN_VALIDATED / NO_AUTHORITY / NO_EFFECTS · successor plan preserved
 Fractal semantic composition / spatial       RUNNING when real consumers pressure it
 VexStream living Origin screenshot pilot     RUNNING · source projection accepted; expected/observed evidence comparison still open
 AI BoardPatch authoring                      READY / NO_AUTHORITY / NO_EFFECTS
 Origin rename propagation debt               PARKED
 ~~~
+
+The next Screen Lens evolution is preserved separately in
+`projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md`. It keeps the accepted Screen Lens
+currentness body closed, ports the useful pressure from the 2026-11-06 Claude handoff, and records the
+simultaneous Android/VexBoard plan before implementation: establish a lawful projectability language from
+real Android pressure, align only non-projectable existing meaning, derive bounded expressions without
+Cartesian-product noise or Scenario ownership, then implement the VexBoard contract/components and bounded
+source adapter.
 
 For current consumers, VexBoard's role is to project, traverse, compare and make already-owned semantic
 relationships perceptible. Real VexStream, Vex Universe, VexLife-Prod or other consumer pressure may
