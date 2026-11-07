@@ -237,7 +237,7 @@ test('Events proves existing expression vocabulary without importing attention S
   );
   assert.deepEqual(
     fixture.expressions.map((entry) => entry.basis),
-    ['SOURCE_DEFAULT', 'SOURCE_AXIS', 'SOURCE_AXIS'],
+    ['SOURCE_DEFAULT', 'SOURCE_AXIS', 'EVIDENCE'],
   );
   const structuralMeaning = {
     relationships: fixture.relationships.map((entry) => ({
