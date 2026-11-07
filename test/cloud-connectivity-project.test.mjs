@@ -13,6 +13,7 @@ const readme = readText('projects/cloud-connectivity/README.md');
 const checklist = readText('projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md');
 const simulation = readText('projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md');
 const serviceArchitecture = readText('projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md');
+const lab = readText('projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md');
 
 const byRef = new Map(segment.items.map((item) => [item.workRef, item]));
 
@@ -20,7 +21,7 @@ test('Cloud Connectivity forms a bounded no-authority Project', () => {
   assert.equal(project.projectRef, 'project.cloud-connectivity');
   assert.deepEqual(project.rootWorkRefs, ['work.cloud-connectivity.outcome']);
   assert.equal(segment.segmentRef, 'segment.cloud-connectivity');
-  assert.equal(segment.items.length, 17);
+  assert.equal(segment.items.length, 18);
 
   for (const item of segment.items) {
     assert.equal(item.authorityDisposition, 'NO_AUTHORITY');
@@ -91,6 +92,7 @@ test('scenario plan includes ambiguous outcome, five-device and compatibility pr
   assert.match(simulation, /C33 — periodic VexLogger bulk upload/);
   assert.match(simulation, /C35 — global announcements poll/);
   assert.match(simulation, /C36 — simultaneous service and operation isolation/);
+  assert.match(simulation, /C37 — contract workbench composes only admitted protocol shapes/);
 });
 
 test('canonical discoverability stays held while shared surfaces are occupied', () => {
@@ -139,6 +141,32 @@ test('logger upload and announcements preserve source ownership', () => {
 test('attempt occurrence does not automatically mint another durable identity', () => {
   assert.match(simulation, /active Job \+ VexLogger chronology first/);
   assert.match(serviceArchitecture, /ATTEMPT_OBSERVABILITY != AUTOMATIC ATTEMPT_ID/);
+});
+
+
+test('Cloud Connectivity Lab projects accepted contract truth rather than inventing protocol', () => {
+  assert.match(lab, /LAB UI != CONTRACT OWNER/);
+  assert.match(lab, /SESSION DRAFT != CONTRACT EVOLUTION/);
+  assert.match(lab, /ENUM != FREE TEXT/);
+  assert.match(lab, /Prefer an existing standard contract representation/);
+  assert.match(lab, /OpenAPI \/ JSON Schema/);
+  assert.ok(byRef.has('work.cloud-connectivity.contract-workbench-lab'));
+});
+
+test('Lab covers minimum-to-maximum valid composition and outward validation', () => {
+  assert.match(lab, /Minimum valid/);
+  assert.match(lab, /richer expression admitted by the current contract|richest expression admitted by the current contract/);
+  assert.match(lab, /Lawful error forms/);
+  assert.match(lab, /Delivery \/ outward scope/);
+  assert.match(lab, /SCHEMA_VALID/);
+  assert.match(lab, /VALID_TARGET_SHAPE != AUTHORIZED_SEND/);
+});
+
+test('synthetic cloud consumes the Lab doorway rather than bypassing contract composition', () => {
+  const synthetic = byRef.get('work.cloud-connectivity.synthetic-cloud');
+  assert.ok(synthetic.dependencyRefs.includes('work.cloud-connectivity.contract-workbench-lab'));
+  assert.match(lab, /Synthetic API ingress \/ server/);
+  assert.match(lab, /VexBoard bounded architecture descent/);
 });
 
 // [VXG RealForever][CLOUD-CONNECTIVITY][PROJECT]
