@@ -401,6 +401,99 @@ VexStream 36-second startup defect
   -> ownership remains project.vexstream.mobile-library
 ```
 
+## Compatibility semantic-family convergence — bounded proof trajectory
+
+Fresh VexArchitecture onboarding pressure exposed a current repository fact that the accepted source
+already names explicitly:
+
+```text
+VexBehaviorBlueprint / VexPort
+    accepted compatibility foundation
+    still has production consumers
+
+Direct VexFamily
+    accepted current semantic authoring foundation
+    preferred for new or materially evolving semantic families
+```
+
+This does **not** authorize a compatibility purge.
+
+The new Work asks a narrower question:
+
+> Can a stable production consumer become smaller by moving only semantic ownership onto Direct
+> VexFamily while preserving provider truth, execution placement, convergence ownership and lived
+> behavior?
+
+Current bounded trajectory:
+
+```text
+work.vexlife-android.current-state-refinement.semantic-family-convergence
+    RUNNING
+
+first proof
+    work.vexlife-android.current-state-refinement.semantic-family-convergence.maps-mode
+    -> VexLife-Android PR #220
+
+VexMaps Distribution Mode
+    current accepted question:
+        Regular vs Distribution
+
+    current pressure:
+        no provider
+        no async work
+        no independent runtime realization question
+
+    candidate:
+        VexMapsDistributionModeFamily
+        -> Direct VexFamily State + Control
+        -> no concrete Effect earned
+        -> convergence consumes Family State directly
+        -> no Connection / VexPort / VexExecution invented
+```
+
+The remaining compatibility consumers are **not yet migration tasks** merely because they exist:
+
+```text
+VexStream Playback
+VexStream Queue
+VexStream Repeat
+VexMaps Delivery Route
+```
+
+Provider-backed VexStream pressure already demonstrates a critical anti-symmetry law:
+
+```text
+semantic Effect exists
+!= unfinished asynchronous work exists
+
+immediate provider command
+!= automatic VexExecution Job
+```
+
+Therefore the next consumer is admitted only after the Maps Mode proof is consumed. If Direct Family
+cannot represent a provider-backed semantic consequence without forcing needless execution custody,
+that is legitimate foundation pressure to investigate before migrating Repeat / Queue / Playback.
+
+Permanent:
+
+```text
+COMPATIBILITY SOURCE PRESENT
+!= TECH DEBT BY EXISTENCE
+
+STABLE CURRENT BEHAVIOR
+-> PRESERVE AS EVIDENCE
+
+MIGRATION
+-> MUST DELETE OR CLARIFY OWNERSHIP
+-> MUST NOT ADD CEREMONY FOR SHAPE CONSISTENCY
+
+CONNECTION NAME
+!= VEXPARTNER CONNECTION
+
+DIRECT FAMILY
+!= PERMISSION TO ABSORB PROVIDER / SESSION / RELAY / EXECUTION OWNERSHIP
+```
+
 ## Permanent boundaries
 
 ```text
