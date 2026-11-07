@@ -820,7 +820,7 @@ VexWork:
 - work.vexboard.source-projectors
 - work.vexboard.screen-lens-currentness
 - work.vexboard.vexstream-screenshot-pilot
-- current base dd03cabfb181cdbbe0232d292c2d12b13c8621f3
+- current accepted VexWork expression-contract base 6ecf4e817ce2fb08a0efffb3bedd85571b565645
 
 VexLife-Android at current main ecbb6987d1da338fa0adf7297456d3f652f04155:
 
@@ -940,19 +940,100 @@ Screen Lens
   must not normalize these into invented equivalence
 ~~~
 
+## VexBoard Phase 3 — accepted expression contract patient zero
+
+The first bounded VexBoard-side contract is now accepted source.
+
+~~~text
+VexWork PR #263
+merge
+6ecf4e817ce2fb08a0efffb3bedd85571b565645
+
+accepted paths
+  src/shared/vexboard-screen-lens-expressions.mjs
+  projects/vexboard/examples/vexlife-android-vexstream.screen-lens-expressions.fixture.json
+  test/vexboard-screen-lens-expressions.test.mjs
+~~~
+
+Accepted meaning:
+
+~~~text
+Screen Lens
++ stable semantic identities
++ source-backed projectability relationships
++ partial Expression Context
+-> one immutable four-face participation resolution
+
+representative VexStream contexts
+  Source defaults
+  Paired
+  Songs populated
+  Albums selected
+  Player active / docked
+  Full player open
+  Connection menu open
+
+runtime track refs
+  remain runtime identities
+  != static Screen Lens elements
+
+evidence
+  expected/reference mismatch remains explicit
+  != observed pixel acceptance
+~~~
+
+Proof/integration:
+
+~~~text
+SourceOwner A003
+  focused Screen Lens/expression tests PASS
+  offline lens:verify PASS
+  full deterministic npm run review PASS
+  exact review snapshot PASS
+
+fresh Independent Assurance
+  CLEAR_ON_EXACT_HEAD
+
+current-main composition
+  accepted main 65fe34b339a131c73fcaccb72835d14d5d4a773b
+  + exact candidate 74d7383c28adb3633f059d6b00d5dd04a98badfd
+  -> synthetic tree 08a1eea7eb0a468e40dd9ef71949949b3df2acb6
+
+post-merge
+  merge 6ecf4e817ce2fb08a0efffb3bedd85571b565645
+  actual tree == synthetic tree
+  all three accepted blobs byte-identical to the proven candidate
+~~~
+
+This closes only the **contract patient-zero** edge. It does not claim the human Lens experience,
+Android source derivation, round-trip evidence or second-consumer portability are complete.
+
 ## Current continuation
 
 ~~~text
 RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
 
-next:
-  Android projectability patient zero ACCEPTED / MERGED
-  -> form one VexStream projectability/expression contract fixture
-  -> prove scalable representative expression derivation without Cartesian-product noise
-  -> implement VexBoard contract/components and four-face expression projection
-  -> implement bounded Android adapter/JSON projection after the contract is independently useful
+DONE
+  Android projectability patient zero
+  -> VexLife-Android PR #212
+
+DONE
+  bounded VexStream expression contract + representative fixture
+  -> VexWork PR #263
+
+ACTIVE
+  consume that accepted contract in the existing Screen Lens presentation owner
+  -> one expression rail over the same Screen
+  -> the same selected context marks Surface + Structure participation
+  -> expression pathway choices reuse existing Behavior + Depth pathway graphs
+  -> runtime representative items stay visibly runtime-only
+  -> unmarked elements are not claimed absent
+
+THEN
+  bounded Android adapter / JSON derivation after the UI contract is independently useful
   -> round-trip / screenshot / lived proof
-  -> second materially different consumer before further abstraction
+  -> one materially different second consumer
+  -> only then consider further shared abstraction
 
 Scenario Playground remains:
   CAPTURED / PARKED / NO_AUTHORITY / NO_EFFECTS
