@@ -448,6 +448,43 @@ projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md
 board.vexlife-prod.perceivability-alignment
 ~~~
 
+## Parallel continuation — Vex Vision beside a real browser
+
+Victor's clarified browser outcome is now preserved as a separate current Work edge:
+
+~~~text
+ordinary real browser
++ explicit selected-window Vex Vision
++ canonical Vex Conversation
+~~~
+
+This does not redefine the current nested-browser practicum as a failure. The localhost frame-host
+path remains valid evidence for rendered page-context composition. It also does not require the proxy
+to become a perfect replacement for every signed-in browser behavior.
+
+The durable continuation is:
+
+[VEX-VISION-COMPANION.md](./VEX-VISION-COMPANION.md)
+
+Current coordinate:
+
+~~~text
+work.vexlife.new-beginnings.vision-companion-real-browser-witness
+  RUNNING / HIGH / PARALLEL
+  authorityDisposition = NO_AUTHORITY
+  effectDisposition    = NO_EFFECTS
+
+current source edge
+  Vextreme-SDK issue #1914
+  draft PR #1915
+  exact candidate 02779b8e34f42169bde3e8e55f954a0f170b32b8
+  SourceOwner proof = PENDING
+~~~
+
+The first intended active slice is one explicit selected-window snapshot per Conversation turn (or
+one explicit "Look now"), with a visible indicator and no raw-frame retention. Continuous/background
+screen monitoring is not admitted by this Work formation.
+
 ## Architecture horizon — preserve during manifestation parity
 
 The lower lived circuit is now stable enough to refactor **without changing its human outcome**.
