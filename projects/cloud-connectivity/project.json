@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.cloud-connectivity",
   "label": "Cloud Connectivity",
-  "purpose": "Demonstrate mobile/cloud correctness across APIs, local/offline state, transport attempts, synchronization, retries, idempotency, multi-device convergence, API versioning, backward compatibility, cloud-provider realization and observability through VexLife-Android, VexLife-Prod, VexBoard and Vex while reusing Full Security for security-boundary meaning.",
+  "purpose": "Demonstrate mobile/cloud correctness across APIs, local/offline state, device-network and per-service relationships, background automation, synchronization, retries, idempotency, multi-device convergence, API versioning, backward compatibility, cloud-provider realization and observability through VexLife-Android, VexLife-Prod, VexBoard and Vex while reusing Full Security for security-boundary meaning and preserving the stable VexFamily semantic grammar.",
   "rootWorkRefs": [
     "work.cloud-connectivity.outcome"
   ],
@@ -20,7 +20,12 @@
     "test/cloud-connectivity-project.test.mjs",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
-    "project.full-security"
+    "project.full-security",
+    "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+    "repo.vexlife-android:architecture/vexarchitecture/VEXLOGGER.md"
   ],
   "formedAt": "2026-11-06T17:25:00.000-08:00"
 }
