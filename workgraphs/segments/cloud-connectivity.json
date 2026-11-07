@@ -65,7 +65,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T17:25:00.000-08:00",
-      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T18:19:00.000-08:00",
       "workRef": "work.cloud-connectivity.demonstration-checklist",
       "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
       "label": "Close the Cloud Connectivity demonstration coverage checklist",
@@ -81,7 +81,8 @@
         "repo.vexlife"
       ],
       "sourceRefs": [
-        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md"
+        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
+        "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -92,7 +93,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T17:25:00.000-08:00",
-      "updatedAt": "2026-11-06T18:10:32.000-08:00",
+      "updatedAt": "2026-11-06T18:19:00.000-08:00",
       "workRef": "work.cloud-connectivity.synthetic-cloud",
       "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
       "label": "Build the deterministic synthetic cloud and network demonstrator",
@@ -104,7 +105,8 @@
         "work.cloud-connectivity.system-topology",
         "work.cloud-connectivity.demonstration-checklist",
         "work.cloud-connectivity.network-service-connectivity-relays",
-        "work.cloud-connectivity.vexservice-candidate-foundation"
+        "work.cloud-connectivity.vexservice-candidate-foundation",
+        "work.cloud-connectivity.contract-workbench-lab"
       ],
       "repositoryRefs": [
         "repo.vexlife-prod",
@@ -113,7 +115,8 @@
       ],
       "sourceRefs": [
         "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
-        "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md"
+        "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md",
+        "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -300,7 +303,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T17:25:00.000-08:00",
-      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T18:19:00.000-08:00",
       "workRef": "work.cloud-connectivity.vexlife-prod-app-selector",
       "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
       "label": "Connect Cloud Connectivity through the VexLife-Prod application-selection seam",
@@ -319,7 +322,8 @@
       "sourceRefs": [
         "projects/cloud-connectivity/README.md",
         "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
-        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt"
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+        "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -360,7 +364,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T17:25:00.000-08:00",
-      "updatedAt": "2026-11-06T18:10:32.000-08:00",
+      "updatedAt": "2026-11-06T18:19:00.000-08:00",
       "workRef": "work.cloud-connectivity.vexboard-explanation",
       "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
       "label": "Project cloud operations and failure scenarios through VexBoard/Vex",
@@ -381,7 +385,8 @@
       ],
       "sourceRefs": [
         "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
-        "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md"
+        "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md",
+        "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -499,6 +504,38 @@
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T18:19:00.000-08:00",
+      "updatedAt": "2026-11-06T18:19:00.000-08:00",
+      "workRef": "work.cloud-connectivity.contract-workbench-lab",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Build the contract-driven Cloud Connectivity Lab doorway",
+      "purpose": "Create the human/AI service-feature workbench that projects one accepted contract source into minimum-to-maximum lawful shapes, typed field constraints, lawful error/output forms, outward-scope selection and deterministic validation; allow session-local value/optional-field experimentation while treating any new field/enum/rule as deliberate API/server + Android contract evolution rather than local Lab invention.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.cloud-connectivity.system-topology",
+        "work.cloud-connectivity.demonstration-checklist"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md",
+        "projects/cloud-connectivity/README.md",
+        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     }
   ],
   "transitions": [],
@@ -507,7 +544,8 @@
     "projects/cloud-connectivity/README.md",
     "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
     "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
-    "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md"
+    "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md",
+    "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md"
   ],
   "formedAt": "2026-11-06T17:25:00.000-08:00"
 }
