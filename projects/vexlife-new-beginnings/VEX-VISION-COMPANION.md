@@ -128,80 +128,77 @@ the receipt expires before proof/lifecycle consumption.
 A future active capture attempt still requires the separately-owned macOS host permission and active
 adapter/capture predicates required by the accepted SDK architecture.
 
-## Current macOS stable-requester prerequisite
+## Current macOS user-selected system-picker route
 
-The accepted SCREEN Safety source and host permission-agent source are now complete enough to expose the
-next physical prerequisite without collapsing it into Vision source work.
+The first real host route is now **explicit user-selected session sharing**, not the historical
+persistent Screen Recording permission-agent path.
 
-Fresh current-host signer observation:
+Human direction selected:
 
 ~~~text
-MACOS_STABLE_REQUESTER_SIGNER_CURRENT=false
-signingAuthorityClass=NONE
-privateKeyUsableForCodesign=false
-credentialSerialized=false
+Vision LookNow
+-> macOS SCContentSharingPicker
+-> Victor chooses exactly one window in OS-owned UI
+-> session-bound SCContentFilter
+-> at most one SCScreenshotManager capture
+-> request / session / Connection-bound capture receipt
 ~~~
 
-This is current evidence about the qualified `macos-victor` codesigning identity surface. It does not
-claim that an eligible certificate cannot exist in another Keychain, backup, or Mac.
-
-The existing accepted permission-agent contract already defines the required stable requester classes:
+Current SDK work:
 
 ~~~text
-APPLE_DEVELOPMENT
-or
-DEVELOPER_ID_APPLICATION
-
-SIGNED
-adHoc=false
-stableDesignatedRequirement=true
-credentialSerialized=false
+work case  github.issue.vextreme-sdk.1923
+draft PR   github.pull.vextreme-sdk.1924
+head       27eafee3f2cec8e2a013fae42631762456255ca9
+paths      5 exact
 ~~~
 
-Security / host classification is now:
+This is additive. The accepted persistent permission agent remains valid for a later persistent
+requester/product identity, and its stable-signer requirement is not weakened.
 
 ~~~text
-HOST_OWNER_APPLE_SIGNER_PROVISIONING_REQUIRED
+PERSISTENT_PERMISSION_ROUTE
+  -> stable requester identity remains required
 
-preferred local proof class
-  APPLE_DEVELOPMENT
-
-new SDK signer foundation
-  NOT_REQUIRED
-
-ad-hoc / self-signed fallback
-  FORBIDDEN
+USER_SELECTED_SESSION
+  -> explicit OS selection is the first scope boundary
+  -> stable signer is not the foreground prerequisite
 ~~~
 
-The human-only prerequisite is local Apple signing identity provisioning through Xcode. It is not a
-Screen Recording decision and must not export private-key material into Relay or VexWork.
-
-After the stable signer becomes current:
+The current system-picker candidate preserves:
 
 ~~~text
-recover historical A005 terminal evidence
--> do not replay A005
--> rotate a fresh attempt / request / correlation / package
--> re-ground current SDK + current SCREEN Safety
--> fresh permission-only F07
--> one separately bounded host Screen Recording permission execution
-~~~
-
-If the current SCREEN Safety receipt expires before that effect, currentize only the source-managed
-Safety binding first.
-
-Permanent:
-
-~~~text
-SIGNER_PROVISIONED != HOST_OS_SCREEN_PERMISSION
-HOST_OS_SCREEN_PERMISSION != SCREEN_CAPTURED
+SYSTEM_PICKER_SELECTED != SCREEN_CAPTURED
 SCREEN_CAPTURED != ACTIVE_VISUAL_OBSERVATION
 ACTIVE_VISUAL_OBSERVATION != VISUAL_MODEL_INPUT
+OBSERVATION != MEMORY
+MEMORY != TRAINING
 ~~~
 
-Durable owner evidence:
-- `github.issue.vextreme-sdk.232.comment.6706210561`
-- `github.issue.vextreme-sdk.241.comment.6706211040`
+A successful one-shot host capture may establish only one bounded `SCREEN_CAPTURED` occurrence and
+its provenance. It still does not grant active visual observation or model-input authority.
+
+Current source-proof boundary:
+
+~~~text
+real macOS Swift compile
++ plist lint
++ focused system-picker contract tests
++ repository-wide sdk-check
++ exact five-path review snapshot
+~~~
+
+The source proof does **not** present the picker or take a screenshot. Only after exact source
+acceptance will a separately formed host attempt present the OS picker.
+
+If the current SCREEN Safety receipt expires before that later host effect, currentize only the
+source-managed Safety binding first.
+
+Durable route-switch evidence:
+- `github.issue.vextreme-sdk.232.comment.6706492909`
+- `github.issue.vextreme-sdk.241.comment.6706493382`
+- `github.issue.vextreme-sdk.1923`
+- `github.pull.vextreme-sdk.1924`
 
 ## Current model/runtime boundary
 
@@ -238,29 +235,34 @@ currently interpret pixels.
 
 ## Partner / Family / Observation architecture pressure
 
-Current VexCgmLabs / VexPartner work adds a newer relationship pattern that materially improves the
-Vision design:
+VexCgmLabs / VexPartner has now crossed its accepted VexWork architecture threshold and materially
+improves the Vision design.
 
 ~~~text
-VexWork PR #267
-VexLife-Android PR #219
+accepted architecture threshold
+  VexWork PR #267 / accepted VexCgmLabs source
+
+consumer/application evidence
+  VexLife-Android PR #219
 ~~~
 
-Those sources are currently **draft / working architecture pressure**, not an accepted universal
-VexArchitecture foundation. Vision should consume the distinctions they have earned without
-prematurely declaring that every outside relationship must inherit one new root hierarchy.
+Vision consumes the accepted relationship roles without turning the CGM-specific implementation into
+a universal product owner.
 
 The important current pattern is:
 
 ~~~text
-Partner
--> Signal
--> Connection
-   -> typed Partner Id
-   -> Decoder
-   -> Observation
-   -> Receiver
--> Store when durable admitted truth is actually earned
+VexPartner<Partner>
+├─ Source<Partner>
+├─ Signal<Partner>
+└─ Connection<Partner, Signal>
+   ├─ Id<Partner>
+   ├─ Conversion<Input, Partner, Signal>
+   ├─ Observation<Partner, Signal>
+   └─ Receiver<Partner, Signal, exact Observation>
+
+Receiver-admitted truth
+-> Store only when durability is actually earned
 -> Family State
 -> Projection / Surface
 ~~~
@@ -311,12 +313,18 @@ selected independently-owned browser/window reality
 macOS screen/window capture realization
     = Connection
 
-selected source/window identity
-    = typed Connection.Id<Partner> pressure
-      (do not flatten the reusable identity to an arbitrary String)
+source.screen.user-selected.current-session
+    = Partner.Source
+    != Connection.Id
+
+macOS system picker / capture mechanism
+    = Connection realization
+
+SCContentFilter
+    = provider/system selection input
 
 platform frame / capture representation
-    -> Decoder
+    -> Connection.Conversion
     -> Vision-owned Signal
 
 one exact capture occurrence
@@ -671,9 +679,12 @@ current implementation edge:
   distinct Formal Review APPROVE / CLEAR_ON_EXACT_HEAD
   PR #1915 merged as d738fe44612575a4ba2404368c1bfa8821d46cd3
   Main Integrity checkpoint converged to the same merge
-  next host prerequisite = MACOS_STABLE_REQUESTER_SIGNER_CURRENT
-  historical host attempt found STABLE_NON_ADHOC_SIGNER_UNAVAILABLE before any Screen Recording prompt
-  live Safety currentness must be re-grounded again before the later host-permission effect
+  historical persistent-permission attempt found STABLE_NON_ADHOC_SIGNER_UNAVAILABLE before any prompt
+  first host route switched to USER_SELECTED_SESSION under SDK #1923 / PR #1924
+  current PR #1924 head 27eafee3f2cec8e2a013fae42631762456255ca9
+  system-picker source proof pending: real macOS compile + focused tests + sdk-check
+  no picker presentation or screenshot has occurred
+  live Safety currentness must be re-grounded again before the later host capture effect
 ~~~
 
 It is READY as work because the human outcome and source owners are sufficiently clear.
@@ -683,9 +694,9 @@ The next implementation sequence is:
 
 1. re-ground current Vextreme-SDK Vex Vision / Safety source;
 2. form a fresh current SCREEN / ON_DEMAND_SNAPSHOT human+Safety authorization for this product use;
-3. establish the stable macOS requester and actual Screen Recording permission receipt;
-4. implement/qualify the admitted active **single-snapshot selected-window** capture worker;
-5. form one real visual-observation contract with ephemeral raw pixels;
+3. prove/accept the macOS user-selected system-picker one-shot route;
+4. run one explicit OS-owned single-window selection and one bounded screenshot attempt;
+5. compose the request/source-bound capture receipt into the existing observer/Perception gates;
 6. identify and qualify the actual local visual interpretation route (existing qualified VLM if one
    is later proven current, otherwise a separately admitted local visual worker);
 7. connect the derived visual observation into current VexLife-Prod Conversation Context;
