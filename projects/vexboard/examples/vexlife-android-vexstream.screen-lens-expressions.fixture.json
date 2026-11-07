@@ -1,0 +1,391 @@
+{
+  "schemaVersion": "vexboard.screen-lens-expression-fixture/v1",
+  "fixtureRef": "fixture.vexlife-android.vexstream.screen-lens-expressions",
+  "lensRef": "lens.vexlife-android",
+  "lensSourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2",
+  "screenRef": "screen.vexstream-music",
+  "sourceRevisionRef": "git.commit.vexlife-android.ecbb6987d1da338fa0adf7297456d3f652f04155",
+  "title": "VexStream · representative Screen Lens expressions",
+  "summary": "Source-backed representative contexts for one stable VexStream Screen. These are partial projection assignments, not Scenario state or a second application-state owner.",
+  "relationships": [
+    {
+      "relationshipRef": "relationship.vexstream.screen.registered",
+      "kind": "REGISTERED",
+      "label": "VexStream Screen registration",
+      "subjectRef": "screen.vexstream-music",
+      "summary": "The Screen and its stable semantic elements already exist independently of any expression.",
+      "elementRefs": [
+        "element.vexstream-music.body"
+      ],
+      "sourceRefs": [
+        "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexstream.connection.state",
+      "kind": "CONDITIONED_BY",
+      "label": "Connection condition",
+      "subjectRef": "element.vexstream-music.body.connection",
+      "summary": "Feature-owned VexStream connection truth changes which connection/library presentation participates without changing Screen identity.",
+      "sourceRefs": [
+        "app:data/vexstream/VexStreamMusicState.kt",
+        "app:screens/shared/vexstream/VexStreamConnectionPresentation.kt",
+        "app:screens/shared/vexstream/VexStreamLibrarySurface.kt"
+      ],
+      "defaultValueRef": "connection.not-paired",
+      "values": [
+        {
+          "valueRef": "connection.not-paired",
+          "label": "Not paired",
+          "elementRefs": [
+            "element.vexstream-music.body.connection",
+            "element.vexstream-music.body.connection.intro",
+            "element.vexstream-music.body.connection.find"
+          ],
+          "pathwayRefs": [
+            "pathway.vexstream-music.connection.find"
+          ]
+        },
+        {
+          "valueRef": "connection.paired",
+          "label": "Paired",
+          "elementRefs": [
+            "element.vexstream-music.body.library-tabs",
+            "element.vexstream-music.body.library"
+          ],
+          "sourceRefs": [
+            "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+          ]
+        }
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexstream.library.selection",
+      "kind": "SELECTS",
+      "label": "Library selection",
+      "subjectRef": "element.vexstream-music.body.library",
+      "summary": "The registered swappable LibraryContent owns one selected child; Songs is its source default.",
+      "sourceRefs": [
+        "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
+        "app:screens/shared/vexstream/VexStreamLibrarySurface.kt"
+      ],
+      "defaultValueRef": "library.songs",
+      "values": [
+        {
+          "valueRef": "library.songs",
+          "label": "Songs selected",
+          "elementRefs": [
+            "element.vexstream-music.body.library-tabs.songs",
+            "element.vexstream-music.body.library.songs"
+          ],
+          "pathwayRefs": [
+            "pathway.vexstream-music.swap-to-child-songs-panel-container-library-content"
+          ]
+        },
+        {
+          "valueRef": "library.albums",
+          "label": "Albums selected",
+          "elementRefs": [
+            "element.vexstream-music.body.library-tabs.albums",
+            "element.vexstream-music.body.library.albums"
+          ],
+          "pathwayRefs": [
+            "pathway.vexstream-music.swap-to-child-albums-panel-container-library-content"
+          ]
+        }
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexstream.songs.repeated-realization",
+      "kind": "REALIZED_AS",
+      "label": "Songs repeated-item realization",
+      "subjectRef": "element.vexstream-music.body.library.songs",
+      "summary": "The registered Songs panel is realized through the existing stable-list mechanic; feature-owned trackRef remains runtime row identity.",
+      "elementRefs": [
+        "element.vexstream-music.body.library.songs"
+      ],
+      "sourceRefs": [
+        "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+        "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt"
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexstream.songs.population",
+      "kind": "POPULATES",
+      "label": "Songs population",
+      "subjectRef": "element.vexstream-music.body.library.songs",
+      "summary": "Runtime VexStream track truth supplies repeated rows without registering those rows as static Screen elements.",
+      "sourceRefs": [
+        "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+        "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+      ],
+      "defaultValueRef": "population.empty",
+      "values": [
+        {
+          "valueRef": "population.empty",
+          "label": "No representative tracks",
+          "runtimeItems": []
+        },
+        {
+          "valueRef": "population.preview",
+          "label": "Preview tracks populated",
+          "runtimeItems": [
+            {
+              "itemRef": "preview.streamed",
+              "label": "VexStream Mobile",
+              "realizationRef": "element.vexstream-music.body.library.songs",
+              "sourceRefs": [
+                "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+              ]
+            },
+            {
+              "itemRef": "preview.downloaded",
+              "label": "Take It With You",
+              "realizationRef": "element.vexstream-music.body.library.songs",
+              "sourceRefs": [
+                "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexstream.player.display",
+      "kind": "CONDITIONED_BY",
+      "label": "Player dock condition",
+      "subjectRef": "element.vexstream-music.body.player",
+      "summary": "Playback display truth determines whether the mini-player presentation participates; Playback semantic meaning remains owned by its existing pathway.",
+      "sourceRefs": [
+        "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+        "app:vexstream/playback/VexStreamPlaybackDisplayState.kt"
+      ],
+      "defaultValueRef": "player.inactive",
+      "values": [
+        {
+          "valueRef": "player.inactive",
+          "label": "Player inactive"
+        },
+        {
+          "valueRef": "player.active",
+          "label": "Player active / docked",
+          "elementRefs": [
+            "element.vexstream-music.body.player",
+            "element.vexstream-music.body.player.open",
+            "element.vexstream-music.body.player.controls",
+            "element.vexstream-music.body.player.previous",
+            "element.vexstream-music.body.player.play-pause",
+            "element.vexstream-music.body.player.next",
+            "element.vexstream-music.body.player.shuffle"
+          ],
+          "pathwayRefs": [
+            "pathway.vexstream.playback.play-pause"
+          ]
+        }
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexstream.full-player.presentation",
+      "kind": "PRESENTS",
+      "label": "Full player presentation",
+      "subjectRef": "element.vexstream-music.body.player.sheet",
+      "summary": "The runtime presentation owner opens/closes the already-registered full-player sheet.",
+      "sourceRefs": [
+        "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
+        "app:screens/shared/vexstream/VexStreamLibrarySurface.kt"
+      ],
+      "defaultValueRef": "full-player.closed",
+      "values": [
+        {
+          "valueRef": "full-player.closed",
+          "label": "Full player closed"
+        },
+        {
+          "valueRef": "full-player.open",
+          "label": "Full player open",
+          "elementRefs": [
+            "element.vexstream-music.body.player.sheet",
+            "element.vexstream-music.body.player.sheet.content",
+            "element.vexstream-music.body.player.sheet.content.now-playing",
+            "element.vexstream-music.body.player.sheet.close"
+          ],
+          "pathwayRefs": [
+            "pathway.vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet",
+            "pathway.vexstream-music.close.FullPlayerSheet"
+          ]
+        }
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexstream.connection-menu.presentation",
+      "kind": "PRESENTS",
+      "label": "Connection menu presentation",
+      "subjectRef": "element.vexstream-music.body.connection.menu",
+      "summary": "The registered connection-management sheet is a transient presentation over the same Screen identity.",
+      "sourceRefs": [
+        "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
+        "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+        "app:screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+      ],
+      "defaultValueRef": "connection-menu.closed",
+      "values": [
+        {
+          "valueRef": "connection-menu.closed",
+          "label": "Connection menu closed"
+        },
+        {
+          "valueRef": "connection-menu.open",
+          "label": "Connection menu open",
+          "elementRefs": [
+            "element.vexstream-music.body.connection.menu",
+            "element.vexstream-music.body.connection.refresh",
+            "element.vexstream-music.body.connection.reconnect",
+            "element.vexstream-music.body.connection.library.download-all-missing",
+            "element.vexstream-music.body.connection.library.remove-all-downloaded",
+            "element.vexstream-music.body.connection.forget.request",
+            "element.vexstream-music.body.connection.menu.close"
+          ],
+          "pathwayRefs": [
+            "pathway.vexstream-music.catalog.refresh",
+            "pathway.vexstream-music.connection.reconnect",
+            "pathway.vexstream-music.open.ForgetConfirmationDialog",
+            "pathway.vexstream-music.close.ConnectionMenuSheet"
+          ]
+        }
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexstream.songs.evidence",
+      "kind": "EVIDENCED_BY",
+      "label": "Songs deterministic expected reference",
+      "subjectRef": "element.vexstream-music.body.library.songs",
+      "summary": "The committed Songs PNG is expected/reference evidence only. A007 proves the current renderer reaches image comparison but does not match this reference; it is not current observed pixel acceptance.",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/screenshotTest/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamVisualGoldenTest.kt",
+        "repo.vexlife-android:app/src/screenshotTestDebug/reference/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamVisualGoldenTestKt/vexStreamSongsLibraryGolden_VexStream · songs library · baseline_0e5891c3_0.png"
+      ],
+      "evidenceRefs": [
+        "evidence.vexstream.songs-golden.expected-reference-mismatch"
+      ]
+    }
+  ],
+  "expressions": [
+    {
+      "expressionRef": "expression.vexstream.source-defaults",
+      "label": "Source defaults",
+      "basis": "SOURCE_DEFAULT",
+      "summary": "Source-owned defaults only: NotPaired, empty tracks, Songs selected.",
+      "relationshipRefs": [
+        "relationship.vexstream.screen.registered",
+        "relationship.vexstream.connection.state",
+        "relationship.vexstream.library.selection",
+        "relationship.vexstream.songs.repeated-realization",
+        "relationship.vexstream.songs.population",
+        "relationship.vexstream.player.display",
+        "relationship.vexstream.full-player.presentation",
+        "relationship.vexstream.connection-menu.presentation"
+      ],
+      "assignments": {}
+    },
+    {
+      "expressionRef": "expression.vexstream.paired",
+      "label": "Paired",
+      "basis": "SOURCE_AXIS",
+      "summary": "Connection truth changes to Paired while Screen and default library selection stay stable.",
+      "relationshipRefs": [
+        "relationship.vexstream.screen.registered",
+        "relationship.vexstream.connection.state",
+        "relationship.vexstream.library.selection"
+      ],
+      "assignments": {
+        "relationship.vexstream.connection.state": "connection.paired"
+      }
+    },
+    {
+      "expressionRef": "expression.vexstream.songs-populated",
+      "label": "Songs populated",
+      "basis": "EVIDENCE",
+      "summary": "Paired VexStream with the source-authored preview tracks projected through stable repeated-item identity; the committed golden remains expected/reference evidence with a known A007 comparison mismatch.",
+      "relationshipRefs": [
+        "relationship.vexstream.screen.registered",
+        "relationship.vexstream.connection.state",
+        "relationship.vexstream.library.selection",
+        "relationship.vexstream.songs.repeated-realization",
+        "relationship.vexstream.songs.population",
+        "relationship.vexstream.songs.evidence"
+      ],
+      "assignments": {
+        "relationship.vexstream.connection.state": "connection.paired",
+        "relationship.vexstream.songs.population": "population.preview"
+      },
+      "evidenceRefs": [
+        "evidence.vexstream.songs-golden.expected-reference-mismatch"
+      ]
+    },
+    {
+      "expressionRef": "expression.vexstream.albums-selected",
+      "label": "Albums selected",
+      "basis": "SOURCE_AXIS",
+      "summary": "The same Screen selects Albums through the source-owned swappable LibraryContent relationship.",
+      "relationshipRefs": [
+        "relationship.vexstream.screen.registered",
+        "relationship.vexstream.connection.state",
+        "relationship.vexstream.library.selection"
+      ],
+      "assignments": {
+        "relationship.vexstream.connection.state": "connection.paired",
+        "relationship.vexstream.library.selection": "library.albums"
+      }
+    },
+    {
+      "expressionRef": "expression.vexstream.player-docked",
+      "label": "Player active / docked",
+      "basis": "SOURCE_COUPLED",
+      "summary": "Paired library presentation plus active playback display truth exposes the mini-player without changing Screen identity.",
+      "relationshipRefs": [
+        "relationship.vexstream.screen.registered",
+        "relationship.vexstream.connection.state",
+        "relationship.vexstream.library.selection",
+        "relationship.vexstream.player.display"
+      ],
+      "assignments": {
+        "relationship.vexstream.connection.state": "connection.paired",
+        "relationship.vexstream.player.display": "player.active"
+      }
+    },
+    {
+      "expressionRef": "expression.vexstream.full-player-open",
+      "label": "Full player open",
+      "basis": "SOURCE_COUPLED",
+      "summary": "Active player truth plus the source-owned presentation relationship opens the full-player sheet.",
+      "relationshipRefs": [
+        "relationship.vexstream.screen.registered",
+        "relationship.vexstream.connection.state",
+        "relationship.vexstream.library.selection",
+        "relationship.vexstream.player.display",
+        "relationship.vexstream.full-player.presentation"
+      ],
+      "assignments": {
+        "relationship.vexstream.connection.state": "connection.paired",
+        "relationship.vexstream.player.display": "player.active",
+        "relationship.vexstream.full-player.presentation": "full-player.open"
+      }
+    },
+    {
+      "expressionRef": "expression.vexstream.connection-menu-open",
+      "label": "Connection menu open",
+      "basis": "SOURCE_COUPLED",
+      "summary": "Paired provider truth plus the registered connection-menu presentation exposes management controls on the same Screen.",
+      "relationshipRefs": [
+        "relationship.vexstream.screen.registered",
+        "relationship.vexstream.connection.state",
+        "relationship.vexstream.library.selection",
+        "relationship.vexstream.connection-menu.presentation"
+      ],
+      "assignments": {
+        "relationship.vexstream.connection.state": "connection.paired",
+        "relationship.vexstream.connection-menu.presentation": "connection-menu.open"
+      }
+    }
+  ]
+}
