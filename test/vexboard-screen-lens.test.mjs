@@ -41,6 +41,7 @@ test('every role belongs to a band and carries a non-color chip', () => {
   assert.equal(Lens.roleFor('RESULT').band, 'RUNTIME');
   assert.equal(Lens.roleFor('REALIZATION').band, 'RUNTIME');
   assert.equal(Lens.roleFor('CONNECTION').band, 'RUNTIME');
+  assert.equal(Lens.roleFor('DECODER').band, 'RUNTIME');
   assert.equal(Lens.roleFor('RECEIVER').band, 'RUNTIME');
   assert.equal(Lens.roleFor('PARTNER').band, 'OUTSIDE');
   assert.equal(Lens.roleFor('SIGNAL').band, 'OUTSIDE');
