@@ -175,6 +175,238 @@ bidirectional realtime media, multiple external-participation relationships, joi
 Android call-system integration. It remains a proposed pressure, not a claimed feature or current
 implementation.
 
+### Service phase checkpoint — fractal convergence shape
+
+The Service discussion has now converged far enough to preserve one narrower child Work:
+
+~~~text
+work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence
+    WAITING_DEPENDENCIES
+~~~
+
+Current architecture hypothesis:
+
+~~~text
+INDIVIDUAL SERVICE
+
+platform-specific Entry
+    Intent / MediaSession / Telecom / other rightful Android entry
+        ↓
+Service-owned Admission against CURRENT truth
+        ↓
+sustained Service relationship becomes live
+        ↓
+Service publishes small current lifecycle truth
+        ↓
+new current conditions
+        ↓
+lifecycle reconciliation
+    remain / constrained / restored / ended
+        ↓
+terminal condition releases concrete composition
+~~~
+
+The Service does not duplicate product State. Family/domain owners keep semantic meaning, VexPartner
+keeps independently-owned external participation, providers keep outside truth, VexExecution keeps
+Job custody, and existing dependency machinery keeps construction/reuse.
+
+~~~text
+ANDROID SERVICE OCCURRENCE
+!= VEX SERVICE RELATIONSHIP
+
+SERVICE LIFECYCLE CURRENTNESS
+!= FAMILY / DOMAIN STATE
+
+PLATFORM ENTRY
+!= SERVICE ADMISSION
+
+EXTERNAL CONSTRAINT
+!= SERVICE TERMINATION
+~~~
+
+The current Playback + Navigation pressure suggests that a Service can remain live while inner behavior
+is constrained. Example: an incoming call/audio-focus loss may pause or constrain playback without
+ending the sustained Playback Service relationship. By contrast, an internal retention policy may end a
+Service after current reasons for retention disappear and an earned grace condition expires.
+
+The earlier Capability enum/value hypothesis is no longer treated as necessary. The concrete Service
+relationship already identifies what sustained provision exists; adding Playback/Navigation/Call enum
+values would currently duplicate that identity.
+
+#### Independent Service startup
+
+Playback, Navigation and a future app-owned Call should be allowed to enter independently through their
+rightful Android mechanisms:
+
+~~~text
+Navigation
+    Intent / foreground-Service entry
+    -> Admission
+    -> live
+
+Playback
+    MediaSession / MediaController entry
+    -> Admission
+    -> live
+
+Call
+    outgoing semantic request OR incoming Telecom/provider occurrence
+    -> call-platform entry
+    -> Admission
+    -> live
+~~~
+
+Do not force those different mechanisms through one BroadcastReceiver or one generic startService(...)
+switch merely for visual symmetry.
+
+#### Process-lifetime currentness graph
+
+When several independently-live Services coexist, they should not discover/call one another directly.
+The emerging missing surface is a process-lifetime graph/projection that makes already-owned Service
+currentness and Relay outputs deliverable.
+
+~~~text
+VexDependencyFactory
+    constructs / reuses objects and child lifetimes
+
+process-level Service / Relay graph
+    exposes living currentness topology
+    does not create relationship meaning
+
+VexRelay
+    derives one purpose-owned relationship truth
+    from exact independently-owned current inputs
+~~~
+
+The graph may be "god-like" in visibility/topology only:
+
+~~~text
+GRAPH MAY KNOW
+    which nodes exist
+    which currentness sources are available
+    which Relay outputs depend on which inputs
+
+GRAPH MUST NOT DECIDE
+    playback policy
+    navigation policy
+    call policy
+    Service admission
+    Family Acts
+    Partner meaning
+~~~
+
+#### Fractal Relay law
+
+The accepted Compound Relay pattern already supplies the scalable composition law:
+
+~~~text
+complete truth A
++ complete truth B
+    ↓
+purpose-owned Relay
+    ↓
+complete relationship truth C
+
+C
++ complete truth D
+    ↓
+higher-order Relay
+    ↓
+complete relationship truth E
+~~~
+
+Higher-order Relays consume complete lower-order outputs rather than reopening/recalculating all of
+their raw child truths.
+
+Driving + music + call + Companion pressure illustrates the intended shape:
+
+~~~text
+Playback current truth ---------\
+Call current truth --------------+-> AudioCoexistenceRelay
+Navigation speech truth --------/
+audio-focus truth --------------/
+        ↓
+AudioCoexistenceTruth
+
+
+Navigation current truth -------\
+Call / conversation truth -------+-> TravelConversationRelay
+        ↓
+TravelConversationTruth
+
+
+TravelConversationTruth --------\
+AudioCoexistenceTruth -----------+-> CompanionContextRelay
+Reminder / conversation truth ---/
+        ↓
+CompanionContextTruth
+        ↓
+VexCompanionService
+~~~
+
+VexCompanionService therefore need not inspect raw Maps/Music/Call internals. It consumes the
+relationship outputs that actually answer its own current question. If the human on the call asks how
+long remains to arrival, a travel/conversation relationship can already carry the current ETA context
+without Maps learning about Companion or Call learning about Maps.
+
+Cross-Service policy must still leave through rightful owners:
+
+~~~text
+Relay output
+-> bounded Family Control / rightful port
+-> Family Act / Effect
+-> realization
+
+not:
+Relay
+-> foreign Service implementation mutation
+~~~
+
+#### Lifetime placement pressure
+
+Current VexLifeRelayGraph is ViewModel/session-lifetime. That is appropriate for UI/session
+relationships but cannot by itself coordinate Playback + Navigation + Call + Companion while no
+Activity/ViewModel exists.
+
+VexApplication already owns the process-lifetime dependency composition root. Formalization should
+therefore test whether Service-related convergence earns:
+
+~~~text
+a process-lifetime sibling / parent Relay graph
+~~~
+
+rather than moving every existing Relay to process lifetime or creating a global semantic manager.
+
+#### Formalization questions still open
+
+~~~text
+1. Is VexService an earned reusable root after Playback + Navigation + Call pressure?
+
+2. What is the smallest Service lifecycle vocabulary?
+   Entry / Admission / current lifecycle / constraint / restoration / termination
+   remain hypotheses until three materially different Services survive them.
+
+3. What exact currentness does a Service publish without duplicating Family/provider State?
+
+4. Does Service lifetime identity survive Android Service object/process recreation?
+   SERVICE RELATIONSHIP != PLATFORM OBJECT OCCURRENCE is the hypothesis to prove.
+
+5. Should the process-level currentness topology be a new VexServiceGraph,
+   a process-lifetime VexRelayGraph sibling/parent, or only explicit dependency wiring?
+   Do not settle the name before a real consumer needs it.
+
+6. Which cross-Service relationships are actually earned?
+   Audio coexistence, travel/conversation and Companion context are concrete pressure questions;
+   do not pre-create pairwise Relays for every possible Service combination.
+
+7. Can VexCompanionService serve as the higher-order consumer proof without becoming a semantic
+   god-object?
+~~~
+
+Formalization should begin by building the three-service pressure matrix and tests/prototypes around
+these laws. Do not create VexService.kt, a global ServiceManager, or a process Relay graph until the
+pressure demonstrates what source contract is actually required.
+
 ### Boundary with the current trajectory
 
 ~~~text
