@@ -425,7 +425,10 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexNavigationSession.kt",
-        "repo.vexlife-android:architecture/widget/README.md"
+        "repo.vexlife-android:architecture/widget/README.md",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/execution/README.md",
+        "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
