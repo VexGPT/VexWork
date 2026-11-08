@@ -218,6 +218,64 @@ Navigation process truth
     -> BackgroundServiceRelay dependency observation
 ~~~
 
+
+Stacked typed-scope candidate:
+
+~~~text
+github.pull.vexlife-android.225
+    [VexArchitecture][DRAFT] Bind dependency lifetimes to typed scope topology
+
+base
+    github.pull.vexlife-android.224
+    0b3ee01e68508c4bba5c18dc38259c931a195f2a
+
+current candidate
+    544c6bbfbf36a8c43f5a094796132cf70478a0c9
+~~~
+
+#225 turns the previously documented topology into source types:
+
+~~~text
+VexDependencyFactory<VexApplicationScope>
+├── VexDependencyFactory<VexSessionScope>
+├── VexDependencyFactory<VexServiceScope<VexStreamPlaybackService>>
+└── VexDependencyFactory<VexServiceScope<VexMapsNavigationService>>
+~~~
+
+and preserves exact declaration identity:
+
+~~~text
+VexDependencyProvider<Scope, Value>
+VexDependencyModule<Scope>
+VexScopedDependency<Scope>
+VexDependencyNode
+~~~
+
+`VexDependencyNode` is the real heterogeneous construction-node common type; known
+Scope + Value relationships are not erased to star projection / Any at the architecture boundary.
+The factory's private built-value storage may still use Any as implementation machinery.
+
+Concrete pressure in #225:
+
+~~~text
+ApplicationScope
+    process PlaybackFamily / BackgroundServiceRelay / repositories
+
+SessionScope
+    Events / Conversation Relay / runtime / session-owned Execution
+
+ServiceScope<VexStreamPlaybackService>
+    Service-owned widget VexExecutionRoot
+    + reused Application PlaybackFamily / BackgroundServiceRelay
+
+ServiceScope<VexMapsNavigationService>
+    Service-owned CoroutineScope
+    + reused Application BackgroundServiceRelay
+~~~
+
+A focused local Kotlin compiler proof of the dependency kernel and concrete parent + Session + Service
+child reuse is PASS. Repository-wide Android/Gradle proof remains unclaimed.
+
 The former Playback Behavior/Port projection path and connection-local pending semantic State are
 removed in the candidate. Pending Play/Pause/Restart intent now lives in the shared Family State, so
 foreground and background consumers cannot diverge merely because they entered through different
