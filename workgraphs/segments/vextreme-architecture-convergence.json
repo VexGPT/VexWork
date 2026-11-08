@@ -396,7 +396,7 @@
       "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
       "label": "Formalize Service lifecycle and fractal cross-Service convergence",
-      "purpose": "Formalize Service lifetime and background convergence without duplicating existing VexArchitecture circuitry: process-shared Families/Stores/Partners/providers remain the rightful current-truth owners; Android Services keep concrete realizations alive and reuse those exact parent dependencies; BackgroundServiceRelay is the process-lived Compound Relay for current background-capable VexLife relationships and may grow through complete lower Relay outputs as real Health/Call/Companion owners emerge; typed scope relationships must make parent/sibling/child lifetime ownership visible without hidden DI placement; Service retention/termination remains a Service-lifecycle concern, with bounded timing owned by Service execution unless a genuine multi-owner relationship earns Relay meaning.",
+      "purpose": "Formalize Service lifetime and background convergence without duplicate semantic state: Android #224 makes Playback Family truth process-shared across UI/Service/Widget and forms BackgroundServiceRelay over current background-capable truths; stacked Android #225 makes Application / retained Session / concrete Service sibling lifetime topology compiler-visible through typed dependency scopes. Services keep concrete realizations alive, Families/Stores/Partners/providers remain rightful truth owners, Relays own convergence, and Service retention/termination stays lifecycle policy with VexExecution custody for bounded timing.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -424,14 +424,15 @@
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
         "repo.vexlife-android:architecture/execution/README.md",
         "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
-        "github.pull.vexlife-android.224"
+        "github.pull.vexlife-android.224",
+        "github.pull.vexlife-android.225"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-07T18:00:00.000Z",
-      "updatedAt": "2026-11-07T20:15:00.000Z"
+      "updatedAt": "2026-11-07T21:00:00.000Z"
     }
   ],
   "transitions": [
@@ -664,7 +665,9 @@
     "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906",
     "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
     "github.pull.vexwork.280",
-    "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence"
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+    "github.pull.vexlife-android.224",
+    "github.pull.vexlife-android.225"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }
