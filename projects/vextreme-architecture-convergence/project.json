@@ -79,7 +79,11 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
     "repo.vexlife-android:app/src/main/AndroidManifest.xml",
-    "github.pull.vexwork.280"
+    "github.pull.vexwork.280",
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+    "repo.vexlife-android:architecture/dependency/README.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/VexApplication.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }
