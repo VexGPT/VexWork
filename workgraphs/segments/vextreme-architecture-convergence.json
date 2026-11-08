@@ -398,7 +398,7 @@
       "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
       "label": "Formalize Service lifecycle and fractal cross-Service convergence",
-      "purpose": "Pressure and formalize the smallest reusable VexService relationship and its coexistence topology without creating a global service manager: independently-started Services own their own sustained lifecycle/admission/currentness; process-lifetime graph projection makes those truths and purpose-owned Relay outputs deliverable; Compound Relays compose only the exact independently-owned truths needed by one relationship question; higher-order Relays consume complete lower-order relationship outputs instead of recalculating their children; construction remains VexDependencyFactory-owned and semantic requests continue through rightful Family/Partner/provider/Execution owners.",
+      "purpose": "Pressure and formalize the smallest reusable VexService relationship and its coexistence topology without creating a global service manager: independently-started Services own their sustained lifecycle/admission/currentness; purpose-owned Compound Relays compose only exact independently-owned truths and higher-order Relays consume complete lower-order outputs; dependency lifetime is made locally traceable by typed scope relationships whose parent and concrete scope identity are part of the dependency/module type rather than inferred from code placement; construction remains VexDependencyFactory-owned and semantic requests continue through rightful Family/Partner/provider/Execution owners.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "workDisposition": "ACTIVE",
@@ -432,7 +432,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-07T18:00:00.000Z",
-      "updatedAt": "2026-11-07T18:00:00.000Z"
+      "updatedAt": "2026-11-07T18:45:00.000Z"
     }
   ],
   "transitions": [
