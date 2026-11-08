@@ -377,6 +377,138 @@ a process-lifetime sibling / parent Relay graph
 
 rather than moving every existing Relay to process lifetime or creating a global semantic manager.
 
+#### Typed dependency-scope topology checkpoint
+
+The dependency discussion has now converged on a stronger lifetime rule than naming or code placement.
+
+~~~text
+A DEPENDENCY'S SCOPE
+IS PART OF ITS TYPE,
+NOT AN INFERENCE FROM WHERE IT WAS CONSTRUCTED.
+
+A SCOPE'S PARENT
+IS PART OF ITS RELATIONSHIP,
+NOT AN INFERENCE FROM WHO HAPPENED TO CREATE IT.
+~~~
+
+The intended small architecture shape is:
+
+~~~text
+VexScope<Parent>
+
+VexService
+
+ServiceScope<Service : VexService>
+
+VexScopedDependency<Scope : VexScope>
+
+VexDependency<Scope : VexScope, Value>
+
+VexDependencyModule<Scope>
+~~~
+
+The exact Kotlin spelling remains implementation pressure, but the relationship must survive intact.
+Do not erase an architecture-known relationship to `Any` or star-projection at the boundary merely
+to make heterogeneous containers easier.
+
+Concrete topology should be locally traceable:
+
+~~~text
+ApplicationScope
+├── ActivityScope
+├── ServiceScope<PlaybackService>
+├── ServiceScope<NavigationService>
+├── ServiceScope<CallService>
+└── ServiceScope<CompanionService>
+~~~
+
+A declaration such as:
+
+~~~text
+VexDependency<
+    ServiceScope<PlaybackService>,
+    PlaybackExecution
+>
+~~~
+
+must make it possible for a fresh human or AI instance to trace:
+
+~~~text
+WHAT AM I?
+    PlaybackExecution
+
+WHOSE LIFETIME AM I IN?
+    PlaybackService
+
+WHO IS MY PARENT?
+    ApplicationScope
+
+WHO ARE MY SIBLINGS / CHILDREN?
+    visible from the scope topology
+
+HOW AM I FORMED?
+    visible from the matching typed dependency module / prerequisite edges
+~~~
+
+Likewise:
+
+~~~text
+VexDependency<
+    ApplicationScope,
+    AudioCoexistenceRelay
+>
+
+VexDependency<
+    ActivityScope,
+    EventsConvergenceRelay
+>
+~~~
+
+make a lifetime movement an explicit architecture change rather than a hidden provider-placement edit.
+
+The dependency factory remains the construction engine underneath this topology:
+
+~~~text
+typed scope/module declaration
+    -> explicit provider prerequisites
+    -> VexDependencyFactory traversal / memoization
+    -> concrete dependency at rightful lifetime
+~~~
+
+Android hosts realize the scope; they do not define its semantic identity:
+
+~~~text
+ApplicationScope
+    -> Android Application process host
+
+ActivityScope
+    -> retained Activity/session host such as ViewModel
+
+ServiceScope<PlaybackService>
+    -> Android MediaSessionService realization
+
+ARCHITECTURE SCOPE
+!= PLATFORM CLASS
+~~~
+
+The existing Dexcom-like lesson retained here is only the useful one: a stable, typed path from a
+lifetime owner to dependencies belonging to that lifetime. Reject nullable class-key lookup or captured
+"not ready" values. Structural dependency existence is non-null and lazy-resolved; changing runtime
+availability belongs in the dependency's current truth.
+
+~~~text
+DECLARED
+!= INSTANTIATED
+!= CURRENT
+
+dependency object absent because construction has not run
+!=
+runtime relationship currently Absent
+~~~
+
+No ambient `get<T>()`, class-name lookup, reflection-based scope discovery, `Any`, or star-projected
+architecture boundary is earned by this checkpoint.
+
 #### Formalization questions still open
 
 ~~~text
