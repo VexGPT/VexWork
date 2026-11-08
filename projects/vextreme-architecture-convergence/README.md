@@ -181,8 +181,48 @@ The Service discussion has now converged far enough to preserve one narrower chi
 
 ~~~text
 work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence
-    WAITING_DEPENDENCIES
+    RUNNING
 ~~~
+
+
+Current Android source candidate:
+
+~~~text
+github.pull.vexlife-android.224
+    [VexArchitecture][DRAFT] Converge background Services on shared Family circuitry
+
+base
+    996079e890e96d3272ecaf1b2b1caaea468ebd4d
+
+current candidate head at formation
+    0b3ee01e68508c4bba5c18dc38259c931a195f2a
+~~~
+
+That candidate makes one real semantic circuit current in source:
+
+~~~text
+VexApplication dependency lifetime
+    -> one VexStreamPlaybackFamily
+    -> existing process VexMapsNavigationSession
+    -> one BackgroundServiceRelay
+
+UI / PlaybackService / Widget
+    -> reuse the exact same PlaybackFamily
+
+Playback provider observation
+    -> PlaybackFamily.observe(...)
+    -> Family.states
+    -> BackgroundServiceRelay dependency observation
+
+Navigation process truth
+    -> BackgroundServiceRelay dependency observation
+~~~
+
+The former Playback Behavior/Port projection path and connection-local pending semantic State are
+removed in the candidate. Pending Play/Pause/Restart intent now lives in the shared Family State, so
+foreground and background consumers cannot diverge merely because they entered through different
+Android surfaces.
+
 
 Current architecture hypothesis:
 
@@ -293,7 +333,7 @@ Player / provider reality changes
     -> rightful interpretation
     -> PlaybackFamily.observe(already-semantic State)
     -> PlaybackFamily.states changes
-    -> AudioCoexistenceRelay was already observing that State
+    -> BackgroundServiceRelay was already observing that State
     -> Relay recalculates its relationship output
 ~~~
 
@@ -364,36 +404,30 @@ complete relationship truth E
 Higher-order Relays consume complete lower-order outputs rather than reopening/recalculating all of
 their raw child truths.
 
-Driving + music + call + Companion pressure illustrates the intended shape:
+The current top-level pressure is broader than audio coexistence:
 
 ~~~text
-Playback current truth ---------\
-Call current truth --------------+-> AudioCoexistenceRelay
-Navigation speech truth --------/
-audio-focus truth --------------/
+PlaybackFamily.State ------------\
+Navigation current truth ---------+-> BackgroundServiceRelay
+future CallFamily.State ----------|
+future Health relationship truth -|
+future Companion relationship ----/
+already-converged lower outputs --/
         ↓
-AudioCoexistenceTruth
-
-
-Navigation current truth -------\
-Call / conversation truth -------+-> TravelConversationRelay
-        ↓
-TravelConversationTruth
-
-
-TravelConversationTruth --------\
-AudioCoexistenceTruth -----------+-> CompanionContextRelay
-Reminder / conversation truth ---/
-        ↓
-CompanionContextTruth
-        ↓
-VexCompanionService
+BackgroundServiceTruth
 ~~~
 
-VexCompanionService therefore need not inspect raw Maps/Music/Call internals. It consumes the
-relationship outputs that actually answer its own current question. If the human on the call asks how
-long remains to arrival, a travel/conversation relationship can already carry the current ETA context
-without Maps learning about Companion or Call learning about Maps.
+The Relay is the process-level relationship for background-capable VexLife meaning while UI may be
+absent. Its current source candidate admits only Playback + Navigation because those owners exist now.
+
+Future Health / Call / Companion pressure may add real inputs or complete lower Relay outputs. For
+example, a sustained Health boundary may eventually make an emergency Call + Companion relationship
+meaningful so Vex can speak current diagnostics through the call. That is an edge-case pressure, not a
+claim that those owners or policies already exist.
+
+If TravelConversation or another narrower Relay later earns an independent relationship question,
+BackgroundServiceRelay should consume that complete output rather than reopening/recalculating its raw
+children.
 
 Cross-Service policy must still leave through rightful owners:
 
@@ -518,7 +552,7 @@ Likewise:
 ~~~text
 VexDependency<
     ApplicationScope,
-    AudioCoexistenceRelay
+    BackgroundServiceRelay
 >
 
 VexDependency<
@@ -655,9 +689,10 @@ part of Service formalization rather than a Relay requirement.
    ownership compiler-visible without turning the dependency implementation into generic machinery
    more complex than the relationships it explains?
 
-6. Which cross-Service relationships are actually earned?
-   Audio coexistence, travel/conversation and Companion context are current concrete pressures;
-   do not pre-create pairwise Relays for every possible Service combination.
+6. How far should BackgroundServiceRelay grow before a narrower relationship earns its own Relay?
+   Current source proves Playback + Navigation only. Future Health / Call / Companion inputs must
+   arrive through their rightful owners, and already-converged lower Relay outputs stay fractal
+   rather than being recalculated at the top level.
 
 7. Can VexCompanionService prove higher-order Relay consumption without becoming a semantic god-object?
 
@@ -681,12 +716,13 @@ POST PARTNER
 != permission system redesign
 
 POST PARTNER
-= preserve the next architecture questions
-  so current Partner work can finish without losing them
+= the current architecture generation after Partner formation began;
+  Partner integration may continue in parallel while this source work remains independently bounded
 ~~~
 
-When this Work resumes, begin from then-current accepted VexArchitecture source and current Android
-provider/platform facts. Do not treat this checkpoint's hypotheses as authority.
+This Work is now RUNNING through Android PR #224. Continue from exact current source/evidence rather
+than treating earlier checkpoint hypotheses as authority. Partner #219 / onboarding #591 remain
+parallel currentness inputs, not blockers by existence.
 
 
 ## Human outcome
