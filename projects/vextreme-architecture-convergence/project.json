@@ -87,7 +87,8 @@
     "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
     "repo.vexlife-android:architecture/execution/README.md",
     "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
-    "github.pull.vexlife-android.224"
+    "github.pull.vexlife-android.224",
+    "github.pull.vexlife-android.225"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }
