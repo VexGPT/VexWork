@@ -743,9 +743,10 @@ part of Service formalization rather than a Relay requirement.
 4. Does Service relationship identity survive Android Service object/process recreation?
    SERVICE RELATIONSHIP != PLATFORM OBJECT OCCURRENCE remains a hypothesis to prove.
 
-5. Can typed Scope topology make ApplicationScope / SessionScope / ServiceScope parent-sibling-child
-   ownership compiler-visible without turning the dependency implementation into generic machinery
-   more complex than the relationships it explains?
+5. Does Android #225's source-formed typed Scope topology remain sufficient under repository-wide
+   Gradle proof and materially different Service pressure, or does a concrete ownership leak still
+   require a smaller correction? The existence of VexApplicationScope / VexSessionScope /
+   VexServiceScope is no longer an open design question.
 
 6. How far should BackgroundServiceRelay grow before a narrower relationship earns its own Relay?
    Current source proves Playback + Navigation only. Future Health / Call / Companion inputs must
@@ -758,10 +759,10 @@ part of Service formalization rather than a Relay requirement.
    dependency topology + existing Relay observation already provide runtime delivery?
 ~~~
 
-Formalization should begin by pressure-testing the typed scope topology with the existing
-Application + retained Session composition, then place shared Families/Relays at the rightful common
-ancestor and compose Playback/Navigation Service children against those exact instances. Call remains
-the materially different third Service pressure before a universal VexService root is accepted.
+Typed scope topology is now source-formed in Android #225 over the existing Application + retained
+Session composition and concrete Playback/Navigation Service children. The next obligation is exact
+repository proof/lifecycle acceptance of #224/#225, then Call remains the materially different third
+Service pressure before a universal VexService root is accepted.
 
 ### Boundary with the current trajectory
 
