@@ -195,7 +195,7 @@ base
     996079e890e96d3272ecaf1b2b1caaea468ebd4d
 
 current candidate head at formation
-    0b3ee01e68508c4bba5c18dc38259c931a195f2a
+    69b24d940ecebc1b440f16cb85ffc1c819804d88
 ~~~
 
 That candidate makes one real semantic circuit current in source:
@@ -227,10 +227,10 @@ github.pull.vexlife-android.225
 
 base
     github.pull.vexlife-android.224
-    0b3ee01e68508c4bba5c18dc38259c931a195f2a
+    69b24d940ecebc1b440f16cb85ffc1c819804d88
 
 current candidate
-    544c6bbfbf36a8c43f5a094796132cf70478a0c9
+    2f39353407402e25f2fe02e7f72fb3c7e92666f8
 ~~~
 
 #225 turns the previously documented topology into source types:
