@@ -62,8 +62,10 @@ VexLife-Android #219
     Observation / Receiver proof
 
 Vextreme #591
-    current Builder Guide / Live Demonstration currentization
-    including positive owner-pressure and Service-pressure checkpointing
+    current head 54635972cb2663bc6e13e063298464d2bb418347
+    current Builder Guide / Live Demonstration authored-source candidate
+    Tests + Key Alignment PASS; 178-file generated currentness intentionally held
+    until Android #219/#224/#225 acceptance fixes the final public wording
 ~~~
 
 This is a checkpoint, not a pre-written architecture answer.
@@ -379,9 +381,8 @@ ServiceScope<NavigationService>
     reuses the same ApplicationScope Navigation Family/domain owner
     keeps location / navigation realization alive
 
-ServiceScope<CallService>
-    reuses the same ApplicationScope CallFamily
-    keeps call realization alive
+future Call Service pressure
+    remains unformed until a real Call owner / lifecycle earns that scope
 ~~~
 
 Provider/runtime change returns through the already-existing semantic boundary:
@@ -510,14 +511,16 @@ belong at their rightful common ancestor: ApplicationScope. Service scopes then 
 application-lived objects while adding only Service-private realization dependencies.
 
 ~~~text
+CURRENT #225 SOURCE
 ApplicationScope
 ├── process-lived Families / Stores / Partners / cross-Service Relays
 ├── SessionScope
 │   └── session/UI-lived Families / Relays / presentation dependencies
 ├── ServiceScope<PlaybackService>
-├── ServiceScope<NavigationService>
-├── ServiceScope<CallService>
-└── ServiceScope<CompanionService>
+└── ServiceScope<NavigationService>
+
+FUTURE PRESSURE — NOT CURRENT SOURCE
+Call / Companion may earn their own Service scopes only from real owners and lifetimes
 ~~~
 
 Permanent topology direction:
@@ -566,15 +569,17 @@ The exact Kotlin spelling remains implementation pressure, but the relationship 
 Do not erase an architecture-known relationship to `Any` or star-projection at the boundary merely
 to make heterogeneous containers easier.
 
-Concrete topology should be locally traceable:
+Concrete topology should be locally traceable without pretending future Services already exist:
 
 ~~~text
+CURRENT #225 SOURCE
 ApplicationScope
 ├── SessionScope
 ├── ServiceScope<PlaybackService>
-├── ServiceScope<NavigationService>
-├── ServiceScope<CallService>
-└── ServiceScope<CompanionService>
+└── ServiceScope<NavigationService>
+
+FUTURE PRESSURE
+Call / Companion remain unformed until real source earns them
 ~~~
 
 A declaration such as:
