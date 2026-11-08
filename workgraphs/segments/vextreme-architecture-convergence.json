@@ -398,7 +398,7 @@
       "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
       "label": "Formalize Service lifecycle and fractal cross-Service convergence",
-      "purpose": "Pressure and formalize the smallest reusable VexService relationship and its coexistence topology without creating a global service manager: independently-started Services own their sustained lifecycle/admission/currentness; purpose-owned Compound Relays compose only exact independently-owned truths and higher-order Relays consume complete lower-order outputs; dependency lifetime is made locally traceable by typed scope relationships whose parent and concrete scope identity are part of the dependency/module type rather than inferred from code placement; construction remains VexDependencyFactory-owned and semantic requests continue through rightful Family/Partner/provider/Execution owners.",
+      "purpose": "Pressure and formalize the smallest reusable VexService relationship and its coexistence topology without duplicating existing VexArchitecture circuitry: application-lived Families/Stores/Partners/providers remain the rightful current-truth owners; Service child scopes reuse those exact parent dependencies while keeping concrete Android/provider behavior alive; purpose-owned Compound Relays observe those existing truths and higher-order Relays consume complete lower-order outputs; typed scope relationships make parent/sibling/child lifetime ownership part of the dependency/module type rather than code placement; Service retention/termination remains a Service-lifecycle concern, with bounded timing owned by Service execution unless a genuine multi-owner relationship earns a Relay.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "workDisposition": "ACTIVE",
@@ -432,7 +432,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-07T18:00:00.000Z",
-      "updatedAt": "2026-11-07T18:45:00.000Z"
+      "updatedAt": "2026-11-07T19:10:00.000Z"
     }
   ],
   "transitions": [
