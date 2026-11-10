@@ -95,45 +95,42 @@ SCREEN CAPTURE IS ACTIVE
 
 ## Current authority/currentness boundary
 
-The historical October SCREEN grant remains provenance only. The resumed Vision trajectory has now
-formed a fresh bounded Safety currentization candidate under SDK PR #1915.
+Historical October grants and the November 7 Safety-currentization receipts remain provenance. They are
+not the current foreground work boundary.
 
-Current source-managed receipt on that exact candidate:
-
-~~~text
-humanAuthorityRef
-  authority.human.victor.vexlife-vision-companion.screen-reachability.20261107A
-
-formedAt
-  2026-11-07T09:14:00.000Z
-
-expiresAtOrNull
-  2026-11-08T09:14:00.000Z
-~~~
-
-That receipt is still **Safety-layer currentness**, not host OS permission and not capture.
+Current accepted Vextreme-SDK main/checkpoint is:
 
 ~~~text
-CURRENT SCREEN SAFETY BINDING
-!= HOST OS SCREEN RECORDING GRANT
-!= SCREENSHOT
-!= ACTIVE VISUAL OBSERVATION
-!= VISUAL MODEL INPUT
+c39951fe260e505b4a3c5b8f606cc8da14c985c0
 ~~~
 
-PR #1915 has been currentized over accepted SDK baseline merge #1920. Its fresh exact-head proof now
-checks the source-managed Safety binding against the actual execution clock and must fail closed if
-the receipt expires before proof/lifecycle consumption.
+That accepted source now contains the bounded USER_SELECTED_SESSION route, its exact receipt validation,
+the canonical Security active-sharing witness, and Perception's content-absent active VISUAL observation
+integration.
 
-A future active capture attempt still requires the separately-owned macOS host permission and active
-adapter/capture predicates required by the accepted SDK architecture.
+The unfinished work is **ordinary Product reachability**, not re-establishing those accepted source
+relationships.
+
+Permanent:
+
+~~~text
+SDK_SOURCE_ACCEPTED
+!= PRODUCT_EFFECT_REACHABLE
+
+SOURCE_ORCHESTRATION
+!= LIVE_CAPTURE_AUTHORITY
+
+CURRENT SAFETY AT RUNTIME
+!= STANDING SCREEN AUTHORITY
+~~~
+
+The Process Factory product-runtime seam must resolve current Safety at the time of the attempt and
+return HELD without helper launch when Safety is not current. Source implementation/proof does not
+itself present the picker or perform capture.
 
 ## Current macOS user-selected system-picker route
 
-The first real host route is now **explicit user-selected session sharing**, not the historical
-persistent Screen Recording permission-agent path.
-
-Human direction selected:
+The first real host route remains **explicit user-selected session sharing**:
 
 ~~~text
 Vision LookNow
@@ -141,64 +138,46 @@ Vision LookNow
 -> Victor chooses exactly one window in OS-owned UI
 -> session-bound SCContentFilter
 -> at most one SCScreenshotManager capture
--> request / session / Connection-bound capture receipt
+-> exact request/session/connection-bound Process Factory receipt
+-> canonical Security witness
+-> canonical Perception active VISUAL observation
 ~~~
 
-Current SDK work:
+This route is now accepted SDK source, not a pending #1924 candidate.
+
+Accepted current chain on SDK main:
 
 ~~~text
-work case  github.issue.vextreme-sdk.1923
-draft PR   github.pull.vextreme-sdk.1924
-head       27eafee3f2cec8e2a013fae42631762456255ca9
-paths      5 exact
+macOS USER_SELECTED_SESSION route       accepted
+Security active-sharing witness         accepted
+Perception active VISUAL integration    accepted
+SDK main                                c39951fe260e505b4a3c5b8f606cc8da14c985c0
 ~~~
 
-This is additive. The accepted persistent permission agent remains valid for a later persistent
-requester/product identity, and its stable-signer requirement is not weakened.
+The current missing SDK edge is PR #1939:
 
 ~~~text
-PERSISTENT_PERMISSION_ROUTE
-  -> stable requester identity remains required
-
-USER_SELECTED_SESSION
-  -> explicit OS selection is the first scope boundary
-  -> stable signer is not the foreground prerequisite
+github.pull.vextreme-sdk.1939
+branch = VXG-111026-chatgpt-vexlife-vision-product-runtime
+head   = bc9b093b61b7ac5009f612d78c703ea431c19f5d
+changedFiles = 0
 ~~~
 
-The current system-picker candidate preserves:
+That PR is a claim-established source-writer scaffold for the exact three-path Process Factory
+orchestration contract. It does not reopen the accepted picker/capture owners and it does not yet earn
+distribution, Product service wiring, or live Product capture.
+
+Permanent:
 
 ~~~text
-SYSTEM_PICKER_SELECTED != SCREEN_CAPTURED
+PRODUCT_REQUEST_ID != PROCESS_SESSION_ID
+PRODUCT_REQUEST_ID != CONNECTION_ID
+
 SCREEN_CAPTURED != ACTIVE_VISUAL_OBSERVATION
 ACTIVE_VISUAL_OBSERVATION != VISUAL_MODEL_INPUT
 OBSERVATION != MEMORY
 MEMORY != TRAINING
 ~~~
-
-A successful one-shot host capture may establish only one bounded `SCREEN_CAPTURED` occurrence and
-its provenance. It still does not grant active visual observation or model-input authority.
-
-Current source-proof boundary:
-
-~~~text
-real macOS Swift compile
-+ plist lint
-+ focused system-picker contract tests
-+ repository-wide sdk-check
-+ exact five-path review snapshot
-~~~
-
-The source proof does **not** present the picker or take a screenshot. Only after exact source
-acceptance will a separately formed host attempt present the OS picker.
-
-If the current SCREEN Safety receipt expires before that later host effect, currentize only the
-source-managed Safety binding first.
-
-Durable route-switch evidence:
-- `github.issue.vextreme-sdk.232.comment.6706492909`
-- `github.issue.vextreme-sdk.241.comment.6706493382`
-- `github.issue.vextreme-sdk.1923`
-- `github.pull.vextreme-sdk.1924`
 
 ## Current model/runtime boundary
 
@@ -478,63 +457,61 @@ VEX CAN WITNESS BROWSER
 A future browser-action capability would require its own Family Control / Act / Effect / Method /
 Partner acknowledgement / later-observation circuit. Vision observation alone cannot grant it.
 
-## Product-side decision currentization — begin the Vision surface now
+## Product-side decision currentization — semantic/control slice accepted
 
-Victor explicitly judged the current VexLife-Prod presentation stable enough to begin adding Vision
-before the SDK physical capture trajectory reaches terminal acceptance.
+The Product-side Vision semantic/control slice is no longer merely a candidate.
 
-This changes the work order, not the authority boundary.
-
-~~~text
-PARALLEL EDGE A — PRODUCT
-VexLife-Prod PR #54
-  stacked on PR #53 exact head
-  VisionFamily State / Control / Effect / DisplayState
-  Blueprint Vision coordinate
-  VexWeb Companion-header manifestation
-  visible Vision · Held control
-  no capture binding
-
-PARALLEL EDGE B — PHYSICAL VISION
-Vextreme-SDK
-  PR #1915 SCREEN Safety currentization
-  held on repository baseline currentization PR #1920
-  then host permission / selected-window capture / Observation
-~~~
-
-Current product candidate:
+Accepted VexLife-Prod:
 
 ~~~text
-VexLife-Prod PR #54
-base 56aa338f186e237bbcdfd91859b761c2ef203f1e
-head 30acf0a6518476025b978698c98018f9762bfa68
-tree 442373d722e0b1c3e91f3904d45c4e6c219335f4
+PR #54 merged
+merge/main at acceptance = 92abc26e6acd2f6604d921c259da6d40950a0f10
+
+VexLifeVisionFamily
+  State   Held | Ready | Looking
+  Control LookNow
+  Effect  RequestSnapshot
+
+generated presentation
+  Vision · Held
+  disabled
 ~~~
 
-PR #54 is intentionally stacked on the stable current #53 presentation source rather than widening
-#53 itself. Its current button is **HELD by design**:
+A024 then promoted that accepted Vision main into the running Product while preserving the current
+Conversation head and healthy Heretic runtime:
 
 ~~~text
-VISIBLE CONTROL
-!= EFFECT AVAILABLE
-
-Vision · Held
--> no JavaScript capture binding
--> no screen-permission request
--> no screenshot
--> no VLM input
+github.pull.vexlife-prod.54.comment.6761261558
+disposition = PASS
+Vision capture = false
+visual model input = false
 ~~~
 
-The current product semantic owner is source-visible now; later backend integration should drive the
-Family state rather than replacing the button with ad-hoc runtime booleans.
+Therefore the child Work item:
+
+~~~text
+work.vexlife.new-beginnings.vision-companion-product-surface
+~~~
+
+is complete as the **truthful semantic/control surface**.
+
+Current VexLife-Prod main has since advanced to:
+
+~~~text
+3eca5055f34b4a9807d0b3d117e6131e51e4c788
+~~~
+
+for later Evolution/G03 work. The Vision Family remains accepted, but Product service files changed
+after the Vision merge. When the later Product service bridge is earned, it must re-ground against
+current Product service source rather than coding from historical PR #54 service assumptions.
 
 Permanent:
 
 ~~~text
-PRODUCT_SURFACE_READY
-!= SCREEN_PERMISSION_CURRENT
-!= SCREEN_CAPTURE_AVAILABLE
-!= VISUAL_OBSERVATION_ACTIVE
+PRODUCT_VISION_SEMANTIC_SOURCE_ACCEPTED
+!= PRODUCT_RUNTIME_BRIDGE_REACHABLE
+!= SCREEN_CAPTURE_ACTIVE
+!= VISUAL_MODEL_INPUT
 ~~~
 
 ## First bounded product slice
@@ -649,7 +626,7 @@ observation/context, not human intent, authority, or an effect grant.
 
 ## Resume coordinate
 
-The Workgraph coordinate is:
+The Workgraph coordinate remains:
 
 ~~~text
 work.vexlife.new-beginnings.vision-companion-real-browser-witness
@@ -658,57 +635,59 @@ priority           HIGH
 workDisposition    ACTIVE
 authority          NO_AUTHORITY
 effects            NO_EFFECTS
-
-current implementation edge:
-  github.issue.vextreme-sdk.1914
-  github.pull.vextreme-sdk.1915
-  accepted baseline github.pull.vextreme-sdk.1920
-  accepted baseline merge ba62378289faa7c72e595793839389f71ba21923
-  currentized candidate fb71627dd1a5d7b58b98a0457876e2b49f86d58c
-  currentized tree 8f70bc979d5b262a6eddb367aea7ef2df8c38b0f
-  provider diff 4 exact Vision/Safety paths
-  historical focused SCREEN owner-binding proof 12/12 PASS
-  historical focused macOS permission-agent proof 17/17 PASS
-  SourceOwner A003 PASS on exact currentized head/tree
-  live Safety observed CURRENT_PERMITTED at 2026-11-07T11:04:53.344Z
-  hostPermissionRequestAuthorized=true while screenCaptureAuthorized=false / activeObservation=false
-  focused SCREEN owner-binding 12/12 PASS
-  focused macOS permission-agent 17/17 PASS
-  full sdk-check PASS: 7014 pass / 0 fail / 3 skip; READY yes
-  fresh Independent Assurance CLEAR_ON_EXACT_HEAD
-  distinct Formal Review APPROVE / CLEAR_ON_EXACT_HEAD
-  PR #1915 merged as d738fe44612575a4ba2404368c1bfa8821d46cd3
-  Main Integrity checkpoint converged to the same merge
-  historical persistent-permission attempt found STABLE_NON_ADHOC_SIGNER_UNAVAILABLE before any prompt
-  first host route switched to USER_SELECTED_SESSION under SDK #1923 / PR #1924
-  current PR #1924 head 27eafee3f2cec8e2a013fae42631762456255ca9
-  system-picker source proof pending: real macOS compile + focused tests + sdk-check
-  no picker presentation or screenshot has occurred
-  live Safety currentness must be re-grounded again before the later host capture effect
 ~~~
 
-It is READY as work because the human outcome and source owners are sufficiently clear.
-It is **not effect-authorized**.
+VexWork is the foreground work-navigation owner for this trajectory. It does not replace SDK/Product
+source or effect authority.
 
-The next implementation sequence is:
+Completed child:
 
-1. re-ground current Vextreme-SDK Vex Vision / Safety source;
-2. form a fresh current SCREEN / ON_DEMAND_SNAPSHOT human+Safety authorization for this product use;
-3. prove/accept the macOS user-selected system-picker one-shot route;
-4. run one explicit OS-owned single-window selection and one bounded screenshot attempt;
-5. compose the request/source-bound capture receipt into the existing observer/Perception gates;
-6. identify and qualify the actual local visual interpretation route (existing qualified VLM if one
-   is later proven current, otherwise a separately admitted local visual worker);
-7. connect the derived visual observation into current VexLife-Prod Conversation Context;
-8. continue the already-formed VexLife-Prod #54 Vision Family/control surface from HELD into live capability states only when those states correspond to real backend truth;
-9. lived proof:
-   - Vision OFF -> no capture;
-   - Vision ON -> selected ordinary browser window only;
-   - one turn -> one capture at most;
-   - Vex describes what Victor can visibly see;
-   - raw frame not retained;
-   - page content cannot grant actions/authority;
-   - stopping Vision stops future observation.
+~~~text
+work.vexlife.new-beginnings.vision-companion-product-surface
+-> COMPLETED
+-> Product Vision semantic/control source accepted
+-> accepted-main lived promotion PASS
+~~~
+
+Current unconsumed source edge:
+
+~~~text
+vgong24/Vextreme-SDK
+main = c39951fe260e505b4a3c5b8f606cc8da14c985c0
+
+github.pull.vextreme-sdk.1939
+head = bc9b093b61b7ac5009f612d78c703ea431c19f5d
+changedFiles = 0
+workRef = work.vexlife.new-beginnings.vision-product-runtime-orchestration
+~~~
+
+Exact authored membrane:
+
+~~~text
+lib/process-factory/macos-screen-system-picker-product-runtime.js
+tests/process-factory/macos-screen-system-picker-product-runtime.test.js
+docs/architecture/macos-screen-system-picker-product-runtime.md
+~~~
+
+The next implementation sequence is now:
+
+1. re-observe PR #1939 + current SDK admission/currentness;
+2. establish/adopt the exact Local Source Workspace AUTHORING custody for the PR #1939 scaffold head;
+3. implement only the three-path Process Factory orchestration contract;
+4. run exact source proof / SDK readiness and ordinary independent lifecycle;
+5. after source acceptance, determine the smallest ordinary-Product-consumable executable carriage;
+6. re-ground current VexLife-Prod service owners and implement the Product service bridge;
+7. earn `Ready` only when that ordinary Product route is actually reachable;
+8. run one lived Product `LookNow`:
+   - OS-owned one-window selection;
+   - at most one capture;
+   - canonical Security witness;
+   - canonical content-absent active VISUAL observation;
+   - truthful Product result/state;
+9. only after that separately decide/earn ephemeral visual-model input and derived visual meaning.
+
+Do **not** use VexWork currentization, SDK Root narration, or proof packaging as a reason to delay step 2
+once current admission and Local Source Workspace custody are actually established.
 
 ## Relationship to current manifestation work
 
@@ -729,20 +708,43 @@ Vision must earn lived superiority before it replaces any existing product pathw
 
 ## Source grounding
 
-- Vextreme-SDK accepted main/checkpoint: `d738fe44612575a4ba2404368c1bfa8821d46cd3`
-- accepted held SCREEN integration merge:
-  `4e8f2fca496269cadc7710e5134ed45d9ecae3e0`
-- accepted SDK baseline repair: Vextreme-SDK PR #1920 / merge `ba62378289faa7c72e595793839389f71ba21923`
-- accepted SCREEN Safety currentization: Vextreme-SDK PR #1915 / merge `d738fe44612575a4ba2404368c1bfa8821d46cd3`
-- `docs/architecture/vex-body-vision-screen-held-integration.md`
-- `docs/architecture/perception-session-screen-owner-binding.md`
-- `docs/architecture/macos-screen-permission-agent.md`
-- `docs/architecture/perception-broker-screen-adapter.md`
-- `docs/private-continuity/vex-body/vision/screen-permission/current.json`
-- `docs/private-continuity/vexlocalbridge/model-runtime-adapter-registry.json`
-- `lib/vexlocalbridge/mlx-persistent-runtime-owner.js`
-- VexWork Security Assurance: `projects/vex-security-assurance/ADVERSARIAL-LENS.md`
-- current Partner architecture pressure: VexWork PR #267 / head `8b6732fa20c8c72bf99faa0c237f580b74813adc`
-- current executable Partner candidate: VexLife-Android PR #219 / head `356baa6fe4ef1577a287da48de0ce758ed793653`
+Foreground Work truth:
+
+- VexWork PR #275 — existing Vision/New Beginnings Work source candidate and provider conversation;
+- `work.vexlife.new-beginnings.vision-companion-real-browser-witness` — parent Work coordinate;
+- `work.vexlife.new-beginnings.vision-companion-product-surface` — completed semantic/control child.
+
+Current SDK truth:
+
+- accepted main/checkpoint: `c39951fe260e505b4a3c5b8f606cc8da14c985c0`;
+- accepted USER_SELECTED_SESSION route: PR #1928 / accepted source lineage;
+- accepted Security active-sharing witness: PR #1930;
+- accepted Perception active VISUAL integration: PR #1934 / merge at current main;
+- Process Factory product-runtime placement:
+  `github.issue.vextreme-sdk.241.comment.6756193443`;
+- current unfinished source writer:
+  `github.pull.vextreme-sdk.1939@bc9b093b61b7ac5009f612d78c703ea431c19f5d`.
+
+Current Product truth:
+
+- VexLife-Prod Vision PR #54 merged as
+  `92abc26e6acd2f6604d921c259da6d40950a0f10`;
+- A024 lived accepted-main promotion PASS:
+  `github.pull.vexlife-prod.54.comment.6761261558`;
+- current Product main:
+  `3eca5055f34b4a9807d0b3d117e6131e51e4c788`.
+
+Exact current owner source to descend for PR #1939 implementation:
+
+~~~text
+lib/process-factory/macos-screen-system-picker-contract.js
+lib/security/macos-screen-system-picker-active-sharing-witness.js
+lib/vex-perception-broker/screen-system-picker-active-integration.js
+docs/process/local-source-workspace-protocol.md
+~~~
+
+Older #1915/#1924/Safety-receipt coordinates remain provenance for how the route was earned. They are
+not the current next-work coordinate.
 
 <!-- [VXG RealForever][VEXLIFE][NEW-BEGINNINGS][VISION-COMPANION][REAL-BROWSER-WITNESS] -->
+
