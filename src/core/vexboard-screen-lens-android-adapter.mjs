@@ -15,8 +15,8 @@
 // through one implementation template. Captured Family closures and typed Behavior
 // ports answer the same ownership questions through materially different source paths.
 //
-// Human knowledge that code cannot say (notes, sharper summaries, ThemeMode's
-// === fence) lives in a separate overlay file, merged last. The generated lens
+// Human knowledge that code cannot say (notes and sharper presentation summaries) lives in a
+// separate overlay file, merged last. Source-expressed relationship details stay source-derived. The generated lens
 // is never edited by hand; regenerate it.
 //
 // Pure: inputs are an adapter config, a Map of repo-relative path -> source
@@ -310,6 +310,72 @@ const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /* ---------- Family vocabulary (one template for every VexFamily) ---------- */
 
+function functionBlocks(text) {
+  const out = [];
+  const pattern = /(?:^|\n)\s*(?:internal\s+|private\s+|public\s+|protected\s+)?(?:suspend\s+)?fun\s+(\w+)\s*\(/g;
+  for (const match of text.matchAll(pattern)) {
+    const open = text.indexOf('(', match.index + match[0].length - 1);
+    if (open < 0) continue;
+    let close;
+    try { close = matchClose(text, open); }
+    catch { continue; }
+    const bodyOpen = text.indexOf('{', close);
+    if (bodyOpen < 0) continue;
+    let bodyClose;
+    try { bodyClose = matchClose(text, bodyOpen); }
+    catch { continue; }
+    out.push({
+      name: match[1],
+      index: match.index,
+      body: text.slice(bodyOpen + 1, bodyClose),
+      text: text.slice(match.index, bodyClose + 1),
+      doc: kdocBefore(text, match.index),
+    });
+  }
+  return out;
+}
+
+function directFamilyRealization(text) {
+  return functionBlocks(text).find((fn) =>
+    /\bact\s*\.\s*launch\s*\(/.test(fn.body) ||
+    /\blaunchWith\s*\(/.test(fn.body)) ?? null;
+}
+
+function identityCurrentnessSettlement(text, realization) {
+  if (!realization) return null;
+  const called = [...new Set(
+    [...realization.body.matchAll(/\bfamily\s*\.\s*(\w+)\s*\(/g)].map((match) => match[1]),
+  )];
+  const candidates = [];
+  for (const fn of functionBlocks(text)) {
+    if (!called.includes(fn.name)) continue;
+    const guard = /\b([A-Za-z_]\w*)\s*===\s*parameter\b/.exec(fn.body);
+    if (!guard) continue;
+    const field = guard[1];
+    if (!new RegExp('\\b' + escapeRegex(field) + '\\s*=\\s*null\\b').test(fn.body)) continue;
+    candidates.push({ fn, field });
+  }
+  if (candidates.length !== 1) return null;
+  const { fn, field } = candidates[0];
+  const callPattern = new RegExp('\\bfamily\\s*\\.\\s*' + escapeRegex(fn.name) + '\\s*\\(', 'g');
+  const countCalls = (value) => [...String(value ?? '').matchAll(callPattern)].length;
+  const onResult = blockAfter(realization.body, /onResult\s*=\s*\{/);
+  const onCompletion = blockAfter(realization.body, /invokeOnCompletion\s*\{/);
+  const total = countCalls(realization.body);
+  const fromResult = countCalls(onResult?.body) > 0;
+  const fromCompletion = countCalls(onCompletion?.body) > 0;
+  const known = countCalls(onResult?.body) + countCalls(onCompletion?.body);
+  return {
+    name: fn.name,
+    field,
+    summary: fn.doc ?? 'Clears one feature-owned currentness fence only for the exact Parameter identity that still owns it.',
+    code: 'if (' + field + ' === parameter) { ' + field + ' = null }',
+    fromResult,
+    fromCompletion,
+    fromBoundary: total > known,
+  };
+}
+
 function sealedMembers(text, interfaceName) {
   const block = blockAfter(text, new RegExp(`sealed\\s+(?:interface|class)\\s+${interfaceName}\\b[^{]*\\{`));
   if (!block) return [];
@@ -341,6 +407,14 @@ function parseFamily(cat, adapter, familyName) {
   }
   const approach = /\bbegin(Latest|Earliest|Queued)\(/.exec(text)?.[1] ?? (/\bbegin\(/.test(text) ? 'Independent' : null);
   const presentation = /override\s+val\s+presentation\s*=\s*(\w+)\./.exec(text)?.[1] ?? null;
+  const realization = directFamilyRealization(text);
+  const acceptedRealization = Boolean(
+    realization &&
+    /\bVexFamily\.Act\.Accepted\b/.test(text) &&
+    /\brealizationBegin\b/.test(realization.body) &&
+    /\bact\s*\.\s*launch\s*\(/.test(realization.body)
+  );
+  const currentnessSettlement = identityCurrentnessSettlement(text, realization);
   return {
     name: familyName,
     path,
@@ -354,6 +428,9 @@ function parseFamily(cat, adapter, familyName) {
     presentation,
     methods,
     approach,
+    realization,
+    acceptedRealization,
+    currentnessSettlement,
     observe: /fun\s+(observe\w*Store)\s*\(/.exec(text)?.[1] ?? null,
     activate: /fun\s+(activate\w+)\s*\(/.exec(text)?.[1] ?? null,
     records: /record\w*Fact\s*\(/.test(text),
@@ -1109,6 +1186,13 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     const state = builder.node('state', 'BEHAVIOR', 'STATE', `CURRENT State · ${family.stateType}`, { symbol: family.stateValues.length ? `${family.stateType}.${family.stateValues.join(' | ')}` : family.stateType, summary: 'Exact current semantic truth that act() reads.', source: family.source });
     const act = builder.node('act', 'BEHAVIOR', 'ACT', `${family.name}.act(State, Control)`, { symbol: 'VexFamily.activate', summary: SUMMARY.act, source: family.source });
     const admitted = builder.node('admitted', 'BEHAVIOR', 'STATE', 'admitted State', { symbol: 'accepted.admittedState', summary: SUMMARY.admitted, source: adapter.sources.vexFamily });
+    const accepted = family.acceptedRealization
+      ? builder.node('accepted', 'BEHAVIOR', 'ACT', 'Act.Accepted · accepted responsibility', {
+          symbol: 'VexFamily.Act.Accepted',
+          summary: 'The authored Act is accepted into this live Family before any new realization enters execution custody.',
+          source: family.source,
+        })
+      : null;
     builder.edge(intent, runtime, 'Invoke');
     builder.edge(runtime, reg, 'dispatch');
     builder.edge(reg, closure, 'closure');
@@ -1116,6 +1200,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     builder.edge(control, act, 'Control');
     builder.edge(state, act, 'CURRENT', 'DATA');
     builder.edge(act, admitted, 'admits');
+    if (accepted) builder.edge(act, accepted, 'accepts');
     let effectRef = null;
     if (effect) {
       effectRef = builder.node('effect', 'BEHAVIOR', 'EFFECT', `Begin(Effect.${effect}${family.approach ? `, ${family.approach}` : ''})`, { symbol: `${family.name}.Effect.${effect}`, summary: `Inert request for outside work${family.approach ? ` with the ${family.approach} overlap Approach` : ''}.`, source: family.source, code: family.excerpt('Effect', effect) });
@@ -1128,32 +1213,80 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     }
     if (method) {
       const store = method.storeType ? parseStore(cat, adapter, method.storeType) : null;
-      const m = builder.node('method', 'DEPTH', 'METHOD', `Act.Method.${method.name}(${method.params.join(', ')})`, { symbol: `${family.name}.Act.Method.${method.name}`, summary: 'Fully bound: the real Store plus the semantic Parameter. Nothing downstream reconstructs them.', source: family.source });
-      const launch = builder.node('launch', 'DEPTH', 'EXECUTION', 'act.launchWith(executionRoot).method(…)', { symbol: family.activate, summary: SUMMARY.launch, source: family.source });
+      const realization = family.acceptedRealization
+        ? builder.node('realization', 'DEPTH', 'REALIZATION', 'realizationBegin? · occurrence still owed', {
+            symbol: 'VexFamily.Act.Accepted.realizationBegin',
+            summary: 'Live view of the authored Begin only while this accepted consequence still requires a new runtime occurrence.',
+            source: family.source,
+          })
+        : null;
+      const m = builder.node('method', 'DEPTH', 'METHOD', `Act.Method.${method.name}(${method.params.join(', ')})`, {
+        symbol: `${family.name}.Act.Method.${method.name}`,
+        summary: family.acceptedRealization
+          ? 'Fully bound Method carrying the exact authored Effect; Accepted.launch verifies provenance before execution custody.'
+          : 'Fully bound: the real Store plus the semantic Parameter. Nothing downstream reconstructs them.',
+        source: family.source,
+      });
+      const launch = builder.node('launch', 'DEPTH', 'EXECUTION',
+        family.acceptedRealization ? 'Act.Accepted.launch(executionRoot, Method)' : 'act.launchWith(executionRoot).method(…)', {
+          symbol: family.acceptedRealization ? 'VexFamily.Act.Accepted.launch' : family.activate,
+          summary: family.acceptedRealization
+            ? 'Re-checks live realization admission and hands the exact Effect-bound Method into VexExecution custody.'
+            : SUMMARY.launch,
+          source: family.source,
+        });
       const custody = builder.node('custody', 'DEPTH', 'EXECUTION', `VexExecution · Job custody${family.approach ? ` (${family.approach})` : ''}`, { symbol: 'VexExecution', summary: SUMMARY.custody, source: adapter.sources.vexExecution });
-      builder.edge(effectRef, m, 'binds');
-      builder.edge(m, launch, 'launch');
+      if (realization) {
+        builder.edge(accepted, realization, 'still owed');
+        builder.edge(effectRef, realization, 'authored Begin');
+        builder.edge(realization, m, 'exact Effect');
+        builder.edge(accepted, launch, 'live admission');
+        builder.edge(m, launch, 'exact Effect');
+      } else {
+        builder.edge(effectRef, m, 'binds');
+        builder.edge(m, launch, 'launch');
+      }
       builder.edge(launch, custody, 'Job');
       if (store) {
         const storeRef = builder.node('store', 'DEPTH', 'STORE', `${store.type}.${method.op ?? 'call'}(…)`, { symbol: store.type, summary: 'Boundary to independently owned outside truth.', source: store.source });
         builder.edge(custody, storeRef, 'runs');
         let last = storeRef;
+        let resultRef = null;
         if (store.impls.length) {
           const impl = builder.node('store-impl', 'DEPTH', 'STORE', store.impls[0], { symbol: store.impls.join(' | '), summary: store.impls.length > 1 ? `Implementations: ${store.impls.join(', ')}.` : 'Concrete store implementation.', source: store.source });
           builder.edge(storeRef, impl, 'persists');
           last = impl;
         }
         if (method.result || store.results.length) {
-          const result = method.result
-            ? builder.node('result', 'DEPTH', 'RESULT', `VexMethod.Result.${method.result}(…)`, { symbol: 'VexMethod.Result', summary: 'The bound Method reports what outside truth did. It is not admitted until the Family interprets it.', source: family.source })
+          resultRef = method.result
+            ? builder.node('result', 'DEPTH', 'RESULT', `VexMethod.Result.${method.result}(…)`, {
+                symbol: 'VexMethod.Result',
+                summary: family.acceptedRealization
+                  ? 'Reports one Method attempt outcome. Result is distinct from Job terminality, realization-obligation terminality and durable Store truth.'
+                  : 'The bound Method reports what outside truth did. It is not admitted until the Family interprets it.',
+                source: family.source,
+              })
             : builder.node('result', 'DEPTH', 'RESULT', `Result.${store.results[0]}(…)`, { symbol: `${store.type}.Result`, summary: 'Outside truth came back. It is not admitted until the Family interprets it.', source: store.source });
-          builder.edge(last, result, 'returns');
-          last = result;
+          builder.edge(last, resultRef, 'returns');
         }
+        let observeRef = null;
         if (family.observe) {
-          const observe = builder.node('observe', 'DEPTH', 'OBSERVATION', `${family.observe} → same Family`, { symbol: family.observe, summary: SUMMARY.observe, source: family.source });
-          builder.edge(last, observe, 'observes');
-          builder.edge(observe, state, 'interpreted', 'RETURN');
+          observeRef = builder.node('observe', 'DEPTH', 'OBSERVATION', `${family.observe} → same Family`, { symbol: family.observe, summary: SUMMARY.observe, source: family.source });
+          builder.edge(storeRef, observeRef, 'states', 'DATA');
+          builder.edge(observeRef, state, 'interpreted', 'RETURN');
+        }
+        if (family.currentnessSettlement) {
+          const settlement = family.currentnessSettlement;
+          const fence = builder.node('fence', 'DEPTH', 'STATE', `${settlement.name} · === fence`, {
+            symbol: settlement.field,
+            summary: settlement.summary,
+            source: family.source,
+            code: settlement.code,
+          });
+          if (settlement.fromResult && resultRef) builder.edge(resultRef, fence, 'settles currentness');
+          if (settlement.fromCompletion) builder.edge(custody, fence, 'Job terminal', 'SIDE');
+          if (settlement.fromBoundary) builder.edge(launch, fence, 'no occurrence / custody failure', 'SIDE');
+          if (observeRef) builder.edge(fence, observeRef, 'allows later observation', 'SIDE');
         }
       }
       if (family.records) {
@@ -1486,6 +1619,13 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       summary: SUMMARY.act,
       source: bond.family.source,
     });
+    const accepted = family.acceptedRealization
+      ? builder.node('accepted', 'BEHAVIOR', 'ACT', 'Act.Accepted · accepted responsibility', {
+          symbol: 'VexFamily.Act.Accepted',
+          summary: 'The target Family accepts the authored Act before its Partner realization enters execution custody.',
+          source: bond.family.source,
+        })
+      : null;
     const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + bond.approach + ' · Effect.' + bond.effect + ')', {
       symbol: bond.familyType + '.Effect.' + bond.effect,
       summary: 'The accepted Act already authored this Effect and its ' + bond.approach + ' overlap/order law before VexExecution runs.',
@@ -1497,16 +1637,28 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       source: bond.labSource.source,
     });
 
+    const realization = family.acceptedRealization
+      ? builder.node('realization', 'DEPTH', 'REALIZATION', 'realizationBegin? · occurrence still owed', {
+          symbol: 'VexFamily.Act.Accepted.realizationBegin',
+          summary: 'The accepted consequence still requires a new Partner realization occurrence.',
+          source: bond.family.source,
+        })
+      : null;
     const method = builder.node('method', 'DEPTH', 'METHOD', 'Act.Method.' + bond.method.name + '(connection, parameter)', {
       symbol: bond.familyType + '.Act.Method.' + bond.method.name,
-      summary: 'Fully bound Family Method carrying the same semantic Parameter into the Partner relationship.',
+      summary: family.acceptedRealization
+        ? 'Fully bound Family Method carrying the exact authored Effect into the Partner relationship.'
+        : 'Fully bound Family Method carrying the same semantic Parameter into the Partner relationship.',
       source: bond.family.source,
     });
-    const execution = builder.node('execution', 'DEPTH', 'EXECUTION', 'act.launchWith(executionRoot).method(…)', {
-      symbol: 'VexExecution',
-      summary: 'Job custody for the accepted Family Act. Relationship identity comes from Family Control semantics.',
-      source: adapter.sources.vexExecution ?? bond.labSource.source,
-    });
+    const execution = builder.node('execution', 'DEPTH', 'EXECUTION',
+      family.acceptedRealization ? 'Act.Accepted.launch(executionRoot, Method)' : 'act.launchWith(executionRoot).method(…)', {
+        symbol: family.acceptedRealization ? 'VexFamily.Act.Accepted.launch' : 'VexExecution',
+        summary: family.acceptedRealization
+          ? 'Accepted responsibility re-checks live admission and hands the exact Effect-bound Method into Job custody.'
+          : 'Job custody for the accepted Family Act. Relationship identity comes from Family Control semantics.',
+        source: family.acceptedRealization ? bond.family.source : (adapter.sources.vexExecution ?? bond.labSource.source),
+      });
     const connection = builder.node('connection', 'DEPTH', 'CONNECTION', bond.partnerType + '.Connection', {
       symbol: bond.partnerType + '.Connection',
       summary: 'Concrete Partner relationship used by the bound Method.',
@@ -1529,8 +1681,17 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     builder.edge(state, act, 'CURRENT', 'DATA');
     builder.edge(control, act, 'resolve');
     builder.edge(act, effect, 'begins');
-    builder.edge(effect, method, 'binds');
-    builder.edge(method, execution, 'launch');
+    if (accepted) builder.edge(act, accepted, 'accepts');
+    if (realization) {
+      builder.edge(accepted, realization, 'still owed');
+      builder.edge(effect, realization, 'authored Begin');
+      builder.edge(realization, method, 'exact Effect');
+      builder.edge(accepted, execution, 'live admission');
+      builder.edge(method, execution, 'exact Effect');
+    } else {
+      builder.edge(effect, method, 'binds');
+      builder.edge(method, execution, 'launch');
+    }
     builder.edge(execution, connection, 'runs');
     builder.edge(connection, partner, 'request');
     builder.edge(partner, result, 'acknowledges');
@@ -1596,6 +1757,13 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       summary: SUMMARY.act,
       source: request.family.source,
     });
+    const accepted = family.acceptedRealization
+      ? builder.node('accepted', 'BEHAVIOR', 'ACT', 'Act.Accepted · accepted responsibility', {
+          symbol: 'VexFamily.Act.Accepted',
+          summary: 'The target Family accepts the authored Act before the cross-Family consequence enters execution custody.',
+          source: request.family.source,
+        })
+      : null;
     const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + request.approach + ' · Effect.' + request.effect + ')', {
       symbol: request.familyType + '.Effect.' + request.effect,
       summary: 'The target Family authors the Effect and its ' + request.approach + ' overlap/order law before realization.',
@@ -1612,16 +1780,26 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       summary: 'Long-lived listener uses exact Flow source + live owner. No Family ResourceId is minted for listener custody.',
       source: adapter.sources.vexExecution ?? bond.labSource.source,
     });
+    const realization = family.acceptedRealization
+      ? builder.node('realization', 'DEPTH', 'REALIZATION', 'realizationBegin? · occurrence still owed', {
+          symbol: 'VexFamily.Act.Accepted.realizationBegin',
+          summary: 'The target accepted consequence still requires a new Partner realization occurrence.',
+          source: request.family.source,
+        })
+      : null;
     const method = builder.node('method', 'DEPTH', 'METHOD', 'Act.Method.' + request.method.name + '(connection, parameter)', {
       symbol: request.familyType + '.Act.Method.' + request.method.name,
       summary: 'Target Family Method realizes the authored Effect through the Partner Connection.',
       source: request.family.source,
     });
-    const execution = builder.node('execution', 'DEPTH', 'EXECUTION', 'act.launchWith(executionRoot).method(…)', {
-      symbol: 'VexExecution',
-      summary: 'Family-authored active-work identity controls the Method Job; this is distinct from listener source addressing.',
-      source: adapter.sources.vexExecution ?? request.labSource.source,
-    });
+    const execution = builder.node('execution', 'DEPTH', 'EXECUTION',
+      family.acceptedRealization ? 'Act.Accepted.launch(executionRoot, Method)' : 'act.launchWith(executionRoot).method(…)', {
+        symbol: family.acceptedRealization ? 'VexFamily.Act.Accepted.launch' : 'VexExecution',
+        summary: family.acceptedRealization
+          ? 'Target accepted responsibility re-checks live admission and hands the exact Effect-bound Method into Job custody.'
+          : 'Family-authored active-work identity controls the Method Job; this is distinct from listener source addressing.',
+        source: family.acceptedRealization ? request.family.source : (adapter.sources.vexExecution ?? request.labSource.source),
+      });
     const connection = builder.node('connection', 'DEPTH', 'CONNECTION', request.partnerType + '.Connection', {
       symbol: request.partnerType + '.Connection',
       summary: 'Concrete relationship to the target Partner.',
@@ -1646,8 +1824,17 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     builder.edge(targetState, act, 'CURRENT', 'DATA');
     builder.edge(targetControl, act, 'resolve');
     builder.edge(act, effect, 'begins');
-    builder.edge(effect, method, 'binds');
-    builder.edge(method, execution, 'launch');
+    if (accepted) builder.edge(act, accepted, 'accepts');
+    if (realization) {
+      builder.edge(accepted, realization, 'still owed');
+      builder.edge(effect, realization, 'authored Begin');
+      builder.edge(realization, method, 'exact Effect');
+      builder.edge(accepted, execution, 'live admission');
+      builder.edge(method, execution, 'exact Effect');
+    } else {
+      builder.edge(effect, method, 'binds');
+      builder.edge(method, execution, 'launch');
+    }
     builder.edge(execution, connection, 'runs');
     builder.edge(connection, partner, 'request');
     builder.edge(partner, result, 'acknowledges');
