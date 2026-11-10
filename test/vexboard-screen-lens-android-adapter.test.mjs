@@ -437,8 +437,112 @@ test('a closure that reaches a Family becomes one SCAE + Depth template', () => 
   assert.equal(node('display').label, 'DisplayState → WidgetPresentation');
   assert.equal(node('provider').label, 'WidgetFamilyProvider(store, executionRoot)');
   assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.observe' && edge.to === 'widget.pick.state' && edge.kind === 'RETURN'));
+  assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.store' && edge.to === 'widget.pick.observe' && edge.kind === 'DATA'));
+  assert.equal(pathway.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'), false);
   assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.effect' && edge.to === 'widget.pick.method'));
   assert.equal(pathway.returnRef, 'widget.pick.display');
+});
+
+test('Direct Family projection follows the pinned source shape instead of rewriting history', () => {
+  const oldFiles = new Map(files);
+  const oldSource = files.get(`${APP}ui/Widget.kt`)
+    .replace(
+      'internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {\n    recordWidgetFact()\n}',
+      `internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {
+    val act = family.activate(control) ?: return
+    act.launchWith(executionRoot).method(
+        onResult = { result ->
+            family.selectionRealizationFinished(
+                Parameter.Choice(1),
+            )
+            observeWidgetState(result)
+        },
+    )
+}
+
+internal fun selectionRealizationFinished(
+    parameter: Parameter.Choice,
+) {
+    if (unsettledChoice === parameter) {
+        unsettledChoice = null
+    }
+}`,
+    )
+    .replace('internal class WidgetFamily(\n    initialState: Widget,\n) {',
+      'internal class WidgetFamily(\n    initialState: Widget,\n) {\n    private var unsettledChoice: Parameter.Choice? = null');
+  oldFiles.set(`${APP}ui/Widget.kt`, oldSource);
+  const oldLens = project({ files: oldFiles }).lens;
+  const oldPath = oldLens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  const oldNode = (slot) => oldPath.nodes.find((entry) => entry.ref === `widget.pick.${slot}`);
+  assert.equal(oldNode('fence').label, 'selectionRealizationFinished · === fence');
+  assert.equal(oldNode('accepted'), undefined);
+  assert.equal(oldNode('realization'), undefined);
+  assert.equal(oldNode('launch').label, 'act.launchWith(executionRoot).method(…)');
+  assert.ok(oldPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.fence'));
+  assert.equal(oldPath.edges.some((edge) => edge.from === 'widget.pick.custody' && edge.to === 'widget.pick.fence'), false);
+
+  const currentFiles = new Map(files);
+  const currentSource = files.get(`${APP}ui/Widget.kt`)
+    .replace(
+      'internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {\n    recordWidgetFact()\n}',
+      `internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {
+    val act: VexFamily.Act.Accepted<WidgetFamily, Widget, Effect> =
+        family.activate(control) ?: return
+    val begin = act.realizationBegin ?: return
+    val effect = begin.effect
+    val method = Act.Method.Persist(store, effect)
+    val job =
+        try {
+            act.launch(
+                executionRoot = executionRoot,
+                method = method,
+                onResult = { result ->
+                    family.settleWidgetCurrentness(effect.choice)
+                    observeWidgetState(result)
+                },
+            )
+        } catch (failure: Throwable) {
+            family.settleWidgetCurrentness(effect.choice)
+            throw failure
+        }
+    if (job != null) {
+        job.invokeOnCompletion {
+            family.settleWidgetCurrentness(effect.choice)
+        }
+    } else {
+        family.settleWidgetCurrentness(effect.choice)
+    }
+}
+
+/** Settle the feature-owned widget currentness fence for one exact accepted choice. */
+internal fun settleWidgetCurrentness(
+    parameter: Parameter.Choice,
+) {
+    if (unsettledChoice === parameter) {
+        unsettledChoice = null
+    }
+}`,
+    )
+    .replace('internal class WidgetFamily(\n    initialState: Widget,\n) {',
+      'internal class WidgetFamily(\n    initialState: Widget,\n) {\n    private var unsettledChoice: Parameter.Choice? = null')
+    .replace(
+      'private val store: WidgetStore,\n                val parameter: Parameter.Choice,',
+      'private val store: WidgetStore,\n                val effect: Effect.Persist,',
+    );
+  currentFiles.set(`${APP}ui/Widget.kt`, currentSource);
+  const currentLens = project({ files: currentFiles }).lens;
+  const currentPath = currentLens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  const currentNode = (slot) => currentPath.nodes.find((entry) => entry.ref === `widget.pick.${slot}`);
+  assert.equal(currentNode('fence').label, 'settleWidgetCurrentness · === fence');
+  assert.equal(currentNode('accepted').symbol, 'VexFamily.Act.Accepted');
+  assert.equal(currentNode('realization').symbol, 'VexFamily.Act.Accepted.realizationBegin');
+  assert.equal(currentNode('launch').label, 'Act.Accepted.launch(executionRoot, Method)');
+  assert.match(currentNode('fence').summary, /feature-owned widget currentness fence/);
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.fence'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.custody' && edge.to === 'widget.pick.fence' && edge.kind === 'SIDE'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.launch' && edge.to === 'widget.pick.fence' && edge.kind === 'SIDE'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.store' && edge.to === 'widget.pick.observe' && edge.kind === 'DATA'));
+  assert.equal(currentPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'), false);
 });
 
 test('a closure that reaches no Family stays a direct registration', () => {
