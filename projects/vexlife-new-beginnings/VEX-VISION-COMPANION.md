@@ -626,7 +626,7 @@ observation/context, not human intent, authority, or an effect grant.
 
 ## Resume coordinate
 
-The Workgraph coordinate remains:
+The parent Work remains:
 
 ~~~text
 work.vexlife.new-beginnings.vision-companion-real-browser-witness
@@ -644,22 +644,26 @@ Completed child:
 
 ~~~text
 work.vexlife.new-beginnings.vision-companion-product-surface
--> COMPLETED
--> Product Vision semantic/control source accepted
--> accepted-main lived promotion PASS
+state = COMPLETED
 ~~~
 
-Current unconsumed source edge:
+Current executable child:
 
 ~~~text
-vgong24/Vextreme-SDK
-main = c39951fe260e505b4a3c5b8f606cc8da14c985c0
+work.vexlife.new-beginnings.vision-product-runtime-orchestration
+state              READY
+priority           HIGH
+authority          AUTHORIZED_BOUNDED
+effects            EFFECTS_BOUND
 
+provider source:
 github.pull.vextreme-sdk.1939
 head = bc9b093b61b7ac5009f612d78c703ea431c19f5d
 changedFiles = 0
-workRef = work.vexlife.new-beginnings.vision-product-runtime-orchestration
 ~~~
+
+This child is the canonical VexWork coordinate for the already-admitted SDK source writer. It
+prevents the active task from living only as an SDK PR claim outside the Workgraph.
 
 Exact authored membrane:
 
@@ -672,22 +676,18 @@ docs/architecture/macos-screen-system-picker-product-runtime.md
 The next implementation sequence is now:
 
 1. re-observe PR #1939 + current SDK admission/currentness;
-2. establish/adopt the exact Local Source Workspace AUTHORING custody for the PR #1939 scaffold head;
-3. implement only the three-path Process Factory orchestration contract;
-4. run exact source proof / SDK readiness and ordinary independent lifecycle;
-5. after source acceptance, determine the smallest ordinary-Product-consumable executable carriage;
-6. re-ground current VexLife-Prod service owners and implement the Product service bridge;
-7. earn `Ready` only when that ordinary Product route is actually reachable;
-8. run one lived Product `LookNow`:
-   - OS-owned one-window selection;
-   - at most one capture;
-   - canonical Security witness;
-   - canonical content-absent active VISUAL observation;
-   - truthful Product result/state;
-9. only after that separately decide/earn ephemeral visual-model input and derived visual meaning.
+2. establish/adopt exact Local Source Workspace AUTHORING custody for the PR #1939 scaffold head;
+3. transition the READY child into RUNNING when actual authoring begins;
+4. implement only the three-path Process Factory orchestration contract;
+5. run exact source proof / SDK readiness and ordinary independent lifecycle;
+6. after source acceptance, determine the smallest ordinary-Product-consumable executable carriage;
+7. re-ground current VexLife-Prod service owners and implement the Product service bridge;
+8. earn `Ready` only when that ordinary Product route is actually reachable;
+9. run one lived Product `LookNow`;
+10. only after that separately decide/earn ephemeral visual-model input and derived visual meaning.
 
-Do **not** use VexWork currentization, SDK Root narration, or proof packaging as a reason to delay step 2
-once current admission and Local Source Workspace custody are actually established.
+Do **not** use VexWork currentization, SDK Root narration, or proof packaging as a reason to delay
+authoring once current admission and Local Source Workspace custody are established.
 
 ## Relationship to current manifestation work
 
