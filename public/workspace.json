@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 19,
+  "projectRegistryVersion": 20,
   "projects": [
     {
       "project": {
@@ -7440,7 +7440,9 @@
             "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
             "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
             "response.victor.screen-lens-realization-regression.20261107",
-            "github.pull.vexlife-android.218"
+            "github.pull.vexlife-android.218",
+            "github.pull.vexwork.276",
+            "github.pull.vexlife-android.219"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [
@@ -7449,7 +7451,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-07T06:24:13.000Z",
-          "updatedAt": "2026-11-07T06:24:16.000Z",
+          "updatedAt": "2026-11-07T11:15:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexboard.screen-lens-realization-recovery.decomposed.20261107",
@@ -7512,7 +7514,7 @@
         {
           "workRef": "work.vexboard.source-projectors",
           "label": "Source projectors and lived comparison",
-          "purpose": "Use the same semantic/rendering foundation to project source-owned VexWork/Atlas and repository VexArchitecture truth read-only, then compare intended VexBoard journeys with observed lived evidence without copying source ownership. VexWork PR #215 accepted one exact Android/VexStream relationship slice through the existing Android projector. The Living Screen Lens currentness/projection-truth child is now accepted and COMPLETED through PR #238 / closure PR #250, so Screen Lens itself is no longer an unfinished Source Projectors edge. This broader outcome remains RUNNING for the VexStream living-Origin expected-versus-observed evidence comparison, broader evidence/federation consumers, automatic sourceRevision/currentness where repeated use earns it, and materially different consumers that may justify additional source-owned relationship shapes.",
+          "purpose": "Use the same semantic/rendering foundation to project source-owned VexWork/Atlas and repository VexArchitecture truth read-only, then compare intended VexBoard journeys with observed lived evidence without copying source ownership. VexWork PR #215 accepted one exact Android/VexStream relationship slice through the existing Android projector. The Living Screen Lens currentness/projection-truth child is now accepted and COMPLETED through PR #238 / closure PR #250, so Screen Lens itself is no longer an unfinished Source Projectors edge. This broader outcome remains RUNNING for the VexStream living-Origin expected-versus-observed evidence comparison, broader evidence/federation consumers, automatic sourceRevision/currentness where repeated use earns it, and materially different consumers that may justify additional source-owned relationship shapes. Draft PR #276 now pressures one materially different source-owned relationship shape—VexPartner circuits—through the existing Screen Lens Behavior/Depth model. The generic Android adapter derives Partner/Connection/queued inbound VexExecution/concrete Conversion/Partner Source/Signal/Observation/suspend Receiver/Store/source-addressed-listener depth plus Family-authored Begin(Queued) Effects from source, including the Room/restart candidate in Android #219. Current #219 produces six PARTNER_CIRCUIT pathways, zero held controls and twelve overlap-free Behavior/Depth layouts; BLE-like and HTTP-like CGM paths differ at concrete Conversion/Connection occurrence while sharing Source/Signal/Store/Family meaning. Acceptance, generated Room proof and Stable/Main repinning remain separate currentness effects.",
           "workClass": "OUTCOME",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -7556,14 +7558,16 @@
             "git.commit.vexwork.cbfce46235b628635774c0d3c849fcfe5d8dd236",
             "github.pull.vexwork.250",
             "git.commit.vexwork.20fe8285ba78e84c7865750306e4531e4406d418",
-            "github.issue.vexwork.238.comment.6677190552"
+            "github.issue.vexwork.238.comment.6677190552",
+            "github.pull.vexwork.276",
+            "github.pull.vexlife-android.219"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-11-06T04:59:10.000Z",
+          "updatedAt": "2026-11-07T11:48:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexboard.source-projectors.ready.pr95-terminal",
@@ -13054,7 +13058,25 @@
           "github.pull.vextreme.570",
           "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906",
           "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
-          "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
+          "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+          "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+          "github.pull.vexwork.267",
+          "github.pull.vexlife-android.219",
+          "github.pull.vextreme.591",
+          "repo.vexlife-android:architecture/widget/README.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
+          "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+          "github.pull.vexwork.280",
+          "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+          "repo.vexlife-android:architecture/dependency/README.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/VexApplication.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "github.pull.vexlife-android.224",
+          "github.pull.vexlife-android.225"
         ],
         "formedAt": "2026-10-29T11:45:00.000Z"
       },
@@ -13077,6 +13099,7 @@
             "work.vextreme.architecture-convergence.terrain-reader-navigation",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
             "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
             "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
           ],
           "dependencyRefs": [],
@@ -13473,6 +13496,91 @@
           ]
         },
         {
+          "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+          "label": "VexArchitecture Post Partner",
+          "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded checkpoint: inventory Android/platform-boundary patterns such as sustained Services, BroadcastReceiver entry, App Widgets/system surfaces, permission/admission relationships, process/lifecycle callbacks and other repeated platform seams; distinguish already-earned roots from feature-local implementations and only formalize new reusable architecture when materially different consumers prove the same independent question.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+          "childWorkRefs": [
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vextreme-architecture-convergence/README.md",
+            "github.pull.vexwork.267",
+            "github.pull.vexlife-android.219",
+            "github.pull.vextreme.591",
+            "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexPartner.kt",
+            "repo.vexlife-android:architecture/widget/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/widget/vexstream/VexStreamPlaybackWidget.kt",
+            "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+            "github.pull.vexwork.280",
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+            "github.pull.vexlife-android.224"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T14:00:00.000Z",
+          "updatedAt": "2026-11-07T20:15:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+          "label": "Formalize Service lifecycle and fractal cross-Service convergence",
+          "purpose": "Formalize Service lifetime and background convergence without duplicate semantic state: Android #224 makes Playback Family truth process-shared across UI/Service/Widget and forms BackgroundServiceRelay over current background-capable truths; stacked Android #225 makes Application / retained Session / concrete Service sibling lifetime topology compiler-visible through typed dependency scopes. Services keep concrete realizations alive, Families/Stores/Partners/providers remain rightful truth owners, Relays own convergence, and Service retention/termination stays lifecycle policy with VexExecution custody for bounded timing.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vextreme-architecture-convergence/README.md",
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+            "github.pull.vexwork.280",
+            "github.pull.vexlife-android.219",
+            "github.pull.vextreme.591",
+            "repo.vexlife-android:architecture/relay/README.md",
+            "repo.vexlife-android:architecture/dependency/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/VexApplication.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexNavigationSession.kt",
+            "repo.vexlife-android:architecture/widget/README.md",
+            "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+            "repo.vexlife-android:architecture/execution/README.md",
+            "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+            "github.pull.vexlife-android.224",
+            "github.pull.vexlife-android.225"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T18:00:00.000Z",
+          "updatedAt": "2026-11-07T21:00:00.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
           "label": "Converge VexRelay Protocol with Family Circuit / VexArchitecture",
           "purpose": "Preserve the accepted Relay / MetaWalk relationship model and its VexArchitecture ownership lessons as a completed convergence foundation. VexWork PR #189, Relay route PR #187 and parent Project PR #185 are accepted. The #210/#212/#213/#214 formation and carrier failures remain retained SDK/tooling evidence without keeping this Vextreme Work open.",
@@ -13609,7 +13717,9 @@
           "label": "Active",
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
-            "work.vextreme.architecture-convergence.semantic-owner-map"
+            "work.vextreme.architecture-convergence.semantic-owner-map",
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence"
           ]
         },
         {
@@ -13652,10 +13762,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 8,
-        "openWorkItemCount": 4,
+        "workItemCount": 10,
+        "openWorkItemCount": 6,
         "outcomeCount": 1,
-        "taskCount": 6,
+        "taskCount": 8,
         "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
@@ -13678,6 +13788,7 @@
             "work.vextreme.architecture-convergence.terrain-reader-navigation",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
             "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
             "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
           ],
           "dependencyRefs": [],
@@ -15924,6 +16035,582 @@
               "createdAt": "2026-11-03T09:06:30.000Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vex-cgm-labs",
+        "label": "VexCgmLabs",
+        "purpose": "Build a transport-neutral synthetic CGM practicum that proves the Partner Source / Signal / Connection / Conversion / Observation / Receiver -> Store -> Family circuit across multiple provider representations, durable restart reconstruction, connected-pen and insulin-pump pressure, later real Local HTTP/BLE realization, and source-backed Design Trace without freezing a generic mapper/entity framework or claiming clinical/regulatory compliance.",
+        "rootWorkRefs": [
+          "work.vex-cgm-labs.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android",
+          "repo.vexlife"
+        ],
+        "sourceRefs": [
+          "projects/vex-cgm-labs/README.md",
+          "projects/vex-cgm-labs/DATA-MODEL-PRESSURE.md",
+          "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md",
+          "projects/vex-cgm-labs/DESIGN-TRACE-PRACTICUM.md",
+          "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+          "github.pull.vexwork.256",
+          "github.pull.vexwork.257",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+          "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt",
+          "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
+          "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+        ],
+        "formedAt": "2026-11-07T03:35:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vex-cgm-labs.board",
+      "items": [
+        {
+          "workRef": "work.vex-cgm-labs.android-cgm-feature",
+          "label": "Build the Android CGM semantic/product projection",
+          "purpose": "Use rightful VexArchitecture owners to derive current/stale/recovering/unavailable product meaning and DisplayState from durable CGM history, Connection truth and admitted Signals without duplicating canonical measurement values into parallel UI models or equating connection availability with measurement currentness.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.continuity-reconciliation",
+            "work.vex-cgm-labs.lab-experience"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+            "projects/vex-cgm-labs/README.md",
+            "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T05:22:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.android-reader-seam",
+          "label": "Form the Android transport-neutral CGM Connection<Signal> seam",
+          "purpose": "Pressure the VexPartner.Connection candidate with real transport realization. The current PR #219 proves the reusable provider boundary is Connection.Conversion<Input, Partner, Signal>: synthetic BLE-like bytes and an HTTP-like body produce equal CGM Partner Signals while keeping distinct Connection occurrence, then converge on the same Observation / suspend Receiver / Store / Family circuit. After repository proof of the current Room/restart candidate, replace the synthetic forms with concrete Local HTTP and/or BLE lifecycle/provider input without moving Partner Source/Signal meaning, Store durability or Family State into transport.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.data-model-foundation",
+            "work.vex-cgm-labs.synthetic-device-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+            "projects/vex-cgm-labs/DATA-MODEL-PRESSURE.md",
+            "projects/vex-cgm-labs/README.md",
+            "github.pull.vexlife-android.219",
+            "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T12:12:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.ble-realization",
+          "label": "Replace the Local HTTP Connection with a BLE realization",
+          "purpose": "Implement a BLE CGM Connection that emits the same admitted CGM Signal vocabulary and prove equivalent continuity/integrity and semantic results for the G01-G30 device events, with discovery/GATT/characteristic/reconnect mechanics remaining concrete realization rather than CGM meaning.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.android-reader-seam",
+            "work.vex-cgm-labs.continuity-reconciliation",
+            "work.vex-cgm-labs.android-cgm-feature",
+            "work.vex-cgm-labs.wifi-realization"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+            "projects/vex-cgm-labs/README.md",
+            "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T05:22:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.cloud-connectivity-integration",
+          "label": "Integrate CGM history with Cloud Connectivity",
+          "purpose": "Use the Cloud Connectivity contracts to pressure offline/durable CGM history upload, backfill provenance, idempotency, currentness and multi-device synchronization without moving CGM acquisition meaning into cloud/service owners.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.android-cgm-feature"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/README.md",
+            "github.pull.vexwork.257"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T03:35:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.continuity-reconciliation",
+          "label": "Implement durable CGM Signal continuity and integrity reconciliation",
+          "purpose": "Build from the Room/restart Store patient zero now present in PR #219: explicit cgm_partner_observation rows preserve Partner source/epoch/sequence plus Connection occurrence provenance; restoration reconstructs historical Observation/Signal values into CgmStore and CgmFamily without Decoder/Receiver replay; the synthetic source resumes at the next durable sequence. First prove the exact v6 schema/migration/instrumentation through repository Gradle/KSP, then deepen CGM-specific duplicate/conflict/gap/retention/checkpoint rules and atomic multi-row invariants where the scenarios require them.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.android-reader-seam",
+            "work.vex-cgm-labs.wifi-realization"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+            "projects/vex-cgm-labs/DATA-MODEL-PRESSURE.md",
+            "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md",
+            "github.pull.vexlife-android.219"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T11:05:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.data-model-foundation",
+          "label": "Prove the Partner / Signal / Store / Family circuit",
+          "purpose": "The Partner Source / Signal / Connection / Conversion / Observation / suspend Receiver -> Store -> Family threshold is accepted in VexWork/VexBoard infrastructure; VexLife-Android PR #219 remains the exact implementation candidate at 0d66416ba36ef876f0111e813a4a8f7c0308a752. A current-contract ExactHeadSourceOwnerProof formation wrapper is now statically qualified at sha256 c5a874bf53b452b1170229615c1dd94bce8e17485e1c2abc7410d6b99432fd4d and awaits one macOS host execution. Consume its canonical RETURN first. PASS advances to fresh Independent Assurance/currentness; safe failure holds only the proved candidate predicate (including a missing generated Room-v6 schema) and should drive the smallest correction/re-proof. Real Local HTTP/BLE provider lifecycle pressure remains after Android source acceptance.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+            "projects/vex-cgm-labs/DATA-MODEL-PRESSURE.md",
+            "projects/vex-cgm-labs/README.md",
+            "github.pull.vexlife-android.219",
+            "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
+            "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T12:38:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.design-trace-practicum",
+          "label": "Prove source-backed Design Trace on CGM requirements",
+          "purpose": "Bind the synthetic CGM design inputs to candidate implementation patterns, actual source owners, verification scenarios and exact evidence so requirement-to-code-to-proof traversal is generated from source relationships rather than a parallel manual trace matrix.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.lab-experience",
+            "work.vex-cgm-labs.data-model-foundation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/DESIGN-TRACE-PRACTICUM.md",
+            "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T03:35:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.full-security-integration",
+          "label": "Integrate CGM device/service security pressure",
+          "purpose": "Use Full Security to pressure device/service identity, possession/admission, protected operations and evidence around the CGM relationship without treating security truth as acquisition, transport continuity or glucose semantics.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.android-reader-seam"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/README.md",
+            "github.pull.vexwork.256"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T03:35:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.lab-experience",
+          "label": "Build the VexCgmLabs synthetic device workbench",
+          "purpose": "Use the CGM, Insulin and consolidated Partners Circuit Screens from VexLife-Android PR #219 as human-visible architecture fixtures. Live CGM/Partners Debug construction uses Room-backed CgmStore while previews remain in-memory. The CGM surface now exposes separate BLE-like and HTTP-like provider controls that differ at Conversion/Connection occurrence but converge into the same Partner Source/Signal vocabulary, Store and CgmFamily. The lab also shows queued Connection admission, source-addressed Store listeners, Family-authored queued Pump Effects, and the CgmFamily-State -> InsulinFamily-Control -> Pump Partner feedback loop. VexBoard PR #276 projects these relationships without changing currentness authority.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.synthetic-device-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md",
+            "github.pull.vexlife-android.219",
+            "github.pull.vexwork.276",
+            "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T12:24:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.outcome",
+          "label": "VexCgmLabs",
+          "purpose": "Create a source-backed medical-mobile CGM practicum whose synthetic device, Android consumer and later BLE realization preserve acquisition/observation continuity, currentness and traceability without making transport, UI, cloud or security alternate CGM semantic owners.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex-cgm-labs.android-cgm-feature",
+            "work.vex-cgm-labs.android-reader-seam",
+            "work.vex-cgm-labs.ble-realization",
+            "work.vex-cgm-labs.cloud-connectivity-integration",
+            "work.vex-cgm-labs.continuity-reconciliation",
+            "work.vex-cgm-labs.data-model-foundation",
+            "work.vex-cgm-labs.design-trace-practicum",
+            "work.vex-cgm-labs.full-security-integration",
+            "work.vex-cgm-labs.lab-experience",
+            "work.vex-cgm-labs.synthetic-device-contract",
+            "work.vex-cgm-labs.vexboard-design-trace-projection",
+            "work.vex-cgm-labs.wifi-realization"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "project.vex-cgm-labs",
+            "projects/vex-cgm-labs/README.md",
+            "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
+            "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T12:24:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.synthetic-device-contract",
+          "label": "Define the synthetic CGM Signal and retained-history contract",
+          "purpose": "Form the smallest transport-neutral synthetic device contract that can emit the same CGM Signal vocabulary through Local HTTP first and BLE later, including current session metadata, live observations, retained-history frontier and exact replay relationships while keeping Lab-only mutation controls separate from the consumer contract.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.data-model-foundation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+            "projects/vex-cgm-labs/DATA-MODEL-PRESSURE.md",
+            "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T05:22:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.vexboard-design-trace-projection",
+          "label": "Project CGM behavior, depth, Design Trace and verification through VexBoard",
+          "purpose": "Use the accepted VexBoard Partner projector from merged PR #276 / e24af6945eb8560c63070b2e32bb43913c042fba to pressure the existing Screen Lens Behavior/Depth projector against current VexLife-Android PR #219: derive Partner / Connection / queued VexExecution / concrete Conversion / Partner Source / Signal / Observation / suspend Receiver / Store / source-addressed listener depth plus Family Begin(Queued) semantics and the feedback circuit. Current consolidated source yields six PARTNER_CIRCUIT pathways, zero held controls and twelve overlap-free Behavior/Depth layouts; BLE and HTTP CGM paths differ only at the concrete Conversion and Connection occurrence while sharing Source/Signal/Store/Family meaning. Keep this Work WAITING_DEPENDENCIES until Android #219 receives repository proof/acceptance and currentness allows truthful Stable/Main projection; projector acceptance alone does not repin draft source.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.design-trace-practicum",
+            "work.vex-cgm-labs.android-cgm-feature"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/DESIGN-TRACE-PRACTICUM.md",
+            "projects/vex-cgm-labs/README.md",
+            "github.pull.vexwork.276",
+            "github.pull.vexlife-android.219",
+            "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
+            "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T12:24:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-cgm-labs.wifi-realization",
+          "label": "Realize the synthetic CGM device over a Local HTTP Connection",
+          "purpose": "Provide the first easy-to-control concrete Connection realization for the synthetic CGM Signal/history contract so semantic scenarios can run before BLE hardware exists, while keeping Lab controls distinct from the consumer-facing Connection.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-cgm-labs.synthetic-device-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+            "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md",
+            "projects/vex-cgm-labs/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T05:22:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vex-cgm-labs.android-reader-seam",
+            "work.vex-cgm-labs.synthetic-device-contract",
+            "work.vex-cgm-labs.android-cgm-feature",
+            "work.vex-cgm-labs.continuity-reconciliation",
+            "work.vex-cgm-labs.lab-experience",
+            "work.vex-cgm-labs.wifi-realization",
+            "work.vex-cgm-labs.design-trace-practicum"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vex-cgm-labs.ble-realization",
+            "work.vex-cgm-labs.cloud-connectivity-integration",
+            "work.vex-cgm-labs.full-security-integration",
+            "work.vex-cgm-labs.vexboard-design-trace-projection"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vex-cgm-labs.data-model-foundation",
+            "work.vex-cgm-labs.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 13,
+        "openWorkItemCount": 13,
+        "outcomeCount": 1,
+        "taskCount": 12,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vex-cgm-labs.outcome",
+          "label": "VexCgmLabs",
+          "purpose": "Create a source-backed medical-mobile CGM practicum whose synthetic device, Android consumer and later BLE realization preserve acquisition/observation continuity, currentness and traceability without making transport, UI, cloud or security alternate CGM semantic owners.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex-cgm-labs.android-cgm-feature",
+            "work.vex-cgm-labs.android-reader-seam",
+            "work.vex-cgm-labs.ble-realization",
+            "work.vex-cgm-labs.cloud-connectivity-integration",
+            "work.vex-cgm-labs.continuity-reconciliation",
+            "work.vex-cgm-labs.data-model-foundation",
+            "work.vex-cgm-labs.design-trace-practicum",
+            "work.vex-cgm-labs.full-security-integration",
+            "work.vex-cgm-labs.lab-experience",
+            "work.vex-cgm-labs.synthetic-device-contract",
+            "work.vex-cgm-labs.vexboard-design-trace-projection",
+            "work.vex-cgm-labs.wifi-realization"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "project.vex-cgm-labs",
+            "projects/vex-cgm-labs/README.md",
+            "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
+            "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-07T03:35:00.000Z",
+          "updatedAt": "2026-11-07T12:24:00.000Z",
+          "transitionHistory": []
         }
       ]
     }
