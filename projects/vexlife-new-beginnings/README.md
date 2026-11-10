@@ -450,7 +450,7 @@ board.vexlife-prod.perceivability-alignment
 
 ## Parallel continuation — Vex Vision beside a real browser
 
-Victor's clarified browser outcome is now preserved as a separate current Work edge:
+Victor's clarified browser outcome remains one current Work edge:
 
 ~~~text
 ordinary real browser
@@ -458,32 +458,55 @@ ordinary real browser
 + canonical Vex Conversation
 ~~~
 
-This does not redefine the current nested-browser practicum as a failure. The localhost frame-host
-path remains valid evidence for rendered page-context composition. It also does not require the proxy
-to become a perfect replacement for every signed-in browser behavior.
-
-The durable continuation is:
+Durable detail:
 
 [VEX-VISION-COMPANION.md](./VEX-VISION-COMPANION.md)
 
-Current coordinate:
+Current Work truth:
 
 ~~~text
 work.vexlife.new-beginnings.vision-companion-real-browser-witness
-  RUNNING / HIGH / PARALLEL
+  RUNNING / HIGH / ACTIVE
   authorityDisposition = NO_AUTHORITY
   effectDisposition    = NO_EFFECTS
 
-current source edge
-  Vextreme-SDK issue #1914
-  draft PR #1915
-  exact candidate 02779b8e34f42169bde3e8e55f954a0f170b32b8
-  SourceOwner proof = PENDING
+work.vexlife.new-beginnings.vision-companion-product-surface
+  COMPLETED
+  VexLifeVisionFamily = Held | Ready | Looking
+  LookNow -> RequestSnapshot
+  accepted Product presentation = Vision · Held
 ~~~
 
-The first intended active slice is one explicit selected-window snapshot per Conversation turn (or
-one explicit "Look now"), with a visible indicator and no raw-frame retention. Continuous/background
-screen monitoring is not admitted by this Work formation.
+Accepted external source now includes:
+
+~~~text
+Vextreme-SDK main c39951fe...
+  USER_SELECTED_SESSION one-shot route
+  canonical Security capture-scoped witness
+  Perception content-absent active VISUAL observation
+
+VexLife-Prod PR #54
+  merged + lived accepted-main promotion PASS
+~~~
+
+Current unconsumed edge:
+
+~~~text
+github.pull.vextreme-sdk.1939
+head = bc9b093b61b7ac5009f612d78c703ea431c19f5d
+changedFiles = 0
+exact three-path Process Factory product-runtime orchestration
+~~~
+
+So the next work is **not** another Root/frontier reconstruction and not another Vision redesign.
+VexWork points to the existing SDK source-writer edge; SDK/Local Source Workspace currentness then owns
+the exact authoring effect.
+
+After that source is accepted, the trajectory continues through ordinary Product executable carriage,
+current Product service bridge, and one lived `LookNow`. Visual-model input remains a later,
+separately-earned edge.
+
+Continuous/background screen monitoring remains unadmitted.
 
 ## Architecture horizon — preserve during manifestation parity
 
