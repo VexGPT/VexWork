@@ -14,13 +14,20 @@ VexWork PR #281
     MERGED
     merge = 776932d2a8cc27ea05b77dc2db320789138a2cdc
     source-epoch Screen Lens currentness accepted
+
+VexWork PR #278
+    MERGED
+    merge = e919f9a6e9f14e5a5b45bbc99e8e764b4363de15
+    reviewed candidate = 9176723334250512ac883b9040da8fad213de448
+    reviewed + merge tree = edcb85367480273408acd74f33f41e3cb645432b
+    data-model-foundation = COMPLETED
 ~~~
 
 Therefore any later section below that says Android #219 is "unmerged", "held until proof", or instructs
 a successor to replay its SourceOwner carriers is **historical formation/proof evidence only**. Do not
 replay it as the current edge.
 
-Current continuation starts from accepted Partner source and asks the next independently-owned
+Current continuation starts from the completed bounded Partner / Signal / Store / Family foundation and asks the next independently-owned
 questions: real Local HTTP / BLE lifecycle, deeper CGM continuity/currentness, product projection and
 the still-open VexCgmLabs Work dependencies.
 
@@ -43,8 +50,8 @@ VexPartner<Partner>
 ~~~
 
 Treat this Partner relationship as the current architecture baseline for this trajectory. Do not
-restart the work from a generic Signal/Entity/Mapper hypothesis, and do not mistake pending Android
-repository proof/lifecycle for architectural uncertainty.
+restart the work from a generic Signal/Entity/Mapper hypothesis, and do not mistake the historical
+proof/lifecycle sections below for a current architectural hold.
 
 ## Accepted threshold
 

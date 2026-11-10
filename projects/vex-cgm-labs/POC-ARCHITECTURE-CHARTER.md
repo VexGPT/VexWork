@@ -41,14 +41,16 @@ The broader architecture question is:
 > integrity, persistence and semantic ownership without forcing CGM, cloud services, smart devices or
 > model streams into one generic super-owner?
 
-## Current VexLife-Android anchors
+## VexLife-Android anchors
 
-Grounding checkpoint:
+Historical / project-formation grounding checkpoint:
 
 ```text
 repo: vgong24/VexLife-Android
 main: ecbb6987d1da338fa0adf7297456d3f652f04155
 ```
+
+That SHA records the Android source observed when this Project/charter pressure was formed. It is not present Android currentness authority. The accepted Partner source is VexLife-Android PR #219 / merge `7800c17909fd03d1170ec0211a6632172c87d1af`, as recorded above.
 
 Current source teaches three complementary relationships.
 
@@ -1106,10 +1108,13 @@ from that baseline:
 6. keep VexBoard deriving relationships from source rather than a parallel hand-authored graph.
 ```
 
-The Partner / Signal / Store / Family implementation/source predicate is satisfied, so its Work
-advances from RUNNING to VERIFYING while this VexWork currentness candidate itself remains unmerged.
-Completion is earned only after #278 is accepted into VexWork main. Real provider lifecycle, deeper
-CGM continuity, product projection and Design Trace retain their own Work states and dependencies.
+The Partner / Signal / Store / Family implementation/source predicate is satisfied, and VexWork PR
+#278 merged as `e919f9a6e9f14e5a5b45bbc99e8e764b4363de15` with merge tree
+`edcb85367480273408acd74f33f41e3cb645432b` exactly matching the reviewed candidate tree after
+SourceOwner A012 PASS and fresh Independent Assurance with zero blocking findings. The existing Work
+therefore completes its lawful `RUNNING -> VERIFYING -> COMPLETED` path. Real provider lifecycle,
+deeper CGM continuity, product projection and Design Trace retain their own Work states and
+dependencies.
 
 ## Remaining questions
 
