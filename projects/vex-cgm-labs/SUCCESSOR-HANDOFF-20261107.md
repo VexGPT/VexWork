@@ -1,11 +1,35 @@
 # VexCgmLabs successor handoff — Partner Source / Conversion stability point
 
+## 2026-11-09 currentization — consume this before the historical proof trail
+
+The architecture/proof trajectory recorded below has now crossed its old #219 hold.
+
+~~~text
+VexLife-Android PR #219
+    MERGED
+    merge = 7800c17909fd03d1170ec0211a6632172c87d1af
+    exact final candidate = aa911ebd3c927ce7c5e872590d71528115865c18
+
+VexWork PR #281
+    MERGED
+    merge = 776932d2a8cc27ea05b77dc2db320789138a2cdc
+    source-epoch Screen Lens currentness accepted
+~~~
+
+Therefore any later section below that says Android #219 is "unmerged", "held until proof", or instructs
+a successor to replay its SourceOwner carriers is **historical formation/proof evidence only**. Do not
+replay it as the current edge.
+
+Current continuation starts from accepted Partner source and asks the next independently-owned
+questions: real Local HTTP / BLE lifecycle, deeper CGM continuity/currentness, product projection and
+the still-open VexCgmLabs Work dependencies.
+
 `[VXG RealForever]`
 
 ## Entry
 
 This handoff resumes the current VexCgmLabs trajectory after the Partner architecture crossed the
-following source-formation threshold:
+following reusable architecture stability point:
 
 ~~~text
 VexPartner<Partner>
@@ -18,7 +42,9 @@ VexPartner<Partner>
    └─ Receiver<Partner, Signal, exact Observation>
 ~~~
 
-Do not restart this work from a generic Signal/Entity/Mapper hypothesis.
+Treat this Partner relationship as the current architecture baseline for this trajectory. Do not
+restart the work from a generic Signal/Entity/Mapper hypothesis, and do not mistake pending Android
+repository proof/lifecycle for architectural uncertainty.
 
 ## Accepted threshold
 
@@ -103,10 +129,11 @@ Pump request
 Pump outcome
 ~~~
 
-## Why #219 is held instead of merged
+## Why #219 integration is held instead of merged
 
-The source shape has strong source-level evidence, but this exact candidate has not yet received the
-repository-owned proof required for a safe Android-main stability point:
+The Partner architecture is already earned by the cross-domain/source pressure. This exact Android
+candidate still needs the repository-owned proof required for an Android-main implementation
+stability point:
 
 ~~~text
 ./gradlew vexVerifyLocal
@@ -207,7 +234,7 @@ Do not rerun the same formed carrier. Return the canonical RETURN ZIP whether PA
 7. Update VexWork with the accepted Android merge commit and advance the current edge to real provider
    realization.
 
-## Next architecture pressure after Android proof
+## Next implementation pressure after Android proof
 
 Do not invent another generic abstraction first.
 

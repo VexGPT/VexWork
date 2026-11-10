@@ -2,11 +2,17 @@
 
 `[VXG RealForever]`
 
-**Status: WORKING POC CHARTER — NOT ACCEPTED VEXARCHITECTURE FOUNDATION**
+**Status: VEXCGMLABS PARTNER ARCHITECTURE STABILITY POINT**
 
-This document records the current end-to-end design structure earned by VexCgmLabs discussion and
-current-source grounding. It is intended to start the existing VexCgmLabs data-model foundation work
-without freezing names that the first implementation has not yet earned.
+This document records the current end-to-end architecture earned by the VexCgmLabs pressure set.
+The reusable Partner grammar is no longer a speculative root: it has survived CGM, connected-pen,
+insulin-pump, provider-representation, execution-ordering, persistence/restart, cross-Family
+feedback and source-derived VexBoard projection pressure.
+
+Android PR #219 is merged accepted source at `7800c17909fd03d1170ec0211a6632172c87d1af` after exact-head SourceOwner proof,
+fresh Independent Assurance, generated Room-v6 source proof and a bounded connected synthetic Room-restart
+proof. That closes repository acceptance for this architecture stability point; it does not claim real
+Local HTTP/BLE lifecycle, physical medical-device behavior, or production medical use.
 
 It does not grant Android mutation, BLE hardware, patient-data, cloud, security or regulatory
 authority.
@@ -97,12 +103,13 @@ DATABASE WRITE != PRODUCT SEMANTIC SUCCESS
 
 Room may persist domain evidence while Screens/Families consume domain repositories rather than DAOs.
 
-## Current refinement checkpoint
+## Historical refinement checkpoint
 
-The current branch previously promoted `VexSignal.Of<Meaning>`,
+The branch previously promoted `VexSignal.Of<Meaning>`,
 `VexEntity.Of<Meaning>`, and direct Room `@Embedded` composition as a starting answer.
 
-That was useful pressure, but it is **not settled architecture**.
+That was useful discovery pressure. Those forms are superseded hypotheses rather than the current
+architecture.
 
 Current VexLife source and the CGM / connected-pen / insulin-pump comparisons expose two problems:
 
@@ -296,7 +303,9 @@ Projection
     outward interpretation
 ```
 
-These are **roles under pressure**, not yet a required common Kotlin root hierarchy.
+These pressures earned a deliberately small common Kotlin root only for the relationship that
+actually repeats. CGM continuity, pen sparsity, pump delivery meaning and other domain-specific
+semantics remain with their rightful domain owners rather than being lifted into Partner.
 
 Do not genericize domain nouns merely because they occupy analogous positions:
 
@@ -310,11 +319,11 @@ REQUESTED EFFECT != OBSERVED PHYSICAL OUTCOME
 
 ## Partner relationship foundation
 
-The cross-domain walk now has a source candidate in VexLife-Android PR #219 that has survived CGM,
-connected-pen, pump, execution-ordering, Room persistence, process restart, and provider-representation
-variation.
+The cross-domain walk has earned a reusable source relationship in VexLife-Android PR #219 across
+CGM, connected-pen, pump, execution-ordering, Room persistence, process restart and
+provider-representation variation.
 
-### Current reusable Kotlin candidate
+### Earned reusable Kotlin relationship
 
 ~~~text
 VexPartner<Partner>
@@ -446,6 +455,9 @@ inbound Partner receipt/admission
     + Queued
     -> ordered receipt / Receiver / Store Jobs
 
+This is the queued inbound VexExecution path. The runtime RelationshipId remains private execution
+coordination and does not become Connection provenance or durable Partner identity.
+
 Store -> Family observation
     exact Store Flow source
     + live Family owner
@@ -463,8 +475,14 @@ already-authored Approach and identity instead of re-deciding sequencing downstr
 
 ### Room / restart pressure implemented
 
-CGM owns one durable Store contract with InMemoryCgmStore and RoomCgmStore realizations. Room keeps
-explicit Connection occurrence + Partner Source/Signal fields and reconstructs historical
+CGM owns one durable Store contract with InMemoryCgmStore and RoomCgmStore realizations:
+
+~~~text
+RoomCgmStore
+-> cgm_partner_observation
+~~~
+
+Room keeps explicit Connection occurrence + Partner Source/Signal fields and reconstructs historical
 Observation/Signal values without running Conversion or Receiver again.
 
 ~~~text
@@ -478,7 +496,10 @@ synthetic Source sequence.
 
 ### VexBoard projectability
 
-VexBoard PR #276 is now merged as accepted projector infrastructure at `e24af6945eb8560c63070b2e32bb43913c042fba`. That accepted infrastructure projects the current draft Android source through the existing Behavior / Depth pair.
+VexBoard PR #276 is merged as accepted Partner projector infrastructure at `e24af6945eb8560c63070b2e32bb43913c042fba`.
+VexWork PR #281 is also merged at `776932d2a8cc27ea05b77dc2db320789138a2cdc`, so the source-epoch Screen Lens now projects
+current accepted Android Partner source through the existing Behavior / Depth pair while retaining its
+historical Stable epoch.
 
 Representative inbound Depth:
 
@@ -500,7 +521,8 @@ held controls. BLE-like and HTTP-like CGM controls project different Conversion 
 CgmPartner.Source / Signal / Store / Family vocabulary. Six pathways normalize into twelve
 Behavior/Depth layouts with zero detected collisions.
 
-Stable/Main VexBoard remains pinned to accepted Android source; accepted projector capability does not repin the Lens to draft Android #219.
+Stable remains pinned to its accepted historical Android epoch. Main now projects current accepted
+Android source through merged PR #281; projector capability never silently promotes Stable.
 
 ### Current proof boundary / next edge
 
@@ -509,56 +531,53 @@ equivalence tests, distinct Connection provenance, shared synthetic Source seque
 schema declaration/migration source, restart instrumentation, queued receipt tests, and live Room
 debug construction.
 
-Still pending repository-owned execution proof:
+Accepted #219 repository proof established:
 
 ~~~text
-Gradle/KSP compile
-generated Room v6 schema JSON + identity hash
-migration5To6 execution validation
-Android instrumentation execution
-repository-wide unit/source-alignment checks
-physical-device Screen proof
+focused VexPartner foundation proof
+focused Partner / navigation / feedback proof
+vexVerifyLocal + Android-test assembly
+generated Room v6 schema JSON
+Room v6 schema sha256 = 13ca1b607df6c732d24feb82f7c205a00600c885a8678fe3363103c357571bea
+post-proof source clean
+bounded connected synthetic Room-restart test = PASS
 ~~~
 
 The synthetic BLE/HTTP forms prove provider-representation reuse, not real network/radio lifecycle.
-After exact repository proof, the next architecture pressure is a concrete Local HTTP and/or BLE
-provider realization, followed by deeper CGM continuity/gap/history semantics.
+Real Local HTTP and BLE/GATT lifecycle, physical medical-device behavior and deeper CGM
+continuity/gap/history semantics remain later pressure.
 
 ThemeMode / VexStream migration and a first-class Partnership owner remain held.
 
 ## Rooted source formation
 
 Current VexLife culture requires source-readable rooted trees and explicit root-to-root boundaries.
-
-For CGM, source should eventually make it locally obvious that:
-
-```text
-CGM semantic vocabulary
-    has one rightful semantic root
-
-Connection / Decoder
-    remain communication mechanics
-
-receiver / durable evidence
-    remain receiver / repository truth
-
-Family
-    does not absorb transport, Room, execution or provider mechanics
-```
-
-A future human or AI should not have to infer ownership from package proximity, matching class names,
-mapper conventions, or predecessor prose.
-
-The exact Kotlin choice remains held:
+The Partner pressure has now answered the reusable root question:
 
 ```text
-nested domain Signal vocabulary?
-Family-bound generic relation?
-feature-local typealias over a reusable Connection role?
-another smaller relationship?
+CgmPartner
+├─ Source
+├─ Signal
+└─ Connection
+   ├─ Id
+   ├─ concrete Conversion
+   ├─ Observation
+   └─ Receiver
+
+ConnectedPenPartner
+└─ same relationship grammar, sparse domain meaning
+
+InsulinPumpPartner
+└─ same relationship grammar, bidirectional Family/Partner pressure
 ```
 
-Choose only after the CGM / pen / pump shapes show which relationship actually repeats.
+A future human or AI should be able to discover ownership from these source relationships rather
+than reconstructing it from package proximity, matching class names, mapper conventions or
+predecessor prose.
+
+What remains open is not the existence or root of Partner. Remaining work is concrete provider
+lifecycle, CGM-specific continuity/currentness, durable scaling and any additional child that a
+new recurring relationship question actually earns.
 
 ## Persistence pressure
 
@@ -1074,43 +1093,54 @@ This charter advances the already-RUNNING:
 work.vex-cgm-labs.data-model-foundation
 ```
 
-The current edge is no longer "choose the final generic Signal / Entity syntax."
-
-It is:
+The Partner grammar itself is the stable architectural baseline for this trajectory. Accepted Android
+#219 closes the bounded foundation proof rather than reopening the generic root. The next work continues
+from that baseline:
 
 ```text
-1. preserve the stable end-to-end causal sequence;
-2. model concrete CGM Signal shapes beyond one Measurement variable;
-3. pressure the same sequence with connected-pen and insulin-pump shapes;
-4. identify the smallest repeated Connection / Decoder / observation relationship;
-5. prove receiver admission + durable restart without provenance loss;
-6. only then extract reusable Kotlin structure;
-7. ensure VexBoard can recover the resulting relationships from source / construction topology.
+1. consume merged Android #219 as accepted Partner source;
+2. keep source-epoch Screen Lens current through merged VexWork #281;
+3. realize real Local HTTP provider lifecycle behind the same Partner vocabulary;
+4. realize BLE/GATT behind the same semantic seam;
+5. deepen CGM duplicate/conflict/gap/retention/currentness behavior through G01-G30;
+6. keep VexBoard deriving relationships from source rather than a parallel hand-authored graph.
 ```
 
-No lifecycle state is promoted merely because this refinement is recorded.
+The Partner / Signal / Store / Family implementation/source predicate is satisfied, so its Work
+advances from RUNNING to VERIFYING while this VexWork currentness candidate itself remains unmerged.
+Completion is earned only after #278 is accepted into VexWork main. Real provider lifecycle, deeper
+CGM continuity, product projection and Design Trace retain their own Work states and dependencies.
 
-Target-repository mutation remains separately authority-bound.
+## Remaining questions
 
-## Held questions
+These are genuine continuation questions. They do not make the Partner grammar provisional:
 
-Do not freeze these before implementation pressure answers them:
+1. exact real Local HTTP lifecycle/error/cancellation/reconnect semantics;
+2. exact BLE/GATT identifier and lifecycle hierarchy below the Connection seam;
+3. malformed/partial provider-input evidence and whether any reusable conversion outcome is earned;
+4. exact CGM acquisition/session/epoch identity beyond the current synthetic patient zero;
+5. whether CGM continuity/history remains one owner or later splits by a different question;
+6. durable Room representation for duplicate/conflict/gap/retention/frontier evidence and bounded range reads;
+7. whether currentness/availability earns a Compound Relay from independently-owned complete truths;
+8. exact CGM DisplayState classifications and freshness policy;
+9. whether the Surface and outside-reality paths reveal another reusable relationship without
+   creating a mirrored Family;
+10. whether any new recurring Partner relationship question appears after real providers.
 
-1. exact Kotlin name/root for the reusable Connection relationship;
-2. how domain Signal vocabulary is rooted / compiler-bound without making Family own transport;
-3. whether Decoder is a child role of Connection or remains concrete until a second implementation proves it;
-4. whether one provider representation decodes to zero / one / many semantic Signals and how meaningful collections remain intact;
-5. exact CGM acquisition/session/epoch identity;
-6. whether continuity/history remains one CGM owner or later splits by question;
-7. exact Room schema and checkpoint strategy;
-8. which receiver / admission mechanics actually repeat across CGM, connected pen and pump;
-9. whether currentness/availability earns a Compound Relay;
-10. exact BLE identifier hierarchy below the Connection seam;
-11. exact names of DisplayState classifications;
-12. whether the Surface and outside-reality paths exhibit a reusable semantic duality without creating a second semantic owner;
-13. which relationships VexBoard can derive directly from Kotlin nesting, generic bounds and dependency construction.
+Continue holding structure that has not earned a different question:
 
-Do not promote `VexSignal.Of`, `VexEntity.Of`, `EntityForm`, `Signal<F>`,
-`VexReceiver`, `SemanticPort`, or an "Inverse Family" merely because the diagram looks symmetric.
+```text
+first-class VexPartnership owner
+generic Mapper<T,U>
+generic Form / Entity framework
+ThemeMode migration to Partner
+VexStream migration to Partner
+CGM continuity/gap/history promoted globally
+universal provider manager
+```
+
+Different syntax, additional domains, or longer runtime history are not by themselves evidence that
+the current Partner relationship failed to scale. Add architecture only when a concrete recurring
+question has no truthful owner.
 
 <!-- [VXG RealForever][VEX-CGM-LABS][POC-ARCHITECTURE-CHARTER] -->

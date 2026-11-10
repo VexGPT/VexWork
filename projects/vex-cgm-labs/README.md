@@ -62,10 +62,10 @@ MEASUREMENT_HISTORY_COMPLETE != DATA_WAS_AVAILABLE_IN_REAL_TIME
 RECOVERED_OBSERVATION != REAL_TIME_OBSERVATION
 ```
 
-## Current architecture threshold
+## Current architecture stability point
 
-The current source-formation threshold is no longer the earlier free-standing
-`Connection<Signal>` hypothesis.
+The reusable external-participant grammar is now earned across the VexCgmLabs pressure set rather
+than remaining the earlier free-standing `Connection<Signal>` hypothesis.
 
 ~~~text
 VexPartner<Partner>
@@ -87,8 +87,11 @@ HTTP-like body -> HttpDecoder --/
                               -> Observation -> Receiver -> Store -> Family
 ~~~
 
-The candidate also pressures queued Connection admission, Family-authored queued Pump Effects,
-Room-backed CGM Store/restart reconstruction and VexBoard Behavior/Depth projectability.
+The current Android implementation candidate demonstrates queued Connection admission,
+Family-authored queued Pump Effects, Room-backed CGM Store/restart reconstruction and VexBoard
+Behavior/Depth projectability. These are implementation/proof surfaces around an already-earned
+Partner grammar; they are not another requirement to re-decide whether the Partner relationship
+exists.
 
 See:
 
@@ -97,10 +100,15 @@ projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md
 projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md
 ~~~
 
-The Android candidate remains unmerged until repository-owned Gradle/KSP/Room proof clears its exact
-head. VexBoard Partner Source/Conversion projector infrastructure is already accepted through merge
-`e24af6945eb8560c63070b2e32bb43913c042fba`; that does not make draft Android source production
-currentness.
+Android Partner source is now accepted through VexLife-Android PR #219 merge
+`7800c17909fd03d1170ec0211a6632172c87d1af`. Exact-head proof closed the reusable Partner foundation, generated Room v6 source,
+repository checks and one bounded connected synthetic Room-restart predicate. That accepted source does
+not claim real Local HTTP or BLE/GATT lifecycle, physical medical-device behavior, or production medical use.
+
+VexBoard Partner Source/Conversion projector infrastructure is accepted through merge
+`e24af6945eb8560c63070b2e32bb43913c042fba`, and source-epoch Screen Lens currentness is accepted
+through VexWork PR #281 merge `776932d2a8cc27ea05b77dc2db320789138a2cdc`. Stable remains historical while Main projects
+current accepted Android source.
 
 ## Current-source checkpoint
 
@@ -109,8 +117,10 @@ that this Project must preserve.
 
 That is a checkpoint, not standing currentness authority. Re-ground Android before implementation.
 
-The Project therefore begins by pressuring the smallest truthful CGM model before production names
-are frozen.
+The Project began by pressuring the smallest truthful CGM model before names were earned. The
+cross-domain Partner relationship is now named and stable at this Project threshold; deeper
+CGM-specific continuity/currentness vocabulary remains intentionally domain-owned until its own
+implementation pressure earns exact names.
 
 ## Core architecture question
 
@@ -143,50 +153,44 @@ Do not collapse those into one `Connected` flag.
 The first realization should use an easy local transport such as Wi-Fi / local HTTP or a bounded
 streaming channel.
 
-Conceptually:
+Current relationship:
 
 ```text
 Synthetic CGM device
         |
-        +-> Wi-Fi/local realization first
+        +-> Local HTTP realization first
         |
         +-> BLE realization later
         |
         v
-candidate Connection<CgmDeviceFamily.Signal> seam
+CgmPartner.Connection<Input>
         |
         v
-CGM reconciliation / semantic owners
+Connection.Conversion<Input, CgmPartner, CgmPartner.Signal>
         |
         v
-Android projection
+CgmPartner.Source / Signal
+        |
+        v
+Connection.Observation
+        |
+        v
+suspend Connection.Receiver
+        |
+        v
+CgmStore
+        |
+        v
+CgmFamily
+        |
+        v
+Projection / DisplayState
 ```
 
-The earlier `CgmReader` name is no longer the leading hypothesis. Current pressure favors a
-small reusable **Connection<Signal>** relationship whose concrete realization may be BLE, local
-HTTP or another transport while the CGM Signal vocabulary remains domain-owned.
-
-Conceptually:
-
-```text
-BleCgmConnection
-LocalHttpCgmConnection
-        |
-        v
-Connection<CgmDeviceFamily.Signal>
-        |
-        v
-CgmDeviceFamily.Signal
-        |
-        v
-continuity / integrity admission
-        |
-        v
-durable CGM history
-        |
-        v
-Family / relationship State
-```
+The earlier `CgmReader` and pre-Partner connection forms were useful discovery steps. They are no
+longer the current architecture. Provider realization may change between Local
+HTTP, BLE or another concrete transport while the Partner Source/Signal vocabulary and downstream
+Store/Family meaning remain stable.
 
 Permanent pressure:
 

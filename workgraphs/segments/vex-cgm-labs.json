@@ -37,9 +37,9 @@
       "workRef": "work.vex-cgm-labs.data-model-foundation",
       "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
       "label": "Prove the Partner / Signal / Store / Family circuit",
-      "purpose": "The Partner Source / Signal / Connection / Conversion / Observation / suspend Receiver -> Store -> Family threshold is accepted in VexWork/VexBoard infrastructure; VexLife-Android PR #219 remains the exact implementation candidate at 0d66416ba36ef876f0111e813a4a8f7c0308a752. A current-contract ExactHeadSourceOwnerProof formation wrapper is now statically qualified at sha256 c5a874bf53b452b1170229615c1dd94bce8e17485e1c2abc7410d6b99432fd4d and awaits one macOS host execution. Consume its canonical RETURN first. PASS advances to fresh Independent Assurance/currentness; safe failure holds only the proved candidate predicate (including a missing generated Room-v6 schema) and should drive the smallest correction/re-proof. Real Local HTTP/BLE provider lifecycle pressure remains after Android source acceptance.",
+      "purpose": "Accepted VexLife-Android PR #219 / merge 7800c17909fd03d1170ec0211a6632172c87d1af closes the bounded Partner / Signal / Store / Family proof across CGM, connected-pen and insulin pump: Partner Source / Signal / Connection / Connection.Conversion<Input -> Signal(s)> / Observation / suspend Receiver; BLE-like ByteArray and HTTP-like response provider forms; queued admission; Room-backed CgmStore persistence with generated Room v6 schema, file-backed close/reopen reconstruction and Gradle/KSP/schema/migration/instrumentation proof; Family outbound pump requests and cross-Family feedback. Merged VexWork PR #281 / 776932d2a8cc27ea05b77dc2db320789138a2cdc keeps the current source-epoch Screen Lens projection aligned while historical Stable remains historical. This accepted Android/source predicate is now under VexWork currentness verification on PR #278. Completion follows only after #278 is accepted into VexWork main. Real Local HTTP/BLE lifecycle and deeper CGM continuity remain separate Work items.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
@@ -56,11 +56,14 @@
         "projects/vex-cgm-labs/README.md",
         "github.pull.vexlife-android.219",
         "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
-        "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+        "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba",
+        "git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af",
+        "github.pull.vexwork.281",
+        "git.commit.vexwork.776932d2a8cc27ea05b77dc2db320789138a2cdc"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T03:35:00.000Z",
-      "updatedAt": "2026-11-07T12:38:00.000Z"
+      "updatedAt": "2026-11-10T05:10:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -155,8 +158,8 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vex-cgm-labs.android-reader-seam",
       "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
-      "label": "Form the Android transport-neutral CGM Connection<Signal> seam",
-      "purpose": "Pressure the VexPartner.Connection candidate with real transport realization. The current PR #219 proves the reusable provider boundary is Connection.Conversion<Input, Partner, Signal>: synthetic BLE-like bytes and an HTTP-like body produce equal CGM Partner Signals while keeping distinct Connection occurrence, then converge on the same Observation / suspend Receiver / Store / Family circuit. After repository proof of the current Room/restart candidate, replace the synthetic forms with concrete Local HTTP and/or BLE lifecycle/provider input without moving Partner Source/Signal meaning, Store durability or Family State into transport.",
+      "label": "Realize the Android transport-neutral CGM Partner Connection seam",
+      "purpose": "Pressure the accepted VexPartner.Connection boundary with real transport realization. Merged Android #219 proves Connection.Conversion<Input, Partner, Signal>: synthetic BLE-like bytes and an HTTP-like body produce equal CGM Partner Signals while keeping distinct Connection occurrence, then converge on the same Observation / suspend Receiver / Store / Family circuit. Next replace the synthetic forms with concrete Local HTTP and/or BLE lifecycle/provider input without moving Partner Source/Signal meaning, Store durability or Family State into transport.",
       "workClass": "TASK",
       "state": "DECOMPOSED",
       "priorityClass": "IMMEDIATE",
@@ -177,18 +180,19 @@
         "projects/vex-cgm-labs/DATA-MODEL-PRESSURE.md",
         "projects/vex-cgm-labs/README.md",
         "github.pull.vexlife-android.219",
-        "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md"
+        "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
+        "git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T03:35:00.000Z",
-      "updatedAt": "2026-11-07T12:12:00.000Z"
+      "updatedAt": "2026-11-10T04:33:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vex-cgm-labs.continuity-reconciliation",
       "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
       "label": "Implement durable CGM Signal continuity and integrity reconciliation",
-      "purpose": "Build from the Room/restart Store patient zero now present in PR #219: explicit cgm_partner_observation rows preserve Partner source/epoch/sequence plus Connection occurrence provenance; restoration reconstructs historical Observation/Signal values into CgmStore and CgmFamily without Decoder/Receiver replay; the synthetic source resumes at the next durable sequence. First prove the exact v6 schema/migration/instrumentation through repository Gradle/KSP, then deepen CGM-specific duplicate/conflict/gap/retention/checkpoint rules and atomic multi-row invariants where the scenarios require them.",
+      "purpose": "Build from the accepted Room/restart Store patient zero now on Android main: explicit cgm_partner_observation rows preserve Partner source/epoch/sequence plus Connection occurrence provenance; restoration reconstructs historical Observation/Signal values into CgmStore and CgmFamily without Decoder/Receiver replay; the synthetic source resumes at the next durable sequence. Android #219 accepted the generated Room v6 schema and bounded connected synthetic restart proof. Next deepen CGM-specific duplicate/conflict/gap/retention/checkpoint rules and atomic multi-row invariants where the scenarios require them.",
       "workClass": "TASK",
       "state": "DECOMPOSED",
       "priorityClass": "HIGH",
@@ -208,11 +212,12 @@
         "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
         "projects/vex-cgm-labs/DATA-MODEL-PRESSURE.md",
         "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md",
-        "github.pull.vexlife-android.219"
+        "github.pull.vexlife-android.219",
+        "git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T03:35:00.000Z",
-      "updatedAt": "2026-11-07T11:05:00.000Z"
+      "updatedAt": "2026-11-10T04:33:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -368,7 +373,7 @@
       "workRef": "work.vex-cgm-labs.vexboard-design-trace-projection",
       "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
       "label": "Project CGM behavior, depth, Design Trace and verification through VexBoard",
-      "purpose": "Use the accepted VexBoard Partner projector from merged PR #276 / e24af6945eb8560c63070b2e32bb43913c042fba to pressure the existing Screen Lens Behavior/Depth projector against current VexLife-Android PR #219: derive Partner / Connection / queued VexExecution / concrete Conversion / Partner Source / Signal / Observation / suspend Receiver / Store / source-addressed listener depth plus Family Begin(Queued) semantics and the feedback circuit. Current consolidated source yields six PARTNER_CIRCUIT pathways, zero held controls and twelve overlap-free Behavior/Depth layouts; BLE and HTTP CGM paths differ only at the concrete Conversion and Connection occurrence while sharing Source/Signal/Store/Family meaning. Keep this Work WAITING_DEPENDENCIES until Android #219 receives repository proof/acceptance and currentness allows truthful Stable/Main projection; projector acceptance alone does not repin draft source.",
+      "purpose": "Use the accepted VexBoard Partner projector from merged PR #276 / e24af6945eb8560c63070b2e32bb43913c042fba and source-epoch Screen Lens currentness from merged PR #281 / 776932d2a8cc27ea05b77dc2db320789138a2cdc against accepted Android Partner source from merged PR #219 / 7800c17909fd03d1170ec0211a6632172c87d1af. The consolidated source yields six PARTNER_CIRCUIT pathways with queued inbound VexExecution (VexExecution · Queued inbound admission), concrete Conversion, Partner Source, Signal, Observation, suspend Receiver, Store and source-addressed observation depth; zero held controls and twelve overlap-free Behavior/Depth layouts. BLE-like and HTTP-like CGM paths differ only at concrete Conversion and Connection occurrence while sharing Source/Signal/Store/Family meaning. The old Android-acceptance/currentness hold is satisfied. This Work remains WAITING_DEPENDENCIES only on its remaining Work dependencies: the still-open Design Trace and Android CGM product Work; projector acceptance does not collapse those owners.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "NORMAL",
@@ -390,14 +395,37 @@
         "github.pull.vexwork.276",
         "github.pull.vexlife-android.219",
         "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
-        "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+        "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba",
+        "git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af",
+        "github.pull.vexwork.281",
+        "git.commit.vexwork.776932d2a8cc27ea05b77dc2db320789138a2cdc"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T03:35:00.000Z",
-      "updatedAt": "2026-11-07T12:24:00.000Z"
+      "updatedAt": "2026-11-10T05:20:00.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-cgm-labs.data-model-foundation.verifying.android219-pr281-accepted",
+      "workRef": "work.vex-cgm-labs.data-model-foundation",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "VexLife-Android PR #219 merged as 7800c17909fd03d1170ec0211a6632172c87d1af after exact-head SourceOwner PASS, fresh Independent Assurance CLEAR, generated Room-v6 source proof and a bounded connected synthetic Room-restart PASS. VexWork PR #281 merged as 776932d2a8cc27ea05b77dc2db320789138a2cdc, keeping current source-epoch Screen Lens projection aligned without promoting historical Stable. The implementation/source predicate for the Partner / Signal / Store / Family foundation is satisfied, so Work advances RUNNING -> VERIFYING while PR #278 itself remains under VexWork currentness review. Completion is reserved for accepted VexWork integration.",
+      "actorRef": "actor.chatgpt.vexcgm-partner-currentness",
+      "sourceRefs": [
+        "github.pull.vexlife-android.219",
+        "git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af",
+        "github.issue-comment.vexlife-android.219.6718148402",
+        "github.issue-comment.vexlife-android.219.6718194999",
+        "github.issue-comment.vexlife-android.219.6718242609",
+        "github.pull.vexwork.281",
+        "git.commit.vexwork.776932d2a8cc27ea05b77dc2db320789138a2cdc"
+      ],
+      "createdAt": "2026-11-10T04:33:00.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.vex-cgm-labs",
     "projects/vex-cgm-labs/README.md",
@@ -405,7 +433,11 @@
     "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md",
     "projects/vex-cgm-labs/DESIGN-TRACE-PRACTICUM.md",
     "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
-    "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+    "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba",
+    "github.pull.vexlife-android.219",
+    "git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af",
+    "github.pull.vexwork.281",
+    "git.commit.vexwork.776932d2a8cc27ea05b77dc2db320789138a2cdc"
   ],
   "formedAt": "2026-11-07T03:35:00.000Z"
 }

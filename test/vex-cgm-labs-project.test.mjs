@@ -48,8 +48,10 @@ test('data model separates sequence, time, provenance and gap classes', () => {
   assert.match(dataModel, /DETECTABLE_GAP != RECOVERABLE_GAP/);
 });
 
-test('Connection Signal seam stays distinct from CGM semantic ownership', () => {
-  assert.match(readme, /Connection<CgmDeviceFamily\.Signal>/);
+test('Partner Connection Signal seam stays distinct from CGM semantic ownership', () => {
+  assert.match(readme, /VexPartner<Partner>/);
+  assert.match(readme, /Connection<Partner, Signal>/);
+  assert.doesNotMatch(readme, /CgmDeviceFamily\.Signal/);
   assert.match(charter, /CONNECTION STATE != SIGNAL/);
   assert.match(charter, /SIGNAL != FAMILY STATE/);
   assert.match(charter, /SIGNAL RECEIVED != STATE CHANGED/);
@@ -102,6 +104,8 @@ test('Cloud and Full Security are later integrations rather than CGM owners', ()
 
 
 test('Partner foundation survives execution ordering and Room restart pressure without ownership collapse', () => {
+  const model = byRef.get('work.vex-cgm-labs.data-model-foundation');
+
   assert.match(charter, /VexPartner<Partner>[\s\S]*Source<Partner>[\s\S]*Conversion<Input, Partner, Signal>[\s\S]*Receiver<Partner, Signal, exact Observation>/);
   assert.match(charter, /suspend Receiver\.receive/);
   assert.match(charter, /CgmPartner\.Connection\.BleDecoder[\s\S]*CgmPartner\.Connection\.HttpDecoder/);
@@ -127,7 +131,7 @@ test('Partner VexBoard Depth keeps queued runtime coordination distinct from dur
   const lab = byRef.get('work.vex-cgm-labs.lab-experience');
 
   assert.match(charter, /queued inbound VexExecution/i);
-  assert.match(charter, /six source-proven PARTNER_CIRCUIT controls[\s\S]*zero held controls/i);
+  assert.match(charter, /six source-proven PARTNER_CIRCUIT controls[\s\S]*zero\s+held controls/i);
   assert.match(charter, /twelve[\s\S]*Behavior\/Depth layouts[\s\S]*zero detected collisions/i);
   assert.equal(projection.state, 'WAITING_DEPENDENCIES');
   assert.ok(projection.sourceRefs.includes('github.pull.vexwork.276'));
@@ -141,23 +145,33 @@ test('Partner VexBoard Depth keeps queued runtime coordination distinct from dur
   assert.match(lab.purpose, /BLE-like and HTTP-like provider controls/);
 });
 
-test('accepted VexBoard Partner projector is durable source while draft Android stays held', () => {
+test('accepted Android Partner source and current Screen Lens stay distinct from remaining Lab work', () => {
   const projection = byRef.get('work.vex-cgm-labs.vexboard-design-trace-projection');
-  const accepted = 'git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba';
+  const acceptedProjector = 'git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba';
+  const acceptedAndroid = 'git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af';
+  const acceptedLens = 'git.commit.vexwork.776932d2a8cc27ea05b77dc2db320789138a2cdc';
 
-  assert.ok(project.sourceRefs.includes(accepted));
-  assert.ok(segment.sourceRefs.includes(accepted));
-  assert.ok(projection.sourceRefs.includes(accepted));
-  assert.match(projection.purpose, /accepted VexBoard Partner projector/);
+  assert.ok(project.sourceRefs.includes(acceptedProjector));
+  assert.ok(segment.sourceRefs.includes(acceptedProjector));
+  assert.ok(segment.sourceRefs.includes(acceptedAndroid));
+  assert.ok(segment.sourceRefs.includes(acceptedLens));
+  assert.ok(projection.sourceRefs.includes(acceptedProjector));
+  assert.ok(projection.sourceRefs.includes(acceptedAndroid));
+  assert.ok(projection.sourceRefs.includes(acceptedLens));
   assert.equal(projection.state, 'WAITING_DEPENDENCIES');
-  assert.match(projection.purpose, /Android #219 receives repository proof\/acceptance/);
-  assert.match(charter, /VexBoard PR #276 is now merged as accepted projector infrastructure/);
-  assert.match(charter, /does not repin the Lens to draft Android #219/);
+  assert.ok(projection.dependencyRefs.includes('work.vex-cgm-labs.design-trace-practicum'));
+  assert.ok(projection.dependencyRefs.includes('work.vex-cgm-labs.android-cgm-feature'));
+  assert.match(projection.purpose, /accepted Android Partner source/i);
+  assert.match(projection.purpose, /remaining Work dependencies/i);
+  assert.doesNotMatch(projection.purpose, /until Android #219 receives repository proof\/acceptance/);
+  assert.match(charter, /Android PR #219 is merged accepted source/);
+  assert.match(charter, /Stable remains pinned to its accepted historical Android epoch/);
 });
 
 // [VXG RealForever][VEX-CGM-LABS][PROJECT]
 
-test('POC charter preserves the external-signal causal sequence without freezing the current hypothesis', () => {
+test('architecture charter preserves the external-signal causal sequence while keeping superseded hypotheses held', () => {
+  assert.match(charter, /VEXCGMLABS PARTNER ARCHITECTURE STABILITY POINT/);
   assert.match(charter, /VexSignal\.Of<Meaning>\s+= HELD/);
   assert.match(charter, /VexEntity\.Of<Meaning>\s+= HELD/);
   assert.match(charter, /EntityForm<Domain, Entity>\s+= HELD/);
@@ -175,7 +189,15 @@ test('durable continuity work reuses existing Work instead of inventing a duplic
   const model = byRef.get('work.vex-cgm-labs.data-model-foundation');
   const continuity = byRef.get('work.vex-cgm-labs.continuity-reconciliation');
 
-  assert.equal(model.state, 'RUNNING');
+  assert.equal(model.state, 'VERIFYING');
+  const verification = segment.transitions.find((entry) =>
+    entry.workRef === 'work.vex-cgm-labs.data-model-foundation' &&
+    entry.nextState === 'VERIFYING'
+  );
+  assert.ok(verification);
+  assert.equal(verification.priorState, 'RUNNING');
+  assert.ok(verification.sourceRefs.includes('github.pull.vexlife-android.219'));
+  assert.ok(verification.sourceRefs.includes('git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af'));
   assert.match(model.label, /Partner \/ Signal \/ Store \/ Family circuit/i);
   assert.match(continuity.label, /Signal continuity and integrity/i);
   assert.doesNotMatch(model.purpose, /VexSignal\.Of<.*is accepted/i);
@@ -186,7 +208,7 @@ test('durable continuity work reuses existing Work instead of inventing a duplic
   assert.ok(continuity.sourceRefs.includes('projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md'));
 });
 
-test('project source map includes the working POC charter without granting effects', () => {
+test('project source map includes the Partner architecture charter without granting effects', () => {
   assert.ok(project.sourceRefs.includes('projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md'));
   for (const item of segment.items) {
     assert.equal(item.authorityDisposition, 'NO_AUTHORITY');
