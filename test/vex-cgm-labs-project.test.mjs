@@ -189,15 +189,15 @@ test('durable continuity work reuses existing Work instead of inventing a duplic
   const model = byRef.get('work.vex-cgm-labs.data-model-foundation');
   const continuity = byRef.get('work.vex-cgm-labs.continuity-reconciliation');
 
-  assert.equal(model.state, 'COMPLETED');
-  const completion = segment.transitions.find((entry) =>
+  assert.equal(model.state, 'VERIFYING');
+  const verification = segment.transitions.find((entry) =>
     entry.workRef === 'work.vex-cgm-labs.data-model-foundation' &&
-    entry.nextState === 'COMPLETED'
+    entry.nextState === 'VERIFYING'
   );
-  assert.ok(completion);
-  assert.equal(completion.priorState, 'RUNNING');
-  assert.ok(completion.sourceRefs.includes('github.pull.vexlife-android.219'));
-  assert.ok(completion.sourceRefs.includes('git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af'));
+  assert.ok(verification);
+  assert.equal(verification.priorState, 'RUNNING');
+  assert.ok(verification.sourceRefs.includes('github.pull.vexlife-android.219'));
+  assert.ok(verification.sourceRefs.includes('git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af'));
   assert.match(model.label, /Partner \/ Signal \/ Store \/ Family circuit/i);
   assert.match(continuity.label, /Signal continuity and integrity/i);
   assert.doesNotMatch(model.purpose, /VexSignal\.Of<.*is accepted/i);

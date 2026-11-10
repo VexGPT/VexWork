@@ -1097,9 +1097,10 @@ from that baseline:
 6. keep VexBoard deriving relationships from source rather than a parallel hand-authored graph.
 ```
 
-Only the Work predicate actually satisfied here is promoted: the Partner / Signal / Store / Family
-foundation completes. Real provider lifecycle, deeper CGM continuity, product projection and Design
-Trace retain their own Work states and dependencies.
+The Partner / Signal / Store / Family implementation/source predicate is satisfied, so its Work
+advances from RUNNING to VERIFYING while this VexWork currentness candidate itself remains unmerged.
+Completion is earned only after #278 is accepted into VexWork main. Real provider lifecycle, deeper
+CGM continuity, product projection and Design Trace retain their own Work states and dependencies.
 
 ## Remaining questions
 
