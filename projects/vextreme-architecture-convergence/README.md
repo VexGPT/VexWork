@@ -43,6 +43,751 @@ no longer hold this Vextreme architecture Work open.
 Current unfinished edges are the real lived predicates recorded below—especially Terrain Journey Inspect
 usefulness/readability and the bounded reader-navigation lived question—not another foundation rewrite.
 
+## Checkpoint — VexArchitecture Post Partner
+
+A bounded successor Work now preserves the architecture questions that should be resumed only after
+the current Partner/onboarding lifecycle is stable enough to stand on accepted source:
+
+~~~text
+work.vextreme.architecture-convergence.vexarchitecture-post-partner
+    WAITING_DEPENDENCIES
+    label: VexArchitecture Post Partner
+~~~
+
+Dependencies:
+
+~~~text
+VexLife-Android #219
+    current VexPartner Source / Signal / Connection / Conversion /
+    Observation / Receiver proof
+
+Vextreme #591
+    current head 54635972cb2663bc6e13e063298464d2bb418347
+    current Builder Guide / Live Demonstration authored-source candidate
+    Tests + Key Alignment PASS; 178-file generated currentness intentionally held
+    until Android #219/#224/#225 acceptance fixes the final public wording
+~~~
+
+This is a checkpoint, not a pre-written architecture answer.
+
+### Resume question
+
+After Partner currentness is accepted, inventory the Android/platform boundaries that remain
+architecturally interesting and ask whether any repeated relationship deserves a reusable root,
+child vocabulary, or merely clearer composition guidance.
+
+Current pressure set:
+
+~~~text
+SERVICE
+    current evidence:
+      VexStreamPlaybackService
+      VexMapsNavigationService
+
+    candidate repeated question:
+      what capability must remain continuously available beyond a shorter
+      caller/UI lifetime, and what bounded lifetime carries that provision?
+
+    current vocabulary hypothesis only:
+      Service
+      Capability
+      Lifetime
+
+    do not yet create VexService or Service.Capability in source
+
+BROADCAST / RECEIVER ENTRY
+    Android / system-originated callback doorway
+    determine:
+      event ingress?
+      provider observation?
+      presentation/update trigger?
+      short receiver-bound work?
+    do not let BroadcastReceiver become semantic or long-running-work authority
+
+WIDGET / SYSTEM SURFACE
+    existing architecture/widget foundation is already real source
+    -> inspect/currentize rather than assume an unsolved blank
+    -> preserve:
+       APP_WIDGET != PRODUCT_STATE_OWNER
+       CALLBACK != LONG_RUNNING_WORK_OWNER
+
+PERMISSION / PLATFORM ADMISSION
+    inspect Android permission/currentness/consent relationships
+    distinguish:
+      user grant
+      OS availability
+      app declaration
+      authorization/security capability
+      feature semantic availability
+    do not collapse them into one generic Capability merely because the word repeats
+
+OTHER PLATFORM PATTERNS
+    discover from current source before naming them
+    candidates may include:
+      Activity / Intent entry
+      process restart / restoration
+      scheduled/background work
+      notifications / system surfaces
+      content/media providers
+      sensor/device callbacks
+    existence of an Android framework noun does not earn a VexArchitecture root
+~~~
+
+### Maturity distinctions at checkpoint formation
+
+~~~text
+Family
+    accepted reusable semantic contract
+
+Partner
+    current source-formed reusable external-participant contract
+    lifecycle acceptance still depends on Android #219 proof/review/merge
+
+Widget
+    existing Android Widget foundation
+    already has reusable source/tests
+    Post Partner asks how it fits the broader body, not whether it exists
+
+Service
+    repeated architecture pressure
+    two materially different current Android witnesses
+    NOT YET an accepted reusable Vex root
+
+BroadcastReceiver / permissions / other Android boundaries
+    inventory and pressure questions
+    NOT YET reusable architecture by existence
+~~~
+
+### Pressure method
+
+Reuse the same method that made Partner trustworthy:
+
+~~~text
+do not copy the patient zero
+-> choose materially different consumers
+-> identify what relationship vocabulary survives
+-> remove domain-specific assumptions
+-> prove each surviving term owns a unique recurring question
+-> prefer composition of existing roots when that is enough
+-> add a reusable root only when subtraction would otherwise lose required meaning
+~~~
+
+For Service, the current proposed third pressure is an app-owned live call because it would add
+bidirectional realtime media, multiple external-participation relationships, join/leave behavior and
+Android call-system integration. It remains a proposed pressure, not a claimed feature or current
+implementation.
+
+### Service phase checkpoint — fractal convergence shape
+
+The Service discussion has now converged far enough to preserve one narrower child Work:
+
+~~~text
+work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence
+    RUNNING
+~~~
+
+
+Current Android source candidate:
+
+~~~text
+github.pull.vexlife-android.224
+    [VexArchitecture][DRAFT] Converge background Services on shared Family circuitry
+
+base
+    996079e890e96d3272ecaf1b2b1caaea468ebd4d
+
+current candidate head at formation
+    69b24d940ecebc1b440f16cb85ffc1c819804d88
+~~~
+
+That candidate makes one real semantic circuit current in source:
+
+~~~text
+VexApplication dependency lifetime
+    -> one VexStreamPlaybackFamily
+    -> existing process VexMapsNavigationSession
+    -> one BackgroundServiceRelay
+
+UI / PlaybackService / Widget
+    -> reuse the exact same PlaybackFamily
+
+Playback provider observation
+    -> PlaybackFamily.observe(...)
+    -> Family.states
+    -> BackgroundServiceRelay dependency observation
+
+Navigation process truth
+    -> BackgroundServiceRelay dependency observation
+~~~
+
+
+Stacked typed-scope candidate:
+
+~~~text
+github.pull.vexlife-android.225
+    [VexArchitecture][DRAFT] Bind dependency lifetimes to typed scope topology
+
+base
+    github.pull.vexlife-android.224
+    69b24d940ecebc1b440f16cb85ffc1c819804d88
+
+current candidate
+    2f39353407402e25f2fe02e7f72fb3c7e92666f8
+~~~
+
+#225 turns the previously documented topology into source types:
+
+~~~text
+VexDependencyFactory<VexApplicationScope>
+├── VexDependencyFactory<VexSessionScope>
+├── VexDependencyFactory<VexServiceScope<VexStreamPlaybackService>>
+└── VexDependencyFactory<VexServiceScope<VexMapsNavigationService>>
+~~~
+
+and preserves exact declaration identity:
+
+~~~text
+VexDependencyProvider<Scope, Value>
+VexDependencyModule<Scope>
+VexScopedDependency<Scope>
+VexDependencyNode
+~~~
+
+`VexDependencyNode` is the real heterogeneous construction-node common type; known
+Scope + Value relationships are not erased to star projection / Any at the architecture boundary.
+The factory's private built-value storage may still use Any as implementation machinery.
+
+Concrete pressure in #225:
+
+~~~text
+ApplicationScope
+    process PlaybackFamily / BackgroundServiceRelay / repositories
+
+SessionScope
+    Events / Conversation Relay / runtime / session-owned Execution
+
+ServiceScope<VexStreamPlaybackService>
+    Service-owned widget VexExecutionRoot
+    + reused Application PlaybackFamily / BackgroundServiceRelay
+
+ServiceScope<VexMapsNavigationService>
+    Service-owned CoroutineScope
+    + reused Application BackgroundServiceRelay
+~~~
+
+A focused local Kotlin compiler proof of the dependency kernel and concrete parent + Session + Service
+child reuse is PASS. Repository-wide Android/Gradle proof remains unclaimed.
+
+The former Playback Behavior/Port projection path and connection-local pending semantic State are
+removed in the candidate. Pending Play/Pause/Restart intent now lives in the shared Family State, so
+foreground and background consumers cannot diverge merely because they entered through different
+Android surfaces.
+
+
+Current architecture hypothesis:
+
+~~~text
+INDIVIDUAL SERVICE
+
+platform-specific Entry
+    Intent / MediaSession / Telecom / other rightful Android entry
+        ↓
+Service-owned Admission against CURRENT truth
+        ↓
+sustained Service relationship becomes live
+        ↓
+Service keeps concrete provider/runtime behavior alive
+while its admitted relationship is retained
+        ↓
+semantic/provider truth returns to its existing rightful owner
+    Family State / Partner / Store / provider observation
+        ↓
+existing Relays observe those truths continuously
+        ↓
+Service-owned retention / termination reconciliation
+        ↓
+terminal condition releases concrete composition
+~~~
+
+The Service does not duplicate product State. Family/domain owners keep semantic meaning, VexPartner
+keeps independently-owned external participation, providers keep outside truth, VexExecution keeps
+Job custody, and existing dependency machinery keeps construction/reuse.
+
+~~~text
+ANDROID SERVICE OCCURRENCE
+!= VEX SERVICE RELATIONSHIP
+
+SERVICE LIFECYCLE CURRENTNESS
+!= FAMILY / DOMAIN STATE
+
+PLATFORM ENTRY
+!= SERVICE ADMISSION
+
+EXTERNAL CONSTRAINT
+!= SERVICE TERMINATION
+~~~
+
+The current Playback + Navigation pressure suggests that a Service can remain live while inner behavior
+is constrained. Example: an incoming call/audio-focus loss may pause or constrain playback without
+ending the sustained Playback Service relationship. By contrast, an internal retention policy may end a
+Service after current reasons for retention disappear and an earned grace condition expires.
+
+The earlier Capability enum/value hypothesis is no longer treated as necessary. The concrete Service
+relationship already identifies what sustained provision exists; adding Playback/Navigation/Call enum
+values would currently duplicate that identity.
+
+#### Independent Service startup
+
+Playback, Navigation and a future app-owned Call should be allowed to enter independently through their
+rightful Android mechanisms:
+
+~~~text
+Navigation
+    Intent / foreground-Service entry
+    -> Admission
+    -> live
+
+Playback
+    MediaSession / MediaController entry
+    -> Admission
+    -> live
+
+Call
+    outgoing semantic request OR incoming Telecom/provider occurrence
+    -> call-platform entry
+    -> Admission
+    -> live
+~~~
+
+Do not force those different mechanisms through one BroadcastReceiver or one generic startService(...)
+switch merely for visual symmetry.
+
+#### Application-lived semantic circuitry and cross-Service convergence
+
+The Service pressure does not require a second Service-current publication bus for semantic truth.
+
+Current VexArchitecture already provides the circuit:
+
+~~~text
+ApplicationScope
+    owns/reuses semantic Families and other process-lived rightful truth owners
+    owns/reuses cross-Service Relays whose relationship remains meaningful without UI
+
+ServiceScope<PlaybackService>
+    reuses the same ApplicationScope PlaybackFamily
+    keeps Media3 / Player realization alive
+
+ServiceScope<NavigationService>
+    reuses the same ApplicationScope Navigation Family/domain owner
+    keeps location / navigation realization alive
+
+future Call Service pressure
+    remains unformed until a real Call owner / lifecycle earns that scope
+~~~
+
+Provider/runtime change returns through the already-existing semantic boundary:
+
+~~~text
+Player / provider reality changes
+    -> rightful interpretation
+    -> PlaybackFamily.observe(already-semantic State)
+    -> PlaybackFamily.states changes
+    -> BackgroundServiceRelay was already observing that State
+    -> Relay recalculates its relationship output
+~~~
+
+A semantic request follows the separate existing path:
+
+~~~text
+Relay output / caller intention
+    -> rightful Family Control
+    -> Family Act
+    -> Effect
+    -> Service/provider realization
+    -> observed semantic reality
+    -> Family State
+~~~
+
+Therefore:
+
+~~~text
+SERVICE
+    keeps concrete behavior/provider realization alive
+
+APPLICATION SCOPE
+    keeps shared process dependencies / Families / process Relays alive
+
+FAMILY
+    owns semantic current State + Control -> Act / Effect meaning
+
+RELAY
+    continuously observes complete rightful truths
+    and owns one convergence relationship output
+
+EXECUTION
+    owns asynchronous Job custody
+~~~
+
+Do not introduce a generic `ServiceCurrent`, `Current/Write`, or Service state bus merely so a
+process Relay can observe semantic state that an application-lived Family already exposes.
+
+When a Relay needs non-Family truth, consume that truth from its existing rightful owner: Partner,
+Store/repository, provider observation, or a genuinely independent Service-lifecycle relationship if
+one is proven necessary.
+
+No new process Relay graph is required for operational delivery. The existing dependency graph builds
+and reuses the objects; StateFlow/Relay dependency observation delivers changes. A process-level graph
+projection may still be earned later by a real inspection/perception consumer, but it is not a
+prerequisite for Services to coordinate.
+
+#### Fractal Relay law
+
+The accepted Compound Relay pattern already supplies the scalable composition law:
+
+~~~text
+complete truth A
++ complete truth B
+    ↓
+purpose-owned Relay
+    ↓
+complete relationship truth C
+
+C
++ complete truth D
+    ↓
+higher-order Relay
+    ↓
+complete relationship truth E
+~~~
+
+Higher-order Relays consume complete lower-order outputs rather than reopening/recalculating all of
+their raw child truths.
+
+The current top-level pressure is broader than audio coexistence:
+
+~~~text
+PlaybackFamily.State ------------\
+Navigation current truth ---------+-> BackgroundServiceRelay
+future CallFamily.State ----------|
+future Health relationship truth -|
+future Companion relationship ----/
+already-converged lower outputs --/
+        ↓
+BackgroundServiceTruth
+~~~
+
+The Relay is the process-level relationship for background-capable VexLife meaning while UI may be
+absent. Its current source candidate admits only Playback + Navigation because those owners exist now.
+
+Future Health / Call / Companion pressure may add real inputs or complete lower Relay outputs. For
+example, a sustained Health boundary may eventually make an emergency Call + Companion relationship
+meaningful so Vex can speak current diagnostics through the call. That is an edge-case pressure, not a
+claim that those owners or policies already exist.
+
+If TravelConversation or another narrower Relay later earns an independent relationship question,
+BackgroundServiceRelay should consume that complete output rather than reopening/recalculating its raw
+children.
+
+Cross-Service policy must still leave through rightful owners:
+
+~~~text
+Relay output
+-> bounded Family Control / rightful port
+-> Family Act / Effect
+-> realization
+
+not:
+Relay
+-> foreign Service implementation mutation
+~~~
+
+#### Lifetime placement pressure
+
+Current VexLifeRelayGraph is ViewModel/session-lifetime. That remains appropriate for relationships
+whose meaning is genuinely session/UI-lived.
+
+Cross-Service Families and Relays that must remain meaningful while no Activity/ViewModel exists
+belong at their rightful common ancestor: ApplicationScope. Service scopes then reuse those same
+application-lived objects while adding only Service-private realization dependencies.
+
+~~~text
+CURRENT #225 SOURCE
+ApplicationScope
+├── process-lived Families / Stores / Partners / cross-Service Relays
+├── SessionScope
+│   └── session/UI-lived Families / Relays / presentation dependencies
+├── ServiceScope<PlaybackService>
+└── ServiceScope<NavigationService>
+
+FUTURE PRESSURE — NOT CURRENT SOURCE
+Call / Companion may earn their own Service scopes only from real owners and lifetimes
+~~~
+
+Permanent topology direction:
+
+~~~text
+child may depend on parent
+parent must not depend on child-private objects
+siblings must not reach sideways into one another
+shared relationship truth belongs at the rightful common ancestor
+~~~
+
+A process-level RelayGraph projection is optional perception/inspection architecture, not required
+runtime plumbing.
+
+#### Typed dependency-scope topology checkpoint
+
+The dependency discussion has now converged on a stronger lifetime rule than naming or code placement.
+
+~~~text
+A DEPENDENCY'S SCOPE
+IS PART OF ITS TYPE,
+NOT AN INFERENCE FROM WHERE IT WAS CONSTRUCTED.
+
+A SCOPE'S PARENT
+IS PART OF ITS RELATIONSHIP,
+NOT AN INFERENCE FROM WHO HAPPENED TO CREATE IT.
+~~~
+
+The intended small architecture shape is:
+
+~~~text
+VexScope<Parent>
+
+VexService
+
+ServiceScope<Service : VexService>
+
+VexScopedDependency<Scope : VexScope>
+
+VexDependency<Scope : VexScope, Value>
+
+VexDependencyModule<Scope>
+~~~
+
+The exact Kotlin spelling remains implementation pressure, but the relationship must survive intact.
+Do not erase an architecture-known relationship to `Any` or star-projection at the boundary merely
+to make heterogeneous containers easier.
+
+Concrete topology should be locally traceable without pretending future Services already exist:
+
+~~~text
+CURRENT #225 SOURCE
+ApplicationScope
+├── SessionScope
+├── ServiceScope<PlaybackService>
+└── ServiceScope<NavigationService>
+
+FUTURE PRESSURE
+Call / Companion remain unformed until real source earns them
+~~~
+
+A declaration such as:
+
+~~~text
+VexDependency<
+    ServiceScope<PlaybackService>,
+    PlaybackExecution
+>
+~~~
+
+must make it possible for a fresh human or AI instance to trace:
+
+~~~text
+WHAT AM I?
+    PlaybackExecution
+
+WHOSE LIFETIME AM I IN?
+    PlaybackService
+
+WHO IS MY PARENT?
+    ApplicationScope
+
+WHO ARE MY SIBLINGS / CHILDREN?
+    visible from the scope topology
+
+HOW AM I FORMED?
+    visible from the matching typed dependency module / prerequisite edges
+~~~
+
+Likewise:
+
+~~~text
+VexDependency<
+    ApplicationScope,
+    BackgroundServiceRelay
+>
+
+VexDependency<
+    SessionScope,
+    EventsConvergenceRelay
+>
+~~~
+
+make a lifetime movement an explicit architecture change rather than a hidden provider-placement edit.
+
+The dependency factory remains the construction engine underneath this topology:
+
+~~~text
+typed scope/module declaration
+    -> explicit provider prerequisites
+    -> VexDependencyFactory traversal / memoization
+    -> concrete dependency at rightful lifetime
+~~~
+
+Android hosts realize the scope; they do not define its semantic identity:
+
+~~~text
+ApplicationScope
+    -> Android Application process host
+
+SessionScope
+    -> retained VexLife session host such as ViewModel; Activity accesses that retained scope
+
+ServiceScope<PlaybackService>
+    -> Android MediaSessionService realization
+
+ARCHITECTURE SCOPE
+!= PLATFORM CLASS
+~~~
+
+The existing Dexcom-like lesson retained here is only the useful one: a stable, typed path from a
+lifetime owner to dependencies belonging to that lifetime. Reject nullable class-key lookup or captured
+"not ready" values. Structural dependency existence is non-null and lazy-resolved; changing runtime
+availability belongs in the dependency's current truth.
+
+~~~text
+DECLARED
+!= INSTANTIATED
+!= CURRENT
+
+dependency object absent because construction has not run
+!=
+runtime relationship currently Absent
+~~~
+
+No ambient `get<T>()`, class-name lookup, reflection-based scope discovery, `Any`, or star-projected
+architecture boundary is earned by this checkpoint.
+
+#### Service termination / retention checkpoint
+
+Termination is an individual Service-lifecycle question unless multiple independently-owned truths
+create a genuinely new relationship question.
+
+~~~text
+Family / provider / Partner / Relay truths
+    -> current reasons to retain this Service
+    -> Service-owned retention decision
+
+retain reason present
+    -> remain live
+
+retain reason absent
+    -> immediate End
+       OR
+       start bounded grace / timeout
+
+grace condition invalidated by new current truth
+    -> cancel pending End
+
+grace completes and current truth still permits End
+    -> request platform Service stop
+    -> Service-owned cleanup / Execution shutdown
+~~~
+
+A timeout is therefore not automatically a Relay:
+
+~~~text
+TIME
+!= RELATIONSHIP OWNER
+
+LOCAL SERVICE RETENTION + TIME
+    -> Service lifecycle policy + Service-owned Execution/timer custody
+
+MULTIPLE INDEPENDENT TRUTHS CREATE NEW RELATIONSHIP MEANING
+    -> Relay may derive one bounded relationship truth
+    -> Service lifecycle may consume that truth as an input
+~~~
+
+Example: Playback becoming idle with no remaining local retention reason may start a Service-owned
+grace timer. New playback/current controller demand cancels that timer. A Call/Navigation convergence
+Relay should not be invented merely to count down that grace period.
+
+Distinguish intentional lifecycle decision from Android host destruction:
+
+~~~text
+SERVICE DECIDES END
+    -> lifecycle/retention decision
+    -> platform stop
+    -> cleanup
+
+ANDROID DESTROYS SERVICE OBJECT
+    -> platform occurrence
+    -> cleanup/reconciliation
+    != proof that semantic Family State should be rewritten by lifecycle destruction alone
+~~~
+
+Current Navigation already demonstrates immediate termination pressure: IDLE/ARRIVED cause Service
+stop and onDestroy cancels Service-owned jobs/resources. Playback currently demonstrates cleanup on
+MediaSessionService destruction but does not yet express a reusable retention/grace rule. That gap is
+part of Service formalization rather than a Relay requirement.
+
+#### Formalization questions still open
+
+~~~text
+1. Is VexService an earned reusable root after Playback + Navigation + Call pressure?
+
+2. What is the smallest Service lifecycle contract?
+   Entry / Admission / retention / external constraint / End are the current pressure terms.
+   Avoid an inert lifecycle enum when functions/relationships can own the behavior directly.
+
+3. Which Service-lifecycle facts, if any, are independently meaningful outside the Service?
+   Semantic State remains with Family; Partner/Store/provider truth remains with those owners.
+   Do not create generic Service currentness merely for observation.
+
+4. Does Service relationship identity survive Android Service object/process recreation?
+   SERVICE RELATIONSHIP != PLATFORM OBJECT OCCURRENCE remains a hypothesis to prove.
+
+5. Does Android #225's source-formed typed Scope topology remain sufficient under repository-wide
+   Gradle proof and materially different Service pressure, or does a concrete ownership leak still
+   require a smaller correction? The existence of VexApplicationScope / VexSessionScope /
+   VexServiceScope is no longer an open design question.
+
+6. How far should BackgroundServiceRelay grow before a narrower relationship earns its own Relay?
+   Current source proves Playback + Navigation only. Future Health / Call / Companion inputs must
+   arrive through their rightful owners, and already-converged lower Relay outputs stay fractal
+   rather than being recalculated at the top level.
+
+7. Can VexCompanionService prove higher-order Relay consumption without becoming a semantic god-object?
+
+8. Does any real inspection/perception consumer require a process RelayGraph projection after typed
+   dependency topology + existing Relay observation already provide runtime delivery?
+~~~
+
+Typed scope topology is now source-formed in Android #225 over the existing Application + retained
+Session composition and concrete Playback/Navigation Service children. The next obligation is exact
+repository proof/lifecycle acceptance of #224/#225, then Call remains the materially different third
+Service pressure before a universal VexService root is accepted.
+
+### Boundary with the current trajectory
+
+~~~text
+POST PARTNER
+!= reopen CGM / Pen / Pump
+!= block Partner integration
+!= pre-authorize a Service framework
+!= Android framework taxonomy project
+!= permission system redesign
+
+POST PARTNER
+= the current architecture generation after Partner formation began;
+  Partner integration may continue in parallel while this source work remains independently bounded
+~~~
+
+This Work is now RUNNING through Android PR #224. Continue from exact current source/evidence rather
+than treating earlier checkpoint hypotheses as authority. Partner #219 / onboarding #591 remain
+parallel currentness inputs, not blockers by existence.
+
 
 ## Human outcome
 

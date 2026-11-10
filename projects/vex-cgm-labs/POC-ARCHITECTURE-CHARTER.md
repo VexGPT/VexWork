@@ -9,9 +9,10 @@ The reusable Partner grammar is no longer a speculative root: it has survived CG
 insulin-pump, provider-representation, execution-ordering, persistence/restart, cross-Family
 feedback and source-derived VexBoard projection pressure.
 
-Android PR #219 still has repository proof/review/merge work. That lifecycle boundary governs the
-candidate's repository acceptance and production currentness; it does not turn the already-earned
-Partner relationship back into an unresolved architecture hypothesis.
+Android PR #219 is merged accepted source at `7800c17909fd03d1170ec0211a6632172c87d1af` after exact-head SourceOwner proof,
+fresh Independent Assurance, generated Room-v6 source proof and a bounded connected synthetic Room-restart
+proof. That closes repository acceptance for this architecture stability point; it does not claim real
+Local HTTP/BLE lifecycle, physical medical-device behavior, or production medical use.
 
 It does not grant Android mutation, BLE hardware, patient-data, cloud, security or regulatory
 authority.
@@ -486,7 +487,10 @@ synthetic Source sequence.
 
 ### VexBoard projectability
 
-VexBoard PR #276 is now merged as accepted projector infrastructure at `e24af6945eb8560c63070b2e32bb43913c042fba`. That accepted infrastructure projects the current draft Android source through the existing Behavior / Depth pair.
+VexBoard PR #276 is merged as accepted Partner projector infrastructure at `e24af6945eb8560c63070b2e32bb43913c042fba`.
+VexWork PR #281 is also merged at `776932d2a8cc27ea05b77dc2db320789138a2cdc`, so the source-epoch Screen Lens now projects
+current accepted Android Partner source through the existing Behavior / Depth pair while retaining its
+historical Stable epoch.
 
 Representative inbound Depth:
 
@@ -508,7 +512,8 @@ held controls. BLE-like and HTTP-like CGM controls project different Conversion 
 CgmPartner.Source / Signal / Store / Family vocabulary. Six pathways normalize into twelve
 Behavior/Depth layouts with zero detected collisions.
 
-Stable/Main VexBoard remains pinned to accepted Android source; accepted projector capability does not repin the Lens to draft Android #219.
+Stable remains pinned to its accepted historical Android epoch. Main now projects current accepted
+Android source through merged PR #281; projector capability never silently promotes Stable.
 
 ### Current proof boundary / next edge
 
@@ -517,20 +522,21 @@ equivalence tests, distinct Connection provenance, shared synthetic Source seque
 schema declaration/migration source, restart instrumentation, queued receipt tests, and live Room
 debug construction.
 
-Still pending repository-owned execution proof:
+Accepted #219 repository proof established:
 
 ~~~text
-Gradle/KSP compile
-generated Room v6 schema JSON + identity hash
-migration5To6 execution validation
-Android instrumentation execution
-repository-wide unit/source-alignment checks
-physical-device Screen proof
+focused VexPartner foundation proof
+focused Partner / navigation / feedback proof
+vexVerifyLocal + Android-test assembly
+generated Room v6 schema JSON
+Room v6 schema sha256 = 13ca1b607df6c732d24feb82f7c205a00600c885a8678fe3363103c357571bea
+post-proof source clean
+bounded connected synthetic Room-restart test = PASS
 ~~~
 
 The synthetic BLE/HTTP forms prove provider-representation reuse, not real network/radio lifecycle.
-After exact repository proof, the next architecture pressure is a concrete Local HTTP and/or BLE
-provider realization, followed by deeper CGM continuity/gap/history semantics.
+Real Local HTTP and BLE/GATT lifecycle, physical medical-device behavior and deeper CGM
+continuity/gap/history semantics remain later pressure.
 
 ThemeMode / VexStream migration and a first-class Partnership owner remain held.
 
@@ -1078,21 +1084,22 @@ This charter advances the already-RUNNING:
 work.vex-cgm-labs.data-model-foundation
 ```
 
-The Partner grammar itself is the stable architectural baseline for this trajectory. The next work
-does not reopen the generic root. It continues from that baseline:
+The Partner grammar itself is the stable architectural baseline for this trajectory. Accepted Android
+#219 closes the bounded foundation proof rather than reopening the generic root. The next work continues
+from that baseline:
 
 ```text
-1. execute exact-head repository proof for Android #219;
-2. correct only concrete source/proof findings;
-3. move the proved candidate through review / merge lifecycle;
-4. realize real Local HTTP provider lifecycle behind the same Partner vocabulary;
-5. realize BLE/GATT behind the same semantic seam;
-6. deepen CGM duplicate/conflict/gap/retention/currentness behavior through G01-G30;
-7. keep VexBoard deriving the relationships from source rather than a parallel hand-authored graph.
+1. consume merged Android #219 as accepted Partner source;
+2. keep source-epoch Screen Lens current through merged VexWork #281;
+3. realize real Local HTTP provider lifecycle behind the same Partner vocabulary;
+4. realize BLE/GATT behind the same semantic seam;
+5. deepen CGM duplicate/conflict/gap/retention/currentness behavior through G01-G30;
+6. keep VexBoard deriving relationships from source rather than a parallel hand-authored graph.
 ```
 
-No lifecycle state is promoted merely because this architecture currentness is recorded.
-Target-repository mutation, merge and provider/device effects remain separately authority-bound.
+Only the Work predicate actually satisfied here is promoted: the Partner / Signal / Store / Family
+foundation completes. Real provider lifecycle, deeper CGM continuity, product projection and Design
+Trace retain their own Work states and dependencies.
 
 ## Remaining questions
 

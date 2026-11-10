@@ -352,6 +352,87 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
       "updatedAt": "2026-11-04T07:17:22.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+      "label": "VexArchitecture Post Partner",
+      "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded checkpoint: inventory Android/platform-boundary patterns such as sustained Services, BroadcastReceiver entry, App Widgets/system surfaces, permission/admission relationships, process/lifecycle callbacks and other repeated platform seams; distinguish already-earned roots from feature-local implementations and only formalize new reusable architecture when materially different consumers prove the same independent question.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "github.pull.vexwork.267",
+        "github.pull.vexlife-android.219",
+        "github.pull.vextreme.591",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexPartner.kt",
+        "repo.vexlife-android:architecture/widget/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/widget/vexstream/VexStreamPlaybackWidget.kt",
+        "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+        "github.pull.vexwork.280",
+        "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+        "github.pull.vexlife-android.224"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-07T14:00:00.000Z",
+      "updatedAt": "2026-11-07T20:15:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+      "label": "Formalize Service lifecycle and fractal cross-Service convergence",
+      "purpose": "Formalize Service lifetime and background convergence without duplicate semantic state: Android #224 makes Playback Family truth process-shared across UI/Service/Widget and forms BackgroundServiceRelay over current background-capable truths; stacked Android #225 makes Application / retained Session / concrete Service sibling lifetime topology compiler-visible through typed dependency scopes. Services keep concrete realizations alive, Families/Stores/Partners/providers remain rightful truth owners, Relays own convergence, and Service retention/termination stays lifecycle policy with VexExecution custody for bounded timing.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+        "github.pull.vexwork.280",
+        "github.pull.vexlife-android.219",
+        "github.pull.vextreme.591",
+        "repo.vexlife-android:architecture/relay/README.md",
+        "repo.vexlife-android:architecture/dependency/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/VexApplication.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexNavigationSession.kt",
+        "repo.vexlife-android:architecture/widget/README.md",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/execution/README.md",
+        "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+        "github.pull.vexlife-android.224",
+        "github.pull.vexlife-android.225"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-07T18:00:00.000Z",
+      "updatedAt": "2026-11-07T21:00:00.000Z"
     }
   ],
   "transitions": [
@@ -581,7 +662,12 @@
     "github.pull.vexwork.185",
     "github.pull.vexwork.214",
     "github.pull.vextreme.570",
-    "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906"
+    "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906",
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+    "github.pull.vexwork.280",
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+    "github.pull.vexlife-android.224",
+    "github.pull.vexlife-android.225"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }

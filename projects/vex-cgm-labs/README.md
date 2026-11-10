@@ -100,10 +100,15 @@ projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md
 projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md
 ~~~
 
-The Android candidate remains unmerged until repository-owned Gradle/KSP/Room proof clears its exact
-head. VexBoard Partner Source/Conversion projector infrastructure is already accepted through merge
-`e24af6945eb8560c63070b2e32bb43913c042fba`; that does not make draft Android source production
-currentness.
+Android Partner source is now accepted through VexLife-Android PR #219 merge
+`7800c17909fd03d1170ec0211a6632172c87d1af`. Exact-head proof closed the reusable Partner foundation, generated Room v6 source,
+repository checks and one bounded connected synthetic Room-restart predicate. That accepted source does
+not claim real Local HTTP or BLE/GATT lifecycle, physical medical-device behavior, or production medical use.
+
+VexBoard Partner Source/Conversion projector infrastructure is accepted through merge
+`e24af6945eb8560c63070b2e32bb43913c042fba`, and source-epoch Screen Lens currentness is accepted
+through VexWork PR #281 merge `776932d2a8cc27ea05b77dc2db320789138a2cdc`. Stable remains historical while Main projects
+current accepted Android source.
 
 ## Current-source checkpoint
 

@@ -145,18 +145,27 @@ test('Partner VexBoard Depth keeps queued runtime coordination distinct from dur
   assert.match(lab.purpose, /BLE-like and HTTP-like provider controls/);
 });
 
-test('accepted VexBoard Partner projector is durable source while draft Android stays held', () => {
+test('accepted Android Partner source and current Screen Lens stay distinct from remaining Lab work', () => {
   const projection = byRef.get('work.vex-cgm-labs.vexboard-design-trace-projection');
-  const accepted = 'git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba';
+  const acceptedProjector = 'git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba';
+  const acceptedAndroid = 'git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af';
+  const acceptedLens = 'git.commit.vexwork.776932d2a8cc27ea05b77dc2db320789138a2cdc';
 
-  assert.ok(project.sourceRefs.includes(accepted));
-  assert.ok(segment.sourceRefs.includes(accepted));
-  assert.ok(projection.sourceRefs.includes(accepted));
-  assert.match(projection.purpose, /accepted VexBoard Partner projector/);
+  assert.ok(project.sourceRefs.includes(acceptedProjector));
+  assert.ok(segment.sourceRefs.includes(acceptedProjector));
+  assert.ok(segment.sourceRefs.includes(acceptedAndroid));
+  assert.ok(segment.sourceRefs.includes(acceptedLens));
+  assert.ok(projection.sourceRefs.includes(acceptedProjector));
+  assert.ok(projection.sourceRefs.includes(acceptedAndroid));
+  assert.ok(projection.sourceRefs.includes(acceptedLens));
   assert.equal(projection.state, 'WAITING_DEPENDENCIES');
-  assert.match(projection.purpose, /Android #219 receives repository proof\/acceptance/);
-  assert.match(charter, /VexBoard PR #276 is now merged as accepted projector infrastructure/);
-  assert.match(charter, /does not repin the Lens to draft Android #219/);
+  assert.ok(projection.dependencyRefs.includes('work.vex-cgm-labs.design-trace-practicum'));
+  assert.ok(projection.dependencyRefs.includes('work.vex-cgm-labs.android-cgm-feature'));
+  assert.match(projection.purpose, /accepted Android Partner source/i);
+  assert.match(projection.purpose, /remaining Work dependencies/i);
+  assert.doesNotMatch(projection.purpose, /until Android #219 receives repository proof\/acceptance/);
+  assert.match(charter, /Android PR #219 is merged accepted source/);
+  assert.match(charter, /Stable remains pinned to its accepted historical Android epoch/);
 });
 
 // [VXG RealForever][VEX-CGM-LABS][PROJECT]
@@ -180,7 +189,15 @@ test('durable continuity work reuses existing Work instead of inventing a duplic
   const model = byRef.get('work.vex-cgm-labs.data-model-foundation');
   const continuity = byRef.get('work.vex-cgm-labs.continuity-reconciliation');
 
-  assert.equal(model.state, 'RUNNING');
+  assert.equal(model.state, 'COMPLETED');
+  const completion = segment.transitions.find((entry) =>
+    entry.workRef === 'work.vex-cgm-labs.data-model-foundation' &&
+    entry.nextState === 'COMPLETED'
+  );
+  assert.ok(completion);
+  assert.equal(completion.priorState, 'RUNNING');
+  assert.ok(completion.sourceRefs.includes('github.pull.vexlife-android.219'));
+  assert.ok(completion.sourceRefs.includes('git.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af'));
   assert.match(model.label, /Partner \/ Signal \/ Store \/ Family circuit/i);
   assert.match(continuity.label, /Signal continuity and integrity/i);
   assert.doesNotMatch(model.purpose, /VexSignal\.Of<.*is accepted/i);

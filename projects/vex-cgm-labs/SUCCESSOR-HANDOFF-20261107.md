@@ -1,5 +1,29 @@
 # VexCgmLabs successor handoff — Partner Source / Conversion stability point
 
+## 2026-11-09 currentization — consume this before the historical proof trail
+
+The architecture/proof trajectory recorded below has now crossed its old #219 hold.
+
+~~~text
+VexLife-Android PR #219
+    MERGED
+    merge = 7800c17909fd03d1170ec0211a6632172c87d1af
+    exact final candidate = aa911ebd3c927ce7c5e872590d71528115865c18
+
+VexWork PR #281
+    MERGED
+    merge = 776932d2a8cc27ea05b77dc2db320789138a2cdc
+    source-epoch Screen Lens currentness accepted
+~~~
+
+Therefore any later section below that says Android #219 is "unmerged", "held until proof", or instructs
+a successor to replay its SourceOwner carriers is **historical formation/proof evidence only**. Do not
+replay it as the current edge.
+
+Current continuation starts from accepted Partner source and asks the next independently-owned
+questions: real Local HTTP / BLE lifecycle, deeper CGM continuity/currentness, product projection and
+the still-open VexCgmLabs Work dependencies.
+
 `[VXG RealForever]`
 
 ## Entry
