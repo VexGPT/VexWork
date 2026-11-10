@@ -690,6 +690,40 @@
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-10T08:51:18.000Z",
+      "updatedAt": "2026-11-10T10:39:57.000Z",
+      "workRef": "work.vexlife.new-beginnings.vision-product-runtime-orchestration",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+      "label": "High — Product-runtime Process Factory orchestration",
+      "purpose": "Implement the already-source-placed SDK Process Factory seam that turns one Product-authored Vision requestRef into one bounded USER_SELECTED_SESSION realization attempt, with Process-Factory-owned session/connection identity, current Safety gating, exact helper receipt validation, canonical Security witness formation and canonical Perception active-observation composition, while preserving no raw-content/model/Memory/training/publication or Product-service effects.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.vision-companion-product-surface"
+      ],
+      "repositoryRefs": [
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.241.comment.6756193443",
+        "github.issue.vextreme-sdk.1574.comment.6763112357",
+        "github.pull.vextreme-sdk.1939",
+        "github.commit.vextreme-sdk.bc9b093b61b7ac5009f612d78c703ea431c19f5d",
+        "github.commit.vextreme-sdk.c39951fe260e505b4a3c5b8f606cc8da14c985c0",
+        "repo.vextreme-sdk:lib/process-factory/macos-screen-system-picker-contract.js",
+        "repo.vextreme-sdk:lib/security/macos-screen-system-picker-active-sharing-witness.js",
+        "repo.vextreme-sdk:lib/vex-perception-broker/screen-system-picker-active-integration.js",
+        "repo.vextreme-sdk:docs/process/local-source-workspace-protocol.md"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     }
   ],
   "transitions": [
