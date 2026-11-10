@@ -455,6 +455,9 @@ inbound Partner receipt/admission
     + Queued
     -> ordered receipt / Receiver / Store Jobs
 
+This is the queued inbound VexExecution path. The runtime RelationshipId remains private execution
+coordination and does not become Connection provenance or durable Partner identity.
+
 Store -> Family observation
     exact Store Flow source
     + live Family owner
@@ -472,8 +475,14 @@ already-authored Approach and identity instead of re-deciding sequencing downstr
 
 ### Room / restart pressure implemented
 
-CGM owns one durable Store contract with InMemoryCgmStore and RoomCgmStore realizations. Room keeps
-explicit Connection occurrence + Partner Source/Signal fields and reconstructs historical
+CGM owns one durable Store contract with InMemoryCgmStore and RoomCgmStore realizations:
+
+~~~text
+RoomCgmStore
+-> cgm_partner_observation
+~~~
+
+Room keeps explicit Connection occurrence + Partner Source/Signal fields and reconstructs historical
 Observation/Signal values without running Conversion or Receiver again.
 
 ~~~text

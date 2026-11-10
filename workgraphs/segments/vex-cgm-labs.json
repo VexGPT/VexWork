@@ -37,7 +37,7 @@
       "workRef": "work.vex-cgm-labs.data-model-foundation",
       "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
       "label": "Prove the Partner / Signal / Store / Family circuit",
-      "purpose": "Accepted VexLife-Android PR #219 / merge 7800c17909fd03d1170ec0211a6632172c87d1af closes the bounded Partner / Signal / Store / Family proof: Partner Source / Signal / Connection / Conversion / Observation / suspend Receiver, dual BLE-like and HTTP-like provider forms, queued admission, generated Room v6 persistence/restart reconstruction, Family outbound pump requests and cross-Family feedback are accepted source. Merged VexWork PR #281 / 776932d2a8cc27ea05b77dc2db320789138a2cdc keeps the current source-epoch Screen Lens projection aligned while historical Stable remains historical. This accepted Android/source predicate is now under VexWork currentness verification on PR #278. Completion follows only after #278 is accepted into VexWork main. Real Local HTTP/BLE lifecycle and deeper CGM continuity remain separate Work items.",
+      "purpose": "Accepted VexLife-Android PR #219 / merge 7800c17909fd03d1170ec0211a6632172c87d1af closes the bounded Partner / Signal / Store / Family proof across CGM, connected-pen and insulin pump: Partner Source / Signal / Connection / Connection.Conversion<Input -> Signal(s)> / Observation / suspend Receiver; BLE-like ByteArray and HTTP-like response provider forms; queued admission; Room-backed CgmStore persistence with generated Room v6 schema, file-backed close/reopen reconstruction and Gradle/KSP/schema/migration/instrumentation proof; Family outbound pump requests and cross-Family feedback. Merged VexWork PR #281 / 776932d2a8cc27ea05b77dc2db320789138a2cdc keeps the current source-epoch Screen Lens projection aligned while historical Stable remains historical. This accepted Android/source predicate is now under VexWork currentness verification on PR #278. Completion follows only after #278 is accepted into VexWork main. Real Local HTTP/BLE lifecycle and deeper CGM continuity remain separate Work items.",
       "workClass": "TASK",
       "state": "VERIFYING",
       "priorityClass": "IMMEDIATE",
@@ -63,7 +63,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T03:35:00.000Z",
-      "updatedAt": "2026-11-10T04:33:00.000Z"
+      "updatedAt": "2026-11-10T05:10:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -373,7 +373,7 @@
       "workRef": "work.vex-cgm-labs.vexboard-design-trace-projection",
       "parentWorkRefOrNull": "work.vex-cgm-labs.outcome",
       "label": "Project CGM behavior, depth, Design Trace and verification through VexBoard",
-      "purpose": "Use the accepted VexBoard Partner projector from merged PR #276 / e24af6945eb8560c63070b2e32bb43913c042fba and source-epoch Screen Lens currentness from merged PR #281 / 776932d2a8cc27ea05b77dc2db320789138a2cdc against accepted Android Partner source from merged PR #219 / 7800c17909fd03d1170ec0211a6632172c87d1af. The consolidated source yields six PARTNER_CIRCUIT pathways, zero held controls and twelve overlap-free Behavior/Depth layouts; BLE-like and HTTP-like CGM paths differ only at concrete Conversion and Connection occurrence while sharing Source/Signal/Store/Family meaning. The old Android-acceptance/currentness hold is satisfied. This Work remains WAITING_DEPENDENCIES only on its still-open Design Trace and Android CGM product Work dependencies; projector acceptance does not collapse those owners.",
+      "purpose": "Use the accepted VexBoard Partner projector from merged PR #276 / e24af6945eb8560c63070b2e32bb43913c042fba and source-epoch Screen Lens currentness from merged PR #281 / 776932d2a8cc27ea05b77dc2db320789138a2cdc against accepted Android Partner source from merged PR #219 / 7800c17909fd03d1170ec0211a6632172c87d1af. The consolidated source yields six PARTNER_CIRCUIT pathways with VexExecution · Queued inbound admission, concrete Conversion, Partner Source, Signal, Observation, suspend Receiver, Store and source-addressed observation depth; zero held controls and twelve overlap-free Behavior/Depth layouts. BLE-like and HTTP-like CGM paths differ only at concrete Conversion and Connection occurrence while sharing Source/Signal/Store/Family meaning. The old Android-acceptance/currentness hold is satisfied. This Work remains WAITING_DEPENDENCIES only on its remaining Work dependencies: the still-open Design Trace and Android CGM product Work; projector acceptance does not collapse those owners.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "NORMAL",
@@ -402,7 +402,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T03:35:00.000Z",
-      "updatedAt": "2026-11-10T04:33:00.000Z"
+      "updatedAt": "2026-11-10T05:10:00.000Z"
     }
   ],
   "transitions": [
