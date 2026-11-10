@@ -212,6 +212,143 @@ combine              Shift-click a chip to add its choices to what is shown (con
                      result is a custom expression both sides read like any other
 ```
 
+## Partner circuits: project deeper source, not another descriptor
+
+The Partner patient zero extends the Android source reader with one reusable relationship shape:
+
+~~~text
+VexPartner<Partner>
+-> Source<Partner>
+-> Signal<Partner>
+-> Connection<Partner, Signal>
+   -> Id<Partner>
+   -> Conversion<Input, Partner, Signal>
+   -> Observation
+   -> Receiver<Partner, Signal, exact Observation>
+
+custom Screen/local source
+-> VexExecution.beginQueued(live Connection owner, private runtime RelationshipId)
+-> exact receipt operation
+-> concrete Conversion / Observation / suspend Receiver
+-> domain Store
+
+Store Flow -> VexExecution.observe(exact source, live Family owner)
+-> Family.observeStore(...)
+-> Family State / DisplayState
+~~~
+
+The reader follows the actual custom-Screen `localEffect` call into the lab/runtime source, then follows
+receiver **type + function** through wrapper layers. It does not choose a global function merely because
+its name matches. That matters for source where a Screen lab and its child runtime both expose
+`requestSyntheticPumpDelivery()`: the receiver coordinate is the relationship.
+
+Fail-closed laws:
+
+~~~text
+localEffect with no source-proven deeper relationship
+    -> HELD
+
+ambiguous receiver/function ownership
+    -> HELD
+
+Partner name without VexPartner<same Partner> root
+    -> HELD
+
+Connection without source-proven Decoder / Observation / Receiver
+    -> HELD
+
+Family request that cannot prove Control / Effect / bound Method / Partner Connection
+    -> HELD
+~~~
+
+The Lens keeps the existing four faces. Partner is additional **Depth**, not a new face:
+
+~~~text
+Behavior
+    Family semantic meaning
+
+Depth
+    Method / VexExecution
+    Partner Connection
+    queued inbound RelationshipId execution lane
+    Decoder / Receiver
+    Partner / Signal / Observation / Store
+    source-addressed Store listener
+    return to Family State
+~~~
+
+Two CGM provider representations are now independently source-proven through the same downstream
+relationship:
+
+~~~text
+BLE-like input
+-> CgmPartner.Connection.BleDecoder
+                         \
+                          -> CgmPartner.Source / Signal
+                         /
+HTTP-like input
+-> CgmPartner.Connection.HttpDecoder
+
+then identically:
+-> Observation -> Receiver -> CgmStore -> CgmFamily
+~~~
+
+The Lens projects those concrete classes under the reusable `CONVERSION` role. It does not invent a
+generic Mapper node, and it does not erase the distinct Connection occurrence that delivered an
+otherwise-equivalent Signal.
+
+A feedback circuit remains projectable without inventing a cross-Family descriptor:
+
+~~~text
+CgmFamily.State
+-> VexExecution.observe(cgmFamily::states)
+-> source-authored convergence / lab rule
+-> InsulinFamily.Control
+-> InsulinFamily Act / Effect
+-> Method
+-> Pump Partner Connection
+-> Partner acknowledgement
+
+later, separately:
+Pump Partner Signal
+-> Observation / Receiver
+-> Store
+-> InsulinFamily State
+~~~
+
+The source now proves three execution/provenance coordinates, and the projection keeps them distinct:
+
+~~~text
+Partner Connection.Id
+    source/observation provenance
+    != VexExecution RelationshipId
+
+inbound receipt/admission
+    live Connection owner
+    + private runtime RelationshipId
+    + Queued
+    -> ordered Jobs
+
+maintained Store Flow listener
+    exact Flow source + live Family owner
+    -> source-addressed observation Job
+
+Family consequence
+    accepted Control kind (+ typed ResourceId only when earned)
+    + authored Approach
+    -> Family-derived RelationshipId -> Job(s)
+~~~
+
+For the Pump patient zero, Behavior visibly says `Begin(Queued · Effect.RequestPumpDelivery)`;
+Depth shows the accepted Act continuing through Method/VexExecution into the Pump Connection.
+
+The current Partner-depth projector is proven against a bounded non-medical fixture and the current
+draft VexLife-Android patient zero. The ordinary VexLife adapter read plan includes CGM, insulin,
+Partner-lab and durable CGM data roots; the proof no longer depends on a special harness-only read
+set. Stable/Main Lens source
+must **not** be repinned to an unaccepted Android PR merely to display the candidate; accepted source
+currentness still governs the production Lens.
+
 ## What a new feature does to become projectable
 
 ```text

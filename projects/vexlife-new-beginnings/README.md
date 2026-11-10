@@ -505,8 +505,8 @@ work.vexlife.new-beginnings.vision-product-runtime-orchestration
 ~~~
 
 So the next work is **not** another Root/frontier reconstruction and not another Vision redesign.
-VexWork now owns the actual current work coordinate; SDK/Local Source Workspace currentness owns the
-exact authoring effect.
+VexWork owns the current Work coordinate; SDK/Local Source Workspace currentness owns the exact
+authoring effect.
 
 After that source is accepted, the trajectory continues through ordinary Product executable carriage,
 current Product service bridge, and one lived `LookNow`. Visual-model input remains a later,

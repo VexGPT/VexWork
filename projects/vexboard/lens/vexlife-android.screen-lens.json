@@ -14,7 +14,7 @@
     "repositoryRef": "repo.vexlife-android",
     "repositoryUrl": "https://github.com/vgong24/VexLife-Android",
     "commit": "305a09eac1fabebcf2241bd207386950f41121f2",
-    "observedAt": "2026-11-07",
+    "observedAt": "2026-11-03",
     "roots": {
       "app": "app/src/main/kotlin/com/vextreme/vexlife/android/",
       "arch": "architecture/",
@@ -8221,6 +8221,16 @@
           "source": "app:ui/ThemeMode.kt"
         },
         {
+          "ref": "theme.dark-mode.toggle.fence",
+          "face": "DEPTH",
+          "role": "STATE",
+          "label": "selectionRealizationFinished · === fence",
+          "symbol": "unsettledSelection",
+          "summary": "Clears one feature-owned currentness fence only for the exact Parameter identity that still owns it.",
+          "source": "app:ui/ThemeMode.kt",
+          "code": "if (unsettledSelection === parameter) { unsettledSelection = null }"
+        },
+        {
           "ref": "theme.dark-mode.toggle.log",
           "face": "DEPTH",
           "role": "CHRONOLOGY",
@@ -8237,16 +8247,6 @@
           "symbol": "ThemeModeFamilyProvider",
           "summary": "Session lifetime. Prerequisites resolve first, then the Family is built and wired.",
           "source": "app:ui/VexLifeSession.kt"
-        },
-        {
-          "ref": "theme.dark-mode.toggle.fence",
-          "face": "DEPTH",
-          "role": "STATE",
-          "label": "selectionRealizationFinished · === fence",
-          "symbol": "unsettledSelection",
-          "summary": "Settles only when the finished Parameter is the same instance as the unsettled selection, so a stale observation cannot overwrite a newer choice.",
-          "source": "app:ui/ThemeMode.kt",
-          "code": "if (unsettledSelection === parameter) {\n    unsettledSelection = null\n}"
         },
         {
           "ref": "theme.dark-mode.toggle.method-observe",
@@ -8345,10 +8345,27 @@
           "label": "returns"
         },
         {
+          "from": "theme.dark-mode.toggle.store",
+          "to": "theme.dark-mode.toggle.observe",
+          "label": "states",
+          "kind": "DATA"
+        },
+        {
           "from": "theme.dark-mode.toggle.observe",
           "to": "theme.dark-mode.toggle.state",
           "label": "interpreted",
           "kind": "RETURN"
+        },
+        {
+          "from": "theme.dark-mode.toggle.result",
+          "to": "theme.dark-mode.toggle.fence",
+          "label": "settles currentness"
+        },
+        {
+          "from": "theme.dark-mode.toggle.fence",
+          "to": "theme.dark-mode.toggle.observe",
+          "label": "allows later observation",
+          "kind": "SIDE"
         },
         {
           "from": "theme.dark-mode.toggle.launch",
@@ -8364,11 +8381,6 @@
         },
         {
           "from": "theme.dark-mode.toggle.result",
-          "to": "theme.dark-mode.toggle.fence",
-          "label": "settle?"
-        },
-        {
-          "from": "theme.dark-mode.toggle.fence",
           "to": "theme.dark-mode.toggle.method-observe",
           "label": "Success output"
         },
@@ -8377,12 +8389,6 @@
           "to": "theme.dark-mode.toggle.state",
           "label": "interpreted",
           "kind": "RETURN"
-        },
-        {
-          "from": "theme.dark-mode.toggle.store",
-          "to": "theme.dark-mode.toggle.observe",
-          "label": "states",
-          "kind": "DATA"
         },
         {
           "from": "theme.dark-mode.toggle.display",
@@ -12706,10 +12712,10 @@
   ],
   "provenance": {
     "generator": "vexlife-android-adapter/5",
-    "projectorBlobSha1": "9c8f41180cc9e8d8c7793524cd85f790d706ff33",
+    "projectorBlobSha1": "d231e26fe04a418b361cd4fce9604956ab36f24d",
     "projectorSupportSha256": "6667392107cc131d8330231edbccacfff6d50e9a2a54b58c27972041adabb7b5",
-    "adapterSha256": "eb01781d044e2255e0f8f4d9f4d0eca9dfedb5a24f54bcd9d64c9aa0a38268cc",
-    "overlaySha256": "b90f9037a67e7f9d6e4fac6cc455b036fe1a7128d8f4601ed66aa7be2825efd0",
+    "adapterSha256": "124c1a5dd5ec752f7f55fb46164524af9c2b12ceeb47fefa1e89a723725a16ae",
+    "overlaySha256": "cf4db59794da0369bf0bb208b9d477cf2d0bd061f5aa480d2777c47817d14d9d",
     "sourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2"
   }
 }

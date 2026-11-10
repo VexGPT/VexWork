@@ -11,8 +11,11 @@ import { requireForwardMainRelation } from '../scripts/build-screen-lens.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const generatedFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-android.screen-lens.json');
+const mainGeneratedFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-android.main.screen-lens.json');
 const raw = JSON.parse(fs.readFileSync(generatedFile, 'utf8'));
+const mainRaw = JSON.parse(fs.readFileSync(mainGeneratedFile, 'utf8'));
 const lens = normalizeScreenLens(raw);
+const mainLens = normalizeScreenLens(mainRaw);
 const hand = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('./fixtures/screen-lens/debug-menu.hand.screen-lens.json', import.meta.url), 'utf8')));
 
 test('the committed lens is current with its adapter, overlay and generator', () => {
@@ -21,7 +24,7 @@ test('the committed lens is current with its adapter, overlay and generator', ()
   assert.equal(verified.state, 'PASS');
   assert.deepEqual(verified.builds.map((entry) => `${entry.subject}:${entry.build}:${entry.state}`), ['vexlife-android:stable:PASS', 'vexlife-android:main:PASS'], 'every catalog build is verified at its own pointer');
   assert.match(raw.provenance.generator, /^vexlife-android-adapter\//);
-  assert.equal(raw.provenance.projectorBlobSha1, '9c8f41180cc9e8d8c7793524cd85f790d706ff33');
+  assert.equal(raw.provenance.projectorBlobSha1, 'd231e26fe04a418b361cd4fce9604956ab36f24d');
   // D34 extended: the projector's own module imports (Kotlin reading, realization, examples) are bound too.
   assert.match(raw.provenance.projectorSupportSha256, /^[0-9a-f]{64}$/);
   assert.match(raw.provenance.sourceCommit, /^[0-9a-f]{40}$/);
@@ -74,7 +77,28 @@ test('dispositions match what the code earns', () => {
   for (const role of ['CONTROL', 'STATE', 'ACT', 'EFFECT', 'PROJECTION', 'METHOD', 'RESULT', 'EXECUTION', 'REALIZATION', 'STORE', 'OBSERVATION']) {
     assert.ok(theme.nodes.some((node) => node.role === role), role);
   }
-  assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.fence'), 'overlay adds the ThemeMode-local fence');
+  assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.fence'), 'source derives the ThemeMode-local fence');
+});
+
+test('Stable keeps historical Direct Family source while Main projects accepted-responsibility currentness', () => {
+  const stableTheme = pathwayForElement(lens, 'element.debug-menu.body.dark-mode');
+  const mainTheme = pathwayForElement(mainLens, 'element.debug-menu.body.dark-mode');
+  const stableNode = (slot) => stableTheme.nodes.find((node) => node.ref === `theme.dark-mode.toggle.${slot}`);
+  const mainNode = (slot) => mainTheme.nodes.find((node) => node.ref === `theme.dark-mode.toggle.${slot}`);
+
+  assert.equal(stableNode('fence').label, 'selectionRealizationFinished · === fence');
+  assert.equal(stableNode('accepted'), undefined);
+  assert.equal(stableNode('realization'), undefined);
+  assert.equal(stableNode('launch').label, 'act.launchWith(executionRoot).method(…)');
+
+  assert.equal(mainNode('fence').label, 'settleSelectionCurrentness · === fence');
+  assert.equal(mainNode('accepted').symbol, 'VexFamily.Act.Accepted');
+  assert.equal(mainNode('realization').symbol, 'VexFamily.Act.Accepted.realizationBegin');
+  assert.equal(mainNode('launch').label, 'Act.Accepted.launch(executionRoot, Method)');
+  assert.ok(mainTheme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.custody' && edge.to === 'theme.dark-mode.toggle.fence' && edge.kind === 'SIDE'));
+  assert.ok(mainTheme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.launch' && edge.to === 'theme.dark-mode.toggle.fence' && edge.kind === 'SIDE'));
+  assert.ok(mainTheme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.store' && edge.to === 'theme.dark-mode.toggle.observe' && edge.kind === 'DATA'));
+  assert.equal(mainTheme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.result' && edge.to === 'theme.dark-mode.toggle.observe'), false);
 });
 
 test('typed pathway instances carry semantic operands instead of reusing one shape instance', () => {

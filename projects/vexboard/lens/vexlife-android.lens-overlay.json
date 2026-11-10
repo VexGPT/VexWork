@@ -22,16 +22,6 @@
       },
       "addNodes": [
         {
-          "ref": "theme.dark-mode.toggle.fence",
-          "face": "DEPTH",
-          "role": "STATE",
-          "label": "selectionRealizationFinished · === fence",
-          "symbol": "unsettledSelection",
-          "summary": "Settles only when the finished Parameter is the same instance as the unsettled selection, so a stale observation cannot overwrite a newer choice.",
-          "source": "app:ui/ThemeMode.kt",
-          "code": "if (unsettledSelection === parameter) {\n    unsettledSelection = null\n}"
-        },
-        {
           "ref": "theme.dark-mode.toggle.method-observe",
           "face": "DEPTH",
           "role": "REALIZATION",
@@ -50,20 +40,9 @@
           "source": "app:ui/VexLifeTheme.kt"
         }
       ],
-      "removeEdges": [
-        {
-          "from": "theme.dark-mode.toggle.result",
-          "to": "theme.dark-mode.toggle.observe"
-        }
-      ],
       "addEdges": [
         {
           "from": "theme.dark-mode.toggle.result",
-          "to": "theme.dark-mode.toggle.fence",
-          "label": "settle?"
-        },
-        {
-          "from": "theme.dark-mode.toggle.fence",
           "to": "theme.dark-mode.toggle.method-observe",
           "label": "Success output"
         },
@@ -72,12 +51,6 @@
           "to": "theme.dark-mode.toggle.state",
           "label": "interpreted",
           "kind": "RETURN"
-        },
-        {
-          "from": "theme.dark-mode.toggle.store",
-          "to": "theme.dark-mode.toggle.observe",
-          "label": "states",
-          "kind": "DATA"
         },
         {
           "from": "theme.dark-mode.toggle.display",
