@@ -131,7 +131,7 @@ test('Partner VexBoard Depth keeps queued runtime coordination distinct from dur
   const lab = byRef.get('work.vex-cgm-labs.lab-experience');
 
   assert.match(charter, /queued inbound VexExecution/i);
-  assert.match(charter, /six source-proven PARTNER_CIRCUIT controls[\s\S]*zero held controls/i);
+  assert.match(charter, /six source-proven PARTNER_CIRCUIT controls[\s\S]*zero\s+held controls/i);
   assert.match(charter, /twelve[\s\S]*Behavior\/Depth layouts[\s\S]*zero detected collisions/i);
   assert.equal(projection.state, 'WAITING_DEPENDENCIES');
   assert.ok(projection.sourceRefs.includes('github.pull.vexwork.276'));
