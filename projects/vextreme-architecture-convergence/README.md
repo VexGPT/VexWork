@@ -2,6 +2,106 @@
 
 [VXG RealForever]
 
+## 2026-11-09 currentization — Post-Partner Service / Widget / VexStream
+
+Consume this checkpoint before the historical Service candidate trail below.
+
+Current accepted Android source:
+
+~~~text
+VexLife-Android main
+e58093c4e4aed0d0c7737e674058810adb7a54a8
+
+Direct Family / Method
+    accepted current, including later #238/#240 realization-terminal semantics
+
+VexBehaviorFamily / SCAE
+    accepted compatibility for live consumers
+    != common new-family authoring route
+
+VexPartner
+    accepted current through merged #219
+
+Widget foundation
+    accepted current source
+    APP_WIDGET != PRODUCT_STATE_OWNER
+    CALLBACK != LONG_RUNNING_WORK_OWNER
+~~~
+
+Current concrete Service witnesses are intentionally different:
+
+~~~text
+VexStreamPlaybackService : MediaSessionService
+    owns MediaSession / ExoPlayer platform lifetime
+    owns current playback-provider observation attachment
+    owns Service-lifetime VexExecutionRoot custody for Widget publication
+    does not become Playback semantic truth
+
+VexMapsNavigationService : Service
+    owns foreground-Service lifetime
+    owns Android location collection + persistent notification realization
+    consumes/drives VexMapsNavigationProcess.session current truth
+    does not replace navigation domain/session truth
+~~~
+
+Current candidate status:
+
+~~~text
+#224 / #225
+    CLOSED / NOT MERGED
+    historical Service / typed-lifetime pressure only
+    != accepted architecture
+
+#233 -> #231
+    OPEN DRAFT candidate pressure
+    #231 proposes VexService current binding
+    stacked on #233
+    materially diverged from current main across later accepted Family realization changes
+    != integration-current architecture
+
+#221 / #222 / #223
+    useful VexStream migration / Partner pressure
+    not current-main integration authority
+~~~
+
+Therefore the active Post-Partner question is not “finish the old Service design.” It is:
+
+~~~text
+current Android main
+-> inspect materially different Service + Widget consumers
+-> subtract questions already owned by:
+     Family
+     Partner
+     Relay
+     Execution
+     Dependency
+     Android/platform realization
+-> identify the one recurring Service/lifetime question that remains
+-> pressure that question against current VexStream + Navigation
+-> only then decide whether VexService survives
+~~~
+
+The accepted Widget foundation is not an unsolved blank. Its current VexStream patient zero still uses
+live compatibility Behavior-family consumers for Playback / Queue / Repeat, so compatibility vocabulary
+must not be mistaken for the preferred new-family route. Foundation-level Widget wording should be
+currentized separately where it over-generalizes SCAE from that patient zero.
+
+Durable Android fresh-entry/currentness owner:
+
+~~~text
+github.issue.vexlife-android.243
+~~~
+
+Durable VexWork currentization owner:
+
+~~~text
+github.issue.vexwork.289
+~~~
+
+No Android source mutation, VexService acceptance, Behavior migration, READY, merge or release is
+implied by this currentization.
+
+
 ## Current architecture threshold — 2026-11-04
 
 The original VexSync / Family-Circuit pressure did its job: it exposed ownership boundaries while
