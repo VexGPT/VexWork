@@ -472,10 +472,16 @@ work.vexlife.new-beginnings.vision-companion-real-browser-witness
 
 work.vexlife.new-beginnings.vision-companion-product-surface
   COMPLETED
-  VexLifeVisionFamily = Held | Ready | Looking
-  LookNow -> RequestSnapshot
-  accepted Product presentation = Vision · Held
+
+work.vexlife.new-beginnings.vision-product-runtime-orchestration
+  READY / HIGH / ACTIVE
+  authorityDisposition = AUTHORIZED_BOUNDED
+  effectDisposition    = EFFECTS_BOUND
 ~~~
+
+The READY child above is the exact current SDK authoring work already admitted on PR #1939. Its
+authority is bounded to the three-path Process Factory source membrane; it does not authorize Product
+service wiring, live capture, visual-model input, Memory, training, or publication.
 
 Accepted external source now includes:
 
@@ -489,18 +495,18 @@ VexLife-Prod PR #54
   merged + lived accepted-main promotion PASS
 ~~~
 
-Current unconsumed edge:
+Current executable edge:
 
 ~~~text
-github.pull.vextreme-sdk.1939
-head = bc9b093b61b7ac5009f612d78c703ea431c19f5d
-changedFiles = 0
-exact three-path Process Factory product-runtime orchestration
+work.vexlife.new-beginnings.vision-product-runtime-orchestration
+-> github.pull.vextreme-sdk.1939
+-> exact Local Source Workspace AUTHORING custody
+-> exact three-path Process Factory implementation/proof
 ~~~
 
 So the next work is **not** another Root/frontier reconstruction and not another Vision redesign.
-VexWork points to the existing SDK source-writer edge; SDK/Local Source Workspace currentness then owns
-the exact authoring effect.
+VexWork now owns the actual current work coordinate; SDK/Local Source Workspace currentness owns the
+exact authoring effect.
 
 After that source is accepted, the trajectory continues through ordinary Product executable carriage,
 current Product service bridge, and one lived `LookNow`. Visual-model input remains a later,
