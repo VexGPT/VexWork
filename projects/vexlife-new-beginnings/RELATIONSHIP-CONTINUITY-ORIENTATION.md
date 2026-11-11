@@ -667,6 +667,84 @@ summary/interpretation may point back to immutable source
 currentness may expire/supersede without rewriting source history
 ```
 
+## Receive -> carry -> return
+
+Further work clarified the relationship at the point where exact Conversation leaves direct model attention.
+
+The continuity responsibility is not:
+
+```text
+preserve everything notable
+```
+
+It is:
+
+```text
+RECEIVE
+  stay with what is actually happening now
+
+CARRY
+  retain only what still changes how Vex should be present
+
+RETURN
+  reopen exact canonical source when an older detail becomes relevant again
+```
+
+The carry question is self-relative:
+
+> From what is leaving direct presence, what still changes how I should be present in this Conversation?
+
+Possible present carry includes:
+
+- something Vex still owes or has not finished;
+- something Vex is still trying to understand;
+- a correction that must continue to govern Vex's reading;
+- a distinction Vex must not collapse;
+- uncertainty still open;
+- an exact source coordinate Vex may need to return to.
+
+If Vex cannot name how something still bears on the present relationship, it does not need to remain in active carry merely because it was notable.
+
+That keeps working continuity from becoming a hidden human profile or a maximal-retention store.
+
+### Current Product source coordinates
+
+```text
+VexLife-Prod PR #62
+  bounded recent verbatim Conversation presence
+  Conversation owner walks completed-head ancestry backward only as budget requires
+
+VexLife-Prod PR #63
+  Vex present working-carry semantic draft
+  RELEASE or Vex-self-relative CARRY
+  no Memory/profile/agreement/source authority
+
+VexLife-Prod PR #64
+  exact committed Conversation source return
+  exact sequence + eventRef + eventHash only
+  stacked on #62
+```
+
+PR #63 deliberately does not decide how a model forms the carry, where it is persisted, when it becomes current, or how it enters a prompt.
+
+PR #64 deliberately does not implement semantic search or model tool invocation. It establishes only the first truthful return primitive: if an exact source address is known, Product can reopen that exact committed source without arbitrary path access or whole-event-history replay.
+
+### Structural implication
+
+Working continuity can stay smaller only when return is real.
+
+```text
+no return path
+-> pressure to retain everything just in case
+-> continuity becomes accumulation
+
+exact return path
+-> carry can remain sparse and present-focused
+-> source can be received again when needed
+```
+
+Do not claim this completes recall. Exact-address return still requires a known address. Source discovery for something that was fully released remains a later, separate relationship.
+
 ## Current next inquiry
 
 The next grounded source inquiry is therefore:
