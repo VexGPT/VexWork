@@ -612,6 +612,127 @@ Which proposed artifact would merely duplicate an existing owner?
 
 Only the genuinely ownerless relationship should earn new source.
 
+## First-design correction after carry capacity pressure
+
+Later source descent materially changed the first complete continuity direction.
+
+A model-authored PresentWorkingCarry remains useful research, but it is **not a required prerequisite** for the first continuity design.
+
+The reason is structural:
+
+```text
+exact source leaves because:
+  old source + retained source + current request
+  no longer fit the model window
+
+a second carry inference that rereads:
+  old source + retained source + current request
+  may exceed the same finite model window
+```
+
+The same contradiction appears at hard rollover if a second semantic handoff inference tries to reread the near-limit prompt plus the newly completed response.
+
+Therefore do not make semantic compression mandatory merely because exact source is leaving.
+
+### Smaller first-design relationship
+
+The current first-design direction is:
+
+```text
+exact recent Conversation while it fits
++ exact prior Vex response across hard rollover
++ bounded durable Memory when selected
++ conditional exact canonical Conversation source return
+  when older source becomes necessary
+```
+
+The exact prior Vex response is a useful hard-rollover bridge because it is already:
+
+- Vex-authored;
+- human-visible;
+- canonical Conversation;
+- bounded by the existing response output limit;
+- formed from the full prompt Vex actually saw;
+- source-addressable;
+- not hidden metadata;
+- not durable Memory;
+- not a profile of the human.
+
+The prior human request still does not need to replay under `WORKING_CHECKPOINT_SUCCESSOR`.
+
+### Minimal source ancestry
+
+A clean source world was formed without the experimental working-carry stack:
+
+```text
+VexLife-Prod PR #82
+branch = VXG-111026-vexlife-prod-minimal-continuity-a001
+head   = 7d150a7dd5141475e1f4f32e2aaba9f68e4e3b69
+
+parents:
+  #70 recent exact Conversation + Memory availability
+  #64 exact canonical Conversation return
+  #65 caller-bounded Memory capacity
+```
+
+This is the preferred first-design ancestry.
+
+### Conditional model-intent source return
+
+```text
+VexLife-Prod PR #81
+branch = VXG-111026-vexlife-prod-conversation-source-return-a001
+head   = f0ecfd457c88b7121b0ac916558fd2d1c157bea8
+parent = #82
+```
+
+The relationship is conditional:
+
+```text
+ordinary model output
+-> human answer
+
+exact internal source-return request
+-> no human-visible answer yet
+-> deterministic local lexical discovery
+-> exact canonical completed-turn source return
+-> later one final inference
+```
+
+Current discovery intentionally uses no embeddings/vector index/semantic acceptance/general search.
+
+It performs case-insensitive exact-substring matching over canonical completed turns, ranks deterministically, then re-opens only selected matches through exact Conversation return.
+
+No lexical match is a truthful `NO_MATCH`, not permission to invent recall.
+
+A source match too large for the supplied return allowance is `HELD_TOKEN_BUDGET`; exact source is not truncated merely to fit.
+
+### Current next edge
+
+Do not resume by rebuilding mandatory working carry.
+
+The next whole relationship is the **conditional two-provider-call source-return turn**.
+
+Before live wiring, preserve:
+
+```text
+first internal inference
+  may request exact source
+
+durable trace should retain:
+  initial prompt receipt identity
+  normalized source-return request
+  initial runtime/invocation identity
+  exact returned source refs
+  final prompt receipt identity
+
+do NOT retain:
+  raw private reasoning
+  raw provider response merely because it was internal
+```
+
+The final source-return prompt must reallocate finite attention so exact requested source is not crowded out by lower-priority Memory.
+
 ## Current implementation coordinates
 
 The relationship inquiry has now produced one Product source-placement coordinate and one bounded first source slice:
