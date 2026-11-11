@@ -30,6 +30,7 @@
     "app:runtime/",
     "app:ui/",
     "app:vexstream/playback/",
+    "app:vexstream/player/",
     "app:preview/",
     "arch:elements/src/main/kotlin/",
     "golden:",
