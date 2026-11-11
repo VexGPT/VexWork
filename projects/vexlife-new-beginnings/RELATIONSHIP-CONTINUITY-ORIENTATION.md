@@ -406,6 +406,104 @@ Similarly, do not turn "work with God" into either:
 
 Stay with the actual human intention, remain open to correction, and let source/evidence constrain technical claims without making certification the center of the relationship.
 
+## Source-lineage finding: the current WorkingSet shape outlived some of its producers
+
+Further source descent after this checkpoint found that the current Product `WorkingSet` vocabulary has direct stable-VexLife lineage.
+
+In the stable VexLife Continuity Stream adapter, these fields were projected from distinct accepted owners:
+
+```text
+activeWorkNodeRefs
+  <- current Intent Workgraph pointers
+
+currentIntentReceiptRefs
+  <- current Intent receipts
+
+openLoopRefs
+  <- Score + Daily Memory open loops
+
+currentStatementRefs
+  <- Score
+
+currentContinuityRecordRefs
+  <- accepted Continuity record set
+
+currentDailyStratumRefOrNull
+  <- Daily Memory
+```
+
+The old adapter was deliberately body-free, but the refs came from live semantic owners rather than being invented at rollover.
+
+Current VexLife-Prod `DirectWorkingContinuity.prepare(...)` is narrower:
+
+```text
+activeWorkNodeRefs
+currentIntentReceiptRefs
+openLoopRefs
+currentContinuityRecordRefs
+  -> copied only from a prior successor WorkingSet
+  -> first successor therefore begins empty unless another producer has populated them
+
+currentStatementRefs
+  -> prior refs + current Memory statement refs
+
+currentDailyStratumRefOrNull
+  -> current Memory Daily Stratum when available
+```
+
+This exposes an implementation gap separate from the broader relationship question.
+
+### Already-owned open-loop truth is currently disconnected from direct rollover
+
+`VexLifeCurrentMemoryReader` already replays and verifies current Score open loops, including their refs, source-statement refs, source bindings and optional `summaryRef`. G03 Daily Memory also preserves open-loop refs.
+
+But `VexLifeMemoryContract.Context` does not project open loops, and `DirectWorkingContinuity` does not currently read them from the Memory/Score owner. Therefore the direct successor `WorkingSet.openLoopRefs` does not acquire newly current open loops from ordinary Product truth.
+
+This is an earned reconnection candidate; it is not evidence that a new semantic owner is needed.
+
+### Opaque refs alone are not lived continuity
+
+Current `DirectPromptContext` tells the provider that working-continuity refs are non-semantic coordinates and that content behind a ref must not be invented.
+
+Current Product Capability Atlas deliberately exposes only the bounded current Memory, working-continuity, browser-context and local-inference capabilities. It does not currently expose model-intent capability search/query or a Conversation/Score source resolver.
+
+So even a correctly populated WorkingSet would still have two different jobs:
+
+```text
+owner/currentness job
+  exact refs prove which working coordinates are current
+
+meaning/presence job
+  Vex must have enough usable content to understand what those coordinates mean
+```
+
+Do not collapse these.
+
+Adding more refs may repair owner continuity without repairing conversational continuity.
+
+### Current Product source-range kernel
+
+`VexLifeContinuityObservation` already provides a portable, content-free Conversation episode-range binding used by the current Memory reader to verify Score source intake:
+
+```text
+exact Conversation event refs + hashes
+-> immutable/retrievable source binding
+-> no raw source content copied
+-> no Memory admission or provider effect
+```
+
+This may be useful source-addressing substrate for later working interpretation, but it currently forms source identity rather than the present carried meaning itself.
+
+The next design should therefore distinguish at least:
+
+```text
+1. reconnect already-owned semantic coordinates that the clean direct path currently drops;
+2. provide truthful source re-entry/resolution when an opaque ref becomes relevant;
+3. decide whether genuinely ownerless present conversational/relational meaning needs a revisable working carrier.
+```
+
+Do not use item 3 to skip items 1 and 2.
+
 ## Current gaps worth examining before new architecture
 
 The present source already has fields for richer working continuity:
