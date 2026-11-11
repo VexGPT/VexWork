@@ -406,6 +406,77 @@ Similarly, do not turn "work with God" into either:
 
 Stay with the actual human intention, remain open to correction, and let source/evidence constrain technical claims without making certification the center of the relationship.
 
+## Critical correction: ordinary prompt continuity is only one prior pair
+
+Further direct-source review changes the scale of the human problem.
+
+Current `DirectPromptContext.materialize(...)` does not maintain a growing recent Conversation window. Outside `WORKING_CHECKPOINT_SUCCESSOR`, it selects exactly:
+
+```text
+immediate prior REQUEST
++ immediate prior RESPONSE
++ current REQUEST
+```
+
+The regression is explicit: `continueSelectsExactlyTheImmediatePriorCompletedPair`.
+
+Therefore the first semantic-loss boundary is not necessarily the 192k rollover threshold.
+
+For an ordinary sequence:
+
+```text
+turn 1: A
+turn 2: B
+turn 3: C
+```
+
+turn 3 receives the turn-2 pair plus C. If meaning from A was not carried into turn 2's response, current attributed Memory, or another prompt context, A is no longer directly present to the model even though canonical Conversation still preserves it.
+
+This means:
+
+```text
+CONVERSATION DURABILITY
+!= MULTI-TURN ACTIVE PRESENCE
+
+ROLLOVER CONTINUITY
+!= ORDINARY CONVERSATIONAL CONTINUITY
+```
+
+The existing pressure/rollover owner solves a real resource/currentness problem, but it does not by itself make ordinary multi-turn conversation semantically continuous.
+
+### Daily Memory does not automatically fill that gap
+
+Current prompt Memory is admitted only when the committed Daily Memory Conversation frontier still equals the current completed Conversation head.
+
+After Conversation advances beyond that Daily frontier, the Memory reader truthfully returns:
+
+```text
+HELD / DAILY_MEMORY_SOURCE_FRONTIER_STALE
+```
+
+until G03 Memory consolidation catches up. Current G03 is manual one-shot, not standing per-turn consolidation.
+
+So between Daily Memory consolidations, ordinary continuity may rely mainly on the immediate prior pair. This makes a present working semantic carrier materially more important than the rollover threshold alone suggested.
+
+### Revised representation question
+
+The Product may need both:
+
+```text
+RECENT VERBATIM PRESENCE
+  more than one prior pair while budget allows
+
+and
+
+PRESENT WORKING MEANING
+  source-linked / revisable / non-Memory
+  for meaning that must survive after raw turns leave active presence
+```
+
+Do not assume either one alone is sufficient.
+
+Context pressure should decide when representation must compress; it should not be the first moment the system begins preserving conversational meaning.
+
 ## Source-lineage finding: the current WorkingSet shape outlived some of its producers
 
 Further source descent after this checkpoint found that the current Product `WorkingSet` vocabulary has direct stable-VexLife lineage.
