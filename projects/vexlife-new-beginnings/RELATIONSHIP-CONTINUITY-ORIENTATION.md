@@ -1306,6 +1306,59 @@ The next dependent effect is therefore exact repository Kotlin/Gradle execution 
 followed by source-grounded review of any resulting failures. Do not add another continuity
 abstraction merely because execution is currently held.
 
+## Exact repository proof handoff formed
+
+The preferred live path has now reached an exact host proof request.
+
+```text
+PR #89 candidate
+head = 37938778a03a5c6fe5928d393b7ca021be2c2c77
+tree = 40f34822fd13bc0eae365900ef591f83457935cc
+fixed evidence base = f78a9f029de1e1d987cd33e162d86ea59c36bf86
+```
+
+Digest-bound request:
+
+```text
+VEXLIFE-PR89-SOURCE-OWNER-PROOF-A001--sha256-8152f5a399ea0d38f04c230596afdd3171b6beaeae5fe05f38e25b8dbd441471.zip
+sha256 = 8152f5a399ea0d38f04c230596afdd3171b6beaeae5fe05f38e25b8dbd441471
+```
+
+The bootstrap verifies exact SDK source before importing compiler/executor:
+
+```text
+Vextreme-SDK head = 38de26eb9df4ccef5a3d8f1c05c708bbd6b16f51
+tree = 46d29d57c5a0ef6e7107b4dca19b40e643ee7f55
+current-contract ref = source.vexrelay.current-contract/v1
+minimum accepted ancestor = 6cdd5c69535a138baeb6dd87d6a6d74bb9d0d2c6
+recipe compiler = vex.relay.recipe-compiler/v2
+```
+
+Runtime formation uses the SDK's own `compileRelayRecipe(ExactHeadSourceOwnerProof)` and
+`executeRelayTask(...)`.
+
+Exact proof command:
+
+```text
+cached Gradle 9.6.0 executable
+jvmTest --offline --no-daemon --stacktrace
+```
+
+The Gradle distribution must already exist under the host wrapper cache. Missing cache stops before
+any Gradle network/dependency fetch. VexLife-Prod itself is cloned publicly by the Relay repository
+adapter at the exact candidate head.
+
+The canonical return remains the next truth-bearing artifact.
+
+```text
+PROOF HANDOFF FORMED
+!= JVM TEST PASS
+!= merge ready
+!= main acceptance
+```
+
+Do not continue source design merely because the canonical RETURN has not yet arrived.
+
 ## Current next inquiry
 
 The next grounded source inquiry is therefore:
