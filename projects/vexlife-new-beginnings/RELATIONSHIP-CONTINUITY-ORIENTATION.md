@@ -1015,10 +1015,15 @@ VexLife-Prod PR #83
   branch = VXG-111026-vexlife-prod-source-return-final-prompt-a001
   head   = b497f6d40506d418186c98fe724452e7380b8bb2
 
-source-return turn evidence
+VexLife-Prod PR #88
+  [Continuity][DRAFT] Preserve normalized source-return turn evidence
   branch = VXG-111026-vexlife-prod-source-return-turn-evidence-a001
-  head   = d43179bdbfb0358b1e2b190a71be7051863cfdf0
-  no PR observed at this checkpoint
+  head   = f78a9f029de1e1d987cd33e162d86ea59c36bf86
+
+VexLife-Prod PR #89
+  [Continuity][DRAFT] Wire conditional exact-source return into the live Companion turn
+  branch = VXG-111026-vexlife-prod-source-return-live-turn-a001
+  head   = 37938778a03a5c6fe5928d393b7ca021be2c2c77
 ```
 
 This path is intentionally **not dependent on the working-carry stack**.
@@ -1139,6 +1144,167 @@ SOURCE FORMED / PATCH REVIEWED
 != merge ready
 != main acceptance
 ```
+
+## Preferred-path live currentness — 2026-11-11
+
+The smaller exact-source continuity trajectory has now advanced through the real direct Companion turn.
+
+### Current preferred stack
+
+```text
+#82  minimal exact-source continuity ancestry
+  head 7b8d595a28a0c51dd4dd4af1833dfd4bbcc5ffe9
+
+#81  conditional exact Conversation source return
+  head b4af2ddcf35c92862dce7b6886fc0b567cd9074d
+
+source-return prompt base
+  head 6fde40c8dd3eb5383c6142d1cba3139529848b4b
+
+#83  final exact-source-return prompt allocation
+  head b497f6d40506d418186c98fe724452e7380b8bb2
+
+#88  normalized source-return turn evidence
+  branch VXG-111026-vexlife-prod-source-return-turn-evidence-a001
+  head   f78a9f029de1e1d987cd33e162d86ea59c36bf86
+
+#89  live conditional source-return Companion turn
+  branch VXG-111026-vexlife-prod-source-return-live-turn-a001
+  head   37938778a03a5c6fe5928d393b7ca021be2c2c77
+```
+
+#88 and #89 are open draft PRs and clean/mergeable in provider truth at this checkpoint.
+
+### #88 evidence relationship
+
+```text
+internal source-return inference
+-> normalized AttemptTrace only
+
+exact source return
+-> final prompt
+
+final human-answer inference
+-> canonical RESPONSE
+-> final runtime/invocation evidence
+
+AttemptTrace + final prompt
+-> compact sourceReturnTrace
+-> existing turn-runtime evidence sidecar v2
+```
+
+Durable evidence retains normalized identities, returned exact source refs and prompt/invocation
+fingerprints. It does not retain raw private reasoning or raw provider response.
+
+Historical runtime-evidence v1 remains readable; a disk-level regression rewrites a fresh v2 fixture
+into the exact v1 wire shape, recomputes evidence/context hashes and reads it through the current
+owner.
+
+### #89 live relationship
+
+Ordinary turn:
+
+```text
+initial continuity prompt
++ conditional source-return protocol
+-> one provider inference
+-> ordinary Vex answer
+-> one canonical RESPONSE
+```
+
+Conditional return:
+
+```text
+initial inference
+-> exact VEXLIFE_CONVERSATION_SOURCE_RETURN_REQUEST/v1
+-> internal control only
+-> deterministic canonical Conversation discovery
+-> exact selected source return
+-> fresh runtime + Memory/currentness recheck
+-> final prompt
+-> second/final inference
+-> one canonical human RESPONSE
+```
+
+Only the final human-answer inference is persisted as the turn's runtime/invocation evidence.
+The first internal control inference survives only through the compact normalized trace.
+
+`RETURNED`, `NO_MATCH` and `HELD_TOKEN_BUDGET` all receive one final inference so Vex can answer
+from returned source or preserve uncertainty without inventing recall.
+
+A final inference may not request source again. The live turn fails closed before RESPONSE/context/head
+commit with:
+
+```text
+SOURCE_RETURN_RECURSION_NOT_ADMITTED
+```
+
+### Human-progress boundary
+
+The source-return protocol creates one deliberate presentation tradeoff.
+
+Raw reasoning/content is buffered only until the first content bytes distinguish:
+
+```text
+ordinary human answer
+vs
+internal source-return control
+```
+
+Ordinary answer:
+- buffered reasoning/content is flushed once the path is known;
+- subsequent deltas stream normally.
+
+Internal source-return request:
+- retrieval reasoning/control JSON remains hidden from human progress.
+
+Therefore early reasoning on an ordinary answer may be delayed briefly. It is not persisted or
+discarded. This prevents an internal control exchange from flashing as Vex's human-facing answer.
+
+### Hard-rollover bridge remains minimal
+
+The durable working checkpoint / SuccessorContext remains reference-only and transcript-free.
+
+The provider successor prompt may nevertheless carry:
+
+```text
+working successor coordinates
++ exact immediately prior Vex RESPONSE
++ current human request
++ caller-bounded current Memory
+```
+
+The prior human request is not replayed.
+
+This is the preferred first-design hard-rollover bridge. Do not substitute the experimental
+working-carry handoff merely because that research is newer.
+
+### Parallel carry research remains parallel
+
+PRs #85/#87 and the experimental live-carry branch remain useful source research only.
+
+They are **not prerequisites** for #88/#89 and should not be silently merged into the preferred path.
+
+### Current dependent predicate
+
+The preferred live path is now source-formed and patch-reviewed.
+
+It is not yet repository-toolchain proven:
+
+```text
+#89 exact head = 37938778a03a5c6fe5928d393b7ca021be2c2c77
+
+SOURCE FORMED / PATCH REVIEWED
+!= Kotlin/Gradle PASS
+!= merge ready
+!= main acceptance
+```
+
+No GitHub workflow is attached to #89 at this checkpoint.
+
+The next dependent effect is therefore exact repository Kotlin/Gradle execution of the #89 stack,
+followed by source-grounded review of any resulting failures. Do not add another continuity
+abstraction merely because execution is currently held.
 
 ## Current next inquiry
 
