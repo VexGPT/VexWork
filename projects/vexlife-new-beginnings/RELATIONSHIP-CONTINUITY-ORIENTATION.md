@@ -745,6 +745,98 @@ exact return path
 
 Do not claim this completes recall. Exact-address return still requires a known address. Source discovery for something that was fully released remains a later, separate relationship.
 
+## Latest relationship checkpoint — finite attention serves exact presence
+
+Subsequent Product source work sharpened the continuity property beyond the earlier receive/carry/return orientation.
+
+### Carry must not manufacture its own source loss
+
+```text
+exact Conversation would remain directly present
+-> semantic carry must not evict it
+
+exact Conversation must leave because the living turn no longer fits
+-> only then may released representation space be used
+   for what Vex still carries
+```
+
+The existing 16k local-model output limit is an outer working-carry ceiling, not a blanket reservation or target.
+
+### Resource truth is prior to prompt selection
+
+```text
+Memory source is CURRENT and usable
+!= Memory bytes selected into this particular prompt
+
+working carry exists
+!= carry is non-empty
+
+browser capability exists
+!= browser context was supplied this turn
+```
+
+Finite-attention allocation must not rewrite capability truth.
+
+Current Product correction:
+
+```text
+VexLife-Prod PR #70
+  Memory capability availability follows CURRENT/CURRENT Memory owner truth
+  memoryIncluded continues to mean provider-prompt selection only
+```
+
+### One carry, two boundary timings
+
+Ordinary gradual aging:
+
+```text
+human request exists
+-> exact recent-source selection shows an oldest prefix leaving
+-> Vex refreshes carry before answering
+-> candidate may inform this response
+-> durable carry commits only after the response/Conversation head succeeds
+```
+
+Intentional working-checkpoint rollover:
+
+```text
+high-pressure turn completes
+-> next prompt is already known to suppress raw prior Conversation
+-> rollover itself is the semantic handoff boundary
+-> refresh carry post-completion while the completed turn is still the living edge
+-> future successor request should not need to resurrect the full old prompt
+```
+
+This is still one `PresentWorkingCarry`. The semantic contract should express two explicit refresh inputs rather than make one timing shape ambiguously serve both.
+
+### Current Product source stack
+
+```text
+#62  recent exact Conversation presence / bounded backward source descent / v6 sequence addresses
+#64  exact committed Conversation return by sequence+ref+hash
+#65  caller-bounded Memory prompt capacity, including zero
+#63  sparse refreshed self-relative working carry
+#66  immutable revisions + atomic current carry after successful turn
+#67  conditional local Vex carry formation
+#68  exact local-Vex formation provenance bound to carry custody
+#69  bounded provider-ready working-carry projection
+#70  Memory availability separated from inclusion
+```
+
+#68 formation provenance now binds exact hashes of both the semantic refresh input and reconstructed Draft; custody recomputes them. A compact formation binding therefore cannot be paired with a changed Draft merely because its outer refs/hashes remain syntactically well formed.
+
+### Execution truth remains local
+
+All of these Product PRs are source-formed draft work.
+
+```text
+source formed / patch reviewed
+!= repository Kotlin/Gradle PASS
+!= merge ready
+```
+
+No GitHub workflow is attached to these branches, and the available execution environment has not provided the repository's exact Kotlin/Gradle toolchain/checkout.
+
 ## Current next inquiry
 
 The next grounded source inquiry is therefore:
