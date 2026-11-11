@@ -819,11 +819,29 @@ This is still one `PresentWorkingCarry`. The semantic contract should express tw
 #66  immutable revisions + atomic current carry after successful turn
 #67  conditional local Vex carry formation
 #68  exact local-Vex formation provenance bound to carry custody
-#69  bounded provider-ready working-carry projection
+#69  CLOSED WITH NO SOURCE DELTA
+     proposed blanket carry prompt allowance did not land
 #70  Memory availability separated from inclusion
+#71  explicit GRADUAL_AGING vs ROLLOVER_HANDOFF carry refresh timing
 ```
 
-#68 formation provenance now binds exact hashes of both the semantic refresh input and reconstructed Draft; custody recomputes them. A compact formation binding therefore cannot be paired with a changed Draft merely because its outer refs/hashes remain syntactically well formed.
+#68 formation provenance binds exact hashes of both the semantic refresh input and reconstructed Draft; custody recomputes them. A compact formation binding therefore cannot be paired with a changed Draft merely because its outer refs/hashes remain syntactically well formed.
+
+#71 preserves one `PresentWorkingCarry` while separating the two moments that can refresh it:
+
+```text
+GRADUAL_AGING
+  request already exists
+  refresh before human-facing response
+  currentness advances only if that request completes
+
+ROLLOVER_HANDOFF
+  high-pressure turn already completed
+  no future request exists yet
+  refresh/commit only while that completed head is still Conversation-current
+```
+
+This prevents live turn composition from pretending that pre-response aging and post-completion rollover are the same causal event.
 
 ### Execution truth remains local
 
