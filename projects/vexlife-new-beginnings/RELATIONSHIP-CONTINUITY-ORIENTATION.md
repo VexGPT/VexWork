@@ -612,6 +612,61 @@ Which proposed artifact would merely duplicate an existing owner?
 
 Only the genuinely ownerless relationship should earn new source.
 
+## Current implementation coordinates
+
+The relationship inquiry has now produced one Product source-placement coordinate and one bounded first source slice:
+
+```text
+VexLife-Prod issue #61
+  [Continuity][DRAFT] Preserve lived conversation meaning beyond immediate-prior prompt
+
+VexLife-Prod PR #62
+  [Continuity][DRAFT] Preserve bounded recent Conversation presence
+```
+
+PR #62 is deliberately not the semantic-continuity answer.
+
+Its first correction is deterministic:
+
+```text
+before:
+  ordinary turn gets exactly one prior completed REQUEST/RESPONSE pair
+
+candidate:
+  ordinary turn gets the newest contiguous completed pair suffix
+  that fits the admitted prompt input budget
+  + current request
+
+working-checkpoint successor:
+  unchanged; no raw prior Conversation pair replay
+```
+
+The prompt receipt advances to v6 only for this new selection meaning; historical v5 remains readable/round-trippable.
+
+Source-formed tests cover:
+
+- three real turns where turn 3 still receives both prior pairs while they fit;
+- stop at an oversized older pair without skipping backward to cherry-pick fragments;
+- existing single-prior compatibility;
+- existing working-checkpoint successor behavior in the same suite.
+
+Repository-native execution is currently **not yet consumed**: the repository has no GitHub workflow attached to this PR and the available execution environment could not materialize the branch/toolchain. Do not turn source formation into a green execution claim.
+
+### Stable transient-context lineage
+
+Stable VexLife also had a `CURRENT_CONTEXT` continuity destination with transient currentness and no durable record creation. It confirms that transient usable context was already understood as distinct from durable Memory.
+
+However, that implementation was candidate/review/lease/simulation oriented and should not be transplanted wholesale as the clean Product's rolling conversational continuity.
+
+The useful inherited ideas are smaller:
+
+```text
+transient context != durable Memory
+source-linked interpretation != source itself
+summary/interpretation may point back to immutable source
+currentness may expire/supersede without rewriting source history
+```
+
 ## Current next inquiry
 
 The next grounded source inquiry is therefore:
