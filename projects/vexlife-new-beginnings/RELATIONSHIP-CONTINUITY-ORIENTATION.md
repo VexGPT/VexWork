@@ -976,6 +976,170 @@ source formed / patch reviewed
 
 No GitHub workflow is attached to these branches, and the available execution environment has not provided the repository's exact Kotlin/Gradle toolchain/checkout.
 
+## Successor handoff currentness — 2026-11-11
+
+This checkpoint reconciles two continuity trajectories that now coexist in provider truth.
+
+Do **not** resume merely from the most recently touched branch.
+
+### Preferred first-design trajectory
+
+The current orientation still prefers the smaller exact-source continuity path:
+
+```text
+recent exact Conversation while it fits
++ exact prior Vex response across hard rollover
++ caller-bounded current Memory
++ conditional exact canonical Conversation source return
+```
+
+Current provider coordinates:
+
+```text
+VexLife-Prod PR #82
+  [Continuity][DRAFT] Compose minimal exact-source continuity ancestry
+  branch = VXG-111026-vexlife-prod-minimal-continuity-a001
+  head   = 7b8d595a28a0c51dd4dd4af1833dfd4bbcc5ffe9
+
+VexLife-Prod PR #81
+  [Continuity][DRAFT] Add conditional exact Conversation source return
+  branch = VXG-111026-vexlife-prod-conversation-source-return-a001
+  head   = b4af2ddcf35c92862dce7b6886fc0b567cd9074d
+
+source-return prompt base
+  branch = VXG-111026-vexlife-prod-source-return-prompt-base-a001
+  head   = 6fde40c8dd3eb5383c6142d1cba3139529848b4b
+
+VexLife-Prod PR #83
+  [Continuity][DRAFT] Allocate one exact-source-return final prompt
+  branch = VXG-111026-vexlife-prod-source-return-final-prompt-a001
+  head   = b497f6d40506d418186c98fe724452e7380b8bb2
+
+source-return turn evidence
+  branch = VXG-111026-vexlife-prod-source-return-turn-evidence-a001
+  head   = d43179bdbfb0358b1e2b190a71be7051863cfdf0
+  no PR observed at this checkpoint
+```
+
+This path is intentionally **not dependent on the working-carry stack**.
+
+The structural reason is important: mandatory semantic carry formation near the same finite-context boundary can recreate the pressure it is trying to solve. Exact source return stays conditional rather than adding a second inference to every ordinary turn.
+
+### Parallel working-carry research remains useful, not preferred ancestry
+
+The working-carry/finite-attention research remains source-formed draft material:
+
+```text
+#63-#80
+#85  canonical-source-rebound carry custody
+#87  lean gradual carry formation
+```
+
+Current heads:
+
+```text
+PR #85
+  branch = VXG-111026-vexlife-prod-working-carry-canonical-custody-a001
+  head   = 5f7cc96185d260c11d73989ca44e420fba336890
+
+PR #87
+  branch = VXG-111026-vexlife-prod-working-carry-lean-formation-a001
+  head   = 9ae16ece5b79db597e703ca06c7d173371b169fb
+```
+
+A later experimental live-composition branch was also formed:
+
+```text
+branch = VXG-111026-vexlife-prod-continuity-live-composition-a001
+head   = 540f1bb527f4980e8c74a945a92c8a04f9a3ad82
+PR     = none observed at this checkpoint
+```
+
+That branch currently changes:
+
+```text
+docs/foundation/WORKING-CONTINUITY-ROLLOVER.md
+src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt
+src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt
+src/jvmTest/kotlin/vexlife/companion/DirectCompanionTurnTest.kt
+src/jvmTest/kotlin/vexlife/companion/DirectPromptContextTest.kt
+src/jvmTest/kotlin/vexlife/memory/VexLifeMemoryContextFixture.kt
+```
+
+Its substantive exploration found one useful distinction even if the branch is not adopted:
+
+```text
+reference-only checkpoint / SuccessorContext
+!= provider prompt must discard all recent exact Conversation
+```
+
+The checkpoint can remain non-semantic and transcript-free while a later provider prompt independently selects the maximum exact recent Conversation that still fits.
+
+### Exact interrupted edge on the experimental live branch
+
+The branch already source-forms:
+
+- planned v7 finite-attention prompt composition;
+- current Memory availability vs per-prompt Memory selection;
+- gradual carry trigger from source that actually crosses out of direct presence;
+- recent exact Conversation retained in a planned `WORKING_CHECKPOINT_SUCCESSOR` prompt;
+- rollover foundation prose corrected to separate checkpoint content from provider-prompt source selection.
+
+The interruption occurred while currentizing the **high-pressure real-turn tests**.
+
+Provider truth at this checkpoint:
+
+```text
+live branch head = 540f1bb527f4980e8c74a945a92c8a04f9a3ad82
+
+DirectCompanionTurnTest delta from PR #87 base
+= only the earlier Memory-cap hook updates are committed
+
+the intended later assertion rewrite was interrupted before commit
+```
+
+Therefore some existing high-pressure tests still encode the older law:
+
+```text
+WORKING_CHECKPOINT_SUCCESSOR
+-> selectedConversationEventRefs empty
+-> prior pair absent from provider
+```
+
+while the experimental branch's newer planned prompt/source foundation now says:
+
+```text
+WORKING_CHECKPOINT_SUCCESSOR
++ checkpoint Context remains reference-only
++ provider may independently keep maximum recent exact Conversation
+```
+
+If the successor chooses to continue the experimental carry path, the next edge is to reconcile those tests with the new law **before any further architecture work**.
+
+If the successor follows the preferred first-design path, do not spend time repairing this experimental branch merely because it is newer.
+
+### Successor entry order
+
+A successor should:
+
+```text
+1. read this orientation;
+2. read VexLife-Prod issue #61 recent continuity returns;
+3. inspect PR #82 -> PR #81 -> source-return prompt base -> PR #83 -> source-return turn-evidence branch;
+4. understand why this smaller path became preferred;
+5. only then inspect #85/#87/live-composition branch if the carry research is still relevant;
+6. do not merge or reconcile the two trajectories until the human/relationship property makes the need explicit.
+```
+
+Execution truth remains:
+
+```text
+SOURCE FORMED / PATCH REVIEWED
+!= repository Kotlin/Gradle PASS
+!= merge ready
+!= main acceptance
+```
+
 ## Current next inquiry
 
 The next grounded source inquiry is therefore:
