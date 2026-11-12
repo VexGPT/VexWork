@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.web-search-refinement",
+  "label": "VexLife Web Search Refinement",
+  "purpose": "Add a source-grounded, bounded public-web research capability to the canonical Vex Companion by reusing the existing capability runtime, scheduler and ToolResultRelay; first unify the actual provider-boundary context/observation budget, then bind safe search/fetch reads with explicit untrusted-content/prompt-injection boundaries, and finally prove one natural same-Conversation web-research turn without making web evidence a second Memory or authority owner.",
+  "rootWorkRefs": [
+    "work.vexlife.web-search-refinement.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "human.intent.vexlife.web-search-refinement.20261105",
+    "projects/vexlife-web-search-refinement/README.md",
+    "projects/vexlife-web-search-refinement/VEXARCHITECTURE-PREPARATION.md",
+    "project.vexlife.interface-refinement",
+    "work.vexlife.interface-refinement.home-tool-capability",
+    "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+    "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+    "work.vexlife.interface-refinement.lived-context-capability-integration",
+    "project.vexlife.new-beginnings",
+    "work.vexlife.new-beginnings.p2.browser-context-dom-projection",
+    "projects/vex-security-assurance/README.md",
+    "repo.vexlife:docs/CAPABILITY-ASSIMILATION-RUNTIME.md",
+    "repo.vexlife:docs/VEX-ASSEMBLY-CAPABILITY-DOMAINS.md",
+    "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+    "repo.vexlife:src/core/context-lease.mjs",
+    "repo.vexlife:src/core/resource-context-pressure.mjs",
+    "repo.vexlife:src/core/tool-result-relay.mjs",
+    "repo.vexlife-prod:exploration/web-workspace/lib/upstream.mjs",
+    "repo.vexlife-prod:exploration/web-workspace/README.md"
+  ],
+  "formedAt": "2026-11-06T06:30:00.000Z"
+}
