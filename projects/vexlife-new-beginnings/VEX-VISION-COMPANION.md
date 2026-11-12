@@ -695,7 +695,7 @@ Current child:
 
 ~~~text
 work.vexlife.new-beginnings.vision-scope-current-context
-state              READY
+state              RUNNING
 priority           HIGH
 authority          NO_AUTHORITY
 effects            NO_EFFECTS
@@ -728,6 +728,11 @@ selected-target transient outline
 SourceOwner A001 stopped in Swift proof-harness/toolchain binding
 candidate defect not established
 next = corrected A002 proof formation
+
+SDK PR #1946
+open draft selected-scope Process Factory contract
+exact 3-new-path candidate
+SourceOwner proof = PENDING
 ~~~
 
 The next implementation sequence is:
@@ -872,9 +877,14 @@ Current authoring boundary:
 
 ~~~text
 VexWork continuity/source = CURRENTIZED on PR #275
-Process Factory placement request = POSTED
-Safety boundary question = POSTED
-new SDK source mutation = NOT YET ADMITTED
+Safety disposition = github.issue.vextreme-sdk.226.comment.6821018321
+Process Factory placement = github.issue.vextreme-sdk.241.comment.6821025379
+Operations current-entry = github.issue.vextreme-sdk.223.comment.6821036077
+Root writer allocation = github.issue.vextreme-sdk.1574.comment.6821041312
+writer claim = github.issue.vextreme-sdk.1574.comment.6821060489
+SDK source candidate = github.pull.vextreme-sdk.1946
+source authoring state = RUNNING
+SourceOwner proof = PENDING
 PR #1945 one-shot target-feedback correction = separate current work
 ~~~
 
