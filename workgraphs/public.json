@@ -7861,7 +7861,7 @@
       "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
       "label": "VexArchitecture Post Partner",
-      "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded current-source checkpoint. Current Android main e58093c4e4aed0d0c7737e674058810adb7a54a8 keeps Direct Family/Method accepted current, Behavior/SCAE as live compatibility, Partner accepted through #219, and the Widget foundation accepted. Concrete VexStream PlaybackService and VexMaps NavigationService remain the current Service witnesses. Closed/unmerged #224/#225 are historical pressure only, while open #233 -> #231 remain candidate pressure requiring current-main re-derivation before any VexService acceptance. Inventory sustained Services, Widget/system surfaces, receiver/admission/lifecycle seams and other repeated platform boundaries from current source; formalize new reusable architecture only when materially different consumers preserve one independent question after existing Family, Partner, Relay, Execution, Dependency and platform ownership are subtracted.",
+      "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded current-source checkpoint. Current Android main d857a92371555472e0303b18eadf353da2a868d6 keeps Direct Family/Method accepted current, VexStream Playback/Queue/Repeat on current Direct VexFamily source, Partner accepted through #219, and the Widget foundation accepted. The Service-fractal child has now re-derived the current Service witnesses: the recurring relationship that survives subtraction is a sustained realization host, while a universal VexService<Service, Current> root is not earned by current Playback + Navigation source. The broader Post-Partner parent remains RUNNING to inventory Broadcast/Receiver, permission/admission and other materially different platform boundaries; formalize another reusable root only when current source preserves one independent question after Family, Partner, Store, Relay, Execution, Dependency, Widget and platform ownership are subtracted.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -7890,21 +7890,25 @@
         "github.issue.vexlife-android.243",
         "git.commit.vexlife-android.e58093c4e4aed0d0c7737e674058810adb7a54a8",
         "github.pull.vexlife-android.231",
-        "github.pull.vexlife-android.233"
+        "github.pull.vexlife-android.233",
+        "git.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+        "github.pull.vexwork.293",
+        "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
+        "github.issue-comment.vexlife-android.243.6818068229"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-07T14:00:00.000Z",
-      "updatedAt": "2026-11-10T06:58:00.000Z"
+      "updatedAt": "2026-11-12T07:55:44.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
       "label": "Formalize Service lifecycle and fractal cross-Service convergence",
-      "purpose": "Re-derive Service lifetime and background convergence from current Android main rather than treating historical candidates as accepted architecture. Current VexStreamPlaybackService owns MediaSession/ExoPlayer platform lifetime plus Service-lifetime execution custody for widget publication without becoming Playback semantic truth; current VexMapsNavigationService owns foreground-Service/location/notification realization while VexMapsNavigationProcess.session remains navigation truth. Accepted Widget architecture keeps APP_WIDGET != PRODUCT_STATE_OWNER and CALLBACK != LONG_RUNNING_WORK_OWNER. Closed #224/#225 remain useful historical pressure; open #233 -> #231 are newer candidate pressure but materially stale against current main and later Family realization semantics. Keep this Work RUNNING until current-source pressure shows what recurring Service question remains after Family/Partner/Relay/Execution/Dependency/platform ownership are subtracted; only then decide whether a reusable VexService root or smaller composition guidance is earned.",
+      "purpose": "Close the Service-fractal architecture question from current Android source rather than historical candidates. At Android d857a92371555472e0303b18eadf353da2a868d6, VexStreamPlaybackService hosts MediaSession/ExoPlayer, attaches Media3PlayerConnection to the process VexStreamPlayerStore and owns Service-lifetime Widget publication custody without requiring Playback semantic current awareness; VexMapsNavigationService hosts foreground/location/speech/notification realization and borrows VexNavigationSession.current because those concrete decisions require it. Accepted Widget source keeps remote SurfaceState and bounded callbacks separate from product State and long-running work. After subtracting Family, Partner, Store, Relay, Execution, Dependency, Widget and Android platform ownership, the repeated relationship is sustained realization hosting: a longer-lived platform host attaches, maintains and tears down concrete realization resources after shorter caller/UI lifetimes end without becoming semantic truth owner. Current source therefore earns smaller composition guidance, not VexService<Service, Current>, universal Service.current, mandatory VexExecution/ServiceScope, or BackgroundServiceRelay. Keep this child RUNNING only through exact VexWork quality review/integration of that source decision; if clear, it may close without Android runtime mutation while the parent continues with other Post-Partner platform boundaries.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -7938,14 +7942,22 @@
         "github.issue.vexlife-android.243",
         "git.commit.vexlife-android.e58093c4e4aed0d0c7737e674058810adb7a54a8",
         "github.pull.vexlife-android.231",
-        "github.pull.vexlife-android.233"
+        "github.pull.vexlife-android.233",
+        "git.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+        "github.pull.vexwork.293",
+        "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
+        "github.issue-comment.vexlife-android.243.6818068229",
+        "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexGlanceAppWidget.kt",
+        "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexWidgetSurfaceState.kt"
       ],
       "formationProcessRefOrNull": null,
-      "nextProcessRefs": [],
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-07T18:00:00.000Z",
-      "updatedAt": "2026-11-10T06:58:00.000Z"
+      "updatedAt": "2026-11-12T07:55:44.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",

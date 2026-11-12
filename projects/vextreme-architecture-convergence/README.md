@@ -2,6 +2,167 @@
 
 [VXG RealForever]
 
+
+## 2026-11-11 current-source subtraction — sustained realization host, not a VexService current root
+
+This checkpoint supersedes the 2026-11-09 Service witness assumptions below where current Android source has
+since moved. Preserve the older checkpoint as provenance; consume this one first for new Post-Partner work.
+
+Current accepted Android source:
+
+~~~text
+VexLife-Android main
+d857a92371555472e0303b18eadf353da2a868d6
+
+VexStream Playback / Queue / Repeat
+    Direct VexFamily consumers on current main
+
+VexStreamPlayerPartner
+    current outside Player request / observation boundary
+
+VexStreamPlayerStore
+    retained outside Player truth
+
+VexBoard PR #293
+    merged as 3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a
+    current Main Screen Lens projects the Direct-Family Playback relationship
+~~~
+
+The current Service witnesses now answer the subtraction question more narrowly.
+
+### Playback Service
+
+~~~text
+VexStreamPlaybackService : MediaSessionService
+    owns Android MediaSession / ExoPlayer platform lifetime
+    owns construction + release of those concrete platform resources
+    attaches Media3PlayerConnection to the process Player Store
+    owns one Service-lifetime VexExecutionRoot only for Widget publication observation
+    does NOT own Playback semantic State
+    does NOT need PlaybackFamily.currentState merely to be a valid Service host
+~~~
+
+Playback semantic currentness lives in the process-owned Direct Families observing
+`VexStreamPlayerStore`. The Service can host Media3 realization while Playback semantic current is
+NoMedia or otherwise independent of Service liveness.
+
+### Navigation Service
+
+~~~text
+VexMapsNavigationService : Service
+    owns foreground-Service admission / termination
+    owns Android location collection
+    owns navigation speech + persistent notification realization
+    borrows VexNavigationSession.current because those concrete realization decisions need it
+    owns its current owner-local CoroutineScope / Jobs
+    does NOT replace Navigation session/domain truth
+~~~
+
+Navigation's current-awareness is therefore a concrete realization dependency, not evidence that every
+Service has a reusable `current` contract.
+
+### Widget counter-pressure
+
+Accepted Widget source still preserves:
+
+~~~text
+VexWidgetSurfaceState
+    remote-surface snapshot
+    != product/domain State
+
+VexWidgetActionCallback
+    bounded callback membrane
+    != long-running work owner
+
+feature/provider/product truth
+    -> feature-owned SurfaceState mapping
+    -> durable Glance presentation custody
+
+widget action
+    -> stable action ref
+    -> rightful product Control / request boundary
+~~~
+
+The Playback Service currently hosts maintained Widget-publication observation because its Android
+lifetime is appropriate for that concrete realization. That does not make Widget a Service semantic
+child and does not make VexExecution a universal Service requirement.
+
+### Subtraction result
+
+After removing questions already owned by Family, Partner, Store, Relay, Execution, Dependency,
+Widget and Android platform APIs, one recurring relationship survives across Playback and Navigation:
+
+~~~text
+SUSTAINED REALIZATION HOST
+
+a shorter caller / UI lifetime may end
+-> one concrete platform realization must remain available
+-> Android Service supplies the host lifetime
+-> host attaches / maintains / tears down the concrete realization resources
+-> semantic / provider / Store truth remains with its rightful owner
+~~~
+
+This is a relationship description, not a new source type.
+
+Current source does **not** earn:
+
+~~~text
+VexService<Service, Current>
+Service.current as a universal contract
+Service-owned semantic State / Control / Projection
+mandatory VexExecution inside every Service
+mandatory typed ServiceScope
+BackgroundServiceRelay as accepted current architecture
+~~~
+
+Historical Android #231 remains useful pressure because it already tried to subtract Entry /
+Retention / Execution children. Its surviving `VexService<Service, Current>` root still overstates
+current source: Playback proves that universal Service-current awareness is unnecessary, while
+Navigation proves that some concrete Service realizations legitimately borrow current truth.
+
+Likewise, current accepted Android main contains no accepted `BackgroundServiceRelay`; do not carry
+that historical candidate shape forward as though it were current cross-Service architecture.
+
+### Decision
+
+~~~text
+recurring relationship
+    = sustained realization host
+
+reusable VexService root
+    = NOT EARNED
+
+smaller composition guidance
+    = EARNED
+
+future third Service pressure
+    = may reopen type/addressability questions
+      only if current source demonstrates a stronger repeated invariant
+~~~
+
+The Service-fractal Work remains RUNNING only long enough to pass VexWork quality review and integrate
+this current-source decision. A clear accepted review may close that child without creating Android
+runtime source. The broader Post-Partner parent remains RUNNING for Broadcast/Receiver,
+permission/admission and other materially different platform boundaries.
+
+Permanent:
+
+~~~text
+SERVICE HOST LIFETIME
+!= SEMANTIC CURRENT
+
+SERVICE CURRENT AWARENESS
+= CONCRETE REALIZATION DEPENDENCY WHEN NEEDED
+!= UNIVERSAL SERVICE CONTRACT
+
+SUSTAINED REALIZATION HOST
+!= NEW VEX ROOT BY NAME ALONE
+
+COMPOSITION GUIDANCE EARNED
+!= FRAMEWORK TYPE EARNED
+~~~
+
+
 ## 2026-11-09 currentization — Post-Partner Service / Widget / VexStream
 
 Consume this checkpoint before the historical Service candidate trail below.
