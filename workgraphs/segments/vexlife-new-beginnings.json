@@ -580,11 +580,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T08:06:00.000Z",
-      "updatedAt": "2026-11-10T10:36:15.000Z",
+      "updatedAt": "2026-11-12T10:03:45.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "High — Vex Vision companion for real-browser witnessing",
-      "purpose": "Let Victor use a normal browser with normal site/session behavior while Vex can be explicitly invited to witness one selected browser window through the existing Vex Vision / Perception architecture. Begin with visible, on-demand one-request/at-most-one-capture observation and ephemeral raw pixels; derive bounded visual context for canonical Conversation without making VexLife UI the sensor owner, treating screen content as authority, fabricating a VLM path, or enabling continuous/background monitoring.",
+      "purpose": "Let Victor use a normal browser with ordinary site/session behavior while one explicitly selected window remains an engaged Vex Vision scope. Ordinary scrolling/navigation may change the current contents without continuous frame accumulation; when a Conversation turn materially benefits from vision, Vex may request one fresh snapshot of the current selected scope, derive one bounded visual observation for Conversation Context, and discard raw pixels. Preserve Vision current state as separate from Conversation history and durable Memory, and do not make VexLife UI the sensor owner or enable background monitoring.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "HIGH",
@@ -655,7 +655,20 @@
         "github.commit.vextreme-sdk.bc9b093b61b7ac5009f612d78c703ea431c19f5d",
         "github.commit.vexlife-prod.92abc26e6acd2f6604d921c259da6d40950a0f10",
         "github.pull.vexlife-prod.54.comment.6761261558",
-        "github.commit.vexlife-prod.3eca5055f34b4a9807d0b3d117e6131e51e4c788"
+        "github.commit.vexlife-prod.3eca5055f34b4a9807d0b3d117e6131e51e4c788",
+        "github.pull.vexwork.275.comment.6820602965",
+        "github.pull.vextreme-sdk.1940",
+        "github.pull.vextreme-sdk.1941",
+        "github.pull.vextreme-sdk.1942",
+        "github.pull.vextreme-sdk.1943",
+        "github.pull.vextreme-sdk.1944",
+        "github.pull.vextreme-sdk.1945",
+        "github.commit.vextreme-sdk.55a9cd5a99eaaf9f17f7c3875b109548fdc31d81",
+        "github.pull.vexlife-prod.77",
+        "github.pull.vexlife-prod.84",
+        "github.pull.vexlife-prod.86",
+        "github.pull.vexlife-prod.90",
+        "github.commit.vexlife-prod.37812f5717a34ec87c76667165f3c11642de0440"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -701,13 +714,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-10T08:51:18.000Z",
-      "updatedAt": "2026-11-10T10:39:57.000Z",
+      "updatedAt": "2026-11-12T10:03:45.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-product-runtime-orchestration",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "label": "High — Product-runtime Process Factory orchestration",
       "purpose": "Implement the already-source-placed SDK Process Factory seam that turns one Product-authored Vision requestRef into one bounded USER_SELECTED_SESSION realization attempt, with Process-Factory-owned session/connection identity, current Safety gating, exact helper receipt validation, canonical Security witness formation and canonical Perception active-observation composition, while preserving no raw-content/model/Memory/training/publication or Product-service effects.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.vision-companion-product-surface"
@@ -724,10 +737,57 @@
         "repo.vextreme-sdk:lib/process-factory/macos-screen-system-picker-contract.js",
         "repo.vextreme-sdk:lib/security/macos-screen-system-picker-active-sharing-witness.js",
         "repo.vextreme-sdk:lib/vex-perception-broker/screen-system-picker-active-integration.js",
-        "repo.vextreme-sdk:docs/process/local-source-workspace-protocol.md"
+        "repo.vextreme-sdk:docs/process/local-source-workspace-protocol.md",
+        "github.commit.vextreme-sdk.a6513694495bdf5e82673ac36f16f0a87f592c28",
+        "github.pull.vextreme-sdk.1940",
+        "github.pull.vextreme-sdk.1941",
+        "github.commit.vextreme-sdk.4f684279a72eb7f0e1c1814160acfd299913efa4",
+        "github.pull.vextreme-sdk.1942",
+        "github.commit.vextreme-sdk.38de26eb9df4ccef5a3d8f1c05c708bbd6b16f51",
+        "github.pull.vexwork.275.comment.6820602965"
       ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-12T10:03:45.000Z",
+      "updatedAt": "2026-11-12T10:03:45.000Z",
+      "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+      "label": "High — persistent Vision scope + demand-driven current visual context",
+      "purpose": "Evolve the accepted one-shot Vision path into the intended conversational relationship without continuous capture: let one explicitly selected window remain the engaged Vision scope across ordinary scrolling/navigation, let turn/context composition request one fresh current snapshot only when vision is materially relevant, give actual capture a distinct visible looking-now signal, derive bounded visual meaning into canonical Conversation Context, discard raw pixels, and keep Vision state, Conversation history, durable Memory, training and effect authority as separate owners.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.vision-companion-product-surface",
+        "work.vexlife.new-beginnings.vision-product-runtime-orchestration",
+        "work.vexlife.new-beginnings.p2.vex-conversation-reintegration"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-new-beginnings/VEX-VISION-COMPANION.md",
+        "github.pull.vexwork.275.comment.6820602965",
+        "github.pull.vextreme-sdk.1945",
+        "github.pull.vextreme-sdk.1945.comment.6820327859",
+        "github.commit.vextreme-sdk.55a9cd5a99eaaf9f17f7c3875b109548fdc31d81",
+        "repo.vextreme-sdk:docs/architecture/macos-screen-system-picker-product-runtime.md",
+        "repo.vextreme-sdk:lib/vex-perception-broker/screen-system-picker-active-integration.js",
+        "repo.vextreme-sdk:docs/architecture/perception-session-authorization.md",
+        "repo.vexlife-prod:docs/foundation/VEXLIFE-VISION-COMPANION.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [
