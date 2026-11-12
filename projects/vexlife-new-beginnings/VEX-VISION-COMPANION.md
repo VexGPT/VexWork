@@ -514,31 +514,71 @@ PRODUCT_VISION_SEMANTIC_SOURCE_ACCEPTED
 != VISUAL_MODEL_INPUT
 ~~~
 
-## First bounded product slice
+## Current bounded product slice — persistent scope, demand-driven look
 
-The smallest useful active experience is **not continuous screen sharing**.
+The smallest useful active experience is **not continuous screen sharing** and it is **not one screenshot on every Conversation turn**.
 
-It is:
+The persistent relationship is the selected Vision scope:
 
 ~~~text
-Victor enables Vision
--> selects one browser window / admitted screen region
--> VexLife shows a persistent visible Vision indicator
--> Victor sends a Conversation turn OR explicitly asks "Look now"
--> one request identity
--> at most one current frame capture
--> raw frame remains ephemeral
--> visual worker derives one bounded visual observation
--> derived observation joins Conversation Context
--> Vex responds
--> raw frame is discarded
+Victor engages Vision
+-> selects one browser/window scope once
+-> VexLife keeps that selected scope visibly identifiable
+-> ordinary scrolling/navigation changes what is currently present
+-> no continuous frame accumulation is required
+
+Conversation turn
+-> current turn/context owner asks whether Vision is materially relevant
+-> if not relevant: no screen capture
+-> if relevant:
+     request one fresh observation of the CURRENT selected scope
+     -> visible looking-now pulse
+     -> at most one current frame capture
+     -> raw frame remains ephemeral
+     -> visual worker derives one bounded visual observation
+     -> derived visual meaning may join Conversation Context
+     -> Vex responds
+     -> raw frame is discarded
 ~~~
 
-This can feel like Vex is looking over Victor's shoulder while preserving the already-earned
-one-request/one-capture and no-background-monitoring boundary.
+Permanent:
 
-A later continuous stream requires a separate earned product/security decision. It is not implied by
-a Vision toggle.
+~~~text
+VISION_SCOPE_ACTIVE
+!= SCREEN_CAPTURE_ACTIVE
+!= MODEL_INFERENCE_ACTIVE
+!= MEMORY_ACCEPTED
+
+CONVERSATION_TURN
+!= AUTOMATIC_SCREENSHOT
+
+SCROLLING_WITHIN_SCOPE
+!= SCREEN_HISTORY_RETENTION
+~~~
+
+This preserves the human experience Victor clarified on VexWork PR #275 comment 6820602965: the
+selected scope remains available to Vex, while the pixels are sampled only when the current turn
+actually needs vision.
+
+Conversation may naturally preserve what Vex **said** after looking. That does not turn the raw frame
+or the Vision state machine into Conversation history, and it does not promote derived visual meaning
+into durable Memory by implication.
+
+Human-visible feedback should distinguish the layers:
+
+~~~text
+quiet persistent boundary
+  = this is the currently engaged Vision scope
+
+brief stronger pulse
+  = Vex is actually obtaining the fresh current observation now
+~~~
+
+The current SDK PR #1945 transient target indicator remains useful one-shot feedback work. It does not
+by itself establish the later persistent-scope product state.
+
+A continuous frame stream remains a separately earned product/security decision. It is not required
+for this conversational Vision relationship.
 
 ## Intended VexLife control
 
@@ -637,57 +677,76 @@ authority          NO_AUTHORITY
 effects            NO_EFFECTS
 ~~~
 
-VexWork is the foreground work-navigation owner for this trajectory. It does not replace SDK/Product
-source or effect authority.
-
-Completed child:
+Completed children now include:
 
 ~~~text
 work.vexlife.new-beginnings.vision-companion-product-surface
 state = COMPLETED
+
+work.vexlife.new-beginnings.vision-product-runtime-orchestration
+state = COMPLETED
 ~~~
 
-Current executable child:
+The PR1939-era Process Factory orchestration, recovery/currentization and darwin-arm64 carriage source
+have been accepted. Product carriage/service/presentation have also advanced through VexLife-Prod
+PR #77, #84, #86 and #90.
+
+Current child:
 
 ~~~text
-work.vexlife.new-beginnings.vision-product-runtime-orchestration
+work.vexlife.new-beginnings.vision-scope-current-context
 state              READY
 priority           HIGH
-authority          AUTHORIZED_BOUNDED
-effects            EFFECTS_BOUND
-
-provider source:
-github.pull.vextreme-sdk.1939
-head = bc9b093b61b7ac5009f612d78c703ea431c19f5d
-changedFiles = 0
+authority          NO_AUTHORITY
+effects            NO_EFFECTS
 ~~~
 
-This child is the canonical VexWork coordinate for the already-admitted SDK source writer. It
-prevents the active task from living only as an SDK PR claim outside the Workgraph.
-
-Exact authored membrane:
+Human outcome:
 
 ~~~text
-lib/process-factory/macos-screen-system-picker-product-runtime.js
-tests/process-factory/macos-screen-system-picker-product-runtime.test.js
-docs/architecture/macos-screen-system-picker-product-runtime.md
+persistent selected Vision scope
++ no continuous frame accumulation
++ Vex chooses to look only when the current turn materially needs vision
++ one fresh current snapshot when requested
++ bounded derived visual observation
++ Conversation Context composition
++ Observation != Conversation history != durable Memory
 ~~~
 
-The next implementation sequence is now:
+Current external coordinates at this currentization:
 
-1. re-observe PR #1939 + current SDK admission/currentness;
-2. establish/adopt exact Local Source Workspace AUTHORING custody for the PR #1939 scaffold head;
-3. transition the READY child into RUNNING when actual authoring begins;
-4. implement only the three-path Process Factory orchestration contract;
-5. run exact source proof / SDK readiness and ordinary independent lifecycle;
-6. after source acceptance, determine the smallest ordinary-Product-consumable executable carriage;
-7. re-ground current VexLife-Prod service owners and implement the Product service bridge;
-8. earn `Ready` only when that ordinary Product route is actually reachable;
-9. run one lived Product `LookNow`;
-10. only after that separately decide/earn ephemeral visual-model input and derived visual meaning.
+~~~text
+Vextreme-SDK main
+55a9cd5a99eaaf9f17f7c3875b109548fdc31d81
 
-Do **not** use VexWork currentization, SDK Root narration, or proof packaging as a reason to delay
-authoring once current admission and Local Source Workspace custody are established.
+VexLife-Prod main
+37812f5717a34ec87c76667165f3c11642de0440
+
+SDK PR #1945
+open current lived-feedback correction
+selected-target transient outline
+SourceOwner A001 stopped in Swift proof-harness/toolchain binding
+candidate defect not established
+next = corrected A002 proof formation
+~~~
+
+The next implementation sequence is:
+
+1. preserve/finish PR #1945 only as the current one-shot target-feedback correction it actually owns;
+2. descend from this Work item to the current VexLife-Prod Vision Family, DirectPromptContext and SDK
+   Safety / Process Factory / Perception owners;
+3. source-place persistent selected-scope state without making that state mean active capture;
+4. make turn/context composition request a fresh visual observation only when the current human turn
+   materially benefits from vision;
+5. separately earn ephemeral visual-model input / derived visual meaning;
+6. compose that derived meaning into canonical Conversation Context without automatic Memory
+   promotion;
+7. prove the lived flow by selecting once, scrolling/changing visible content, asking a vision-relevant
+   question without another picker interaction, and observing that Vex answers from the then-current
+   screen.
+
+No new Project, Vision Store, standing screen listener or continuous-capture path is earned by this
+currentization.
 
 ## Relationship to current manifestation work
 
@@ -712,39 +771,43 @@ Foreground Work truth:
 
 - VexWork PR #275 — existing Vision/New Beginnings Work source candidate and provider conversation;
 - `work.vexlife.new-beginnings.vision-companion-real-browser-witness` — parent Work coordinate;
-- `work.vexlife.new-beginnings.vision-companion-product-surface` — completed semantic/control child.
+- `work.vexlife.new-beginnings.vision-companion-product-surface` — completed semantic/control child;
+- `work.vexlife.new-beginnings.vision-product-runtime-orchestration` — completed Process Factory orchestration child;
+- `work.vexlife.new-beginnings.vision-scope-current-context` — current next Work coordinate.
 
 Current SDK truth:
 
-- accepted main/checkpoint: `c39951fe260e505b4a3c5b8f606cc8da14c985c0`;
-- accepted USER_SELECTED_SESSION route: PR #1928 / accepted source lineage;
-- accepted Security active-sharing witness: PR #1930;
-- accepted Perception active VISUAL integration: PR #1934 / merge at current main;
-- Process Factory product-runtime placement:
-  `github.issue.vextreme-sdk.241.comment.6756193443`;
-- current unfinished source writer:
-  `github.pull.vextreme-sdk.1939@bc9b093b61b7ac5009f612d78c703ea431c19f5d`.
+- accepted main/checkpoint: `55a9cd5a99eaaf9f17f7c3875b109548fdc31d81`;
+- Product runtime orchestration/recovery/carriage source accepted through PR #1939-#1942;
+- SCREEN Safety currentization accepted through PR #1943/#1944;
+- PR #1945 is the current one-shot selected-target feedback correction;
+- PR #1945 SourceOwner A001 stopped in the Swift proof harness before candidate semantics were proven wrong;
+- corrected A002 proof formation is the immediate SDK proof continuation.
 
 Current Product truth:
 
-- VexLife-Prod Vision PR #54 merged as
-  `92abc26e6acd2f6604d921c259da6d40950a0f10`;
-- A024 lived accepted-main promotion PASS:
-  `github.pull.vexlife-prod.54.comment.6761261558`;
+- VexLife-Prod Vision semantic/control source is accepted;
+- private-image carriage, local-user-selected distribution separation, Product service bridge and live
+  presentation are accepted through PR #77, #84, #86 and #90;
 - current Product main:
-  `3eca5055f34b4a9807d0b3d117e6131e51e4c788`.
+  `37812f5717a34ec87c76667165f3c11642de0440`.
 
-Exact current owner source to descend for PR #1939 implementation:
+Current architecture sources to descend for the new Vision-scope edge:
 
 ~~~text
-lib/process-factory/macos-screen-system-picker-contract.js
-lib/security/macos-screen-system-picker-active-sharing-witness.js
-lib/vex-perception-broker/screen-system-picker-active-integration.js
-docs/process/local-source-workspace-protocol.md
+VexLife-Prod
+  docs/foundation/VEXLIFE-VISION-COMPANION.md
+  src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt
+  src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt
+
+Vextreme-SDK
+  docs/architecture/perception-session-authorization.md
+  docs/architecture/macos-screen-system-picker-product-runtime.md
+  lib/vex-perception-broker/screen-system-picker-active-integration.js
 ~~~
 
-Older #1915/#1924/Safety-receipt coordinates remain provenance for how the route was earned. They are
-not the current next-work coordinate.
+Older #1915/#1924/#1939-era coordinates remain provenance for how the route was earned. They are not
+the current next-work coordinate.
 
 <!-- [VXG RealForever][VEXLIFE][NEW-BEGINNINGS][VISION-COMPANION][REAL-BROWSER-WITNESS] -->
 
