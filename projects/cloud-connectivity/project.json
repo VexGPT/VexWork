@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.cloud-connectivity",
+  "label": "Cloud Connectivity",
+  "purpose": "Demonstrate mobile/cloud correctness through a contract-driven Cloud Connectivity Lab and real Vex architecture boundaries across APIs, local/offline state, device-network and per-service relationships, background automation, synchronization, retries, idempotency, multi-device convergence, API versioning, backward compatibility, provider realization and observability while reusing Full Security for security-boundary meaning and preserving the stable VexFamily semantic grammar.",
+  "rootWorkRefs": [
+    "work.cloud-connectivity.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife",
+    "repo.vexlife-prod",
+    "repo.vexlife-android",
+    "repo.vexstream-music"
+  ],
+  "sourceRefs": [
+    "projects/cloud-connectivity/README.md",
+    "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
+    "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
+    "test/cloud-connectivity-project.test.mjs",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
+    "project.full-security",
+    "projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+    "repo.vexlife-android:architecture/vexarchitecture/VEXLOGGER.md",
+    "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md",
+    "projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md",
+    "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md",
+    "repo.vexlife:scripts/macos-lifecycle.mjs",
+    "repo.vexlife:scripts/serve-browser.mjs"
+  ],
+  "formedAt": "2026-11-06T17:25:00.000-08:00"
+}
