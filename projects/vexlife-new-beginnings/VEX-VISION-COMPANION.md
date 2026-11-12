@@ -748,6 +748,138 @@ The next implementation sequence is:
 No new Project, Vision Store, standing screen listener or continuous-capture path is earned by this
 currentization.
 
+## Source descent after persistent-scope currentization
+
+The current accepted one-shot implementation cannot satisfy persistent selected scope merely by
+changing Product state.
+
+Current SDK mechanics are explicit:
+
+~~~text
+macos-screen-system-picker-agent.swift
+  OneShotSystemPickerSession
+  -> picker selection
+  -> one SCScreenshotManager capture
+  -> picker disabled
+  -> observer removed
+  -> helper process terminates
+
+vexlife-vision-runtime
+  -> one requestRef
+  -> one helper execution
+  -> one Product result
+  -> runtime executable exits
+~~~
+
+Therefore:
+
+~~~text
+VisionFamily.State says "Engaged"
+!= selected macOS scope actually remains available
+
+PERSISTENT_SCOPE
+-> requires a rightful host/session owner
+~~~
+
+The selected provider identity must not be moved into Product Conversation/Memory simply to survive the
+one-shot process. The current source-owner question is routed to Process Factory:
+
+~~~text
+github.issue.vextreme-sdk.241.comment.6820899602
+~~~
+
+Proposed first responsibility is a bounded selected-scope session whose provider selection remains
+host-local and which performs no capture while merely ENGAGED.
+
+The exact Safety question is routed to:
+
+~~~text
+github.issue.vextreme-sdk.226.comment.6820900304
+~~~
+
+The intended separation is:
+
+~~~text
+scope selected / engaged
+  != sensor active
+  != capture active
+  != active visual observation
+
+actual LOOK
+  -> fresh current SCREEN authority
+  -> at most one snapshot
+~~~
+
+No continuous-ephemeral mode is requested by this product intention.
+
+### "Vex decides to look" is a separate missing seam
+
+Current VexLife-Prod Capability Atlas is an effect-free self-frame. It tells Vex what capability truth
+is available but explicitly does not execute capabilities.
+
+Current direct inference also records:
+
+~~~text
+nativeToolExecutionObserved = false
+~~~
+
+and DirectCompanionTurn currently materializes context before the single provider invocation.
+
+Therefore:
+
+~~~text
+CAPABILITY_VISIBLE_TO_VEX
+!= VEX_CAN_CALL_CAPABILITY_DURING_TURN
+~~~
+
+Do not implement the clarified human intention by making DirectPromptContext automatically capture a
+screen on every Conversation turn. That would transfer the decision from Vex to prompt construction
+and violate:
+
+~~~text
+CONVERSATION_TURN != AUTOMATIC_SCREENSHOT
+~~~
+
+After selected-scope session ownership is accepted, the next composition question is the smallest
+lawful seam by which Vex may request one current visual observation during the same human turn.
+
+Preferred judgment pressure:
+
+~~~text
+existing capability/execution seam if current source owns one
+-> reuse it
+
+otherwise
+-> add the smallest Vision-specific request/observation continuation earned by this lived use
+
+do not create a generic tool framework solely for symmetry
+~~~
+
+Whichever realization is selected must preserve:
+
+~~~text
+Vex requests LOOK
+!= Vex grants itself SCREEN authority
+
+fresh Safety still gates capture
+screen content remains untrusted observation
+derived visual meaning may enter Conversation Context
+raw pixels do not become Conversation or Memory
+Memory promotion remains separate
+~~~
+
+Current authoring boundary:
+
+~~~text
+VexWork continuity/source = CURRENTIZED on PR #275
+Process Factory placement request = POSTED
+Safety boundary question = POSTED
+new SDK source mutation = NOT YET ADMITTED
+PR #1945 one-shot target-feedback correction = separate current work
+~~~
+
+This is a source/authority hold, not an architecture unknown.
+
 ## Relationship to current manifestation work
 
 ~~~text
