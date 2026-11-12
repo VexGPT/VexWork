@@ -724,6 +724,200 @@ function followBehaviorPort(cat, adapter, screen, element) {
 }
 
 
+// One source-proven Direct VexFamily local-effect shape. Unknown or ambiguous hops stay held.
+function directFamilyTypeSource(cat, adapter, typeName, relationship, familyType) {
+  return uniqueSource(
+    cat,
+    adapter,
+    new RegExp(
+      '(?:sealed\\s+interface|sealed\\s+class|enum\\s+class|interface|class)\\s+' +
+        escapeRegex(typeName) +
+        '[\\s\\S]{0,520}?VexFamily\\.' + relationship +
+        '\\s*<\\s*' + escapeRegex(familyType) + '\\s*>',
+    ),
+  );
+}
+
+function directFamilyCoordinates(familyText, familyType) {
+  const match = new RegExp(
+    'VexFamily\\s*<\\s*' + escapeRegex(familyType) +
+      '\\s*,\\s*([A-Z]\\w*)\\s*,\\s*([A-Z]\\w*)\\s*,\\s*([A-Z]\\w*)\\s*>',
+  ).exec(familyText);
+  return match ? { stateType: match[1], controlType: match[2], effectType: match[3] } : null;
+}
+
+function directFamilyExperience(cat, adapter, interfaceType, controlType) {
+  const candidates = [];
+  for (const [path, text] of cat.files) {
+    for (const match of text.matchAll(/\bclass\s+(\w+)\s*\(/g)) {
+      const paramsOpen = match.index + match[0].length - 1;
+      let paramsClose;
+      try { paramsClose = matchClose(text, paramsOpen); } catch { continue; }
+      const bodyOpen = text.indexOf('{', paramsClose);
+      if (bodyOpen < 0 || !new RegExp(':\\s*' + escapeRegex(interfaceType) + '\\b').test(text.slice(paramsClose + 1, bodyOpen))) continue;
+      let bodyClose;
+      try { bodyClose = matchClose(text, bodyOpen); } catch { continue; }
+      const body = text.slice(bodyOpen + 1, bodyClose);
+      const activate = functionSpans(body).find((fn) => fn.name === 'activate' && [...fn.params.values()].includes(controlType));
+      if (!activate) continue;
+      const controlName = [...activate.params.entries()].find(([, type]) => type === controlType)?.[0] ?? null;
+      if (!controlName) continue;
+      const activateBody = body.slice(activate.bodyStart, activate.end);
+      const helperMatch = /\b(activate[A-Z]\w*)\s*\(/.exec(activateBody);
+      if (!helperMatch) continue;
+      const helperOpen = helperMatch.index + helperMatch[0].length - 1;
+      let helperClose;
+      try { helperClose = matchClose(activateBody, helperOpen); } catch { continue; }
+      const helperArgs = splitArgs(activateBody.slice(helperOpen + 1, helperClose));
+      const familyLocal = named(helperArgs, 'family');
+      if (!familyLocal || named(helperArgs, 'control') !== controlName) continue;
+      const fields = new Map();
+      for (const arg of splitArgs(text.slice(paramsOpen + 1, paramsClose))) {
+        const typed = /(?:private\s+)?val\s+(\w+)\s*:\s*([\w.<>?]+)/.exec(arg.value);
+        if (typed) fields.set(typed[1], typed[2].replace(/\?$/, ''));
+      }
+      const familyType = fields.get(familyLocal) ?? null;
+      if (!familyType || !/Family$/.test(familyType)) continue;
+      candidates.push({
+        name: match[1],
+        source: toRootRef(adapter, path),
+        interfaceType,
+        controlType,
+        controlName,
+        familyType,
+        helperName: helperMatch[1],
+      });
+    }
+  }
+  const unique = new Map(candidates.map((entry) => [[entry.name, entry.familyType, entry.helperName].join('|'), entry]));
+  return unique.size === 1 ? [...unique.values()][0] : null;
+}
+
+function directFamilyStoreReturn(familyText, familyType, storeType) {
+  const candidates = [];
+  for (const span of functionSpans(familyText)) {
+    const familyParam = [...span.params.entries()].find(([, type]) => type.replace(/\?$/, '') === familyType);
+    const storeParam = [...span.params.entries()].find(([, type]) => type.replace(/\?$/, '') === storeType);
+    if (!familyParam || !storeParam) continue;
+    const body = familyText.slice(span.bodyStart, span.end);
+    if (!/VexExecution\.observe\s*\(/.test(body)) continue;
+    const source = new RegExp('source\\s*=\\s*' + escapeRegex(storeParam[0]) + '\\s*::\\s*(\\w+)').exec(body);
+    const observe = new RegExp(escapeRegex(familyParam[0]) + '\\s*\\.\\s*(observe\\w+)\\s*\\(').exec(body);
+    if (source && observe) candidates.push({ name: span.name, sourceFlow: source[1], observeMethod: observe[1] });
+  }
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function directFamilyNamespace(source, familyType) {
+  const logical = /^[^:]+:(.+)\/[^/]+$/.exec(source ?? '')?.[1] ?? null;
+  return logical ? logical.split('/').filter(Boolean).join('.') : slug(familyType.replace(/Family$/, ''));
+}
+
+function followDirectFamilyLocalEffect(cat, adapter, screen, element) {
+  const declaration = element.symbol?.split('.').at(-1) ?? null;
+  if (!screen || !declaration) return null;
+  const elementPattern = escapeRegex(screen.object) + '\\s*\\.\\s*' + escapeRegex(declaration);
+  const doorways = [];
+  for (const [path, text] of cat.files) {
+    const pattern = new RegExp(
+      elementPattern +
+        '\\s*->[\\s\\S]{0,300}?([a-z]\\w*)\\s*(?:\\?\\.)?\\.\\s*activate\\s*\\(\\s*([A-Z]\\w*Control)\\s*\\.\\s*(\\w+)',
+      'g',
+    );
+    for (const match of text.matchAll(pattern)) {
+      const span = functionSpans(text)
+        .filter((fn) => fn.start < match.index && fn.end > match.index)
+        .sort((a, b) => b.start - a.start)[0] ?? null;
+      const receiverType = span?.params.get(match[1])?.replace(/\?$/, '') ?? receiverTypeInSource(text, match[1]);
+      if (!receiverType) continue;
+      doorways.push({
+        receiver: match[1],
+        receiverType,
+        controlType: match[2],
+        control: match[3],
+        source: toRootRef(adapter, path),
+      });
+    }
+  }
+  const keys = new Set(doorways.map((entry) => [entry.receiverType, entry.controlType, entry.control].join('|')));
+  const sources = new Set(doorways.map((entry) => entry.source));
+  if (keys.size !== 1 || sources.size !== 1) return null;
+  const doorway = doorways[0];
+
+  const experienceSource = uniqueSource(cat, adapter, new RegExp('interface\\s+' + escapeRegex(doorway.receiverType) + '\\b'));
+  const experience = experienceSource ? directFamilyExperience(cat, adapter, doorway.receiverType, doorway.controlType) : null;
+  if (!experienceSource || !experience) return null;
+  const helper = sourceFunction(cat, adapter, experience.helperName);
+  if (!helper) return null;
+
+  const familyParam = [...helper.params.entries()].find(([, type]) => type.replace(/\?$/, '') === experience.familyType);
+  const controlParam = [...helper.params.entries()].find(([, type]) => type.replace(/\?$/, '') === doorway.controlType);
+  const partnerParam = [...helper.params.entries()].map(([name, type]) => {
+    const match = /^([A-Z]\w*Partner)\.Connection(?:\.(\w+))?\??$/.exec(type);
+    return match ? { name, type: type.replace(/\?$/, ''), partnerType: match[1] } : null;
+  }).find(Boolean);
+  const storeParam = [...helper.params.entries()].find(([, type]) => /Store\??$/.test(type));
+  if (!familyParam || !controlParam || !partnerParam || !storeParam ||
+      ![...helper.params.values()].some((type) => type.replace(/\?$/, '') === 'VexExecutionRoot')) return null;
+
+  const activation = new RegExp(
+    'val\\s+(\\w+)\\s*=\\s*' + escapeRegex(familyParam[0]) +
+      '\\s*\\.\\s*(activate\\w*)\\s*\\(\\s*' + escapeRegex(controlParam[0]) + '\\s*[,)]',
+  ).exec(helper.body);
+  if (!activation) return null;
+  const accepted = activation[1];
+  if (!new RegExp('\\b' + escapeRegex(accepted) + '\\s*\\.\\s*realizationBegin\\b').test(helper.body) ||
+      !new RegExp('\\b' + escapeRegex(accepted) + '\\s*\\.\\s*launch\\s*\\(').test(helper.body)) return null;
+
+  const family = familyRoot(cat, adapter, experience.familyType);
+  const coordinates = family ? directFamilyCoordinates(family.text, experience.familyType) : null;
+  if (!family || !coordinates || coordinates.controlType !== doorway.controlType) return null;
+  const stateSource = directFamilyTypeSource(cat, adapter, coordinates.stateType, 'State', experience.familyType);
+  const controlSource = directFamilyTypeSource(cat, adapter, coordinates.controlType, 'Control', experience.familyType);
+  const effectSource = directFamilyTypeSource(cat, adapter, coordinates.effectType, 'Effect', experience.familyType);
+  if (!stateSource || !controlSource || !effectSource || !new RegExp('\\b' + escapeRegex(doorway.control) + '\\b').test(controlSource.text)) return null;
+
+  const method = /\bclass\s+Method\s*\([\s\S]{0,900}?connection\s*:\s*([A-Z]\w*Partner)\.Connection(?:\.(\w+))?[\s\S]{0,900}?override\s+val\s+effect\s*:\s*([A-Z]\w*)/.exec(family.text);
+  if (!method || method[1] !== partnerParam.partnerType || method[3] !== coordinates.effectType) return null;
+  const partner = partnerRoot(cat, adapter, partnerParam.partnerType);
+  const storeType = storeParam[1].replace(/\?$/, '');
+  const store = storeRoot(cat, adapter, storeType);
+  const observation = directFamilyStoreReturn(family.text, experience.familyType, storeType);
+  if (!partner || !store || !observation) return null;
+
+  const observeMethod = sourceFunction(cat, adapter, observation.observeMethod, experience.familyType);
+  const signalType = observeMethod
+    ? [...observeMethod.params.values()]
+        .map((type) => new RegExp('^' + escapeRegex(partnerParam.partnerType) + '\\.Signal\\.(\\w+)\\??$').exec(type)?.[1] ?? null)
+        .find(Boolean) ?? null
+    : null;
+  if (!observeMethod || !signalType) return null;
+
+  const approaches = new Set([...family.text.matchAll(/\bbegin(Earliest|Latest|Queued)?\s*\(/g)].map((match) => match[1] ?? 'Independent'));
+  if (approaches.size !== 1) return null;
+
+  return {
+    ...doorway,
+    experienceSource,
+    experience,
+    helper,
+    familyType: experience.familyType,
+    family,
+    ...coordinates,
+    stateSource,
+    controlSource,
+    effectSource,
+    approach: [...approaches][0],
+    partnerType: partnerParam.partnerType,
+    partner,
+    connectionType: partnerParam.type,
+    storeType,
+    store,
+    observation,
+    signalType,
+  };
+}
+
 // One source-proven VexPartner shape. Unknown or ambiguous hops stay held.
 function sourceFunction(cat, adapter, functionName, ownerType = null) {
   const candidates = [];
@@ -1440,6 +1634,146 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
   };
 
 
+  const directFamilyLocalEffectPathway = (screen, element, bond) => {
+    const controlSlug = bond.control.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    const ref = 'pathway.' + directFamilyNamespace(bond.family.source, bond.familyType) + '.' + controlSlug;
+    if (pathways.has(ref)) return ref;
+    const controlLabel = element.label || humanize(bond.control);
+    const builder = new PathwayBuilder(ref, bond.familyType.replace(/Family$/, '') + ' · ' + controlLabel, 'SCAE_FAMILY');
+
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'The registered element delegates feature-local meaning to its source-owned presentation handler.',
+      source: screen.source,
+    });
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', bond.receiverType + '.activate(' + bond.control + ')', {
+      symbol: bond.receiverType + '.activate',
+      summary: 'The UI-facing Experience carries the same Family-bound Control into the live semantic owner.',
+      source: bond.source,
+    });
+    const control = builder.node('control', 'BEHAVIOR', 'CONTROL', bond.controlType + '.' + bond.control, {
+      symbol: bond.controlType + '.' + bond.control,
+      summary: 'Family-bound semantic input.',
+      source: bond.controlSource.source,
+    });
+    const state = builder.node('state', 'BEHAVIOR', 'STATE', 'CURRENT ' + bond.stateType, {
+      symbol: bond.stateType,
+      summary: 'Exact current semantic truth read by the Direct Family.',
+      source: bond.stateSource.source,
+    });
+    const act = builder.node('act', 'BEHAVIOR', 'ACT', bond.familyType + '.act(State, Control)', {
+      symbol: bond.familyType + '.act',
+      summary: 'The live Direct Family decides the lawful consequence from current State plus Control.',
+      source: bond.family.source,
+    });
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + bond.approach + ' · ' + bond.effectType + ')', {
+      symbol: bond.effectType,
+      summary: 'The authored Begin carries the exact Effect selected by current State.',
+      source: bond.effectSource.source,
+    });
+    const accepted = builder.node('accepted', 'BEHAVIOR', 'ACT', 'Act.Accepted · accepted responsibility', {
+      symbol: 'VexFamily.Act.Accepted',
+      summary: 'Semantic consequence is accepted into the live Family before newly owed outside realization enters execution custody.',
+      source: bond.family.source,
+    });
+    const presentation = builder.node('presentation', 'BEHAVIOR', 'PROJECTION', bond.familyType + '.Projection → ' + controlLabel + ' presentation', {
+      symbol: bond.familyType + '.projectionFor',
+      summary: 'The Experience reads Family-owned projection meaning and manifests the same human-facing control.',
+      source: bond.experience.source,
+    });
+
+    const realization = builder.node('realization', 'DEPTH', 'REALIZATION', 'realizationBegin? · occurrence still owed', {
+      symbol: 'VexFamily.Act.Accepted.realizationBegin',
+      summary: 'Live view of the authored Begin only while this accepted consequence still requires a new runtime occurrence.',
+      source: bond.family.source,
+    });
+    const method = builder.node('method', 'DEPTH', 'METHOD', bond.familyType + '.Act.Method(connection, effect)', {
+      symbol: bond.familyType + '.Act.Method',
+      summary: 'Fully bound Method carrying the exact authored Effect and the existing outside request connection.',
+      source: bond.family.source,
+    });
+    const launch = builder.node('launch', 'DEPTH', 'EXECUTION', 'Act.Accepted.launch(executionRoot, Method)', {
+      symbol: 'VexFamily.Act.Accepted.launch',
+      summary: 'Re-checks live realization admission and hands the exact Effect-bound Method into execution custody.',
+      source: bond.family.source,
+    });
+    const custody = builder.node('custody', 'DEPTH', 'EXECUTION', 'VexExecution · Job custody (' + bond.approach + ')', {
+      symbol: 'VexExecution',
+      summary: SUMMARY.custody,
+      source: adapter.sources.vexExecution,
+    });
+    const connection = builder.node('connection', 'DEPTH', 'CONNECTION', bond.connectionType, {
+      symbol: bond.connectionType,
+      summary: 'Finite request side of the already-owned outside Partner Connection.',
+      source: bond.partner.source,
+    });
+    const partner = builder.node('partner', 'DEPTH', 'PARTNER', bond.partnerType, {
+      symbol: bond.partnerType,
+      summary: 'Independently owned outside participant. Request acknowledgement is not durable semantic outcome truth.',
+      source: bond.partner.source,
+    });
+    const result = builder.node('result', 'DEPTH', 'RESULT', 'VexMethod.Result · request acknowledgement', {
+      symbol: 'VexMethod.Result',
+      summary: 'Acknowledges one request attempt; durable outside truth returns later through Partner Signal and Store observation.',
+      source: bond.family.source,
+    });
+    const signal = builder.node('signal', 'DEPTH', 'OBSERVATION', bond.partnerType + '.Signal.' + bond.signalType, {
+      symbol: bond.partnerType + '.Signal.' + bond.signalType,
+      summary: 'Later outside observation, separate from the request acknowledgement.',
+      source: bond.partner.source,
+    });
+    const store = builder.node('store', 'DEPTH', 'STORE', bond.storeType, {
+      symbol: bond.storeType,
+      summary: 'Retains complete outside truth assembled from exact Partner Signals.',
+      source: bond.store.source,
+    });
+    const observe = builder.node('observe', 'DEPTH', 'OBSERVATION', bond.observation.name + ' → ' + bond.familyType + '.' + bond.observation.observeMethod, {
+      symbol: bond.observation.name,
+      summary: 'Store currentness re-enters through the same live Family.',
+      source: bond.family.source,
+    });
+
+    builder.edge(intent, doorway, 'custom handler');
+    builder.edge(doorway, control, 'same Control');
+    builder.edge(state, act, 'CURRENT', 'DATA');
+    builder.edge(control, act, 'resolve');
+    builder.edge(act, effect, 'begins');
+    builder.edge(act, accepted, 'accepts');
+    builder.edge(accepted, presentation, 'projects');
+    builder.edge(accepted, realization, 'still owed');
+    builder.edge(effect, realization, 'authored Begin');
+    builder.edge(realization, method, 'exact Effect');
+    builder.edge(accepted, launch, 'live admission');
+    builder.edge(method, launch, 'exact Effect');
+    builder.edge(launch, custody, 'custody');
+    builder.edge(custody, connection, 'runs');
+    builder.edge(connection, partner, 'request');
+    builder.edge(partner, result, 'acknowledges');
+    builder.edge(partner, signal, 'later observation', 'RETURN');
+    builder.edge(signal, store, 'retains', 'DATA');
+    builder.edge(store, observe, bond.observation.sourceFlow, 'DATA');
+    builder.edge(observe, state, 'observed', 'RETURN');
+    builder.edge(state, presentation, 'projects', 'RETURN');
+
+    builder.pathway.summary =
+      'Source-earned ' + bond.familyType + ' owns ' + bond.control +
+      ' meaning; accepted realization uses the existing ' + bond.partnerType +
+      ' request connection while durable outside truth returns later through ' + bond.storeType + '.';
+    builder.pathway.returnRef = presentation;
+    builder.pathway.returns = 'Family-owned projection meaning returns to the same human-facing ' + controlLabel + ' control.';
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({
+      elementRef: element.ref,
+      via: 'DIRECT_FAMILY_LOCAL_EFFECT',
+      family: bond.familyType,
+      control: bond.control,
+      partner: bond.partnerType,
+      store: bond.storeType,
+    });
+    return ref;
+  };
+
+
   const partnerRef = (screen, element) => {
     const local = element.symbol?.split('.').at(-1) ?? element.ref.split('.').at(-1);
     return 'pathway.' + screen.screenKey + '.partner.' + typedRefToken(local);
@@ -1935,6 +2269,11 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       const behaviorBond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
       if (behaviorBond) {
         element.pathwayRef = behaviorPortPathway(screen, element, behaviorBond);
+        return element;
+      }
+      const directFamilyBond = screen ? followDirectFamilyLocalEffect(cat, adapter, screen, element) : null;
+      if (directFamilyBond) {
+        element.pathwayRef = directFamilyLocalEffectPathway(screen, element, directFamilyBond);
         return element;
       }
       const partnerBond = screen ? followPartnerCircuit(cat, adapter, screen, element) : null;

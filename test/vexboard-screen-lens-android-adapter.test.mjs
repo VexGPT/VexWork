@@ -545,6 +545,151 @@ internal fun settleWidgetCurrentness(
   assert.equal(currentPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'), false);
 });
 
+test('localEffect projects current Direct Family through Partner request and Store return', () => {
+  const variant = new Map(files);
+  variant.set(
+    APP + 'screens/primary/home/HomeScreen.kt',
+    files.get(APP + 'screens/primary/home/HomeScreen.kt')
+      .replace('val Ping = buttonRef(id = "body.ping", intent = invoke(AppActions.Ping))', 'val Ping = buttonRef(id = "body.ping", intent = localEffect())')
+      .concat('\nfun renderPlayback(experience: PlaybackExperience) {\n    when (HomeScreen.Ping) {\n        HomeScreen.Ping -> experience.activate(PlaybackControl.PlayPause)\n    }\n}\n'),
+  );
+  variant.set(APP + 'ui/PlaybackExperience.kt', [
+    'interface PlaybackExperience {',
+    '    fun activate(control: PlaybackControl)',
+    '}',
+    'private class CurrentPlaybackExperience(',
+    '    private val family: PlaybackFamily,',
+    '    private val connection: PlayerPartner.Connection.Request?,',
+    '    private val playerStore: PlayerStore,',
+    '    private val executionRoot: VexExecutionRoot,',
+    ') : PlaybackExperience {',
+    '    override fun activate(control: PlaybackControl) {',
+    '        val requestConnection = connection ?: return',
+    '        activatePlaybackThroughPartner(',
+    '            family = family,',
+    '            control = control,',
+    '            connection = requestConnection,',
+    '            playerStore = playerStore,',
+    '            executionRoot = executionRoot,',
+    '        )',
+    '    }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackState.kt', [
+    'sealed interface PlaybackState : VexFamily.State<PlaybackFamily> {',
+    '    data object Idle : PlaybackState',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackControl.kt', [
+    'enum class PlaybackControl : VexFamily.Control<PlaybackFamily> {',
+    '    PlayPause,',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackEffect.kt', [
+    'sealed interface PlaybackEffect : VexFamily.Effect<PlaybackFamily> {',
+    '    data object RequestPlay : PlaybackEffect',
+    '    data object RequestPause : PlaybackEffect',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackFamily.kt', [
+    'class PlaybackFamily :',
+    '    VexFamily<PlaybackFamily, PlaybackState, PlaybackControl, PlaybackEffect>(',
+    '        initialState = PlaybackState.Idle,',
+    '    ) {',
+    '    fun activatePlayback(control: PlaybackControl) = activate(control)',
+    '    override fun act(currentState: PlaybackState, control: PlaybackControl) =',
+    '        stay(beginLatest(PlaybackEffect.RequestPlay))',
+    '    fun observePlayer(playback: PlayerPartner.Signal.Playback?) = Unit',
+    '    object Act {',
+    '        class Method(',
+    '            private val connection: PlayerPartner.Connection.Request,',
+    '            override val effect: PlaybackEffect,',
+    '        ) : VexFamily.Act.Method<PlaybackFamily, Unit, Unit> {',
+    '            override suspend fun invoke() = VexMethod.Result.Success(Unit)',
+    '        }',
+    '    }',
+    '}',
+    'fun activatePlaybackThroughPartner(',
+    '    family: PlaybackFamily,',
+    '    control: PlaybackControl,',
+    '    connection: PlayerPartner.Connection.Request,',
+    '    playerStore: PlayerStore,',
+    '    executionRoot: VexExecutionRoot,',
+    ') {',
+    '    val accepted = family.activatePlayback(control) ?: return',
+    '    val begin = accepted.realizationBegin ?: return',
+    '    accepted.launch(',
+    '        executionRoot = executionRoot,',
+    '        method = PlaybackFamily.Act.Method(connection, begin.effect),',
+    '    )',
+    '}',
+    'fun observePlaybackPlayerStore(',
+    '    family: PlaybackFamily,',
+    '    store: PlayerStore,',
+    '    executionRoot: VexExecutionRoot,',
+    ') {',
+    '    family.observePlayer(store.currentPlaybackSignal())',
+    '    VexExecution.observe(',
+    '        executionRoot = executionRoot,',
+    '        owner = family,',
+    '        source = store::playbackSignals,',
+    '    ) { playback -> family.observePlayer(playback) }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlayerPartner.kt', [
+    'object PlayerPartner : VexPartner<PlayerPartner> {',
+    '    data object Source : VexPartner.Source<PlayerPartner>',
+    '    sealed interface Signal : VexPartner.Signal<PlayerPartner> {',
+    '        val source: Source get() = Source',
+    '        data class Playback(val playing: Boolean) : Signal',
+    '    }',
+    '    interface Connection : VexPartner.Connection<PlayerPartner, Signal> {',
+    '        interface Request : Connection',
+    '    }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlayerStore.kt', [
+    'class PlayerStore {',
+    '    fun currentPlaybackSignal(): PlayerPartner.Signal.Playback? = null',
+    '    fun playbackSignals() = Unit',
+    '}',
+  ].join('\n'));
+
+  const { lens, report } = project({ files: variant });
+  const ping = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(ping.pathwayRef, 'pathway.ui.play-pause');
+  const pathway = lens.pathways.find((entry) => entry.pathwayRef === ping.pathwayRef);
+  assert.equal(pathway.disposition, 'SCAE_FAMILY');
+  assert.ok(pathway.nodes.some((node) => node.role === 'CONTROL' && node.label === 'PlaybackControl.PlayPause'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'ACT' && node.symbol === 'VexFamily.Act.Accepted'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'REALIZATION' && node.symbol === 'VexFamily.Act.Accepted.realizationBegin'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'METHOD' && node.symbol === 'PlaybackFamily.Act.Method'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'PARTNER' && node.label === 'PlayerPartner'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'STORE' && node.label === 'PlayerStore'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'OBSERVATION' && node.label === 'PlayerPartner.Signal.Playback'));
+  assert.ok(pathway.edges.some((edge) => edge.from.endsWith('.store') && edge.to.endsWith('.observe') && edge.kind === 'DATA'));
+  assert.ok(pathway.edges.some((edge) => edge.from.endsWith('.observe') && edge.to.endsWith('.state') && edge.kind === 'RETURN'));
+  assert.ok(report.bonds.some((bond) =>
+    bond.via === 'DIRECT_FAMILY_LOCAL_EFFECT' &&
+    bond.family === 'PlaybackFamily' &&
+    bond.control === 'PlayPause' &&
+    bond.partner === 'PlayerPartner' &&
+    bond.store === 'PlayerStore'
+  ));
+
+  const broken = new Map(variant);
+  broken.set(
+    APP + 'ui/PlaybackFamily.kt',
+    variant.get(APP + 'ui/PlaybackFamily.kt').replace('source = store::playbackSignals,', 'source = missing::playbackSignals,'),
+  );
+  const brokenProjection = project({ files: broken });
+  const brokenPing = brokenProjection.lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(brokenPing.pathwayRef, undefined);
+  assert.ok(brokenProjection.report.held.some((entry) =>
+    entry.elementRef === brokenPing.ref && /not source-proven/.test(entry.reason)
+  ));
+});
+
 test('a closure that reaches no Family stays a direct registration', () => {
   const { lens } = project();
   const ping = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.other.ping');
