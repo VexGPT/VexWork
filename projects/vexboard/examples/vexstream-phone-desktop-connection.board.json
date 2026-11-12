@@ -16,7 +16,7 @@
         "parentRefOrNull": null,
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js",
           "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
@@ -29,7 +29,7 @@
         "parentRefOrNull": null,
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
@@ -43,8 +43,9 @@
         "parentRefOrNull": null,
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
-          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "repo.vexlife-android:app/src/main/AndroidManifest.xml"
         ]
       },
       {
@@ -54,7 +55,7 @@
         "parentRefOrNull": "container.vexstream.desktop",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
       },
@@ -65,7 +66,7 @@
         "parentRefOrNull": "scene.vexstream.desktop.library",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
@@ -77,7 +78,7 @@
         "parentRefOrNull": "container.vexstream.desktop",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
@@ -89,7 +90,7 @@
         "parentRefOrNull": "container.vexstream.desktop",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
@@ -101,7 +102,7 @@
         "parentRefOrNull": "container.vexstream.desktop",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
@@ -113,7 +114,7 @@
         "parentRefOrNull": "container.vexstream.desktop",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
@@ -125,7 +126,7 @@
         "parentRefOrNull": "container.vexstream.desktop",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
       },
@@ -136,7 +137,7 @@
         "parentRefOrNull": "scene.vexstream.desktop.pending-approval",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
@@ -148,7 +149,7 @@
         "parentRefOrNull": "container.vexstream.android",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
         ]
       },
@@ -159,7 +160,7 @@
         "parentRefOrNull": "scene.vexstream.android.home",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
         ]
       },
@@ -170,7 +171,7 @@
         "parentRefOrNull": "container.vexstream.android",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
@@ -183,7 +184,7 @@
         "parentRefOrNull": "scene.vexstream.android.not-paired",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -195,7 +196,7 @@
         "parentRefOrNull": "container.vexstream.android",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -207,7 +208,7 @@
         "parentRefOrNull": "container.vexstream.android",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -219,7 +220,7 @@
         "parentRefOrNull": "scene.vexstream.android.confirm-code",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -231,7 +232,7 @@
         "parentRefOrNull": "container.vexstream.android",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -243,7 +244,7 @@
         "parentRefOrNull": "container.vexstream.android",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
         ]
@@ -255,8 +256,9 @@
         "parentRefOrNull": "container.vexstream.android-os",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
-          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "repo.vexlife-android:app/src/main/AndroidManifest.xml"
         ]
       },
       {
@@ -280,7 +282,7 @@
         "toRef": "control.vexstream.desktop.open-phone",
         "labelOrNull": "Phone",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
       },
@@ -291,7 +293,7 @@
         "toRef": "scene.vexstream.desktop.phone-connection",
         "labelOrNull": "Open",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js"
         ]
       },
@@ -302,7 +304,7 @@
         "toRef": "decision.vexstream.desktop.remembered-phone",
         "labelOrNull": "Pairing state",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js"
         ]
       },
@@ -313,7 +315,7 @@
         "toRef": "scene.vexstream.desktop.pairing-ready",
         "labelOrNull": "No remembered → auto-start",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js"
         ]
       },
@@ -324,7 +326,7 @@
         "toRef": "control.vexstream.desktop.connect-another",
         "labelOrNull": "Remembered",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
       },
@@ -335,7 +337,7 @@
         "toRef": "scene.vexstream.desktop.pairing-ready",
         "labelOrNull": "Start pairing",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js"
         ]
       },
@@ -347,7 +349,7 @@
         "labelOrNull": "Continue on phone",
         "sourceRefs": [
           "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
         ]
       },
@@ -358,7 +360,7 @@
         "toRef": "control.vexstream.android.connect-vexstream",
         "labelOrNull": "Connect",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
         ]
       },
@@ -369,7 +371,7 @@
         "toRef": "scene.vexstream.android.not-paired",
         "labelOrNull": "Open VexStream",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
         ]
@@ -381,7 +383,7 @@
         "toRef": "control.vexstream.android.find-nearby",
         "labelOrNull": "Find",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -393,7 +395,7 @@
         "toRef": "scene.vexstream.android.searching",
         "labelOrNull": "Search",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -405,7 +407,7 @@
         "toRef": "scene.vexstream.android.confirm-code",
         "labelOrNull": "Found",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -430,7 +432,7 @@
         "toRef": "control.vexstream.android.request-access",
         "labelOrNull": "Codes match",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -442,7 +444,7 @@
         "toRef": "scene.vexstream.android.waiting-approval",
         "labelOrNull": "Request access",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -467,7 +469,7 @@
         "toRef": "control.vexstream.desktop.allow",
         "labelOrNull": "Allow",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
@@ -498,14 +500,14 @@
     "sourceRefs": [
       "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
       "src/shared/vexboard-evidence.mjs",
-      "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+      "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
       "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
       "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
       "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
       "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
       "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
       "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
-      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+      "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
       "repo.vexstream-music:v2/web/features/phone/connection.js",
       "repo.vexstream-music:v2/web/features/phone/presentation.js",
       "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
@@ -850,8 +852,8 @@
     ],
     "sourceRefs": [
       "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
-      "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
-      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
+      "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+      "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94"
     ]
   },
   "evidence": {
@@ -865,7 +867,7 @@
         "semanticRef": "scene.vexstream.desktop.library",
         "expectation": "Expected visual: VexStream Desktop library exposes the phone/device connection control.",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
       },
@@ -874,7 +876,7 @@
         "semanticRef": "scene.vexstream.desktop.phone-connection",
         "expectation": "Expected visual: Phone Connection reflects current remembered/pairing state without claiming another product owner.",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/connection.js",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
@@ -884,7 +886,7 @@
         "semanticRef": "scene.vexstream.desktop.pairing-ready",
         "expectation": "Expected visual: Ready to pair for 5 minutes shows the current six-digit confirmation code and phone instructions.",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
       },
@@ -893,7 +895,7 @@
         "semanticRef": "scene.vexstream.android.home",
         "expectation": "Expected visual: VexLife Home exposes Connect VexStream Music when the local connection is not paired.",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
         ]
       },
@@ -902,7 +904,7 @@
         "semanticRef": "scene.vexstream.android.not-paired",
         "expectation": "Expected visual: VexStream Music NotPaired presentation exposes Find VexStream.",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -912,7 +914,7 @@
         "semanticRef": "scene.vexstream.android.confirm-code",
         "expectation": "Expected visual: ConfirmCode shows the selected desktop name, six-digit code, and Codes match / Request access control.",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -922,7 +924,7 @@
         "semanticRef": "scene.vexstream.android.waiting-approval",
         "expectation": "Expected visual: Android shows WaitingForDesktopApproval after Request access.",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
@@ -932,7 +934,7 @@
         "semanticRef": "scene.vexstream.desktop.pending-approval",
         "expectation": "Expected visual: Desktop shows the pending VexLife phone with Deny and Allow controls.",
         "sourceRefs": [
-          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
           "repo.vexstream-music:v2/web/features/phone/presentation.js"
         ]
       },
@@ -941,7 +943,7 @@
         "semanticRef": "scene.vexstream.android.paired-library",
         "expectation": "Expected visual: after approval Android is Paired and library/catalog presentation may populate independently of the adjacent OS permission surface.",
         "sourceRefs": [
-          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
         ]
@@ -951,16 +953,79 @@
         "semanticRef": "reference.vexstream.android-os.media-permission",
         "expectation": "Expected observation: an Android OS media permission surface may overlay the paired library; it is platform-owned and is not modeled as the prerequisite for remote catalog visibility.",
         "sourceRefs": [
-          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "repo.vexlife-android:app/src/main/AndroidManifest.xml"
         ]
       }
     ],
-    "artifacts": [],
+    "artifacts": [
+      {
+        "artifactRef": "evidence-artifact.vexstream.android-home.a011",
+        "slotRef": "evidence-slot.vexstream.android-home",
+        "role": "OBSERVED",
+        "assetRef": "asset.screenshot.vexstream.android-home.a011",
+        "journeyRefOrNull": null,
+        "journeyStepSequenceOrNull": null,
+        "interactionRefOrNull": "android.action.open-vexstream",
+        "configurationRefOrNull": null,
+        "capturedAtOrNull": "2026-10-19T03:59:25.489Z",
+        "contentSha256OrNull": "f5b84da36456bfeba22a1f1874c09360fe7b33eef303776ed0412fb72bdcb3da",
+        "sourceRefs": [
+          "return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c",
+          "run.vexstream-e2e-a011-20261019T035558Z-2400",
+          "git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334",
+          "git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3",
+          "evidence.a011:android-private/screenshots/android.action.open-vexstream.before.png"
+        ]
+      },
+      {
+        "artifactRef": "evidence-artifact.vexstream.android-not-paired.a011",
+        "slotRef": "evidence-slot.vexstream.android-not-paired",
+        "role": "OBSERVED",
+        "assetRef": "asset.screenshot.vexstream.android-not-paired.a011",
+        "journeyRefOrNull": null,
+        "journeyStepSequenceOrNull": null,
+        "interactionRefOrNull": "android.action.open-vexstream",
+        "configurationRefOrNull": null,
+        "capturedAtOrNull": "2026-10-19T03:59:25.982Z",
+        "contentSha256OrNull": "3bde6851344aacc36fc5b647d1ed7b7937c2450e3e4c06ddaf5d101661164434",
+        "sourceRefs": [
+          "return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c",
+          "run.vexstream-e2e-a011-20261019T035558Z-2400",
+          "git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334",
+          "git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3",
+          "evidence.a011:android-private/screenshots/android.action.open-vexstream.after.png"
+        ]
+      },
+      {
+        "artifactRef": "evidence-artifact.vexstream.android-confirm-code.a011",
+        "slotRef": "evidence-slot.vexstream.android-confirm-code",
+        "role": "OBSERVED",
+        "assetRef": "asset.screenshot.vexstream.android-confirm-code.a011",
+        "journeyRefOrNull": null,
+        "journeyStepSequenceOrNull": null,
+        "interactionRefOrNull": "android.action.confirm-pairing-code",
+        "configurationRefOrNull": null,
+        "capturedAtOrNull": "2026-10-19T03:59:27.014Z",
+        "contentSha256OrNull": "733f78c0ef2c117fd29cbab030abea8b17dcf0a5786366eb37f62ef6b9d26d23",
+        "sourceRefs": [
+          "return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c",
+          "run.vexstream-e2e-a011-20261019T035558Z-2400",
+          "git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334",
+          "git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3",
+          "evidence.a011:android-private/screenshots/android.action.confirm-pairing-code.after.png"
+        ]
+      }
+    ],
     "sourceRefs": [
       "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
       "src/shared/vexboard-evidence.mjs",
-      "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
-      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
+      "git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+      "git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
+      "return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c",
+      "run.vexstream-e2e-a011-20261019T035558Z-2400",
+      "git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334",
+      "git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3"
     ]
   }
 }

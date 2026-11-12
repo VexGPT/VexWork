@@ -975,11 +975,24 @@ function inspector(side){
     if(slots.length){
       const eg=el('div','group');eg.append(el('h3','','Evidence · expected / observed'));
       for(const slot of slots){
-        const block=el('div','ref-row');block.append(inspectorRefToken(slot.slotRef,{semanticRefs:[slot.semanticRef]}),el('div','v',slot.expectation));
+        const block=el('div','ref-row');block.append(
+          inspectorRefToken(slot.slotRef,{semanticRefs:[slot.semanticRef]}),
+          el('div','v',slot.expectation),
+          el('div','tiny','Expected source'),
+          el('div','v',slot.sourceRefs.join('\n')),
+        );
         if(slot.artifacts.length){
           const artifacts=el('div','ref-list');
           for(const artifact of slot.artifacts){
-            const row=el('div','ref-row');row.append(el('span','badge '+(artifact.role==='OBSERVED'?'draft':'readonly'),artifact.role),document.createTextNode(' '),inspectorRefToken(artifact.artifactRef),el('div','v',artifact.assetRef+(artifact.capturedAtOrNull?'\n'+artifact.capturedAtOrNull:'')));artifacts.append(row);
+            const sourceLabel=artifact.role==='OBSERVED'?'Observed source':'Reference source';
+            const row=el('div','ref-row');row.append(
+              el('span','badge '+(artifact.role==='OBSERVED'?'draft':'readonly'),artifact.role),
+              document.createTextNode(' '),
+              inspectorRefToken(artifact.artifactRef),
+              el('div','v',artifact.assetRef+(artifact.capturedAtOrNull?'\n'+artifact.capturedAtOrNull:'')),
+              el('div','tiny',sourceLabel),
+              el('div','v',artifact.sourceRefs.join('\n')),
+            );artifacts.append(row);
           }
           block.append(artifacts);
         }else block.append(el('div','empty','Expected slot only · no artifact admitted yet.'));
