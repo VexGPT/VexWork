@@ -755,7 +755,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-12T10:03:45.000Z",
-      "updatedAt": "2026-11-12T10:03:45.000Z",
+      "updatedAt": "2026-11-12T10:20:00.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "label": "High — persistent Vision scope + demand-driven current visual context",
@@ -784,7 +784,9 @@
         "repo.vextreme-sdk:docs/architecture/perception-session-authorization.md",
         "repo.vexlife-prod:docs/foundation/VEXLIFE-VISION-COMPANION.md",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+        "github.issue.vextreme-sdk.241.comment.6820899602",
+        "github.issue.vextreme-sdk.226.comment.6820900304"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
