@@ -178,6 +178,150 @@
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T12:47:02.000Z",
+      "updatedAt": "2026-11-07T12:47:02.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.outcome",
+      "label": "Compatibility semantic-family convergence",
+      "purpose": "Converge bounded production consumers of the accepted VexBehaviorBlueprint/VexPort compatibility path onto Direct VexFamily only where current source proves the semantic question can become smaller without moving provider truth, runtime custody, Relay ownership, or stable human behavior. Do not force immediate provider work through VexExecution merely for symmetry; each next consumer must be earned by the preceding proof.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-android-current-state-refinement/README.md",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorBlueprint.kt",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/README.md",
+        "github.pull.vexlife-android.220",
+        "github.pull.vexlife-android.222"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T12:47:02.000Z",
+      "updatedAt": "2026-11-07T12:47:02.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence.maps-mode",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "label": "Prove VexMaps Distribution Mode as Direct VexFamily",
+      "purpose": "Use the provider-free Distribution Mode semantic owner as the first migration proof: preserve Regular/Distribution and Toggle/UseDistribution meaning, replace the compatibility Behavior/Connection/VexPort semantic owner with Direct VexFamily, let convergence consume Mode State directly, and prove that no provider, Connection, Effect realization, or VexExecution machinery is needed.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.220",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/mode/VexMapsDistributionModeFamily.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/convergence/VexMapsDistributionModeDeliveryRouteConvergenceRelay.kt"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T13:10:52.000Z",
+      "updatedAt": "2026-11-07T13:10:52.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence.repeat",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "label": "Prove provider-backed VexStream Repeat as Direct VexFamily",
+      "purpose": "Prove that a stable provider-backed compatibility family can move semantic State/Control/Effect ownership to Direct VexFamily while retaining the real Media3 Connection as provider observation/realization and without inventing VexExecution for an immediate repeatMode assignment. Preserve request != provider outcome and admit no Queue/Playback migration by analogy.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.221",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatFamily.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/Media3VexStreamRepeatConnection.kt",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T13:40:00.000Z",
+      "updatedAt": "2026-11-07T13:40:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence.vexstream-hub-partner",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "label": "Pressure paired VexStream Hub/Desktop as VexPartner",
+      "purpose": "Test VexPartner positively against the actual paired VexStream external participant: reuse existing hubRef as Partner Source and pinned certificateSha256 as Connection identity, move external catalog representation conversion out of PairedVexStreamMusicRepository, and keep Media3 classified separately as local platform/provider realization unless its own source later earns Partner meaning.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "github.pull.vexlife-android.219"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.223",
+        "github.pull.vexlife-android.219",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexPartner.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubPartner.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubContract.kt"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T13:23:07.000Z",
+      "updatedAt": "2026-11-07T13:23:07.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence.queue",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "label": "Prove provider-backed VexStream Queue as Direct VexFamily",
+      "purpose": "Prove that finite Queue State/Control/Effect semantics can move from the compatibility Blueprint/VexPort projection to Direct VexFamily while the real Media3 provider Connection and typed Queue Play/Reorder occurrence boundaries remain independent. Reuse one Queue State availability law across Family resolution, Compose and widget consumers; preserve request != provider outcome and do not admit Playback migration by analogy.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "github.pull.vexlife-android.221"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.222",
+        "github.pull.vexlife-android.221",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueFamily.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/Media3VexStreamQueueConnection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackReadState.kt"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [],

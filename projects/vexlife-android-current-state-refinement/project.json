@@ -30,7 +30,25 @@
     "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
     "github.pull.vexlife-android.211",
     "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
-    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt"
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt",
+    "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+    "work.vexlife-android.current-state-refinement.semantic-family-convergence.maps-mode",
+    "github.pull.vexlife-android.220",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorBlueprint.kt",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "work.vexlife-android.current-state-refinement.semantic-family-convergence.repeat",
+    "github.pull.vexlife-android.221",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatFamily.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/Media3VexStreamRepeatConnection.kt",
+    "work.vexlife-android.current-state-refinement.semantic-family-convergence.vexstream-hub-partner",
+    "github.pull.vexlife-android.223",
+    "github.pull.vexlife-android.219",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexPartner.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubPartner.kt",
+    "work.vexlife-android.current-state-refinement.semantic-family-convergence.queue",
+    "github.pull.vexlife-android.222",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueFamily.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/Media3VexStreamQueueConnection.kt"
   ],
   "formedAt": "2026-10-24T08:50:00.000Z"
 }
