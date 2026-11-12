@@ -477,7 +477,7 @@ work.vexlife.new-beginnings.vision-product-runtime-orchestration
   COMPLETED
 
 work.vexlife.new-beginnings.vision-scope-current-context
-  READY / HIGH / ACTIVE
+  RUNNING / HIGH / ACTIVE
   authorityDisposition = NO_AUTHORITY
   effectDisposition    = NO_EFFECTS
 ~~~
@@ -527,8 +527,9 @@ SDK PR #1945
 ~~~
 
 PR #1945 is useful current feedback work, but the persistent-scope/context child is the broader next
-product relationship. VexWork owns the Work coordinate; VexLife-Prod and Vextreme-SDK remain the
-rightful semantic/effect owners.
+product relationship. SDK PR #1946 now carries the first exact Process Factory selected-scope session
+contract under that child; executable SourceOwner proof remains pending. VexWork owns the Work
+coordinate; VexLife-Prod and Vextreme-SDK remain the rightful semantic/effect owners.
 
 No new Project, Vision Store, continuous screen listener, automatic Memory promotion or background
 capture is earned by this currentization.
