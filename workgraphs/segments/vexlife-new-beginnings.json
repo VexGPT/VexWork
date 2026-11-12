@@ -755,13 +755,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-12T10:03:45.000Z",
-      "updatedAt": "2026-11-12T10:20:00.000Z",
+      "updatedAt": "2026-11-12T10:30:18.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "label": "High — persistent Vision scope + demand-driven current visual context",
       "purpose": "Evolve the accepted one-shot Vision path into the intended conversational relationship without continuous capture: let one explicitly selected window remain the engaged Vision scope across ordinary scrolling/navigation, let turn/context composition request one fresh current snapshot only when vision is materially relevant, give actual capture a distinct visible looking-now signal, derive bounded visual meaning into canonical Conversation Context, discard raw pixels, and keep Vision state, Conversation history, durable Memory, training and effect authority as separate owners.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.vision-companion-product-surface",
@@ -786,7 +786,13 @@
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
         "github.issue.vextreme-sdk.241.comment.6820899602",
-        "github.issue.vextreme-sdk.226.comment.6820900304"
+        "github.issue.vextreme-sdk.226.comment.6820900304",
+        "github.pull.vextreme-sdk.1946",
+        "github.issue.vextreme-sdk.1574.comment.6821041312",
+        "github.issue.vextreme-sdk.1574.comment.6821060489",
+        "github.issue.vextreme-sdk.223.comment.6821036077",
+        "github.issue.vextreme-sdk.226.comment.6821018321",
+        "github.issue.vextreme-sdk.241.comment.6821025379"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -1349,6 +1355,22 @@
         "github.pull.vexlife-prod.54.comment.6761261558"
       ],
       "createdAt": "2026-11-10T10:36:15.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.vision-scope-current-context.ready-running.sdk-pr1946.20261112A",
+      "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Root admitted the exact three-new-path Process Factory selected-scope session writer and SDK PR #1946 formed on current main/checkpoint with the exact claimed membrane. Source authoring is now active while executable proof, Assurance, native scope persistence, capture, model input and Product/Conversation integration remain unearned.",
+      "actorRef": "actor.chatgpt.vexlife-vision-companion",
+      "sourceRefs": [
+        "github.pull.vextreme-sdk.1946",
+        "github.issue.vextreme-sdk.1574.comment.6821041312",
+        "github.issue.vextreme-sdk.1574.comment.6821060489",
+        "github.issue.vextreme-sdk.223.comment.6821036077"
+      ],
+      "createdAt": "2026-11-12T10:30:18.000Z"
     }
   ],
   "sourceRefs": [
