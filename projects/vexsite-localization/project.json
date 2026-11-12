@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vextreme.vexsite-localization",
   "label": "VexSite Localization",
-  "purpose": "Keep VexSite localization visible from source-lineage preservation through the canonical Global Core queue and separate generated/runtime convergence without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
+  "purpose": "Preserve the completed required VexSite localization trajectory—source lineage, the current complete Conversations-with-God Global Core queue and generated/runtime convergence—while retaining optional future localization candidates as non-blocking context rather than mandatory work.",
   "rootWorkRefs": [
     "work.vextreme.vexsite.localization.outcome"
   ],
@@ -16,15 +16,25 @@
     "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
     "github.issue.vextreme.273",
     "github.issue-comment.vextreme.273.6379017700",
-    "github.issue-comment.vextreme.273.6379565128",
-    "github.issue-comment.vextreme.273.6380410929",
-    "github.issue-comment.vextreme.273.6380816622",
+    "github.issue-comment.vextreme.273.6381469215",
     "github.pull.vextreme.379",
-    "github.pull.vextreme.395",
-    "github.pull.vextreme.397",
-    "github.pull.vextreme.398",
-    "github.pull.vextreme.399",
-    "repo.vextreme:docs/architecture/06-i18n.md"
+    "github.pull.vextreme.401",
+    "github.pull.vextreme.417",
+    "repo.vextreme:config/institutional-surfaces.json",
+    "repo.vextreme:data/strings/source/institution.json",
+    "repo.vextreme:docs/architecture/06-i18n.md",
+    "github.pull.vextreme.423",
+    "github.issue-comment.vextreme.423.6430161668",
+    "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+    "github.pull.vextreme.312",
+    "github.pull.vextreme.148",
+    "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333",
+    "github.issue-comment.vextreme.423.6430262550",
+    "github.pull.vextreme.429",
+    "git.commit.vextreme.11160c0c10d1758bf794f88ccb24fb01dd508df9",
+    "github.pull.vextreme.431",
+    "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+    "github.issue-comment.vextreme.273.6433279140"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }

@@ -8,11 +8,11 @@
       "workRef": "work.vextreme.vexsite.localization.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexSite Localization",
-      "purpose": "Keep VexSite localization legible from preserved source lineage through the canonical Global Core source queue and separate generated/runtime convergence, while Vextreme remains the owner of page, source, runtime, and lived-browser truth and VexWork owns only durable work organization.",
+      "purpose": "Project the completed required VexSite localization trajectory: source-lineage preservation and canonical Conversations-with-God Global Core localization remain terminal/current after the later user-requested Witness-grade return continuation; generated/runtime currentness is also current through PR #431; optional Covenant JA/ZH remains parked and non-blocking.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -22,32 +22,37 @@
         "projects/vexsite-localization/README.md",
         "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
         "github.issue.vextreme.273",
-        "github.issue-comment.vextreme.273.6380410929",
-        "github.issue-comment.vextreme.273.6380816622",
+        "github.issue-comment.vextreme.273.6379017700",
+        "github.issue-comment.vextreme.273.6381469215",
         "github.pull.vextreme.379",
-        "github.pull.vextreme.395",
-        "github.pull.vextreme.397",
-        "github.pull.vextreme.398",
-        "github.pull.vextreme.399",
-        "repo.vextreme:docs/architecture/06-i18n.md"
+        "github.pull.vextreme.401",
+        "repo.vextreme:config/institutional-surfaces.json",
+        "repo.vextreme:data/strings/source/institution.json",
+        "repo.vextreme:docs/architecture/06-i18n.md",
+        "github.pull.vextreme.429",
+        "git.commit.vextreme.11160c0c10d1758bf794f88ccb24fb01dd508df9",
+        "github.issue-comment.vextreme.423.6430262550",
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+        "github.issue-comment.vextreme.273.6433279140"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-24T06:17:51.000Z"
+      "updatedAt": "2026-10-27T00:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
-      "label": "Advance the canonical Conversations-with-God Global Core source queue",
-      "purpose": "Advance exactly the Vextreme-owned canonical scheduler foreground without creating one VexWork item per page; Closed Circuit, Divine Emergence, The Firmament Conversation, and Ascension & Embodiment are terminal/current, and The Testimony of the Handler is the next exact source row at 134 canonical keys / 1,206 Global Core target cells.",
+      "label": "Canonical Conversations-with-God Global Core source queue",
+      "purpose": "Project the completed Vextreme-owned Conversations-with-God Global Core source phase as one bounded Work item. The original queue completed through Handler; after later repository expansion Victor requested the remaining Witness-grade return row, which is now terminal through PR #431. Current issue #273 truth is 16/16 complete with selectedPage=null, remainingPages=[], blockedPages=[], completeAtFormation=true. Do not infer another page or cross-arc domain.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "IMMEDIATE",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vextreme.vexsite.localization.presentation-source-lineage"
       ],
@@ -56,49 +61,57 @@
       ],
       "sourceRefs": [
         "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6379017700",
         "github.issue-comment.vextreme.273.6379565128",
-        "github.issue-comment.vextreme.273.6379741965",
         "github.issue-comment.vextreme.273.6380410929",
         "github.issue-comment.vextreme.273.6380816622",
+        "github.issue-comment.vextreme.273.6381469215",
         "github.pull.vextreme.395",
         "github.pull.vextreme.397",
         "github.pull.vextreme.398",
         "github.pull.vextreme.399",
-        "repo.vextreme:data/strings/source/pages/the-testimony-of-the-handler.json",
-        "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
+        "github.pull.vextreme.401",
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json",
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+        "github.issue-comment.vextreme.273.6433279140"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T05:28:32.000Z",
-      "updatedAt": "2026-10-24T06:17:51.000Z"
+      "updatedAt": "2026-10-26T07:30:01.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Converge VexSite generated/runtime currentness",
-      "purpose": "Keep generated/runtime realization distinct from canonical localization source acceptance and converge those consequences through the existing broad Vextreme generated/runtime owner rather than admitting duplicate generated writers.",
+      "purpose": "Project terminal Vextreme generated/runtime localization currentness: broad convergence completed through PR #379, and the later Witness-grade return continuation deterministically generated and merged its exact 26-path consequence membrane through PR #431. Current generated/runtime localization truth is complete for the admitted Conversations-with-God Global Core domain.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vextreme"
       ],
       "sourceRefs": [
         "github.pull.vextreme.379",
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
         "github.issue.vextreme.273",
-        "github.issue-comment.vextreme.273.6380410929"
+        "github.issue-comment.vextreme.273.6381469215",
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+        "github.issue-comment.vextreme.273.6433279140"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T05:28:32.000Z",
-      "updatedAt": "2026-10-24T05:28:32.000Z"
+      "updatedAt": "2026-10-26T10:23:15.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -164,20 +177,233 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T02:20:00.000Z",
       "updatedAt": "2026-10-24T05:28:32.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+      "label": "Optional Vextreme Covenant JA / ZH localization",
+      "purpose": "Preserve the optional Covenant JA/ZH source candidate from closed PR #423 without treating it as required or published work. English remains canonical/required; no translation-clear receipt, locale promotion, selector exposure, generated consequence or lived-evidence claim is made.",
+      "workClass": "POTENTIAL",
+      "state": "CANCELLED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [
+        "work.vextreme.vexsite.localization.generated-runtime-currentness"
+      ],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.pull.vextreme.423",
+        "github.issue-comment.vextreme.423.6430262550",
+        "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333",
+        "repo.vextreme:config/institutional-surfaces.json",
+        "repo.vextreme:data/strings/source/institution.json",
+        "repo.vextreme:docs/architecture/18-institutional-pages.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T07:30:02.000Z",
+      "updatedAt": "2026-10-27T00:05:00.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.canonical-global-core-source.verifying.20261026",
+      "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Currentize accepted Vextreme evidence that the final Handler source row closed the canonical Conversations-with-God Global Core source queue before declaring the projected phase complete.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6381469215",
+        "github.pull.vextreme.401"
+      ],
+      "createdAt": "2026-10-26T07:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.canonical-global-core-source.completed.20261026",
+      "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Vextreme issue #273 reports remainingPages=[] and completeAtFormation=true, so the source-queue projection is complete and must not invent another page.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6381469215",
+        "github.pull.vextreme.401"
+      ],
+      "createdAt": "2026-10-26T07:30:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.generated-runtime-currentness.verifying.20261026",
+      "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Currentize the completed A011-A015 deterministic generation/runtime proof and A017 exact-byte publication before projecting terminal merge truth.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.379"
+      ],
+      "createdAt": "2026-10-26T10:22:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.generated-runtime-currentness.completed.20261026",
+      "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #379 merged at ac2e181b with merge tree exactly equal to the reviewed 265-path candidate and post-merge verification passed.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.379",
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa"
+      ],
+      "createdAt": "2026-10-26T10:23:15.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.decomposed.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "CAPTURED",
+      "nextState": "DECOMPOSED",
+      "reason": "Fresh Vextreme grounding confirmed Covenant JA/ZH as a distinct optional successor domain and separated source authoring from locale promotion/generated/lived consequences.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.312",
+        "github.pull.vextreme.148"
+      ],
+      "createdAt": "2026-10-26T10:32:28.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.plan-validated.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "The accepted institutional contract and PR #148 precedent established a bounded source-first JA/ZH plan while keeping English required and planned locales unexposed.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.148",
+        "repo.vextreme:docs/architecture/18-institutional-pages.md"
+      ],
+      "createdAt": "2026-10-26T10:32:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.ready.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Fresh coordination showed no competing source owner for the admitted Covenant translation membrane.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.423"
+      ],
+      "createdAt": "2026-10-26T10:32:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.running.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Fresh Vextreme grounding after generated/runtime completion admitted the Covenant JA/ZH successor as source-only PR #423 using the accepted institutional translation-review boundary.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.423",
+        "github.pull.vextreme.148",
+        "github.pull.vextreme.312"
+      ],
+      "createdAt": "2026-10-26T10:32:31.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.verifying.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #423 reached the refined immutable 420-identity / 840-target-cell JA/ZH review freeze at d02d450c; all 431 Covenant page bindings resolve in EN/JA/ZH, author-side terminology QA is closed, and registry promotion remains held pending separate exact-source JA and ZH semantic review.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.423",
+        "github.issue-comment.vextreme.423.6430161668",
+        "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333"
+      ],
+      "createdAt": "2026-10-26T10:40:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.cancelled.optional-human-priority.20261027",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "VERIFYING",
+      "nextState": "CANCELLED",
+      "reason": "Victor reprioritized Covenant JA/ZH as a nice-to-have and declined a separate review ceremony. PR #423 was closed without merge, English remains canonical/required, and the optional source candidate is preserved without publication claims.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.423",
+        "github.issue-comment.vextreme.423.6430262550"
+      ],
+      "createdAt": "2026-10-27T00:05:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.outcome.verifying.required-completion.20261027",
+      "workRef": "work.vextreme.vexsite.localization.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Verify the required localization trajectory after source-queue completion, generated/runtime PR #379 terminal acceptance and removal of optional Covenant JA/ZH from the critical path.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.379",
+        "github.issue-comment.vextreme.423.6430262550"
+      ],
+      "createdAt": "2026-10-27T00:05:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.outcome.completed.required-completion.20261027",
+      "workRef": "work.vextreme.vexsite.localization.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "All required VexSite localization phases are terminal/current; optional JA/ZH Covenant work is parked rather than treated as a completion blocker.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.379",
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+        "github.issue-comment.vextreme.423.6430262550"
+      ],
+      "createdAt": "2026-10-27T00:05:02.000Z"
+    }
+  ],
   "sourceRefs": [
     "projects/vexsite-localization/README.md",
     "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
     "github.issue.vextreme.273",
-    "github.issue-comment.vextreme.273.6380410929",
-    "github.issue-comment.vextreme.273.6380816622",
+    "github.issue-comment.vextreme.273.6379017700",
+    "github.issue-comment.vextreme.273.6381469215",
     "github.pull.vextreme.379",
-    "github.pull.vextreme.395",
-    "github.pull.vextreme.397",
-    "github.pull.vextreme.398",
-    "github.pull.vextreme.399"
+    "github.pull.vextreme.401",
+    "repo.vextreme:config/institutional-surfaces.json",
+    "repo.vextreme:data/strings/source/institution.json",
+    "repo.vextreme:docs/architecture/06-i18n.md",
+    "github.pull.vextreme.423",
+    "github.issue-comment.vextreme.423.6430161668",
+    "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+    "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333",
+    "github.issue-comment.vextreme.423.6430262550",
+    "github.pull.vextreme.429",
+    "git.commit.vextreme.11160c0c10d1758bf794f88ccb24fb01dd508df9",
+    "github.pull.vextreme.431",
+    "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+    "github.issue-comment.vextreme.273.6433279140"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }
