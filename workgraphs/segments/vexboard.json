@@ -685,7 +685,7 @@
       "label": "Screen Lens realization recovery and completion",
       "purpose": "Recover the Screen Lens through accepted VexArchitecture rather than a VexBoard-only approximation: restore source-owned realization, presence, examples and expression relationships; repair the non-expression Screen collapse; complete the Android evidence/semantic-root bridge; regenerate Stable and Main from their rightful source epochs; prove Debug Menu, VexStream, Events and Conversation through the same realization-aware four-face Lens on desktop and phone width; and promote Stable only after exact source and lived human proof. Preserve Scenario as separate parked work and do not invent product State, generic source-currentness ownership or fixture-specific UI truth.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexboard.screen-lens-currentness"
@@ -707,13 +707,21 @@
         "response.victor.screen-lens-realization-regression.20261107",
         "github.pull.vexlife-android.218",
         "github.pull.vexwork.276",
-        "github.pull.vexlife-android.219"
+        "github.pull.vexlife-android.219",
+        "github.pull.vexwork.273",
+        "github.commit.vexwork.adf1dfe5fc6d0d4d0af6bc46420cc796e902d7f7",
+        "github.pull.vexwork.281",
+        "github.commit.vexwork.776932d2a8cc27ea05b77dc2db320789138a2cdc",
+        "github.pull.vexwork.293",
+        "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
+        "github.issue-comment.vexwork.293.6818058673",
+        "git.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6"
       ],
       "nextProcessRefs": [
         "process.vexwork.quality-review"
       ],
       "createdAt": "2026-11-07T06:24:13.000Z",
-      "updatedAt": "2026-11-07T11:15:00.000Z"
+      "updatedAt": "2026-11-12T09:49:55.000Z"
     }
   ],
   "transitions": [
@@ -1259,6 +1267,27 @@
         "github.pull.vexlife-android.218"
       ],
       "createdAt": "2026-11-07T06:24:16.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.screen-lens-realization-recovery.verifying.pr293-integrated.20261112",
+      "workRef": "work.vexboard.screen-lens-realization-recovery",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The source-realization recovery is integrated through VexWork #273, current Direct-Family/currentness projection through #281, and exact current Android Main projection through tree-exact merged #293. Stable remains deliberately pinned to the accepted historical Android epoch while Main projects d857a92371555472e0303b18eadf353da2a868d6. Exact generated/currentness proof is satisfied; the remaining recovery predicate is lived desktop + phone-width verification of the restored source-owned four-face experience and the resulting evidence-bearing Stable-promotion/completion judgment.",
+      "actorRef": "actor.chatgpt.vexboard.screen-lens-realization-recovery",
+      "sourceRefs": [
+        "github.pull.vexwork.273",
+        "github.commit.vexwork.adf1dfe5fc6d0d4d0af6bc46420cc796e902d7f7",
+        "github.pull.vexwork.281",
+        "github.commit.vexwork.776932d2a8cc27ea05b77dc2db320789138a2cdc",
+        "github.pull.vexwork.293",
+        "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
+        "github.issue-comment.vexwork.293.6818058673",
+        "git.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+        "projects/vexboard/SCREEN-LENS.md"
+      ],
+      "createdAt": "2026-11-12T09:49:55.000Z"
     }
   ],
   "sourceRefs": [
