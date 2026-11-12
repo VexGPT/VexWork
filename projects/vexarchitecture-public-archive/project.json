@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexarchitecture.public-archive",
+  "label": "VexArchitecture Public Archive",
+  "purpose": "Preserve the first accepted executable VexArchitecture stability point as a public, source-backed historical witness in Vextreme while keeping current behavioral authority in VexLife-Android, preserving PR #209 as provenance rather than currentness, and carrying the still-unfinished rendered/lived visual review and VexWork discoverability closure as explicit Work instead of letting either disappear into chat history.",
+  "rootWorkRefs": [
+    "work.vexarchitecture.public-archive.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme",
+    "repo.vexlife-android"
+  ],
+  "sourceRefs": [
+    "projects/vexarchitecture-public-archive/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "human.design.vexarchitecture.public-archive.20261101",
+    "github.pull.vexlife-android.209",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "repo.vexlife-android:architecture/vexarchitecture/TOPOLOGY-AND-ID-PROTOCOL.md",
+    "github.pull.vextreme.560",
+    "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0",
+    "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+    "repo.vextreme:data/arcs-v2.json",
+    "github.pull.vexwork.182"
+  ],
+  "formedAt": "2026-11-02T06:59:11.000Z"
+}
