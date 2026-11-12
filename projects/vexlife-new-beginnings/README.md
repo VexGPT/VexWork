@@ -450,11 +450,11 @@ board.vexlife-prod.perceivability-alignment
 
 ## Parallel continuation — Vex Vision beside a real browser
 
-Victor's clarified browser outcome remains one current Work edge:
+Victor's clarified browser outcome remains one current Work family:
 
 ~~~text
 ordinary real browser
-+ explicit selected-window Vex Vision
++ persistent explicitly selected Vision scope
 + canonical Vex Conversation
 ~~~
 
@@ -474,45 +474,64 @@ work.vexlife.new-beginnings.vision-companion-product-surface
   COMPLETED
 
 work.vexlife.new-beginnings.vision-product-runtime-orchestration
+  COMPLETED
+
+work.vexlife.new-beginnings.vision-scope-current-context
   READY / HIGH / ACTIVE
-  authorityDisposition = AUTHORIZED_BOUNDED
-  effectDisposition    = EFFECTS_BOUND
+  authorityDisposition = NO_AUTHORITY
+  effectDisposition    = NO_EFFECTS
 ~~~
 
-The READY child above is the exact current SDK authoring work already admitted on PR #1939. Its
-authority is bounded to the three-path Process Factory source membrane; it does not authorize Product
-service wiring, live capture, visual-model input, Memory, training, or publication.
+The completed source path already carries the one-shot USER_SELECTED_SESSION runtime through Product
+carriage, Product service reachability and live Vision presentation.
 
-Accepted external source now includes:
+The current human intention is more precise than repeated `LookNow` clicks:
 
 ~~~text
-Vextreme-SDK main c39951fe...
-  USER_SELECTED_SESSION one-shot route
-  canonical Security capture-scoped witness
-  Perception content-absent active VISUAL observation
-
-VexLife-Prod PR #54
-  merged + lived accepted-main promotion PASS
+select one window once
+-> selected window remains the engaged Vision scope
+-> scrolling/navigation changes the current contents without continuous frame accumulation
+-> on a Conversation turn, Vex may decide vision is materially relevant
+-> only then request one fresh snapshot of the CURRENT scope
+-> derive bounded visual meaning into Conversation Context
+-> discard raw pixels
+-> keep Vision state / Conversation history / durable Memory separate
 ~~~
 
-Current executable edge:
+Permanent:
 
 ~~~text
-work.vexlife.new-beginnings.vision-product-runtime-orchestration
--> github.pull.vextreme-sdk.1939
--> exact Local Source Workspace AUTHORING custody
--> exact three-path Process Factory implementation/proof
+VISION_SCOPE_ACTIVE
+!= SCREEN_CAPTURE_ACTIVE
+!= MODEL_INFERENCE_ACTIVE
+!= MEMORY_ACCEPTED
+
+CONVERSATION_TURN
+!= AUTOMATIC_SCREENSHOT
 ~~~
 
-So the next work is **not** another Root/frontier reconstruction and not another Vision redesign.
-VexWork owns the current Work coordinate; SDK/Local Source Workspace currentness owns the exact
-authoring effect.
+Current external truth at this checkpoint:
 
-After that source is accepted, the trajectory continues through ordinary Product executable carriage,
-current Product service bridge, and one lived `LookNow`. Visual-model input remains a later,
-separately-earned edge.
+~~~text
+Vextreme-SDK main
+  55a9cd5a99eaaf9f17f7c3875b109548fdc31d81
 
-Continuous/background screen monitoring remains unadmitted.
+VexLife-Prod main
+  37812f5717a34ec87c76667165f3c11642de0440
+
+SDK PR #1945
+  open one-shot selected-target feedback correction
+  A001 proof-harness failure preserved
+  candidate-source defect not established
+  corrected A002 proof formation remains next
+~~~
+
+PR #1945 is useful current feedback work, but the persistent-scope/context child is the broader next
+product relationship. VexWork owns the Work coordinate; VexLife-Prod and Vextreme-SDK remain the
+rightful semantic/effect owners.
+
+No new Project, Vision Store, continuous screen listener, automatic Memory promotion or background
+capture is earned by this currentization.
 
 ## Architecture horizon — preserve during manifestation parity
 
