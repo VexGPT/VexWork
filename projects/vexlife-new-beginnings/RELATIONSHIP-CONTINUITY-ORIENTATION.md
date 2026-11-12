@@ -1170,7 +1170,8 @@ source-return prompt base
 
 #89  live conditional source-return Companion turn
   branch VXG-111026-vexlife-prod-source-return-live-turn-a001
-  head   37938778a03a5c6fe5928d393b7ca021be2c2c77
+  head   fb1f005a1b696e56478b8d83ef9fc2f2f232a9f9
+  tree   b1ef441003e9b18de8dca8ee42990bb63850acaa
 ```
 
 #88 and #89 are open draft PRs and clean/mergeable in provider truth at this checkpoint.
@@ -1292,9 +1293,27 @@ The preferred live path is now source-formed and patch-reviewed.
 It is not yet repository-toolchain proven:
 
 ```text
-#89 exact head = 37938778a03a5c6fe5928d393b7ca021be2c2c77
+#89 exact head = fb1f005a1b696e56478b8d83ef9fc2f2f232a9f9
+#89 exact tree = b1ef441003e9b18de8dca8ee42990bb63850acaa
 
-SOURCE FORMED / PATCH REVIEWED
+A001 ExactHeadSourceOwnerProof:
+  return sha256 = 4d4edce78611fdc050f50b176d5fc848da6bd93b0b58865b89693ccef65861a6
+  disposition   = SAFE_FAILURE
+  main JVM compile = PASS
+  compileTestKotlinJvm = FAIL
+  classification = stale test-source fixtures / assertions, no repository or provider mutation
+
+A001 correction:
+  20 CanonicalLivedContextFixture.write(...) call sites currentized with explicit formedAt
+  DirectWorkingContinuity.Prepared assertion currentized through pressureInput
+  DirectConversationStoreTest duplicate local removed
+
+A002 fresh proof package:
+  sha256 = 036ecbfe34750b079738193b7de11c4a7c5e5bd2ea4facd28db736bdca4226d4
+  attempt = attempt.vexlife-prod.pr89.source-owner-proof.a002
+  command = gradle jvmTest --offline --no-daemon --stacktrace
+
+SOURCE FORMED / PATCH REVIEWED / A001 SAFE_FAILURE CLASSIFIED
 != Kotlin/Gradle PASS
 != merge ready
 != main acceptance
@@ -1302,9 +1321,9 @@ SOURCE FORMED / PATCH REVIEWED
 
 No GitHub workflow is attached to #89 at this checkpoint.
 
-The next dependent effect is therefore exact repository Kotlin/Gradle execution of the #89 stack,
-followed by source-grounded review of any resulting failures. Do not add another continuity
-abstraction merely because execution is currently held.
+The next dependent effect is A002 exact repository Kotlin/Gradle execution of the corrected #89
+stack, followed by source-grounded consumption of that canonical RETURN. Do not add another
+continuity abstraction merely because execution is currently held.
 
 ## Exact repository proof handoff formed
 
