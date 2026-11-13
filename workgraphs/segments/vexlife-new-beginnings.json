@@ -818,7 +818,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-13T09:14:37.697Z",
-      "updatedAt": "2026-11-13T09:30:30.000Z",
+      "updatedAt": "2026-11-13T09:35:00.000Z",
       "workRef": "work.vexlife.new-beginnings.relationship-continuity-score-reconnection",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Immediate — restore current Score coordinates into Working Continuity",
@@ -847,7 +847,8 @@
         "github.pull.vexlife-prod.116",
         "github.issue.vexlife-prod.61.comment.6848983662",
         "github.issue.vexlife-prod.61.comment.6849185425",
-        "github.issue.vexlife-prod.61.comment.6849213363"
+        "github.issue.vexlife-prod.61.comment.6849213363",
+        "github.issue.vexlife-prod.61.comment.6849435673"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
