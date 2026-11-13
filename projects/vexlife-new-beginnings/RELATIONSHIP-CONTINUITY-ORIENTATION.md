@@ -2874,3 +2874,86 @@ run R009 once
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R008][R009-PREDICATE-RECOVERY] -->
 
+## R008 lived PASS by stale-harness correction — 2026-11-12 23:37:29 America/Los_Angeles
+
+R009 recovered the exact retained A029/A027 `semanticPass` expression.
+
+```text
+R009 RETURN sha256 =
+20a0d8a88c5437c15e9938d0dba5921dd28947e08cc440c1a85ca2d878319627
+
+classification =
+EXACT_RETAINED_SEMANTIC_PASS_PREDICATE_RECOVERED
+```
+
+R008 satisfied 27/28 retained harness clauses. The only false clause was the stale pre-A024 expectation:
+
+```text
+expected by retained harness:
+WORKING_CHECKPOINT_SUCCESSOR
+
+observed by R008:
+SOURCE_RETURN_WORKING_CHECKPOINT_SUCCESSOR
+```
+
+Current PR #89 source already owns the corrected truth. Its focused regression constructs the source-return successor prompt with:
+
+```text
+contextMode =
+SOURCE_RETURN_WORKING_CHECKPOINT_SUCCESSOR
+```
+
+A024 had already proven that this mode truthfully represents:
+
+```text
+same working-checkpoint successor custody
++ returned exact Conversation source
+```
+
+and PR #89 corrected `DirectWorkingContinuity.prepare` to admit that exact mode.
+
+Therefore no provider/model replay is warranted.
+
+R008 lived result is reclassified:
+
+```text
+R008_LIVED_TWO_STAGE_SOURCE_RETURN = PASS
+reclassification =
+EVIDENCE_ONLY_STALE_HARNESS_PREDICATE_CORRECTION
+businessReplayPerformed = false
+ProductSourceMutationPerformed = false
+```
+
+R008 lived facts include:
+- two HTTP 200 provider calls;
+- first inference emitted exact internal source-return control;
+- deterministic older canonical source returned for the second inference;
+- final response contained the hidden older secret;
+- one canonical REQUEST/RESPONSE pair;
+- source-return trace present with old request/response refs;
+- internal control absent from human progress;
+- raw provider output/reasoning not persisted;
+- temporary Conversation Home removed;
+- canonical Conversation untouched.
+
+The Product runtime receipt changed only through the A031-authorized Product-owned recovery path. Runtime receipt equality is not part of the recovered semanticPass expression.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6847086590
+```
+
+Earned next edge:
+
+```text
+A026 SourceOwner PASS
++ fresh semantic Assurance CLEAR
++ R008 lived PASS
+-> integration currentness / OwnerMergeDuty
+```
+
+Current Product main has advanced after the last preferred-stack currentization, so integration must re-ground/currentize before READY/merge. No lived replay is implied by that currentization alone.
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][R008-LIVED-PASS][R009-CONSUMED] -->
+
