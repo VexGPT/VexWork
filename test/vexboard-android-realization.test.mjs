@@ -152,6 +152,121 @@ const realize = () => realizeScreen({
   files, composables, primitives, resolveRef, toSource: (path) => path, knownRefs, constants: stringConstants(files),
 });
 
+test('realization preserves source-owned composable call topology without interpreting architecture', () => {
+  const realization = realize();
+  const pairs = realization.callEdges.map((edge) => [edge.caller, edge.callee]);
+  assert.ok(pairs.some(([caller, callee]) => caller === 'ShelfContent' && callee === 'ShelfPane'));
+  assert.ok(pairs.some(([caller, callee]) => caller === 'ShelfPane' && callee === 'EntryCard'));
+  assert.ok(pairs.some(([caller, callee]) => caller === 'EntryCard' && callee === 'RowMenuItem'));
+  assert.ok(realization.callEdges.every((edge) => realization.calls.includes(edge.caller) && realization.calls.includes(edge.callee)));
+});
+
+test('call topology dedupes repeated source calls, sorts stably, and tolerates missing source locations', () => {
+  const repeatedFiles = new Map(files);
+  repeatedFiles.set('app/feature/ShelfScreen.kt', SCREEN.replace(
+    '        RowMenuItem(element = ShelfScreen.RowAction)',
+    '        RowMenuItem(element = ShelfScreen.RowAction)\\n        RowMenuItem(element = ShelfScreen.RowAction)',
+  ));
+  const repeated = realizeScreen({
+    screen: { object: 'ShelfScreen', screenKey: 'shelf', path: 'app/feature/ShelfScreen.kt', customRender: true, source: 'app:feature/ShelfScreen.kt' },
+    files: repeatedFiles,
+    composables: composableIndex(repeatedFiles),
+    primitives: primitiveCatalog(repeatedFiles, (path) => path.startsWith('arch/elements/')),
+    resolveRef,
+    toSource: (path) => path,
+    knownRefs,
+    constants: stringConstants(repeatedFiles),
+  });
+  assert.equal(repeated.callEdges.filter((edge) => edge.caller === 'EntryCard' && edge.callee === 'RowMenuItem').length, 1, 'duplicate source calls collapse to one topology edge');
+  const keys = repeated.callEdges.map((edge) => [edge.caller, edge.callee, edge.callerSource ?? '', edge.calleeSource ?? ''].join('|'));
+  assert.deepEqual(keys, [...keys].sort(), 'call topology has deterministic ordering');
+
+  const sourceLess = realizeScreen({
+    screen: { object: 'ShelfScreen', screenKey: 'shelf', path: 'app/feature/ShelfScreen.kt', customRender: true, source: 'app:feature/ShelfScreen.kt' },
+    files,
+    composables,
+    primitives,
+    resolveRef,
+    toSource: () => null,
+    knownRefs,
+    constants: stringConstants(files),
+  });
+  assert.ok(sourceLess.callEdges.length > 0);
+  assert.ok(sourceLess.callEdges.every((edge) => edge.callerSource === null && edge.calleeSource === null));
+
+  const blueprintOnly = realizeScreen({
+    screen: { object: 'ShelfScreen', screenKey: 'shelf', path: 'app/feature/ShelfScreen.kt', customRender: false, source: 'app:feature/ShelfScreen.kt' },
+    files,
+    composables,
+    primitives,
+    resolveRef,
+    toSource: (path) => path,
+    knownRefs,
+    constants: stringConstants(files),
+  });
+  assert.deepEqual(blueprintOnly.callEdges, []);
+});
+
+test('realization status stays truthful across missing render, empty body, opaque boundary and projected registered content', () => {
+  const variant = (body, { includeRender = true } = {}) => {
+    const screenText = `
+object ShelfScreen : AppScreenBlueprint(screenKey = "shelf", titleRes = R.string.shelf) {
+    ${includeRender ? `@Composable
+    internal override fun renderContent(runtime: VexRuntime, repositories: AppRepositories) {
+        ${body}
+    }` : ''}
+}
+
+@Composable
+internal fun ProjectedButton(element: ButtonElement, runtime: VexRuntime) {
+    VexButton(element = element, handler = runtime)
+}
+`;
+    const variantFiles = new Map([
+      ['arch/elements/Primitives.kt', PRIMITIVES],
+      ['app/feature/ShelfScreen.kt', screenText],
+    ]);
+    return realizeScreen({
+      screen: { object: 'ShelfScreen', screenKey: 'shelf', path: 'app/feature/ShelfScreen.kt', customRender: true, source: 'app:feature/ShelfScreen.kt' },
+      files: variantFiles,
+      composables: composableIndex(variantFiles),
+      primitives: primitiveCatalog(variantFiles, (path) => path.startsWith('arch/elements/')),
+      resolveRef,
+      toSource: (path) => path,
+      knownRefs,
+      constants: stringConstants(variantFiles),
+    });
+  };
+
+  const held = variant('', { includeRender: false });
+  assert.equal(held.status, 'HELD');
+  assert.match(held.held[0].reason, /renderContent override not found/);
+  assert.deepEqual(held.callEdges, []);
+
+  const empty = variant('');
+  assert.equal(empty.status, 'OPAQUE');
+  assert.equal(empty.entry.symbol, 'ShelfScreen.renderContent');
+  assert.deepEqual(empty.calls, []);
+  assert.deepEqual(empty.callEdges, []);
+
+  const opaque = variant('AndroidView(factory = { NativeThing(it) })');
+  assert.equal(opaque.status, 'OPAQUE');
+  assert.ok(opaque.opaque.some((entry) => entry.symbol === 'AndroidView'));
+
+  const projected = variant('ProjectedButton(element = ShelfScreen.Open, runtime = runtime)');
+  assert.equal(projected.status, 'PROJECTED');
+  assert.ok(projected.elements.some((entry) => entry.ref === 'element.shelf.body.open'));
+  assert.equal(projected.opaque.length, 0);
+  assert.equal(projected.held.length, 0);
+
+
+  const registeredTree = variant('VexElementTree(placement = ShelfScreen.Open, registry = runtime)');
+  assert.equal(registeredTree.rendersRegisteredTree, 'element.shelf.body.open');
+  assert.equal(registeredTree.status, 'PROJECTED', 'an explicitly registered tree is a projected realization even without a nested composable call');
+
+  assert.equal(realize().status, 'PARTIAL', 'the full fixture remains partial because source deliberately crosses opaque/held boundaries');
+});
+
 test('primitive relationships are learned from the primitives own parameter names', () => {
   const relationship = (name) => primitives.get(name).map((signature) => signature.relationship).sort().join('/');
   assert.equal(relationship('VexStableLazyColumn'), 'REPEAT');
