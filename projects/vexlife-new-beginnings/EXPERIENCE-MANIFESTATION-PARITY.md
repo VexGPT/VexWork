@@ -322,6 +322,83 @@ UNSENT_DRAFT != QUEUED_TURN
 CANCEL_REQUESTED != CANCELLED_UNTIL_ACTIVE_OWNER_RECONCILES
 ```
 
+### Current Product turn-custody observation
+
+Fresh current-main VexLife-Prod descent narrows the missing cancellation relationship materially.
+
+Current turn chronology is:
+
+```text
+Conversation writer lease acquired
+-> durable REQUEST appended
+-> runtime/context selection
+-> synchronous streaming provider call
+-> durable RESPONSE appended
+-> durable Context recorded
+-> canonical Conversation head committed
+-> writer lease released
+```
+
+The provider transport currently uses synchronous `HttpClient.send(... ofInputStream())` and consumes
+the SSE body synchronously. The Product service uses a cached request executor, but it retains no
+per-turn Future / Job / cancellation token that another request can address.
+
+Therefore:
+
+```text
+BROWSER FETCH ABORT
+!= MODEL TURN CANCEL
+
+STOP ROUTE THAT WAITS FOR CONVERSATION WRITER
+!= ACTIVE TURN INTERRUPTION
+```
+
+A Stop request must be able to arrive concurrently and address the active turn *outside* the occupied
+Conversation writer lease. That argues for one ephemeral active-turn custody coordinate at the
+rightful runtime owner, not for another durable Conversation/history store.
+
+Existing durable behavior is already useful if interruption unwinds the active turn:
+
+```text
+REQUEST durable
++ no committed canonical completion
+-> off-head attempt
+
+request-only off-head branch
+-> already valid AbandonedAttempt shape
+
+failure after REQUEST
+-> existing DirectCompanionTurn failure receipt
+-> retrySameSendAttemptAllowed = false
+-> form a new Send attempt from the last valid head
+```
+
+This is evidence that cancellation may be able to reuse existing Conversation/failure truth, but
+human cancellation still needs its own truthful failure/cancellation meaning. Current generic
+exception mapping would otherwise collapse an interruption into `TURN_FAILED` or a transport
+failure.
+
+The race that must be designed before mutation is:
+
+```text
+Stop arrives before canonical head commit
+  -> signal exact active turn
+  -> provider/execution unwinds
+  -> no later canonical completion for that attempt
+
+completion wins first
+  -> canonical head is already committed
+  -> later Stop cannot retroactively cancel history
+  -> UI reconciles to completed truth
+
+Stop requested
+!= Stop won
+!= attempt cancelled
+until the active runtime owner resolves that race
+```
+
+No second durable cancellation ledger is earned by current evidence.
+
 ### Bounded acceptance pressure
 
 A future implementation should prove the relationship from both the human surface and the Vex turn:
