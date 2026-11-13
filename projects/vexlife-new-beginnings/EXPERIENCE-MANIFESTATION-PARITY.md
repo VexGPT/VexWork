@@ -296,6 +296,42 @@ Current durable turn evidence records provider identity/fingerprints but no elap
 Latency therefore remains an evidence gap: do not attribute it to page rendering, prompt prefill, or
 generation until timing is observed.
 
+### Shared current state != active-turn materialization
+
+The continuity correction and Browser-provider successor sharpen the presentation contract:
+
+```text
+RIGHTFUL OWNER CURRENT STATE
+  may remain current outside the model window
+
+TURN-BOUND CONTEXT
+  is the exact bounded projection/snapshot materialized for one Send
+
+NEXT-TURN COMPOSER CONTEXT
+  may already point at newer owner state
+```
+
+For Browser specifically:
+
+```text
+Browser provider current page
+!= durable Memory
+!= prior turn's BrowserContext snapshot
+!= proof that the active model received the current visible page
+```
+
+The human surface should therefore project both relationships when they differ: what is current now at
+the provider/composer boundary, and what exact context identity the in-flight/completed turn actually
+received. Updating provider state must never retroactively mutate the context receipt of an active turn.
+
+This law generalizes without creating one global shared-memory owner:
+
+```text
+OWNER CURRENTNESS != PROMPT INCLUSION
+PROMPT INCLUSION != DURABLE MEMORY
+ABSENT FROM ACTIVE PROMPT != ABSENT FROM PRODUCT TRUTH
+```
+
 ### Stop exists visually but has no real cancellation relationship
 
 Current authoring source contains a stable `Stop` element beside `Send`, but:
