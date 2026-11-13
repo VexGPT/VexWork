@@ -2525,3 +2525,66 @@ run R004 once
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R003][RECOVERY-R004] -->
 
+## A031 R005 failure-preserving lived continuation — 2026-11-12 23:15:30 America/Los_Angeles
+
+R004 recovery closed the replay question:
+
+```text
+RETURN sha256 =
+60bfa5fcf4e2ae898e73bbb79f5e94b12f928c6727256f0d3a2fbbf848af7ea7
+
+classification =
+NO_DURABLE_PRODUCT_RUNTIME_OR_INFERENCE_ACTIVITY_OBSERVED_AFTER_R003
+```
+
+R004 observed:
+- stable and Product runtime receipt SHA-256 unchanged from the R001 baseline;
+- both recorded runtime PIDs dead;
+- no matching Product/stable launchd family;
+- no matching `mlx_lm.server` process;
+- no listener on port 8765;
+- zero stable/Product log-byte and bounded pattern deltas from R001.
+
+Therefore R003 left no durable Product runtime or inference activity and a fresh lived continuation is safe.
+
+### A031 R005 failure-preserving lived continuation
+
+```text
+package =
+VEXLIFE-PR89-LIVED-SOURCE-RETURN-A031-RESTORED-DIRECT-HOST-R005
+
+sha256 =
+30faa5d7ee2ce7884af3254a4cbfd3252642622a3b7493966915248309f87dbf
+
+businessAttemptRef =
+attempt.vexlife-prod.pr89.lived-source-return.a018
+```
+
+R005 preserves the same exact Product candidate/runtime/direct-host/no-Local-Workspace boundaries.
+
+The only harness correction is failure preservation:
+- retain normalized lived proof if the targeted test writes one;
+- retain bounded JUnit testcase/failure identity and VexLife stack coordinates;
+- retain Gradle stdout/stderr SHA-256;
+- do not retain raw provider output/reasoning;
+- clean the temporary checkout only after normalized failure evidence is written.
+
+This prevents another Gradle wrapper failure from erasing the exact semantic cause.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846727839
+```
+
+Current edge:
+
+```text
+run R005 once
+-> consume exact R005 RETURN
+-> PASS: rightful PR #89 integration/currentness
+-> SAFE_FAILURE: consume preserved first semantic failure before replay
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R005][FAILURE-PRESERVATION] -->
+
