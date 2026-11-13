@@ -3984,6 +3984,36 @@ REUSE_OWNER_AND_INVARIANTS
 The SCREEN successor should therefore consume the established reservation law while forming the
 smallest SCREEN-specific contract.
 
+Fresh source review also shows the existing one-shot system-picker route enforces:
+
+~~~text
+one receipt -> captureCount must equal 1
+~~~
+
+but does not durably remember a reused `requestRef` across separate runtime invocations.
+
+So the recurring owner question is not actually:
+
+~~~text
+persistent-selected-scope replay only
+~~~
+
+It is:
+
+~~~text
+SCREEN
++ ON_DEMAND_SNAPSHOT
++ one exact semantic requestRef
+-> at most one physical capture across retries / process restarts
+~~~
+
+The new reservation owner should therefore be **route-neutral at the SCREEN snapshot-effect level**.
+Persistent selected-scope LOOK is its first required consumer.
+
+Do not widen or retrofit the historical one-shot Product path in the same source slice merely because
+the new owner could later harden it. The current Product trajectory is moving away from that one-shot
+endpoint; migration is separately earned.
+
 #### Required single-use law
 
 Before any native screenshot call:
@@ -4041,6 +4071,9 @@ A mutable transaction ledger is not required merely to achieve single-use SCREEN
 Candidate Process-Factory-owned shape:
 
 ~~~text
+one route-neutral SCREEN / ON_DEMAND_SNAPSHOT reservation owner
+first consumer = persistent selected-scope LOOK
+
 one caller-supplied private runtime root
 
 reservations/
