@@ -1697,4 +1697,91 @@ VexLife-Prod issue #61 comment:
 
 records the A021 consumption and exact successor edge.
 
+
+### A022 / A023 currentization
+
+A022 consumed the first-stage admission failure without changing Product source.
+
+```text
+A022 RETURN sha256
+3dbd4666c35a2f6d7d7ff51cd7b52df2dacd84be2448970b0cea0af223a8de8d
+
+Product head/tree
+6f30873ae7e62ca61b2f0a3936e4b24b444b6951
+5a70d8abf32cded58193d9f34ab183c76f04cc5a
+```
+
+A022 proves the model output is already one bounded source-return block structurally:
+
+```text
+header index = 2
+header count = 1
+header on own line = true
+header inside <=512 preamble bound = true
+request schema count = 1
+
+post-header starts with newline = true
+payload trimmed = true
+payload begins/ends as JSON object = true
+payload parses as one whole JsonObject = true
+trailing bytes after final brace = 0
+code fence before/after header = false / false
+```
+
+The admission-message hash does not match any semantic `requireRequest(...)` predicate message. Product's
+repository-owned JSON boundary is strict, so the remaining exact question is typed wire shape before
+semantic request admission:
+
+```text
+required key missing?
+unknown key?
+wrong JSON type?
+schemaVersion mismatch?
+queryTerms array/value shape?
+speakerScope value?
+```
+
+A023 is formed as a diagnostic-only fresh attempt:
+
+```text
+formation sha256
+e9c4099424d0bf07198fbb4cac24c1dbca286d1f871285ad1bfe16908f418cf0
+
+attemptRef
+attempt.vexlife-prod.pr89.lived-source-return.a013
+
+SDK head
+dec067ad3445376e944d89e403ba6df0a64337fb
+
+SDK tree
+5ea73ea8ca4f5406bc3487fe800f97ff494cebc5
+```
+
+A023 records only normalized typed-wire facts:
+- object key count / unknown-key count;
+- required-key presence;
+- schemaVersion string + exact-value booleans;
+- queryTerms array/count and bounded per-term validity booleans;
+- normalized uniqueness;
+- speakerScope string + admitted-value boolean.
+
+Raw provider output/reasoning remains unpersisted.
+
+Current exact edge:
+
+```text
+run A023
+-> identify field-level typed-wire mismatch
+-> correct Product only if a rightful source defect is proven
+-> SourceOwner + Assurance only if Product source changes
+-> fresh lived two-stage proof
+-> integration only after lived PASS
+```
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6843741011
+```
+
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-NEW-BEGINNINGS][RELATIONSHIP-CONTINUITY-ORIENTATION] -->
