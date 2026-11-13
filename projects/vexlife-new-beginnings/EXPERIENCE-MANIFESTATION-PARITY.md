@@ -211,6 +211,60 @@ Include page
 Exact-head lived proof must still demonstrate that context included **before Send** reaches the same
 turn and that the current-turn UI identifies the context actually bound to it.
 
+### Lived clarification — captured page can be truthful while the visible page has moved
+
+Victor's lived Conversation `[96] -> [97]` showed Vex answering from a previously captured Terrain Map /
+Direct Contact page while the visible Browser had already navigated onward to a VexArchitecture page.
+The presentation simultaneously showed the web-hosted navigation warning and cleared current address/context.
+
+This is not evidence that BrowserContext failed to reach Vex. It demonstrates the distinction already
+required above:
+
+```text
+TURN-BOUND CAPTURED PAGE SNAPSHOT
+!= CURRENTLY VISIBLE CHILD PAGE AFTER IN-FRAME NAVIGATION
+```
+
+The current web-hosted Browser cannot observe exact arbitrary cross-origin child navigation. After that
+navigation it truthfully clears current address/context rather than pretending the old snapshot is current.
+The normal-browser-provider successor owns that terminal provider limitation.
+
+### Latency pressure — context acquisition vs model prefill
+
+Current source also separates two latency classes:
+
+```text
+Include this page
+-> separately render admitted Vex page
+-> reporter may inspect up to 200,000 rendered characters
+-> Product normalizes at most 12,000 characters into BrowserContext
+
+Page included
+-> context acquisition is complete
+-> later Send materializes BrowserContext with Conversation / Memory / continuity / capability context
+-> local model prompt prefill + generation
+```
+
+The 12,000-character BrowserContext is roughly a few thousand estimated tokens by the Product's current
+`bytes / 4 + framing` estimator; it is not itself a 200,000-character model prompt. But the whole direct
+prompt may consume a much larger bounded context (current input budget 192,000 tokens) because current
+Conversation, Memory and continuity are composed separately.
+
+Therefore a long delay *after* `Page included` / `Thinking` should not be attributed to web-page loading
+without prompt-receipt evidence. Current evidence makes local-model prompt prefill / overall context size a
+stronger candidate. The exact completed-turn Context projection already carries
+`providerMaterializedInputTokenEstimate` and BrowserContext character/ref fields; use those receipts before
+optimizing the browser loader.
+
+Permanent:
+
+```text
+PAGE INCLUDED != MODEL PREFILL COMPLETE
+VISIBLE PAGE MOVED != CAPTURED TURN CONTEXT MUTATED
+RENDERED_TEXT_SCAN_LIMIT != MODEL BROWSER_CONTEXT_SIZE
+SLOW TURN != SLOW PAGE LOAD WITHOUT TIMING / RECEIPT EVIDENCE
+```
+
 ### Stop exists visually but has no real cancellation relationship
 
 Current authoring source contains a stable `Stop` element beside `Send`, but:
