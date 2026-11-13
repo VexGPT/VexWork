@@ -1971,61 +1971,47 @@ LOOKING
 ENDED
 ~~~
 
-and terminal reasons:
+That does **not** mean Product should pre-author all five states.
 
-~~~text
-HUMAN_DISENGAGED
-SOURCE_LOST
-HOST_OWNER_LOST
-EXPLICIT_STOP
-~~~
-
-Product semantic meaning should not expose that list merely because it exists.
-
-A smaller candidate human-facing Family is:
+For the first persistent-scope Product slice, only three semantic states are currently earned:
 
 ~~~text
 State
-  Held       # Product/Vision cannot truthfully offer the requested relationship
-  Ready      # Vision route exists; no current selected scope
-  Selecting  # explicit human system-picker selection is in progress
-  Engaged    # one selected scope is available; no capture active
-  Looking    # one admitted current LOOK is in progress
+  Held
+    Product cannot truthfully offer a fresh/current selected-scope relationship now
+
+  Ready
+    Product can lawfully attempt a fresh explicit human scope selection now
+
+  Engaged
+    current outside projection proves one selected scope exists
 
 Control
   Engage
   Stop
-  LookNow
 
 Effect
   RequestEngage
   RequestStop
-  RequestSnapshot
 ~~~
 
-Candidate pure transitions:
+First-slice pure transitions:
 
 ~~~text
 Ready + Engage
 -> stay + RequestEngage
--> do NOT claim Selecting or Engaged merely because Product requested the effect
 
-Selecting / Engaged / Looking + Stop
+Engaged + Stop
 -> stay + RequestStop
--> do NOT claim stopped until outside truth returns
 
-Engaged + LookNow
--> stay + RequestSnapshot
--> do NOT claim Looking/captured/observed merely because Product requested LOOK
-
-Held + LookNow
-Ready + LookNow
-Selecting + LookNow
-Looking + LookNow
+Held + Engage
+Held + Stop
+Ready + Stop
+Engaged + Engage
 -> not admitted
 ~~~
 
-This correction matters:
+Permanent:
 
 ~~~text
 FAMILY_EFFECT_REQUESTED
@@ -2035,81 +2021,69 @@ ENGAGE_REQUESTED
 != SELECTING
 != ENGAGED
 
-LOOK_REQUESTED
-!= LOOKING
-!= SCREEN_CAPTURED
-!= ACTIVE_VISUAL_OBSERVATION
+STOP_REQUESTED
+!= SCOPE_RELEASED
 ~~~
 
-The Family authors product meaning. The Product/runtime projection supplies outside truth. Product then
-interprets that truth back into Family State.
+The Family authors product meaning. The Product/runtime projection supplies outside truth. Product
+interprets that truth back into Family State after the effect settles.
 
-Outside SDK projection must then be interpreted back into Product semantic State.
-
-Grounded mapping pressure:
+Grounded first-slice mapping:
 
 ~~~text
-route unavailable / Safety-held relationship
+runtime absent
 -> Held
 
-route reachable + no selected session
+runtime present + projectionOrNull = null
 -> Ready
 
-SDK SELECTING
--> Selecting
+SDK HELD + holdReason = null
+-> Ready
+
+SDK HELD + SAFETY_NOT_CURRENT
+-> Held
 
 SDK ENGAGED
 -> Engaged
 
-SDK LOOKING
--> Looking
-
-SDK HELD with no material hold reason after human picker cancellation
--> likely Ready, not Product Held
-
-SDK HELD with SAFETY_NOT_CURRENT
--> Held
-
 SDK ENDED
 -> Ready
--> the selected scope is gone, but the persistent Product runtime remains able to mint a fresh scope
-   session on the next Engage
--> endReason may shape bounded presentation detail/evidence, not become a second Product lifecycle
+
+SDK SELECTING
+-> do not invent Product Selecting merely to mirror it
+
+SDK LOOKING
+-> impossible/unsupported in the first slice; fail closed rather than pre-author future meaning
 ~~~
 
-So the current grounded semantic distinction is:
+Why `Selecting` is not currently earned as Product State:
 
 ~~~text
-Held
-  = the Product cannot truthfully offer a new/current selected-scope relationship now
-    (for example runtime route absent or SCREEN Safety not current)
+current Product ENGAGE command
+-> serialized persistent runtime command
+-> waits for macOS picker settlement
+-> returns after selection/cancellation/hold
 
-Ready
-  = the Product route can lawfully attempt a fresh explicit human selection now
-    even when a prior scope session ended/lost/cancelled
-
-Engaged
-  = current outside projection proves one selected scope exists
-
-Looking
-  = current outside projection proves one admitted LOOK is in progress
+concurrent Product PROJECT
+-> shares the same serialized runtime/session boundary
 ~~~
 
-SELECTING remains a valid candidate Product State because the SDK owns that outside state, but the
-current synchronous/serialized Product command path may not expose it through GET /vision while the
-picker request is blocked. Do not invent a second observer solely to make that transient state visible;
-the OS picker already supplies contemporaneous human selection feedback.
+So ordinary Product GET does not currently need a stable `Selecting` truth. The macOS system picker is
+already the truthful contemporaneous selection UI, and presentation may show request-local progress
+while its own Engage request is in flight.
 
-Permanent:
+Do not add a second observer, state holder or native overlay solely to expose a transient SDK state.
+
+`Looking` is also not earned in the first slice because persistent LOOK execution is still absent.
+Whether future active-LOOK presentation becomes a semantic Family State, an execution/progress fact,
+or a composition of both must be answered only after the LOOK owner exists.
 
 ~~~text
-PRODUCT_FAMILY_STATE
-!= SDK_SESSION_STATE_ENUM
-
-FAMILY_INTERPRETS_OUTSIDE_TRUTH
-!= FAMILY_OWNS_NATIVE_LIFECYCLE
+FUTURE_LOOK_EXPECTED
+!= LOOKING_STATE_REQUIRED_NOW
 ~~~
 
+Product semantic meaning therefore remains smaller than the SDK lifecycle rather than cloning it.
 #### First persistent-scope Product presentation should consume one semantic projection
 
 PR #114 already separates:
@@ -2543,53 +2517,41 @@ GET /api/v1/vision
 -> presentation
 ~~~
 
-Grounded projection interpretation:
+Grounded first-slice projection interpretation:
 
 ~~~text
-runtime absent
--> Held
-
-runtime present + projectionOrNull = null
--> Ready
-
-SDK HELD + holdReason = null
--> Ready
-
-SDK HELD + SAFETY_NOT_CURRENT
--> Held
-
-SDK SELECTING
--> Selecting if/when this state is actually observable at Product
-
-SDK ENGAGED
--> Engaged
-
-SDK LOOKING
--> Looking
-
-SDK ENDED
--> Ready
+runtime absent -> Held
+runtime present + projectionOrNull = null -> Ready
+SDK HELD + no hold reason -> Ready
+SDK HELD + SAFETY_NOT_CURRENT -> Held
+SDK ENGAGED -> Engaged
+SDK ENDED -> Ready
+SDK SELECTING -> not promoted into first-slice Family State
+SDK LOOKING -> unsupported until LOOK is actually admitted
 ~~~
 
 For controls:
 
 ~~~text
 human Engage
--> resolve Family against CURRENT semantic projection
+-> derive CURRENT Family State from current outside projection
+-> resolve Family Control.Engage
 -> accepted Effect.RequestEngage only
 -> existing /vision/scope/engage realization
 -> re-project outside truth
 -> return the newly interpreted semantic projection
 
 human Stop
--> resolve Family against CURRENT semantic projection
+-> derive CURRENT Family State from current outside projection
+-> resolve Family Control.Stop
 -> accepted Effect.RequestStop only
 -> existing /vision/scope/stop realization
 -> re-project outside truth
 -> return the newly interpreted semantic projection
 
 LOOK
--> remains semantically/execution held until the later LOOK source is accepted
+-> no Product Family Control/Effect yet in this first slice
+-> legacy /vision/look-now stays HELD
 ~~~
 
 The HTTP route is not allowed to become a second decision language. It consumes the Family Act; it does
@@ -2929,7 +2891,7 @@ exact ephemeral visual resource identity/custody remains a real missing owner
 The following remain intentionally unresolved until source/implementation pressure earns them:
 
 ~~~text
-final persistent-scope VexLifeVisionFamily vocabulary / DisplayState projection fields
+future LOOK-era VexLifeVisionFamily evolution / active-LOOK presentation ownership
 exact SCREEN single-use capture reservation owner
 exact persistent-selected-scope LOOK capture receipt contract
 exact Security witness + Perception successor contract for capture without picker replay
