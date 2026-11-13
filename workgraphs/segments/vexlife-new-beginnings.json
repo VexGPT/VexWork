@@ -801,6 +801,36 @@
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-13T02:30:00.000Z",
+      "updatedAt": "2026-11-13T02:30:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "Immediate — normal Internet browser provider for the VexLife Browser pane",
+      "purpose": "Replace the web-hosted iframe as the terminal human Browser provider with a real browser-provider relationship that can preserve ordinary HTTP(S) site/session behavior, pages that refuse embedding, and exact current URL/back-forward/reload navigation while keeping human page display separate from Vex context/perception and from local Product effect authority. Select the provider from current product/macOS evidence rather than pre-choosing Electron, JCEF, WKWebView or another engine by familiarity.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.experience-manifestation-parity",
+        "work.vexlife.new-beginnings.local-runtime-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "human.intent.vexlife.normal-internet-browser.20261112",
+        "github.pull.vexlife-prod.100",
+        "repo.vexlife-prod:docs/foundation/VEXWEB-GENERATED-P1-WORKSPACE.md",
+        "repo.vexlife-prod:docs/foundation/LOCAL-PRODUCT-SERVICE.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [
