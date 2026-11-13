@@ -808,7 +808,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-13T02:30:00.000Z",
-      "updatedAt": "2026-11-13T02:48:00.000Z",
+      "updatedAt": "2026-11-13T03:02:00.000Z",
       "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Immediate — normal Internet browser provider for the VexLife Browser pane",
@@ -830,7 +830,10 @@
         "repo.vexlife-prod:docs/foundation/LOCAL-PRODUCT-SERVICE.md",
         "human.authorization.vexlife.normal-browser-provider.20261112",
         "github.pull.vexlife-prod.101",
-        "repo.vexlife-prod:exploration/macos-browser-provider/README.md"
+        "repo.vexlife-prod:exploration/macos-browser-provider/README.md",
+        "github.pull.vexlife-prod.101.comment.6842461229",
+        "source.vexrelay.current-contract/v1",
+        "github.commit.vextreme-sdk.e16d0def27c07b0139783a323f2f6e27eb6be0fd"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1439,6 +1442,22 @@
         "github.pull.vexwork.297"
       ],
       "createdAt": "2026-11-13T02:44:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.normal-browser-provider.route-locked.macos-vexrelay.20261112A",
+      "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Exact #101 source syntax is proven and the remaining predicate is Mac-specific. Current source.vexrelay.current-contract/v1 admits macos-victor and the native VexRelay task-archive carrier. The host-proof route is locked to ExactHeadSourceOwnerProof / SOURCE_OWNER_BROWSER through the checkout-free Mac source bootstrap; GitHub Actions and retained Local Source Workspace are not selected.",
+      "actorRef": "actor.chatgpt.normal-browser-provider",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.101",
+        "github.pull.vexlife-prod.101.comment.6842461229",
+        "source.vexrelay.current-contract/v1",
+        "github.commit.vextreme-sdk.e16d0def27c07b0139783a323f2f6e27eb6be0fd"
+      ],
+      "createdAt": "2026-11-13T03:02:00.000Z"
     }
   ],
   "sourceRefs": [
