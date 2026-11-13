@@ -41,8 +41,9 @@ The program intentionally learns from real consumers before extracting more arch
 | VCS-03 Maps engine realization | COMPLETED | Shared boundary exercised against a real replaceable provider engine. |
 | **VCS-04 Conversation adoption** | **COMPLETED** | L1-L11 lived acceptance and terminal Android/VexWork source-currentness are closed. |
 | **VCS-05 VexStream stress** | **COMPLETED** | Local Range/media pressure, restart/reconnect continuity, and ownership separation are proven; no new generic streaming transport was earned. |
-| VCS-06 VexArchitecture extraction | WAITING | Extract only patterns earned by multiple real consumers. |
-| VCS-07 deployment choices | WAITING | Deployment comes after runtime semantics stabilize. |
+| **VCS-06 VexArchitecture extraction** | **COMPLETED** | Reusable cross-repository composition accepted in Vextreme-SDK without moving feature meaning. |
+| **VCS-07 deployment choices** | **COMPLETED** | Existing deployment-neutral Hosted Capabilities choices are sufficient for current needs. |
+| **Human acceptance walk** | **READY / IMMEDIATE** | Victor personally walks the supported connected/offline/reconnect product boundaries; away-from-home HUB_ONLY VexStream streaming remains an explicit held capability, not a required PASS. |
 
 ## VCS-04 phase truth
 
@@ -108,9 +109,56 @@ L5 canonical installed Conversation read PASS
 Phase-3 cleanup                          CLOSED
 ```
 
-## Current edge
+## Program complete; human closeout pending
 
-**VCS-04 is terminally COMPLETED; VCS-05 VexStream adoption / streaming stress is READY.**
+**VCS-00 through VCS-07 remain COMPLETED. Their accepted source, architecture and prior lived evidence are not reopened.**
+
+The parent Work item remains `COMPLETED` because VexWork lifecycle does not rewrite a completed outcome back into verification. It is deliberately **not yet treated as CONVERGED/CLOSED from Victor's lived perspective**. A new child is the current acceptance edge:
+
+```text
+work.vexlife.connected-services.human-acceptance-walk
+state = READY
+priority = IMMEDIATE
+```
+
+The human walk should be presented as a calm VexBoard/ProcessMap-style journey while truth remains in the rightful product/source owners.
+
+Supported acceptance path:
+
+```text
+same-Wi-Fi VexStream
+-> stream one HUB_ONLY song + seek
+-> download exact song
+-> HUB_AND_LOCAL
+-> stop/unreach Desktop without Forget/Revoke
+-> LOCAL_ONLY playback
+-> remove phone network reachability
+-> verified local playback still works
+-> ordinary Android process restart
+-> offline copy restores
+-> restore network + Desktop
+-> same identity reconciles HUB_AND_LOCAL without new approval
+
+separate remote Home/Conversation check
+-> Tailscale/private reachability already established on computer + phone
+-> phone Wi-Fi off / cellular path
+-> bounded authenticated Home session
+-> ordinary Conversation read/send path
+```
+
+Explicit non-PASS / held edge:
+
+```text
+phone away from same Wi-Fi
++ HUB_ONLY / not-downloaded VexStream media
+-> away-from-home streaming is NOT currently required to work
+-> current Android remote/direct-relay source != accepted matching VexStream Desktop remote producer
+-> observe this as HELD_NOT_ACCEPTED, not as a regression of VCS-05
+```
+
+Human-closeout completion means the supported steps are personally lived and any mismatch is classified against current source. A genuine product defect reopens only its rightful capability; the known remote VexStream producer gap becomes new work only if Victor wants that capability.
+
+Historical completion evidence follows below; it is not a reason to replay prior proof carriers.
 
 A037 closed the last lived predicate. The VCS-04 matrix is now L1-L11 PASS:
 
@@ -217,7 +265,7 @@ VexStream-owned data plane
 
 No new generic streaming transport, generic backpressure owner, remote relay media producer acceptance, or Maps/Conversation streaming widening was earned. Android remote 256 KiB source remains architecture pressure only until a rightful producer is accepted.
 
-## VCS-06 current edge
+## VCS-06 terminal result
 
 Three real consumers have now earned architecture extraction:
 
@@ -228,7 +276,7 @@ VexStream
 -> extract only stable recurring ownership/contracts/proof obligations
 ```
 
-Do not copy VexStream's Range/media plane into a universal template. Cross-product reusable architecture is expected to land in Vextreme-SDK only after exact source placement/authority is established.
+VexStream's Range/media plane remains feature-owned. The reusable architecture is accepted in Vextreme-SDK PR #1903 / merge `06ccef98769ff25eabd8bee4b8646185a42eb5f1`.
 
 ## Read next
 
@@ -236,11 +284,13 @@ For ordinary continuation:
 
 ```text
 this README
--> public/workspace.json / VexWork UI
--> work.vexlife.connected-services.vcs06-architecture-extraction
+-> work.vexlife.connected-services.human-acceptance-walk
+-> VexBoard Connected Services system anatomy / acceptance presentation
+-> target repository current source only when one walked predicate disagrees
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md only when causal history is needed
--> target repository current source only for the next effect
 ```
+
+Do not treat the currently stale aggregate public projections as stronger than this source while PR #176 remains held behind shared generated-path custody.
 
 Do **not** begin by replaying A001-A019 or searching GitHub issue comments.
 

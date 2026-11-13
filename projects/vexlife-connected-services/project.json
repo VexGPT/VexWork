@@ -10,7 +10,8 @@
     "repo.vexwork",
     "repo.vexlife",
     "repo.vexlife-android",
-    "repo.vexstream-music"
+    "repo.vexstream-music",
+    "repo.vextreme-sdk"
   ],
   "sourceRefs": [
     "projects/vexlife-connected-services/README.md",
