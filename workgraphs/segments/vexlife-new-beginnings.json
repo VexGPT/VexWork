@@ -9,7 +9,7 @@
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T02:28:00.000Z",
-      "updatedAt": "2026-11-10T10:42:00.000Z",
+      "updatedAt": "2026-11-13T10:23:00.000Z",
       "workRef": "work.vexlife.new-beginnings.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife New Beginnings",
@@ -43,7 +43,9 @@
         "projects/vexlife-new-beginnings/VEX-VISION-COMPANION.md",
         "github.pull.vexwork.275",
         "github.pull.vexlife-prod.54",
-        "github.pull.vextreme-sdk.1939"
+        "github.pull.vextreme-sdk.1939",
+        "projects/vexlife-new-beginnings/SETUP-JOURNEY.md",
+        "github.pull.vexwork.275.comment.6850363453"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -811,6 +813,36 @@
         "github.commit.vexwork.446fab9ca235d09aa88d5df33cf4d4ace227c0ea",
         "github.commit.vexwork.66a17343e713eeded46a0014dd56804d4ef00e60",
         "github.commit.vexlife-prod.5396e179483cc22598be447b3124af8355a6fee6"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-13T10:23:00.000Z",
+      "updatedAt": "2026-11-13T10:23:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.setup-journey-map",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "Immediate — permission-aware VexLife Setup Journey map",
+      "purpose": "Map the human first-run journey before additional onboarding effects: compose rightful Product-entry, Home, host-permission, model/runtime, service, Browser and Vision truth into one predictable native causal path where each step explains its next effect before outside realization and advances only after fresh observation.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-new-beginnings/SETUP-JOURNEY.md",
+        "projects/vexlife-new-beginnings/README.md",
+        "github.pull.vexwork.275.comment.6850363453",
+        "github.pull.vexlife-prod.107.comment.6850364078",
+        "github.pull.vexlife-prod.107.comment.6850370036",
+        "github.pull.vexlife-prod.107"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
