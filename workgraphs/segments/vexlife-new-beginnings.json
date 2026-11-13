@@ -847,6 +847,39 @@
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-13T10:14:09Z",
+      "updatedAt": "2026-11-13T11:37:38Z",
+      "workRef": "work.vexlife.new-beginnings.companion-turn-interaction-integrity",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.experience-manifestation-parity",
+      "label": "Immediate — keep active Companion turn context and human controls truthful",
+      "purpose": "Make the human-visible Companion surface agree with the exact in-flight turn: distinguish rightful owner current state from the bounded context snapshot actually bound to the active Send, preserve newer next-turn composer context without retroactively mutating the active turn, and provide a real Stop/cancel/replacement-Send relationship only when exact provider execution can be interrupted and canonical Conversation truth reconciled. Reuse existing Conversation abandoned/off-head meaning where truthful; do not create a second cancellation ledger or treat provider state as durable Memory.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.local-runtime-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md",
+        "github.pull.vexwork.301",
+        "github.pull.vexwork.292",
+        "github.pull.vexwork.297",
+        "github.pull.vexlife-prod.100",
+        "github.commit.vexlife-prod.b58ca3bd5e0dfed59f6db5d7949c1100154c3ffe",
+        "human.witness.vexlife-prod.companion-turn-context-stop-gap.20261113"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [
