@@ -3833,3 +3833,237 @@ Work/authority/custody admission.
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][IMPLEMENTATION-DESIGN-CONTINUATION] -->
 
+## Candidate A refinement — restore the stable Score producer relationship
+
+Further source descent resolves the main placement question for candidate A.
+
+The bound stable VexLife reference already had a separate read-only Score projection:
+
+```text
+vgong24/VexLife
+revision 7d59753687ff12726b0d309ee2dde028b5f89e8a
+
+score-context-continuity.mjs
+-> projectScoreContext(...)
+-> schemaVersion = vexlife.score-context-projection/v1
+
+continuity-stream-adapter.mjs
+-> consumes that Score projection
+-> currentStatementRefs = Score current statements
+-> openLoopRefs = Score OPEN loops
+-> places those refs into the reference-only WorkingSet
+```
+
+The clean Kotlin Product retained the WorkingSet fields but its current direct producer no longer consumes a
+Score projection:
+
+```text
+DirectWorkingContinuity.prepare(...)
+-> currentStatementRefs =
+     prior WorkingSet currentStatementRefs
+     + statement refs selected into current Memory
+-> openLoopRefs =
+     prior WorkingSet openLoopRefs only
+```
+
+Therefore the preferred interpretation is:
+
+```text
+LOST / UNRECONNECTED PRODUCER RELATIONSHIP
+!= NEW SEMANTIC FEATURE
+```
+
+### Proposed source shape
+
+Do not widen `VexLifeMemoryContract.Context` to carry Score semantics merely because
+`VexLifeCurrentMemoryReader` currently traverses Score internally.
+
+The clean implementation should restore one independently typed read-only current Score projection and let
+both consumers use that owner truth:
+
+```text
+canonical Home Score
+-> one current Score replay / validation owner
+-> read-only Score projection
+   - currentness / attention
+   - lineage + thread
+   - exact Score head when present
+   - exact Score source Conversation head when present
+   - semantic-authority current head when present
+   - current statement refs
+   - current OPEN-loop refs
+   - source / projection identity needed for currentness proof
+
+                    +----------------------+
+                    |                      |
+                    v                      v
+          Memory formation        WorkingContinuity formation
+          selects admitted        carries current refs only
+          semantic pages          no semantic body copied
+```
+
+Prefer preserving the accepted `vexlife.score-context-projection/v1` relationship rather than inventing a
+different semantic meaning under a new generic continuity contract. Exact Kotlin file/class placement remains
+subject to Product source review, but the semantic owner should be Score/current-source truth, not Memory and
+not WorkingContinuity.
+
+If the existing Score replay currently embedded inside `VexLifeCurrentMemoryReader` is extracted, Memory
+should consume that same validated reader/projection rather than maintaining a second independent Score
+replay implementation.
+
+### WorkingSet composition law
+
+For the Score-owned fields, current Score replaces stale inherited coordinates:
+
+```text
+WorkingSet.currentStatementRefs
+= exact current Score statement refs
+
+WorkingSet.openLoopRefs
+= exact current Score OPEN-loop refs
+```
+
+Do **not** blindly union these sets with the prior successor:
+
+```text
+prior successor says loop OPEN
++ current Score no longer says loop OPEN
+-> prior ref must not survive as current merely through inheritance
+```
+
+The prior WorkingSet remains useful continuity/provenance evidence for fields whose current producers have not
+yet been reconnected, but it is not authority over a current Score set.
+
+Memory selection remains independent:
+
+```text
+Score current statement refs
+!= Memory pages selected into prompt
+
+Memory bounded/held
+!= Score statement/open-loop truth absent
+```
+
+This restores coordinate continuity without turning every current Score statement into prompt Memory content.
+
+### Empty, attention, and currentness semantics
+
+The stable Score source already distinguishes these cases:
+
+```text
+no Score head
++ no invalid/attention evidence
+-> CURRENT empty Score projection
+-> currentStatementRefs = []
+-> openLoopRefs = []
+
+valid current Score head
+-> CURRENT exact current sets
+
+invalid/re-addressed/source-invalid tail or other Score attention
+-> ATTENTION
+-> do not assert an exact current Score set
+```
+
+Candidate A should preserve that distinction.
+
+A Score projection that is not safely current must not silently fall back to stale prior Score refs and must
+not be interpreted as an empty current set.
+
+### Turn-liveness and post-turn checkpoint law
+
+Working continuity is stewardship around the human turn, not authority to reject an otherwise valid answer.
+
+Current Product already preserves:
+
+```text
+Conversation RESPONSE durable
+!= working continuity must have succeeded
+```
+
+Candidate A should extend that law:
+
+```text
+Score projection CURRENT
+-> form current WorkingSet + Plan
+
+Score projection ATTENTION / unreadable / currentness-invalid
+-> working-continuity formation HELD
+-> no new checkpoint/head promoted from unproven Score truth
+-> provider / human turn may continue under its existing rightful inputs
+
+Conversation RESPONSE already committed
++ later Score/currentness recheck fails
+-> working continuity HELD
+-> never retroactively convert the completed send into failure
+```
+
+The implementation should bind the exact Score projection/head used to form the WorkingSet and re-observe the
+current Score frontier before realizing the post-turn checkpoint. If the Score projection materially changed
+during the provider turn, hold/reform the working-continuity effect rather than commit a stale working set as
+current.
+
+### Candidate A proof matrix
+
+At minimum, the source change should prove:
+
+```text
+no prior successor + no Score head
+-> current empty Score coordinate sets; ordinary turn unaffected
+
+no prior successor + current Score statement/open loop
+-> WorkingSet gets both current refs
+
+Memory includes only a subset of current Score statements
+-> WorkingSet still carries exact current Score statement refs
+-> provider Memory still contains only its admitted bounded pages
+
+Memory HELD / no Memory pages
++ Score CURRENT
+-> WorkingSet can still carry current Score coordinates
+-> no Score semantic body leaks into Memory/prompt
+
+prior successor + same loop still OPEN
+-> one current ref
+
+prior successor + loop no longer current
+-> stale inherited ref removed
+
+new Score statement/open loop after prior checkpoint
+-> current refs acquired
+
+Score ATTENTION at formation
+-> no new working checkpoint
+-> human turn not rejected merely for working-continuity stewardship
+
+Score changes after formation but before post-turn commit
+-> checkpoint realization held
+-> stale Score refs not promoted
+-> committed Conversation response remains valid
+
+source-return turn
+-> final WorkingContinuity preparation uses the same current-Score law
+-> Conversation exact-source-return behavior remains unchanged
+```
+
+### What candidate A does not solve
+
+Restoring Score coordinates does not make their semantic bodies model-visible:
+
+```text
+Score/openLoop ref carried
+!= Vex can read what it means
+```
+
+That remains candidate B and stays conditional on a lived consumer need.
+
+Likewise, restoring the stable Score producer does not itself justify reconnecting Intent work nodes,
+continuity-record sets, or another predecessor producer. Each remaining WorkingSet field must be traced to
+its current rightful owner and an actual consumer need before its producer relationship is restored.
+
+No Product source mutation is authorized by this design note. It preserves the implementation shape so a
+future admitted Product work item can start from current source truth rather than rediscovering or
+re-architecting the relationship.
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][SCORE-PRODUCER-RECONNECTION-DESIGN] -->
+
