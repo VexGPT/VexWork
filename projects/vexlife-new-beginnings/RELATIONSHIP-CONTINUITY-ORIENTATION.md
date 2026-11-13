@@ -3060,3 +3060,89 @@ run A027 once
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][CURRENTIZED][SOURCEOWNER-A027-FORMED] -->
 
+## SourceOwner A027 bootstrap contract correction / A028 — 2026-11-12 23:56:07 America/Los_Angeles
+
+The first fresh currentized SourceOwner bootstrap did not form a SourceOwner task.
+
+Observed A027 bootstrap error:
+
+```text
+RECIPE_SEED_MUST_NOT_DEFINE:operations
+```
+
+The current SDK recipe compiler owns four fields and rejects them when pre-authored by a caller:
+
+```text
+operations
+completionPolicy
+continuationPlan
+result
+```
+
+The SDK's own recipe/carrier tests delete all four from `baseManifest(...)` before calling `compileRelayRecipe(...)`.
+
+Therefore:
+
+```text
+A027 inner SourceOwner task = NOT FORMED
+A027 Product clone = NOT REACHED
+A027 Gradle = NOT REACHED
+A027 SourceOwner proof = NOT EXECUTED
+A027 provider/model effect = NONE
+```
+
+This is a bootstrap recipe-seed contract violation, not Product/source/lived failure.
+
+Fresh A028 user-delivery bootstrap:
+
+```text
+PR89-SO-A028.zip
+sha256 =
+a753f23087a61ecd492cd0b1710b4f7c91fd55e2402d96502a1594ef87f4c751
+```
+
+A028 performs a complete source-owned compiler preflight before native carrier formation and requires:
+
+```text
+GITHUB_GH
+REPOSITORY_STATE
+EXPECTED_HEAD
+EXPECTED_TREE
+COMMAND
+REVIEW_SNAPSHOT
+CANONICAL_RETURN
+```
+
+with exact currentized PR #89:
+```text
+base =
+e0ab43f6c96de0faccd1c613684ab459d84dc0a0
+
+head =
+7dc1625c764cd96e7cad35a7974180c8dbf542e5
+
+tree =
+a16160568fdd562bd264fd1dc166ddd2a9c39543
+```
+
+and exact 11-path membrane.
+
+No Local Workspace, no GitHub Actions, no lived provider replay, no READY/approval/merge effect.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6847424975
+```
+
+Current edge:
+
+```text
+run A028
+-> consume SourceOwner RETURN
+-> PASS: fresh semantic Assurance
+-> SAFE_FAILURE: classify exact first SourceOwner failure
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][SOURCEOWNER-A027-BOOTSTRAP-FAILURE][A028] -->
+
