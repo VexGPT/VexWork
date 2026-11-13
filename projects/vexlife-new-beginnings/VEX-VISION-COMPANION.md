@@ -1006,7 +1006,7 @@ The human outcome is not "screen capture" and it is not "make Vex multimodal" in
 It is one lived relationship:
 
 ~~~text
-Victor uses an ordinary browser / computer normally
+Victor uses an ordinary browser normally
 -> Victor explicitly engages one bounded Vision relationship
 -> macOS presents the system-owned picker
 -> Victor selects one window/scope once
@@ -1117,11 +1117,13 @@ Presentation
   returns bounded meaning to the human
 ~~~
 
-Applied to this Vision experience:
+Target responsibility mapping for this Vision experience, with source status kept explicit:
 
 ~~~text
+ACCEPTED CURRENT SEMANTIC OWNER
 VexLifeVisionFamily
-  owns Vision product meaning and lawful Control -> Act / Effect relationships
+  owns the existing one-shot Vision product meaning and lawful Control -> Act / Effect relationships
+  -> persistent-scope vocabulary is NOT yet accepted
   != native window identity
   != SCREEN authority
   != process lifetime
@@ -1129,13 +1131,16 @@ VexLifeVisionFamily
   != Conversation
   != Memory
 
+DESIGN TARGET / EXISTING-SEAM QUESTION
 VexExecution / bound Method
-  owns one admitted live realization attempt
+  should own one admitted live realization attempt when the Product earns the LOOK continuation
+  -> exact current reusable seam must be established from source before implementation
   != semantic State
   != outside truth
 
+PR #114 CANDIDATE RESPONSIBILITY
 VexLife-Prod service
-  owns one long-lived carried Vision runtime child
+  would own one long-lived carried Vision runtime child
   + transport / command correlation / bounded projection validation
   != selected-scope session owner
   != native provider owner
@@ -1144,35 +1149,41 @@ VexLife-Prod service
   != visual worker
   != Conversation owner
 
+ACCEPTED SDK RESPONSIBILITY
 Vextreme-SDK Process Factory selected-scope session / host custody
   owns actual selected-scope lifecycle and native custody below Product
   -> may retain the provider/filter/host objects needed for the scope to remain available
   -> performs no capture merely because scope is ENGAGED
 
+ACCEPTED AUTHORITY OWNER / FUTURE LOOK CONSUMER
 Vex Safety / SCREEN owner binding
   owns current capture authorization/currentness
-  -> is checked at actual LOOK
+  -> actual persistent-scope LOOK must consume fresh current Safety
   -> prior ENGAGE does not mint standing capture authority
 
+FUTURE LOOK REALIZATION
 physical frame acquisition
-  owns one bounded outside-world occurrence
+  should own one bounded outside-world occurrence
   != visual interpretation
   != semantic State
   != Memory
 
+FUTURE VISUAL-INTERPRETATION OWNER
 visual worker
-  owns bounded interpretation of one admitted frame
+  should own bounded interpretation of one admitted frame
   != sensor authority
   != Conversation ownership
   != Memory authority
 
+FUTURE CONVERGENCE
 Conversation Context
   may converge current Conversation truth + admitted derived visual meaning for this turn
   != Vision State owner
   != automatic durable Memory
 
+FUTURE PERSISTENT-SCOPE PRESENTATION
 Presentation
-  must distinguish:
+  must eventually distinguish:
     quiet persistent selected-scope indication
     from
     brief stronger "Vex is looking now" indication
