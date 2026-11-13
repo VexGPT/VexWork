@@ -59,6 +59,8 @@ const SDK_BLOB_GUARDS = Object.freeze({
   "lib/vexlocalbridge/templates/RUN-VEX-TASK.command": "fa5a9c7bb3de10a30ee856452f7086e4c11eb3ea",
   "docs/private-continuity/vexlocalbridge/profiles/macos-victor-vextreme-sdk.json": "05bb84b74cb0fcf35f330ced1481c9d2fc167b3a"
 });
+const LIVED_GUARD_TEMPLATE = "#!/bin/bash\nset -euo pipefail\nIMAGE_ROOT=__IMAGE_ROOT__\nJAVA=__JAVA__\nSAFE_USER_HOME=__SAFE_USER_HOME__\nPROOF_HOME=__PROOF_HOME__\nLOG=__LOG__\nCOUNT_FILE=__COUNT_FILE__\nHEAD=__HEAD__\n\nif [ ! -f \"$COUNT_FILE\" ]; then printf '%s\\n' 0 > \"$COUNT_FILE\"; fi\nN=\"$(cat \"$COUNT_FILE\")\"\nN=\"$((N + 1))\"\nprintf '%s\\n' \"$N\" > \"$COUNT_FILE\"\n\nKIND=\"\"\nif [ \"$#\" -eq 5 ] &&\n   [ \"$1\" = \"--inspect-front-door\" ] &&\n   [ \"$2\" = \"--home\" ] &&\n   [ \"$3\" = \"$PROOF_HOME\" ] &&\n   [ \"$4\" = \"--expected-source-sha\" ] &&\n   [ \"$5\" = \"$HEAD\" ]; then\n  KIND=\"INSPECT\"\nelif [ \"$#\" -eq 6 ] &&\n     [ \"$1\" = \"--activate-front-door-control\" ] &&\n     [ \"$2\" = \"FORM_HOME\" ] &&\n     [ \"$3\" = \"--home\" ] &&\n     [ \"$4\" = \"$PROOF_HOME\" ] &&\n     [ \"$5\" = \"--expected-source-sha\" ] &&\n     [ \"$6\" = \"$HEAD\" ]; then\n  KIND=\"FORM_HOME\"\nelif [ \"$#\" -ge 2 ] && [ \"$1\" = \"--activate-front-door-control\" ]; then\n  printf 'BLOCKED\\t%s' \"$2\" >> \"$LOG\"\n  for A in \"$@\"; do printf '\\t%s' \"$A\" >> \"$LOG\"; done\n  printf '\\n' >> \"$LOG\"\n  printf '%s\\n' \"PR107 lived-proof guard blocked Product-entry control: $2\" >&2\n  exit 41\nelse\n  printf 'UNEXPECTED' >> \"$LOG\"\n  for A in \"$@\"; do printf '\\t%s' \"$A\" >> \"$LOG\"; done\n  printf '\\n' >> \"$LOG\"\n  printf '%s\\n' \"PR107 lived-proof guard rejected unexpected setup invocation.\" >&2\n  exit 42\nfi\n\nprintf '%s' \"$KIND\" >> \"$LOG\"\nfor A in \"$@\"; do printf '\\t%s' \"$A\" >> \"$LOG\"; done\nprintf '\\n' >> \"$LOG\"\n\nERR=__ERR__\nset +e\nOUT=\"$(\"$JAVA\" -Duser.home=\"$SAFE_USER_HOME\" -cp \"$IMAGE_ROOT/lib/*\" vexlife.setup.VexLifeProdSetupProcessKt \"$@\" 2>\"$ERR\")\"\nSTATUS=$?\nset -e\n\nif [ \"$STATUS\" -ne 0 ]; then\n  cat \"$ERR\" >&2 || true\n  exit \"$STATUS\"\nfi\n\nprintf '%s\\n' \"$OUT\" > __INVOCATION_PREFIX__\"$N\".json\nprintf '%s\\n' \"$OUT\"\n";
+
 
 function fail(message) {
   throw new Error(message);
@@ -227,71 +229,27 @@ const log=path.join(proof,'guard-invocations.tsv');
 const count=path.join(proof,'guard-count.txt');
 const guard=path.join(proof,'setup-guard.command');
 const q=(s)=>"'" + String(s).replaceAll("'","'\\\\''") + "'";
-
-const guardScript=\`#!/bin/bash
-set -euo pipefail
-IMAGE_ROOT=\${q(image)}
-JAVA=\${q(javaPath)}
-SAFE_USER_HOME=\${q(safeUserHome)}
-PROOF_HOME=\${q(PROOF_HOME)}
-LOG=\${q(log)}
-COUNT_FILE=\${q(count)}
-HEAD=\${q(HEAD)}
-
-if [ ! -f "$COUNT_FILE" ]; then printf '%s\\n' 0 > "$COUNT_FILE"; fi
-N="$(cat "$COUNT_FILE")"
-N="$((N + 1))"
-printf '%s\\n' "$N" > "$COUNT_FILE"
-
-KIND=""
-if [ "$#" -eq 5 ] &&
-   [ "$1" = "--inspect-front-door" ] &&
-   [ "$2" = "--home" ] &&
-   [ "$3" = "$PROOF_HOME" ] &&
-   [ "$4" = "--expected-source-sha" ] &&
-   [ "$5" = "$HEAD" ]; then
-  KIND="INSPECT"
-elif [ "$#" -eq 6 ] &&
-     [ "$1" = "--activate-front-door-control" ] &&
-     [ "$2" = "FORM_HOME" ] &&
-     [ "$3" = "--home" ] &&
-     [ "$4" = "$PROOF_HOME" ] &&
-     [ "$5" = "--expected-source-sha" ] &&
-     [ "$6" = "$HEAD" ]; then
-  KIND="FORM_HOME"
-elif [ "$#" -ge 2 ] && [ "$1" = "--activate-front-door-control" ]; then
-  printf 'BLOCKED\\t%s' "$2" >> "$LOG"
-  for A in "$@"; do printf '\\t%s' "$A" >> "$LOG"; done
-  printf '\\n' >> "$LOG"
-  printf '%s\\n' "PR107 lived-proof guard blocked Product-entry control: $2" >&2
-  exit 41
-else
-  printf 'UNEXPECTED' >> "$LOG"
-  for A in "$@"; do printf '\\t%s' "$A" >> "$LOG"; done
-  printf '\\n' >> "$LOG"
-  printf '%s\\n' "PR107 lived-proof guard rejected unexpected setup invocation." >&2
-  exit 42
-fi
-
-printf '%s' "$KIND" >> "$LOG"
-for A in "$@"; do printf '\\t%s' "$A" >> "$LOG"; done
-printf '\\n' >> "$LOG"
-
-ERR=\${q(path.join(proof,'java-stderr.tmp'))}
-set +e
-OUT="$("$JAVA" -Duser.home="$SAFE_USER_HOME" -cp "$IMAGE_ROOT/lib/*" vexlife.setup.VexLifeProdSetupProcessKt "$@" 2>"$ERR")"
-STATUS=$?
-set -e
-
-if [ "$STATUS" -ne 0 ]; then
-  cat "$ERR" >&2 || true
-  exit "$STATUS"
-fi
-
-printf '%s\\n' "$OUT" > \${q(path.join(proof,'invocation-'))}"$N".json
-printf '%s\\n' "$OUT"
-\`;
-
+let guardScript=process.argv[3];
+const guardValues={
+  "__IMAGE_ROOT__": image,
+  "__JAVA__": javaPath,
+  "__SAFE_USER_HOME__": safeUserHome,
+  "__PROOF_HOME__": PROOF_HOME,
+  "__LOG__": log,
+  "__COUNT_FILE__": count,
+  "__HEAD__": HEAD,
+  "__ERR__": path.join(proof,'java-stderr.tmp'),
+  "__INVOCATION_PREFIX__": path.join(proof,'invocation-'),
+};
+for (const [token,value] of Object.entries(guardValues)) {
+  guardScript=guardScript.replaceAll(token,q(value));
+}
+if (guardScript.includes("__IMAGE_ROOT__") ||
+    guardScript.includes("__JAVA__") ||
+    guardScript.includes("__PROOF_HOME__") ||
+    guardScript.includes("__INVOCATION_PREFIX__")) {
+  throw new Error('GUARD_PLACEHOLDER_SUBSTITUTION_INCOMPLETE');
+}
 fs.writeFileSync(guard,guardScript,{mode:0o755});
 fs.chmodSync(guard,0o755);
 fs.writeFileSync(
@@ -783,7 +741,7 @@ console.log(JSON.stringify(summary,null,2));
         action: 'COMMAND',
         repositoryRef: 'primary',
         command: 'node',
-        args: ['-e', prepareScript, PRODUCT_HEAD, proofHome],
+        args: ['-e', prepareScript, PRODUCT_HEAD, proofHome, LIVED_GUARD_TEMPLATE],
         proofClass: 'TOOL',
         mutationClass: 'NONE',
         candidateEvidence: false,
