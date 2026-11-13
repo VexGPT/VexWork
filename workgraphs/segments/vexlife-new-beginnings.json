@@ -808,13 +808,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-13T02:30:00.000Z",
-      "updatedAt": "2026-11-13T02:30:00.000Z",
+      "updatedAt": "2026-11-13T02:44:00.000Z",
       "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Immediate — normal Internet browser provider for the VexLife Browser pane",
       "purpose": "Replace the web-hosted iframe as the terminal human Browser provider with a real browser-provider relationship that can preserve ordinary HTTP(S) site/session behavior, pages that refuse embedding, and exact current URL/back-forward/reload navigation while keeping human page display separate from Vex context/perception and from local Product effect authority. Select the provider from current product/macOS evidence rather than pre-choosing Electron, JCEF, WKWebView or another engine by familiarity.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.experience-manifestation-parity",
@@ -827,10 +827,11 @@
         "human.intent.vexlife.normal-internet-browser.20261112",
         "github.pull.vexlife-prod.100",
         "repo.vexlife-prod:docs/foundation/VEXWEB-GENERATED-P1-WORKSPACE.md",
-        "repo.vexlife-prod:docs/foundation/LOCAL-PRODUCT-SERVICE.md"
+        "repo.vexlife-prod:docs/foundation/LOCAL-PRODUCT-SERVICE.md",
+        "human.authorization.vexlife.normal-browser-provider.20261112"
       ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS"
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     }
   ],
   "transitions": [
@@ -1421,6 +1422,21 @@
         "github.pull.vextreme-sdk.1947"
       ],
       "createdAt": "2026-11-13T02:24:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.normal-browser-provider.ready-running.human-continuation.20261112A",
+      "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly continued the isolated normal-browser trajectory. Source authoring is admitted only for a bounded provider proof beside existing Vision, Conversation and runtime owners; product-lifecycle adoption, new long-lived presentation process and provider selection remain unearned until the proof supplies evidence.",
+      "actorRef": "actor.chatgpt.normal-browser-provider",
+      "sourceRefs": [
+        "human.authorization.vexlife.normal-browser-provider.20261112",
+        "github.pull.vexlife-prod.100",
+        "github.pull.vexwork.297"
+      ],
+      "createdAt": "2026-11-13T02:44:00.000Z"
     }
   ],
   "sourceRefs": [
