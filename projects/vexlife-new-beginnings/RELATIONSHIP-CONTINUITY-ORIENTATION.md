@@ -2372,3 +2372,78 @@ VexLife-Prod issue #61 comment 6846545028
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R002][PREBUSINESS-PROVEN] -->
 
+## A031 R003 corrected retained-proof binding — 2026-11-12 23:07:38 America/Los_Angeles
+
+R002 RETURN:
+
+```text
+sha256 =
+a76b5a429b15abab24ce2187ce84430c38f4f846c97cceaa0cff807cd65e78dd
+
+disposition = SAFE_FAILURE
+stopReason = A029_NORMALIZED_PROOF_NOT_RETAINED
+
+providerOrNetworkEffectPerformed = false
+modelRuntimePerformed = false
+steps = []
+```
+
+R002 therefore stopped before GH auth and all business execution.
+
+The carrier-local defect was one wrong retained-source coordinate:
+
+```text
+metadata:
+  runRootRelative =
+  Library/Application Support/Vextreme/VexRelay/runs/vexlife-pr89-lived-source-return-a029
+
+  proofRelative =
+  workspace/repositories/primary/build/vexrelay-a029/live-source-return-proof.json
+
+R002 used:
+  HOME + proofRelative
+
+rightful retained source:
+  HOME + runRootRelative + proofRelative
+```
+
+Classification:
+
+```text
+CARRIER_RESTORATION_PATH_BINDING_DEFECT
+!= Product source failure
+!= provider/model failure
+```
+
+A031 R003 corrected retained-proof binding:
+
+```text
+package =
+VEXLIFE-PR89-LIVED-SOURCE-RETURN-A031-RESTORED-DIRECT-HOST-R003
+
+sha256 =
+d317dfb8c9429e070c3e5d53f5ab89ab8c10f61f3eeb81993c5504346b5a4e7f
+
+businessAttemptRef =
+attempt.vexlife-prod.pr89.lived-source-return.a018
+```
+
+Only the retained-proof locator changes. All PR #89 candidate, runtime receipt, direct-host Relay, exact Product recovery predicate, and no-Local-Workspace boundaries remain unchanged.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846595628
+```
+
+Current edge:
+
+```text
+run A031 R003 once
+-> consume exact R003 RETURN
+-> PASS: rightful PR #89 integration/currentness
+-> SAFE_FAILURE: classify first exact failure before replay
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R003][PATH-BINDING-CORRECTION] -->
+
