@@ -1447,6 +1447,420 @@ Ground the smallest truthful arbitration from lived/product pressure.
 The first Vision implementation should fail closed on ambiguous/multiple internal controls rather than
 silently executing more effects than one bounded turn admitted.
 
+### Source-derived implementation decomposition after end-to-end review
+
+Fresh source descent across the accepted SDK selected-scope owners and current Product Conversation
+owners makes the remaining implementation boundaries more concrete.
+
+This is a design decomposition, not a claim that the later source slices are already admitted.
+
+#### 1. Accepted selected-scope session already owns LOOK intent semantics
+
+Accepted SDK source:
+
+~~~text
+lib/process-factory/macos-screen-selected-scope-session.js
+~~~
+
+already exports:
+
+~~~text
+requestMacosScreenSelectedScopeLook(...)
+completeMacosScreenSelectedScopeLook(...)
+~~~
+
+and owns:
+
+~~~text
+ENGAGED
++ requestRef
++ fresh current SCREEN Safety
+-> LOOKING
+-> bind transient current Safety refs
+
+LOOKING
++ matching requestRef
++ fresh current SCREEN Safety
+-> ENGAGED
+-> clear transient LOOK binding
+~~~
+
+The Product-safe projection already distinguishes:
+
+~~~text
+LOOKING
+lookingIndicatorRequired=true
+lookRequestRefOrNull=<exact current LOOK>
+fresh LOOK Safety refs
+
+while still:
+screenCaptureAuthorized=false
+captureExecutionAuthorized=false
+requestReplayProtectionEstablished=false
+captureExecutionRequiresSingleUseEffectReservation=true
+~~~
+
+Therefore the next native LOOK slice must consume this accepted state owner rather than inventing a
+second LOOK state machine.
+
+#### 2. Persistent native host currently has no LOOK/capture command surface
+
+Accepted current host source:
+
+~~~text
+lib/process-factory/macos-screen-selected-scope-host-custody.js
+lib/process-factory/macos-screen-selected-scope-agent.swift
+~~~
+
+currently proves the non-capturing persistent relationship:
+
+~~~text
+Node custody child stdio = ['ignore', 'pipe', 'pipe']
+native helper receives no stdin commands
+native helper contains no SCScreenshotManager
+native helper retains:
+  SCContentFilter
+  one unstarted SCStream
+
+SCStream.startCapture = forbidden in this slice
+raw pixel access = absent
+~~~
+
+The Product-facing Process Factory runtime also intentionally admits only:
+
+~~~text
+ENGAGE
+PROJECT
+RECONCILE
+STOP
+SHUTDOWN
+~~~
+
+and explicitly rejects LOOK.
+
+Therefore:
+
+~~~text
+SESSION_LOOK_SEMANTICS_ACCEPTED
+!= PERSISTENT_NATIVE_LOOK_REALIZATION_EXISTS
+~~~
+
+The smallest later SDK source question is not "how does Product capture a screen?" It is:
+
+> How does Process Factory bind one already-admitted LOOKING request to the retained native selected
+> scope, consume the rightful single-use capture reservation, perform at most one current snapshot,
+> and settle the existing session back to ENGAGED without exporting native provider identity upward?
+
+Likely implementation pressure:
+
+~~~text
+host custody
+-> gain one bounded LOOK operation
+
+native selected-scope helper
+-> gain one exact bounded inbound LOOK command channel
+-> reuse retained SCContentFilter
+-> SCScreenshotManager.captureImage(...)
+-> no picker replay
+-> no SCStream.startCapture
+-> emit one request-bound result/evidence
+~~~
+
+The exact command/pipe schema and effect-reservation binding remain to be source-placed before mutation.
+
+Do not infer that the generic continuity effect-transaction implementation is automatically the
+rightful SCREEN replay owner merely because both use "effect reservation" language. Bind the exact
+existing single-use effect owner or form the smallest supported Vision-specific placement from live
+source.
+
+#### 3. The accepted one-shot capture route does not contain a hidden raw-image/VLM pipeline
+
+The accepted one-shot system-picker helper:
+
+~~~text
+lib/process-factory/macos-screen-system-picker-agent.swift
+~~~
+
+does currently use:
+
+~~~text
+SCScreenshotManager.captureImage(...)
+~~~
+
+but then only:
+
+~~~text
+CGImage provider bytes
+-> SHA-256 + dimensions
+-> content-absent capture receipt
+-> bytes discarded
+~~~
+
+It does not base64-encode, write, retain or pass image bytes upward.
+
+The accepted Perception integration then forms only:
+
+~~~text
+content-absent VISUAL observation identity
++ frame digest/dimensions
++ exact Security witness
+~~~
+
+while preserving:
+
+~~~text
+rawBytesIncluded=false
+rawRetentionAllowed=false
+visualModelInputAuthorized=false
+memoryAccepted=false
+~~~
+
+Therefore:
+
+~~~text
+SCREEN_CAPTURE_PATH_EXISTS
+!= VISUAL_INTERPRETATION_PATH_EXISTS
+~~~
+
+The persistent LOOK executor may reuse the accepted one-shot capture behavior/invariants where they
+still fit, but visual-model input is a separate earned boundary.
+
+#### 4. VLM vocabulary exists; a current image-inference worker does not
+
+Current SDK VexLocalBridge registry recognizes:
+
+~~~text
+MLX_VLM_DIRECT_RUNTIME
+~~~
+
+and explicitly preserves:
+
+~~~text
+MLX_VLM_DIRECT_RUNTIME != MLX_LM_DIRECT_RUNTIME
+VLM_COMPATIBLE != IMAGE_INFERENCE_PERFORMED
+VISION_TOWER_PRESENT != VISION_INPUT_AUTHORIZED
+MULTIMODAL_INPUT_AVAILABLE != SENSOR_AUTHORITY
+RUNTIME_ADAPTER != PERCEPTION_BROKER
+RUNTIME_ADAPTER != VEX_VISION
+~~~
+
+The current generic RuntimeAdapter source is a reference/qualification gate with effect authority
+false. It is not a current qualified Product visual worker and it does not define a live raw-image
+transport.
+
+Therefore the visual-interpreter slice must separately establish:
+
+~~~text
+one exact VLM/model profile + artifact custody
+one qualified local visual runtime
+one bounded image-input contract
+one bounded derived-meaning output contract
+
+while preserving:
+capture authority remains elsewhere
+raw bytes are not persisted
+raw bytes do not enter Product Conversation
+raw bytes do not become Memory
+training/publication remain false
+~~~
+
+The exact ephemeral byte transport is intentionally not frozen here. The rightful implementation must
+keep native/provider identity below Process Factory and must not route raw pixels through Product merely
+because Product owns Conversation.
+
+#### 5. Product same-turn continuation can reuse an existing orchestration shape without inheriting read-only authority
+
+Current Product already owns one bounded same-turn source-return continuation in
+`DirectCompanionTurn`.
+
+Current `DirectCompanionTurn.Hooks` also already injects turn-local currentness/effect dependencies
+such as model transport, current runtime evidence, current Memory and time.
+
+Current PR #114 Product construction separately owns the persistent `VisionRuntime` lifetime in
+`VexLifeProdLocalService`.
+
+That creates a natural dependency direction:
+
+~~~text
+VexLifeProdLocalService
+  owns persistent VisionRuntime lifetime
+  -> supplies one bounded Vision continuation dependency to DirectCompanionTurn
+
+DirectCompanionTurn
+  owns same-turn orchestration
+  -> never discovers/owns the service runtime itself
+~~~
+
+A future Product continuation can therefore be shaped as:
+
+~~~text
+before initial provider stage:
+  service-owned Vision dependency projects current scope truth
+  -> bounded capability fact enters DirectPromptContext / Capability Atlas
+
+Capability Atlas:
+  capability.vexlife.vision.look-current   # candidate identity, not accepted source
+  canonicalStage = REQUESTABLE             # candidate stage
+  effectAuthorityGranted = false
+
+initial model inference:
+  may answer normally
+  OR emit one exact internal "current visual context needed" control
+
+internal control:
+  contains no native/provider/window identity
+  contains no SCREEN authorization
+  contains no effect reservation
+  does not itself mint effect authority
+
+DirectCompanionTurn:
+  recognizes the internal request
+  mints/binds the Product-side request identity to this exact turn
+  -> asks the Vision semantic/effect owner to admit/realize it
+
+Vision owner:
+  exact current semantic State
+  + request
+  -> lawful Effect or truthful held result
+
+effect realization:
+  accepted persistent selected scope
+  + fresh SCREEN Safety
+  + single-use capture reservation
+  -> at most one current snapshot
+  -> bounded visual interpretation
+  -> bounded derived visual meaning / provenance
+
+DirectCompanionTurn:
+  rematerializes final prompt with bounded derived visual context
+  -> disables repeat LOOK request
+  -> one final provider inference
+  -> one canonical human/Vex Conversation turn
+~~~
+
+The candidate Capability Atlas identity/stage above is design pressure, not yet source. The important
+law is:
+
+~~~text
+MODEL_CAN_KNOW_LOOK_IS_REQUESTABLE
+!= MODEL_HAS_CAPTURE_AUTHORITY
+~~~
+
+#### 6. Turn evidence should preserve provenance without silently persisting visual content
+
+Current `DirectTurnContextStore` persists:
+
+~~~text
+final prompt materialization receipt
+runtime observation / invocation evidence
+bounded sourceReturnTrace when used
+raw provider response = not persisted
+raw reasoning = not persisted
+~~~
+
+A future Vision continuation can follow that evidence shape without copying SourceReturn semantics:
+
+~~~text
+visionLookTrace candidate:
+  turn-bound Product LOOK request identity
+  scopeSessionRef or bounded source identity only if Product-safe
+  capture/visualObservation refs
+  frame digest + dimensions when already accepted metadata
+  derived-meaning hash / result ref
+  visual runtime/model profile refs
+  rawBytesPersisted=false
+  rawFileWritten=false
+  memoryAccepted=false
+  trainingEligible=false
+~~~
+
+The actual raw frame must never be serialized into Conversation Context merely to prove that it was
+used.
+
+Whether the derived visual text itself should remain transient with only its hash/provenance in
+canonical turn Context, or whether an exact bounded derived-meaning object should be retained as
+turn-scoped Context, remains an explicit design decision for the visual-worker/Conversation boundary.
+
+~~~text
+TURN_CONTEXT_PROVENANCE
+!= DURABLE_MEMORY
+~~~
+
+#### 7. Internal-continuation arbitration — bounded first slice
+
+Current Product already permits one source-return continuation. Vision introduces a second possible
+continuation class.
+
+The smallest initial rule should remain fail-closed:
+
+~~~text
+one initial provider stage
+-> zero OR one recognized internal continuation request total
+-> one bounded realization
+-> one final provider stage
+-> no continuation request admitted from the final stage
+~~~
+
+So the first Vision continuation should not silently execute SourceReturn + Vision LOOK in an
+unbounded sequence during one human turn.
+
+This is a bounded first-slice choice, not a permanent claim that a future turn can never need both.
+If lived product pressure proves that source-return + visual observation must compose in one turn,
+form the smallest explicit combined-enrichment rule then.
+
+Do not answer that future pressure by introducing an open-ended generic tool loop.
+
+#### 8. Source order implied by the ownership graph
+
+The implementation order that now follows from current source is:
+
+~~~text
+CURRENT FOREGROUND
+recover/rebuild exact persistent local artifact
+-> PR #114 exact-head SourceOwner
+-> Assurance / lifecycle / integration
+-> install running Product carrying persistent selected-scope runtime
+-> lived engage/select-once/project/stop proof
+
+NEXT SDK EFFECT SLICE
+accepted session LOOK semantics
+-> persistent native LOOK/capture realization
+-> exact single-use capture reservation/replay boundary
+-> no picker replay
+-> content-absent capture/Perception proof
+
+NEXT VISUAL SLICE
+qualified VLM/visual worker
+-> ephemeral frame input
+-> bounded derived visual meaning
+-> no raw persistence
+
+NEXT PRODUCT CONVERSATION SLICE
+Capability Atlas requestability
++ DirectCompanionTurn bounded internal Vision request
++ injected service-owned Vision continuation
++ final prompt rematerialization
++ one final inference
++ bounded visionLookTrace
+
+NEXT PRESENTATION SLICE
+quiet persistent scope indicator
+!= brief active LOOK indicator
+
+LIVED END-TO-END
+select once
+-> browse/scroll
+-> ask something visually dependent
+-> Vex chooses LOOK
+-> one current snapshot without picker replay
+-> bounded interpretation
+-> same turn continues
+-> answer reflects what is currently visible
+~~~
+
+This order is causal rather than ceremonial. Independent design/source work may continue while a
+physical proof predicate is held, but no later layer may pretend an earlier effect exists.
+
 ### Security boundary carried by the design
 
 This end-to-end experience keeps the existing Security activation above and makes its current boundary
