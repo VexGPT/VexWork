@@ -2104,3 +2104,38 @@ This section does not mutate accepted VexWork Workgraph lifecycle truth, Product
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-NEW-BEGINNINGS][RELATIONSHIP-CONTINUITY][SUCCESSOR][20261112T223936-0800] -->
 
+## Successor correction — A031 user-visible delivery was not established
+
+Timestamp:
+
+```text
+local = 2026-11-12T22:49:24-08:00
+UTC   = 2026-11-13T06:49:24Z
+```
+
+A successor response incorrectly promoted an internal Files metadata result labeled `surface=library` into the claim that the A031 carrier was present in Victor's visible Library.
+
+Victor explicitly reports that it is not present there.
+
+Corrected truth:
+
+```text
+A031 carrier identity = known from predecessor durable record
+A031 canonical RETURN = not present
+A031 user-visible ZIP delivery = NOT VERIFIED
+A031 visible Library presence = NOT VERIFIED
+A031 host handoff = NOT COMPLETE
+```
+
+Internal file-index metadata is not evidence that Victor can see, access, or download an artifact.
+
+This correction does not invalidate the predecessor's A031 formation record or the PR #89 source/Assurance evidence. It corrects only the successor's visibility/delivery claim.
+
+Provider correction anchor:
+
+```text
+VexWork PR #292 comment 6846289197
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][CORRECTION][A031-DELIVERY][20261112T224924-0800] -->
+
