@@ -2197,6 +2197,14 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     return null;
   };
 
+  const directDependency = (type, sourceRef = '') => {
+    const name = String(type ?? sourceRef ?? '');
+    if (/Logger/.test(name)) return { face: 'DEPTH', role: 'CHRONOLOGY', summary: 'In-session chronology.' };
+    if (/CoroutineScope/.test(name)) return { face: 'DEPTH', role: 'CONSTRUCTION', summary: 'Coroutine lifetime host captured by the registration; it is not outside truth.' };
+    if (/Repository|Store|Persistence|Queue/.test(name) || /^repositories\./.test(sourceRef)) return { face: 'DEPTH', role: 'STORE', summary: 'Outside truth this registration touches.' };
+    return { face: 'BEHAVIOR', role: 'DISPATCH', summary: 'Collaborator used by the registration; no outside-truth role is source-proven.' };
+  };
+
   const directPathway = (actionKey, registration) => {
     const ref = `pathway.${actionKey.replace(/^action\./, '')}`;
     const builder = new PathwayBuilder(ref, humanize(registration.actionName), 'DIRECT_REGISTRATION');
@@ -2210,8 +2218,8 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       const expression = registration.locals.get(receiver) ?? null;
       const paramType = registration.params.get(receiver) ?? null;
       if (!expression && paramType) {
-        const role = /Logger/.test(paramType) ? 'CHRONOLOGY' : /Repository|Store|Persistence|Queue/.test(paramType) ? 'STORE' : 'DISPATCH';
-        const owner = builder.node(`owner-${receiver}`, role === 'DISPATCH' ? 'BEHAVIOR' : 'DEPTH', role, paramType, { symbol: receiver, summary: role === 'STORE' ? 'Outside truth this registration touches.' : 'Collaborator passed into the registration.', source: registration.source });
+        const dependency = directDependency(paramType, receiver);
+        const owner = builder.node(`owner-${receiver}`, dependency.face, dependency.role, paramType, { symbol: receiver, summary: dependency.summary, source: registration.source });
         builder.edge(reg, owner, 'calls');
         continue;
       }
@@ -2221,8 +2229,12 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
         const controller = builder.node(`calls-${receiver}`, 'BEHAVIOR', 'DISPATCH', ctor[1], { symbol: receiver, summary: 'Feature-owned controller built inside the registrations.', source: registration.source, code: expression });
         builder.edge(reg, controller, 'calls');
         for (const dep of expression.matchAll(/context\.((?:repositories\.)?\w+)/g)) {
-          const store = builder.node(`dep-${dep[1].replace(/\W+/g, '-')}`, 'DEPTH', 'STORE', dep[1], { symbol: dep[1], summary: 'Normal feature truth the controller writes through.', source: registration.source });
-          builder.edge(controller, store, 'writes');
+          const sourceRef = dep[1];
+          const fieldName = sourceRef.split('.')[0];
+          const type = sourceRef.startsWith('repositories.') ? sourceRef : fields.get(fieldName) ?? sourceRef;
+          const dependency = directDependency(type, sourceRef);
+          const collaborator = builder.node(`dep-${sourceRef.replace(/\W+/g, '-')}`, dependency.face, dependency.role, type, { symbol: `context.${sourceRef}`, summary: dependency.summary, source: registration.source });
+          builder.edge(controller, collaborator, 'uses');
         }
         continue;
       }
@@ -2230,8 +2242,8 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       if (!context) continue;
       const fieldName = context[1].split('.')[0];
       const type = context[1].startsWith('repositories.') ? context[1] : fields.get(fieldName) ?? context[1];
-      const role = /Logger/.test(type) ? 'CHRONOLOGY' : 'STORE';
-      const owner = builder.node(`owner-${receiver}`, 'DEPTH', role, type, { symbol: `context.${context[1]}`, summary: role === 'CHRONOLOGY' ? 'In-session chronology.' : 'Outside truth this registration touches.', source: adapter.sources.screenActionContext });
+      const dependency = directDependency(type, context[1]);
+      const owner = builder.node(`owner-${receiver}`, dependency.face, dependency.role, type, { symbol: `context.${context[1]}`, summary: dependency.summary, source: adapter.sources.screenActionContext });
       builder.edge(reg, owner, 'calls');
     }
     builder.pathway.summary = registration.code ? 'The registration calls owners directly; no Family has earned this meaning yet.' : 'Registered, with no product effect yet.';

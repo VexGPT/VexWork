@@ -24,7 +24,7 @@ test('the committed lens is current with its adapter, overlay and generator', ()
   assert.equal(verified.state, 'PASS');
   assert.deepEqual(verified.builds.map((entry) => `${entry.subject}:${entry.build}:${entry.state}`), ['vexlife-android:stable:PASS', 'vexlife-android:main:PASS'], 'every catalog build is verified at its own pointer');
   assert.match(raw.provenance.generator, /^vexlife-android-adapter\//);
-  assert.equal(raw.provenance.projectorBlobSha1, '1b4c1c85494f6e3ccbd92131d0f80ff6b268441d');
+  assert.equal(raw.provenance.projectorBlobSha1, '0a056364b8a5f143b48105aaf1112ba0b335f736');
   // D34 extended: the projector's own module imports (Kotlin reading, realization, examples) are bound too.
   assert.match(raw.provenance.projectorSupportSha256, /^[0-9a-f]{64}$/);
   assert.match(raw.provenance.sourceCommit, /^[0-9a-f]{40}$/);
@@ -78,6 +78,13 @@ test('dispositions match what the code earns', () => {
     assert.ok(theme.nodes.some((node) => node.role === role), role);
   }
   assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.fence'), 'source derives the ThemeMode-local fence');
+
+  const synthetic = pathwayForElement(lens, 'element.debug-menu.body.events-simulator.actions.start');
+  const syntheticScope = synthetic.nodes.find((node) => node.ref === 'events.synthetic.start.dep-scope');
+  assert.equal(syntheticScope.label, 'CoroutineScope');
+  assert.equal(syntheticScope.role, 'CONSTRUCTION', 'session coroutine lifetime is construction/support, not outside truth');
+  assert.equal(synthetic.nodes.find((node) => node.ref === 'events.synthetic.start.dep-repositories-events').role, 'STORE');
+  assert.equal(synthetic.nodes.some((node) => node.ref === 'events.synthetic.start.dep-scope' && node.role === 'STORE'), false);
 });
 
 test('Stable keeps historical Direct Family source while Main projects accepted-responsibility currentness', () => {
