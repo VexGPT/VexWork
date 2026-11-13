@@ -2957,3 +2957,106 @@ Current Product main has advanced after the last preferred-stack currentization,
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][R008-LIVED-PASS][R009-CONSUMED] -->
 
+## Preferred stack currentized; SourceOwner A027 formed — 2026-11-12 23:49:44 America/Los_Angeles
+
+R008 remains lived PASS by the R009 evidence-only stale-harness correction. The provider/model proof was not replayed during integration currentization.
+
+Current Product main before propagation:
+
+```text
+3f91379eea2688ffa32d0f8903169cd9fc434233
+tree =
+267e5c2836e4a73cac09c04bd2f4a7e7b4c19bb3
+```
+
+The preferred exact-source ancestry was forward-currentized with ordinary clean two-parent merges only:
+
+```text
+#108 main -> minimal-continuity root
+  fb2e50745c8ac7babb9316c45312528e2b3e7fc8
+
+#109 minimal root -> exact source-return
+  6a2365b441724ba0e0bdd9d7963dfa85d7de4e19
+
+#110 exact source-return -> prompt base
+  33e824cc004493a483bedc3b2aaff3ec032725d3
+
+#111 prompt base -> final prompt
+  181b7625adabd42fc9da275ac189baabd46e5d16
+
+#112 final prompt -> turn evidence
+  e0ab43f6c96de0faccd1c613684ab459d84dc0a0
+
+#113 turn evidence -> live turn
+  7dc1625c764cd96e7cad35a7974180c8dbf542e5
+```
+
+No rebase, squash, reset, force push, Local Source Workspace, or parallel working-carry ancestry was introduced.
+
+Current PR #89 exact candidate:
+
+```text
+base =
+e0ab43f6c96de0faccd1c613684ab459d84dc0a0
+
+head =
+7dc1625c764cd96e7cad35a7974180c8dbf542e5
+
+tree =
+a16160568fdd562bd264fd1dc166ddd2a9c39543
+```
+
+The old A026 SourceOwner/Assurance are historical on the prior exact head because current main/toolchain source advanced. The lived R008 relationship evidence remains valid.
+
+A fresh SourceOwner package has been formed through current SDK-owned VexRelay machinery:
+
+```text
+package =
+PR89-SO-A027--sha256-ed01847c1c898d9b42a81c0b17a43426b3be10eb9c30d65c6593736c8df41b19.zip
+
+sha256 =
+ed01847c1c898d9b42a81c0b17a43426b3be10eb9c30d65c6593736c8df41b19
+
+attemptRef =
+attempt.vexlife-prod.pr89.source-owner-proof.a027
+```
+
+Formation/execution route:
+
+```text
+current exact SDK
+-> ExactHeadSourceOwnerProof recipe compiler
+-> native VexRelay task-archive carrier producer
+-> RUN_ROOT + CLONE_IN_WORKSPACE/GITHUB_GH
+-> exact currentized PR #89 head/tree
+-> full offline jvmTest
+-> REVIEW_SNAPSHOT maxFiles=10
+-> one canonical outer RETURN retaining inner VexRelay RETURN
+```
+
+No Local Workspace or GitHub Actions. No approval, READY, merge, or lived-model replay is authorized by A027.
+
+Durable Product anchors:
+
+```text
+R008 lived PASS:
+VexLife-Prod issue #61 comment 6847086590
+
+stack currentization:
+VexLife-Prod issue #61 comment 6847230212
+
+SourceOwner A027 formation:
+VexLife-Prod issue #61 comment 6847287561
+```
+
+Current exact edge:
+
+```text
+run A027 once
+-> consume exact SourceOwner RETURN
+-> PASS: fresh semantic Assurance on exact currentized head
+-> SAFE_FAILURE: classify first exact failure before source/lifecycle movement
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][CURRENTIZED][SOURCEOWNER-A027-FORMED] -->
+
