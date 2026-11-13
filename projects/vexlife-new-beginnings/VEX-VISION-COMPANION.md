@@ -953,3 +953,45 @@ the current next-work coordinate.
 
 <!-- [VXG RealForever][VEXLIFE][NEW-BEGINNINGS][VISION-COMPANION][REAL-BROWSER-WITNESS] -->
 
+
+## Forward convergence after Main Integrity recovery — PR #1947
+
+PR #1946's exact selected-scope source reached SourceOwner PASS, fresh Assurance CLEAR, Formal Review APPROVE, lifecycle currentness, READY and OwnerMergeDuty. Its ordinary merge was then recovered by Main Integrity because the merge commit title omitted the required `[VXG-ROOT-MERGE]` prefix.
+
+That recovery is integration-protocol evidence, not a semantic rejection of the three source files.
+
+Current live SDK coordinates:
+
+~~~text
+recovered main/checkpoint
+552e9e88cdc8fb2509e4517f92cf21d9bcfedd31
+
+forward PR
+#1947
+branch=VXG-111226-vexlife-vision-selected-scope-session-forward-a001
+base=552e9e88cdc8fb2509e4517f92cf21d9bcfedd31
+head=40b54c8448d13065502e20c270887b06fab78533
+tree=03b07a139718b55a73b90f00fd51825906d4db85
+paths=3 exact
+~~~
+
+The forward tree is byte-identical to the prior reviewed PR #1946 tree. The new commit identity still requires fresh exact-head SourceOwner / Assurance / lifecycle. No semantic redesign is implied.
+
+Future merge duty must use an ordinary merge title beginning:
+
+~~~text
+[VXG-ROOT-MERGE]
+~~~
+
+Current next edge:
+
+~~~text
+PR1947 ExactHeadSourceOwnerProof
+-> fresh Independent Assurance
+-> Formal Review / lifecycle currentness
+-> READY
+-> OwnerMergeDuty
+-> exact-head ordinary merge with [VXG-ROOT-MERGE] title
+-> post-merge verification
+~~~
+
