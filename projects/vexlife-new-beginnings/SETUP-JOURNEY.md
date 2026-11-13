@@ -40,6 +40,50 @@ SYSTEM DIALOG DISMISSED
 != EFFECT SUCCESS
 ```
 
+## Lineage — this map composes existing roads
+
+This Setup Journey is a new convergence map, not a new semantic road system.
+
+It is based on existing VexWork owners:
+
+```text
+work.vexlife.new-beginnings.local-runtime-foundation
+-> Home / model-runtime / Product service / private-image / bootstrap substrate
+
+work.vexlife.new-beginnings.experience-manifestation-parity
+-> human-visible experience must faithfully manifest accepted relationships
+-> experience work is not cosmetic CSS parity
+
+work.vexlife.new-beginnings.later.settings-capability-mapping
+-> visible capability controls map back to rightful source owners
+-> shared UI does not collapse distinct effects
+```
+
+It also consumes predecessor VexLife setup behavior as human-experience lineage:
+
+```text
+repo.vexlife:install/vexlife-setup-window.applescript
+repo.vexlife:install/vexlife-setup.sh
+repo.vexlife:README.md
+```
+
+Those predecessor surfaces already established that Vex Home location is a human-owned choice with
+`~/.vexlife` as the default suggestion rather than a forced coordinate.
+
+Therefore:
+
+```text
+SETUP JOURNEY
+!= NEW SEMANTIC MEGA-OWNER
+
+SETUP JOURNEY
+= HUMAN CAUSAL COMPOSITION
+  of already-rightful runtime / capability / manifestation owners
+```
+
+Where the map introduces a new relationship, that relationship must be justified as a missing
+composition seam, not as permission to replace the underlying owner.
+
 ## Why this map exists now
 
 Current Mac startup work established two things together:
