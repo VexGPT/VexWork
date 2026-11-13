@@ -2588,3 +2588,71 @@ run R005 once
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R005][FAILURE-PRESERVATION] -->
 
+## A031 R006 proof-output environment correction — 2026-11-12 23:19:31 America/Los_Angeles
+
+R005 canonical RETURN:
+
+```text
+sha256 =
+bc0251da8c4e251670a7a70d5570030369eb660111c87c6ffebed12cf3c6ae59
+
+disposition = SAFE_FAILURE
+stopReason = A031_LIVED_GRADLE_FAILED
+```
+
+R005 preserved the exact first semantic failure:
+
+```text
+java.lang.IllegalArgumentException:
+VEXLIFE_LIVED_SOURCE_RETURN_PROOF_OUTPUT is required
+
+LiveSourceReturnRolloverHostProofTest.kt:254
+
+test time = 0.001s
+livedProofPresent = false
+modelRuntimePerformed = false
+```
+
+Runtime receipts were unchanged. Therefore this is a harness-environment binding defect before the lived body, not Product source/runtime/provider failure.
+
+### A031 R006 proof-output environment correction
+
+```text
+package =
+VEXLIFE-PR89-LIVED-SOURCE-RETURN-A031-RESTORED-DIRECT-HOST-R006
+
+sha256 =
+c40593ed4502674d66535b6e0050b4ae55dc1bcfaf803036953f46c794f472ef
+
+businessAttemptRef =
+attempt.vexlife-prod.pr89.lived-source-return.a018
+```
+
+R006 binds:
+
+```text
+VEXLIFE_LIVED_SOURCE_RETURN_PROOF_OUTPUT =
+<fresh exact PR89 checkout>/build/vexrelay-a029/live-source-return-proof.json
+```
+
+and creates the proof-output parent before the targeted Gradle invocation.
+
+All existing exact Product candidate, runtime guard, direct-host Relay, failure-evidence retention, and no-Local-Workspace boundaries remain unchanged.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846782010
+```
+
+Current edge:
+
+```text
+run A031 R006 once
+-> consume exact R006 RETURN
+-> PASS: rightful PR #89 integration/currentness
+-> SAFE_FAILURE: consume preserved first semantic failure before replay
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R006][PROOF-OUTPUT-ENV] -->
+
