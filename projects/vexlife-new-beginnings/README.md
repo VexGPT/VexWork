@@ -364,6 +364,28 @@ THIS README
 = CURRENT HUMAN ENTRY / NAVIGATION
 ~~~
 
+## Setup Journey — map before more onboarding effects
+
+The current Mac startup trajectory exposed macOS permission-grant UI as part of the lived path.
+New Beginnings now treats that as product/UX evidence rather than an incidental host interruption.
+
+Canonical map:
+
+[SETUP-JOURNEY.md](./SETUP-JOURNEY.md)
+
+Permanent:
+
+```text
+SYSTEM PERMISSION UI
+!= VEXLIFE HUMAN UNDERSTANDING
+
+NEW HUMAN-VISIBLE SETUP STEP
+-> MAP ITS STATE / CONTROL / EFFECT / OUTSIDE REALIZATION / RE-OBSERVATION FIRST
+```
+
+The exact permission inventory remains source/host-evidence-bound; the map does not pre-authorize a
+generic permission sweep.
+
 ## Current human-lived checkpoint — experience manifestation parity is immediate
 
 The clean product body is now materially stronger than the prior P3 checkpoint:
