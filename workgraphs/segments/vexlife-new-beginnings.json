@@ -755,7 +755,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-12T10:03:45.000Z",
-      "updatedAt": "2026-11-13T09:10:34.000Z",
+      "updatedAt": "2026-11-13T09:27:10.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "label": "High — persistent Vision scope + demand-driven current visual context",
@@ -807,7 +807,8 @@
         "github.pull.vexwork.275.comment.6847995233",
         "github.pull.vexwork.275.comment.6848151597",
         "github.commit.vexwork.083135273238a07aab2723b3210a598ed23751dc",
-        "github.commit.vexwork.e5b632f9d1f6ff27f805b4ad19003cb54994b856"
+        "github.commit.vexwork.e5b632f9d1f6ff27f805b4ad19003cb54994b856",
+        "github.commit.vexwork.446fab9ca235d09aa88d5df33cf4d4ace227c0ea"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
