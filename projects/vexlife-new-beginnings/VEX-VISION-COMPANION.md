@@ -1910,14 +1910,26 @@ accepted session LOOK semantics
 -> persistent native LOOK/capture realization
 -> exact single-use capture reservation/replay boundary
 -> no picker replay
--> content-absent capture/Perception proof
+-> form a persistent-selected-scope LOOK capture receipt
+-> Security proves the exact capture against the already-established selected-scope relationship
+-> Perception forms one content-absent VISUAL observation for that new route
+-> do NOT reuse the one-shot system-picker witness/integration unchanged
 -> actual LOOK indicator truth becomes available to Product
 
-NEXT VISUAL SLICE
-qualified VLM/visual worker
--> ephemeral frame input
+NEXT EPHEMERAL VISUAL RESOURCE SLICE
+fresh LOOK frame exists only attempt-locally
+-> establish the rightful ephemeral visual resource identity/custody owner
+-> bind resource identity + content digest + capture/observation provenance + expiry
+-> raw persistence remains false
+-> no Product/Conversation raw-byte custody
+
+NEXT VISUAL-MODEL SLICE
+ephemeral resource owner
+-> exact one-shot visual-model-input Safety
+-> content-absent Perception input projection
+-> qualified one-image MLX_VLM_DIRECT_RUNTIME binding / visual worker
 -> bounded derived visual meaning
--> no raw persistence
+-> destroy/release ephemeral frame resource
 
 NEXT PRODUCT CONVERSATION / LOOK PRESENTATION SLICE
 Capability Atlas requestability
@@ -1995,14 +2007,16 @@ Candidate pure transitions:
 
 ~~~text
 Ready + Engage
--> Selecting + RequestEngage
-
-Engaged + LookNow
--> Looking + RequestSnapshot
+-> stay + RequestEngage
+-> do NOT claim Selecting or Engaged merely because Product requested the effect
 
 Selecting / Engaged / Looking + Stop
--> stay(current semantic State) + RequestStop
--> do not claim stopped until outside truth returns
+-> stay + RequestStop
+-> do NOT claim stopped until outside truth returns
+
+Engaged + LookNow
+-> stay + RequestSnapshot
+-> do NOT claim Looking/captured/observed merely because Product requested LOOK
 
 Held + LookNow
 Ready + LookNow
@@ -2010,6 +2024,25 @@ Selecting + LookNow
 Looking + LookNow
 -> not admitted
 ~~~
+
+This correction matters:
+
+~~~text
+FAMILY_EFFECT_REQUESTED
+!= OUTSIDE_REALIZATION_STATE
+
+ENGAGE_REQUESTED
+!= SELECTING
+!= ENGAGED
+
+LOOK_REQUESTED
+!= LOOKING
+!= SCREEN_CAPTURED
+!= ACTIVE_VISUAL_OBSERVATION
+~~~
+
+The Family authors product meaning. The Product/runtime projection supplies outside truth. Product then
+interprets that truth back into Family State.
 
 Outside SDK projection must then be interpreted back into Product semantic State.
 
@@ -2038,11 +2071,34 @@ SDK HELD with SAFETY_NOT_CURRENT
 -> Held
 
 SDK ENDED
--> interpret endReason; do not expose ENDED merely because the SDK uses it
+-> Ready
+-> the selected scope is gone, but the persistent Product runtime remains able to mint a fresh scope
+   session on the next Engage
+-> endReason may shape bounded presentation detail/evidence, not become a second Product lifecycle
 ~~~
 
-The exact `ENDED` reason mapping remains held until Product/lived behavior establishes whether
-SOURCE_LOST / HOST_OWNER_LOST should present as Ready-with-reselect or Held-with-recovery.
+So the current grounded semantic distinction is:
+
+~~~text
+Held
+  = the Product cannot truthfully offer a new/current selected-scope relationship now
+    (for example runtime route absent or SCREEN Safety not current)
+
+Ready
+  = the Product route can lawfully attempt a fresh explicit human selection now
+    even when a prior scope session ended/lost/cancelled
+
+Engaged
+  = current outside projection proves one selected scope exists
+
+Looking
+  = current outside projection proves one admitted LOOK is in progress
+~~~
+
+SELECTING remains a valid candidate Product State because the SDK owns that outside state, but the
+current synchronous/serialized Product command path may not expose it through GET /vision while the
+picker request is blocked. Do not invent a second observer solely to make that transient state visible;
+the OS picker already supplies contemporaneous human selection feedback.
 
 Permanent:
 
@@ -2363,6 +2419,330 @@ one initial provider stage
 
 <!-- [VXG RealForever][VEXLIFE][VISION][CANDIDATE-SEMANTIC-CONTINUATION-SHAPE][20261113] -->
 
+### Architect-before-authoring gate — do not instantiate the architecture by name
+
+Fresh review against the current public VexArchitecture Builder Field Guide and Live Demonstration
+sharpens the build rule:
+
+~~~text
+Family
+  owns product / semantic meaning
+
+Execution
+  owns the separate recurring question:
+  "what asynchronous work is actually alive right now?"
+  + overlap / cancellation / Job custody
+
+Method
+  is one fully-bound executable attempt with closed lawful Success / Failure and escaped Error meaning
+
+Partner
+  is earned only by a recurring independently-owned external-participant relationship
+
+Store
+  is earned only when durable admitted truth needs an owner
+
+Relay
+  is earned only when independently-owned truths must become new relationship truth
+~~~
+
+VexArchitecture explicitly warns that source placement/naming is evidence to inspect, not authority,
+and that another abstraction is earned only when a concrete recurring question cannot be answered by a
+rightful owner without absorbing foreign responsibility, duplicating the same relationship or
+inventing hidden coordination.
+
+Applied here:
+
+~~~text
+FIRST PERSISTENT-SCOPE PRODUCT SLICE
+
+needs:
+  Family semantic interpretation
+  existing Product service/runtime realization
+  existing Product-safe SDK projection
+  existing presentation polling
+
+does NOT currently need a new:
+  VexMethod foundation
+  VexExecution foundation
+  VexPartner realization
+  Vision Store
+  Relay
+  event bus
+  observer daemon
+  second state holder
+~~~
+
+Why Method / Execution are not yet earned:
+
+- current Product VexFamilyContract is intentionally a pure semantic contract with no execution
+  machinery;
+- current VexLifeProdEntryFamily already proves that a Product Family may author Effects while
+  realization remains outside the semantic owner;
+- PR #114 already owns one serialized persistent Vision runtime child and command lifetime;
+- the selected-scope slice has not yet produced a separate recurring Product question about active
+  async Job overlap/cancellation that the existing runtime/service cannot answer.
+
+Therefore:
+
+~~~text
+EFFECT_EXISTS
+!= METHOD_ABSTRACTION_REQUIRED
+
+ASYNC_OR_BLOCKING_WORK_EXISTS
+!= VEXEXECUTION_REQUIRED
+
+ARCHITECTURE_NAME_AVAILABLE
+!= ARCHITECTURE_RELATIONSHIP_EARNED
+~~~
+
+Re-evaluate an Execution relationship only when the LOOK slice creates a real repeated custody
+question such as:
+
+~~~text
+active LOOK
++ concurrent Stop / shutdown / newer LOOK
+-> which work remains alive?
+-> which consequence supersedes/cancels/queues?
+-> who owns that overlap law?
+~~~
+
+If the current serialized owner and exact semantic state answer that truthfully, still do not create a
+generic Execution layer merely for symmetry.
+
+Partner is also not currently earned for the selected browser/window. The window is independently-owned
+outside reality, but current Process Factory + Safety + Security + Perception owners already answer the
+concrete selection/capture/observation questions. There is not yet a proven reusable
+Source/Signal/Connection relationship whose absence forces foreign responsibility or duplication.
+
+Likewise:
+
+~~~text
+RAW_FRAME_EPHEMERAL
+-> no Vision Store
+
+TURN_PROMPT_CONVERGENCE_ALREADY_OWNED_BY
+  DirectCompanionTurn + DirectPromptContext
+-> no Relay merely because Vision context joins Conversation
+~~~
+
+#### First Product scope slice — smallest truthful realization
+
+Current PR #114 already provides the lower runtime routes. The next Product semantic slice should
+correct their relationship to Family rather than add another coordinator.
+
+~~~text
+GET /api/v1/vision
+-> if VisionRuntime absent:
+     Family State = Held
+
+-> else PROJECT current persistent runtime
+-> validate Product-safe selected-scope projection
+-> interpret outside truth into VexLifeVisionFamily State
+-> Family DisplayState / bounded Product VisionProjection
+-> presentation
+~~~
+
+Grounded projection interpretation:
+
+~~~text
+runtime absent
+-> Held
+
+runtime present + projectionOrNull = null
+-> Ready
+
+SDK HELD + holdReason = null
+-> Ready
+
+SDK HELD + SAFETY_NOT_CURRENT
+-> Held
+
+SDK SELECTING
+-> Selecting if/when this state is actually observable at Product
+
+SDK ENGAGED
+-> Engaged
+
+SDK LOOKING
+-> Looking
+
+SDK ENDED
+-> Ready
+~~~
+
+For controls:
+
+~~~text
+human Engage
+-> resolve Family against CURRENT semantic projection
+-> accepted Effect.RequestEngage only
+-> existing /vision/scope/engage realization
+-> re-project outside truth
+-> return the newly interpreted semantic projection
+
+human Stop
+-> resolve Family against CURRENT semantic projection
+-> accepted Effect.RequestStop only
+-> existing /vision/scope/stop realization
+-> re-project outside truth
+-> return the newly interpreted semantic projection
+
+LOOK
+-> remains semantically/execution held until the later LOOK source is accepted
+~~~
+
+The HTTP route is not allowed to become a second decision language. It consumes the Family Act; it does
+not decide independently that ENGAGE/STOP is lawful.
+
+Current presentation already calls GET /api/v1/vision every 2.5 seconds when no request is in
+flight. Reuse that currentness loop:
+
+~~~text
+EXISTING_VISION_POLL
++ truthful Family-backed /vision projection
+-> quiet persistent selected-scope indicator stays current
+
+NO_NEW_OBSERVER_REQUIRED
+~~~
+
+The existing Vision control/quick-action surfaces are also sufficient for the first slice. Rebind them
+from obsolete one-shot lookNow() behavior to the Family-projected Engage / Stop affordance instead of
+adding another toolbar/control surface.
+
+The macOS picker itself is the truthful selection-in-progress UI. Do not build a second native
+"selecting" overlay merely to mirror SDK state.
+
+#### Persistent LOOK cannot reuse one-shot Security / Perception unchanged
+
+Current accepted one-shot Security source is explicitly bound to:
+
+~~~text
+routeClass = USER_SELECTED_SESSION
+humanSharingUiWitness = OS_SYSTEM_PICKER
+sharingBoundaryWitnessState = VISIBLE_AND_HUMAN_SELECTED_FOR_CAPTURE
+pickerPresentedWitness = true
+humanSelectionWitness = true
+~~~
+
+and rejects a capture receipt unless:
+
+~~~text
+pickerSelectionAccepted = true
+pickerCanceled = false
+captureAttempted = true
+captureCount = 1
+captureSucceeded = true
+~~~
+
+Current Perception integration imports that exact Security composer and likewise requires the picker
+selection/capture event.
+
+Persistent selected-scope Vision intentionally changes chronology:
+
+~~~text
+human system-picker selection
+-> scope remains ENGAGED
+-> time / scrolling / navigation
+-> later LOOK
+-> capture WITHOUT picker replay
+~~~
+
+Therefore:
+
+~~~text
+ONE_SHOT_SYSTEM_PICKER_CAPTURE_WITNESS
+!= PERSISTENT_SELECTED_SCOPE_LOOK_WITNESS
+
+ONE_SHOT_PERCEPTION_INTEGRATION
+!= PERSISTENT_SELECTED_SCOPE_LOOK_INTEGRATION
+~~~
+
+Do not falsify chronology by setting pickerPresentedWitness=true on the later LOOK merely because the
+scope originally came from a picker.
+
+The later SDK LOOK slice must return to the same rightful owners with a new exact relationship:
+
+~~~text
+Process Factory
+  persistent selected-scope LOOK capture receipt
+  binds current LOOK request + retained scopeSessionRef + fresh Safety + exact capture result
+  no native provider identity exported
+
+Security
+  proves this capture came from the already human-selected current scope
+  and that the visible quiet-scope / active-LOOK boundaries are truthful
+  without pretending a picker was presented for this capture
+
+Perception
+  consumes the exact new capture receipt + Security witness + owner-current Safety
+  -> one content-absent current VISUAL observation identity
+~~~
+
+No new SCREEN Safety mode is needed; the accepted mode remains ON_DEMAND_SNAPSHOT.
+
+#### Ephemeral visual resource custody is still an actual missing owner
+
+After accepted PR #1934, Perception explicitly recorded the next material predicate:
+
+~~~text
+EXACT_EPHEMERAL_VISUAL_RESOURCE_IDENTITY_AND_CUSTODY_OWNER
+~~~
+
+The intended later chain was already:
+
+~~~text
+fresh LOOK capture
+-> attempt-local ephemeral frame custody
+-> one-shot visual-model-input Safety
+-> content-absent Perception inputProjectionRef
+-> exact one-image MLX_VLM_DIRECT_RUNTIME
+-> local inference
+-> discard frame
+~~~
+
+Fresh current-main search at accepted SDK 1c2c9d76114ca35f00125f0a5c93e531e3e6a746 confirms
+the proposed visual-model-input and ephemeral-resource source paths still do not exist.
+
+The Android CAMERA Home visual-resource work at VexLife #832 is useful design precedent but remained a
+read-only source placement; current VexLife main contains no accepted
+home-bridge-visual-observation source to consume.
+
+Therefore:
+
+~~~text
+CAMERA_HOME_RESOURCE_PLACEMENT
+!= ACCEPTED_REUSABLE_RESOURCE_OWNER
+
+CONTENT_ABSENT_VISUAL_OBSERVATION
+!= RAW_IMAGE_CUSTODY
+
+VLM_RUNTIME_CLASS_EXISTS
+!= IMAGE_RESOURCE_RESOLUTION_EXISTS
+~~~
+
+Before VLM authoring, source-place the smallest rightful local SCREEN attempt-resource owner.
+
+Do not decide its implementation from convenience:
+
+~~~text
+NO automatic:
+  temp-file Store
+  base64 in Product
+  imageBlob in RuntimeAdapter
+  imagePath in Conversation
+  Home Bridge reuse without a Home/transport need
+~~~
+
+The owner must answer only the recurring missing question:
+
+> Between one accepted capture and one authorized visual-model inference, who owns the exact
+> attempt-local image resource identity, byte custody, expiry/destruction and content-digest binding
+> without becoming Perception, Memory, Product Conversation or the VLM runtime?
+
+That question should be routed to the closest current source owner before a class/path is named.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][ARCHITECT-BEFORE-AUTHORING][20261113] -->
 ### Security boundary carried by the design
 
 This end-to-end experience keeps the existing Security activation above and makes its current boundary
@@ -2530,6 +2910,7 @@ The following are grounded strongly enough to guide implementation:
 ~~~text
 persistent scope != continuous capture
 scope selection != capture authorization
+Family Effect requested != outside realization State
 Vex decides whether LOOK is materially useful
 LOOK must be current-Safety-gated
 one LOOK -> at most one current observation
@@ -2539,18 +2920,24 @@ Vision State != Conversation history != Memory
 Product service != selected-scope owner
 visual worker != sensor authority
 presentation must distinguish engaged from actively looking
+first Product scope slice does not earn new Method / Execution / Partner / Store / Relay abstractions
+existing /vision polling is sufficient for quiet scope currentness
+one-shot system-picker Security/Perception contracts cannot represent later persistent LOOK unchanged
+exact ephemeral visual resource identity/custody remains a real missing owner
 ~~~
 
 The following remain intentionally unresolved until source/implementation pressure earns them:
 
 ~~~text
-final persistent-scope VexLifeVisionFamily vocabulary
+final persistent-scope VexLifeVisionFamily vocabulary / DisplayState projection fields
+exact SCREEN single-use capture reservation owner
+exact persistent-selected-scope LOOK capture receipt contract
+exact Security witness + Perception successor contract for capture without picker replay
+exact local ephemeral visual resource identity/custody owner
 exact same-turn Vex LOOK continuation owner/API
-whether the selected browser/window should become a VexPartner realization
-exact visual-model worker/runtime
-exact derived-visual-observation contract
+exact visual-model worker/runtime and one-image binding
+exact derived visual-context contract
 exact Conversation Context convergence representation
-whether any durable Vision Store is ever earned
 ~~~
 
 These held questions are design frontiers, not permission to collapse back to automatic screenshots or
