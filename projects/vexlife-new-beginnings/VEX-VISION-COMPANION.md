@@ -1981,6 +1981,100 @@ FAMILY_INTERPRETS_OUTSIDE_TRUTH
 != FAMILY_OWNS_NATIVE_LIFECYCLE
 ~~~
 
+#### First persistent-scope Product presentation should consume one semantic projection
+
+PR #114 already separates:
+
+~~~text
+GET /api/v1/vision
+  -> Product human-facing semantic projection
+  -> currently only HELD / READY from route reachability
+
+GET /api/v1/vision/scope
+  -> lower Product-safe selected-scope runtime projection
+  -> accepted SDK state / opaque refs / negative effect flags
+~~~
+
+That separation should be preserved.
+
+The next Product scope semantic/presentation slice should evolve `/api/v1/vision` to interpret current
+scope truth through the Product semantic owner rather than making generated browser JavaScript combine
+SDK states itself.
+
+Candidate relationship:
+
+~~~text
+persistent Vision runtime PROJECT
+-> validated Product-safe selected-scope projection
+-> VexLifeVisionFamily-owned semantic interpretation
+-> Product Vision semantic projection
+-> generated presentation
+~~~
+
+So:
+
+~~~text
+/api/v1/vision/scope
+!= human semantic state owner
+
+generated JavaScript
+!= Family state interpreter
+~~~
+
+The human projection should carry only the bounded information presentation actually needs, such as:
+
+~~~text
+semantic state
+route reachability
+whether one scope is currently engaged
+whether the quiet scope indicator is required
+whether the active LOOK indicator is required
+effectsPerformed=false for GET
+~~~
+
+Do not expose native/provider identity merely so presentation can label a selected window.
+
+Current native selected-scope helper contains no persistent overlay/outline after picker selection. The
+first truthful quiet scope indicator therefore belongs in ordinary VexLife presentation:
+
+~~~text
+Vision · Ready
+Vision · Selecting…
+Vision · On
+Vision · Held
+~~~
+
+Exact wording is presentation design, not semantic source.
+
+The first persistent-scope UI slice should expose:
+
+~~~text
+Engage
+-> Product Family semantic admission
+-> existing PR #114 ENGAGE route
+-> macOS system picker
+
+Stop
+-> Product Family semantic admission
+-> existing PR #114 STOP route
+
+Look Now
+-> remains execution-held until persistent LOOK source is accepted
+-> Product must not fall back to the obsolete one-shot protocol
+~~~
+
+Likely current owners implicated after PR #114 acceptance include:
+
+~~~text
+VexLifeVisionFamily + semantic tests
+VexLifeProdServiceContract + tests
+VexLifeProdLocalService + tests
+VexLifeWebP1RuntimeArtifacts / Vision presentation tests
+~~~
+
+This is an owner map, not an admitted exact source membrane. Re-ground current main/overlap before
+authoring that later slice.
+
 #### Model LOOK control should request visual context, not author effect identity
 
 The existing source-return grammar establishes a useful bounded form:
