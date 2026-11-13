@@ -399,6 +399,55 @@ until the active runtime owner resolves that race
 
 No second durable cancellation ledger is earned by current evidence.
 
+### Provider cancellation pressure — request interruption is not terminal truth
+
+VexLife-Prod's packaged service runtime is JDK 21. Its current Companion streaming transport uses
+synchronous `HttpClient.send(... BodyHandlers.ofInputStream())` and then reads the returned body
+stream to EOF.
+
+Current JDK 21 API behavior adds two important pressures:
+
+```text
+interrupt blocking HttpClient.send
+-> implementation attempts to cancel exchange
+-> cancellation timing is not guaranteed
+
+BodyHandlers.ofInputStream response
+-> response may exist before body is complete
+-> caller must read to EOF OR close the InputStream
+  to release exchange resources
+```
+
+Therefore a future Product cancellation path must not equate an interrupt request with provider
+termination.
+
+The active runtime owner needs enough ephemeral custody to cover both material phases:
+
+```text
+before response/body stream is established
+  -> cancel/interrupt the outstanding HTTP exchange
+
+after response InputStream exists
+  -> close/cancel that exact active stream
+  -> wait until provider execution unwinds
+```
+
+Only after the exact turn's provider execution has actually unwound may the Product reconcile the
+attempt as cancelled/abandoned and release the composer for a replacement Send.
+
+Permanent:
+
+```text
+INTERRUPT_REQUESTED != PROVIDER_STOPPED
+HTTP_FUTURE_CANCEL_REQUESTED != PROVIDER_STOPPED
+STREAM_CLOSE_REQUESTED != TURN_RECONCILED
+STOP_UI_ACK != CANONICAL_CANCELLATION_TRUTH
+```
+
+A transport implementation may later use an interruptible synchronous occurrence, a cancellable
+future plus exact body-stream close, or another smaller mechanism. This VexWork source does not
+preselect that implementation. It preserves the required observable terminal condition.
+
 ### Bounded acceptance pressure
 
 A future implementation should prove the relationship from both the human surface and the Vex turn:
