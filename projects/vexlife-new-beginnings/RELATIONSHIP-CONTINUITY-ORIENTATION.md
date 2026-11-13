@@ -3752,6 +3752,45 @@ SHARED CURRENT-STATE WORLD
 != everything copied into Memory
 ```
 
+
+### Current-source restraint — PresentWorkingCarry is research, not accepted Product currentness
+
+Fresh Product ancestry check resolves an ambiguity in the historical record:
+
+```text
+PR #63 PresentWorkingCarry semantic contract
+  was merged historically
+
+PR #82 minimal continuity
+  intentionally formed the accepted first-design world without #63-#80
+  current main removes VexLifeWorkingCarryContract.kt
+```
+
+PR #82 states the reason explicitly: avoid inheriting experimental semantic-working-carry machinery
+as mandatory Product debt. Current accepted source therefore remains:
+
+```text
+recent exact Conversation while it fits
++ bounded durable Memory
++ conditional exact canonical Conversation source return
+```
+
+The #63-#80 / #85 / #87 working-carry stack remains useful research evidence because its CARRY/RELEASE
+semantics align with the human continuity question, but historical merge state must not be substituted
+for current source authority.
+
+The finite-attention correction in this orientation does **not** automatically revive that stack.
+Only a concrete lived case where existing Conversation / Memory / Score / WorkingContinuity / typed source
+return owners cannot preserve genuinely present meaning should reopen PresentWorkingCarry as Product work.
+
+Permanent:
+
+```text
+HISTORICALLY MERGED != CURRENT SOURCE PRESENT
+USEFUL RESEARCH != REQUIRED PRODUCT DEPENDENCY
+GOOD SEMANTIC SHAPE != EARNED LIVE OWNER
+```
+
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][END-TO-END-FEATURE-GROUNDING] -->
 
 ## Implementation-design continuation — current source findings
