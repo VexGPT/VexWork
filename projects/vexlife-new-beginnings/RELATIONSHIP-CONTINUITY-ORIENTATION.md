@@ -2139,3 +2139,68 @@ VexWork PR #292 comment 6846289197
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][CORRECTION][A031-DELIVERY][20261112T224924-0800] -->
 
+
+
+## A031 restored user-delivery carrier — 2026-11-12 22:57 America/Los_Angeles
+
+The predecessor A031 formation record remains valid as historical formation, but Victor confirmed its ZIP was never delivered on a user-visible surface.
+
+A new restored carrier has now been formed for the same unfinished business edge:
+
+```text
+A031 restored user-delivery carrier
+
+name =
+VEXLIFE-PR89-LIVED-SOURCE-RETURN-A031-RESTORED-DIRECT-HOST
+
+sha256 =
+134b5154f990fc903b66d7cb45a8fdabe94c70f6e9376bc2f2246d74d36df0ee
+
+bytes = 9760
+
+businessAttemptRef =
+attempt.vexlife-prod.pr89.lived-source-return.a018
+```
+
+This restoration does not claim byte identity with the undelivered predecessor ZIP.
+
+It preserves:
+- PR #89 exact candidate `2da02aa6... / 5283a008...`;
+- A026 SourceOwner PASS;
+- fresh semantic Assurance CLEAR;
+- A030 recovered evidence and exact dead-runtime predicate;
+- exact predecessor SDK/direct-host binding;
+- recover-before-replay.
+
+The restored carrier uses the retained A029 normalized proof and retained lived-test source as predecessor memory. It does not edit that retained run. In a fresh exact PR #89 checkout it applies only the earned runtime recovery:
+
+```text
+observeCurrentQualified(...)
+-> only if exact message:
+   qualified Heretic runtime receipt process is not live
+-> HereticPersistentRuntime.startOrReuse(...)
+-> immediately re-observe current qualified runtime
+-> continue the same lived source-return proof
+```
+
+Any different runtime predicate fails closed.
+
+Durable Product restoration anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846421639
+```
+
+Current truth:
+
+```text
+RESTORED CARRIER FORMED
+!= A031 executed
+!= lived PASS
+!= integration readiness
+```
+
+Current unconsumed edge remains execution/consumption of this one restored carrier.
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-RESTORED-DELIVERY] -->
+\n
