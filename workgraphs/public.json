@@ -20,6 +20,7 @@
     "work.vex-cgm-labs.outcome",
     "work.vex-universe.outcome",
     "work.vex.security-assurance.outcome",
+    "work.vexarchitecture.vexboard-sync.20261113.outcome",
     "work.vexlife-android.current-state-refinement.outcome",
     "work.vexlife.new-beginnings.outcome",
     "work.vexlife.welcome-wagon.outcome",
@@ -4803,6 +4804,212 @@
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-13T08:00:00.000Z",
+      "updatedAt": "2026-11-13T08:00:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.baseline-contract",
+      "parentWorkRefOrNull": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "label": "Freeze sync baseline and audit contract",
+      "purpose": "Re-ground Vextreme stable-reader architecture, VexLife-Android current source, VexWork current Screen Lens, and open Screen Lens verification work; record the reusable ownership-to-Lens comparison matrix and exact initial population before judging gaps.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexarchitecture-vexboard-sync-2026-11-13/README.md",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+        "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-13T08:00:00.000Z",
+      "updatedAt": "2026-11-13T08:00:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.depth-closure-audit",
+      "parentWorkRefOrNull": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "label": "Audit Depth closure and external-participant reflection",
+      "purpose": "Inspect every pathway with Depth—especially Store/repository/provider terminals—and follow current Android source far enough to determine whether Depth lawfully stops there or should continue through Method/Execution, Partner/Connection/Conversion/Source/Signal/Observation/Receiver, Store admission, Family return, or presentation; use VexStream Playback and accepted Partner circuits as witnesses, not universal templates.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexarchitecture.vexboard-sync.20261113.screen-pathway-census"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.pull.vexwork.276",
+        "github.pull.vexwork.293",
+        "github.pull.vexlife-android.219",
+        "projects/vexboard/SCREEN-LENS-ADAPTER.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-13T08:00:00.000Z",
+      "updatedAt": "2026-11-13T08:00:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+      "parentWorkRefOrNull": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "label": "Form only source-proven projection repairs",
+      "purpose": "From accepted audit findings, form the smallest VexBoard adapter/overlay/model/test corrections needed to expose relationships that current Android source already proves. Do not mutate Android meaning for VexBoard convenience, do not hand-edit generated Lens JSON, and do not invent Partner/Relay/Service semantics by analogy.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexarchitecture.vexboard-sync.20261113.depth-closure-audit",
+        "work.vexarchitecture.vexboard-sync.20261113.service-widget-relay-audit"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexarchitecture-vexboard-sync-2026-11-13/README.md",
+        "projects/vexboard/SCREEN-LENS-ADAPTER.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-13T08:00:00.000Z",
+      "updatedAt": "2026-11-13T08:00:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexArchitecture VexBoard Sync Nov 13, 2026",
+      "purpose": "Establish a repeatable VexArchitecture-to-VexBoard sanity-check trajectory that can answer, screen by screen and pathway by pathway, whether Screen Lens Surface/Structure/Behavior/Depth faithfully projects the relationships current Android source actually proves, without assuming every repository/provider boundary should become Partner and without letting missing projection depth hide source-owned relationships.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "project.vexarchitecture.vexboard-sync.20261113",
+        "projects/vexarchitecture-vexboard-sync-2026-11-13/README.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-13T08:00:00.000Z",
+      "updatedAt": "2026-11-13T08:00:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.repeatable-sync-protocol",
+      "parentWorkRefOrNull": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "label": "Extract repeatable VexArchitecture ↔ VexBoard sync protocol",
+      "purpose": "Turn the completed audit into a lightweight reusable sanity-check route for future architecture evolution: pin architecture/source/Lens coordinates, census screens/pathways, inspect Depth terminals, compare earned relationships, classify gaps, regenerate/check, and preserve evidence without creating a second architecture authority.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexarchitecture.vexboard-sync.20261113.depth-closure-audit",
+        "work.vexarchitecture.vexboard-sync.20261113.service-widget-relay-audit"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexarchitecture-vexboard-sync-2026-11-13/README.md",
+        "docs/foundation/WORKGRAPH-COMPOSITION.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-13T08:00:00.000Z",
+      "updatedAt": "2026-11-13T08:00:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.screen-pathway-census",
+      "parentWorkRefOrNull": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "label": "Audit every Screen Lens screen and projected pathway",
+      "purpose": "Walk every current Screen Lens screen, interactive control and projected pathway against exact pinned Android source; classify each as truthful/complete, intentionally shallow, held/unprojected, or requiring deeper source review, while keeping non-interactive content distinct from missing behavior.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexarchitecture.vexboard-sync.20261113.baseline-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "repo.vexwork:projects/vexboard/lens/vexlife-android.main.screen-lens.json",
+        "projects/vexboard/SCREEN-LENS.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-13T08:00:00.000Z",
+      "updatedAt": "2026-11-13T08:00:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.service-widget-relay-audit",
+      "parentWorkRefOrNull": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "label": "Audit Service, Widget and Relay/convergence perception",
+      "purpose": "Pressure the Screen Lens against stable relationships that may not have dedicated Lens roles today: sustained Service-host realization, Widget/system-surface manifestation, and Relay/convergence. Determine whether existing role/edge vocabulary already makes each relationship perceivable before proposing any new role or schema.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexarchitecture.vexboard-sync.20261113.screen-pathway-census"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "projects/vexboard/SCREEN-LENS.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
