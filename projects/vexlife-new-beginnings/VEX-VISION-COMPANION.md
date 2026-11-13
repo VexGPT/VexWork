@@ -2660,21 +2660,68 @@ PR #114 accepted Product persistent-runtime bridge
 The first Product Family design remains valid, but its deployment/completion must not outrun this
 lower-owner currentness predicate.
 
-#### Candidate source membrane — only after owner placement/current coordination
+#### Candidate source membrane — current source reduces it to five existing paths
 
-Likely existing SDK owners, not a new subsystem:
+Fresh source descent shows the pure session owner already admits `SOURCE_LOST` and already exposes
+`endMacosScreenSelectedScopeSession(... reason=SOURCE_LOST)`.
+
+Therefore no selected-scope session source mutation is currently justified.
+
+Candidate maximum:
 
 ~~~text
 lib/process-factory/macos-screen-selected-scope-agent.swift
 lib/process-factory/macos-screen-selected-scope-host-custody.js
-lib/process-factory/macos-screen-selected-scope-session.js        # only if transition helper is needed
 tests/process-factory/macos-screen-selected-scope-agent.test.js
 tests/process-factory/macos-screen-selected-scope-host-custody.test.js
 docs/architecture/macos-screen-selected-scope-session.md
 ~~~
 
-This is a design membrane, not an admitted claim. Fresh Operations/currentness/path-overlap must choose
-the exact smaller set.
+Expected responsibility:
+
+~~~text
+native helper
+  prove/observe retained source currentness without pixel capture
+  emit one content-absent source-lost terminal event when absence is definitive
+  release filter/stream and exit
+
+host custody
+  exact-schema validate that event
+  permit it only from a state where a selected scope existed
+  consume existing session end transition with reason=SOURCE_LOST
+  wait for native child close before settlement
+
+session.js
+  unchanged
+  existing SOURCE_LOST vocabulary / terminal transition reused
+~~~
+
+Static/source tests must continue proving:
+
+~~~text
+SCScreenshotManager absent
+SCStream.startCapture absent
+SCStreamOutput absent
+raw bytes absent
+provider title/app/native ID absent from emitted event
+SOURCE_LOST cannot be fabricated before a scope was established
+unknown/malformed native source-loss event fails closed
+~~~
+
+Required host proof before claiming the candidate source correct:
+
+~~~text
+move selected window       -> remains current
+resize selected window     -> remains current
+minimize selected window   -> remains same source
+scroll/navigate content    -> remains current
+close selected window      -> SOURCE_LOST
+exit owning app            -> SOURCE_LOST
+no screenshot/pixel effect throughout
+~~~
+
+This remains a design membrane, not an admitted claim. Fresh Operations/currentness/path-overlap and
+the real host probe decide the exact source before authoring.
 
 No Product/Conversation/Memory/VLM source belongs in this correction.
 
