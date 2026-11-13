@@ -2724,3 +2724,72 @@ run R007 once
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R007][HARNESS-CONTRACT-RECOVERY] -->
 
+## A031 R008 complete harness-contract binding — 2026-11-12 23:25:38 America/Los_Angeles
+
+R007 canonical RETURN:
+
+```text
+sha256 =
+c8d28f23182b4f2e9dc1e0f84b2c81e0efcb510b8f586358efaa4e014f04f508
+
+disposition = PASS
+classification =
+COMPLETE_RETAINED_HARNESS_ENVIRONMENT_CONTRACT_RECOVERED
+```
+
+R007 recovered the exact retained A029 test source:
+
+```text
+sha256 =
+9654313ca2870e023877fa62205bdcdc759b1714fb38eb9adae8f78095c0301e
+
+lineCount = 1205
+```
+
+and proved its complete direct `System.getenv(...)` contract contains exactly two names:
+
+```text
+VEXLIFE_LIVED_SOURCE_RETURN_PROOF_OUTPUT
+VEXLIFE_LIVED_SOURCE_RETURN_PRODUCT_HEAD
+```
+
+Therefore the earlier R005/R006 one-variable failures are closed as incomplete restored-harness binding rather than Product defects.
+
+### A031 R008 complete harness-contract binding
+
+```text
+package =
+VEXLIFE-PR89-LIVED-SOURCE-RETURN-A031-RESTORED-DIRECT-HOST-R008
+
+sha256 =
+1bd042b48c02cd34ec97fc4b4eb64e152c7fa0b0579f004bd726badd19d50022
+
+businessAttemptRef =
+attempt.vexlife-prod.pr89.lived-source-return.a018
+```
+
+R008 binds both recovered environment variables together:
+- proof output -> normalized proof path in the fresh exact PR #89 checkout;
+- product head -> exact PR #89 candidate head `2da02aa6...`.
+
+R008 also preserves normalized failure evidence and records model-runtime activity truthfully if a failed proof has already recorded provider calls.
+
+All exact Product candidate, runtime guard, direct-host Relay, pre-admission carriage, and no-Local-Workspace boundaries remain unchanged.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846888697
+```
+
+Current edge:
+
+```text
+run A031 R008 once
+-> consume exact R008 RETURN
+-> PASS: rightful PR #89 integration/currentness
+-> SAFE_FAILURE: consume preserved first semantic failure before replay
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R008][COMPLETE-HARNESS-CONTRACT] -->
+
