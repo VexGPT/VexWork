@@ -1573,6 +1573,79 @@ rightful SCREEN replay owner merely because both use "effect reservation" langua
 existing single-use effect owner or form the smallest supported Vision-specific placement from live
 source.
 
+#### SCREEN capture replay owner remains a source-placement edge
+
+The accepted selected-scope architecture requires:
+
+~~~text
+LOOKING
++ exact request identity
++ fresh SCREEN Safety
++ durable single-use effect reservation
+-> native capture may become separately authorized
+
+replayed / already-consumed effect identity
+-> no second capture
+~~~
+
+Fresh source descent confirms that the concrete generic reservation machinery currently present in the
+SDK is the Operations typed-effect transaction foundation:
+
+~~~text
+lib/continuity-operations/effect-transaction.js
+docs/private-continuity/multivex/process-factory/
+  foundations/typed-effect-binding.json
+  registries/connector-action-registry.json
+  processes/execute-effect-transaction.json
+~~~
+
+Its current registry maps only:
+
+~~~text
+ISSUE_COMMENT  -> GITHUB_ISSUE
+PR_READY       -> GITHUB_PULL_REQUEST
+PR_MERGE       -> GITHUB_PULL_REQUEST
+PR_METADATA    -> GITHUB_PULL_REQUEST
+~~~
+
+and that foundation itself is currently labeled `CANDIDATE`.
+
+There is no current SCREEN capture mapping, SCREEN connector action, SCREEN idempotency rule or
+Process-Factory source module implementing a selected-scope screenshot reservation.
+
+Therefore:
+
+~~~text
+GENERIC_SINGLE_USE_RESERVATION_MECHANICS_EXIST
+!= SCREEN_CAPTURE_RESERVATION_OWNER_IMPLEMENTED
+
+SELECTED_SCOPE_DOC_REQUIRES_SINGLE_USE_RESERVATION
+!= PERMISSION_TO_REUSE_OPERATIONS_GITHUB_TRANSACTION_AS_SCREEN_OWNER
+~~~
+
+The next SDK LOOK placement must resolve this exact owner question before screenshot execution:
+
+> Reuse/specialize an accepted generic reservation primitive only if its source contract is current and
+> legitimately supports local SCREEN effects; otherwise source-place the smallest SCREEN-specific
+> Process Factory reservation/replay owner that preserves the same single-use law without creating a
+> second completed-request ledger inside the selected-scope session.
+
+Required properties regardless of realization:
+
+~~~text
+reservation is durable before capture dispatch
+reservation binds exact LOOK request identity
+reservation binds the current selected-scope relationship without exposing native provider identity
+reservation is bound to the current Safety-qualified capture attempt
+same reservation / same effect identity cannot capture twice
+completed capture evidence survives process/turn failure
+session state remains free of unbounded replay history
+raw image bytes are not part of reservation persistence
+~~~
+
+This is a source-placement unknown, not an architecture unknown and not a reason to weaken the replay
+boundary.
+
 #### 3. The accepted one-shot capture route does not contain a hidden raw-image/VLM pipeline
 
 The accepted one-shot system-picker helper:
