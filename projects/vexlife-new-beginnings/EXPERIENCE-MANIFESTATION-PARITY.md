@@ -265,6 +265,37 @@ RENDERED_TEXT_SCAN_LIMIT != MODEL BROWSER_CONTEXT_SIZE
 SLOW TURN != SLOW PAGE LOAD WITHOUT TIMING / RECEIPT EVIDENCE
 ```
 
+### Lived receipt — BrowserContext delivery is proven; latency remains unlocalized
+
+A completed lived turn now carries exact durable Context evidence:
+
+```text
+browserContextIncluded = true
+browserPageUrl = https://vgong24.github.io/Vextreme/pages/terrain-map.html?group=direct_contact&page=direct-contact
+browserTitle = Terrain Map — Vextreme
+browserContextCharacters = 319
+browserContextCapture = RENDERED
+providerMaterializedInputTokenEstimate = 15495
+inputTokenBudget = 192000
+memoryIncluded = false
+workingContinuityIncluded = false
+capabilityFrameIncluded = true
+```
+
+The corresponding Vex response described that page specifically. So the page-reading path itself is
+lived-proven for that turn.
+
+This also rules out two premature latency explanations for that observation:
+
+```text
+SLOW TURN != OVERSIZED BROWSER CONTEXT   # only 319 characters
+SLOW TURN != NEAR-MAX INPUT BUDGET       # 15,495 / 192,000 estimated tokens
+```
+
+Current durable turn evidence records provider identity/fingerprints but no elapsed phase timing.
+Latency therefore remains an evidence gap: do not attribute it to page rendering, prompt prefill, or
+generation until timing is observed.
+
 ### Stop exists visually but has no real cancellation relationship
 
 Current authoring source contains a stable `Stop` element beside `Send`, but:
