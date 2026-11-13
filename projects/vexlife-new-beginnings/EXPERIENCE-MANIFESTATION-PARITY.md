@@ -448,6 +448,56 @@ A transport implementation may later use an interruptible synchronous occurrence
 future plus exact body-stream close, or another smaller mechanism. This VexWork source does not
 preselect that implementation. It preserves the required observable terminal condition.
 
+### Authoring-layer observation — Stop identity exists, Stop capability does not
+
+Current VexLife-Prod source already gives the Composer stable source identity:
+
+```text
+Conversation
+-> Composer
+   -> ContextReceipt
+   -> ContextShare
+   -> Send
+   -> Stop
+```
+
+But the authoring bindings are asymmetric:
+
+```text
+Send
+-> Activate
+-> capability "conversation.send"
+
+Stop
+-> stable Blueprint/VexWeb element only
+-> no capability binding
+-> generated markup remains hidden
+-> runtime supplies no Stop handler
+```
+
+Therefore the missing feature should not begin by merely unhiding the existing button.
+
+The semantic relationship to earn first is:
+
+```text
+human Control: stop the exact active Companion turn
+-> availability only while one cancellable active turn exists
+-> runtime cancellation request to the rightful active-turn custody owner
+-> observed terminal reconciliation
+-> DisplayState
+```
+
+The exact future capability name/schema is intentionally not authored here. VexLife-Prod source must
+name it when current product admission exists.
+
+Permanent:
+
+```text
+STABLE STOP ELEMENT != STOP CAPABILITY
+VISIBLE STOP BUTTON != CANCELLABLE TURN
+CONTROL IDENTITY != EFFECT AUTHORITY
+```
+
 ### Bounded acceptance pressure
 
 A future implementation should prove the relationship from both the human surface and the Vex turn:
