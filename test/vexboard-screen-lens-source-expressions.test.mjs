@@ -178,6 +178,212 @@ test('Source Depth follows only source-default realization relationships and the
   assert.ok(graph.edges.some((edge) => edge.label === 'calls' && graph.nodes.find((node) => node.ref === edge.from)?.label === 'VexStreamLibrarySurface' && graph.nodes.find((node) => node.ref === edge.to)?.label === 'VexStreamSongsPane'));
 });
 
+test('every Source expression keeps realization topology bounded to source-owned calls', () => {
+  for (const screen of lens.screens) {
+    const expression = X.expressionsFor(lens, screen.screenRef)[0];
+    const graph = X.expressionGraph(lens, screen.screenRef, expression);
+    const realization = R.realizationOf(lens, screen.screenRef);
+    const depth = graph.nodes.filter((node) => node.face === 'DEPTH');
+
+    if (!realization?.entry?.symbol) {
+      assert.equal(depth.length, 0, `${screen.screenRef} has no source realization entry`);
+      continue;
+    }
+
+    assert.ok(depth.some((node) => node.label === realization.entry.symbol), `${screen.screenRef} keeps its render entry`);
+    const byRef = new Map(graph.nodes.map((node) => [node.ref, node]));
+    for (const edge of graph.edges.filter((entry) => entry.label === 'calls')) {
+      const caller = byRef.get(edge.from)?.label;
+      const callee = byRef.get(edge.to)?.label;
+      assert.ok(realization.realizers.includes(caller), `${caller} is a source realizer`);
+      assert.ok(realization.realizers.includes(callee), `${callee} is a source realizer`);
+      assert.ok(realization.callEdges.some((candidate) => candidate.caller === caller && candidate.callee === callee), `${caller} -> ${callee} comes from source topology`);
+    }
+  }
+});
+
+test('Source Depth stays readable across missing entry, registered-tree entry, sparse sources and irrelevant calls', () => {
+  const graphFrom = (mutate) => {
+    const input = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8'));
+    const screen = input.screens.find((entry) => entry.screenRef === STREAM);
+    mutate(screen.realization, screen);
+    const projected = normalizeScreenLens(input);
+    const expression = X.expressionsFor(projected, STREAM)[0];
+    return X.expressionGraph(projected, STREAM, expression);
+  };
+
+  const noEntry = graphFrom((raw) => {
+    raw.entry = null;
+    raw.callEdges = [];
+  });
+  assert.equal(noEntry.nodes.some((node) => node.face === 'DEPTH'), false, 'no render entry means no invented Depth');
+
+  const registeredTree = graphFrom((raw, screen) => {
+    const root = screen.elements.find((element) => !element.parentRef);
+    assert.ok(root, 'fixture has a registered root');
+    raw.rendersRegisteredTree = root.ref;
+    raw.callEdges = [];
+    for (const entry of raw.presence) {
+      if (entry.kind !== 'SELECTION') continue;
+      entry.realizedBy = null;
+      for (const choice of entry.choices ?? []) choice.realizedBy = null;
+    }
+  });
+  const registeredEntry = registeredTree.nodes.find((node) => node.face === 'DEPTH');
+  assert.match(registeredEntry.summary, /Renders the registered tree/);
+  assert.equal(registeredTree.edges.some((edge) => edge.label === 'calls'), false);
+
+  const sparse = graphFrom((raw) => {
+    raw.callEdges = [
+      { caller: 'VexStreamMusicScreenContent', callee: 'VexStreamLibrarySurface' },
+      { caller: 'VexStreamLibrarySurface', callee: 'VexStreamSongsPane', calleeSource: raw.entry.source },
+      { caller: 'VexStreamAlbumsPane', callee: 'VexStreamFullPlayerSheet', callerSource: raw.entry.source },
+    ];
+  });
+  const labels = sparse.nodes.filter((node) => node.face === 'DEPTH').map((node) => node.label);
+  assert.ok(labels.includes('VexStreamMusicScreenContent'));
+  assert.ok(labels.includes('VexStreamLibrarySurface'));
+  assert.ok(labels.includes('VexStreamSongsPane'));
+  assert.ok(!labels.includes('VexStreamAlbumsPane'));
+  assert.ok(!labels.includes('VexStreamFullPlayerSheet'));
+  assert.equal(sparse.nodes.find((node) => node.label === 'VexStreamLibrarySurface').source, null, 'missing source metadata stays absent instead of being invented');
+  assert.ok(sparse.nodes.find((node) => node.label === 'VexStreamSongsPane').source, 'callee source metadata is retained when source provides it');
+});
+
+test('control-to-expression lookup preserves accessibility without inventing presentation meaning', () => {
+  const screen = lens.screens.find((entry) => entry.screenRef === STREAM);
+  const expressions = X.expressionsFor(lens, STREAM);
+  const controls = [...lens.chrome.flatMap((entry) => entry.elements), ...screen.elements];
+
+  const typed = controls
+    .filter((element) => element.intent)
+    .map((element) => [element, X.expressionForControl(lens, STREAM, expressions, element.ref)])
+    .filter(([, expression]) => expression);
+
+  assert.ok(typed.some(([element, expression]) => /swapTo\(/.test(element.intent) && expression.kind === 'SELECTION'), 'typed selection controls resolve to their source-derived selection expression');
+  assert.ok(typed.some(([element, expression]) => /\b(?:open|toggle)\(/.test(element.intent) && ['PRESENTATION', 'SOURCE'].includes(expression.kind)), 'typed presentation controls resolve without a custom scenario');
+  const localOnly = controls.find((element) => element.intent === 'localEffect()');
+  assert.ok(localOnly);
+  assert.equal(X.expressionForControl(lens, STREAM, expressions, localOnly.ref), null, 'local effects do not masquerade as presentation expressions');
+  const noIntent = controls.find((element) => !element.intent);
+  assert.ok(noIntent);
+  assert.equal(X.expressionForControl(lens, STREAM, expressions, noIntent.ref), null);
+
+  const input = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8'));
+  const rawScreen = input.screens.find((entry) => entry.screenRef === STREAM);
+  const selection = rawScreen.realization.presence.find((entry) => entry.kind === 'SELECTION' && entry.defaultRef && entry.subjectRef);
+  assert.ok(selection);
+  const container = rawScreen.elements.find((element) => element.ref === selection.subjectRef);
+  const child = rawScreen.elements.find((element) => element.ref === selection.defaultRef);
+  const control = rawScreen.elements.find((element) => element.intent);
+  assert.ok(container?.symbol && child?.symbol && control);
+  const local = (symbol) => symbol.split('.').pop();
+
+  control.intent = `swapTo(container = ${local(container.symbol)}, child = ${local(child.symbol)})`;
+  let projected = normalizeScreenLens(input);
+  let projectedExpressions = X.expressionsFor(projected, STREAM);
+  assert.equal(X.expressionForControl(projected, STREAM, projectedExpressions, control.ref)?.ref, X.SOURCE_EXPRESSION_REF, 'selecting the source-default child needs no extra scenario override');
+
+  control.intent = `swapTo(container = ${local(container.symbol)}, child = MissingChild)`;
+  projected = normalizeScreenLens(input);
+  projectedExpressions = X.expressionsFor(projected, STREAM);
+  assert.equal(X.expressionForControl(projected, STREAM, projectedExpressions, control.ref), null, 'an unresolved typed target does not invent an expression');
+});
+
+test('expression lookup and naming prefer the smallest readable relationship surface', () => {
+  const synthetic = [
+    { ref: 'expression:source', also: [], kind: 'SOURCE', reveals: [], context: { overrides: {} } },
+    { ref: 'expression:relationship', also: ['expression:alias'], kind: 'SELECTION', reveals: ['element.x'], context: { overrides: { a: '1' } } },
+    { ref: 'expression:deep', also: [], kind: 'PRESENTATION', reveals: ['element.x'], context: { overrides: { a: '1', b: '2' } } },
+    { ref: 'expression:example', also: [], kind: 'EXAMPLE', reveals: ['element.x'], context: { overrides: {} } },
+  ];
+  assert.equal(X.expressionFor(synthetic, 'expression:relationship').ref, 'expression:relationship');
+  assert.equal(X.expressionFor(synthetic, 'expression:alias').ref, 'expression:relationship');
+  assert.equal(X.expressionFor(synthetic, 'expression:missing'), null);
+  assert.equal(X.expressionExposing(synthetic, 'element.x').ref, 'expression:relationship', 'relationship expression wins over deeper and example-only views');
+  assert.equal(X.expressionExposing(synthetic, 'element.missing'), null);
+
+  assert.equal(X.expressionName(null), null);
+  assert.equal(X.expressionName({ label: 'Sheet', symbol: 'Player.FullPlayerSheet' }), 'Full player sheet');
+  assert.equal(X.expressionName({ label: 'Dark mode', symbol: 'Theme.DarkMode' }), 'Dark mode');
+  assert.equal(X.expressionName({ label: null, symbol: 'Theme.DarkMode' }), 'Dark mode');
+
+  for (const [condition, negated] of [
+    ['a is B', 'a !is B'],
+    ['a == null', 'a != null'],
+    ['x.isEmpty()', 'x.isNotEmpty()'],
+    ['x.isNotBlank()', 'x.isBlank()'],
+    ['x.isBlank()', 'x.isNotBlank()'],
+    ['a || b', 'not (a || b)'],
+    ['a ?: b', 'not (a ?: b)'],
+    ['a + b', 'not (a + b)'],
+  ]) assert.equal(X.negateCondition(condition), negated);
+});
+
+
+test('Source and orphan Example graphs keep absent metadata explicit without inventing relationships', () => {
+  const missingCalls = {
+    ...lens,
+    screens: lens.screens.map((screen) => screen.screenRef === STREAM ? {
+      ...screen,
+      symbol: null,
+      source: null,
+      realization: {
+        ...screen.realization,
+        entry: { ...screen.realization.entry, source: null },
+        callEdges: undefined,
+      },
+    } : screen),
+  };
+  const sourceGraph = X.expressionGraph(missingCalls, STREAM, stream[0]);
+  const sourceScreen = sourceGraph.nodes.find((node) => node.role === 'SCREEN');
+  const renderEntry = sourceGraph.nodes.find((node) => node.face === 'DEPTH' && node.symbol === 'render entry');
+  assert.ok(sourceScreen && renderEntry);
+  assert.equal(sourceScreen.symbol, null);
+  assert.equal(sourceScreen.source, null);
+  assert.equal(renderEntry.source, null);
+  assert.equal(sourceGraph.edges.some((edge) => edge.label === 'calls'), false, 'missing call-edge metadata does not invent calls');
+
+  const noDefault = JSON.parse(JSON.stringify(lens));
+  const noDefaultScreen = noDefault.screens.find((screen) => screen.screenRef === STREAM);
+  noDefaultScreen.symbol = null;
+  noDefaultScreen.source = null;
+  const selection = noDefaultScreen.realization.presence.find((entry) => entry.kind === 'SELECTION' && !entry.gate);
+  assert.ok(selection, 'fixture has a top-level source selection');
+  selection.defaultRef = null;
+  selection.subjectRef = null;
+  selection.realizedBy = null;
+  for (const choice of selection.choices) choice.realizedBy = null;
+  const noDefaultGraph = X.expressionGraph(noDefault, STREAM, stream[0]);
+  assert.ok(noDefaultGraph.nodes.some((node) => node.role === 'STATE' && /shows no default/.test(node.label)));
+  assert.ok(noDefaultGraph.nodes.some((node) => node.role === 'SCREEN' && node.symbol === null && node.source === null));
+
+  const orphanExpression = {
+    ref: 'expression:missing-example',
+    kind: 'EXAMPLE',
+    exampleRef: 'example:missing',
+    presenceRef: null,
+    parentRef: null,
+    steps: [],
+    context: R.emptyRealizationContext(),
+    where: 'Missing example',
+    what: 'missing example',
+    evidence: [],
+    reveals: [],
+    hides: [],
+    focusRef: null,
+    also: [],
+    depth: 0,
+  };
+  const orphanGraph = X.expressionGraph({ ...lens, examples: undefined }, STREAM, orphanExpression);
+  assert.equal(orphanGraph.label, 'example:missing');
+  assert.equal(orphanGraph.nodes.length, 1);
+  assert.equal(orphanGraph.nodes[0].label, 'example:missing');
+  assert.equal(orphanGraph.nodes[0].symbol, null);
+  assert.equal(orphanGraph.nodes[0].source, null);
+  assert.deepEqual(orphanGraph.edges, []);
+});
+
 test('realization call topology fails closed when an edge names an unknown realizer', () => {
   const input = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8'));
   const raw = input.screens.find((screen) => screen.screenRef === STREAM).realization;

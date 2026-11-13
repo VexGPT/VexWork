@@ -84,6 +84,42 @@ test('normalization carries realization and examples, and fails closed on dangli
   assert.deepEqual(old.examples, []);
 });
 
+test('realization call topology normalizes optional sources and rejects malformed edges', () => {
+  const valid = base();
+  valid.screens[0].realization.realizers = ['SContent', 'APane', 'BPane'];
+  valid.screens[0].realization.callEdges = [
+    { caller: 'SContent', callee: 'APane', callerSource: 'app:S.kt', calleeSource: null },
+    { caller: 'SContent', callee: 'BPane' },
+  ];
+  const topology = normalizeScreenLens(valid).screens[0].realization;
+  assert.deepEqual(topology.callEdges.map((edge) => [edge.caller, edge.callee, edge.callerSource, edge.calleeSource]), [
+    ['SContent', 'APane', 'app:S.kt', null],
+    ['SContent', 'BPane', null, null],
+  ]);
+  assert.ok(Object.isFrozen(topology.callEdges));
+
+  for (const [edge, pattern] of [
+    [null, /needs caller/],
+    [{ callee: 'APane' }, /needs caller/],
+    [{ caller: 'SContent' }, /needs callee/],
+    [{ caller: 'Ghost', callee: 'APane' }, /caller Ghost is not a realizer/],
+    [{ caller: 'SContent', callee: 'Ghost' }, /callee Ghost is not a realizer/],
+  ]) {
+    const input = base();
+    input.screens[0].realization.realizers = ['SContent', 'APane', 'BPane'];
+    input.screens[0].realization.callEdges = [edge];
+    assert.throws(() => normalizeScreenLens(input), pattern);
+  }
+
+  const duplicate = base();
+  duplicate.screens[0].realization.realizers = ['SContent', 'APane'];
+  duplicate.screens[0].realization.callEdges = [
+    { caller: 'SContent', callee: 'APane' },
+    { caller: 'SContent', callee: 'APane' },
+  ];
+  assert.throws(() => normalizeScreenLens(duplicate), /duplicate realization call edge SContent -> APane/);
+});
+
 test('source defaults: closed modal and its contents latent, default child selected, data branches depend', () => {
   const lens = normalizeScreenLens(base());
   const resolved = R.resolvePresence(lens, 'screen.s');

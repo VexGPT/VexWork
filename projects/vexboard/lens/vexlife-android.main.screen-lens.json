@@ -279,6 +279,7 @@
         "realizers": [
           "HomeScreenContent"
         ],
+        "callEdges": [],
         "presence": [
           {
             "ref": "presence.home.body-vexstream-branch",
@@ -418,6 +419,32 @@
           "CompactAttentionButton",
           "EventRow",
           "EventsScreenContent"
+        ],
+        "callEdges": [
+          {
+            "caller": "AttentionActionButton",
+            "callee": "CompactAttentionButton",
+            "callerSource": "app:screens/primary/events/EventsScreen.kt",
+            "calleeSource": "app:screens/primary/events/EventsScreen.kt"
+          },
+          {
+            "caller": "EventRow",
+            "callee": "AttentionActionButton",
+            "callerSource": "app:screens/primary/events/EventsScreen.kt",
+            "calleeSource": "app:screens/primary/events/EventsScreen.kt"
+          },
+          {
+            "caller": "EventRow",
+            "callee": "CompactAttentionButton",
+            "callerSource": "app:screens/primary/events/EventsScreen.kt",
+            "calleeSource": "app:screens/primary/events/EventsScreen.kt"
+          },
+          {
+            "caller": "EventsScreenContent",
+            "callee": "EventRow",
+            "callerSource": "app:screens/primary/events/EventsScreen.kt",
+            "calleeSource": "app:screens/primary/events/EventsScreen.kt"
+          }
         ],
         "presence": [
           {
@@ -886,6 +913,8 @@
         "status": "BLUEPRINT",
         "entry": null,
         "rendersRegisteredTree": "element.settings.body",
+        "realizers": [],
+        "callEdges": [],
         "presence": [],
         "templates": [],
         "elements": [],
@@ -1353,6 +1382,14 @@
           "DebugMenuScreenContent",
           "LogHistorySheet"
         ],
+        "callEdges": [
+          {
+            "caller": "DebugMenuScreenContent",
+            "callee": "LogHistorySheet",
+            "callerSource": "app:screens/shared/debug/DebugMenuScreen.kt",
+            "calleeSource": "app:screens/shared/debug/loghistory/LogHistorySheet.kt"
+          }
+        ],
         "presence": [
           {
             "ref": "presence.debug-menu.log-history-sheet-open",
@@ -1448,6 +1485,7 @@
         "realizers": [
           "CgmPartnerLabScreenContent"
         ],
+        "callEdges": [],
         "presence": [],
         "templates": [],
         "elements": [
@@ -1564,6 +1602,7 @@
         "realizers": [
           "InsulinPartnerLabScreenContent"
         ],
+        "callEdges": [],
         "presence": [],
         "templates": [],
         "elements": [
@@ -1723,6 +1762,7 @@
         "realizers": [
           "PartnersCircuitLabScreenContent"
         ],
+        "callEdges": [],
         "presence": [],
         "templates": [],
         "elements": [
@@ -2129,6 +2169,86 @@
           "NavigationTrailContent",
           "ScreenNode"
         ],
+        "callEdges": [
+          {
+            "caller": "AppGraphView",
+            "callee": "GraphRow",
+            "callerSource": "app:screens/shared/gallery/graph/AppGraphView.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          },
+          {
+            "caller": "AppGraphView",
+            "callee": "NavigationTrailContent",
+            "callerSource": "app:screens/shared/gallery/graph/AppGraphView.kt",
+            "calleeSource": "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt"
+          },
+          {
+            "caller": "ElementNode",
+            "callee": "GraphElements",
+            "callerSource": "app:screens/shared/gallery/graph/AppGraphView.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          },
+          {
+            "caller": "ElementNode",
+            "callee": "GraphScreens",
+            "callerSource": "app:screens/shared/gallery/graph/AppGraphView.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          },
+          {
+            "caller": "ElementsGallery",
+            "callee": "GalleryExplainableStatusSample",
+            "callerSource": "app:screens/shared/gallery/elements/ElementsGallery.kt",
+            "calleeSource": "app:screens/shared/gallery/elements/GalleryExplainableStatusSample.kt"
+          },
+          {
+            "caller": "ElementsGallery",
+            "callee": "GalleryModalSamples",
+            "callerSource": "app:screens/shared/gallery/elements/ElementsGallery.kt",
+            "calleeSource": "app:screens/shared/gallery/elements/GalleryModalSamples.kt"
+          },
+          {
+            "caller": "GalleryScreenContent",
+            "callee": "AppGraphView",
+            "callerSource": "app:screens/shared/gallery/GalleryScreen.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          },
+          {
+            "caller": "GalleryScreenContent",
+            "callee": "ElementsGallery",
+            "callerSource": "app:screens/shared/gallery/GalleryScreen.kt",
+            "calleeSource": "app:screens/shared/gallery/elements/ElementsGallery.kt"
+          },
+          {
+            "caller": "GraphScreens",
+            "callee": "GraphRow",
+            "callerSource": "app:screens/shared/gallery/graph/AppGraphView.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          },
+          {
+            "caller": "NavigationTrailContent",
+            "callee": "ElementNode",
+            "callerSource": "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          },
+          {
+            "caller": "NavigationTrailContent",
+            "callee": "ScreenNode",
+            "callerSource": "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          },
+          {
+            "caller": "ScreenNode",
+            "callee": "GraphElements",
+            "callerSource": "app:screens/shared/gallery/graph/AppGraphView.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          },
+          {
+            "caller": "ScreenNode",
+            "callee": "GraphScreens",
+            "callerSource": "app:screens/shared/gallery/graph/AppGraphView.kt",
+            "calleeSource": "app:screens/shared/gallery/graph/AppGraphView.kt"
+          }
+        ],
         "presence": [
           {
             "ref": "presence.gallery.gallery-screen-content-alternative",
@@ -2419,6 +2539,7 @@
         "realizers": [
           "UserProfileScreenContent"
         ],
+        "callEdges": [],
         "presence": [],
         "templates": [],
         "elements": [],
@@ -2491,6 +2612,20 @@
           "ConversationMessageCard",
           "VexConversationRoom",
           "VexFamilyConversationScreenContent"
+        ],
+        "callEdges": [
+          {
+            "caller": "VexConversationRoom",
+            "callee": "ConversationMessageCard",
+            "callerSource": "app:screens/shared/conversation/VexConversationRoom.kt",
+            "calleeSource": "app:screens/shared/conversation/VexConversationRoom.kt"
+          },
+          {
+            "caller": "VexFamilyConversationScreenContent",
+            "callee": "VexConversationRoom",
+            "callerSource": "app:screens/shared/conversation/VexFamilyConversationScreen.kt",
+            "calleeSource": "app:screens/shared/conversation/VexConversationRoom.kt"
+          }
         ],
         "presence": [
           {
@@ -3248,6 +3383,38 @@
           "VexMapsMapSurface",
           "VexMapsNavigationCard",
           "VexMapsRoutePlannerCard"
+        ],
+        "callEdges": [
+          {
+            "caller": "VexMapsMapSurface",
+            "callee": "VexMapsAppearanceControl",
+            "callerSource": "app:screens/shared/maps/VexMapsMapSurface.kt",
+            "calleeSource": "app:screens/shared/maps/VexMapsAppearanceControl.kt"
+          },
+          {
+            "caller": "VexMapsMapSurface",
+            "callee": "VexMapsDestinationSearchOverlay",
+            "callerSource": "app:screens/shared/maps/VexMapsMapSurface.kt",
+            "calleeSource": "app:screens/shared/maps/VexMapsDestinationSearchOverlay.kt"
+          },
+          {
+            "caller": "VexMapsMapSurface",
+            "callee": "VexMapsNavigationCard",
+            "callerSource": "app:screens/shared/maps/VexMapsMapSurface.kt",
+            "calleeSource": "app:screens/shared/maps/VexMapsNavigationOverlay.kt"
+          },
+          {
+            "caller": "VexMapsMapSurface",
+            "callee": "VexMapsRoutePlannerCard",
+            "callerSource": "app:screens/shared/maps/VexMapsMapSurface.kt",
+            "calleeSource": "app:screens/shared/maps/VexMapsPlanner.kt"
+          },
+          {
+            "caller": "VexMapsNavigationCard",
+            "callee": "NavigationStopButton",
+            "callerSource": "app:screens/shared/maps/VexMapsNavigationOverlay.kt",
+            "calleeSource": "app:screens/shared/maps/VexMapsNavigationOverlay.kt"
+          }
         ],
         "presence": [
           {
@@ -4891,6 +5058,266 @@
           "VexStreamSongsPane",
           "VexStreamTrackCard",
           "VexStreamTrackMenuItem"
+        ],
+        "callEdges": [
+          {
+            "caller": "NavigationTrailContent",
+            "callee": "VexStreamCollectionCard",
+            "callerSource": "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "NavigationTrailContent",
+            "callee": "VexStreamCollectionDetail",
+            "callerSource": "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "NavigationTrailContent",
+            "callee": "VexStreamEmptyMessage",
+            "callerSource": "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "NavigationTrailContent",
+            "callee": "VexStreamLibraryTabs",
+            "callerSource": "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamAlbumsPane",
+            "callee": "VexStreamCollectionBrowserPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamArtistsPane",
+            "callee": "VexStreamCollectionBrowserPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamCollectionBrowserPane",
+            "callee": "NavigationTrailContent",
+            "callerSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+            "calleeSource": "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt"
+          },
+          {
+            "caller": "VexStreamCollectionDetail",
+            "callee": "VexStreamCollectionActions",
+            "callerSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamCollectionDetail",
+            "callee": "VexStreamTrackCard",
+            "callerSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamTrackPresentation.kt"
+          },
+          {
+            "caller": "VexStreamDownloadsPane",
+            "callee": "VexStreamEmptyMessage",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamDownloadsPane",
+            "callee": "VexStreamLibraryTabs",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamDownloadsPane",
+            "callee": "VexStreamTrackCard",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamTrackPresentation.kt"
+          },
+          {
+            "caller": "VexStreamFullPlayerSheet",
+            "callee": "VexStreamPlaybackTimeline",
+            "callerSource": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+          },
+          {
+            "caller": "VexStreamFullPlayerSheet",
+            "callee": "VexStreamQueueContent",
+            "callerSource": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamQueuePresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibraryLoadingPane",
+            "callee": "VexStreamLibraryLoadingStatus",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibraryLoadingPane",
+            "callee": "VexStreamLibraryTabs",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibraryOrganizationSheet",
+            "callee": "FilterModeButton",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibraryOrganizationSheet",
+            "callee": "OrganizationSectionLabel",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibraryOrganizationSheet",
+            "callee": "SortButton",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibraryOrganizationSheet",
+            "callee": "StringFilterRow",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamAlbumsPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamArtistsPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamConnectionMenuSheet",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamConnectionSetup",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamDownloadsPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamForgetConfirmationDialog",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamFullPlayerSheet",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamLibraryFabActions",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamLibraryLoadingPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamLibraryLoadingStatus",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamLibraryOrganizationSheet",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamMiniPlayer",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamPlaylistsPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamSearchSheet",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamSearchPresentation.kt"
+          },
+          {
+            "caller": "VexStreamLibrarySurface",
+            "callee": "VexStreamSongsPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamMiniPlayer",
+            "callee": "VexStreamPlaybackTimeline",
+            "callerSource": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+          },
+          {
+            "caller": "VexStreamMusicScreenContent",
+            "callee": "VexStreamLibrarySurface",
+            "callerSource": "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibrarySurface.kt"
+          },
+          {
+            "caller": "VexStreamPlaylistsPane",
+            "callee": "VexStreamCollectionBrowserPane",
+            "callerSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamCollectionPresentation.kt"
+          },
+          {
+            "caller": "VexStreamSearchSheet",
+            "callee": "VexStreamTrackCard",
+            "callerSource": "app:screens/shared/vexstream/VexStreamSearchPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamTrackPresentation.kt"
+          },
+          {
+            "caller": "VexStreamSongsPane",
+            "callee": "VexStreamEmptyMessage",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamSongsPane",
+            "callee": "VexStreamLibraryTabs",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+          },
+          {
+            "caller": "VexStreamSongsPane",
+            "callee": "VexStreamTrackCard",
+            "callerSource": "app:screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamTrackPresentation.kt"
+          },
+          {
+            "caller": "VexStreamTrackCard",
+            "callee": "VexStreamTrackMenuItem",
+            "callerSource": "app:screens/shared/vexstream/VexStreamTrackPresentation.kt",
+            "calleeSource": "app:screens/shared/vexstream/VexStreamTrackPresentation.kt"
+          }
         ],
         "presence": [
           {
@@ -7932,6 +8359,8 @@
         "status": "BLUEPRINT",
         "entry": null,
         "rendersRegisteredTree": "element.talk-to-vex.body",
+        "realizers": [],
+        "callEdges": [],
         "presence": [],
         "templates": [],
         "elements": [],
@@ -15230,8 +15659,8 @@
   ],
   "provenance": {
     "generator": "vexlife-android-adapter/5",
-    "projectorBlobSha1": "ac29200831b056e37558fa80e427d760f93b91cc",
-    "projectorSupportSha256": "6667392107cc131d8330231edbccacfff6d50e9a2a54b58c27972041adabb7b5",
+    "projectorBlobSha1": "1b4c1c85494f6e3ccbd92131d0f80ff6b268441d",
+    "projectorSupportSha256": "cbbe5e9e3e6100ff63c70281ce36dea82451eb5d5b3d9f74c651b5e9a43ed74e",
     "adapterSha256": "439aaaad61c9bcd55b0d13a3fa7d76f8759bb7ba67b8acf702503cc5eedeea3c",
     "overlaySha256": "cf4db59794da0369bf0bb208b9d477cf2d0bd061f5aa480d2777c47817d14d9d",
     "sourceCommit": "d857a92371555472e0303b18eadf353da2a868d6"
