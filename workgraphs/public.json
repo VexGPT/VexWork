@@ -4868,7 +4868,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-13T08:00:00.000Z",
-      "updatedAt": "2026-11-13T09:09:24.000Z",
+      "updatedAt": "2026-11-13T09:14:39.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
@@ -4876,7 +4876,7 @@
       "label": "Form only source-proven projection repairs",
       "purpose": "From accepted audit findings, form the smallest generic VexBoard reader/composition/projection/test corrections needed so source-proven causal neighborhoods remain intelligible from a human-facing feature coordinate through rightful owners and, where source proves it, back through return/presentation. Do not mutate Android meaning for VexBoard convenience, hand-edit generated Lens JSON, add feature-specific mappings, or invent Partner/Relay/Service/Widget semantics by analogy.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexarchitecture.vexboard-sync.20261113.depth-closure-audit",
@@ -13840,6 +13840,21 @@
         "projects/vexarchitecture-vexboard-sync-2026-11-13/README.md"
       ],
       "createdAt": "2026-11-13T09:09:25.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.vexboard-sync.20261113.repair.ready-running.realization-topology-r001",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin the first authorized repair slice only: preserve source-owned composable caller-to-callee topology already discovered by the realization walker, carry it through the existing Lens realization contract, and expose the relevant ancestor closure in Source Depth without adding architecture roles, changing Android meaning, or broadening into direct-registration repair.",
+      "actorRef": "actor.chatgpt.vexarchitecture-vexboard-sync.20261113",
+      "sourceRefs": [
+        "projects/vexarchitecture-vexboard-sync-2026-11-13/README.md",
+        "src/core/vexboard-android-realization.mjs",
+        "src/shared/vexboard-screen-lens-source-expressions.mjs"
+      ],
+      "createdAt": "2026-11-13T09:14:39.000Z"
     }
   ],
   "sourceRefs": [
