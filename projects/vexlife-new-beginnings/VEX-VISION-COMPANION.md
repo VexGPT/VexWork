@@ -3084,6 +3084,139 @@ Service injection and durable turn-evidence paths are added only if the accepted
 result proves they are necessary. Do not pre-author a broad source membrane now.
 
 <!-- [VXG RealForever][VEXLIFE][VISION][CURRENT-MAIN-CONVERSATION-SEAM][20261113] -->
+### Vision turn evidence — extend the existing runtime evidence, never create a second effect ledger
+
+Fresh Product-main review shows `DirectTurnContextStore` already owns exactly one Product-runtime
+evidence record for each completed direct turn:
+
+~~~text
+~/.vexlife/runtime/vexlife-prod/turn-evidence/<turnRef>.json
+~~~
+
+The canonical Conversation Context references that evidence but does not absorb Product-runtime fields.
+
+Current runtime evidence already evolved from v1 to v2 to add one optional:
+
+~~~text
+sourceReturnTrace
+~~~
+
+while preserving historical readability.
+
+That is the right precedent for Vision.
+
+#### Successful Vision-enriched turn
+
+After the lower LOOK effect + Security + Perception + visual-worker contracts are accepted, the same
+turn-evidence object may evolve by one version to include one optional bounded Vision trace.
+
+Candidate meaning:
+
+~~~text
+visionTrace
+  Product-minted Vision continuation request ref
+  model-authored bounded focus / request hash
+  initial prompt receipt ref/fingerprint
+
+  lower SCREEN effect reservation ref
+  lower immutable capture completion ref
+  Security witness ref
+  Perception visualObservationRef
+
+  visual runtime/model profile refs
+  derived visual context ref/hash
+  final prompt receipt ref/fingerprint
+
+  rawBytesPersisted=false
+  rawFileWritten=false
+  rawProviderVisionOutputPersisted=false
+  memoryAccepted=false
+  trainingEligible=false
+  publicationEligible=false
+~~~
+
+Exact fields remain downstream of the accepted lower contracts. Do not copy provider/native/window
+identity into Product evidence.
+
+The trace answers only:
+
+~~~text
+which bounded internal Vision request occurred in this completed turn?
+which already-owned lower evidence did it consume?
+what derived visual context was supplied to the final prompt?
+which final prompt actually produced the committed response?
+~~~
+
+It does not own or recreate the underlying capture truth.
+
+#### Failed turn after a real LOOK
+
+The more important boundary is failure after capture but before final Conversation completion.
+
+~~~text
+LOOK reserved
+-> capture may occur
+-> capture completion may become durable
+-> visual interpretation may occur
+-> final provider inference fails
+-> no completed Conversation response
+~~~
+
+In that case:
+
+~~~text
+Process Factory reservation/completion evidence
+  remains the durable effect truth
+
+DirectTurnContextStore
+  does NOT fabricate a completed turn evidence file
+  does NOT replay capture
+  does NOT become the missing effect ledger
+
+same human send attempt
+  remains non-replayable under current DirectCompanionTurn law
+
+new human send attempt
+  is a new semantic/effect decision
+~~~
+
+So:
+
+~~~text
+TURN_EVIDENCE_EXISTS
+!= CAPTURE_OCCURRED
+
+TURN_EVIDENCE_ABSENT_AFTER_FAILURE
+!= CAPTURE_DID_NOT_HAPPEN
+~~~
+
+The lower effect owner must be sufficient to answer whether the capture request was reserved/completed
+even when no Product turn commits.
+
+#### No second Vision trace store
+
+Do not add:
+
+~~~text
+runtime/vexlife-prod/vision-turns/
+vision-effect-ledger.json
+vision-history/
+VisionStore
+~~~
+
+merely to preserve successful-turn provenance.
+
+The existing turn-evidence owner can carry the bounded successful-turn trace. The lower Process
+Factory effect owner carries replay/outcome truth. Conversation carries the final human/Vex exchange.
+
+~~~text
+PROCESS_FACTORY_EFFECT_EVIDENCE
+!= PRODUCT_TURN_EVIDENCE
+!= CONVERSATION
+!= MEMORY
+~~~
+
+<!-- [VXG RealForever][VEXLIFE][VISION][TURN-EVIDENCE-NONCOLLAPSE][20261113] -->
 #### Final visual context should remain untrusted turn input
 
 A successful visual worker should return one bounded derived context, not raw image bytes.
