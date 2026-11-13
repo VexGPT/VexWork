@@ -2575,6 +2575,303 @@ adding another toolbar/control surface.
 The macOS picker itself is the truthful selection-in-progress UI. Do not build a second native
 "selecting" overlay merely to mirror SDK state.
 
+### First post-#114 Product implementation blueprint — no new architecture layer
+
+This blueprint is for the **next Product semantic/presentation slice after PR #114 is accepted and
+lived-current**. It is not authority to mutate the current PR #114 claim.
+
+Current source is sufficient to design this slice without any new file family, coordinator, Method,
+Execution foundation, Store, Partner or Relay.
+
+#### 1. Keep the first Family deliberately small
+
+Target first-slice semantic vocabulary:
+
+~~~text
+State
+  Held
+  Ready
+  Engaged
+
+Control
+  Engage
+  Stop
+
+Effect
+  RequestEngage
+  RequestStop
+~~~
+
+Do not add `Selecting`, `Looking` or `LookNow` merely because later architecture will need more Vision.
+
+The pure law remains:
+
+~~~text
+Ready + Engage
+-> admittedState = null
+-> effect = RequestEngage
+
+Engaged + Stop
+-> admittedState = null
+-> effect = RequestStop
+
+everything else
+-> null
+~~~
+
+The outside runtime result, not the Effect request, determines the next Family State.
+
+#### 2. Evolve the existing Vision projection; do not create another projection type
+
+Current `VexLifeProdServiceContract.VisionProjection` already owns the human-facing wire projection.
+Keep that owner and evolve its existing schema rather than create a parallel persistent-scope
+projection for presentation.
+
+Smallest useful first-slice wire truth:
+
+~~~text
+VisionProjection
+  schemaVersion = v2 candidate
+  state = HELD | READY | ENGAGED
+  routeReachable
+  effectsPerformed=false
+~~~
+
+No extra `scopeEngaged`, `scopeIndicatorRequired`, `primaryControlRef`, provider identity or hold-detail
+field is required yet because the existing semantic State already answers the first UI question.
+
+Required invariant refinement:
+
+~~~text
+READY   -> routeReachable=true
+ENGAGED -> routeReachable=true
+HELD    -> routeReachable may be false OR true
+
+because:
+runtime absent -> HELD + routeReachable=false
+runtime present but current Safety/relationship held -> HELD + routeReachable=true
+~~~
+
+Permanent:
+
+~~~text
+ROUTE_REACHABLE
+!= CONTROL_ADMITTED
+~~~
+
+Presentation must therefore stop using `routeReachable` as its permission/affordance decision.
+
+#### 3. GET /api/v1/vision becomes a pure Family-backed interpretation
+
+Current service behavior:
+
+~~~text
+visionRuntime != null
+-> READY
+~~~
+
+must evolve to:
+
+~~~text
+if VisionRuntime absent:
+  -> VisionProjection(HELD, routeReachable=false)
+
+else:
+  -> currentVisionRuntime.project()
+  -> validate Product-safe projection
+  -> interpret outside truth:
+
+     null                              -> Ready
+     SDK HELD + holdReason=null        -> Ready
+     SDK HELD + SAFETY_NOT_CURRENT     -> Held
+     SDK ENGAGED                       -> Engaged
+     SDK ENDED                         -> Ready
+     unsupported first-slice state     -> fail closed as Held / no control
+
+  -> VexLifeVisionFamily.displayStateFor(...)
+  -> VisionProjection(..., routeReachable=true, effectsPerformed=false)
+~~~
+
+`GET /vision` performs only current projection/interpretation. It does not engage, stop, capture,
+start a model, write Memory or mutate Conversation.
+
+#### 4. Existing ENGAGE / STOP routes consume Family meaning before runtime realization
+
+Do not replace the current concrete routes with a generic command endpoint.
+
+~~~text
+POST /api/v1/vision/scope/engage
+-> project current runtime truth
+-> derive current Family State
+-> Family.resolve(state, Control.Engage)
+-> require exact Effect.RequestEngage
+-> existing runtime.engage(requestRef)
+-> return exact existing runtime response
+
+POST /api/v1/vision/scope/stop
+-> project current runtime truth
+-> derive current Family State
+-> Family.resolve(state, Control.Stop)
+-> require exact Effect.RequestStop
+-> existing runtime.stop(requestRef)
+-> return exact existing runtime response
+~~~
+
+The route does not become a second semantic decision language. If Family does not admit the control,
+the route performs no runtime effect.
+
+After either POST, presentation re-reads `/api/v1/vision` for newly interpreted outside truth. No
+second Product state holder is required.
+
+`POST /api/v1/vision/look-now` remains explicitly held/409 throughout this slice.
+
+#### 5. Reuse the existing presentation surface and currentness loop
+
+Current presentation already has:
+
+~~~text
+one Vision control
+one Vision quick action
+state.vision
+one local vision-in-flight flag
+loadVision()
+2.5-second /api/v1/vision refresh
+~~~
+
+Use them.
+
+Smallest presentation evolution:
+
+~~~text
+HELD
+-> Vision · Held
+-> disabled
+
+READY
+-> Vision · Ready
+-> action = Engage
+
+ENGAGED
+-> Vision · On
+-> quiet persistent selected-scope indication
+-> action = Stop
+~~~
+
+During the local Engage request:
+
+~~~text
+presentation-local in-flight state
+-> Selecting…
+-> macOS system picker is the authoritative human selection surface
+~~~
+
+During Stop:
+
+~~~text
+presentation-local in-flight state
+-> Stopping…
+~~~
+
+Those are request-progress labels, not new canonical Family States.
+
+Both the header Vision control and existing Vision quick action should invoke the same currently
+projected Engage/Stop behavior. Do not add another toolbar button or settings toggle.
+
+Remove the current control-path dependence on the obsolete one-shot `lookNow()` behavior. Keep the
+held service endpoint only as the explicit later-boundary response.
+
+Existing 2.5-second polling is enough to notice an outside scope release/Safety hold. Do not add SSE,
+WebSocket, event bus or observer process for this slice.
+
+#### 6. Candidate authored membrane after PR #114 acceptance
+
+Current source suggests this later slice can remain on existing files only:
+
+~~~text
+src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt
+src/commonTest/kotlin/vexlife/vision/VexLifeVisionFamilyTest.kt
+
+src/commonMain/kotlin/vexlife/service/VexLifeProdServiceContract.kt
+src/commonTest/kotlin/vexlife/service/VexLifeProdServiceContractTest.kt
+
+src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt
+src/jvmTest/kotlin/vexlife/service/VexLifeProdLocalServiceTest.kt
+
+src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt
+src/commonTest/kotlin/vexlife/web/VexLifeVisionQuickAccessTest.kt
+~~~
+
+This is a **candidate source membrane**, not a claim. Re-ground current main, repository coordination
+and exact overlap after PR #114 terminal acceptance before authoring.
+
+No new source file is presently justified.
+
+#### 7. Proof should target semantic boundaries, not implementation count
+
+Family proof:
+
+~~~text
+Held admits neither Engage nor Stop
+Ready + Engage -> no admittedState + RequestEngage
+Ready + Stop -> null
+Engaged + Stop -> no admittedState + RequestStop
+Engaged + Engage -> null
+~~~
+
+Service projection proof:
+
+~~~text
+no runtime -> HELD / routeReachable=false
+runtime + null projection -> READY
+runtime + ENGAGED -> ENGAGED
+runtime + ENDED -> READY
+runtime + Safety-held -> HELD while routeReachable=true
+GET performs no effect
+~~~
+
+Control proof:
+
+~~~text
+Engage from Ready -> exactly one runtime ENGAGE
+Engage from Engaged/Held -> no ENGAGE
+Stop from Engaged -> exactly one runtime STOP
+Stop from Ready/Held -> no STOP
+LookNow remains held -> no capture
+service close still owns exact runtime close
+~~~
+
+Presentation proof:
+
+~~~text
+Vision button/quick action no longer invoke legacy one-shot LookNow
+Ready offers Engage
+Engaged offers Stop + quiet On indication
+Held offers no control
+existing polling remains the only background currentness mechanism
+no browser screen-capture API
+no raw pixels/model/Memory effect
+~~~
+
+The lived proof remains the actual completion criterion:
+
+~~~text
+running accepted Product
+-> Vision Ready
+-> Engage
+-> system picker once
+-> select one window
+-> Vision On
+-> browse/scroll normally
+-> no capture
+-> quiet indicator remains truthful
+-> Stop
+-> selected scope released
+-> Vision Ready
+~~~
+
+Only after that lived relationship is current should Product consume the later LOOK effect source.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][FIRST-PERSISTENT-SCOPE-PRODUCT-BLUEPRINT][20261113] -->
 #### Persistent LOOK cannot reuse one-shot Security / Perception unchanged
 
 Current accepted one-shot Security source is explicitly bound to:
