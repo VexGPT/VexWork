@@ -138,11 +138,20 @@ test('Source Depth consumes preserved realization topology and keeps only the re
   const raw = input.screens.find((screen) => screen.screenRef === STREAM).realization;
   assert.ok(raw.realizers.includes('VexStreamMusicScreenContent'));
   assert.ok(raw.realizers.includes('VexStreamLibrarySurface'));
-  const target = raw.presence.find((entry) => entry.realizedBy && entry.realizedBy !== 'VexStreamMusicScreenContent')?.realizedBy;
-  assert.ok(target, 'fixture needs one source-earned nested realizer');
+  const target = raw.presence.find((entry) => entry.realizedBy && !['VexStreamMusicScreenContent', 'VexStreamLibrarySurface'].includes(entry.realizedBy))?.realizedBy;
+  assert.ok(target, 'fixture needs one source-earned nested realizer below the library surface');
+  const relationshipRealizers = new Set([
+    raw.entry.symbol,
+    ...raw.presence.flatMap((entry) => [entry.realizedBy, ...(entry.choices ?? []).map((choice) => choice.realizedBy)]),
+    ...raw.templates.map((template) => template.symbol),
+    ...raw.elements.flatMap((entry) => entry.realizedBy ?? []),
+  ].filter(Boolean));
+  const irrelevant = raw.realizers.find((symbol) => !relationshipRealizers.has(symbol));
+  assert.ok(irrelevant, 'fixture needs one traversed composable that owns no projected realization relationship');
   raw.callEdges = [
     { caller: 'VexStreamMusicScreenContent', callee: 'VexStreamLibrarySurface', callerSource: raw.entry.source, calleeSource: raw.entry.source },
     { caller: 'VexStreamLibrarySurface', callee: target, callerSource: raw.entry.source, calleeSource: raw.entry.source },
+    { caller: 'VexStreamMusicScreenContent', callee: irrelevant, callerSource: raw.entry.source, calleeSource: raw.entry.source },
   ];
   const projected = normalizeScreenLens(input);
   const expressions = X.expressionsFor(projected, STREAM);
@@ -150,6 +159,7 @@ test('Source Depth consumes preserved realization topology and keeps only the re
   assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === 'VexStreamMusicScreenContent'));
   assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === 'VexStreamLibrarySurface'));
   assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === target));
+  assert.ok(!graph.nodes.some((node) => node.face === 'DEPTH' && node.label === irrelevant), 'unrelated traversed calls stay out of Source Depth');
   assert.ok(graph.edges.some((edge) => edge.label === 'calls' && graph.nodes.find((node) => node.ref === edge.from)?.label === 'VexStreamMusicScreenContent' && graph.nodes.find((node) => node.ref === edge.to)?.label === 'VexStreamLibrarySurface'));
 });
 
