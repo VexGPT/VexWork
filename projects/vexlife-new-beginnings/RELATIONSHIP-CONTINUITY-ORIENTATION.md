@@ -1449,4 +1449,252 @@ an authoritative human profile, or a lossy replacement for canonical Conversatio
 
 Continue from that question.
 
+
+## Successor checkpoint currentness — 2026-11-12 / A021
+
+This section currentizes the preferred exact-source continuity trajectory after real Product/runtime proof.
+It does not change Workgraph lifecycle truth, Product source authority, or integration authority.
+
+### Human outcome remains unchanged
+
+```text
+finite active context changes representation
+!= relational reset
+
+the human should not reconstruct earlier meaning merely because older exact source
+is no longer directly selected into one inference
+```
+
+The preferred first design remains:
+
+```text
+recent exact Conversation while it fits
++ exact prior Vex RESPONSE across hard rollover
++ caller-bounded current Memory
++ conditional exact canonical Conversation source return
+```
+
+The parallel model-authored working-carry research remains research, not a prerequisite for this path.
+
+### Current VexLife-Prod stack
+
+Provider truth at this checkpoint:
+
+```text
+#82 minimal exact-source continuity ancestry
+  head f1b0baeaee73290fe6f8d15c542bf3909074d1bd
+
+#81 conditional exact Conversation source return
+  head f8bb390d657ed0f951dcd8c3223a71e8ca7388cb
+
+source-return prompt base
+  head 3b01098e34ae0213ad83a7599701645c0141d2ec
+
+#83 final exact-source-return prompt allocation
+  head fa80a5b2f6db61a7ebc608808b0cc9242c65e5fa
+
+#88 normalized source-return turn evidence
+  head 71282f62536e5571757134d7bc2b138474b4999a
+
+#89 live conditional source-return Companion turn
+  head 6f30873ae7e62ca61b2f0a3936e4b24b444b6951
+  tree 5a70d8abf32cded58193d9f34ab183c76f04cc5a
+  base 71282f62536e5571757134d7bc2b138474b4999a
+  state open / draft / mergeable
+```
+
+These are physically connected through the Product branch ancestry. They are not accepted on VexLife-Prod
+`main` yet.
+
+Current Product main observed:
+
+```text
+a120f1cf5b2739b66c9da9780fed3b7adced288b
+```
+
+Unrelated movement of `main` is integration-currentness context; it does not invalidate exact candidate
+proof on an unchanged branch.
+
+### What is connected in Product source
+
+At the #89 tip the preferred trajectory composes these seven functional slices:
+
+```text
+1. bounded recent exact Conversation presence
+2. hard-rollover exact prior Vex RESPONSE bridge
+3. caller-bounded current Memory selection without rewriting Memory availability truth
+4. conditional Conversation source-return protocol + exact deterministic discovery
+5. final prompt allocation with returned exact source / NO_MATCH / HELD_TOKEN_BUDGET handling
+6. normalized first-stage source-return attempt evidence without raw reasoning/provider-body persistence
+7. live DirectCompanionTurn two-stage orchestration + final-only canonical RESPONSE rule
+```
+
+The underlying canonical Conversation, Direct Companion runtime, durable Context/Head, local Heretic runtime,
+and working-checkpoint successor foundations are accepted predecessor Product source. The seven slices above
+are the new relationship-continuity path layered onto that body.
+
+Therefore:
+
+```text
+SOURCE-CONNECTED END TO END = YES
+ACCEPTED ON MAIN = NO
+REAL FIRST PROVIDER STAGE = YES
+REAL SECOND SOURCE-RETURN STAGE = NOT YET PROVEN
+```
+
+### Source proof status
+
+The latest exact candidate source proof is A020:
+
+```text
+candidate head = 6f30873ae7e62ca61b2f0a3936e4b24b444b6951
+candidate tree = 5a70d8abf32cded58193d9f34ab183c76f04cc5a
+fixed base     = 71282f62536e5571757134d7bc2b138474b4999a
+
+full PR #89 membrane = 10 paths
+offline jvmTest = PASS
+SourceOwner = PASS
+fresh semantic Assurance = CLEAR_ON_EXACT_HEAD
+```
+
+This proves the exact candidate source/test claim. It does not substitute for lived two-stage behavior.
+
+### A021 lived result
+
+Canonical A021 RETURN:
+
+```text
+sha256 = 44679cb260412a63a9a1e58357b7ed580a93e2f5dca0713c32291c2e2b48de8d
+attemptRef = attempt.vexlife-prod.pr89.lived-source-return.a011
+state = SAFE_FAILURE
+turnFailureCode = ADMISSION_FAILED
+connectionFailureCode = NONE
+```
+
+Observed first-stage truth:
+
+```text
+real Product Heretic = current for the executed package
+providerCallCount = 1
+HTTP = 200
+source-return protocol present = true
+working-continuity context present = true
+successor bridge present = true
+returned source absent = true
+hidden old token absent = true
+```
+
+Durability boundary:
+
+```text
+temporary REQUEST persisted = true
+temporary RESPONSE persisted = false
+temporary Context persisted = false
+temporary current Head committed = false
+
+canonical ~/.vexlife Conversation read/write = false / false
+temporary proof Home removed = true
+runtime receipt bytes before/after = identical
+repository / remote / runtime / service / model mutation = false
+Memory / training effects = false
+```
+
+A021 therefore narrows the remaining failure to Product admission/classification after the first healthy
+provider response and before deterministic source-return discovery.
+
+It does **not** retain enough raw provider output to guess which exact admission predicate fired.
+
+### Exact unfinished edge
+
+```text
+do not replay A021
+
+preserve:
+  A020 SourceOwner PASS
+  fresh semantic Assurance CLEAR
+  exact #89 head/tree
+
+next:
+  classify the exact first-stage Product admission predicate
+  using bounded normalized diagnostics
+  without persisting raw provider output/reasoning
+-> correct only the rightful owner if source change is actually required
+-> if Product source changes:
+     fresh ExactHeadSourceOwnerProof
+     fresh semantic Assurance
+-> fresh lived two-stage proof
+-> only after lived PASS:
+     READY_FOR_INTEGRATION
+     Integration Steward / OwnerMergeDuty
+     current-main composition/currentness
+     merge
+     post-merge verification
+```
+
+Do not add a new continuity abstraction merely because A021 is held.
+
+### Current VexRelay source after A021
+
+A021 executed against SDK head:
+
+```text
+26a18d97a22b898f14e15bb7b1543c25b808c5af
+```
+
+Current SDK main/checkpoint have since moved to:
+
+```text
+91c3589e529175b2b44abb385157f384b07be660
+tree 6f01c27ebca72ce85686cf2ab41e757529c73093
+```
+
+The delta is private-home-gateway source/tests. The accepted Relay contract remains byte-identical:
+
+```text
+current-contract blob b53cbac01c2deeb45fad5c32ce98e0796c04126f
+contractRef source.vexrelay.current-contract/v1
+runtime v0.2.0-RC1
+recipe compiler vex.relay.recipe-compiler/v2
+```
+
+A021 evidence remains valid. Any new host package must bind the newer current SDK head.
+
+### VexWork truth boundary
+
+Current VexWork main observed while forming this checkpoint:
+
+```text
+main 3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a
+tree 5e35a82c7de440250db28f3695afe3ecdd64e209
+```
+
+The accepted New Beginnings Workgraph segment does not yet encode this newer relationship-continuity lane as
+a Work item. This orientation remains the project-local continuity source named by Product issue #61.
+
+Therefore:
+
+```text
+THIS ORIENTATION
+= current project-local relationship-continuity checkpoint
+
+VEXWORK WORKGRAPH MAIN
+= accepted lifecycle truth
+!= silently currentized by this documentation branch
+```
+
+Do not invent Workgraph lifecycle state from this note. If durable lifecycle/navigation pressure requires
+the relationship-continuity lane to become a Work item, currentize the rightful
+`workgraphs/segments/vexlife-new-beginnings.json` owner under current VexWork rules rather than treating
+this note as a second Workgraph.
+
+### Durable provider anchor
+
+VexLife-Prod issue #61 comment:
+
+```text
+6843394719
+```
+
+records the A021 consumption and exact successor edge.
+
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-NEW-BEGINNINGS][RELATIONSHIP-CONTINUITY-ORIENTATION] -->
