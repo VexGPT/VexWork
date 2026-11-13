@@ -808,7 +808,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-13T02:30:00.000Z",
-      "updatedAt": "2026-11-13T03:26:00.000Z",
+      "updatedAt": "2026-11-13T03:29:00.000Z",
       "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Immediate — normal Internet browser provider for the VexLife Browser pane",
@@ -837,7 +837,10 @@
         "relay.return.sha256.71754299f393fdd03676a679ed8c3c1ad9ed17f0fbcae4ee6736cabdde8f5801",
         "relay.inner-return.sha256.eccb77e0d54dbd2d0d301e68e05357d1930070afa439fb639bc52c0cebdd5dab",
         "github.pull.vexlife-prod.101.head.05e7a40353ddcd8bc9a3a9dafcc8df313c9dbea6",
-        "relay.package.sha256.c9b2b8da5b300261ed28f70e8f6fd6766db76861aa6fbe2ffc2ed1325e1cbce3"
+        "relay.package.sha256.c9b2b8da5b300261ed28f70e8f6fd6766db76861aa6fbe2ffc2ed1325e1cbce3",
+        "relay.return.sha256.89d1eb5f4d977de8480933f9127acd5c3b2297b919cc0cdc61e6cbbcbfe9d44a",
+        "relay.inner-return.sha256.d48fe919b878de4ea796518ed40432e2e497e05796684d414fcde0e362e84933",
+        "relay.package.sha256.0eecae016de2ef02db187abba2ab88112df8e1bbf27dfafa0725a35e1c8ccb5e"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1478,6 +1481,22 @@
         "relay.package.sha256.c9b2b8da5b300261ed28f70e8f6fd6766db76861aa6fbe2ffc2ed1325e1cbce3"
       ],
       "createdAt": "2026-11-13T03:26:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.normal-browser-provider.attempt2-human-interrupted-r3-formed.20261112A",
+      "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Attempt 2 launched the exact native Browser candidate and emitted READY but Victor closed the window before FINISH or Vextreme chrome observation. The fail-closed launcher returned SAFE_FAILURE; this is classified as human interruption before the browser predicate, not provider or source failure. Candidate head/tree remain unchanged. Fresh VexRelay attempt 3 was formed with rotated attempt identity only.",
+      "actorRef": "actor.chatgpt.normal-browser-provider",
+      "sourceRefs": [
+        "relay.return.sha256.89d1eb5f4d977de8480933f9127acd5c3b2297b919cc0cdc61e6cbbcbfe9d44a",
+        "relay.inner-return.sha256.d48fe919b878de4ea796518ed40432e2e497e05796684d414fcde0e362e84933",
+        "github.pull.vexlife-prod.101",
+        "relay.package.sha256.0eecae016de2ef02db187abba2ab88112df8e1bbf27dfafa0725a35e1c8ccb5e"
+      ],
+      "createdAt": "2026-11-13T03:29:00.000Z"
     }
   ],
   "sourceRefs": [
