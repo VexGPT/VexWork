@@ -1820,14 +1820,25 @@ recover/rebuild exact persistent local artifact
 -> PR #114 exact-head SourceOwner
 -> Assurance / lifecycle / integration
 -> install running Product carrying persistent selected-scope runtime
--> lived engage/select-once/project/stop proof
+-> substrate lived engage/select-once/project/stop proof
 
-NEXT SDK EFFECT SLICE
+NEXT PRODUCT SCOPE SEMANTIC / PRESENTATION SLICE
+accepted persistent Product service projection
+-> evolve VexLifeVisionFamily from one-shot reachability to human persistent-scope meaning
+-> interpret Product-safe SDK projection instead of copying native lifecycle
+-> human Engage / Stop controls
+-> quiet truthful persistent selected-scope indicator
+-> LOOK remains held from execution until the later effect slice
+-> lived human select-once / browse / stop proof through ordinary Product presentation
+-> no capture merely from this slice
+
+NEXT SDK LOOK EFFECT SLICE
 accepted session LOOK semantics
 -> persistent native LOOK/capture realization
 -> exact single-use capture reservation/replay boundary
 -> no picker replay
 -> content-absent capture/Perception proof
+-> actual LOOK indicator truth becomes available to Product
 
 NEXT VISUAL SLICE
 qualified VLM/visual worker
@@ -1835,20 +1846,17 @@ qualified VLM/visual worker
 -> bounded derived visual meaning
 -> no raw persistence
 
-NEXT PRODUCT CONVERSATION SLICE
+NEXT PRODUCT CONVERSATION / LOOK PRESENTATION SLICE
 Capability Atlas requestability
 + DirectCompanionTurn bounded internal Vision request
 + injected service-owned Vision continuation
 + final prompt rematerialization
 + one final inference
 + bounded visionLookTrace
-
-NEXT PRESENTATION SLICE
-quiet persistent scope indicator
-!= brief active LOOK indicator
++ brief active LOOK indicator distinct from quiet engaged-scope indicator
 
 LIVED END-TO-END
-select once
+select once through ordinary Product UI
 -> browse/scroll
 -> ask something visually dependent
 -> Vex chooses LOOK
