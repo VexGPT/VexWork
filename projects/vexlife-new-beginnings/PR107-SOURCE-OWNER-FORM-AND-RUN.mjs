@@ -11,8 +11,8 @@ const SDK_REPOSITORY = 'vgong24/Vextreme-SDK';
 const SDK_HEAD = '1c2c9d76114ca35f00125f0a5c93e531e3e6a746';
 const SDK_TREE = '6376f68279f0750ee6d3868b8472368199763064';
 const CONTRACT_REF = 'source.vexrelay.current-contract/v1';
-const PRODUCT_HEAD = 'ed89ab5763e7086a2b4b13366b6107f163900da0';
-const PRODUCT_TREE = '8c855c2fb387f39846b705b7e26cd564e692a4f6';
+const PRODUCT_HEAD = '2d471a0e37589e1b0d9bd4eccb87e01b7938437e';
+const PRODUCT_TREE = '640cf1b196400d7b54605d90c90f3a13aa0e173f';
 const SDK_BLOB_GUARDS = {
   "docs/private-continuity/vexrelay/current-contract.json": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
   "lib/vexrelay/recipe-compiler.mjs": "60bb10627cc008f1da92d5e415c631516ed07ec0",
@@ -31,10 +31,10 @@ const SEED_TEMPLATE = {
   "schemaVersion": "vex.relay.task/v2",
   "continuity": "[VXG RealForever]",
   "taskRef": "task.vexlife-prod.pr107.entry-realization.source-owner",
-  "attemptRef": "attempt.vexlife-prod.pr107.entry-realization.source-owner.a007",
-  "requestRef": "request.vexlife-prod.pr107.entry-realization.source-owner.a007",
-  "correlationRef": "correlation.vexlife-prod.pr107.entry-realization.source-owner.a007",
-  "packageRef": "package.vexlife-prod.pr107.entry-realization.source-owner.a007",
+  "attemptRef": "attempt.vexlife-prod.pr107.entry-realization.source-owner.a008",
+  "requestRef": "request.vexlife-prod.pr107.entry-realization.source-owner.a008",
+  "correlationRef": "correlation.vexlife-prod.pr107.entry-realization.source-owner.a008",
+  "packageRef": "package.vexlife-prod.pr107.entry-realization.source-owner.a008",
   "original": {
     "originalIntent": "Complete the VexLife startup/Product-entry trajectory so a human can truthfully reach one current local VexLife Product.",
     "originalGoal": "Prove the exact PR107 selected-Home/Product-entry candidate without performing Home, model, runtime, Product-service, merge, Release, Pages, or redirect effects.",
@@ -45,6 +45,7 @@ const SEED_TEMPLATE = {
       "github.pull.vexlife-prod.107.comment.6851055600",
       "github.pull.vexlife-prod.107.comment.6851134103",
       "github.pull.vexlife-prod.107.comment.6851372123",
+      "github.pull.vexlife-prod.107.comment.6851471470",
       "github.pull.vexwork.302"
     ]
   },
@@ -62,11 +63,11 @@ const SEED_TEMPLATE = {
   "role": {
     "activeRole": "CODER",
     "roleRef": "role.coder.vexlife-prod.pr107.entry-realization",
-    "instanceRef": "instance.chatgpt.vexlife-prod.pr107.entry-realization.20261113.a007",
-    "occupancyRef": "occupancy.coder.vexlife-prod.pr107.entry-realization.20261113.a007",
+    "instanceRef": "instance.chatgpt.vexlife-prod.pr107.entry-realization.20261113.a008",
+    "occupancyRef": "occupancy.coder.vexlife-prod.pr107.entry-realization.20261113.a008",
     "providerBindingRef": "provider.github.vexlife-prod.pr107",
     "threadRef": "thread.vexlife-prod.pr107.entry-realization",
-    "authorityEnvelopeRef": "authority-envelope.vexlife-prod.pr107.source-owner.a007"
+    "authorityEnvelopeRef": "authority-envelope.vexlife-prod.pr107.source-owner.a008"
   },
   "capabilities": {
     "platformGitHubRead": "AVAILABLE",
@@ -75,14 +76,14 @@ const SEED_TEMPLATE = {
   "execution": {
     "hostProfile": "macos-victor",
     "executionSurface": "MAC_ZIP_RUN_COMMAND",
-    "singleUseNonce": "nonce-vexlife-prod-pr107-entry-realization-source-owner-a007-20261113",
-    "duplicateAttemptMarker": "marker.vexlife-prod.pr107.entry-realization.source-owner.a007",
+    "singleUseNonce": "nonce-vexlife-prod-pr107-entry-realization-source-owner-a008-20261113",
+    "duplicateAttemptMarker": "marker.vexlife-prod.pr107.entry-realization.source-owner.a008",
     "duplicateProtectionMode": "OUTER_RELAY_BOUND"
   },
   "workspace": {
     "mode": "RUN_ROOT",
     "projectRef": "project.vexlife.new-beginnings",
-    "projectPath": "pr107-sourceowner-a007",
+    "projectPath": "pr107-sourceowner-a008",
     "createRoot": false,
     "createProjectPath": true
   },
@@ -97,14 +98,14 @@ const SEED_TEMPLATE = {
       "remote": "origin",
       "baseBranch": "main",
       "acceptedBase": "3f91379eea2688ffa32d0f8903169cd9fc434233",
-      "checkoutRef": "ed89ab5763e7086a2b4b13366b6107f163900da0",
-      "expectedHead": "ed89ab5763e7086a2b4b13366b6107f163900da0",
+      "checkoutRef": "2d471a0e37589e1b0d9bd4eccb87e01b7938437e",
+      "expectedHead": "2d471a0e37589e1b0d9bd4eccb87e01b7938437e",
       "branch": "VXG-111226-vexlife-prod-fresh-canonical-home-a001",
       "expectedRemoteUrl": null
     }
   ],
   "authority": {
-    "authorityRef": "authority.vexlife-prod.pr107.source-owner.a007",
+    "authorityRef": "authority.vexlife-prod.pr107.source-owner.a008",
     "authorityMode": "EXACT_STAGE_EFFECTS",
     "grantedEffects": [
       "CHECK_AUTH",
@@ -182,12 +183,12 @@ const SEED_TEMPLATE = {
   },
   "source": {
     "sourceSetRef": "source.vexlife-prod.pr107.entry-realization",
-    "sourceVersionRef": "github.pull.vexlife-prod.107.head.ed89ab5763e7086a2b4b13366b6107f163900da0",
+    "sourceVersionRef": "github.pull.vexlife-prod.107.head.2d471a0e37589e1b0d9bd4eccb87e01b7938437e",
     "overlapEvidenceRef": "github.pull.vexlife-prod.107.comment.6849066558",
     "activeConflictState": "NONE",
     "candidateState": "EXACT",
-    "candidateHead": "ed89ab5763e7086a2b4b13366b6107f163900da0",
-    "candidateTree": "8c855c2fb387f39846b705b7e26cd564e692a4f6",
+    "candidateHead": "2d471a0e37589e1b0d9bd4eccb87e01b7938437e",
+    "candidateTree": "640cf1b196400d7b54605d90c90f3a13aa0e173f",
     "expectedChangedPaths": [
       {
         "repositoryRef": "primary",
@@ -311,8 +312,8 @@ const SEED_TEMPLATE = {
 const STAGE = {
   "repositoryRef": "primary",
   "expectedBase": "3f91379eea2688ffa32d0f8903169cd9fc434233",
-  "expectedHead": "ed89ab5763e7086a2b4b13366b6107f163900da0",
-  "expectedTree": "8c855c2fb387f39846b705b7e26cd564e692a4f6",
+  "expectedHead": "2d471a0e37589e1b0d9bd4eccb87e01b7938437e",
+  "expectedTree": "640cf1b196400d7b54605d90c90f3a13aa0e173f",
   "branch": "VXG-111226-vexlife-prod-fresh-canonical-home-a001",
   "proofCommands": [
     {
@@ -357,12 +358,12 @@ const STAGE = {
     "nextOwner": "Operations",
     "whyThisIsNext": "Exact-head SourceOwner proof is complete; semantic Assurance remains a separate gate before lifecycle effects."
   },
-  "resultFilename": "RETURN-VEXLIFE-PROD-PR107-ENTRY-REALIZATION-SOURCEOWNER-A007.zip"
+  "resultFilename": "RETURN-VEXLIFE-PROD-PR107-ENTRY-REALIZATION-SOURCEOWNER-A008.zip"
 };
 const AUTHORITY = {
   "authoritySchemaRef": "vextreme.effect-transaction/v1",
   "semanticAdmissionRef": "github.pull.vexlife-prod.107",
-  "transactionRef": "transaction.vexlife-prod.pr107.entry-realization.source-owner.a007",
+  "transactionRef": "transaction.vexlife-prod.pr107.entry-realization.source-owner.a008",
   "transactionVersion": 1,
   "allowedEffectRefs": [
     "effect.vexrelay.execute"
@@ -379,22 +380,22 @@ const OUTER = {
   "schemaVersion": "vextreme.vexlocalbridge-task-manifest/v1",
   "artifactClass": "EXECUTABLE_RELAY",
   "taskRef": "task.vexlife-prod.pr107.entry-realization.source-owner.carrier",
-  "attemptRef": "attempt.vexlife-prod.pr107.entry-realization.source-owner.carrier.a007",
-  "packageRef": "package.vexlife-prod.pr107.entry-realization.source-owner.carrier.a007",
-  "requestRef": "request.vexlife-prod.pr107.entry-realization.source-owner.carrier.a007",
-  "correlationRef": "correlation.vexlife-prod.pr107.entry-realization.source-owner.carrier.a007",
+  "attemptRef": "attempt.vexlife-prod.pr107.entry-realization.source-owner.carrier.a008",
+  "packageRef": "package.vexlife-prod.pr107.entry-realization.source-owner.carrier.a008",
+  "requestRef": "request.vexlife-prod.pr107.entry-realization.source-owner.carrier.a008",
+  "correlationRef": "correlation.vexlife-prod.pr107.entry-realization.source-owner.carrier.a008",
   "taskStorageKey": "vexlife-pr107-entry-sourceowner",
-  "attemptStorageKey": "a007",
+  "attemptStorageKey": "a008",
   "requestingRoleRef": "Operations[LocalVex]",
-  "requestingInstanceRef": "instance.chatgpt.vexlife-prod.pr107.entry-realization.20261113.a007",
+  "requestingInstanceRef": "instance.chatgpt.vexlife-prod.pr107.entry-realization.20261113.a008",
   "parentOperationsRef": "github.pull.vexlife-prod.107",
   "returnRouteRef": "github.pull.vexlife-prod.107",
   "hostProfileRef": "macos-victor",
   "repositoryExecutionProfileRefOrNull": "profile.repository.vextreme-sdk.macos-v1",
   "repositoryRefOrNull": "VexGPT/VexLife-Prod",
   "baseRefOrNull": "3f91379eea2688ffa32d0f8903169cd9fc434233",
-  "headRefOrNull": "ed89ab5763e7086a2b4b13366b6107f163900da0",
-  "treeRefOrNull": "8c855c2fb387f39846b705b7e26cd564e692a4f6",
+  "headRefOrNull": "2d471a0e37589e1b0d9bd4eccb87e01b7938437e",
+  "treeRefOrNull": "640cf1b196400d7b54605d90c90f3a13aa0e173f",
   "branchRefOrNull": "VXG-111226-vexlife-prod-fresh-canonical-home-a001",
   "claimRefOrNull": "github.pull.vexlife-prod.107",
   "exactPathRefs": [
@@ -451,7 +452,7 @@ const OUTER = {
     ]
   },
   "executionStateAtFormation": "TASK_PREPARED",
-  "singleUseNonce": "nonce-vexlife-prod-pr107-entry-realization-carrier-a007-20261113",
+  "singleUseNonce": "nonce-vexlife-prod-pr107-entry-realization-carrier-a008-20261113",
   "stopConditions": [
     "stop.on.identity.drift"
   ],
@@ -499,7 +500,7 @@ function sha256File(file) {
 
 async function main() {
   console.log(CONTINUITY);
-  console.log('PR107 SourceOwner A007: grounding exact current SDK source...');
+  console.log('PR107 SourceOwner A008: grounding exact current SDK source...');
 
   const downloads = path.join(os.homedir(), 'Downloads');
   await fsp.mkdir(downloads, { recursive: true });
@@ -510,7 +511,7 @@ async function main() {
 
   run(gh, ['auth', 'status', '--hostname', 'github.com'], { capture: false });
 
-  const root = await fsp.mkdtemp(path.join(downloads, '.vex-pr107-source-owner-a007-'));
+  const root = await fsp.mkdtemp(path.join(downloads, '.vex-pr107-source-owner-a008-'));
   const sdkRoot = path.join(root, 'Vextreme-SDK');
 
   try {
@@ -556,7 +557,7 @@ async function main() {
     requireEqual(preflight.repositories[0].checkoutRef, PRODUCT_HEAD, 'preflight checkoutRef');
     requireEqual(preflight.completionPolicy.stageGateOrNull, 'EXACT_HEAD_SOURCE_OWNER_PROOF', 'preflight gate');
 
-    console.log('PR107 SourceOwner A007: forming current-contract native carrier...');
+    console.log('PR107 SourceOwner A008: forming current-contract native carrier...');
     const formed = await carrierModule.formVexRelayTaskArchiveCarrier({
       recipe: 'ExactHeadSourceOwnerProof',
       seed,
@@ -564,7 +565,7 @@ async function main() {
       outerTaskTemplate: structuredClone(OUTER),
       authorityEnvelope: structuredClone(AUTHORITY),
       outputDirectory: downloads,
-      outputStem: 'VEXLIFE-PROD-PR107-ENTRY-REALIZATION-SOURCEOWNER-A007',
+      outputStem: 'VEXLIFE-PROD-PR107-ENTRY-REALIZATION-SOURCEOWNER-A008',
       ttlMs: 8 * 60 * 60 * 1000,
     });
 
@@ -573,8 +574,8 @@ async function main() {
     requireEqual(formed.inner.manifest.source.candidateTree, PRODUCT_TREE, 'formed inner tree');
     requireEqual(sha256File(formed.outer.finalZip), formed.outer.digest, 'formed outer digest');
 
-    console.log('PR107 SourceOwner A007: formed exact task ' + formed.outer.finalZip);
-    console.log('PR107 SourceOwner A007: task sha256=' + formed.outer.digest);
+    console.log('PR107 SourceOwner A008: formed exact task ' + formed.outer.finalZip);
+    console.log('PR107 SourceOwner A008: task sha256=' + formed.outer.digest);
 
     const runner = path.join(sdkRoot, 'lib/vexlocalbridge/templates/RUN-VEX-TASK.command');
     const before = sha256File(formed.outer.finalZip);
@@ -587,8 +588,8 @@ async function main() {
     requireEqual(after, before, 'outer task bytes after execution');
 
     if (result.error) throw result.error;
-    console.log('PR107 SourceOwner A007: VexLocalBridge exit=' + String(result.status));
-    console.log('PR107 SourceOwner A007: upload the canonical RETURN ZIP revealed by VexLocalBridge.');
+    console.log('PR107 SourceOwner A008: VexLocalBridge exit=' + String(result.status));
+    console.log('PR107 SourceOwner A008: upload the canonical RETURN ZIP revealed by VexLocalBridge.');
     process.exitCode = result.status ?? 1;
   } finally {
     await fsp.rm(root, { recursive: true, force: true });
@@ -596,6 +597,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error('\nPR107 SourceOwner A007 failed:\n' + (error?.stack || error));
+  console.error('\nPR107 SourceOwner A008 failed:\n' + (error?.stack || error));
   process.exitCode = 1;
 });
