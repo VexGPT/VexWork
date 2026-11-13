@@ -3516,6 +3516,198 @@ LOOK source may be designed in parallel, but no later layer may silently treat t
 window boundary as already proven.
 
 <!-- [VXG RealForever][VEXLIFE][VISION][FIRST-PERSISTENT-SCOPE-PRODUCT-BLUEPRINT][20261113] -->
+### Persistent LOOK evidence chain — preserve selection chronology without another Store
+
+Persistent LOOK has one evidentiary requirement that the one-shot path did not need:
+
+~~~text
+human picker selection happened earlier
+-> scope stayed engaged
+-> later capture happened without picker replay
+~~~
+
+Security must be able to prove that chronology without inventing:
+
+~~~text
+pickerPresentedForThisCapture=true
+~~~
+
+and without exporting native window/provider identity.
+
+#### Reuse the existing content-absent establishment event
+
+Current native selected-scope helper already emits one exact content-absent event when the system
+picker establishes the scope:
+
+~~~text
+SELECTED_SCOPE_ENGAGED
+scopeSessionRef
+selectedScopePresent=true
+providerScopeRetained=true
+streamObjectRetained=true
+all capture / raw / observation flags=false
+emittedAt
+~~~
+
+Current host custody validates that event before the pure session can become ENGAGED, then discards
+the event body after applying the transition.
+
+For later LOOK, host custody may retain **that exact validated content-absent establishment evidence**
+in memory for the lifetime of the selected scope.
+
+~~~text
+SELECTION_ESTABLISHMENT_EVIDENCE
+!= NATIVE_PROVIDER_IDENTITY
+!= WINDOW_TITLE
+!= APP_IDENTITY
+!= RAW_PIXELS
+~~~
+
+Clear it when the selected scope ends/is held/released.
+
+#### Bind establishment evidence into the pre-capture reservation
+
+The durable LOOK reservation should bind the exact current scope establishment evidence before native
+capture dispatch.
+
+Candidate relationship:
+
+~~~text
+reservation
+  requestRef
+  scopeSessionRef
+  validated selected-scope establishment evidence/fingerprint
+  fresh LOOK Safety refs
+  reservedAt
+  one-use identity
+~~~
+
+Then after capture:
+
+~~~text
+completion
+  exact reservation
+  exact persistent-scope capture receipt
+  same requestRef
+  same scopeSessionRef
+  capture result / digest / dimensions
+  no raw bytes
+~~~
+
+This makes the durable effect chain sufficient to answer after a process/turn failure:
+
+~~~text
+which human-selected scope was this LOOK bound to?
+which fresh Safety was used?
+was this request already reserved?
+did a content-absent capture completion become durable?
+~~~
+
+without requiring a separate durable selected-scope history system.
+
+#### Native capture result should be a separate event/receipt family
+
+Do not widen the current lifecycle event schema by allowing its previously-forbidden capture flags to
+turn true.
+
+Current lifecycle events deliberately prove non-capture selected-scope custody.
+
+Persistent LOOK should add a distinct bounded command/result relationship:
+
+~~~text
+native lifecycle events
+  SELECTED_SCOPE_ENGAGED
+  SOURCE_LOST / release / Safety end
+  -> remain selected-scope lifecycle truth
+
+native LOOK command
+  -> exact requestRef
+  -> exact fresh Safety binding/expiry needed by native capture boundary
+
+native LOOK result / Process Factory capture receipt
+  -> exact requestRef
+  -> exact scopeSessionRef
+  -> captureAttempted
+  -> captureCount <= 1
+  -> captureSucceeded / bounded failure
+  -> frameSha256OrNull
+  -> frameWidth/HeightOrNull
+  -> observedAt
+  -> rawBytesIncluded=false for the content-absent capture-proof slice
+~~~
+
+Exact schema/field names remain source-placement work. The ownership distinction is the invariant.
+
+#### Host custody is the first place to pressure, not a new replay subsystem
+
+Host custody already owns:
+
+~~~text
+the selected-scope child process
+the exact validated selection event
+the pure session instance
+native event parsing
+stop/release settlement
+~~~
+
+So the first implementation pressure is to extend **that existing owner** with the narrow LOOK
+dispatch/replay responsibility while consuming a caller-supplied durable root.
+
+Do not automatically create a new `VisionEffectStore` or generic effect manager.
+
+A separate module is earned only if the durable reservation/completion logic becomes a recurring
+independent contract that cannot remain in host custody without obscuring or duplicating ownership.
+
+~~~text
+NEW_FILE_FOR_NEATNESS
+!= NEW_OWNER_EARNED
+~~~
+
+#### Active capture indicator can remain short-lived
+
+The accepted one-shot target-outline behavior is useful as a **pattern** for the stronger actual-LOOK
+pulse:
+
+~~~text
+LOOK admitted
+-> establish current selected source/geometry
+-> brief host-local target indication
+-> at most one SCScreenshotManager capture
+-> remove indication
+~~~
+
+That short-lived capture indicator is different from the unresolved quiet persistent exact-window
+boundary. It does not require a permanently maintained geometry observer.
+
+If the SOURCE_LOST/currentness primitive also proves current geometry at LOOK time, reuse that same
+host-local observation for the pulse rather than adding another source enumeration.
+
+#### Security successor can then prove the real chronology
+
+The new Security owner can consume:
+
+~~~text
+validated selection establishment evidence
++ durable LOOK reservation
++ exact persistent-scope capture receipt
+~~~
+
+and prove:
+
+~~~text
+human selected this scope earlier through the OS picker
+same scopeSessionRef remained the capture source
+fresh SCREEN Safety bound this LOOK
+one request produced at most one capture
+active LOOK indicator obligation was met
+no picker was falsely claimed for the later capture
+no standing monitor / continuous capture was created
+~~~
+
+Then Perception may consume that exact new witness to form one content-absent current VISUAL
+observation.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][PERSISTENT-LOOK-EVIDENCE-CHAIN][20261113] -->
 #### Persistent LOOK cannot reuse one-shot Security / Perception unchanged
 
 Current accepted one-shot Security source is explicitly bound to:
