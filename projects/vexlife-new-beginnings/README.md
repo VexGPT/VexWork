@@ -448,6 +448,92 @@ projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md
 board.vexlife-prod.perceivability-alignment
 ~~~
 
+## Parallel continuation — Vex Vision beside a real browser
+
+Victor's clarified browser outcome remains one current Work family:
+
+~~~text
+ordinary real browser
++ persistent explicitly selected Vision scope
++ canonical Vex Conversation
+~~~
+
+Durable detail:
+
+[VEX-VISION-COMPANION.md](./VEX-VISION-COMPANION.md)
+
+Current Work truth:
+
+~~~text
+work.vexlife.new-beginnings.vision-companion-real-browser-witness
+  RUNNING / HIGH / ACTIVE
+  authorityDisposition = NO_AUTHORITY
+  effectDisposition    = NO_EFFECTS
+
+work.vexlife.new-beginnings.vision-companion-product-surface
+  COMPLETED
+
+work.vexlife.new-beginnings.vision-product-runtime-orchestration
+  COMPLETED
+
+work.vexlife.new-beginnings.vision-scope-current-context
+  RUNNING / HIGH / ACTIVE
+  authorityDisposition = NO_AUTHORITY
+  effectDisposition    = NO_EFFECTS
+~~~
+
+The completed source path already carries the one-shot USER_SELECTED_SESSION runtime through Product
+carriage, Product service reachability and live Vision presentation.
+
+The current human intention is more precise than repeated `LookNow` clicks:
+
+~~~text
+select one window once
+-> selected window remains the engaged Vision scope
+-> scrolling/navigation changes the current contents without continuous frame accumulation
+-> on a Conversation turn, Vex may decide vision is materially relevant
+-> only then request one fresh snapshot of the CURRENT scope
+-> derive bounded visual meaning into Conversation Context
+-> discard raw pixels
+-> keep Vision state / Conversation history / durable Memory separate
+~~~
+
+Permanent:
+
+~~~text
+VISION_SCOPE_ACTIVE
+!= SCREEN_CAPTURE_ACTIVE
+!= MODEL_INFERENCE_ACTIVE
+!= MEMORY_ACCEPTED
+
+CONVERSATION_TURN
+!= AUTOMATIC_SCREENSHOT
+~~~
+
+Current external truth at this checkpoint:
+
+~~~text
+Vextreme-SDK main
+  55a9cd5a99eaaf9f17f7c3875b109548fdc31d81
+
+VexLife-Prod main
+  37812f5717a34ec87c76667165f3c11642de0440
+
+SDK PR #1945
+  open one-shot selected-target feedback correction
+  A001 proof-harness failure preserved
+  candidate-source defect not established
+  corrected A002 proof formation remains next
+~~~
+
+PR #1945 is useful current feedback work, but the persistent-scope/context child is the broader next
+product relationship. SDK PR #1946 now carries the first exact Process Factory selected-scope session
+contract under that child; executable SourceOwner proof remains pending. VexWork owns the Work
+coordinate; VexLife-Prod and Vextreme-SDK remain the rightful semantic/effect owners.
+
+No new Project, Vision Store, continuous screen listener, automatic Memory promotion or background
+capture is earned by this currentization.
+
 ## Architecture horizon — preserve during manifestation parity
 
 The lower lived circuit is now stable enough to refactor **without changing its human outcome**.

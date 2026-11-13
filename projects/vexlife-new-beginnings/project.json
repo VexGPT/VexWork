@@ -11,7 +11,8 @@
     "repo.vexlife-prod",
     "repo.vexlife-android",
     "repo.vexlife",
-    "repo.vextreme"
+    "repo.vextreme",
+    "repo.vextreme-sdk"
   ],
   "sourceRefs": [
     "projects/vexlife-new-beginnings/README.md",
@@ -108,7 +109,15 @@
     "github.commit.vexlife-android.ecbb6987d1da338fa0adf7297456d3f652f04155",
     "artifact.vexlife-prod.a022.host-lifetime.return.sha256.ac1a135a780aa737b5c06267af38bf5e707713545c3ecfd181a78bda741a21fa",
     "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5",
-    "human.witness.vexlife-prod.manifestation-parity-gap.20261106"
+    "human.witness.vexlife-prod.manifestation-parity-gap.20261106",
+    "projects/vexlife-new-beginnings/VEX-VISION-COMPANION.md",
+    "human.intent.vexlife.vision-companion.real-browser-witness.20261107",
+    "github.pull.vexwork.275",
+    "github.pull.vexlife-prod.54",
+    "github.commit.vexlife-prod.92abc26e6acd2f6604d921c259da6d40950a0f10",
+    "github.pull.vexlife-prod.54.comment.6761261558",
+    "github.commit.vextreme-sdk.c39951fe260e505b4a3c5b8f606cc8da14c985c0",
+    "github.pull.vextreme-sdk.1939"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
