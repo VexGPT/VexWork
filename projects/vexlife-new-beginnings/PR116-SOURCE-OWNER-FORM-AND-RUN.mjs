@@ -93,7 +93,7 @@ async function main() {
 
   run(gh, ['auth', 'status', '--hostname', 'github.com'], { capture: false });
 
-  const bootstrapRoot = await fsp.mkdtemp(path.join(downloads, '.vex-pr116-so-a001-'));
+  const bootstrapRoot = await fsp.mkdtemp(path.join(downloads, '.vex-pr116-so-a002-'));
   const sdkRoot = path.join(bootstrapRoot, 'Vextreme-SDK');
 
   try {
@@ -207,7 +207,7 @@ async function main() {
       hostProfile: 'macos-victor',
       executionSurface: 'MAC_ZIP_RUN_COMMAND',
       singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-a002',
-      duplicateAttemptMarker: 'marker.vexlife-prod-pr116-source-owner-proof-a001',
+      duplicateAttemptMarker: 'marker.vexlife-prod-pr116-source-owner-proof-a002',
       duplicateProtectionMode: 'OUTER_RELAY_BOUND',
       formedAt: now.toISOString(),
       expiresAtOrNull: new Date(now.getTime() + 30 * 60 * 1000).toISOString(),
@@ -241,7 +241,7 @@ async function main() {
 
     seed.authority = {
       ...seed.authority,
-      authorityRef: 'authority.vexlife-prod.pr116.source-owner.a001',
+      authorityRef: 'authority.vexlife-prod.pr116.source-owner.a002',
       authorityMode: 'EXACT_STAGE_EFFECTS',
       grantedEffects: [...effects],
       conditionalEffects: [],
@@ -405,7 +405,7 @@ async function main() {
       requestRef: 'request.vexlife-prod.pr116.source-owner-proof.carrier.a002',
       correlationRef: 'correlation.vexlife-prod.pr116.source-owner-proof.carrier.a002',
       taskStorageKey: 'task-vexlife-prod-pr116-source-owner-proof',
-      attemptStorageKey: 'attempt-a001',
+      attemptStorageKey: 'attempt-a002',
       requestingRoleRef: 'Operations[RelationshipContinuity]',
       requestingInstanceRef: 'instance.chatgpt.relationship-continuity.20261113.a001',
       parentOperationsRef: ISSUE_REF,
