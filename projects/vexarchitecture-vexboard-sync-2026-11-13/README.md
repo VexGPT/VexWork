@@ -7,6 +7,8 @@
 Keep VexBoard Screen Lens perception aligned with the stable VexArchitecture body by periodically asking one concrete question:
 
 > For every screen, control, pathway, Behavior relationship and Depth relationship, does the Lens show as much of the architecture as current source actually proves — no less, and no invented extra depth?
+>
+> From a human-facing feature coordinate, can the Board preserve the source-proven causal feature loop far enough to understand the intention, semantic owner, concrete realization, independently-owned reality, reconciliation/return, and resulting human-facing projection — while stopping truthfully where source stops or remains held?
 
 This Project exists because the check is expected to recur as VexArchitecture and Android source evolve. It is a sanity-check Project, not a new architecture owner.
 
@@ -176,6 +178,125 @@ SOURCE ENDS AT RIGHTFUL PROVIDER / STORE BOUNDARY
 -> KEEP THE TERMINAL
 ```
 
+
+## End-to-end feature invariant
+
+Screen Lens is a hub-space projection over source truth. It must not become a second feature model or architecture registry.
+
+An end-to-end feature is **not** "every class beneath a Screen", one mandatory linear pipeline, or one giant integration test. It is the source-proven causal/lived feature slice whose ownership remains intelligible from the human/product intention through whatever reality actually changes and back to what the human can experience.
+
+When source earns the full loop, the useful causal spine is:
+
+```text
+human / product intention
+    ↓
+Control + exact CURRENT State
+    ↓
+Family / rightful semantic decision
+    ↓
+Act
+├─ admitted semantic State, when earned
+└─ Effect, when concrete realization is needed
+    ↓
+bound Method / concrete realization
+    ↓
+Execution custody, when earned
+    ↓
+Store / provider / platform / Partner participation
+    ↓
+independently-owned reality
+    ↓
+rightful observation + reconciliation
+    ↓
+already-semantic State / relationship truth
+    ↓
+Family.observe(...) or the rightful semantic owner
+    ↓
+Projection / DisplayState
+    ↓
+concrete presentation meaning
+    ↓
+platform manifestation
+    ↓
+human experience
+```
+
+The loop is conditional, not ceremonial:
+
+```text
+Partner
+    only when independently-owned external participation earns
+    Source / Signal / Connection / Observation semantics
+
+Relay / convergence
+    only when independently-owned truths must become new relationship truth
+
+Service / sustained realization
+    only when concrete behavior must outlive the initiating UI/caller
+    while semantic truth remains elsewhere
+
+Widget / other human surface
+    manifestation of already-owned truth
+    != a second semantic owner
+
+Dependency / construction
+Logger / chronology
+Forensics / provenance
+    orthogonal relationships
+    != mandatory sequential stages
+```
+
+Therefore:
+
+```text
+END_TO_END != TRACE_EVERY_CLASS
+END_TO_END != FORCE_EVERY_ARCHITECTURAL_NOUN
+END_TO_END != ONE_GIANT_TEST
+END_TO_END != STORE_MUST_ALWAYS_HAVE_MORE_DEPTH
+
+SOURCE-PROVEN RETURN EXISTS
++ LENS TERMINATES BEFORE IT
+-> PROJECTION GAP
+
+SOURCE-PROVEN RELATIONSHIP IS ALREADY EXTRACTED
++ BOARD FACE HIDES / COLLAPSES IT
+-> PROJECTION GAP
+
+SOURCE TRUTHFULLY STOPS
+-> RIGHTFUL TERMINAL
+
+SOURCE RELATIONSHIP IS NOT YET PROJECTABLE WITHOUT GUESSING
+-> HELD
+```
+
+The Board should make the causal neighborhood needed for understanding source-addressable from the selected human feature coordinate. It does not have to flatten every orthogonal relationship into one graph.
+
+### Proof follows the feature claim
+
+"End-to-end" does not replace rightful proof surfaces with one universal test.
+
+```text
+semantic law
+    -> focused source/unit proof
+
+relationship / convergence / currentness
+    -> focused relationship proof
+
+platform realization / sustained lifetime
+    -> Android/native proof where implicated
+
+provider behavior
+    -> provider/lived proof where implicated
+
+presentation
+    -> render/device proof where implicated
+
+whole human journey
+    -> Journey/lived feature proof when that is the claim
+```
+
+A green proof at one boundary does not silently prove the others.
+
 ## Audit method
 
 ### Pass A — Screen and control census
@@ -206,7 +327,9 @@ Behavior
 Depth
   what realizes it?
   what outside truth participates?
+  what relationship/currentness/reconciliation is source-proven?
   how does truth return?
+  where does the returned truth become human-facing meaning again?
 ```
 
 Follow exact source, not labels alone.
@@ -287,6 +410,8 @@ regression proof
 generated-currentness consequence
 ```
 
+A repair is not complete merely because the graph is deeper. It should preserve the smallest source-proven causal neighborhood needed to understand the feature, including a return/presentation relationship when source proves one, while remaining generic across features that share the same relationship shape.
+
 Permanent:
 
 ```text
@@ -328,10 +453,11 @@ A fresh instance should:
 2. ground VexWork current main and this Project source;
 3. re-ground Vextreme/VexLife-Android current source before treating the formation coordinates as current;
 4. preserve open VexBoard #295 as a separate lived-verification trajectory;
-5. begin with **Freeze sync baseline and audit contract**;
-6. do not mutate Lens/Android source during the census/audit stages;
-7. capture concrete projection gaps before proposing repairs;
-8. use the current VexWork generated-consequence route when this Project source itself is integrated.
+5. carry the **end-to-end feature invariant** above as the comparison frame, without forcing optional architecture into every feature;
+6. begin with **Freeze sync baseline and audit contract**;
+7. do not mutate Lens/Android source during the census/audit stages;
+8. capture concrete projection gaps before proposing repairs;
+9. use the current VexWork generated-consequence route when this Project source itself is integrated.
 
 ## Formation boundary
 

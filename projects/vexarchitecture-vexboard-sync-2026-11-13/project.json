@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexarchitecture.vexboard-sync.20261113",
   "label": "VexArchitecture VexBoard Sync Nov 13, 2026",
-  "purpose": "Keep VexBoard Screen Lens perception aligned with the stable VexArchitecture ownership grammar by repeatedly auditing every current screen and projected pathway against exact VexLife-Android source, with special attention to Depth closure: distinguish truthful Store/provider terminals from missing Partner, Connection, Signal, Observation, Receiver, Execution, Relay, Service-host, Widget/presentation, or Family-return relationships, then repair only source-proven projection gaps without making VexBoard a semantic owner.",
+  "purpose": "Keep VexBoard Screen Lens perception aligned with the stable VexArchitecture ownership grammar by repeatedly auditing every current human-facing feature coordinate, screen and projected pathway against exact VexLife-Android source: preserve the source-proven causal/lived feature slice from human intention through semantic ownership, concrete realization, independently-owned reality, reconciliation/return and human-facing projection; distinguish truthful terminals and held unknowns from missing Depth/return visibility; and repair only source-proven projection gaps without making VexBoard a semantic owner or forcing optional Partner, Relay, Service, Widget or other relationships where source does not earn them.",
   "rootWorkRefs": [
     "work.vexarchitecture.vexboard-sync.20261113.outcome"
   ],

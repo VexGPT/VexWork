@@ -16673,7 +16673,7 @@
       "project": {
         "projectRef": "project.vexarchitecture.vexboard-sync.20261113",
         "label": "VexArchitecture VexBoard Sync Nov 13, 2026",
-        "purpose": "Keep VexBoard Screen Lens perception aligned with the stable VexArchitecture ownership grammar by repeatedly auditing every current screen and projected pathway against exact VexLife-Android source, with special attention to Depth closure: distinguish truthful Store/provider terminals from missing Partner, Connection, Signal, Observation, Receiver, Execution, Relay, Service-host, Widget/presentation, or Family-return relationships, then repair only source-proven projection gaps without making VexBoard a semantic owner.",
+        "purpose": "Keep VexBoard Screen Lens perception aligned with the stable VexArchitecture ownership grammar by repeatedly auditing every current human-facing feature coordinate, screen and projected pathway against exact VexLife-Android source: preserve the source-proven causal/lived feature slice from human intention through semantic ownership, concrete realization, independently-owned reality, reconciliation/return and human-facing projection; distinguish truthful terminals and held unknowns from missing Depth/return visibility; and repair only source-proven projection gaps without making VexBoard a semantic owner or forcing optional Partner, Relay, Service, Widget or other relationships where source does not earn them.",
         "rootWorkRefs": [
           "work.vexarchitecture.vexboard-sync.20261113.outcome"
         ],
@@ -16713,7 +16713,7 @@
         {
           "workRef": "work.vexarchitecture.vexboard-sync.20261113.baseline-contract",
           "label": "Freeze sync baseline and audit contract",
-          "purpose": "Re-ground Vextreme stable-reader architecture, VexLife-Android current source, VexWork current Screen Lens, and open Screen Lens verification work; record the reusable ownership-to-Lens comparison matrix and exact initial population before judging gaps.",
+          "purpose": "Re-ground Vextreme stable-reader architecture, VexLife-Android current source, VexWork current Screen Lens, and open Screen Lens verification work; freeze the end-to-end comparison contract (human intention -> rightful owners/realization -> outside truth -> reconciliation/return -> human projection, with optional relationships remaining optional) and exact initial population before judging gaps.",
           "workClass": "TASK",
           "state": "READY",
           "workDisposition": "ACTIVE",
@@ -16737,13 +16737,13 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T08:00:00.000Z",
-          "updatedAt": "2026-11-13T08:00:00.000Z",
+          "updatedAt": "2026-11-13T08:53:12.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexarchitecture.vexboard-sync.20261113.depth-closure-audit",
           "label": "Audit Depth closure and external-participant reflection",
-          "purpose": "Inspect every pathway with Depth—especially Store/repository/provider terminals—and follow current Android source far enough to determine whether Depth lawfully stops there or should continue through Method/Execution, Partner/Connection/Conversion/Source/Signal/Observation/Receiver, Store admission, Family return, or presentation; use VexStream Playback and accepted Partner circuits as witnesses, not universal templates.",
+          "purpose": "Inspect every pathway with Depth—especially Store/repository/provider terminals—and follow current Android source far enough to determine whether the selected feature coordinate lawfully stops there or source proves further realization, relationship, outside-truth, reconciliation/observation, semantic return or human-facing projection. Use VexStream Playback and accepted Partner circuits as witnesses, not universal templates, and classify projector loss separately from truthful terminals.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -16769,13 +16769,13 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T08:00:00.000Z",
-          "updatedAt": "2026-11-13T08:00:00.000Z",
+          "updatedAt": "2026-11-13T08:53:12.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
           "label": "Form only source-proven projection repairs",
-          "purpose": "From accepted audit findings, form the smallest VexBoard adapter/overlay/model/test corrections needed to expose relationships that current Android source already proves. Do not mutate Android meaning for VexBoard convenience, do not hand-edit generated Lens JSON, and do not invent Partner/Relay/Service semantics by analogy.",
+          "purpose": "From accepted audit findings, form the smallest generic VexBoard reader/composition/projection/test corrections needed so source-proven causal neighborhoods remain intelligible from a human-facing feature coordinate through rightful owners and, where source proves it, back through return/presentation. Do not mutate Android meaning for VexBoard convenience, hand-edit generated Lens JSON, add feature-specific mappings, or invent Partner/Relay/Service/Widget semantics by analogy.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -16800,13 +16800,13 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T08:00:00.000Z",
-          "updatedAt": "2026-11-13T08:00:00.000Z",
+          "updatedAt": "2026-11-13T08:53:12.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexarchitecture.vexboard-sync.20261113.outcome",
           "label": "VexArchitecture VexBoard Sync Nov 13, 2026",
-          "purpose": "Establish a repeatable VexArchitecture-to-VexBoard sanity-check trajectory that can answer, screen by screen and pathway by pathway, whether Screen Lens Surface/Structure/Behavior/Depth faithfully projects the relationships current Android source actually proves, without assuming every repository/provider boundary should become Partner and without letting missing projection depth hide source-owned relationships.",
+          "purpose": "Establish a repeatable VexArchitecture-to-VexBoard sanity-check trajectory that can answer, from each human-facing feature coordinate, whether Screen Lens Surface/Structure/Behavior/Depth preserves the source-proven causal/lived feature slice from intention through semantic ownership and realization, across independently-owned reality and reconciliation, back to human-facing projection—without forcing optional architecture, inventing depth, or letting truthful relationships disappear behind shallow projection.",
           "workClass": "OUTCOME",
           "state": "DECOMPOSED",
           "workDisposition": "ACTIVE",
@@ -16835,13 +16835,13 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T08:00:00.000Z",
-          "updatedAt": "2026-11-13T08:00:00.000Z",
+          "updatedAt": "2026-11-13T08:53:12.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexarchitecture.vexboard-sync.20261113.repeatable-sync-protocol",
           "label": "Extract repeatable VexArchitecture ↔ VexBoard sync protocol",
-          "purpose": "Turn the completed audit into a lightweight reusable sanity-check route for future architecture evolution: pin architecture/source/Lens coordinates, census screens/pathways, inspect Depth terminals, compare earned relationships, classify gaps, regenerate/check, and preserve evidence without creating a second architecture authority.",
+          "purpose": "Turn the completed audit into a lightweight reusable VexArchitecture ↔ VexBoard sync route: pin architecture/source/Lens coordinates, census feature coordinates/screens/pathways, inspect extraction/composition/projection loss and rightful terminals, preserve source-proven return/human visibility, regenerate/check, and keep proof surfaces claim-specific without creating a second architecture authority.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -16866,13 +16866,13 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T08:00:00.000Z",
-          "updatedAt": "2026-11-13T08:00:00.000Z",
+          "updatedAt": "2026-11-13T08:53:12.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexarchitecture.vexboard-sync.20261113.screen-pathway-census",
           "label": "Audit every Screen Lens screen and projected pathway",
-          "purpose": "Walk every current Screen Lens screen, interactive control and projected pathway against exact pinned Android source; classify each as truthful/complete, intentionally shallow, held/unprojected, or requiring deeper source review, while keeping non-interactive content distinct from missing behavior.",
+          "purpose": "Walk every current Screen Lens screen, interactive control, expression and projected pathway against exact pinned Android source; record where the human-facing feature coordinate enters, what source relationships are already extracted/projected/held, and where causal visibility currently ends, while keeping non-interactive content, legitimate input-only controls and intentionally held localEffect relationships distinct from missing behavior.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -16896,13 +16896,13 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T08:00:00.000Z",
-          "updatedAt": "2026-11-13T08:00:00.000Z",
+          "updatedAt": "2026-11-13T08:53:12.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexarchitecture.vexboard-sync.20261113.service-widget-relay-audit",
           "label": "Audit Service, Widget and Relay/convergence perception",
-          "purpose": "Pressure the Screen Lens against stable relationships that may not have dedicated Lens roles today: sustained Service-host realization, Widget/system-surface manifestation, and Relay/convergence. Determine whether existing role/edge vocabulary already makes each relationship perceivable before proposing any new role or schema.",
+          "purpose": "Pressure the Screen Lens against stable orthogonal/conditional relationships that may not have dedicated Lens roles today: sustained Service-host realization, Widget/other human-surface manifestation, Relay/convergence relationship truth, construction/lifetime, chronology and presentation return. Preserve the question each relationship answers and determine whether existing nodes/edges can expose it before proposing any new role or schema.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -16927,7 +16927,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T08:00:00.000Z",
-          "updatedAt": "2026-11-13T08:00:00.000Z",
+          "updatedAt": "2026-11-13T08:53:12.000Z",
           "transitionHistory": []
         }
       ],
@@ -17007,7 +17007,7 @@
         {
           "workRef": "work.vexarchitecture.vexboard-sync.20261113.outcome",
           "label": "VexArchitecture VexBoard Sync Nov 13, 2026",
-          "purpose": "Establish a repeatable VexArchitecture-to-VexBoard sanity-check trajectory that can answer, screen by screen and pathway by pathway, whether Screen Lens Surface/Structure/Behavior/Depth faithfully projects the relationships current Android source actually proves, without assuming every repository/provider boundary should become Partner and without letting missing projection depth hide source-owned relationships.",
+          "purpose": "Establish a repeatable VexArchitecture-to-VexBoard sanity-check trajectory that can answer, from each human-facing feature coordinate, whether Screen Lens Surface/Structure/Behavior/Depth preserves the source-proven causal/lived feature slice from intention through semantic ownership and realization, across independently-owned reality and reconciliation, back to human-facing projection—without forcing optional architecture, inventing depth, or letting truthful relationships disappear behind shallow projection.",
           "workClass": "OUTCOME",
           "state": "DECOMPOSED",
           "workDisposition": "ACTIVE",
@@ -17036,7 +17036,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T08:00:00.000Z",
-          "updatedAt": "2026-11-13T08:00:00.000Z",
+          "updatedAt": "2026-11-13T08:53:12.000Z",
           "transitionHistory": []
         }
       ]
