@@ -1012,7 +1012,7 @@ export function stringConstants(files) {
 }
 
 export function realizeScreen({ screen, files, composables, primitives, resolveRef, toSource, knownRefs, constants = null, renderSymbol = 'renderContent' }) {
-  const result = { status: 'BLUEPRINT', entry: null, rendersRegisteredTree: null, presence: [], templates: [], elements: [], opaque: [], held: [], calls: [] };
+  const result = { status: 'BLUEPRINT', entry: null, rendersRegisteredTree: null, presence: [], templates: [], elements: [], opaque: [], held: [], calls: [], callEdges: [] };
   if (!screen.customRender) return result;
   const text = files.get(screen.path);
   const objectMatch = new RegExp(`object\\s+${screen.object}\\s*:`).exec(text);
@@ -1039,6 +1039,27 @@ export function realizeScreen({ screen, files, composables, primitives, resolveR
   result.opaque = dedupe(walker.opaque.map((entry) => ({ symbol: entry.symbol, source: entry.source, reason: entry.reason })), (entry) => `${entry.symbol}|${entry.source}`);
   result.held = dedupe([...walker.held, ...summary.presence.filter((entry) => entry.held).map((entry) => ({ reason: entry.held, source: entry.source, symbol: entry.realizedBy ?? null }))], (entry) => `${entry.reason}|${entry.source}|${entry.symbol}`);
   result.calls = [...walker.calls].sort();
+  const callEdges = [];
+  visit(tree, (node, path) => {
+    if (node.type !== 'CALL') return;
+    const caller = [...path].reverse().find((entry) => entry?.type === 'CALL') ?? null;
+    if (!caller) return;
+    callEdges.push({
+      caller: caller.symbol,
+      callee: node.symbol,
+      callerSource: caller.source ?? null,
+      calleeSource: node.source ?? null,
+    });
+  });
+  result.callEdges = dedupe(
+    callEdges,
+    (edge) => [edge.caller, edge.callee, edge.callerSource ?? '', edge.calleeSource ?? ''].join('|'),
+  ).sort((left, right) =>
+    left.caller.localeCompare(right.caller) ||
+    left.callee.localeCompare(right.callee) ||
+    String(left.callerSource ?? '').localeCompare(String(right.callerSource ?? '')) ||
+    String(left.calleeSource ?? '').localeCompare(String(right.calleeSource ?? '')),
+  );
   const realizedCount = summary.elements.length + summary.presence.length + (result.rendersRegisteredTree ? 1 : 0);
   result.status = result.opaque.length && !realizedCount ? 'OPAQUE' : realizedCount ? (result.held.length || result.opaque.length ? 'PARTIAL' : 'PROJECTED') : 'OPAQUE';
   return result;

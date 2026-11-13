@@ -2514,10 +2514,10 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       if (!parsed) continue;
       const realization = realizeScreen({ screen: { ...parsed, source: screen.source }, files, composables, primitives, resolveRef, toSource, knownRefs, constants });
       if (realization.status === 'BLUEPRINT') {
-        screen.realization = { status: 'BLUEPRINT', entry: null, rendersRegisteredTree: screen.elements.find((element) => !element.parentRef)?.ref ?? null, presence: realizeBlueprintPresence(screen), templates: [], elements: [], opaque: [], held: [] };
+        screen.realization = { status: 'BLUEPRINT', entry: null, rendersRegisteredTree: screen.elements.find((element) => !element.parentRef)?.ref ?? null, realizers: [], callEdges: [], presence: realizeBlueprintPresence(screen), templates: [], elements: [], opaque: [], held: [] };
         continue;
       }
-      screen.realization = { status: realization.status, entry: realization.entry, rendersRegisteredTree: realization.rendersRegisteredTree, realizers: realization.calls, presence: realization.presence, templates: realization.templates, elements: realization.elements, opaque: realization.opaque, held: realization.held };
+      screen.realization = { status: realization.status, entry: realization.entry, rendersRegisteredTree: realization.rendersRegisteredTree, realizers: realization.calls, callEdges: realization.callEdges, presence: realization.presence, templates: realization.templates, elements: realization.elements, opaque: realization.opaque, held: realization.held };
       for (const entry of realizeBlueprintPresence(screen)) {
         const existing = screen.realization.presence.find((candidate) => candidate.kind === entry.kind && candidate.subjectRef === entry.subjectRef);
         if (!existing) { screen.realization.presence.push(entry); continue; }

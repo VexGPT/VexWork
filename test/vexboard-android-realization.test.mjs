@@ -152,6 +152,15 @@ const realize = () => realizeScreen({
   files, composables, primitives, resolveRef, toSource: (path) => path, knownRefs, constants: stringConstants(files),
 });
 
+test('realization preserves source-owned composable call topology without interpreting architecture', () => {
+  const realization = realize();
+  const pairs = realization.callEdges.map((edge) => [edge.caller, edge.callee]);
+  assert.ok(pairs.some(([caller, callee]) => caller === 'ShelfContent' && callee === 'ShelfPane'));
+  assert.ok(pairs.some(([caller, callee]) => caller === 'ShelfPane' && callee === 'EntryCard'));
+  assert.ok(pairs.some(([caller, callee]) => caller === 'EntryCard' && callee === 'RowMenuItem'));
+  assert.ok(realization.callEdges.every((edge) => realization.calls.includes(edge.caller) && realization.calls.includes(edge.callee)));
+});
+
 test('primitive relationships are learned from the primitives own parameter names', () => {
   const relationship = (name) => primitives.get(name).map((signature) => signature.relationship).sort().join('/');
   assert.equal(relationship('VexStableLazyColumn'), 'REPEAT');

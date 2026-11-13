@@ -428,6 +428,55 @@ function selectorsOf(lens, screenRef, parts, containerRef, childRef) {
   return candidates.filter((element) => element.intent && pattern.test(element.intent));
 }
 
+// The realization reader already walks nested composables. Preserve only the source-owned call
+// relationships needed to reach a realizer that matters to registered presence/templates/elements;
+// do not turn Source Depth into an every-function call graph.
+function addSourceRealizationDepth(realization, expression, screenNode, { add, link }) {
+  if (!realization?.entry?.symbol) return;
+  const relevant = new Set([realization.entry.symbol]);
+  for (const presence of realization.presence ?? []) {
+    if (presence.realizedBy) relevant.add(presence.realizedBy);
+    for (const choice of presence.choices ?? []) if (choice.realizedBy) relevant.add(choice.realizedBy);
+  }
+  for (const template of realization.templates ?? []) if (template.symbol) relevant.add(template.symbol);
+  for (const fact of realization.elements ?? []) for (const symbol of fact.realizedBy ?? []) relevant.add(symbol);
+
+  const edges = realization.callEdges ?? [];
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const edge of edges) {
+      if (relevant.has(edge.callee) && !relevant.has(edge.caller)) {
+        relevant.add(edge.caller);
+        changed = true;
+      }
+    }
+  }
+
+  const sourceBySymbol = new Map([[realization.entry.symbol, realization.entry.source ?? null]]);
+  for (const edge of edges) {
+    if (edge.callerSource && !sourceBySymbol.has(edge.caller)) sourceBySymbol.set(edge.caller, edge.callerSource);
+    if (edge.calleeSource && !sourceBySymbol.has(edge.callee)) sourceBySymbol.set(edge.callee, edge.calleeSource);
+  }
+  const nodeFor = (symbol) => add({
+    ref: nodeRef(expression, `realizer:${symbol}`),
+    face: 'DEPTH',
+    role: 'REALIZATION',
+    label: symbol,
+    symbol: symbol === realization.entry.symbol ? 'render entry' : 'source call',
+    summary: symbol === realization.entry.symbol
+      ? (realization.rendersRegisteredTree ? 'Renders the registered tree.' : 'Custom realization read from source.')
+      : 'Source composable on the path to a registered realization relationship.',
+    source: sourceBySymbol.get(symbol) ?? null,
+  });
+
+  const entryRef = nodeFor(realization.entry.symbol);
+  link(screenNode, entryRef, 'realized by');
+  for (const edge of edges) {
+    if (!relevant.has(edge.caller) || !relevant.has(edge.callee)) continue;
+    link(nodeFor(edge.caller), nodeFor(edge.callee), 'calls');
+  }
+}
+
 /**
  * How an expression is reached (Behavior face) and what realizes it underneath (Depth face),
  * in the same node/edge shape as a pathway so the existing layout, ports and inspector apply.
@@ -462,10 +511,7 @@ export function expressionGraph(lens, screenRef, expression) {
       const ref = add({ ref: nodeRef(expression, 'feature'), face: 'BEHAVIOR', role: 'STATE', label: `${featureOwned.length} feature-owned relationship${featureOwned.length === 1 ? '' : 's'} decide`, symbol: 'feature data', summary: featureOwned.map((entry) => placeOf(parts, entry)).join(', '), source: null });
       link(screenNode, ref, 'not evaluated');
     }
-    if (realization?.entry?.symbol) {
-      const entryNode = add({ ref: nodeRef(expression, 'entry'), face: 'DEPTH', role: 'REALIZATION', label: realization.entry.symbol, symbol: 'render entry', summary: realization.rendersRegisteredTree ? 'Renders the registered tree.' : 'Custom realization read from source.', source: realization.entry.source });
-      link(screenNode, entryNode, 'realized by');
-    }
+    addSourceRealizationDepth(realization, expression, screenNode, { add, link });
     return graphOf(expression, nodes, edges, `${parts.screen.label} under source defaults`);
   }
 

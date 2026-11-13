@@ -133,6 +133,33 @@ test('a hand-set context is a custom expression, read the same way by both sides
   assert.equal(X.expressionMatching(stream, byWhat(stream, 'Library', 'Albums').context).ref, byWhat(stream, 'Library', 'Albums').ref);
 });
 
+test('Source Depth consumes preserved realization topology and keeps only the relevant ancestor closure', () => {
+  const input = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8'));
+  const raw = input.screens.find((screen) => screen.screenRef === STREAM).realization;
+  assert.ok(raw.realizers.includes('VexStreamMusicScreenContent'));
+  assert.ok(raw.realizers.includes('VexStreamLibrarySurface'));
+  const target = raw.presence.find((entry) => entry.realizedBy && entry.realizedBy !== 'VexStreamMusicScreenContent')?.realizedBy;
+  assert.ok(target, 'fixture needs one source-earned nested realizer');
+  raw.callEdges = [
+    { caller: 'VexStreamMusicScreenContent', callee: 'VexStreamLibrarySurface', callerSource: raw.entry.source, calleeSource: raw.entry.source },
+    { caller: 'VexStreamLibrarySurface', callee: target, callerSource: raw.entry.source, calleeSource: raw.entry.source },
+  ];
+  const projected = normalizeScreenLens(input);
+  const expressions = X.expressionsFor(projected, STREAM);
+  const graph = X.expressionGraph(projected, STREAM, expressions[0]);
+  assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === 'VexStreamMusicScreenContent'));
+  assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === 'VexStreamLibrarySurface'));
+  assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === target));
+  assert.ok(graph.edges.some((edge) => edge.label === 'calls' && graph.nodes.find((node) => node.ref === edge.from)?.label === 'VexStreamMusicScreenContent' && graph.nodes.find((node) => node.ref === edge.to)?.label === 'VexStreamLibrarySurface'));
+});
+
+test('realization call topology fails closed when an edge names an unknown realizer', () => {
+  const input = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8'));
+  const raw = input.screens.find((screen) => screen.screenRef === STREAM).realization;
+  raw.callEdges = [{ caller: 'VexStreamMusicScreenContent', callee: 'NotARealizer' }];
+  assert.throws(() => normalizeScreenLens(input), /call edge callee NotARealizer is not a realizer/);
+});
+
 test('Source graph: each top-level relationship with its default; a golden keeps its accepted render as evidence', () => {
   const graph = X.expressionGraph(lens, 'screen.debug-menu', X.expressionsFor(lens, 'screen.debug-menu')[0]);
   assert.ok(graph.nodes.some((node) => node.role === 'STATE' && node.label === 'Log sheet closed'));
