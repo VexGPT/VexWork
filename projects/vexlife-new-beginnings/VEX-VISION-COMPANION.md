@@ -2704,6 +2704,105 @@ The owner must answer only the recurring missing question:
 
 That question should be routed to the closest current source owner before a class/path is named.
 
+#### Ephemeral visual resource owner-resolution hypothesis — ask Process Factory first
+
+This is **not accepted source placement**. It is the narrowest current owner-routing hypothesis after
+checking current SDK/VexLife/Product source and the unfinished Android CAMERA precedent.
+
+Ask Process Factory #241 first because the missing question is resource lifetime around one physical
+capture effect:
+
+~~~text
+native selected-scope owner produces one frame
+-> frame must remain alive just long enough for one separately authorized visual consumer
+-> frame must be destroyed/released
+~~~
+
+That is closer to host/process/resource custody than to:
+
+~~~text
+VexLife Family
+  semantic meaning only
+
+Vex Safety
+  authority/currentness only
+
+Security
+  integrity/witness only
+
+Perception
+  admitted observation meaning; current accepted SCREEN source is content-absent
+
+VexLocalBridge / VLM runtime
+  qualified consumer/runtime binding; must not acquire sensor/resource ownership by convenience
+
+Conversation
+  derived visual meaning only
+
+Memory
+  no admission implied
+
+Store
+  not earned because the resource is deliberately non-durable
+~~~
+
+The exact owner question to #241 is:
+
+> Can Process Factory own one non-durable, attempt-local SCREEN frame resource lifetime that begins
+> only after one accepted persistent-scope capture, binds the frame to the exact LOOK/capture identity
+> and content digest, exposes it to at most one separately authorized visual-model consumer, and
+> destroys/releases it after consume/expiry without becoming Perception, VLM runtime, Store or Memory?
+
+Minimum semantic pressure if that owner accepts the question:
+
+~~~text
+resourceRef
+lookRequestRef
+scopeSessionRef or equivalent Product-safe source binding
+captureReceiptRef
+contentSha256
+mediaType
+byteLength
+formedAt
+expiresAt
+rawRetentionAllowed=false
+memoryEligible=false
+trainingEligible=false
+publicationEligible=false
+consumerAuthorityOwnedElsewhere=true
+consumeCardinality=AT_MOST_ONE
+~~~
+
+These are candidate meanings, not a frozen schema.
+
+Critically, do **not** choose byte carriage yet. The contract must remain valid whether the accepted
+realization later uses:
+
+~~~text
+in-process memory
+bounded pipe
+shared memory
+owned temporary file
+other qualified local mechanism
+~~~
+
+because choosing a temp path/base64/blob first would let transport convenience define architecture.
+
+If Process Factory rejects ownership because the resource lifetime cannot be truthfully separated from
+the visual consumer, return the question to the exact neighboring owner with that evidence. Do not
+create a new generic Resource subsystem merely because no current owner accepts the first formulation.
+
+~~~text
+OWNER_QUESTION_FIRST
+-> SOURCE_PLACEMENT_SECOND
+-> CLASS/PATH THIRD
+
+not
+
+CLASS_NAME_FIRST
+-> retrofit ownership afterward
+~~~
+
 <!-- [VXG RealForever][VEXLIFE][VISION][ARCHITECT-BEFORE-AUTHORING][20261113] -->
 ### Security boundary carried by the design
 
