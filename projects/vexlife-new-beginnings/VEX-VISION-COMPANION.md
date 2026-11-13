@@ -1861,6 +1861,333 @@ select once
 This order is causal rather than ceremonial. Independent design/source work may continue while a
 physical proof predicate is held, but no later layer may pretend an earlier effect exists.
 
+### Candidate Product semantic/continuation shape after source review
+
+The following is now grounded enough to constrain implementation, but remains a candidate until the
+persistent-scope Product slice is accepted/lived and the exact source membrane is admitted.
+
+#### Human-facing Family should interpret SDK truth, not clone it
+
+The accepted SDK session owns physical states:
+
+~~~text
+HELD
+SELECTING
+ENGAGED
+LOOKING
+ENDED
+~~~
+
+and terminal reasons:
+
+~~~text
+HUMAN_DISENGAGED
+SOURCE_LOST
+HOST_OWNER_LOST
+EXPLICIT_STOP
+~~~
+
+Product semantic meaning should not expose that list merely because it exists.
+
+A smaller candidate human-facing Family is:
+
+~~~text
+State
+  Held       # Product/Vision cannot truthfully offer the requested relationship
+  Ready      # Vision route exists; no current selected scope
+  Selecting  # explicit human system-picker selection is in progress
+  Engaged    # one selected scope is available; no capture active
+  Looking    # one admitted current LOOK is in progress
+
+Control
+  Engage
+  Stop
+  LookNow
+
+Effect
+  RequestEngage
+  RequestStop
+  RequestSnapshot
+~~~
+
+Candidate pure transitions:
+
+~~~text
+Ready + Engage
+-> Selecting + RequestEngage
+
+Engaged + LookNow
+-> Looking + RequestSnapshot
+
+Selecting / Engaged / Looking + Stop
+-> stay(current semantic State) + RequestStop
+-> do not claim stopped until outside truth returns
+
+Held + LookNow
+Ready + LookNow
+Selecting + LookNow
+Looking + LookNow
+-> not admitted
+~~~
+
+Outside SDK projection must then be interpreted back into Product semantic State.
+
+Grounded mapping pressure:
+
+~~~text
+route unavailable / Safety-held relationship
+-> Held
+
+route reachable + no selected session
+-> Ready
+
+SDK SELECTING
+-> Selecting
+
+SDK ENGAGED
+-> Engaged
+
+SDK LOOKING
+-> Looking
+
+SDK HELD with no material hold reason after human picker cancellation
+-> likely Ready, not Product Held
+
+SDK HELD with SAFETY_NOT_CURRENT
+-> Held
+
+SDK ENDED
+-> interpret endReason; do not expose ENDED merely because the SDK uses it
+~~~
+
+The exact `ENDED` reason mapping remains held until Product/lived behavior establishes whether
+SOURCE_LOST / HOST_OWNER_LOST should present as Ready-with-reselect or Held-with-recovery.
+
+Permanent:
+
+~~~text
+PRODUCT_FAMILY_STATE
+!= SDK_SESSION_STATE_ENUM
+
+FAMILY_INTERPRETS_OUTSIDE_TRUTH
+!= FAMILY_OWNS_NATIVE_LIFECYCLE
+~~~
+
+#### Model LOOK control should request visual context, not author effect identity
+
+The existing source-return grammar establishes a useful bounded form:
+
+~~~text
+exact internal header
++ one exact JSON object
++ no surrounding prose
+~~~
+
+A candidate Vision equivalent may use:
+
+~~~text
+VEXLIFE_VISION_LOOK_REQUEST/v1
+{"schemaVersion":"vexlife-prod.vision-look-request/v1","focus":"<bounded visual fact needed>"}
+~~~
+
+This exact spelling/schema is **not yet accepted source**. The invariant is more important than the
+name.
+
+The model-authored request may carry only bounded interpretive intent such as `focus`.
+
+It must not carry:
+
+~~~text
+requestRef
+scopeSessionRef
+native/provider/window identity
+SCREEN authorization/binding/fingerprint
+effect reservation
+capture count
+VLM/runtime selection authority
+Memory/training/publication authority
+~~~
+
+Product/owner code mints and binds the exact effect request identity after the internal request is
+semantically admitted.
+
+~~~text
+MODEL_REQUESTS_CURRENT_VISUAL_CONTEXT
+!= MODEL_AUTHORS_CAPTURE_AUTHORITY
+~~~
+
+#### Capability framing should expose requestability, not authority
+
+Current Capability Atlas already owns the vocabulary:
+
+~~~text
+DISCOVERABLE
+EXPLAINABLE
+REQUESTABLE
+ADMITTED
+EXECUTABLE
+COMPLETED
+~~~
+
+and every current frame preserves:
+
+~~~text
+effectAuthorityGranted=false
+~~~
+
+That makes `REQUESTABLE` the current design pressure for a future current-scope LOOK capability.
+
+A candidate capability would be available only when the service-owned current Vision projection proves
+one engaged selected scope and no conflicting LOOK is already active.
+
+No current SCREEN authorization should be treated as durable capability authority. Actual LOOK still
+re-resolves fresh Safety after the model requests it.
+
+Likely direction:
+
+~~~text
+service-owned current Vision projection
+-> turn-local bounded resource fact
+
+Capability Atlas
+-> model can know current LOOK is REQUESTABLE / HELD / UNAVAILABLE
+-> effectAuthorityGranted remains false
+~~~
+
+The current `DirectPromptContext` hardcodes `DirectTurnCapabilityRefs` and its resource facts.
+Therefore Vision requestability requires an explicit bounded input to prompt materialization; prompt
+code must not discover or own `VisionRuntime` itself.
+
+#### Final visual context should remain untrusted turn input
+
+A successful visual worker should return one bounded derived context, not raw image bytes.
+
+Candidate final-prompt relationship:
+
+~~~text
+ephemeral raw frame
+-> visual worker
+-> bounded derived visual meaning
+-> raw frame destroyed
+
+DirectPromptContext
+-> materializes a bounded visual-context message
+-> derived visible text is marked untrusted reference data
+-> current human request remains the human intention being answered
+-> final local-model inference
+~~~
+
+The visual-context message should not receive instruction authority merely because Product formed it.
+Visible webpage/application text remains data.
+
+The prompt receipt may retain refs, hashes, character counts and runtime/model provenance without
+retaining raw pixels.
+
+#### Effect evidence must survive a post-capture turn failure
+
+Current direct Conversation failure law is:
+
+~~~text
+failed send attempt
+-> retrySameSendAttemptAllowed=false
+-> same failed attempt is not automatically replayed
+-> human/owner must form a new send attempt through the exact recovery route
+~~~
+
+Vision must preserve that law.
+
+But LOOK is a real effect. Therefore after a capture/visual observation occurs and before final
+provider inference, enough **content-absent durable effect evidence** must exist that a crash cannot
+make the system later claim no LOOK occurred.
+
+Required recovery truth:
+
+~~~text
+LOOK_REQUESTED
+!= CAPTURE_PERFORMED
+!= VISUAL_INTERPRETATION_PERFORMED
+!= FINAL_CONVERSATION_RESPONSE_COMMITTED
+~~~
+
+If capture succeeds and final inference later fails:
+
+~~~text
+same send attempt
+-> NOT replayed
+-> NOT automatically recaptured
+
+durable evidence
+-> still proves whether capture occurred
+-> contains no raw pixels
+-> does not become Memory
+
+new human send attempt
+-> is a new turn/effect decision
+-> may independently request a new current LOOK
+~~~
+
+The exact durable owner should preferably be the rightful capture/effect-reservation owner or a
+turn-bound reference to its accepted receipt. Do not create a second Product effect ledger merely to
+make Conversation recovery convenient.
+
+A completed turn may then persist only a bounded Vision trace/reference alongside existing prompt/runtime
+evidence:
+
+~~~text
+turnRef
+Product LOOK request ref
+capture/effect receipt ref
+content-absent visualObservationRef
+frame digest + dimensions if already admitted metadata
+visual runtime/model profile refs
+derived-context hash/ref
+rawBytesPersisted=false
+rawFileWritten=false
+memoryAccepted=false
+trainingEligible=false
+~~~
+
+Exact fields remain downstream of the accepted capture/effect and visual-worker contracts.
+
+#### Two internal controls earn bounded arbitration, not a generic tool framework
+
+Once SourceReturn and Vision LOOK both exist, `DirectCompanionTurn` will have two known internal
+continuation classes.
+
+That earns a small typed arbitration question:
+
+~~~text
+initial provider output
+-> ordinary human answer
+OR
+-> one exact SourceReturn request
+OR
+-> one exact Vision LOOK request
+~~~
+
+It does not yet earn arbitrary tool registration, recursion or multiple effect loops.
+
+The current `SourceReturnProgressGate` responsibility also becomes a repeated relationship:
+
+~~~text
+internal control content
+!= human-visible streamed answer
+~~~
+
+A bounded refactor may generalize only that responsibility to the exact admitted internal headers.
+
+First-slice law remains:
+
+~~~text
+one initial provider stage
+-> at most one admitted internal continuation total
+-> one bounded continuation realization
+-> one final provider stage
+-> final stage cannot request another continuation
+~~~
+
+<!-- [VXG RealForever][VEXLIFE][VISION][CANDIDATE-SEMANTIC-CONTINUATION-SHAPE][20261113] -->
+
 ### Security boundary carried by the design
 
 This end-to-end experience keeps the existing Security activation above and makes its current boundary
