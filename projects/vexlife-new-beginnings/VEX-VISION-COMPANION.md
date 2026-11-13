@@ -3953,6 +3953,246 @@ Then Perception may consume that exact new witness to form one content-absent cu
 observation.
 
 <!-- [VXG RealForever][VEXLIFE][VISION][PERSISTENT-LOOK-EVIDENCE-CHAIN][20261113] -->
+### Persistent LOOK replay boundary — reuse Process Factory ownership law, not the GitHub registry
+
+Current repository source identifies Process Factory as the owner class for durable single-use effect
+reservation / completion / replay prevention.
+
+But the existing concrete typed-effect engine and connector registry are not a SCREEN implementation.
+
+Current connector-action registry contains only:
+
+~~~text
+ISSUE_COMMENT -> GITHUB_ISSUE
+PR_READY      -> GITHUB_PULL_REQUEST
+PR_MERGE      -> GITHUB_PULL_REQUEST
+PR_METADATA   -> GITHUB_PULL_REQUEST
+~~~
+
+with GitHub-specific repository/number target bindings and GitHub provider profiles.
+
+So:
+
+~~~text
+PROCESS_FACTORY_OWNS_SINGLE_USE_EFFECT_LAW
+!= CURRENT_GITHUB_CONNECTOR_REGISTRY_OWNS_SCREEN
+
+REUSE_OWNER_AND_INVARIANTS
+!= FORCE_SCREEN_INTO_REPOSITORY_TRANSACTION_SCHEMA
+~~~
+
+The SCREEN successor should therefore consume the established reservation law while forming the
+smallest SCREEN-specific contract.
+
+#### Required single-use law
+
+Before any native screenshot call:
+
+~~~text
+exact LOOK request identity
++ exact selected scopeSessionRef
++ fresh current SCREEN Safety identity
+-> durable reservation persisted
+-> only then capture may be authorized
+~~~
+
+Replay law:
+
+~~~text
+same requestRef observed again
+-> NEVER perform a second capture
+
+if immutable completion exists
+-> return/project the prior content-absent outcome
+-> no new effect
+
+if reservation exists but no completion exists
+-> outcome = UNKNOWN_AFTER_RESERVATION
+-> no replay
+-> a new semantic LOOK requires a new requestRef
+~~~
+
+Crash windows therefore remain safe:
+
+~~~text
+crash before reservation durable
+-> capture must not have been authorized
+
+crash after reservation durable, before capture
+-> request consumed
+-> no capture replay
+
+crash during/after capture, before completion durable
+-> request consumed
+-> capture outcome may be UNKNOWN
+-> no capture replay
+
+completion durable
+-> exact content-absent outcome may be recovered
+-> no capture replay
+~~~
+
+This deliberately prefers one possibly-unused consumed LOOK identity over a duplicate screenshot.
+
+#### Smallest persistence shape
+
+A mutable transaction ledger is not required merely to achieve single-use SCREEN capture.
+
+Candidate Process-Factory-owned shape:
+
+~~~text
+one caller-supplied private runtime root
+
+reservations/
+  <sha256(requestRef)>.json
+
+completions/
+  <sha256(requestRef)>.json
+~~~
+
+Reservation creation:
+
+~~~text
+CREATE_NEW / O_EXCL
+-> exact JSON bytes
+-> fsync reservation file
+-> fsync parent directory
+-> only then return capture authorization
+~~~
+
+Using one file per immutable request identity removes the need for a shared mutable transaction-file
+lock in the first SCREEN slice.
+
+The filename hash is only path identity. The durable record itself must carry and validate the exact
+`requestRef` and bindings.
+
+Candidate reservation meaning, not frozen schema:
+
+~~~text
+requestRef
+scopeSessionRef
+channelRef=SCREEN
+mode=ON_DEMAND_SNAPSHOT
+safetyAuthorizationRef
+safetyBindingRef
+safetyReceiptFingerprint
+reservedAt
+reservationRef
+reservationFingerprint
+captureCardinality=AT_MOST_ONE
+~~~
+
+Candidate immutable completion meaning:
+
+~~~text
+requestRef
+reservationRef
+captureAttempted
+captureSucceeded
+captureErrorCodeOrNull
+observedAtOrNull
+frameSha256OrNull
+frameWidthOrNull
+frameHeightOrNull
+captureReceiptRefOrNull
+securityWitnessRefOrNull
+visualObservationRefOrNull
+rawBytesPersisted=false
+rawFileWritten=false
+memoryAccepted=false
+trainingEligible=false
+publicationEligible=false
+~~~
+
+Security/Perception refs may remain null when capture does not reach those later owners. Do not rewrite
+a capture failure or post-capture composition failure into 'no effect happened'.
+
+#### Storage location is not effect ownership
+
+Current VexLife Home source already admits Product-runtime implementation/lifetime records beneath:
+
+~~~text
+~/.vexlife/runtime/vexlife-prod/
+~~~
+
+while explicitly preserving:
+
+~~~text
+PHYSICAL_RUNTIME_NAMESPACE
+!= SEMANTIC_HOME_OWNER
+~~~
+
+That gives a plausible durable substrate for a future Vision effect root without making Product the
+SCREEN reservation owner.
+
+Candidate relationship:
+
+~~~text
+VexLife-Prod
+  observes canonical Home
+  -> allocates/resolves one exact private Vision runtime root below runtime/vexlife-prod
+  -> passes that root to the carried Process Factory Vision runtime
+  -> does not interpret reservation schema
+  -> does not authorize capture
+
+Process Factory SCREEN reservation owner
+  owns reservation/completion schema + single-use law inside the supplied root
+  -> validates containment / non-symlink boundary
+  -> persists before native capture
+  -> consumes same requestRef forever
+~~~
+
+Permanent:
+
+~~~text
+STORAGE_LOCATION
+!= EFFECT_AUTHORITY_OWNER
+
+PRODUCT_HOME
+!= VISION_STORE
+!= MEMORY
+!= SCREEN_CAPTURE_LEDGER_OWNER
+~~~
+
+Do not write reservations into the carried private service image. That image is integrity-checked
+artifact content, not runtime mutable state.
+
+Do not place reservations in canonical Conversation Context merely because LOOK happens during a turn.
+Conversation may later retain a bounded reference to the effect evidence; it does not own replay
+prevention.
+
+#### Transport remains downstream of ownership
+
+Current persistent Vision executable accepts zero argv and Product currently opens it with only the
+artifact executable path.
+
+A future runtime-root injection is therefore required before durable LOOK reservation can exist, but
+the exact transport is intentionally not frozen yet:
+
+~~~text
+constructor/dependency argument
+bounded argv
+environment binding
+initial IPC command
+~~~
+
+Choose the smallest transport only after the owner/root contract is accepted. Do not let transport
+convenience decide ownership.
+
+#### Visual runtime is still a later owner
+
+VexLocalBridge currently recognizes `MLX_VLM_DIRECT_RUNTIME` as a runtime class and can validate a
+content-absent runtime-adapter record, but it performs no model effect and contains no accepted
+one-image visual inference implementation.
+
+~~~text
+VLM_RUNTIME_CLASS_RECOGNIZED
+!= QUALIFIED_ONE_IMAGE_CONSUMER_EXISTS
+~~~
+
+So the ephemeral frame must not be routed to VexLocalBridge merely because the enum exists.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][LOOK-SINGLE-USE-RESERVATION][ARCHITECT-REVIEWED][20261113] -->
 #### Persistent LOOK cannot reuse one-shot Security / Perception unchanged
 
 Current accepted one-shot Security source is explicitly bound to:
