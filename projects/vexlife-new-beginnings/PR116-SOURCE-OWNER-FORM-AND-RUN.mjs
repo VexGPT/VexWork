@@ -93,7 +93,7 @@ async function main() {
 
   run(gh, ['auth', 'status', '--hostname', 'github.com'], { capture: false });
 
-  const bootstrapRoot = await fsp.mkdtemp(path.join(downloads, '.vex-pr116-so-a002-'));
+  const bootstrapRoot = await fsp.mkdtemp(path.join(downloads, '.vex-pr116-so-a003-'));
   const sdkRoot = path.join(bootstrapRoot, 'Vextreme-SDK');
 
   try {
@@ -166,10 +166,10 @@ async function main() {
     });
 
     seed.taskRef = 'task.vexlife-prod.pr116.source-owner-proof';
-    seed.attemptRef = 'attempt.vexlife-prod.pr116.source-owner-proof.a002';
-    seed.requestRef = 'request.vexlife-prod.pr116.source-owner-proof.a002';
-    seed.correlationRef = 'correlation.vexlife-prod.pr116.source-owner-proof.a002';
-    seed.packageRef = 'package.vexlife-prod.pr116.source-owner-proof.a002';
+    seed.attemptRef = 'attempt.vexlife-prod.pr116.source-owner-proof.a003';
+    seed.requestRef = 'request.vexlife-prod.pr116.source-owner-proof.a003';
+    seed.correlationRef = 'correlation.vexlife-prod.pr116.source-owner-proof.a003';
+    seed.packageRef = 'package.vexlife-prod.pr116.source-owner-proof.a003';
 
     seed.original = {
       originalIntent: 'Prove the exact bounded Score-to-WorkingContinuity producer restoration without widening semantic ownership.',
@@ -196,18 +196,18 @@ async function main() {
       activeRole: 'CODER',
       roleRef: 'role.coder.vexlife-prod.pr116',
       instanceRef: 'instance.chatgpt.relationship-continuity.20261113.a001',
-      occupancyRef: 'occupancy.vexlife-prod.pr116.source-owner.a002',
+      occupancyRef: 'occupancy.vexlife-prod.pr116.source-owner.a003',
       providerBindingRef: 'provider.github.vexlife-prod.pr116',
       threadRef: 'thread.vexlife-prod.relationship-continuity',
-      authorityEnvelopeRef: 'authority-envelope.vexlife-prod.pr116.source-owner.a002',
+      authorityEnvelopeRef: 'authority-envelope.vexlife-prod.pr116.source-owner.a003',
     };
 
     seed.execution = {
       ...seed.execution,
       hostProfile: 'macos-victor',
       executionSurface: 'MAC_ZIP_RUN_COMMAND',
-      singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-a002',
-      duplicateAttemptMarker: 'marker.vexlife-prod-pr116-source-owner-proof-a002',
+      singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-a003',
+      duplicateAttemptMarker: 'marker.vexlife-prod-pr116-source-owner-proof-a003',
       duplicateProtectionMode: 'OUTER_RELAY_BOUND',
       formedAt: now.toISOString(),
       expiresAtOrNull: new Date(now.getTime() + 30 * 60 * 1000).toISOString(),
@@ -219,7 +219,7 @@ async function main() {
       projectRef: 'project.vexlife.new-beginnings',
       projectPath: 'vexlife-prod-pr116-source-owner',
       createRoot: false,
-      createProjectPath: false,
+      createProjectPath: true,
     };
 
     Object.assign(seed.repositories[0], {
@@ -241,7 +241,7 @@ async function main() {
 
     seed.authority = {
       ...seed.authority,
-      authorityRef: 'authority.vexlife-prod.pr116.source-owner.a002',
+      authorityRef: 'authority.vexlife-prod.pr116.source-owner.a003',
       authorityMode: 'EXACT_STAGE_EFFECTS',
       grantedEffects: [...effects],
       conditionalEffects: [],
@@ -292,7 +292,7 @@ async function main() {
         timeoutMs: 600000,
       }],
       maxFiles: 10,
-      stateRef: 'state.vexlife-prod.pr116.source-owner.a002',
+      stateRef: 'state.vexlife-prod.pr116.source-owner.a003',
       currentLifecycleState: 'SOURCE_READY',
       currentGoal: 'Prove the exact PR #116 Score-to-WorkingContinuity restoration candidate.',
       remainingGoals: [
@@ -305,7 +305,7 @@ async function main() {
         nextOwner: 'Operations',
         whyThisIsNext: 'Exact SourceOwner/full-JVM proof is complete; semantic Assurance remains a separate effect.',
       },
-      resultFilename: 'RETURN-VEXLIFE-PR116-SOURCE-OWNER-PROOF-A002.zip',
+      resultFilename: 'RETURN-VEXLIFE-PR116-SOURCE-OWNER-PROOF-A003.zip',
     };
 
     const recipe = recipeContract('ExactHeadSourceOwnerProof');
@@ -390,7 +390,7 @@ async function main() {
     const authorityEnvelope = {
       authoritySchemaRef: 'vextreme.effect-transaction/v1',
       semanticAdmissionRef: VEXWORK_ADMISSION_REF,
-      transactionRef: 'transaction.vexlife-prod.pr116.source-owner-proof.a002',
+      transactionRef: 'transaction.vexlife-prod.pr116.source-owner-proof.a003',
       transactionVersion: 1,
       allowedEffectRefs: ['effect.vexrelay.execute'],
       heldEffectRefs: ['effect.merge', 'effect.mark-ready', 'effect.approve', 'effect.publish'],
@@ -400,12 +400,12 @@ async function main() {
       schemaVersion: 'vextreme.vexlocalbridge-task-manifest/v1',
       artifactClass: 'EXECUTABLE_RELAY',
       taskRef: 'task.vexlife-prod.pr116.source-owner-proof.carrier',
-      attemptRef: 'attempt.vexlife-prod.pr116.source-owner-proof.carrier.a002',
-      packageRef: 'package.vexlife-prod.pr116.source-owner-proof.carrier.a002',
-      requestRef: 'request.vexlife-prod.pr116.source-owner-proof.carrier.a002',
-      correlationRef: 'correlation.vexlife-prod.pr116.source-owner-proof.carrier.a002',
+      attemptRef: 'attempt.vexlife-prod.pr116.source-owner-proof.carrier.a003',
+      packageRef: 'package.vexlife-prod.pr116.source-owner-proof.carrier.a003',
+      requestRef: 'request.vexlife-prod.pr116.source-owner-proof.carrier.a003',
+      correlationRef: 'correlation.vexlife-prod.pr116.source-owner-proof.carrier.a003',
       taskStorageKey: 'task-vexlife-prod-pr116-source-owner-proof',
-      attemptStorageKey: 'attempt-a002',
+      attemptStorageKey: 'attempt-a003',
       requestingRoleRef: 'Operations[RelationshipContinuity]',
       requestingInstanceRef: 'instance.chatgpt.relationship-continuity.20261113.a001',
       parentOperationsRef: ISSUE_REF,
@@ -441,7 +441,7 @@ async function main() {
         }],
       },
       executionStateAtFormation: 'TASK_PREPARED',
-      singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-carrier-a002',
+      singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-carrier-a003',
       stopConditions: ['stop.on.identity.drift', 'stop.on.auth.block', 'stop.on.test.failure'],
       archiveDigestBinding: 'FILENAME_SHA256',
     };
@@ -454,7 +454,7 @@ async function main() {
       outerTaskTemplate,
       authorityEnvelope,
       outputDirectory: downloads,
-      outputStem: 'Vex-PR116-SO-A002',
+      outputStem: 'Vex-PR116-SO-A003',
       ttlMs: 30 * 60 * 1000,
     });
 
