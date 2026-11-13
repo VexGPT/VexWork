@@ -755,7 +755,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-12T10:03:45.000Z",
-      "updatedAt": "2026-11-12T10:30:18.000Z",
+      "updatedAt": "2026-11-13T02:24:00.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "label": "High — persistent Vision scope + demand-driven current visual context",
@@ -792,7 +792,12 @@
         "github.issue.vextreme-sdk.1574.comment.6821060489",
         "github.issue.vextreme-sdk.223.comment.6821036077",
         "github.issue.vextreme-sdk.226.comment.6821018321",
-        "github.issue.vextreme-sdk.241.comment.6821025379"
+        "github.issue.vextreme-sdk.241.comment.6821025379",
+        "github.pull.vextreme-sdk.1947",
+        "github.issue.vextreme-sdk.500.comment.6841907228",
+        "github.issue.vextreme-sdk.500.comment.6841911390",
+        "github.issue.vextreme-sdk.1574.comment.6841929367",
+        "github.issue.vextreme-sdk.1574.comment.6841935006"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -1371,6 +1376,21 @@
         "github.issue.vextreme-sdk.223.comment.6821036077"
       ],
       "createdAt": "2026-11-12T10:30:18.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.vision-scope-current-context.forward-convergence.pr1947.20261113A",
+      "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #1946 source semantics cleared and merged, but Main Integrity recovered the merge because its commit title omitted the required [VXG-ROOT-MERGE] marker. The exact reviewed three-blob tree was therefore forward-converged onto recovered main/checkpoint as PR #1947. Same Work continues; fresh exact-head lifecycle is required because the commit identity changed.",
+      "actorRef": "actor.chatgpt.vexlife-vision-companion",
+      "sourceRefs": [
+        "github.pull.vextreme-sdk.1946",
+        "github.issue.vextreme-sdk.500.comment.6841907228",
+        "github.pull.vextreme-sdk.1947"
+      ],
+      "createdAt": "2026-11-13T02:24:00.000Z"
     }
   ],
   "sourceRefs": [
