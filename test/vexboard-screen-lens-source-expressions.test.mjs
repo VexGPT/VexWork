@@ -133,13 +133,17 @@ test('a hand-set context is a custom expression, read the same way by both sides
   assert.equal(X.expressionMatching(stream, byWhat(stream, 'Library', 'Albums').context).ref, byWhat(stream, 'Library', 'Albums').ref);
 });
 
-test('Source Depth consumes preserved realization topology and keeps only the relevant ancestor closure', () => {
+test('Source Depth follows only source-default realization relationships and their ancestors', () => {
   const input = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8'));
   const raw = input.screens.find((screen) => screen.screenRef === STREAM).realization;
   assert.ok(raw.realizers.includes('VexStreamMusicScreenContent'));
   assert.ok(raw.realizers.includes('VexStreamLibrarySurface'));
-  const target = raw.presence.find((entry) => entry.realizedBy && !['VexStreamMusicScreenContent', 'VexStreamLibrarySurface'].includes(entry.realizedBy))?.realizedBy;
-  assert.ok(target, 'fixture needs one source-earned nested realizer below the library surface');
+  assert.ok(raw.realizers.includes('VexStreamSongsPane'));
+  assert.ok(raw.realizers.includes('VexStreamAlbumsPane'));
+  assert.ok(raw.realizers.includes('VexStreamFullPlayerSheet'));
+
+  // Source defaults select Songs. Albums is a latent selection and FullPlayerSheet is closed.
+  // An unrelated traversed call is source-real but owns no relationship in this expression.
   const relationshipRealizers = new Set([
     raw.entry.symbol,
     ...raw.presence.flatMap((entry) => [entry.realizedBy, ...(entry.choices ?? []).map((choice) => choice.realizedBy)]),
@@ -148,19 +152,30 @@ test('Source Depth consumes preserved realization topology and keeps only the re
   ].filter(Boolean));
   const irrelevant = raw.realizers.find((symbol) => !relationshipRealizers.has(symbol));
   assert.ok(irrelevant, 'fixture needs one traversed composable that owns no projected realization relationship');
+
   raw.callEdges = [
     { caller: 'VexStreamMusicScreenContent', callee: 'VexStreamLibrarySurface', callerSource: raw.entry.source, calleeSource: raw.entry.source },
-    { caller: 'VexStreamLibrarySurface', callee: target, callerSource: raw.entry.source, calleeSource: raw.entry.source },
+    { caller: 'VexStreamLibrarySurface', callee: 'VexStreamSongsPane', callerSource: raw.entry.source, calleeSource: raw.entry.source },
+    { caller: 'VexStreamLibrarySurface', callee: 'VexStreamAlbumsPane', callerSource: raw.entry.source, calleeSource: raw.entry.source },
+    { caller: 'VexStreamLibrarySurface', callee: 'VexStreamFullPlayerSheet', callerSource: raw.entry.source, calleeSource: raw.entry.source },
     { caller: 'VexStreamMusicScreenContent', callee: irrelevant, callerSource: raw.entry.source, calleeSource: raw.entry.source },
   ];
+
   const projected = normalizeScreenLens(input);
   const expressions = X.expressionsFor(projected, STREAM);
   const graph = X.expressionGraph(projected, STREAM, expressions[0]);
-  assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === 'VexStreamMusicScreenContent'));
-  assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === 'VexStreamLibrarySurface'));
-  assert.ok(graph.nodes.some((node) => node.face === 'DEPTH' && node.label === target));
-  assert.ok(!graph.nodes.some((node) => node.face === 'DEPTH' && node.label === irrelevant), 'unrelated traversed calls stay out of Source Depth');
+  const depthLabels = graph.nodes.filter((node) => node.face === 'DEPTH').map((node) => node.label);
+
+  assert.deepEqual(depthLabels.sort(), [
+    'VexStreamLibrarySurface',
+    'VexStreamMusicScreenContent',
+    'VexStreamSongsPane',
+  ].sort());
+  assert.ok(!depthLabels.includes('VexStreamAlbumsPane'), 'latent selection stays behind its own expression');
+  assert.ok(!depthLabels.includes('VexStreamFullPlayerSheet'), 'closed presentation stays behind its open expression');
+  assert.ok(!depthLabels.includes(irrelevant), 'unrelated traversed calls stay out of Source Depth');
   assert.ok(graph.edges.some((edge) => edge.label === 'calls' && graph.nodes.find((node) => node.ref === edge.from)?.label === 'VexStreamMusicScreenContent' && graph.nodes.find((node) => node.ref === edge.to)?.label === 'VexStreamLibrarySurface'));
+  assert.ok(graph.edges.some((edge) => edge.label === 'calls' && graph.nodes.find((node) => node.ref === edge.from)?.label === 'VexStreamLibrarySurface' && graph.nodes.find((node) => node.ref === edge.to)?.label === 'VexStreamSongsPane'));
 });
 
 test('realization call topology fails closed when an edge names an unknown realizer', () => {
