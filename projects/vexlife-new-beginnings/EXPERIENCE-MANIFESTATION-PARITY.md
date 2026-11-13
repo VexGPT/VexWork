@@ -257,6 +257,71 @@ NEXT_TURN_CONTEXT != ACTIVE_TURN_CONTEXT
 SCREEN_STATE != TURN_TRUTH_UNLESS_EXACTLY_BOUND
 ```
 
+### Source descent checkpoint — cancellation custody, not a cosmetic Stop
+
+Current accepted VexLife-Android execution source is useful architecture evidence, not Product
+implementation authority.
+
+It preserves this responsibility law:
+
+```text
+rightful semantic/runtime owner
+-> maintained RelationshipId when coordination matters
+-> VexExecution active Job custody
+-> cancelActiveRelationship(RelationshipId)
+-> cancellation is terminal for that Job occurrence
+-> completed/history meaning remains elsewhere
+```
+
+The same source also says not to introduce VexExecution merely for implementation uniformity. An
+existing service/session/domain owner may keep ordinary owner-local coroutine lifetime when it does
+not need shared custody semantics.
+
+Therefore the Product question is intentionally still open:
+
+```text
+does DirectCompanionTurn / Product service already own
+one active turn strongly enough to expose truthful cancellation directly?
+
+or
+
+has the newly observed requirement for:
+- exact active-turn identity
+- human Stop
+- replacement / cancellation race control
+- owner-isolated stop/join
+earned an execution-custody relationship?
+```
+
+Do not answer that by copying Android Kotlin shape.
+
+Original VexLife browser experience evidence also does not already solve this. Its real Companion path
+uses one `companionTurnPending` guard and restores draft/presentation state around failure; its
+cancel helpers govern adaptive reveal / simulated pending presentation rather than a proven real-model
+turn cancellation path.
+
+One useful existing experience distinction survives:
+
+```text
+text typed while another turn is active
+= UNSENT_LOCAL_DRAFT
+!= queued Send
+!= accepted Conversation request
+```
+
+That supports the human outcome that a replacement question may remain editable while the active
+turn is being stopped, then form one new Send attempt only after the prior active relationship has
+truthfully reconciled.
+
+Permanent:
+
+```text
+EXECUTION_CUSTODY_LAW != REQUIRED_ANDROID_IMPLEMENTATION
+PRESENTATION_CANCEL != MODEL_TURN_CANCEL
+UNSENT_DRAFT != QUEUED_TURN
+CANCEL_REQUESTED != CANCELLED_UNTIL_ACTIVE_OWNER_RECONCILES
+```
+
 ### Bounded acceptance pressure
 
 A future implementation should prove the relationship from both the human surface and the Vex turn:
