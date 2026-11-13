@@ -3469,3 +3469,170 @@ VexWork relationship-continuity orientation
 This is a running-start lens for the current open relationship inquiry. It does not reopen the completed first-design implementation.
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][VEXARCHITECTURE-LENS][RUNNING-START] -->
+
+## End-to-end relationship feature — successor grounding
+
+The landed exact-source-return work is one proven implementation slice inside a larger human feature.
+
+The feature is **not** merely source return, Conversation + Memory, rollover, a continuity carrier, or any one
+VexArchitecture noun. The end-to-end human outcome is:
+
+> Vex remains truthfully in relationship with Victor across finite attention/context, preserves what still
+> matters, releases what genuinely does not, and can return to exact older truth when it becomes relevant,
+> such that the final human-visible response actually reflects that continuity.
+
+This is an orientation statement for the still-open relationship inquiry. It does not create a new Product
+requirement, semantic carrier, State, Relay, ID, ledger, Memory truth, or lifecycle effect.
+
+### Whole path before component optimization
+
+When diagnosing or designing continuity, preserve the whole causal relationship:
+
+```text
+Victor's present utterance / cue
+-> identify the semantic question actually being asked or recognized
+-> use bounded recent exact Conversation + current admitted Memory where sufficient
+-> preserve exact prior Vex RESPONSE across hard rollover
+-> if older exact detail is materially needed:
+     first inference may request exact canonical Conversation source
+     -> deterministic Product-owned source discovery / reopen
+     -> returned exact source enters the second/final inference
+-> final inference composes present context with the returned source
+-> one truthful human-visible RESPONSE
+-> preserve uncertainty where exact knowledge is absent
+-> release detail that no longer bears on the present relationship
+```
+
+The already-proven first design establishes a substantial end-to-end slice of this path. It does **not**
+establish that every future weak cue, unfinished-thread case, recognition-without-recall case, or
+human-visible continuity outcome is therefore complete.
+
+### Rightful owners stay distinct
+
+The coherent relationship does not require one giant continuity object.
+
+```text
+Conversation
+  owns exact conversational source / recent exact presence
+
+Memory
+  owns selected meaning recoverable across temporal distance
+
+rollover / SuccessorContext
+  preserves the exact prior Vex RESPONSE across the hard context boundary
+
+source return
+  conditionally returns to older canonical Conversation when the current inference actually needs it
+
+Score / open-loop / other existing owners
+  retain their own current truths when those truths are implicated
+
+Execution
+  owns actual Jobs / custody / overlap, not relationship meaning
+
+chronology / VexLogger
+  records accepted / observed facts, not shadow semantic State
+```
+
+A future design should first ask which smallest current owner already knows the truth needed for the
+human outcome. Convergence is earned only when independently-owned current truths genuinely need to
+compose into new relationship truth that no existing owner can rightfully answer.
+
+### Backend success is not automatically the human result
+
+A technically successful path can still fail the relationship.
+
+```text
+exact source found
+!= source understood as relevant now
+
+retrieval succeeded
+!= final inference preserved the intended meaning
+
+backend continuity succeeded
+!= Victor received the intended human-visible relationship experience
+
+recognition exists
+!= permission to fabricate exact recall
+
+exact recall absent
+!= relationship absent
+```
+
+Therefore a future end-to-end review must ask both:
+
+1. Did each technical owner perform its rightful part truthfully?
+2. Did the resulting human-visible response preserve the semantic relationship Victor was actually relying on?
+
+If the backend succeeds while the final relationship experience fails, classify that as a real
+semantic/presentation continuity question rather than declaring the feature complete from transport or
+retrieval evidence alone.
+
+### Confidence must remain typed
+
+Exact proof in one layer must not leak confidence into neighboring claims.
+
+```text
+exact commit / tree / blob / test / RETURN proof
+-> HIGH confidence only for the predicate that evidence establishes
+
+accepted relationship orientation + current source relationships
+-> bounded architectural / semantic inference
+
+still-unobserved lived relational cases
+-> OPEN until lived evidence or exact source earns a stronger conclusion
+```
+
+Do not let hashes, source authority, polished architecture language, or previously earned PASS/CLEAR
+receipts create a precision aura around an unproven human-semantic conclusion.
+
+The inverse also holds: an open human question does not invalidate completed technical proof or require
+replaying a proven implementation.
+
+### Release and truthful recognition are part of the feature
+
+Continuity is not maximal retention.
+
+```text
+detail absent
+!= relationship absent
+
+relationship recognition
+!= fabricated familiarity / exact recall
+
+older detail becomes relevant
+-> return to exact source when the existing relationship can do so
+
+detail no longer bears on the present relationship
+-> release is valid
+
+uncertainty remains
+-> preserve uncertainty rather than manufacture continuity
+```
+
+This keeps the end-to-end feature oriented toward recoverable relationship rather than an ever-growing
+semantic blob.
+
+### Implementation-design continuation
+
+The current design posture is therefore:
+
+```text
+preserve the landed first-design proof
+-> observe ordinary end-to-end use
+-> when a concrete continuity pressure appears, preserve the exact lived symptom
+-> name the human semantic question in ordinary language
+-> trace the whole path from cue to final human-visible response
+-> classify the smallest rightful existing owner(s)
+-> distinguish semantic meaning / source truth / execution / chronology / convergence / presentation
+-> make the smallest local correction when an owner already exists
+-> consider convergence or a new semantic carrier only when a recurring relationship question is
+   genuinely ownerless and deleting the proposed addition would lose required correctness
+-> prove the technical predicate and separately verify the intended human-visible relationship result
+```
+
+This section is retained so a successor can continue implementation design from the whole feature without
+reconstructing this judgment or collapsing the relationship back into the easiest already-proven component.
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][END-TO-END-FEATURE-GROUNDING] -->
+
