@@ -428,20 +428,16 @@ function selectorsOf(lens, screenRef, parts, containerRef, childRef) {
   return candidates.filter((element) => element.intent && pattern.test(element.intent));
 }
 
-// The realization reader already walks nested composables. Preserve only the source-owned call
-// relationships needed to reach a realizer that matters to registered presence/templates/elements;
-// do not turn Source Depth into an every-function call graph.
-function addSourceRealizationDepth(realization, expression, screenNode, { add, link }) {
+// The realization reader already walks nested composables. One expression chooses which of those
+// source relationships are in view; only then do we retain the caller chain needed to reach them.
+// This keeps topology descriptive without turning Source Depth into an every-function call graph.
+function addSourceRealizationDepth(realization, expression, screenNode, sourceRealizers, { add, link }) {
   if (!realization?.entry?.symbol) return;
-  const relevant = new Set([realization.entry.symbol]);
-  for (const presence of realization.presence ?? []) {
-    if (presence.realizedBy) relevant.add(presence.realizedBy);
-    for (const choice of presence.choices ?? []) if (choice.realizedBy) relevant.add(choice.realizedBy);
-  }
-  for (const template of realization.templates ?? []) if (template.symbol) relevant.add(template.symbol);
-  for (const fact of realization.elements ?? []) for (const symbol of fact.realizedBy ?? []) relevant.add(symbol);
-
+  const relevant = new Set([realization.entry.symbol, ...sourceRealizers].filter(Boolean));
   const edges = realization.callEdges ?? [];
+
+  // Ancestor closure only: intermediate composables are visible when they are the source path from
+  // the render entry to a realizer the current expression actually presents.
   for (let changed = true; changed;) {
     changed = false;
     for (const edge of edges) {
@@ -465,7 +461,7 @@ function addSourceRealizationDepth(realization, expression, screenNode, { add, l
     symbol: symbol === realization.entry.symbol ? 'render entry' : 'source call',
     summary: symbol === realization.entry.symbol
       ? (realization.rendersRegisteredTree ? 'Renders the registered tree.' : 'Custom realization read from source.')
-      : 'Source composable on the path to a registered realization relationship.',
+      : 'Source composable on the path to a realization relationship presented by this expression.',
     source: sourceBySymbol.get(symbol) ?? null,
   });
 
@@ -511,7 +507,18 @@ export function expressionGraph(lens, screenRef, expression) {
       const ref = add({ ref: nodeRef(expression, 'feature'), face: 'BEHAVIOR', role: 'STATE', label: `${featureOwned.length} feature-owned relationship${featureOwned.length === 1 ? '' : 's'} decide`, symbol: 'feature data', summary: featureOwned.map((entry) => placeOf(parts, entry)).join(', '), source: null });
       link(screenNode, ref, 'not evaluated');
     }
-    addSourceRealizationDepth(realization, expression, screenNode, { add, link });
+    const sourceRealizers = new Set();
+    for (const entry of topLevel) {
+      // A Source expression does not open closed presentations or choose feature-owned conditions.
+      // It may, however, have a source-default runtime selection. Keep the shared realizer plus the
+      // exact composable that realizes that selected child.
+      if (entry.kind !== 'SELECTION') continue;
+      if (entry.realizedBy) sourceRealizers.add(entry.realizedBy);
+      const selectedRef = outcomes.get(entry.ref)?.value ?? null;
+      const choice = parts.choicesOf(entry).find((candidate) => candidate.resolvedTargetRef === selectedRef) ?? null;
+      if (choice?.realizedBy) sourceRealizers.add(choice.realizedBy);
+    }
+    addSourceRealizationDepth(realization, expression, screenNode, sourceRealizers, { add, link });
     return graphOf(expression, nodes, edges, `${parts.screen.label} under source defaults`);
   }
 
