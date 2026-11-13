@@ -823,7 +823,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-13T10:23:00.000Z",
-      "updatedAt": "2026-11-13T10:23:00.000Z",
+      "updatedAt": "2026-11-13T11:12:00.000Z",
       "workRef": "work.vexlife.new-beginnings.setup-journey-map",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Immediate — permission-aware VexLife Setup Journey map",
@@ -831,7 +831,10 @@
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.local-runtime-foundation",
+        "work.vexlife.new-beginnings.experience-manifestation-parity"
+      ],
       "repositoryRefs": [
         "repo.vexwork",
         "repo.vexlife-prod"
@@ -842,7 +845,11 @@
         "github.pull.vexwork.275.comment.6850363453",
         "github.pull.vexlife-prod.107.comment.6850364078",
         "github.pull.vexlife-prod.107.comment.6850370036",
-        "github.pull.vexlife-prod.107"
+        "github.pull.vexlife-prod.107",
+        "work.vexlife.new-beginnings.later.settings-capability-mapping",
+        "repo.vexlife:install/vexlife-setup-window.applescript",
+        "repo.vexlife:install/vexlife-setup.sh",
+        "repo.vexlife:README.md"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
