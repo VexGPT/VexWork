@@ -1784,4 +1784,138 @@ Durable Product anchor:
 VexLife-Prod issue #61 comment 6843741011
 ```
 
+
+### A024 / A025 currentization
+
+A024 closed the remaining uncertainty about the first-stage source-return request and located the real Product defect.
+
+```text
+A024 RETURN sha256
+3736fbf4b61e9ad04e168331246c374f7796dfe5c91230e0818c86e36d276731
+```
+
+Normalized lived truth:
+
+```text
+first provider HTTP = 200
+parseRequestOrNull replay = PASS
+deterministic discover replay = PASS
+discovery match count = 1
+scanned completed turn count = 2
+```
+
+The source-return request is therefore valid and deterministic exact Conversation source discovery succeeds.
+
+Exact failure stack:
+
+```text
+DirectWorkingContinuity.prepare
+DirectWorkingContinuity.kt:358
+
+DirectCompanionTurn.performProviderTurn
+DirectCompanionTurn.kt:849
+```
+
+The failure was caused by one stale successor-mode guard.
+
+The final source-return prompt truthfully names:
+
+```text
+SOURCE_RETURN_WORKING_CHECKPOINT_SUCCESSOR
+```
+
+because it composes:
+
+```text
+existing working-checkpoint successor Context
++ returned exact Conversation source
+```
+
+But `DirectWorkingContinuity.prepare(...)` admitted only:
+
+```text
+WORKING_CHECKPOINT_SUCCESSOR
+```
+
+while already requiring the same exact lineage/thread/current-request/context/checkpoint/claim/source custody.
+
+PR #89 correction:
+
+```text
+parent = 6f30873ae7e62ca61b2f0a3936e4b24b444b6951
+head   = 2da02aa6ec6bd5c15f0f5743affb8f7612a82dc2
+tree   = 5283a0088ca2ac66f31f783ba62418352bd1789d
+commit = Admit source-return successor continuity prompt
+```
+
+Exact correction paths:
+
+```text
+src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt
+src/jvmTest/kotlin/vexlife/companion/DirectWorkingContinuityTest.kt
+```
+
+Meaning:
+
+- prior SuccessorContext custody is unchanged;
+- exact lineage/thread/current-request binding remains required;
+- exact context/checkpoint/successor-claim/source refs remain required;
+- prompt receipt mode now admits exactly:
+  - `WORKING_CHECKPOINT_SUCCESSOR`
+  - `SOURCE_RETURN_WORKING_CHECKPOINT_SUCCESSOR`;
+- no ordinary or non-successor source-return mode is admitted;
+- focused regression binds this distinction.
+
+Because `DirectWorkingContinuity.kt` is newly changed by PR #89, the full #89 membrane expands from 10 to **11 exact paths**.
+
+Fresh SourceOwner handoff:
+
+```text
+A025 formation sha256
+3c274bf312d5117e2c74b55f462762200044436e943e82a2becfffabc36b5738
+
+candidate head
+2da02aa6ec6bd5c15f0f5743affb8f7612a82dc2
+
+candidate tree
+5283a0088ca2ac66f31f783ba62418352bd1789d
+
+fixed evidence base
+71282f62536e5571757134d7bc2b138474b4999a
+
+review membrane
+11 paths
+```
+
+Current SDK binding for A025:
+
+```text
+head dec067ad3445376e944d89e403ba6df0a64337fb
+tree 5ea73ea8ca4f5406bc3487fe800f97ff494cebc5
+
+Relay contract blob
+b53cbac01c2deeb45fad5c32ce98e0796c04126f
+```
+
+Current exact edge:
+
+```text
+run A025
+-> consume SourceOwner RETURN
+-> fresh semantic Assurance on 2da02aa6...
+-> fresh lived two-stage source-return proof
+-> only after lived PASS:
+     READY_FOR_INTEGRATION
+     Integration Steward / OwnerMergeDuty
+     current-main composition/currentness
+     merge
+     post-merge verification
+```
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6843983459
+```
+
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-NEW-BEGINNINGS][RELATIONSHIP-CONTINUITY-ORIENTATION] -->
