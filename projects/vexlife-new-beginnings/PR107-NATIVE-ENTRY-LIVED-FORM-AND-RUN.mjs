@@ -117,7 +117,7 @@ async function main() {
   const downloads = path.join(os.homedir(), 'Downloads');
   await fsp.mkdir(downloads, { recursive: true });
 
-  const proofHome = path.join(downloads, '.vexlife-pr107-selected-home-proof-a004');
+  const proofHome = path.join(downloads, '.vexlife-pr107-selected-home-proof-a005');
   const realDefaultHome = path.join(os.homedir(), '.vexlife');
 
   if (proofHome === realDefaultHome) {
@@ -137,11 +137,11 @@ async function main() {
 
   run(gh, ['auth', 'status', '--hostname', 'github.com'], { capture: false });
 
-  const bootstrapRoot = await fsp.mkdtemp(path.join(downloads, '.vex-pr107-native-lived-a004-sdk-'));
+  const bootstrapRoot = await fsp.mkdtemp(path.join(downloads, '.vex-pr107-native-lived-a005-sdk-'));
   const sdkRoot = path.join(bootstrapRoot, 'Vextreme-SDK');
 
   try {
-    console.log('PR107 Native Lived A004: grounding exact SDK...');
+    console.log('PR107 Native Lived A005: grounding exact SDK...');
     run(gh, ['repo', 'clone', SDK_REPOSITORY, sdkRoot, '--', '--no-checkout'], { capture: false });
     run(git, ['-C', sdkRoot, 'checkout', '--detach', SDK_HEAD]);
 
@@ -189,7 +189,7 @@ async function main() {
       requireVexRelayArchiveCarrierTaskShape,
     } = nativeVexRelay;
 
-    const proofDir = 'build/pr107-native-entry-lived-a004';
+    const proofDir = 'build/pr107-native-entry-lived-a005';
     const appRel = proofDir + '/VexLife Prod Setup.app';
     const infoRel = appRel + '/Contents/Info.plist';
     const imageRel = 'build/vexlife-prod-service-image/images/' + PRODUCT_HEAD;
@@ -201,7 +201,7 @@ const path=require('path');
 const repo=process.cwd();
 const HEAD=process.argv[1];
 const PROOF_HOME=process.argv[2];
-const proof=path.join(repo,'build','pr107-native-entry-lived-a004');
+const proof=path.join(repo,'build','pr107-native-entry-lived-a005');
 const image=path.join(repo,'build','vexlife-prod-service-image','images',HEAD);
 
 if (fs.existsSync(PROOF_HOME)) {
@@ -294,7 +294,7 @@ const path=require('path');
 const repo=process.cwd();
 const HEAD=process.argv[1];
 const PROOF_HOME=process.argv[2];
-const proof=path.join(repo,'build','pr107-native-entry-lived-a004');
+const proof=path.join(repo,'build','pr107-native-entry-lived-a005');
 const logPath=path.join(proof,'guard-invocations.tsv');
 
 if(!fs.existsSync(logPath)) throw new Error('GUARD_INVOCATION_LOG_MISSING');
@@ -488,7 +488,7 @@ console.log(JSON.stringify(summary,null,2));
       githubHostname: 'github.com',
       branch: PRODUCT_BRANCH,
       workspaceMode: 'RUN_ROOT',
-      projectPath: 'pr107-native-entry-lived-a004',
+      projectPath: 'pr107-native-entry-lived-a005',
       expectedChangedPaths: CHANGED_PATHS,
       activeConflictState: 'NONE',
       onPassState: 'LIFECYCLE_EFFECT_PENDING',
@@ -498,16 +498,16 @@ console.log(JSON.stringify(summary,null,2));
     const now = new Date();
 
     task.taskRef = 'task.vexlife-prod.pr107.native-entry-lived';
-    task.attemptRef = 'attempt.vexlife-prod.pr107.native-entry-lived.a004';
-    task.requestRef = 'request.vexlife-prod.pr107.native-entry-lived.a004';
-    task.correlationRef = 'correlation.vexlife-prod.pr107.native-entry-lived.a004';
-    task.packageRef = 'package.vexlife-prod.pr107.native-entry-lived.a004';
+    task.attemptRef = 'attempt.vexlife-prod.pr107.native-entry-lived.a005';
+    task.requestRef = 'request.vexlife-prod.pr107.native-entry-lived.a005';
+    task.correlationRef = 'correlation.vexlife-prod.pr107.native-entry-lived.a005';
+    task.packageRef = 'package.vexlife-prod.pr107.native-entry-lived.a005';
 
     task.original = {
       originalIntent:
         'Complete the VexLife startup/Product-entry trajectory through a truthful human-selected Home journey.',
       originalGoal:
-        'Prove the actual native Product-entry chooser, non-default selected Home formation, post-effect re-observation and no-acquisition boundary.',
+        'Prove the actual native Product-entry chooser, clipboard-assisted non-default selected Home formation, post-effect re-observation and no-acquisition boundary.',
       userProtectedIntent:
         'Never target the real ~/.vexlife during proof; preserve human Home choice; block model/runtime acquisition and Product service effects.',
       sourceRefs: [
@@ -535,19 +535,19 @@ console.log(JSON.stringify(summary,null,2));
       ...task.role,
       activeRole: 'OPERATIONS',
       roleRef: 'role.operations.vexlife-prod.pr107.native-entry-lived',
-      instanceRef: 'instance.chatgpt.vexlife-prod.pr107.native-entry-lived.20261113.a004',
-      occupancyRef: 'occupancy.operations.vexlife-prod.pr107.native-entry-lived.20261113.a004',
+      instanceRef: 'instance.chatgpt.vexlife-prod.pr107.native-entry-lived.20261113.a005',
+      occupancyRef: 'occupancy.operations.vexlife-prod.pr107.native-entry-lived.20261113.a005',
       providerBindingRef: 'provider.github.vexlife-prod.pr107',
       threadRef: 'thread.vexlife-prod.pr107.native-entry-lived',
-      authorityEnvelopeRef: 'authority-envelope.vexlife-prod.pr107.native-entry-lived.a004',
+      authorityEnvelopeRef: 'authority-envelope.vexlife-prod.pr107.native-entry-lived.a005',
     };
 
     task.execution = {
       ...task.execution,
       hostProfile: 'macos-victor',
       executionSurface: 'MAC_ZIP_RUN_COMMAND',
-      singleUseNonce: 'nonce-vexlife-prod-pr107-native-entry-lived-a004-20261113',
-      duplicateAttemptMarker: 'marker.vexlife-prod.pr107.native-entry-lived.a004',
+      singleUseNonce: 'nonce-vexlife-prod-pr107-native-entry-lived-a005-20261113',
+      duplicateAttemptMarker: 'marker.vexlife-prod.pr107.native-entry-lived.a005',
       duplicateProtectionMode: 'OUTER_RELAY_BOUND',
       formedAt: now.toISOString(),
       expiresAtOrNull: new Date(now.getTime() + 8 * 60 * 60 * 1000).toISOString(),
@@ -557,7 +557,7 @@ console.log(JSON.stringify(summary,null,2));
       ...task.workspace,
       mode: 'RUN_ROOT',
       projectRef: 'project.vexlife.new-beginnings',
-      projectPath: 'pr107-native-entry-lived-a004',
+      projectPath: 'pr107-native-entry-lived-a005',
       createRoot: false,
       createProjectPath: true,
     };
@@ -580,7 +580,7 @@ console.log(JSON.stringify(summary,null,2));
 
     task.authority = {
       ...task.authority,
-      authorityRef: 'authority.vexlife-prod.pr107.native-entry-lived.a004',
+      authorityRef: 'authority.vexlife-prod.pr107.native-entry-lived.a005',
       authorityMode: 'EXACT_STAGE_EFFECTS',
       grantedEffects: [...effects],
       conditionalEffects: [],
@@ -873,7 +873,7 @@ console.log(JSON.stringify(summary,null,2));
     ];
 
     task.result = {
-      filename: 'RETURN-VEXLIFE-PROD-PR107-NATIVE-ENTRY-LIVED-A004.zip',
+      filename: 'RETURN-VEXLIFE-PROD-PR107-NATIVE-ENTRY-LIVED-A005.zip',
     };
 
     const validated = packageModule.validateTaskObject(task).manifest;
@@ -889,7 +889,7 @@ console.log(JSON.stringify(summary,null,2));
     const authorityEnvelope = {
       authoritySchemaRef: 'vextreme.effect-transaction/v1',
       semanticAdmissionRef: 'github.pull.vexlife-prod.107',
-      transactionRef: 'transaction.vexlife-prod.pr107.native-entry-lived.a004',
+      transactionRef: 'transaction.vexlife-prod.pr107.native-entry-lived.a005',
       transactionVersion: 1,
       allowedEffectRefs: ['effect.vexrelay.execute'],
       heldEffectRefs: [
@@ -904,14 +904,14 @@ console.log(JSON.stringify(summary,null,2));
       schemaVersion: 'vextreme.vexlocalbridge-task-manifest/v1',
       artifactClass: 'EXECUTABLE_RELAY',
       taskRef: 'task.vexlife-prod.pr107.native-entry-lived.carrier',
-      attemptRef: 'attempt.vexlife-prod.pr107.native-entry-lived.carrier.a004',
-      packageRef: 'package.vexlife-prod.pr107.native-entry-lived.carrier.a004',
-      requestRef: 'request.vexlife-prod.pr107.native-entry-lived.carrier.a004',
-      correlationRef: 'correlation.vexlife-prod.pr107.native-entry-lived.carrier.a004',
+      attemptRef: 'attempt.vexlife-prod.pr107.native-entry-lived.carrier.a005',
+      packageRef: 'package.vexlife-prod.pr107.native-entry-lived.carrier.a005',
+      requestRef: 'request.vexlife-prod.pr107.native-entry-lived.carrier.a005',
+      correlationRef: 'correlation.vexlife-prod.pr107.native-entry-lived.carrier.a005',
       taskStorageKey: 'vexlife-pr107-native-entry-lived',
-      attemptStorageKey: 'a004',
+      attemptStorageKey: 'a005',
       requestingRoleRef: 'Operations[LocalVex]',
-      requestingInstanceRef: 'instance.chatgpt.vexlife-prod.pr107.native-entry-lived.20261113.a004',
+      requestingInstanceRef: 'instance.chatgpt.vexlife-prod.pr107.native-entry-lived.20261113.a005',
       parentOperationsRef: 'github.pull.vexlife-prod.107',
       returnRouteRef: 'github.pull.vexlife-prod.107',
       hostProfileRef: 'macos-victor',
@@ -945,12 +945,12 @@ console.log(JSON.stringify(summary,null,2));
         }],
       },
       executionStateAtFormation: 'TASK_PREPARED',
-      singleUseNonce: 'nonce-vexlife-prod-pr107-native-entry-lived-carrier-a004-20261113',
+      singleUseNonce: 'nonce-vexlife-prod-pr107-native-entry-lived-carrier-a005-20261113',
       stopConditions: ['stop.on.identity.drift'],
       archiveDigestBinding: 'FILENAME_SHA256',
     };
 
-    const work = await fsp.mkdtemp(path.join(os.tmpdir(), 'pr107-native-entry-lived-a004-carrier-'));
+    const work = await fsp.mkdtemp(path.join(os.tmpdir(), 'pr107-native-entry-lived-a005-carrier-'));
 
     try {
       const innerRoot = path.join(work, 'inner');
@@ -961,7 +961,7 @@ console.log(JSON.stringify(summary,null,2));
       const innerPackage = await packageModule.buildTaskPackage({
         manifestPath,
         outputDirectory: work,
-        outputStem: 'VEXLIFE-PROD-PR107-NATIVE-ENTRY-LIVED-A004-INNER',
+        outputStem: 'VEXLIFE-PROD-PR107-NATIVE-ENTRY-LIVED-A005-INNER',
       });
 
       const contentRoot = path.join(work, 'outer-content');
@@ -1004,7 +1004,7 @@ console.log(JSON.stringify(summary,null,2));
         taskTemplate: bindAuthoritySummaryFromEnvelope(outer, authorityEnvelope),
         contentRoot,
         outputDirectory: downloads,
-        outputStem: 'VEXLIFE-PROD-PR107-NATIVE-ENTRY-LIVED-A004',
+        outputStem: 'VEXLIFE-PROD-PR107-NATIVE-ENTRY-LIVED-A005',
         ttlMs: 8 * 60 * 60 * 1000,
       });
 
@@ -1016,20 +1016,28 @@ console.log(JSON.stringify(summary,null,2));
       requireEqual(hashFile(formedOuter.finalZip), formedOuter.digest, 'outer digest');
 
       console.log('');
-      console.log('PR107 Native Lived A004 is ready.');
+      console.log('PR107 Native Lived A005 is ready.');
+      console.log('');
+      console.log('BEFORE THE WINDOW OPENS:');
+      console.log('- The exact disposable proof Home was copied to your clipboard by the launch command.');
+      console.log('- This bounded proof is staged under Downloads, so macOS may ask');
+      console.log('  "VexLife Prod Setup" for access to files in Downloads.');
+      console.log('- That is proof-harness permission, NOT an established VexLife Product permission.');
+      console.log('- Choose Allow for this bounded proof if macOS asks.');
       console.log('');
       console.log('WHEN THE "Choose your Vex Home" WINDOW APPEARS:');
-      console.log('1. Replace the prefilled ~/.vexlife path with EXACTLY:');
+      console.log('1. The existing ~/.vexlife text should already be selected.');
+      console.log('2. Press Command-V once to paste the disposable proof Home.');
+      console.log('3. The field must now read exactly:');
       console.log('');
       console.log('   ' + proofHome);
       console.log('');
-      console.log('2. Click Continue.');
-      console.log('3. Click "Create Vex Home".');
-      console.log('4. If "Set Up VexLife" appears, click Cancel.');
-      console.log('   If a held-state message appears instead, click Close/OK.');
+      console.log('4. Click Continue.');
+      console.log('5. Click "Create Vex Home".');
+      console.log('6. If "Set Up VexLife" appears, click Cancel.');
+      console.log('   If a truthful held-state dialog appears instead, click Close/OK.');
       console.log('');
-      console.log('Safety: the proof guard refuses any Home path other than the one printed above,');
-      console.log('so your real ~/.vexlife cannot be touched by this proof.');
+      console.log('Safety: the guard refuses any other Home, including your real ~/.vexlife.');
       console.log('');
 
       const runner = path.join(sdkRoot, 'lib/vexlocalbridge/templates/RUN-VEX-TASK.command');
@@ -1046,7 +1054,7 @@ console.log(JSON.stringify(summary,null,2));
 
       if (result.error) throw result.error;
 
-      console.log('PR107 Native Lived A004: VexLocalBridge exit=' + String(result.status));
+      console.log('PR107 Native Lived A005: VexLocalBridge exit=' + String(result.status));
       console.log('Upload the canonical RETURN ZIP revealed by VexLocalBridge.');
 
       process.exitCode = result.status ?? 1;
@@ -1059,6 +1067,6 @@ console.log(JSON.stringify(summary,null,2));
 }
 
 main().catch((error) => {
-  console.error('\nPR107 Native Lived A004 failed:\n' + (error?.stack || error));
+  console.error('\nPR107 Native Lived A005 failed:\n' + (error?.stack || error));
   process.exitCode = 1;
 });
