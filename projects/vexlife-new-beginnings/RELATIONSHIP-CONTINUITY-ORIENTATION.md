@@ -2447,3 +2447,81 @@ run A031 R003 once
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R003][PATH-BINDING-CORRECTION] -->
 
+## A031 R003 lived-test failure recovery R004 — 2026-11-12 23:11:52 America/Los_Angeles
+
+R003 canonical RETURN:
+
+```text
+sha256 =
+dd9a54ce97308e9108b64486ffaa4576923f00ef5e8ef58a8b66088159ac31c7
+
+disposition = SAFE_FAILURE
+stopReason = A031_LIVED_GRADLE_FAILED
+```
+
+R003 successfully reached:
+- authenticated provider source acquisition;
+- exact Product candidate checkout;
+- targeted `LiveSourceReturnRolloverHostProofTest`;
+- one completed test, one failed test.
+
+Exact candidate remained:
+```text
+2da02aa6ec6bd5c15f0f5743affb8f7612a82dc2
+/
+5283a0088ca2ac66f31f783ba62418352bd1789d
+```
+
+Stable and Product runtime receipt bytes were unchanged before/after R003.
+
+R003 retained only Gradle stdout/stderr hashes and removed the temporary test report/checkout. Therefore the generic Gradle failure is not the exact semantic failure classification.
+
+Recover-before-replay remains required.
+
+### R004
+
+```text
+package =
+VEXLIFE-PR89-A031-R003-POSTFAILURE-RECOVERY-R004-DIRECT-HOST
+
+sha256 =
+3a8d3db551e70c9e7184ce896a08483763d49c8483dcfbded317b4e71c87e6c0
+
+recoveryAttemptRef =
+attempt.vexlife-prod.pr89.a031-r003-postfailure-recovery.r004
+```
+
+R004 is recovery-only. It compares current Product/stable runtime receipt, process, launchd and bounded log fingerprints/counters against the R001 baseline. It performs no Gradle, model inference, Heretic restart, Product source mutation, Local Workspace, GitHub Actions, or lifecycle effect.
+
+Current Relay binding:
+
+```text
+SDK =
+0418b282cd1a92e3a22696480f5b364bebfc56bf
+tree =
+b76ef935bc703392c78d4259689b027ea77be444
+
+contractRef =
+source.vexrelay.current-contract/v1
+
+contract blob =
+b53cbac01c2deeb45fad5c32ce98e0796c04126f
+```
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846668220
+```
+
+Current edge:
+
+```text
+run R004 once
+-> consume exact recovery RETURN
+-> classify R003 runtime/inference residue
+-> only then decide whether fresh lived proof is safe
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R003][RECOVERY-R004] -->
+
