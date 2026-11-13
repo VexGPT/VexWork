@@ -1320,6 +1320,133 @@ ONE VISION-SPECIFIC EARNED CONTINUATION
 != GENERIC AGENT TOOL FRAMEWORK REQUIRED
 ~~~
 
+#### Concrete current-source precedent — one bounded same-turn continuation already exists
+
+Fresh Product-source descent found an existing current pattern in `DirectCompanionTurn` /
+`DirectConversationSourceReturn`:
+
+~~~text
+initial prompt
+-> source-return protocol is available as one typed internal control
+-> first local-model inference
+
+if the model answers normally:
+  -> complete the turn normally
+
+if the model emits the exact source-return control:
+  -> do not expose that control as the human answer
+  -> deterministically discover/re-open exact canonical Conversation source
+  -> rematerialize the prompt with the returned source
+  -> disable another source-return request
+  -> perform one final provider inference
+  -> persist only the final human-facing response + bounded source-return trace
+~~~
+
+Current source explicitly bounds this relationship:
+
+~~~text
+one internal source-return request per human turn
+effectAuthorityGranted = false
+effectsPerformed = false
+returned source != Memory
+returned source != semantic acceptance
+final inference cannot request source again
+~~~
+
+This is strong implementation evidence for the **shape** of same-turn Vision continuation:
+
+~~~text
+MODEL_REQUESTS_MORE_CURRENT_CONTEXT
+-> Product intercepts one exact internal control
+-> rightful owner obtains the missing context
+-> Product rematerializes exact current prompt/context
+-> one final inference answers the same human turn
+~~~
+
+But the ownership difference is material:
+
+~~~text
+CONVERSATION_SOURCE_RETURN
+= read-only canonical source acquisition
+= no effect authority
+
+VISION_LOOK
+= real sensor/effect request
+= requires current semantic admission + current SCREEN authority + physical observation
+~~~
+
+Therefore do **not** copy `DirectConversationSourceReturn` and call Vision read-only context.
+
+The likely smallest Product design is:
+
+~~~text
+Capability Atlas
+-> may describe current Vision LOOK requestability/held state
+-> still grants no effect authority
+
+initial provider stage
+-> may emit one exact Vision LOOK internal request when current vision is materially needed
+
+DirectCompanionTurn
+-> recognizes the internal request
+-> does NOT capture directly
+-> routes it to the rightful Vision semantic/effect realization
+
+Vision semantic owner
+-> resolves the request against exact current Vision State
+
+Vision effect realization
+-> re-observes current selected scope
+-> re-observes fresh SCREEN Safety
+-> performs at most one admitted LOOK
+-> returns bounded derived visual context or one truthful held/failure result
+
+DirectCompanionTurn
+-> rematerializes the current prompt with the bounded Vision return
+-> disables repeat Vision LOOK for the final stage
+-> performs one final inference
+-> commits one canonical human/Vex turn
+~~~
+
+Current VexLife-Prod source has **no `VexExecution` implementation**. Its portable
+`VexFamilyContract` deliberately owns semantic `Act` / `Effect` meaning and explicitly owns no
+execution machinery.
+
+Therefore:
+
+~~~text
+VEXARCHITECTURE_EXECUTION_LAW
+= useful design constraint
+
+CURRENT_PRODUCT_VEXEXECUTION_CLASS
+= ABSENT
+
+ABSENT_VEXEXECUTION_CLASS
+!= PORT_ANDROID_VEXEXECUTION_BY_DEFAULT
+~~~
+
+The implementation should first pressure the existing `DirectCompanionTurn` continuation owner and
+the exact Vision effect owner. A Product-local execution abstraction is earned only if a repeated
+custody/overlap/failure question appears that those current owners cannot truthfully answer.
+
+One new design question is now explicit:
+
+~~~text
+current source already permits one Conversation source-return continuation
+
+Vision adds a second possible internal continuation kind
+
+QUESTION:
+  does one human turn admit only one internal continuation total,
+  or can independently bounded source-return + Vision LOOK both occur?
+
+DO NOT ANSWER BY GENERIC TOOL LOOP.
+Ground the smallest truthful arbitration from lived/product pressure.
+~~~
+
+The first Vision implementation should fail closed on ambiguous/multiple internal controls rather than
+silently executing more effects than one bounded turn admitted.
+
 ### Security boundary carried by the design
 
 This end-to-end experience keeps the existing Security activation above and makes its current boundary
