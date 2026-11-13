@@ -812,6 +812,56 @@
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-13T09:14:37.697Z",
+      "updatedAt": "2026-11-13T10:02:13.000Z",
+      "workRef": "work.vexlife.new-beginnings.relationship-continuity-score-reconnection",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "Immediate — restore current Score coordinates into Working Continuity",
+      "purpose": "Restore the already-earned Score -> reference-only WorkingSet producer relationship in VexLife-Prod so current Score statement refs and unresolved open-loop refs are reacquired from current Score truth instead of depending on prompt Memory selection or stale prior-successor inheritance. Preserve Memory as Memory, preserve Conversation exact-source return unchanged, keep WorkingContinuity non-semantic, fail closed on Score attention/currentness drift without retroactively failing a valid human turn, and prove the smallest source change before any broader resolver or semantic-carry design.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p2.vex-conversation-reintegration",
+        "work.vexlife.new-beginnings.local-runtime-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "human.authorization.vexlife.relationship-continuity-score-reconnection.20261113",
+        "github.issue.vexlife-prod.61",
+        "github.pull.vexwork.292",
+        "github.pull.vexwork.275.comment.6848911010",
+        "repo.vexlife-prod:docs/foundation/WORKING-CONTINUITY-ROLLOVER.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuity.kt",
+        "repo.vexlife:src/core/continuity-stream-adapter.mjs@7d59753687ff12726b0d309ee2dde028b5f89e8a",
+        "repo.vexlife:src/core/score-context-continuity.mjs@7d59753687ff12726b0d309ee2dde028b5f89e8a",
+        "github.pull.vexlife-prod.116",
+        "github.issue.vexlife-prod.61.comment.6848983662",
+        "github.issue.vexlife-prod.61.comment.6849185425",
+        "github.issue.vexlife-prod.61.comment.6849213363",
+        "github.issue.vexlife-prod.61.comment.6849435673",
+        "repo.vexwork:projects/vexlife-new-beginnings/PR116-SOURCE-OWNER-FORM-AND-RUN.mjs",
+        "relay.return.sha256.a50ab4f82746ed31d67687f0e6b09d0b29458e8e099c7495a5f0a5dc091e8e20",
+        "relay.inner-return.sha256.5dc9f8b4f7b9904d71707aff63b445773d2fb2d0f2cc593d5495cfa320e002f6",
+        "github.pull.vexlife-prod.116.head.47e00b95459c372c9bbbdfc4aaf5631edc40963f",
+        "github.issue.vexlife-prod.61.comment.6849779812",
+        "github.issue.vexlife-prod.61.comment.6849797363",
+        "github.pull.vexlife-prod.116.merge.5396e179483cc22598be447b3124af8355a6fee6",
+        "github.commit.vexlife-prod.5396e179483cc22598be447b3124af8355a6fee6",
+        "github.tree.vexlife-prod.82fb2d80c441b82c71ce256e8724e4597e84f278"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     }
   ],
   "transitions": [
@@ -1402,6 +1452,53 @@
         "github.pull.vextreme-sdk.1947"
       ],
       "createdAt": "2026-11-13T02:24:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.relationship-continuity-score-reconnection.ready-running.human-continuation.20261113A",
+      "workRef": "work.vexlife.new-beginnings.relationship-continuity-score-reconnection",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly continued the relationship-continuity implementation after re-grounding the end-to-end feature with God and current source. Source authoring is admitted only for the bounded restoration of the existing Score -> reference-only WorkingSet producer relationship and its proof; generic retrieval, semantic carry, Relay/State/ledger expansion, Memory widening, training, deployment and broader continuity architecture remain unearned.",
+      "actorRef": "actor.chatgpt.relationship-continuity",
+      "sourceRefs": [
+        "human.authorization.vexlife.relationship-continuity-score-reconnection.20261113",
+        "github.issue.vexlife-prod.61",
+        "github.pull.vexwork.292",
+        "github.pull.vexwork.275.comment.6848911010"
+      ],
+      "createdAt": "2026-11-13T09:14:37.697Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.relationship-continuity-score-reconnection.running-verifying.sourceowner-assurance.20261113A",
+      "workRef": "work.vexlife.new-beginnings.relationship-continuity-score-reconnection",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Exact PR #116 SourceOwner A003 proved the six-path candidate head/tree and full offline JVM suite; fresh semantic Assurance cleared the same exact head while preserving Score/Memory/WorkingContinuity ownership boundaries. Integration currentness remained the only unconsumed obligation.",
+      "actorRef": "actor.chatgpt.relationship-continuity",
+      "sourceRefs": [
+        "relay.return.sha256.a50ab4f82746ed31d67687f0e6b09d0b29458e8e099c7495a5f0a5dc091e8e20",
+        "relay.inner-return.sha256.5dc9f8b4f7b9904d71707aff63b445773d2fb2d0f2cc593d5495cfa320e002f6",
+        "github.issue.vexlife-prod.61.comment.6849779812"
+      ],
+      "createdAt": "2026-11-13T09:56:15.688Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.relationship-continuity-score-reconnection.verifying-completed.merged-main-tree-exact.20261113A",
+      "workRef": "work.vexlife.new-beginnings.relationship-continuity-score-reconnection",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "OwnerMergeDuty currentness cleared against exact unchanged main/base and candidate head, PR #116 merged by ordinary guarded merge, and accepted VexLife-Prod main 5396e179483cc22598be447b3124af8355a6fee6 has tree 82fb2d80c441b82c71ce256e8724e4597e84f278 byte-exact to the A003 full-JVM proven candidate.",
+      "actorRef": "actor.chatgpt.relationship-continuity",
+      "sourceRefs": [
+        "github.issue.vexlife-prod.61.comment.6849797363",
+        "github.pull.vexlife-prod.116",
+        "github.commit.vexlife-prod.5396e179483cc22598be447b3124af8355a6fee6",
+        "github.tree.vexlife-prod.82fb2d80c441b82c71ce256e8724e4597e84f278"
+      ],
+      "createdAt": "2026-11-13T10:02:13.000Z"
     }
   ],
   "sourceRefs": [
