@@ -2421,8 +2421,9 @@ TURN_PROMPT_CONVERGENCE_ALREADY_OWNED_BY
 
 #### First Product scope slice — smallest truthful realization
 
-Current PR #114 already provides the lower runtime routes. The next Product semantic slice should
-correct their relationship to Family rather than add another coordinator.
+Current PR #114 provides the lower runtime routes, but its current accepted SDK substrate does not yet
+prove selected-source loss. After that lower-owner currentness gap is corrected, the Product semantic
+slice should correct the route-to-Family relationship rather than add another coordinator.
 
 ~~~text
 GET /api/v1/vision
@@ -2481,10 +2482,11 @@ flight. Reuse that currentness loop:
 
 ~~~text
 EXISTING_VISION_POLL
++ lower owner whose ENGAGED truth can retire on source loss
 + truthful Family-backed /vision projection
--> quiet persistent selected-scope indicator stays current
+-> Product-global Ready / On / Held semantic indication stays current
 
-NO_NEW_OBSERVER_REQUIRED
+NO_NEW_PRODUCT_OBSERVER_REQUIRED
 ~~~
 
 The existing Vision control/quick-action surfaces are also sufficient for the first slice. Rebind them
@@ -2562,6 +2564,38 @@ SCShareableContent.info(for: retainedFilter)
 -> current shareable content matching the retained filter or no match
 -> no raw pixel capture
 ~~~
+
+Do not over-specify production behavior before the host proof. The first qualification matrix should
+establish at least:
+
+~~~text
+selected window remains open + moves
+-> CURRENT / remain ENGAGED
+
+selected window remains open + resizes
+-> CURRENT / remain ENGAGED
+
+selected window minimizes
+-> still same selected source; do not relabel SOURCE_LOST merely because visible geometry changes
+
+selected window navigates/scrolls
+-> CURRENT / remain ENGAGED
+
+selected window closes
+-> source absence becomes observable
+-> SOURCE_LOST
+
+owning app exits
+-> source absence becomes observable
+-> SOURCE_LOST
+
+probe cannot establish currentness
+-> not SOURCE_LOST by invention
+-> fail closed through truthful unknown/host-owner behavior
+~~~
+
+The production probe cadence, event/timer mechanism and exact native event spelling remain downstream
+of this real host behavior proof.
 
 Apple exposes `SCShareableContentInfo` on macOS 14+ and describes `info(for:)` as retrieving current
 shareable content matching a filter. That makes it a promising host-currentness probe, not accepted
@@ -2756,10 +2790,11 @@ boundary remains explicitly unproven. Do not call that narrower Product proof th
 human-experience completion.
 
 <!-- [VXG RealForever][VEXLIFE][VISION][QUIET-SCOPE-BOUNDARY][HELD-OWNER-QUESTION][20261113] -->
-### First post-#114 Product implementation blueprint — no new architecture layer
+### First post-currentness Product implementation blueprint — no new architecture layer
 
-This blueprint is for the **next Product semantic/presentation slice after PR #114 is accepted and
-lived-current**. It is not authority to mutate the current PR #114 claim.
+This blueprint is for the **next Product semantic/presentation slice after PR #114 is accepted and the
+lower selected-scope owner can truthfully retire ENGAGED on source loss**. It is not authority to mutate
+the current PR #114 claim or to skip the intervening SDK currentness correction.
 
 Current source is sufficient to design this slice without any new file family, coordinator, Method,
 Execution foundation, Store, Partner or Relay.
@@ -3050,7 +3085,7 @@ running accepted Product
 -> Vision Ready
 ~~~
 
-This proves the Product semantic/control circuit and ordinary persistent-scope runtime relationship.
+This proves the Product semantic/control circuit over a lower owner that can retire stale source truth.
 It does **not** by itself prove that the exact external window remains visibly marked while engaged.
 
 The broader persistent-scope human experience requires the quiet-scope boundary question above to be
