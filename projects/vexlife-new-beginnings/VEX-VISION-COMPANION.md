@@ -1552,6 +1552,233 @@ raw image bytes are not part of reservation persistence
 This is a source-placement unknown, not an architecture unknown and not a reason to weaken the replay
 boundary.
 
+### Durable persistent-LOOK replay placement — Home stores bytes; Process Factory owns meaning
+
+The selected-scope architecture already requires one durable single-use reservation before native
+capture. Fresh source descent now answers **where the durability may live** without changing who owns
+the effect.
+
+Canonical VexLife Home explicitly permits source-bound implementation/lifetime records under:
+
+~~~text
+~/.vexlife/runtime/vexlife-prod/
+~~~
+
+while preserving:
+
+~~~text
+PHYSICAL_RUNTIME_NAMESPACE
+!= SEMANTIC_HOME_OWNER
+~~~
+
+Current Product durable-file source states the corresponding law directly:
+
+> Domain source owns schema and meaning; filesystem custody only proves safe persistence under one
+> caller-supplied owned root.
+
+Therefore the candidate relationship is:
+
+~~~text
+VexLife-Prod
+  owns canonical Home admission
+  + allocates one exact private Vision-effect runtime subroot
+  + passes only that exact subroot to the carried Vision runtime
+  != LOOK reservation semantics
+  != replay decision
+  != SCREEN authority
+
+Process Factory
+  owns one persistent-selected-scope LOOK reservation/completion contract
+  + single-use replay law
+  + exact binding to LOOK request / selected scope / fresh Safety
+  + durable records inside the caller-supplied root
+
+canonical Home
+  storage substrate only
+  != Vision Store
+  != Memory
+  != Conversation
+~~~
+
+Permanent:
+
+~~~text
+STORAGE_LOCATION
+!= EFFECT_AUTHORITY_OWNER
+
+RUNTIME_RECORD_UNDER_HOME
+!= MEMORY_ACCEPTED
+
+DURABLE_REPLAY_EVIDENCE
+!= DURABLE_VISUAL_CONTENT
+~~~
+
+#### Do not give the child the whole Home
+
+Current Product has `session.result.productHome` at the same service-construction point where it opens
+`VexLifeProdVisionRuntime`.
+
+The later LOOK integration should derive/secure one exact descendant runtime directory on the Product
+side and pass **only that directory** as a dependency.
+
+Do not pass:
+
+~~~text
+~/.vexlife
+Conversation path
+Memory path
+config/
+devices/
+arbitrary writable parent
+~~~
+
+to the SDK Vision child.
+
+The exact descendant name and transport (`argv` / environment / bounded initialization contract) are
+not frozen here. Current SDK entrypoint intentionally accepts zero argv, so changing that boundary
+belongs to the later exact LOOK integration rather than being smuggled into the currentness slice.
+
+#### Reservation law — reuse the accepted mechanics, not the GitHub-shaped contract
+
+The accepted typed-effect foundation establishes the mechanical law:
+
+~~~text
+persist reservation atomically BEFORE dispatch
+-> reservation remains consumed across block/crash/restart
+-> completion evidence binds to the exact reservation
+-> replay of the same effect identity is rejected
+-> retry requires a fresh admitted identity
+~~~
+
+The current typed-effect registry itself remains Operations/GitHub-shaped and is not the SCREEN owner.
+
+So the SCREEN owner should implement the smallest local specialization of those mechanics rather than
+importing the GitHub transaction schema or creating a generic new effect framework.
+
+Candidate minimum durable relationship:
+
+~~~text
+RESERVATION
+  exact LOOK requestRef
+  exact selected scopeSessionRef
+  exact fresh SCREEN Safety authorization/binding/fingerprint
+  reservedAt
+  effectClass = one on-demand selected-scope snapshot
+  reservation identity/fingerprint
+  raw bytes absent
+
+COMPLETION
+  exact reservation identity
+  exact content-absent capture receipt identity/fingerprint
+  capture attempted/count/result
+  frame digest + dimensions when available
+  completedAt
+  raw bytes absent
+~~~
+
+Those are semantic pressure, not a frozen schema.
+
+Use the LOOK request identity itself as the one-use effect identity unless fresh source proves a
+separate nonce answers a real additional question. Do not mint three identities because a generic
+effect system elsewhere happens to have three fields.
+
+#### Crash / uncertainty law
+
+Required order:
+
+~~~text
+fresh LOOK semantics + fresh SCREEN Safety
+-> durable reservation creation succeeds
+-> ONLY THEN native capture command may be dispatched
+-> native capture settles
+-> validate content-absent capture receipt
+-> durably bind completion to reservation
+-> only then expose positive capture completion upward
+~~~
+
+If the process dies after reservation but before durable completion:
+
+~~~text
+reservation present
+completion absent
+-> UNKNOWN_EFFECT_OUTCOME_FOR_THIS_REQUEST
+-> same requestRef may NOT capture again
+-> no invented success
+-> no invented failure
+-> new lawful LOOK requires a new request identity
+~~~
+
+If completion persistence fails after the native effect may have occurred, the same rule applies:
+preserve uncertainty and do not replay.
+
+This deliberately prefers one missed snapshot over an invisible duplicate screenshot.
+
+#### Persistence mechanics should stay local
+
+Current SDK has several subsystem-local atomic JSON writers. The effect-transaction CLI exports one,
+but that helper is owned by its CLI/transaction subsystem and carries no repository-wide public
+persistence contract.
+
+Do not create a generic persistence library merely to avoid a small local implementation.
+
+The narrow SCREEN replay owner needs the same mechanical properties:
+
+~~~text
+exact owned root
+no symlink traversal
+private mode
+create/reserve atomically
+fsync durable bytes before dispatch
+atomic rename where replacement is required
+exclusive create / exact duplicate rejection
+directory durability where platform requires it
+immutable reservation history for the one-use identity
+~~~
+
+Implementation may copy the proven mechanical pattern locally while preserving independent domain
+ownership.
+
+#### Product/runtime dependency direction
+
+Long-term dependency direction should remain:
+
+~~~text
+VexLifeProdLocalService
+  has canonical productHome
+  -> derives one exact private runtime subroot
+  -> opens VexLifeProdVisionRuntime(executable, exactSubroot)
+
+VexLifeProdVisionRuntime
+  transports only the exact dependency to the accepted carried Vision process
+  != reservation semantic owner
+
+SDK selected-scope Product runtime
+  injects exact root into the narrow LOOK replay owner
+
+LOOK replay owner
+  persists/reads only its own closed records under that root
+~~~
+
+Do not let the SDK child discover `~/.vexlife` from ambient HOME or infer writable state from the
+artifact location.
+
+#### One-shot precedent also bounds what Product should receive
+
+The accepted one-shot SDK runtime already composes:
+
+~~~text
+Process Factory capture receipt
+-> Security active-sharing witness
+-> Perception active VISUAL observation
+-> Product-safe result
+~~~
+
+while raw bytes remain absent.
+
+Persistent LOOK should preserve that ownership direction. Product should not receive native provider
+identity or raw frame bytes merely because it supplied the durability root.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][PERSISTENT-LOOK-DURABLE-REPLAY-PLACEMENT][20261113] -->
 #### 3. The accepted one-shot capture route does not contain a hidden raw-image/VLM pipeline
 
 The accepted one-shot system-picker helper:
