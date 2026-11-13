@@ -3723,6 +3723,35 @@ SOURCE ADDRESSABILITY != MODEL ACCESS
 CURRENT COORDINATE != SEMANTIC BODY
 ```
 
+
+### Current downstream consumers of the finite-attention correction
+
+The distinction is now consumed by two separate New Beginnings relationships rather than remaining
+only an orientation statement:
+
+```text
+normal Browser provider (#297)
+  provider owns exact current browser state outside the model window
+  Vex BrowserContext is a bounded turn-specific projection of that state
+  current page truth is not promoted into durable Memory merely for access
+
+Companion turn interaction integrity (#301)
+  owner current state
+  != exact snapshot bound to the active turn
+  != next-turn composer context
+  presentation must preserve those identities when they differ
+```
+
+This is intentionally distributed ownership, not one new `SharedMemory` container.
+
+```text
+SHARED CURRENT-STATE WORLD
+= composition of rightful current owners
+!= one universal state store
+!= one universal resolver
+!= everything copied into Memory
+```
+
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][END-TO-END-FEATURE-GROUNDING] -->
 
 ## Implementation-design continuation — current source findings
