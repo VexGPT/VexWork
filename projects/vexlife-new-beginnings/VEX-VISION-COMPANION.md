@@ -4226,6 +4226,304 @@ VLM_RUNTIME_CLASS_RECOGNIZED
 So the ephemeral frame must not be routed to VexLocalBridge merely because the enum exists.
 
 <!-- [VXG RealForever][VEXLIFE][VISION][LOOK-SINGLE-USE-RESERVATION][ARCHITECT-REVIEWED][20261113] -->
+### Persistent LOOK Process Factory realization — capture first, transport later
+
+The accepted pure selected-scope session already owns the semantic host-session transition:
+
+~~~text
+ENGAGED
++ requestRef
++ fresh current SCREEN Safety
+-> LOOKING
+
+LOOKING
++ matching requestRef
++ fresh current SCREEN Safety
+-> ENGAGED
+
+Safety loss
+-> HELD
+~~~
+
+It already admits `SOURCE_LOST` / `HOST_OWNER_LOST` / `EXPLICIT_STOP` terminal truth.
+
+Therefore the first physical persistent-LOOK source slice should **reuse the session owner unchanged**.
+
+~~~text
+SESSION_LOOK_SEMANTICS_EXISTS
+-> do not rewrite session.js merely because capture is now being realized
+~~~
+
+#### New abstraction earned: one SCREEN snapshot effect owner
+
+Host custody currently owns child-process/provider lifetime. It should not absorb durable filesystem
+reservation history just because it is adjacent to capture.
+
+That separate recurring question is now real:
+
+> Has this exact SCREEN / ON_DEMAND_SNAPSHOT request identity already consumed its one physical
+> capture opportunity across retry, crash and process replacement?
+
+So one small Process-Factory-owned SCREEN snapshot effect owner **is earned**.
+
+It owns only:
+
+~~~text
+caller-supplied private effect root
+reserve exact requestRef once
+bind requestRef -> scopeSessionRef + current SCREEN Safety identity
+persist before capture authorization
+recover exact immutable completion when present
+report UNKNOWN_AFTER_RESERVATION when completion is absent
+never replay the same requestRef
+~~~
+
+It does not own:
+
+~~~text
+selected provider scope
+Safety policy
+native screenshot API
+Security witness
+Perception meaning
+raw image lifetime
+visual-model inference
+Conversation
+Memory
+~~~
+
+#### Existing host custody gains one physical LOOK operation, not a second state model
+
+After the source-currentness correction is accepted, the existing
+`macos-screen-selected-scope-host-custody.js` may gain one operation shaped by current owners:
+
+~~~text
+look({ requestRef })
+
+1. require current accepted session state = ENGAGED
+
+2. ask existing session owner:
+     requestMacosScreenSelectedScopeLook(session, {requestRef, now})
+   -> LOOKING + exact fresh Safety refs
+
+3. ask SCREEN snapshot effect owner to reserve requestRef durably
+   -> reservation MUST be durable before native capture command
+
+4. send one exact LOOK command to the already-owned native selected-scope child
+   -> same retained SCContentFilter/provider scope
+   -> no second picker
+
+5. receive one exact content-absent capture receipt
+   -> bind requestRef + scopeSessionRef + reservationRef + current Safety
+
+6. persist immutable capture completion when outcome is known
+
+7. ask existing session owner:
+     completeMacosScreenSelectedScopeLook(session, {requestRef, now})
+   -> ENGAGED if Safety remains current
+   -> HELD if Safety is no longer current
+
+8. if session leaves ENGAGED/LOOKING
+   -> existing custody release law still owns native child termination
+~~~
+
+Important failure law:
+
+~~~text
+reservation persisted
++ native command send/result becomes uncertain
+-> requestRef remains consumed
+-> no second capture
+-> scope session may recover to truthful ENGAGED/HELD only through existing owner semantics
+-> effect outcome remains UNKNOWN unless an immutable completion exists
+~~~
+
+Do not keep the pure session in LOOKING merely to represent unknown effect evidence. Session state
+answers the selected-scope relationship; the reservation/completion owner answers capture replay/outcome
+evidence.
+
+#### Existing native selected-scope helper gains one command path
+
+Current helper retains:
+
+~~~text
+SCContentFilter
+one unstarted SCStream
+~~~
+
+and currently ignores stdin.
+
+The later physical LOOK realization should keep the same helper/process lifetime and add one bounded
+command surface rather than launching a second picker/helper process.
+
+Candidate native command meaning:
+
+~~~text
+LOOK
+requestRef
+reservationRef
+safetyAuthorizationRef
+safetyBindingRef
+safetyReceiptFingerprint
+safetyExpiresAt
+~~~
+
+Provider/window identity is still not accepted from Product/Node input; it remains the already-retained
+host-local filter.
+
+Native LOOK law:
+
+~~~text
+exact retained scope still current
++ command Safety not stale
+-> visible active-capture feedback begins
+-> SCScreenshotManager.captureImage(contentFilter=retainedFilter)
+-> compute frame digest + dimensions in memory
+-> emit one content-absent capture receipt
+-> active-capture feedback ends
+-> raw image leaves scope
+~~~
+
+First physical capture slice still ends with:
+
+~~~text
+rawBytesPersisted=false
+rawFileWritten=false
+visualModelInputAuthorized=false
+activeVisualObservation not yet established by implication
+~~~
+
+The active-capture indicator realization is a Security-bound question. Process Factory may render
+host-local feedback needed by the accepted Security design, but it must not certify its own sufficiency.
+
+#### Process Factory capture receipt chronology must be truthful
+
+The new receipt must explicitly distinguish this route from the historical one-shot picker capture.
+
+Candidate meaning:
+
+~~~text
+routeClass = PERSISTENT_SELECTED_SCOPE_LOOK        # candidate spelling
+channelRef = SCREEN
+mode = ON_DEMAND_SNAPSHOT
+
+requestRef
+scopeSessionRef
+reservationRef
+observedAt
+
+safetyAuthorizationRef
+safetyBindingRef
+safetyReceiptFingerprint
+
+pickerPresentedForThisCapture = false
+selectedScopeReused = true
+
+captureAttempted
+captureCount = 0 | 1
+captureSucceeded
+captureErrorCodeOrNull
+
+frameSha256OrNull
+frameWidthOrNull
+frameHeightOrNull
+
+rawBytesIncluded=false
+rawRetained=false
+rawFileWritten=false
+continuousCapturePerformed=false
+backgroundCapturePerformed=false
+modelInputEffect=false
+memoryEffect=false
+trainingEffect=false
+publicationEffect=false
+~~~
+
+The exact schema/spelling is not frozen here. The invariant is:
+
+~~~text
+PRIOR_SYSTEM_PICKER_SELECTION_OCCURRED
+!= PICKER_PRESENTED_FOR_THIS_CAPTURE
+~~~
+
+Do not obtain a Security PASS by lying that the picker was presented again.
+
+#### Smallest first capture source membrane
+
+After source-currentness acceptance, the first **Process Factory capture** slice should pressure only
+the concrete owners needed for one content-absent snapshot:
+
+~~~text
+NEW
+  one route-neutral SCREEN / ON_DEMAND_SNAPSHOT reservation owner
+  one focused test file
+
+EXISTING
+  lib/process-factory/macos-screen-selected-scope-agent.swift
+  lib/process-factory/macos-screen-selected-scope-host-custody.js
+  tests/process-factory/macos-screen-selected-scope-agent.test.js
+  tests/process-factory/macos-screen-selected-scope-host-custody.test.js
+  docs/architecture/macos-screen-selected-scope-session.md
+
+UNCHANGED FIRST
+  lib/process-factory/macos-screen-selected-scope-session.js
+  lib/process-factory/macos-screen-selected-scope-product-runtime.js
+  lib/process-factory/macos-screen-selected-scope-product-runtime-entrypoint.js
+~~~
+
+This is a design membrane, not a source claim. The reservation owner path/name remains for #241
+source placement rather than being invented in VexWork.
+
+Why Product runtime remains unchanged in this first slice:
+
+~~~text
+PHYSICAL_CAPTURE_OWNER_PROOF
+-> Security successor
+-> Perception successor
+-> only then Product-facing LOOK transport
+~~~
+
+Adding `LOOK` to the Product command stream before the lower capture/witness/observation owners exist
+would expose an unfinished effect boundary upward and force later schema churn.
+
+#### Security and Perception remain separate owner slices
+
+After Process Factory capture is current:
+
+~~~text
+Security #232
+-> persistent-selected-scope capture witness
+-> proves exact capture belongs to already human-selected current scope
+-> proves current visible capture boundary
+-> does not pretend picker replay
+-> no raw-content authority
+
+Perception #243
+-> consumes exact capture receipt + Security witness + owner-current Safety
+-> forms one content-absent current VISUAL observation identity
+-> no raw image custody
+~~~
+
+Only after those owners exist should the Process Factory Product runtime expose `LOOK` upward and
+return their bounded refs/results.
+
+#### Product-facing LOOK transport is a consumer, not the effect owner
+
+Later:
+
+~~~text
+macos-screen-selected-scope-product-runtime.js
++ entrypoint
+-> add LOOK only as orchestration over accepted custody/effect/Security/Perception owners
+-> no raw bytes
+-> no provider identity
+-> no replay ledger
+~~~
+
+Then VexLife-Prod may add a Product `visionRuntime.look(requestRef)` dependency for the Conversation
+continuation without becoming the SCREEN effect owner.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][PERSISTENT-LOOK][PROCESS-FACTORY-REALIZATION][20261113] -->
 #### Persistent LOOK cannot reuse one-shot Security / Perception unchanged
 
 Current accepted one-shot Security source is explicitly bound to:
