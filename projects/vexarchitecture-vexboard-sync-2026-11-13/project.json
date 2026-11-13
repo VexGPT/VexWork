@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexarchitecture.vexboard-sync.20261113",
+  "label": "VexArchitecture VexBoard Sync Nov 13, 2026",
+  "purpose": "Keep VexBoard Screen Lens perception aligned with the stable VexArchitecture ownership grammar by repeatedly auditing every current screen and projected pathway against exact VexLife-Android source, with special attention to Depth closure: distinguish truthful Store/provider terminals from missing Partner, Connection, Signal, Observation, Receiver, Execution, Relay, Service-host, Widget/presentation, or Family-return relationships, then repair only source-proven projection gaps without making VexBoard a semantic owner.",
+  "rootWorkRefs": [
+    "work.vexarchitecture.vexboard-sync.20261113.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexarchitecture-vexboard-sync-2026-11-13/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "project.vexboard",
+    "work.vexboard.source-projectors",
+    "projects/vexboard/SCREEN-LENS.md",
+    "projects/vexboard/SCREEN-LENS-ADAPTER.md",
+    "projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md",
+    "repo.vexwork:projects/vexboard/lens/vexlife-android.main.screen-lens.json",
+    "github.pull.vexwork.276",
+    "github.pull.vexwork.281",
+    "github.pull.vexwork.293",
+    "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
+    "github.pull.vexwork.295",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+    "github.pull.vexlife-android.219",
+    "github.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+    "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+    "github.pull.vextreme.591",
+    "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48"
+  ],
+  "formedAt": "2026-11-13T08:00:00.000Z"
+}
