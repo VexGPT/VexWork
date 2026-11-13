@@ -1552,6 +1552,251 @@ raw image bytes are not part of reservation persistence
 This is a source-placement unknown, not an architecture unknown and not a reason to weaken the replay
 boundary.
 
+### Downstream visual-model owners are already source-placed — resume them, do not invent a Vision worker
+
+Fresh owner descent found a predecessor visual-input chain that was **source-placed but never
+implemented/accepted on current SDK main**.
+
+That distinction matters:
+
+~~~text
+SOURCE_PLACEMENT_READY
+!= SOURCE_IMPLEMENTED
+!= CURRENT_ACCEPTED_RUNTIME
+~~~
+
+But it also means the ownership questions were already answered and should be resumed rather than
+redesigned from scratch.
+
+#### Vex Safety #226 — one-shot local visual-model input authorization
+
+Historical source placement:
+
+~~~text
+github.issue.vextreme-sdk.226.comment.6053889540
+
+lib/trust-safety/perception-visual-model-input-authorization.js
+tests/trust-safety/perception-visual-model-input-authorization.test.js
+docs/architecture/perception-visual-model-input-authorization.md
+~~~
+
+It owns only:
+
+~~~text
+one exact already-admitted visual observation/resource
++ exact content digest / expiry
++ exact model profile/runtime target
+-> permission for transient LOCAL model read/use of that one frame
+~~~
+
+and preserves:
+
+~~~text
+FRAME_CAPTURED
+!= MODEL_MAY_READ_FRAME
+
+MODEL_MAY_READ_ONE_FRAME
+!= RAW_RETENTION
+!= MEMORY
+!= TRAINING
+!= CLOUD_UPLOAD
+~~~
+
+The original first supported class was CAMERA. Persistent SCREEN should extend this generic visual
+model-input owner only after a current SCREEN observation/resource exists; do not create a separate
+`screen-vlm-permission` owner unless the current generic contract proves structurally incompatible.
+
+#### Perception #243 — VISUAL observation -> model input projection
+
+Historical source placement:
+
+~~~text
+github.issue.vextreme-sdk.243.comment.6053898906
+
+lib/vex-perception-broker/visual-model-input-projection.js
+tests/vex-perception-broker/visual-model-input-projection.test.js
+docs/architecture/visual-model-input-projection.md
+~~~
+
+It owns:
+
+~~~text
+current active/admitted VISUAL observation
++ exact capture/resource identity + digest + expiry
++ current #226 visual-model-input authorization
+-> content-absent inputProjectionRef
+~~~
+
+and explicitly does **not** own:
+
+~~~text
+sensor permission
+capture
+resource materialization
+VLM LOAD/INFER
+Memory/training/publication
+~~~
+
+The original first class was CAMERA / ONE_SHOT_IMAGE / MLX_VLM_DIRECT_RUNTIME. SCREEN should consume
+the same generic semantic question once the new persistent-scope SCREEN observation exists.
+
+#### VexLocalBridge #636 — one-image MLX-VLM runtime binding
+
+Historical source placement:
+
+~~~text
+github.issue.vextreme-sdk.636.comment.6054593814
+
+lib/vexlocalbridge/mlx-vlm-runtime-binding.js
+tests/vexlocalbridge/mlx-vlm-runtime-binding.test.js
+docs/private-continuity/vexlocalbridge/mlx-vlm-runtime-binding-registry.json
+docs/private-continuity/vexlocalbridge/schemas/mlx-vlm-runtime-binding.schema.json
+~~~
+
+The binding was deliberately designed as a sibling of the text MLX runtime rather than widening the
+generic RuntimeAdapter or existing `mlx_lm` binding.
+
+Durable/source-visible records contain refs/digests only:
+
+~~~text
+runtimeClass=MLX_VLM_DIRECT_RUNTIME
+runtimeAdapterRef
+modelProfileRef
+artifactCustodyEvidenceRef
+artifactContentSetSha256
+hostExecutionProfileRef
+sessionRef
+inputProjectionRef
+maxInferTurns
+expiresAt
+sourceRefs
+~~~
+
+and reject durable:
+
+~~~text
+imagePath
+imageBlob
+imageBytes
+base64Image
+private model/Python path
+~~~
+
+The host runtime may resolve an ephemeral local path only through an injected visual-input resolver
+that proves:
+
+~~~text
+exact current Perception inputProjectionRef
+current #226 visual-model-input authorization
+matching task/runtime-owned ephemeral resource
+exact contentSha256
+resource not expired
+one image only
+~~~
+
+That private path never returns in durable output and is never accepted from the model/human.
+
+#### What remains missing today
+
+Current accepted SDK main `1c2c9d76114ca35f00125f0a5c93e531e3e6a746` contains none of those
+three source families.
+
+The latest concrete Vex-small MLX-VLM runtime evidence found on #636 proves:
+
+~~~text
+model LOAD = PASS
+text INFER = PASS
+imageInferencePerformed = false
+IMAGE_RUNTIME = NOT_YET_PROVEN
+~~~
+
+So:
+
+~~~text
+MLX_VLM_RUNTIME_CLASS_ACCEPTED
+!= ONE_IMAGE_RUNTIME_IMPLEMENTED
+!= IMAGE_INFERENCE_QUALIFIED
+~~~
+
+Do not claim a current visual worker exists.
+
+#### Correct SCREEN continuation
+
+The downstream visual chain should therefore be:
+
+~~~text
+persistent selected-scope LOOK
+-> new SCREEN capture receipt
+-> new SCREEN Security witness
+-> new content-absent SCREEN/VISUAL observation
+-> exact attempt-local ephemeral image resource
+
+then resume existing owner placements:
+
+#226 generic visual-model-input authorization
+  -> admit SCREEN / LOCAL_ONE_SHOT_VISUAL_INFERENCE
+
+#243 generic visual-model-input projection
+  -> admit SCREEN / VISUAL / ONE_SHOT_IMAGE
+  -> emit inputProjectionRef
+
+#636 one-image MLX_VLM runtime binding
+  -> resolve inputProjectionRef + ephemeral resource locally
+  -> separately authorized LOAD/INFER
+  -> bounded result ref/text
+~~~
+
+No `VisionVisualWorker` source is currently earned.
+
+Permanent:
+
+~~~text
+VEX_VISION
+!= VLM_RUNTIME_OWNER
+
+PERCEPTION_INPUT_PROJECTION
+!= IMAGE_PATH
+
+VLM_BINDING
+!= SENSOR_AUTHORITY
+
+VLM_RESULT
+!= MEMORY
+~~~
+
+#### Ephemeral resource is the remaining bridge question
+
+The old #636 placement assumes a `task/runtime-owned ephemeral resource` exists but does not own its
+materialization.
+
+That matches the present SCREEN gap exactly.
+
+So the Process Factory #241 owner-resolution question is now narrower:
+
+> Can Process Factory own the attempt-local SCREEN image resource materialization/lifetime required
+> to satisfy the already-source-placed #226 -> #243 -> #636 visual-input chain?
+
+If yes, the resource contract should be designed to satisfy those existing consumers rather than
+inventing its own VLM-facing semantics.
+
+That means at minimum it must be able to supply, through a private resolver:
+
+~~~text
+resourceRef
+captureRef
+observationRef or binding path to it
+contentSha256
+capturedAt
+expiresAt
+one-image cardinality
+ephemeral machine-local resolution
+raw retention = false
+~~~
+
+Exact resource fields still belong to the rightful owner placement. The consumer requirements above
+are constraints, not permission to author the owner from VexWork.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][RESUME-VISUAL-INPUT-OWNER-CHAIN][20261113] -->
 ### Future LOOK semantic pressure — keep the persistent Family persistent
 
 The persistent Product relationship is the selected scope, not the short-lived capture attempt.
@@ -4131,7 +4376,8 @@ exact persistent-selected-scope LOOK capture receipt contract
 exact Security witness + Perception successor contract for capture without picker replay
 exact local ephemeral visual resource identity/custody owner
 exact same-turn Vex LOOK continuation owner/API
-exact visual-model worker/runtime and one-image binding
+current implementation/admission of the already-source-placed #226 visual-model-input Safety + #243 input projection + #636 one-image MLX-VLM binding
+exact model profile/artifact custody + real one-image runtime qualification
 exact derived visual-context contract
 exact Conversation Context convergence representation
 ~~~
