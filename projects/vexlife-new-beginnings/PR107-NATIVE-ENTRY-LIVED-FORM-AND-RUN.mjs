@@ -228,15 +228,15 @@ const count=path.join(proof,'guard-count.txt');
 const guard=path.join(proof,'setup-guard.command');
 const q=(s)=>"'" + String(s).replaceAll("'","'\\\\''") + "'";
 
-const guardScript=`#!/bin/bash
+const guardScript=\`#!/bin/bash
 set -euo pipefail
-IMAGE_ROOT=${q(image)}
-JAVA=${q(javaPath)}
-SAFE_USER_HOME=${q(safeUserHome)}
-PROOF_HOME=${q(PROOF_HOME)}
-LOG=${q(log)}
-COUNT_FILE=${q(count)}
-HEAD=${q(HEAD)}
+IMAGE_ROOT=\${q(image)}
+JAVA=\${q(javaPath)}
+SAFE_USER_HOME=\${q(safeUserHome)}
+PROOF_HOME=\${q(PROOF_HOME)}
+LOG=\${q(log)}
+COUNT_FILE=\${q(count)}
+HEAD=\${q(HEAD)}
 
 if [ ! -f "$COUNT_FILE" ]; then printf '%s\\n' 0 > "$COUNT_FILE"; fi
 N="$(cat "$COUNT_FILE")"
@@ -277,7 +277,7 @@ printf '%s' "$KIND" >> "$LOG"
 for A in "$@"; do printf '\\t%s' "$A" >> "$LOG"; done
 printf '\\n' >> "$LOG"
 
-ERR=${q(path.join(proof,'java-stderr.tmp'))}
+ERR=\${q(path.join(proof,'java-stderr.tmp'))}
 set +e
 OUT="$("$JAVA" -Duser.home="$SAFE_USER_HOME" -cp "$IMAGE_ROOT/lib/*" vexlife.setup.VexLifeProdSetupProcessKt "$@" 2>"$ERR")"
 STATUS=$?
@@ -288,9 +288,9 @@ if [ "$STATUS" -ne 0 ]; then
   exit "$STATUS"
 fi
 
-printf '%s\\n' "$OUT" > ${q(path.join(proof,'invocation-'))}"$N".json
+printf '%s\\n' "$OUT" > \${q(path.join(proof,'invocation-'))}"$N".json
 printf '%s\\n' "$OUT"
-`;
+\`;
 
 fs.writeFileSync(guard,guardScript,{mode:0o755});
 fs.chmodSync(guard,0o755);
