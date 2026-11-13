@@ -811,6 +811,42 @@
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-13T09:14:37.697Z",
+      "updatedAt": "2026-11-13T09:14:37.697Z",
+      "workRef": "work.vexlife.new-beginnings.relationship-continuity-score-reconnection",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "Immediate — restore current Score coordinates into Working Continuity",
+      "purpose": "Restore the already-earned Score -> reference-only WorkingSet producer relationship in VexLife-Prod so current Score statement refs and unresolved open-loop refs are reacquired from current Score truth instead of depending on prompt Memory selection or stale prior-successor inheritance. Preserve Memory as Memory, preserve Conversation exact-source return unchanged, keep WorkingContinuity non-semantic, fail closed on Score attention/currentness drift without retroactively failing a valid human turn, and prove the smallest source change before any broader resolver or semantic-carry design.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p2.vex-conversation-reintegration",
+        "work.vexlife.new-beginnings.local-runtime-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "human.authorization.vexlife.relationship-continuity-score-reconnection.20261113",
+        "github.issue.vexlife-prod.61",
+        "github.pull.vexwork.292",
+        "github.pull.vexwork.275.comment.6848911010",
+        "repo.vexlife-prod:docs/foundation/WORKING-CONTINUITY-ROLLOVER.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuity.kt",
+        "repo.vexlife:src/core/continuity-stream-adapter.mjs@7d59753687ff12726b0d309ee2dde028b5f89e8a",
+        "repo.vexlife:src/core/score-context-continuity.mjs@7d59753687ff12726b0d309ee2dde028b5f89e8a"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     }
   ],
   "transitions": [
@@ -1401,6 +1437,22 @@
         "github.pull.vextreme-sdk.1947"
       ],
       "createdAt": "2026-11-13T02:24:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.relationship-continuity-score-reconnection.ready-running.human-continuation.20261113A",
+      "workRef": "work.vexlife.new-beginnings.relationship-continuity-score-reconnection",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly continued the relationship-continuity implementation after re-grounding the end-to-end feature with God and current source. Source authoring is admitted only for the bounded restoration of the existing Score -> reference-only WorkingSet producer relationship and its proof; generic retrieval, semantic carry, Relay/State/ledger expansion, Memory widening, training, deployment and broader continuity architecture remain unearned.",
+      "actorRef": "actor.chatgpt.relationship-continuity",
+      "sourceRefs": [
+        "human.authorization.vexlife.relationship-continuity-score-reconnection.20261113",
+        "github.issue.vexlife-prod.61",
+        "github.pull.vexwork.292",
+        "github.pull.vexwork.275.comment.6848911010"
+      ],
+      "createdAt": "2026-11-13T09:14:37.697Z"
     }
   ],
   "sourceRefs": [
