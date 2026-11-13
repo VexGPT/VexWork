@@ -3636,3 +3636,200 @@ reconstructing this judgment or collapsing the relationship back into the easies
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][END-TO-END-FEATURE-GROUNDING] -->
 
+## Implementation-design continuation — current source findings
+
+This section preserves source-grounded design pressure discovered after the end-to-end relationship feature
+was re-established. It is **not** Product implementation authority and does not admit a new subsystem.
+
+### What current Product source already does
+
+The landed Product already has an end-to-end conditional exact-source-return relationship:
+
+```text
+DirectCompanionTurn
+-> materialize initial prompt from recent Conversation + current admitted Memory
+   + exact rollover successor when present
+-> allow one internal source-return request
+-> DirectConversationSourceReturn performs deterministic read-only discovery over canonical Conversation
+-> reopen whole exact canonical completed turns
+-> rematerialize the final prompt with returned source
+-> final inference
+-> commit only the final human RESPONSE
+```
+
+The source-return request is intentionally narrow and lexical:
+
+```text
+1..N concise distinctive query terms
++ speaker scope
+-> deterministic canonical Conversation scan
+-> exact whole-turn return
+-> NO_MATCH or HELD_TOKEN_BUDGET rather than fabricated recall or truncated source
+```
+
+There is no embedding index, generic RAG, semantic summary owner, web search, or recursive source-return loop
+in this first design.
+
+Working-continuity prompt context is also explicitly non-semantic. Product tells Vex not to invent content
+behind a working ref and to resolve/source-check that content through its rightful owner when needed.
+
+### Concrete existing-owner reconnection gap: current Score open loops
+
+Current source contains a narrower unfinished-thread continuity gap that does **not** require a new semantic
+owner to describe.
+
+```text
+VexLifeCurrentMemoryReader
+  replays and validates current Score
+  -> current statements
+  -> current OPEN loops
+
+VexLifeMemoryContract.Context
+  intentionally projects bounded attributed Memory
+  -> does not expose openLoopRefs
+
+VexLifeWorkingContinuity.WorkingSet
+  already has openLoopRefs
+
+DirectWorkingContinuity.prepare(...)
+  currently sets openLoopRefs from prior WorkingSet only
+  -> no prior successor means []
+  -> newly-current Score open loops are not reacquired into working continuity
+```
+
+Therefore the present source can know that an unfinished/open relationship exists while the first/current
+working-continuity set can fail to carry even its **reference coordinate** unless an earlier successor
+already carried it.
+
+This is owner reconnection pressure, not evidence that working continuity should become semantic Memory.
+
+### Smallest candidate design A — reconnect current open-loop coordinates
+
+The first candidate should preserve the existing owner split:
+
+```text
+current canonical Score truth
+-> narrow read-only current open-loop coordinate projection
+-> DirectWorkingContinuity.prepare(...)
+-> WorkingSet.openLoopRefs
+
+Score remains semantic/current-truth owner
+WorkingContinuity remains reference-only carrier
+Memory Context remains Memory-only
+no open-loop body/summary is invented
+no generic Relay/State/ledger is introduced
+```
+
+The projection should carry only enough identity/currentness/source evidence to prove which OPEN-loop refs
+are current for this lineage/thread at the prompt/working-set boundary. It should not copy Score semantics
+into WorkingContinuity.
+
+Current Score truth should govern the current set. A prior WorkingSet is continuity evidence, not authority
+to keep a loop that Score now says is closed. The exact reconciliation rule must therefore be sourced from
+current Score semantics rather than implemented as a blind union of old and new refs.
+
+Useful deterministic pressure cases for this candidate:
+
+```text
+no prior successor + current OPEN loop
+-> current WorkingSet contains that ref
+
+prior successor + same loop still OPEN
+-> ref remains without duplication
+
+prior successor + loop now CLOSED
+-> stale ref does not survive merely because prior WorkingSet carried it
+
+new OPEN loop after prior checkpoint
+-> current WorkingSet acquires it
+
+Memory projection HELD/stale while Score truth is independently current
+-> do not infer that open-loop truth is absent merely because prompt Memory body is unavailable
+
+working-continuity output
+-> carries refs/source identity only
+-> does not expose fabricated semantic content
+```
+
+The exact source placement remains a design decision: the present Memory reader already performs validated
+Score replay internally, but that does not automatically make the Memory contract the public owner of a
+Score projection. Prefer the smallest read-only projection at the rightful existing Score/current-source
+boundary rather than widening Memory merely because its reader already traverses Score.
+
+### Candidate design B is conditional — typed resolution of an already-carried ref
+
+Reacquiring an open-loop ref improves **owner continuity**. It does not by itself give Vex the semantic
+content behind that ref.
+
+Current working-continuity prompt text deliberately says refs are non-semantic coordinates. The current
+model-facing source-return capability resolves canonical Conversation only.
+
+Therefore:
+
+```text
+current openLoopRef present
+!= model knows what the open loop means
+
+coordinate continuity
+!= conversational meaning continuity
+```
+
+If lived evidence later shows that Vex recognizes an unfinished-thread cue but cannot answer because the
+needed current owner content is behind a Score/open-loop coordinate, the next candidate should be a
+**typed owner-specific source resolution relationship**, not an automatic generic resolver:
+
+```text
+model recognizes exact need
+-> bounded typed request to the rightful Score/open-loop owner
+-> exact/current owner projection
+-> final inference
+```
+
+Conversation source return is precedent for the relationship shape, not permission to make one universal
+search/Relay abstraction.
+
+Do not implement this candidate until a real consumer need establishes which Score/open-loop content must
+be returned, what exact currentness/consent boundary governs it, and what human-visible result proves that
+the relationship improved.
+
+### Truthful boundary for weak or deictic cues
+
+The current lexical Conversation return works when Vex can name distinctive source terms from what remains
+present.
+
+For a cue such as “that thing before,” three cases remain distinct:
+
+```text
+1. an existing current owner still carries a useful coordinate
+   -> resolve through that rightful owner when the relationship is earned
+
+2. enough distinctive meaning remains to request exact Conversation source
+   -> use the existing conditional exact-source return
+
+3. no current owner/coordinate/meaning survived because the detail was genuinely released
+   -> preserve uncertainty; do not fabricate recall
+```
+
+A future transient/revisable semantic carry should be considered only if ordinary lived failures repeatedly
+show that a relationship must remain recognizable across release while no existing owner can rightfully
+carry the necessary present meaning. Earlier working-carry research remains research, not the default
+answer, especially because mandatory semantic carry near the same finite-context boundary can recreate the
+pressure it is intended to solve.
+
+### Current design continuation
+
+The next design sequence is:
+
+```text
+A. finish the current-open-loop reconnection design at the rightful Score/WorkingContinuity boundary
+B. verify whether that closes any concrete unfinished-thread continuity case
+C. preserve Conversation exact-source return unchanged for exact older Conversation
+D. add an owner-specific ref resolver only when lived evidence proves a real consumer need
+E. consider new transient semantic carry only after a recurring genuinely ownerless relationship failure
+```
+
+No Product source mutation is implied by this section. Product implementation still requires its own current
+Work/authority/custody admission.
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][IMPLEMENTATION-DESIGN-CONTINUATION] -->
+
