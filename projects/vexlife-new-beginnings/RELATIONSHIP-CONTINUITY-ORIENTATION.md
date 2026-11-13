@@ -2793,3 +2793,84 @@ run A031 R008 once
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R008][COMPLETE-HARNESS-CONTRACT] -->
 
+## A031 R009 exact semantic-predicate recovery — 2026-11-12 23:32:53 America/Los_Angeles
+
+R008 canonical RETURN:
+
+```text
+sha256 =
+565f23ae032d2a26895e735be85b97e307be83f0137388de5ecffc39b123124f
+
+disposition = SAFE_FAILURE
+stopReason = A031_LIVED_GRADLE_FAILED
+```
+
+R008 reached the real lived two-stage source-return path:
+- two real HTTP 200 provider calls;
+- first call emitted one valid internal source-return request;
+- exact older source returned into the second prompt;
+- hidden secret appeared in the final response;
+- turn completed as SOURCE_RETURN_WORKING_CHECKPOINT_SUCCESSOR;
+- sourceReturnTrace present with old request/response;
+- exactly one current REQUEST/RESPONSE pair;
+- internal control absent from human progress;
+- raw provider output/reasoning not persisted.
+
+Product runtime recovery also occurred:
+
+```text
+Product receipt before =
+7ba16473028d52e4e6c3d27b83387ee81751d5bdde1216eab5c5f3d932894037
+
+Product receipt after =
+67631bbd198a5239b3dbc0f034d59f4e39d2fbf061dfe8e71b05ec9c0098a5f6
+
+stable predecessor receipt unchanged =
+8a0e5544bfd316e82ee829c68e2fd3e28f836b0ebc1c381376ca6cc118c459a6
+```
+
+The retained test nevertheless reports:
+
+```text
+semanticPass = false
+lived source-return rollover semantic predicate did not pass
+LiveSourceReturnRolloverHostProofTest.kt:1220
+```
+
+Do not relabel this SAFE_FAILURE as PASS and do not guess which remaining clause failed.
+
+Because A031 explicitly authorized Product-owned runtime receipt/service recovery while forbidding stable predecessor mutation, the Product receipt delta is a plausible stale-harness candidate, not yet a proven cause.
+
+### R009
+
+```text
+package =
+VEXLIFE-PR89-A031-SEMANTIC-PREDICATE-RECOVERY-R009-DIRECT-HOST
+
+sha256 =
+e42c04927279e87644b53d4b0d99080f6ec48087ef6db8094d4dc783699d997c
+
+recoveryAttemptRef =
+attempt.vexlife-prod.pr89.a031-semantic-predicate-recovery.r009
+```
+
+R009 reads the exact retained A029 test source and returns the exact `semanticPass` predicate, require site, receipt-related clauses, and bounded source windows. It performs no Gradle/model/runtime/Product mutation, Local Workspace, or GitHub Actions.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6847011273
+```
+
+Current edge:
+
+```text
+run R009 once
+-> consume exact retained semantic predicate
+-> classify the exact failing/stale clause
+-> correct only if source proves the harness contradiction
+-> no lived replay before that
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R008][R009-PREDICATE-RECOVERY] -->
+
