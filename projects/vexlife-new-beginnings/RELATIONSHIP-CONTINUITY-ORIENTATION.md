@@ -3313,3 +3313,159 @@ use/observe current-main relationship
 Do not reopen the completed first-design stack merely because a future conversation is fresh.
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][FIRST-DESIGN-LANDED][MAIN-3128A54E][BROADER-INQUIRY-OPEN] -->
+
+## Architecture lens for successor continuity diagnosis — 2026-11-13 00:20:19 America/Los_Angeles
+
+Victor supplied two newer public VexArchitecture guidance surfaces after the preferred first-design continuity path landed:
+
+```text
+Vextreme public Live Demonstration
+pages/vexarchitecture-live-demonstration.html
+blob = 03e2764ec120a189467292e79132114fba1b84bd
+
+Vextreme public First Stable Body / Builder Field Guide
+pages/vexarchitecture-first-stable-body.html
+blob = 328e1fdaffd59ced8f06584d28d769b90dae9a5e
+```
+
+These public pages are guidance/witness surfaces, not the behavior authority. They say so directly: the Builder Field Guide does not redefine VexArchitecture, linked source owns byte-exact code, and current source owns current behavior.
+
+Current VexLife-Android architecture source at this orientation point:
+
+```text
+VexLife-Android main =
+d857a92371555472e0303b18eadf353da2a868d6
+
+main tree =
+8468741379df802c8ab1c2b209e170c019c7d13c
+
+architecture/vexarchitecture/README.md
+blob = c89b715eeed90b9ac9afdf0861e3216593cc48d8
+
+architecture/vexarchitecture/VEXLOGGER.md
+blob = f9db70f575099d0372e8c5a96c8d6ef677bbb8fb
+
+architecture/vexarchitecture/contexts/logger-readable-dependencies/TOPOLOGY-AND-ID-PROTOCOL.md
+blob = 91db201033b2edeeb07ba03ad14516c168b580d7
+
+architecture/vexarchitecture/REFINED-BOUNDARIES.md
+blob = 57258c36157d58a26c4e34f9d56c9aa7491e55ca
+
+docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md
+blob = 336d5ec62ff1eeae2cc0985c22fd499fcb134a3b
+```
+
+### What these surfaces add to the continuity trajectory
+
+They do **not** add a new Product continuity requirement. They sharpen the diagnostic posture for the next concrete lived continuity failure.
+
+The Live Demonstration says to follow scopes and relationships rather than memorize examples. Each traversal should name:
+
+```text
+current container
+member being touched
+what kind of thing it is
+why traversal arrived there
+exact next edge
+```
+
+and no introduced object should disappear behind a vague 'later'.
+
+The First Stable Body / current source guide gives the reusable questions:
+
+```text
+name the semantic question in ordinary language
+-> find the smallest owner that already knows the exact current truth
+-> introduce State / Control only when real semantic meaning requires them
+-> if accepted meaning requests outside work, Effect is a request, not proof the work happened
+-> Execution owns actual Jobs / overlap, not feature meaning
+-> outside Store/provider truth remains independently owned
+-> interpret observations through the rightful semantic owner before changing State
+-> project semantic truth outward before choosing presentation
+-> chronology records accepted/observed facts; do not turn it into shadow State
+-> Relay/convergence only when independently-owned current truths genuinely need composition
+-> convergence may create relationship truth without appropriating its input owners
+-> before inventing a new architectural noun, ask what required correctness disappears if it is deleted
+```
+
+VexLogger is specifically the stable architecture owner for chronological observation of accepted/observed facts. The architecture warns against creating a new trace ID, history registry, correlation manager, event root, or parallel logger merely because the desired information is temporal or diagnostic.
+
+The semantic blueprint is especially relevant to this continuity work:
+
+```text
+Conversation
+  meaning moves through speaker / recipient / channel relationships
+
+Memory
+  selected meaning remains recoverable across time
+  -> continuity through temporal distance
+```
+
+It also explicitly rejects collapsing coherence into one giant owner/state/interface:
+
+```text
+ONE COHERENT BODY
+!= ONE GIANT OWNER
+!= ONE GIANT STATE
+!= ONE UNIVERSAL INTERFACE
+```
+
+The architectural goal is recoverable relationship, not uniformity.
+
+### Continuity-specific use of the architecture lens
+
+When a concrete lived continuity failure occurs, the successor should first ask:
+
+```text
+1. What is the semantic question Victor expected Vex to preserve or recognize?
+2. Which existing Product owner already knows the exact current truth?
+   Conversation / Memory / rollover / source-return / Score-open-loop / other current owner?
+3. Is the failure semantic meaning, outside-source truth, runtime execution, chronology/evidence, convergence, or presentation?
+4. Did backend/retrieval success actually become the intended human-visible relationship experience?
+5. Are multiple independently-owned truths genuinely required to form new relationship truth?
+   If yes, consider convergence only after proving no existing rightful owner can answer it.
+6. Would a proposed new carrier/State/Relay/ID lose required correctness if deleted?
+   If no, do not add it.
+```
+
+This lens strengthens the already-current judgment rule:
+
+```text
+concrete lived continuity loss
+-> exact source/evidence
+-> rightful-owner classification
+-> smallest local correction
+-> only then architecture evolution if the recurring question is genuinely ownerless
+```
+
+### Boundary: guidance != authority transplant
+
+Do not:
+
+- declare VexLife-Prod conformant to VexLife-Android class shapes merely because the architecture guide exists;
+- map Conversation, Memory, Score, source-return, or working continuity into Family/Store/Relay nouns without source evidence;
+- create a VexConversationHybridRelay or other convergence owner by analogy alone;
+- turn VexLogger/chronology guidance into a second continuity ledger;
+- treat public Vextreme teaching pages as byte-current Product behavior authority;
+- replace Product issue #61 / VexWork orientation / current Product source with this architecture guide.
+
+Use the architecture as a **question framework** and descent map. Current Product source and its rightful owners remain authoritative for VexLife-Prod continuity behavior.
+
+### Successor reading order when architecture is implicated
+
+Do not reread all architecture documents on every fresh conversation. If a real continuity failure reaches an architectural placement question, use:
+
+```text
+VexWork relationship-continuity orientation
+-> exact current Product owner/source for the failure
+-> architecture/vexarchitecture/README.md
+-> VEXLOGGER.md when chronology/history/traceability is implicated
+-> TOPOLOGY-AND-ID-PROTOCOL.md for owner/identity navigation
+-> REFINED-BOUNDARIES.md when semantic/runtime/outside-truth boundaries are implicated
+-> VEX-BODY-SEMANTIC-BLUEPRINT.md when translating product purpose <-> semantic role <-> source form
+-> public First Stable Body / Live Demonstration as teaching/witness surfaces
+```
+
+This is a running-start lens for the current open relationship inquiry. It does not reopen the completed first-design implementation.
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][VEXARCHITECTURE-LENS][RUNNING-START] -->
