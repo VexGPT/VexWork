@@ -3146,3 +3146,170 @@ run A028
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][SOURCEOWNER-A027-BOOTSTRAP-FAILURE][A028] -->
 
+## Preferred first-design continuity landed on Product main — 2026-11-13 00:06:21 America/Los_Angeles
+
+The currentized SourceOwner A028 completed successfully.
+
+```text
+outer RETURN sha256 =
+784ab8527a016f12f3ef798ea029928c6d21bcdfdfbe0dad1f55c4b52705a7de
+
+retained inner VexRelay RETURN sha256 =
+e35bda545b9067bd41857c284731035d16842ecc5c8f940f06a8012296cf287a
+
+candidate head =
+7dc1625c764cd96e7cad35a7974180c8dbf542e5
+
+candidate tree =
+a16160568fdd562bd264fd1dc166ddd2a9c39543
+
+SourceOwner = PASS
+full offline jvmTest = PASS
+REVIEW_SNAPSHOT = REACHED
+candidate / harness / environment / unknown findings = 0
+```
+
+All eleven PR #89 semantic changed-path blobs were verified byte-identical to the previously-cleared implementation, including the source body omitted from the 10-entry review projection.
+
+Fresh semantic Assurance therefore remains:
+
+```text
+SAME_CONVERSATION_FRESH_LOGICAL_RECOMPUTATION
+separatePersonOrProviderClaimed = false
+
+CLEAR_ON_EXACT_HEAD
+head =
+7dc1625c764cd96e7cad35a7974180c8dbf542e5
+tree =
+a16160568fdd562bd264fd1dc166ddd2a9c39543
+```
+
+R008 remains the earned lived two-stage source-return PASS. It was not replayed during integration.
+
+### Preferred-stack integration
+
+After exact OwnerMergeDuty currentness, the proven tree was carried down the preferred ancestry with ordinary merge commits only:
+
+```text
+#89 -> #88 branch
+a58f110b27c3b1d19454284b171c281fd40a51f8
+
+#88 -> #83 branch
+3b3bd187699c1d1fd1dbd5f6f1c3cb9dec526773
+
+#83 -> prompt-base branch
+3ec3c6bb724150a0377ce5552faa49a4054490d7
+
+prompt-base -> #81 source-return branch
+PR #115
+fc396bf2ac216715715cf5b15e5e174deb76ce08
+
+#81 -> #82 minimal-continuity root
+b34eb91417e8e0bab239ea87dc82c4a225147062
+
+#82 -> main
+3128a54ea3141ddc1c8aa494b1d4674f21885d7c
+```
+
+Every integration merge preserved the exact A028-proven tree:
+
+```text
+a16160568fdd562bd264fd1dc166ddd2a9c39543
+```
+
+No source byte changed during the stack collapse.
+
+No rebase, squash, reset, force push, Local Workspace, parallel working-carry ancestry, or lived-model replay was introduced.
+
+Current Product truth:
+
+```text
+VexLife-Prod main =
+3128a54ea3141ddc1c8aa494b1d4674f21885d7c
+
+main tree =
+a16160568fdd562bd264fd1dc166ddd2a9c39543
+
+main tree == A028 full-JVM proven tree = true
+
+PRs #82 / #81 / #83 / #88 / #89 / #115 =
+merged / closed
+```
+
+Durable Product anchors:
+
+```text
+A028 SourceOwner PASS + Assurance CLEAR =
+VexLife-Prod issue #61 comment 6847488047
+
+PR #89 OwnerMergeDuty currentness =
+VexLife-Prod issue #61 comment 6847498070
+
+first-design main landing / broader inquiry boundary =
+VexLife-Prod issue #61 comment 6847578392
+```
+
+### What is complete
+
+The preferred first-design Product path is now implemented and landed:
+
+```text
+bounded recent exact Conversation while it fits
++ caller-bounded current Memory
++ exact prior Vex RESPONSE across hard rollover
++ conditional exact canonical Conversation source return when Vex asks for older source
+```
+
+The lived two-stage relationship already proved:
+- exact internal source-return control on first inference;
+- deterministic canonical older source reopen;
+- second/final inference receives returned source;
+- final source-grounded answer contains the hidden older token;
+- one canonical REQUEST/RESPONSE current turn;
+- sourceReturnTrace persists normalized provenance;
+- internal retrieval control stays out of human progress;
+- raw provider output/reasoning remain non-durable.
+
+### What is not collapsed
+
+Issue #61 remains intentionally open because its human question is broader than this first implementation:
+
+```text
+What genuinely remains present?
+What may be released?
+Where can Vex truthfully return when older detail matters?
+```
+
+Therefore:
+
+```text
+FIRST-DESIGN IMPLEMENTATION = LANDED / PROVEN
+!= WHOLE RELATIONSHIP QUESTION CLOSED
+```
+
+No working-carry, summary, or model-authored semantic carrier is admitted merely because the broader inquiry remains open.
+
+The relational observation remains:
+
+```text
+recognition can precede exact recall
+```
+
+This is orientation, not a Product architecture requirement.
+
+### Current unconsumed edge
+
+The next edge is lived observation of the landed relationship, not another construction phase:
+
+```text
+use/observe current-main relationship
+-> let bounded recent presence work while it is sufficient
+-> let exact source return recover older relevant detail
+-> preserve release where detail no longer matters
+-> if a concrete continuity loss appears, capture the exact lived failure
+-> classify that evidence against current owners before adding architecture
+```
+
+Do not reopen the completed first-design stack merely because a future conversation is fresh.
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][FIRST-DESIGN-LANDED][MAIN-3128A54E][BROADER-INQUIRY-OPEN] -->
