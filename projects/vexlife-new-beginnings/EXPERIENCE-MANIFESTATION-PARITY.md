@@ -159,6 +159,140 @@ HELD
 
 Do not assume textual or visual sameness is required. Preserve the human outcome and design consistency while allowing VexLife-Prod's cleaner architecture to remain cleaner.
 
+## Current lived pressure — Companion turn interaction integrity
+
+The current lived product exposed one relationship that should be preserved before more surrounding
+startup, Browser-provider or Vision work changes the surface:
+
+```text
+what the human sees about the current Vex turn
+=
+what the exact in-flight Vex turn is actually carrying / doing
+```
+
+This pressure belongs under experience manifestation parity because it crosses the visible Conversation
+timeline, composer / Send / Stop controls, current Context projection and the canonical Conversation
+turn they represent. It is not owned by startup sequencing or by the normal-Browser-provider successor.
+
+### Observed current behavior
+
+Current lived observation plus source descent shows two distinct pressures.
+
+First, page-context acquisition may complete after a turn has already started:
+
+```text
+human Send
+-> pending request snapshots browserContext
+
+while that request is already in flight:
+  human may Include this page
+  -> separate context provider returns rendered page text
+  -> presentation may show Page included
+  -> that newly included page belongs to a later turn
+  -> the already-running request is unchanged
+```
+
+Therefore:
+
+```text
+CURRENT_IN_FLIGHT_TURN_CONTEXT
+!= NEXT_TURN_COMPOSER_CONTEXT
+
+VISIBLE_PAGE_INCLUDED
+!= PROOF_CURRENT_TURN_RECEIVED_PAGE
+
+VISIBLE_CONTEXT_TICKET
+must not imply a relationship the active request does not carry
+```
+
+Do not classify this observation as a broken browser-context pipeline merely from the visible mismatch.
+Current Product source already contains the UI -> context-provider -> Send payload -> service
+`BrowserContextInput` -> `DirectPromptContext.BrowserContext` -> prompt materialization / receipt
+path. The lived question is whether the exact current turn and the next-turn composer state are
+represented truthfully and whether the exact-head path works when context is included before Send.
+
+Second, the current presentation exposes no real human interruption path for an active turn:
+
+```text
+semantic / generated Stop coordinate exists
+-> rendered Stop control remains hidden
+-> no presentation Stop binding
+-> no Product-service Conversation cancel route
+-> no currently admitted active-turn cancellation relationship
+```
+
+A human may type a replacement draft while Vex is generating, but Send remains held until the active
+request resolves. The product therefore does not yet let the human stop the current generation,
+reconcile the interrupted attempt, and immediately form a different Send intent.
+
+### Do not invent the implementation before tracing the owners
+
+The next source descent must map the whole relationship before mutation:
+
+```text
+screen Control / DisplayState
+-> exact pending / active Send identity
+-> exact browser-context receipt bound to that Send
+-> active turn execution custody
+-> provider invocation / interruption capability
+-> completion-vs-cancel race
+-> canonical Conversation result
+-> abandoned / off-head attempt relationship where applicable
+-> composer release
+-> replacement Send with a new attempt identity
+-> screen reconciliation
+```
+
+Existing canonical Conversation source already has failed / abandoned off-head attempt concepts. That is
+relevant evidence, not permission to equate human cancellation with existing failure semantics without
+tracing the interruption and commit race.
+
+Permanent:
+
+```text
+STOP_CONTROL != PROVIDER_CANCEL_BY_ASSUMPTION
+ABANDONED_ATTEMPT != HUMAN_CANCEL_BY_DEFINITION
+DRAFT_TYPED_DURING_SEND != REPLACEMENT_SEND_ACCEPTED
+NEXT_TURN_CONTEXT != ACTIVE_TURN_CONTEXT
+SCREEN_STATE != TURN_TRUTH_UNLESS_EXACTLY_BOUND
+```
+
+### Bounded acceptance pressure
+
+A future implementation should prove the relationship from both the human surface and the Vex turn:
+
+```text
+page context included before Send
+-> exact active request carries that page context
+-> prompt receipt identifies the same context
+-> Vex response may use it
+-> current-turn UI identifies what was actually bound
+
+page context acquired or changed while another turn is in flight
+-> UI identifies it as next-turn context
+-> active-turn context does not silently change
+
+human Stop during an active turn
+-> Stop is visible only when a real interruption path exists
+-> rightful active-turn owner receives the interruption
+-> cancellation/completion race resolves once
+-> a cancelled attempt cannot later appear as a canonical completed response
+-> Conversation remains truthful
+-> composer is released
+-> human may immediately form a different Send attempt
+```
+
+Candidate Work identity for later shared-Workgraph admission:
+
+```text
+work.vexlife.new-beginnings.companion-turn-interaction-integrity
+parent = work.vexlife.new-beginnings.experience-manifestation-parity
+```
+
+This source preserves the direction now. Shared Workgraph admission remains a separate coordination
+effect because current New Beginnings writers already own the shared segment. Do not create a segment
+race merely to make this observation durable.
+
 ## VexBoard-mappability pressure
 
 A meaningful relationship that needs to be inspectable should be source-addressable enough for a read-only projector to answer:
