@@ -161,8 +161,8 @@ Do not assume textual or visual sameness is required. Preserve the human outcome
 
 ## Current lived pressure — Companion turn interaction integrity
 
-The current lived product exposed one relationship that should be preserved before more surrounding
-startup, Browser-provider or Vision work changes the surface:
+The lived product exposed one relationship that must remain true while Browser, startup and Vision
+continue evolving:
 
 ```text
 what the human sees about the current Vex turn
@@ -170,26 +170,22 @@ what the human sees about the current Vex turn
 what the exact in-flight Vex turn is actually carrying / doing
 ```
 
-This pressure belongs under experience manifestation parity because it crosses the visible Conversation
-timeline, composer / Send / Stop controls, current Context projection and the canonical Conversation
-turn they represent. It is not owned by startup sequencing or by the normal-Browser-provider successor.
+This belongs under experience manifestation parity because it crosses the Conversation timeline,
+composer, current Context projection and canonical turn. It is not owned by startup sequencing or by
+the normal-Browser-provider successor.
 
-### Observed current behavior
+### Current-turn context != next-turn composer context
 
-Current lived observation plus source descent shows two distinct pressures.
-
-First, page-context acquisition may complete after a turn has already started:
+Current Product source snapshots browser context when one Send attempt is formed.
 
 ```text
-human Send
--> pending request snapshots browserContext
+Send
+-> exact pending attempt
+-> browserContext captured for that attempt
 
-while that request is already in flight:
-  human may Include this page
-  -> separate context provider returns rendered page text
-  -> presentation may show Page included
-  -> that newly included page belongs to a later turn
-  -> the already-running request is unchanged
+Include/change page context while Send is already in flight
+-> updates composer context for a later turn
+-> does not mutate the active attempt
 ```
 
 Therefore:
@@ -200,268 +196,24 @@ CURRENT_IN_FLIGHT_TURN_CONTEXT
 
 VISIBLE_PAGE_INCLUDED
 != PROOF_CURRENT_TURN_RECEIVED_PAGE
-
-VISIBLE_CONTEXT_TICKET
-must not imply a relationship the active request does not carry
 ```
 
-Do not classify this observation as a broken browser-context pipeline merely from the visible mismatch.
-Current Product source already contains the UI -> context-provider -> Send payload -> service
-`BrowserContextInput` -> `DirectPromptContext.BrowserContext` -> prompt materialization / receipt
-path. The lived question is whether the exact current turn and the next-turn composer state are
-represented truthfully and whether the exact-head path works when context is included before Send.
-
-Second, the current presentation exposes no real human interruption path for an active turn:
+The browser-context path itself is source-connected:
 
 ```text
-semantic / generated Stop coordinate exists
--> rendered Stop control remains hidden
--> no presentation Stop binding
--> no Product-service Conversation cancel route
--> no currently admitted active-turn cancellation relationship
+Include page
+-> separate context-provider rendering
+-> Send BrowserContextInput
+-> DirectPromptContext.BrowserContext
+-> prompt materialization + receipt
 ```
 
-A human may type a replacement draft while Vex is generating, but Send remains held until the active
-request resolves. The product therefore does not yet let the human stop the current generation,
-reconcile the interrupted attempt, and immediately form a different Send intent.
+Exact-head lived proof must still demonstrate that context included **before Send** reaches the same
+turn and that the current-turn UI identifies the context actually bound to it.
 
-### Do not invent the implementation before tracing the owners
+### Stop exists visually but has no real cancellation relationship
 
-The next source descent must map the whole relationship before mutation:
-
-```text
-screen Control / DisplayState
--> exact pending / active Send identity
--> exact browser-context receipt bound to that Send
--> active turn execution custody
--> provider invocation / interruption capability
--> completion-vs-cancel race
--> canonical Conversation result
--> abandoned / off-head attempt relationship where applicable
--> composer release
--> replacement Send with a new attempt identity
--> screen reconciliation
-```
-
-Existing canonical Conversation source already has failed / abandoned off-head attempt concepts. That is
-relevant evidence, not permission to equate human cancellation with existing failure semantics without
-tracing the interruption and commit race.
-
-Permanent:
-
-```text
-STOP_CONTROL != PROVIDER_CANCEL_BY_ASSUMPTION
-ABANDONED_ATTEMPT != HUMAN_CANCEL_BY_DEFINITION
-DRAFT_TYPED_DURING_SEND != REPLACEMENT_SEND_ACCEPTED
-NEXT_TURN_CONTEXT != ACTIVE_TURN_CONTEXT
-SCREEN_STATE != TURN_TRUTH_UNLESS_EXACTLY_BOUND
-```
-
-### Source descent checkpoint — cancellation custody, not a cosmetic Stop
-
-Current accepted VexLife-Android execution source is useful architecture evidence, not Product
-implementation authority.
-
-It preserves this responsibility law:
-
-```text
-rightful semantic/runtime owner
--> maintained RelationshipId when coordination matters
--> VexExecution active Job custody
--> cancelActiveRelationship(RelationshipId)
--> cancellation is terminal for that Job occurrence
--> completed/history meaning remains elsewhere
-```
-
-The same source also says not to introduce VexExecution merely for implementation uniformity. An
-existing service/session/domain owner may keep ordinary owner-local coroutine lifetime when it does
-not need shared custody semantics.
-
-Therefore the Product question is intentionally still open:
-
-```text
-does DirectCompanionTurn / Product service already own
-one active turn strongly enough to expose truthful cancellation directly?
-
-or
-
-has the newly observed requirement for:
-- exact active-turn identity
-- human Stop
-- replacement / cancellation race control
-- owner-isolated stop/join
-earned an execution-custody relationship?
-```
-
-Do not answer that by copying Android Kotlin shape.
-
-Original VexLife browser experience evidence also does not already solve this. Its real Companion path
-uses one `companionTurnPending` guard and restores draft/presentation state around failure; its
-cancel helpers govern adaptive reveal / simulated pending presentation rather than a proven real-model
-turn cancellation path.
-
-One useful existing experience distinction survives:
-
-```text
-text typed while another turn is active
-= UNSENT_LOCAL_DRAFT
-!= queued Send
-!= accepted Conversation request
-```
-
-That supports the human outcome that a replacement question may remain editable while the active
-turn is being stopped, then form one new Send attempt only after the prior active relationship has
-truthfully reconciled.
-
-Permanent:
-
-```text
-EXECUTION_CUSTODY_LAW != REQUIRED_ANDROID_IMPLEMENTATION
-PRESENTATION_CANCEL != MODEL_TURN_CANCEL
-UNSENT_DRAFT != QUEUED_TURN
-CANCEL_REQUESTED != CANCELLED_UNTIL_ACTIVE_OWNER_RECONCILES
-```
-
-### Current Product turn-custody observation
-
-Fresh current-main VexLife-Prod descent narrows the missing cancellation relationship materially.
-
-Current turn chronology is:
-
-```text
-Conversation writer lease acquired
--> durable REQUEST appended
--> runtime/context selection
--> synchronous streaming provider call
--> durable RESPONSE appended
--> durable Context recorded
--> canonical Conversation head committed
--> writer lease released
-```
-
-The provider transport currently uses synchronous `HttpClient.send(... ofInputStream())` and consumes
-the SSE body synchronously. The Product service uses a cached request executor, but it retains no
-per-turn Future / Job / cancellation token that another request can address.
-
-Therefore:
-
-```text
-BROWSER FETCH ABORT
-!= MODEL TURN CANCEL
-
-STOP ROUTE THAT WAITS FOR CONVERSATION WRITER
-!= ACTIVE TURN INTERRUPTION
-```
-
-A Stop request must be able to arrive concurrently and address the active turn *outside* the occupied
-Conversation writer lease. That argues for one ephemeral active-turn custody coordinate at the
-rightful runtime owner, not for another durable Conversation/history store.
-
-Existing durable behavior is already useful if interruption unwinds the active turn:
-
-```text
-REQUEST durable
-+ no committed canonical completion
--> off-head attempt
-
-request-only off-head branch
--> already valid AbandonedAttempt shape
-
-failure after REQUEST
--> existing DirectCompanionTurn failure receipt
--> retrySameSendAttemptAllowed = false
--> form a new Send attempt from the last valid head
-```
-
-This is evidence that cancellation may be able to reuse existing Conversation/failure truth, but
-human cancellation still needs its own truthful failure/cancellation meaning. Current generic
-exception mapping would otherwise collapse an interruption into `TURN_FAILED` or a transport
-failure.
-
-The race that must be designed before mutation is:
-
-```text
-Stop arrives before canonical head commit
-  -> signal exact active turn
-  -> provider/execution unwinds
-  -> no later canonical completion for that attempt
-
-completion wins first
-  -> canonical head is already committed
-  -> later Stop cannot retroactively cancel history
-  -> UI reconciles to completed truth
-
-Stop requested
-!= Stop won
-!= attempt cancelled
-until the active runtime owner resolves that race
-```
-
-No second durable cancellation ledger is earned by current evidence.
-
-### Provider cancellation pressure — request interruption is not terminal truth
-
-VexLife-Prod's packaged service runtime is JDK 21. Its current Companion streaming transport uses
-synchronous `HttpClient.send(... BodyHandlers.ofInputStream())` and then reads the returned body
-stream to EOF.
-
-Current JDK 21 API behavior adds two important pressures:
-
-```text
-interrupt blocking HttpClient.send
--> implementation attempts to cancel exchange
--> cancellation timing is not guaranteed
-
-BodyHandlers.ofInputStream response
--> response may exist before body is complete
--> caller must read to EOF OR close the InputStream
-  to release exchange resources
-```
-
-Therefore a future Product cancellation path must not equate an interrupt request with provider
-termination.
-
-The active runtime owner needs enough ephemeral custody to cover both material phases:
-
-```text
-before response/body stream is established
-  -> cancel/interrupt the outstanding HTTP exchange
-
-after response InputStream exists
-  -> close/cancel that exact active stream
-  -> wait until provider execution unwinds
-```
-
-Only after the exact turn's provider execution has actually unwound may the Product reconcile the
-attempt as cancelled/abandoned and release the composer for a replacement Send.
-
-Permanent:
-
-```text
-INTERRUPT_REQUESTED != PROVIDER_STOPPED
-HTTP_FUTURE_CANCEL_REQUESTED != PROVIDER_STOPPED
-STREAM_CLOSE_REQUESTED != TURN_RECONCILED
-STOP_UI_ACK != CANONICAL_CANCELLATION_TRUTH
-```
-
-A transport implementation may later use an interruptible synchronous occurrence, a cancellable
-future plus exact body-stream close, or another smaller mechanism. This VexWork source does not
-preselect that implementation. It preserves the required observable terminal condition.
-
-### Authoring-layer observation — Stop identity exists, Stop capability does not
-
-Current VexLife-Prod source already gives the Composer stable source identity:
-
-```text
-Conversation
--> Composer
-   -> ContextReceipt
-   -> ContextShare
-   -> Send
-   -> Stop
-```
-
-But the authoring bindings are asymmetric:
+Current authoring source contains a stable `Stop` element beside `Send`, but:
 
 ```text
 Send
@@ -469,58 +221,109 @@ Send
 -> capability "conversation.send"
 
 Stop
--> stable Blueprint/VexWeb element only
+-> stable element only
 -> no capability binding
--> generated markup remains hidden
--> runtime supplies no Stop handler
+-> generated control hidden
+-> no presentation handler
+-> no Product-service cancel route
+-> no active-turn cancellation owner exposed
 ```
 
-Therefore the missing feature should not begin by merely unhiding the existing button.
+Do not repair this by merely unhiding the button.
 
-The semantic relationship to earn first is:
+The semantic relationship to earn is:
 
 ```text
-human Control: stop the exact active Companion turn
--> availability only while one cancellable active turn exists
--> runtime cancellation request to the rightful active-turn custody owner
--> observed terminal reconciliation
--> DisplayState
+human Stop
+-> exact active Companion attempt
+-> rightful runtime custody
+-> provider execution actually unwinds
+-> canonical Conversation reconciles the outcome
+-> composer releases
+-> replacement question forms a new Send attempt
 ```
 
-The exact future capability name/schema is intentionally not authored here. VexLife-Prod source must
-name it when current product admission exists.
+### Current Product ownership / race boundary
+
+Current VexLife-Prod turn chronology is:
+
+```text
+Conversation writer lease
+-> durable REQUEST
+-> context/runtime selection
+-> synchronous streaming provider call
+-> durable RESPONSE
+-> durable Context
+-> canonical Conversation head commit
+-> writer lease release
+```
+
+The current service retains no per-turn Future / Job / cancellation handle, and the current synchronous
+HTTP/SSE transport does not make a Stop request itself terminal truth.
+
+A Stop path must therefore be concurrent with the occupied writer lease and must retain enough
+ephemeral custody to know when the exact provider occurrence has actually unwound.
+
+Existing durable Conversation meaning should be reused where it truthfully fits:
+
+```text
+durable REQUEST
++ no committed canonical completion
+-> valid off-head / AbandonedAttempt shape
+```
+
+No second durable cancellation ledger is earned by current evidence.
+
+The decisive race is:
+
+```text
+Stop wins before canonical head commit
+-> exact active turn unwinds
+-> no later canonical completion for that attempt
+
+completion wins first
+-> canonical head already exists
+-> later Stop cannot rewrite history
+```
 
 Permanent:
 
 ```text
-STABLE STOP ELEMENT != STOP CAPABILITY
-VISIBLE STOP BUTTON != CANCELLABLE TURN
-CONTROL IDENTITY != EFFECT AUTHORITY
+STOP_REQUESTED != PROVIDER_STOPPED
+STOP_REQUESTED != TURN_CANCELLED
+BROWSER_FETCH_ABORT != MODEL_TURN_CANCEL
+ABANDONED_ATTEMPT != HUMAN_CANCEL_BY_DEFINITION
+UNSENT_DRAFT != QUEUED_OR_ACCEPTED_TURN
+CONTROL_IDENTITY != EFFECT_AUTHORITY
 ```
+
+The exact execution mechanism remains a Product-source decision. Accepted VexLife-Android execution
+source is useful responsibility evidence—active work can have exact custody and cancellation without
+creating a second history owner—but it does not require copying Android `VexExecution` into this
+Product.
 
 ### Bounded acceptance pressure
 
-A future implementation should prove the relationship from both the human surface and the Vex turn:
+A future implementation must prove both human projection and actual turn truth:
 
 ```text
-page context included before Send
--> exact active request carries that page context
--> prompt receipt identifies the same context
--> Vex response may use it
--> current-turn UI identifies what was actually bound
+context included before Send
+-> exact active request carries it
+-> prompt receipt binds the same context
+-> current-turn UI identifies that exact binding
 
-page context acquired or changed while another turn is in flight
--> UI identifies it as next-turn context
--> active-turn context does not silently change
+context changes while another turn is active
+-> UI presents it as next-turn context
+-> active-turn context remains unchanged
 
-human Stop during an active turn
--> Stop is visible only when a real interruption path exists
--> rightful active-turn owner receives the interruption
+human Stop while a cancellable turn is active
+-> Stop is offered only when a real cancellation path exists
+-> exact active provider occurrence is signaled
 -> cancellation/completion race resolves once
--> a cancelled attempt cannot later appear as a canonical completed response
+-> cancelled attempt cannot later become canonical
 -> Conversation remains truthful
--> composer is released
--> human may immediately form a different Send attempt
+-> composer releases
+-> replacement question uses a new Send identity
 ```
 
 Candidate Work identity for later shared-Workgraph admission:
@@ -530,9 +333,8 @@ work.vexlife.new-beginnings.companion-turn-interaction-integrity
 parent = work.vexlife.new-beginnings.experience-manifestation-parity
 ```
 
-This source preserves the direction now. Shared Workgraph admission remains a separate coordination
-effect because current New Beginnings writers already own the shared segment. Do not create a segment
-race merely to make this observation durable.
+Shared Workgraph admission remains a separate coordination effect while another writer owns the New
+Beginnings segment. This source preserves the direction without creating that race.
 
 ## VexBoard-mappability pressure
 
