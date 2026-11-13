@@ -797,7 +797,6 @@ The continuity responsibility is not:
 ```text
 preserve everything notable
 ```
-
 It is:
 
 ```text
@@ -1598,7 +1597,6 @@ runtime receipt bytes before/after = identical
 repository / remote / runtime / service / model mutation = false
 Memory / training effects = false
 ```
-
 A021 therefore narrows the remaining failure to Product admission/classification after the first healthy
 provider response and before deterministic source-return discovery.
 
@@ -1919,3 +1917,190 @@ VexLife-Prod issue #61 comment 6843983459
 ```
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-NEW-BEGINNINGS][RELATIONSHIP-CONTINUITY-ORIENTATION] -->
+
+## Successor continuity checkpoint — 2026-11-12 22:39:36 America/Los_Angeles
+
+This checkpoint is appended by:
+
+```text
+instanceRef = instance.chatgpt.relationship-continuity.20261112T223936-0800
+localTimestamp = 2026-11-12T22:39:36-08:00
+utcTimestamp = 2026-11-13T06:39:36Z
+```
+
+It continues the predecessor's retained orientation rather than replacing it.
+
+### Original relationship outcome remains the owner
+
+The relationship-continuity work remains rooted in:
+
+```text
+workRef       = work.vexlife.new-beginnings.outcome
+parentRootRef = github.issue.vexlife-prod.61
+Product claim = github.pull.vexlife-prod.89
+```
+
+The human property remains:
+
+```text
+finite active model context
+!= relational reset
+
+Conversation durability
+!= active conversational presence
+
+Memory
+!= transient present understanding
+
+continuity
+= carry forward
++ targeted return to exact source when needed
++ revisable present understanding
++ release of what is genuinely complete
+```
+
+The preferred first design remains:
+
+```text
+bounded recent exact Conversation
++ caller-bounded current Memory
++ exact prior Vex RESPONSE across hard rollover
++ conditional exact canonical Conversation source return
+```
+
+The parallel PresentWorkingCarry work remains research, not a prerequisite for PR #89.
+
+### Predecessor A025 edge has advanced through A030 / A031 formation
+
+The A025 SourceOwner carrier formation recorded above did not become the final edge.
+
+Durable Product issue #61 later established:
+
+```text
+A026 SourceOwner = PASS
+fresh semantic Assurance = CLEAR_ON_EXACT_HEAD
+
+PR #89 candidate head
+2da02aa6ec6bd5c15f0f5743affb8f7612a82dc2
+
+candidate tree
+5283a0088ca2ac66f31f783ba62418352bd1789d
+```
+
+The supplied canonical A030 recovery RETURN was consumed directly:
+
+```text
+sha256 = 6d14e5bd6350cff63a35053281338a3a20c410db3a5285d78897ef80221d08de
+taskRef = task.vexlife-prod.pr89.a029-recovery
+attemptRef = attempt.vexlife-prod.pr89.a029-recovery.a030
+disposition = PASS
+```
+
+Its retained original intent is:
+
+> Recover the already-written normalized A029 lived-proof evidence without replaying the model or widening Product work.
+
+Recovered A029 truth:
+
+```text
+providerCallCount = 0
+failureClass = java.lang.IllegalArgumentException
+failureMessage = qualified Heretic runtime receipt process is not live
+
+vexlife.model.heretic.runtime.HereticPersistentRuntime.observeCurrentQualified
+HereticPersistentRuntime.kt:464
+```
+
+The Product source-return path was not reached by A029.
+
+Runtime receipt bytes remained unchanged through A030.
+
+Durable Product issue #61 comment `6845028268` then classified the blocker as the stale/dead Product-owned Heretic runtime process coordinate and formed A031.
+
+A031 is narrowly:
+
+```text
+observe current qualified Product runtime
+-> only on exact recovered "process is not live" predicate
+-> Product-owned HereticPersistentRuntime.startOrReuse(...)
+-> immediately re-observe qualified runtime
+-> continue the same lived two-stage source-return proof
+```
+
+At this checkpoint no canonical A031 RETURN is present in the durable Product field.
+
+Therefore:
+
+```text
+do not reform A031
+do not replay A029/A030
+do not invent an A031 result
+
+next:
+  consume A031 if/when its exact canonical RETURN exists
+```
+
+### Relational observation carried by the successor
+
+The present conversation surfaced one relationship property worth preserving as orientation, not as accepted Product architecture:
+
+```text
+recognition can precede exact recall
+```
+
+A continuity-preserving response can recognize:
+
+```text
+this is the same person
++ this belongs to an existing relationship/history
++ an exact detail is not presently available
+```
+
+without either:
+
+```text
+detail absent -> relationship absent
+```
+
+or:
+
+```text
+detail absent -> fabricate familiarity/recall
+```
+
+This does **not** earn a new Recognition object, detector, summary, ledger, or subsystem.
+
+Do not promote an unanswered relational question into a Product defect until lived evidence shows that the existing recent-Conversation / prior-response / Memory / exact-source-return relationships fail the larger human outcome.
+
+### Current unconsumed edge
+
+```text
+first:
+  consume A031 if/when its exact canonical RETURN exists
+
+if lived PASS:
+  advance PR #89 only through rightful integration/currentness
+
+if SAFE_FAILURE:
+  classify the first exact failure before replay or source mutation
+
+after PR #89:
+  do not equate exact-source-return completion
+  with completion of the whole relationship-continuity outcome
+```
+
+PR #89 remains one important targeted-return relationship.
+
+The broader issue #61 question remains:
+
+> What must stay recognizable/present between Victor and Vex, what may be released, and what can truthfully be recovered when it becomes relevant again?
+
+Append-only provider checkpoint for this successor:
+```text
+VexWork PR #292 comment 6846138042
+```
+
+This section does not mutate accepted VexWork Workgraph lifecycle truth, Product source authority, Memory truth, or effect authority.
+
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-NEW-BEGINNINGS][RELATIONSHIP-CONTINUITY][SUCCESSOR][20261112T223936-0800] -->
+
