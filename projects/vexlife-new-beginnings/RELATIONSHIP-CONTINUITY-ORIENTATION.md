@@ -2656,3 +2656,71 @@ run A031 R006 once
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R006][PROOF-OUTPUT-ENV] -->
 
+## A031 R007 complete harness-contract recovery — 2026-11-12 23:23:09 America/Los_Angeles
+
+R006 canonical RETURN:
+
+```text
+sha256 =
+82c11d50fb3cf981536c8f9e0f04b209fd0ce468b07c8a33af13b5f1f73c9fda
+
+disposition = SAFE_FAILURE
+stopReason = A031_LIVED_GRADLE_FAILED
+```
+
+Exact first failure:
+
+```text
+java.lang.IllegalArgumentException:
+VEXLIFE_LIVED_SOURCE_RETURN_PRODUCT_HEAD is required
+
+LiveSourceReturnRolloverHostProofTest.kt:259
+
+test time = 0.003s
+livedProofPresent = false
+modelRuntimePerformed = false
+```
+
+This confirms the previous proof-output environment binding worked and the test advanced to the next declared harness requirement.
+
+The remaining mistake would be to bind one environment variable per replay. Therefore the next edge is read-only recovery of the complete harness environment contract from the exact retained A029 test source.
+
+### A031 R007 complete harness-contract recovery
+
+```text
+package =
+VEXLIFE-PR89-A031-HARNESS-CONTRACT-RECOVERY-R007-DIRECT-HOST
+
+sha256 =
+a2e3cda8a46663e82e371aa58ff99d84e97623dcb086d0f22e172cc3cd572038
+
+recoveryAttemptRef =
+attempt.vexlife-prod.pr89.a031-harness-contract-recovery.r007
+```
+
+R007 verifies the retained test source SHA-256:
+
+```text
+9654313ca2870e023877fa62205bdcdc759b1714fb38eb9adae8f78095c0301e
+```
+
+and returns all `VEXLIFE_LIVED_SOURCE_RETURN_*` / direct `System.getenv(...)` dependencies with exact occurrence lines and bounded surrounding source windows.
+
+R007 performs no Gradle, Heretic start/restart, model inference, Product source mutation, Local Workspace, GitHub Actions, or lifecycle mutation.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846843611
+```
+
+Current edge:
+
+```text
+run R007 once
+-> consume complete harness environment contract
+-> form one corrected fresh lived continuation with all required bindings
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R007][HARNESS-CONTRACT-RECOVERY] -->
+
