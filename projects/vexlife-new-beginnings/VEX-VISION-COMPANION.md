@@ -212,60 +212,9 @@ This grounding did **not** establish a current production VLM worker already con
 Do not turn registry vocabulary, synthetic tests or training candidates into a claim that Vex can
 currently interpret pixels.
 
-## Partner / Family / Observation architecture pressure
+## Partner / Family / Observation architecture pressure — lessons, not a Vision template
 
-VexCgmLabs / VexPartner has now crossed its accepted VexWork architecture threshold and materially
-improves the Vision design.
-
-~~~text
-accepted architecture threshold
-  VexWork PR #267 / accepted VexCgmLabs source
-
-consumer/application evidence
-  VexLife-Android PR #219
-~~~
-
-Vision consumes the accepted relationship roles without turning the CGM-specific implementation into
-a universal product owner.
-
-The important current pattern is:
-
-~~~text
-VexPartner<Partner>
-├─ Source<Partner>
-├─ Signal<Partner>
-└─ Connection<Partner, Signal>
-   ├─ Id<Partner>
-   ├─ Conversion<Input, Partner, Signal>
-   ├─ Observation<Partner, Signal>
-   └─ Receiver<Partner, Signal, exact Observation>
-
-Receiver-admitted truth
--> Store only when durability is actually earned
--> Family State
--> Projection / Surface
-~~~
-
-and, for a lawful outward request:
-
-~~~text
-Family Control + CURRENT State
--> Act
--> Effect
--> Act.Method
--> VexExecution
--> Partner Connection
--> Partner acknowledgement
-
-later outside evidence
--> Signal
--> Observation
--> Receiver
--> durable truth if admitted
--> Family State
-~~~
-
-Permanent distinctions from that work that apply directly to Vision:
+Accepted VexPartner / VexArchitecture work remains useful here because it preserves distinctions:
 
 ~~~text
 Partner != Family
@@ -276,186 +225,136 @@ Store != Partner
 Store != Family
 
 EFFECT_REQUESTED
-!= PARTNER_ACKNOWLEDGED
+!= OUTSIDE_ACKNOWLEDGEMENT
 != OUTSIDE_OUTCOME
 != DURABLE_DOMAIN_TRUTH
 ~~~
 
-### Vision mapping under that pressure
+But those accepted abstractions are **not a recipe requiring Vision to instantiate each noun**.
 
-For the first real-browser Vision slice, the type walk should be read approximately as:
+The earlier Vision exploration considered mappings such as selected browser/window -> Partner, capture
+-> Connection, frame -> Signal and capture occurrence -> Observation. Fresh source descent has not
+earned those type relationships for the current implementation.
 
-~~~text
-selected independently-owned browser/window reality
-    = candidate Partner-side participant
-
-macOS screen/window capture realization
-    = Connection
-
-source.screen.user-selected.current-session
-    = Partner.Source
-    != Connection.Id
-
-macOS system picker / capture mechanism
-    = Connection realization
-
-SCContentFilter
-    = provider/system selection input
-
-platform frame / capture representation
-    -> Connection.Conversion
-    -> Vision-owned Signal
-
-one exact capture occurrence
-    -> Observation
-       request identity
-       selected source / region
-       capture time/currentness
-       Signal identity
-
-Safety + scope + cardinality admission
-    -> Receiver
-
-Vision semantic owner
-    -> Family State
-
-human-facing state
-    -> Projection / VexLife Vision control
-
-derived admitted visual observation
-    -> Conversation Context
-    -> Heretic Vex
-~~~
-
-The exact Kotlin/root names remain held until the existing Vex Vision source and the first physical
-capture implementation show what genuinely repeats. In particular:
+Current concrete ownership already answers the present selected-scope questions:
 
 ~~~text
-SELECTED_BROWSER_WINDOW_IS_PARTNER
-    = architectural pressure, not yet a frozen type name
+VexLifeVisionFamily
+  Product semantic meaning
 
-SCREEN_CAPTURE_CONNECTION
-    = relationship role, not Family meaning
+VexLife-Prod service
+  Product runtime lifetime + HTTP/presentation boundary
 
-SCREEN_FRAME_SIGNAL
-    != VISUAL_INTERPRETATION
-    != CONVERSATION_CONTEXT
+Process Factory selected-scope session / custody
+  host-local scope lifecycle + provider-object custody below Product
+
+Vex Safety
+  current SCREEN authority
+
+Security
+  capture integrity / human-visible boundary witness
+
+Perception
+  admitted content-absent observation meaning
+
+Conversation
+  later derived visual context consumption
 ~~~
+
+So:
+
+~~~text
+INDEPENDENTLY_OWNED_WINDOW_EXISTS
+!= VEXPARTNER_REQUIRED_NOW
+
+FAMILY_EFFECT_EXISTS
+!= METHOD_REQUIRED_NOW
+
+BLOCKING_OR_ASYNC_RUNTIME_EXISTS
+!= VEXEXECUTION_REQUIRED_NOW
+~~~
+
+Partner becomes earned only if a recurring external-participant Source / Signal / Connection /
+Observation question appears that the current owners cannot answer without absorbing foreign
+responsibility or duplicating relationship truth.
+
+Method becomes earned only if the system needs one reusable fully-bound executable-attempt object with
+its own closed Success / Failure / Error semantics beyond the existing concrete owner boundary.
+
+Execution becomes earned only if active-work custody, overlap, supersession/cancellation or lifetime
+becomes a separate recurring question the current serialized runtime/service cannot answer truthfully.
 
 ### No Store is earned merely because a frame exists
 
-The Partner work defines Store as the owner of **durable admitted domain truth**. The first Vision
-slice explicitly forbids raw screenshot retention.
-
-Therefore:
+The first Vision relationship explicitly requires raw pixels to remain ephemeral.
 
 ~~~text
-RAW FRAME OBSERVED
-!= STORE REQUIRED
+RAW_FRAME_OBSERVED
+!= STORE_REQUIRED
 
 raw pixels
-    ephemeral
+  attempt-local only
 
-first derived visual observation
-    bounded / turn-scoped unless another owner later earns durability
+content-absent capture/observation evidence
+  may be durable where the rightful effect/evidence owner requires it
+
+derived visual meaning
+  turn-scoped unless another owner later earns durability
 
 Memory
-    not implied
+  not implied
 
 training
-    not implied
+  not implied
 ~~~
 
-Do not create a Vision Store merely for architectural symmetry. If later product pressure earns
-durable visual-observation provenance, then form the smallest rightful Store and prove what survives
-restart. Until then, Store = NOT_EARNED_FOR_RAW_PIXELS is a valid architecture result.
+Do not create a Vision Store for symmetry. If later product pressure earns durable visual-domain truth,
+form the smallest Store then and prove exactly what survives restart.
 
-### Vision Family and outward request semantics
+### Vision Family and outward requests
 
-The VexLife Vision control should eventually emit typed Family Controls rather than directly invoking
-the capture API. Candidate semantic pressure is:
+The current first persistent-scope Family is intentionally smaller than the earlier one-shot and
+future LOOK designs:
 
 ~~~text
-VisionFamily.State
-    OFF
-    PERMISSION_NEEDED
-    READY
-    ENABLED(selected source)
-    LOOKING
-    HELD
-
-VisionFamily.Control
-    Enable
-    Disable
-    SelectSource
-    LookNow
+State   Held | Ready | Engaged
+Control Engage | Stop
+Effect  RequestEngage | RequestStop
 ~~~
 
-Then:
+Family Effects request work; they do not certify outside realization.
+
+Future LOOK may later add a lawful Control/Effect relationship. Whether it also earns Method,
+Execution, Partner or another architecture role remains open until the actual repeated question
+exists.
+
+Permanent:
 
 ~~~text
-Control.LookNow + CURRENT Vision State
--> accepted Act
--> Effect
--> bound Method
--> VexExecution
--> exact screen Connection request
--> host / Partner acknowledgement
-
-later:
-frame Signal
--> Observation
--> Receiver
--> derived visual observation
--> Family / Conversation consequence
-~~~
-
-This preserves:
-
-~~~text
-LOOK_NOW_REQUESTED
-!= HOST_PERMISSION_GRANTED
-!= CAPTURE_ACKNOWLEDGED
-!= FRAME_OBSERVED
+LOOK_REQUESTED
+!= SCREEN_CAPTURED
+!= VISUAL_OBSERVATION_ADMITTED
 != FRAME_INTERPRETED
 != VEX_RECEIVED_CONTEXT
 ~~~
 
-The existing SCREEN permission agent is therefore an enabling relationship/effect owner, not the
-Vision Family itself.
-
 ### Partnership and listener restraint
-
-The current Partner work keeps **Partnership** as relational language until relationship-owned
-identity, lifecycle, custody, authorization or reconciliation truth appears that neither Family nor
-Partner can own.
-
-Vision should do the same:
 
 ~~~text
 real-browser witness relationship
 != automatically VexPartnership object
+
+PERSISTENT_SELECTED_SCOPE
+!= MAINTAINED_CAPTURE_LISTENER
+
+VEX_CAN_WITNESS_BROWSER
+!= VEX_CAN_CONTROL_BROWSER
 ~~~
 
-Likewise, the first Vision slice is on-demand snapshot, so it does **not** earn a sustained capture
-listener. If continuous observation is ever separately admitted:
+A future browser-action capability would need its own lawful semantic/effect/outside-evidence circuit.
+Method/Execution/Partner are consumed only if that concrete circuit earns them; Vision observation alone
+cannot grant browser-control authority.
 
-~~~text
-MAINTAINED_CAPTURE_LISTENER
-!= FAMILY_RELATIONSHIP_ID
-~~~
-
-must remain preserved, matching the newer source-addressed listener lesson.
-
-Finally:
-
-~~~text
-VEX CAN WITNESS BROWSER
-!= VEX CAN CONTROL BROWSER
-~~~
-
-A future browser-action capability would require its own Family Control / Act / Effect / Method /
-Partner acknowledgement / later-observation circuit. Vision observation alone cannot grant it.
 
 ## Product-side decision currentization — semantic/control slice accepted
 
@@ -1122,8 +1021,9 @@ Target responsibility mapping for this Vision experience, with source status kep
 ~~~text
 ACCEPTED CURRENT SEMANTIC OWNER
 VexLifeVisionFamily
-  owns the existing one-shot Vision product meaning and lawful Control -> Act / Effect relationships
-  -> persistent-scope vocabulary is NOT yet accepted
+  owns current Product semantic State / Control / Act / Effect meaning
+  -> predecessor one-shot source exists today
+  -> first persistent-scope target is Held | Ready | Engaged + Engage | Stop
   != native window identity
   != SCREEN authority
   != process lifetime
@@ -1131,64 +1031,59 @@ VexLifeVisionFamily
   != Conversation
   != Memory
 
-DESIGN TARGET / EXISTING-SEAM QUESTION
-VexExecution / bound Method
-  should own one admitted live realization attempt when the Product earns the LOOK continuation
-  -> exact current reusable seam must be established from source before implementation
-  != semantic State
-  != outside truth
+NOT CURRENTLY EARNED
+VexMethod / VexExecution
+  no current Product implementation requires these abstractions for the first scope slice
+  revisit only if a concrete repeated executable-attempt or active-work-custody question appears
 
 PR #114 CANDIDATE RESPONSIBILITY
 VexLife-Prod service
-  would own one long-lived carried Vision runtime child
+  one long-lived carried Vision runtime child
   + transport / command correlation / bounded projection validation
   != selected-scope session owner
   != native provider owner
   != capture authority
-  != LOOK semantic owner
   != visual worker
   != Conversation owner
 
 ACCEPTED SDK RESPONSIBILITY
 Vextreme-SDK Process Factory selected-scope session / host custody
-  owns actual selected-scope lifecycle and native custody below Product
-  -> may retain the provider/filter/host objects needed for the scope to remain available
-  -> performs no capture merely because scope is ENGAGED
+  owns selected-scope lifecycle and native provider-object custody below Product
+  -> no capture merely because scope is ENGAGED
 
-ACCEPTED AUTHORITY OWNER / FUTURE LOOK CONSUMER
+ACCEPTED AUTHORITY OWNER
 Vex Safety / SCREEN owner binding
-  owns current capture authorization/currentness
-  -> actual persistent-scope LOOK must consume fresh current Safety
-  -> prior ENGAGE does not mint standing capture authority
+  owns capture authorization/currentness
+  -> every later LOOK re-resolves ON_DEMAND_SNAPSHOT authority
 
-FUTURE LOOK REALIZATION
-physical frame acquisition
-  should own one bounded outside-world occurrence
-  != visual interpretation
-  != semantic State
-  != Memory
+FUTURE PERSISTENT LOOK EFFECT
+Process Factory + exact replay/reservation owner
+  must realize one current capture without picker replay
+  -> exact SCREEN single-use reservation owner still requires source resolution
 
-FUTURE VISUAL-INTERPRETATION OWNER
-visual worker
-  should own bounded interpretation of one admitted frame
+FUTURE SECURITY / PERCEPTION SUCCESSOR
+  must prove a persistent-selected-scope LOOK without falsely claiming the picker was presented for that capture
+  -> one-shot system-picker witness/integration cannot be reused unchanged
+
+FUTURE EPHEMERAL RESOURCE OWNER
+  must own one attempt-local raw frame lifetime between capture and one authorized visual consumer
+  -> exact owner not yet accepted
+
+FUTURE VISUAL WORKER
+  owns bounded interpretation of one authorized frame resource
   != sensor authority
   != Conversation ownership
   != Memory authority
 
-FUTURE CONVERGENCE
-Conversation Context
-  may converge current Conversation truth + admitted derived visual meaning for this turn
-  != Vision State owner
-  != automatic durable Memory
+CURRENT SAME-TURN ORCHESTRATION OWNER
+DirectCompanionTurn + DirectPromptContext
+  already own bounded turn orchestration / prompt rematerialization
+  -> future Vision continuation should pressure these current seams first
 
-FUTURE PERSISTENT-SCOPE PRESENTATION
-Presentation
-  must eventually distinguish:
-    quiet persistent selected-scope indication
-    from
-    brief stronger "Vex is looking now" indication
+PRESENTATION
+  first scope slice: quiet Ready / On / Held + request-local Select/Stop progress
+  later LOOK slice: active-looking feedback only after actual LOOK execution truth exists
 ~~~
-
 Do not create a Vision Store merely because a frame exists:
 
 ~~~text
@@ -1217,43 +1112,58 @@ RECOGNIZABLE_PARTNER_SHAPE
 If implementation pressure proves the reusable external-participant grammar, consume VexPartner then.
 Otherwise preserve the smallest truthful Vision-owned relationship.
 
-### Current semantic pressure — Family evolution is not yet frozen
+### Current semantic pressure — first persistent-scope Family is now narrowed
 
-Current accepted Product source still carries the earlier one-shot semantic Family:
+Current accepted Product source at PR #114 still physically contains the predecessor one-shot Family:
 
 ~~~text
-VexLifeVisionFamily
+State   Held | Ready | Looking
+Control LookNow
+Effect  RequestSnapshot
+~~~
+
+That is source provenance, not the target semantic shape for the next post-#114 scope slice.
+
+Fresh current-source reasoning now earns only:
+
+~~~text
+FIRST PERSISTENT-SCOPE SLICE
 
 State
   Held
   Ready
-  Looking
+  Engaged
 
 Control
-  LookNow
+  Engage
+  Stop
 
 Effect
-  RequestSnapshot
+  RequestEngage
+  RequestStop
 ~~~
 
-The persistent-scope Product bridge does not silently redefine that Family. The eventual Family
-evolution must be earned from the lived relationship and current source.
+`Selecting`, `Looking`, `LookNow` and `RequestSnapshot` are not pre-authored into this slice.
 
-Likely semantic questions include:
+The reason is causal rather than stylistic:
 
 ~~~text
-what does OFF mean?
-what does READY mean when a persistent scope can be engaged?
-what current truth means selecting?
-what current truth means engaged?
-what Control means stop sharing?
-what Control means look now?
-what semantic State is visible while one LOOK attempt is active?
-what held state follows stale/revoked Safety or lost scope?
+ENGAGE Effect
+!= SDK SELECTING
+!= SDK ENGAGED
+
+persistent LOOK executor
+= absent
+
+therefore:
+LOOKING semantic State
+= not earned now
 ~~~
 
-Candidate vocabulary such as Engaged / Selecting / Stop / Look is design pressure, not accepted source
-merely because it is easy to name.
+The first Product slice should change the predecessor Family only when PR #114 is accepted/lived and
+the next exact Product source claim is admitted. The current VexWork blueprint defines that later
+source target; it does not mutate PR #114.
+
 
 ### The critical post-scope seam — Vex decides to LOOK during the same turn
 
@@ -1261,64 +1171,60 @@ Current VexLife-Prod source makes the missing relationship concrete:
 
 ~~~text
 DirectPromptContext
--> materializes bounded Context before the single provider invocation
+-> materializes bounded Context before provider invocation
 
-Capability Atlas frame
--> tells Vex what capability truth is available
--> grants no effect authority by itself
+Capability Atlas
+-> describes bounded current capability truth
+-> grants no effect authority
+
+DirectCompanionTurn
+-> already owns bounded same-turn provider orchestration
 ~~~
 
 Therefore:
 
 ~~~text
 CAPABILITY_VISIBLE_TO_VEX
-!= VEX_CAN_CALL_CAPABILITY_DURING_TURN
-~~~
+!= EFFECT_AUTHORITY
 
-Do not realize the human intention as:
-
-~~~text
-every human message
--> prompt construction automatically captures a screenshot
--> visual meaning is injected before Vex decides whether it needs vision
-~~~
-
-That would move the decision from Vex/semantic execution into prompt construction and violate:
-
-~~~text
 CONVERSATION_TURN
 != AUTOMATIC_SCREENSHOT
 ~~~
 
-Current implementation-design pressure is instead:
+Do not realize Vision by capturing during ordinary prompt construction.
+
+The current future-LOOK pressure is:
 
 ~~~text
 human request
--> ordinary bounded Conversation context / initial reasoning
--> Vex determines that current visual evidence is materially needed
--> lawful Vision LOOK Control / Act / Effect
--> bound Vision Method
--> VexExecution owns the attempt
--> Product persistent Vision service
--> accepted selected-scope owner
--> fresh current SCREEN Safety
--> at most one current frame
--> bounded visual interpretation
--> derived visual meaning
--> canonical Conversation Context convergence
--> same turn resumes / continues
+-> ordinary current Conversation context
+-> initial local-model inference
+-> Vex determines current visual evidence is materially needed
+-> one bounded internal visual-context request
+-> current Vision semantic owner decides whether a LOOK Control/Effect is lawful
+-> rightful capture/effect owner resolves exact request identity + fresh SCREEN Safety + replay protection
+-> Process Factory performs at most one admitted capture from the current selected scope
+-> Security / Perception establish truthful capture + content-absent observation meaning
+-> ephemeral visual resource owner carries one attempt-local frame to one separately authorized visual consumer
+-> visual worker derives bounded visual meaning
+-> DirectCompanionTurn rematerializes final turn context
+-> one final inference
 -> final Vex response
 ~~~
 
-First search for an already-accepted execution/continuation seam that truthfully owns this relationship.
-If none exists, add the smallest Vision-specific continuation earned by this experience.
+No `VexMethod`, `VexExecution`, `VexPartner`, Store or Relay is inserted into that chain merely because
+the generic architecture has those concepts.
+
+Before adding any of them, ask the architecture question they would uniquely answer and prove that the
+current rightful owners cannot answer it without responsibility collapse or duplication.
 
 Do not create a generic tool framework solely because this resembles model tool use.
 
 ~~~text
-ONE VISION-SPECIFIC EARNED CONTINUATION
-!= GENERIC AGENT TOOL FRAMEWORK REQUIRED
+ONE_VISION_SPECIFIC_EARNED_CONTINUATION
+!= GENERIC_AGENT_TOOL_FRAMEWORK_REQUIRED
 ~~~
+
 
 #### Concrete current-source precedent — one bounded same-turn continuation already exists
 
@@ -2124,16 +2030,16 @@ generated JavaScript
 != Family state interpreter
 ~~~
 
-The human projection should carry only the bounded information presentation actually needs, such as:
+The first-slice human projection should remain minimal:
 
 ~~~text
-semantic state
-route reachability
-whether one scope is currently engaged
-whether the quiet scope indicator is required
-whether the active LOOK indicator is required
-effectsPerformed=false for GET
+state = HELD | READY | ENGAGED
+routeReachable
+effectsPerformed=false
 ~~~
+
+`ENGAGED` itself is enough for presentation to render the quiet selected-scope indication. Do not add
+duplicate engaged/indicator fields or any active-LOOK field before LOOK exists.
 
 Do not expose native/provider identity merely so presentation can label a selected window.
 
@@ -2142,9 +2048,10 @@ first truthful quiet scope indicator therefore belongs in ordinary VexLife prese
 
 ~~~text
 Vision · Ready
-Vision · Selecting…
 Vision · On
 Vision · Held
+
+request-local Engage progress may say Selecting… while the macOS picker is actually open
 ~~~
 
 Exact wording is presentation design, not semantic source.
