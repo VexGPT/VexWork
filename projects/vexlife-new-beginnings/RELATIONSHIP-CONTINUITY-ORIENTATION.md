@@ -2281,3 +2281,94 @@ VexLife-Prod issue #61 comment 6846487190
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031][MASKED-RESTORE][RECOVERY-R001] -->
 
+## A031 R002 corrected continuation — 2026-11-12 23:04:40 America/Los_Angeles
+
+R001 recovery proved the first restored A031 carrier never crossed into business execution.
+
+```text
+R001 RETURN sha256 =
+94e72232464cc15744b475ee984881796680985c2f0068847c933e8ade82aa44
+
+R001 result sha256 =
+ab22af75c2a4dad37af7ba28193ecaf8106a847657b43256fffd532891c2b3d6
+```
+
+The restored payload checked both runtime receipt hashes before GH auth or any later business stage. R001 proves the stable predecessor receipt had already changed from its older A030 hash, so the failed restored carrier deterministically stopped at:
+
+```text
+RUNTIME_RECEIPT_CURRENTNESS_CHANGED_BEFORE_A031_RESTORE
+```
+
+Its separate argument-binding defect then caused the catch-path EEXIST and masked that preflight failure.
+
+Therefore:
+
+```text
+GH auth = NOT REACHED
+Product clone = NOT REACHED
+Gradle = NOT REACHED
+Product runtime recovery = NOT REACHED
+provider/model inference = NOT REACHED
+
+BUSINESS_REPLAY_OCCURRED = false
+```
+
+The Product runtime receipt remains exactly the A030 receipt and its recorded process remains dead. The stable predecessor receipt drift predates the failed restored carrier and is not attributed to A031.
+
+Current live VexRelay source was re-grounded without Local Workspace:
+
+```text
+SDK main/tree =
+0418b282cd1a92e3a22696480f5b364bebfc56bf
+b76ef935bc703392c78d4259689b027ea77be444
+
+contractRef =
+source.vexrelay.current-contract/v1
+
+contract blob =
+b53cbac01c2deeb45fad5c32ce98e0796c04126f
+
+HOST_SEMANTIC_MODEL_RUNTIME
+-> adapter.vexlocalbridge.direct-host-effect
+```
+
+### A031 R002 corrected continuation
+
+```text
+A031 R002 corrected continuation
+
+package =
+VEXLIFE-PR89-LIVED-SOURCE-RETURN-A031-RESTORED-DIRECT-HOST-R002
+
+sha256 =
+fafafb07be63d1ed1ad675564aebd5ab059d3d556a299f6d58d85613a6fcc14a
+
+businessAttemptRef =
+attempt.vexlife-prod.pr89.lived-source-return.a018
+```
+
+R002:
+- corrects the payload-output argument binding;
+- binds the R001-observed current stable receipt as a before/after non-mutation guard;
+- continues to require the exact A030/R001 Product runtime receipt before business execution;
+- admits Product `startOrReuse` only on the exact proven dead-process predicate;
+- uses current SDK/direct-host contract;
+- uses no Local Workspace and no GitHub Actions.
+
+Current edge:
+
+```text
+run A031 R002 once
+-> consume exact R002 RETURN
+-> lived PASS: rightful PR #89 integration/currentness
+-> SAFE_FAILURE: classify first exact failure before replay
+```
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846545028
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-R002][PREBUSINESS-PROVEN] -->
+
