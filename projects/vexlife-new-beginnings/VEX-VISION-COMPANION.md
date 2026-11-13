@@ -1806,10 +1806,15 @@ accepted persistent Product service projection
 -> evolve VexLifeVisionFamily from one-shot reachability to human persistent-scope meaning
 -> interpret Product-safe SDK projection instead of copying native lifecycle
 -> human Engage / Stop controls
--> quiet truthful persistent selected-scope indicator
+-> Product-global quiet semantic indication: Ready / On / Held
 -> LOOK remains held from execution until the later effect slice
--> lived human select-once / browse / stop proof through ordinary Product presentation
+-> lived human select-once / browse / stop Product-semantic proof
 -> no capture merely from this slice
+
+QUIET EXACT-WINDOW BOUNDARY QUESTION
+-> do not conflate Product On with visible exact-window identity
+-> resolve Process Factory/Safety ownership only if exact-window marking is required
+-> no stream/capture merely to maintain an indicator
 
 NEXT SDK LOOK EFFECT SLICE
 accepted session LOOK semantics
@@ -2482,6 +2487,117 @@ adding another toolbar/control surface.
 The macOS picker itself is the truthful selection-in-progress UI. Do not build a second native
 "selecting" overlay merely to mirror SDK state.
 
+### Quiet engaged-scope indication — semantic badge != exact-window boundary
+
+The current Safety disposition requires a retained selected scope to keep a truthful quiet
+human-visible scope indication. The originating human intention also says a quiet persistent boundary
+may indicate which window is the engaged Vision scope.
+
+Do not collapse two different claims:
+
+~~~text
+PRODUCT SEMANTIC INDICATOR
+  Vision · On
+  = Product currently interprets one selected scope as ENGAGED
+
+EXACT-WINDOW HOST BOUNDARY
+  visually marks the actual external selected window
+  = this specific window is the retained scope
+~~~
+
+~~~text
+VISION_ON
+!= THIS_EXACT_WINDOW_IS_VISIBLY_MARKED
+~~~
+
+The first Product semantic slice can truthfully implement the first claim without exporting provider
+identity.
+
+The current native persistent selected-scope helper does **not** implement the second claim. It retains
+the `SCContentFilter` / provider scope but exposes no persistent outline/overlay.
+
+The accepted one-shot helper cannot simply be copied:
+
+~~~text
+one-shot target outline
+-> read selected SCWindow frame once
+-> show for ~250 ms
+-> capture
+-> remove
+~~~
+
+That short lifetime avoids needing to prove that the geometry remains current after the window moves or
+resizes.
+
+A persistent outline would have a different obligation:
+
+~~~text
+window moves / resizes / changes display / minimizes / leaves visible space
+-> indicator must remain attached truthfully
+OR
+-> indicator must stop claiming the boundary
+~~~
+
+Current repository source contains no accepted non-capture window-geometry currentness owner for that
+relationship.
+
+Apple ScreenCaptureKit exposes `SCWindow.frame` and current shareable-content information, but the
+current Vextreme source has not established a lawful repeated geometry-observation contract for
+dormant selected-scope indication. Do not infer that such polling is free merely because it reads
+metadata rather than pixels.
+
+Therefore the broader human-visible boundary remains a source question:
+
+> Does the accepted quiet-scope requirement need the exact external window to remain visibly marked
+> while ENGAGED, or is Product-global `Vision · On` plus the explicit system-picker selection
+> sufficient for the first lived relationship?
+
+If exact-window marking is required, return to the rightful owners before authoring:
+
+~~~text
+Process Factory #241
+  owns retained native selected-scope/provider custody
+  -> candidate owner of host-local indicator realization
+
+Vex Safety #226
+  owns whether repeated host-local window geometry observation solely to maintain the indicator
+  remains inside the dormant non-sensor relationship or requires a separately admitted boundary
+~~~
+
+Candidate exact-window realization is deliberately **not** frozen. In particular, do not yet choose:
+
+~~~text
+periodic SCShareableContent polling
+SCShareableContent.info(for:) polling
+Accessibility window notifications
+starting SCStream merely to obtain geometry
+retaining/exporting title/app/window ID to Product
+~~~
+
+Starting a capture stream solely to keep an indicator attached would contradict the dormant
+non-sensor relationship and is not an acceptable shortcut.
+
+If a later accepted host-local indicator cannot prove current geometry, it must not leave a stale
+outline that falsely marks another rectangle as the selected boundary.
+
+Permanent:
+
+~~~text
+QUIET_SCOPE_INDICATOR
+!= ACTIVE_CAPTURE_INDICATOR
+
+PRODUCT_SEMANTIC_ENGAGED
+!= EXACT_WINDOW_GEOMETRY_CURRENT
+
+NO_VISIBLE_EXACT_WINDOW_BOUNDARY_PROOF
+!= SELECTED_SCOPE_CUSTODY_ABSENT
+~~~
+
+So the first Product slice may complete its semantic/presentation duty while the broader exact-window
+boundary remains explicitly unproven. Do not call that narrower Product proof the full persistent-scope
+human-experience completion.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][QUIET-SCOPE-BOUNDARY][HELD-OWNER-QUESTION][20261113] -->
 ### First post-#114 Product implementation blueprint — no new architecture layer
 
 This blueprint is for the **next Product semantic/presentation slice after PR #114 is accepted and
@@ -2759,7 +2875,7 @@ no browser screen-capture API
 no raw pixels/model/Memory effect
 ~~~
 
-The lived proof remains the actual completion criterion:
+The lived proof for **this Product semantic/presentation slice** is:
 
 ~~~text
 running accepted Product
@@ -2770,13 +2886,21 @@ running accepted Product
 -> Vision On
 -> browse/scroll normally
 -> no capture
--> quiet indicator remains truthful
+-> Product semantic indicator remains truthful
 -> Stop
 -> selected scope released
 -> Vision Ready
 ~~~
 
-Only after that lived relationship is current should Product consume the later LOOK effect source.
+This proves the Product semantic/control circuit and ordinary persistent-scope runtime relationship.
+It does **not** by itself prove that the exact external window remains visibly marked while engaged.
+
+The broader persistent-scope human experience requires the quiet-scope boundary question above to be
+resolved or explicitly accepted as unnecessary for the first experience before the project claims full
+human-visible completion.
+
+LOOK source may be designed in parallel, but no later layer may silently treat the unresolved exact-
+window boundary as already proven.
 
 <!-- [VXG RealForever][VEXLIFE][VISION][FIRST-PERSISTENT-SCOPE-PRODUCT-BLUEPRINT][20261113] -->
 #### Persistent LOOK cannot reuse one-shot Security / Perception unchanged
