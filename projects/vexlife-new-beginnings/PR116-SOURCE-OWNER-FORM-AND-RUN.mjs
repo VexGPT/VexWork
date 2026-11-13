@@ -166,10 +166,10 @@ async function main() {
     });
 
     seed.taskRef = 'task.vexlife-prod.pr116.source-owner-proof';
-    seed.attemptRef = 'attempt.vexlife-prod.pr116.source-owner-proof.a001';
-    seed.requestRef = 'request.vexlife-prod.pr116.source-owner-proof.a001';
-    seed.correlationRef = 'correlation.vexlife-prod.pr116.source-owner-proof.a001';
-    seed.packageRef = 'package.vexlife-prod.pr116.source-owner-proof.a001';
+    seed.attemptRef = 'attempt.vexlife-prod.pr116.source-owner-proof.a002';
+    seed.requestRef = 'request.vexlife-prod.pr116.source-owner-proof.a002';
+    seed.correlationRef = 'correlation.vexlife-prod.pr116.source-owner-proof.a002';
+    seed.packageRef = 'package.vexlife-prod.pr116.source-owner-proof.a002';
 
     seed.original = {
       originalIntent: 'Prove the exact bounded Score-to-WorkingContinuity producer restoration without widening semantic ownership.',
@@ -196,17 +196,17 @@ async function main() {
       activeRole: 'CODER',
       roleRef: 'role.coder.vexlife-prod.pr116',
       instanceRef: 'instance.chatgpt.relationship-continuity.20261113.a001',
-      occupancyRef: 'occupancy.vexlife-prod.pr116.source-owner.a001',
+      occupancyRef: 'occupancy.vexlife-prod.pr116.source-owner.a002',
       providerBindingRef: 'provider.github.vexlife-prod.pr116',
       threadRef: 'thread.vexlife-prod.relationship-continuity',
-      authorityEnvelopeRef: 'authority-envelope.vexlife-prod.pr116.source-owner.a001',
+      authorityEnvelopeRef: 'authority-envelope.vexlife-prod.pr116.source-owner.a002',
     };
 
     seed.execution = {
       ...seed.execution,
       hostProfile: 'macos-victor',
       executionSurface: 'MAC_ZIP_RUN_COMMAND',
-      singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-a001',
+      singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-a002',
       duplicateAttemptMarker: 'marker.vexlife-prod-pr116-source-owner-proof-a001',
       duplicateProtectionMode: 'OUTER_RELAY_BOUND',
       formedAt: now.toISOString(),
@@ -292,7 +292,7 @@ async function main() {
         timeoutMs: 600000,
       }],
       maxFiles: 10,
-      stateRef: 'state.vexlife-prod.pr116.source-owner.a001',
+      stateRef: 'state.vexlife-prod.pr116.source-owner.a002',
       currentLifecycleState: 'SOURCE_READY',
       currentGoal: 'Prove the exact PR #116 Score-to-WorkingContinuity restoration candidate.',
       remainingGoals: [
@@ -305,7 +305,7 @@ async function main() {
         nextOwner: 'Operations',
         whyThisIsNext: 'Exact SourceOwner/full-JVM proof is complete; semantic Assurance remains a separate effect.',
       },
-      resultFilename: 'RETURN-VEXLIFE-PR116-SOURCE-OWNER-PROOF-A001.zip',
+      resultFilename: 'RETURN-VEXLIFE-PR116-SOURCE-OWNER-PROOF-A002.zip',
     };
 
     const recipe = recipeContract('ExactHeadSourceOwnerProof');
@@ -367,6 +367,14 @@ async function main() {
       fail('compiled task contains forbidden mutating/lifecycle operation');
     }
 
+    const proofSeed = stage.proofCommands[0];
+    requireEqual(proofSeed.predicateClass, 'SOURCE_OWNER_BEHAVIOR', 'proof seed predicate class');
+    requireEqual(
+      proofSeed.predicateRef,
+      'predicate.vexlife-prod.pr116.full-jvm-source-owner',
+      'proof seed predicate ref',
+    );
+
     const proofOperation = compiled.operations.find((operation) => operation.action === 'COMMAND');
     requireEqual(proofOperation.command, 'bash', 'proof command');
     requireEqual(
@@ -374,7 +382,7 @@ async function main() {
       JSON.stringify(['./gradlew', 'jvmTest', '--offline', '--no-daemon', '--stacktrace']),
       'proof args',
     );
-    requireEqual(proofOperation.predicateClass, 'SOURCE_OWNER_BEHAVIOR', 'proof predicate class');
+    requireEqual(proofOperation.proofClass, 'TEST', 'proof class');
     requireEqual(proofOperation.mutationClass, 'NONE', 'proof mutation class');
     requireEqual(proofOperation.candidateEvidence, true, 'proof candidate evidence');
     requireEqual(proofOperation.timeoutMs, 600000, 'proof timeout');
@@ -382,7 +390,7 @@ async function main() {
     const authorityEnvelope = {
       authoritySchemaRef: 'vextreme.effect-transaction/v1',
       semanticAdmissionRef: VEXWORK_ADMISSION_REF,
-      transactionRef: 'transaction.vexlife-prod.pr116.source-owner-proof.a001',
+      transactionRef: 'transaction.vexlife-prod.pr116.source-owner-proof.a002',
       transactionVersion: 1,
       allowedEffectRefs: ['effect.vexrelay.execute'],
       heldEffectRefs: ['effect.merge', 'effect.mark-ready', 'effect.approve', 'effect.publish'],
@@ -392,10 +400,10 @@ async function main() {
       schemaVersion: 'vextreme.vexlocalbridge-task-manifest/v1',
       artifactClass: 'EXECUTABLE_RELAY',
       taskRef: 'task.vexlife-prod.pr116.source-owner-proof.carrier',
-      attemptRef: 'attempt.vexlife-prod.pr116.source-owner-proof.carrier.a001',
-      packageRef: 'package.vexlife-prod.pr116.source-owner-proof.carrier.a001',
-      requestRef: 'request.vexlife-prod.pr116.source-owner-proof.carrier.a001',
-      correlationRef: 'correlation.vexlife-prod.pr116.source-owner-proof.carrier.a001',
+      attemptRef: 'attempt.vexlife-prod.pr116.source-owner-proof.carrier.a002',
+      packageRef: 'package.vexlife-prod.pr116.source-owner-proof.carrier.a002',
+      requestRef: 'request.vexlife-prod.pr116.source-owner-proof.carrier.a002',
+      correlationRef: 'correlation.vexlife-prod.pr116.source-owner-proof.carrier.a002',
       taskStorageKey: 'task-vexlife-prod-pr116-source-owner-proof',
       attemptStorageKey: 'attempt-a001',
       requestingRoleRef: 'Operations[RelationshipContinuity]',
@@ -433,7 +441,7 @@ async function main() {
         }],
       },
       executionStateAtFormation: 'TASK_PREPARED',
-      singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-carrier-a001',
+      singleUseNonce: 'nonce-vexlife-prod-pr116-source-owner-proof-carrier-a002',
       stopConditions: ['stop.on.identity.drift', 'stop.on.auth.block', 'stop.on.test.failure'],
       archiveDigestBinding: 'FILENAME_SHA256',
     };
@@ -446,7 +454,7 @@ async function main() {
       outerTaskTemplate,
       authorityEnvelope,
       outputDirectory: downloads,
-      outputStem: 'Vex-PR116-SO-A001',
+      outputStem: 'Vex-PR116-SO-A002',
       ttlMs: 30 * 60 * 1000,
     });
 
