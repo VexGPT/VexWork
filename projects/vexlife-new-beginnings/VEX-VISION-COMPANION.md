@@ -1552,6 +1552,132 @@ raw image bytes are not part of reservation persistence
 This is a source-placement unknown, not an architecture unknown and not a reason to weaken the replay
 boundary.
 
+### Future LOOK semantic pressure — keep the persistent Family persistent
+
+The persistent Product relationship is the selected scope, not the short-lived capture attempt.
+
+So when persistent LOOK is actually earned, the default semantic evolution should be:
+
+~~~text
+State
+  Held
+  Ready
+  Engaged
+
+Control
+  Engage
+  Stop
+  <current LOOK control, exact name later>
+
+Effect
+  RequestEngage
+  RequestStop
+  RequestSnapshot
+~~~
+
+with:
+
+~~~text
+Engaged + LOOK control
+-> stay
+-> RequestSnapshot
+~~~
+
+not:
+
+~~~text
+Engaged + LOOK
+-> optimistically admit Product Looking
+~~~
+
+Why:
+
+~~~text
+PERSISTENT_SCOPE_STATE
+= Engaged
+
+ONE_CAPTURE_ATTEMPT
+= ephemeral effect execution inside Engaged
+
+SDK LOOKING
+= lower execution/session truth while the scope remains the same selected relationship
+~~~
+
+Therefore the future Product interpretation pressure is:
+
+~~~text
+SDK ENGAGED
+-> Family Engaged
+
+SDK LOOKING
+-> Family Engaged
++ separate execution/progress fact: LOOK active
+
+LOOK settles and SDK returns ENGAGED
+-> Family still Engaged
+
+LOOK/Safety/source loss settles SDK HELD/ENDED
+-> re-interpret Family from that outside truth
+~~~
+
+This keeps one semantic state from doing two jobs.
+
+#### Active LOOK indication should consume execution progress first
+
+The current Product already has request-local/inference progress surfaces:
+
+~~~text
+DirectCompanionTurn Progress
+streaming service events
+web response-progress / in-flight state
+~~~
+
+When model-driven LOOK exists, pressure those current surfaces first:
+
+~~~text
+internal Vision request admitted
+-> LOOK effect starts
+-> progress = Looking
+-> brief stronger human-visible LOOK indication
+-> effect settles
+-> progress resumes reasoning/responding
+~~~
+
+For an explicit/manual LOOK proof surface, the initiating request itself may own an equivalent local
+in-flight indicator.
+
+Do not add `Looking` to durable Product State merely so the UI has a spinner.
+
+Re-evaluate only if a real product question later requires a current LOOK state independent of the
+attempt that initiated it, for example cross-client observation of a long-lived capture operation.
+
+At that point ask whether the missing question belongs to Family State, execution/current-work
+projection, or both. Do not decide by naming symmetry.
+
+#### One semantic LOOK Effect should serve human and model initiation
+
+The eventual model internal control must not create a second capture language.
+
+~~~text
+human explicit LOOK proof
+or
+model requests current visual context
+        ↓
+same Product semantic LOOK Control/Effect
+        ↓
+same Process Factory capture/replay/Safety circuit
+~~~
+
+The model's internal request remains non-authoritative. The current turn owner converts it into the
+same lawful semantic Control only after current capability/state truth permits it.
+
+~~~text
+MODEL_INTERNAL_CONTROL
+!= SECOND_VISION_API
+!= SECOND_EFFECT_TYPE
+~~~
+
+<!-- [VXG RealForever][VEXLIFE][VISION][LOOK-AS-EFFECT-NOT-PERSISTENT-STATE][20261113] -->
 ### Durable persistent-LOOK replay placement — Home stores bytes; Process Factory owns meaning
 
 The selected-scope architecture already requires one durable single-use reservation before native
