@@ -2816,6 +2816,26 @@ retaining/exporting title/app/window ID to Product
 Starting a capture stream solely to keep an indicator attached would contradict the dormant
 non-sensor relationship and is not an acceptable shortcut.
 
+If the accepted SOURCE_LOST currentness primitive later proves that the **same** host-local
+`SCShareableContent.info(for:)` observation also carries trustworthy current geometry across
+move/resize/display changes, the indicator may consume that already-required currentness observation
+in the same native owner.
+
+~~~text
+ONE_HOST_CURRENTNESS_OBSERVATION
+-> source-exists truth
+-> optional indicator geometry only if separately required + host-proven
+
+not:
+
+SOURCE_LOST_TIMER
++ SECOND_INDICATOR_TIMER
++ DUPLICATE_WINDOW_REOBSERVATION
+~~~
+
+Do not collect/store/export geometry merely because it may become useful. The currentness slice can
+ignore geometry entirely until exact-window marking is actually earned.
+
 If a later accepted host-local indicator cannot prove current geometry, it must not leave a stale
 outline that falsely marks another rectangle as the selected boundary.
 
