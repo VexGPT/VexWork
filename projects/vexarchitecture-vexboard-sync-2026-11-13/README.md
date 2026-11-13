@@ -423,6 +423,173 @@ NOT
 DESIRED PROJECTION -> INVENTED SOURCE RELATIONSHIP
 ```
 
+
+## Nov 13 audit result — source-proven classification
+
+The initial read-only audit is complete enough to admit implementation without pretending every shallow graph is a defect.
+
+Current pathway population remains:
+
+```text
+71 total
+
+14 TYPED_NAVIGATION
+27 TYPED_PRESENTATION
+ 2 SCAE_FAMILY
+20 DIRECT_REGISTRATION
+ 8 PARTNER_CIRCUIT
+```
+
+Classification:
+
+```text
+14 TYPED_NAVIGATION
+    typed source relationship is complete for the question it answers
+
+26 ordinary TYPED_PRESENTATION
+    typed presentation relationship is complete
+
+ 1 TYPED_PRESENTATION with Depth
+    Open Log sheet
+    -> LogHistorySheet
+    -> LogHistoryRepository
+    source truthfully reads the repository boundary for that presentation
+    -> RIGHTFUL_TERMINAL
+
+ 2 SCAE_FAMILY
+    ThemeMode
+    VexStream Playback
+    both preserve semantic decision, realization/outside truth and return
+    -> RETURN_COMPLETE
+
+ 8 PARTNER_CIRCUIT
+    source proves Partner / Connection / Conversion / Source / Signal /
+    Observation / Receiver / Store and returned Family-facing meaning
+    -> PARTNER_COMPLETE
+
+ 2 DIRECT_REGISTRATION placeholders
+    Gallery sample
+    Talk to Vex placeholder
+    source declares no product effect
+    -> RIGHTFUL_TERMINAL
+
+18 DIRECT_REGISTRATION with Depth
+    current reader stops early or misclassifies at least one source relationship
+    -> PROJECTION_STOPS_EARLY
+```
+
+The 18 are one systemic pressure set, not 18 separately-authored feature defects:
+
+```text
+ClearLogHistory
+    chronology + persistence/execution bridge is flattened as STORE
+
+Synthetic Events / Attention Lab
+    controller dependencies are flattened as STORE
+    CoroutineScope can be mislabeled STORE
+    Events source continues through repository truth and EventsConvergenceRelay
+
+User Profile Save
+    write reaches UserProfileRepository
+    same Screen observes repository truth back into presentation
+
+Family Conversation Send
+    repository/private-Home truth continues through observation,
+    VexConversationHybridRelay and canonical message reappearance
+
+VexStream connection/catalog registrations
+    repository call is only the doorway; production repository continues through
+    discovery/pairing/provider/current-state relationships and Screen observation
+```
+
+### Cross-cutting relationship judgment
+
+The stable relationships not obvious in the current pathway vocabulary are now judged:
+
+```text
+Relay / convergence
+    SOURCE-PROVEN GAP
+    Events and Family Conversation explicitly compose independently-owned truths;
+    current projection either stops before that relationship or can flatten Relay to STORE.
+
+Service / sustained realization
+    SOURCE-PROVEN SIDE-RELATIONSHIP GAP
+    VexStreamPlaybackService and VexMapsNavigationService host concrete platform
+    lifetime while semantic/session truth remains elsewhere.
+
+Widget / other human surface
+    SOURCE-PROVEN SIDE-RELATIONSHIP GAP
+    playback Widget publication is a second manifestation of already-owned truth,
+    not a second semantic owner.
+
+Construction / chronology
+    existing Lens vocabulary can represent these questions when source earns them;
+    no new role is justified merely for symmetry.
+```
+
+### Two generic projector failures
+
+The audit reduced the repair pressure to two reusable failures:
+
+```text
+1. REALIZATION TOPOLOGY LOSS
+
+RealizationWalker already follows nested composable calls and provenance.
+The generated realization contract keeps a flat realizer set but discards the
+caller -> callee topology. Source-expression Depth therefore often collapses
+rich known realization to one render-entry node.
+
+2. DOORWAY-DEPENDENT SOURCE FOLLOWING
+
+invoke(AppActions.X)
+    -> shallow direct-registration receiver heuristic
+
+localEffect()
+    -> several deeper source-shape followers
+
+custom realization
+    -> recursive source walker
+
+Equivalent source richness can therefore become differently visible because of
+doorway syntax rather than architectural truth.
+```
+
+The first implementation pressure is deliberately smaller than the whole second problem:
+
+> Preserve source-owned realization call relationships that the existing walker already discovers, carry them through the existing realization contract, and expose them through Source-expression Depth. Then inspect the newly visible real Screens before generalizing the next missing relationship.
+
+This changes no Android meaning and earns no new architecture role.
+
+## Human authorization boundary — Nov 13
+
+After reviewing the Project wording and the implementation ordering, Victor directed this trajectory to move forward.
+
+That authorizes a bounded VexWork source effect for the source-proven Screen Lens projection repair:
+
+```text
+VEXWORK PROJECTOR / REALIZATION / NORMALIZER / TEST REPAIR
+    AUTHORIZED_BOUNDED
+    EFFECTS_BOUND
+
+VEXLIFE-ANDROID SEMANTIC SOURCE MUTATION
+    NOT AUTHORIZED BY THIS GRANT
+
+#295 TAKEOVER
+    NO
+
+MERGE / RELEASE / LIFECYCLE ACCEPTANCE
+    NOT GRANTED BY IMPLEMENTATION AUTHORITY
+```
+
+The first authoring slice remains:
+
+```text
+preserve already-discovered realization topology
+-> project it without inventing semantic meaning
+-> inspect the real generated result
+-> let newly visible source truth earn the next repair
+```
+
 ## Repeatability
 
 The first dated baseline is 2026-11-13, but the Project is intentionally useful again.
