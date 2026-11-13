@@ -2421,16 +2421,28 @@ QUIET EXACT-WINDOW BOUNDARY QUESTION
 -> resolve Process Factory/Safety ownership only if exact-window marking is required
 -> no stream/capture merely to maintain an indicator
 
-NEXT SDK LOOK EFFECT SLICE
-accepted session LOOK semantics
--> persistent native LOOK/capture realization
--> exact single-use capture reservation/replay boundary
--> no picker replay
--> form a persistent-selected-scope LOOK capture receipt
--> Security proves the exact capture against the already-established selected-scope relationship
--> Perception forms one content-absent VISUAL observation for that new route
--> do NOT reuse the one-shot system-picker witness/integration unchanged
--> actual LOOK indicator truth becomes available to Product
+NEXT PROCESS FACTORY LOOK CAPTURE SLICE
+accepted pure session LOOK semantics remain unchanged
+-> route-neutral SCREEN / ON_DEMAND_SNAPSHOT durable reservation owner
+-> persistent selected-scope host custody dispatches one LOOK
+-> same retained provider scope; no picker replay
+-> one content-absent persistent-selected-scope capture receipt
+-> no Security/Perception claim by implication
+
+NEXT SECURITY LOOK WITNESS SLICE
+validated selection-establishment evidence
++ durable LOOK reservation
++ exact persistent-scope capture receipt
++ visible active-capture boundary evidence
+-> persistent-selected-scope capture witness
+-> no false picker-presented-for-this-capture claim
+
+NEXT PERCEPTION LOOK OBSERVATION SLICE
+exact capture receipt
++ exact new Security witness
++ owner-current SCREEN Safety
+-> one content-absent current VISUAL observation identity
+-> no raw image custody
 
 NEXT EPHEMERAL VISUAL RESOURCE SLICE
 fresh LOOK frame exists only attempt-locally
@@ -3883,7 +3895,7 @@ native LOOK result / Process Factory capture receipt
 
 Exact schema/field names remain source-placement work. The ownership distinction is the invariant.
 
-#### Host custody is the first place to pressure, not a new replay subsystem
+#### Host custody retains selection evidence; replay history is now a separate earned owner
 
 Host custody already owns:
 
@@ -3895,18 +3907,40 @@ native event parsing
 stop/release settlement
 ~~~
 
-So the first implementation pressure is to extend **that existing owner** with the narrow LOOK
-dispatch/replay responsibility while consuming a caller-supplied durable root.
+It should therefore retain the validated content-absent selection-establishment evidence/fingerprint
+in memory for the lifetime of that selected scope and supply it when one LOOK is being formed.
 
-Do not automatically create a new `VisionEffectStore` or generic effect manager.
-
-A separate module is earned only if the durable reservation/completion logic becomes a recurring
-independent contract that cannot remain in host custody without obscuring or duplicating ownership.
+But durable single-use replay history is a different recurring question:
 
 ~~~text
+child/process custody
+!= request identity already consumed across process replacement
+~~~
+
+Fresh review of the Process Factory typed-effect ownership law and current GitHub-only connector
+registry establishes that the replay question is real but the existing repository transaction schema
+is the wrong implementation.
+
+So one small route-neutral `SCREEN / ON_DEMAND_SNAPSHOT` reservation owner is now earned.
+
+~~~text
+host custody
+  owns live selected-scope process + establishment evidence
+
+SCREEN snapshot effect owner
+  owns durable reserve/complete/no-replay truth
+
 NEW_FILE_FOR_NEATNESS
 != NEW_OWNER_EARNED
+
+but:
+
+INDEPENDENT_DURABLE_REPLAY_QUESTION
+-> SMALL_SEPARATE_OWNER_EARNED
 ~~~
+
+Do not create a `VisionEffectStore` or generic effect manager. This owner is bounded to one SCREEN
+snapshot-effect law.
 
 #### Active capture indicator can remain short-lived
 
