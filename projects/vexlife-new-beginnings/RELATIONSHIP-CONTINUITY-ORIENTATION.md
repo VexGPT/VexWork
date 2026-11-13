@@ -3634,6 +3634,95 @@ preserve the landed first-design proof
 This section is retained so a successor can continue implementation design from the whole feature without
 reconstructing this judgment or collapsing the relationship back into the easiest already-proven component.
 
+
+## Solution checkpoint — finite attention must not become semantic authority
+
+Victor's current correction sharpens the relationship question:
+
+```text
+FINITE MODEL WINDOW
+!= CURRENT RELATIONSHIP SCOPE
+
+TOKEN PRESSURE
+may decide which bytes are materialized now
+!= authority to decide what meaning remains current
+```
+
+The bounded recent-Conversation suffix introduced by Product PR #62 is therefore retained as an
+opportunistic exact-source cache, not as the semantic continuity law. Recency + remaining token budget
+may choose which verbatim turns are cheaply present, but it must not define what the relationship still
+means.
+
+The smallest current design direction is layered rather than one giant memory object:
+
+```text
+CANONICAL CONVERSATION
+  complete immutable lived source
+
+DURABLE MEMORY / SCORE
+  accepted longer-lived meaning and current semantic coordinates
+
+WORKING CONTINUITY
+  current source-linked coordinates only
+  != semantic bodies
+
+PRESENT WORKING MEANING
+  only when meaning still matters now and no existing owner already carries it
+  source-linked / revisable / situated / non-authoritative
+  != durable Memory
+  != human profile
+  != replacement for Conversation
+
+TYPED SOURCE RETURN
+  Vex asks the rightful owner for bounded current/exact source when needed
+
+ACTIVE MODEL WINDOW
+  temporary materialization of what this inference needs
+```
+
+Operationally:
+
+```text
+receive current owner truth
+-> carry only present meaning that still bears on the relationship
+-> keep exact source coordinates for released detail
+-> let Vex request exact owner-specific source when relevance returns
+-> materialize only the bounded result needed for this inference
+-> release prompt bytes without deleting source/current truth
+```
+
+Conversation already proves the first typed return shape through conditional exact canonical source
+return. Browser current-state, Score/open-loop meaning and other owner-specific sources should earn
+their own typed resolution only when a concrete consumer needs them; do not invent one universal
+resolver merely for uniformity.
+
+Recent verbatim Conversation remains useful as a latency/quality optimization:
+
+```text
+RECENT VERBATIM PRESENT
+-> cheap direct availability
+
+RECENT VERBATIM ABSENT
+-> does not mean relationship meaning became false
+-> exact source may still be current/retrievable
+```
+
+The unresolved implementation question is therefore narrower: whether ordinary lived conversation
+still has genuinely ownerless present meaning after existing Conversation / Memory / Score / Working
+Continuity / source-return owners are reconnected. Only that residue earns a revisable present-working
+semantic carrier.
+
+Permanent:
+
+```text
+PROMPT CONTENT != SHARED CURRENT STATE
+RECENCY != RELEVANCE
+TOKEN BUDGET != SEMANTIC CURRENTNESS
+RELEASE FROM ACTIVE PROMPT != FORGET
+SOURCE ADDRESSABILITY != MODEL ACCESS
+CURRENT COORDINATE != SEMANTIC BODY
+```
+
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][END-TO-END-FEATURE-GROUNDING] -->
 
 ## Implementation-design continuation — current source findings
