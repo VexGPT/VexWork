@@ -1801,9 +1801,16 @@ recover/rebuild exact persistent local artifact
 -> install running Product carrying persistent selected-scope runtime
 -> substrate lived engage/select-once/project/stop proof
 
+NEXT SDK SELECTED-SCOPE CURRENTNESS SLICE
+accepted persistent host/session custody
+-> make SOURCE_LOST detection real without pixel capture
+-> retire false ENGAGED when selected source disappears
+-> preserve PROJECT != RECONCILE
+-> currentize/requalify persistent artifact if SDK bytes change
+
 NEXT PRODUCT SCOPE SEMANTIC / PRESENTATION SLICE
-accepted persistent Product service projection
--> evolve VexLifeVisionFamily from one-shot reachability to human persistent-scope meaning
+current selected-scope projection can retire on source loss
+-> evolve VexLifeVisionFamily from one-shot reachability to Held | Ready | Engaged
 -> interpret Product-safe SDK projection instead of copying native lifecycle
 -> human Engage / Stop controls
 -> Product-global quiet semantic indication: Ready / On / Held
@@ -2487,6 +2494,157 @@ adding another toolbar/control surface.
 The macOS picker itself is the truthful selection-in-progress UI. Do not build a second native
 "selecting" overlay merely to mirror SDK state.
 
+### Missing selected-scope currentness — SOURCE_LOST must become real before Product Engaged
+
+The accepted selected-scope session contract already admits:
+
+~~~text
+END_REASONS
+  HUMAN_DISENGAGED
+  SOURCE_LOST
+  HOST_OWNER_LOST
+  EXPLICIT_STOP
+~~~
+
+and the Safety disposition requires a retained scope only while the selected source has not been
+lost/invalidated.
+
+But current accepted native realization does not prove `SOURCE_LOST` currentness.
+
+Current native helper:
+
+~~~text
+retains SCContentFilter
+retains one unstarted SCStream
+SCStream delegate = nil
+picker deactivated after selection
+no selected-source currentness probe
+no SOURCE_LOST native event
+~~~
+
+The accepted architecture doc explicitly records that the first native primitive does not yet claim
+`SOURCE_LOST` detection.
+
+Therefore:
+
+~~~text
+CHILD_PROCESS_ALIVE
+!= SELECTED_WINDOW_STILL_EXISTS
+
+SDK_PROJECTS_ENGAGED
+!= SOURCE_CURRENTNESS_CONTINUOUSLY_PROVEN
+~~~
+
+Example failure:
+
+~~~text
+human selects browser window
+-> SDK ENGAGED
+-> browser window closes
+-> helper process remains alive
+-> current implementation may continue projecting ENGAGED
+~~~
+
+That is acceptable as an unfinished substrate boundary, but Product must not turn it into a stronger
+human claim and call the selected-scope experience current.
+
+#### Smallest next SDK question
+
+Do not add a generic monitor. Extend the existing selected-scope host/custody owner only enough to
+answer its already-owned lifecycle question:
+
+> Does the exact retained selected source still exist?
+
+Candidate host primitive to **qualify, not assume**:
+
+~~~text
+SCShareableContent.info(for: retainedFilter)
+-> current shareable content matching the retained filter or no match
+-> no raw pixel capture
+~~~
+
+Apple exposes `SCShareableContentInfo` on macOS 14+ and describes `info(for:)` as retrieving current
+shareable content matching a filter. That makes it a promising host-currentness probe, not accepted
+Vextreme source until a real host proof establishes its behavior for close/minimize/move/display
+changes.
+
+Required semantics regardless of primitive:
+
+~~~text
+current source positively re-observed
+-> remain ENGAGED
+
+source definitively absent
+-> accepted session end reason SOURCE_LOST
+-> release retained provider scope
+-> native host exits
+
+currentness probe fails / cannot establish truth
+-> do NOT invent SOURCE_LOST
+-> fail closed through the existing host-owner failure boundary
+   unless fresh source earns a more exact held/unknown state
+~~~
+
+No provider title/app/native ID/geometry needs to cross the Process Factory boundary for source-loss
+truth.
+
+#### Do not misuse PROJECT to hide reconciliation
+
+Current SDK already distinguishes:
+
+~~~text
+PROJECT
+  read current projection
+
+RECONCILE
+  re-observe governing currentness and may release custody
+~~~
+
+Preserve that distinction. Do not silently make a supposedly read-only Product GET perform hidden
+capture/release effects just because the UI polls it.
+
+The preferred ownership shape is for the native selected-scope host to retire its own relationship
+when the provider source is definitively lost, so Product PROJECT remains a truthful read of current
+host/session truth.
+
+If the host platform cannot supply event-driven source loss, a bounded host-local currentness probe may
+be necessary. Its cadence is an implementation/qualification question, not a reason to introduce a
+new scheduler architecture.
+
+#### This currentness slice precedes Product semantic Engaged
+
+Correct causal order:
+
+~~~text
+PR #114 accepted Product persistent-runtime bridge
+-> selected-scope SOURCE_LOST currentness becomes truthful in Process Factory/native host
+-> currentize/requalify the local persistent Vision artifact if SDK bytes change
+-> Product consumes a selected-scope projection whose ENGAGED truth can retire on source loss
+-> then evolve VexLifeVisionFamily / /api/v1/vision to Held | Ready | Engaged
+~~~
+
+The first Product Family design remains valid, but its deployment/completion must not outrun this
+lower-owner currentness predicate.
+
+#### Candidate source membrane — only after owner placement/current coordination
+
+Likely existing SDK owners, not a new subsystem:
+
+~~~text
+lib/process-factory/macos-screen-selected-scope-agent.swift
+lib/process-factory/macos-screen-selected-scope-host-custody.js
+lib/process-factory/macos-screen-selected-scope-session.js        # only if transition helper is needed
+tests/process-factory/macos-screen-selected-scope-agent.test.js
+tests/process-factory/macos-screen-selected-scope-host-custody.test.js
+docs/architecture/macos-screen-selected-scope-session.md
+~~~
+
+This is a design membrane, not an admitted claim. Fresh Operations/currentness/path-overlap must choose
+the exact smaller set.
+
+No Product/Conversation/Memory/VLM source belongs in this correction.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][SELECTED-SCOPE-SOURCE-CURRENTNESS][SOURCE-LOST-GAP][20261113] -->
 ### Quiet engaged-scope indication — semantic badge != exact-window boundary
 
 The current Safety disposition requires a retained selected scope to keep a truthful quiet
@@ -3310,7 +3468,7 @@ Product service != selected-scope owner
 visual worker != sensor authority
 presentation must distinguish engaged from actively looking
 first Product scope slice does not earn new Method / Execution / Partner / Store / Relay abstractions
-existing /vision polling is sufficient for quiet scope currentness
+existing /vision polling is sufficient for Product semantic refresh once lower selected-scope source currentness is truthful
 one-shot system-picker Security/Perception contracts cannot represent later persistent LOOK unchanged
 exact ephemeral visual resource identity/custody remains a real missing owner
 ~~~
@@ -3319,6 +3477,8 @@ The following remain intentionally unresolved until source/implementation pressu
 
 ~~~text
 future LOOK-era VexLifeVisionFamily evolution / active-LOOK presentation ownership
+exact selected-scope SOURCE_LOST host-currentness primitive / cadence
+exact quiet exact-window boundary requirement and, if required, geometry-currentness owner
 exact SCREEN single-use capture reservation owner
 exact persistent-selected-scope LOOK capture receipt contract
 exact Security witness + Perception successor contract for capture without picker replay
