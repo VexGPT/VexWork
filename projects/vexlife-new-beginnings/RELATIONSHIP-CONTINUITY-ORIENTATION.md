@@ -2204,3 +2204,80 @@ Current unconsumed edge remains execution/consumption of this one restored carri
 
 <!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031-RESTORED-DELIVERY] -->
 \n
+
+## A031 masked restored-carrier recovery R001 — 2026-11-12 23:01:59 America/Los_Angeles
+
+A user-visible execution of the restored A031 carrier exposed a carrier-local argument-binding defect:
+
+```text
+payload.mjs:
+  OUT = process.argv[2]
+
+RUN.command:
+  node payload.mjs "$CARRIED" "$PAYLOAD_OUT"
+
+therefore:
+  OUT = existing input ZIP path
+  -> fs.mkdirSync(OUT)
+  -> EEXIST
+```
+
+The observed EEXIST occurred in the payload catch path and masked the original payload outcome.
+
+Therefore:
+
+```text
+VISIBLE EEXIST
+!= proof business payload did not run
+!= Product source failure
+!= PR #89 semantic failure
+```
+
+Current VexRelay/VexLocalBridge route was re-grounded without Local Workspace:
+
+```text
+contractRef = source.vexrelay.current-contract/v1
+contract blob = b53cbac01c2deeb45fad5c32ce98e0796c04126f
+
+HOST_SEMANTIC_MODEL_RUNTIME
+-> adapter.vexlocalbridge.direct-host-effect
+-> lib/vexlocalbridge/pre-admission-carriage.js
+
+current SDK head/tree =
+0418b282cd1a92e3a22696480f5b364bebfc56bf
+b76ef935bc703392c78d4259689b027ea77be444
+```
+
+Because the catch path masked whether runtime recovery/model inference already occurred, recover-before-replay now governs.
+
+A031 masked restored-carrier recovery R001:
+
+```text
+sha256 =
+050bbdbbf76e029c451c9cff4d3a40636d5ddc91f63b7f9598f0a420f0fbebb7
+
+recoveryAttemptRef =
+attempt.vexlife-prod.pr89.a031-restored-masked-execution-recovery.r001
+```
+
+R001 performs no Gradle, model inference, Heretic restart, Product source mutation, Local Workspace, or lifecycle mutation. It observes durable runtime/process/log/failed-stage residue only.
+
+Current exact edge:
+
+```text
+run R001 once
+-> consume recovery RETURN
+-> classify how far masked A031 actually progressed
+-> only then decide whether fresh lived proof/replay is permitted
+```
+
+Do not repair the argument bug and replay A031 before R001 is consumed.
+
+Durable Product anchor:
+
+```text
+VexLife-Prod issue #61 comment 6846487190
+```
+
+<!-- [VXG RealForever][VEXWORK][RELATIONSHIP-CONTINUITY][A031][MASKED-RESTORE][RECOVERY-R001] -->
+
