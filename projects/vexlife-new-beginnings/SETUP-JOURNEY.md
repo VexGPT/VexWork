@@ -144,22 +144,30 @@ Do not turn “permission denied” into “setup corrupted.”
    |  - what this setup may change
    |  - what it will not change
    v
-1. VEX HOME / IDENTITY
+1. VEX HOME LOCATION + IDENTITY
+   |
+   |  Human choice:
+   |    choose Vex Home directory
+   |    default suggestion = ~/.vexlife
+   |    alternate absolute location remains allowed
+   |
+   |  Observe selected coordinate:
+   |    absent | canonical existing | noncanonical/held
    |
    |  State:
-   |    HOME_FORMATION_REQUIRED | HOME_PRESENT
+   |    HOME_FORMATION_REQUIRED | HOME_PRESENT | HOME_HELD
    |
    |  Human Control:
-   |    Create Vex Home | Continue
+   |    Create Vex Home | Use This Home | Choose Another Location
    |
    |  Effect:
-   |    FORM_CANONICAL_HOME
+   |    FORM_CANONICAL_HOME at the selected coordinate
    |
    |  Outside realization:
    |    canonical local Home/device/Companion identity only
    |
    |  Re-observe:
-   |    exact Home/device/Companion identity
+   |    exact same selected Home/device/Companion identity
    v
 2. MAC CAPABILITY / PERMISSION
    |
@@ -264,23 +272,72 @@ OPEN SETUP JOURNEY
 != REQUEST SCREEN ACCESS
 ```
 
-## Step 1 — Vex Home
+## Step 1 — choose and classify Vex Home
 
-Fresh Home formation remains its own human decision.
+The Vex Home location is a human-owned custody choice.
+
+The predecessor VexLife setup already exposed:
 
 ```text
-HOME_FORMATION_REQUIRED
+Where should Vex keep its local Home?
+[~/.vexlife]
+```
+
+and allowed another folder to be entered. New Beginnings must not silently collapse that choice into
+`System.getProperty("user.home")/.vexlife` and then describe the implementation as though the
+location were inherently fixed.
+
+The relationship is:
+
+```text
+suggest default ~/.vexlife
+-> human confirms or chooses another absolute location
+-> classify that exact selected coordinate
+-> absent | canonical existing | noncanonical/held
+-> explain the observed state
+-> explicit Create / Use / Choose Another control
+-> effect, if any, targets that exact selected Home
+-> re-observe the same selected Home
+```
+
+Fresh Home formation remains a separate human decision:
+
+```text
+SELECTED HOME IS ABSENT
+-> HOME_FORMATION_REQUIRED
 -> explain:
+   selected path
    canonical local identity only
    no model download
    no Product service start
 -> Create Vex Home
--> FORM_CANONICAL_HOME
--> fresh observation
+-> FORM_CANONICAL_HOME(selectedHome)
+-> fresh observation of selectedHome
 -> HOME_PRESENT
 ```
 
-The journey advances because Home truth changed, not because the renderer assumes the click worked.
+Permanent:
+
+```text
+DEFAULT HOME SUGGESTION
+!= FORCED HOME LOCATION
+
+HOME CHOOSER
+!= HOME EFFECT
+
+SELECTED HOME AT UI
+!= SELECTED HOME CARRIED THROUGH PRODUCT
+
+SELECTED HOME
+-> MUST remain the same coordinate through setup, image install, service lifetime,
+   Product service process, Conversation, Memory and later re-observation
+```
+
+A chooser that displays one location but lets a downstream process silently fall back to
+`~/.vexlife` is not a valid implementation.
+
+The journey advances because Home truth changed at the selected coordinate, not because the renderer
+assumes the click worked.
 
 ## Step 2 — Mac capability / permission
 
