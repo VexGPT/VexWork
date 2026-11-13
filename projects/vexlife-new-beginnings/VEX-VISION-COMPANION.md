@@ -2792,6 +2792,298 @@ The current `DirectPromptContext` hardcodes `DirectTurnCapabilityRefs` and its r
 Therefore Vision requestability requires an explicit bounded input to prompt materialization; prompt
 code must not discover or own `VisionRuntime` itself.
 
+### Current Product-main Conversation seam — one Vision-specific continuation, no tool framework
+
+Fresh review of VexLife-Prod current main at:
+
+~~~text
+5396e179483cc22598be447b3124af8355a6fee6
+~~~
+
+shows that the same-turn Vision seam is already mostly owned by current Product source.
+
+#### DirectCompanionTurn already owns the bounded two-stage orchestration
+
+Current `DirectCompanionTurn` already performs:
+
+~~~text
+one initial provider stage
+
+ordinary answer
+-> finish one canonical turn
+
+OR exact Conversation SourceReturn control
+-> suppress internal control from human streaming
+-> realize one bounded continuation
+-> rematerialize final prompt
+-> one final provider stage
+-> final stage cannot request SourceReturn again
+-> finish one canonical turn
+~~~
+
+Therefore Vision does not earn a new orchestrator, `VexExecution`, generic tool manager or recursive
+agent loop merely because it also needs one bounded continuation.
+
+Future first-slice arbitration:
+
+~~~text
+initial provider output
+-> ordinary human answer
+OR
+-> exact SourceReturn request
+OR
+-> exact VisionLook request
+
+multiple/ambiguous internal controls
+-> fail closed
+
+one admitted internal continuation
+-> realize exactly one
+-> rematerialize final prompt
+-> one final provider stage
+-> final stage admits NO internal continuation
+~~~
+
+First slice deliberately does not execute SourceReturn and VisionLook sequentially in one human turn.
+
+If lived pressure later proves both are needed together, earn one explicit combined rule then. Do not
+answer that future case with arbitrary recursion.
+
+~~~text
+KNOWN_TWO_CONTROL_ARBITRATION
+!= GENERIC_TOOL_RUNTIME
+~~~
+
+#### One Vision-specific continuation owner is earned; a generic control framework is not
+
+`DirectConversationSourceReturn` currently owns a distinct relationship, not merely JSON parsing:
+
+~~~text
+protocol message
+exact internal-control grammar
+request validation
+source discovery
+bounded returned-source projection
+attempt trace
+final trace
+~~~
+
+Vision will likewise need a distinct bounded relationship:
+
+~~~text
+Vision LOOK protocol message
+exact model-authored request grammar
+bounded request validation
+call to the already-accepted Vision continuation dependency
+bounded derived visual context projection
+attempt/effect provenance trace
+final-prompt binding
+~~~
+
+Those responsibilities should not be smeared into `DirectCompanionTurn`.
+
+So one **Vision-specific continuation/protocol owner** is likely earned when the lower LOOK + visual
+result contracts exist.
+
+Do not freeze its class/path name yet. The exact result object it must consume is still downstream of
+Process Factory -> Security -> Perception -> ephemeral-resource -> visual-worker acceptance.
+
+Permanent:
+
+~~~text
+VISION_SPECIFIC_PROTOCOL_OWNER
+!= GENERIC_INTERNAL_CONTROL_REGISTRY
+
+TURN_ORCHESTRATOR
+!= VISION_PROTOCOL_OWNER
+!= SCREEN_EFFECT_OWNER
+~~~
+
+#### Capability Atlas needs one explicit Vision capability, not runtime discovery
+
+Current Capability Atlas already owns the stages:
+
+~~~text
+DISCOVERABLE
+EXPLAINABLE
+REQUESTABLE
+ADMITTED
+EXECUTABLE
+COMPLETED
+~~~
+
+and every current frame preserves:
+
+~~~text
+effectAuthorityGranted=false
+~~~
+
+Current `DirectPromptContext` hardcodes four direct-turn capability refs and constructs four explicit
+resource facts. It performs no capability runtime discovery.
+
+That is good pressure for Vision:
+
+~~~text
+service-owned current Vision projection
+-> one explicit turn-local Vision requestability input
+
+DirectPromptContext
+-> one explicit Vision resource fact
+-> one registered Vision capability ref
+-> canonicalStage=REQUESTABLE
+-> effectAuthorityGranted=false
+~~~
+
+Do **not** replace the fixed current path with:
+
+~~~text
+additionalCapabilities[]
+dynamic plugin registry
+tool discovery
+prompt-owned VisionRuntime lookup
+generic effect handles
+~~~
+
+just to add one known capability.
+
+Candidate meaning remains:
+
+~~~text
+capability.vexlife.vision.look-current      # candidate identity only
+
+AVAILABLE
+  = current Product projection proves one requestable engaged Vision relationship
+
+HELD / UNAVAILABLE / UNKNOWN
+  = current Product truth says Vex cannot truthfully request current visual context now
+
+effectAuthorityGranted=false
+  always
+~~~
+
+Do not model current SCREEN Safety as a pre-granted capability permission. The model can know LOOK is
+requestable; the actual LOOK owner still re-resolves fresh SCREEN Safety only after the request.
+
+~~~text
+MODEL_CAN_KNOW_LOOK_IS_REQUESTABLE
+!= CAPTURE_AUTHORITY_ALREADY_GRANTED
+~~~
+
+#### Current Hooks are already the right dependency direction
+
+`DirectCompanionTurn.Hooks` currently injects turn-local dependencies such as:
+
+~~~text
+provider transport
+time
+current qualified runtime evidence
+current Memory
+Memory-at-cap
+progress observer
+working-continuity commit
+~~~
+
+So the future Vision dependency should enter that same direction:
+
+~~~text
+service-owned Vision continuation
+-> injected into DirectCompanionTurn
+
+DirectCompanionTurn
+-> never discovers or opens VisionRuntime itself
+~~~
+
+A Vision dependency should expose only the bounded Product-side operation the turn needs, not the
+persistent runtime object or native scope identity.
+
+#### Product progress may mirror LOOK; it cannot certify the Security indicator
+
+Current `DirectCompanionTurn.ProgressObserver` is intentionally non-authoritative:
+
+~~~text
+observer failure
+-> swallowed
+-> canonical turn must continue truthfully
+~~~
+
+That means a future progress phase such as:
+
+~~~text
+Looking
+~~~
+
+can be useful to drive transient Product UX:
+
+~~~text
+Vex is looking…
+~~~
+
+but it cannot be the sole Security evidence that a capture indicator was actually shown.
+
+~~~text
+PRODUCT_PROGRESS_LOOKING
+!= SECURITY_ACTIVE_CAPTURE_INDICATOR_WITNESS
+~~~
+
+The authoritative capture-indicator obligation remains below Product with the capture/Security owners.
+Product progress may mirror accepted activity for human experience; failure to render that mirror
+cannot be rewritten as proof that Security's host-visible boundary succeeded.
+
+If Product presentation is ever selected as part of the authoritative Security indicator, its current
+best-effort observer semantics would have to change under an explicit Security-owned contract. Do not
+silently make that change while adding Vision.
+
+#### Current progress gate earns only a bounded two-header generalization
+
+`SourceReturnProgressGate` currently prevents one internal SourceReturn control from leaking as the
+human-visible streamed answer.
+
+Once Vision has a second exact internal header, that responsibility repeats:
+
+~~~text
+internal control content
+!= human-visible answer stream
+~~~
+
+The bounded refactor is:
+
+~~~text
+recognize exactly the admitted SourceReturn header
++ exactly the admitted VisionLook header
+-> suppress either internal control from human streaming
+
+all other content
+-> ordinary human-visible provider progress
+~~~
+
+Do not generalize to arbitrary tool/control registration.
+
+#### First Product Conversation source pressure after all lower owners exist
+
+The later implementation should first pressure existing current files:
+
+~~~text
+src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt
+src/jvmTest/kotlin/vexlife/capability/VexLifeCapabilityAtlasTest.kt
+
+src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt
+src/jvmTest/kotlin/vexlife/companion/DirectPromptContextTest.kt
+
+src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt
+src/jvmTest/kotlin/vexlife/companion/DirectCompanionTurnTest.kt
+~~~
+
+Likely additional owner only when lower contracts make its responsibility concrete:
+
+~~~text
+one Vision-specific internal-control / derived-context / trace source
++ focused test
+~~~
+
+Service injection and durable turn-evidence paths are added only if the accepted Vision continuation
+result proves they are necessary. Do not pre-author a broad source membrane now.
+
+<!-- [VXG RealForever][VEXLIFE][VISION][CURRENT-MAIN-CONVERSATION-SEAM][20261113] -->
 #### Final visual context should remain untrusted turn input
 
 A successful visual worker should return one bounded derived context, not raw image bytes.
