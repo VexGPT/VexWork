@@ -87,7 +87,9 @@
         "human.intent.vexlife.official-application.platform-realization.20261114",
         "github.pull.vexlife-prod.138",
         "github.pull.vexwork.296",
-        "project.vexlife.new-beginnings"
+        "project.vexlife.new-beginnings",
+        "projects/vexlife-official-application/MACOS-APPLE-SILICON-OFFICIAL-APP-HANDOFF.md",
+        "map.vexlife.official-application.macos-apple-silicon.20261114"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -142,7 +144,9 @@
       ],
       "sourceRefs": [
         "github.pull.vexlife-prod.138",
-        "projects/vexlife-official-application/README.md"
+        "projects/vexlife-official-application/README.md",
+        "projects/vexlife-official-application/MACOS-APPLE-SILICON-OFFICIAL-APP-HANDOFF.md",
+        "map.vexlife.official-application.macos-apple-silicon.20261114"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -371,7 +375,9 @@
     "github.pull.vexwork.296",
     "github.pull.vexwork.302",
     "github.pull.vexlife-prod.138",
-    "human.intent.vexlife.official-application.platform-realization.20261114"
+    "human.intent.vexlife.official-application.platform-realization.20261114",
+    "projects/vexlife-official-application/MACOS-APPLE-SILICON-OFFICIAL-APP-HANDOFF.md",
+    "map.vexlife.official-application.macos-apple-silicon.20261114"
   ],
   "formedAt": "2026-11-15T04:22:00.000Z"
 }
