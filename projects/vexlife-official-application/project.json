@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.official-application",
+  "label": "VexLife Official Application",
+  "purpose": "Form the cross-platform productization and distribution trajectory that turns accepted VexLife product semantics into trusted installable applications on supported macOS, Windows, Android and iOS/iPadOS targets, with truthful OS/CPU support matrices, stable application identity, signing/distribution, capability-permission ownership, update/uninstall/data-preservation semantics and lived release proof while leaving each target repository as source owner.",
+  "rootWorkRefs": [
+    "work.vexlife.official-application.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod",
+    "repo.vexlife-android"
+  ],
+  "sourceRefs": [
+    "human.intent.vexlife.official-application.20261114",
+    "projects/vexlife-official-application/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "project.vexlife.new-beginnings",
+    "github.pull.vexwork.296",
+    "github.pull.vexwork.302",
+    "github.pull.vexlife-prod.138",
+    "repo.vexlife-prod:docs/work/claude-stable-builds-home/QUEUED.md",
+    "projects/vex-security-assurance/README.md",
+    "repo.vexlife-android:app/build.gradle.kts"
+  ],
+  "formedAt": "2026-11-15T04:22:00.000Z"
+}

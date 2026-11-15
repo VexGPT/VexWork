@@ -1,0 +1,344 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife-official-application",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Official Application",
+      "purpose": "Establish one truthful cross-platform application-distribution trajectory so people can install, launch, update, permission and recover VexLife through ordinary platform-native relationships while preserving the same Vex Home / Conversation / Memory product meaning and keeping platform/runtime/source ownership federated.",
+      "workClass": "OUTCOME",
+      "state": "PLAN_VALIDATED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "project.vexlife.official-application",
+        "projects/vexlife-official-application/README.md",
+        "project.vexlife.new-beginnings",
+        "projects/vex-security-assurance/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.shared-contract",
+      "parentWorkRefOrNull": "work.vexlife.official-application.outcome",
+      "label": "Define the shared official-application acceptance contract",
+      "purpose": "Preserve the cross-platform invariants that make a VexLife build official without making one platform's syntax canonical: stable app identity/version/source binding, truthful support matrix, ordinary install/launch, trust/signing, capability-owned permissions, Home/data preservation, contained dependencies, release provenance, update/recovery, lived proof and store/privacy obligations where applicable.",
+      "workClass": "TASK",
+      "state": "PLAN_VALIDATED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-official-application/README.md",
+        "projects/vex-security-assurance/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.macos",
+      "parentWorkRefOrNull": "work.vexlife.official-application.outcome",
+      "label": "macOS official application",
+      "purpose": "Turn the current source-bound Mac bootstrap/native Setup lineage into a durable VexLife application distribution relationship with platform-native identity, ordinary install/launch/update/uninstall, capability-owned permissions, exact Apple-silicon runtime support, signing/notarization and lived real-Mac proof.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-prod.138",
+        "github.pull.vexwork.302",
+        "repo.vexlife-prod:docs/work/claude-stable-builds-home/QUEUED.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.macos.apple-silicon",
+      "parentWorkRefOrNull": "work.vexlife.official-application.macos",
+      "label": "macOS Apple silicon / arm64 release pathway",
+      "purpose": "Establish the leading official Mac artifact for the currently admitted darwin/arm64 Apple-silicon Product/runtime relationship: package the durable app, bind version/source/runtime identity, sign/notarize, prove ordinary installation and preserve Home/currentness across restart/update/reinstall on representative supported Apple-silicon Macs.",
+      "workClass": "TASK",
+      "state": "PLAN_VALIDATED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-prod.138",
+        "projects/vexlife-official-application/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "PARKED",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.macos.intel",
+      "parentWorkRefOrNull": "work.vexlife.official-application.macos",
+      "label": "Potential — macOS Intel / x86_64 legacy support evaluation",
+      "purpose": "Evaluate rather than assume whether a truthful legacy Intel Mac pathway is worth supporting after the Apple-silicon release contract is grounded. Require an actually compatible model/runtime, supported macOS baseline, architecture-complete package dependencies and separate lived proof; do not treat a universal wrapper or Rosetta as proof that the current arm64 MLX path works on Intel.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.official-application.macos.apple-silicon"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-official-application/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.windows",
+      "parentWorkRefOrNull": "work.vexlife.official-application.outcome",
+      "label": "Windows official application",
+      "purpose": "Realize accepted VexLife product/current-state/model-continuity semantics through Windows-native host observation, filesystem/runtime/process lifetime, package identity, install/update/uninstall and lived proof rather than reducing the outcome to a launcher or executable.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "github.pull.vexwork.296",
+        "projects/vexlife-official-application/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.windows.x64",
+      "parentWorkRefOrNull": "work.vexlife.official-application.windows",
+      "label": "Windows x64 application pathway",
+      "purpose": "Ground the x64 Windows host/runtime/dependency/package relationship for ordinary Intel/AMD 64-bit Windows machines, including supported OS baseline, exact installer/package identity, signing/update semantics, model/runtime fit and lived proof before making a support claim.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "github.pull.vexwork.296",
+        "projects/vexlife-official-application/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.windows.arm64",
+      "parentWorkRefOrNull": "work.vexlife.official-application.windows",
+      "label": "Windows ARM64 application pathway",
+      "purpose": "Ground the native Windows ARM64 host/runtime/dependency/package relationship, keeping native ARM64 qualification distinct from x64 emulation and proving the actual model/runtime/backend and lived product behavior on representative Windows-on-Arm hardware.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "github.pull.vexwork.296",
+        "projects/vexlife-official-application/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.android",
+      "parentWorkRefOrNull": "work.vexlife.official-application.outcome",
+      "label": "Android official application",
+      "purpose": "Take the existing VexLife-Android application source from development/buildable application form to an official distributable relationship with release identity/versioning, signing custody, release APK/AAB formation, truthful API/ABI support, selected Play/direct-test distribution, permissions/privacy and lived install/update/uninstall proof.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "repo.vexlife-android:app/build.gradle.kts",
+        "projects/vexlife-official-application/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.android.release",
+      "parentWorkRefOrNull": "work.vexlife.official-application.android",
+      "label": "Android release signing, bundle/APK and device support pathway",
+      "purpose": "Ground the actual release artifact and distribution contract for VexLife-Android: preserve the existing application identity, define release signing custody and version progression, form/verify signed AAB/APK outputs, derive ABI support from real native dependencies, bind Play/direct testing channels as selected and prove install/update/uninstall on representative devices.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "repo.vexlife-android:app/build.gradle.kts",
+        "projects/vex-security-assurance/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.ios",
+      "parentWorkRefOrNull": "work.vexlife.official-application.outcome",
+      "label": "iOS / iPadOS official application pathway",
+      "purpose": "Preserve the future VexLife iOS/iPadOS product pathway without inventing an implementation repository: select/form the rightful source owner, bind bundle identity and device-family/OS support, realize an appropriate model/runtime relationship, entitlements/permissions/signing/provisioning, TestFlight/App Store distribution and lived real-device proof.",
+      "workClass": "OUTCOME",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-official-application/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:22:00.000Z",
+      "updatedAt": "2026-11-15T04:22:00.000Z",
+      "workRef": "work.vexlife.official-application.release-catalog",
+      "parentWorkRefOrNull": "work.vexlife.official-application.outcome",
+      "label": "Evolve stable-build distribution into an artifact-aware release catalog",
+      "purpose": "Evolve the currently queued script-first stable-build home only after real platform artifacts exist: present stable/preview releases with exact version/source/platform/architecture/runtime identity and the appropriate official download/store route without turning the catalog into release authority.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.official-application.macos.apple-silicon",
+        "work.vexlife.official-application.android.release"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "repo.vexlife-prod:docs/work/claude-stable-builds-home/QUEUED.md",
+        "projects/vexlife-official-application/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexlife.official-application",
+    "projects/vexlife-official-application/README.md",
+    "human.intent.vexlife.official-application.20261114",
+    "github.pull.vexwork.296",
+    "github.pull.vexwork.302",
+    "github.pull.vexlife-prod.138"
+  ],
+  "formedAt": "2026-11-15T04:22:00.000Z"
+}
