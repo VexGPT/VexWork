@@ -223,6 +223,143 @@ same VexLife product relationship
 != same installer
 ```
 
+
+## Platform realization / dependency-wrapper intention
+
+Victor's architectural intention is to avoid turning every new platform/CPU target into scattered
+platform branches throughout VexLife.
+
+A provisional implementation name such as `IPlatformDependencyWrapper` expresses the useful
+intuition, but this Project does **not** require that exact name, language construct or one giant
+wrapper object. The durable requirement is the relationship:
+
+```text
+current HostObservation
+  platform / OS / architecture / hardware capabilities
++
+current ProductSelection
+  VexLife version / selected model / requested capability
++
+source-owned PlatformRealizationCatalog
+  qualified combinations that actually exist
+        ↓
+PlatformRealizationResolver
+        ↓
+one exact PlatformRealizationPlan
+        ↓
+rightful owners consume only their part
+  application artifact / installer
+  runtime + native dependencies
+  model artifact realization
+  process/service lifetime
+  capability permission adapter
+  distribution/update realization
+        ↓
+fresh observations
+        ↓
+VexLife converges to current Product truth
+```
+
+The purpose is **one architecture decision point, not many duplicated `if (platform)` decisions**.
+
+Permanent:
+
+```text
+DESIRED CONFIG != OBSERVED HOST REALITY
+CONFIG VALUE != COMPATIBLE IMPLEMENTATION EXISTS
+PLATFORM REALIZATION != EFFECT AUTHORITY
+PLATFORM REALIZATION != ONE GOD OBJECT
+RESOLVER != RUNTIME TRUTH OWNER
+
+ONE TARGET CHANGE
+-> one newly resolved plan
+-> existing rightful owners follow their resolved coordinates
+
+not
+
+ONE TARGET CHANGE
+-> hand-edit downloader + runtime + installer + service + permissions independently
+```
+
+### Build-time and runtime realization remain distinct
+
+The same source-owned realization vocabulary may serve two moments:
+
+```text
+BUILD-TIME REALIZATION
+  target platform / architecture
+  -> which application/runtime/native dependency bytes belong in this release artifact?
+
+RUNTIME REALIZATION
+  observed host + selected model/capability
+  -> which supported realization may this installed Product actually use now?
+```
+
+A runtime config cannot transform already-compiled ARM code into x86 code. Instead, build formation
+selects/forms compatible target bytes, and runtime selection chooses among compatible realizations
+available to or lawfully acquirable by that installed target.
+
+### Current source already points in this direction
+
+The #138 Product source has several patient-zero pieces rather than a blank slate:
+
+```text
+HereticModelCatalog
+  model identity -> exact artifact members / provider revision / memory fit
+
+HereticArtifactDeliveryCatalog
+  artifact identity -> exact acquisition channel
+
+HereticMacHostProfile
+  observed platform / architecture / chip / memory -> eligibility
+
+HereticModelConfiguration
+  selected model + exact qualified runtime evidence -> bound Product model
+```
+
+The next architecture worker should therefore **map and generalize the smallest rightful seams** from
+current accepted source instead of replacing these owners with a new mega-abstraction.
+
+Questions for that worker include:
+
+1. Which currently scattered target-dependent facts are genuinely one realization-selection concern?
+2. Which existing owners must stay independent after selection?
+3. What stable target identity is sufficient: platform, OS range, CPU architecture/ABI, accelerator,
+   runtime/backend capabilities, or some smaller/larger combination?
+4. What belongs in a source-owned realization catalog versus fresh host observation?
+5. What is resolved at build time versus at runtime?
+6. How does a selected model resolve a platform-compatible artifact/runtime realization without
+   changing Home / Conversation / Memory identity?
+7. How do unsupported combinations fail truthfully rather than falling back to a nearby platform?
+8. Can adding a later qualified realization be mostly additive — one catalog/implementation
+   registration plus proof — instead of requiring platform conditionals across unrelated owners?
+
+Candidate shape for investigation only:
+
+```text
+PlatformTarget
+PlatformRealizationCatalog
+PlatformRealizationResolver
+PlatformRealizationPlan
+
+PlatformRealization
+  -> HostRealization
+  -> ApplicationRealization
+  -> RuntimeRealization
+  -> ModelArtifactRealization
+  -> ProcessLifetimeRealization
+  -> PermissionRealization
+  -> DistributionRealization
+```
+
+The names are not accepted architecture. They make the intended decomposition perceivable so a worker
+can inspect current VexArchitecture/Product source and earn the smallest exact interfaces.
+
+Completion for this architecture task is **not** "an interface file exists." It is a source-grounded
+design/implementation boundary demonstrating that a new platform realization can be added without
+making platform-specific decisions leak through unrelated Product owners, while preserving truthful
+unsupported/unknown states and current proof responsibilities.
+
 ### 8. Release provenance and reproducible identity
 
 Every published artifact needs enough evidence to answer:

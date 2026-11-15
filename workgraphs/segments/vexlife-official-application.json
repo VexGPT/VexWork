@@ -65,6 +65,38 @@
       "effectDisposition": "NO_EFFECTS",
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
+      "createdAt": "2026-11-15T04:58:00.000Z",
+      "updatedAt": "2026-11-15T04:58:00.000Z",
+      "workRef": "work.vexlife.official-application.platform-realization-abstraction",
+      "parentWorkRefOrNull": "work.vexlife.official-application.outcome",
+      "label": "Map the reusable platform realization / dependency-wrapper abstraction",
+      "purpose": "Turn Victor's IPlatformDependencyWrapper intuition into a source-grounded VexArchitecture boundary: combine fresh host observation and Product/model selection with a source-owned catalog of qualified platform realizations, resolve one exact realization plan, then let existing artifact/runtime/process/permission/distribution owners consume only their coordinates. Separate build-time target-byte selection from runtime realization selection; prevent scattered platform conditionals, a new god object, or configuration values from inventing unsupported implementations.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.official-application.shared-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-official-application/README.md",
+        "human.intent.vexlife.official-application.platform-realization.20261114",
+        "github.pull.vexlife-prod.138",
+        "github.pull.vexwork.296",
+        "project.vexlife.new-beginnings"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
       "createdAt": "2026-11-15T04:22:00.000Z",
       "updatedAt": "2026-11-15T04:22:00.000Z",
       "workRef": "work.vexlife.official-application.macos",
@@ -338,7 +370,8 @@
     "human.intent.vexlife.official-application.20261114",
     "github.pull.vexwork.296",
     "github.pull.vexwork.302",
-    "github.pull.vexlife-prod.138"
+    "github.pull.vexlife-prod.138",
+    "human.intent.vexlife.official-application.platform-realization.20261114"
   ],
   "formedAt": "2026-11-15T04:22:00.000Z"
 }
