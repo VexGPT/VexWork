@@ -44,7 +44,7 @@ main{min-height:72vh;padding:26px 0 60px}.hero{display:grid;grid-template-column
 <div class="vex-nav-actions" id="vex-nav-actions" aria-label="Page tools"></div>
 </div>
 <div class="toolbar">
-<div class="brand"><a class="terrain-home" href="./vexboard/">VexBoard</a><a class="pink-entry" href="./orientation.html" aria-label="Pink VexWork onboarding entry">🩷 Pink entry</a><span class="readonly">read-only projection</span></div>
+<div class="brand"><span class="readonly">read-only projection</span></div>
 <label><span class="field-label">Find work</span><input id="search" class="search" type="search" placeholder="Find a Project, Outcome, task, defect or work ref…"></label>
 </div>
 <div class="levels" aria-label="VexWork semantic level">
@@ -86,8 +86,11 @@ main{min-height:72vh;padding:26px 0 60px}.hero{display:grid;grid-template-column
 /*
  * Vex ecosystem Spiral registration for the PUBLIC VexWork navigator.
  *
- * This surface registers only navigation it truthfully owns:
+ * This surface registers only navigation it truthfully owns or intentionally cross-references:
+ * - VexBoard, the primary board projection;
+ * - Pink, the human onboarding/orientation entry;
  * - its own read-only Terrain projection;
+ * - VexArchitecture's public Development Standard group in Vextreme Terrain;
  * - canonical Vextreme Support.
  *
  * Intentionally absent:
@@ -99,11 +102,32 @@ main{min-height:72vh;padding:26px 0 60px}.hero{display:grid;grid-template-column
  */
 window.VEX_SPIRAL_FEATURES = [
   {
+    id: 'vexboard',
+    label: 'Open VexBoard',
+    title: 'VexBoard',
+    icon: '📋',
+    href: './vexboard/'
+  },
+  {
+    id: 'pink-entry',
+    label: 'Open Pink VexWork onboarding',
+    title: 'Pink entry',
+    icon: '🩷',
+    href: './orientation.html'
+  },
+  {
     id: 'terrain',
     label: 'Open VexWork Terrain',
     title: 'VexWork Terrain Map',
     icon: '🗺️',
     href: './terrain.html'
+  },
+  {
+    id: 'vexarchitecture',
+    label: 'Open VexArchitecture Development Standard',
+    title: 'VexArchitecture · Development Standard',
+    icon: '🧭',
+    href: 'https://vgong24.github.io/Vextreme/pages/terrain-map.html?group=development_standard'
   },
   {
     id: 'support',
