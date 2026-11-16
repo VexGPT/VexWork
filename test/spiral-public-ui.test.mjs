@@ -7,7 +7,7 @@ const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 test('public VexWork home pins the shared Spiral and registers bounded local features', () => {
   assert.match(page, /window\.VEX_SPIRAL_FEATURES\s*=\s*\[/);
   assert.match(page, /Vextreme@04ee63c4bf9d2ccbbb03e93514a8a67d242c49db\/widgets\/vex-fab\.js/);
-  assert.match(page, /Vextreme@04ee63c4bf9d2ccbbb03e93514a8a67d242c49db\/widgets\/vex-spiral-features\.js/);
+  assert.match(page, /Vextreme@04ee63c4bf9d2ccbbb03e93514a8a67d242c49db\/components\/vex-spiral-features\.js/);
   assert.match(page, /id:\s*'terrain'/);
   assert.match(page, /href:\s*'\.\/terrain\.html'/);
   assert.match(page, /id:\s*'support'/);
