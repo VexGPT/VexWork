@@ -248,10 +248,14 @@ test('dynamic VexWork strings enter through textContent, not producer HTML', () 
   assert.doesNotMatch(page, /\.innerHTML\s*=\s*item\.|\.innerHTML\s*=\s*project\./);
 });
 
-test('family navigation keeps Vextreme and VexLife Prod as sibling destinations', () => {
+test('family navigation keeps Vextreme, VexLife and VexWork as stable sibling destinations', () => {
   assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html/);
-  assert.match(page, /https:\/\/github\.com\/VexGPT\/VexLife-Prod/);
-  assert.match(orientationPage, /https:\/\/github\.com\/VexGPT\/VexLife-Prod/);
+  assert.match(page, /https:\/\/vexgpt\.github\.io\/VexLife-Prod\//);
+  assert.match(orientationPage, /https:\/\/vexgpt\.github\.io\/VexLife-Prod\//);
+  assert.match(page, />VexLife<\/a>/);
+  assert.match(orientationPage, />VexLife<\/a>/);
+  assert.doesNotMatch(page, /https:\/\/github\.com\/VexGPT\/VexLife-Prod/);
+  assert.doesNotMatch(orientationPage, /https:\/\/github\.com\/VexGPT\/VexLife-Prod/);
   assert.doesNotMatch(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
   assert.doesNotMatch(orientationPage, /https:\/\/vgong24\.github\.io\/VexLife\//);
 });
