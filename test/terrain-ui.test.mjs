@@ -14,6 +14,12 @@ test('Terrain remains an explicit read-only VexWork projection', () => {
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
+test('Terrain family rail points VexLife at the VexLife-Prod Pages home', () => {
+  assert.match(page, /https:\/\/vexgpt\.github\.io\/VexLife-Prod\//);
+  assert.match(page, />VexLife<\/a>/);
+  assert.doesNotMatch(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
+});
+
 test('Terrain uses stable perceptual bands and strata rather than radial graph navigation', () => {
   assert.match(page, /project-band/);
   assert.match(page, /preview-strip/);
