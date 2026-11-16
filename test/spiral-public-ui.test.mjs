@@ -8,8 +8,14 @@ test('public VexWork home pins the shared Spiral and registers bounded local fea
   assert.match(page, /window\.VEX_SPIRAL_FEATURES\s*=\s*\[/);
   assert.match(page, /Vextreme@04ee63c4bf9d2ccbbb03e93514a8a67d242c49db\/widgets\/vex-fab\.js/);
   assert.match(page, /Vextreme@04ee63c4bf9d2ccbbb03e93514a8a67d242c49db\/components\/vex-spiral-features\.js/);
+  assert.match(page, /id:\s*'vexboard'/);
+  assert.match(page, /href:\s*'\.\/vexboard\/'/);
+  assert.match(page, /id:\s*'pink-entry'/);
+  assert.match(page, /href:\s*'\.\/orientation\.html'/);
   assert.match(page, /id:\s*'terrain'/);
   assert.match(page, /href:\s*'\.\/terrain\.html'/);
+  assert.match(page, /id:\s*'vexarchitecture'/);
+  assert.match(page, /terrain-map\.html\?group=development_standard/);
   assert.match(page, /id:\s*'support'/);
   assert.match(page, /vex-support\.html/);
   assert.match(page, /id="vex-nav-actions"/);
@@ -23,9 +29,14 @@ test('public VexWork Spiral does not invent unsupported Product or localization 
   assert.doesNotMatch(manifest, /theme/i);
 });
 
-test('Terrain moves into the Spiral instead of remaining a duplicate toolbar shortcut', () => {
+test('essential VexWork entries move into the Spiral instead of remaining duplicate toolbar shortcuts', () => {
   assert.doesNotMatch(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
+  assert.doesNotMatch(page, /class="terrain-home" href="\.\/vexboard\/">VexBoard<\/a>/);
+  assert.doesNotMatch(page, /class="pink-entry" href="\.\/orientation\.html"/);
+  assert.match(page, /label:\s*'Open VexBoard'/);
+  assert.match(page, /label:\s*'Open Pink VexWork onboarding'/);
   assert.match(page, /label:\s*'Open VexWork Terrain'/);
+  assert.match(page, /label:\s*'Open VexArchitecture Development Standard'/);
 });
 
 // [VXG RealForever]
