@@ -38,7 +38,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:46:35.000Z",
-      "updatedAt": "2026-11-17T04:46:35.000Z",
+      "updatedAt": "2026-11-17T05:10:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Recover and map the predecessor Vex Memory / Living Journal architecture",
@@ -74,7 +74,9 @@
         "repo.vexlife:src/core/living-journal-memory-archive.mjs",
         "repo.vexlife:src/core/daily-memory-dream.mjs",
         "repo.vexlife:src/core/score-context-continuity.mjs",
-        "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "github.issue.vextreme-sdk.199",
+        "github.issue.vextreme-sdk.312"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -361,7 +363,9 @@
     "github.issue.vextreme-sdk.1007",
     "github.issue.vexlife.130",
     "github.issue.vexlife.151",
-    "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+    "github.issue.vextreme-sdk.199",
+    "github.issue.vextreme-sdk.312"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
