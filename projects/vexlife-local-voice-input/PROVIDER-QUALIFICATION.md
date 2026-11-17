@@ -461,6 +461,104 @@ Next compare a Whisper runtime/model on the same fixture, then decide whether to
 - or retain multiple qualified choices behind the provider-selection contract.
 
 
+
+
+## A002 whisper.cpp host result — exact fixture transcript; preferred next integration candidate
+
+Exact lived RETURN:
+
+~~~text
+RETURN sha256
+26a79b9d89cffb9a62d24e7140ba913859d842b288066fd8f9d85d408cccf38d
+
+status
+PASS
+
+whisper.cpp source commit
+d1be6fde11ac6e0407606b4e42fe72d34add8037
+
+source tree
+6fe2755682242a5c01aba65a22b3c0305d747841
+
+model
+ggml-base.en.bin
+
+model bytes
+147,964,211
+
+model sha256
+a03779c86df3323075f5e796cb2ce5029f00ec8869eee3fdfb897afe36c6d002
+~~~
+
+The exact same 6.625-second fixture used by sherpa A001 produced:
+
+~~~text
+After early nightfall the yellow lamps would light up here and there
+the squalid quarter of the brothels.
+~~~
+
+Ignoring capitalization and punctuation, this is an exact 18/18 word match against the fixture
+reference: zero substitutions, deletions or insertions.
+
+Observed current Mac runtime:
+
+~~~text
+Apple M4 Pro / Metal
+model load                   51.72 ms
+Whisper internal total       1,467.14 ms
+cold process wall time       4.18 s
+internal-total RTF           ~0.2215
+cold process-wall RTF        ~0.631
+maximum resident set size    400,343,040 bytes
+peak memory footprint        444,548,224 bytes
+~~~
+
+The cold process wall includes first-process Metal embedded-library initialization/compilation.
+Even that cold run is faster than the 6.625-second source audio.
+
+### Same-fixture comparison
+
+~~~text
+                         sherpa 20M             whisper.cpp base.en
+
+final word edits         4 / 18                  0 / 18
+provider timing          120 ms inference        1,467 ms internal total
+max RSS                  337,395,712 B           400,343,040 B
+model/archive            ~127.9 MB archive       147,964,211 B model
+streaming partials       13 observed             not tested by CLI comparator
+endpoint                 0 observed              not tested by CLI comparator
+~~~
+
+One fixture is not a corpus benchmark and does not establish a permanent Product default.
+
+It is sufficient to make whisper.cpp Base English the preferred candidate for the **next direct
+Product/JVM streaming pressure test**, while sherpa remains a legitimate provider family and a
+larger/better sherpa model remains a possible future qualified option.
+
+### Next relationship question
+
+Current whisper.cpp source already exposes:
+
+- a C API over float PCM;
+- abort/progress/new-segment callbacks;
+- Java/JNA bindings for `whisper_full(... float[] samples ...)`;
+- `whisper_full_with_state` and related result access.
+
+The next spike should therefore test the shortest Product-shaped route:
+
+~~~text
+JVM
+-> whisper.cpp JNA/native binding
+-> float PCM
+-> transcript
+~~~
+
+before choosing a sidecar/service topology.
+
+That experiment should also pressure cancellation/segment callbacks enough to decide whether
+VoiceInput session custody can stay owner-local or actually earns reusable VexExecution.
+
+
 ## Selection threshold
 
 Promote one candidate only when it is clear which integration burden is smaller **for the Product**,
