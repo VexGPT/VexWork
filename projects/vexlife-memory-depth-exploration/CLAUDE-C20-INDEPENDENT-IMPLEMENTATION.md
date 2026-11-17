@@ -253,6 +253,16 @@ the returned text the answer actually used.
   `VexLifeCapabilityBridge`, `DirectCompanionTurn`, `DirectPromptContext` and the reach
   definitions. This lane is based on `main`; whichever lands second rebinds. Not resolved here.
 
+## Security routing (VexWork AGENTS.md)
+
+YES — this changes a model/context/memory/tool boundary: Vex gains one new read capability over local
+Conversation, Memory pages and the working checkpoint. Bounded answer from current source: it is
+read-only (`READ_ONLY_LOCAL`, `externalEffectsExecuted=false`, Home tree unchanged in tests), admitted
+only when this turn's frame shows it AVAILABLE, bounded to 4 requests per turn and ≤ 8000 tokens per
+result, performs no network access, and reads no data the existing `home` and `conversation`
+capabilities do not already expose. Private conversations are not in canonical Conversation and are
+not reached. No Security Assurance descent beyond this was needed for the slice; lived review owed.
+
 ## 9. Deliberately not added
 
 - No turn-projection store, no index files, no vector/embedding index — derived reads are enough for
