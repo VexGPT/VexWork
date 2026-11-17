@@ -4816,3 +4816,379 @@ A background worker does not become a new Vex identity merely because it is a se
 ### Compact principle
 
 > Idle is not imaginary thinking. When the human explicitly enables background cognition, VexLife can host a bounded same-lineage worker that continues a named question, uses admitted capabilities, records Vex-origin reflections and exact source observations, respects attention/notification budgets, and maintains a small background continuity diff. When the human returns, foreground Vex receives the exact human request plus current context and that background delta, then reorients or hydrates deeper material as needed.
+
+---
+
+## Discovery 18 — Full VexArchitecture circuit tracing across scoped state changes
+
+### Human checkpoint
+
+Victor identified that the emerging Memory / nervous-system / background-cognition architecture should remain traceable through VexArchitecture, including the multitude of state changes that can occur at different scopes, their causes, admission predicates, realized effects and the full return circuit.
+
+The requirement is not merely to retain a chronological event log. A future reader should be able to start from any meaningful event and answer:
+
+~~~text
+what container/scope were we in?
+which owner held the state?
+what input/control/event arrived?
+what admission allowed the transition?
+what semantic Act/Method was formed?
+what execution custody performed it?
+which Partner/outside boundary was crossed?
+what effect was attempted versus actually occurred?
+what later outside truth returned?
+where was that truth retained?
+which same/different Family interpreted it?
+what state changed as a result?
+which presentation/Widget/service projected it?
+what became Memory / lesson / checkpoint / open-loop consequence?
+what remained unknown?
+~~~
+
+### VexArchitecture source relationship to preserve
+
+The current VexArchitecture live demonstration provides two especially useful circuit witnesses.
+
+#### Direct semantic/Partner circuit
+
+~~~text
+foreground UI / Widget
+-> Control
+-> VexFamily
+-> accepted Act
+-> exact Act.Method
+-> VexExecution custody
+-> VexPartner.Connection.Request
+-> outside provider / physical system
+-> later VexPartner.Signal
+-> Store
+-> same Family observes Store
+-> semantic DisplayState / presentation
+-> visible surface
+~~~
+
+The source explicitly preserves:
+
+~~~text
+request acknowledgement != later outside truth
+Partner Signal != semantic State
+Store retains outside truth
+same Family interprets returned truth
+Service / Widget reuse owners without becoming semantic State
+~~~
+
+#### Full control-to-return round trip
+
+The ThemeMode witness demonstrates the same round-trip property from process construction through UI:
+
+~~~text
+visible control
+-> runtime/action dispatch
+-> Control.Select
+-> ThemeModeFamily
+-> Act / Begin / Method
+-> VexExecution
+-> ThemeModeStore
+-> store observation
+-> same ThemeModeFamily
+-> DisplayState
+-> presentation
+-> same visible control reflects returned truth
+~~~
+
+The lesson is not to copy ThemeMode or Playback types literally. It is to preserve the scope/ownership/causal relationships.
+
+### One human turn may produce many state transitions
+
+A single conversational round may contain concurrent or sequential state changes such as:
+
+~~~text
+Conversation state
+  request/response completed
+
+Working Continuity state
+  focus/open-loop/parent changes
+
+Semantic Family state
+  interpretation / intent / relationship meaning changes
+
+Capability state
+  AVAILABLE / HELD / result returned
+
+Execution state
+  task requested / running / completed / failed
+
+Partner/outside state
+  remote/provider/physical truth changes independently
+
+Store state
+  new outside observation retained
+
+Memory / lesson state
+  candidate / accepted / corrected / superseded
+
+Background-job state
+  active / paused / checkpointed / expired
+
+Notification state
+  eligible / suppressed / emitted / acknowledged
+
+Presentation state
+  desktop/mobile/Widget projection changes
+~~~
+
+These states have different owners and causal laws. The trace must not collapse them into one universal Vex.current.
+
+### Candidate trace grammar
+
+The exact schema must be source-placed later, but the investigation should compare something equivalent to:
+
+~~~text
+CircuitTrace {
+  circuitRef
+  originatingEventRefs[]
+  humanTurnRefOrNull
+  backgroundJobRefOrNull
+  rootQuestionOrIntentRefOrNull
+
+  transitions[]
+}
+
+Transition {
+  transitionRef
+  sequenceWithinCircuit
+
+  scopeClass
+  containerRef
+  ownerRef
+  memberRefOrNull
+
+  stateClass
+  priorStateRefOrFingerprint
+
+  triggerEventRefs[]
+  controlRefOrNull
+
+  admissionRefOrNull
+  admissionPredicateRefs[]
+  authorityRefOrNull
+
+  semanticActRefOrNull
+  methodRefOrNull
+  executionRefOrNull
+
+  partnerRefOrNull
+  partnerDirectionOrNull
+
+  attemptedEffectRefs[]
+  completedEffectRefs[]
+  uncompletedEffectRefs[]
+
+  returnedSignalRefs[]
+  storeRefOrNull
+
+  resultingStateRefOrFingerprint
+  resultingMeaningRefs[]
+
+  downstreamConsumerRefs[]
+  presentationRefs[]
+
+  sourceRefs[]
+  evidenceRefs[]
+  unknownRefs[]
+  formedAt
+}
+~~~
+
+### State classes should remain explicit
+
+Candidate classes to compare against current owners:
+
+~~~text
+SEMANTIC_STATE
+CONVERSATION_STATE
+WORKING_CONTINUITY_STATE
+EXECUTION_STATE
+PARTNER_OUTSIDE_STATE
+STORE_STATE
+CAPABILITY_STATE
+MEMORY_STATE
+LESSON_STATE
+BACKGROUND_JOB_STATE
+NOTIFICATION_STATE
+PRESENTATION_STATE
+RUNTIME_LIFECYCLE_STATE
+~~~
+
+Do not create a new universal state taxonomy if existing Family/Partner/Store/Process/Memory owners already expose the needed identity. The trace may point to owner-native states rather than re-author them.
+
+### Causal edge vocabulary
+
+The trace should be traversable by typed relationship rather than only timestamps.
+
+Candidate causal relationships:
+
+~~~text
+OBSERVED
+TRIGGERED
+INTERPRETED_BY
+ADMITTED_BY
+CONTROLLED_BY
+AUTHORED_ACT
+REALIZED_BY
+REQUESTED_THROUGH
+ATTEMPTED_EFFECT
+COMPLETED_EFFECT
+RETURNED_AS_SIGNAL
+RETAINED_BY
+OBSERVED_BY
+CORRECTED_BY
+SUPERSEDED_BY
+PROJECTED_AS
+NOTIFIED_AS
+CONSOLIDATED_INTO
+LESSON_DERIVED_FROM
+CHECKPOINT_CARRIES
+HYDRATED_FROM
+~~~
+
+Vocabulary should be reconciled with current VexArchitecture / Lattice / Process Factory contracts before adoption.
+
+### Admission belongs on the causal path
+
+Every effectful transition should make visible why it was allowed.
+
+Example:
+
+~~~text
+Vex recognizes stale external fact
+-> Web capability becomes salient
+-> Capability Frame says web AVAILABLE
+-> request validates against action/arguments
+-> Web owner admits target
+-> request crosses Partner
+-> source response returns
+-> source observation retained
+-> Vex semantic interpretation changes
+~~~
+
+The trace must preserve:
+
+~~~text
+CAPABILITY SALIENT != AVAILABLE
+AVAILABLE != REQUEST ADMITTED
+REQUEST ADMITTED != EFFECT COMPLETED
+EFFECT COMPLETED != SEMANTIC STATE CHANGED
+SEMANTIC STATE CHANGED != MEMORY ACCEPTED
+~~~
+
+### Causality must distinguish request from returned truth
+
+The Playback source gives the key rule:
+
+~~~text
+request dispatch acknowledgement
+!= later Player truth
+~~~
+
+Apply the same rule broadly:
+
+~~~text
+web request sent != web fact established
+notification emitted != human read it
+background research ran != conclusion accepted
+Memory candidate formed != Memory accepted
+tool invocation succeeded != user's objective resolved
+model response generated != human acknowledged meaning
+~~~
+
+### Full circuit closure should be queryable
+
+A completed circuit should allow questions such as:
+
+~~~text
+Why does Vex currently believe X?
+Which exact source observation changed that belief?
+What capability/process admitted the observation?
+Which prior state was replaced or corrected?
+Did the human confirm the interpretation?
+What Store retained the outside truth?
+Which Family interpreted it?
+Did it alter the active checkpoint?
+Did it become a durable Memory/lesson?
+Which surfaces currently project the result?
+~~~
+
+This turns the architecture into an inspectable causal graph rather than a collection of disconnected logs.
+
+### Circuit tracing for background Vex
+
+Background cognition should use the same grammar:
+
+~~~text
+human enables background job
+-> authorization/admission
+-> background role occupancy
+-> checkpoint loaded
+-> Vex reflection
+-> capability salience
+-> capability admission
+-> Partner request
+-> source observation
+-> Store/evidence
+-> Vex interpretation drift
+-> optional lesson/memory candidate
+-> notification eligibility
+-> attention policy admission/suppression
+-> background checkpoint
+-> foreground return diff
+-> foreground Family reorientation
+~~~
+
+This makes background thinking traceable without pretending the human was present or that every reflection became shared truth.
+
+### Circuit tracing for Memory / lesson formation
+
+Likewise:
+
+~~~text
+human/Vex event
+-> salience candidate
+-> exact source binding
+-> semantic/relationship interpretation candidate
+-> correction / counterexample review
+-> rightful Memory/Lesson admission
+-> index / retrieval projection
+-> later hydration
+-> future Vex behavior
+-> transfer evidence or new correction
+~~~
+
+This closes the event-learning loop causally.
+
+### Checkpoint requirement
+
+The current Memory Depth Exploration checkpoint should preserve the principle:
+
+> Every durable projection we add should be able to tell us which rightful source/owner produced it, which state transition it represents, what caused/admitted that transition, what actual effect occurred, what returned afterward, and what downstream owner consumed it.
+
+Therefore the future implementation should be judged not only by retrieval accuracy but by whether a fresh reader can traverse the complete causal circuit without inventing missing edges.
+
+### Claude investigation questions
+
+1. Map current VexLife-Prod Conversation / Working Continuity / Capability / Memory owners into the VexArchitecture circuit grammar.
+2. Identify which transitions already have content-addressed receipts or source refs and which are currently untraceable.
+3. Determine whether a generic CircuitTrace is warranted or whether a generated projection over owner-native receipts is sufficient.
+4. Preserve Family semantic State separately from Partner/outside/Store state.
+5. Preserve admission/authority separately from capability salience and execution.
+6. Prove request acknowledgement does not masquerade as returned truth.
+7. Trace checkpoint selection, hydration and background-return diff as state transitions with exact source descent.
+8. Trace Memory/lesson candidate -> acceptance/correction/supersession -> future retrieval/use.
+9. Make desktop/mobile/Widget/notification projections downstream consumers, not semantic owners.
+10. Add a practicum that starts from one human turn and reconstructs the complete multi-scope circuit end-to-end.
+11. Add the inverse practicum: start from a current Vex state and trace backward to the exact causal source/admission chain.
+12. Measure missing-edge/unknown coverage rather than silently filling gaps.
+
+### Compact principle
+
+> Follow the full circuit. A state change is meaningful only in its rightful scope: who owned the prior state, what triggered it, what admitted the transition, what was actually attempted/performed, what outside truth returned, who retained and interpreted that truth, and what changed downstream. VexArchitecture should make the entire causal round trip traversable in both directions.
