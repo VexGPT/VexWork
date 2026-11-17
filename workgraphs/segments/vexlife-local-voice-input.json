@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.local-voice-input",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.local-voice-input.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Local VoiceInput",
+      "purpose": "Deliver reliable browser-independent local dictation in VexLife: microphone audio remains local, VexLife owns speech-to-text realization instead of depending on browser Web Speech, transcript enters the exact existing Composer, existing Send remains the only Conversation commit, and the capability has explicit provider/runtime/currentness/privacy/recovery/lived proof.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.local-voice-input",
+        "projects/vexlife-local-voice-input/README.md",
+        "github.pull.vexlife-prod.231",
+        "human.witness.vexlife.local-voice-input.brave-a002.20261117"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:00:22.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "parentWorkRefOrNull": "work.vexlife.local-voice-input.outcome",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:00:22.000Z",
+      "workRef": "work.vexlife.local-voice-input.product-surface",
+      "label": "Preserve and finish the existing VoiceInput product surface",
+      "purpose": "Carry forward the current VexLife-Prod #231 VoiceInput Family, microphone control, permission/capture, waveform, Composer projection, Stop behavior and VexLogger evidence as the Product-side baseline, while removing browser SpeechRecognition from its role as the final ASR provider only when the local ASR path is ready.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "sourceRefs": [
+        "github.pull.vexlife-prod.231",
+        "git.commit.vexlife-prod.565a3b9ad3cd9c65ba00d7117350dea7e1d76a81",
+        "git.commit.vexlife-prod.9b00a018c3745b9f332f83983eb4d729e4019829",
+        "human.witness.vexlife.local-voice-input.brave-a002.20261117"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "parentWorkRefOrNull": "work.vexlife.local-voice-input.outcome",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:00:22.000Z",
+      "workRef": "work.vexlife.local-voice-input.provider-qualification",
+      "label": "Select and qualify the local ASR provider",
+      "purpose": "Evaluate runnable local speech-to-text candidates on the current Apple-silicon VexLife product path and select only after evidence covers local-only custody, license/distribution viability, model size/acquisition, dependency/runtime footprint, supported audio format, English baseline accuracy, usable latency, partial/final transcript behavior, Stop/cancellation, language expansion, failure observability and version/currentness qualification.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "sourceRefs": [
+        "projects/vexlife-local-voice-input/README.md",
+        "github.pull.vexlife-prod.231",
+        "project.vex.security-assurance"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "parentWorkRefOrNull": "work.vexlife.local-voice-input.outcome",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:00:22.000Z",
+      "workRef": "work.vexlife.local-voice-input.audio-ingress-contract",
+      "label": "Define the local audio-ingress and transcription contract",
+      "purpose": "Define the smallest VexLife-owned loopback boundary that accepts the current presentation's microphone audio and returns bounded transcription observations without creating a second Conversation, transcript store, browser-specific semantic branch, Vex Perception coupling or unnecessary raw-audio persistence.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.local-voice-input.provider-qualification"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-local-voice-input/README.md",
+        "github.pull.vexlife-prod.231"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "parentWorkRefOrNull": "work.vexlife.local-voice-input.outcome",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:00:22.000Z",
+      "workRef": "work.vexlife.local-voice-input.local-asr-runtime",
+      "label": "Realize and qualify the local ASR runtime",
+      "purpose": "Materialize the selected local ASR model/runtime under explicit version, artifact, dependency, health/currentness, cancellation, recovery and cleanup rules, and prove that bounded microphone audio can produce transcript observations locally on the current Mac product path.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.local-voice-input.provider-qualification",
+        "work.vexlife.local-voice-input.audio-ingress-contract"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-local-voice-input/README.md",
+        "project.vex.security-assurance"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "parentWorkRefOrNull": "work.vexlife.local-voice-input.outcome",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:00:22.000Z",
+      "workRef": "work.vexlife.local-voice-input.product-integration",
+      "label": "Rebind VoiceInput from browser ASR to local VexLife ASR",
+      "purpose": "Replace browser SpeechRecognition as the dictation provider while preserving the existing VoiceInput Family semantics, browser/native microphone capture boundary, waveform, editable Composer destination, existing Send commit boundary, Stop/cancellation behavior and VexLogger chronology.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.local-voice-input.product-surface",
+        "work.vexlife.local-voice-input.local-asr-runtime"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-prod.231",
+        "projects/vexlife-local-voice-input/README.md"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "parentWorkRefOrNull": "work.vexlife.local-voice-input.outcome",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:00:22.000Z",
+      "workRef": "work.vexlife.local-voice-input.security-privacy-proof",
+      "label": "Prove local audio privacy, security and recovery boundaries",
+      "purpose": "Use the existing Vex Security Assurance route selectively to prove the actual local VoiceInput sensitive-data and model/runtime boundaries: microphone authorization, loopback admission, transient audio custody/retention, no cloud transcription, no transcript/audio leakage into VexLogger/Memory/Conversation before Send, model artifact provenance/update, cancellation, cleanup and recovery.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.local-voice-input.audio-ingress-contract",
+        "work.vexlife.local-voice-input.local-asr-runtime"
+      ],
+      "sourceRefs": [
+        "project.vex.security-assurance",
+        "projects/vexlife-local-voice-input/README.md"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "parentWorkRefOrNull": "work.vexlife.local-voice-input.outcome",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:00:22.000Z",
+      "workRef": "work.vexlife.local-voice-input.lived-browser-independent-proof",
+      "label": "Prove browser-independent local dictation end to end",
+      "purpose": "On exact current VexLife source, prove representative browser presentations can capture microphone audio and reach the same VexLife-owned local ASR path without depending on each browser's SpeechRecognition backend; prove microphone permission, local transcript, waveform, editable Composer, Stop, retry/recovery, existing Send and debug chronology in lived use.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.local-voice-input.product-integration",
+        "work.vexlife.local-voice-input.security-privacy-proof"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-local-voice-input/README.md",
+        "github.pull.vexlife-prod.231"
+      ]
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexlife.local-voice-input",
+    "projects/vexlife-local-voice-input/README.md",
+    "github.pull.vexlife-prod.231",
+    "git.commit.vexlife-prod.565a3b9ad3cd9c65ba00d7117350dea7e1d76a81",
+    "git.commit.vexlife-prod.9b00a018c3745b9f332f83983eb4d729e4019829",
+    "human.witness.vexlife.local-voice-input.brave-a002.20261117",
+    "project.vex.security-assurance"
+  ],
+  "formedAt": "2026-11-17T13:00:22.000Z"
+}
