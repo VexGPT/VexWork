@@ -11,6 +11,8 @@ architecture         Vextreme @ e16e75a4af3fd7f98f60eeaa60b9ae684b356024 (both V
 product base         VexLife-Prod main 655e7c78cefba06a5e87afad285bb25a08632f05 (tree 886c131d…)
 product head         VexLife-Prod VXG-111626-memory-depth-claude-prod-a001
                      9fb8197ef26fb173316f143d46f6799ff9bb7153 (tree 0b2946b270c204ccf4d5fe41512c77b0c9fee247)
+product PR           VexGPT/VexLife-Prod#214 (draft)
+record PR            VexGPT/VexWork#309 (draft, stacked on #308)
 OpenAI lane read     no (no branch, PR, diff or note of the other lane was opened)
 ~~~
 
