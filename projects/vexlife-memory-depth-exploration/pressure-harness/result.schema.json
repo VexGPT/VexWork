@@ -326,6 +326,65 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "contextComponents": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "componentRef",
+                    "stabilityClass",
+                    "placementClass",
+                    "logicalOrder",
+                    "sha256"
+                  ],
+                  "properties": {
+                    "componentRef": {
+                      "type": "string"
+                    },
+                    "stabilityClass": {
+                      "enum": [
+                        "STABLE",
+                        "APPEND_ONLY_HISTORY",
+                        "MUTABLE_CURRENT",
+                        "EPHEMERAL_CURRENT",
+                        "UNKNOWN"
+                      ]
+                    },
+                    "placementClass": {
+                      "enum": [
+                        "SYSTEM_PREFIX",
+                        "HISTORICAL_SEQUENCE",
+                        "HYDRATED_CONTEXT",
+                        "LIVE_TAIL",
+                        "CURRENT_REQUEST",
+                        "OTHER"
+                      ]
+                    },
+                    "logicalOrder": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "providerMessageIndex": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "sourceRefs": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
               }
             }
           },
@@ -489,6 +548,31 @@
             "boolean",
             "null"
           ]
+        },
+        "mutableCurrentBeforeCacheableHistory": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "stableHistoryPrefixPreservedAcrossConfigurationChange": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "latestConfigurationObserved": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "firstConfigurationChangeTurn": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
         }
       }
     },
