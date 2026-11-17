@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.local-voice-input",
+  "label": "VexLife Local VoiceInput",
+  "purpose": "Make VoiceInput a dependable browser-independent local VexLife capability by preserving the current VoiceInput Family/UI/Composer path, moving speech-to-text realization from browser Web Speech to a VexLife-owned local ASR provider/runtime, and proving local audio custody, usable transcription, security/privacy boundaries, Stop/recovery behavior, and lived operation across representative browsers without per-browser semantic implementations.",
+  "rootWorkRefs": [
+    "work.vexlife.local-voice-input.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-local-voice-input/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "github.pull.vexlife-prod.231",
+    "git.commit.vexlife-prod.565a3b9ad3cd9c65ba00d7117350dea7e1d76a81",
+    "git.commit.vexlife-prod.9b00a018c3745b9f332f83983eb4d729e4019829",
+    "human.witness.vexlife.local-voice-input.brave-a002.20261117",
+    "project.vex.security-assurance"
+  ],
+  "formedAt": "2026-11-17T13:00:22.000Z"
+}
