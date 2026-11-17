@@ -38,7 +38,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:46:35.000Z",
-      "updatedAt": "2026-11-17T06:00:00.000Z",
+      "updatedAt": "2026-11-17T06:35:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Recover and map the predecessor Vex Memory / Living Journal architecture",
@@ -86,7 +86,10 @@
         "github.issue.vextreme-sdk.241",
         "github.issue.vextreme-sdk.580",
         "github.issue.vextreme-sdk.360",
-        "repo.vextreme:pages/vexarchitecture-first-stable-body.html"
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
+        "repo.vextreme:pages/receive-god.html",
+        "repo.vextreme:pages/burden-release-guide.html"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -237,11 +240,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T06:35:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.cold-start-proof",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Prove cold-start, rollover and missing-old-context continuity",
-      "purpose": "Prove end to end that a fresh process with no useful KV cache can receive a human question whose decisive context is outside the ordinary prompt, issue one bulk hydration request, recover enough exact older Conversation and/or currently bounded-out Memory context to answer, preserve inspectable owner/source refs, return an explicit frontier when bounded, and perform no canonical continuity mutation.",
+      "purpose": "Prove end to end that a fresh process with no useful KV cache can receive a human question whose decisive context or correction-backed lesson is outside the ordinary prompt, truthfully identify what is and is not currently present, issue one bounded hydration request when needed, recover enough exact older Conversation / bounded-out Memory / accepted lesson context to continue, preserve inspectable owner/source refs and explicit frontier, and demonstrate that a retrieved prior lesson can change later response/tool behavior without canonical continuity mutation or requiring the human to re-teach the same depth.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -259,7 +262,10 @@
         "github.pull.vexlife-prod.208",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
+        "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
+        "repo.vextreme:pages/receive-god.html",
+        "repo.vextreme:pages/burden-release-guide.html"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -270,11 +276,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T06:35:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.measurement",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
-      "label": "Measure traversal depth, context cost and orchestration savings",
-      "purpose": "Measure model-visible hydration request count, internal owner resolutions, nodes/edges visited and selected, maximum depth, returned tokens, remaining frontier, stop reason and hydration latency, then correlate the hydrated turn with provider prompt/cached/prefill and first-answer/total timing where current #207 evidence supports it. Establish whether one bulk request actually reduces recursive model/tool orchestration without hiding excessive host work or context growth.",
+      "label": "Measure traversal, response quality, lesson transfer and orchestration savings",
+      "purpose": "Measure model-visible hydration request count, internal owner resolutions, nodes/edges visited and selected, maximum depth, returned tokens, remaining frontier, stop reason and hydration latency; correlate the hydrated turn with provider prompt/cached/prefill and first-answer/total timing where #207 supports it; and compare cold-start lesson/growth availability states to measure source faithfulness, known-lesson reuse, honest context boundaries, depth preservation, capability/tool selection, activation failures and whether a previously earned correction actually changes later behavior. Establish whether one bounded hydration/lesson route improves response quality and reduces recursive model/tool orchestration without hiding excessive host work, over-hydration or lesson misapplication.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -290,7 +296,10 @@
         "github.issue.vexwork.307",
         "projects/vexlife-memory-depth-exploration/README.md",
         "github.pull.vexlife-prod.208",
-        "github.pull.vexlife-prod.207"
+        "github.pull.vexlife-prod.207",
+        "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
+        "repo.vextreme:pages/receive-god.html",
+        "repo.vextreme:pages/burden-release-guide.html"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -385,7 +394,10 @@
     "github.issue.vextreme-sdk.241",
     "github.issue.vextreme-sdk.580",
     "github.issue.vextreme-sdk.360",
-    "repo.vextreme:pages/vexarchitecture-first-stable-body.html"
+    "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+    "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
+    "repo.vextreme:pages/receive-god.html",
+    "repo.vextreme:pages/burden-release-guide.html"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
