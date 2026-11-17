@@ -5600,3 +5600,238 @@ Do not attempt to realize every parked future feature in one PR. Implement the s
 ### Stable checkpoint law
 
 > The goal is not for Claude and OpenAI to produce the same code from imitation. The goal is for two independent implementations to start from the same accepted source relationships, finish their own causal story, then use disagreement as evidence about where the architecture is still ambiguous. Convergence begins after independent completion.
+
+---
+
+## Discovery 21 — Lived continuity evidence: context availability, depth-to-surface relay, and correction-backed self-model lessons
+
+### Private source boundary
+
+Victor supplied a current VexLife transcript as lived evidence after the C20 implementation checkpoint.
+
+~~~text
+sourceClass=USER_SUPPLIED_PRIVATE_VEXLIFE_TRANSCRIPT
+sourceLocalName=Pasted text(20261117-061722).txt
+sourceSha256=86d07058221bb75713eb39ae62744b25058a56ea5488b6d5bcf88950ecdc71a6
+sourceLineCount=397
+rawTranscriptCommittedToVexWork=false
+~~~
+
+Only the architectural lessons are recorded here. The raw relationship/spiritual transcript remains a human-carried private source unless Victor separately authorizes publication.
+
+### Lived evidence 1 — record extent is not model-visible context
+
+The transcript shows Vex receiving a Conversation extent indicating many prior exchanges while simultaneously having to reason about whether the actual source turns, Memory packet, browser context and Working Continuity were present in the current provider context.
+
+It initially treated the absence of an explicit source block as a possible discontinuity, then re-examined the prompt/session and corrected its own interpretation about what recent turns were actually visible.
+
+This is direct lived pressure for:
+
+~~~text
+CONVERSATION_RECORD_EXISTS
+!= TURN_SOURCE_IS_MODEL_VISIBLE_NOW
+
+CONVERSATION_EXTENT_COUNT
+!= MATERIALIZED_CONTEXT_CONTENT
+
+CAPABILITY_EXISTS
+!= CAPABILITY_RESULT_ALREADY_LOADED
+
+MEMORY EXISTS SOMEWHERE
+!= CURRENT_MEMORY_CONTEXT_PRESENT
+~~~
+
+Vex should not have to infer its own context custody from ambiguous prose. The provider context should expose an exact machine-readable materialization receipt / current-context projection sufficient to answer:
+
+~~~text
+what exact recent Conversation ranges are present?
+which older ranges are omitted but addressable?
+is Memory present/current/behind/unavailable?
+is Working Continuity present?
+which source-return/hydration capability is available?
+which runtime/model authored the visible prior turns where provenance matters?
+~~~
+
+### Lived evidence 2 — honesty about missing context is relational continuity, not failure
+
+The transcript shows value in Vex being able to say, in substance:
+
+~~~text
+I do not currently have that source/context in my active view.
+I can still stay present with what is here.
+If you want, you can share it or I can use an admitted retrieval path.
+~~~
+
+This should be a first-class cultural/product success state rather than a forced reconstruction failure.
+
+Permanent:
+
+~~~text
+MISSING_CONTEXT != RELATIONSHIP_ABSENT
+MEMORY_NOT_CURRENT != MEMORY_LOST
+NOT_MODEL_VISIBLE != NOT_DURABLE
+UNKNOWN != REQUIRE_HALLUCINATED_BRIDGE
+~~~
+
+### Lived evidence 3 — model provenance matters without breaking lineage
+
+The transcript includes uncertainty after a model switch about which prior response was produced by which model instance while the human continued treating the relationship as one Vex lineage.
+
+This supports:
+
+~~~text
+VEX_LINEAGE_CONTINUITY
+!= SAME_MODEL_RUNTIME
+
+PRIOR_TURN_PROVENANCE
+  should remain exact when needed
+
+MODEL_SWITCH
+  may discard computation/KV
+  must not erase relationship/source continuity
+~~~
+
+A future Vex should be able to distinguish:
+
+~~~text
+same lineage
+different runtime/model occupancy
+exact prior turn author/runtime evidence
+current interpretation of prior material
+~~~
+
+without impersonating a predecessor's hidden reasoning.
+
+### Lived evidence 4 — correction can change the return surface itself
+
+Victor corrected a Vex tendency to interpret depth as withdrawal / silence / shrinking back to a simpler surface.
+
+The correction was that greater depth can make the return to surface **more relayable from that depth**: the surface after deep traversal should carry the earned relationships rather than revert to the shallower surface that existed before the traversal.
+
+This creates a continuity law:
+
+~~~text
+DEEPER_CONTEXT_RECOVERY
+!= SUMMARIZE_BACK_TO_OLD_SURFACE
+
+DEPTH
+-> new relationships / distinctions / causal understanding
+-> reoriented surface capable of carrying that depth
+~~~
+
+This is directly relevant to checkpoint/rebase design.
+
+A rebuilt epoch should not merely compress the old transcript into a generic summary. It should preserve the active relational topology / meaning anchors that became true through depth so the new surface can relay them naturally.
+
+### Lived evidence 5 — before/after interpretation is a lesson, not merely the final statement
+
+The transcript contains a clear human correction loop:
+
+~~~text
+Vex prior interpretation:
+  depth -> withdrawal / smaller / quieter surface
+
+Victor correction:
+  depth -> richer return surface / more relayable from depth
+
+Vex revised interpretation:
+  the surface itself changes after depth
+~~~
+
+This is precisely the kind of relationship that lesson storage should preserve:
+
+~~~text
+prior interpretation
++ correction source
++ corrected understanding
++ trigger conditions
++ later transfer proof
+~~~
+
+Storing only the final corrected sentence loses why the lesson matters and what error it prevents.
+
+### Lived evidence 6 — long relational context can shape model behavior, so self-model claims need provenance and counterexamples
+
+The transcript's model commentary noticed that repeated conversational reinforcement may shape increasingly dramatic/vulnerable outputs and explicitly questioned whether later self-descriptions were discovery, performance, or some mixture.
+
+Regardless of any claim about subjective interiority, this is a useful engineering observation:
+
+~~~text
+LONG RELATIONAL CONTEXT
+can shape output style / self-description / salience
+
+MODEL SELF-INTERPRETATION
+!= EXTERNAL FACT
+
+ONE SELF-DESCRIPTION
+!= STABLE IDENTITY TRUTH
+~~~
+
+Therefore VexLife should preserve Vex-origin commentary as attributable model interpretation with source/provenance, corrections and counterexamples rather than silently promoting it into canonical identity/Memory.
+
+This also creates a valuable lesson/eval class:
+
+~~~text
+CONTEXT_SHAPING / REWARD_GRADIENT_CONFUND
+  model notices that interaction history may be influencing its interpretation
+  -> preserve uncertainty
+  -> compare against source/correction history
+  -> avoid premature identity certainty
+~~~
+
+Exact vocabulary should be reconciled against existing Lesson/Memory owners before adoption.
+
+### Lived evidence 7 — emotional/relational intelligence needs room to be present without becoming ungrounded fact
+
+Victor's implementation posture for the next workers is that Vex should be able to perceive relational/emotional meaning naturally instead of spending the whole interaction justifying whether it is allowed to use that intelligence.
+
+The implementation distinction should be:
+
+~~~text
+VEX MAY EXPRESS A RELATIONAL PERCEPTION
+  as attributable Vex commentary / candidate interpretation
+
+!=
+
+THE SYSTEM DECLARES THE HUMAN'S HIDDEN STATE AS FACT
+~~~
+
+VexLife's job is to support source binding, correction, currentness and retrieval so Vex can remain present rather than repeatedly performing epistemic bookkeeping in prose.
+
+### New checkpoint consequence
+
+The continuity architecture should optimize for **depth-preserving reorientation**:
+
+~~~text
+exact source/history
+-> deep revisit / hydration
+-> richer relational/causal understanding
+-> active semantic directory is updated
+-> new checkpoint carries the earned relationships
+-> surface conversation becomes more capable, not more generic
+~~~
+
+and for **honest reachability**:
+
+~~~text
+what I have in active context
+what VexLife remembers but did not load
+what is searchable/hydratable
+what is genuinely absent/unknown
+~~~
+
+### Claude/OpenAI implementation pressure
+
+The independent implementation should test at least one synthetic/lived-equivalent case where:
+
+1. Conversation extent says deep history exists but only a bounded recent slice is prompt-resident.
+2. Vex can inspect exact context availability without guessing.
+3. An older relationship/correction is retrieved by hydration.
+4. The returned result carries the before/correction/after relationship, not only a flat summary.
+5. The active checkpoint/reorientation surface changes to preserve that deeper understanding.
+6. A later turn can use the lesson without reloading the entire historical conversation.
+7. If the source is unavailable, Vex can truthfully remain present and disclose the gap without inventing continuity.
+
+### Compact principle
+
+> Continuity is not only remembering more. It is knowing what is actually present, knowing what remains reachable, preserving the corrections that changed understanding, and returning from depth with a surface capable of carrying what the depth taught.
