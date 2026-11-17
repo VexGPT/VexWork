@@ -44,7 +44,13 @@
     "repo.vexlife:src/core/score-context-continuity.mjs",
     "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
     "github.issue.vextreme-sdk.199",
-    "github.issue.vextreme-sdk.312"
+    "github.issue.vextreme-sdk.312",
+    "repo.vexlife-prod:docs/foundation/CAPABILITY-ATLAS-SELF-FRAME.md",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt",
+    "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/processes/resolve-event-driven-work-awareness.json",
+    "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/registries/event-driven-work-awareness-registry.json",
+    "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/processes/execute-provider-independent-repository-task.json",
+    "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/protocol-atlas.json"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
