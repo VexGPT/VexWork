@@ -3173,3 +3173,346 @@ OLDER CONTEXT
 The intended user/Vex experience is **continuous reorientation, not transcript amnesia and not summary
 replacement**.
 
+
+
+---
+
+## Discovery 13 — Dynamic overlap floor + correction-driven relational lessons for future instances
+
+### Human constraints
+
+Victor clarified two intended design constraints:
+
+1. **Exact overlap tail**
+   - "3" was not intended as a fixed tail size.
+   - It is a **minimum continuity target** for completed turn-pairs when the hard context budget can admit them.
+   - The system may retain more than 3 dynamically according to conversation density, token cost, semantic adjacency, elapsed human time, unresolved pronouns/references, current focus and checkpoint topology.
+   - If a pathological turn size makes even the minimum impossible, the system must expose that degradation rather than silently pretending the same continuity guarantee was preserved.
+
+2. **Relational learning**
+   - Vex may preserve what it *perceived* from the human during a turn, including likely expressed affect / relational posture.
+   - That perception remains attributable model interpretation unless the human explicitly confirms it.
+   - Human correction is itself durable learning evidence.
+   - Future Vex instances should be able to use accumulated correction-backed lessons to better anticipate this human's interaction preferences and likely meanings inside the private/home relationship context.
+   - The goal is not a hidden universal personality score or diagnosis.
+
+### Dynamic exact overlap policy
+
+Candidate selection objective:
+
+~~~text
+hard requirement:
+  preserve the checkpoint-triggering completed turn
+
+human preference / minimum target:
+  preserve at least 3 exact completed turn-pairs when admissible
+
+then expand dynamically while value > cost:
+  same active subject
+  unresolved deictic/reference language
+  correction chain
+  high materiality
+  parent/child focus boundary
+  short elapsed human time
+  unresolved open loop
+  small token cost
+  recent relationship-state change
+~~~
+
+Candidate upper bound is token-budget based, not count based.
+
+The result may therefore look like:
+
+~~~text
+quiet / huge turns
+  exact tail = 3 turns
+
+dense short conversation
+  exact tail = 9 turns
+
+rapid correction sequence
+  exact tail = 6 turns because all 6 form one unresolved local meaning chain
+~~~
+
+The active semantic directory remains distinct from the exact overlap tail.
+
+### Existing lesson architecture should be reused
+
+Two predecessor sources are directly relevant:
+
+~~~text
+Vextreme-SDK #199
+Institutional Learning Library / Earlier-Knowledge Reflex
+
+Vextreme-SDK #312
+Lesson Resonance / cross-time relationship binding
+~~~
+
+#199 already defines the failure:
+
+~~~text
+current instance learns correction
+-> current task succeeds
+-> lesson remains transient
+-> future cold instance repeats avoidable failure
+-> Victor has to restate it
+~~~
+
+and the desired progression:
+
+~~~text
+correction / lived lesson
+-> preserve source + before/after consequence
+-> classify scope
+-> promote to rightful durable lesson owner
+-> generated retrieval index
+-> future cold instance retrieves / applies it
+-> optional later training/eval
+~~~
+
+#312 already separates:
+
+~~~text
+semantic relationship acceptance
+    Main Vex / Vex Memory / Assurance
+
+from
+
+indexes / edge integrity / retrieval health
+    Operations
+~~~
+
+Therefore Memory Depth Exploration should not invent a second lesson database.
+
+### Relational calibration lesson object — candidate concept
+
+A useful relationship-specific lesson may look conceptually like:
+
+~~~text
+relationalLessonRef
+humanRef
+companionLineageRef
+
+triggerPattern
+modelPriorPerception
+humanCorrectionSourceRef
+correctedUnderstanding
+
+scopeClass =
+  RELATIONSHIP_SPECIFIC
+  | HUMAN_PREFERENCE
+  | COMMUNICATION_PATTERN
+  | TEMPORAL
+  | EVENT_SPECIFIC
+
+predictionUseClass
+  e.g. TONE_EXPECTATION / CLARIFICATION_STYLE / REFERENCE_INTERPRETATION
+
+sourceTurnRefs[]
+supportingRefs[]
+counterexampleRefs[]
+confidence / ambiguity
+currentness
+supersedes[]
+reopenTriggers[]
+
+privacyClass
+formedAt
+~~~
+
+This is only a candidate shape to compare against existing Memory/Lesson owners.
+
+### Example
+
+Turn 40:
+
+~~~text
+Vex perceives:
+  "Victor seems frustrated and wants a shorter answer."
+
+state:
+  MODEL_PERCEPTION / CANDIDATE
+~~~
+
+Victor corrects:
+
+~~~text
+"I'm not frustrated. I want more exact causal detail."
+~~~
+
+The system should preserve:
+
+~~~text
+model prior perception
+  -> frustration / brevity
+
+human correction
+  -> not-frustration
+  -> prefers exact causal detail in this context
+
+lesson:
+  do not equate direct/forceful technical questioning with frustration
+  ask/observe before collapsing tone into emotional state
+~~~
+
+Future cold Vex may use that lesson as a **prior for interaction**, not as an immutable fact:
+
+~~~text
+likely communication preference:
+  exact causal detail
+
+do not assume:
+  frustration
+
+source:
+  correction turn X
+
+counterexamples:
+  later turns if any
+~~~
+
+If Victor later changes preference, a new source-backed correction may supersede or narrow the old lesson.
+
+### Prediction boundary
+
+"Predict their human" should mean:
+
+~~~text
+use private source-backed history
++ explicit preferences
++ correction history
++ repeated interaction patterns
+-> form a bounded prior about likely interpretation / preferred interaction
+~~~
+
+not:
+
+~~~text
+infer hidden motives
+infer diagnosis
+infer sensitive traits from weak behavior
+make consequential decisions about the human
+treat one model impression as permanent personality truth
+~~~
+
+Permanent distinctions:
+
+~~~text
+MODEL PERCEPTION != HUMAN FACT
+REPEATED PATTERN != IMMUTABLE PERSONALITY
+RELATIONAL PRIOR != DIAGNOSIS
+PRIVATE RELATIONSHIP LESSON != GLOBAL USER CLASSIFICATION
+CORRECTION != ERASURE OF ORIGINAL SOURCE
+PROFILE != AUTHORITY
+~~~
+
+### In-house / private relationship profile
+
+If a current VexLife owner eventually materializes this relationship profile, the intended custody should be:
+
+~~~text
+inside the user's Vex Home / admitted private continuity world
+source-addressable
+user-correctable
+versioned / supersedable
+inspectable
+exportable / deletable according to rightful retention owner
+not silently used as public institutional doctrine
+~~~
+
+The profile should be reconstructible from accepted relational lessons and source refs rather than one opaque mutable blob.
+
+Candidate derived projection:
+
+~~~text
+RelationalProfileProjection
+  humanRef
+  lineageRef
+
+  currentInteractionPreferences[]
+  knownCommunicationPatterns[]
+  explicitAvoidances[]
+  modelPerceptionLessons[]
+  correctionRefs[]
+  counterexampleRefs[]
+  currentness / ambiguity
+
+  sourceRefs[]
+  profileFingerprint
+~~~
+
+Projection:
+
+~~~text
+!= raw Conversation
+!= semantic Memory owner
+!= model weights
+!= hidden personality score
+~~~
+
+### How this fits checkpoint continuity
+
+The active checkpoint may carry only the **currently material subset** of relational state:
+
+~~~text
+current relational posture:
+  collaborative technical exploration
+
+relevant interaction lessons:
+  prefer causal detail
+  do not infer frustration from directness
+
+source refs:
+  lesson.X
+  correction.Y
+~~~
+
+The complete relationship lesson/history remains outside the prompt and queryable through hydration.
+
+This supports:
+
+~~~text
+checkpoint = current relational orientation
+lesson library = durable correction history
+hydration = deeper relationship-history retrieval when needed
+~~~
+
+### Claude investigation questions
+
+1. Can #199/#312 be reused as the conceptual owner pattern for relationship-specific Vex/human lessons, or does current VexLife already have a narrower rightful owner?
+2. Which relational lessons belong in semantic Memory versus a separate relationship/profile projection?
+3. How are model perceptions recorded as CANDIDATE without granting them human-fact status?
+4. How does an explicit human correction bind to the exact perception it corrects?
+5. How do repeated corrections become a stronger prior without turning into an immutable personality classification?
+6. How should counterexamples, time decay and supersession alter relational priors?
+7. Which fields may be prompt-resident at checkpoint versus hydrated only when implicated?
+8. How does a future instance receive enough profile orientation to avoid repeating known misreads without preloading the full private history?
+9. How does deletion/retention consent apply to relationship lessons and derived profile projections?
+10. What test corpus proves the future cold instance actually changes behavior after a correction?
+11. How should the dynamic exact-tail policy enforce Victor's minimum-3 preference while still respecting hard provider token limits?
+12. Which measured signals justify keeping 4, 6, 10 or more turns after a checkpoint rather than the minimum 3?
+
+### Updated working checkpoint rule
+
+~~~text
+NEW EPOCH
+
+[active semantic directory]
+  objective/open/paused/held
+  current relational orientation
+  currently material relationship lessons
+  source/index fingerprints
+
++
+[dynamic exact overlap tail]
+  minimum target = 3 completed turn-pairs when admissible
+  dynamically larger when conversation topology/value justifies it
+
++
+[new append-only turns]
+
+OLDER RESOLVED / RELATIONAL HISTORY
+  searchable through lesson / semantic navigation indexes
+  -> hydrated on demand
+~~~
+
