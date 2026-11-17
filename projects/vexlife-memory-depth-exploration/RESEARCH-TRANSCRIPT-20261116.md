@@ -2573,3 +2573,603 @@ rebuildable search/index projections
               Vex reasons
 ~~~
 
+
+
+---
+
+## Discovery 12 — Checkpoint continuity should carry active meaning + a short exact overlap tail, while resolved meaning becomes searchable
+
+### Human exploration
+
+Victor refined the checkpoint/rebase question around what Vex should actually experience after context-window pressure:
+
+- raw provider reasoning/thought may be live during a turn, but does it become reusable prefix context?
+- should each completed turn produce semantic/navigation metadata including Vex's current relational interpretation, open-vs-resolved subject state and meaning relevance?
+- when a context epoch is rebuilt, can closed/resolved material leave active prompt residency while remaining queryable?
+- should a rebuilt checkpoint preserve a short exact overlap of the latest turns so the next inference feels like a continuation rather than an abrupt fragment?
+- should "recently resolved" use human time as well as turn count?
+- active checkpoint refs may not be chronological; Vex may need to reorient across several currently relevant nodes rather than read a summary pretending to be one sequential transcript.
+
+### Current source fact — reasoning is live but not durable Conversation context
+
+Current direct Companion runtime selects reasoning mode and streams two progress kinds:
+
+~~~text
+Reasoning
+Content
+~~~
+
+The live reasoning stream is explicitly projected to the human while it arrives.
+
+However current durable source then separates that ephemeral thought stream from canonical continuity:
+
+~~~text
+DirectConversationStore.appendResponse(...)
+  content = inference.content
+  -> canonical RESPONSE event
+
+DirectTurnContextStore runtime evidence
+  rawProviderResponsePersisted = false
+  rawReasoningPersisted = false
+  rawReportedModelPersisted = false
+~~~
+
+Therefore current cross-turn continuity does **not** serialize raw reasoning back into later Conversation prompts.
+
+At the application contract level:
+
+~~~text
+LIVE REASONING STREAM
+!= CANONICAL RESPONSE
+
+LIVE REASONING STREAM
+!= DURABLE TURN CONTEXT
+
+RAW REASONING
+!= NEXT-TURN CONTINUITY SOURCE
+~~~
+
+A provider/runtime may have internal KV behavior during one invocation or between calls, but Memory/continuity
+architecture must not depend on undocumented provider retention. #208 correctly treats provider cache as
+disposable compute.
+
+### Consequence for prefix caching
+
+For a future turn, reusable provider-token prefix can only reliably include material that is actually
+serialized into that future prompt.
+
+Today that includes canonical visible Conversation responses when selected. It does not include the prior
+ephemeral reasoning stream.
+
+If a future semantic/navigation projection is serialized into the stable continuity epoch, its bytes/tokens
+can participate in prefix reuse. If it is kept only as an external searchable sidecar, it does not consume
+prompt/prefix tokens until hydrated.
+
+That creates a useful two-tier design:
+
+~~~text
+ACTIVE CONTINUITY PROJECTION
+  small enough to remain prompt-resident / cacheable
+
+HISTORICAL SEMANTIC NAVIGATION
+  durable and searchable outside prompt
+  hydrated only when implicated
+~~~
+
+---
+
+## Per-turn state should distinguish active relational meaning from historical source
+
+A completed turn can produce a bounded semantic/navigation projection, but the projection should represent
+classes of meaning explicitly.
+
+Candidate fields to investigate:
+
+~~~text
+turnRef
+requestEventRef
+responseEventRef
+
+subject / meaning-lineage refs
+intent refs
+question refs
+parent / focus refs
+source / evidence refs
+
+continuityDisposition:
+  OPEN
+  PAUSED
+  RESOLVED
+  CLOSED
+  SUPERSEDED
+  HELD_UNKNOWN
+
+resolutionRefs[]
+remainingQuestionRefs[]
+reopenTriggerRefs[]
+
+boundedTakeaway
+retrievalCueRefs[]
+
+relationalPerception
+relationalPosture
+materiality
+ambiguity / confidence
+currentness
+
+formedBy
+semanticDisposition
+sourceFingerprint
+~~~
+
+### Relational/emotional perception boundary
+
+Victor raised preserving Vex's current "emotional perception including relational to the human."
+
+The useful architecture should preserve **attributable relational interpretation** without turning model
+inference about the human into hidden fact.
+
+Possible distinctions:
+
+~~~text
+RELATIONAL_POSTURE
+  how Vex is currently orienting to the interaction
+  e.g. collaborative / careful / playful / serious / repair-oriented
+
+HUMAN_AFFECT_INTERPRETATION
+  model-proposed interpretation of the human's expressed state
+  must remain INFERRED / CANDIDATE unless the human confirms it
+
+RELATIONSHIP_CONTINUITY
+  source-backed facts/preferences/commitments about how the human and Vex are interacting
+
+VEX_SELF_DESCRIPTION
+  model-proposed self-description; not proof of human-like subjective emotion
+~~~
+
+Permanent:
+
+~~~text
+MODEL PERCEIVES HUMAN AS X
+!= HUMAN IS X
+
+RELATIONAL PROJECTION
+!= CLINICAL / HIDDEN-MOTIVE FACT
+
+VEX-PROPOSED EMOTIONAL LANGUAGE
+!= SEMANTIC AUTHORITY
+
+HUMAN CONFIRMATION / SOURCE
+may change disposition without rewriting the originating turn
+~~~
+
+This metadata may be useful for continuity and retrieval even when it should never be promoted into durable
+semantic Memory.
+
+---
+
+## Context rebase should be a residency decision, not a deletion decision
+
+Victor's proposed shape is close to:
+
+~~~text
+BEFORE CHECKPOINT
+
+[active semantic/navigation state]
++
+[recent exact Conversation allocation]
+
+Vex processes both
+-> response
+-> updated per-turn semantic/navigation projection
+~~~
+
+At threshold:
+
+~~~text
+canonical owners
++ per-turn semantic/navigation projections
++ current Working Continuity
+        |
+        v
+CHECKPOINT / REBASE COMPILER
+        |
+        +-> keep active/open/paused/currently material refs
+        |
+        +-> demote resolved/closed historical material from prompt residency
+        |      (but keep it searchable)
+        |
+        +-> preserve unresolved obligations / current relationship context
+        |
+        +-> choose a short exact recent overlap tail
+        |
+        +-> preserve semantic-index / source fingerprints and frontier refs
+        |
+        v
+new stable continuity epoch C_(k+1)
+~~~
+
+No source is deleted.
+
+~~~text
+RESOLVED
+!= FORGOTTEN
+
+NOT PROMPT-RESIDENT
+!= UNREACHABLE
+
+CHECKPOINT COMPACTION
+!= MEMORY DELETION
+~~~
+
+---
+
+## Post-checkpoint continuity should deliberately overlap the old epoch
+
+A new epoch should not begin with only a decontextualized summary.
+
+Candidate shape:
+
+~~~text
+C_(k+1)
+  current active meaning refs
+  current open/paused subjects
+  current intent / commitments / obligations
+  current focus stack / parent anchors
+  current relational posture where justified
+  unresolved unknowns
+  searchable-history/index coordinates
+
++ exact overlap tail
+  recent exact human/Vex turn pair(s)
+  especially the turn(s) that formed the checkpoint
+
++ new current request
+~~~
+
+This creates:
+
+~~~text
+OLD EPOCH
+... Turn 97
+    Turn 98
+    Turn 99
+       |
+       | checkpoint formed
+       v
+
+NEW EPOCH
+[C_100]
+[exact Turn 98]
+[exact Turn 99]
+[current Turn 100 request]
+~~~
+
+The exact count "last 3 turns" should not be hard-coded merely because it sounds safe. It is a policy candidate
+to measure.
+
+The overlap tail exists for a different reason than active semantic refs:
+
+~~~text
+ACTIVE REFS
+  preserve what matters / what remains open
+
+RECENT EXACT TAIL
+  preserve local conversational texture, deixis and immediate continuity
+  ("that", "the thing you just said", tone, immediate correction)
+
+HISTORICAL INDEX
+  preserves reachability of everything else
+~~~
+
+This is not a summary-only continuation.
+
+---
+
+## The active checkpoint is a directory plus enough lived local context
+
+A useful mental model is:
+
+~~~text
+CHECKPOINT
+!= COMPRESSED TRANSCRIPT
+
+CHECKPOINT
+= CURRENT WORKING DIRECTORY
+  + CURRENT STATE / OPEN QUESTIONS
+  + IMPORTANT ACTIVE MEANING REFS
+  + SOURCE / SEARCH COORDINATES
+  + SMALL EXACT OVERLAP TAIL
+~~~
+
+Vex may need to reorient because active refs are not necessarily chronological:
+
+~~~text
+active objective from 4 hours ago
++ unresolved relationship question from 20 minutes ago
++ current correction from the immediately prior turn
++ open external-source question from yesterday
+~~~
+
+The checkpoint should not pretend those nodes are one sequential conversation.
+
+Instead it should make relationships explicit:
+
+~~~text
+ACTIVE_PARENT
+PAUSED_CHILD
+OPEN_LOOP
+DEPENDS_ON
+CORRECTS
+RETURNS_TO
+CURRENT_RELATIONAL_CONTEXT
+RECENT_EXACT
+~~~
+
+Then Vex can reason over the current small subgraph.
+
+---
+
+## Open vs resolved is useful prompt-residency metadata
+
+A likely selection rule:
+
+~~~text
+OPEN / ACTIVE
+  normally prompt-resident if material
+
+PAUSED
+  prompt-resident when it is a plausible return target
+
+HELD_UNKNOWN
+  prompt-resident when the unknown constrains current work
+
+RESOLVED / CLOSED
+  normally removed from active residency
+  remains indexed / searchable
+
+SUPERSEDED
+  not active by default
+  retained for formation-history / correction queries
+~~~
+
+But "resolved" must not mean irrelevant forever.
+
+A later question:
+
+> "What did we resolve about Memory today?"
+
+should search resolved nodes directly rather than requiring them to have stayed in every prompt.
+
+---
+
+## Human time and turn count should be separate query dimensions
+
+Victor correctly noted that "recent" should not mean only "last N turns."
+
+A person may:
+
+~~~text
+have 80 short turns in 30 minutes
+or
+have 4 deep turns over 8 hours
+~~~
+
+A useful recent-resolution query can define a **union window**:
+
+~~~text
+recent by human time:
+  occurredAt >= now - 5 hours
+
+OR
+
+recent by Conversation density:
+  sequence >= currentSequence - N turns
+~~~
+
+bounded by the current lineage/thread as appropriate.
+
+Equivalent start boundary:
+
+~~~text
+windowStart =
+  earlier_of(
+    now - 5h,
+    timestampOfNthPriorTurn(N)
+  )
+~~~
+
+This means the query sees at least the last 5 human hours **or** the last N turns, whichever reaches farther
+back, without requiring an arbitrary high turn count when conversation is sparse.
+
+Other scopes may be useful:
+
+~~~text
+CURRENT_EPOCH
+CURRENT_HUMAN_DAY
+CURRENT_THREAD
+SINCE_LAST_CHECKPOINT
+SINCE_LAST_RESOLUTION
+SINCE_NAMED_EVENT
+LAST_DURATION
+LAST_N_TURNS
+UNION_OF_TIME_AND_TURNS
+~~~
+
+Time scope is a retrieval lens, not semantic truth.
+
+---
+
+## Example: immediately after a semantic rebase
+
+Before:
+
+~~~text
+active state:
+  A = Memory Depth Exploration
+  B = Archive/Journal predecessor mapping
+  C = unresolved per-turn semantic sidecar
+  D = resolved prefix-cache question
+
+recent exact:
+  Turn 221
+  Turn 222
+  Turn 223
+~~~
+
+Threshold crosses after Turn 223.
+
+Compiler derives:
+
+~~~text
+Checkpoint C224
+
+ACTIVE:
+  A
+  B
+  C
+
+RESOLVED but searchable:
+  D -> resolutionRef D.7
+
+FOCUS:
+  current = C
+  parent = A
+
+RELATIONAL:
+  user is actively co-designing architecture
+  source-backed communication preferences only
+  model affect inference held as candidate where present
+
+HISTORY:
+  semanticIndexHead = ...
+  conversationHead = ...
+  journalCurrentDayRef = ...
+  unresolvedFrontierRefs = [...]
+
+RECENT EXACT TAIL:
+  Turn 222
+  Turn 223
+~~~
+
+Next inference receives:
+
+~~~text
+[stable checkpoint C224]
+[exact Turn 222]
+[exact Turn 223]
+[Victor's Turn 224 request]
+~~~
+
+Vex can immediately understand local pronouns / corrections from 222-223 while also seeing A/B/C as active
+coordinates.
+
+If Victor asks:
+
+> "What did we resolve in the last five hours?"
+
+the answer does **not** require D to still be prompt-resident:
+
+~~~text
+hydrate {
+  queries: [{
+    disposition: RESOLVED,
+    timeScope: LAST_5_HOURS,
+    currentThread: true
+  }],
+  grouping: [SUBJECT_OR_MEANING_LINEAGE, RESOLUTION],
+  orderingWithinGroup: [RESOLVED_AT]
+}
+~~~
+
+If Victor asks:
+
+> "Why is B still open?"
+
+the active checkpoint already provides B plus its open relationship; hydration only descends if exact formation
+source is needed.
+
+---
+
+## Checkpoint formation should probably be two-pass
+
+One candidate implementation pattern to compare:
+
+~~~text
+PASS 1 — host/deterministic currentness
+
+collect:
+  Working Continuity refs
+  current owners
+  recent exact tail candidates
+  turn dispositions already accepted/sealed
+  open loops / obligations / unknowns
+  source fingerprints
+
+PASS 2 — Vex-proposed semantic selection (bounded)
+
+Vex may propose:
+  which subjects are materially active
+  bounded takeaways
+  relation-to-parent
+  possible resolution/open status
+  relational posture
+
+host seals only what its contract permits
+and keeps unsupported semantic proposals candidate/held
+~~~
+
+This preserves Vex's useful perception without making checkpoint truth depend on an unvalidated JSON monologue.
+
+---
+
+## Questions for Claude / implementation comparison
+
+1. What exactly does current mlx-lm prompt caching retain across requests, and can any generated assistant tokens
+   be reused only when the next serialized prompt contains those same tokens? Do not make continuity depend on
+   undocumented server behavior.
+2. How should per-turn semantic/navigation projection be authored without persisting raw reasoning?
+3. Which relational/emotional fields are safe/useful retrieval metadata and which must remain candidate or
+   ephemeral?
+4. Who seals OPEN / PAUSED / RESOLVED / SUPERSEDED states?
+5. Can checkpoint formation use those dispositions as prompt-residency hints without changing canonical source?
+6. How should the exact recent overlap tail be selected: N turns, token budget, elapsed time, semantic adjacency,
+   or a measured combination?
+7. Should the turn that triggers rebase always be included in the new epoch's exact overlap tail?
+8. Can the immediate prior request/response remain exact even when older adjacent turns are removed?
+9. What metadata/index head or fingerprint must the checkpoint retain so historical hydration starts from the
+   exact same durable search world?
+10. How should active nonchronological refs be presented to the provider so Vex understands relationship
+    structure rather than reading them as a fake transcript sequence?
+11. What query contract supports "resolved in the last 5 hours OR last N turns" and other human-time scopes?
+12. How are resolved nodes re-opened when new evidence invalidates or extends the old resolution?
+13. How does checkpoint formation interact with #208's stable prefix so mutable current-state selection does not
+    itself force avoidable cache invalidation every turn?
+
+### Working checkpoint thesis
+
+~~~text
+PRE-CHECKPOINT
+  stable epoch
+  + append-only exact recent Conversation
+  + live Zone 3
+
+AT THRESHOLD
+  derive active/current semantic directory
+  + demote resolved historical material to searchable residency
+  + retain exact small overlap tail
+  + preserve search/index/source fingerprints
+
+POST-CHECKPOINT
+  [new stable checkpoint]
+  + [exact overlap tail]
+  + [new turns append]
+
+OLDER CONTEXT
+  searchable by semantic/navigation projection
+  -> hydrate exact source on demand
+~~~
+
+The intended user/Vex experience is **continuous reorientation, not transcript amnesia and not summary
+replacement**.
+
