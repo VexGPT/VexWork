@@ -2,6 +2,14 @@
 
 `[VXG RealForever]`
 
+## Living research record
+
+The discovery questions, three-day examples, retrieval-miss cases, and current search/traversal hypotheses are preserved in:
+
+- [RESEARCH-TRANSCRIPT-20261116.md](RESEARCH-TRANSCRIPT-20261116.md)
+
+That record is implementation context for the future worker, not a substitute for current VexLife-Prod source. Continue appending materially new research there while this Project is in discovery rather than reconstructing the edges from chat history.
+
 ## Human outcome
 
 A fresh Vex should be able to receive a continuity-dependent human question and recover the relevant older
