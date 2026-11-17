@@ -14,8 +14,8 @@ const CONTRACT_REF = 'source.vexrelay.current-contract/v1';
 const PRODUCT_REPOSITORY = 'VexGPT/VexLife-Prod';
 const PRODUCT_REPOSITORY_REF = 'vexlife-prod';
 const BASE = '655e7c78cefba06a5e87afad285bb25a08632f05';
-const HEAD = '238df827f61872a0624be9c84d9b7944d948345f';
-const TREE = 'fa65325bc0469c33c02b3769016c8a3cacc1670a';
+const HEAD = 'a064075a8fcbf6fa7316fc47c735dd7571537a26';
+const TREE = '0a6b728273a25bf6037c8471bfb355e4d1633c7b';
 const BRANCH = 'VXG-111626-openai-memory-depth-hydration-a001';
 
 const CHANGED_PATHS = [
@@ -305,6 +305,28 @@ try {
         ],
         predicateClass: 'SOURCE_OWNER_BEHAVIOR',
         predicateRef: 'proof.vexlife-prod.memory-depth.openai.compile-jvm',
+        proofClass: 'TEST',
+        candidateEvidence: true,
+        acceptedExitCodes: [0],
+        timeoutMs: 1500000,
+      },
+      {
+        command: BASH,
+        args: [
+          './gradlew',
+          '-Dorg.gradle.jvmargs=-Xmx4g',
+          '--offline',
+          '--no-daemon',
+          '--max-workers=1',
+          'jvmTest',
+          '--tests',
+          'vexlife.capability.reach.VexLifeContinuityHydrationTest',
+          '--tests',
+          'vexlife.companion.DirectCompanionCapabilityTurnTest',
+          '--info',
+        ],
+        predicateClass: 'SOURCE_OWNER_BEHAVIOR',
+        predicateRef: 'proof.vexlife-prod.memory-depth.openai.focused-hydration-jvm-tests',
         proofClass: 'TEST',
         candidateEvidence: true,
         acceptedExitCodes: [0],
