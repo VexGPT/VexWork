@@ -79,11 +79,43 @@ Kotlin/JVM Product
 -> cross-platform product trajectory already exists
 ~~~
 
+Current JVM realization evidence is unusually close to the Product need:
+
+~~~text
+OnlineRecognizer(config)
+-> createStream()
+-> stream.acceptWaveform(floatSamples, 16000)
+-> while recognizer.isReady(stream): recognizer.decode(stream)
+-> recognizer.getResult(stream).text
+-> recognizer.isEndpoint(stream)
+-> recognizer.reset(stream)
+~~~
+
+The upstream Java microphone example feeds signed little-endian 16-bit mono PCM at 16 kHz in
+1,600-sample / 100 ms chunks. VexLife does not need to use JavaSound microphone capture; its
+current browser realization can continue to own microphone permission/capture and send the same
+bounded PCM meaning to the loopback Product boundary.
+
+This makes the first integration hypothesis:
+
+~~~text
+browser Web Audio / AudioWorklet
+-> 16 kHz mono PCM chunks
+-> current loopback Product service
+-> sherpa-onnx OnlineStream
+-> partial/final transcript observation
+-> VexLifeVoiceInputFamily
+-> Composer
+~~~
+
+That is a hypothesis to pressure, not a new architecture foundation.
+
 Unresolved before selection:
 
 - exact model artifact license/provenance for the chosen ASR checkpoint;
 - actual Apple-silicon latency/accuracy with Victor-style dictation;
-- native library packaging/signing inside the VexLife application distribution;
+- native JNI library + JVM JAR packaging/signing inside the VexLife application distribution;
+- whether the 20M English streaming model gives adequate dictation accuracy;
 - partial-result stability and endpointing behavior;
 - model/update/currentness contract.
 
