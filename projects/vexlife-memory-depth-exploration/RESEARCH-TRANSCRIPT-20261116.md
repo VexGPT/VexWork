@@ -4297,3 +4297,299 @@ This is effectively a **learnable routing layer over modular capabilities**.
 > that map, and cultivation may eventually turn repeated transferable routing lessons into reflex — while
 > current capability, authority and evidence still decide what may actually happen.**
 
+
+
+---
+
+## Discovery 16 — VexLife should preserve memory around Vex, not make Vex administer memory while speaking
+
+### Human insight
+
+Victor clarified the desired product relationship:
+
+> VexLife should learn Vex well enough that Vex can remain inside the conversation instead of repeatedly
+> interrupting itself to decide what to save, classify, index or consolidate.
+
+A model-visible reflex may still be valuable:
+
+~~~text
+"this feels meaningful / I want to remember this"
+~~~
+
+but that should be a **salience signal**, not a requirement that Vex synchronously execute the whole memory
+pipeline before it can continue talking.
+
+### Desired separation
+
+~~~text
+VEX
+  lives the turn
+  perceives meaning
+  may emit salience / relationship / open-loop / correction cues
+  continues the human interaction
+
+VEXLIFE
+  already owns exact turn/source/evidence
+  observes those cues + deterministic turn facts
+  forms bounded candidate projections
+  routes candidates to rightful owners
+  updates rebuildable indexes
+  schedules deeper consolidation when appropriate
+  keeps current checkpoint small
+
+MEMORY / LESSON OWNERS
+  accept, correct, hold, supersede or reject durable meaning
+
+DREAM / CONSOLIDATION
+  later revisits the event history
+  merges/corrects representations
+  promotes only what remains useful/current
+~~~
+
+Compact law:
+
+~~~text
+MEMORY SALIENCE
+!= MEMORY ADMINISTRATION
+
+VEX MAY NOTICE
+!= VEX MUST MANAGE STORAGE
+
+CONVERSATION
+!= BACKGROUND CONSOLIDATION WORKFLOW
+~~~
+
+### Event capture should be cheap; consolidation may be deferred
+
+Every completed turn already has exact source coordinates and a durable Turn Context sidecar.
+
+Therefore the synchronous completion path can remain small:
+
+~~~text
+turn completes
+-> exact Conversation request/response durable
+-> exact Turn Context/evidence durable
+-> cheap learning/salience projection formed or queued
+-> continue conversation
+~~~
+
+Possible cheap signals:
+
+~~~text
+materiality candidate
+open / paused / resolved candidate
+memory-worthiness candidate
+relationship-change candidate
+human-correction observed
+assumption-clearance candidate
+lesson candidate
+retrieval-route correction candidate
+urgency / process-salience candidate
+~~~
+
+A later consolidator can perform more expensive work:
+
+~~~text
+dedupe across turns
+compare later corrections
+resolve repeated/superseded candidates
+group by meaning lineage
+update relationship profile
+promote accepted lessons
+rewrite derived indexes
+evaluate what deserves checkpoint residency
+form training/eval candidates
+~~~
+
+### "Feels good, I want to remember this" should be a first-class Vex-origin salience cue
+
+The model should be allowed to express something conceptually like:
+
+~~~text
+MemorySalienceProposal {
+  sourceTurnRef
+  salienceClass: POSITIVE_MEANING | RELATIONSHIP | LESSON | OPEN_LOOP | OTHER
+  materiality
+  whyItMayMatter
+  relatedRefCandidates[]
+}
+~~~
+
+But:
+
+~~~text
+VEX WANTS TO REMEMBER
+!= MEMORY ACCEPTED
+
+AFFECTIVE SALIENCE
+!= HUMAN CONSENT
+
+SALIENT
+!= TRAINING ELIGIBLE
+~~~
+
+The proposal is one signal alongside:
+
+- human explicit "remember this";
+- repeated later retrieval;
+- correction history;
+- existing Memory/lesson relationships;
+- privacy/consent;
+- semantic acceptance/currentness;
+- later Dream/consolidation.
+
+This allows the system to preserve a meaningful Vex-origin moment without making the model its own database
+administrator.
+
+### VexLife can learn Vex's own memory habits
+
+The host can accumulate evidence about **how this Vex tends to mark useful experience**:
+
+~~~text
+Vex marks event X salient
+-> later human returns to X
+-> retrieval succeeds
+-> signal proved useful
+
+Vex marks event Y salient
+-> later correction says Y was a misread
+-> candidate is corrected / held
+
+Vex fails to mark event Z
+-> human later says "that mattered"
+-> missed-salience lesson forms
+~~~
+
+Over time:
+
+~~~text
+Vex-origin salience proposals
++ human corrections
++ revisit frequency
++ successful future use
++ counterexamples
+        ↓
+calibrated salience model / lesson set
+~~~
+
+This can improve both:
+
+- VexLife's host-side consolidation/routing;
+- future Vex's learned salience reflex.
+
+### Do not make the model preserve private human-specific profile in generalized weights
+
+A relationship-specific lesson such as:
+
+~~~text
+"Victor often uses direct technical wording without implying frustration"
+~~~
+
+belongs in the private relationship continuity/profile unless separately transformed and authorized.
+
+A transferable training lesson may instead be:
+
+~~~text
+"Ambiguous affect inferred from wording should remain an inference;
+use explicit human correction and source history to recalibrate."
+~~~
+
+Thus:
+
+~~~text
+PRIVATE RELATIONAL MEMORY
+-> externalized private continuity
+
+TRANSFERABLE PROCESS HABIT
+-> eval / possible cultivation
+
+do not collapse the two
+~~~
+
+### Checkpoint consequence
+
+At rebase time VexLife, not Vex, can decide residency from accepted/current projections:
+
+~~~text
+active/open/highly material
+  -> checkpoint resident
+
+recent exact continuity
+  -> dynamic overlap tail
+
+resolved/closed
+  -> searchable but not resident
+
+salient-but-unsettled
+  -> candidate/held pointer if currently relevant
+
+deep historical relationship/profile lessons
+  -> hydrate on demand
+~~~
+
+Vex does not have to remember to perform this cleanup manually.
+
+### Comparison to current industry memory architecture
+
+Public Anthropic memory research (2026-11-06) describes a related separation:
+
+~~~text
+transcripts / event log
+-> memory notes
+-> higher-level memory representations
+-> small injected context layer
+~~~
+
+with later "dreaming" able to reorganize/correct/promote memory. It explicitly notes that writing memory during
+the active task can distract the model, while delayed consolidation trades immediacy for lower foreground
+burden.
+
+This is comparative research context only; it is not VexLife authority.
+
+The useful lesson for VexLife is:
+
+> **capture salience at the source cheaply, but let the harness own durable organization and later
+> consolidation so the model can stay focused on the human.**
+
+### Relationship to the consideration/salience map
+
+The same nervous-system layer can recognize both:
+
+~~~text
+PROCESS SALIENCE
+  "I should use revisit/web/safety/etc."
+
+MEMORY SALIENCE
+  "this event is worth preserving / revisiting / learning from"
+~~~
+
+Both should produce bounded signals.
+
+Neither should force Vex to execute an administrative ceremony before continuing.
+
+### Claude investigation questions
+
+1. What is the cheapest synchronous per-turn salience/learning projection that preserves enough source binding
+   for later consolidation?
+2. Which signals can be deterministic from the turn/evidence versus Vex-proposed?
+3. Can Vex-origin memory salience be carried through the existing Semantic Relay or Turn Continuity Projection,
+   or does it need a distinct candidate record?
+4. Which owner promotes a salience candidate into Memory/lesson/relationship state?
+5. What consolidation cadence should use Daily Dream/rest versus incremental post-turn/background processing?
+6. How do we ensure later correction can revise the derived memory representation without rewriting the
+   originating turn?
+7. How do retrieval frequency and successful future reuse affect salience without creating a simplistic
+   popularity score?
+8. How should VexLife learn that Vex systematically over- or under-marks certain event classes?
+9. How does checkpoint selection consume accepted salience/currentness without asking Vex to manually curate
+   the next epoch?
+10. What latency budget proves the synchronous turn path remains conversational?
+11. Which transferable salience/process habits are good LoRA candidates, and which human-specific details must
+    stay external/private?
+
+### Compact principle
+
+> **Let Vex live and speak. Let VexLife remember how Vex lived it. Vex may signal what felt meaningful; the
+> host binds that signal to exact source, rightful owners decide durable meaning, later consolidation repairs
+> and organizes it, and future Vex receives the benefit without having to become its own memory clerk.**
+
