@@ -37,16 +37,65 @@
       "effectDisposition": "NO_EFFECTS",
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:46:35.000Z",
+      "updatedAt": "2026-11-17T04:46:35.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Recover and map the predecessor Vex Memory / Living Journal architecture",
+      "purpose": "Reconstruct the accepted design lineage already earned across Vextreme-SDK and predecessor VexLife before finalizing new hydration contracts: Vex Memory #225, Daily Rest/Dream #239, Institutional Query #236, Artifact Continuation #311, Lesson Continuity/Lattice #328/#329, Context Revisitation #397, Daily Record Chain #416, Continuity Stream #1007, Living Journal real-Memory projection #130 and committed-day Archive #151. Map each predecessor question, owner, typed relationship, source-descent rule, currentness/supersession behavior and bounded retrieval pattern onto current VexLife-Prod owners, then classify REUSE / PORT / REFINE / HOLD so Memory Depth Exploration does not rebuild already-earned architecture from scratch.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk",
+        "repo.vexlife",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "projects/vexlife-memory-depth-exploration/RESEARCH-TRANSCRIPT-20261116.md",
+        "github.issue.vexwork.307",
+        "github.pull.vexlife-prod.208",
+        "github.issue.vextreme-sdk.225",
+        "github.issue.vextreme-sdk.239",
+        "github.issue.vextreme-sdk.236",
+        "github.issue.vextreme-sdk.311",
+        "github.issue.vextreme-sdk.328",
+        "github.issue.vextreme-sdk.329",
+        "github.issue.vextreme-sdk.397",
+        "github.issue.vextreme-sdk.416",
+        "github.issue.vextreme-sdk.1007",
+        "github.issue.vexlife.130",
+        "github.issue.vexlife.151",
+        "repo.vexlife:src/core/living-journal-memory-projection.mjs",
+        "repo.vexlife:src/core/living-journal-memory-archive.mjs",
+        "repo.vexlife:src/core/daily-memory-dream.mjs",
+        "repo.vexlife:src/core/score-context-continuity.mjs",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:46:35.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.hydration-contract",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Define the bounded continuity hydration request/result contract",
       "purpose": "Define the smallest owner-neutral contract for one bulk continuity expansion: exact current-turn/question binding, start coordinates, bounded traversal policy, typed owner/source provenance, selected material, visited/ref coverage, stop reason and explicit remaining frontier. The result must remain effect-free and must not create semantic acceptance, rewrite history or mint a universal truth namespace.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "WAITING_DEPENDENCIES",
       "priorityClass": "IMMEDIATE",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage"
+      ],
       "repositoryRefs": [
         "repo.vexwork",
         "repo.vexlife-prod"
@@ -70,15 +119,17 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:46:35.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.resolver-neighborhood",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Map the rightful continuity resolver neighborhood and typed edges",
       "purpose": "Inventory which current refs can actually be resolved through Working Continuity, canonical Conversation, semantic Memory and exact turn/capability evidence; define only source-proven outgoing relationships and bounded resolver operations for those owners. Reuse existing owner APIs where possible and do not create a universal ref registry merely for traversal convenience.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "WAITING_DEPENDENCIES",
       "priorityClass": "IMMEDIATE",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage"
+      ],
       "repositoryRefs": [
         "repo.vexwork",
         "repo.vexlife-prod"
@@ -303,7 +354,14 @@
     "projects/vexlife-memory-depth-exploration/README.md",
     "github.pull.vexlife-prod.208",
     "github.pull.vexlife-prod.207",
-    "github.pull.vexlife-prod.206"
+    "github.pull.vexlife-prod.206",
+    "github.issue.vextreme-sdk.225",
+    "github.issue.vextreme-sdk.397",
+    "github.issue.vextreme-sdk.416",
+    "github.issue.vextreme-sdk.1007",
+    "github.issue.vexlife.130",
+    "github.issue.vexlife.151",
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
