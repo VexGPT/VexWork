@@ -65,9 +65,10 @@ comparable experiment evidence
 4. `relay/STAGE-CATALOG.json` — stage/effect/route map
 5. `relay/README.md` — VexRelay / VexLocalBridge use
 6. `PRODUCT-ADAPTER-PICKUP.md` — exact product bridge obligations
-7. `scenario.schema.json`
-8. `result.schema.json`
-9. `scenarios/depth-continuity-v1.json`
+7. `CURRENT-STATE-EPOCH-CONSIDERATION.md` — mutable current state across cache epochs
+8. `scenario.schema.json`
+9. `result.schema.json`
+10. `scenarios/depth-continuity-v1.json`
 
 ## Canonical modes
 
