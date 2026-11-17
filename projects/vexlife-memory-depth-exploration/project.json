@@ -53,7 +53,8 @@
     "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/protocol-atlas.json",
     "github.issue.vextreme-sdk.241",
     "github.issue.vextreme-sdk.580",
-    "github.issue.vextreme-sdk.360"
+    "github.issue.vextreme-sdk.360",
+    "repo.vextreme:pages/vexarchitecture-first-stable-body.html"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
