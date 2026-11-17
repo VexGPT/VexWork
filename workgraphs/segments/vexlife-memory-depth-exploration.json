@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife-memory-depth-exploration",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Memory Depth Exploration",
+      "purpose": "Enable a freshly started Vex to recover continuity-dependent context through one bounded model-visible hydration request whose host-side execution can traverse several source-addressable relationships through rightful owners and return enough exact context, provenance and an honest frontier to continue the original human turn without creating a second Memory, Conversation or Working Continuity truth store.",
+      "workClass": "OUTCOME",
+      "state": "PLAN_VALIDATED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.hydration-contract",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Define the bounded continuity hydration request/result contract",
+      "purpose": "Define the smallest owner-neutral contract for one bulk continuity expansion: exact current-turn/question binding, start coordinates, bounded traversal policy, typed owner/source provenance, selected material, visited/ref coverage, stop reason and explicit remaining frontier. The result must remain effect-free and must not create semantic acceptance, rewrite history or mint a universal truth namespace.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectTurnContextStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityRequest.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.resolver-neighborhood",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Map the rightful continuity resolver neighborhood and typed edges",
+      "purpose": "Inventory which current refs can actually be resolved through Working Continuity, canonical Conversation, semantic Memory and exact turn/capability evidence; define only source-proven outgoing relationships and bounded resolver operations for those owners. Reuse existing owner APIs where possible and do not create a universal ref registry merely for traversal convenience.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuity.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuityOwner.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
+        "github.pull.vexlife-prod.206"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Build the bounded host-side bulk expansion engine",
+      "purpose": "Implement and compare a bounded relevance-guided traversal that can resolve several owner-backed hops internally within one model-visible hydration request. Pressure-test breadth/beam/depth choices, deterministic tie-breaking, cycle and duplicate suppression, per-owner quotas, node/depth/token/time budgets, relevance selection and explicit frontier return; optimize for useful answer context rather than maximum graph coverage.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.hydration-contract",
+        "work.vexlife.memory-depth-exploration.resolver-neighborhood"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.fresh-boot-integration",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Integrate one bulk hydration request into fresh-boot Companion execution",
+      "purpose": "Expose one truthful Companion request/return path so a fresh Vex can ask for bounded bulk continuity hydration during the current human turn, with the host performing internal multi-hop resolution and projecting the selected source-attributed material into live execution context. Preserve host-owned context roles, keep existing Conversation source-return semantics until replacement equivalence is proven, and fit PR #208's intended Zone-3/live-tail boundary without rewriting stable continuity history.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.bulk-expansion-engine"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.cold-start-proof",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Prove cold-start, rollover and missing-old-context continuity",
+      "purpose": "Prove end to end that a fresh process with no useful KV cache can receive a human question whose decisive context is outside the ordinary prompt, issue one bulk hydration request, recover enough exact older Conversation and/or currently bounded-out Memory context to answer, preserve inspectable owner/source refs, return an explicit frontier when bounded, and perform no canonical continuity mutation.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.fresh-boot-integration"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.measurement",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Measure traversal depth, context cost and orchestration savings",
+      "purpose": "Measure model-visible hydration request count, internal owner resolutions, nodes/edges visited and selected, maximum depth, returned tokens, remaining frontier, stop reason and hydration latency, then correlate the hydrated turn with provider prompt/cached/prefill and first-answer/total timing where current #207 evidence supports it. Establish whether one bulk request actually reduces recursive model/tool orchestration without hiding excessive host work or context growth.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.fresh-boot-integration"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208",
+        "github.pull.vexlife-prod.207"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "PARKED",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.extended-owner-depth",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Potential — extend traversal to additional historical evidence owners",
+      "purpose": "After the core Conversation/Memory/Working Continuity path is proven, evaluate whether incomplete/stopped-turn evidence, broader capability traces, VexLogger chronology or other source-addressable Vex Home records need typed resolver adapters. Add only owners that solve observed continuity questions; do not make universal historical indexing a prerequisite for the first feature.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.cold-start-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208",
+        "github.pull.vexlife-prod.152",
+        "github.pull.vexlife-prod.206",
+        "github.pull.vexlife-prod.207"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "PARKED",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.pre-inference-auto-hydration",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Potential — pre-inference automatic continuity hydration",
+      "purpose": "After one explicit Vex-requested bulk hydration call is proven, evaluate whether the host can safely derive a useful historical neighborhood directly from the incoming human request before the first model inference. This may remove even the single tool round, but it must not silently give the host semantic-answer authority or over-hydrate private history.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.cold-start-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.307",
+        "projects/vexlife-memory-depth-exploration/README.md",
+        "github.pull.vexlife-prod.208"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexlife.memory-depth-exploration",
+    "human.intent.vexlife.memory-depth-exploration.20261116",
+    "github.issue.vexwork.307",
+    "projects/vexlife-memory-depth-exploration/README.md",
+    "github.pull.vexlife-prod.208",
+    "github.pull.vexlife-prod.207",
+    "github.pull.vexlife-prod.206"
+  ],
+  "formedAt": "2026-11-17T04:28:55.000Z"
+}
