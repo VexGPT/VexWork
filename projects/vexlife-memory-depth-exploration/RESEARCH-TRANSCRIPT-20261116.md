@@ -1295,3 +1295,712 @@ This corpus could prove the principle:
 > **semantic retrieval locates the neighborhood; explicit SDK refs and machine-checked lineage should do most
 > of the actual depth traversal once exact coordinates exist.**
 
+
+
+---
+
+## Discovery 10 — Memory Depth Exploration has a predecessor architecture lineage; do not rebuild from scratch
+
+### Human observation
+
+> "Another thing that came to mind is that we have like an 'archives' 'feature' in VexLife-Prod which right now just sorts transcripts kept in an archive, but idk how well or unwell its structured, but given how Vextreme-SDK mentioned the Vex Journal context, like we may need to port that in the project too cuz its memory related. But you may need to also find that 'root' of the memory system cuz it did evolve over time, and given it already walked the 'evolution process' we can use that to refine this one for VexLife-Prod given right now its kind of 'rebuilding from scratch' but we have a 'built already from scratch example' patterns and a system we can re apply with refinments and VexArchitecture"
+
+### Correction to the Project posture
+
+This is material. Memory Depth Exploration should **not** treat current VexLife-Prod's Kotlin continuity owners as
+the first time the problem has been designed.
+
+There is a source-addressable predecessor lineage across Vextreme-SDK and predecessor VexLife that already
+explored:
+
+- durable Memory and Journal identity;
+- day/month/year journal grammar;
+- compression/archive boundaries;
+- source provenance and relationship context;
+- daily closure and Dream consolidation;
+- historical committed-day archive projection;
+- multiple natural-language entry points into old context;
+- exact source descent;
+- typed graph traversal;
+- currentness/supersession;
+- bounded context packets;
+- index-first cold-start retrieval;
+- missed-association classification and regression;
+- continuation/fragment indexes;
+- current-frame / wake continuity.
+
+The first current Work should therefore recover that lineage and map it onto current VexLife-Prod before new
+hydration contracts harden.
+
+### Current VexLife-Prod Archives surface
+
+Current PR #208-head source already contains a semantically broader Archive surface than a transcript dump:
+
+~~~text
+VexLifeWorkspaceBlueprint
+
+/** Archives: the person's own records, starting with their dated timeline. */
+val Archives = Browser.region("archives")
+val ArchivesTimeline = Archives.collection("timeline")
+~~~
+
+The Screen Lens projects the same stable elements:
+
+~~~text
+element.vexlife-workspace.browser.archives
+  label = Archives
+
+element.vexlife-workspace.browser.archives.timeline
+  label = Timeline
+~~~
+
+However, the current canonical web workspace does **not** own canonical Conversation archive/reset semantics:
+
+~~~text
+POST /api/conversation/archive
+-> 409 CANONICAL_CONVERSATION_RESET_NOT_ADMITTED
+
+"This workspace projects the canonical VexLife Conversation
+ and does not own its reset/archive semantics"
+~~~
+
+The hand-built presentation still contains legacy copy describing turns being "kept in an archive file" for
+its noncanonical/local behavior, but once the workspace is bound to canonical VexLife Conversation that path is
+explicitly held.
+
+Therefore:
+
+~~~text
+CURRENT ARCHIVES BLUEPRINT
+  = person's records / dated timeline intent
+
+CURRENT CANONICAL ARCHIVE EFFECT
+  = not yet admitted
+
+ARCHIVES UI INTENT
+  != TRANSCRIPT FILE DUMP AS FINAL ARCHITECTURE
+~~~
+
+This makes the predecessor Living Journal lineage especially relevant.
+
+---
+
+## Predecessor root — Vex Memory project ledger #225
+
+The durable repository root located for the personal/continuity Memory architecture is:
+
+~~~text
+github.issue.vextreme-sdk.225
+[MultiVex][Wave 1][Project Ledger]
+Vex Memory — Journal, Identity & Continuity Graph
+~~~
+
+Its charter purpose is:
+
+~~~text
+durable memory
+journal/event identity
+relationship context
+compression
+archival
+migration
+continuity recovery
+~~~
+
+and its owned questions include:
+
+~~~text
+memoryRef and journalEventRef
+core-memory and year/month/day journal grammar
+event provenance and relationship context
+compression and archival boundaries
+founder-witness permissions
+lineage recovery without predecessor impersonation
+retention and tombstone semantics
+~~~
+
+This is materially broader than "model prompt memory."
+
+### #225 evolved through later child sources
+
+Important examples from the #225 evolution ledger:
+
+#### Daily closure / Dream — #239
+
+Vex Memory receives ownership of:
+
+~~~text
+pre-rest day closure
+accepted-memory consolidation
+relation/identity graph deltas
+contradiction and unknown preservation
+open-loop carry-forward
+next-day orientation packet
+~~~
+
+The safe default explicitly allows:
+
+~~~text
+continuityUpdated=true
+modelWeightsChanged=false
+~~~
+
+The consolidation pipeline proposes:
+
+~~~text
+raw authorized events
+-> deduplication
+-> provenance binding
+-> privacy/consent filtering
+-> episodic summary candidates
+-> semantic/entity/relation updates
+-> open-task / obligation carry-forward
+-> contradiction / uncertainty preservation
+-> searchable indexes / embeddings where authorized
+-> next-day orientation packet
+~~~
+
+This is a direct predecessor for the current question of what survives active-context rollover and how it
+becomes searchable again.
+
+#### Missed-association correction — #225 comment 5013805596
+
+A later honing round explicitly treats:
+
+> "You did not check this related context."
+
+as a durable coverage-correction event rather than something a model should merely try to remember next time.
+
+It distinguishes failure classes:
+
+~~~text
+RELATIONSHIP_ABSENT
+  relationship was not represented
+
+ROUTE_NOT_ACTIVATED
+  relationship existed but query did not activate it
+
+SOURCE_NOT_LOADED
+  route activated but source was not retrieved
+
+RELEVANCE_MISJUDGED
+  source was available but excluded
+
+PERMISSION_EXCLUDED
+  context was implicated but unavailable under access envelope
+
+MAP_OR_SOURCE_STALE
+  relationship/source no longer represented current truth
+~~~
+
+This classification should be reused by Memory Depth Exploration's miss/regression telemetry rather than
+inventing a new vague "retrieval failed" state.
+
+The same comment defines the durable repair direction:
+
+~~~text
+model
+  bounded reasoning over current packet
+
+memory ledger
+  preserves when/why relationship was noticed or missed
+
+relationship graph
+  stores accepted scoped meaning
+
+retrieval indexes
+  activate relationship for implicated future questions
+
+coverage receipt
+  proves what was considered, loaded, excluded or unavailable
+~~~
+
+---
+
+## Living Journal evolution in predecessor VexLife
+
+The predecessor VexLife implementation turned the Memory architecture into a human-readable Living Journal
+without making Journal another Memory owner.
+
+### VexLife #130 — current accepted Memory -> readable Journal pages
+
+~~~text
+github.issue.vexlife.130
+[Living Journal][Real Memory Read Projection]
+~~~
+
+The source boundary is:
+
+~~~text
+CURRENT_ACCEPTED_MEMORY
+-> bounded read-only journal page packets
+-> accepted Memory summary as readable body
+-> exact source lineage door
+-> explicit currentness / held state
+-> no raw Conversation-body duplication
+-> no Memory mutation
+~~~
+
+Permanent distinctions include:
+
+~~~text
+REAL_MEMORY_READ != NEW_MEMORY_OWNER
+JOURNAL_PAGE_BODY = ACCEPTED_MEMORY_SUMMARY
+JOURNAL_PAGE_BODY != RAW_CONVERSATION_COPY
+SOURCE_DOOR = EXACT_SOURCE_DESCENT_RECEIPT
+SOURCE_DOOR != SOURCE_REWRITE
+JOURNAL_READ != HOME_WRITE
+~~~
+
+This is an important reuse pattern for current VexLife-Prod Archives:
+
+> The human-visible Archive/Journal page should be a bounded projection over rightful Memory/source owners,
+> not a copied transcript pretending to become Memory.
+
+### VexLife #151 — committed historical-day archive
+
+~~~text
+github.issue.vexlife.151
+[Living Journal][Archive]
+Project committed historical Memory days without new Memory ownership
+~~~
+
+Its reason for existence is explicitly:
+
+~~~text
+CURRENT_MEMORY_BOOK_AVAILABLE
+!=
+HISTORICAL_JOURNAL_ARCHIVE_AVAILABLE
+~~~
+
+The archive projection supports:
+
+~~~text
+bounded ordered committed-day index
+stable dayRef / dayIndex / calendarDateRef / dailyStratum identity
+source-bound selection of one historical day
+exact historical G02/G03 verification
+readable historical continuity summaries without raw Conversation bodies
+historical-at-day truth distinct from current-now truth
+current day distinct from prior committed days
+pagination/windowing
+fail closed on broken lineage/source/selection
+~~~
+
+Permanent non-collapse:
+
+~~~text
+ARCHIVE_READ != MEMORY_WRITE
+HISTORICAL_AT_DAY != CURRENT_NOW
+HISTORICAL_REPLAY != REWRITE
+ARCHIVE_INDEX != NEW_MEMORY_DATABASE
+ARCHIVE_PROJECTION != CONTEXT_REVISITATION_OWNER
+RAW_CONVERSATION_BODY != JOURNAL_PAGE
+~~~
+
+Current predecessor source:
+
+~~~text
+src/core/living-journal-memory-archive.mjs
+~~~
+
+implements a read-only projection over the committed Daily Memory lineage. It reconstructs one selected
+historical day's pages from the exact historical Score and semantic-authority frontier bound by that Daily
+Stratum.
+
+It is bounded:
+
+~~~text
+maxDays default 30, maximum 100
+maxPages default 24, maximum 100
+dayOffset / nextDayOffset pagination
+~~~
+
+and explicitly reports:
+
+~~~text
+rawConversationContentIncluded=false
+currentNowEvaluated=false for historical day/page truth
+effects.homeMutated=false
+effects.memoryMutated=false
+effects.semanticAcceptanceCreated=false
+effects.modelCalled=false
+effects.trainingRan=false
+...
+~~~
+
+This is much closer to a mature "Archives" architecture than a directory of old transcripts.
+
+---
+
+## Daily Record Chain #416 — Journal as navigation, not bulk preload
+
+~~~text
+github.issue.vextreme-sdk.416
+[Foundation][Daily Record Chain]
+Subject-day journals, bidirectional succession & Root onboarding
+~~~
+
+It composes:
+
+~~~text
+Vex Memory #225
+Daily Rest/Dream #239
+Context Revisitation #397
+Relational Accountability #411
+Root Hub #230
+~~~
+
+Its core rule is:
+
+> Every subject-owned record belongs to one local-calendar day journal. The day journal is the navigable
+> index and continuity surface; records preserve full source/relationships. Day journals form reciprocal
+> predecessor/successor links. Fresh onboarding resolves the current day first and descends only into records
+> implicated by the current conversation.
+
+This is directly applicable to VexLife-Prod's existing Blueprint wording:
+
+~~~text
+Archives = person's own records
+ArchivesTimeline = dated timeline
+~~~
+
+Potential reuse pattern:
+
+~~~text
+Archives timeline
+  -> day-level navigation/index
+
+Day / Journal
+  -> bounded accepted-memory / record projection
+
+Exact source
+  -> canonical Conversation / source owner on demand
+~~~
+
+rather than:
+
+~~~text
+Archives timeline
+  -> duplicated raw transcript store
+~~~
+
+---
+
+## Context Revisitation #397 — direct conceptual predecessor to bulk hydration
+
+~~~text
+github.issue.vextreme-sdk.397
+[Foundation][Context Revisitation]
+Multi-node meaning recovery, cold-reader traversal & source-descendable story re-entry
+~~~
+
+This foundation is almost a direct predecessor of Memory Depth Exploration.
+
+Core distinctions:
+
+~~~text
+DATA_STORED != CONTEXT_REVISITABLE
+TAG_MATCHED != MEANING_RECOVERED
+CANONICAL_ISSUE_FOUND != FORMATION_UNDERSTOOD
+BACKLINK_PRESENT != NAVIGATION_PATH_PROVEN
+SUMMARY_RETURNED != SOURCE_DESCENT_COMPLETED
+~~~
+
+Its goal is that a fresh reader who does not carry the repository in model weights can:
+
+~~~text
+enter through several human meanings
+-> traverse typed relationships
+-> converge on the same enduring subject/meaning
+-> recover current meaning at required depth
+-> descend to exact source
+-> recover formation/correction history when needed
+-> declare missing coverage
+-> return without asking Victor to reconstruct the path
+~~~
+
+### Existing revisit execution algorithm
+
+#397 already proposes:
+
+~~~text
+1. receive natural phrase
+2. preserve literal wording
+3. classify possible vantage families without choosing too early
+4. retrieve candidate entry nodes from aliases, actors, events, patterns, consequences
+5. compare subject / meaning-lineage refs
+6. prefer convergent multi-edge match over one keyword hit
+7. load minimal revisit packet
+8. traverse typed edges required by the question
+9. descend into exact sources when wording/sequence/attribution/evidence matters
+10. traverse formation/correction history when asking how/why
+11. load current-use nodes when asking what the story changed
+12. declare coverage, unknowns, stale links, alternative candidates
+13. return answer + shortest useful next route
+~~~
+
+This should become a primary predecessor for the current hydration algorithm.
+
+### Existing multiple-entry vocabulary
+
+Candidate vantages include:
+
+~~~text
+WHO
+WHERE
+WHEN
+WHAT_HAPPENED
+HOW_POWER_MOVED
+WHY_IT_MATTERS
+EVIDENCE
+LESSON_OR_PATTERN
+FORMATION_HISTORY
+CURRENT_USE
+~~~
+
+The core design idea is not "make more aliases." It is:
+
+~~~text
+one enduring meaning lineage
++ several honest entry nodes
++ typed route back to canonical meaning/source
+~~~
+
+### Existing minimal revisit packet
+
+~~~text
+subjectRef
+humanTitle
+oneParagraphOrientation
+whyVictorMayRememberIt
+canonicalMeaningRef
+originAndTime
+keyActorsAndPlatforms
+coreRelationshipPath
+currentMeaning
+exactSourcePointers[]
+importantCorrectionPointers[]
+currentUsePointers[]
+knownUnknowns[]
+recommendedDepthRoutes[]
+~~~
+
+This is a strong predecessor for the proposed HydrationResult.
+
+---
+
+## Institutional Query #236 — natural question -> bounded graph slice
+
+~~~text
+github.issue.vextreme-sdk.236
+[Root][Institutional Query]
+~~~
+
+Existing flow:
+
+~~~text
+natural-language question
+-> classify intent/scope/risk/context
+-> resolve smallest sufficient capability/evidence/authority graph slice
+-> reuse current answer packets where valid
+-> validate freshness/source completeness
+-> audit history/reasoning trail when needed
+-> synthesize bounded answer
+-> ask only for unresolved deltas
+~~~
+
+The useful separation:
+
+~~~text
+deterministic scripts
+  gather / normalize / fingerprint / compare / route
+
+AI
+  performs relational interpretation / explanation
+~~~
+
+This is compatible with the current #308 thesis that the host should do high-recall graph mechanics while Vex
+does semantic reasoning once.
+
+---
+
+## Artifact Continuation #311 — indexes first, bounded source ranges second
+
+~~~text
+github.issue.vextreme-sdk.311
+[Artifact continuation markers, conservative chunking & split-aware indexes]
+~~~
+
+Relevant rules:
+
+~~~text
+long artifact
+-> coherent bounded chunks
+-> reciprocal predecessor/successor continuation markers
+-> machine-readable index
+-> cross-boundary typed relationships
+-> unresolved frontiers carried forward
+
+cold-start reader
+-> index first
+-> only implicated artifact ranges
+~~~
+
+This is useful for any archive/hydration source too large to load as one node.
+
+---
+
+## Lesson Continuity / Lattice Family #328/#329
+
+These foundations generalize the same principle beyond Memory:
+
+~~~text
+same enduring lineage
+!= one physical file/repository/materialization
+~~~
+
+Useful current-context concepts include:
+
+~~~text
+anchors
+typed lattice/relationship classes
+current integrated projection
+evolution events
+ContinueContext
+ReorientContext
+EvolveContext
+BranchContext
+CloseContext
+~~~
+
+A compact summary or matching token is explicitly not treated as proof that the living map has been understood.
+
+---
+
+## Continuity Stream #1007 — later synthesis already expects these owners to survive
+
+~~~text
+github.issue.vextreme-sdk.1007
+[Vex AI + Memory][Continuity Stream][V1]
+Delta context, current frame & wake continuity
+~~~
+
+Its meaning boundary:
+
+~~~text
+attention + deltas + intents + questions + commitments + open loops
++ relationships + authority
++ observed/inferred/unknown separation
++ exact source descent
++ current frame
++ bounded context capsule
++ checkpoint/replay
++ session invalidation/rebuild
++ wake continuity
+~~~
+
+and explicitly:
+
+~~~text
+!= raw transcript database
+!= KV-cache identity
+!= automatic Memory promotion
+!= hidden reasoning
+~~~
+
+Its planned VexLife adapter says existing owners should remain byte-identical unless a real source gap is
+proven, including:
+
+~~~text
+score-context-continuity.mjs
+intent-workgraph.mjs
+context-lease.mjs
+continuity-evolution-router.mjs
+conversation.mjs
+state.mjs
+daily-memory-dream.mjs
+living-journal-memory-archive.mjs
+runtime-recovery.mjs
+~~~
+
+This is strong evidence that the older architecture intended **composition over accepted owners**, not a
+replacement Memory database.
+
+---
+
+## VexArchitecture live-demonstration consequence
+
+Current public VexArchitecture live-demo source says the teaching method is:
+
+> Do not memorize the examples. Follow the scopes and relationships.
+
+Every traversal step names:
+
+~~~text
+container
+member
+what kind of thing it is / role
+why traversal arrived there
+exact next edge
+~~~
+
+and exact linked source owns byte-level implementation truth.
+
+It also repeatedly follows the **same live object** through construction, execution and consumers rather than
+recreating equivalent-looking objects in each layer.
+
+Memory Depth Exploration should use the same implementation discipline:
+
+~~~text
+Question
+-> which current container/owner are we in?
+-> which exact member/ref is implicated?
+-> what relationship lawfully leads outward?
+-> which owner owns the next node?
+-> what exact next edge is worth traversing?
+-> when exact source is needed, descend there
+~~~
+
+Do not implement a generic "memory graph node" that erases the rightful container/owner distinctions.
+
+---
+
+## Revised project sequence
+
+The current project should now proceed:
+
+~~~text
+0. PREDECESSOR MEMORY/JOURNAL LINEAGE RECOVERY        READY
+   #225 / #239 / #236 / #311 / #328 / #329
+   #397 / #416 / #1007
+   VexLife #130 / #151
+   VexArchitecture traversal discipline
+   -> classify REUSE / PORT / REFINE / HOLD
+
+1. HYDRATION CONTRACT
+   consume predecessor revisit/minimal-packet/currentness/source-descent lessons
+
+2. RESOLVER NEIGHBORHOOD
+   map current VexLife-Prod owners to predecessor typed edges
+
+3. BULK EXPANSION ENGINE
+   implement only the remaining mechanical gap
+
+4. FRESH-BOOT INTEGRATION
+
+5. COLD-START / ROLLOVER PROOF
+
+6. MEASUREMENT
+~~~
+
+The first implementation question is therefore no longer:
+
+> "How should we invent hydrate?"
+
+It is:
+
+> **"Which already-earned Vex Memory / Living Journal / Context Revisitation relationships still apply to
+> current VexLife-Prod, which current owner now carries each one, and what genuinely remains missing after
+> that port/refinement map?"**
+
