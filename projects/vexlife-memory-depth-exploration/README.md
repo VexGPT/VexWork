@@ -10,6 +10,48 @@ The discovery questions, three-day examples, retrieval-miss cases, and current s
 
 That record is implementation context for the future worker, not a substitute for current VexLife-Prod source. Continue appending materially new research there while this Project is in discovery rather than reconstructing the edges from chat history.
 
+
+## Predecessor architecture is now the first edge
+
+Research after Project formation found that this outcome has an existing architecture lineage rather than a blank starting point.
+
+Primary predecessors now include:
+
+~~~text
+Vex Memory root                         Vextreme-SDK #225
+Daily closure / Dream                   Vextreme-SDK #239
+Institutional Query                     Vextreme-SDK #236
+Artifact Continuation                   Vextreme-SDK #311
+Lesson Continuity / Lattice Family      Vextreme-SDK #328 / #329
+Context Revisitation                    Vextreme-SDK #397
+Daily Record Chain                      Vextreme-SDK #416
+Continuity Stream V1                    Vextreme-SDK #1007
+
+Living Journal real Memory projection   VexLife #130
+Living Journal committed-day Archive    VexLife #151
+~~~
+
+Current VexLife-Prod also already declares:
+
+~~~text
+Archives = "the person's own records, starting with their dated timeline"
+ArchivesTimeline = dated archive navigation
+~~~
+
+while canonical Conversation reset/archive remains intentionally unowned/held in the current web workspace.
+
+Therefore the immediate Work is not to invent a generic retrieval system. It is to map the predecessor
+relationships onto current VexLife-Prod owners and classify each as:
+
+~~~text
+REUSE
+PORT
+REFINE
+HOLD
+~~~
+
+Only then should the new Hydration contract and resolver neighborhood become implementation-ready.
+
 ## Human outcome
 
 A fresh Vex should be able to receive a continuity-dependent human question and recover the relevant older
@@ -509,11 +551,14 @@ returned context bounded.
 work.vexlife.memory-depth-exploration.outcome
   PLAN_VALIDATED
 
-work.vexlife.memory-depth-exploration.hydration-contract
+work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage
   READY
 
+work.vexlife.memory-depth-exploration.hydration-contract
+  WAITING_DEPENDENCIES
+
 work.vexlife.memory-depth-exploration.resolver-neighborhood
-  READY
+  WAITING_DEPENDENCIES
 
 work.vexlife.memory-depth-exploration.bulk-expansion-engine
   WAITING_DEPENDENCIES
@@ -531,8 +576,9 @@ work.vexlife.memory-depth-exploration.pre-inference-auto-hydration
   CAPTURED / POTENTIAL
 ~~~
 
-The two READY items are the smallest useful first edge because implementation should not start by writing a
-recursive crawler before the request/result truth boundary and resolvable owner relationships are explicit.
+The predecessor-lineage map is the sole first READY edge. The request/result contract and resolver neighborhood
+must consume that map so implementation does not rebuild already-earned Vex Memory / Living Journal / Context
+Revisitation relationships under new names.
 
 ## Potentials intentionally not required for the first feature
 
