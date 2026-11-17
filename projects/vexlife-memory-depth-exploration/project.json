@@ -50,7 +50,10 @@
     "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/processes/resolve-event-driven-work-awareness.json",
     "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/registries/event-driven-work-awareness-registry.json",
     "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/processes/execute-provider-independent-repository-task.json",
-    "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/protocol-atlas.json"
+    "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/protocol-atlas.json",
+    "github.issue.vextreme-sdk.241",
+    "github.issue.vextreme-sdk.580",
+    "github.issue.vextreme-sdk.360"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
