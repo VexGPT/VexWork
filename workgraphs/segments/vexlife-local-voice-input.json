@@ -72,18 +72,19 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T13:00:22.000Z",
-      "updatedAt": "2026-11-17T13:00:22.000Z",
+      "updatedAt": "2026-11-17T13:12:00.000Z",
       "workRef": "work.vexlife.local-voice-input.provider-qualification",
       "label": "Select and qualify the local ASR provider",
       "purpose": "Evaluate runnable local speech-to-text candidates on the current Apple-silicon VexLife product path and select only after evidence covers local-only custody, license/distribution viability, model size/acquisition, dependency/runtime footprint, supported audio format, English baseline accuracy, usable latency, partial/final transcript behavior, Stop/cancellation, language expansion, failure observability and version/currentness qualification.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "sourceRefs": [
         "projects/vexlife-local-voice-input/README.md",
         "github.pull.vexlife-prod.231",
-        "project.vex.security-assurance"
+        "project.vex.security-assurance",
+        "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md"
       ]
     },
     {
@@ -231,7 +232,25 @@
       ]
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.local-voice-input.provider-qualification.running.a001-research-grounded",
+      "workRef": "work.vexlife.local-voice-input.provider-qualification",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Current upstream source review narrowed the first runnable comparison to sherpa-onnx versus whisper.cpp: sherpa-onnx pressures direct Kotlin/JVM streaming integration and cross-platform packaging; whisper.cpp pressures a minimal native Whisper runtime with strong Apple acceleration and broad platform support. MLX Whisper and WhisperKit remain bounded alternatives. Provider selection is still held pending exact Mac qualification and model-license/provenance evidence.",
+      "actorRef": "actor.chatgpt.vexlife-local-voice-input",
+      "sourceRefs": [
+        "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md",
+        "github.repository.k2-fsa.sherpa-onnx",
+        "github.repository.ggml-org.whisper.cpp",
+        "github.repository.ml-explore.mlx-examples",
+        "github.repository.argmaxinc.argmax-oss-swift"
+      ],
+      "createdAt": "2026-11-17T13:12:00.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.vexlife.local-voice-input",
     "projects/vexlife-local-voice-input/README.md",
@@ -239,7 +258,8 @@
     "git.commit.vexlife-prod.565a3b9ad3cd9c65ba00d7117350dea7e1d76a81",
     "git.commit.vexlife-prod.9b00a018c3745b9f332f83983eb4d729e4019829",
     "human.witness.vexlife.local-voice-input.brave-a002.20261117",
-    "project.vex.security-assurance"
+    "project.vex.security-assurance",
+    "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md"
   ],
   "formedAt": "2026-11-17T13:00:22.000Z"
 }
