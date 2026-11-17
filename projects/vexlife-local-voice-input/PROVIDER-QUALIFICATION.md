@@ -254,6 +254,82 @@ WhisperKit
 
 No provider is selected yet.
 
+## Customizable provider boundary
+
+The existence of several legitimate local ASR realizations is now concrete pressure for one narrow,
+provider-neutral interface/configuration boundary. It does **not** justify moving provider identity
+into VoiceInput semantic State.
+
+~~~text
+VexLifeVoiceInputFamily
+  Start / Stop / semantic State / transcript meaning
+  DOES NOT know sherpa / whisper.cpp / MLX / WhisperKit
+
+Settings / configuration owner
+  selectedProviderRef
+  selectedModelRefOrNull
+  human-visible qualified choices
+
+local-ASR realization boundary
+  current qualified provider catalog
+  current runtime/model capability
+  selected provider/model
+  one session contract
+
+provider implementation
+  sherpa-onnx OR whisper.cpp OR another qualified provider
+  owns physical ASR mechanics only
+~~~
+
+The minimal provider contract should be pressured toward responsibilities equivalent to:
+
+~~~text
+provider identity / version
+model identity / version
+capability observation
+open transcription session
+accept bounded PCM samples
+observe partial/final transcript
+Stop / cancellation
+close / release
+failure/currentness observation
+~~~
+
+The exact language/type names are implementation-owned and must be earned in VexLife-Prod source.
+Do not create a generic framework or manager simply because this document can list those operations.
+
+Human configurability should route through the rightful Product Settings owner:
+
+~~~text
+human selects qualified ASR provider/model
+-> Settings semantic Control
+-> persisted Product configuration
+-> realization resolves that provider for the next VoiceInput session
+~~~
+
+VoiceInput remains provider-agnostic:
+
+~~~text
+BeginLocalDictation(language)
+-> selected qualified local-ASR realization
+-> transcript observation
+-> same VoiceInput Family
+~~~
+
+A future `AUTO` selection policy is not assumed by this Project. If earned, it must itself have
+explicit deterministic selection/currentness rules rather than silently choosing whichever provider
+happens to load.
+
+VexLogger may record stable provider/model/version refs and timing/failure facts. It must not record
+raw audio or transcript content merely because multiple providers exist.
+
+This configuration pressure is tracked explicitly as:
+
+~~~text
+work.vexlife.local-voice-input.provider-selection-contract
+WAITING_DEPENDENCIES on provider qualification
+~~~
+
 ## A001 qualification experiment
 
 The first host experiment should compare **sherpa-onnx and whisper.cpp** before Product source
