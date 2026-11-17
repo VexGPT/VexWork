@@ -260,4 +260,38 @@ test('repository-stage former rebinds current Relay contract and forms only read
   }
 });
 
+
+test('current-state placement scenario changes reply language mid-run and requires placement evidence', () => {
+  const scenario = JSON.parse(
+    fs.readFileSync(path.join(HARNESS, 'scenarios/current-state-placement-v1.json'), 'utf8'),
+  );
+  const configuration = scenario.sets.find((set) => set.kind === 'CONFIGURATION_SWAP');
+  assert.ok(configuration);
+  assert.deepEqual(
+    configuration.turns
+      .flatMap((turn) => turn.beforeTurnControls ?? [])
+      .map((control) => [control.controlClass, control.key, control.value]),
+    [
+      ['PERSON_SETTING_UPDATE', 'replyLanguage', 'zh'],
+      ['PERSON_SETTING_UPDATE', 'replyLanguage', 'en'],
+    ],
+  );
+
+  const resultSchema = JSON.parse(
+    fs.readFileSync(path.join(HARNESS, 'result.schema.json'), 'utf8'),
+  );
+  const promptProperties =
+    resultSchema.properties.turns.items.properties.prompt.properties;
+  assert.ok(promptProperties.contextComponents);
+  assert.ok(
+    resultSchema.properties.summary.properties.mutableCurrentBeforeCacheableHistory,
+  );
+  assert.ok(
+    resultSchema.properties.summary.properties.stableHistoryPrefixPreservedAcrossConfigurationChange,
+  );
+  assert.ok(
+    resultSchema.properties.summary.properties.latestConfigurationObserved,
+  );
+});
+
 // [VXG RealForever][VEXWORK][CONTINUITY-PRESSURE][HARNESS-INTERFACE]
