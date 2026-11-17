@@ -919,3 +919,379 @@ a continuity-dependent human question with fewer model/tool orchestration rounds
 currentness, provenance or boundedness**.
 
 <!-- [VXG RealForever][VEXWORK][MEMORY-DEPTH-EXPLORATION][RESEARCH-TRANSCRIPT][20261116] -->
+
+
+---
+
+## Discovery 09 — Vextreme-SDK already provides a rich traversal patient-zero
+
+### Human question
+
+> "but like do we currently have any similar structures in like Vextreme-SDK for the traversal of context for like chatgpt instance to look through as like examples? Like how traversable is it if you just grabbed any issue and see what it contained"
+
+### Current source observation
+
+Yes. Vextreme-SDK already contains a large amount of **semi-structured graph-shaped continuity** that can serve
+as a realistic patient-zero corpus for Memory Depth Exploration.
+
+The important distinction is:
+
+~~~text
+SDK HAS MANY TRAVERSABLE RELATIONSHIPS
+!=
+SDK HAS ONE GENERIC CONTEXT-TRAVERSAL ENGINE
+~~~
+
+Today the graph is distributed across GitHub issue/PR/comment text plus machine-checked continuity source.
+
+### Example: issue #1932 as a graph entry
+
+Starting from only:
+
+~~~text
+github.issue.vextreme-sdk.1932
+[Independent Assurance] VexLife Vision Security active-sharing witness PR1930 corrected head
+~~~
+
+the issue body directly exposes:
+
+~~~text
+candidatePr
+  -> github.pull.vextreme-sdk.1930
+
+priorAssurance
+  -> github.issue.vextreme-sdk.1931
+
+owner receipt
+  -> github.issue.vextreme-sdk.232.comment.6716395353
+
+PR receipt
+  -> github.pull.vextreme-sdk.1930.comment.6716395011
+
+exact candidate coordinates
+  -> base SHA
+  -> head SHA
+  -> tree SHA
+
+exact source membrane
+  -> 4 source/test paths
+
+next stage
+  -> FORMAL_REVIEW_EXACT_HEAD
+
+dependent held owner
+  -> #243
+~~~
+
+Its single return comment then adds:
+
+~~~text
+disposition=CLEAR_ON_EXACT_HEAD
+reviewedHead=<exact head>
+reviewedTree=<exact tree>
+next=FORMAL_REVIEW_EXACT_HEAD
+~~~
+
+Following only one of those edges to PR #1930 exposes another neighborhood:
+
+~~~text
+physicalPredecessor
+  -> github.issue.vextreme-sdk.1923.comment.6715770305
+
+sourcePlacement
+  -> github.issue.vextreme-sdk.232.comment.6715779474
+
+refinedSdkReadyPlacement
+  -> github.issue.vextreme-sdk.232.comment.6715830794
+
+dependsOn
+  -> github.issue.vextreme-sdk.232
+  -> github.issue.vextreme-sdk.1923
+  -> github.pull.vextreme-sdk.1928
+
+workRef
+instanceRef
+branch
+exact paths
+implementationAuthority=true
+reviewAuthority=false
+mergeAuthority=false
+~~~
+
+Therefore one apparently narrow review issue can produce a multi-hop exact context neighborhood without fuzzy
+semantic search after the first node is known.
+
+### What makes these SDK nodes unusually traversable
+
+Common useful coordinates include:
+
+~~~text
+github.issue.*
+github.issue.*.comment.*
+github.pull.*
+github.pull.*.comment.*
+workRef
+claimRef
+instanceRef
+owner / parent / predecessor / successor
+base / head / tree
+sourceRefs[]
+dependsOn[]
+exact source paths
+current disposition
+next owner / next stage
+terminal receipt
+~~~
+
+These are already close to typed edges even though many live inside prose/code blocks rather than one universal
+schema.
+
+### Current Frontier as a compact graph projection
+
+Root Current Frontier issue #1574 explicitly behaves like a bounded current graph projection.
+
+It contains:
+
+~~~text
+predecessorProviderFrontier
+successorEntryRef
+canonical orientation anchors
+current lane owners
+terminal receipts
+active workers
+PRs / branches / heads / trees
+bottleneck refs
+protected decision refs
+open fork refs
+unknown refs
+~~~
+
+It also gives an explicit fresh-entry routing rule:
+
+~~~text
+read THIS_ISSUE
+-> predecessor close receipt
+-> exact current-entry/state anchors only when needed
+-> exact implicated lane owner receipt
+-> fresh live delta
+~~~
+
+That is conceptually very close to the desired hydration philosophy:
+
+~~~text
+CURRENT_POINTER > HISTORICAL_NARRATION
+small implicated neighborhood > bulk replay
+~~~
+
+### Machine-checked graph-like structures also exist
+
+The SDK is not relying entirely on hand-written issue prose.
+
+Examples observed on current main include:
+
+#### Operations current-entry resolution
+
+`lib/continuity-operations/operations-current-entry.js` validates and resolves receipts carrying:
+
+~~~text
+entryRef
+projectRef
+rootRef
+acceptedMainRef
+acceptedCheckpointRef
+predecessorRootRefOrNull
+supersedesEntryRefOrNull
+sourceRefs[]
+~~~
+
+It checks:
+
+~~~text
+superseded target exists
+predecessor root matches the prior receipt
+acceptedAt is monotonic
+no succession cycle exists
+exactly one current leaf exists
+observed main/checkpoint still match accepted currentness
+~~~
+
+This is already deterministic graph/currentness reduction rather than semantic search.
+
+#### Lesson Resonance contextual fragments
+
+`docs/private-continuity/lesson-resonance/INDEX.md` defines compact comment-fragment navigation with:
+
+~~~text
+formationRef
+fragmentRef
+fragmentSequence / fragmentCount
+partArtifactRef
+partPathRef
+predecessorFragmentRef
+successorFragmentRef
+sharedOriginContextRef
+coveredSectionRefs[]
+carriedQuestionRefs[]
+carriedRelationshipRefs[]
+canonicalSourceRef
+contentHashOrHeadRef
+~~~
+
+and requires:
+
+~~~text
+predecessor and successor fragment refs are reciprocal
+cross-fragment relationships are mirrored in the index or machine manifest
+connector truncation -> direct source retrieval, not assumption
+~~~
+
+This is especially relevant to Memory Depth Exploration because it demonstrates an existing SDK pattern for
+**small resumable fragments with explicit graph edges back to canonical source**.
+
+#### VexRelay current source
+
+The VexRelay private-continuity source also uses an explicit machine read order and current-contract pointer:
+
+~~~text
+fresh formation
+-> current contract
+-> classify stage/effect
+-> lock route
+-> typed adapter
+~~~
+
+Again, this is deterministic source navigation around a current pointer rather than loading all historical
+context.
+
+### Important counterexample: issue #500
+
+A random SDK issue is **not automatically self-contained or equally traversable**.
+
+Issue #500's body is nearly empty:
+
+~~~text
+Main-integrity incident ledger.
+~~~
+
+but it currently has hundreds of comments.
+
+The comments themselves contain structured incident/event records such as:
+
+~~~text
+eventHead
+checkpointHead
+classification
+reason
+responsibleThreadRef
+responsibleLedgerRef
+responsibleInstanceRef
+candidatePrRef
+coderLedgerRef
+coderReturnRef
+nextOwner
+rootLedgerRef
+recoveryClass
+expectedRecoveryParent
+~~~
+
+Therefore:
+
+~~~text
+ISSUE_BODY != COMPLETE_CONTEXT_NODE
+ISSUE != ONE SEMANTIC RECORD
+COMMENT_STREAM MAY CONTAIN MANY GRAPH NODES
+~~~
+
+A traversal/hydration adapter for GitHub provider history should therefore treat an issue as a **container /
+addressable provider surface** whose body, comments, PR metadata and linked source may each expose distinct
+nodes/edges.
+
+### Implication for the bulk hydrator
+
+Vextreme-SDK is a strong candidate fixture because it contains both:
+
+1. **high-quality explicit edges** that should be followed exactly; and
+2. **messy provider containers** where the relevant context is distributed across many comments and historical
+   revisions.
+
+A first SDK-aware traversal experiment could begin from a known issue and ask the host to construct a bounded
+neighborhood by parsing exact ref-shaped coordinates before using semantic retrieval.
+
+Example:
+
+~~~text
+start = github.issue.vextreme-sdk.1932
+
+depth 0
+  issue 1932
+
+depth 1 exact refs
+  PR 1930
+  issue 1931
+  owner issue/comment 232
+  PR receipt comment
+  #243 held dependency
+
+depth 2
+  PR1930 dependsOn 232 / 1923 / PR1928
+  source-placement comments
+  exact 4 source paths
+  prior physical event
+
+depth 3 if question requires
+  Process Factory owner/source
+  prior correction finding
+  exact source implementation/test
+~~~
+
+If the human asks:
+
+> Why was this Security witness corrected before it cleared?
+
+the traversal could prioritize:
+
+~~~text
+1932
+-> priorAssurance 1931
+-> old reviewed head
+-> CHANGES_REQUIRED finding / correction
+-> corrected PR1930 source
+-> CLEAR comment
+~~~
+
+If the human asks:
+
+> What owns the receipt/Safety truth?
+
+the same seed can take another path:
+
+~~~text
+1932
+-> owner issue 232
+-> Process Factory validation relationship
+-> exact corrected source/test
+~~~
+
+The graph therefore supports **question-guided traversal over the same starting node**.
+
+### Research consequence
+
+Memory Depth Exploration should consider Vextreme-SDK as a realistic regression/evaluation corpus, not merely
+synthetic three-day fixtures.
+
+Useful evaluation questions:
+
+~~~text
+given one SDK issue, can hydration recover the right predecessor/current/successor neighborhood?
+can it distinguish provider container from semantic record?
+can exact refs dominate fuzzy retrieval when available?
+can it avoid loading a 227-comment ledger when only one incident chain is relevant?
+can it identify current/superseded review evidence by exact head/tree?
+can it stop at canonical source rather than recursively summarizing provider prose?
+~~~
+
+This corpus could prove the principle:
+
+> **semantic retrieval locates the neighborhood; explicit SDK refs and machine-checked lineage should do most
+> of the actual depth traversal once exact coordinates exist.**
+
