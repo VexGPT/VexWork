@@ -5406,3 +5406,197 @@ For later Dream Sync / adapter cultivation, architecture uses candidate/evidence
 ### Compact principle
 
 > Today, Product Dream is a deterministic Memory transaction, not Vex dreaming through its own thoughts. The richer Dream architecture was intended to add bounded reflection and optional cultivation later, but that layer is separate and not yet proven live. Conversation-round count alone does not activate either one.
+
+---
+
+## Discovery 20 — Stable implementation checkpoint + blind-parallel convergence protocol
+
+### Human checkpoint
+
+Victor accepted the current research state as the stable checkpoint for independent implementation attempts.
+
+The next phase should not have one implementation teach the other before both have independently completed enough work to expose their own architectural judgment.
+
+### Shared baseline
+
+Both implementations may consume the same shared sources:
+
+~~~text
+VexWork PR #308
+  Memory Depth Exploration research / project / workgraph
+
+VexLife-Prod PR #208
+  continuity workbench / three-zone projection
+
+VexArchitecture Builder Field Guide
+  https://vgong24.github.io/Vextreme/pages/vexarchitecture-first-stable-body.html
+
+VexArchitecture Live Demonstration
+  https://vgong24.github.io/Vextreme/pages/vexarchitecture-live-demonstration.html
+
+plus exact predecessor/current sources referenced by #308
+~~~
+
+### VexArchitecture is the design grammar, not decoration
+
+Implementation should keep asking:
+
+~~~text
+which container are we in?
+which member are we touching?
+what kind of thing is it?
+what question does this owner answer?
+why did traversal arrive here?
+what exact next edge follows?
+what does this object NOT own?
+how does the circuit return to the same rightful semantic owner?
+~~~
+
+Preserve the core distinctions:
+
+~~~text
+Family        semantic/product meaning
+Execution     active custody / realization
+Partner       independently-owned outside participant grammar when earned
+Store         retained outside truth
+Service       sustained platform realization where earned; not semantic owner
+Widget/UI     projection/action membrane; not semantic owner
+Relay         convergence/transport relationship; not source truth
+~~~
+
+Do not create generic VexService / universal current / one giant Vex state merely because several systems need sustained lifetime.
+
+### Blind-parallel rule
+
+Claude and OpenAI should implement independently from the same checkpoint.
+
+Before independent completion:
+
+~~~text
+CLAUDE MAY READ
+  shared baseline sources
+  predecessor/current sources named by shared baseline
+  repository culture/currentness/coordination sources
+
+OPENAI MAY READ
+  same shared baseline sources
+  same predecessor/current sources
+
+CLAUDE MUST NOT READ
+  OpenAI implementation branch / PR / review notes
+
+OPENAI MUST NOT READ
+  Claude implementation branch / PR / review notes
+~~~
+
+The point is not secrecy for its own sake. It creates two independent architectural witnesses from the same source pressure.
+
+### Branching
+
+#308 is VexWork navigation/research source, not VexLife-Prod implementation authority.
+
+Recommended shape:
+
+~~~text
+VexWork #308 exact checkpoint
+  -> Claude child research/decision branch
+  -> OpenAI child research/decision branch
+
+then each worker independently re-grounds VexLife-Prod
+  -> reads current AGENTS / CULTURE / foundation route
+  -> determines rightful product integration base
+  -> creates separate target source branch / PR
+~~~
+
+Do not place Kotlin/Product implementation in VexWork.
+
+At this checkpoint, #208 is the focal VexLife-Prod continuity workbench and should be treated as the shared design/proof surface, but each worker must re-verify current target repository truth before source mutation.
+
+### Independent completion receipt
+
+Before cross-reading the other implementation, each side should produce a bounded completion record containing:
+
+~~~text
+human outcome understood
+owner map
+REUSE / PORT / REFINE / HOLD predecessor map
+exact source/base/head/tree
+changed paths
+new/changed contracts
+tests / lived proofs
+full VexArchitecture forward circuit trace
+full VexArchitecture backward causal trace
+performance / token / retrieval measurements where applicable
+known held edges / unknowns
+why each new abstraction was necessary
+what was deliberately NOT added
+~~~
+
+Suggested marker:
+
+~~~text
+INDEPENDENT_IMPLEMENTATION_COMPLETE_FOR_CONVERGENCE
+~~~
+
+This marker means ready for cross-review, not merge-ready by implication.
+
+### Convergence phase
+
+Only after both independent completion markers:
+
+~~~text
+Claude reads OpenAI implementation
+OpenAI reads Claude implementation
+        |
+        v
+compare semantic relationships, not coding style
+        |
+        +-> truths both independently discovered
+        +-> owner/architecture disagreements
+        +-> stronger proof on either side
+        +-> unnecessary abstractions
+        +-> missing edge/circuit coverage
+        +-> performance differences
+        +-> current-source compatibility
+        |
+        v
+each side returns a convergence review
+        |
+        v
+refine independently or form one reconciled candidate
+        |
+        v
+repeat cross-review until material disagreements close or remain explicitly held
+~~~
+
+Convergence is not line-by-line averaging and not majority vote. Prefer the relationship with the stronger rightful owner, smaller necessary structure and better matching proof.
+
+### Implementation target
+
+The implementation should aim to make the lived Vex continuity world coherent end-to-end, not merely add a hydrate function.
+
+At minimum it must reconcile:
+
+~~~text
+per-turn exact Conversation + Turn Context
+bounded semantic/navigation projection
+active/open/paused/resolved continuity
+dynamic exact overlap tail (minimum target 3 when admissible)
+checkpoint/rebase semantics
+historical hydration with batched multi-query traversal
+memoization / duplicate convergence
+bounded return / explicit frontier
+structural grouping/currentness
+relationship/correction lesson retrieval
+Capability Atlas + consideration/salience
+background cognition / notification budget boundaries
+deterministic G03 Dream vs generative reflection
+full scoped causal circuit tracing
+#208 provider/cache topology
+~~~
+
+Do not attempt to realize every parked future feature in one PR. Implement the smallest coherent product slice that proves the architecture and leaves explicit successor edges.
+
+### Stable checkpoint law
+
+> The goal is not for Claude and OpenAI to produce the same code from imitation. The goal is for two independent implementations to start from the same accepted source relationships, finish their own causal story, then use disagreement as evidence about where the architecture is still ambiguous. Convergence begins after independent completion.
