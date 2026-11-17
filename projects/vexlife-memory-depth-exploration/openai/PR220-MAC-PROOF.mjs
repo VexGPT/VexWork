@@ -14,8 +14,8 @@ const CONTRACT_REF = 'source.vexrelay.current-contract/v1';
 const PRODUCT_REPOSITORY = 'VexGPT/VexLife-Prod';
 const PRODUCT_REPOSITORY_REF = 'vexlife-prod';
 const BASE = '655e7c78cefba06a5e87afad285bb25a08632f05';
-const HEAD = 'fa064544fa3d5401852b960c4d6b46a9cc3ea661';
-const TREE = 'b8a736a97071dffb17efb3cc42500e02e8ba316f';
+const HEAD = '3651b961ce19192473b9a7c7d240a2b2b83e8a2d';
+const TREE = '8060c7226ea5ba3b5767969cf1d3c0c43948f79f';
 const BRANCH = 'VXG-111626-openai-memory-depth-hydration-a001';
 
 const CHANGED_PATHS = [
