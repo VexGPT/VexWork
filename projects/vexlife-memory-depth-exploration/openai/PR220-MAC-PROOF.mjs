@@ -295,7 +295,32 @@ try {
     proofCommands: [
       {
         command: BASH,
-        args: ['./gradlew', '--offline', '--no-daemon', 'jvmTest', 'checkVexLifeStrings'],
+        args: [
+          './gradlew',
+          '-Dorg.gradle.jvmargs=-Xmx4g',
+          '--offline',
+          '--no-daemon',
+          '--max-workers=1',
+          'compileKotlinJvm',
+        ],
+        predicateClass: 'SOURCE_OWNER_BEHAVIOR',
+        predicateRef: 'proof.vexlife-prod.memory-depth.openai.compile-jvm',
+        proofClass: 'TEST',
+        candidateEvidence: true,
+        acceptedExitCodes: [0],
+        timeoutMs: 1500000,
+      },
+      {
+        command: BASH,
+        args: [
+          './gradlew',
+          '-Dorg.gradle.jvmargs=-Xmx4g',
+          '--offline',
+          '--no-daemon',
+          '--max-workers=1',
+          'jvmTest',
+          'checkVexLifeStrings',
+        ],
         predicateClass: 'SOURCE_OWNER_BEHAVIOR',
         predicateRef: 'proof.vexlife-prod.memory-depth.openai.jvm-test-and-strings',
         proofClass: 'TEST',
