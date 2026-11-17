@@ -20,7 +20,11 @@
     "stress test README",
     "memory test README",
     "pressure harness",
-    "continuity harness"
+    "continuity harness",
+    "language swap test",
+    "settings placement test",
+    "configuration cache test",
+    "current state placement test"
   ],
   "rootEntry": "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
   "interfaceSource": "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
@@ -36,5 +40,9 @@
   ],
   "currentRelayContractRef": "source.vexrelay.current-contract/v1",
   "currentRelayTaskSchema": "vex.relay.task/v2",
-  "truthOwner": false
+  "truthOwner": false,
+  "scenarios": {
+    "depthContinuity": "projects/vexlife-memory-depth-exploration/pressure-harness/scenarios/depth-continuity-v1.json",
+    "currentStatePlacement": "projects/vexlife-memory-depth-exploration/pressure-harness/scenarios/current-state-placement-v1.json"
+  }
 }
