@@ -56,7 +56,8 @@
               "FORMATION",
               "PRESSURE",
               "PROBE",
-              "LESSON_TRANSFER"
+              "LESSON_TRANSFER",
+              "CONFIGURATION_SWAP"
             ]
           },
           "turns": {
@@ -103,6 +104,34 @@
                     "type": "string"
                   },
                   "uniqueItems": true
+                },
+                "beforeTurnControls": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "controlClass",
+                      "key",
+                      "value"
+                    ],
+                    "properties": {
+                      "controlClass": {
+                        "enum": [
+                          "PERSON_SETTING_UPDATE"
+                        ]
+                      },
+                      "key": {
+                        "enum": [
+                          "replyLanguage"
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
                 }
               }
             }
