@@ -375,6 +375,92 @@ The experiment must not:
 - claim a model license until its exact artifact/source license is verified;
 - select a Product provider solely because it won one synthetic fixture.
 
+
+
+## A001 sherpa host result — runtime passed; 20M model not selected
+
+Exact lived RETURN:
+
+~~~text
+RETURN sha256
+adf278c5af4cb43678edb17b6d7b4f8cc3ea2edd6d8de04c45edc99d6b5d3b1e
+
+provider source
+aa273e8029af4e0aabac7d7455a177c5b493aa34
+
+provider release
+v2.0.1
+
+model
+sherpa-onnx-streaming-zipformer-en-20M-2023-02-17
+~~~
+
+Observed on Victor's Apple-silicon Mac:
+
+~~~text
+audio duration      6.625 s
+model/session init  825 ms
+first partial       38 ms
+inference           120 ms
+real-time factor    0.0181
+partial updates     13
+peak RSS            337,395,712 bytes
+~~~
+
+This proves the released JVM + macOS ARM64 native path is real and extremely faster than realtime on
+the deterministic fixture.
+
+The reference sentence is:
+
+~~~text
+AFTER EARLY NIGHTFALL THE YELLOW LAMPS WOULD LIGHT UP HERE AND THERE
+THE SQUALID QUARTER OF THE BROTHELS
+~~~
+
+A001 returned:
+
+~~~text
+THE YELLOW LAMPS WOULD LIGHT UP HERE AND THERE
+THE SQUALID QUARTER OF THE BRAFFLELS
+~~~
+
+For this one fixture only:
+
+~~~text
+3 deletions
+1 substitution
+4 / 18 reference-word errors ~= 22.2%
+~~~
+
+This is not a corpus WER claim. It is enough to withhold Product-default selection of this 20M
+streaming model.
+
+The exact host evidence also corrected one proof assumption:
+
+~~~text
+runner requested java_home -v 21
+actual retained JVM = Temurin 17.0.20.1
+~~~
+
+Therefore A001 proves the provider under the actual Java 17 runtime used by the run. Exact
+VexLife-private-image JDK-21 compatibility remains a later Product integration predicate.
+
+Current disposition:
+
+~~~text
+sherpa JVM/native integration seam    PASS
+streaming partials                    PASS
+speed                                 EXCELLENT
+20M model dictation quality           NOT SELECTED
+provider qualification                RUNNING
+~~~
+
+Next compare a Whisper runtime/model on the same fixture, then decide whether to:
+- prefer a Whisper-family provider;
+- pressure a stronger sherpa streaming model;
+- or retain multiple qualified choices behind the provider-selection contract.
+
+
 ## Selection threshold
 
 Promote one candidate only when it is clear which integration burden is smaller **for the Product**,
