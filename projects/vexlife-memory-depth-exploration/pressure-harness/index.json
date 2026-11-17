@@ -44,5 +44,6 @@
   "scenarios": {
     "depthContinuity": "projects/vexlife-memory-depth-exploration/pressure-harness/scenarios/depth-continuity-v1.json",
     "currentStatePlacement": "projects/vexlife-memory-depth-exploration/pressure-harness/scenarios/current-state-placement-v1.json"
-  }
+  },
+  "currentStateEpochConsideration": "projects/vexlife-memory-depth-exploration/pressure-harness/CURRENT-STATE-EPOCH-CONSIDERATION.md"
 }
