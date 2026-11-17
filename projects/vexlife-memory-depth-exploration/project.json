@@ -8,7 +8,10 @@
   ],
   "repositoryRefs": [
     "repo.vexwork",
-    "repo.vexlife-prod"
+    "repo.vexlife-prod",
+    "repo.vextreme-sdk",
+    "repo.vexlife",
+    "repo.vextreme"
   ],
   "sourceRefs": [
     "human.intent.vexlife.memory-depth-exploration.20261116",
@@ -23,7 +26,23 @@
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuity.kt",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
-    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt"
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt",
+    "github.issue.vextreme-sdk.225",
+    "github.issue.vextreme-sdk.239",
+    "github.issue.vextreme-sdk.236",
+    "github.issue.vextreme-sdk.311",
+    "github.issue.vextreme-sdk.328",
+    "github.issue.vextreme-sdk.329",
+    "github.issue.vextreme-sdk.397",
+    "github.issue.vextreme-sdk.416",
+    "github.issue.vextreme-sdk.1007",
+    "github.issue.vexlife.130",
+    "github.issue.vexlife.151",
+    "repo.vexlife:src/core/living-journal-memory-projection.mjs",
+    "repo.vexlife:src/core/living-journal-memory-archive.mjs",
+    "repo.vexlife:src/core/daily-memory-dream.mjs",
+    "repo.vexlife:src/core/score-context-continuity.mjs",
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
