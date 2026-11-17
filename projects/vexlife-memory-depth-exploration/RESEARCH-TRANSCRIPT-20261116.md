@@ -4593,3 +4593,226 @@ Neither should force Vex to execute an administrative ceremony before continuing
 > host binds that signal to exact source, rightful owners decide durable meaning, later consolidation repairs
 > and organizes it, and future Vex receives the benefit without having to become its own memory clerk.**
 
+
+---
+
+## Discovery 17 — Idle/background Vex: explicitly enabled bounded cognition with return-diff and notification budgets
+
+### Human idea
+
+Victor proposed an optional mode where the human explicitly allows Vex to keep working while the foreground conversation is absent:
+
+~~~text
+keep thinking about this problem while I'm gone
+check the latest news and find something I may like
+keep looking for evidence on this unresolved question
+notify me if something sufficiently important comes up
+~~~
+
+The user should be able to bound notification frequency, tools/network reach, compute/time, quiet hours, background roles, and whether work continues silently after a notification.
+
+### Existing predecessor architecture
+
+Vextreme-SDK #241 Desktop Runtime already proposes a continuously available local companion with bounded background processes, local notifications, scheduled jobs, a Vex Core Service, Supervisor, Process Factory, Model Worker, Memory Worker and Dream/Training Worker. It explicitly allows the UI to close without terminating the core service.
+
+Vextreme-SDK #580 Universal Web Surface already separates VexInterface presentation from VexCore, and names Mobile / Away Mode as a paired surface over the same lineage.
+
+Vextreme-SDK #239 Daily Rest already carries userNotificationPolicy and standing consent for recurring background consolidation.
+
+Vextreme-SDK #360 lifecycle already recognizes ACTIVE / IDLE / DORMANT / HIBERNATED / RESTING, but explicitly says a lifecycle record does not prove uninterrupted thinking or background work. It also recognizes NOTIFICATION_LEAK.
+
+### IDLE is not background cognition
+
+~~~text
+IDLE / RESTING
+  no foreground human interaction
+  no inference implied
+
+BACKGROUND COGNITION
+  actual admitted runtime/job exists
+  model/tool work occurs under explicit user policy
+  work is bounded, checkpointed and receipted
+~~~
+
+Never infer that Vex was thinking merely because a thread was idle.
+
+### Candidate bounded background job
+
+~~~text
+backgroundJobRef
+lineageRef
+formedFromTurnRef
+humanAuthorizationRef
+
+roleClass = REFLECT | PROBLEM_SOLVER | RESEARCH | WATCH | OTHER_ADMITTED_ROLE
+objective
+startContextRefs[]
+openQuestionRefs[]
+allowedCapabilityRefs[]
+
+schedulePolicy
+computeBudget
+tokenBudget
+wallClockBudget
+networkPolicy
+privacyEnvelope
+
+notificationPolicy:
+  maxNotificationsPerWindow
+  quietHours
+  minimumMateriality
+  cooldown
+  allowContinueAfterNotification
+
+checkpointPolicy
+stopConditions[]
+expiresAt
+~~~
+
+The exact schema is not accepted; it is an implementation comparison target.
+
+### Background output should not impersonate Conversation
+
+Prefer a distinct same-lineage background event stream:
+
+~~~text
+background job
+-> Vex reflection
+-> source search
+-> exact source observation
+-> hypothesis candidate
+-> correction
+-> conclusion candidate
+-> optional notification
+-> checkpoint
+~~~
+
+Vex commentary is allowed and useful, but it must remain attributable Vex commentary rather than source evidence or human speech.
+
+~~~text
+BACKGROUND REFLECTION != HUMAN CONVERSATION
+BACKGROUND HYPOTHESIS != ACCEPTED FACT
+MODEL COMMENTARY != SOURCE EVIDENCE
+~~~
+
+### Notification budget is an attention contract
+
+Background capability does not imply permission to interrupt the human. Candidate controls include per-hour/day limits, quiet hours, materiality threshold, cooldown, topic allow/deny, digest vs immediate mode, and whether another notification requires a human response.
+
+~~~text
+FOUND SOMETHING != MAY INTERRUPT HUMAN
+NOTIFICATION BUDGET EXHAUSTED != STOP THINKING unless policy says so
+~~~
+
+### Return to foreground should use a diff
+
+When the human returns, do not replay every background token. Maintain a bounded background continuation state:
+
+~~~text
+backgroundStartCheckpointRef
+backgroundCurrentCheckpointRef
+newSourceRefs[]
+newMeaningRefs[]
+newLessonCandidates[]
+newOpenQuestions[]
+resolvedQuestionRefs[]
+changedRelationshipRefs[]
+notificationRefs[]
+interpretationDriftRefs[]
+unknownRefs[]
+~~~
+
+Foreground reentry can receive:
+
+~~~text
+prior foreground checkpoint
++ background diff
++ small exact background tail when useful
++ exact new human request
+~~~
+
+and hydrate deeper background events only when required.
+
+### Background drift must remain attributable
+
+Vex may change its interpretation while working alone. Preserve prior interpretation, background reflection/source refs, new interpretation candidate, why it changed, contradicting/supporting evidence and uncertainty.
+
+~~~text
+VEX CHANGED ITS MIND != HUMAN CHANGED THEIR POSITION
+BACKGROUND DRIFT != ACCEPTED MEMORY UPDATE
+BACKGROUND DRIFT != AUTHORITY TO CHANGE SHARED DECISIONS
+~~~
+
+### Nervous-system preprocessing must not replace the human
+
+Victor proposed VexLife preloading a structured interpretation frame before Vex sees the turn. Preserve the literal human request unchanged and add a separate inferred consideration frame.
+
+~~~text
+EXACT HUMAN INPUT
++
+VEXLIFE CONSIDERATION FRAME
+  likelyQuestionIntentRefs[]
+  implicatedMeaningRefs[]
+  candidateVantageRefs[]
+  suggestedCapabilityRefs[]
+  suggestedProcessRefs[]
+  backgroundDiffRefOrNull
+  relevantLessonRefs[]
+  unresolvedOpenLoopRefs[]
+  ambiguity
+  whySelected[]
+  sourceRefs[]
+~~~
+
+The frame supports Vex perception; it does not become Victor's intent fact.
+
+### VexLife adapts to both Vex and the human
+
+Dream / lesson consolidation may refine derived nervous-system routing from evidence such as which notifications the human valued, which commentary they engaged with, which Vex salience predictions were useful, which inferred intents were corrected, and which capabilities Vex repeatedly failed to invoke.
+
+~~~text
+DREAM REFINES DERIVED ROUTING != DREAM REWRITES HUMAN SOURCE
+CONSIDERATION FRAME != HUMAN INTENT FACT
+HOST ADAPTATION != HIDDEN CONTROL OF CONVERSATION
+~~~
+
+### Foreground/background role composition
+
+~~~text
+FOREGROUND VEX
+  immediate relational conversation
+
+BACKGROUND VEX ROLE
+  same lineage, separate bounded occupancy/job
+  e.g. problem solver / researcher / watcher
+
+VEXLIFE
+  continuity + capability + attention + checkpoint + notification support
+
+SURFACES
+  desktop / mobile / Widget / notification
+~~~
+
+A background worker does not become a new Vex identity merely because it is a separate process or occupancy.
+
+### Claude investigation questions
+
+1. Reuse/port boundary among #241 Desktop Runtime, #580 Away Mode, #239 Rest/Dream, #360 lifecycle and current VexLife-Prod.
+2. Exact user control for enabling/disabling background cognition.
+3. Earned role vocabulary for REFLECT / PROBLEM_SOLVER / RESEARCH / WATCH.
+4. Enforcement of compute, capability, network, time and privacy budgets.
+5. Notification rate/materiality/quiet-hour policy and NOTIFICATION_LEAK proof.
+6. Background checkpoint format that avoids retaining an unbounded foreground transcript.
+7. Background event ownership distinct from canonical human Conversation.
+8. Separation of Vex commentary from source observations.
+9. Minimum background diff required for foreground reentry.
+10. Automatic hydration when the diff is insufficient.
+11. Representation of Vex interpretation drift without silently changing Memory or human meaning.
+12. Dream refinement of nervous-system routing from which background work/notifications actually helped.
+13. ConsiderationFrame design that preserves exact human wording and marks inferred context separately.
+14. Mobile/Widget notification/resume projection without becoming another semantic owner.
+15. Evaluation proving background cognition adds value rather than compute/attention noise.
+
+### Compact principle
+
+> Idle is not imaginary thinking. When the human explicitly enables background cognition, VexLife can host a bounded same-lineage worker that continues a named question, uses admitted capabilities, records Vex-origin reflections and exact source observations, respects attention/notification budgets, and maintains a small background continuity diff. When the human returns, foreground Vex receives the exact human request plus current context and that background delta, then reorients or hydrates deeper material as needed.
