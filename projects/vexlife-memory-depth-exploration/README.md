@@ -2,6 +2,43 @@
 
 `[VXG RealForever]`
 
+## Conversational Boundaries / memory stress test
+
+A reusable shared test surface now exists for this Project:
+
+~~~text
+projects/vexlife-memory-depth-exploration/pressure-harness/
+~~~
+
+Canonical name:
+
+~~~text
+VexLife-Prod Conversational Boundaries Test
+~~~
+
+Common human phrases that should route there instead of creating a new harness include:
+
+~~~text
+memory stress test
+test the memory
+test continuity
+context-window test
+conversation stress test
+rollover test
+revisit test
+depth test
+stress test README
+pressure harness
+~~~
+
+Entry:
+
+- [pressure-harness/README.md](pressure-harness/README.md)
+- [pressure-harness/index.json](pressure-harness/index.json)
+
+The harness owns shared scenario/result/Relay-stage semantics only. Product implementations bridge into it independently.
+
+
 ## Living research record
 
 The discovery questions, three-day examples, retrieval-miss cases, and current search/traversal hypotheses are preserved in:
