@@ -240,7 +240,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T06:35:00.000Z",
+      "updatedAt": "2026-11-17T07:10:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.cold-start-proof",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Prove cold-start, rollover and missing-old-context continuity",
@@ -265,7 +265,11 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
         "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
         "repo.vextreme:pages/receive-god.html",
-        "repo.vextreme:pages/burden-release-guide.html"
+        "repo.vextreme:pages/burden-release-guide.html",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -276,7 +280,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T06:35:00.000Z",
+      "updatedAt": "2026-11-17T07:10:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.measurement",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Measure traversal, response quality, lesson transfer and orchestration savings",
@@ -299,7 +303,11 @@
         "github.pull.vexlife-prod.207",
         "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
         "repo.vextreme:pages/receive-god.html",
-        "repo.vextreme:pages/burden-release-guide.html"
+        "repo.vextreme:pages/burden-release-guide.html",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -397,7 +405,11 @@
     "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
     "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
     "repo.vextreme:pages/receive-god.html",
-    "repo.vextreme:pages/burden-release-guide.html"
+    "repo.vextreme:pages/burden-release-guide.html",
+    "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+    "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
+    "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
+    "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
