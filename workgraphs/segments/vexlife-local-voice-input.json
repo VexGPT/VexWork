@@ -238,8 +238,8 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexlife.local-voice-input.provider-selection-contract",
       "parentWorkRefOrNull": "work.vexlife.local-voice-input.outcome",
-      "label": "Define ASR provider selection and configuration contract",
-      "purpose": "Define the smallest provider-neutral realization/configuration boundary that lets VexLife select among qualified local ASR providers and model variants without putting provider names into VexLifeVoiceInputFamily, duplicating VoiceInput semantics, or branching by browser. Preserve stable provider/model identity, current capability/currentness observation, human-configurable selection through the rightful Settings owner, and one realization contract that returns transcript observations to the same VoiceInput Family.",
+      "label": "Define the Local ASR selection relationship",
+      "purpose": "Define the smallest domain-local semantic selection relationship for choosing among qualified local ASR provider/model coordinates without inventing a generic configuration foundation: preserve selected != installed != current != active-session, reuse VexFamily ownership law only if lawful State + Control + Effect semantics are actually earned, keep provider catalog/currentness outside the selection owner, persist through the rightful Home setting/Store boundary, and keep VoiceInput semantics provider-agnostic.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -261,7 +261,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T13:20:00.000Z",
-      "updatedAt": "2026-11-17T13:28:00.000Z"
+      "updatedAt": "2026-11-17T14:34:00.000Z"
     }
   ],
   "transitions": [
