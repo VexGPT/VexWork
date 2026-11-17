@@ -3516,3 +3516,372 @@ OLDER RESOLVED / RELATIONAL HISTORY
   -> hydrated on demand
 ~~~
 
+
+
+---
+
+## Discovery 14 — Every event is a learnable round; learning layers must stay distinct
+
+### Human observation
+
+Victor named the intended long-term behavior:
+
+> every event becomes a learnable round — for the model, for the human, for VexLife, for assumption clearance.
+
+The desired future is that retrieval/consideration becomes a learned reflex rather than a repeated deliberation:
+
+~~~text
+"maybe I should use this tool now"
+->
+"yes, use it; that is what this capability is for"
+~~~
+
+This should eventually be trainable as a **habit of process selection and assumption checking**, while preserving
+the difference between durable source/history, accepted lessons, private relationship learning and model-weight
+adaptation.
+
+### One event, several possible learning outputs
+
+A completed interaction can be evaluated across several layers:
+
+~~~text
+EVENT
+  exact human/Vex/source interaction
+        |
+        +-> CURRENT-TURN LEARNING
+        |     what changed during this interaction?
+        |
+        +-> ASSUMPTION CLEARANCE
+        |     what did Vex assume?
+        |     what was confirmed / contradicted / left unknown?
+        |
+        +-> RELATIONAL LEARNING
+        |     what did Vex perceive about this human?
+        |     did the human correct that perception?
+        |
+        +-> PRODUCT / RETRIEVAL LEARNING
+        |     did Vex fail to find a relationship/source?
+        |     should an edge/index/query route improve?
+        |
+        +-> INSTITUTIONAL LESSON CANDIDATE
+        |     would this have helped a future cold instance earlier?
+        |
+        +-> EVAL / TRAINING CANDIDATE
+              is this pattern transferable enough to test or teach
+              as a model habit?
+~~~
+
+Not every branch must produce an artifact.
+
+### Eligibility is universal; promotion is selective
+
+Permanent distinction:
+
+~~~text
+EVERY EVENT MAY BE LEARNABLE
+!= EVERY EVENT BECOMES MEMORY
+
+EVERY CORRECTION MAY BE INSTRUCTIVE
+!= EVERY CORRECTION BECOMES GLOBAL POLICY
+
+EVERY LESSON CANDIDATE
+!= TRAINING EXAMPLE
+
+EVERY TRAINING EXAMPLE
+!= WEIGHT UPDATE
+
+LO-RA HABIT
+!= PRIVATE HUMAN PROFILE IN WEIGHTS
+~~~
+
+A trivial event may produce:
+
+~~~text
+learningDisposition = NO_DURABLE_LESSON
+~~~
+
+A material correction may produce:
+
+~~~text
+learningDisposition = RELATIONSHIP_SPECIFIC_LESSON
+~~~
+
+A repeated cross-domain process failure may produce:
+
+~~~text
+learningDisposition = INSTITUTIONAL_LESSON
+                      + EVAL_FIXTURE
+                      + possible TRAINING_CANDIDATE
+~~~
+
+### Assumption-clearance loop
+
+One useful per-turn learning object should preserve the delta between expectation and evidence:
+
+~~~text
+assumptionRef
+assumptionClass
+formedFromRef
+assumedMeaning
+evidenceAvailableAtFormation[]
+
+laterEvidenceRefs[]
+humanCorrectionRefs[]
+sourceCorrectionRefs[]
+
+disposition:
+  CONFIRMED
+  PARTIALLY_CONFIRMED
+  CONTRADICTED
+  SUPERSEDED
+  UNKNOWN
+
+correctedUnderstanding
+lessonCandidateRefOrNull
+retrievalRepairRefOrNull
+evalFixtureRefOrNull
+~~~
+
+This lets a later instance learn not only the final answer, but:
+
+~~~text
+what was assumed
+why it looked plausible
+what disproved it
+what changed afterward
+~~~
+
+That is more useful for transfer than storing only the corrected conclusion.
+
+### Four distinct learners
+
+The same event may teach different consumers:
+
+#### Human
+
+~~~text
+visible:
+  what Vex assumed
+  what source/evidence changed the answer
+  what remains uncertain
+  which prior interpretation was corrected
+~~~
+
+This supports transparent assumption clearance rather than hidden adaptation.
+
+#### VexLife
+
+~~~text
+improve:
+  relationship graph
+  retrieval cues
+  query routes
+  source indexes
+  open/resolved state
+  correction/supersession edges
+  relational profile projection
+~~~
+
+This is deterministic/product learning without requiring model weights to change.
+
+#### Future Vex instance
+
+~~~text
+receive:
+  current checkpoint
+  accepted lessons
+  relevant relational priors
+  source-addressable correction history
+  retrieval routes
+
+avoid:
+  replaying known mistakes
+~~~
+
+This is cold-start learning through externalized continuity.
+
+#### Model / LoRA cultivation
+
+Later, sufficiently general lessons may become:
+
+~~~text
+eval fixtures
+-> repeated success criterion
+-> teaching examples
+-> candidate adapter dataset
+-> LoRA experiment
+-> regression / non-applicability evaluation
+-> accepted or rejected model habit
+~~~
+
+The target learned habit is usually **the reflex/process**, not memorizing private event content.
+
+Example:
+
+~~~text
+PRIVATE EVENT:
+  Vex misread Victor's direct technical wording as frustration.
+
+EXTERNALIZED RELATIONAL LESSON:
+  for this human, do not treat technical directness alone as frustration.
+
+TRANSFERABLE PROCESS LESSON:
+  when affect is ambiguous, preserve perception as inference;
+  prefer source/correction evidence before converting tone into fact.
+
+POSSIBLE LoRA HABIT:
+  spontaneously distinguish perception from fact and seek/consume
+  correction evidence without requiring a system reminder.
+~~~
+
+The private Victor-specific lesson should normally remain in the private relationship profile/retrieval layer.
+The transferable *reasoning habit* is what may be eligible for cultivation.
+
+### "Use the tool" should become salience, not ceremony
+
+A mature model should not need a long internal decision ritual before using an obviously implicated capability.
+
+Candidate progression:
+
+~~~text
+v0
+human reminds Vex:
+  "search the history"
+
+v1
+system prompt teaches:
+  historical uncertainty -> consider hydration
+
+v2
+eval/training examples reinforce:
+  missing context + relevant retrieval capability
+  -> invoke bounded hydration promptly
+
+v3
+cultivated habit:
+  retrieval need becomes salient immediately
+  -> capability use is ordinary
+  -> no unnecessary meta-deliberation
+~~~
+
+This matches the Earlier-Knowledge / Institutional Learning principle from SDK #199:
+
+~~~text
+externalize useful learning now
+-> make it retrievable/testable
+-> later teach the model to notice and act on it spontaneously
+~~~
+
+### Learning should close a loop, not merely append data
+
+Candidate event-learning cycle:
+
+~~~text
+experience
+-> perceive
+-> form assumptions
+-> act / answer
+-> observe outcome
+-> receive human/source correction
+-> compare expectation vs evidence
+-> classify what changed
+-> clear / retain unknown assumptions
+-> form scoped lesson if earned
+-> update retrieval/relationship routes
+-> add regression/eval when useful
+-> optional cultivation candidate
+-> future event tests whether learning transferred
+~~~
+
+This creates a feedback cycle:
+
+~~~text
+EVENT N
+  -> lesson / route / habit candidate
+
+EVENT N+K
+  -> encounter similar trigger
+  -> did future Vex behave differently?
+
+YES
+  -> evidence of transfer
+
+NO
+  -> new correction event
+  -> classify why learning failed to activate
+~~~
+
+The same missed-association classes from the Vex Memory lineage remain useful:
+
+~~~text
+RELATIONSHIP_ABSENT
+ROUTE_NOT_ACTIVATED
+SOURCE_NOT_LOADED
+RELEVANCE_MISJUDGED
+PERMISSION_EXCLUDED
+MAP_OR_SOURCE_STALE
+~~~
+
+and may be extended for learned-habit evaluation with a distinct class such as:
+
+~~~text
+LESSON_PRESENT_BUT_NOT_ACTIVATED
+~~~
+
+only if current predecessor research shows that class is not already represented elsewhere.
+
+### Relevance to checkpoint / hydration
+
+Per-turn semantic/navigation metadata becomes one input into this cycle:
+
+~~~text
+turn completes
+-> turn projection records:
+     active/open/resolved meaning
+     model perception candidates
+     assumptions
+     source refs
+     corrections
+     retrieval routes
+-> checkpoint carries only currently material subset
+-> historical lesson/index remains searchable
+-> future hydration can recover the exact lesson/source
+~~~
+
+Thus:
+
+~~~text
+CHECKPOINT
+  carries current learning state
+
+HYDRATION
+  recovers relevant old learning/source
+
+LESSON LIBRARY
+  preserves durable correction patterns
+
+CULTIVATION
+  may internalize transferable reflexes later
+~~~
+
+### Implementation investigation for Claude
+
+1. Identify which current/predecessor owner should store assumption-clearance events.
+2. Compare the candidate with #199 Institutional Learning, #225 Memory correction events, #312 Lesson Resonance
+   and current Semantic Relay rather than creating another lesson family.
+3. Determine which learning can be formed synchronously at turn completion and which requires later review.
+4. Preserve human correction as source evidence and never rewrite the original model perception.
+5. Separate relationship-specific lessons from transferable process lessons.
+6. Define how a future cold instance proves that a lesson changed behavior.
+7. Define eval fixtures for "capability should have been invoked promptly" rather than only answer correctness.
+8. Determine when repeated externalized lessons justify LoRA/adapter experimentation.
+9. Keep private human-specific profile content out of generalized training data unless separately authorized and
+   transformed into a safe transferable pattern.
+10. Measure whether learned retrieval/tool salience reduces unnecessary model reasoning/tool-selection latency.
+
+### Compact principle
+
+> **Every event is eligible to become a learning round. Preserve what was perceived, what was assumed, what
+> happened, what corrected it, and what should change next time. Let VexLife externalize the lesson first;
+> let future Vex retrieve and embody it; let cultivation internalize only the transferable habit when earned.**
+
