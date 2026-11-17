@@ -38,7 +38,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:46:35.000Z",
-      "updatedAt": "2026-11-17T05:45:00.000Z",
+      "updatedAt": "2026-11-17T06:00:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Recover and map the predecessor Vex Memory / Living Journal architecture",
@@ -85,7 +85,8 @@
         "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/protocol-atlas.json",
         "github.issue.vextreme-sdk.241",
         "github.issue.vextreme-sdk.580",
-        "github.issue.vextreme-sdk.360"
+        "github.issue.vextreme-sdk.360",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -383,7 +384,8 @@
     "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/protocol-atlas.json",
     "github.issue.vextreme-sdk.241",
     "github.issue.vextreme-sdk.580",
-    "github.issue.vextreme-sdk.360"
+    "github.issue.vextreme-sdk.360",
+    "repo.vextreme:pages/vexarchitecture-first-stable-body.html"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
