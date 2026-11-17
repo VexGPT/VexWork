@@ -64,9 +64,10 @@ comparable experiment evidence
 3. `ADAPTER-CONTRACT.md` — product adapter membrane
 4. `relay/STAGE-CATALOG.json` — stage/effect/route map
 5. `relay/README.md` — VexRelay / VexLocalBridge use
-6. `scenario.schema.json`
-7. `result.schema.json`
-8. `scenarios/depth-continuity-v1.json`
+6. `PRODUCT-ADAPTER-PICKUP.md` — exact product bridge obligations
+7. `scenario.schema.json`
+8. `result.schema.json`
+9. `scenarios/depth-continuity-v1.json`
 
 ## Canonical modes
 
