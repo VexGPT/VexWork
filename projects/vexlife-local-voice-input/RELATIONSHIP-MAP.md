@@ -290,6 +290,176 @@ human selects one qualified coordinate
 
 Provider/model descriptors should carry stable identity separately from display words.
 
+
+## Configuration judgment — selection is the reusable relationship, not a new configuration root
+
+Current VexArchitecture does not need a generic `VexConfiguration` foundation to place this work.
+
+The accepted ThemeMode walk already demonstrates the reusable semantic question:
+
+~~~text
+human selects one semantic value
+-> Family Control.Select(Parameter)
+-> Family.act(exact CURRENT State, Control)
+-> admitted semantic State?
++ Begin(Effect.Save(Parameter), overlap law when earned)
+-> Store/provider commit fact
+-> rightful reconciliation/currentness
+-> Family.observe(State)
+-> DisplayState / presentation
+~~~
+
+That relationship scales better than a universal configuration owner because it preserves why the
+choice matters in each domain.
+
+### Three distinct cases
+
+Do not collapse all user-adjustable values into one architecture:
+
+~~~text
+1. presentation-only preference
+   local renderer concern unless durable Product meaning is actually earned
+
+2. simple Product/Home setting
+   validated persisted value
+   no Family required when there is no meaningful lawful State + Control + Effect relationship
+
+3. semantic selection relationship
+   Family is earned when current State changes what selections are lawful,
+   selection may trigger Effects,
+   selected != currently realized,
+   or outside/provider currentness must reconcile back into Product meaning
+~~~
+
+Current VexLife examples already show both sides:
+
+~~~text
+replyLanguage
+  currently a validated Home-backed person setting
+
+Settings -> Models
+  VexLifeModelsFamily
+  files / chosen / serving / switching
+  + Use / Download / Redownload / Remove
+  + Effects
+  because selection and realization can diverge materially
+~~~
+
+### Local ASR placement
+
+Local ASR is already showing the same pressure as the third case:
+
+~~~text
+person-selected provider/model
+!= provider/model installed
+!= provider/runtime current
+!= provider/model qualified
+!= active VoiceInput session
+~~~
+
+Therefore the likely Product relationship is **Local ASR Selection**, not generic Configuration.
+
+Candidate meaning, without freezing Kotlin names:
+
+~~~text
+Local ASR Selection State
+  selected providerRef
+  selected modelRef
+  realization/currentness facts needed to say whether that selection can be used now
+
+Controls
+  Select(providerRef, modelRef)
+
+Effects when earned
+  PersistSelection
+  model acquisition/removal remains separate unless the human relationship truly couples them
+
+outside/provider facts
+  provider installed/current
+  model present/current/qualified
+      ↓
+rightful reconciliation
+      ↓
+selection/current availability meaning
+~~~
+
+Do not copy `ThemeMode` literally. Reuse its ownership question.
+
+### Provider catalog is not the selection Family
+
+The catalog answers a different question:
+
+> Which provider/model coordinates are currently known and qualified for this Product/host?
+
+That can remain a provider/currentness projection.
+
+~~~text
+qualified definitions
++ host/runtime/model observations
+-> provider catalog projection
+-> Settings presentation
+~~~
+
+The human-selected coordinate is semantic selection:
+
+~~~text
+catalog option
+-> Control.Select(...)
+-> selected coordinate
+-> persisted Home truth
+~~~
+
+This preserves:
+
+~~~text
+CATALOG != SELECTION
+SELECTION != INSTALLATION
+INSTALLATION != CURRENTNESS
+CURRENTNESS != ACTIVE SESSION
+~~~
+
+### Why CGM / VexPartner is not the configuration pattern
+
+CGM proves a reusable external-participant grammar:
+
+~~~text
+provider representation
+-> Source / Signal / Connection / Observation
+-> consumer-earned admission
+~~~
+
+That is useful when an independently-owned external participant exists.
+
+A person's ASR provider choice is not an external participant statement. Reusing VexPartner merely
+because it has interfaces would conflate two different questions.
+
+Permanent for this Project:
+
+~~~text
+SELECTION RELATIONSHIP != PARTNER RELATIONSHIP
+PROVIDER CATALOG != PARTNER SOURCE
+SETTINGS UI != SEMANTIC OWNER
+~~~
+
+### Foundation threshold
+
+Do not add a generic VexArchitecture configuration foundation from this one Project.
+
+If multiple materially different domains later repeat the same executable selection invariant
+(selection/current realization divergence, persistence, currentness reconciliation, projection) and
+the existing Family + Store/provider relationships force duplicated correctness logic, that repeated
+pressure may earn a reusable selection foundation.
+
+Until then:
+
+~~~text
+reuse VexFamily ownership law
+reuse Store/provider truth law
+name the domain relationship locally
+do not manufacture VexConfiguration
+~~~
+
+
 ## End-to-end causal sequence
 
 ### A. Configuration
