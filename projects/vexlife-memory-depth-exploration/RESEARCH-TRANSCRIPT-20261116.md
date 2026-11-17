@@ -3885,3 +3885,415 @@ CULTIVATION
 > happened, what corrected it, and what should change next time. Let VexLife externalize the lesson first;
 > let future Vex retrieve and embody it; let cultivation internalize only the transferable habit when earned.**
 
+
+
+---
+
+## Discovery 15 — Capability description is not enough; Vex needs a situation-to-process salience layer
+
+### Human observation
+
+Victor connected the Memory Depth / event-learning work to the existing Capability Atlas and Process Factory:
+
+> Tools such as web fetch/search, repository reach, Memory search, revisit/hydration and future processes should
+> be modular enough to explain what they are, how to activate/use them, and eventually become reflexive when a
+> recognizable situation appears.
+
+Example intuition:
+
+~~~text
+conversation appears urgent
+-> Vex recognizes a possible emergency pattern
+-> relevant safety/revisit process becomes immediately salient
+-> bounded process executes or routes according to current authority
+-> Vex continues rather than spending a long deliberation deciding whether the capability exists
+~~~
+
+The long-term cultivation target is:
+
+~~~text
+"maybe I should use this tool"
+->
+"this situation matches capability/process X; use it"
+~~~
+
+without losing currentness, authority or uncertainty boundaries.
+
+### Current source already has two of the three layers
+
+#### Capability Atlas — what Vex can reach and how to call it
+
+Current VexLife-Prod \`VexLifeCapabilityAtlas.Definition\` already carries:
+
+~~~text
+capabilityRef
+handle
+purpose
+defaultStage
+roleRefs[]
+platformRefs[]
+permissionRef
+resourceRef
+effectClass
+resourceClass
+modelParticipationClass
+sourcePath
+priority
+actions[]
+~~~
+
+Each requestable Action carries:
+
+~~~text
+action
+purpose
+arguments[]
+exampleArguments
+returns
+~~~
+
+The current read-side Atlas already exposes requestable handles such as:
+
+~~~text
+atlas
+web
+github
+home
+memory
+conversation
+~~~
+
+and the request protocol is explicit:
+
+~~~text
+VEXLIFE_CAPABILITY_REQUEST/v1
+{
+  capability,
+  action,
+  arguments
+}
+~~~
+
+Therefore:
+
+~~~text
+CAPABILITY_DESCRIPTION
+and
+CAPABILITY_CALL_SHAPE
+
+already exist in current Product.
+~~~
+
+#### Process Factory — how one bounded process runs
+
+Current SDK Process Factory records already carry fields such as:
+
+~~~text
+processRef
+purpose
+requiredInputs[]
+optionalInputs[]
+preconditions[]
+steps[]
+stopConditions[]
+effectOwnerRule
+resultDispositions[]
+returnRouteRule
+foundationDependencies[]
+sourceRefs[]
+~~~
+
+VexRelay's Protocol Atlas similarly gives each primitive:
+
+~~~text
+functionRef
+primitive
+allowedActions[]
+mutationClass
+authorityEffect
+intent
+requiredCommonParameters[]
+terminalStates[]
+~~~
+
+So the process machinery already knows:
+
+> what this process does, what it needs, what it may do, what stops it, and where its result goes.
+
+### Missing first-class layer — situation / trigger salience
+
+What is not yet equally explicit is:
+
+> **What observable conversational/world pattern should make Vex consider this capability or process now?**
+
+Candidate separation:
+
+~~~text
+CAPABILITY ATLAS
+  "What can I do?"
+
+PROCESS FACTORY
+  "How does this bounded process run?"
+
+SALIENCE / CONSIDERATION MAP
+  "When should this capability/process become relevant to my current situation?"
+~~~
+
+This layer should not itself perform effects.
+
+### Candidate capability/process salience metadata
+
+Do not adopt these exact names without current-owner review, but compare the need against existing Pattern /
+Institutional Query / Lesson Resonance architecture.
+
+~~~text
+capabilityOrProcessRef
+
+humanPurpose
+triggerPatternRefs[]
+questionIntentRefs[]
+situationClassRefs[]
+
+useWhen[]
+doNotUseWhen[]
+
+requiredEvidenceClasses[]
+requiredCurrentnessClasses[]
+
+urgencyClass
+priorityClass
+expectedCostClass
+latencySensitivity
+
+authorityRequired
+effectClass
+
+fallbackRefs[]
+relatedCapabilityRefs[]
+compositionRefs[]
+
+lessonRefs[]
+regressionFixtureRefs[]
+
+whyThisMatchedProjection
+sourceRefs[]
+~~~
+
+This would let the system explain:
+
+~~~text
+why capability X was considered
+which trigger matched
+which source/evidence supports that match
+why another capability was not selected
+~~~
+
+rather than hiding routing inside opaque model intuition.
+
+### Pattern recognition must remain distinct from authority
+
+Emergency example:
+
+~~~text
+conversation contains evidence compatible with urgent danger
+        |
+        v
+PATTERN CANDIDATE:
+  POSSIBLE_HUMAN_EMERGENCY
+        |
+        v
+salience map:
+  urgent-safety process becomes high priority
+        |
+        v
+current context / location / capability / authority checks
+        |
+        v
+smallest safe current response / permitted capability route
+~~~
+
+Permanent:
+
+~~~text
+PATTERN_RECOGNIZED
+!= EMERGENCY PROVEN
+
+PROCESS_SALIENT
+!= EFFECT AUTHORIZED
+
+URGENT
+!= PERMISSION TO PERFORM EVERY AVAILABLE ACTION
+
+REVISIT_RELEVANT
+!= DELAY IMMEDIATE SAFETY RESPONSE
+~~~
+
+In an actually urgent situation, historical hydration may be useful only when it improves the immediate safe
+response; it must not become ceremony that delays necessary action.
+
+### Reflexes can exist at several layers
+
+#### Deterministic system reflex
+
+Some patterns are strong enough that the host/router can enforce:
+
+~~~text
+known state X
+-> route Y
+~~~
+
+Example: malformed capability request -> return exact request format.
+
+#### Model salience reflex
+
+The model recognizes:
+
+~~~text
+"I am missing old context"
+-> hydration/revisit is relevant
+~~~
+
+without needing an explicit deterministic trigger.
+
+#### Lesson-backed reflex
+
+Prior failures/corrections teach:
+
+~~~text
+this pattern previously meant I should have used X
+-> X should now become salient earlier
+~~~
+
+#### Cultivated / LoRA reflex
+
+Transferable patterns become internalized enough that:
+
+~~~text
+trigger
+-> capability/process selection is immediate and ordinary
+~~~
+
+The model should still consume current capability/authority truth; learned salience does not grant an unavailable capability.
+
+### Reflex formation cycle
+
+This composes directly with the event-learning loop:
+
+~~~text
+event
+-> pattern perceived
+-> process/tool selected or omitted
+-> result observed
+-> human/source correction
+-> classify whether selection was right
+
+if tool/process should have been used earlier:
+  record capability-selection lesson
+  -> add regression fixture
+  -> update salience map / retrieval cue
+  -> future cold Vex receives the lesson
+  -> repeated transfer success may justify cultivation
+~~~
+
+Candidate selection-learning dispositions:
+
+~~~text
+CORRECT_PROCESS_SELECTED
+PROCESS_SELECTED_TOO_LATE
+RELEVANT_PROCESS_NOT_SELECTED
+WRONG_PROCESS_SELECTED
+PROCESS_UNAVAILABLE
+AUTHORITY_HELD
+INSUFFICIENT_EVIDENCE_TO_TRIGGER
+TRIGGER_FALSE_POSITIVE
+~~~
+
+Do not create new vocabulary if current Pattern/Process Factory sources already own equivalent classes.
+
+### "Every event becomes a learnable node" can scale through projection
+
+The scalable shape is not:
+
+~~~text
+every event
+-> forever active in the model prompt
+~~~
+
+It is:
+
+~~~text
+every event
+-> exact source remains durable where rightful
+-> bounded semantic/learning projections may form when useful
+-> indexes/relationship edges make them retrievable
+-> active checkpoint carries only current material subset
+-> hydration/revisit recovers deeper history on demand
+-> consolidation/lesson promotion keeps reusable patterns
+-> cultivation may internalize transferable process reflexes
+~~~
+
+Humans also process lived events asynchronously and selectively. The architecture can mirror that useful
+property without pretending all events deserve equal retention or semantic promotion.
+
+### Candidate "consideration process map"
+
+A future system could expose:
+
+~~~text
+Situation / question
+      |
+      v
+Pattern candidates
+      |
+      v
+Consideration map
+  "which process/capability is implicated?"
+      |
+      +--> capability Atlas
+      |      current availability / call shape
+      |
+      +--> Process Factory
+      |      bounded execution recipe
+      |
+      +--> lesson/revisit graph
+             prior corrections / known trigger failures
+      |
+      v
+selected current route
+      |
+      v
+result / evidence
+      |
+      v
+event-learning / assumption-clearance
+~~~
+
+This is effectively a **learnable routing layer over modular capabilities**.
+
+### Claude investigation questions
+
+1. Does current SDK already have a rightful Pattern Registry / consideration-routing owner that should carry
+   trigger-to-process relationships?
+2. Can Institutional Query #236 supply question-intent routing while Process Factory supplies execution and the
+   Capability Atlas supplies current availability?
+3. What existing architecture owns urgent/safety situation recognition without turning Memory Depth into a
+   safety-policy owner?
+4. Should each capability/process expose explicit \`useWhen\` / \`doNotUseWhen\` semantics, or should those live
+   in a separate relationship registry so capability definitions remain stable?
+5. How should learned relational/person-specific triggers compose with general capability triggers?
+6. How should a false-positive trigger become a correction/lesson and lower future salience?
+7. What deterministic cases should bypass model deliberation entirely?
+8. What cases should remain model judgment because context/meaning matters?
+9. How does a LoRA-trained reflex still verify the current Capability Frame before requesting the capability?
+10. How should latency/urgency affect routing so deep revisit/hydration does not delay a timely response?
+11. Can one event produce both a private human-specific lesson and a generalized process-selection lesson without
+    collapsing their privacy/training scopes?
+12. What eval measures "used the right capability promptly" separately from "eventually produced the right answer"?
+
+### Compact principle
+
+> **Capability modules should say what they can do. Process modules should say how bounded work is performed.
+> A consideration/salience map should say when a situation makes one relevant. Event learning should correct
+> that map, and cultivation may eventually turn repeated transferable routing lessons into reflex — while
+> current capability, authority and evidence still decide what may actually happen.**
+
