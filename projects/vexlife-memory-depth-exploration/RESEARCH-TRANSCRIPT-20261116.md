@@ -2004,3 +2004,572 @@ It is:
 > current VexLife-Prod, which current owner now carries each one, and what genuinely remains missing after
 > that port/refinement map?"**
 
+
+
+---
+
+## Discovery 11 — Per-turn semantic projection + batched hydration + overlap-aware result fusion
+
+### Human question
+
+Victor connected several pressures:
+
+- current Conversation preserves turns, but does not appear to give Vex one rich semantic search map per turn;
+- a future context rebase should retain enough meaning coordinates to hunt older context;
+- hydration should accept several search intentions/parameters in one request rather than serial single-query calls;
+- parallel branches may rediscover the same nodes, so repeated resolution/results need memoization and deduplication;
+- large result sets must remain bounded without losing exact continuation/frontier coordinates;
+- result ordering should not collapse to chronology; grouping/relationship class/currentness may matter more than time.
+
+### Current VexLife-Prod source facts
+
+#### Canonical Conversation already stores exact per-turn source identity
+
+`DirectConversationStore.Event` carries:
+
+~~~text
+eventRef / eventHash
+turnRef / messageRef
+speakerRef / recipientRefs[]
+sequence / priorEventHash
+exact content / contentHash
+semanticRelay?               <- optional reference-only semantic metadata
+runtime/model provenance
+privacyClass
+formedAt
+~~~
+
+The source comment is important:
+
+> Historical v1 and Semantic Relay v2 events are read under accepted contracts; product-local authoring
+> remains v1 until a rightful Semantic Relay author supplies metadata.
+
+Therefore current Product already reserves a semantic-metadata seam, but intentionally refuses to let the
+current Conversation writer invent that semantic truth.
+
+#### Semantic Relay already has a candidate metadata vocabulary
+
+`VexLifeSemanticRelayContract` validates reference-only metadata including:
+
+~~~text
+relayRef
+sourceMessageRef
+originatorRef / originatorKind
+recipientRefs[]
+
+intentRefs[]
+canonicalMeaningRefs[]
+sourceRefs[]
+evidenceRefs[]
+authorityRefs[]
+
+interpretationProjectionRef
+interpretationState = CANDIDATE | CONFIRMED | CORRECTED
+ambiguityState = CLEAR | AMBIGUOUS | DISPUTED | UNKNOWN
+materiality = ORDINARY | MATERIAL
+
+language / localization / delivery / acknowledgement / understanding
+and runtime-currentness related fields
+~~~
+
+The contract explicitly forbids raw content fields such as:
+
+~~~text
+rawText
+messageContent
+content
+generatedAnswer
+providerResponse
+prompt
+conversationTranscript
+...
+~~~
+
+That strongly supports the architectural pattern:
+
+~~~text
+semantic metadata = references + state + provenance
+!= copied raw turn body
+~~~
+
+The exact existing Semantic Relay contract may not be the final owner for Memory Depth semantic indexing, but
+it is a current source precedent that must be evaluated before inventing a new per-turn meaning object.
+
+#### DirectTurnContextStore already persists a per-completed-turn evidence sidecar
+
+For each completed turn, current Product persists:
+
+~~~text
+turnRef
+requestEventRef/hash
+responseEventRef/hash
+
+promptContext materialization receipt
+runtime observation
+invocation evidence
+optional Conversation source-return trace
+optional capability trace
+
+rawProviderResponsePersisted=false/...
+rawReasoningPersisted=false/...
+formedAt
+
+evidenceRef / evidenceSha256
+~~~
+
+The canonical turn context points to this runtime evidence via `contextSourceRefs[]`.
+
+Therefore:
+
+~~~text
+PER-TURN DURABLE SIDE-CAR PATTERN
+already exists
+
+PER-TURN SEMANTIC / NAVIGATION SIDE-CAR
+not yet established in Product
+~~~
+
+#### PR #208 already proposes a Turn Continuity Projection
+
+Current #208 workbench says a retrospective bounded projection may carry:
+
+~~~text
+turnRef
+semantic state
+parent/anchor refs
+bounded takeaway
+~~~
+
+and must remain source-addressable without replacing exact Conversation history.
+
+This is directly adjacent to Victor's idea.
+
+### Working conclusion — yes to per-turn meaning metadata, but not model-authored truth
+
+A likely target is one **derived per-completed-turn semantic/navigation projection** keyed by the canonical
+`turnRef`.
+
+Conceptually:
+
+~~~text
+TurnContinuityProjection
+  turnRef
+  requestEventRef
+  responseEventRef
+
+  semanticState
+  intentRefs[]
+  meaningRefs[]
+  topic / concept refs where earned
+  parent / anchor refs[]
+  relationship candidates / accepted relationship refs[]
+  openLoopRefs[]
+  decision / correction / supersession refs[]
+  sourceRefs[]
+  evidenceRefs[]
+
+  boundedTakeaway
+  retrievalCueRefs[]
+  ambiguity/currentness state
+
+  formedBy / author class
+  acceptance/disposition state
+  projectionVersion
+  sourceFingerprint
+~~~
+
+Important:
+
+~~~text
+MODEL_PROPOSED_MEANING
+!= ACCEPTED_SEMANTIC_TRUTH
+
+TURN_PROJECTION
+!= MEMORY
+
+TURN_PROJECTION
+!= CONVERSATION
+
+TURN_PROJECTION
+!= RAW_TRANSCRIPT_COPY
+
+SEARCHABLE_METADATA
+!= AUTHORITY
+~~~
+
+Some fields can be deterministic/host-owned; some may be Vex-proposed; some may need an existing semantic owner
+to confirm/correct them. The implementation must identify those classes rather than letting one JSON blob hide
+the distinction.
+
+### Rebase / reconstruction should carry coordinates, not the entire historical lattice
+
+When context pressure causes a new continuity epoch, do not serialize every historical turn projection back
+into the prompt.
+
+Prefer:
+
+~~~text
+new continuity checkpoint
+  active/current intent refs
+  open-loop refs
+  current statement/decision refs
+  current parent/focus stack refs
+  recent exact-turn refs
+  relevant meaning/lineage anchor refs
+  semantic-index/source fingerprint
+  unresolved frontier refs
+~~~
+
+Historical per-turn projections/indexes remain durable outside the active prompt.
+
+Then:
+
+~~~text
+fresh / rebased Vex
+-> current checkpoint says WHERE WE ARE
+-> question says WHAT IS RELEVANT
+-> hydration searches the durable semantic/navigation index
+-> exact source descends only where needed
+~~~
+
+This keeps the "meaning lattice" reachable without trying to keep the entire lattice inside each checkpoint.
+
+---
+
+## Hydration should accept a query bundle, not one String
+
+The prior simplified `hydrate(question: String)` is too narrow.
+
+A likely request shape should support multiple independent entry attempts in one model-visible call.
+
+Conceptual example:
+
+~~~text
+HydrationRequest {
+  requestRef
+  currentTurnRef
+
+  queries: [
+    {
+      queryRef: "why",
+      text: "Why did we keep Conversation separate from Memory?",
+      vantageRefs: [WHY_IT_MATTERS, FORMATION_HISTORY]
+    },
+    {
+      queryRef: "ownership",
+      terms: ["Conversation", "Memory", "semantic ownership"],
+      relationshipHints: [CORRECTS, SOURCE_OF, SUPERSEDES]
+    },
+    {
+      queryRef: "current-anchor",
+      seedRefs: [
+        statement.current-ownership,
+        openloop.memory-depth
+      ]
+    }
+  ]
+
+  ownerScopes: [
+    CONVERSATION,
+    MEMORY,
+    WORKING_CONTINUITY,
+    TURN_CONTEXT
+  ]
+
+  timeRangeOrNull
+  requiredCurrentness
+  maxDepth
+  maxVisitedNodes
+  maxSelectedNodes
+  maxReturnedTokens
+  maxOwnerReads
+  maxWallTime
+}
+~~~
+
+The exact schema is not accepted. The principle is:
+
+> **One hydration operation may fan out several query/vantage/seed branches in parallel and fuse their
+> neighborhoods before returning to Vex.**
+
+This prevents Vex from spending one inference round on each alternative interpretation.
+
+### Parallel fan-out
+
+Host mechanics may perform:
+
+~~~text
+query A -> Conversation lexical / semantic locate
+query B -> Memory locate
+query C -> Working Continuity exact seed expansion
+query D -> current turn/evidence refs
+
+in parallel where owners permit
+
+-> union candidate refs
+-> expand exact typed relationships
+-> fuse results
+~~~
+
+Independent branches that converge on the same exact ref strengthen retrieval confidence without duplicating
+the source in the return packet.
+
+---
+
+## Memoization / overlap handling is required
+
+Multiple query branches and graph paths can converge on the same node:
+
+~~~text
+query A -> statement.42 -> turn.17
+query B -> openloop.5   -> turn.17
+query C -> semantic hit -> turn.17
+~~~
+
+The host should resolve `turn.17` once per relevant source version/access envelope.
+
+Useful separation:
+
+~~~text
+NODE RESOLUTION CACHE
+  key:
+    ownerRef
+    nodeRef
+    source/currentness fingerprint
+    projection/schema version
+    access/privacy envelope
+
+  value:
+    exact resolved node + outgoing typed edges
+
+QUERY-SPECIFIC RELEVANCE
+  not canonical
+  may be recomputed per HydrationRequest
+
+SELECTED RETURN MATERIAL
+  deduplicated by canonical source identity
+  records matchedByQueryRefs[] / pathRefs[]
+~~~
+
+Do not cache query relevance as semantic truth.
+
+Cross-call memoization is valid only while the source/currentness fingerprint remains exact; source change
+invalidates the cached expansion.
+
+### Why this matters
+
+Without memoization:
+
+~~~text
+parallel search
+-> same historical turn resolved 5 times
+-> same source text consumes I/O/token budget 5 times
+-> top-K polluted by duplicates
+-> depth appears larger than actual context coverage
+~~~
+
+With overlap-aware fusion:
+
+~~~text
+one exact node
+matched by 5 routes
+-> resolve once
+-> preserve 5 route/provenance reasons
+-> return one source body
+~~~
+
+---
+
+## Truncation needs explicit frontier semantics
+
+A bulk hydration result must not simply return a huge flat array until connector/model truncation silently
+cuts the tail.
+
+Each owner/branch should be bounded and continuation-aware.
+
+Candidate result properties:
+
+~~~text
+groups[]
+selectedNodes[]
+sourceMaterial[]
+visitedNodeRefs[]
+
+omittedCountsByOwner
+boundedOutNodeRefs[] or summarized frontier
+ownerContinuationCursors[]
+remainingFrontierRefs[]
+
+truncated = true|false
+stopReason
+budgetConsumed
+coverage
+~~~
+
+For large exact source material:
+
+~~~text
+sourceRef
+selectedRanges[]
+nextRangeCursorOrNull
+contentHash / source version
+~~~
+
+This composes with the older Artifact Continuation #311 lesson:
+
+~~~text
+index first
+-> implicated bounded range
+-> explicit continuation pointer
+!= silent truncation
+~~~
+
+### Depth and truncation interact
+
+A branch at depth 4 may be less useful than another branch at depth 2.
+
+Therefore the engine should not blindly spend equal depth everywhere.
+
+It should maintain:
+
+~~~text
+per-branch frontier priority
+per-owner quota
+global token/node/time budget
+overlap-aware remaining value estimate
+~~~
+
+and stop with an inspectable frontier.
+
+---
+
+## Result ordering should be structural before chronological
+
+A flat:
+
+~~~text
+sortBy(timestamp)
+~~~
+
+is insufficient.
+
+Useful returned grouping axes may include:
+
+~~~text
+meaningLineageRef / subjectRef
+owner class
+currentness / supersession state
+relationship class
+question/vantage match
+decision / evidence / correction / source
+day/journal grouping
+formation episode
+current use
+~~~
+
+Then each group may carry its own ordering:
+
+~~~text
+CURRENTNESS
+  current before superseded when answering current-state question
+
+CAUSAL
+  source -> decision -> correction -> current meaning
+
+FORMATION_HISTORY
+  chronological evolution
+
+JOURNAL
+  day/time order
+
+RELEVANCE
+  highest query coverage / strongest convergent routes first
+~~~
+
+The HydrationResult should therefore be closer to a **small structured subgraph** than a globally sorted list.
+
+Example:
+
+~~~text
+groups: [
+  {
+    groupRef: meaning.conversation-memory-separation,
+    class: MEANING_LINEAGE,
+
+    current: [statement.42],
+    formation: [turn.17, decision.3, correction.9],
+    evidence: [source.11],
+    superseded: [statement.12],
+
+    matchedByQueryRefs: ["why", "ownership", "current-anchor"]
+  }
+]
+~~~
+
+Chronology remains available as one projection rather than becoming universal ranking truth.
+
+---
+
+## New implementation questions created by this discovery
+
+The predecessor-lineage recovery Work should now explicitly answer:
+
+1. Does current Semantic Relay already own enough per-message semantic metadata to extend/reuse, or is its
+   scope narrower than the needed Turn Continuity Projection?
+2. Who is the rightful author of a per-turn semantic/navigation sidecar?
+3. Which fields are deterministic versus Vex-proposed versus semantically accepted?
+4. Is the projection formed synchronously with turn completion or asynchronously without delaying the human
+   response?
+5. How are projections corrected/superseded when later context changes interpretation?
+6. What index is rebuilt from these projections, and what remains query-time only?
+7. What fields survive a semantic rebase directly in Working Continuity versus staying only as searchable
+   historical refs?
+8. How should a HydrationRequest represent multiple query clauses/vantages/seeds?
+9. Which owner reads can safely execute in parallel?
+10. How are duplicate exact nodes memoized/fused while preserving every route that found them?
+11. How are source ranges/cursors/frontier refs returned without silent truncation?
+12. Which grouping/order modes are required for current state, formation history, Journal chronology and
+    evidence descent?
+13. Which retrieval/cache artifacts are disposable acceleration versus durable continuity source?
+14. How should #207 telemetry measure internal owner reads, cache hits, duplicate suppression and returned
+    token savings?
+
+### Current working shape
+
+~~~text
+COMPLETED TURN
+  canonical Conversation
+  + canonical Turn Context evidence
+  + bounded semantic/navigation projection
+        |
+        v
+rebuildable search/index projections
+        |
+        +------------------------+
+        |                        |
+   context rebase            fresh boot
+   keeps active refs             |
+        |                        |
+        +----------+-------------+
+                   |
+                   v
+           HydrationRequest
+        queries[] + seedRefs[]
+                   |
+          parallel locate/expand
+                   |
+           memoized exact nodes
+                   |
+           overlap-aware fusion
+                   |
+          structural grouping/sort
+                   |
+       bounded material + frontier
+                   |
+                   v
+            #208 live Zone 3
+                   |
+                   v
+              Vex reasons
+~~~
+
