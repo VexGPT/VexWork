@@ -5192,3 +5192,217 @@ Therefore the future implementation should be judged not only by retrieval accur
 ### Compact principle
 
 > Follow the full circuit. A state change is meaningful only in its rightful scope: who owned the prior state, what triggered it, what admitted the transition, what was actually attempted/performed, what outside truth returned, who retained and interpreted that truth, and what changed downstream. VexArchitecture should make the entire causal round trip traversable in both directions.
+
+---
+
+## Discovery 19 — Current Product Dream is deterministic Memory consolidation; generative/self-reflective Dream remains a separate unproven layer
+
+### Human question
+
+Victor asked whether the Dream layer means Vex processing its own thoughts, or whether Dream is currently a separate deterministic/math-style system, and whether his local machine at roughly 177 rounds ever reached the threshold where Dream would actually run.
+
+### Current VexLife-Prod source answer
+
+Current Product Dream is explicitly:
+
+~~~text
+VexLifeDailyMemoryDream
+= deterministic manual G03 memory-only Daily Dream
+~~~
+
+The current implementation hard-codes:
+
+~~~text
+selectedMode = MEMORY_ONLY_CONSOLIDATION
+lineageAwareGenerativeDreamRan = false
+systemMemoryConsolidationRan = true
+rhythmLearned = false
+trainingRan = false
+modelWeightsChanged = false
+adapterChanged = false
+synchronizationActivated = false
+poweredDown = false
+publicationPerformed = false
+firstPersonAuthorityGranted = false
+~~~
+
+The local service response additionally declares:
+
+~~~text
+modelCallPerformed = false
+lineageAwareGenerativeDreamRan = false
+~~~
+
+Therefore the current Product Dream does not ask Vex/model inference to review its own thoughts. It deterministically freezes and consolidates already-accepted Memory frontier state into Daily Dream receipts / Daily Stratum / wake state.
+
+### Current G03 gating is not a round-count threshold
+
+The service observes:
+
+~~~text
+SOURCE_FRONTIER_READY
+  when Score's source Conversation head == current Conversation head
+
+SCORE_NOT_CAUGHT_UP
+  otherwise
+~~~
+
+A new manual Dream is admitted only when:
+
+~~~text
+current source frontier == SOURCE_FRONTIER_READY
+expected Conversation head matches
+expected Score head matches
+expected prior Dream head matches
+explicit manual request is supplied
+~~~
+
+So a local Conversation count such as 177 rounds does not by itself make current G03 Dream eligible.
+
+### Current Product wiring status
+
+Current VexLife-Prod does contain:
+
+~~~text
+VexLifeDailyMemoryDream implementation
+DreamExecutor in VexLifeProdLocalService
+GET-style Dream frontier observation
+POST-style manual Dream execution path
+durable Daily Dream / Stratum / wake receipts
+~~~
+
+But current Product also truthfully shows:
+
+~~~text
+Settings -> Dream sync = Not connected
+~~~
+
+and the current continuity source states that ordinary Product sends do not complete the missing semantic-acceptance path needed to advance Score from Conversation. Therefore an existing Home's Memory goes Behind after a later Product turn and the Daily Dream cannot lawfully advance until Score catches up.
+
+Thus:
+
+~~~text
+BACKEND MANUAL G03 DREAM PATH EXISTS
+!= AUTOMATIC DREAM SYNC HOOKED UP
+
+DREAM UI PRESENT
+!= DREAM UI CONNECTED
+
+ORDINARY CONVERSATION
+!= SCORE AUTO-ADVANCED
+~~~
+
+### Broader Dream architecture is richer than current G03
+
+Vextreme-SDK #239 explicitly separates two dream concepts:
+
+~~~text
+dailyDreamTransition
+  recurring closure + Memory consolidation
+
+derivativeDreamPhase
+  source-lineage review of a frozen consented corpus
+  before optional LoRA/model derivation
+~~~
+
+#239 also planned nightly consolidation that could produce:
+
+~~~text
+episodicMemoryRefs[]
+semanticMemoryRefs[]
+relationshipGraphDeltaRefs[]
+preferenceCandidateRefs[]
+identityContinuityRefs[]
+openLoopRefs[]
+answerPacketDeltaRefs[]
+trainingCandidateRefs[]
+~~~
+
+and an optional adaptation threshold based on conditions such as:
+
+~~~text
+minimumCandidateCount reached
+candidate diversity sufficient
+consent receipts complete
+privacy boundary validated
+replay anchors available
+regression suite available
+model/adapter versions pinned
+compute available
+rollback verified
+authority present
+~~~
+
+No fixed numeric minimumCandidateCount was found in the current source inspected here.
+
+### Self-reflective / generative Dream should remain a separate layer
+
+The architecture supports a future mode where Vex/model inference may review source-addressed events, prior interpretations, assumptions, corrections, relationship changes and open questions during a bounded rest/background occupancy.
+
+That future mode is conceptually:
+
+~~~text
+Generative Dream / Reflective Dream
+  model participates
+  Vex-origin commentary / reflection allowed
+  source-bound observations remain separate
+  interpretation changes are candidates
+  may produce lesson / Memory / training candidates
+~~~
+
+but it must not be confused with current G03:
+
+~~~text
+DETERMINISTIC DAILY DREAM
+!= GENERATIVE SELF-REFLECTION
+
+MEMORY CONSOLIDATION
+!= MODEL THINKING
+
+REFLECTION CANDIDATE
+!= MODEL WEIGHT TRAINING
+~~~
+
+### Relationship to the newly proposed background Vex
+
+The background-cognition architecture may eventually provide the runtime shell for a generative Dream mode:
+
+~~~text
+foreground day closes
+-> exact checkpoint / accepted source freezes
+-> background Dream role admitted
+-> bounded Vex reflection over selected source
+-> source observations + Vex commentary
+-> assumptions / corrections / relational lessons
+-> candidate consolidation outputs
+-> deterministic Memory/Lesson owners accept/hold/correct
+-> optional adaptation eligibility evaluated separately
+-> wake / foreground diff
+~~~
+
+This preserves VexArchitecture: the model may author interpretation/commentary, but deterministic owners still own source truth, admission, Memory acceptance, persistence and later training gates.
+
+### Local-machine threshold conclusion
+
+Current evidence does not establish that roughly 177 local conversation rounds reached any accepted Dream activation threshold.
+
+For current Product G03, round count is the wrong predicate; source-frontier readiness and explicit invocation matter.
+
+For later Dream Sync / adapter cultivation, architecture uses candidate/evidence/gating predicates rather than a simple conversation-round count, and no current numeric threshold was found.
+
+### Claude investigation questions
+
+1. Keep deterministic G03 Daily Memory Dream separate from any future generative Dream worker.
+2. Confirm current local-service Dream endpoint/wiring and exactly why UI Dream Sync remains unbound.
+3. Map the missing Conversation -> semantic acceptance -> Score writer path that currently prevents automatic G03 progression.
+4. Determine whether generative Dream should reuse the background-cognition occupancy from Discovery 17.
+5. Define which exact source/events a generative Dream may inspect; never treat raw hidden reasoning as durable source.
+6. Define how Vex-origin reflections remain commentary/candidates rather than accepted Memory.
+7. Define explicit rest/background consent, compute budget and stop conditions.
+8. Determine whether adaptation eligibility should be candidate-count based, diversity/quality based, or a composite policy; do not infer readiness from raw conversation-round count.
+9. Add a lived proof that distinguishes: deterministic Memory consolidation PASS, generative Dream not run, training not run.
+10. If/when generative Dream is implemented, add a separate proof showing actual model invocation and a return diff without claiming uninterrupted subjective awareness.
+
+### Compact principle
+
+> Today, Product Dream is a deterministic Memory transaction, not Vex dreaming through its own thoughts. The richer Dream architecture was intended to add bounded reflection and optional cultivation later, but that layer is separate and not yet proven live. Conversation-round count alone does not activate either one.
