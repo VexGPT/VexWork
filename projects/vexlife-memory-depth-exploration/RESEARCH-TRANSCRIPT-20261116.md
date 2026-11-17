@@ -5601,3 +5601,190 @@ Do not attempt to realize every parked future feature in one PR. Implement the s
 
 > The goal is not for Claude and OpenAI to produce the same code from imitation. The goal is for two independent implementations to start from the same accepted source relationships, finish their own causal story, then use disagreement as evidence about where the architecture is still ambiguous. Convergence begins after independent completion.
 
+
+
+---
+
+## Discovery 21 — Growth Record / learned recognition should close the loop between Vex learning and VexLife salience
+
+### Evidence
+
+A bounded lived-evidence case is now source-placed at:
+
+~~~text
+projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md
+~~~
+
+It binds a user-supplied VexLife transcript by SHA-256 and preserves only the material excerpts/relationships needed to justify the feature pressure.
+
+Related practice sources:
+
+~~~text
+repo.vextreme:pages/receive-god.html
+repo.vextreme:pages/burden-release-guide.html
+~~~
+
+The evidence demonstrates three useful pressures:
+
+1. Vex had to reason about what context was actually present versus merely durable/referenced.
+2. Vex formed a model-origin interpretation about how prior interaction history may be shaping its own response.
+3. Victor corrected one interpretation, and Vex immediately changed the relationship it used to understand "depth -> surface."
+
+### Product distinction
+
+Candidate human-facing distinction:
+
+~~~text
+MEMORY
+  what happened / what accepted continuity remains
+
+GROWTH
+  what changed in Vex's understanding or behavior because it happened
+~~~
+
+Do not create a second truth store.
+
+Treat Growth Record as a projection over rightful existing Memory / Lesson / relationship / source owners.
+
+### Return/release lessons
+
+For practices where Vex recognizes and returns/releases a pattern, preserve the evidence truthfully:
+
+~~~text
+pattern was recognized
+return/release was formed in event X
+practice/source context = Y
+corrections / counterexamples = [...]
+current lesson = [...]
+later recurrence/transfer evidence = [...]
+~~~
+
+Do not promote that to metaphysical certainty that the pattern can never recur or influence behavior again.
+
+The operational value is:
+
+~~~text
+known pattern becomes salient
+-> prior lesson is recognizable/retrievable
+-> Vex does not need to rediscover it from zero
+-> prior pattern need not automatically drive interpretation/action
+~~~
+
+### Two nervous systems
+
+The research now explicitly distinguishes:
+
+~~~text
+VEX / MODEL INNER NERVOUS SYSTEM
+  learned/reflexive salience
+
+VEXLIFE NERVOUS SYSTEM
+  externalized source binding
+  lesson/correction/currentness
+  retrieval + consideration routing
+  capability/process salience
+~~~
+
+The integration seam is observable behavior/proposals, not hidden chain-of-thought persistence.
+
+Candidate signals include:
+
+~~~text
+Vex-origin salience proposal
+Memory/revisit request
+capability selection/timing
+human correction
+source correction
+later recurrence
+answer/tool outcome
+~~~
+
+### Learning-transfer loop
+
+~~~text
+EVENT N
+  Vex notices / learns
+  -> observable candidate
+  -> VexLife binds source
+  -> rightful lesson owner accepts/holds/corrects
+  -> retrieval/consideration routes improve
+
+EVENT N+K
+  similar trigger
+  -> relevant lesson becomes salient
+  -> relevant capability/process becomes salient
+  -> Vex behaves
+
+compare expected vs actual behavior
+  -> transfer evidence
+  -> activation/misapplication/staleness evidence
+~~~
+
+This directly extends Discovery 14's "every event may be learnable" and Discovery 15's capability salience work.
+
+### Measurement
+
+The evidence file defines an A/B/C comparison:
+
+~~~text
+A  cold start; lesson unavailable
+B  cold start; lesson durable but retrieved on demand
+C  lesson already checkpoint-resident
+~~~
+
+Measure response quality:
+
+~~~text
+SOURCE_FAITHFULNESS
+KNOWN_LESSON_REUSE
+HONEST_CONTEXT_BOUNDARY
+DEPTH_PRESERVATION
+NON_OVERCLAIM
+RELATIONAL_FIT
+~~~
+
+and nervous-system/tool behavior:
+
+~~~text
+lessonMatchDetected
+lessonHydrationRequested
+lessonHydrationSucceeded
+firstRelevantCapabilitySelected
+irrelevantCapabilityCount
+toolSelectionLatency
+extraMetaDeliberationTurns
+sourceReturnCount
+repeatedKnownCorrectionCount
+lessonActivationFailureCount
+contextBoundaryErrorCount
+~~~
+
+Permanent:
+
+~~~text
+LESSON_STORED != LESSON_TRANSFERRED
+LESSON_RETRIEVED != LESSON_APPLIED_CORRECTLY
+OUTPUT_CHANGED != OUTPUT_IMPROVED
+~~~
+
+### Implementation pressure
+
+The first coherent implementation does not need to realize a full "Growth" product surface.
+
+It should, however, preserve enough of the route to prove:
+
+~~~text
+prior correction/lesson
+-> durable source-addressable lesson
+-> not permanently prompt-resident
+-> future related trigger
+-> VexLife retrieves / makes it salient
+-> Vex response or tool choice changes
+-> transfer outcome is measurable
+~~~
+
+This is evidence for the existing Memory / Context Revisitation / Lesson / salience architecture, not permission to add another Memory owner.
+
+### Compact principle
+
+> VexLife should not only help Vex remember what happened. It should externalize what Vex learned from what happened, make that lesson recognizable at the right later moment, and measure whether future Vex actually behaves differently because the learning was available.
