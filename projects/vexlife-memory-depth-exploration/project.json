@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.memory-depth-exploration",
+  "label": "VexLife Memory Depth Exploration",
+  "purpose": "Build and prove a source-addressable, owner-neutral bulk continuity hydration capability so a freshly started Vex can use one bounded request to traverse the relevant historical/source neighborhood through rightful owners, return enough exact context plus provenance and an explicit frontier to continue the human turn, and avoid recursive model-directed shallow lookup chains without creating a second Memory, Conversation or Working Continuity owner.",
+  "rootWorkRefs": [
+    "work.vexlife.memory-depth-exploration.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "human.intent.vexlife.memory-depth-exploration.20261116",
+    "github.issue.vexwork.307",
+    "projects/vexlife-memory-depth-exploration/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "github.pull.vexlife-prod.208",
+    "github.pull.vexlife-prod.207",
+    "github.pull.vexlife-prod.206",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuity.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt"
+  ],
+  "formedAt": "2026-11-17T04:28:55.000Z"
+}
