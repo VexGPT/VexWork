@@ -559,6 +559,93 @@ That experiment should also pressure cancellation/segment callbacks enough to de
 VoiceInput session custody can stay owner-local or actually earns reusable VexExecution.
 
 
+
+
+## A003 direct JVM/JNA result — in-process Product topology proved
+
+Exact recovered RETURN:
+
+~~~text
+RETURN sha256
+ab5b3b8132cb2acd73b5c516734cb64be5692ba7e74f2e03133f27e5e8921c65
+
+status
+PASS_PROVIDER_CARRIER_RECOVERED
+~~~
+
+Provider evidence:
+
+~~~text
+whisper.cpp
+commit d1be6fde11ac6e0407606b4e42fe72d34add8037
+tree   6fe2755682242a5c01aba65a22b3c0305d747841
+release v1.9.5
+
+binding
+whisper.cpp/bindings/java @ same pinned commit
+
+JNA 5.13.0
+sha256 66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb
+bytes 1,879,325
+
+native libwhisper.dylib
+sha256 517c632ea287a067d16406b068aca8183a2725865314ea38188bfaca0e3e26d2
+~~~
+
+Direct JVM result on the exact same 6.625-second fixture:
+
+~~~text
+JVM float PCM
+-> JNA
+-> libwhisper.dylib
+-> Metal / Apple M4 Pro
+-> transcript
+
+initMs         4186
+inferenceMs     683
+wholeMs        4876
+RTF            0.1031
+final words    exact 18 / 18
+~~~
+
+The model/runtime used Metal and the same Base English model pinned by A002.
+
+Carrier recovery boundary:
+
+~~~text
+provider inference            PASS
+Gradle task                   BUILD SUCCESSFUL
+provider-result formed        YES
+single-use Gradle teardown    HELD
+normal outer ZIP packaging    NOT REACHED
+evidence directory            recovered without rerunning inference
+~~~
+
+Because the parent Gradle invocation never terminated, A003 does not claim terminal `time -l`
+process statistics. The provider/runtime result itself is independent of that teardown defect.
+
+Architectural consequence:
+
+~~~text
+SEPARATE SPEECH PROCESS
+is NOT currently earned.
+
+The smallest proved realization is:
+
+browser PCM
+-> existing VexLife JVM service
+-> direct whisper.cpp/JNA
+-> VoiceInput reconciliation
+-> Composer
+~~~
+
+This does not make the JVM service the ASR semantic owner. It hosts the provider realization.
+
+Next provider-qualification pressure should be the actual browser-audio ingress/session path,
+including Stop/cancellation behavior and live transcript cadence. That pressure decides whether
+owner-local ASR session custody is enough or whether VexExecution is truly earned.
+
+
 ## Selection threshold
 
 Promote one candidate only when it is clear which integration burden is smaller **for the Product**,
