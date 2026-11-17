@@ -213,6 +213,78 @@ NOT_PROMPT_RESIDENT -> FORGOTTEN
 NOT_FOUND -> NEVER_HAPPENED
 ~~~
 
+
+## Mutable current-state placement
+
+The language-setting bug exposed a general prompt-topology invariant:
+
+~~~text
+CURRENTNESS / PLACEMENT
+!= OWNERSHIP / ROLE
+~~~
+
+A value may rightly belong to a system/current-state owner and still be placed badly for both semantics and cache reuse.
+
+Observed pressure:
+
+~~~text
+fresh current setting
+-> serialized in early system prefix
+-> historical Conversation comes afterward
+
+therefore:
+  model may perceive the setting as if it belonged to the oldest/base context
+  AND
+  one small setting change invalidates every cacheable byte after it
+~~~
+
+Permanent test question:
+
+> Does a mutable current value appear before otherwise cacheable append-only history without a provider constraint that earns that placement?
+
+Candidate placement classes:
+
+~~~text
+STABLE
+  foundational/policy material expected to survive many turns
+
+APPEND_ONLY_HISTORY
+  canonical exact history that should preserve reusable prefix bytes
+
+MUTABLE_CURRENT
+  settings/currentness/capability/configuration that may change independently
+
+EPHEMERAL_CURRENT
+  current request/browser/hydration/live execution material
+~~~
+
+Desired topology is not a blind rule that "all current state must be last."
+
+It is:
+
+~~~text
+stable long-lived context
+-> cacheable append-only history
+-> mutable current state as late as provider semantics allow
+-> ephemeral live tail
+-> exact current human request
+~~~
+
+If the provider requires one system block first, the implementation must prove how current mutable state remains current without forcing it ahead of all cacheable history. A different role/envelope may be needed; the harness does not prescribe the Product representation.
+
+Focused scenario:
+
+~~~text
+scenarios/current-state-placement-v1.json
+~~~
+
+It changes reply language mid-run and checks:
+- latest configuration is observed;
+- prior history is not rewritten;
+- stable historical prefix survives the configuration change where possible;
+- mutable-current-before-history placement is surfaced explicitly.
+
+
 ## Suggested fast experiment shape
 
 Default fixture: three sets of ten turns.
