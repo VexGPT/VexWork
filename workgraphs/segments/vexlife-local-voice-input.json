@@ -72,7 +72,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T13:00:22.000Z",
-      "updatedAt": "2026-11-17T13:12:00.000Z",
+      "updatedAt": "2026-11-17T13:28:00.000Z",
       "workRef": "work.vexlife.local-voice-input.provider-qualification",
       "label": "Select and qualify the local ASR provider",
       "purpose": "Evaluate runnable local speech-to-text candidates on the current Apple-silicon VexLife product path and select only after evidence covers local-only custody, license/distribution viability, model size/acquisition, dependency/runtime footprint, supported audio format, English baseline accuracy, usable latency, partial/final transcript behavior, Stop/cancellation, language expansion, failure observability and version/currentness qualification.",
@@ -84,7 +84,8 @@
         "projects/vexlife-local-voice-input/README.md",
         "github.pull.vexlife-prod.231",
         "project.vex.security-assurance",
-        "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md"
+        "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md",
+        "projects/vexlife-local-voice-input/RELATIONSHIP-MAP.md"
       ]
     },
     {
@@ -255,11 +256,12 @@
       ],
       "sourceRefs": [
         "projects/vexlife-local-voice-input/README.md",
-        "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md"
+        "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md",
+        "projects/vexlife-local-voice-input/RELATIONSHIP-MAP.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T13:20:00.000Z",
-      "updatedAt": "2026-11-17T13:20:00.000Z"
+      "updatedAt": "2026-11-17T13:28:00.000Z"
     }
   ],
   "transitions": [
@@ -289,7 +291,8 @@
     "git.commit.vexlife-prod.9b00a018c3745b9f332f83983eb4d729e4019829",
     "human.witness.vexlife.local-voice-input.brave-a002.20261117",
     "project.vex.security-assurance",
-    "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md"
+    "projects/vexlife-local-voice-input/PROVIDER-QUALIFICATION.md",
+    "projects/vexlife-local-voice-input/RELATIONSHIP-MAP.md"
   ],
   "formedAt": "2026-11-17T13:00:22.000Z"
 }
