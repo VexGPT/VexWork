@@ -14,7 +14,7 @@ Snapshot formed: 2026-11-18 America/Los_Angeles
 Observed VexLife-Prod main at formation:
 
 ```text
-98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0
+a58777106b08bd58c167608fa0115729185ae3dd
 ```
 
 This file is a **living navigation snapshot**, not permanent Product truth. A successor must update it when
@@ -143,36 +143,34 @@ Memory Review owner
 Semantic Acceptance writer
     X ordinary human/model Product route
 
-CurrentAcceptedSemanticProjection
-    -> CurrentAcceptedSemanticPromptBlock
-    -> VexLifeCurrentMemoryProviderSelection
-    X ordinary DirectCompanionTurn Memory selection
-
-DirectPromptContext.contextComponents
-    X current service/Web human component-order projection
-
 provider/model representation profile
     X complete human Models/Vex Context explanation
 
+capability-frame AVAILABLE / HELD / UNKNOWN catalog
+    X complete human capability catalog
+
 provider-stage measurement
     X causal Vex Context human projection
+
+Consideration Router
+    X ordinary DirectPromptContext / DirectCompanionTurn
+
+Turn Epilogue contract
+    X live provider/turn integration
+
+Memory Review owner
+    X ordinary service / Web / standing-consent UX
+
+Semantic Acceptance writer
+    X ordinary human/model Product route
 ```
 
-The accepted-semantic connector is especially important. Current source docs explicitly say:
+The accepted-semantic connector was previously an unfinished edge and is now connected on the refreshed
+Product main: `DirectCompanionTurn` supplies `VexLifeCurrentMemoryProviderSelection.read(...)` to the prompt
+path, so Daily Memory can be composed with current accepted-semantic continuity under one Memory cap.
 
-```text
-current accepted semantic continuity exists
--> prompt placement held
-
-prompt block exists
--> prompt placement held
-
-Memory Review/Keep exists
--> service/Web/Turn-Epilogue/standing-consent integration held
-```
-
-A production-source symbol scan across current memory/consideration/companion/capability/model/service/Web
-source confirmed those owners remain isolated from the ordinary turn/service path at this snapshot.
+The remaining adaptive-loop disconnect is later in the circuit: Consideration / Turn Epilogue / Memory Review
+/ ordinary acceptance UX are still not wired into the live turn/service path.
 
 ### Current provider realization gaps
 
@@ -198,15 +196,15 @@ qualification predicate must stay visible and revisitable.
 
 Current Product knows more than Victor can inspect.
 
-Important internal/current fields not fully surfaced include:
+Vex Context now exposes exact completed-turn component ordering/placement evidence and exact live
+VexLife->runtime provider JSON for the current browser session. Important current fields still not fully
+surfaced include:
 
 ```text
-contextComponents placement / stability / digest
 full selected Companion representation profile
 capability frame AVAILABLE / HELD / UNKNOWN catalog
 held reason + unlock predicate
 provider-stage prompt/cached/prefill/latency causal evidence
-exact provider request JSON (candidate #251 only)
 Consideration/salience/adaptation evidence
 Memory review / semantic acceptance path
 ```
@@ -215,8 +213,8 @@ Memory review / semantic acceptance path
 
 ```text
 VexLife-Prod #251
-  Vex Context / Context Profiles / exact live provider-request JSON
-  OPEN / DRAFT at this snapshot
+  MERGED at 8e2e2999ed6c3d832af1f28b4f916a01a0f95c10
+  Vex Context / Context Profiles / exact live provider-request JSON now on main
 
 VexLife-Prod #351
   false Source Return action narration discovery
@@ -287,25 +285,23 @@ real result/effect evidence
 -> model may report the action as performed
 ```
 
-### Priority B — close immediate semantic-Memory continuity
+### Priority B — close the adaptive Memory loop
 
-Verify and then connect the accepted-semantic provider selection into the ordinary turn so an explicitly kept
-correction/lesson can become current continuity without waiting for another Daily Dream consolidation.
-
-Desired:
+The immediate accepted-semantic provider connector is now on current main. The next missing arrows are:
 
 ```text
-Daily baseline
-+ current accepted semantic delta
-- exact statement duplicates
--> one bounded Memory selection
--> DirectPromptContext
--> current Vex
+turn shape
+-> Consideration
+-> optional Turn Epilogue / bounded salience
+-> Memory Review / standing-consent UX
+-> semantic acceptance
+-> already-connected current accepted-semantic selection
+-> next Vex turn
 ```
 
-### Priority C — finish the human causal witness
+### Priority C — extend the human causal witness
 
-Currentize/complete Vex Context so Victor can see:
+Vex Context is now accepted. Extend it so Victor can also see:
 
 ```text
 what existed
@@ -382,8 +378,8 @@ connection status:
   Turn Epilogue -> provider turn
   Memory Review -> service/UI
   Semantic Acceptance -> ordinary Keep flow
-  accepted-semantic provider selection -> DirectCompanionTurn
-  contextComponents -> human projection
+  accepted-semantic provider selection -> DirectCompanionTurn (CONNECTED at this snapshot)
+  contextComponents -> human projection (CONNECTED at this snapshot)
   provider profile -> human projection
   capability Atlas -> human catalog
   GPT-OSS/imported model reach qualification
