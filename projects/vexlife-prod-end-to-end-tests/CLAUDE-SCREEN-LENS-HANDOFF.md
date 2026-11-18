@@ -201,6 +201,42 @@ Screen Lens projection -> perception
 != Product authority
 ~~~
 
+## Graph / pathway / route expectation
+
+Treat the source-derived relationship graph as primary.
+
+~~~text
+PATHWAY = selected branch-capable subgraph
+ROUTE   = one concrete traversal
+JOURNEY = human scenario across one or more routes
+~~~
+
+Where current Screen Lens already exposes a `pathwayRef`, preserve it as a projection/query coordinate. Do not assume the pathway ref itself is semantic authority; investigate how its nodes/edges can be derived from the richer source relationship graph.
+
+For each source relationship discovered, make it possible to answer both directions:
+
+~~~text
+REVERSE
+  what source State / Control / surface element(s) can reach this edge?
+
+FORWARD
+  what Effect / realization / observation / successor State / Projection follows from it?
+~~~
+
+First test-generation deliverable should be a deterministic route manifest, not hand-written test code:
+
+~~~text
+target coordinate / edge
+preconditions
+human actions + elementRefs
+relationship traversal
+expected State/Effect/Observation
+expected Projection/evidence
+execution class
+~~~
+
+Then bind that manifest to existing VexLife-Prod deterministic/isolated-service runners.
+
 ## No blanket mutation grant
 
 This handoff authorizes read/discovery and the already-admitted VexBoard Screen Lens lane only. VexLife-Prod source changes, lifecycle actions, merges, and release effects still require their rightful current lane/authority.

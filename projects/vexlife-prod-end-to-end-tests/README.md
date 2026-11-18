@@ -168,6 +168,23 @@ copy the same branch into every test journey
 
 Likewise, locale/platform/model conditions are evidence configurations over one semantic journey, not new copies of the human journey.
 
+## Graph-derived pathways and tests
+
+The graph is primary.
+
+~~~text
+source relationships
+-> graph
+-> selected pathway (branch-capable subgraph)
+-> route (one concrete traversal)
+-> journey (human scenario across routes)
+-> generated deterministic test case
+~~~
+
+This enables edge-centered testing: select one graph edge, traverse backward to the human-visible Controls/elements and required State, then traverse forward to Effects, observations, successor State, cross-Family consequences and human Projection.
+
+Current VexBoard already owns BoardJourney traversal, outgoing relationship choices, loop/motif analysis and Screen Lens queries. This Project should extend the source relationship input and test derivation rather than build another graph engine.
+
 ## Cross-Family pressure
 
 The interesting E2E failures are usually not inside one Family. They happen at crossings.

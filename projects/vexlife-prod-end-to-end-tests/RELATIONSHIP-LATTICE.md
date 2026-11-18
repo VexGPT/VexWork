@@ -219,6 +219,254 @@ That is currently a fail-closed limitation, not automatically a defect.
 
 The graph should keep the same existing element/pathway IDs and attach the limitation/investigation to them. If a future browser/provider route can lawfully re-observe exact page identity, the relationship mapping evolves while the existing human coordinate remains queryable.
 
+## Graph first; pathways and tests are derived
+
+The relationship graph is the reusable source for navigation and test generation.
+
+~~~text
+GRAPH
+  all currently projectable source coordinates + typed relationships
+
+PATHWAY
+  a selected branch-capable subgraph answering one human/architecture question
+
+ROUTE
+  one concrete traversal through a pathway after State/guard choices are fixed
+
+JOURNEY
+  a human scenario that may traverse several routes over time
+
+TEST CASE
+  one route + fixture/preconditions + actions + assertions + execution class
+~~~
+
+A `pathwayRef` is therefore useful as a **derived projection handle** for VexBoard/query/navigation. It is not another semantic owner. Existing Screen Lens pathway refs can remain compatibility/read coordinates while the long-term direction is to derive their membership from the relationship graph.
+
+### Graph nodes
+
+Prefer existing coordinates:
+
+~~~text
+Family / owner symbol
+State ref or exact State shape
+Control ref
+Effect source symbol
+outside realization / observation coordinate
+Projection coordinate
+elementRef
+existing provider/runtime/store coordinate
+~~~
+
+### Graph edges
+
+Useful relationship kinds include:
+
+~~~text
+OFFERS
+  State -> Control
+
+MANIFESTS
+  elementRef -> Control
+
+REQUESTS_EFFECT
+  Control -> Effect
+  with required/current State predicate carried on the edge
+
+ADMITS_STATE
+  Control -> immediate admitted State
+  when the Family Act actually admits one
+
+REALIZED_BY
+  Effect -> runtime/provider/owner
+
+OBSERVES_AS
+  realization/observation -> State
+
+PROJECTS_TO
+  State -> DisplayState / elementRef
+
+CONSUMED_BY
+  one owner/current truth -> another owner
+
+CAPTURED_AT_SEND
+  mutable current truth -> exact accepted-turn context
+
+RETURNS_TO
+  outside result -> rightful semantic owner
+~~~
+
+The current State predicate prevents `Control -> Effect` from pretending the Control means the same thing in every State.
+
+### Branching pathway versus one route
+
+Example:
+
+~~~text
+Vision pathway
+
+READY
+  -> OFFERS ENGAGE
+       -> REQUESTS_EFFECT EngageScope
+            -> macOS/runtime
+                 -> OBSERVES_AS SELECTING
+                 -> OBSERVES_AS ENGAGED
+                 -> OBSERVES_AS HELD
+
+ENGAGED
+  -> OFFERS STOP
+       -> REQUESTS_EFFECT StopScope
+            -> runtime
+                 -> OBSERVES_AS READY
+                 -> OBSERVES_AS HELD
+~~~
+
+The **pathway** is the whole branch-capable subgraph. A **route** is one concrete walk, for example:
+
+~~~text
+READY -> ENGAGE -> EngageScope -> picker -> ENGAGED
+~~~
+
+or:
+
+~~~text
+READY -> ENGAGE -> EngageScope -> picker -> HELD
+~~~
+
+## Edge-centered reverse/forward test generation
+
+Any node or edge should be selectable as a test target.
+
+Given one target edge, derive:
+
+~~~text
+reverse traversal
+  target edge
+  <- prerequisite State / source truth
+  <- lawful Control
+  <- human-visible elementRef(s)
+  <- fixture/setup coordinates needed to make that State true
+
+forward traversal
+  target edge
+  -> Effect / realization
+  -> observation
+  -> successor State
+  -> cross-owner consequences
+  -> Projection / receipt / durable evidence
+~~~
+
+This lets a test generator answer:
+
+~~~text
+How can a human reach this edge?
+What must be true before it is reachable?
+What exact thing should be clicked/typed/selected?
+What consequences should be asserted afterward?
+What sibling routes branch from the same point?
+What prior nodes can reach this node?
+What later nodes become reachable from it?
+~~~
+
+### Example: Include this page
+
+Select the edge:
+
+~~~text
+browser page context included
+-> CAPTURED_AT_SEND
+-> DirectPromptContext.BrowserContext
+~~~
+
+Reverse traversal can recover:
+
+~~~text
+eligible exact page identity
+<- Product-owned navigation
+<- context-share available
+<- element.vexlife-workspace.companion.conversation.context-share
+~~~
+
+Forward traversal can recover:
+
+~~~text
+DirectPromptContext receipt
+-> provider request contains exact browser context
+-> completed turn
+-> Vex Context / context receipt projection
+~~~
+
+The unlocated-page branch is another route from the same neighborhood:
+
+~~~text
+unexpected embedded navigation
+-> page identity unknown
+-> stale context cleared
+-> ContextShare unavailable
+-> Send must not carry stale browserContext
+~~~
+
+## Graph-derived deterministic tests
+
+The desired end state is not thousands of hand-authored test methods.
+
+~~~text
+source / Screen Lens / Family extraction
+-> normalized relationship graph
+-> route queries
+-> deterministic test-case manifests
+-> parameterized test runner
+-> exact result/evidence
+~~~
+
+The test generator may be dynamic while the result is deterministic: the same pinned source graph and route-selection policy must produce the same case manifest.
+
+A generated case should contain at least:
+
+~~~text
+target node/edge coordinates
+route relationship coordinates
+preconditions / fixture changes
+human actions + elementRefs
+scripted provider behavior when needed
+expected State / Control availability
+expected Effects / observations
+expected cross-owner consequences
+expected Projection / receipts
+execution class + resource claims
+source fingerprint
+~~~
+
+This makes coverage graph-shaped:
+
+~~~text
+known source edges
+- covered edges
+- intentionally held edges
+- active-candidate edges
+= addressable coverage debt
+~~~
+
+and allows tests to be regenerated when implementation coordinates change while stable human journeys and semantic relationships remain recognizable.
+
+## Existing VexBoard machinery to reuse
+
+Current VexWork already has useful traversal primitives:
+
+~~~text
+src/shared/vexboard-journey.mjs
+  BoardJourney
+  journeyChoices()
+  relationship traversal / back / revisit
+
+src/shared/vexboard-journey-pathway-analysis.mjs
+  loop/motif discovery over journey relationship walks
+
+src/shared/vexboard-screen-lens-query.mjs
+  read-only element/pathway/source/dependency queries
+~~~
+
+So the next implementation pressure is **richer VexLife relationship extraction + route/test derivation**, not a second graph engine.
+
 ## Source seed
 
 `relationship-lattice.seed.json` contains the current pinned anchors, journey seeds, loops and active-candidate pressure. It is deliberately disposable/regenerable as Product source changes.
