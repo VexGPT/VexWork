@@ -351,6 +351,183 @@ disposition: CURRENT | ACTIVE_CANDIDATE | HELD | UNKNOWN
 
 `CLAUDE-SCREEN-LENS-HANDOFF.md` carries the exact handoff.
 
+## Hard-edge build discipline
+
+When a route is difficult to explain or test, do not immediately introduce a helper class.
+
+First classify the missing thing:
+
+~~~text
+A. semantic law missing?
+   -> rightful Family / owner source may be incomplete.
+
+B. source law exists, but graph cannot see it?
+   -> extraction / projectability gap.
+
+C. graph sees the relationship, but no implementation realizes it?
+   -> realization / adapter / provider edge.
+
+D. realization happens, but Product cannot re-observe truth?
+   -> observation / reconciliation gap.
+
+E. Product truth exists, but human cannot perceive it?
+   -> Projection / Screen Lens / Vex Context gap.
+
+F. route is truthful, but tests cannot drive it deterministically?
+   -> test seam / route-manifest / fixture gap.
+
+G. lived behavior is intentionally unavailable?
+   -> HELD / limitation; keep it addressable instead of inventing success.
+~~~
+
+Only after this classification ask whether a new abstraction is needed.
+
+### No-helper-workaround rule
+
+A new helper/adapter/registry/DSL earns existence only when it solves repeated concrete pressure that cannot already be expressed by a rightful existing owner or shared primitive.
+
+Before adding one, answer:
+
+~~~text
+What exact repeated failure does it remove?
+Who consumes it?
+Which existing source could own this instead?
+Does it derive truth or duplicate truth?
+Will it reduce future reading/maintenance?
+Can it fail closed when source is incomplete?
+Does it preserve existing IDs/ownership?
+If deleted, what required correctness/proof is lost?
+~~~
+
+If the last answer is "nothing required," do not add it.
+
+Prefer, in order:
+
+~~~text
+reuse existing source relationship
+-> add missing source relationship to rightful owner
+-> extend existing extractor/query
+-> add a small local adapter
+-> only then form a shared abstraction after repeated pressure
+~~~
+
+## Worked examples for judgment
+
+### Example 1 — Vision: Effect is a request, not success
+
+Source: `src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt`
+
+~~~text
+READY + ENGAGE
+-> Act(admittedState = null, Effect = EngageScope)
+-> macOS/runtime picker
+-> observe(...)
+-> SELECTING | ENGAGED | HELD
+-> DisplayState
+~~~
+
+Use this to reject helpers that collapse semantic State, runtime realization, and observed successor truth into one manager.
+
+### Example 2 — Memory Review: one human choice crosses owners
+
+Source: `src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewFamily.kt`
+
+~~~text
+Pending(candidate) + KEEP(candidate)
+-> Effect.Accept(candidate)
+-> semantic acceptance / persistence owners
+-> accepted semantic Memory becomes independently observable
+-> later Memory selection may consume it
+~~~
+
+Use this to reject a mega Memory workflow helper that steals review, acceptance, Score, durable Memory, and prompt meaning from separate owners.
+
+### Example 3 — Include this page: stable UI ID, conditional route, projection gap
+
+Source neighborhood:
+
+~~~text
+VexLifeWorkspaceBlueprint.kt
+VexLifeWebP1.kt
+VexLifeWebP1RuntimeArtifacts.kt
+DirectPromptContext.kt
+VexLifeProdScreenLens.kt
+~~~
+
+Stable surface coordinate:
+
+~~~text
+element.vexlife-workspace.companion.conversation.context-share
+~~~
+
+Route:
+
+~~~text
+Product-owned navigation earns exact page identity
+-> context eligible
+-> ContextShare available
+-> separate page-context read
+-> browserContext ready
+-> includePage true
+-> next Send captures browserContext
+-> DirectPromptContext receipt fingerprints exact context
+~~~
+
+Alternate route:
+
+~~~text
+embedded page navigates internally
+-> exact new address is not observable
+-> stale identity/context cleared
+-> ContextShare unavailable
+-> Send must not carry stale browserContext
+~~~
+
+Do not add a BrowserContext helper that guesses the current page. Either a rightful surface re-earns exact identity or the edge remains unavailable.
+
+### Example 4 — complex cross-fractal case: Voice + language + turn capture + Vex Context
+
+Active candidate pressure: #251, #310, #331.
+
+~~~text
+<subject:user>
+  -> spoken-language = zh
+  -> composer-output = TRANSLATE_TO_ENGLISH
+  -> reply-language = zh-Hans
+  -> Voice START
+  -> speak Chinese
+  -> Composer contains English translation
+  -> Send
+  -> provider input contains:
+       Conversation.request = English text
+       PersonContext.replyLanguage = zh-Hans
+  -> Vex replies in Simplified Chinese
+  -> Vex Context shows what this completed turn actually received
+~~~
+
+Then change reply-language to zh-Hant. The next Send captures zh-Hant while the prior zh-Hans receipt remains unchanged.
+
+This teaches that spoken language, editable request language, reply language, VoiceInput, Conversation, prompt capture, and Vex Context remain independent owners that can converge without earning a mega-Family.
+
+## Reusable innovation, but only when earned
+
+Promising fractals already suggested by current pressure:
+
+~~~text
+source relationship extractor
+graph revision diff
+edge-to-test manifest compiler
+coverage debt query
+failing-route minimizer
+resource-aware shard planner
+~~~
+
+These are candidate tools, not commitments.
+
+An innovation earns source only when it has a concrete consumer now, reuses source truth rather than copies it, removes repeated manual work, fails closed, costs less to maintain than the problem it removes, and no existing VexWork/VexBoard/VexLife primitive already answers the question.
+
+The goal is not maximum abstraction. The goal is maximum recoverability and reuse per unit of machinery.
+
 ## Execution classes
 
 The same journey may have several proof realizations:

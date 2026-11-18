@@ -710,6 +710,68 @@ Claude/OpenAI orientation
 
 without each consumer owning a separate feature map.
 
+## Hard-edge convergence algorithm
+
+When a selected graph node/edge is difficult, use this before changing source:
+
+~~~text
+Can exact source already explain the edge?
+  YES -> derive graph/test from source
+  NO
+   |
+   v
+Can lived evidence reproduce the relationship?
+  NO -> keep UNKNOWN / HELD; do not guess
+  YES
+   |
+   v
+Which layer is missing?
+  semantic law
+  source extraction
+  realization
+  observation
+  projection
+  deterministic test seam
+   |
+   v
+repair the smallest rightful layer
+-> regenerate graph
+-> does the route now derive without manual interpretation?
+~~~
+
+This prevents a hard route from becoming a local helper-class workaround that hides a missing architectural relationship.
+
+## Fractal reuse test
+
+A pattern discovered in one neighborhood may be reused elsewhere only after separating the reusable relationship from feature-specific nouns.
+
+~~~text
+Vision:
+  State + Control -> Effect -> realization -> Observation -> State
+
+Model switching:
+  State + Control -> Effect -> runtime convergence -> Observation -> State
+
+VoiceInput:
+  State + Control -> Effect -> microphone/runtime -> Observation -> State
+~~~
+
+The reusable fractal is the relationship shape, not a shared AsyncFeatureManager.
+
+Likewise reply language, Context Profile, selected model/runtime, and Memory availability can share:
+
+~~~text
+mutable current truth
+-> accepted Send captures exact value
+-> in-flight turn remains fixed
+-> later current changes affect next Send
+-> historical receipt remains immutable
+~~~
+
+The reusable fractal is turn capture, not one helper that owns every current setting.
+
+A fresh instance should look for these structural equivalences before adding code while preserving rightful semantic owners on each side.
+
 ## Source seed
 
 `relationship-lattice.seed.json` contains the current pinned anchors, journey seeds, loops and active-candidate pressure. It is deliberately disposable/regenerable as Product source changes.

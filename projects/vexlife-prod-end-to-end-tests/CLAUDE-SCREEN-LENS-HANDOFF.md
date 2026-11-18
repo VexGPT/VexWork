@@ -663,6 +663,109 @@ Suggested patient zeros:
 2. ContextShare available -> page read -> included -> Send browserContext.
 3. reply-language change -> next Send -> Vex Context historical/current distinction.
 
+## If you hit a hard edge: do not paper over it
+
+Before adding a helper class, registry, second state holder, custom traversal engine or feature-specific test DSL, classify the problem:
+
+~~~text
+semantic law missing
+extractor/projectability missing
+realization missing
+observation/reconciliation missing
+human projection missing
+deterministic test seam missing
+intentionally held/unknown
+~~~
+
+Then repair the smallest rightful layer.
+
+Use these four examples as judgment anchors:
+
+~~~text
+Vision
+  Effect != observed successor State
+
+Memory Review
+  one human choice may cross several owners
+
+ContextShare
+  element ID != semantic route
+  conditional availability
+  fail-closed/projectability gaps
+
+Voice + language + Vex Context
+  independent current truths converge at Send
+  current state must not rewrite historical evidence
+~~~
+
+If a new problem resembles one structurally, reuse the relationship pattern, not the feature-specific implementation.
+
+### Example analogy test
+
+If you find yourself proposing FooFeatureManager / FooFlowCoordinator / FooGraphRegistry / FooTestHelper, first ask whether the problem is actually one of:
+
+~~~text
+State + Control -> Effect -> realization -> Observation
+current truth -> captured at Send -> immutable receipt
+stable element ID -> deeper semantic owner
+cross-owner Effect realization
+graph extraction / projection only
+~~~
+
+If yes, use the existing architecture shape and add only the missing edge/adapter/query.
+
+## Exploration is allowed; accretion is not automatic
+
+You may discover a useful new fractal while tracing the graph.
+
+Capture it first as a candidate convergence:
+
+~~~text
+observed repeated pressure
+existing primitives checked
+proposed structural pattern
+at least one concrete consumer
+what duplication/manual work it removes
+what maintenance it creates
+why a local solution is insufficient
+~~~
+
+Only promote it to shared source after that pressure is real.
+
+Current promising but uncommitted candidates:
+
+~~~text
+source relationship extractor
+graph revision diff
+edge -> deterministic test-manifest compiler
+coverage-debt query
+failing-route minimizer
+resource-aware shard planner
+~~~
+
+Do not implement them merely because they are elegant.
+
+## Minimum knowledge-share receipt before broad implementation
+
+Return:
+
+~~~text
+1. Human outcome in your own words.
+2. Exact current-main source refs read.
+3. Exact active-candidate refs read separately.
+4. Which judgment example your edge most resembles, and why.
+5. Current graph node/edge or missing relationship.
+6. Whether you are deriving source or using Roomba discovery.
+7. Smallest rightful layer that needs change.
+8. Existing primitive you will reuse.
+9. Why no helper abstraction is required; or the repeated pressure that earns one.
+10. One reverse-generated route and one forward consequence chain.
+11. One thing still UNKNOWN/HELD that you will not guess.
+12. Candidate innovation noticed, if any, kept separate unless earned.
+~~~
+
+This receipt is not ceremony; it proves orientation before source accretes.
+
 ## No blanket mutation grant
 
 This handoff authorizes read/discovery and the already-admitted VexBoard Screen Lens lane only. VexLife-Prod source changes, lifecycle actions, merges, and release effects still require their rightful current lane/authority.

@@ -981,5 +981,121 @@
     "productSourceMutationPerformed": false,
     "vexBoardMutationPerformed": false,
     "externalEffectsPerformed": false
-  }
+  },
+  "judgmentExamples": [
+    {
+      "example": "Vision",
+      "sourceCoordinates": [
+        "VexLifeVisionFamily",
+        "VexLifeVisionFamily.Ready",
+        "VexLifeVisionFamily.Engage",
+        "VexLifeVisionFamily.Effect.EngageScope"
+      ],
+      "pattern": "State + Control -> Effect -> outside realization -> Observation -> successor State -> Projection",
+      "prevents": [
+        "Effect_is_success",
+        "control_available_in_every_state",
+        "runtime_becomes_semantic_owner"
+      ]
+    },
+    {
+      "example": "MemoryReview",
+      "sourceCoordinates": [
+        "VexLifeMemoryReviewFamily",
+        "VexLifeMemoryReviewFamily.Pending",
+        "VexLifeMemoryReviewFamily.Keep",
+        "VexLifeMemoryReviewFamily.Effect.Accept"
+      ],
+      "pattern": "Family Effect crosses to separate persistence/semantic owners; eventual durable truth is re-observed independently",
+      "prevents": [
+        "mega_memory_family",
+        "effect_endpoint_equals_durable_owner",
+        "workflow_helper_steals_semantics"
+      ]
+    },
+    {
+      "example": "ContextShare",
+      "sourceCoordinates": [
+        "element.vexlife-workspace.companion.conversation.context-share",
+        "pathway.vexlife-prod.conversation.send",
+        "DirectPromptContext.BrowserContext"
+      ],
+      "pattern": "stable surface ID + conditional availability + optional Send capture + fail-closed invalidation",
+      "prevents": [
+        "element_id_as_semantic_owner",
+        "disabled_equals_absent",
+        "guess_current_page_identity",
+        "projection_current_equals_relationship_complete"
+      ]
+    },
+    {
+      "example": "VoiceLanguageContext",
+      "sourceCoordinates": [
+        "VexLifeVoiceInputFamily",
+        "VexLifeLocalAsrSpokenLanguage",
+        "VexLifeLocalAsrComposerOutput",
+        "VexLifePersonSettings",
+        "DirectPromptContext",
+        "Vex Context"
+      ],
+      "disposition": "ACTIVE_CANDIDATE_PRESSURE",
+      "pattern": "independent current truths converge at accepted Send; completed receipt remains immutable across later changes",
+      "prevents": [
+        "generic_language_state",
+        "voice_second_conversation",
+        "current_setting_rewrites_history",
+        "vex_context_becomes_truth_owner"
+      ]
+    }
+  ],
+  "abstractionGate": {
+    "requiredQuestions": [
+      "What repeated concrete failure or manual reconstruction does this remove?",
+      "Who consumes it now?",
+      "Which existing source primitive was checked first?",
+      "Does it derive truth or duplicate truth?",
+      "Can it fail closed?",
+      "What required correctness/proof is lost if it is removed?",
+      "Why is a smaller local solution insufficient?"
+    ],
+    "preferenceOrder": [
+      "reuse existing source relationship",
+      "repair rightful semantic/source relationship",
+      "extend existing extractor/query",
+      "add small local adapter",
+      "form shared abstraction only after repeated pressure"
+    ]
+  },
+  "candidateInnovations": [
+    {
+      "candidate": "source relationship extractor",
+      "status": "UNCOMMITTED",
+      "consumerPressure": "derive Family/Blueprint/provider edges without manual map upkeep"
+    },
+    {
+      "candidate": "graph revision diff",
+      "status": "UNCOMMITTED",
+      "consumerPressure": "identify changed human routes after source refactors"
+    },
+    {
+      "candidate": "edge-to-test manifest compiler",
+      "status": "UNCOMMITTED",
+      "consumerPressure": "reverse/forward traversal into deterministic test inputs/assertions"
+    },
+    {
+      "candidate": "coverage debt query",
+      "status": "UNCOMMITTED",
+      "consumerPressure": "address uncovered/held/active source edges"
+    },
+    {
+      "candidate": "failing route minimizer",
+      "status": "UNCOMMITTED",
+      "consumerPressure": "reduce long E2E failures to smallest reproducing graph route"
+    },
+    {
+      "candidate": "resource-aware shard planner",
+      "status": "UNCOMMITTED",
+      "consumerPressure": "parallelize isolated deterministic routes while serializing shared live/lifecycle resources"
+    }
+  ]
 }
