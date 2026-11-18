@@ -257,13 +257,15 @@ This is the best Roomba/projectability example.
 
 ### E. Context Profile / reply language — turn capture and historical immutability
 
-Active candidate; do not promote to current main:
+Mixed current/candidate boundary:
 
 ~~~text
-VexLife-Prod PR #251
-src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt
-src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt
-src/commonMain/kotlin/vexlife/service/VexLifeProdServiceContract.kt
+current main
+  VexLifePersonSettings / reply-language capture in DirectPromptContext
+
+active candidate #251
+  VexLifeContextProfileFamily
+  Vex Context projection/evidence evolution
 ~~~
 
 Judgment taught:
@@ -469,13 +471,18 @@ Release Inbox
 Vision
 ~~~
 
+Current-main pressure now includes:
+
+~~~text
+VoiceInput (merged #310)
+Local ASR Models (merged #310)
+Person reply language / spoken language / Composer output (merged #331)
+~~~
+
 Then active candidate pressure:
 
 ~~~text
-Context Profile (#251)
-VoiceInput (#310)
-Local ASR Models (#310)
-Person reply language / spoken language / Composer output (#331)
+Context Profile + Vex Context (#251)
 ~~~
 
 ## What to look for

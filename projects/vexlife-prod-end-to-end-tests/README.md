@@ -127,12 +127,20 @@ Release Inbox
 Vision
 ~~~
 
-Active candidate Families / owners already relevant to future journeys:
+Current main now also includes the formerly active Voice / Local ASR / language work:
+
+~~~text
+VoiceInput
+Local ASR model Family
+spoken-language
+Composer-output
+reply-script relationships
+~~~
+
+Current active candidate pressure:
 
 ~~~text
 #251 Context Profile + Vex Context
-#310 VoiceInput + Local ASR model Family
-#331 spoken-language / Composer-output / reply-script relationships
 ~~~
 
 The machine-readable seed is `relationship-lattice.seed.json`. It is a **pinned projection seed**, not canonical Product meaning.
@@ -649,7 +657,9 @@ Do not add a BrowserContext helper that guesses the current page. Either a right
 
 ### Example 4 — complex cross-fractal case: Voice + language + turn capture + Vex Context
 
-Active candidate pressure: #251, #310, #331.
+Current source status:
+- VoiceInput / Local ASR / spoken-language / Composer-output / reply-script relationships are on current main through merged #310/#331.
+- Context Profile + Vex Context remain active candidate pressure in #251.
 
 ~~~text
 <subject:user>

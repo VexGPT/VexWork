@@ -20,7 +20,6 @@
     "docs/process/FORM-PROJECT.md",
     "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
     "github.pull.vexlife-prod.343",
-    "github.commit.vexlife-prod.605c635ae2d034a1c4d605e829faa4813de071c3",
     "github.pull.vexwork.298",
     "github.pull.vexwork.300",
     "github.pull.vexwork.303",
@@ -45,7 +44,10 @@
     "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeRelayGraph.kt",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeSemanticRelayContract.kt",
-    "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence"
+    "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+    "github.commit.vexlife-prod.98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0",
+    "github.merge.vexlife-prod.310.3120a7535f5c9095735c6880f6dd0119ec39a7a8",
+    "github.merge.vexlife-prod.331.98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0"
   ],
   "formedAt": "2026-11-18T14:27:00.000Z"
 }

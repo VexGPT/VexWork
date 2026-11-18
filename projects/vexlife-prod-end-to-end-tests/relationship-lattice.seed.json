@@ -283,9 +283,9 @@
     {
       "coordinate": "VexLifeVoiceInputFamily",
       "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
-      "disposition": "ACTIVE_CANDIDATE",
+      "disposition": "CURRENT_MAIN",
       "sourcePath": "src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt",
-      "sourceRef": "github.pull.vexlife-prod.310",
+      "sourceRef": null,
       "stateRefs": [
         "READY",
         "REQUESTING_MICROPHONE",
@@ -304,9 +304,9 @@
     {
       "coordinate": "VexLifeLocalAsrModelsFamily",
       "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
-      "disposition": "ACTIVE_CANDIDATE",
+      "disposition": "CURRENT_MAIN",
       "sourcePath": "src/commonMain/kotlin/vexlife/localasr/VexLifeLocalAsrModelsFamily.kt",
-      "sourceRef": "github.pull.vexlife-prod.310",
+      "sourceRef": null,
       "stateRefs": [],
       "stateShapes": [
         "State(artifactState, selected, downloading, anyDownloadRunning)"
@@ -327,9 +327,9 @@
     {
       "coordinate": "VexLifePersonSettings",
       "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
-      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_EVOLUTION",
+      "disposition": "CURRENT_MAIN",
       "sourceRef": null,
-      "humanMeaning": "Current person reply-language preference; script-specific evolution is active in #331."
+      "humanMeaning": "Current person reply-language preference; script-specific reply-language behavior is on current main through merged #331."
     },
     {
       "coordinate": "DirectCompanionTurn",
@@ -383,15 +383,15 @@
     {
       "coordinate": "VexLifeLocalAsrSpokenLanguage",
       "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
-      "disposition": "ACTIVE_CANDIDATE",
-      "sourceRef": "github.pull.vexlife-prod.331",
+      "disposition": "CURRENT_MAIN",
+      "sourceRef": null,
       "humanMeaning": "Microphone recognition language; distinct from Vex reply language."
     },
     {
       "coordinate": "VexLifeLocalAsrComposerOutput",
       "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
-      "disposition": "ACTIVE_CANDIDATE",
-      "sourceRef": "github.pull.vexlife-prod.331",
+      "disposition": "CURRENT_MAIN",
+      "sourceRef": null,
       "humanMeaning": "AS_SPOKEN vs TRANSLATE_TO_ENGLISH dictation output into existing Composer."
     },
     {
@@ -610,21 +610,21 @@
     {
       "from": "VexLifeVoiceInputFamily",
       "to": "DirectCompanionTurn",
-      "disposition": "ACTIVE_CANDIDATE_INDIRECT",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP_INDIRECT",
       "kind": "EDITS_COMPOSER_NOT_SEND",
       "humanMeaning": "VoiceInput edits the existing Composer; only the later human Send enters canonical Conversation."
     },
     {
       "from": "VexLifeLocalAsrSpokenLanguage",
       "to": "VexLifeVoiceInputFamily",
-      "disposition": "ACTIVE_CANDIDATE",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "CONFIGURES_RECOGNITION",
       "humanMeaning": "Microphone language configures recognition while remaining distinct from Vex reply language."
     },
     {
       "from": "VexLifeLocalAsrComposerOutput",
       "to": "DirectCompanionTurn",
-      "disposition": "ACTIVE_CANDIDATE_INDIRECT",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP_INDIRECT",
       "kind": "FORMS_EDITABLE_REQUEST_TEXT",
       "humanMeaning": "ASR output mode changes the editable Composer text that may later be sent; it does not directly choose reply language."
     },
@@ -761,15 +761,15 @@
     {
       "journeyRef": "journey.language.reply-switch-history",
       "shardRef": "voice-language",
-      "disposition": "ACTIVE_CANDIDATE",
-      "sourceRef": "github.pull.vexlife-prod.331",
+      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_VEX_CONTEXT_PROJECTION",
+      "sourceRef": "github.pull.vexlife-prod.251",
       "humanOutcome": "Speak/send across reply-language changes and prove current turn behavior changes without rewriting historical turn context."
     },
     {
       "journeyRef": "journey.voice.spoken-composer-reply-separation",
       "shardRef": "voice-language",
-      "disposition": "ACTIVE_CANDIDATE",
-      "sourceRef": "github.pull.vexlife-prod.331",
+      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_VEX_CONTEXT_PROJECTION",
+      "sourceRef": "github.pull.vexlife-prod.251",
       "humanOutcome": "Speak Chinese, optionally translate Composer text to English, while independently asking Vex to reply in Simplified/Traditional Chinese and projecting the distinctions truthfully in Vex Context."
     },
     {
@@ -1038,7 +1038,7 @@
         "DirectPromptContext",
         "Vex Context"
       ],
-      "disposition": "ACTIVE_CANDIDATE_PRESSURE",
+      "disposition": "CURRENT_MAIN_WITH_ACTIVE_VEX_CONTEXT_PROJECTION",
       "pattern": "independent current truths converge at accepted Send; completed receipt remains immutable across later changes",
       "prevents": [
         "generic_language_state",
@@ -1350,6 +1350,30 @@
     "counterexample": {
       "source": "VexLife-Prod VexLifeSemanticRelayContract",
       "note": "Specific reference-only semantic-relay metadata contract; not generic authority for graph/testing convergence."
+    }
+  },
+  "currentness": {
+    "observedAt": "2026-11-18",
+    "vexLifeProdMain": "98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0",
+    "mergedPressure": {
+      "310": {
+        "state": "MERGED",
+        "mergeCommit": "3120a7535f5c9095735c6880f6dd0119ec39a7a8"
+      },
+      "331": {
+        "state": "MERGED",
+        "mergeCommit": "98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0"
+      }
+    },
+    "activePressure": {
+      "251": {
+        "state": "OPEN_DRAFT",
+        "head": "7477e1a32a4c27289a97c33aee8e1e67c63a64c1"
+      },
+      "343": {
+        "state": "OPEN_DRAFT",
+        "head": "78c6fe406fa223ddf0034295734c39d7db2558f5"
+      }
     }
   }
 }
