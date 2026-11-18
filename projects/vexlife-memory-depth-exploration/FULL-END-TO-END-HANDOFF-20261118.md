@@ -13,7 +13,7 @@ Target repository:
 - VexGPT/VexLife-Prod
 
 Product source snapshot used for this handoff:
-- main = 98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0
+- main = a58777106b08bd58c167608fa0115729185ae3dd
 
 This document is a recipient-complete implementation handoff for a fresh worker. It is navigation and
 source synthesis, not VexLife-Prod source authority, merge authority, release authority, Memory acceptance,
@@ -565,18 +565,18 @@ Sources:
 
 ## 4. Current candidate / unfinished Product work
 
-### 4.1 Vex Context / Context Profiles — PR #251
+### 4.1 Vex Context / Context Profiles — PR #251 MERGED
 
-At this handoff snapshot:
+Refreshed current truth:
 
 ~~~text
 PR #251
 head 7477e1a32a4c27289a97c33aee8e1e67c63a64c1
-base 98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0
-state OPEN / DRAFT
+merge 8e2e2999ed6c3d832af1f28b4f916a01a0f95c10
+state MERGED
 ~~~
 
-The candidate owns/proposes:
+Current main now owns:
 - Vex context as a sibling workspace surface
 - last-turn vs next-turn causal presentation
 - Context Profiles
@@ -596,7 +596,7 @@ foundationText     <= 16,000 characters when extension mode
 foundation source  version + optional SHA-256 provenance
 ~~~
 
-PR #251 is candidate source, not current main authority yet.
+PR #251 is now accepted current-main lineage. Its foundation source is `docs/foundation/VEX-CONTEXT-PROFILES.md`.
 
 ### 4.2 Urgent false-action narrative — PR #351
 
@@ -885,11 +885,9 @@ Acceptance:
 - positive control for real request/result;
 - human answer cannot collapse imagined action into performed effect.
 
-### Step 2 — Finish the Vex Context witness core
+### Step 2 — Extend the accepted Vex Context witness core
 
-Use #251 as candidate/provenance, not automatic authority.
-
-Converge one human surface over:
+#251 is now merged current source. Preserve its accepted boundaries and extend the human witness over:
 - last completed turn;
 - current next-turn sources/configuration;
 - selected model/provider profile;
@@ -904,7 +902,7 @@ Raw provider JSON is expert view. Human causal explanation comes first.
 Acceptance:
 - Victor can answer "what did this Vex actually receive and what actually happened?" without reading source.
 
-### Step 3 — Project the typed field catalog
+### Step 4 — Project the typed field catalog
 
 The catalog is a projection over rightful owners, not a second settings database.
 
@@ -913,14 +911,14 @@ Acceptance:
   mutability/standing/held reason/unlock predicate/tradeoff/examples.
 - HELD never removes a field from the human catalog.
 
-### Step 4 — Give every field a source-backed lesson
+### Step 5 — Give every field a source-backed lesson
 
 Implement the "What is this?" experience and "Ask Vex about this field."
 
 Acceptance:
 - Victor can discover and understand a field without already knowing its engineering name.
 
-### Step 5 — Form a capability-realization matrix per model
+### Step 6 — Form a capability-realization matrix per model
 
 For every offered model + capability, project:
 
@@ -940,7 +938,7 @@ source/effect refs?
 Acceptance:
 - when a capability is not used, the system can name exactly which arrow failed.
 
-### Step 6 — Qualify provider-native reach rather than leaving permanent hidden holds
+### Step 7 — Qualify provider-native reach rather than leaving permanent hidden holds
 
 For GPT-OSS/Harmony and future/imported models:
 1. inspect current provider/profile source;
@@ -957,7 +955,7 @@ Do not preserve HELD forever merely because an old snapshot had it.
 Acceptance:
 - every offered model has an explicit visible route to qualified reach or an exact visible blocker.
 
-### Step 7 — Integrate VexLife nervous-system adaptation
+### Step 3 — Close the VexLife nervous-system adaptation loop
 
 Do not make Vex become its own context/tool/Memory administrator.
 
@@ -1207,13 +1205,13 @@ read current VexLife-Prod front door/culture/foundation index
 -> choose the smallest current unconsumed edge
 ~~~
 
-At formation time, the expected first Product edge is still:
+At refreshed formation time, the expected first Product edge is:
 
 ~~~text
 #351 effect-truth correction
--> #251 currentize/finish Vex Context witness core
--> typed field/capability-realization projection
--> provider qualification / nervous-system adaptation / semantic-depth successors
+-> connect Consideration / Epilogue / Review into the now-connected current-semantic Memory path
+-> extend accepted Vex Context with typed field + capability-realization witnessability
+-> provider qualification / semantic-depth / lesson-transfer successors
 ~~~
 
 If current source has moved materially, update the route rather than replaying this sequence mechanically.
