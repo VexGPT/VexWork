@@ -1863,6 +1863,48 @@ MODEL-FACING NATURAL EXPRESSION
 
 ---
 
+## Shared pressure-harness reuse
+
+Before creating any new Memory/continuity test runner, read:
+
+~~~text
+projects/vexlife-memory-depth-exploration/
+  HARNESS-REUSE-PLAN-POST-PR247-20261117.md
+~~~
+
+Current harness owner at this checkpoint:
+
+~~~text
+VexWork #310
+head 0fc67824a9723665b652453334df594a38284def
+harness.vexlife-prod.conversational-boundaries/v1
+~~~
+
+The successor should reuse:
+
+~~~text
+depth-continuity-v1
+current-state-placement-v1
+shared adapter contract
+shared result ZIP / analyzer
+scratch Home isolation
+effective-selection / payload / native pressure strategies
+~~~
+
+New Consideration/Epilogue evidence should begin under namespaced implementationExtensions rather than forcing shared schema churn.
+
+Memory Keep/Withdraw/Dream/restart should not be hidden inside a Product-specific adapter. If those controls are needed for lived transfer proof, extend #310's shared scenario grammar minimally and map each control through the rightful Product owner.
+
+Permanent:
+
+~~~text
+NEW PRODUCT DECISION != NEW TEST SYSTEM
+HARNESS CONTROL != PRODUCT EFFECT OWNER
+SCENARIO DECLARES INTENT -> ADAPTER USES RIGHTFUL OWNER -> RESULT RECORDS EFFECT
+~~~
+
+---
+
 ## Resume coordinate
 
 The merged continuity substrate is not the next engineering question.
