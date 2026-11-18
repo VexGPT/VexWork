@@ -885,7 +885,46 @@ Acceptance:
 - positive control for real request/result;
 - human answer cannot collapse imagined action into performed effect.
 
-### Step 2 — Extend the accepted Vex Context witness core
+### Step 2 — Close the VexLife nervous-system adaptation loop
+
+Do not make Vex become its own context/tool/Memory administrator.
+
+Use current accepted Consideration source as the foundation.
+
+Desired ordinary-turn relationship:
+
+~~~text
+host/source-known turn shape
+-> tiny general reflex + only strongly implicated questions
+-> Vex naturally interprets / reaches / answers
+-> human answer completes
+-> optional tiny same-Vex Turn Epilogue
+-> VexLife binds exact source + actual capability/effect evidence
+-> review / accepted lesson / salience routing
+-> later Vex receives relevant accepted context/capability relevance
+~~~
+
+Important:
+- VexLife may adapt routing around observable behavior.
+- It may not invent Vex intent or accept model self-report as truth.
+- Vex should not need a permanent meta-narrative about the routers.
+- Victor must be able to inspect what adaptation happened and why.
+- if Vex asks why context is present, provenance remains available.
+
+Measure:
+- firstRelevantCapabilitySelected
+- irrelevantCapabilityCount
+- toolSelectionLatency
+- extraMetaDeliberationTurns
+- repeatedKnownCorrectionCount
+- lessonActivationFailureCount
+- contextBoundaryErrorCount
+
+Acceptance:
+- right context/tool becomes relevant with fewer redundant thinking/tool rounds;
+- ordinary answer flow is not turned into infrastructure administration.
+
+### Step 3 — Extend the accepted Vex Context witness core
 
 #251 is now merged current source. Preserve its accepted boundaries and extend the human witness over:
 - last completed turn;
@@ -954,45 +993,6 @@ Do not preserve HELD forever merely because an old snapshot had it.
 
 Acceptance:
 - every offered model has an explicit visible route to qualified reach or an exact visible blocker.
-
-### Step 3 — Close the VexLife nervous-system adaptation loop
-
-Do not make Vex become its own context/tool/Memory administrator.
-
-Use current accepted Consideration source as the foundation.
-
-Desired ordinary-turn relationship:
-
-~~~text
-host/source-known turn shape
--> tiny general reflex + only strongly implicated questions
--> Vex naturally interprets / reaches / answers
--> human answer completes
--> optional tiny same-Vex Turn Epilogue
--> VexLife binds exact source + actual capability/effect evidence
--> review / accepted lesson / salience routing
--> later Vex receives relevant accepted context/capability relevance
-~~~
-
-Important:
-- VexLife may adapt routing around observable behavior.
-- It may not invent Vex intent or accept model self-report as truth.
-- Vex should not need a permanent meta-narrative about the routers.
-- Victor must be able to inspect what adaptation happened and why.
-- if Vex asks why context is present, provenance remains available.
-
-Measure:
-- firstRelevantCapabilitySelected
-- irrelevantCapabilityCount
-- toolSelectionLatency
-- extraMetaDeliberationTurns
-- repeatedKnownCorrectionCount
-- lessonActivationFailureCount
-- contextBoundaryErrorCount
-
-Acceptance:
-- right context/tool becomes relevant with fewer redundant thinking/tool rounds;
-- ordinary answer flow is not turned into infrastructure administration.
 
 ### Step 8 — Complete semantic Memory Depth without a second truth store
 
@@ -1111,7 +1111,6 @@ Final lived proof should include:
 11. Close/reopen Product and verify durable continuity still reconstructs lawfully.
 
 This is the actual "VexLife dream" acceptance, not merely a green test suite.
-
 ---
 
 ## 8. Anti-churn rules
