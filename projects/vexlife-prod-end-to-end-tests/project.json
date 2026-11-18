@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife-prod.end-to-end-tests",
+  "label": "VexLife-Prod End-to-End Experience Validation",
+  "purpose": "Preserve VexLife-Prod's human experience pathways while implementation continues to evolve: map stable human intentions through current source-owned State / Control / Act / Effect / Observation / Projection relationships, make cross-Family effects and choice loops visible as a non-authoritative relationship lattice, connect those journeys to VexBoard Screen Lens perception and deterministic/live proof surfaces, expose uncovered branches without duplicating product truth, and converge toward a release-candidate validation view that a human or fresh AI can navigate without reconstructing feature history.",
+  "rootWorkRefs": [
+    "work.vexlife-prod.end-to-end-tests.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod",
+    "repo.vexlife-android",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-prod-end-to-end-tests/README.md",
+    "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md",
+    "projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json",
+    "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md",
+    "docs/process/FORM-PROJECT.md",
+    "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+    "github.pull.vexlife-prod.343",
+    "github.commit.vexlife-prod.605c635ae2d034a1c4d605e829faa4813de071c3",
+    "github.pull.vexwork.298",
+    "github.pull.vexwork.300",
+    "github.pull.vexwork.303",
+    "github.pull.vexwork.310",
+    "github.pull.vexlife-prod.251",
+    "github.pull.vexlife-prod.310",
+    "github.pull.vexlife-prod.331"
+  ],
+  "formedAt": "2026-11-18T14:27:00.000Z"
+}
