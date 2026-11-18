@@ -22,6 +22,47 @@ move after this handoff was formed.
 
 ---
 
+
+## 0A. Current connection audit is a required gate
+
+Before following the implementation sequence, consume:
+
+- `projects/vexlife-memory-depth-exploration/CURRENT-CONNECTION-AUDIT-20261118.md`
+
+Do not assume that a source file, merged foundation or UI element means the end-to-end relationship is connected.
+For every relevant feature/field, map at least:
+
+~~~text
+SOURCE
+  does current Product source own it?
+
+TURN
+  does the ordinary Direct Companion turn consume it?
+
+PROVIDER
+  does the selected model/provider receive a qualified representation?
+
+HUMAN
+  can Victor witness/configure/understand it?
+
+ADAPT
+  does it participate in the VexLife nervous-system feedback loop?
+~~~
+
+Classify the current relationship as CONNECTED / PARTIAL / INTERNAL_ONLY / CANDIDATE / UNFORMED / VISIBLE_STUB.
+Only then choose the smallest missing edge to connect.
+
+The 2026-11-18 audit found material disconnect signals including:
+- current accepted-semantic provider-selection source appears not to be consumed by the ordinary turn path;
+- Consideration / Turn Epilogue / Memory Review / semantic acceptance do not yet form one live adaptive loop;
+- richer contextComponents / provider profiles / capability-frame truth / stage measurements are mostly not human-witnessed;
+- GPT-OSS/imported-Qwen provider reach machinery exists but remains held from ordinary reach;
+- Dream backend exists while Dream Sync presentation is not connected;
+- several visible UI affordances remain explicit stubs;
+- no qualified meaning index exists.
+
+High-impact source-only findings must be reverified repository-wide before mutation.
+
 ## 1. What Victor is trying to build
 
 The outcome is larger than "Memory Depth."
