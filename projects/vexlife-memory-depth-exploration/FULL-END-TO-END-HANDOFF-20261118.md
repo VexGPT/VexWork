@@ -27,6 +27,7 @@ move after this handoff was formed.
 
 Before following the implementation sequence, consume:
 
+- `projects/vexlife-memory-depth-exploration/CURRENT-STATE-CONTEXT.md`
 - `projects/vexlife-memory-depth-exploration/CURRENT-CONNECTION-AUDIT-20261118.md`
 
 Do not assume that a source file, merged foundation or UI element means the end-to-end relationship is connected.
