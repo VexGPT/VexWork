@@ -1804,6 +1804,65 @@ runs in Product.
 
 ---
 
+## Natural Vex perception / Turn Epilogue refinement
+
+Before implementing a broad host-side request-pattern classifier, read:
+
+~~~
+projects/vexlife-memory-depth-exploration/
+  NATURAL-VEX-PERCEPTION-TURN-EPILOGUE-20261117.md
+~~~
+
+This refinement corrects one remaining risk in the first Consideration scaffold:
+
+~~~text
+VexLife classifies the turn
+-> Vex fills out a report
+~~~
+
+is too external/manual as the long-term nervous-system shape.
+
+Preferred direction:
+
+~~~
+tiny general self-reflex
++ strong source-known nudges only
+-> Vex naturally interprets / reaches / answers
+-> same Vex forms a tiny post-answer Turn Epilogue
+-> VexLife binds exact source and review policy
+~~~
+
+The model-facing epilogue may use natural sentence stems such as:
+
+~~~
+What stayed with me was ___
+I'm still unsure about ___
+Something I see differently now is ___
+Future me may want to remember ___
+~~~
+
+Blank is valid.
+
+Machine serialization remains separate from model experience.
+
+Preferred performance path is a provider-qualified same-generation machine-only epilogue; a small
+post-answer inference is fallback. The human answer must never fail because epilogue formation fails.
+
+Stable semantic question/stem refs now belong in Product #247 so model-facing wording can evolve by
+provider/language without changing the contract.
+
+Permanent:
+
+~~~
+VEXLIFE SUPPORTS VEX SELF-PERCEPTION
+!= VEXLIFE PREDECIDES VEX INTERPRETATION
+
+MODEL-FACING NATURAL EXPRESSION
+!= MACHINE REPRESENTATION
+~~~
+
+---
+
 ## Resume coordinate
 
 The merged continuity substrate is not the next engineering question.
