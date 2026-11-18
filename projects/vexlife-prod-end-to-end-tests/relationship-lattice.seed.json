@@ -153,16 +153,15 @@
       "disposition": "CURRENT_MAIN",
       "sourceSymbol": "VexLifeMemoryReviewFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewFamily.kt",
-      "stateRefs": [
-        "PENDING_REVIEW"
-      ],
+      "stateRefs": [],
       "controlRefs": [
         "KEEP",
         "NOT_NOW",
         "DECLINE"
       ],
-      "notes": [
-        "State value is source-shaped; PENDING_REVIEW is a human-facing seed label, not a replacement product identity."
+      "stateShapes": [
+        "Idle",
+        "Pending(candidateRef, summary, candidateClass)"
       ]
     },
     {
@@ -170,9 +169,7 @@
       "disposition": "CURRENT_MAIN",
       "sourceSymbol": "VexLifeModelsFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
-      "stateRefs": [
-        "SOURCE_DERIVED"
-      ],
+      "stateRefs": [],
       "controlRefs": [
         "SELECT_MODEL",
         "USE_MODEL",
@@ -182,6 +179,22 @@
         "REDOWNLOAD_MODEL",
         "REMOVE_MODEL",
         "FORGET_IMPORTED_MODEL"
+      ],
+      "stateShapes": [
+        "State(handle, artifactPresence, downloading, chosen, targeted, serving, switching, imported, runtimeConfiguration, runtimeConfigurationPending, anyDownloadRunning, anySwitchRunning)"
+      ],
+      "stateAxes": [
+        "artifactPresence",
+        "downloading",
+        "chosen",
+        "targeted",
+        "serving",
+        "switching",
+        "imported",
+        "runtimeConfiguration",
+        "runtimeConfigurationPending",
+        "anyDownloadRunning",
+        "anySwitchRunning"
       ]
     },
     {
@@ -189,12 +202,18 @@
       "disposition": "CURRENT_MAIN",
       "sourceSymbol": "VexLifeReleaseInboxFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/release/VexLifeReleaseInboxFamily.kt",
-      "stateRefs": [
-        "SOURCE_DERIVED"
-      ],
+      "stateRefs": [],
       "controlRefs": [
         "VIEW_RELEASE",
         "DISMISS_RELEASE"
+      ],
+      "stateShapes": [
+        "State(sourceCurrentness, communications[])"
+      ],
+      "stateAxes": [
+        "sourceCurrentness",
+        "communications[].standing",
+        "communications[].notice.identity"
       ]
     },
     {
@@ -257,14 +276,21 @@
       "sourceSymbol": "VexLifeLocalAsrModelsFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/localasr/VexLifeLocalAsrModelsFamily.kt",
       "sourceRef": "github.pull.vexlife-prod.310",
-      "stateRefs": [
-        "SOURCE_DERIVED"
-      ],
+      "stateRefs": [],
       "controlRefs": [
         "USE_SPEECH_MODEL",
         "DOWNLOAD_SPEECH_MODEL",
         "REDOWNLOAD_SPEECH_MODEL",
         "REMOVE_SPEECH_MODEL"
+      ],
+      "stateShapes": [
+        "State(artifactState, selected, downloading, anyDownloadRunning)"
+      ],
+      "stateAxes": [
+        "artifactState",
+        "selected",
+        "downloading",
+        "anyDownloadRunning"
       ]
     }
   ],
