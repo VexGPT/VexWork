@@ -38,6 +38,314 @@ Active Product pressure to read but not promote to current main:
 #331 reply-language scripts / Composer output
 ~~~
 
+
+## Fresh-instance orientation order
+
+A fresh instance should not begin by inventing a new test abstraction.
+
+Read in this order:
+
+~~~text
+1. projects/vexlife-prod-end-to-end-tests/README.md
+   -> human outcome + Project boundaries
+
+2. projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md
+   -> graph / pathway / route / journey / test semantics
+   -> derive-vs-Roomba rule
+
+3. projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json
+   -> pinned examples / current candidate pressure
+   -> navigation seed only, never Product authority
+
+4. VexLife-Prod:
+   src/commonMain/kotlin/vexlife/semantic/VexFamilyContract.kt
+   -> exact State + Control -> Act(admitted State?, Effect?) law
+
+5. concrete source examples below
+   -> learn the distinctions from real Product source
+
+6. VexBoard traversal/query primitives
+   -> reuse existing graph mechanics
+
+7. only then inspect active PRs for future-current edges
+   -> ACTIVE_CANDIDATE != current main
+~~~
+
+If any summary conflicts with exact source, exact source wins within its rightful authority boundary.
+
+## Judgment anchors: concrete source examples
+
+These examples are deliberately chosen because each prevents a different category mistake.
+
+### A. VexFamilyContract — the grammar
+
+~~~text
+VexLife-Prod
+src/commonMain/kotlin/vexlife/semantic/VexFamilyContract.kt
+~~~
+
+Use it to remember:
+
+~~~text
+State + Control
+-> Act(
+     admittedState?,
+     Effect?
+   )
+
+Act is pure semantic interpretation.
+Effect is requested realization.
+Effect != outside success.
+Projection comes from State.
+~~~
+
+Do not infer execution/storage/UI ownership from the semantic contract.
+
+### B. Vision — Effect is not successor State
+
+~~~text
+src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt
+~~~
+
+Patient-zero law:
+
+~~~text
+READY + ENGAGE
+-> stay(Effect.EngageScope)
+-> no immediate admitted State
+-> runtime / macOS picker
+-> observe(...)
+-> SELECTING | ENGAGED | HELD
+-> DisplayState
+~~~
+
+Judgment taught:
+
+~~~text
+Control is lawful only in some States.
+Effect requests realization.
+Observation decides actual successor truth.
+A held branch can still expose a different lawful Control.
+~~~
+
+This is the best example for generating branch-capable Family routes.
+
+### C. Memory Review — one Family can request an Effect owned elsewhere
+
+~~~text
+src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewFamily.kt
+~~~
+
+Patient-zero law:
+
+~~~text
+Pending(candidate) + KEEP
+-> Effect.Accept(candidate)
+-> MemoryReview itself does not become "ACCEPTED"
+-> persistence / semantic acceptance / Score are separate owners
+~~~
+
+Judgment taught:
+
+~~~text
+same human outcome may cross several owners
+without collapsing those owners into one Family.
+
+Effect endpoint
+!= eventual durable state owner.
+~~~
+
+This is the best example for cross-owner graph edges.
+
+### D. ContextShare — stable UI coordinate + incomplete/deeper runtime relationship
+
+Read together:
+
+~~~text
+src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt
+src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt
+src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt
+src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt
+src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt
+~~~
+
+Stable surface coordinate:
+
+~~~text
+element.vexlife-workspace.companion.conversation.context-share
+~~~
+
+Current lived/source neighborhood:
+
+~~~text
+Product-owned navigation earns page identity
+-> context becomes eligible
+-> ContextShare can be activated
+-> separate context-frame read
+-> browserContext ready
+-> includePage true/false
+-> next Send may capture exact browserContext
+-> DirectPromptContext receipt fingerprints it
+
+unexpected internal embedded navigation
+-> exact new address not observable
+-> stale identity/context cleared
+-> ContextShare unavailable
+~~~
+
+Judgment taught:
+
+~~~text
+element ID locates the human control
+!= complete semantic pathway.
+
+visible-but-unavailable
+!= feature absent.
+
+fail-closed limitation
+!= automatically a defect.
+
+Screen Lens may be source-current yet relationship-shallow.
+~~~
+
+This is the best Roomba/projectability example.
+
+### E. Context Profile / reply language — turn capture and historical immutability
+
+Active candidate; do not promote to current main:
+
+~~~text
+VexLife-Prod PR #251
+src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt
+src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt
+src/commonMain/kotlin/vexlife/service/VexLifeProdServiceContract.kt
+~~~
+
+Judgment taught:
+
+~~~text
+mutable current truth
+-> captured at accepted Send
+-> fixed for that completed turn
+
+later current change
+-> affects NEXT TURN
+-> does not rewrite LAST TURN RECEIVED
+~~~
+
+Use this to judge temporal edges and E2E history assertions.
+
+### F. VexLife-Android ScreenBlueprint + Journey — stable coordinates and human walks
+
+~~~text
+VexLife-Android
+architecture/elements/.../ScreenBlueprint.kt
+app/src/journeyTest/.../VexJourney.kt
+app/src/journeyTest/.../catalog/Journeys.kt
+~~~
+
+Judgment taught:
+
+~~~text
+nested source structure
+-> stable element.<screen>.... IDs
+
+human-readable journey
+-> tap/assert by stable production element ID
+
+journey domain/path
+!= engine topology
+~~~
+
+Use this as the reference for queryable human walks without duplicating semantic IDs.
+
+### G. VexBoard graph mechanics — do not build another traversal engine
+
+~~~text
+VexWork
+src/shared/vexboard-journey.mjs
+src/shared/vexboard-journey-pathway-analysis.mjs
+src/shared/vexboard-screen-lens-query.mjs
+~~~
+
+Current machinery already supports:
+
+~~~text
+graph relationships
+journeyChoices() outgoing edges
+relationship traversal
+BACK / REVISIT
+loop/motif discovery
+element/pathway/source lookup
+"where is this?"
+"what depends on this?"
+~~~
+
+Judgment taught:
+
+~~~text
+new work should enrich source-derived graph input
+and derive test routes from it,
+not create a second graph engine.
+~~~
+
+## Fresh-instance decision rules
+
+When reading a feature/edge:
+
+~~~text
+1. Is the meaning already explicit in rightful source?
+   YES -> derive it. Do not Roomba it for authorship.
+
+2. Is the lived Product exposing behavior the graph cannot explain?
+   YES -> bounded Roomba discovery.
+          Capture evidence.
+          Propose missing/wrong edge.
+          Reconcile back to rightful source.
+
+3. Is this inside one Family?
+   -> model State + Control -> Act -> Effect / admitted State.
+
+4. Does realization cross an owner boundary?
+   -> preserve both endpoints.
+      Do not collapse them into one Family.
+
+5. Is there an Effect?
+   -> do not claim success until observation/reconciliation proves successor truth.
+
+6. Is there a UI element ID?
+   -> use it to locate/act on the manifestation.
+      Do not treat the element ID as semantic ownership.
+
+7. Is this an active PR?
+   -> map as ACTIVE_CANDIDATE.
+      Do not use it as current-main release truth.
+
+8. Is the relationship held/unknown?
+   -> keep the edge addressable and fail closed.
+      Do not fill the gap with a guessed route.
+~~~
+
+## First fresh-instance deliverable
+
+Before broad implementation, return a compact orientation receipt:
+
+~~~text
+A. current source bindings actually read
+B. three patient-zero graphs:
+   - Vision
+   - Memory Review
+   - ContextShare
+C. one active-candidate temporal graph:
+   - reply language / Context Profile -> next Send -> Vex Context
+D. VexBoard traversal primitives available for reuse
+E. exact graph gaps / projection gaps discovered
+F. one generated route manifest candidate
+G. what was derived from source vs what required Roomba discovery
+~~~
+
+If that receipt cannot be produced from exact source, do not begin a broad crawler/test framework.
+
 ## Two simultaneous outputs
 
 ### Output A — rightful Screen Lens evolution

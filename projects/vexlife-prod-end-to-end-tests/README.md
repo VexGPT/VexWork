@@ -296,6 +296,31 @@ Examples of high-value loops:
 - Voice READY -> LISTENING -> STOPPING -> READY/failure;
 - Context Profile A -> accepted turn A -> select B -> next accepted turn B.
 
+
+## Fresh-instance front door
+
+A fresh worker should orient in this order:
+
+~~~text
+README
+-> RELATIONSHIP-LATTICE
+-> relationship-lattice.seed.json
+-> VexFamilyContract
+-> Vision / MemoryReview / ContextShare source examples
+-> existing VexBoard journey/query machinery
+-> active candidates only after current-main semantics are grounded
+~~~
+
+The concrete examples are intentional judgment tests:
+- Vision teaches Effect != observed successor State.
+- Memory Review teaches cross-owner realization without Family collapse.
+- ContextShare teaches stable element identity, conditional availability and fail-closed/projectability gaps.
+- #251 teaches accepted-turn capture versus later current-state changes.
+- Android Journey/ScreenBlueprint teaches stable production IDs + human walk authoring.
+- VexBoard BoardJourney/query source teaches existing traversal mechanics.
+
+See `CLAUDE-SCREEN-LENS-HANDOFF.md` for exact paths and the fresh-instance decision rules.
+
 ## Claude / Screen Lens relationship
 
 Do **not** create a second Screen Lens ownership lane here.
