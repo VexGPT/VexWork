@@ -817,6 +817,352 @@ when qualified Atlas reach is actually represented as `web_fetch`.
 
 Optimization follows truth:
 
+
+### Assignment — witnessed capability/context inventory
+
+Do not begin this Work by asking "what settings should we invent?" Begin by enumerating what the Product
+already knows, what candidate source has already formed, and what exact relationship each field controls.
+
+For every field/capability relationship, classify four independent human-facing dimensions:
+
+~~~text
+VISIBLE
+  Can Victor see that the field/capability exists?
+
+CONFIGURABLE
+  Is there a lawful human Control that may change it?
+
+RUNNABLE
+  Can the currently selected model/provider/runtime realization use it now?
+
+PROVEN
+  Has this exact realization/configuration relationship been qualified by the required evidence?
+~~~
+
+These dimensions must not collapse:
+
+~~~text
+VISIBLE != CONFIGURABLE
+CONFIGURABLE != RUNNABLE
+RUNNABLE != PROVEN
+
+HELD may make RUNNABLE=false
+HELD must not make VISIBLE=false
+~~~
+
+#### Grounded starter inventory
+
+The first implementation pass should project at least the following already-known fields. Preserve the
+source state shown here: current-main truth is not the same as a #251 candidate relationship.
+
+##### Context construction — #251 candidate source
+
+~~~text
+profile.name
+  machine type       string
+  current contract   1..80 characters
+  mutability         USER_CONFIGURABLE
+
+profile.description
+  machine type       string
+  current contract   0..280 characters
+  mutability         USER_CONFIGURABLE
+
+profile.foundationMode
+  machine type       enum
+  options            PRODUCT_DEFAULT
+                     EXTEND_PRODUCT_DEFAULT
+  mutability         USER_CONFIGURABLE
+
+profile.foundationText
+  machine type       text
+  current contract   <= 16,000 characters
+  applicability      required/nonblank only for EXTEND_PRODUCT_DEFAULT
+  mutability         USER_CONFIGURABLE
+
+profile.basedOnProductFoundation.version
+  machine type       nullable source/version ref
+  purpose            provenance / drift explanation
+  mutability         OBSERVATION_ONLY
+
+profile.basedOnProductFoundation.bodySha256
+  machine type       nullable SHA-256
+  purpose            exact Product-Foundation provenance
+  mutability         OBSERVATION_ONLY
+~~~
+
+The Product Foundation itself is not replaced/disabled by a profile. The UI must explain that distinction.
+
+##### Model/provider representation — current VexLife-Prod main
+
+~~~text
+companion.messageProtocol
+  enum               OPENAI_CHAT | HARMONY
+  mutability         PRODUCT_FIXED
+
+companion.reasoningRepresentation
+  enum               REASONING_FIELDS | HARMONY_CHANNELS
+  mutability         PRODUCT_FIXED
+
+companion.capabilityRepresentation
+  enum               VEXLIFE_CONTROL_TEXT | HARMONY_FUNCTIONS
+  mutability         PRODUCT_FIXED
+
+companion.reachRepresentationStanding
+  enum               QUALIFIED | HELD_PROVIDER_BRIDGE
+  mutability         OBSERVATION_ONLY / qualification-derived
+
+companion.coalesceLeadingSystemMessages
+  boolean
+  mutability         PRODUCT_FIXED
+
+companion.modelIdentity
+  nullable text
+  mutability         PRODUCT_FIXED
+
+generation.temperature
+  decimal
+  mutability         PRODUCT_FIXED today
+  source             exact model/profile sampling basis
+
+generation.topP
+  decimal
+  mutability         PRODUCT_FIXED today
+
+generation.topK
+  integer
+  mutability         PRODUCT_FIXED today
+
+generation.reasoningEffort
+  nullable enum      LOW | MEDIUM | HIGH where the representation earns it
+  mutability         PRODUCT_FIXED today
+
+generation.productMaxOutputTokens
+  integer / tokens
+  current value      16,000
+  mutability         PRODUCT_FIXED today
+~~~
+
+Human lessons should show concrete per-model values, for example the current Product profiles:
+
+~~~text
+Qwen 27B     OPENAI_CHAT / REASONING_FIELDS / VEXLIFE_CONTROL_TEXT
+             reach QUALIFIED
+             temperature 1.0 / top-p 0.95 / top-k 20
+
+Qwen 9B      OPENAI_CHAT / REASONING_FIELDS / VEXLIFE_CONTROL_TEXT
+             reach QUALIFIED
+             temperature 0.6 / top-p 0.95 / top-k 20
+
+Qwen 4B      OPENAI_CHAT / REASONING_FIELDS / VEXLIFE_CONTROL_TEXT
+             reach QUALIFIED
+             temperature 0.6 / top-p 0.95 / top-k 20
+
+GPT-OSS 20B  HARMONY / HARMONY_CHANNELS / HARMONY_FUNCTIONS
+             reach HELD_PROVIDER_BRIDGE
+             temperature 1.0 / top-p 1.0 / top-k 0
+             reasoning effort MEDIUM
+~~~
+
+This is exactly the kind of HELD relationship that must remain visible. The human surface should say that
+semantic reach + Harmony representation machinery exist, ordinary reach is not currently advertised to this
+model, why it is held, and what exact qualification/evidence would change that standing.
+
+##### Runtime configuration — current VexLife-Prod main
+
+~~~text
+runtime.promptCacheEntries
+  machine type       integer
+  low-level contract 1..10
+  mutability         USER_CONFIGURABLE where the selected model realization admits it
+
+current Product narrowing:
+  Qwen 27B           recommended 1 / current admitted maximum 1
+  Qwen 4B            recommended 1 / experimental maximum 3
+  other current      recommended 1 / currently narrowed maximum 1
+
+runtime.promptCacheRecommendationStanding
+  enum-like standing
+  examples           LIVED_SAFETY_FLOOR
+                     HELD_EXPERIMENT
+                     SAFE_FLOOR_UNTUNED
+  mutability         OBSERVATION_ONLY
+~~~
+
+The lesson for this field must make the ownership distinction explicit:
+
+~~~text
+prompt-cache residency / runtime performance
+!= Memory truth
+!= Conversation durability
+!= Working Continuity truth
+~~~
+
+Example human questions this field should support:
+
+~~~text
+"What does prompt cache 2 actually change?"
+"Why is 3 experimental on the 4B?"
+"Does increasing this improve Memory, or just avoid recomputing recent prompt state?"
+"Show me cached vs prefill evidence for my last turns."
+~~~
+
+##### Capability/request-return limits — current VexLife-Prod main
+
+~~~text
+capability.maximumRequestsPerTurn
+  integer            4
+  mutability         PRODUCT_FIXED today
+
+capability.exchangeAllowanceTokens
+  token-count        24,000
+  mutability         PRODUCT_FIXED today
+
+capability.maximumResultTokens
+  token-count        9,000
+  mutability         PRODUCT_FIXED today
+~~~
+
+These constants must be witnessable even if they remain fixed. A person should be able to ask why the
+boundary exists and whether current evidence still justifies it.
+
+Current read-side reach to inventory includes:
+
+~~~text
+atlas
+  list / describe
+
+web
+  search / fetch
+
+github
+  describe / tree / read
+
+home
+  list / read
+
+memory
+  search
+
+conversation
+  exact Conversation Source Return
+
+continuity
+  bounded multi-query revisit across Conversation / Memory / current work
+~~~
+
+For each capability show:
+
+~~~text
+semantic capability exists?
+current frame standing?
+selected provider representation?
+advertised to this model?
+request emitted?
+request admitted?
+owner performed it?
+result state?
+source/effect refs?
+~~~
+
+Do not reduce this to one "tools available" boolean.
+
+##### Context placement / observability — current lineage + #251 candidate
+
+The field catalog must also include non-editable evidence fields, because the person needs to understand what
+the model actually received:
+
+~~~text
+context component
+  owner/category
+  stability
+  provider placement
+  message index
+  exact digest
+  included / held / omitted reason
+
+provider request
+  stage index
+  exact request-body SHA-256
+  exact JSON body when session evidence exists (#251 candidate)
+  historical raw body unavailable after session unless an owner explicitly persists it
+
+provider-stage measurement
+  prompt tokens
+  cached prompt tokens
+  prefill tokens
+  completion tokens
+  first-token latency
+  first-answer latency
+  total latency
+  finish/stop reason
+  control header observed in reasoning?
+  control header observed in answer?
+~~~
+
+The raw provider JSON is an expert view, not the only view. A human summary should explain how semantic
+context became provider messages/tools before offering "View exact JSON".
+
+#### Wiki / lesson contract
+
+Every visible field gets a "What is this?" lesson sufficient for Victor to understand and ask about it without
+already knowing the implementation vocabulary.
+
+The lesson should answer:
+
+~~~text
+What is this?
+Why does VexLife have it?
+What owns it?
+What is its machine type?
+What is the current value?
+What is the Product/default value?
+What values are lawful?
+Can I change it?
+If not, why not?
+What would changing it affect?
+What would it NOT affect?
+What tradeoff does it represent?
+What evidence supports the current default/recommendation?
+What fields interact with it?
+Show me an example.
+Show me the exact source/evidence.
+Ask Vex about this field.
+~~~
+
+Do not use English prose as the configuration identity. The typed/schema field is the contract; localized
+human words teach and explain it.
+
+#### Full-utilization acceptance
+
+"Full utilization" does not mean blindly activating every experimental feature. It means no known Product
+relationship disappears from human consideration.
+
+~~~text
+everything known is discoverable
+everything discoverable is explainable
+everything explainable is source-addressed
+everything with an earned human Control is configurable
+everything held names why + what unlocks it
+everything executed has effect/result evidence
+everything performance-sensitive is measurable
+nothing becomes "unavailable" merely because a helper/model inferred false from a hidden standing
+~~~
+
+A future worker should be able to answer:
+
+~~~text
+"What capabilities/features exist that Victor has never been shown?"
+"Which are hidden only because their realization is held?"
+"Which fields are fixed Product policy versus lawful user configuration?"
+"Which settings affect semantic memory/continuity versus provider/runtime performance?"
+"Which model receives which capability representation?"
+"Where is a capability lost: Atlas, profile, provider JSON, model request, admission, owner, or result?"
+~~~
+
+The output of that inventory should drive Vex Context presentation and later qualification/configuration work.
+It should not become a new semantic owner.
+
 ### Witnessability and typed field catalog
 
 The human outcome is stronger than "a capability is internally registered."
