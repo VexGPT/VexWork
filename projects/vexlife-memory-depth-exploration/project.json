@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.memory-depth-exploration",
   "label": "VexLife Memory Depth Exploration",
-  "purpose": "Build and prove a source-addressable, owner-neutral bulk continuity hydration capability so a freshly started Vex can use one bounded request to traverse the relevant historical/source neighborhood through rightful owners, return enough exact context plus provenance and an explicit frontier to continue the human turn, and avoid recursive model-directed shallow lookup chains without creating a second Memory, Conversation or Working Continuity owner.",
+  "purpose": "Build and prove one inspectable VexLife continuity/context circuit so a fresh or successor Vex can recover source-grounded continuity through rightful owners, receive current context and capability truth through the selected model/provider's qualified representation, and let a person inspect what was supplied, available, requested, admitted, executed, returned and carried forward; preserve bounded hydration, truthful effect evidence and optimizable context placement without creating a second Memory, Conversation, Working Continuity, provider-profile or execution-truth owner.",
   "rootWorkRefs": [
     "work.vexlife.memory-depth-exploration.outcome"
   ],
@@ -61,7 +61,22 @@
     "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
     "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
     "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
-    "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json"
+    "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
+    "github.pull.vexlife-prod.198",
+    "github.pull.vexlife-prod.201",
+    "github.pull.vexlife-prod.210",
+    "github.pull.vexlife-prod.214",
+    "github.pull.vexlife-prod.220",
+    "github.pull.vexlife-prod.222",
+    "github.pull.vexlife-prod.241",
+    "github.pull.vexlife-prod.251",
+    "github.pull.vexlife-prod.346",
+    "github.pull.vexlife-prod.351",
+    "repo.vexlife-prod:docs/foundation/VEX-CONTEXT-PROFILES.md",
+    "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionProvider.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/HarmonyCapabilityTools.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
