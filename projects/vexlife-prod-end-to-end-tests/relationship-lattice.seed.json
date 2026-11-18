@@ -479,6 +479,14 @@
       "disposition": "PROJECTION_DEPENDENCY",
       "kind": "READ_ONLY_CONSUMPTION",
       "humanMeaning": "VexBoard consumes source-owned Product projection/relationships; it does not become VexLife truth authority."
+    },
+    {
+      "relationshipRef": "rel.browser-context-availability",
+      "from": "element.vexlife-workspace.companion.conversation.context-share",
+      "to": "anchor.owner.prompt",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
+      "kind": "OPTIONAL_CURRENT_PAGE_CONTEXT",
+      "humanMeaning": "The visible ContextShare control is available only when current page identity/context is lawfully known; when included, the next ordinary Send may carry the exact normalized browser context into prompt materialization."
     }
   ],
   "journeySeeds": [
@@ -575,6 +583,36 @@
       "disposition": "ACTIVE_CANDIDATE",
       "sourceRef": "github.pull.vexlife-prod.317",
       "humanOutcome": "Native Windows entry reaches the same canonical Home/service/Conversation turn relationship when accepted."
+    },
+    {
+      "journeyRef": "journey.browser.context-share-direct-navigation",
+      "shardRef": "workspace-context",
+      "disposition": "CURRENT_FOCUSED",
+      "humanOutcome": "Open an eligible page through Product-owned navigation, request/include its context, Send, and prove the exact browser context reached the prompt receipt.",
+      "coordinateRefs": [
+        "element.vexlife-workspace.companion.conversation.context-share",
+        "pathway.vexlife-prod.conversation.send"
+      ]
+    },
+    {
+      "journeyRef": "journey.browser.context-share-internal-navigation-unlocated",
+      "shardRef": "workspace-context",
+      "disposition": "CURRENT_LIMITATION",
+      "humanOutcome": "After unexpected internal navigation in the embedded cross-origin page, stale page identity/context is cleared, Include this page becomes unavailable, the human is told the current address is unavailable, and no stale page context is sent.",
+      "coordinateRefs": [
+        "element.vexlife-workspace.companion.conversation.context-share",
+        "pathway.vexlife-prod.local.companion.conversation.context-share"
+      ]
+    },
+    {
+      "journeyRef": "journey.browser.context-share-navigation-invalidation",
+      "shardRef": "workspace-context",
+      "disposition": "CURRENT_FOCUSED",
+      "humanOutcome": "Capture/include one page, navigate lawfully to another, and prove the prior page context is invalidated before a later Send.",
+      "coordinateRefs": [
+        "element.vexlife-workspace.companion.conversation.context-share",
+        "pathway.vexlife-prod.conversation.send"
+      ]
     }
   ],
   "loopSeeds": [
@@ -690,6 +728,23 @@
         "completed turn remains A",
         "next Send captures B"
       ]
+    },
+    {
+      "loopRef": "loop.browser-context.include-invalidate-reearn",
+      "journeyRefs": [
+        "journey.browser.context-share-direct-navigation",
+        "journey.browser.context-share-navigation-invalidation",
+        "journey.browser.context-share-internal-navigation-unlocated"
+      ],
+      "shape": [
+        "Product-owned navigation earns page identity",
+        "ContextShare becomes eligible",
+        "context read becomes ready and may be included",
+        "Send captures exact browserContext only when included",
+        "navigation invalidates prior context",
+        "unexpected embedded navigation clears identity/context",
+        "ContextShare stays unavailable until identity is lawfully re-earned"
+      ]
     }
   ],
   "permutationAxes": [
@@ -731,5 +786,55 @@
     "productSourceMutationPerformed": false,
     "vexBoardMutationPerformed": false,
     "externalEffectsPerformed": false
+  },
+  "coordinateIntentMappings": [
+    {
+      "coordinateRef": "element.vexlife-workspace.companion.conversation.context-share",
+      "coordinateClass": "ELEMENT",
+      "intention": "Let the person include the exact current page in the next Vex turn when the Product can lawfully identify and read that page.",
+      "sourcePath": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+      "relatedRefs": [
+        "pathway.vexlife-prod.local.companion.conversation.context-share",
+        "element.vexlife-workspace.companion.conversation.context-receipt",
+        "pathway.vexlife-prod.conversation.send"
+      ],
+      "availabilityPredicates": [
+        "not Archives",
+        "not Private",
+        "exact context target page identity or already-read browser context exists",
+        "not currently loading page context"
+      ],
+      "currentLimitation": "After unexpected internal navigation inside the embedded cross-origin page, current source cannot prove the new exact address, clears stale page identity/context, and disables this control until identity is lawfully re-earned.",
+      "journeyRefs": [
+        "journey.browser.context-share-direct-navigation",
+        "journey.browser.context-share-internal-navigation-unlocated",
+        "journey.browser.context-share-navigation-invalidation"
+      ]
+    },
+    {
+      "coordinateRef": "pathway.vexlife-prod.local.companion.conversation.context-share",
+      "coordinateClass": "PATHWAY",
+      "intention": "Current Screen Lens projection for the ContextShare control.",
+      "sourcePath": "src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
+      "currentProjection": "TYPED_PRESENTATION over ContextReceipt",
+      "investigationNote": "Runtime source proves deeper page-identity, eligibility, context-readiness, optional Send capture and prompt-receipt relationships than this local-only projection currently exposes. Investigate source-projectable depth without hand-authoring Product truth in VexBoard."
+    },
+    {
+      "coordinateRef": "pathway.vexlife-prod.conversation.send",
+      "coordinateClass": "PATHWAY",
+      "intention": "Accept one canonical human Send and carry exactly the current optional browser context, Person Context, Memory, runtime and other admitted prompt relationships into the turn.",
+      "sourcePath": "src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
+      "relatedRefs": [
+        "element.vexlife-workspace.companion.conversation.send",
+        "anchor.owner.direct-turn",
+        "anchor.owner.prompt"
+      ]
+    }
+  ],
+  "mappingLaw": {
+    "identityRule": "Reuse existing source IDs as graph coordinates whenever they already uniquely identify the surface/path/owner relationship. Do not mint a parallel feature ID merely to attach human meaning.",
+    "intentionRule": "Attach human intention, availability, related source coordinates, journeys and known limitations as metadata around existing IDs.",
+    "journeyRule": "Journey identity is allowed because a journey is a path through several coordinates, not a duplicate feature identity.",
+    "queryRule": "A coordinate lookup should return intention, current source relationships, lawful availability, related journeys, loops, proof and incomplete/held/unknown edges."
   }
 }

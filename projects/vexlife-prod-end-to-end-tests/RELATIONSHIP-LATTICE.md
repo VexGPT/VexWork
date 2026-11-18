@@ -107,6 +107,59 @@ Generate a case when at least one is true:
 - a held/failure branch changes what the human may do;
 - two representations can collapse distinct meaning (for example spoken Chinese vs Simplified/Traditional reply script).
 
+## Reuse existing IDs; map intention onto them
+
+Do not mint a second feature ID when Product source already has a unique coordinate.
+
+~~~text
+existing elementRef / pathwayRef / Family-Control ref
+  -> human intention
+  -> availability predicates
+  -> owner/cross-owner relationships
+  -> journeys
+  -> loops
+  -> proof
+  -> incomplete / held / unknown edges
+~~~
+
+Example:
+
+~~~text
+element.vexlife-workspace.companion.conversation.context-share
+  meaning: let this exact current page shape the next Vex turn when lawful
+
+pathway.vexlife-prod.local.companion.conversation.context-share
+  current Screen Lens projection for that control
+
+pathway.vexlife-prod.conversation.send
+  later turn path that may carry the exact included browserContext
+~~~
+
+A journey gets its own ID because it is a walk through several existing coordinates, not another name for the feature.
+
+## Visible-but-unavailable is still part of the graph
+
+The screenshot case is a useful patient zero:
+
+~~~text
+known page identity
+-> context eligible
+-> Include this page available
+-> read context
+-> ready / included
+-> Send may carry browserContext
+
+unexpected internal cross-origin navigation
+-> exact new address not observable from this web-hosted presentation
+-> stale address/context cleared
+-> Current address unavailable
+-> Include this page disabled
+~~~
+
+That is currently a fail-closed limitation, not automatically a defect.
+
+The graph should keep the same existing element/pathway IDs and attach the limitation/investigation to them. If a future browser/provider route can lawfully re-observe exact page identity, the relationship mapping evolves while the existing human coordinate remains queryable.
+
 ## Source seed
 
 `relationship-lattice.seed.json` contains the current pinned anchors, journey seeds, loops and active-candidate pressure. It is deliberately disposable/regenerable as Product source changes.

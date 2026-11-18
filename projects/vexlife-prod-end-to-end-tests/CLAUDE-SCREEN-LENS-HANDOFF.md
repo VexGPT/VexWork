@@ -107,6 +107,56 @@ completed turn -> Vex Context / Screen Lens / human projection
 
 Call out where a pathway is intentionally independent rather than forcing an edge.
 
+## Existing-ID mapping rule
+
+Do not invent a parallel feature ID when source already has a unique element/pathway/Family coordinate.
+
+For each discovery, return the existing coordinate(s) and attach meaning:
+
+~~~text
+coordinateRefs[]
+humanMeaning
+availabilityPredicates[]
+State / Control law
+crossFamilyEdges[]
+journeyRefs[]
+loop pressure
+proofRefs[]
+currentLimitationOrHoldOrUnknown
+~~~
+
+Patient zero:
+
+~~~text
+element.vexlife-workspace.companion.conversation.context-share
+pathway.vexlife-prod.local.companion.conversation.context-share
+pathway.vexlife-prod.conversation.send
+~~~
+
+Current runtime behavior is deeper than the present local-only Screen Lens path:
+
+~~~text
+Product-owned navigation earns exact page identity
+-> context eligibility
+-> human requests page read
+-> separate context frame returns normalized exact-page context
+-> Include this page becomes included
+-> next Send optionally carries browserContext
+-> DirectPromptContext fingerprints it in the receipt
+~~~
+
+Current fail-closed branch:
+
+~~~text
+unexpected internal embedded navigation
+-> new cross-origin address cannot be observed
+-> clear stale page identity/context
+-> show Current address unavailable
+-> disable Include this page
+~~~
+
+Treat that as a current limitation to map and revisit. Also flag that the current Screen Lens classifies ContextShare only as TYPED_PRESENTATION over ContextReceipt even though runtime source proves deeper relationships. Investigate whether Product Screen Lens source/projectability should expose more; do not hand-author the missing depth in VexBoard.
+
 ## Patient-zero relationship journey
 
 Use the language/Voice/Context case as a pressure test for the mapping:

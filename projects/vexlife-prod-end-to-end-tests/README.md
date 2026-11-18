@@ -99,6 +99,30 @@ Active candidate Families / owners already relevant to future journeys:
 
 The machine-readable seed is `relationship-lattice.seed.json`. It is a **pinned projection seed**, not canonical Product meaning.
 
+## Identity rule
+
+Use existing Product identities wherever they already uniquely name the thing.
+
+~~~text
+elementRef / pathwayRef / Family-Control ref
+  = graph coordinate
+
+E2E Project
+  = maps intention + availability + relationships + journeys + proof onto that coordinate
+~~~
+
+Do not create a second feature-ID namespace just to make the graph queryable.
+
+Journey IDs remain useful because a journey is a sequence across multiple coordinates.
+
+The first explicit patient zero is the existing ContextShare element:
+
+~~~text
+element.vexlife-workspace.companion.conversation.context-share
+~~~
+
+whose current source behavior spans page-identity eligibility, context reading, optional Send capture, prompt receipt, invalidation and a fail-closed unlocated-page branch.
+
 ## The lattice, not a duplicated choice tree
 
 The intended relationship shape is:
