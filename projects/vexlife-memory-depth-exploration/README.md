@@ -817,6 +817,149 @@ when qualified Atlas reach is actually represented as `web_fetch`.
 
 Optimization follows truth:
 
+### Witnessability and typed field catalog
+
+The human outcome is stronger than "a capability is internally registered."
+
+Permanent:
+
+~~~text
+KNOWN TO PRODUCT != HIDDEN FROM HUMAN
+HELD != HIDDEN
+UNQUALIFIED != UNDISCOVERABLE
+NOT CURRENTLY LAWFUL != NOT EXPLAINED
+MODEL-SPECIFIC != MAGIC STRING
+RAW JSON AVAILABLE != HUMAN UNDERSTANDING
+~~~
+
+If VexLife knows a feature, context component, model/provider setting or capability relationship exists,
+Vex Context should be able to witness it even when the current model/runtime cannot use it yet.
+
+For every projected field, the human surface should be able to answer at least:
+
+~~~text
+fieldRef
+human label / explanation
+category
+machine value type
+current value
+Product/default value
+allowed values / range / unit
+appliesTo (model / provider / runtime / profile / turn / Home)
+rightful owner + source coordinate
+mutability
+  PRODUCT_FIXED
+  USER_CONFIGURABLE
+  EXPERIMENTAL_CONFIGURABLE
+  OBSERVATION_ONLY
+current standing
+  QUALIFIED
+  AVAILABLE
+  HELD
+  UNAVAILABLE
+  UNKNOWN
+why held / unavailable
+what evidence or qualification would unlock it
+what changing it affects
+example configurations
+related fields / conflicts / dependencies
+~~~
+
+Machine type and human explanation are separate:
+
+~~~text
+enum / boolean / integer / decimal / token-count / duration / bytes
+text / ref / list / structured object
+        !=
+English wording used to explain the field
+~~~
+
+Semantics should remain compiler/schema-visible where earned; presentation/localization supplies the
+human label, lesson and examples. Do not make English strings the configuration contract.
+
+Initial field families to expose include:
+
+~~~text
+CONTEXT CONSTRUCTION
+  Foundation mode / personal Foundation extension
+  Memory inclusion / budget evidence
+  Working Continuity / rollover placement
+  Conversation selection / overlap / source-return / revisit
+  browser/person/current-state placement
+
+MODEL / PROVIDER REPRESENTATION
+  message protocol
+  reasoning representation
+  capability representation
+  reach representation standing
+  leading-system coalescing
+  model identity hint
+
+GENERATION / RUNTIME
+  temperature
+  top-p
+  top-k
+  reasoning effort
+  Product max output tokens
+  prompt-cache configuration when applicable
+  context/input token budgets where the rightful owner exposes them
+
+CAPABILITY / EFFECT
+  Atlas handle + actions
+  availability / held reason
+  provider-native representation
+  requested / admitted / performed / returned evidence
+
+OBSERVABILITY
+  exact provider request JSON + SHA-256
+  component ordering / placement / stability
+  prompt/cached/prefill/completion tokens
+  first-token / first-answer / total latency
+  stop / finish reason
+~~~
+
+Vex Context should provide a wiki-like "What is this?" path for each field with:
+- plain-language meaning;
+- why someone might change or inspect it;
+- examples of conservative / performance / continuity-heavy configurations where source supports them;
+- the tradeoff being made;
+- whether the setting changes semantic context, provider representation, runtime performance or only presentation;
+- links to the exact source/owner and current evidence.
+
+Examples are education, not automatic recommendations. A configuration should not be surfaced as safe or
+qualified merely because a value is syntactically accepted.
+
+The same witnessability should apply to HELD features. Example:
+
+~~~text
+GPT-OSS web reach
+  semantic Atlas capability     EXISTS
+  provider representation       HARMONY_FUNCTIONS
+  current standing              HELD_PROVIDER_BRIDGE
+  advertised to model now       NO
+  why                           exact provider bridge not yet qualified
+  unlock requirement            named qualification/lived proof
+  source                         exact representation/profile coordinates
+~~~
+
+This is preferable to removing the feature from the person's view and letting "false/held" become an
+ambient assumption that nobody revisits.
+
+The human may then ask Vex about any visible field:
+
+~~~text
+"What does top-p do here?"
+"Why is web reach held for this model?"
+"What would happen if prompt cache entries were 2?"
+"Which fields make old Conversation easier to revisit?"
+"Show me what this model gets that GPT-OSS does not."
+"Which settings affect memory semantics versus only inference performance?"
+~~~
+
+The answer should descend to the field's rightful owner/source and current evidence rather than treating
+the UI label as authority.
+
+
 ~~~text
 correct semantic/context ownership
 -> correct provider/model representation
