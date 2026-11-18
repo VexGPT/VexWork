@@ -742,6 +742,47 @@ Suggested patient zeros:
 2. ContextShare available -> page read -> included -> Send browserContext.
 3. reply-language change -> next Send -> Vex Context historical/current distinction.
 
+## Traversal debt rule
+
+As you map a route, do not normalize missing identity into a workaround.
+
+If a meaningful control/projection/state manifestation lacks a stable ID or graph coordinate:
+
+~~~text
+stop that dependent route at FRONTIER_DEBT
+identify the exact missing coordinate/predicate
+repair the rightful production/source identity first
+regenerate the graph
+resume from the same frontier
+~~~
+
+Do not use test-only aliases, text matching, child indexes, CSS coincidence, or helper wrappers to make the route appear addressable.
+
+### Strategic order
+
+To reduce repeated setup cost, begin with routes that are already source-clear and addressable.
+
+~~~text
+cleared routes
+-> initial relationship graph
+-> traversal + test-manifest generation
+-> graph validator exposes remaining debt frontiers
+-> separate instances can pick up distinct frontier edges
+-> each repair makes the graph more complete
+~~~
+
+A missing ID is not forgotten just because another route continues. It remains an explicit frontier returned by graph validation.
+
+Add this to your orientation receipt:
+
+~~~text
+Traversal debt encountered:
+  coordinate / route
+  debt class
+  rightful source that should own the repair
+  whether it blocks this route only or a shared graph neighborhood
+~~~
+
 ## If you hit a hard edge: do not paper over it
 
 Before adding a helper class, registry, second state holder, custom traversal engine or feature-specific test DSL, classify the problem:

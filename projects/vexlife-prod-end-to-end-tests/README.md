@@ -431,6 +431,88 @@ disposition: CURRENT | ACTIVE_CANDIDATE | HELD | UNKNOWN
 
 `CLAUDE-SCREEN-LENS-HANDOFF.md` carries the exact handoff.
 
+## Traversal debt: clear what you touch, route around what you cannot yet clear
+
+A graph route is only **cleared** when every meaningful coordinate needed to traverse/test it is stably addressable.
+
+~~~text
+meaningful control/state/projection exists
++ no stable source coordinate / element ID / relationship coordinate exists
+-> infrastructure debt
+-> route is not CLEARED yet
+~~~
+
+Do not silently walk past missing identity and leave the graph dependent on prose or DOM coincidence.
+
+At the same time, one debt edge should not force the entire Product map to stop.
+
+Use a frontier strategy:
+
+~~~text
+1. traverse already-addressable / source-clear routes first
+2. build the initial graph + traversal/test tooling from those clean routes
+3. whenever traversal hits missing identity/projectability:
+     mark the exact frontier coordinate
+     classify the debt
+     stop only that dependent route
+4. continue other independent cleared routes
+5. let graph validation enumerate debt frontiers
+6. any fresh instance can claim one frontier and repair the rightful source
+7. regenerate graph; frontier disappears when alignment is real
+~~~
+
+Important:
+
+~~~text
+DEBT FRONTIER
+!= hand-maintained second backlog of feature truth
+~~~
+
+Prefer deriving debt from the graph itself:
+
+~~~text
+human-visible/control relationship with no stable elementRef
+Family Control with no manifestation binding
+Effect with no realization edge
+realization with no observation/reconciliation edge
+State with no truthful Projection
+Screen Lens pathway missing source-proven depth
+journey edge with no deterministic action coordinate
+~~~
+
+Those become queryable traversal debt.
+
+### Missing ID rule
+
+If a meaningful Product manifestation needs to be selected, asserted, revisited or used as a graph endpoint and has no stable identity, **fix the rightful production identity first**.
+
+Do not:
+
+~~~text
+CSS-selector around it
+index into children
+match visible text as identity
+create a test-only alias
+hide the gap in a helper
+~~~
+
+unless the source relationship is genuinely dynamic and already owns a stable runtime identity scheme.
+
+### Why cleared routes first
+
+Starting from clean routes reduces iterative burden:
+
+~~~text
+clean source routes
+-> initial graph compiler
+-> reverse/forward traversal
+-> debt detector becomes real
+-> remaining rough edges are surfaced automatically
+-> parallel workers can repair one frontier at a time
+~~~
+
+This turns tech debt from something a human must remember into something the graph can expose.
+
 ## Hard-edge build discipline
 
 When a route is difficult to explain or test, do not immediately introduce a helper class.

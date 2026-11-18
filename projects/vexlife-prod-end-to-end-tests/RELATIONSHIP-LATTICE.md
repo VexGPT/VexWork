@@ -710,6 +710,51 @@ Claude/OpenAI orientation
 
 without each consumer owning a separate feature map.
 
+## Traversal debt frontier
+
+Graph completeness must include **addressability completeness**.
+
+During traversal, assign one derived route status:
+
+~~~text
+CLEARED
+  every required semantic/source/surface coordinate is stably addressable and the route can be derived
+
+FRONTIER_DEBT
+  the route reaches a truthful relationship that lacks required identity/projectability/observation/test addressability
+
+HELD
+  source intentionally does not currently admit the relationship
+
+UNKNOWN
+  evidence is insufficient to classify it
+~~~
+
+A `FRONTIER_DEBT` route should carry the smallest missing predicate, for example:
+
+~~~text
+missing stable element ID
+missing element -> Control binding
+missing source-projectable Family edge
+missing realization coordinate
+missing observation edge
+missing Projection coordinate
+missing deterministic test action
+~~~
+
+The route itself is not repaired by inventing an alias. Repair the rightful source, then regenerate.
+
+### Strategic traversal order
+
+~~~text
+prefer CLEARED neighborhoods first
+-> exercise graph mechanics on known-good architecture
+-> derive a debt detector
+-> circulate FRONTIER_DEBT edges independently
+~~~
+
+This is not permission to postpone debt indefinitely. It is a way to avoid repeatedly rebuilding the traversal infrastructure while still making every encountered debt edge explicit and recoverable.
+
 ## Hard-edge convergence algorithm
 
 When a selected graph node/edge is difficult, use this before changing source:

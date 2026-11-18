@@ -1097,5 +1097,33 @@
       "status": "UNCOMMITTED",
       "consumerPressure": "parallelize isolated deterministic routes while serializing shared live/lifecycle resources"
     }
-  ]
+  ],
+  "traversalDebtPolicy": {
+    "routeStatuses": [
+      "CLEARED",
+      "FRONTIER_DEBT",
+      "HELD",
+      "UNKNOWN"
+    ],
+    "clearedDefinition": "Every required semantic/source/surface coordinate for the selected route is stably addressable and derivable from rightful source.",
+    "frontierDebtDefinition": "A truthful route reaches a relationship whose required identity, projectability, realization, observation, projection, or deterministic action coordinate is missing.",
+    "missingIdentityRule": "Repair the rightful production/source identity before treating the dependent route as cleared; do not substitute test-only aliases or unstable selectors.",
+    "strategicOrder": [
+      "traverse already-cleared/addressable neighborhoods first",
+      "bootstrap graph traversal and test-manifest generation",
+      "derive debt frontiers from graph validation",
+      "repair independent frontier edges in parallel where ownership/resource claims allow",
+      "regenerate until the frontier disappears or is classified HELD/UNKNOWN"
+    ],
+    "debtClasses": [
+      "MISSING_STABLE_ID",
+      "MISSING_MANIFESTATION_BINDING",
+      "MISSING_SEMANTIC_EDGE",
+      "MISSING_REALIZATION_EDGE",
+      "MISSING_OBSERVATION_EDGE",
+      "MISSING_PROJECTION_EDGE",
+      "MISSING_DETERMINISTIC_TEST_ACTION",
+      "SCREEN_LENS_DEPTH_GAP"
+    ]
+  }
 }
