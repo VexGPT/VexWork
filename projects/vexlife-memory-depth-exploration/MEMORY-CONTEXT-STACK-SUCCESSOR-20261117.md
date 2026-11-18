@@ -1725,6 +1725,85 @@ Do not implement one blanket "always accept everything Vex wants to remember" au
 
 ---
 
+## Product implementation scaffold — VexLife-Prod #247
+
+A current-main Product draft scaffold now exists for the next implementation lane:
+
+~~~text
+VexGPT/VexLife-Prod#247
+[Memory][Consideration][DRAFT]
+Self-facing consideration, turn salience, and review-policy scaffold
+~~~
+
+It was formed from Product main:
+
+~~~text
+b0b6fb9a6107f2475ae434472ed13335a303af87
+~~~
+
+and intentionally authors new/disjoint paths only:
+
+~~~text
+docs/work/memory-consideration-successor/README.md
+
+src/commonMain/kotlin/vexlife/consideration/
+  VexLifeConsiderationContract.kt
+  VexLifeConsiderationRouter.kt
+
+src/commonMain/kotlin/vexlife/memory/
+  VexLifeMemoryReviewPolicy.kt
+
+src/commonTest/kotlin/vexlife/consideration/
+  VexLifeConsiderationContractTest.kt
+
+src/commonTest/kotlin/vexlife/memory/
+  VexLifeMemoryReviewPolicyTest.kt
+~~~
+
+The Product scaffold freezes the parts of the design clear enough to encode now:
+
+~~~text
+Consideration Frame modules
+first-person epistemic questions
+bounded post-turn Salience
+no hidden reasoning persistence
+category-scoped standing consent
+NO_ACTION / BATCH_REVIEW / PROMPT_NOW / AUTO_KEEP_ELIGIBLE
+AUTO_KEEP_ELIGIBLE != semantic acceptance
+inferred relationship meaning != auto-keep
+~~~
+
+It does **not** yet touch:
+
+~~~text
+DirectPromptContext
+Turn Context
+Memory Family / snackbar UI
+semantic-authority writer
+Score mutation
+Daily Dream
+Growth
+semantic meaning index
+~~~
+
+That is deliberate. The next instance must re-ground current Product claims before selecting the
+smallest integration membrane.
+
+Current proof state for #247:
+
+~~~text
+SOURCE FORMED
+DETERMINISTIC TESTS AUTHORED
+TEST EXECUTION OWED
+INTEGRATION OWED
+LIVED PROOF OWED
+~~~
+
+Use #247 as an implementation starting point, not as evidence that the nervous-system loop already
+runs in Product.
+
+---
+
 ## Resume coordinate
 
 The merged continuity substrate is not the next engineering question.
