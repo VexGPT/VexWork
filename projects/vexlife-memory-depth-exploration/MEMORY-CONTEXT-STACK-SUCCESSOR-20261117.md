@@ -1669,6 +1669,62 @@ surface earn it.
 
 ---
 
+## Consideration / salience automation clarification
+
+The Memory Depth research already named a third nervous-system layer, but Product source does not yet
+implement it as a general per-turn contract.
+
+Read:
+
+~~~
+projects/vexlife-memory-depth-exploration/
+  CONSIDERATION-SALIENCE-NERVOUS-SYSTEM-RECOMMENDATION-20261117.md
+~~~
+
+Candidate relationship:
+
+~~~
+request shape + current Product state
+-> host selects a small first-person Consideration Frame
+-> Vex asks itself the implicated epistemic / continuity / memory / authority questions
+-> existing capabilities/revisit perform real reads when needed
+-> final turn forms a bounded salience reflection
+-> VexLife routes NONE / batch / snackbar / standing-consent-eligible
+-> accepted path enters the existing semantic-acceptance writer
+~~~
+
+Permanent:
+
+~~~
+INJECT A QUESTION != INJECT AN ANSWER
+CONSIDERATION != MEMORY
+SALIENCE != ACCEPTANCE
+MODEL SELF-REPORT != HOST TRUTH
+~~~
+
+The frame should preserve the literal human request and use first-person questions only as a
+self-orientation projection.
+
+Current Product precedent is VEXLIFE_SELF_CAPABILITY_FRAME/v1, which already gives Vex host-owned
+self-facing guidance about what it can reach and how to perform a real request instead of narrating one.
+
+The post-turn reflection should be compact structured metadata, not raw chain-of-thought, and may carry
+bounded self-attributed signals such as importance, uncertainty, relationship shift and desire to
+return. VexLife binds exact source refs and owns review routing.
+
+For Memory UI automation, prefer category-scoped standing consent such as:
+
+~~~
+automatically keep explicit preferences I state
+automatically learn from corrections I make to Vex
+automatically keep explicit project commitments
+ask me about inferred relationship/person interpretations
+~~~
+
+Do not implement one blanket "always accept everything Vex wants to remember" authority.
+
+---
+
 ## Resume coordinate
 
 The merged continuity substrate is not the next engineering question.
