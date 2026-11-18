@@ -64,6 +64,35 @@ a provider-chat thread becoming canonical truth
 
 Product source should use a distinct Conversation/thread identity so the human feature name does not collide with VexWork's separate execution/session identity vocabulary.
 
+## Formation source checkpoint
+
+This feature source was grounded against:
+
+~~~text
+VexWork main
+d70da76d9f95645ee83dc09c7cf7384b6c572cf5
+
+VexLife-Prod main
+7345cc2e366e918a9298f0a03c96950c9bae4ac0
+~~~
+
+The Product checkpoint includes the lived/merged service-lifetime correction from VexLife-Prod #281. Fresh Instance does not reopen that lifecycle work; it consumes the now-stable Product entry/runtime relationship as context.
+
+Relevant current Product source coordinates include:
+
+~~~text
+src/commonMain/kotlin/vexlife/conversation/DirectConversationIdentity.kt
+src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt
+src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt
+src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt
+src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuity.kt
+src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt
+src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt
+src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentAcceptedSemanticProjection.kt
+src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentAcceptedSemanticPromptBlock.kt
+src/commonMain/kotlin/vexlife/person/VexLifePersonSettings.kt
+~~~
+
 ## Current Product pressure
 
 Current VexLife-Prod source has one fixed direct Conversation address:
