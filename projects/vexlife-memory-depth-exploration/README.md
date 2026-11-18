@@ -694,4 +694,140 @@ grant release/deployment authority
 Source implementation must descend into current VexLife-Prod culture/currentness and earn its own exact
 authoring authority.
 
+
+## Current convergence — Vex Context, provider representation and effect truth
+
+The original Memory Depth question exposed a larger current Product question. The Project identity stays
+`project.vexlife.memory-depth-exploration`; this is a Work/navigation convergence, not a claim that
+Memory owns provider configuration, model representation, capabilities or execution truth.
+
+Human aliases that should route here now include:
+
+~~~text
+memory depth
+Vex Context
+context JSON / what JSON does Vex receive?
+model context / what does Vex carry?
+provider alignment / model representation
+why does this model say web is unavailable?
+why doesn't Vex use web_fetch / Atlas reach?
+what actually happened during Source Return?
+prompt cache / context placement
+~~~
+
+The current causal circuit to make inspectable is:
+
+~~~text
+rightful semantic owners
+  Foundation / Memory / Working Continuity / Conversation / Person / current state
+        |
+        v
+bounded context construction
+  what is automatic
+  what is current
+  what is historical/hydrated
+        |
+        v
+qualified model/provider profile
+  message representation
+  reasoning representation
+  capability/tool representation + standing
+  sampling / output limits
+        |
+        v
+exact VexLife provider request JSON
+        |
+        v
+model output / control intent
+        |
+        v
+Product admission + rightful capability/effect owner
+        |
+        v
+actual returned source / observed effect
+        |
+        v
+Vex continuation + durable evidence
+        |
+        v
+Vex Context human projection
+~~~
+
+Permanent distinctions:
+
+~~~text
+CONTEXT COMPONENT != PROVIDER REPRESENTATION
+CAPABILITY AVAILABLE != CAPABILITY REQUESTED
+CAPABILITY REQUESTED != REQUEST ADMITTED
+REQUEST ADMITTED != EFFECT PERFORMED
+MODEL NARRATION != EFFECT PERFORMED
+CONTROL HEADER IN REASONING != CONTROL ADMISSION
+SOURCE RETURN PROTOCOL KNOWLEDGE != SOURCE RETURN RESULT
+VEXLIFE PROVIDER REQUEST != RUNTIME POST-TEMPLATE / TOKENIZED INPUT
+VEX CONTEXT PROJECTION != SEMANTIC OWNER
+CACHE REUSE != CONTINUITY TRUTH
+~~~
+
+### Current Product lineage to preserve
+
+~~~text
+#198  model-native Harmony capability representation through the existing bridge
+#201  explicit per-model Companion/provider profiles
+#207  provider-stage stop / token / cache / timing / control-header measurement
+#210  prompt-cache baseline measurement before topology changes
+
+#214  Context Revisitation / overlap-tail independent continuity implementation
+#220  OpenAI turn-bound continuity hydration independent implementation
+#222  current-state placement after stable history + component placement evidence
+#241  merged C20 continuity integration carrying the #222 lineage to main
+
+#346  merged provider-representation -> Source Return JSON semantic-object boundary
+#251  Vex Context / Context Profiles / exact live provider-request JSON
+#351  URGENT discovery: model can narrate Source Return even when no effect occurred
+~~~
+
+These are siblings in one causal circuit, not one source owner.
+
+### Current first edge
+
+The new READY Work item is:
+
+~~~text
+work.vexlife.memory-depth-exploration.context-provider-convergence
+~~~
+
+Its first concrete defect is #351. Product evidence already distinguishes:
+
+~~~text
+controlHeaderInReasoning=true
+controlHeaderInAnswer=false
+sourceReturn=none
+capabilityRequests=0
+~~~
+
+so the next correction must preserve the fact that Product correctly performed no Source Return while
+preventing protocol knowledge / imagined reconstruction from being presented as performed retrieval.
+
+After that boundary is truthful, use the same Work to converge the educational Vex Context surface:
+for the selected model, show which context is automatically supplied, which capabilities are qualified,
+how the provider represents them, what exact request VexLife sent, what control/effect actually ran, and
+what came back. This should help a person learn the model's configuration and help builders refine the
+connective tissue without teaching models false capability absence such as "web access is unavailable"
+when qualified Atlas reach is actually represented as `web_fetch`.
+
+Optimization follows truth:
+
+~~~text
+correct semantic/context ownership
+-> correct provider/model representation
+-> correct capability visibility and effect evidence
+-> human-inspectable exact request
+-> provider-stage cached/prefill/latency measurement
+-> smallest topology/configuration refinement
+~~~
+
+Do not optimize cache shape by hiding current truth or capability reach, and do not fix a model narration
+problem by pretending an effect happened.
+
+
 <!-- [VXG RealForever][VEXWORK][VEXLIFE][MEMORY-DEPTH-EXPLORATION] -->
