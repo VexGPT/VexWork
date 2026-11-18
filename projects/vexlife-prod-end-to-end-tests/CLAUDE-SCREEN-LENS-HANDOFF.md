@@ -783,6 +783,88 @@ Traversal debt encountered:
   whether it blocks this route only or a shared graph neighborhood
 ~~~
 
+## After the base graph: generate interruption/race considerations
+
+Do not start here. First derive the truthful ordinary route.
+
+Then inspect that route for:
+
+~~~text
+transient States
+Controls available during transient States
+active Effects / executions
+authored overlap Approach
+mutable current truth captured at a boundary
+retry/idempotency identity
+owner/lifetime teardown
+outside observations that can arrive later
+~~~
+
+From those, generate candidate perturbation routes.
+
+### Patient-zero examples
+
+**VoiceInput (#310 active candidate):**
+
+~~~text
+READY + START
+-> REQUESTING_MICROPHONE
+
+while REQUESTING_MICROPHONE:
+STOP is lawful
+-> STOPPING
+
+question:
+what happens if recognition-started observation arrives after STOP?
+~~~
+
+Treat the last line as an investigation question until the realization source proves its stale-result/currentness behavior.
+
+**Models current main:**
+
+~~~text
+anyDownloadRunning / anySwitchRunning
+-> idle = false
+-> many Controls are not admitted
+~~~
+
+Generate busy-state Control attempts and assert no unearned Effect.
+
+**VexExecution / Android architecture:**
+
+~~~text
+Earliest / Latest / Queued / Independent
+~~~
+
+These are already-authored overlap policies. Reuse them when the Product relationship actually carries them; do not create a second race-policy abstraction.
+
+**Send current main:**
+
+~~~text
+sendInFlight
+pending idempotency key
+exact retry/reconciliation path
+~~~
+
+Generate double-Send / exact retry considerations from those existing coordinates.
+
+### Suggested generated labels
+
+~~~text
+REENTRY
+INTERRUPT
+SIBLING_CONTROL
+STALE_OBSERVATION
+CAPTURE_RACE
+TEARDOWN
+ORDERING
+RETRY_IDEMPOTENCY
+~~~
+
+Labels are analysis metadata only.
+
+Add perturbation candidates to your orientation/coverage receipt only after the ordinary route is grounded.
+
 ## If you hit a hard edge: do not paper over it
 
 Before adding a helper class, registry, second state holder, custom traversal engine or feature-specific test DSL, classify the problem:

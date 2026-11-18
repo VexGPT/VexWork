@@ -755,6 +755,75 @@ prefer CLEARED neighborhoods first
 
 This is not permission to postpone debt indefinitely. It is a way to avoid repeatedly rebuilding the traversal infrastructure while still making every encountered debt edge explicit and recoverable.
 
+## Post-map perturbation derivation
+
+Once a source-derived pathway is known, the graph may derive a second-order **perturbation neighborhood**.
+
+### Trigger shapes
+
+~~~text
+State A --Control X--> transient State B
+State B --Control Y--> ...
+
+Effect E --REALIZED_BY--> active execution
+same maintained relationship admits another occurrence
+
+current value V1 --CAPTURED_AT_SEND--> turn T
+current value changes to V2 while T is in flight
+
+outside observation O1 belongs to predecessor
+newer semantic choice/effect already exists
+~~~
+
+These shapes can produce candidate race/interruption routes.
+
+### Do not infer policy from topology alone
+
+The graph may ask:
+
+~~~text
+repeat?
+interrupt?
+cancel?
+queue?
+ignore?
+replace?
+reject?
+stale result?
+~~~
+
+but source must answer.
+
+If a VexExecution `Approach` is already authored, it is the overlap policy:
+
+~~~text
+Earliest -> existing unfinished occurrence is sufficient
+Latest   -> cancel predecessor, await teardown, then newest
+Queued   -> preserve arrival order
+Independent -> intentionally separate occurrences
+~~~
+
+If Family law returns null for a Control in the in-flight State, the generated test should assert the Control is unavailable / effect-free rather than forcing an overlap behavior.
+
+### Perturbation edge output
+
+A generated perturbation candidate should carry:
+
+~~~text
+base route
+active State / Effect / relationship
+perturbing Control or outside event
+timing window
+authored overlap/currentness policy if any
+expected semantic admission/rejection
+expected cancellation/queue/replacement behavior if source owns it
+expected observation fence
+expected final State / Projection
+evidence needed to distinguish stale vs current result
+~~~
+
+Unresolved timing semantics become `FRONTIER_DEBT` or `UNKNOWN`, not guessed assertions.
+
 ## Hard-edge convergence algorithm
 
 When a selected graph node/edge is difficult, use this before changing source:

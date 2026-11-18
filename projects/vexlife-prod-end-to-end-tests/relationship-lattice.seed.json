@@ -1125,5 +1125,72 @@
       "MISSING_DETERMINISTIC_TEST_ACTION",
       "SCREEN_LENS_DEPTH_GAP"
     ]
+  },
+  "postMapPerturbationPolicy": {
+    "purpose": "After ordinary source-derived routes are grounded, derive timing/overlap/interruption considerations from transient states, active effects, maintained execution relationships, captured-currentness boundaries, retry identity, and late outside observations.",
+    "generatedClasses": [
+      "REENTRY",
+      "INTERRUPT",
+      "SIBLING_CONTROL",
+      "STALE_OBSERVATION",
+      "CAPTURE_RACE",
+      "TEARDOWN",
+      "ORDERING",
+      "RETRY_IDEMPOTENCY"
+    ],
+    "triggerShapes": [
+      "transient State with one or more lawful Controls",
+      "active Effect/realization plus repeated or sibling Control",
+      "maintained relationship with authored VexExecution overlap Approach",
+      "mutable current truth captured into an in-flight turn/event",
+      "outside observation that can arrive after semantic currentness changes",
+      "owner/lifetime teardown while work is active",
+      "retry/idempotency identity around an admitted human intent"
+    ],
+    "sourceAuthorityRule": "Graph topology may generate a perturbation question, but exact Family/execution/runtime/provider source must define admission, overlap, cancellation, ordering, stale-result and final-state expectations.",
+    "unresolvedRule": "Unresolved timing semantics remain FRONTIER_DEBT or UNKNOWN; generated considerations must not invent race behavior.",
+    "sourceExamples": [
+      {
+        "source": "VexLife-Android VexExecution",
+        "path": "architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+        "semantics": [
+          "Independent",
+          "Earliest",
+          "Latest",
+          "Queued",
+          "cancelActiveRelationship"
+        ]
+      },
+      {
+        "source": "VexLifeVoiceInputFamily",
+        "disposition": "ACTIVE_CANDIDATE",
+        "semantics": [
+          "READY+START -> REQUESTING_MICROPHONE",
+          "REQUESTING_MICROPHONE+STOP -> STOPPING",
+          "LISTENING+STOP -> STOPPING",
+          "STOPPING admits no Control"
+        ]
+      },
+      {
+        "source": "VexLifeModelsFamily",
+        "disposition": "CURRENT_MAIN",
+        "semantics": [
+          "downloading",
+          "anyDownloadRunning",
+          "switching",
+          "anySwitchRunning",
+          "idle gates Controls"
+        ]
+      },
+      {
+        "source": "VexLifeWebP1RuntimeArtifacts",
+        "disposition": "CURRENT_MAIN",
+        "semantics": [
+          "sendInFlight",
+          "pending idempotency key",
+          "exact retry/reconciliation"
+        ]
+      }
+    ]
   }
 }

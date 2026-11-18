@@ -35,7 +35,9 @@
     "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
     "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourney.kt",
     "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
-    "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md"
+    "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+    "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+    "repo.vexlife-android:architecture/execution/README.md"
   ],
   "formedAt": "2026-11-18T14:27:00.000Z"
 }

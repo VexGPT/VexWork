@@ -690,6 +690,126 @@ An innovation earns source only when it has a concrete consumer now, reuses sour
 
 The goal is not maximum abstraction. The goal is maximum recoverability and reuse per unit of machinery.
 
+## Post-map perturbation: interruption, overlap and race considerations
+
+After the truthful graph exists, derive **candidate perturbation routes** from its topology.
+
+Do not hand-author a generic "race-condition suite" first.
+
+Look for source-backed pressure such as:
+
+~~~text
+transient / in-flight State
++ Control still available
+
+active Effect / realization
++ same Control repeated
+
+active Effect / realization
++ opposite or sibling Control attempted
+
+mutable current truth
++ accepted turn already in flight
+
+outside observation
++ predecessor teardown / cancellation still active
+
+lifetime ending
++ work or observation still active
+~~~
+
+Those shapes generate questions like:
+
+~~~text
+What if the person presses Stop while Start is still requesting permission?
+What if the same Control is pressed twice before the first Effect settles?
+What if another Control is attempted during model download/switch?
+What if an old observation returns after a newer choice?
+What if the setting changes after Send captured the old value?
+What if teardown happens while a child operation is active?
+~~~
+
+The graph generates the **consideration**. Exact source decides the expected behavior.
+
+### Source examples
+
+**VexExecution / Android** already authors overlap semantics:
+
+~~~text
+Earliest
+  unfinished existing Job is sufficient
+
+Latest
+  cancel predecessor
+  wait through teardown
+  run newest
+
+Queued
+  preserve admitted occurrences
+  run in arrival order
+
+cancelActiveRelationship(RelationshipId)
+  cancels active work for that maintained semantic relationship
+~~~
+
+Therefore a relationship that already carries an authored `Approach` should generate overlap tests from that Approach rather than inventing another concurrency policy.
+
+**VoiceInput active candidate** exposes a useful interruption shape:
+
+~~~text
+READY + START
+-> REQUESTING_MICROPHONE + BeginLocalDictation
+
+REQUESTING_MICROPHONE + STOP
+-> STOPPING + EndLocalDictation
+
+LISTENING + STOP
+-> STOPPING + EndLocalDictation
+
+STOPPING
+-> no further Control admitted
+~~~
+
+This makes `START -> STOP before startup settles` an earned perturbation route. A late external "recognition started" observation after Stop is a question to investigate against the realization owner; do not call it a race bug until exact implementation proves whether stale observation is fenced.
+
+**Models current main** uses `downloading`, `anyDownloadRunning`, `switching`, and `anySwitchRunning` to derive an `idle` predicate. Most model Controls are rejected while the Home is already downloading or switching. That naturally generates "attempt control while busy" tests and proves unavailable Controls stay effect-free.
+
+**Conversation Send current main** uses `sendInFlight` and exact pending/idempotency state. That naturally generates double-Send / retry / interrupted transport considerations without authoring a second send coordinator.
+
+### Generated perturbation classes
+
+Useful derived classes include:
+
+~~~text
+REENTRY
+  same Control while prior occurrence is active
+
+INTERRUPT
+  opposite/stop/cancel Control while startup/work is in flight
+
+SIBLING_CONTROL
+  different Control against the same owner while busy
+
+STALE_OBSERVATION
+  older outside result arrives after newer current truth
+
+CAPTURE_RACE
+  mutable setting changes after a turn/event captured its value
+
+TEARDOWN
+  owner/lifetime stops while work is active
+
+ORDERING
+  two admitted occurrences complete in an order different from request order
+
+RETRY_IDEMPOTENCY
+  transport/retry repeats an already-admitted human intent
+~~~
+
+These are generated **consideration labels**, not new Product semantics.
+
+Do not Cartesian-expand them across every edge. Generate them only when graph/source structure makes the perturbation meaningful.
+
 ## Execution classes
 
 The same journey may have several proof realizations:
