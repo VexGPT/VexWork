@@ -421,7 +421,8 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt",
         "github.pull.vexlife-prod.247",
         "projects/vexlife-memory-depth-exploration/FULL-END-TO-END-HANDOFF-20261118.md",
-        "projects/vexlife-memory-depth-exploration/CURRENT-CONNECTION-AUDIT-20261118.md"
+        "projects/vexlife-memory-depth-exploration/CURRENT-CONNECTION-AUDIT-20261118.md",
+        "projects/vexlife-memory-depth-exploration/CURRENT-STATE-CONTEXT.md"
       ],
       "formationProcessRefOrNull": null
     }
