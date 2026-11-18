@@ -237,6 +237,124 @@ execution class
 
 Then bind that manifest to existing VexLife-Prod deterministic/isolated-service runners.
 
+
+## Concrete notation example
+
+Use this only as a readable traversal/query notation. Resolve it back to current source; do not create these angle-bracket tokens as new Product IDs.
+
+~~~text
+<subject:user>
+  -> <surface:settings>
+  -> <control:reply-language>
+  -> branch_routes[
+       select(en),
+       select(zh-Hans),
+       select(zh-Hant)
+     ]
+  -> <capture:next-send>
+  -> <owner:DirectPromptContext.PersonContext.replyLanguage>
+  -> <provider:selected-runtime>
+  -> <projection:Vex Context>
+~~~
+
+Interpretation:
+
+~~~text
+human intention
+-> current State exposes a Control
+-> human chooses one branch
+-> lawful Act/Effect/current-setting realization
+-> next accepted Send captures the result
+-> provider receives it
+-> completed turn records it
+-> human projection shows what actually happened
+~~~
+
+Second example:
+
+~~~text
+<subject:user>
+  -> <control:spoken-language=zh>
+  -> <control:composer-output=TRANSLATE_TO_ENGLISH>
+  -> <control:reply-language=zh-Hans>
+  -> <control:voice-start>
+  -> speak(...)
+  -> <composer:English translation>
+  -> <control:send>
+  -> <provider-input>[
+       Conversation.request = English,
+       PersonContext.replyLanguage = zh-Hans
+     ]
+  -> <projection:Vex Context>
+~~~
+
+The point is not the syntax. The point is that one compact human-readable path can expand into exact source coordinates, branches, reverse prerequisites, forward consequences and generated test assertions.
+
+## When to derive and when to excavate
+
+### Architecture-first
+
+If current source already expresses the relationship:
+
+~~~text
+read source
+-> derive graph
+-> derive route
+-> run generated test
+~~~
+
+Do **not** manually click around to rediscover it.
+
+### Roomba discovery
+
+If the generated graph cannot explain a lived feature/state:
+
+~~~text
+walk once
+-> capture exact element IDs + observations + evidence
+-> propose candidate missing edge(s)
+-> reverse-engineer source ownership
+-> confirm/correct/reject
+-> repair rightful source/projector
+-> regenerate graph
+~~~
+
+The walk is discovery evidence, not semantic authority.
+
+### Build-as-you-walk
+
+For active new work:
+
+~~~text
+add truthful source edge
+-> graph grows
+-> route/test manifests grow
+-> exercise edge once
+-> reconcile mismatch
+-> graph remains the map
+~~~
+
+The desired direction is that manual walking becomes less necessary as the architecture becomes more complete.
+
+## Claude first prototype question
+
+Before building a large crawler, prove this loop on one small source neighborhood:
+
+~~~text
+Family/owner source
+-> graph nodes/edges
+-> select one edge
+-> reverse traversal to elementRef + precondition
+-> forward traversal to expected Effect/State/Projection
+-> emit one deterministic test manifest
+-> emit one human-readable explanation
+~~~
+
+Suggested patient zeros:
+1. Vision READY + ENGAGE -> EngageScope -> observed successor.
+2. ContextShare available -> page read -> included -> Send browserContext.
+3. reply-language change -> next Send -> Vex Context historical/current distinction.
+
 ## No blanket mutation grant
 
 This handoff authorizes read/discovery and the already-admitted VexBoard Screen Lens lane only. VexLife-Prod source changes, lifecycle actions, merges, and release effects still require their rightful current lane/authority.

@@ -185,6 +185,46 @@ This enables edge-centered testing: select one graph edge, traverse backward to 
 
 Current VexBoard already owns BoardJourney traversal, outgoing relationship choices, loop/motif analysis and Screen Lens queries. This Project should extend the source relationship input and test derivation rather than build another graph engine.
 
+
+## Derive where possible; excavate only where necessary
+
+The Project intentionally supports both directions:
+
+~~~text
+architecture complete enough
+-> generate the map from source
+
+architecture/projection incomplete
+-> walk the Product once like a Roomba
+-> capture candidate missing relationships
+-> reconcile them back into rightful source
+-> regenerate the map
+~~~
+
+The walk is never a second source of truth.
+
+As VexArchitecture becomes more complete, the expected trend is:
+
+~~~text
+less manual discovery
+more graph derivation
+more route/test generation
+~~~
+
+A compact human-readable traversal may look like:
+
+~~~text
+<subject:user>
+  -> <surface:settings>
+  -> <control:reply-language>
+  -> branch_routes[].select(...)
+  -> <capture:next-send>
+  -> <provider>
+  -> <projection:Vex Context>
+~~~
+
+but every token must resolve back to the existing source graph.
+
 ## Cross-Family pressure
 
 The interesting E2E failures are usually not inside one Family. They happen at crossings.

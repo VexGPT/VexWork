@@ -467,6 +467,249 @@ src/shared/vexboard-screen-lens-query.mjs
 
 So the next implementation pressure is **richer VexLife relationship extraction + route/test derivation**, not a second graph engine.
 
+
+## Example notation for Claude: readable intent over exact graph coordinates
+
+The notation below is **illustrative query language**, not a new semantic source.
+
+Its job is to make the graph readable while every token still resolves to existing source coordinates.
+
+### Example — change Vex reply language
+
+~~~text
+<subject:user>
+  -> <surface:settings>
+  -> <control:reply-language>
+  -> branch_routes[
+       select(en),
+       select(zh-Hans),
+       select(zh-Hant)
+     ]
+  -> <capture:next-send>
+  -> <owner:DirectPromptContext.PersonContext.replyLanguage>
+  -> <provider:selected-runtime>
+  -> <projection:Vex Context>
+~~~
+
+Expanded relationship meaning:
+
+~~~text
+user
+-> opens the Settings manifestation
+-> chooses the existing reply-language Control
+-> Product current setting becomes en | zh-Hans | zh-Hant
+-> next accepted Send captures that exact current setting
+-> DirectPromptContext PersonContext carries it
+-> provider receives it
+-> completed response is committed
+-> Vex Context projects what that completed turn actually received
+~~~
+
+A concrete route is one branch:
+
+~~~text
+<subject:user>
+  -> select(zh-Hans)
+  -> Send
+  -> PersonContext.replyLanguage=zh-Hans
+  -> provider
+  -> response
+  -> Vex Context.lastTurn.replyLanguage=zh-Hans
+~~~
+
+A second route through the same pathway:
+
+~~~text
+<subject:user>
+  -> select(zh-Hant)
+  -> Send
+  -> PersonContext.replyLanguage=zh-Hant
+  -> provider
+  -> response
+  -> Vex Context.lastTurn.replyLanguage=zh-Hant
+~~~
+
+The prior zh-Hans receipt remains unchanged.
+
+### Example — Voice + Composer + reply language remain independent
+
+~~~text
+<subject:user>
+  -> <control:spoken-language=zh>
+  -> <control:composer-output=TRANSLATE_TO_ENGLISH>
+  -> <control:reply-language=zh-Hans>
+  -> <control:voice-start>
+  -> speak("...")
+  -> <composer:text=English translation>
+  -> <control:send>
+  -> <provider-input>[
+       Conversation.request = English text,
+       PersonContext.replyLanguage = zh-Hans
+     ]
+  -> <projection:Vex Context>
+~~~
+
+This is useful because one human walk crosses several independent owners without collapsing them into one "language feature."
+
+### Example — select one edge and generate its route
+
+Suppose the selected graph edge is:
+
+~~~text
+<edge:
+  PersonSettings.replyLanguage
+  -> CAPTURED_AT_SEND
+  -> DirectPromptContext.PersonContext.replyLanguage
+>
+~~~
+
+Reverse traversal asks:
+
+~~~text
+what human-visible Control can change PersonSettings.replyLanguage?
+what elementRef manifests that Control?
+what current State makes that Control available?
+what setup is required to reach that State?
+~~~
+
+Forward traversal asks:
+
+~~~text
+which accepted Send captures the value?
+which provider message/component carries it?
+which completed-turn receipt proves it?
+which projection shows it to the human?
+~~~
+
+The derived test route is therefore generated from the edge rather than hand-authored from memory.
+
+## Build versus reverse-engineer
+
+There are two legitimate ways to form the graph.
+
+### Mode A — architecture-first generation
+
+Use this when the architecture already exposes enough truthful structure.
+
+~~~text
+Family source
++ State / Control / Act / Effect
++ observation/reconciliation
++ Blueprint element IDs
++ Screen Lens/source realization
++ prompt/service/provider contracts
+
+-> extract graph automatically
+-> derive pathways/routes
+-> generate test manifests
+-> generate human-readable explanations
+~~~
+
+In this mode, **do not manually walk the UI just to rediscover relationships the source already states**.
+
+The walk becomes verification of the generated map, not the author of the map.
+
+### Mode B — Roomba discovery
+
+Use this when the architecture/projection is incomplete, latent, or the lived Product exposes a relationship the graph cannot yet explain.
+
+~~~text
+bounded lived walk
+-> encounter stable element IDs
+-> observe available/unavailable Controls
+-> observe State/projection changes
+-> retain exact runtime/source evidence
+-> propose candidate missing edges
+-> trace back into source
+-> confirm / correct / reject each edge
+-> update rightful source/projector
+-> regenerate graph
+~~~
+
+Permanent:
+
+~~~text
+ROOMBA TRACE
+!= PRODUCT TRUTH
+
+OBSERVED WALK
+!= PERMISSION TO INVENT A RELATIONSHIP
+~~~
+
+The Roomba is an **excavator**. It finds where the map is incomplete.
+
+Once a discovered relationship is reconciled into rightful source, future graph generation should no longer depend on manually walking that route.
+
+### Mode C — build while walking
+
+When new product work is actively being built, the two modes can meet:
+
+~~~text
+author one source relationship
+-> graph extractor gains one edge
+-> generated pathway expands
+-> generated route/test manifests expand
+-> developer/lived walk exercises the new edge
+-> mismatch becomes either:
+     source bug
+     implementation bug
+     projection gap
+     missing observation
+     held relationship
+~~~
+
+This is the preferred development loop.
+
+The walk does not maintain a second map. It continuously checks whether the source-derived map and the lived Product still describe the same human experience.
+
+## Map compiler target
+
+The eventual generative tool can be thought of as:
+
+~~~text
+VexLife source
+  |
+  +-- Family circuits
+  +-- Blueprint element IDs
+  +-- service/runtime/provider relationships
+  +-- Screen Lens/source realization
+  +-- current candidate/held annotations
+  |
+  v
+RELATIONSHIP GRAPH
+  |
+  +-- reverse reachability
+  +-- forward reachability
+  +-- branch enumeration
+  +-- loop/motif detection
+  +-- pathway selection
+  +-- route selection
+  |
+  +--> human-readable journey explanation
+  |
+  +--> deterministic test manifest
+  |
+  +--> VexBoard projection
+  |
+  +--> coverage / missing-edge report
+~~~
+
+One well-maintained graph can therefore serve:
+
+~~~text
+architecture navigation
+UI crawler targeting
+static/deterministic tests
+lived test planning
+Screen Lens
+Vex Context validation
+coverage analysis
+human documentation
+Claude/OpenAI orientation
+~~~
+
+without each consumer owning a separate feature map.
+
 ## Source seed
 
 `relationship-lattice.seed.json` contains the current pinned anchors, journey seeds, loops and active-candidate pressure. It is deliberately disposable/regenerable as Product source changes.
