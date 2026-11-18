@@ -1,0 +1,4521 @@
+{
+  "schemaVersion": "vexwork.experience-graph.law-evidence/v1",
+  "graphFingerprint": "2be14bdb0e3e89f79135d168cd13277ad7143a933f32e40fe617183a8b2c872a",
+  "source": {
+    "repository": "VexGPT/VexLife-Prod",
+    "commit": "a58777106b08bd58c167608fa0115729185ae3dd"
+  },
+  "probeSourceSha256": "a4ffa41a3a1ebb2c8a95695ed1b5ac6c185177158266e94a81cb1a82e9fa332d",
+  "runner": {
+    "command": "./gradlew jvmTest --tests vexwork.experience.probe.ExperienceLawProbeTest",
+    "gradleWrapper": "9.6.0",
+    "jvm": "21.0.13.0.3",
+    "productSourceModified": false,
+    "probePlacement": "throwaway git-archive tree, src/jvmTest only"
+  },
+  "plan": [
+    {
+      "family": "VexLifeContextProfileFamily",
+      "runnable": false,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "ProductDefault",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for foundation: VexLifeContextProfile.ProductFoundationIdentity"
+        },
+        {
+          "variant": "Saved",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for profile: VexLifeContextProfile.Effective"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Use",
+          "fixtures": [
+            "Use#0",
+            "Use#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Save",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for definition: VexLifeContextProfile.Definition"
+        },
+        {
+          "variant": "SaveAs",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for definition: VexLifeContextProfile.Definition"
+        },
+        {
+          "variant": "RestoreProductDefault",
+          "fixtures": [
+            "RestoreProductDefault"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Import",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for profile: VexLifeContextProfile.Portable"
+        }
+      ]
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Kept",
+          "fixtures": [
+            "Kept"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Private",
+          "fixtures": [
+            "Private#0"
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Begin",
+          "fixtures": [
+            "Begin"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "End",
+          "fixtures": [
+            "End"
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Recording",
+          "fixtures": [
+            "Recording"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "RecordingEnhanced",
+          "fixtures": [
+            "RecordingEnhanced#0",
+            "RecordingEnhanced#1"
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "StartEnhanced",
+          "fixtures": [
+            "StartEnhanced"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "StopEnhanced",
+          "fixtures": [
+            "StopEnhanced"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ClearHistory",
+          "fixtures": [
+            "ClearHistory"
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Current",
+          "fixtures": [
+            "Current#0",
+            "Current#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "UpdateAvailable",
+          "fixtures": [
+            "UpdateAvailable#0",
+            "UpdateAvailable#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "RepairRequired",
+          "fixtures": [
+            "RepairRequired#0",
+            "RepairRequired#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "UpdateRepairRequired",
+          "fixtures": [
+            "UpdateRepairRequired#0",
+            "UpdateRepairRequired#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ServiceRecoveryRequired",
+          "fixtures": [
+            "ServiceRecoveryRequired#0",
+            "ServiceRecoveryRequired#1",
+            "ServiceRecoveryRequired#2",
+            "ServiceRecoveryRequired#3"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "StartRequired",
+          "fixtures": [
+            "StartRequired#0",
+            "StartRequired#1",
+            "StartRequired#2",
+            "StartRequired#3"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "HomeFormationRequired",
+          "fixtures": [
+            "HomeFormationRequired#0",
+            "HomeFormationRequired#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "HomeHeld",
+          "fixtures": [
+            "HomeHeld#0",
+            "HomeHeld#1",
+            "HomeHeld#2",
+            "HomeHeld#3",
+            "HomeHeld#4",
+            "HomeHeld#5",
+            "HomeHeld#6",
+            "HomeHeld#7"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "HostHeld",
+          "fixtures": [
+            "HostHeld#0",
+            "HostHeld#1",
+            "HostHeld#2",
+            "HostHeld#3",
+            "HostHeld#4",
+            "HostHeld#5",
+            "HostHeld#6",
+            "HostHeld#7"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "SetupRequired",
+          "fixtures": [
+            "SetupRequired#0",
+            "SetupRequired#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "StorageHeld",
+          "fixtures": [
+            "StorageHeld#0",
+            "StorageHeld#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ModelFilesHeld",
+          "fixtures": [
+            "ModelFilesHeld#0",
+            "ModelFilesHeld#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "HeldUnknown",
+          "fixtures": [
+            "HeldUnknown#0",
+            "HeldUnknown#1",
+            "HeldUnknown#2",
+            "HeldUnknown#3"
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "OpenCurrent",
+          "fixtures": [
+            "OpenCurrent"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ConvergeDesired",
+          "fixtures": [
+            "ConvergeDesired"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "RecoverStaleService",
+          "fixtures": [
+            "RecoverStaleService"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Start",
+          "fixtures": [
+            "Start"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "FormHome",
+          "fixtures": [
+            "FormHome"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "SetUp",
+          "fixtures": [
+            "SetUp"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Cancel",
+          "fixtures": [
+            "Cancel"
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeMemoryFamily",
+      "runnable": false,
+      "notRunnable": "Family declares no Control",
+      "states": [
+        {
+          "variant": "Current",
+          "fixtures": [
+            "Current#0"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "NotFormed",
+          "fixtures": [
+            "NotFormed"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Behind",
+          "fixtures": [
+            "Behind"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Unreadable",
+          "fixtures": [
+            "Unreadable"
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": []
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Idle",
+          "fixtures": [
+            "Idle"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Pending",
+          "fixtures": [
+            "Pending#0",
+            "Pending#1",
+            "Pending#2",
+            "Pending#3",
+            "Pending#4",
+            "Pending#5",
+            "Pending#6",
+            "Pending#7"
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Keep",
+          "fixtures": [
+            "Keep#0",
+            "Keep#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "NotNow",
+          "fixtures": [
+            "NotNow#0",
+            "NotNow#1"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Decline",
+          "fixtures": [
+            "Decline#0",
+            "Decline#1"
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "runnable": false,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "State",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for runtimeConfiguration: HereticRuntimeConfiguration.Effective"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Select",
+          "fixtures": [
+            "Select"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Use",
+          "fixtures": [
+            "Use"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "UseRecommendedRuntimeConfiguration",
+          "fixtures": [
+            "UseRecommendedRuntimeConfiguration"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "SetPromptCacheEntries",
+          "fixtures": [
+            "SetPromptCacheEntries#0"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Download",
+          "fixtures": [
+            "Download"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Redownload",
+          "fixtures": [
+            "Redownload"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Remove",
+          "fixtures": [
+            "Remove"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ForgetImportedModel",
+          "fixtures": [
+            "ForgetImportedModel"
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "HereticRuntimeAvailability",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "State.StableBorrowable",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for evidence: HereticModelConfiguration.QualifiedRuntimeEvidence"
+        },
+        {
+          "variant": "State.StablePredecessorUnavailable",
+          "fixtures": [
+            "State.StablePredecessorUnavailable"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "State.Qualified",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for evidence: HereticModelConfiguration.QualifiedRuntimeEvidence"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Control.EnsureAvailable",
+          "fixtures": [
+            "Control.EnsureAvailable#0",
+            "Control.EnsureAvailable#1"
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeReleaseInboxFamily",
+      "runnable": false,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "State",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for communications: List<Communication>"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Control.View",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for identity: VexLifeReleaseIdentity.Value"
+        },
+        {
+          "variant": "Control.Dismiss",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for identity: VexLifeReleaseIdentity.Value"
+        }
+      ]
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Held",
+          "fixtures": [
+            "Held#0",
+            "Held#1",
+            "Held#2"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Ready",
+          "fixtures": [
+            "Ready"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Selecting",
+          "fixtures": [
+            "Selecting"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Engaged",
+          "fixtures": [
+            "Engaged"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Looking",
+          "fixtures": [
+            "Looking"
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Engage",
+          "fixtures": [
+            "Engage"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Stop",
+          "fixtures": [
+            "Stop"
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Ready",
+          "fixtures": [
+            "Ready"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "RequestingMicrophone",
+          "fixtures": [
+            "RequestingMicrophone"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Listening",
+          "fixtures": [
+            "Listening"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Stopping",
+          "fixtures": [
+            "Stopping"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Held",
+          "fixtures": [
+            "Held#0",
+            "Held#1",
+            "Held#2"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Failed",
+          "fixtures": [
+            "Failed#0",
+            "Failed#1",
+            "Failed#2",
+            "Failed#3"
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Start",
+          "fixtures": [
+            "Start"
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Stop",
+          "fixtures": [
+            "Stop"
+          ],
+          "notFixturable": null
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "family": "VexLifePrivateModeFamily",
+      "state": "Private",
+      "stateFixture": "Private#0",
+      "control": "Begin",
+      "controlFixture": "Begin",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "state": "Kept",
+      "stateFixture": "Kept",
+      "control": "Begin",
+      "controlFixture": "Begin",
+      "result": {
+        "admitted": null,
+        "effect": "BeginPrivate"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#2",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#3",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#6",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#7",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#2",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#3",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "admitted": null,
+        "effect": null
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#2",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#3",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#4",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#5",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#2",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#3",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#4",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#5",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#6",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#7",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#2",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#3",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#0",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#1",
+      "control": "Cancel",
+      "controlFixture": "Cancel",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "Recording",
+      "stateFixture": "Recording",
+      "control": "ClearHistory",
+      "controlFixture": "ClearHistory",
+      "result": {
+        "admitted": null,
+        "effect": "ClearDebugHistory"
+      }
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "RecordingEnhanced",
+      "stateFixture": "RecordingEnhanced#0",
+      "control": "ClearHistory",
+      "controlFixture": "ClearHistory",
+      "result": {
+        "admitted": null,
+        "effect": "ClearDebugHistory"
+      }
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "RecordingEnhanced",
+      "stateFixture": "RecordingEnhanced#1",
+      "control": "ClearHistory",
+      "controlFixture": "ClearHistory",
+      "result": {
+        "admitted": null,
+        "effect": "ClearDebugHistory"
+      }
+    },
+    {
+      "family": "HereticRuntimeAvailability",
+      "state": "State.StablePredecessorUnavailable",
+      "stateFixture": "State.StablePredecessorUnavailable",
+      "control": "Control.EnsureAvailable",
+      "controlFixture": "Control.EnsureAvailable#0",
+      "result": {
+        "admitted": null,
+        "effect": "ObserveCurrentProductOwnedRuntime"
+      }
+    },
+    {
+      "family": "HereticRuntimeAvailability",
+      "state": "State.StablePredecessorUnavailable",
+      "stateFixture": "State.StablePredecessorUnavailable",
+      "control": "Control.EnsureAvailable",
+      "controlFixture": "Control.EnsureAvailable#1",
+      "result": {
+        "admitted": null,
+        "effect": "EnsureProductOwnedRuntime"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#2",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#3",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#6",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#7",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#2",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#3",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#2",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#3",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#4",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#5",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#2",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#3",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#4",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#5",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#6",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#7",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#2",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#3",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#0",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#1",
+      "control": "ConvergeDesired",
+      "controlFixture": "ConvergeDesired",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Idle",
+      "stateFixture": "Idle",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#0",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": {
+        "admitted": null,
+        "effect": "Dismiss"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#1",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": {
+        "admitted": null,
+        "effect": "Dismiss"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#2",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": {
+        "admitted": null,
+        "effect": "Dismiss"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#3",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": {
+        "admitted": null,
+        "effect": "Dismiss"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#4",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": {
+        "admitted": null,
+        "effect": "Dismiss"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#5",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": {
+        "admitted": null,
+        "effect": "Dismiss"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#6",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": {
+        "admitted": null,
+        "effect": "Dismiss"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#7",
+      "control": "Decline",
+      "controlFixture": "Decline#0",
+      "result": {
+        "admitted": null,
+        "effect": "Dismiss"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Idle",
+      "stateFixture": "Idle",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#0",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#1",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#2",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#3",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#4",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#5",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#6",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#7",
+      "control": "Decline",
+      "controlFixture": "Decline#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "state": "Kept",
+      "stateFixture": "Kept",
+      "control": "End",
+      "controlFixture": "End",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "state": "Private",
+      "stateFixture": "Private#0",
+      "control": "End",
+      "controlFixture": "End",
+      "result": {
+        "admitted": null,
+        "effect": "EndPrivate"
+      }
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Engaged",
+      "stateFixture": "Engaged",
+      "control": "Engage",
+      "controlFixture": "Engage",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Held",
+      "stateFixture": "Held#0",
+      "control": "Engage",
+      "controlFixture": "Engage",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Held",
+      "stateFixture": "Held#1",
+      "control": "Engage",
+      "controlFixture": "Engage",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Held",
+      "stateFixture": "Held#2",
+      "control": "Engage",
+      "controlFixture": "Engage",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Looking",
+      "stateFixture": "Looking",
+      "control": "Engage",
+      "controlFixture": "Engage",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Selecting",
+      "stateFixture": "Selecting",
+      "control": "Engage",
+      "controlFixture": "Engage",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Ready",
+      "stateFixture": "Ready",
+      "control": "Engage",
+      "controlFixture": "Engage",
+      "result": {
+        "admitted": null,
+        "effect": "EngageScope"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#2",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#3",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#6",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#7",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#2",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#3",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "admitted": null,
+        "effect": "FormCanonicalHome"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "admitted": null,
+        "effect": "FormCanonicalHome"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#2",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#3",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#4",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#5",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#2",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#3",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#4",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#5",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#6",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#7",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#2",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#3",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#0",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#1",
+      "control": "FormHome",
+      "controlFixture": "FormHome",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Idle",
+      "stateFixture": "Idle",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#0",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": {
+        "admitted": null,
+        "effect": "Accept"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#1",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": {
+        "admitted": null,
+        "effect": "Accept"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#2",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": {
+        "admitted": null,
+        "effect": "Accept"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#3",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": {
+        "admitted": null,
+        "effect": "Accept"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#4",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": {
+        "admitted": null,
+        "effect": "Accept"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#5",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": {
+        "admitted": null,
+        "effect": "Accept"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#6",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": {
+        "admitted": null,
+        "effect": "Accept"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#7",
+      "control": "Keep",
+      "controlFixture": "Keep#0",
+      "result": {
+        "admitted": null,
+        "effect": "Accept"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Idle",
+      "stateFixture": "Idle",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#0",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#1",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#2",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#3",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#4",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#5",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#6",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#7",
+      "control": "Keep",
+      "controlFixture": "Keep#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Idle",
+      "stateFixture": "Idle",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#0",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": {
+        "admitted": null,
+        "effect": "Defer"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#1",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": {
+        "admitted": null,
+        "effect": "Defer"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#2",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": {
+        "admitted": null,
+        "effect": "Defer"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#3",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": {
+        "admitted": null,
+        "effect": "Defer"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#4",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": {
+        "admitted": null,
+        "effect": "Defer"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#5",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": {
+        "admitted": null,
+        "effect": "Defer"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#6",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": {
+        "admitted": null,
+        "effect": "Defer"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#7",
+      "control": "NotNow",
+      "controlFixture": "NotNow#0",
+      "result": {
+        "admitted": null,
+        "effect": "Defer"
+      }
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Idle",
+      "stateFixture": "Idle",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#0",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#1",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#2",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#3",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#4",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#5",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#6",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "Pending",
+      "stateFixture": "Pending#7",
+      "control": "NotNow",
+      "controlFixture": "NotNow#1",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#2",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#3",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#6",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#7",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#2",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#3",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "admitted": null,
+        "effect": "OpenPresentation"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "admitted": null,
+        "effect": "OpenPresentation"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "admitted": null,
+        "effect": "OpenPresentation"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "admitted": null,
+        "effect": "OpenPresentation"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#2",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#3",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#4",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#5",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#2",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#3",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#4",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#5",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#6",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#7",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#2",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#3",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#0",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#1",
+      "control": "OpenCurrent",
+      "controlFixture": "OpenCurrent",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#2",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#3",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#6",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#7",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#2",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#3",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#2",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#3",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#4",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#5",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#2",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#3",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#4",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#5",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#6",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#7",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#2",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#3",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#0",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#1",
+      "control": "RecoverStaleService",
+      "controlFixture": "RecoverStaleService",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#2",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#3",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#6",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#7",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#2",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#3",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#2",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#3",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#4",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#5",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#2",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#3",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#4",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#5",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#6",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#7",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#2",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#3",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#0",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#1",
+      "control": "SetUp",
+      "controlFixture": "SetUp",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "Current",
+      "stateFixture": "Current#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#2",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HeldUnknown",
+      "stateFixture": "HeldUnknown#3",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeFormationRequired",
+      "stateFixture": "HomeFormationRequired#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#6",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#7",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ModelFilesHeld",
+      "stateFixture": "ModelFilesHeld#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "RepairRequired",
+      "stateFixture": "RepairRequired#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "SetupRequired",
+      "stateFixture": "SetupRequired#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateAvailable",
+      "stateFixture": "UpdateAvailable#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "UpdateRepairRequired",
+      "stateFixture": "UpdateRepairRequired#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#2",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StartRequired",
+      "stateFixture": "StartRequired#3",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": null,
+        "effect": "ConvergeProduct"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#2",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#3",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#4",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HomeHeld",
+      "stateFixture": "HomeHeld#5",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held Home entry state requires one held disposition and bounded detail"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#2",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#3",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#4",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#5",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#6",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "HostHeld",
+      "stateFixture": "HostHeld#7",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#2",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "ServiceRecoveryRequired",
+      "stateFixture": "ServiceRecoveryRequired#3",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "StorageHeld",
+      "stateFixture": "StorageHeld#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "error": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+      }
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Held",
+      "stateFixture": "Held#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Held",
+      "stateFixture": "Held#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Held",
+      "stateFixture": "Held#2",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Listening",
+      "stateFixture": "Listening",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "RequestingMicrophone",
+      "stateFixture": "RequestingMicrophone",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Stopping",
+      "stateFixture": "Stopping",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Failed",
+      "stateFixture": "Failed#0",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": "RequestingMicrophone",
+        "effect": "BeginLocalDictation"
+      }
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Failed",
+      "stateFixture": "Failed#1",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": "RequestingMicrophone",
+        "effect": "BeginLocalDictation"
+      }
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Failed",
+      "stateFixture": "Failed#2",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": "RequestingMicrophone",
+        "effect": "BeginLocalDictation"
+      }
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Failed",
+      "stateFixture": "Failed#3",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": "RequestingMicrophone",
+        "effect": "BeginLocalDictation"
+      }
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Ready",
+      "stateFixture": "Ready",
+      "control": "Start",
+      "controlFixture": "Start",
+      "result": {
+        "admitted": "RequestingMicrophone",
+        "effect": "BeginLocalDictation"
+      }
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "RecordingEnhanced",
+      "stateFixture": "RecordingEnhanced#0",
+      "control": "StartEnhanced",
+      "controlFixture": "StartEnhanced",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "RecordingEnhanced",
+      "stateFixture": "RecordingEnhanced#1",
+      "control": "StartEnhanced",
+      "controlFixture": "StartEnhanced",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "Recording",
+      "stateFixture": "Recording",
+      "control": "StartEnhanced",
+      "controlFixture": "StartEnhanced",
+      "result": {
+        "admitted": null,
+        "effect": "BeginEnhancedCapture"
+      }
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Held",
+      "stateFixture": "Held#0",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Held",
+      "stateFixture": "Held#1",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Looking",
+      "stateFixture": "Looking",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Ready",
+      "stateFixture": "Ready",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Selecting",
+      "stateFixture": "Selecting",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Engaged",
+      "stateFixture": "Engaged",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": {
+        "admitted": null,
+        "effect": "StopScope"
+      }
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "Held",
+      "stateFixture": "Held#2",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": {
+        "admitted": null,
+        "effect": "StopScope"
+      }
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Failed",
+      "stateFixture": "Failed#0",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Failed",
+      "stateFixture": "Failed#1",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Failed",
+      "stateFixture": "Failed#2",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Failed",
+      "stateFixture": "Failed#3",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Held",
+      "stateFixture": "Held#0",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Held",
+      "stateFixture": "Held#1",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Held",
+      "stateFixture": "Held#2",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Ready",
+      "stateFixture": "Ready",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Stopping",
+      "stateFixture": "Stopping",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "Listening",
+      "stateFixture": "Listening",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": {
+        "admitted": "Stopping",
+        "effect": "EndLocalDictation"
+      }
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "RequestingMicrophone",
+      "stateFixture": "RequestingMicrophone",
+      "control": "Stop",
+      "controlFixture": "Stop",
+      "result": {
+        "admitted": "Stopping",
+        "effect": "EndLocalDictation"
+      }
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "Recording",
+      "stateFixture": "Recording",
+      "control": "StopEnhanced",
+      "controlFixture": "StopEnhanced",
+      "result": "REJECT"
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "RecordingEnhanced",
+      "stateFixture": "RecordingEnhanced#0",
+      "control": "StopEnhanced",
+      "controlFixture": "StopEnhanced",
+      "result": {
+        "admitted": null,
+        "effect": "EndEnhancedCapture"
+      }
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "RecordingEnhanced",
+      "stateFixture": "RecordingEnhanced#1",
+      "control": "StopEnhanced",
+      "controlFixture": "StopEnhanced",
+      "result": {
+        "admitted": null,
+        "effect": "EndEnhancedCapture"
+      }
+    }
+  ]
+}

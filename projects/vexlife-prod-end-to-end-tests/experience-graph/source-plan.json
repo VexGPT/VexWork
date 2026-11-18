@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "vexwork.experience-graph.source-plan/v1",
+  "repository": "VexGPT/VexLife-Prod",
+  "url": "https://github.com/VexGPT/VexLife-Prod",
+  "commit": "a58777106b08bd58c167608fa0115729185ae3dd",
+  "commitObservedAt": "2026-11-18",
+  "commitNote": "Re-observed current main. Supersedes the handoff's 98a22ede: #251 Context Profile + Vex Context merged at 8e2e2999 and #361 followed; #343 remains an open candidate not in main.",
+  "priorCommit": "98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0",
+  "priorCommitNote": "Handoff-pinned main (#331 merge). Used only as the prior revision for graph change impact.",
+  "familyRoot": "src/commonMain",
+  "wiringRoots": ["src/commonMain", "src/jvmMain"],
+  "lens": "docs/lens/vexlife-prod.screen-lens.json",
+  "sendBoundary": {
+    "turn": "src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt",
+    "prompt": "src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+    "service": "src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt"
+  }
+}

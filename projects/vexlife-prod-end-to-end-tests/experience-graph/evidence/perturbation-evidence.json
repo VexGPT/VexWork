@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "vexwork.experience-graph.perturbation-evidence/v1",
+  "purpose": "Source-review answers to generated perturbation questions whose expected behavior is owned by realization source, not Family law. Each answer is bound to the exact Git blob it was read from; when that blob changes the answer becomes STALE_EVIDENCE automatically.",
+  "reviewer": "Claude worker · VXG-111826-vexlife-prod-e2e-claude-a001",
+  "reviewedAt": "2026-11-18",
+  "answers": [
+    {
+      "perturbationRef": "perturbation:STALE_OBSERVATION:VexLifeVoiceInputFamily:RequestingMicrophone:Stop:observeRecognitionStarted:Listening",
+      "method": "SOURCE_REVIEW",
+      "answer": "FENCED — STOP realizes End, which sets dictation.desiredActive = false and increments dictation.session (L1193–L1194). Begin re-checks `!dictation.desiredActive || session !== dictation.session` after every await and returns before applying recognitionStartedState (L1343 before L1351). A late recognition-started cannot move STOPPING/READY to LISTENING.",
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1191",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1343",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1351"
+      ],
+      "sourceFiles": [
+        { "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt", "blobSha1": "5296f08cb27133f48153b46c85633d91f7c3373f" }
+      ],
+      "note": "Fence lives in generated browser JavaScript, not typed Family law; executing it needs a browser-runtime harness (proof class C) that this lane does not have."
+    },
+    {
+      "perturbationRef": "perturbation:STALE_OBSERVATION:VexLifeVoiceInputFamily:RequestingMicrophone:Stop:observeFailure:Failed",
+      "method": "SOURCE_REVIEW",
+      "answer": "PARTIALLY FENCED — the microphone failure branch (L1286) and the provider-prepare failure branch (L1313) return when `session !== dictation.session`. The audio-capture failure branch (catch around startVoiceCapture, L1327–L1340) has no session fence: if startVoiceCapture rejects after STOP, failVoiceInput -> settleVoiceInputFailure applies FAILED over the STOPPING / READY successor. Whether startVoiceCapture can reject inside that window is not proven from source.",
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1286",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1313",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1327",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1013"
+      ],
+      "sourceFiles": [
+        { "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt", "blobSha1": "5296f08cb27133f48153b46c85633d91f7c3373f" }
+      ],
+      "candidateProductRepair": "VoiceInput realization (VexLifeWebP1RuntimeArtifacts): add the same `if (session !== dictation.session) return;` guard to the audio-capture catch before failVoiceInput. Not applied: Product source is outside this worker lane.",
+      "note": "Source-proven unfenced path, not a reproduced defect."
+    },
+    {
+      "perturbationRef": "perturbation:STALE_OBSERVATION:VexLifeVoiceInputFamily:RequestingMicrophone:Stop:observeCapability:Held",
+      "method": "SOURCE_REVIEW",
+      "answer": "FENCED UNLESS FORCED — observeVoiceInputCapability returns early while voiceInputSessionOwnsState() (REQUESTING_MICROPHONE / LISTENING / STOPPING, L678–L681). Only the End/teardown completion forces a refresh, which is the intended successor rather than a stale arrival.",
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L678"
+      ],
+      "sourceFiles": [
+        { "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt", "blobSha1": "5296f08cb27133f48153b46c85633d91f7c3373f" }
+      ],
+      "note": "Same fence as the READY variant."
+    },
+    {
+      "perturbationRef": "perturbation:STALE_OBSERVATION:VexLifeVoiceInputFamily:RequestingMicrophone:Stop:observeCapability:Ready",
+      "method": "SOURCE_REVIEW",
+      "answer": "FENCED UNLESS FORCED — observeVoiceInputCapability returns early while voiceInputSessionOwnsState() (L678–L681); the forced refresh comes only from End/teardown completion, which is the intended successor.",
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L678"
+      ],
+      "sourceFiles": [
+        { "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt", "blobSha1": "5296f08cb27133f48153b46c85633d91f7c3373f" }
+      ],
+      "note": "Same fence as the HELD variant."
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeVoiceInputFamily:Ready+Start:Stop",
+      "method": "SOURCE_REVIEW",
+      "answer": "BEGIN CONTINUATION ABORTS — Family law admits STOPPING + EndLocalDictation. End clears desiredActive and bumps the session; when getUserMedia later resolves, Begin stops the acquired tracks and returns (L1300), and every later await re-checks the fence.",
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1191",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1300"
+      ],
+      "sourceFiles": [
+        { "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt", "blobSha1": "5296f08cb27133f48153b46c85633d91f7c3373f" }
+      ],
+      "note": "The audio-capture failure gap above is the one exception on this path."
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeVoiceInputFamily:Failed+Start:Stop",
+      "method": "SOURCE_REVIEW",
+      "answer": "BEGIN CONTINUATION ABORTS — same realization path as READY + START: End clears desiredActive and bumps the session; Begin stops acquired tracks and returns (L1300).",
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1300"
+      ],
+      "sourceFiles": [
+        { "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt", "blobSha1": "5296f08cb27133f48153b46c85633d91f7c3373f" }
+      ],
+      "note": "Restart from FAILED uses the same Begin realization."
+    }
+  ]
+}
