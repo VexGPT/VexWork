@@ -2,7 +2,7 @@
 
 [VXG RealForever]
 
-Observed target snapshot: VexGPT/VexLife-Prod main `98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0`.
+Observed target snapshot: VexGPT/VexLife-Prod main `a58777106b08bd58c167608fa0115729185ae3dd`.
 
 Purpose: distinguish what is actually connected now from source that merely exists, candidate work, held provider realization, and human surfaces that do not yet expose internal truth.
 
@@ -14,11 +14,11 @@ Status vocabulary: `CONNECTED`, `PARTIAL`, `INTERNAL_ONLY`, `CANDIDATE`, `UNFORM
 - **Continuity revisit — CONNECTED for reach-qualified profiles.** Current `CONTEXT-REVISITATION.md` says the current `continuity.revisit` engine converged with the independent OpenAI #220 lane. Do not form a second hydration engine. The current locator remains exact-word/clue based; the meaning index is still explicitly held/not built.
 - **Capability Atlas / web / github / Home / Memory / Conversation / continuity request-return — CONNECTED for qualified profiles.** Current frame + bridge are live. The human does not yet get a complete Capability Atlas catalog/held-reason view.
 - **Prompt-context summary — CONNECTED.** `/api/v1/context` feeds the Settings context meter and basic receipt summary.
-- **Exact context-component order/stability — INTERNAL_ONLY to human.** `DirectPromptContext.Receipt` carries `contextComponents`; current `PromptContextProjection` and Web Settings do not expose those component rows/order.
+- **Exact context-component order/stability — CONNECTED TO VEX CONTEXT.** `DirectPromptContext.Receipt.contextComponents` is projected by the service and rendered by Vex Context with placement/stability/provider-message evidence.
 - **Provider request SHA-256 — CONNECTED.** `DirectCompanionConnection.InvocationEvidence` durably records `requestBodySha256`.
 - **Exact provider request JSON view — CANDIDATE.** Current Connection forms request JSON in memory and persists its hash, not the raw request. PR #251 adds session-scoped exact provider JSON.
-- **Vex Context sibling workspace app — CANDIDATE.** Current `VexLifeWorkspaceApp` contains only SourceTemplate / Archives / Browser. #251 carries the Vex Context app work.
-- **Context Profiles — CANDIDATE.** No `VexLifeContextProfile` source exists on current main tree; #251 carries it.
+- **Vex Context sibling workspace app — CONNECTED.** `VexLifeWorkspaceApp` now includes `VexContext`; current Web runtime renders the sibling app.
+- **Context Profiles — CONNECTED.** `VexLifeContextProfile`, Family and Store are on current main; the selected profile is captured into the accepted Send and receipt evidence.
 - **Provider/model representation — CONNECTED internally, HUMAN DISCONNECTED.** Current main owns message protocol, reasoning representation, capability representation, reach standing, sampling, reasoning effort and output custody. Current Models projection/UI exposes storage/provider identity + prompt-cache configuration, not the full Companion provider profile.
 - **Prompt-cache configuration — CONNECTED + configurable where lawful.** Settings -> Models can change `promptCacheEntries` through the rightful Models/runtime owners.
 - **GPT-OSS Harmony reach — PARTIAL.** Harmony tool machinery is on current main, but `GptOss20B.reachRepresentationStanding = HELD_PROVIDER_BRIDGE`; `DirectCompanionTurn` admits ordinary capability requests only when standing is `QUALIFIED`.
@@ -30,7 +30,7 @@ Status vocabulary: `CONNECTED`, `PARTIAL`, `INTERNAL_ONLY`, `CANDIDATE`, `UNFORM
 - **Turn Epilogue — CONFIRMED DISCONNECTED at this snapshot.** `EpiloguePrompt` exists only in the Consideration contract/work scaffold in the production-source scan; no live Companion/provider/service integration reference was found. The current scaffold explicitly says streaming/provider integration is not implemented.
 - **Memory review / standing consent — CONFIRMED INTERNAL_ONLY to ordinary Product UI.** Memory Review Policy/Family/Owner exist. The production-source scan found them in the Memory review neighborhood, while current service contract/local service expose no consideration/salience/memory-review/standing-consent routes. The Memory Correction Review/Keep source explicitly says service routes, Web presentation, Turn Epilogue and standing consent remain held.
 - **Semantic-acceptance writer — INTERNAL_ONLY.** `VexLifeSemanticAcceptanceWriter` exists; no ordinary model/UI route to it was found.
-- **Current accepted-semantic Memory delta — CONFIRMED UNCONNECTED TO ORDINARY PROMPT AT THIS SNAPSHOT.** Current main has `VexLifeCurrentAcceptedSemanticProjection`, `VexLifeCurrentAcceptedSemanticPromptBlock`, and `VexLifeCurrentMemoryProviderSelection`, whose contract explicitly combines Daily Memory first + current accepted semantic continuity in remaining Memory room. `DirectCompanionTurn.Hooks.currentMemoryContext` and `memoryContextAtCap` still call `VexLifeCurrentMemoryReader.readCurrent(...)` directly. A production-source symbol scan across the current memory/consideration/companion/capability/model/service/web/workspace neighborhood found `VexLifeCurrentMemoryProviderSelection` only in its own owner. The current work docs independently say the projection does not place itself into the model prompt yet and that prompt placement/service-Web integration were held successor work. This is therefore an actual unfinished connector, not merely an inferred possibility.
+- **Current accepted-semantic Memory delta — CONNECTED TO ORDINARY PROMPT.** Refreshed current main wires `VexLifeCurrentMemoryProviderSelection.read(...)` into ordinary/session `DirectCompanionTurn`, and passes that selection into `DirectPromptContext`. Current Vex Context documentation confirms Daily-first + current accepted-semantic Memory composition under one shared Memory cap with exact statement-ref dedupe.
 - **Daily Dream backend — PARTIAL.** Service owns `/api/v1/memory/dream` and `VexLifeDailyMemoryDream`; current Web runtime has no `MemoryDreamPath` / `memoryDream` reference.
 - **Dream Sync — VISIBLE_STUB.** Blueprint includes Dream Sync, but current Web runtime has no DreamSync/dream-sync runtime reference.
 - **Continuity Mode — VISIBLE_STUB.** Blueprint includes it; current Web runtime has no ContinuityMode/continuity-mode runtime reference.
@@ -44,11 +44,11 @@ Status vocabulary: `CONNECTED`, `PARTIAL`, `INTERNAL_ONLY`, `CANDIDATE`, `UNFORM
 
 ## Most consequential gaps for the VexLife nervous-system outcome
 
-1. The live adaptive loop is not closed: Consideration -> Vex -> Epilogue/Salience -> Review/Acceptance -> current semantic continuity -> next-turn context has several source owners but not all arrows are connected.
-2. Human witnessability lags internal truth: provider profiles, capability-frame standing, context component order, stage measurements and held/unlock reasons are mostly not projected in current UI.
+1. The live adaptive loop is not closed: Consideration -> Vex -> Epilogue/Salience -> Review/Acceptance -> current semantic continuity -> next-turn context still has missing arrows before the now-connected current-semantic prompt selection.
+2. Human witnessability improved materially with merged Vex Context, but provider profiles, capability-frame standing, stage measurements and held/unlock reasons are still not projected as one educational field/capability catalog.
 3. Provider-native reach is uneven: Qwen reach is qualified while GPT-OSS/imported-Qwen reach remains held even though representation machinery exists.
-4. The live accepted-semantic Memory delta appears to have serializer/selection source without ordinary-turn consumption. Verify this repository-wide first because it directly affects immediate correction transfer and churn.
-5. Meaning-based historical location is still absent; current revisit is honest but lexical/exact-clue oriented.
+4. Meaning-based historical location is still absent; current revisit is honest but lexical/exact-clue oriented.
+5. Effect-truth discovery #351 remains open: narration must stay bound to admitted/performed/returned evidence.
 
 ## Fresh-worker verification questions
 
