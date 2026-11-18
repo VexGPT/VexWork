@@ -1626,6 +1626,49 @@ CURRENTNESS / PLACEMENT != OWNERSHIP / ROLE
 
 ---
 
+## Post-Claude writer/currentness clarification
+
+Read this companion note before implementing lesson/Growth transfer:
+
+~~~
+projects/vexlife-memory-depth-exploration/
+  MEMORY-WRITER-TRANSFER-RECOMMENDATION-20261117.md
+~~~
+
+It records two source-grounded facts that materially sharpen this handoff:
+
+~~~
+VexLife-Prod can validate accepted Memory
+!= VexLife-Prod can create new accepted Memory
+
+Daily snapshot freshness
+!= accepted semantic validity
+~~~
+
+Recommended causal direction:
+
+~~~
+read-only proposal
+-> human consent
+-> Product semantic-acceptance writer
+-> reader round-trip
+-> Score append
+-> current accepted semantic continuity
+-> later Daily Dream consolidation / rebase
+~~~
+
+The recommendation preserves exact Conversation-head binding as a mutation/admission guard while
+testing whether continuing lesson validity should instead be governed by current Score membership,
+semantic authority, consent and correction/supersession/release state.
+
+It also recommends distinguishing a consolidated Daily/Living Journal baseline from a live accepted
+semantic delta rather than making Dream the only moment when accepted Memory is usable.
+
+This relationship is **recommended / unaccepted** until the rightful Product Memory owner and proof
+surface earn it.
+
+---
+
 ## Resume coordinate
 
 The merged continuity substrate is not the next engineering question.
