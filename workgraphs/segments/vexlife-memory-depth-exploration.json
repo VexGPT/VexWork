@@ -10,11 +10,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T04:28:55.000Z",
+      "updatedAt": "2026-11-18T16:45:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Memory Depth Exploration",
-      "purpose": "Enable a freshly started Vex to recover continuity-dependent context through one bounded model-visible hydration request whose host-side execution can traverse several source-addressable relationships through rightful owners and return enough exact context, provenance and an honest frontier to continue the original human turn without creating a second Memory, Conversation or Working Continuity truth store.",
+      "purpose": "Make Vex continuity deep, inspectable and provider-correct: a fresh or successor Vex can recover relevant source-grounded history through rightful owners, current context/capability truth reaches the selected model through its qualified provider representation, and the person can inspect the causal chain from source/context through provider request, reach/effect evidence and resulting continuity without creating another Memory, Conversation, Working Continuity or execution-truth owner.",
       "workClass": "OUTCOME",
       "state": "PLAN_VALIDATED",
       "priorityClass": "IMMEDIATE",
@@ -27,7 +27,11 @@
         "project.vexlife.memory-depth-exploration",
         "github.issue.vexwork.307",
         "projects/vexlife-memory-depth-exploration/README.md",
-        "github.pull.vexlife-prod.208"
+        "github.pull.vexlife-prod.208",
+        "github.pull.vexlife-prod.241",
+        "github.pull.vexlife-prod.251",
+        "github.pull.vexlife-prod.346",
+        "github.pull.vexlife-prod.351"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -373,6 +377,50 @@
         "github.pull.vexlife-prod.208"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-18T16:45:00.000Z",
+      "updatedAt": "2026-11-18T16:45:00.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.context-provider-convergence",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Converge Vex context, provider representation, capability truth and human exposure",
+      "purpose": "Coordinate the end-to-end model-facing continuity/context relationship already spread across current Product work: inventory which Foundation/Memory/Working Continuity/Conversation/person/current-state components VexLife carries automatically; preserve qualified per-model provider profiles and model-native capability representation; ensure Capability Atlas availability is neither hidden from a qualified model nor advertised when held; expose the exact VexLife provider-request JSON and component placement/provenance in Vex Context; distinguish model narration from admitted Controls, performed effects and returned source; and use provider-stage cache/prefill/latency evidence to refine the connective tissue without making the UI, provider representation or retrieval facade another semantic truth owner. The current first concrete defect is VexLife-Prod #351: Source Return may be narrated as performed even when Product evidence proves no control/effect occurred.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.pull.vexlife-prod.198",
+        "github.pull.vexlife-prod.201",
+        "github.pull.vexlife-prod.207",
+        "github.pull.vexlife-prod.210",
+        "github.pull.vexlife-prod.214",
+        "github.pull.vexlife-prod.220",
+        "github.pull.vexlife-prod.222",
+        "github.pull.vexlife-prod.241",
+        "github.pull.vexlife-prod.251",
+        "github.pull.vexlife-prod.346",
+        "github.pull.vexlife-prod.351",
+        "repo.vexlife-prod:docs/foundation/VEX-CONTEXT-PROFILES.md",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionProvider.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/HarmonyCapabilityTools.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt"
+      ],
+      "formationProcessRefOrNull": null
     }
   ],
   "transitions": [],
