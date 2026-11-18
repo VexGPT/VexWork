@@ -77,7 +77,8 @@
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionProvider.kt",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/HarmonyCapabilityTools.kt",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt",
-    "github.pull.vexlife-prod.247"
+    "github.pull.vexlife-prod.247",
+    "projects/vexlife-memory-depth-exploration/FULL-END-TO-END-HANDOFF-20261118.md"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
