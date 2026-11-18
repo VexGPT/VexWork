@@ -7,6 +7,7 @@
 Fresh implementation instances should start here for the current unified outcome:
 
 - [FULL-END-TO-END-HANDOFF-20261118.md](FULL-END-TO-END-HANDOFF-20261118.md)
+- [CURRENT-STATE-CONTEXT.md](CURRENT-STATE-CONTEXT.md) — living snapshot successors must refresh when Product main or connection truth changes.
 - [CURRENT-CONNECTION-AUDIT-20261118.md](CURRENT-CONNECTION-AUDIT-20261118.md) — source-level map of what is actually connected, partial, internal-only, candidate, unformed, or a visible stub on the observed Product main.
 
 It synthesizes current accepted Product truth, candidate/open work, the VexLife nervous-system relationship,
