@@ -107,6 +107,65 @@ Generate a case when at least one is true:
 - a held/failure branch changes what the human may do;
 - two representations can collapse distinct meaning (for example spoken Chinese vs Simplified/Traditional reply script).
 
+## One coherent map: coordinates and relationship rows
+
+The source roles are different; do not make them peer feature IDs.
+
+~~~text
+elementRef
+  where a current UI manifestation can be found/clicked
+
+pathwayRef
+  a Screen Lens projection of one current interaction path
+
+Family / State / Control / Effect source
+  semantic vocabulary and law
+
+Act
+  pure relationship row:
+  current State + Control -> admitted State? + Effect?
+
+Observation
+  outside/runtime truth interpreted back into actual Family State
+
+Projection
+  what the human is lawfully shown from that State
+~~~
+
+`Control` is close to human intention **inside one Family**, but it is not enough by itself: the same Control may be lawful in one State and unavailable in another.
+
+`Effect` is what the admitted Act asks the realization layer to do. It is not proof that the world changed, and it does not always imply an immediate Family State change.
+
+Example from current source:
+
+~~~text
+VexLifeVisionFamily
+
+READY + ENGAGE
+-> Act(
+     admittedState = none,
+     Effect.EngageScope
+   )
+-> macOS/runtime realization
+-> observe(...)
+-> SELECTING / ENGAGED / HELD
+-> DisplayState
+~~~
+
+Memory Review makes the distinction even clearer:
+
+~~~text
+Pending(candidate) + KEEP
+-> Effect.Accept(candidate)
+-> no immediate admitted MemoryReview State
+-> semantic-acceptance/persistence owners realize their own effects
+-> later review + current Memory truth are re-observed independently
+~~~
+
+So the lattice stores **relationship rows over existing coordinates** rather than inventing `rel.*` identities.
+
+Cross-owner edges likewise use exact source endpoints plus a relationship kind/evidence. A new ID is earned only for a genuinely new object such as a human journey or VexWork Work item.
+
 ## Reuse existing IDs; map intention onto them
 
 Do not mint a second feature ID when Product source already has a unique coordinate.

@@ -99,9 +99,23 @@ Active candidate Families / owners already relevant to future journeys:
 
 The machine-readable seed is `relationship-lattice.seed.json`. It is a **pinned projection seed**, not canonical Product meaning.
 
-## Identity rule
+## Identity and relationship rule
 
-Use existing Product identities wherever they already uniquely name the thing.
+Use existing Product identities wherever they already uniquely name the thing, but keep architectural roles distinct.
+
+~~~text
+elementRef   = surface address
+pathwayRef   = current Screen Lens path projection
+Control      = typed choice within one Family
+Act          = State + Control relationship law
+Effect       = requested realization
+Observation  = actual outside truth interpreted back to State
+Projection   = human-facing consequence
+~~~
+
+Do not mint `anchor.*` or `rel.*` aliases for those existing/source-addressable relationships.
+
+One coherent map is formed by joining the coordinates into law/cross-owner rows.
 
 ~~~text
 elementRef / pathwayRef / Family-Control ref

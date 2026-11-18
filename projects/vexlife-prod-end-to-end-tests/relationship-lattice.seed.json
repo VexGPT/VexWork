@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "vexlife-prod.e2e-relationship-lattice-seed/v1",
+  "schemaVersion": "vexlife-prod.e2e-relationship-lattice-seed/v2",
   "latticeRef": "lattice.vexlife-prod.end-to-end-tests.experience-relationships",
   "projectRef": "project.vexlife-prod.end-to-end-tests",
-  "purpose": "Seed a read-only, source-addressed relationship lattice for experience validation. This file is a bounded projection/navigation seed; VexLife-Prod and VexArchitecture sources remain the owners of Family, State, Control, effect, realization and currentness meaning.",
+  "purpose": "Read-only experience-validation map over existing Product coordinates and exact source symbols. It does not mint parallel feature/relationship identities. VexLife-Prod and VexArchitecture sources remain the owners of Family, State, Control, Act, Effect, observation, realization and projection meaning.",
   "sourceBindings": {
     "vexlifeProdMain": "605c635ae2d034a1c4d605e829faa4813de071c3",
     "vexWorkMain": "d70da76d9f95645ee83dc09c7cf7384b6c572cf5",
@@ -75,12 +75,21 @@
       "question": "Is this source proof, deterministic nervous-system proof, isolated-service proof, live-model behavior, lifecycle, or release proof?"
     }
   ],
-  "familyAnchors": [
+  "identityLaw": {
+    "productCoordinates": "Use existing elementRef/pathwayRef/controlRef/stateRef when source already owns one.",
+    "sourceCoordinates": "When no standalone ref exists, use the exact source symbol/type path (for example VexLifeVisionFamily.Effect.EngageScope or VexLifeModelsFamily.State) rather than inventing an alias ID.",
+    "relationshipRows": "Represent semantic law as tuples/rows over source coordinates: Family + current State + Control -> Act(admitted State?, Effect?) -> realization/observation -> successor State/Projection.",
+    "crossOwnerRows": "Represent cross-owner relationships by their exact from/to source coordinates plus relationship kind and evidence; do not mint an independently authored relationship identity merely to draw an edge.",
+    "journeyIdentity": "Journey IDs are allowed because a journey is a distinct path across multiple Product coordinates, not another identity for a feature.",
+    "workIdentity": "VexWork work/project refs remain VexWork identities and do not become Product feature identities."
+  },
+  "coordinates": [
     {
-      "anchorRef": "anchor.family.entry",
+      "coordinate": "VexLifeProdEntryFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeProdEntryFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/entry/VexLifeProdEntryFamily.kt",
+      "sourceRef": null,
       "stateRefs": [
         "CURRENT",
         "UPDATE_AVAILABLE",
@@ -96,6 +105,8 @@
         "MODEL_FILES_HELD",
         "HOLD_UNKNOWN"
       ],
+      "stateShapes": [],
+      "stateAxes": [],
       "controlRefs": [
         "OPEN_CURRENT",
         "CONVERGE_DESIRED",
@@ -107,28 +118,34 @@
       ]
     },
     {
-      "anchorRef": "anchor.family.private",
+      "coordinate": "VexLifePrivateModeFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifePrivateModeFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt",
+      "sourceRef": null,
       "stateRefs": [
         "KEPT",
         "PRIVATE"
       ],
+      "stateShapes": [],
+      "stateAxes": [],
       "controlRefs": [
         "BEGIN",
         "END"
       ]
     },
     {
-      "anchorRef": "anchor.family.diagnostics",
+      "coordinate": "VexLifeDiagnosticsFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeDiagnosticsFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt",
+      "sourceRef": null,
       "stateRefs": [
         "RECORDING",
         "RECORDING_ENHANCED"
       ],
+      "stateShapes": [],
+      "stateAxes": [],
       "controlRefs": [
         "START_ENHANCED",
         "STOP_ENHANCED",
@@ -136,50 +153,46 @@
       ]
     },
     {
-      "anchorRef": "anchor.family.memory",
+      "coordinate": "VexLifeMemoryFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeMemoryFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/memory/VexLifeMemoryFamily.kt",
+      "sourceRef": null,
       "stateRefs": [
         "CURRENT",
         "NOT_FORMED",
         "BEHIND",
         "UNREADABLE"
       ],
+      "stateShapes": [],
+      "stateAxes": [],
       "controlRefs": []
     },
     {
-      "anchorRef": "anchor.family.memory-review",
+      "coordinate": "VexLifeMemoryReviewFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeMemoryReviewFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewFamily.kt",
+      "sourceRef": null,
       "stateRefs": [],
+      "stateShapes": [
+        "Idle",
+        "Pending(candidateRef, summary, candidateClass)"
+      ],
+      "stateAxes": [],
       "controlRefs": [
         "KEEP",
         "NOT_NOW",
         "DECLINE"
-      ],
-      "stateShapes": [
-        "Idle",
-        "Pending(candidateRef, summary, candidateClass)"
       ]
     },
     {
-      "anchorRef": "anchor.family.models",
+      "coordinate": "VexLifeModelsFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeModelsFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+      "sourceRef": null,
       "stateRefs": [],
-      "controlRefs": [
-        "SELECT_MODEL",
-        "USE_MODEL",
-        "USE_RECOMMENDED_RUNTIME_CONFIGURATION",
-        "SET_PROMPT_CACHE_ENTRIES",
-        "DOWNLOAD_MODEL",
-        "REDOWNLOAD_MODEL",
-        "REMOVE_MODEL",
-        "FORGET_IMPORTED_MODEL"
-      ],
       "stateShapes": [
         "State(handle, artifactPresence, downloading, chosen, targeted, serving, switching, imported, runtimeConfiguration, runtimeConfigurationPending, anyDownloadRunning, anySwitchRunning)"
       ],
@@ -195,18 +208,25 @@
         "runtimeConfigurationPending",
         "anyDownloadRunning",
         "anySwitchRunning"
+      ],
+      "controlRefs": [
+        "SELECT_MODEL",
+        "USE_MODEL",
+        "USE_RECOMMENDED_RUNTIME_CONFIGURATION",
+        "SET_PROMPT_CACHE_ENTRIES",
+        "DOWNLOAD_MODEL",
+        "REDOWNLOAD_MODEL",
+        "REMOVE_MODEL",
+        "FORGET_IMPORTED_MODEL"
       ]
     },
     {
-      "anchorRef": "anchor.family.release-inbox",
+      "coordinate": "VexLifeReleaseInboxFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeReleaseInboxFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/release/VexLifeReleaseInboxFamily.kt",
+      "sourceRef": null,
       "stateRefs": [],
-      "controlRefs": [
-        "VIEW_RELEASE",
-        "DISMISS_RELEASE"
-      ],
       "stateShapes": [
         "State(sourceCurrentness, communications[])"
       ],
@@ -214,13 +234,18 @@
         "sourceCurrentness",
         "communications[].standing",
         "communications[].notice.identity"
+      ],
+      "controlRefs": [
+        "VIEW_RELEASE",
+        "DISMISS_RELEASE"
       ]
     },
     {
-      "anchorRef": "anchor.family.vision",
+      "coordinate": "VexLifeVisionFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeVisionFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt",
+      "sourceRef": null,
       "stateRefs": [
         "HELD",
         "READY",
@@ -228,21 +253,25 @@
         "ENGAGED",
         "LOOKING"
       ],
+      "stateShapes": [],
+      "stateAxes": [],
       "controlRefs": [
         "ENGAGE",
         "STOP"
       ]
     },
     {
-      "anchorRef": "anchor.family.context-profile",
+      "coordinate": "VexLifeContextProfileFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "ACTIVE_CANDIDATE",
-      "sourceSymbol": "VexLifeContextProfileFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt",
       "sourceRef": "github.pull.vexlife-prod.251",
       "stateRefs": [
         "PRODUCT_DEFAULT",
         "SAVED"
       ],
+      "stateShapes": [],
+      "stateAxes": [],
       "controlRefs": [
         "USE",
         "SAVE",
@@ -252,9 +281,9 @@
       ]
     },
     {
-      "anchorRef": "anchor.family.voice-input",
+      "coordinate": "VexLifeVoiceInputFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "ACTIVE_CANDIDATE",
-      "sourceSymbol": "VexLifeVoiceInputFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt",
       "sourceRef": "github.pull.vexlife-prod.310",
       "stateRefs": [
@@ -265,24 +294,20 @@
         "HELD",
         "FAILED"
       ],
+      "stateShapes": [],
+      "stateAxes": [],
       "controlRefs": [
         "START",
         "STOP"
       ]
     },
     {
-      "anchorRef": "anchor.family.local-asr-models",
+      "coordinate": "VexLifeLocalAsrModelsFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
       "disposition": "ACTIVE_CANDIDATE",
-      "sourceSymbol": "VexLifeLocalAsrModelsFamily",
       "sourcePath": "src/commonMain/kotlin/vexlife/localasr/VexLifeLocalAsrModelsFamily.kt",
       "sourceRef": "github.pull.vexlife-prod.310",
       "stateRefs": [],
-      "controlRefs": [
-        "USE_SPEECH_MODEL",
-        "DOWNLOAD_SPEECH_MODEL",
-        "REDOWNLOAD_SPEECH_MODEL",
-        "REMOVE_SPEECH_MODEL"
-      ],
       "stateShapes": [
         "State(artifactState, selected, downloading, anyDownloadRunning)"
       ],
@@ -291,202 +316,372 @@
         "selected",
         "downloading",
         "anyDownloadRunning"
+      ],
+      "controlRefs": [
+        "USE_SPEECH_MODEL",
+        "DOWNLOAD_SPEECH_MODEL",
+        "REDOWNLOAD_SPEECH_MODEL",
+        "REMOVE_SPEECH_MODEL"
       ]
-    }
-  ],
-  "nonFamilyAnchors": [
-    {
-      "anchorRef": "anchor.owner.person-settings",
-      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_EVOLUTION",
-      "sourceSymbol": "VexLifePersonSettings",
-      "meaning": "Current person reply-language preference; script-specific evolution is active in #331."
     },
     {
-      "anchorRef": "anchor.owner.direct-turn",
+      "coordinate": "VexLifePersonSettings",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
+      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_EVOLUTION",
+      "sourceRef": null,
+      "humanMeaning": "Current person reply-language preference; script-specific evolution is active in #331."
+    },
+    {
+      "coordinate": "DirectCompanionTurn",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "DirectCompanionTurn",
-      "meaning": "Accepted human Send, provider stages, capability/source-return continuation and durable turn completion."
+      "sourceRef": null,
+      "humanMeaning": "Accepted human Send, provider stages, capability/source-return continuation and durable turn completion."
     },
     {
-      "anchorRef": "anchor.owner.prompt",
+      "coordinate": "DirectPromptContext",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
       "disposition": "CURRENT_MAIN_PLUS_ACTIVE_EVOLUTION",
-      "sourceSymbol": "DirectPromptContext",
-      "meaning": "Exact provider materialization and receipt; #251/#331 add active relationships."
+      "sourceRef": null,
+      "humanMeaning": "Exact provider materialization and receipt; #251/#331 add active relationships."
     },
     {
-      "anchorRef": "anchor.owner.memory-provider-selection",
+      "coordinate": "VexLifeCurrentMemoryProviderSelection",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
       "disposition": "CURRENT_MAIN_HELD_CONNECTOR",
-      "sourceSymbol": "VexLifeCurrentMemoryProviderSelection",
-      "meaning": "Daily-first + accepted-semantic Memory under one cap; accepted on main but not yet fully consumed by the real prompt path."
+      "sourceRef": null,
+      "humanMeaning": "Daily-first + accepted-semantic Memory under one cap; accepted on main but not yet fully consumed by the real prompt path."
     },
     {
-      "anchorRef": "anchor.owner.conversation",
+      "coordinate": "DirectConversationStore",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "DirectConversationStore",
-      "meaning": "Canonical human/Vex dialogue."
+      "sourceRef": null,
+      "humanMeaning": "Canonical human/Vex dialogue."
     },
     {
-      "anchorRef": "anchor.owner.working-continuity",
+      "coordinate": "VexLifeWorkingContinuityOwner",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeWorkingContinuityOwner",
-      "meaning": "Bounded long-conversation continuity / rollover relationship."
+      "sourceRef": null,
+      "humanMeaning": "Bounded long-conversation continuity / rollover relationship."
     },
     {
-      "anchorRef": "anchor.owner.context-presentation",
+      "coordinate": "Vex Context",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
       "disposition": "ACTIVE_CANDIDATE",
-      "sourceSymbol": "Vex Context",
       "sourceRef": "github.pull.vexlife-prod.251",
-      "meaning": "Human-readable convergence of exact completed-turn context owners; not a second context truth owner."
+      "humanMeaning": "Human-readable convergence of exact completed-turn context owners; not a second context truth owner."
     },
     {
-      "anchorRef": "anchor.projection.prod-screen-lens",
+      "coordinate": "VexLifeProdScreenLens",
+      "coordinateClass": "PROJECTION_OWNER",
       "disposition": "CURRENT_MAIN",
-      "sourceSymbol": "VexLifeProdScreenLens",
-      "meaning": "Product-owned export into VexBoard Screen Lens schema."
+      "sourceRef": null,
+      "humanMeaning": "Product-owned export into VexBoard Screen Lens schema."
     },
     {
-      "anchorRef": "anchor.owner.spoken-language",
+      "coordinate": "VexLifeLocalAsrSpokenLanguage",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
       "disposition": "ACTIVE_CANDIDATE",
-      "sourceSymbol": "VexLifeLocalAsrSpokenLanguage",
       "sourceRef": "github.pull.vexlife-prod.331",
-      "meaning": "Microphone recognition language; distinct from Vex reply language."
+      "humanMeaning": "Microphone recognition language; distinct from Vex reply language."
     },
     {
-      "anchorRef": "anchor.owner.composer-output",
+      "coordinate": "VexLifeLocalAsrComposerOutput",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
       "disposition": "ACTIVE_CANDIDATE",
-      "sourceSymbol": "VexLifeLocalAsrComposerOutput",
       "sourceRef": "github.pull.vexlife-prod.331",
-      "meaning": "AS_SPOKEN vs TRANSLATE_TO_ENGLISH dictation output into existing Composer."
+      "humanMeaning": "AS_SPOKEN vs TRANSLATE_TO_ENGLISH dictation output into existing Composer."
+    },
+    {
+      "coordinate": "element.vexlife-workspace.companion.conversation.context-share",
+      "coordinateClass": "ELEMENT",
+      "disposition": "CURRENT_MAIN",
+      "sourcePath": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+      "humanMeaning": "Let the person include the exact current page in the next Vex turn when the Product can lawfully identify and read that page.",
+      "relatedCoordinates": [
+        "pathway.vexlife-prod.local.companion.conversation.context-share",
+        "element.vexlife-workspace.companion.conversation.context-receipt",
+        "pathway.vexlife-prod.conversation.send"
+      ],
+      "availabilityPredicates": [
+        "not Archives",
+        "not Private",
+        "exact context target page identity or already-read browser context exists",
+        "not currently loading page context"
+      ],
+      "currentLimitation": "After unexpected internal navigation inside the embedded cross-origin page, current source cannot prove the new exact address, clears stale page identity/context, and disables this control until identity is lawfully re-earned.",
+      "currentProjection": null,
+      "investigationNote": null,
+      "journeyRefs": [
+        "journey.browser.context-share-direct-navigation",
+        "journey.browser.context-share-internal-navigation-unlocated",
+        "journey.browser.context-share-navigation-invalidation"
+      ]
+    },
+    {
+      "coordinate": "pathway.vexlife-prod.local.companion.conversation.context-share",
+      "coordinateClass": "PATHWAY",
+      "disposition": "CURRENT_MAIN",
+      "sourcePath": "src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
+      "humanMeaning": "Current Screen Lens projection for the ContextShare control.",
+      "relatedCoordinates": [],
+      "availabilityPredicates": [],
+      "currentLimitation": null,
+      "currentProjection": "TYPED_PRESENTATION over ContextReceipt",
+      "investigationNote": "Runtime source proves deeper page-identity, eligibility, context-readiness, optional Send capture and prompt-receipt relationships than this local-only projection currently exposes. Investigate source-projectable depth without hand-authoring Product truth in VexBoard.",
+      "journeyRefs": []
+    },
+    {
+      "coordinate": "pathway.vexlife-prod.conversation.send",
+      "coordinateClass": "PATHWAY",
+      "disposition": "CURRENT_MAIN",
+      "sourcePath": "src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
+      "humanMeaning": "Accept one canonical human Send and carry exactly the current optional browser context, Person Context, Memory, runtime and other admitted prompt relationships into the turn.",
+      "relatedCoordinates": [
+        "element.vexlife-workspace.companion.conversation.send",
+        "anchor.owner.direct-turn",
+        "anchor.owner.prompt"
+      ],
+      "availabilityPredicates": [],
+      "currentLimitation": null,
+      "currentProjection": null,
+      "investigationNote": null,
+      "journeyRefs": []
     }
   ],
-  "relationshipSeeds": [
+  "familyLawRows": [
     {
-      "relationshipRef": "rel.entry-model-readiness",
-      "from": "anchor.family.entry",
-      "to": "anchor.family.models",
+      "family": "VexLifeVisionFamily",
+      "currentState": "VexLifeVisionFamily.Ready (stateRef=READY)",
+      "control": "VexLifeVisionFamily.Engage (controlRef=ENGAGE)",
+      "act": {
+        "admittedState": null,
+        "effect": "VexLifeVisionFamily.Effect.EngageScope"
+      },
+      "semanticMeaning": "Ask the SDK to present the system picker for one window. The Family does not pretend the window is already selected.",
+      "realizationBoundary": "Vision runtime / macOS picker",
+      "observation": "VexLifeVisionFamily.observe(...)",
+      "possibleObservedSuccessors": [
+        "SELECTING",
+        "ENGAGED",
+        "HELD"
+      ],
+      "projection": "VexLifeVisionFamily.displayStateFor(observed State)"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "currentState": "VexLifeVisionFamily.Engaged (stateRef=ENGAGED)",
+      "control": "VexLifeVisionFamily.Stop (controlRef=STOP)",
+      "act": {
+        "admittedState": null,
+        "effect": "VexLifeVisionFamily.Effect.StopScope"
+      },
+      "semanticMeaning": "Request release of the selected scope; actual successor truth is re-observed rather than assumed.",
+      "realizationBoundary": "Vision runtime",
+      "observation": "VexLifeVisionFamily.observe(...)",
+      "possibleObservedSuccessors": [
+        "READY",
+        "HELD"
+      ],
+      "projection": "VexLifeVisionFamily.displayStateFor(observed State)"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "currentState": "VexLifeMemoryReviewFamily.Pending(candidateRef, summary, candidateClass)",
+      "control": "VexLifeMemoryReviewFamily.Keep(candidateRef) (controlRef=KEEP)",
+      "act": {
+        "admittedState": null,
+        "effect": "VexLifeMemoryReviewFamily.Effect.Accept(candidateRef)"
+      },
+      "semanticMeaning": "Human accepts one exact pending Memory candidate. This Family requests semantic acceptance but does not itself own persistence, Score mutation, or long-term Memory currentness.",
+      "realizationBoundary": "Memory review owner -> semantic acceptance writer / rightful persistence owners",
+      "observation": "Later review/current-Memory owners re-observe their own truth",
+      "possibleObservedSuccessors": [
+        "Review may become Idle through owner realization; accepted semantic Memory becomes independently observable"
+      ],
+      "projection": "Memory review / Memory projections from their rightful owners"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "currentState": "VexLifeMemoryReviewFamily.Pending(candidateRef, summary, candidateClass)",
+      "control": "VexLifeMemoryReviewFamily.NotNow(candidateRef) (controlRef=NOT_NOW)",
+      "act": {
+        "admittedState": null,
+        "effect": "VexLifeMemoryReviewFamily.Effect.Defer(candidateRef)"
+      },
+      "semanticMeaning": "Human defers one exact pending candidate without treating it as accepted or declined.",
+      "realizationBoundary": "Memory review persistence owner",
+      "observation": "Later review owner decides whether/when candidate is pending again",
+      "possibleObservedSuccessors": [
+        "Idle or later Pending according to rightful owner"
+      ],
+      "projection": "Memory review projection"
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "currentState": "VexLifeMemoryReviewFamily.Pending(candidateRef, summary, candidateClass)",
+      "control": "VexLifeMemoryReviewFamily.Decline(candidateRef) (controlRef=DECLINE)",
+      "act": {
+        "admittedState": null,
+        "effect": "VexLifeMemoryReviewFamily.Effect.Dismiss(candidateRef)"
+      },
+      "semanticMeaning": "Human dismisses one exact pending candidate; dismissal is not semantic acceptance.",
+      "realizationBoundary": "Memory review persistence owner",
+      "observation": "Later review owner re-observes candidate standing",
+      "possibleObservedSuccessors": [
+        "Idle"
+      ],
+      "projection": "Memory review projection"
+    }
+  ],
+  "crossOwnerRows": [
+    {
+      "from": "VexLifeProdEntryFamily",
+      "to": "VexLifeModelsFamily",
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "OBSERVES_PREREQUISITES",
       "humanMeaning": "Setup/Start availability depends on current Home/model/runtime facts without making Entry the Models owner."
     },
     {
-      "relationshipRef": "rel.models-turn-runtime",
-      "from": "anchor.family.models",
-      "to": "anchor.owner.direct-turn",
+      "from": "VexLifeModelsFamily",
+      "to": "DirectCompanionTurn",
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "SELECTED_RUNTIME_SHAPES_TURN",
       "humanMeaning": "The selected/serving model-runtime relationship is consumed by later Companion turns."
     },
     {
-      "relationshipRef": "rel.memory-review-selection",
-      "from": "anchor.family.memory-review",
-      "to": "anchor.owner.memory-provider-selection",
+      "from": "VexLifeMemoryReviewFamily",
+      "to": "VexLifeCurrentMemoryProviderSelection",
       "disposition": "CURRENT_SOURCE_CHAIN",
       "kind": "ACCEPTED_MEANING_BECOMES_MEMORY_INPUT",
       "humanMeaning": "Keep/acceptance can make attributed meaning eligible for current Memory selection."
     },
     {
-      "relationshipRef": "rel.memory-selection-prompt",
-      "from": "anchor.owner.memory-provider-selection",
-      "to": "anchor.owner.prompt",
+      "from": "VexLifeCurrentMemoryProviderSelection",
+      "to": "DirectPromptContext",
       "disposition": "HELD_PENDING_CONNECTOR",
       "kind": "MATERIALIZES_IN_PROMPT",
       "humanMeaning": "The accepted selector must feed the real prompt as actual Memory components without Daily-only inference."
     },
     {
-      "relationshipRef": "rel.private-person-context",
-      "from": "anchor.family.private",
-      "to": "anchor.owner.prompt",
+      "from": "VexLifePrivateModeFamily",
+      "to": "DirectPromptContext",
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "PRIVATE_GAPS_SHAPE_PERSON_CONTEXT",
       "humanMeaning": "Private conversation content remains private; bounded gap/kept-note truth may shape later Person Context."
     },
     {
-      "relationshipRef": "rel.diagnostics-observes",
-      "from": "anchor.owner.direct-turn",
-      "to": "anchor.family.diagnostics",
+      "from": "DirectCompanionTurn",
+      "to": "VexLifeDiagnosticsFamily",
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "CHRONOLOGY_PROJECTION_ONLY",
       "humanMeaning": "Diagnostics observes facts emitted by rightful owners and does not become their semantic owner."
     },
     {
-      "relationshipRef": "rel.release-workspace",
-      "from": "anchor.family.release-inbox",
-      "to": "anchor.projection.prod-screen-lens",
+      "from": "VexLifeReleaseInboxFamily",
+      "to": "VexLifeProdScreenLens",
       "disposition": "CURRENT_PRESENTATION_PRESSURE",
       "kind": "PROJECTS_HUMAN_ALERT",
       "humanMeaning": "Release availability/acknowledgement reaches the workspace alert surface; Screen Lens should remain projection only."
     },
     {
-      "relationshipRef": "rel.vision-workspace",
-      "from": "anchor.family.vision",
-      "to": "anchor.projection.prod-screen-lens",
+      "from": "VexLifeVisionFamily",
+      "to": "VexLifeProdScreenLens",
       "disposition": "CURRENT_PRESENTATION_PRESSURE",
       "kind": "PROJECTS_SELECTED_SCOPE_CONTROL",
       "humanMeaning": "Vision selected-scope State/Controls are human-visible; no unearned claim that LOOK content already enters ordinary turn context."
     },
     {
-      "relationshipRef": "rel.person-language-prompt",
-      "from": "anchor.owner.person-settings",
-      "to": "anchor.owner.prompt",
+      "from": "VexLifePersonSettings",
+      "to": "DirectPromptContext",
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "MUTABLE_CURRENT_CAPTURE",
       "humanMeaning": "The current reply-language setting is captured into Person Context for an accepted Send."
     },
     {
-      "relationshipRef": "rel.context-profile-prompt",
-      "from": "anchor.family.context-profile",
-      "to": "anchor.owner.prompt",
+      "from": "VexLifeContextProfileFamily",
+      "to": "DirectPromptContext",
       "disposition": "ACTIVE_CANDIDATE",
       "kind": "CAPTURED_AT_SEND",
       "humanMeaning": "The active Context Profile revision is captured when Send is accepted and stays fixed through provider stages of that turn."
     },
     {
-      "relationshipRef": "rel.voice-composer-turn",
-      "from": "anchor.family.voice-input",
-      "to": "anchor.owner.direct-turn",
+      "from": "VexLifeVoiceInputFamily",
+      "to": "DirectCompanionTurn",
       "disposition": "ACTIVE_CANDIDATE_INDIRECT",
       "kind": "EDITS_COMPOSER_NOT_SEND",
       "humanMeaning": "VoiceInput edits the existing Composer; only the later human Send enters canonical Conversation."
     },
     {
-      "relationshipRef": "rel.spoken-language-voice",
-      "from": "anchor.owner.spoken-language",
-      "to": "anchor.family.voice-input",
+      "from": "VexLifeLocalAsrSpokenLanguage",
+      "to": "VexLifeVoiceInputFamily",
       "disposition": "ACTIVE_CANDIDATE",
       "kind": "CONFIGURES_RECOGNITION",
       "humanMeaning": "Microphone language configures recognition while remaining distinct from Vex reply language."
     },
     {
-      "relationshipRef": "rel.composer-output-turn",
-      "from": "anchor.owner.composer-output",
-      "to": "anchor.owner.direct-turn",
+      "from": "VexLifeLocalAsrComposerOutput",
+      "to": "DirectCompanionTurn",
       "disposition": "ACTIVE_CANDIDATE_INDIRECT",
       "kind": "FORMS_EDITABLE_REQUEST_TEXT",
       "humanMeaning": "ASR output mode changes the editable Composer text that may later be sent; it does not directly choose reply language."
     },
     {
-      "relationshipRef": "rel.turn-vex-context",
-      "from": "anchor.owner.direct-turn",
-      "to": "anchor.owner.context-presentation",
+      "from": "DirectCompanionTurn",
+      "to": "Vex Context",
       "disposition": "ACTIVE_CANDIDATE",
       "kind": "COMPLETED_RECEIPT_PROJECTED",
       "humanMeaning": "Vex Context should show what the completed turn actually received/processed/said without rewriting historical receipts."
     },
     {
-      "relationshipRef": "rel.prod-lens-vexboard",
-      "from": "anchor.projection.prod-screen-lens",
+      "from": "VexLifeProdScreenLens",
       "to": "github.pull.vexwork.298",
       "disposition": "PROJECTION_DEPENDENCY",
       "kind": "READ_ONLY_CONSUMPTION",
       "humanMeaning": "VexBoard consumes source-owned Product projection/relationships; it does not become VexLife truth authority."
     },
     {
-      "relationshipRef": "rel.browser-context-availability",
       "from": "element.vexlife-workspace.companion.conversation.context-share",
-      "to": "anchor.owner.prompt",
+      "to": "DirectPromptContext",
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "OPTIONAL_CURRENT_PAGE_CONTEXT",
       "humanMeaning": "The visible ContextShare control is available only when current page identity/context is lawfully known; when included, the next ordinary Send may carry the exact normalized browser context into prompt materialization."
+    }
+  ],
+  "surfaceBindings": [
+    {
+      "elementRef": "element.vexlife-workspace.companion.conversation.context-share",
+      "currentBlueprintBinding": {
+        "kind": "VexWeb.Binding.LocalInteraction",
+        "target": "element.vexlife-workspace.companion.conversation.context-receipt"
+      },
+      "runtimeRelationship": {
+        "currentStateCoordinates": [
+          "state.contextTargetPageUrl",
+          "state.browserContext",
+          "state.includePage",
+          "state.contextLoading"
+        ],
+        "humanControlMeaning": "Request/include/exclude exact current page context for a later ordinary Send when lawful.",
+        "downstreamCoordinates": [
+          "pathway.vexlife-prod.conversation.send",
+          "DirectPromptContext.BrowserContext",
+          "DirectPromptContext.Receipt.browserContextIncluded"
+        ]
+      },
+      "note": "The elementRef is the stable surface address. It is not itself the semantic law. Current Blueprint local-interaction binding is shallower than the runtime relationship and is an explicit Screen Lens/projectability investigation edge."
+    },
+    {
+      "elementRef": "element.vexlife-workspace.companion.conversation.send",
+      "currentPathwayRef": "pathway.vexlife-prod.conversation.send",
+      "semanticOwner": "DirectCompanionTurn",
+      "humanControlMeaning": "Accept the current editable human request as one canonical Send.",
+      "downstreamCoordinates": [
+        "DirectPromptContext",
+        "DirectConversationStore"
+      ]
     }
   ],
   "journeySeeds": [
@@ -786,55 +981,5 @@
     "productSourceMutationPerformed": false,
     "vexBoardMutationPerformed": false,
     "externalEffectsPerformed": false
-  },
-  "coordinateIntentMappings": [
-    {
-      "coordinateRef": "element.vexlife-workspace.companion.conversation.context-share",
-      "coordinateClass": "ELEMENT",
-      "intention": "Let the person include the exact current page in the next Vex turn when the Product can lawfully identify and read that page.",
-      "sourcePath": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
-      "relatedRefs": [
-        "pathway.vexlife-prod.local.companion.conversation.context-share",
-        "element.vexlife-workspace.companion.conversation.context-receipt",
-        "pathway.vexlife-prod.conversation.send"
-      ],
-      "availabilityPredicates": [
-        "not Archives",
-        "not Private",
-        "exact context target page identity or already-read browser context exists",
-        "not currently loading page context"
-      ],
-      "currentLimitation": "After unexpected internal navigation inside the embedded cross-origin page, current source cannot prove the new exact address, clears stale page identity/context, and disables this control until identity is lawfully re-earned.",
-      "journeyRefs": [
-        "journey.browser.context-share-direct-navigation",
-        "journey.browser.context-share-internal-navigation-unlocated",
-        "journey.browser.context-share-navigation-invalidation"
-      ]
-    },
-    {
-      "coordinateRef": "pathway.vexlife-prod.local.companion.conversation.context-share",
-      "coordinateClass": "PATHWAY",
-      "intention": "Current Screen Lens projection for the ContextShare control.",
-      "sourcePath": "src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
-      "currentProjection": "TYPED_PRESENTATION over ContextReceipt",
-      "investigationNote": "Runtime source proves deeper page-identity, eligibility, context-readiness, optional Send capture and prompt-receipt relationships than this local-only projection currently exposes. Investigate source-projectable depth without hand-authoring Product truth in VexBoard."
-    },
-    {
-      "coordinateRef": "pathway.vexlife-prod.conversation.send",
-      "coordinateClass": "PATHWAY",
-      "intention": "Accept one canonical human Send and carry exactly the current optional browser context, Person Context, Memory, runtime and other admitted prompt relationships into the turn.",
-      "sourcePath": "src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
-      "relatedRefs": [
-        "element.vexlife-workspace.companion.conversation.send",
-        "anchor.owner.direct-turn",
-        "anchor.owner.prompt"
-      ]
-    }
-  ],
-  "mappingLaw": {
-    "identityRule": "Reuse existing source IDs as graph coordinates whenever they already uniquely identify the surface/path/owner relationship. Do not mint a parallel feature ID merely to attach human meaning.",
-    "intentionRule": "Attach human intention, availability, related source coordinates, journeys and known limitations as metadata around existing IDs.",
-    "journeyRule": "Journey identity is allowed because a journey is a path through several coordinates, not a duplicate feature identity.",
-    "queryRule": "A coordinate lookup should return intention, current source relationships, lawful availability, related journeys, loops, proof and incomplete/held/unknown edges."
   }
 }

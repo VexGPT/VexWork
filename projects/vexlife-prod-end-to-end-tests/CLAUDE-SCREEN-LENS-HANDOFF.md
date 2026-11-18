@@ -49,23 +49,23 @@ Continue through the current VexBoard Screen Lens/sync ownership. Repair only re
 For each meaningful source pathway discovered, return:
 
 ~~~text
-discoveryRef
 sourceRefs[]
+existing coordinateRefs[] / exact source symbols
 humanMeaning
 sourceOwner / Family
-State refs observed
+State refs/shapes observed
 Controls lawful by State
-Act / Effect / read relationship
-outside realization / observation
-successor State / currentness
-crossFamilyEdges[]
+Act row: State + Control -> admitted State? + Effect?
+outside realization
+Observation -> actual successor State/currentness
+cross-owner endpoint rows
 projectionRefs[]
-loopRefOrNull
+loop pressure
 candidateJourneyRefs[]
 disposition CURRENT | ACTIVE_CANDIDATE | HELD | UNKNOWN
 ~~~
 
-These packets update the E2E lattice; they do not become Product truth.
+These packets update the E2E lattice; they do not become Product truth. Do not mint a discovery/relationship ID merely to name a row that is already uniquely described by its source coordinates.
 
 ## First census targets
 
