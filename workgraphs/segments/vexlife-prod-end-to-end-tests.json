@@ -224,6 +224,36 @@
       "nextProcessRefs": [],
       "createdAt": "2026-11-18T15:40:00.000Z",
       "updatedAt": "2026-11-18T15:40:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+      "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+      "label": "A2R — derive graph-operations Relay/convergence where earned",
+      "purpose": "After ordinary source-derived routes exist, classify independent-truth joins and form only the Relay/convergence relationships actually earned by current consumers such as route readiness, debt-frontier projection, perturbation currentness, coverage/proof currentness, change impact, execution-plan readiness, VexBoard inspection or release-readiness; keep graph extraction, scheduling, durable evidence and Product semantic ownership outside Relay.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife-prod.end-to-end-tests.journey-branch-coverage"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-prod-end-to-end-tests/README.md",
+        "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md",
+        "repo.vexlife-android:architecture/relay/README.md",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-18T16:48:00.000Z",
+      "updatedAt": "2026-11-18T16:48:00.000Z"
     }
   ],
   "transitions": [
@@ -581,6 +611,47 @@
         "work.vexlife-prod.end-to-end-tests.release-threshold"
       ],
       "createdAt": "2026-11-18T15:40:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence.captured.decomposed.formation-1",
+      "workRef": "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+      "priorState": "CAPTURED",
+      "nextState": "DECOMPOSED",
+      "reason": "Graph/testing Relay pressure is now concrete, but Relay must remain a post-map convergence consumer rather than a graph-extraction owner or mandatory stage.",
+      "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+      "sourceRefs": [
+        "projects/vexlife-prod-end-to-end-tests/README.md",
+        "repo.vexlife-android:architecture/relay/README.md"
+      ],
+      "createdAt": "2026-11-18T16:48:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence.decomposed.plan-validated.formation-2",
+      "workRef": "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "The subset sequence begins only after ordinary journey/branch coverage exists and may then form earned current relationship projections without blocking deterministic proof on unearned Relay abstractions.",
+      "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+      "sourceRefs": [
+        "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+        "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md"
+      ],
+      "createdAt": "2026-11-18T16:48:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence.plan-validated.waiting-dependencies.formation-3",
+      "workRef": "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "WAITING_DEPENDENCIES",
+      "reason": "Wait for ordinary graph/routes; then classify and realize only convergence questions with exact independent inputs, a new relationship truth and a current consumer.",
+      "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+      "sourceRefs": [
+        "work.vexlife-prod.end-to-end-tests.journey-branch-coverage"
+      ],
+      "createdAt": "2026-11-18T16:48:03.000Z"
     }
   ],
   "sourceRefs": [

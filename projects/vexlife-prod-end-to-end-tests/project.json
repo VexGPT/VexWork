@@ -39,7 +39,13 @@
     "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
     "repo.vexlife-android:architecture/execution/README.md",
     "concept.vexlife-prod.experience-relationship-graph",
-    "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation"
+    "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+    "repo.vexlife-android:architecture/relay/README.md",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexRelay.kt",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeRelayGraph.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeSemanticRelayContract.kt",
+    "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence"
   ],
   "formedAt": "2026-11-18T14:27:00.000Z"
 }

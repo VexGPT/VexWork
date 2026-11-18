@@ -293,6 +293,13 @@ CAPTURED_AT_SEND
 
 RETURNS_TO
   outside result -> rightful semantic owner
+
+CONVERGES_IN
+  independently-owned current truth -> source-proven Relay / convergence owner
+  only when exact source owns a new relationship question
+
+DERIVES_RELATIONSHIP
+  Relay / convergence owner -> current relationship truth it alone owns
 ~~~
 
 The current State predicate prevents `Control -> Effect` from pretending the Control means the same thing in every State.
@@ -754,6 +761,90 @@ prefer CLEARED neighborhoods first
 ~~~
 
 This is not permission to postpone debt indefinitely. It is a way to avoid repeatedly rebuilding the traversal infrastructure while still making every encountered debt edge explicit and recoverable.
+
+## Post-map Relay / convergence derivation
+
+Relay is a graph **consumer and current relationship owner when earned**, not the graph's source of truth.
+
+Use this decision:
+
+~~~text
+Do several independently-owned current truths participate?
+  NO -> no convergence question
+  YES
+   |
+   v
+Does their combination create a new current relationship truth?
+  NO -> ordinary CONSUMED_BY / CAPTURED_AT / PROJECTS_TO edge
+  YES
+   |
+   v
+Does exact source already own that relationship with a Relay/convergence owner?
+  YES -> graph CONVERGES_IN + DERIVES_RELATIONSHIP
+  NO
+   |
+   v
+Is there repeated current consumer pressure for the combined truth?
+  NO -> keep as candidate; do not accrete machinery
+  YES -> candidate convergence pressure / rightful-source investigation
+        unresolved semantics remain FRONTIER_DEBT or UNKNOWN
+~~~
+
+### Graph-operations candidate questions
+
+After ordinary routes exist, current graph/testing infrastructure may earn convergence around:
+
+~~~text
+route readiness
+debt frontier
+coverage / proof currentness
+graph revision change impact
+perturbation candidate currentness
+execution-plan readiness
+VexBoard inspection
+release readiness
+~~~
+
+These are relationship questions, not pre-authorized class names.
+
+### Compound Relay fit
+
+The Android `VexCompoundRelay` source demonstrates the useful shape:
+
+~~~text
+independent dependency Flows
+-> retained coherent InputState
+-> processStates()
+-> derived OutputState
+~~~
+
+For graph operations, that can mean:
+
+~~~text
+current graph projection
++ current evidence
++ current runtime/resources
++ current debt
+-> one current operational relationship
+~~~
+
+but durable graph/evidence/history ownership stays outside the Relay.
+
+### Relay-specific proof pressure
+
+When a graph-operations Relay is actually earned, derive tests for:
+
+~~~text
+sibling dependency arrivals do not erase one another
+older/stale source truth cannot overwrite newer semantic currentness
+duplicate/equal semantic input does not manufacture output changes
+input-only changes do not manufacture output changes when relationship meaning is equal
+processing failure releases the serialization boundary
+deactivation/lifetime does not create a second owner
+projection remains current-state truth, not an event ledger
+~~~
+
+Those tests come from Relay architecture itself and compose with the ordinary route/perturbation tests rather than replacing them.
 
 ## Post-map perturbation derivation
 

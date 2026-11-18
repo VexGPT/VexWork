@@ -783,6 +783,88 @@ Traversal debt encountered:
   whether it blocks this route only or a shared graph neighborhood
 ~~~
 
+## Graph-operations Relay subset — after ordinary graph truth
+
+Once the ordinary graph and first route manifests are grounded, run a separate Relay/convergence pass.
+
+Do not use Relay to extract the graph.
+
+~~~text
+source -> graph
+graph + other current independent truths -> optional earned Relay
+~~~
+
+Read the Android source attractor:
+
+~~~text
+VexLife-Android
+architecture/relay/README.md
+architecture/relay/.../VexRelay.kt
+architecture/relay/.../VexCompoundRelay.kt
+app/.../ui/VexLifeRelayGraph.kt
+~~~
+
+Preserve these distinctions:
+
+~~~text
+Relay owns new relationship truth
+!= input truth owner
+
+VexLifeRelayGraph projects Relay nodes
+!= constructs / activates / semantically owns them
+
+current Relay projection
+!= event ledger
+~~~
+
+`VexLifeSemanticRelayContract` in VexLife-Prod is a specific conversation semantic-relay metadata validator; do not treat its name as generic convergence authority.
+
+### Relay subset sequence
+
+~~~text
+R0 ordinary graph/routes exist
+
+R1 inspect independent-truth joins
+   classify:
+     ordinary consumption
+     source-proven Relay
+     candidate convergence
+     FRONTIER_DEBT / UNKNOWN
+
+R2 derive earliest useful operational convergence
+   route readiness
+   debt frontier
+   perturbation candidate currentness
+
+R3 after deterministic proof exists
+   coverage/proof currentness
+   execution-plan readiness
+
+R4 after graph revisions / lived evidence exist
+   change impact
+   VexBoard inspection
+
+R5 after release evidence exists
+   release-readiness convergence
+~~~
+
+Do not implement all of these. For each, first show the concrete independent inputs, the new relationship question, the current consumer, and why an ordinary query/projection is insufficient.
+
+### Return record for any earned Relay
+
+~~~text
+relationship question
+independent input owners
+source coordinate(s)
+why CONSUMED_BY alone is insufficient
+output relationship truth
+current consumer
+lifetime / activation owner
+projection surface
+proof of sibling-arrival/currentness/no-op behavior
+what durable truth remains outside the Relay
+~~~
+
 ## After the base graph: generate interruption/race considerations
 
 Do not start here. First derive the truthful ordinary route.

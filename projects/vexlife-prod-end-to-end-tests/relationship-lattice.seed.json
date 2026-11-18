@@ -1192,5 +1192,164 @@
         ]
       }
     ]
+  },
+  "relayConvergencePolicy": {
+    "roleSeparation": {
+      "graph": "Deterministic projection of source-owned coordinates and relationships; answers what relationships exist.",
+      "relay": "Optional current relationship owner when independently-owned current truths create new meaning together; answers what those truths mean together now.",
+      "execution": "Runs admitted work; Relay must not become scheduler/job custody.",
+      "evidence": "Owns durable proof/history; Relay may project current proof interpretation but is not the evidence ledger."
+    },
+    "graphEdgeKinds": {
+      "CONVERGES_IN": "Independently-owned current truth -> source-proven Relay/convergence owner.",
+      "DERIVES_RELATIONSHIP": "Relay/convergence owner -> relationship truth it alone owns."
+    },
+    "classificationRule": [
+      "two owners in one journey does not imply Relay",
+      "ordinary consumption stays CONSUMED_BY",
+      "turn capture stays CAPTURED_AT_SEND",
+      "presentation stays PROJECTS_TO",
+      "only source-proven new relationship truth earns Relay edges"
+    ],
+    "subsetSequence": [
+      {
+        "stage": "R0",
+        "meaning": "Ordinary source-derived graph and route manifests exist."
+      },
+      {
+        "stage": "R1",
+        "meaning": "Classify independent-truth joins as ordinary consumption, source-proven Relay, candidate convergence, FRONTIER_DEBT, or UNKNOWN."
+      },
+      {
+        "stage": "R2",
+        "meaning": "Earliest operational convergence candidates: route readiness, debt frontier, perturbation candidate currentness."
+      },
+      {
+        "stage": "R3",
+        "meaning": "After deterministic evidence exists: coverage/proof currentness and execution-plan readiness."
+      },
+      {
+        "stage": "R4",
+        "meaning": "After graph revisions/lived evidence exist: change impact and VexBoard inspection."
+      },
+      {
+        "stage": "R5",
+        "meaning": "After release evidence exists: release-readiness convergence."
+      }
+    ],
+    "candidateOperationalQuestions": [
+      {
+        "question": "route readiness",
+        "inputs": [
+          "route graph truth",
+          "stable addressability",
+          "Product/runtime currentness",
+          "host/resource availability",
+          "blocking FRONTIER_DEBT"
+        ],
+        "output": "current route readiness / execution-class eligibility",
+        "status": "CANDIDATE_NOT_PREAUTHORIZED"
+      },
+      {
+        "question": "debt frontier",
+        "inputs": [
+          "graph debt facts",
+          "dependent routes",
+          "rightful repair ownership"
+        ],
+        "output": "current debt-frontier relationship",
+        "status": "CANDIDATE_NOT_PREAUTHORIZED"
+      },
+      {
+        "question": "coverage / proof currentness",
+        "inputs": [
+          "source graph edges",
+          "deterministic evidence",
+          "live/lifecycle evidence",
+          "evidence currentness",
+          "HELD/UNKNOWN truth"
+        ],
+        "output": "current coverage/proof relationship",
+        "status": "CANDIDATE_NOT_PREAUTHORIZED"
+      },
+      {
+        "question": "graph change impact",
+        "inputs": [
+          "prior graph revision",
+          "current graph revision",
+          "journey/route membership",
+          "proof fingerprints"
+        ],
+        "output": "materially affected human routes / proof invalidation",
+        "status": "CANDIDATE_NOT_PREAUTHORIZED"
+      },
+      {
+        "question": "perturbation candidate currentness",
+        "inputs": [
+          "transient topology",
+          "lawful in-flight Controls",
+          "overlap/currentness policy",
+          "existing perturbation coverage"
+        ],
+        "output": "meaningful current interruption/race questions",
+        "status": "CANDIDATE_NOT_PREAUTHORIZED"
+      },
+      {
+        "question": "execution-plan readiness",
+        "inputs": [
+          "route manifests",
+          "execution classes",
+          "resource claims",
+          "host/model/runtime availability"
+        ],
+        "output": "parallel-safe / serial-only / held route set",
+        "fence": "Execution/scheduler owner runs work; Relay only derives current plan meaning.",
+        "status": "CANDIDATE_NOT_PREAUTHORIZED"
+      },
+      {
+        "question": "VexBoard inspection",
+        "inputs": [
+          "selected graph coordinate",
+          "current neighborhood",
+          "current proof",
+          "current debt",
+          "current source/runtime projection"
+        ],
+        "output": "coherent current inspection projection",
+        "fence": "VexBoard remains read-only projection/consumer.",
+        "status": "CANDIDATE_NOT_PREAUTHORIZED"
+      },
+      {
+        "question": "release readiness",
+        "inputs": [
+          "required journeys",
+          "proof classes",
+          "HELD/UNKNOWN/debt",
+          "lived lifecycle evidence"
+        ],
+        "output": "current release-readiness relationship",
+        "fence": "Release authority remains outside the Relay.",
+        "status": "CANDIDATE_NOT_PREAUTHORIZED"
+      }
+    ],
+    "relayProofPressure": [
+      "concurrent sibling dependency updates do not lose retained input truth",
+      "source-semantic currentness prevents stale overwrite",
+      "equal semantic input/output suppresses duplicate current meaning",
+      "input-only changes do not force output changes when derived relationship is equal",
+      "processing failure releases serialization boundary",
+      "current projection is not treated as event ledger",
+      "Relay projection does not acquire ownership of input truth/history"
+    ],
+    "sourceWitnesses": [
+      "VexLife-Android architecture/relay/README.md",
+      "VexLife-Android VexRelay.kt",
+      "VexLife-Android VexCompoundRelay.kt",
+      "VexLife-Android VexLifeRelayGraph.kt"
+    ],
+    "counterexample": {
+      "source": "VexLife-Prod VexLifeSemanticRelayContract",
+      "note": "Specific reference-only semantic-relay metadata contract; not generic authority for graph/testing convergence."
+    }
   }
 }

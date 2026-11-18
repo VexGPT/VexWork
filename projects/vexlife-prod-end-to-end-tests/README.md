@@ -690,6 +690,217 @@ An innovation earns source only when it has a concrete consumer now, reuses sour
 
 The goal is not maximum abstraction. The goal is maximum recoverability and reuse per unit of machinery.
 
+## Graph operations subset — Relay / convergence after the map exists
+
+Relay is not the graph extractor and not another mandatory stage after every edge.
+
+Keep this separation:
+
+~~~text
+STATIC / DETERMINISTIC
+source
+-> relationship extraction
+-> normalized Experience Relationship Graph
+-> pathways / routes / test manifests
+
+LIVE / CONVERGENCE
+graph + independently-owned current truths
+-> earned Relay / Compound Relay relationship
+-> one coherent current relationship projection
+~~~
+
+The graph answers:
+
+~~~text
+What relationships exist?
+~~~
+
+Relay answers:
+
+~~~text
+What do these independently-owned current truths mean together right now?
+~~~
+
+### Relay source attractor
+
+Current VexLife-Android Relay source is the concrete architecture witness:
+
+~~~text
+architecture/relay/README.md
+architecture/relay/.../VexRelay.kt
+architecture/relay/.../VexCompoundRelay.kt
+app/.../ui/VexLifeRelayGraph.kt
+~~~
+
+Key laws carried into this Project:
+
+~~~text
+independent truths
+-> convergence relationship
+-> relationship truth
+
+VexLifeRelayGraph
+= readable projection of Relay nodes
+!= constructor / activator / semantic owner
+
+Compound Relay
+= retained coherent input truth + derived output truth
+
+current projection
+!= event ledger
+~~~
+
+`VexLifeSemanticRelayContract` in VexLife-Prod is a specific semantic-relay metadata contract. Its name does not make it the generic owner of every graph/testing convergence question.
+
+### When graph/testing infrastructure may earn a Relay
+
+Do not create these as classes merely because the names are useful. They are candidate **relationship questions**. A concrete Relay is earned only when its inputs remain independently owned and their current combination has new meaning.
+
+1. **Route readiness**
+
+~~~text
+route exists
++ stable addressability
++ Product/runtime currentness
++ host/resource availability
++ blocking FRONTIER_DEBT
+-> current route readiness
+~~~
+
+Possible output meaning: runnable now, runnable serially, debt-blocked, held, unavailable.
+
+2. **Debt frontier**
+
+~~~text
+graph debt facts
++ routes depending on them
++ current rightful repair ownership
+-> current debt-frontier relationship
+~~~
+
+This may help circulate exact frontier edges without becoming a second backlog owner.
+
+3. **Coverage / proof currentness**
+
+~~~text
+source graph edges
++ deterministic evidence
++ live/lifecycle evidence
++ evidence fingerprints/currentness
++ HELD / UNKNOWN truth
+-> current coverage relationship
+~~~
+
+Coverage projection owns the current interpretation; durable proof/history remains with its evidence source.
+
+4. **Graph change impact**
+
+~~~text
+prior graph revision
++ current graph revision
++ journey/route membership
++ proof fingerprints
+-> materially affected human routes / invalidated proof
+~~~
+
+This answers 'what human experience changed?' rather than merely 'what files changed?'
+
+5. **Perturbation candidate currentness**
+
+~~~text
+transient graph topology
++ lawful in-flight Controls
++ overlap/currentness policy
++ existing perturbation coverage
+-> meaningful interruption/race questions still needing proof
+~~~
+
+The Relay may surface current candidate questions; source still owns the expected race/overlap behavior.
+
+6. **Execution-plan readiness**
+
+~~~text
+route manifests
++ execution class
++ resource claims
++ host/model/runtime availability
+-> parallel-safe / serial-only / held route set
+~~~
+
+Relay may derive the coherent plan. Execution/scheduler owners run it. Relay does not become a generic scheduler.
+
+7. **VexBoard inspection**
+
+~~~text
+selected graph coordinate
++ current graph neighborhood
++ current proof
++ current debt
++ current runtime/source projection
+-> coherent inspection projection
+~~~
+
+VexBoard remains a consumer/projection surface, not Product truth authority.
+
+8. **Release readiness**
+
+~~~text
+required journeys
++ current proof classes
++ current HELD / UNKNOWN / debt
++ lived lifecycle evidence
+-> current release-readiness relationship
+~~~
+
+Release authority remains with the rightful release lifecycle; a Relay may only project the current convergence.
+
+### Source-proven Relay edges in the graph
+
+When an actual source Relay/convergence owner exists, the graph may represent:
+
+~~~text
+CONVERGES_IN
+  independently-owned current truth -> source-proven Relay/convergence owner
+
+DERIVES_RELATIONSHIP
+  Relay/convergence owner -> relationship truth it alone owns
+~~~
+
+Do not emit these edges merely because two owners participate in one journey. `CONSUMED_BY` remains correct when one owner simply consumes another owner's truth without creating a new relationship owner.
+
+### Subset sequence inside the larger E2E program
+
+Relay/convergence work is a nested post-map process, not a new top-level ontology:
+
+~~~text
+R0  ordinary graph + routes exist
+    -> detect candidate independent-truth joins
+
+R1  source-classify each join
+    -> CONSUMED_BY only
+    -> source-proven Relay
+    -> candidate convergence pressure
+    -> FRONTIER_DEBT / UNKNOWN
+
+R2  earliest useful graph-operations convergence
+    -> route readiness
+    -> debt frontier
+    -> perturbation candidate currentness
+
+R3  once deterministic evidence exists
+    -> coverage / proof currentness
+    -> execution-plan readiness
+
+R4  once graph revisions / lived evidence exist
+    -> change impact
+    -> VexBoard inspection
+
+R5  once release evidence exists
+    -> release-readiness convergence
+~~~
+
+Each stage is earned by its inputs. Do not delay ordinary E2E proof just to manufacture Relays that have no consumer yet.
+
 ## Post-map perturbation: interruption, overlap and race considerations
 
 After the truthful graph exists, derive **candidate perturbation routes** from its topology.
@@ -831,6 +1042,7 @@ Deterministic proof verifies VexLife's relationship handling even when the real 
 A0  Experience-contract + topology foundation               RUNNING
 A1  Screen Lens choice-discovery bridge                     READY
 A2  Journey / branch coverage projection                    WAITING_DEPENDENCIES
+A2R Graph-operations Relay / convergence subset              WAITING_DEPENDENCIES
 A3  Deterministic nervous-system shards                      WAITING_DEPENDENCIES
 A4  Live-model + lived-lifecycle validation                  WAITING_DEPENDENCIES
 A5  Release-candidate experience threshold                  WAITING_DEPENDENCIES
