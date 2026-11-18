@@ -39,6 +39,51 @@ Active Product pressure to read but not promote to current main:
 ~~~
 
 
+## First orientation: architecture attractor before implementation
+
+Read these before reasoning about the E2E graph:
+
+~~~text
+https://vgong24.github.io/Vextreme/pages/vexarchitecture-first-stable-body.html
+https://vgong24.github.io/Vextreme/pages/vexarchitecture-live-demonstration.html
+
+pinned Vextreme main
+1a0f161b4175e83c223e57642d08501004cdb9fd
+~~~
+
+Take the architecture as the attractor:
+
+~~~text
+Family owns semantic meaning
+Execution owns active custody
+outside truth stays outside until rightful reconciliation
+Relay exists only for a new relationship across independent truths
+presentation projects truth; it does not become truth
+provider acknowledgement != physical outcome
+implementation naming/placement is evidence, not authority
+~~~
+
+Do not convert these into another local helper framework. Follow the same questions in current source.
+
+Then read the current Android witnesses:
+
+~~~text
+VexLife-Android main d857a92371555472e0303b18eadf353da2a868d6
+
+architecture/elements/.../ScreenBlueprint.kt
+app/src/main/.../screens/AppScreenBlueprint.kt
+app/src/main/.../screens/AppScreens.kt
+app/src/journeyTest/.../VexJourney.kt
+app/src/journeyTest/.../catalog/Journeys.kt
+app/src/journeyTest/.../VexJourneyCoverage.kt
+docs/foundation/JOURNEY-INSTRUMENTATION.md
+docs/foundation/SCREEN-CRAWLER-EVIDENCE.md
+app/src/journeyTest/.../crawler/VexScreenCrawlerConfig.kt
+app/src/androidTest/.../crawler/VexScreenCrawlerInstrumentedTest.kt
+~~~
+
+These demonstrate stable production IDs, human walk authoring, semantic coverage, and optional crawler evidence without making the test system the product owner.
+
 ## Fresh-instance orientation order
 
 A fresh instance should not begin by inventing a new test abstraction.
@@ -345,6 +390,40 @@ G. what was derived from source vs what required Roomba discovery
 ~~~
 
 If that receipt cannot be produced from exact source, do not begin a broad crawler/test framework.
+
+## Mission sequence
+
+Hold this sequence while working:
+
+~~~text
+GOAL
+Preserve stable human experience while VexLife-Prod implementation keeps evolving.
+
+NEAR-GOAL
+Make current VexLife-Prod relationships projectable as one source-derived graph that VexBoard can query and E2E tests can traverse.
+
+SOLUTION ROUTE
+VexArchitecture attractor
+-> Android stable-ID / Journey / crawler witnesses
+-> current VexBoard graph/query machinery
+-> VexLife-Prod Family / Blueprint / runtime / prompt relationships
+-> relationship graph
+-> derived pathway
+-> concrete route
+-> deterministic test manifest
+-> lived-model / lifecycle proof when required
+
+TARGET MASTERY
+Given any human-visible control, Family State/Control, Effect, projection or failing E2E edge:
+1. locate it in source;
+2. traverse backward to prerequisites and the human action;
+3. traverse forward to realization, observation, successor truth and projection;
+4. identify every lawful branch/loop;
+5. generate the smallest truthful test route;
+6. distinguish Product relationship correctness from model behavior;
+7. know whether the edge is CURRENT, ACTIVE_CANDIDATE, HELD or UNKNOWN;
+8. improve the source graph rather than create a parallel feature map.
+~~~
 
 ## Two simultaneous outputs
 

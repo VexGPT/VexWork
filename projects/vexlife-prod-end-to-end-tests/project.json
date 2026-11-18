@@ -27,7 +27,15 @@
     "github.pull.vexwork.310",
     "github.pull.vexlife-prod.251",
     "github.pull.vexlife-prod.310",
-    "github.pull.vexlife-prod.331"
+    "github.pull.vexlife-prod.331",
+    "https://vgong24.github.io/Vextreme/pages/vexarchitecture-first-stable-body.html",
+    "https://vgong24.github.io/Vextreme/pages/vexarchitecture-live-demonstration.html",
+    "github.commit.vextreme.1a0f161b4175e83c223e57642d08501004cdb9fd",
+    "github.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+    "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourney.kt",
+    "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+    "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md"
   ],
   "formedAt": "2026-11-18T14:27:00.000Z"
 }

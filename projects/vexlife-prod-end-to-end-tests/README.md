@@ -64,6 +64,44 @@ this Project
   != release authority
 ~~~
 
+## Architecture attractors
+
+Before forming new mechanics, ground in the two VexArchitecture source guides:
+
+- https://vgong24.github.io/Vextreme/pages/vexarchitecture-first-stable-body.html
+- https://vgong24.github.io/Vextreme/pages/vexarchitecture-live-demonstration.html
+
+Pinned source snapshot used for this Project:
+
+~~~text
+vgong24/Vextreme main
+1a0f161b4175e83c223e57642d08501004cdb9fd
+
+pages/vexarchitecture-first-stable-body.html
+blob 328e1fdaffd59ced8f06584d28d769b90dae9a5e
+
+pages/vexarchitecture-live-demonstration.html
+blob 03e2764ec120a189467292e79132114fba1b84bd
+~~~
+
+These pages are the design attractor, not another framework to re-encode locally.
+
+Key judgment carried into this Project:
+
+~~~text
+Family owns product / semantic meaning.
+Execution owns active custody.
+Outside truth stays independently owned and returns through rightful reconciliation.
+Partner is earned only when an independently-owned external participant exists.
+Store/provider, Relay/convergence, chronology, construction/lifetime and presentation answer different questions.
+provider acknowledgement != physical outcome != durable domain truth.
+implementation placement and naming are evidence to inspect, never authority by themselves.
+~~~
+
+The Live Demonstration is especially important because it shows that ThemeMode, VexStream, VexMaps and Partner do **not** become one class template. What transfers is the ability to locate human intention, semantic ownership, outside truth, execution custody, convergence, durability and presentation.
+
+That is the posture here too: **reuse the relationship shape; preserve rightful owners; do not normalize every feature into one implementation pattern.**
+
 ## Topology layers
 
 1. **Human intention** — what the person is trying to accomplish.
@@ -167,6 +205,48 @@ copy the same branch into every test journey
 ~~~
 
 Likewise, locale/platform/model conditions are evidence configurations over one semantic journey, not new copies of the human journey.
+
+## Android + Screen Lens source witnesses
+
+Use current VexLife-Android as the closest concrete witness for stable IDs, semantic Screen registration, human journeys and crawler evidence.
+
+~~~text
+vgong24/VexLife-Android main
+d857a92371555472e0303b18eadf353da2a868d6
+
+architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt
+  nested source structure -> stable element.<screen>... IDs
+
+app/src/main/kotlin/com/vextreme/vexlife/android/screens/AppScreenBlueprint.kt
+app/src/main/kotlin/com/vextreme/vexlife/android/screens/AppScreens.kt
+  production Screen registration / semantic source
+
+app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourney.kt
+app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/catalog/Journeys.kt
+  human-readable journey paths over stable production IDs
+
+app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourneyCoverage.kt
+  journey coverage against production registration
+
+docs/foundation/JOURNEY-INSTRUMENTATION.md
+docs/foundation/SCREEN-CRAWLER-EVIDENCE.md
+app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerConfig.kt
+app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceIdentity.kt
+app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerInstrumentedTest.kt
+  functional journey + optional visual evidence multiplication
+~~~
+
+The important transfer is not Compose or Android instrumentation. It is:
+
+~~~text
+one stable source coordinate
+-> one human-readable walk
+-> one expected semantic history
+-> coverage accounting
+-> optional crawler evidence
+~~~
+
+That same idea now extends into the VexLife-Prod relationship graph and graph-derived E2E routes.
 
 ## Graph-derived pathways and tests
 
@@ -382,9 +462,9 @@ G. lived behavior is intentionally unavailable?
 
 Only after this classification ask whether a new abstraction is needed.
 
-### No-helper-workaround rule
+### Architecture-attractor rule
 
-A new helper/adapter/registry/DSL earns existence only when it solves repeated concrete pressure that cannot already be expressed by a rightful existing owner or shared primitive.
+The accepted VexArchitecture/VexBoard/VexLife patterns are the default attractor. Diverge only when a concrete source pressure cannot be represented truthfully by an existing rightful owner or shared primitive.
 
 Before adding one, answer:
 
