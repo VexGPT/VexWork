@@ -834,9 +834,56 @@ A2  Journey / branch coverage projection                    WAITING_DEPENDENCIES
 A3  Deterministic nervous-system shards                      WAITING_DEPENDENCIES
 A4  Live-model + lived-lifecycle validation                  WAITING_DEPENDENCIES
 A5  Release-candidate experience threshold                  WAITING_DEPENDENCIES
+A6  Experience Relationship Graph foundationalization       WAITING_DEPENDENCIES
 ~~~
 
 A1 may proceed concurrently with A0 because Screen Lens source perception and experience-contract formation answer different questions. A2 converges them.
+
+## Terminal knowledge-share successor — Experience Relationship Graph
+
+Do not author the final foundational document yet.
+
+Once the end-to-end graph, traversal, generated routes/tests, debt frontiers and perturbation model have enough accepted source/proof behind them to be taught without depending on this formation discussion, formulate the durable concept:
+
+~~~text
+Experience Relationship Graph
+~~~
+
+Intended outcome:
+
+~~~text
+accepted E2E relationship system
+-> distill durable architecture / usage / navigation model
+-> choose the rightful current foundational location(s)
+-> make it part of startup context for VexLife-Prod and VexWork
+-> link this Project / major PR lineage as provenance and worked history
+~~~
+
+The final repository path, filename, entry route and exact split between VexLife-Prod and VexWork are intentionally **not pinned now**. Repository structure, ownership and startup context may evolve before this work becomes mature enough to formalize.
+
+At that later point:
+
+~~~text
+current repository culture / foundation maps decide placement
+current accepted source decides claims
+this E2E Project / PR supplies provenance and examples
+the foundational document supplies durable orientation
+~~~
+
+The document should teach the reusable idea—not preserve every formation artifact:
+
+~~~text
+source-owned relationships
+-> Experience Relationship Graph
+-> pathway / route / journey derivation
+-> stable IDs / addressability
+-> graph-derived tests and coverage
+-> FRONTIER_DEBT
+-> post-map interruption / race probes
+-> human-readable navigation and AI orientation
+~~~
+
+Promotion criterion: a fresh worker should be able to use the resulting foundational context to understand and extend the system without rereading this entire Project history.
 
 ## Completion target
 

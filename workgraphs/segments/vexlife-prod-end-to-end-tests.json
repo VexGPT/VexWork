@@ -196,6 +196,34 @@
       "nextProcessRefs": [],
       "createdAt": "2026-11-18T14:27:00.000Z",
       "updatedAt": "2026-11-18T14:27:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+      "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+      "label": "A6 — formalize Experience Relationship Graph foundational context",
+      "purpose": "After release-threshold validation has established an accepted and teachable end-to-end relationship system, distill the durable Experience Relationship Graph concept into the then-current rightful foundational/startup context for VexLife-Prod and VexWork, with current repository culture deciding final path/placement and this Project/PR lineage retained as provenance rather than permanent authority.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife-prod.end-to-end-tests.release-threshold"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-prod-end-to-end-tests/README.md",
+        "project.vexlife-prod.end-to-end-tests"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-18T15:40:00.000Z",
+      "updatedAt": "2026-11-18T15:40:00.000Z"
     }
   ],
   "transitions": [
@@ -513,6 +541,46 @@
         "work.vexlife-prod.end-to-end-tests.live-validation"
       ],
       "createdAt": "2026-11-18T14:27:23.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation.captured.decomposed.formation-1",
+      "workRef": "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+      "priorState": "CAPTURED",
+      "nextState": "DECOMPOSED",
+      "reason": "The durable successor is known as Experience Relationship Graph foundational context, but its final repository path/placement is intentionally deferred until the E2E system and current foundation entry routes are mature enough to decide truthfully.",
+      "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+      "sourceRefs": [
+        "projects/vexlife-prod-end-to-end-tests/README.md"
+      ],
+      "createdAt": "2026-11-18T15:40:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation.decomposed.plan-validated.formation-2",
+      "workRef": "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "Foundationalization is correctly sequenced after release-threshold validation so the durable document is distilled from accepted graph behavior/proof rather than prematurely freezing formation-stage assumptions.",
+      "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+      "sourceRefs": [
+        "work.vexlife-prod.end-to-end-tests.release-threshold",
+        "projects/vexlife-prod-end-to-end-tests/README.md"
+      ],
+      "createdAt": "2026-11-18T15:40:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation.plan-validated.waiting-dependencies.formation-3",
+      "workRef": "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "WAITING_DEPENDENCIES",
+      "reason": "Wait for the release-threshold predecessor and then re-read current repository culture/foundation entry routes before choosing any final filename, path, split, or startup-context placement.",
+      "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+      "sourceRefs": [
+        "work.vexlife-prod.end-to-end-tests.release-threshold"
+      ],
+      "createdAt": "2026-11-18T15:40:03.000Z"
     }
   ],
   "sourceRefs": [

@@ -968,6 +968,24 @@ Return:
 
 This receipt is not ceremony; it proves orientation before source accretes.
 
+## Terminal successor after the E2E system is earned
+
+Do not create a foundational `Experience Relationship Graph` document during early graph formation merely because the concept is promising.
+
+After A5/release-threshold work has established enough accepted graph behavior and proof, the terminal successor is:
+
+~~~text
+Experience Relationship Graph
+-> distill the durable pattern from accepted source/proof
+-> select the then-current rightful foundation/startup locations
+-> expose it in VexLife-Prod and VexWork startup context
+-> point back to project.vexlife-prod.end-to-end-tests / PR lineage as provenance
+~~~
+
+Do not pin the future file path now. Re-read current repository culture/source maps when that successor becomes actionable.
+
+The final doc should be a durable entry point, not a transcript of this Project.
+
 ## No blanket mutation grant
 
 This handoff authorizes read/discovery and the already-admitted VexBoard Screen Lens lane only. VexLife-Prod source changes, lifecycle actions, merges, and release effects still require their rightful current lane/authority.

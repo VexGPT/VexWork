@@ -37,7 +37,9 @@
     "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
     "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
     "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
-    "repo.vexlife-android:architecture/execution/README.md"
+    "repo.vexlife-android:architecture/execution/README.md",
+    "concept.vexlife-prod.experience-relationship-graph",
+    "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation"
   ],
   "formedAt": "2026-11-18T14:27:00.000Z"
 }
