@@ -441,8 +441,8 @@
       "humanMeaning": "Accept one canonical human Send and carry exactly the current optional browser context, Person Context, Memory, runtime and other admitted prompt relationships into the turn.",
       "relatedCoordinates": [
         "element.vexlife-workspace.companion.conversation.send",
-        "anchor.owner.direct-turn",
-        "anchor.owner.prompt"
+        "DirectCompanionTurn",
+        "DirectPromptContext"
       ],
       "availabilityPredicates": [],
       "currentLimitation": null,
