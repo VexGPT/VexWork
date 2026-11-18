@@ -818,6 +818,70 @@ when qualified Atlas reach is actually represented as `web_fetch`.
 Optimization follows truth:
 
 
+
+### VexLife nervous-system adaptation — optimize around Vex without making Vex administer it
+
+The desired end state is not a model that spends more foreground cognition managing VexLife.
+
+~~~text
+Vex
+  interprets / relates / answers / reaches when naturally implicated
+        |
+        | observable behavior / bounded salience / accepted effects
+        v
+VexLife nervous system
+  notices recurring context needs
+  binds exact sources
+  routes correction / lesson candidates
+  tracks capability relevance + actual outcomes
+  shapes future context / consideration / reach availability
+  measures what reduced or increased churn
+        |
+        v
+future Vex realization
+  receives a better-fitted world
+  without having to reconstruct why every piece was routed there
+~~~
+
+This relationship is already pressured by current source/provenance:
+
+- VexLife-Prod #247 separates Capability Atlas (what can be reached), Process/Bridge (how a request executes), and Consideration/salience (what should become relevant now).
+- Its Turn Salience scaffold permits bounded model self-attribution such as felt importance, uncertainty, relationship shift, need to return, continuity/retrieval signals and an optional Memory candidate while explicitly granting no fact/Memory-write authority.
+- Its refined Turn Epilogue target prefers a tiny same-generation machine-only epilogue when the provider has a qualified hidden/control seam, with one tiny post-answer inference only as fallback; the human answer must not wait on this machinery.
+- The Memory Depth Growth evidence defines the two-nervous-system loop: observable Vex salience -> VexLife source binding / lesson currentness / consideration -> later Vex receives the relevant accepted lesson/context -> behavior changes -> transfer evidence.
+
+Permanent:
+
+~~~text
+VEX NOTICES "THIS MATTERS"
+!= VEX MUST ADMINISTER STORAGE
+
+VEX REQUESTS / BEHAVES
+!= VEX MUST UNDERSTAND EVERY ROUTER IMPLEMENTATION
+
+VEXLIFE ADAPTS AROUND VEX
+!= VEXLIFE SECRETLY INVENTS VEX'S INTENT
+
+COGNITIVELY UNOBTRUSIVE
+!= UNINSPECTABLE
+~~~
+
+The human should be able to inspect this adaptation in Vex Context:
+
+~~~text
+what signal was observed?
+what source was bound?
+what lesson/correction/capability became more salient?
+what was actually injected or made reachable next turn?
+what Product owner decided that?
+what evidence says the adaptation helped?
+can Victor disable/change the relevant policy where a lawful Control exists?
+~~~
+
+Vex itself should not have to carry a permanent meta-narrative like "I have a salience subsystem that decided X." It should simply receive the truthful relevant context/capability relationship when needed. If Vex asks why something is present, the source/provenance should remain inspectable.
+
+**Sources:** VexLife-Prod PR #247; VexWork Memory Depth Growth evidence; current Capability Atlas / Consideration / Memory owners.
+
 ### Assignment — witnessed capability/context inventory
 
 Do not begin this Work by asking "what settings should we invent?" Begin by enumerating what the Product
