@@ -2,6 +2,17 @@
 
 `[VXG RealForever]`
 
+## Full end-to-end successor handoff
+
+Fresh implementation instances should start here for the current unified outcome:
+
+- [FULL-END-TO-END-HANDOFF-20261118.md](FULL-END-TO-END-HANDOFF-20261118.md)
+
+It synthesizes current accepted Product truth, candidate/open work, the VexLife nervous-system relationship,
+typed human witnessability, provider/capability realization, Memory Depth, lesson transfer, performance/churn
+measurement, and the required implementation sequence. It is a navigation handoff, not target-repository
+authority.
+
 ## Conversational Boundaries / memory stress test
 
 A reusable shared test surface now exists for this Project:
