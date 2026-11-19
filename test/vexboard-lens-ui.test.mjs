@@ -274,6 +274,9 @@ test('a source-owned static view is mounted generically and bound through stable
   assert.match(page, /data-vex-product-style/, 'the Product stylesheet is distinguishable from Lens inspection CSS');
   assert.match(page, /function staticViewStyleRules\(doc\)/);
   assert.match(page, /function staticViewPresentationRules\(doc, view, ref\)/);
+  assert.match(page, /function applyStaticViewStateBindings\(doc, view, resolved\)/, 'Product-authored state bindings realize source-derived presentation without Product-specific VexWork logic');
+  assert.match(page, /resolved\?\.presence\?\.get\(binding\.presenceRef\)/);
+  assert.match(page, /operation\.op === 'SET_ATTRIBUTE'/);
   assert.match(page, /candidate\.node\.matches\(rule\.selector\)/, 'CSS relationships come from browser selector matching');
   assert.match(page, /declarations: rule\.style\.cssText/, 'the Product rule block stays inspectable without becoming VexBoard rendering authority');
   assert.match(page, /h\('h3', \{\}, 'Presentation rules'\)/);
