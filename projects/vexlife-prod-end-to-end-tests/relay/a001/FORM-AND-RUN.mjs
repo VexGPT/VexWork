@@ -87,11 +87,11 @@ try {
       duplicateAttemptMarker:`marker.${attemptRef}`, duplicateProtectionMode:'OUTER_RELAY_BOUND',
       formedAt:formed.toISOString(), expiresAtOrNull:innerExpires.toISOString()
     },
-    workspace:{mode:'RUN_ROOT',projectRef:'project.vexlife-prod.end-to-end-tests',projectPath:'workspace',createRoot:false,createProjectPath:false},
+    workspace:{mode:'RUN_ROOT',projectRef:'project.vexlife-prod.end-to-end-tests',projectPath:'workspace',createRoot:true,createProjectPath:true},
     repositories:[{
       repositoryRef:'primary',mode:'CLONE_IN_WORKSPACE',cloneTransport:'GIT',cloneUrl:request.candidate.cloneUrl,
       nameWithOwner:request.candidate.repository,localPath:'repositories/vexwork',remote:'origin',
-      baseBranch:request.candidate.baseBranch,acceptedBase:request.candidate.baseHead,expectedHead:request.candidate.head,
+      baseBranch:request.candidate.baseBranch,acceptedBase:request.candidate.baseHead,checkoutRef:request.candidate.head,expectedHead:request.candidate.head,
       branch:request.candidate.branch,expectedRemoteUrl:null
     }],
     authority:{
