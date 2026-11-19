@@ -7,6 +7,7 @@ import * as R from '../src/shared/vexboard-screen-lens-realization.mjs';
 import { LENS_ROLES, normalizeScreenLens } from '../src/shared/vexboard-screen-lens.mjs';
 
 const committed = () => normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8')));
+const prodCommitted = () => normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-prod.state-css-experiment.screen-lens.json', import.meta.url), 'utf8')));
 const lens = committed();
 const STREAM = 'screen.vexstream-music';
 const stream = X.expressionsFor(lens, STREAM);
@@ -116,6 +117,29 @@ test('the typed intent of a control finds the expression it brings about; a sour
   // A per-item action is exposed where its population has rows, closest to Source.
   const exposing = X.expressionExposing(stream, 'element.vexstream-music.body.track-actions.menu');
   assert.equal(exposing.where, 'Songs');
+});
+
+test('a source-authored local target travels only when it is an existing presentation outcome', () => {
+  const prod = prodCommitted();
+  const screenRef = 'screen.vexlife-workspace';
+  const expressions = X.expressionsFor(prod, screenRef);
+  const destination = (ref) => X.expressionForControl(prod, screenRef, expressions, ref);
+
+  const settings = destination('element.vexlife-workspace.companion.view-switch');
+  assert.ok(settings, 'the Companion view switch reaches the Settings selection outcome');
+  assert.equal(settings.context.overrides['presence.vexlife-workspace.companion.content-selection'], 'element.vexlife-workspace.companion.settings');
+  assert.equal(settings.focusRef, 'element.vexlife-workspace.companion.settings');
+
+  const language = destination('element.vexlife-workspace.header.utilities.quick-actions.language');
+  assert.ok(language, 'Language reaches its authored open presentation');
+  assert.equal(language.context.overrides['presence.vexlife-workspace.header.language-panel-open'], 'OPEN');
+
+  const releases = destination('element.vexlife-workspace.header.utilities.quick-actions.release-alerts');
+  assert.ok(releases, 'Release alerts reaches its authored open presentation');
+  assert.equal(releases.context.overrides['presence.vexlife-workspace.header.release-alerts-panel-open'], 'OPEN');
+
+  assert.equal(destination('element.vexlife-workspace.header.utilities.quick-actions.vision'), null, 'a local relationship with no presentation outcome remains inspect-only');
+  assert.equal(destination('vexweb.vexlife-workspace.p1.body.seam.browser-companion.handle'), null, 'local spatial relationships do not impersonate presentation travel');
 });
 
 test('a hand-set context is a custom expression, read the same way by both sides', () => {
