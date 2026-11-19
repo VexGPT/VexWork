@@ -2,11 +2,11 @@
 set -euo pipefail
 
 REPOSITORY='VexGPT/VexWork'
-SOURCE_COMMIT='548542354df3ffadcdd5e185e7dace71872c93c9'
+SOURCE_COMMIT='d78ce4309f13489f027aa16d373dcc135ecb7697'
 FORM_PATH='projects/vexboard/relay/vexlife-prod-screen-lens/a001/FORM-AND-RUN.mjs'
 REQUEST_PATH='projects/vexboard/relay/vexlife-prod-screen-lens/a001/REQUEST.json'
-FORM_BLOB='99a027379831e7445f56ea2ffbfa249c9ed682ba'
-REQUEST_BLOB='e4e32423bdc1e4f5cf83f507a7c7225a611b15d5'
+FORM_BLOB='93a57e59a0a23a79c08078101b6833ea13b22f33'
+REQUEST_BLOB='355dcfd70b838e4110690a6268f4889e70cb6df4'
 
 resolve_exec() {
   local candidate
