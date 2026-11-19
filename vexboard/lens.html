@@ -644,6 +644,14 @@ async function fetchJson(url) {
 }
 const short = (sha) => (sha ? sha.slice(0, 7) : 'unpinned');
 const currentSubject = () => state.request?.subject ?? null;
+function catalogSubjectForCurrentLens() {
+  if (!state.catalog || currentSubject()) return currentSubject();
+  const snapshot = state.lens?.sourceSnapshot;
+  return state.catalog.subjects.find((subject) =>
+    (snapshot?.repositoryRef && subject.repositoryRef === snapshot.repositoryRef) ||
+    (snapshot?.repositoryUrl && subject.repository?.url === snapshot.repositoryUrl)
+  ) ?? null;
+}
 const currentBuildRef = () => (state.request?.mode === 'BUILD' ? state.request.build.buildRef : null);
 function currentBuildLabel() {
   if (state.request?.mode === 'COMMIT') return `Commit ${short(state.commit?.sha)}`;
@@ -1208,11 +1216,15 @@ function renderBar() {
   const commitLink = snapshot.repositoryUrl && snapshot.commit
     ? h('a', { class: 'source-link', href: `${snapshot.repositoryUrl}/tree/${snapshot.commit}`, target: '_blank', rel: 'noopener', title: `${where}\n${snapshot.notes.join('\n')}`, 'aria-label': where }, 'Source')
     : h('span', { class: 'source-link', title: where }, `${repoName}@${commit}`);
-  const subject = currentSubject();
+  const requestSubject = currentSubject();
+  const subject = requestSubject ?? catalogSubjectForCurrentLens();
+  const legacySuffix = !requestSubject && subject
+    ? state.lens.title.replace(`${subject.label} · Screen Lens`, '').replace(/^\s*·\s*/, '').trim()
+    : '';
   return h('header', { class: 'bar' },
     h('a', { class: 'crumb', href: './projects.html', title: 'All projects' }, 'VexBoard'),
-    subject ? h('h1', {}, renderProjectMenu(subject), h('span', { class: 'kind' }, '· Screen Lens')) : h('h1', {}, state.lens.title),
-    subject ? renderBuildSwitch(subject) : null,
+    subject ? h('h1', {}, renderProjectMenu(subject), h('span', { class: 'kind' }, '· Screen Lens'), legacySuffix ? h('span', { class: 'kind' }, `· ${legacySuffix}`) : null) : h('h1', {}, state.lens.title),
+    requestSubject ? renderBuildSwitch(requestSubject) : null,
     commitLink,
     renderDeltaChip(),
     renderSearch(),
@@ -1908,11 +1920,17 @@ function staticViewDocument(view) {
     .replace(/<link\b[^>]*>/gi, '');
   const css = view.css.replace(/<\/style/gi, '<\\/style');
   const lensCss = `
-[data-vex-lens-selected]{outline:3px solid Highlight!important;outline-offset:-3px!important}
-[data-vex-lens-ancestor]{outline:1px dashed Highlight!important;outline-offset:-1px!important}
+:root{--vexboard-lens-focus:#0783c7;--vexboard-lens-focus-soft:rgba(7,131,199,.18)}
+html[data-vex-lens-has-selection] [data-vex-ref]:not([data-vex-lens-selected]):not([data-vex-lens-ancestor]){opacity:.48!important;transition:opacity .12s ease}
+html[data-vex-lens-has-selection] [data-vex-lens-selected],
+html[data-vex-lens-has-selection] [data-vex-lens-ancestor],
+html[data-vex-lens-has-selection] [data-vex-lens-selected] [data-vex-ref]{opacity:1!important}
+[data-vex-lens-selected]{outline:2px solid var(--vexboard-lens-focus)!important;outline-offset:1px!important;box-shadow:0 0 0 3px var(--vexboard-lens-focus-soft)!important}
+[data-vex-lens-ancestor]{outline:1px dashed rgba(7,131,199,.46)!important;outline-offset:-1px!important}
 [data-vex-lens-delta]{box-shadow:inset 0 0 0 2px #e11d48!important}
 [data-vex-lens-flash]{animation:vexboard-lens-flash .8s ease-out}
-@keyframes vexboard-lens-flash{0%,35%{outline:4px solid Highlight;outline-offset:-4px}100%{outline-color:transparent}}
+.vexboard-lens-travel{position:fixed;z-index:2147483647;height:22px;min-width:28px;padding:0 8px;border:0;border-radius:999px;background:var(--vexboard-lens-focus);color:#fff;font:600 11px/22px system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 5px 14px -7px rgba(0,0,0,.72);cursor:pointer}
+@keyframes vexboard-lens-flash{0%,35%{outline:4px solid var(--vexboard-lens-focus);outline-offset:0}100%{outline-color:transparent}}
 `;
   const injection = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'"><style data-vex-product-style>${css}</style><style data-vex-lens-style>${lensCss}</style>`;
   return /<head(?:\s[^>]*)?>/i.test(html)
@@ -2256,6 +2274,7 @@ function bindStaticView(frame, expression, { interactive }) {
   }
 
   if (!interactive) return;
+  doc.addEventListener('scroll', scheduleBridge, { capture: true, passive: true });
   const directAttributes = [view.anchors.elementAttribute, view.anchors.structuralAttribute].filter(Boolean);
   const closestSelector = directAttributes.map((attribute) => `[${CSS.escape(attribute)}]`).join(',');
   const refFor = (node) => {
@@ -2313,19 +2332,12 @@ function bindStaticView(frame, expression, { interactive }) {
 function renderStaticViewActions() {
   const screen = currentScreen();
   const selected = state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
-  const destination = selected ? destinationForElement(selected) : null;
   const splitBinding = selected ? (screen.view?.interactionBindings ?? []).find((binding) => binding.kind === 'SPLIT' && binding.elementRef === selected.ref) ?? null : null;
   const toggleBinding = selected ? (screen.view?.interactionBindings ?? []).find((binding) => binding.kind === 'TOGGLE' && binding.elementRef === selected.ref) ?? null : null;
-  return destination || splitBinding || toggleBinding
+  return splitBinding || toggleBinding
     ? h('div', { class: 'product-view-actions' },
         splitBinding ? renderStaticSplitControl(splitBinding) : null,
-        toggleBinding ? renderStaticToggleControl(toggleBinding) : null,
-        destination ? h('button', {
-          class: 'tool product-view-travel',
-          type: 'button',
-          title: destination.title,
-          onclick: (event) => { event.stopPropagation(); destination.go(); },
-        }, destination.label) : null)
+        toggleBinding ? renderStaticToggleControl(toggleBinding) : null)
     : null;
 }
 function refreshStaticViewActions(wrapper) {
@@ -2870,6 +2882,42 @@ function visibleRect(node, clip) {
   const c = clip.getBoundingClientRect();
   return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, midY: Math.min(Math.max(r.top + r.height / 2, c.top + 12), c.bottom - 12), offscreen: r.bottom < c.top || r.top > c.bottom, clip: c };
 }
+function staticProductVisibleRect(leftFace, ref) {
+  const view = currentScreen().view;
+  const frame = leftFace.querySelector('.current-product-view .product-view-frame');
+  const doc = frame?.contentDocument;
+  if (!view || !frame || !doc) return null;
+  const node = staticViewNodes(doc, view, ref, { includeStructuralParents: true }).find((candidate) => {
+    const box = candidate.getBoundingClientRect();
+    return box.width > 0 && box.height > 0;
+  }) ?? null;
+  if (!node) return null;
+  const nodeBox = node.getBoundingClientRect();
+  const frameBox = frame.getBoundingClientRect();
+  const faceBox = leftFace.getBoundingClientRect();
+  const clip = {
+    left: Math.max(frameBox.left, faceBox.left),
+    right: Math.min(frameBox.right, faceBox.right),
+    top: Math.max(frameBox.top, faceBox.top),
+    bottom: Math.min(frameBox.bottom, faceBox.bottom),
+  };
+  const box = {
+    left: frameBox.left + nodeBox.left,
+    right: frameBox.left + nodeBox.right,
+    top: frameBox.top + nodeBox.top,
+    bottom: frameBox.top + nodeBox.bottom,
+  };
+  return {
+    ...box,
+    midY: Math.min(Math.max((box.top + box.bottom) / 2, clip.top + 12), clip.bottom - 12),
+    offscreen: box.bottom < clip.top || box.top > clip.bottom,
+    clip,
+  };
+}
+function surfaceVisibleRect(leftFace, ref) {
+  return visibleRect(leftFace.querySelector(`[data-ref="${CSS.escape(ref)}"]`), leftFace)
+    ?? staticProductVisibleRect(leftFace, ref);
+}
 // The bridge leaves the anchor sideways unless that would cross a sibling control;
 // then it drops into the free gap below (or above) the anchor's row first.
 function bridgeExit(leftFace, anchorRef, from, preferAbove) {
@@ -2919,7 +2967,7 @@ function drawBridge(relationship = bridgeRelationship()) {
   const leftFace = document.querySelector(`.flipper[data-side="EXPERIENCE"] .face[data-face="${state.faces.EXPERIENCE}"]`);
   const rightFace = document.querySelector(`.flipper[data-side="BEHAVIOR"] .face[data-face="${behaviorFace}"]`);
   if (!leftFace || !rightFace) return;
-  const from = visibleRect(leftFace.querySelector(`[data-ref="${CSS.escape(anchorRef)}"]`), leftFace);
+  const from = surfaceVisibleRect(leftFace, anchorRef);
   const entry = entryRef;
   const viewport = rightFace.querySelector('.graph');
   const stripTarget = behaviorFace === 'BEHAVIOR' ? rightFace.querySelector('.doorway button') : null;
@@ -3636,10 +3684,64 @@ function placeSurfaceFloaters() {
 }
 
 /* ---------- render ---------- */
+function clearStaticViewTravelBadge(doc) {
+  doc.__vexboardLensTravelCleanup?.();
+  doc.__vexboardLensTravelCleanup = null;
+  doc.querySelector('.vexboard-lens-travel')?.remove();
+}
+function refreshStaticViewTravelBadge(doc, view) {
+  clearStaticViewTravelBadge(doc);
+  const selected = state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
+  const destination = selected ? destinationForElement(selected) : null;
+  if (!selected || !destination) return;
+  const target = staticViewNodes(doc, view, selected.ref).find((node) => {
+    const box = node.getBoundingClientRect();
+    return box.width > 0 && box.height > 0;
+  }) ?? null;
+  if (!target) return;
+
+  const badge = doc.createElement('button');
+  badge.className = 'vexboard-lens-travel';
+  badge.type = 'button';
+  badge.textContent = 'Go';
+  badge.title = destination.title;
+  badge.setAttribute('aria-label', destination.label);
+  badge.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    destination.go();
+  });
+  doc.body.append(badge);
+
+  let frame = 0;
+  const place = () => {
+    frame = 0;
+    const box = target.getBoundingClientRect();
+    if (!box.width || !box.height) { badge.hidden = true; return; }
+    badge.hidden = false;
+    const width = doc.defaultView.innerWidth;
+    const height = doc.defaultView.innerHeight;
+    badge.style.left = `${Math.max(4, Math.min(width - 32, box.right - 18))}px`;
+    badge.style.top = `${Math.max(4, Math.min(height - 24, box.top - 9))}px`;
+  };
+  const schedule = () => {
+    if (frame) return;
+    frame = doc.defaultView.requestAnimationFrame(place);
+  };
+  doc.addEventListener('scroll', schedule, true);
+  doc.defaultView.addEventListener('resize', schedule);
+  doc.__vexboardLensTravelCleanup = () => {
+    if (frame) doc.defaultView.cancelAnimationFrame(frame);
+    doc.removeEventListener('scroll', schedule, true);
+    doc.defaultView.removeEventListener('resize', schedule);
+  };
+  place();
+}
 function refreshStaticViewInspectionMarks(doc, view) {
   for (const node of doc.querySelectorAll('[data-vex-lens-selected]')) node.removeAttribute('data-vex-lens-selected');
   for (const node of doc.querySelectorAll('[data-vex-lens-ancestor]')) node.removeAttribute('data-vex-lens-ancestor');
   const marks = selectionPathRefs();
+  doc.documentElement.toggleAttribute('data-vex-lens-has-selection', Boolean(marks.selected));
   for (const ref of marks.ancestors) for (const node of staticViewNodes(doc, view, ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-ancestor', '');
   if (marks.selected) {
     for (const node of staticViewNodes(doc, view, marks.selected, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-selected', '');
@@ -3647,6 +3749,7 @@ function refreshStaticViewInspectionMarks(doc, view) {
   } else {
     state.presentationRules = null;
   }
+  refreshStaticViewTravelBadge(doc, view);
 }
 function replaceStructureFacePreservingViewport(experience) {
   const oldStructure = experience?.querySelector('.face[data-face="STRUCTURE"]');
