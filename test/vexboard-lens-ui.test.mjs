@@ -199,6 +199,12 @@ test('expression carousel preserves the lived desktop and phone-width interactio
   assert.match(page, /ondblclick: \(\) => \(element\.navigatesTo \? travel\(element\) : exposeElement\(element\.ref\)\)/, 'Structure double-click traverses to that source-derived expression');
 });
 
+test('Structure keeps a real scroll boundary inside the flipped Experience face', () => {
+  assert.match(page, /\.structure\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;/);
+  assert.match(page, /const kept = \{ phone: .* structure: document\.querySelector\('\.face\[data-face="STRUCTURE"\] \.structure'\)\?\.scrollTop \?\? 0 \}/);
+  assert.match(page, /if \(structure\) structure\.scrollTop = kept\.structure;/);
+});
+
 test('expression stepping animates the whole three-card carousel handoff instead of teleporting neighbours', () => {
   assert.match(page, /--x-shift:356px/);
   assert.match(page, /@keyframes x-center-from-next/);
@@ -267,6 +273,8 @@ test('a source-owned static view is mounted generically and bound through stable
   assert.match(page, /scriptPolicy must be NONE|no Product JavaScript/);
   assert.match(page, /sandbox: 'allow-same-origin'/);
   assert.doesNotMatch(page, /sandbox: 'allow-same-origin allow-scripts'/);
+  assert.match(page, /doc\.addEventListener\('contextmenu',[\s\S]*flip\('EXPERIENCE'\)/, 'right-click inside a Product iframe flips the same Experience side');
+  assert.match(page, /if \(event\.shiftKey\) return;/, 'Shift-right-click keeps the native browser escape hatch');
   assert.match(page, /view\.anchors\.elementAttribute/);
   assert.match(page, /view\.anchors\.structuralAttribute/);
   assert.match(page, /view\.anchors\.structuralParentAttribute/);
