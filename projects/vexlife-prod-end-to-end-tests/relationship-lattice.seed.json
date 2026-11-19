@@ -13,12 +13,8 @@
         "meaning": "Vex Context / Context Profiles"
       },
       {
-        "ref": "github.pull.vexlife-prod.310",
-        "meaning": "VoiceInput / local ASR"
-      },
-      {
-        "ref": "github.pull.vexlife-prod.331",
-        "meaning": "reply-language scripts / Composer output"
+        "ref": "github.pull.vexlife-prod.343",
+        "meaning": "E2E validation excavation / current Product coverage map"
       },
       {
         "ref": "github.pull.vexwork.298",
@@ -36,7 +32,8 @@
         "ref": "github.pull.vexwork.310",
         "meaning": "shared continuity-pressure harness"
       }
-    ]
+    ],
+    "vexLifeProdMain": "98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0"
   },
   "topologyLayers": [
     {
@@ -796,7 +793,8 @@
       "humanOutcome": "After unexpected internal navigation in the embedded cross-origin page, stale page identity/context is cleared, Include this page becomes unavailable, the human is told the current address is unavailable, and no stale page context is sent.",
       "coordinateRefs": [
         "element.vexlife-workspace.companion.conversation.context-share",
-        "pathway.vexlife-prod.local.companion.conversation.context-share"
+        "pathway.vexlife-prod.local.companion.conversation.context-share",
+        "pathway.vexlife-prod.conversation.send"
       ]
     },
     {
@@ -1163,7 +1161,7 @@
       },
       {
         "source": "VexLifeVoiceInputFamily",
-        "disposition": "ACTIVE_CANDIDATE",
+        "disposition": "CURRENT_MAIN",
         "semantics": [
           "READY+START -> REQUESTING_MICROPHONE",
           "REQUESTING_MICROPHONE+STOP -> STOPPING",
