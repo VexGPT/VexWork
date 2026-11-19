@@ -4,7 +4,7 @@
   "projectRef": "project.vexlife-prod.end-to-end-tests",
   "purpose": "Read-only experience-validation map over existing Product coordinates and exact source symbols. It does not mint parallel feature/relationship identities. VexLife-Prod and VexArchitecture sources remain the owners of Family, State, Control, Act, Effect, observation, realization and projection meaning.",
   "sourceBindings": {
-    "vexlifeProdMain": "a58777106b08bd58c167608fa0115729185ae3dd",
+    "vexlifeProdMain": "fb4ea859949f2fcba47bf55857669df37d2730ce",
     "vexWorkMain": "d70da76d9f95645ee83dc09c7cf7384b6c572cf5",
     "vexLifeAndroidMain": "d857a92371555472e0303b18eadf353da2a868d6",
     "activeCandidates": [
@@ -1423,7 +1423,7 @@
   },
   "currentness": {
     "observedAt": "2026-11-18",
-    "vexLifeProdMain": "a58777106b08bd58c167608fa0115729185ae3dd",
+    "vexLifeProdMain": "fb4ea859949f2fcba47bf55857669df37d2730ce",
     "mergedPressure": {
       "251": {
         "state": "MERGED",
