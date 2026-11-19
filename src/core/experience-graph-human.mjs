@@ -55,13 +55,22 @@ function experienceRoute(route, derivationCase, seed) {
   }));
   const human = (route.steps ?? []).find((step) => step.step === 'HUMAN_ACTION') ?? null;
   const elementRefs = human?.elementRefs ?? [];
+  const interactiveElementRefs = elementRefs.filter((ref) => String(ref).startsWith('element.'));
+  if (interactiveElementRefs.length > 1) {
+    pushMissing(
+      missing,
+      'AMBIGUOUS_MANIFESTATION_BINDING',
+      human?.coordinate ?? null,
+      `The mechanical graph maps this Control to multiple interactive elements: ${interactiveElementRefs.join(', ')}`,
+    );
+  }
   const bindings = bindingsForElements(seed, elementRefs);
   if (elementRefs.length && !bindings.some((binding) => binding.deterministicActionRef)) {
     pushMissing(
       missing,
       'MISSING_DETERMINISTIC_TEST_ACTION',
-      elementRefs[0],
-      'A stable human element exists, but this convergence has not earned one deterministic action binding for this route.',
+      interactiveElementRefs.length === 1 ? interactiveElementRefs[0] : (human?.coordinate ?? null),
+      'A stable human action exists, but this convergence has not earned one unambiguous deterministic action binding for this route.',
     );
   }
   for (const deeper of derivationCase?.deeper ?? []) {
