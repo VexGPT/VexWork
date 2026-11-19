@@ -274,6 +274,37 @@ Before broad implementation:
 6. Do not create another graph engine, another Screen Lens schema, or another human-facing canvas route.
 7. Produce raw-git preview before any integration/merge decision.
 
+## Browser workspace realization (candidate, not accepted)
+
+Lived finding (2026-11-19): the Prod Lens drew the browser workspace inside Android's phone frame.
+
+```text
+VEXWEB_FRAME_TOPOLOGY != PHONE_TOPOLOGY
+OUTER_MACOS_WINDOW    != PRODUCT_IDENTITY
+```
+
+Candidate pair, both `VXG-111926-claude-vexlife-prod-browser-workspace-lens-a001`:
+
+- VexLife-Prod: `VexLifeProdScreenLens` walks `VexLifeWebP1.Surface` (content + overlay root) and exports
+  `screens[].layout` (FRAME, seams, regions, seam chrome, overlays) plus FRAME / SEAM / HANDLE / REGION
+  elements, `layer` and `interactions`. Send, Vision and Private Mode keep their pathways; each element's
+  parent is its VexWeb container. The seam handle gets a TYPED_PRESENTATION pathway (local spatial
+  binding → seam → the regions before/after it); no Family is invented.
+- VexWork (stacked on #327): `src/shared/vexboard-screen-lens-frames.mjs` normalizes and measures the
+  layout; the Surface draws a workspace when a screen carries one and the phone otherwise (D54).
+
+Stable `5b93204` and Main `152c323` predate the export, so they still draw as a phone; the workspace is
+witnessed through Commit projection of the Product candidate head. Nothing here requires a merge to main.
+
+Witness checklist for the candidate:
+
+1. `lens.html?subject=vexlife-prod&commit=<Product candidate head>` draws header band, Browser | seam |
+   Companion, and the overlay layer — not a phone;
+2. clicking Send, Vision and Private Mode still bridges to their Behavior graphs;
+3. clicking the seam handle shows its spatial pathway and "Where it sits" (axis, allocation, regions);
+4. Structure shows Workspace frame › Header / Body frame › Browser / Companion nesting;
+5. VexLife-Android Stable and Main are unchanged.
+
 ## Human witness gate
 
 Before READY / approval / merge:

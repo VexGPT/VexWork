@@ -9,6 +9,7 @@
 // traversable without duplicate pages or copied subtrees.
 
 import { normalizeExamples, normalizeScreenRealization } from './vexboard-screen-lens-realization.mjs';
+import { LAYERS, normalizeScreenLayout } from './vexboard-screen-lens-frames.mjs';
 
 export const SCREEN_LENS_SCHEMA = 'vexboard.screen-lens/v1';
 
@@ -62,11 +63,15 @@ export const LENS_ROLES = Object.freeze({
   CONSTRUCTION: Object.freeze({ role: 'CONSTRUCTION', band: 'SUPPORT', chip: 'DI', label: 'Construction' }),
 });
 
+// FRAME, SEAM and HANDLE belong to a screen realized as frames of regions divided by seams
+// (vexboard-screen-lens-frames.mjs): a frame and a seam are structure, a seam handle is touched.
 export const ELEMENT_KINDS = Object.freeze({
   COLUMN: 'CONTAINER', ROW: 'CONTAINER', STACK: 'CONTAINER', CARD: 'CONTAINER', MENU: 'CONTAINER', SHEET: 'CONTAINER', DIALOG: 'CONTAINER', REGION: 'CONTAINER',
+  FRAME: 'CONTAINER', SEAM: 'CONTAINER',
   TEXT: 'CONTENT', IMAGE: 'CONTENT',
-  TOGGLE: 'ELEMENT', BUTTON: 'ELEMENT', FAB: 'ELEMENT', MENU_ITEM: 'ELEMENT', FIELD: 'ELEMENT',
+  TOGGLE: 'ELEMENT', BUTTON: 'ELEMENT', FAB: 'ELEMENT', MENU_ITEM: 'ELEMENT', FIELD: 'ELEMENT', HANDLE: 'ELEMENT',
 });
+export const ELEMENT_INTERACTIONS = Object.freeze(['ACTIVATE', 'RESIZE', 'COLLAPSE_BEFORE', 'COLLAPSE_AFTER']);
 
 export const PATHWAY_DISPOSITIONS = Object.freeze({
   SCAE_FAMILY: 'Source earns a semantic owner: Control, State, Act, Effect and Projection relationships are explicit.',
@@ -128,6 +133,10 @@ function normalizeElement(input, owner, refs) {
     textRole: optionalText(input.textRole, `${ref} textRole`),
     icon: optionalText(input.icon, `${ref} icon`),
     style: optionalText(input.style, `${ref} style`),
+    // Which plane it is drawn on (content, chrome, transient feedback, modal) and how it is touched,
+    // when source says so. Both are optional: a lens generated before them stays valid.
+    layer: input.layer === undefined || input.layer === null ? null : (LAYERS.includes(input.layer) ? input.layer : fail(`${ref} layer ${input.layer} is unknown`)),
+    interactions: (input.interactions || []).map((value) => (ELEMENT_INTERACTIONS.includes(value) ? value : fail(`${ref} interaction ${value} is unknown`))),
     ownerRef: owner,
   };
 }
@@ -257,6 +266,8 @@ export function normalizeScreenLens(input) {
   for (const screen of screens) {
     const raw = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.realization;
     screen.realization = normalizeScreenRealization(raw, { screenRef: screen.screenRef, knownRefs: lensRefs });
+    const layout = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.layout;
+    screen.layout = normalizeScreenLayout(layout, { screenRef: screen.screenRef, elements: screen.elements });
   }
   const examples = normalizeExamples(input.examples, { knownRefs: lensRefs });
   const examplesHeld = (input.examplesHeld || []).map((entry) => ({ ref: optionalText(entry.ref, 'examplesHeld ref'), source: optionalText(entry.source, 'examplesHeld source'), reason: text(entry.reason, 'examplesHeld reason') }));

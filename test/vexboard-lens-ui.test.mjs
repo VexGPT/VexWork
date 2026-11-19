@@ -187,9 +187,10 @@ test('Surface realizes source-authored presentation rather than flattening it in
 });
 
 test('expression carousel preserves the lived desktop and phone-width interaction shape', () => {
-  assert.match(page, /class: 'xslot'/);
+  assert.match(page, /class: `xslot\$\{wide \? ' wide' : ''\}`/);
   assert.match(page, /class: `xpeek \$\{side\} kind-\$\{expression\.kind\}`/);
-  assert.match(page, /renderPhone\(expression, \{ interactive: false \}\)/);
+  assert.match(page, /renderScreenSurface\(expression, \{ interactive: false \}\)/);
+  assert.match(page, /const renderScreenSurface = \(expression, options\) => \(currentScreen\(\)\.layout \? renderWorkspace\(expression, options\) : renderPhone\(expression, options\)\)/, 'a screen without a layout keeps the phone carousel');
   assert.match(page, /function wireSwipe\(surface\)/);
   assert.match(page, /Math\.abs\(dx\) > 70/);
   assert.match(page, /event\.key === 'ArrowRight' \|\| event\.key === 'ArrowLeft'/);
@@ -256,4 +257,19 @@ test('nothing the lens adds on the surface covers a control: chips, opened overl
   assert.match(page, /body\.scrollTop \+= cover/, 'a sheet scrolls its opener above it');
   assert.match(page, /function bridgeExit\(/);
   assert.match(page, /if \(!crosses\(from\.midY, a\.right\)\) return direct;/, 'the bridge only detours when the side exit would cross a sibling');
+});
+
+test('a screen whose source authors a frame layout is drawn as a workspace, chosen from layout facts only', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-frames\.mjs'/);
+  assert.match(page, /function renderWorkspace\(expression, \{ interactive \}\)/);
+  assert.match(page, /const geometry = Frames\.frameGeometry\(frame\)/, 'regions, seams and handles sit where the layout puts them');
+  assert.doesNotMatch(page, /slug === 'vexlife-prod'|subject\.slug === ['"]vexlife/, 'no subject-name special case selects the realization');
+  // Every drawn frame, region, seam, handle and overlay is a Lens element: selectable and inspectable.
+  for (const marked of [/markElement\(line, elementOf\(seam\.ref\), marks\)/, /markElement\(handle, element, marks\)/, /markElement\(layer, element, marks\)/, /markElement\(node, elementOf\(frame\.ref\), marks\)/]) assert.match(page, marked);
+  // Each region scrolls on its own; a band far wider than tall lays its controls along its length.
+  assert.match(page, /class: `ws-scroll\$\{inline \? ' inline' : ''\}`/);
+  assert.match(page, /\.main\.wide\{grid-template-columns:minmax\(0,1\.6fr\) minmax\(0,1fr\)\}/);
+  assert.match(page, /\.workspace \.ws-region\{position:absolute/, 'region placement outranks the generic [data-ref] positioning');
+  assert.match(page, /function spatialBlock\(element\)/, 'the inspector says where a frame, seam, region or handle sits');
+  assert.match(page, /\['Touched by', element\.interactions/);
 });
