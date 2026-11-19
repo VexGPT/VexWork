@@ -9,6 +9,7 @@ import { renderExperienceReport } from '../src/core/experience-graph-report.mjs'
 import { experienceBoardGraph, lawFingerprint, normalizeExperienceGraph } from '../src/core/experience-graph.mjs';
 import { advanceBoardJourney, createBoardJourney } from '../src/shared/vexboard-journey.mjs';
 import { calculateBoardJourneyPathways } from '../src/shared/vexboard-journey-pathway-analysis.mjs';
+import { normalizeBoardGraph, normalizeBoardProjection } from '../src/shared/vexboard-model.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const json = (file) => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
@@ -168,7 +169,9 @@ test('current VexBoard inspection is generated from the graph without claiming a
   assert.equal(board.schemaVersion, 'vexboard.local-draft/v1');
   assert.equal(board.draftRef, 'board.vexlife-prod.experience-relationships.current');
   assert.equal(board.mode, 'READ_ONLY_SOURCE');
-  assert.equal(board.projection.layoutIntent, 'SWIMLANE');
+  const normalizedGraph = normalizeBoardGraph(board.graph);
+  const normalizedProjection = normalizeBoardProjection(board.projection, normalizedGraph);
+  assert.equal(normalizedProjection.layoutIntent, 'SWIMLANE');
   assert.ok(board.projection.items.every((item) => item.locked && item.visible));
   const refs = new Set(board.graph.nodes.map((node) => node.nodeRef));
   for (const family of INSPECTION_FAMILIES) assert.ok(refs.has(family), family);
