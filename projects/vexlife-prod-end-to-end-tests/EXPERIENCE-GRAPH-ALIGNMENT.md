@@ -369,7 +369,11 @@ Depth 07 is consumed evidence: outer/inner Relay transport passed and exact head
 
 The missing helper is repaired at `ffe2a4f766429979ebe0be4ba8b82ff414a292af` (tree `5f9bd93ea7cb2736ce0938357f47554ebc55e105`) by defining the SHA-256 helper already called by the law-probe currentness path.
 
-The next unconsumed edge is **Depth 07B: rerun the same non-mutating generated-drift discovery against the repaired exact head**. Generated Experience Graph currentization remains held until that run returns an actual drift set.
+Depth 07B is consumed evidence: the source-owned generator reached its intended comparison and returned canonical `experience graph drift:` output at exact head `ffe2a4f766429979ebe0be4ba8b82ff414a292af` / tree `5f9bd93ea7cb2736ce0938357f47554ebc55e105`. No source/provider mutation occurred and no first substantive failure was recorded.
+
+The exact generated-currentization membrane is 19 paths: the main graph/frontier/routes/perturbations/convergence, law-probe plan, law-proof, EXPERIENCE-GRAPH report; three graph/frontier/routes files for each of the three candidate builds; and branches.json / BRANCHES.md. The generated Kotlin probe source is not in the drift set.
+
+The next unconsumed edge is **Depth 08: mutate only those 19 generator-owned paths on the existing #321, prove focused tests + offline verify, make one signed-off commit, and non-force push only if every exact preflight/path predicate remains true**.
 
 ## Fresh reviewer handoff rule
 
