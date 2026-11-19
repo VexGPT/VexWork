@@ -145,7 +145,7 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
       elementRef: 'element.debug-menu.split-handle',
       targetRef: 'screen.debug-menu',
       beforeRef: 'element.debug-menu.body.dark-mode',
-      afterRef: 'element.debug-menu.body.reset-log',
+      afterRef: 'element.debug-menu.body.log-history.actions.reset',
       styleProperty: '--before',
       collapsedAttribute: 'data-collapsed',
       collapsedBeforeValue: 'before',
