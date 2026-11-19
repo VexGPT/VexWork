@@ -285,6 +285,13 @@ test('a source-owned static view is mounted generically and bound through stable
   assert.match(page, /function applyStaticViewStateBindings\(doc, view, resolved\)/, 'Product-authored state bindings realize source-derived presentation without Product-specific VexWork logic');
   assert.match(page, /resolved\?\.presence\?\.get\(binding\.presenceRef\)/);
   assert.match(page, /operation\.op === 'SET_ATTRIBUTE'/);
+  assert.match(page, /function renderStaticSplitControl\(binding\)/, 'a selected split handle gets a discoverable Product-spatial phase control');
+  assert.match(page, /Browser-local spatial projection; Product state is unchanged/);
+  assert.match(page, /function bindStaticSplitInteractions\(doc, view\)/);
+  assert.match(page, /handle\.addEventListener\('pointermove'/, 'the real Product handle can be dragged');
+  assert.match(page, /target\.style\.setProperty\(binding\.styleProperty/, 'dragging writes only the Product-exported CSS custom property');
+  assert.match(page, /target\.setAttribute\(binding\.collapsedAttribute, binding\.collapsedAfterValue\)/);
+  assert.match(page, /target\.setAttribute\(binding\.collapsedAttribute, binding\.collapsedBeforeValue\)/);
   assert.match(page, /candidate\.node\.matches\(rule\.selector\)/, 'CSS relationships come from browser selector matching');
   assert.match(page, /declarations: rule\.style\.cssText/, 'the Product rule block stays inspectable without becoming VexBoard rendering authority');
   assert.match(page, /h\('h3', \{\}, 'Presentation rules'\)/);
