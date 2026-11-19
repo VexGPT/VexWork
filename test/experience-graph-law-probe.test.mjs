@@ -80,7 +80,18 @@ test('law evidence passes when executed outcomes land inside the graph and fails
     row('VexLifeReviewFamily', 'Pending', 'Keep', { admitted: null, effect: 'Accept' }),
     row('VexLifeGatewayFamily', 'HostHeld', 'Cancel', { error: 'IllegalArgumentException: needs a reason' }),
   ];
-  const proof = compareLawEvidence({ graph, derivation, evidence: evidenceFor(graph, rows) });
+  const evidence = evidenceFor(graph, rows);
+  assert.equal(
+    compareLawEvidence({ graph, derivation, evidence }).current,
+    false,
+    'law evidence cannot be called current without the identity of the probe being compared',
+  );
+  const proof = compareLawEvidence({
+    graph,
+    derivation,
+    evidence,
+    currentProbeSourceSha256: evidence.probeSourceSha256,
+  });
   assert.equal(proof.current, true);
   const status = (state, control) => proof.cells.find((cell) => cell.state === state && cell.control === control).status;
   assert.equal(status('VexLifeSightFamily.Ready', 'VexLifeSightFamily.Engage'), 'PASS');
@@ -152,10 +163,20 @@ test('law evidence is bound to the Family law it exercised, not to presentation 
   const presentation = normalizeExperienceGraph({ ...graph, edges: graph.edges.filter((edge) => edge.kind !== 'MANIFESTS') });
   assert.notEqual(presentation.fingerprint, graph.fingerprint);
   assert.equal(lawFingerprint(presentation), lawFingerprint(graph));
-  assert.equal(compareLawEvidence({ graph: presentation, derivation, evidence }).current, true);
+  assert.equal(compareLawEvidence({
+    graph: presentation,
+    derivation,
+    evidence,
+    currentProbeSourceSha256: evidence.probeSourceSha256,
+  }).current, true);
   // Older evidence without a law fingerprint still binds to the whole graph.
   const { lawFingerprint: omitted, ...legacy } = evidence;
   void omitted;
-  assert.equal(compareLawEvidence({ graph: presentation, derivation, evidence: legacy }).current, false);
+  assert.equal(compareLawEvidence({
+    graph: presentation,
+    derivation,
+    evidence: legacy,
+    currentProbeSourceSha256: evidence.probeSourceSha256,
+  }).current, false);
   assert.throws(() => compareLawEvidence({ graph, derivation, evidence: { schemaVersion: 'x' } }), /law evidence schema mismatch/);
 });
