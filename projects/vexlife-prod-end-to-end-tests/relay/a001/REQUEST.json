@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "vexwork.vexrelay-host-formation-request/v1",
+  "continuity": "[VXG RealForever]",
+  "candidate": {
+    "repository": "VexGPT/VexWork",
+    "cloneUrl": "https://github.com/VexGPT/VexWork.git",
+    "baseBranch": "VXG-111826-vexlife-prod-e2e-project-a001",
+    "baseHead": "e2bac13de991b5e7bc5160837e695ccce81e9575",
+    "branch": "VXG-111826-vexlife-prod-e2e-chatgpt-a001",
+    "head": "bb226e9f0f7412564b66627e2b5f7b0579929373",
+    "tree": "ae643221f7ed34e0cfd5f4f0cc991a5b0ac57dae",
+    "pullRequest": 320,
+    "changedPaths": [
+      "projects/vexlife-prod-end-to-end-tests/relationship-graph.mjs",
+      "projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json",
+      "test/vexlife-prod-e2e-relationship-graph.test.mjs"
+    ]
+  },
+  "sdk": {
+    "repository": "vgong24/Vextreme-SDK",
+    "head": "8543c7d755faba04d4c4019c02e84f992667918a",
+    "tree": "6376f68279f0750ee6d3868b8472368199763064",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof"
+  },
+  "proofCommands": [
+    {
+      "command": "node",
+      "args": [
+        "--test",
+        "test/vexlife-prod-e2e-relationship-graph.test.mjs"
+      ],
+      "predicateClass": "SOURCE_OWNER_BEHAVIOR",
+      "predicateRef": "predicate.vexwork.vexlife-prod-e2e.relationship-graph.focused-test",
+      "proofClass": "TEST",
+      "acceptedExitCodes": [
+        0
+      ],
+      "timeoutMs": 600000
+    },
+    {
+      "command": "npm",
+      "args": [
+        "run",
+        "review"
+      ],
+      "predicateClass": "SOURCE_OWNER_REPOSITORY",
+      "predicateRef": "predicate.vexwork.vexlife-prod-e2e.repository-review",
+      "proofClass": "TEST",
+      "acceptedExitCodes": [
+        0
+      ],
+      "timeoutMs": 1200000
+    }
+  ]
+}
