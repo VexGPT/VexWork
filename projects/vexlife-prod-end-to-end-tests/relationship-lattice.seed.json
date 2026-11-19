@@ -4,21 +4,13 @@
   "projectRef": "project.vexlife-prod.end-to-end-tests",
   "purpose": "Read-only experience-validation map over existing Product coordinates and exact source symbols. It does not mint parallel feature/relationship identities. VexLife-Prod and VexArchitecture sources remain the owners of Family, State, Control, Act, Effect, observation, realization and projection meaning.",
   "sourceBindings": {
-    "vexlifeProdMain": "605c635ae2d034a1c4d605e829faa4813de071c3",
+    "vexlifeProdMain": "fb4ea859949f2fcba47bf55857669df37d2730ce",
     "vexWorkMain": "d70da76d9f95645ee83dc09c7cf7384b6c572cf5",
     "vexLifeAndroidMain": "d857a92371555472e0303b18eadf353da2a868d6",
     "activeCandidates": [
       {
-        "ref": "github.pull.vexlife-prod.251",
-        "meaning": "Vex Context / Context Profiles"
-      },
-      {
-        "ref": "github.pull.vexlife-prod.310",
-        "meaning": "VoiceInput / local ASR"
-      },
-      {
-        "ref": "github.pull.vexlife-prod.331",
-        "meaning": "reply-language scripts / Composer output"
+        "ref": "github.pull.vexlife-prod.343",
+        "meaning": "E2E validation excavation / current Product coverage map"
       },
       {
         "ref": "github.pull.vexwork.298",
@@ -263,9 +255,9 @@
     {
       "coordinate": "VexLifeContextProfileFamily",
       "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
-      "disposition": "ACTIVE_CANDIDATE",
+      "disposition": "CURRENT_MAIN",
       "sourcePath": "src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt",
-      "sourceRef": "github.pull.vexlife-prod.251",
+      "sourceRef": null,
       "stateRefs": [
         "PRODUCT_DEFAULT",
         "SAVED"
@@ -341,9 +333,9 @@
     {
       "coordinate": "DirectPromptContext",
       "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
-      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_EVOLUTION",
+      "disposition": "CURRENT_MAIN",
       "sourceRef": null,
-      "humanMeaning": "Exact provider materialization and receipt; #251/#331 add active relationships."
+      "humanMeaning": "Exact provider materialization and receipt, including current-main Context Profile capture and reply-language/turn-context relationships."
     },
     {
       "coordinate": "VexLifeCurrentMemoryProviderSelection",
@@ -367,11 +359,12 @@
       "humanMeaning": "Bounded long-conversation continuity / rollover relationship."
     },
     {
-      "coordinate": "Vex Context",
-      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
-      "disposition": "ACTIVE_CANDIDATE",
-      "sourceRef": "github.pull.vexlife-prod.251",
-      "humanMeaning": "Human-readable convergence of exact completed-turn context owners; not a second context truth owner."
+      "coordinate": "element.vexlife-workspace.browser.vex-context",
+      "coordinateClass": "ELEMENT",
+      "disposition": "CURRENT_MAIN",
+      "sourceRef": null,
+      "humanMeaning": "Human-readable Vex Context projection of exact completed-turn and next-Send context relationships; not a second context truth owner.",
+      "sourcePath": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt"
     },
     {
       "coordinate": "VexLifeProdScreenLens",
@@ -449,6 +442,42 @@
       "currentProjection": null,
       "investigationNote": null,
       "journeyRefs": []
+    },
+    {
+      "coordinate": "element.vexlife-workspace.companion.vision",
+      "coordinateClass": "ELEMENT",
+      "disposition": "CURRENT_MAIN",
+      "sourcePath": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+      "humanMeaning": "Choose or release the window selected for Vision through the current Vision Family relationship.",
+      "relatedCoordinates": [
+        "pathway.vexlife-prod.vision.selected-scope",
+        "VexLifeVisionFamily"
+      ],
+      "availabilityPredicates": [],
+      "currentLimitation": null,
+      "currentProjection": "pathway.vexlife-prod.vision.selected-scope",
+      "investigationNote": null,
+      "journeyRefs": [
+        "journey.vision.engage-stop"
+      ]
+    },
+    {
+      "coordinate": "pathway.vexlife-prod.vision.selected-scope",
+      "coordinateClass": "PATHWAY",
+      "disposition": "CURRENT_MAIN",
+      "sourcePath": "src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
+      "humanMeaning": "Current Product Screen Lens projection of the Vision Family selected-scope relationship.",
+      "relatedCoordinates": [
+        "element.vexlife-workspace.companion.vision",
+        "VexLifeVisionFamily"
+      ],
+      "availabilityPredicates": [],
+      "currentLimitation": null,
+      "currentProjection": "SCAE_FAMILY",
+      "investigationNote": null,
+      "journeyRefs": [
+        "journey.vision.engage-stop"
+      ]
     }
   ],
   "familyLawRows": [
@@ -468,7 +497,9 @@
         "ENGAGED",
         "HELD"
       ],
-      "projection": "VexLifeVisionFamily.displayStateFor(observed State)"
+      "projection": "VexLifeVisionFamily.displayStateFor(observed State)",
+      "realizationRef": "VexLifeProdVisionRuntime",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/vision/VexLifeProdVisionRuntime.kt"
     },
     {
       "family": "VexLifeVisionFamily",
@@ -485,7 +516,9 @@
         "READY",
         "HELD"
       ],
-      "projection": "VexLifeVisionFamily.displayStateFor(observed State)"
+      "projection": "VexLifeVisionFamily.displayStateFor(observed State)",
+      "realizationRef": "VexLifeProdVisionRuntime",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/vision/VexLifeProdVisionRuntime.kt"
     },
     {
       "family": "VexLifeMemoryReviewFamily",
@@ -501,7 +534,10 @@
       "possibleObservedSuccessors": [
         "Review may become Idle through owner realization; accepted semantic Memory becomes independently observable"
       ],
-      "projection": "Memory review / Memory projections from their rightful owners"
+      "projection": "Memory review / Memory projections from their rightful owners",
+      "observationRef": "VexLifeMemoryReviewOwner.observe",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/memory/VexLifeMemoryReviewOwner.kt",
+      "realizationRef": "VexLifeMemoryReviewOwner.keep"
     },
     {
       "family": "VexLifeMemoryReviewFamily",
@@ -517,7 +553,10 @@
       "possibleObservedSuccessors": [
         "Idle or later Pending according to rightful owner"
       ],
-      "projection": "Memory review projection"
+      "projection": "Memory review projection",
+      "observationRef": "VexLifeMemoryReviewOwner.observe",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/memory/VexLifeMemoryReviewOwner.kt",
+      "realizationRef": "VexLifeMemoryReviewOwner.writeDecisionAndResolve"
     },
     {
       "family": "VexLifeMemoryReviewFamily",
@@ -533,7 +572,10 @@
       "possibleObservedSuccessors": [
         "Idle"
       ],
-      "projection": "Memory review projection"
+      "projection": "Memory review projection",
+      "observationRef": "VexLifeMemoryReviewOwner.observe",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/memory/VexLifeMemoryReviewOwner.kt",
+      "realizationRef": "VexLifeMemoryReviewOwner.writeDecisionAndResolve"
     }
   ],
   "crossOwnerRows": [
@@ -603,7 +645,7 @@
     {
       "from": "VexLifeContextProfileFamily",
       "to": "DirectPromptContext",
-      "disposition": "ACTIVE_CANDIDATE",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "CAPTURED_AT_SEND",
       "humanMeaning": "The active Context Profile revision is captured when Send is accepted and stays fixed through provider stages of that turn."
     },
@@ -630,8 +672,8 @@
     },
     {
       "from": "DirectCompanionTurn",
-      "to": "Vex Context",
-      "disposition": "ACTIVE_CANDIDATE",
+      "to": "element.vexlife-workspace.browser.vex-context",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "COMPLETED_RECEIPT_PROJECTED",
       "humanMeaning": "Vex Context should show what the completed turn actually received/processed/said without rewriting historical receipts."
     },
@@ -648,6 +690,20 @@
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "OPTIONAL_CURRENT_PAGE_CONTEXT",
       "humanMeaning": "The visible ContextShare control is available only when current page identity/context is lawfully known; when included, the next ordinary Send may carry the exact normalized browser context into prompt materialization."
+    },
+    {
+      "from": "VexLifeMemoryReviewOwner.keep",
+      "to": "VexLifeSemanticAcceptanceWriter.keepWithConversationLease",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
+      "kind": "CONSUMED_BY",
+      "humanMeaning": "Keeping an accepted review crosses from the Memory Review owner into the semantic-acceptance writer while the canonical Conversation lease remains held."
+    },
+    {
+      "from": "VexLifeSemanticAcceptanceWriter.keepWithConversationLease",
+      "to": "VexLifeScoreContinuity.appendAcceptedStatement",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
+      "kind": "CONSUMED_BY",
+      "humanMeaning": "After semantic acceptance is current, the accepted statement is admitted into current Score continuity without making Memory Review the Score owner."
     }
   ],
   "surfaceBindings": [
@@ -671,7 +727,8 @@
           "DirectPromptContext.Receipt.browserContextIncluded"
         ]
       },
-      "note": "The elementRef is the stable surface address. It is not itself the semantic law. Current Blueprint local-interaction binding is shallower than the runtime relationship and is an explicit Screen Lens/projectability investigation edge."
+      "note": "The elementRef is the stable surface address. It is not itself the semantic law. Current Blueprint local-interaction binding is shallower than the runtime relationship and is an explicit Screen Lens/projectability investigation edge.",
+      "currentPathwayRef": "pathway.vexlife-prod.local.companion.conversation.context-share"
     },
     {
       "elementRef": "element.vexlife-workspace.companion.conversation.send",
@@ -681,6 +738,20 @@
       "downstreamCoordinates": [
         "DirectPromptContext",
         "DirectConversationStore"
+      ]
+    },
+    {
+      "elementRef": "element.vexlife-workspace.companion.vision",
+      "currentPathwayRef": "pathway.vexlife-prod.vision.selected-scope",
+      "semanticOwner": "VexLifeVisionFamily",
+      "humanControlMeaning": "Use the lawful current Vision control: choose a window when READY, or release the selected/held window when STOP is offered.",
+      "downstreamCoordinates": [
+        "VexLifeVisionFamily.Control",
+        "VexLifeVisionFamily.Effect",
+        "VexLifeProdVisionRuntime",
+        "VexLifeVisionFamily.observe",
+        "VexLifeVisionFamily.State",
+        "VexLifeVisionFamily.displayStateFor"
       ]
     }
   ],
@@ -754,22 +825,19 @@
     {
       "journeyRef": "journey.context.profile-next-turn",
       "shardRef": "workspace-context",
-      "disposition": "ACTIVE_CANDIDATE",
-      "sourceRef": "github.pull.vexlife-prod.251",
+      "disposition": "CURRENT_FOCUSED",
       "humanOutcome": "Change Context Profile and prove the accepted turn keeps its captured profile while later changes apply only to the next Send."
     },
     {
       "journeyRef": "journey.language.reply-switch-history",
       "shardRef": "voice-language",
-      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_VEX_CONTEXT_PROJECTION",
-      "sourceRef": "github.pull.vexlife-prod.251",
+      "disposition": "CURRENT_MAIN",
       "humanOutcome": "Speak/send across reply-language changes and prove current turn behavior changes without rewriting historical turn context."
     },
     {
       "journeyRef": "journey.voice.spoken-composer-reply-separation",
       "shardRef": "voice-language",
-      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_VEX_CONTEXT_PROJECTION",
-      "sourceRef": "github.pull.vexlife-prod.251",
+      "disposition": "CURRENT_MAIN",
       "humanOutcome": "Speak Chinese, optionally translate Composer text to English, while independently asking Vex to reply in Simplified/Traditional Chinese and projecting the distinctions truthfully in Vex Context."
     },
     {
@@ -796,7 +864,8 @@
       "humanOutcome": "After unexpected internal navigation in the embedded cross-origin page, stale page identity/context is cleared, Include this page becomes unavailable, the human is told the current address is unavailable, and no stale page context is sent.",
       "coordinateRefs": [
         "element.vexlife-workspace.companion.conversation.context-share",
-        "pathway.vexlife-prod.local.companion.conversation.context-share"
+        "pathway.vexlife-prod.local.companion.conversation.context-share",
+        "pathway.vexlife-prod.conversation.send"
       ]
     },
     {
@@ -1036,9 +1105,9 @@
         "VexLifeLocalAsrComposerOutput",
         "VexLifePersonSettings",
         "DirectPromptContext",
-        "Vex Context"
+        "element.vexlife-workspace.browser.vex-context"
       ],
-      "disposition": "CURRENT_MAIN_WITH_ACTIVE_VEX_CONTEXT_PROJECTION",
+      "disposition": "CURRENT_MAIN",
       "pattern": "independent current truths converge at accepted Send; completed receipt remains immutable across later changes",
       "prevents": [
         "generic_language_state",
@@ -1163,7 +1232,7 @@
       },
       {
         "source": "VexLifeVoiceInputFamily",
-        "disposition": "ACTIVE_CANDIDATE",
+        "disposition": "CURRENT_MAIN",
         "semantics": [
           "READY+START -> REQUESTING_MICROPHONE",
           "REQUESTING_MICROPHONE+STOP -> STOPPING",
@@ -1354,8 +1423,12 @@
   },
   "currentness": {
     "observedAt": "2026-11-18",
-    "vexLifeProdMain": "98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0",
+    "vexLifeProdMain": "fb4ea859949f2fcba47bf55857669df37d2730ce",
     "mergedPressure": {
+      "251": {
+        "state": "MERGED",
+        "mergeCommit": "8e2e2999ed6c3d832af1f28b4f916a01a0f95c10"
+      },
       "310": {
         "state": "MERGED",
         "mergeCommit": "3120a7535f5c9095735c6880f6dd0119ec39a7a8"
@@ -1366,10 +1439,6 @@
       }
     },
     "activePressure": {
-      "251": {
-        "state": "OPEN_DRAFT",
-        "head": "7477e1a32a4c27289a97c33aee8e1e67c63a64c1"
-      },
       "343": {
         "state": "OPEN_DRAFT",
         "head": "78c6fe406fa223ddf0034295734c39d7db2558f5"
