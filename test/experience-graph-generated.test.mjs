@@ -98,7 +98,8 @@ test('branch dynamics: candidates are projected against preserved main and say w
   for (const row of branches.candidates) {
     assert.equal(row.basisCommit, plan.commit);
     assert.equal(row.routeFlips.filter((flip) => flip.from === 'CLEARED').length, 0, `${row.buildRef} regresses no CLEARED route`);
-    assert.equal(row.lawProofReusable, true, `${row.buildRef} leaves Family law unchanged, so main's executed proof still holds`);
+    // A candidate that adds or changes Family law cannot borrow main's executed proof.
+    assert.equal(row.lawProofReusable, row.familiesAdded.length === 0 && row.familiesRemoved.length === 0 && row.edges.changed.length === 0, row.buildRef);
     assert.equal(json(buildOutputs(row.buildRef).graph).source.commit, row.commit);
   }
   const keyed = by['candidate-keyed-elements'];
@@ -107,7 +108,15 @@ test('branch dynamics: candidates are projected against preserved main and say w
   for (const kind of ['DATAKEY_ANCHOR_NOT_IN_MAIN', 'FAMILY_READS_WIRE_STRING', 'TYPED_REF_BYPASSED', 'LITERAL_SHADOWS_CONSTANT', 'DATAKEY_UNRESOLVED']) assert.ok(keyed.debt.resolvedByKind[kind] > 0, kind);
   const localization = by['candidate-localization'];
   assert.equal(localization.verdict, 'IMPROVES_MAIN');
-  assert.deepEqual(localization.debt.resolvedByKind, { LANGUAGE_INCOMPLETE: 2, PARTIAL_LANGUAGE_SERVED: 1, SCRIPT_COLLAPSE: 1 });
+  assert.equal(localization.lawProofReusable, false, 'a new Family needs its own executed proof');
+  assert.equal(keyed.lawProofReusable, true);
+  assert.deepEqual(localization.debt.resolvedByKind, { LANGUAGE_INCOMPLETE: 2, MISSING_CONTROL_LAW: 1, PARTIAL_LANGUAGE_SERVED: 1, SCRIPT_COLLAPSE: 1 });
+  // The two language choices become VexLifeLanguageFamily: six new routes, every one CLEARED.
+  assert.deepEqual(localization.familiesAdded, ['VexLifeLanguageFamily']);
+  const languageRoutes = json(buildOutputs('candidate-localization').routes).routes.filter((route) => route.routeRef.startsWith('route:VexLifeLanguageFamily.'));
+  assert.equal(languageRoutes.length, 6);
+  assert.ok(languageRoutes.every((route) => route.status === 'CLEARED'));
+  assert.equal(localization.routeCounts.candidate.CLEARED, localization.routeCounts.main.CLEARED + 6);
   assert.equal(by['candidate-design-foundation'].verdict, 'NO_GRAPH_CHANGE', 'presentation-only: its law is held by the Product\'s own token test');
 });
 

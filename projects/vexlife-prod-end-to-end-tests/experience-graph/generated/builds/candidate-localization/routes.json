@@ -1,8 +1,8 @@
 {
   "schemaVersion": "vexwork.experience-graph.derivation/v1",
-  "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85",
+  "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c",
   "counts": {
-    "CLEARED": 13,
+    "CLEARED": 19,
     "FRONTIER_DEBT": 53,
     "HELD": 0,
     "UNKNOWN": 0
@@ -37,6 +37,17 @@
         "route:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0",
         "route:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0",
         "route:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0"
+      ]
+    },
+    {
+      "family": "VexLifeLanguageFamily",
+      "routeRefs": [
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+        "route:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0"
       ]
     },
     {
@@ -1334,6 +1345,463 @@
         }
       ],
       "explanation": "<subject:user>\n  -> <element:key:workspace.button.diagnostics-stop-enhanced>\n  -> <state:RECORDING_ENHANCED>\n  -> <control:STOP_ENHANCED>\n  -> <effect:EndEnhancedCapture>\n  -> <realized-by:VexLifeDiagnostics + VexChronologyFile>\n  -> <observed:Recording | RecordingEnhanced>\n  -> <projection:key:workspace.status.diagnostics-enhanced-off>"
+    },
+    {
+      "routeRef": "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+      "family": "VexLifeLanguageFamily",
+      "pathwayRef": "pathway.vexlife-prod.person.reply-language",
+      "status": "CLEARED",
+      "missing": [],
+      "steps": [
+        {
+          "step": "PRECONDITION",
+          "coordinate": "VexLifeLanguageFamily.FollowingReplies",
+          "guards": [
+            "!(control.code == currentState.replyLanguage)"
+          ],
+          "executionClass": "A"
+        },
+        {
+          "step": "HUMAN_ACTION",
+          "coordinate": "VexLifeLanguageFamily.ChooseReplyLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.reply-language"
+          ],
+          "executionClass": "C"
+        },
+        {
+          "step": "ACT",
+          "coordinate": "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:FollowingReplies:1",
+          "act": {
+            "kind": "ADMIT",
+            "admittedState": "VexLifeLanguageFamily.FollowingReplies",
+            "axisUpdates": {},
+            "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+          },
+          "executionClass": "A"
+        },
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "owners": [
+            "VexLifeProdLocalService",
+            "VexLifeProdSetupLanguage",
+            "VexLifePersonSettingsStore"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "observations": [
+            "VexLifeLanguageFamily.stateFor",
+            "VexLifeProdLocalService.languageState"
+          ],
+          "successors": [
+            "VexLifeLanguageFamily.FollowingReplies",
+            "VexLifeLanguageFamily.ScreenChosen"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "states": [
+            {
+              "state": "VexLifeLanguageFamily.FollowingReplies",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            },
+            {
+              "state": "VexLifeLanguageFamily.ScreenChosen",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            }
+          ],
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language"
+          ],
+          "executionClass": "A"
+        }
+      ],
+      "explanation": "<subject:user>\n  -> <element:element.vexlife-workspace.header.utilities.language-panel.reply-language>\n  -> <state:FOLLOWING_REPLIES>[!(control.code == currentState.replyLanguage)]\n  -> <control:CHOOSE_REPLY_LANGUAGE>\n  -> <admit:FollowingReplies>\n  -> <effect:SaveChoices>\n  -> <realized-by:VexLifeProdLocalService + VexLifeProdSetupLanguage + VexLifePersonSettingsStore>\n  -> <observed:FollowingReplies | ScreenChosen>\n  -> <projection:element.vexlife-workspace.header.utilities.language-panel.reply-language>"
+    },
+    {
+      "routeRef": "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+      "family": "VexLifeLanguageFamily",
+      "pathwayRef": "pathway.vexlife-prod.person.reply-language",
+      "status": "CLEARED",
+      "missing": [],
+      "steps": [
+        {
+          "step": "PRECONDITION",
+          "coordinate": "VexLifeLanguageFamily.FollowingReplies",
+          "guards": [],
+          "executionClass": "A"
+        },
+        {
+          "step": "HUMAN_ACTION",
+          "coordinate": "VexLifeLanguageFamily.ChooseScreenLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.screen-language"
+          ],
+          "executionClass": "C"
+        },
+        {
+          "step": "ACT",
+          "coordinate": "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:FollowingReplies:0",
+          "act": {
+            "kind": "ADMIT",
+            "admittedState": "VexLifeLanguageFamily.ScreenChosen",
+            "axisUpdates": {},
+            "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+          },
+          "executionClass": "A"
+        },
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "owners": [
+            "VexLifeProdLocalService",
+            "VexLifeProdSetupLanguage",
+            "VexLifePersonSettingsStore"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "observations": [
+            "VexLifeLanguageFamily.stateFor",
+            "VexLifeProdLocalService.languageState"
+          ],
+          "successors": [
+            "VexLifeLanguageFamily.FollowingReplies",
+            "VexLifeLanguageFamily.ScreenChosen"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "states": [
+            {
+              "state": "VexLifeLanguageFamily.FollowingReplies",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            },
+            {
+              "state": "VexLifeLanguageFamily.ScreenChosen",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            }
+          ],
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language"
+          ],
+          "executionClass": "A"
+        }
+      ],
+      "explanation": "<subject:user>\n  -> <element:element.vexlife-workspace.header.utilities.language-panel.reply-language>\n  -> <state:FOLLOWING_REPLIES>\n  -> <control:CHOOSE_SCREEN_LANGUAGE>\n  -> <admit:ScreenChosen>\n  -> <effect:SaveChoices>\n  -> <realized-by:VexLifeProdLocalService + VexLifeProdSetupLanguage + VexLifePersonSettingsStore>\n  -> <observed:FollowingReplies | ScreenChosen>\n  -> <projection:element.vexlife-workspace.header.utilities.language-panel.reply-language>"
+    },
+    {
+      "routeRef": "route:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+      "family": "VexLifeLanguageFamily",
+      "pathwayRef": "pathway.vexlife-prod.person.reply-language",
+      "status": "CLEARED",
+      "missing": [],
+      "steps": [
+        {
+          "step": "PRECONDITION",
+          "coordinate": "VexLifeLanguageFamily.FollowingReplies",
+          "guards": [],
+          "executionClass": "A"
+        },
+        {
+          "step": "HUMAN_ACTION",
+          "coordinate": "VexLifeLanguageFamily.FollowReplyLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.screen-language-follow"
+          ],
+          "executionClass": "C"
+        },
+        {
+          "step": "ACT",
+          "coordinate": "edge:OFFERS:VexLifeLanguageFamily.FollowingReplies:VexLifeLanguageFamily.FollowReplyLanguage",
+          "act": {
+            "kind": "STAY",
+            "admittedState": null,
+            "axisUpdates": {},
+            "effect": null
+          },
+          "executionClass": "A"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "states": [
+            {
+              "state": "VexLifeLanguageFamily.FollowingReplies",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            }
+          ],
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language"
+          ],
+          "executionClass": "A"
+        }
+      ],
+      "explanation": "<subject:user>\n  -> <element:element.vexlife-workspace.header.utilities.language-panel.reply-language>\n  -> <state:FOLLOWING_REPLIES>\n  -> <control:FOLLOW_REPLY_LANGUAGE>\n  -> <projection:element.vexlife-workspace.header.utilities.language-panel.reply-language>"
+    },
+    {
+      "routeRef": "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+      "family": "VexLifeLanguageFamily",
+      "pathwayRef": "pathway.vexlife-prod.person.reply-language",
+      "status": "CLEARED",
+      "missing": [],
+      "steps": [
+        {
+          "step": "PRECONDITION",
+          "coordinate": "VexLifeLanguageFamily.ScreenChosen",
+          "guards": [
+            "!(control.code == currentState.replyLanguage)"
+          ],
+          "executionClass": "A"
+        },
+        {
+          "step": "HUMAN_ACTION",
+          "coordinate": "VexLifeLanguageFamily.ChooseReplyLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.reply-language"
+          ],
+          "executionClass": "C"
+        },
+        {
+          "step": "ACT",
+          "coordinate": "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:1",
+          "act": {
+            "kind": "ADMIT",
+            "admittedState": "VexLifeLanguageFamily.ScreenChosen",
+            "axisUpdates": {
+              "replyLanguage": "control.code"
+            },
+            "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+          },
+          "executionClass": "A"
+        },
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "owners": [
+            "VexLifeProdLocalService",
+            "VexLifeProdSetupLanguage",
+            "VexLifePersonSettingsStore"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "observations": [
+            "VexLifeLanguageFamily.stateFor",
+            "VexLifeProdLocalService.languageState"
+          ],
+          "successors": [
+            "VexLifeLanguageFamily.FollowingReplies",
+            "VexLifeLanguageFamily.ScreenChosen"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "states": [
+            {
+              "state": "VexLifeLanguageFamily.FollowingReplies",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            },
+            {
+              "state": "VexLifeLanguageFamily.ScreenChosen",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            }
+          ],
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language"
+          ],
+          "executionClass": "A"
+        }
+      ],
+      "explanation": "<subject:user>\n  -> <element:element.vexlife-workspace.header.utilities.language-panel.reply-language>\n  -> <state:SCREEN_CHOSEN>[!(control.code == currentState.replyLanguage)]\n  -> <control:CHOOSE_REPLY_LANGUAGE>\n  -> <admit:ScreenChosen>\n  -> <effect:SaveChoices>\n  -> <realized-by:VexLifeProdLocalService + VexLifeProdSetupLanguage + VexLifePersonSettingsStore>\n  -> <observed:FollowingReplies | ScreenChosen>\n  -> <projection:element.vexlife-workspace.header.utilities.language-panel.reply-language>"
+    },
+    {
+      "routeRef": "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+      "family": "VexLifeLanguageFamily",
+      "pathwayRef": "pathway.vexlife-prod.person.reply-language",
+      "status": "CLEARED",
+      "missing": [],
+      "steps": [
+        {
+          "step": "PRECONDITION",
+          "coordinate": "VexLifeLanguageFamily.ScreenChosen",
+          "guards": [
+            "!(control.code == currentState.screenLanguage)"
+          ],
+          "executionClass": "A"
+        },
+        {
+          "step": "HUMAN_ACTION",
+          "coordinate": "VexLifeLanguageFamily.ChooseScreenLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.screen-language"
+          ],
+          "executionClass": "C"
+        },
+        {
+          "step": "ACT",
+          "coordinate": "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:1",
+          "act": {
+            "kind": "ADMIT",
+            "admittedState": "VexLifeLanguageFamily.ScreenChosen",
+            "axisUpdates": {
+              "screenLanguage": "control.code"
+            },
+            "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+          },
+          "executionClass": "A"
+        },
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "owners": [
+            "VexLifeProdLocalService",
+            "VexLifeProdSetupLanguage",
+            "VexLifePersonSettingsStore"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "observations": [
+            "VexLifeLanguageFamily.stateFor",
+            "VexLifeProdLocalService.languageState"
+          ],
+          "successors": [
+            "VexLifeLanguageFamily.FollowingReplies",
+            "VexLifeLanguageFamily.ScreenChosen"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "states": [
+            {
+              "state": "VexLifeLanguageFamily.FollowingReplies",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            },
+            {
+              "state": "VexLifeLanguageFamily.ScreenChosen",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            }
+          ],
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language"
+          ],
+          "executionClass": "A"
+        }
+      ],
+      "explanation": "<subject:user>\n  -> <element:element.vexlife-workspace.header.utilities.language-panel.reply-language>\n  -> <state:SCREEN_CHOSEN>[!(control.code == currentState.screenLanguage)]\n  -> <control:CHOOSE_SCREEN_LANGUAGE>\n  -> <admit:ScreenChosen>\n  -> <effect:SaveChoices>\n  -> <realized-by:VexLifeProdLocalService + VexLifeProdSetupLanguage + VexLifePersonSettingsStore>\n  -> <observed:FollowingReplies | ScreenChosen>\n  -> <projection:element.vexlife-workspace.header.utilities.language-panel.reply-language>"
+    },
+    {
+      "routeRef": "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0",
+      "family": "VexLifeLanguageFamily",
+      "pathwayRef": "pathway.vexlife-prod.person.reply-language",
+      "status": "CLEARED",
+      "missing": [],
+      "steps": [
+        {
+          "step": "PRECONDITION",
+          "coordinate": "VexLifeLanguageFamily.ScreenChosen",
+          "guards": [],
+          "executionClass": "A"
+        },
+        {
+          "step": "HUMAN_ACTION",
+          "coordinate": "VexLifeLanguageFamily.FollowReplyLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.screen-language-follow"
+          ],
+          "executionClass": "C"
+        },
+        {
+          "step": "ACT",
+          "coordinate": "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.FollowReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:0",
+          "act": {
+            "kind": "ADMIT",
+            "admittedState": "VexLifeLanguageFamily.FollowingReplies",
+            "axisUpdates": {},
+            "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+          },
+          "executionClass": "A"
+        },
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "owners": [
+            "VexLifeProdLocalService",
+            "VexLifeProdSetupLanguage",
+            "VexLifePersonSettingsStore"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "observations": [
+            "VexLifeLanguageFamily.stateFor",
+            "VexLifeProdLocalService.languageState"
+          ],
+          "successors": [
+            "VexLifeLanguageFamily.FollowingReplies",
+            "VexLifeLanguageFamily.ScreenChosen"
+          ],
+          "executionClass": "B"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "states": [
+            {
+              "state": "VexLifeLanguageFamily.FollowingReplies",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            },
+            {
+              "state": "VexLifeLanguageFamily.ScreenChosen",
+              "display": "VexLifeLanguageFamily.DisplayState"
+            }
+          ],
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language"
+          ],
+          "executionClass": "A"
+        }
+      ],
+      "explanation": "<subject:user>\n  -> <element:element.vexlife-workspace.header.utilities.language-panel.reply-language>\n  -> <state:SCREEN_CHOSEN>\n  -> <control:FOLLOW_REPLY_LANGUAGE>\n  -> <admit:FollowingReplies>\n  -> <effect:SaveChoices>\n  -> <realized-by:VexLifeProdLocalService + VexLifeProdSetupLanguage + VexLifePersonSettingsStore>\n  -> <observed:FollowingReplies | ScreenChosen>\n  -> <projection:element.vexlife-workspace.header.utilities.language-panel.reply-language>"
     },
     {
       "routeRef": "route:VexLifeLocalAsrModelsFamily.State:ControlDownload:0",
@@ -5654,7 +6122,13 @@
       "shape": "MUTABLE_CURRENT_TRUTH_CAPTURED_AT_SEND",
       "captureEdge": "edge:CAPTURED_AT_SEND:VexLifePersonSettingsStore:DirectCompanionTurn.Intent.personContext",
       "currentTruthOwner": "VexLifePersonSettingsStore",
-      "feedingRoutes": [],
+      "feedingRoutes": [
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0"
+      ],
       "sendManifestation": [
         "element.vexlife-workspace.companion.conversation.send"
       ],
@@ -5663,13 +6137,8 @@
         "DirectPromptContext.Receipt.personContextIncluded"
       ],
       "captureLaw": "Reply language and private gaps, composed by the service; see DirectPromptContext.PersonContext.",
-      "status": "FRONTIER_DEBT",
-      "missing": [
-        {
-          "predicate": "NO_FAMILY_ROUTE_REALIZES_CURRENT_TRUTH",
-          "coordinate": "VexLifePersonSettingsStore"
-        }
-      ]
+      "status": "CLEARED",
+      "missing": []
     },
     {
       "journeyRef": "journey:gate:MODEL_SWITCH_HELD",
@@ -5745,7 +6214,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:HereticRuntimeAvailability.State.StableBorrowable:Control.EnsureAvailable:0",
@@ -5776,7 +6245,7 @@
         "effectFree": false
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:0",
@@ -5816,7 +6285,7 @@
           "status": "HELD_NO_HARNESS_IN_LANE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:1",
@@ -5856,7 +6325,7 @@
           "status": "HELD_NO_HARNESS_IN_LANE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:Import:0",
@@ -5906,7 +6375,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
@@ -5956,7 +6425,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:Use:0",
@@ -6006,7 +6475,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeContextProfileFamily.Saved:Import:0",
@@ -6056,7 +6525,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0",
@@ -6106,7 +6575,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeContextProfileFamily.Saved:Save:0",
@@ -6158,7 +6627,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeContextProfileFamily.Saved:SaveAs:0",
@@ -6208,7 +6677,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeContextProfileFamily.Saved:Use:0",
@@ -6260,7 +6729,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeDiagnosticsFamily.Recording:ClearHistory:0",
@@ -6313,7 +6782,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0",
@@ -6365,7 +6834,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0",
@@ -6418,7 +6887,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0",
@@ -6470,7 +6939,329 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
+    },
+    {
+      "caseRef": "case:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+      "routeRef": "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+      "family": "VexLifeLanguageFamily",
+      "executionClass": "A",
+      "target": {
+        "state": "VexLifeLanguageFamily.FollowingReplies",
+        "control": "VexLifeLanguageFamily.ChooseReplyLanguage"
+      },
+      "preconditions": {
+        "state": "VexLifeLanguageFamily.FollowingReplies",
+        "guards": [
+          "!(control.code == currentState.replyLanguage)"
+        ]
+      },
+      "actions": [
+        {
+          "control": "VexLifeLanguageFamily.ChooseReplyLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.reply-language"
+          ]
+        }
+      ],
+      "expect": {
+        "act": {
+          "kind": "ADMIT",
+          "admittedState": "VexLifeLanguageFamily.FollowingReplies",
+          "axisUpdates": {},
+          "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+        },
+        "effectFree": false
+      },
+      "deeper": [
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "executionClass": "A",
+          "status": "ASSERTABLE_FROM_SOURCE"
+        }
+      ],
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
+    },
+    {
+      "caseRef": "case:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+      "routeRef": "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+      "family": "VexLifeLanguageFamily",
+      "executionClass": "A",
+      "target": {
+        "state": "VexLifeLanguageFamily.FollowingReplies",
+        "control": "VexLifeLanguageFamily.ChooseScreenLanguage"
+      },
+      "preconditions": {
+        "state": "VexLifeLanguageFamily.FollowingReplies",
+        "guards": []
+      },
+      "actions": [
+        {
+          "control": "VexLifeLanguageFamily.ChooseScreenLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.screen-language"
+          ]
+        }
+      ],
+      "expect": {
+        "act": {
+          "kind": "ADMIT",
+          "admittedState": "VexLifeLanguageFamily.ScreenChosen",
+          "axisUpdates": {},
+          "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+        },
+        "effectFree": false
+      },
+      "deeper": [
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "executionClass": "A",
+          "status": "ASSERTABLE_FROM_SOURCE"
+        }
+      ],
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
+    },
+    {
+      "caseRef": "case:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+      "routeRef": "route:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+      "family": "VexLifeLanguageFamily",
+      "executionClass": "A",
+      "target": {
+        "state": "VexLifeLanguageFamily.FollowingReplies",
+        "control": "VexLifeLanguageFamily.FollowReplyLanguage"
+      },
+      "preconditions": {
+        "state": "VexLifeLanguageFamily.FollowingReplies",
+        "guards": []
+      },
+      "actions": [
+        {
+          "control": "VexLifeLanguageFamily.FollowReplyLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.screen-language-follow"
+          ]
+        }
+      ],
+      "expect": {
+        "act": {
+          "kind": "STAY",
+          "admittedState": null,
+          "axisUpdates": {},
+          "effect": null
+        },
+        "effectFree": true
+      },
+      "deeper": [
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "executionClass": "A",
+          "status": "ASSERTABLE_FROM_SOURCE"
+        }
+      ],
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
+    },
+    {
+      "caseRef": "case:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+      "routeRef": "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+      "family": "VexLifeLanguageFamily",
+      "executionClass": "A",
+      "target": {
+        "state": "VexLifeLanguageFamily.ScreenChosen",
+        "control": "VexLifeLanguageFamily.ChooseReplyLanguage"
+      },
+      "preconditions": {
+        "state": "VexLifeLanguageFamily.ScreenChosen",
+        "guards": [
+          "!(control.code == currentState.replyLanguage)"
+        ]
+      },
+      "actions": [
+        {
+          "control": "VexLifeLanguageFamily.ChooseReplyLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.reply-language"
+          ]
+        }
+      ],
+      "expect": {
+        "act": {
+          "kind": "ADMIT",
+          "admittedState": "VexLifeLanguageFamily.ScreenChosen",
+          "axisUpdates": {
+            "replyLanguage": "control.code"
+          },
+          "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+        },
+        "effectFree": false
+      },
+      "deeper": [
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "executionClass": "A",
+          "status": "ASSERTABLE_FROM_SOURCE"
+        }
+      ],
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
+    },
+    {
+      "caseRef": "case:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+      "routeRef": "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+      "family": "VexLifeLanguageFamily",
+      "executionClass": "A",
+      "target": {
+        "state": "VexLifeLanguageFamily.ScreenChosen",
+        "control": "VexLifeLanguageFamily.ChooseScreenLanguage"
+      },
+      "preconditions": {
+        "state": "VexLifeLanguageFamily.ScreenChosen",
+        "guards": [
+          "!(control.code == currentState.screenLanguage)"
+        ]
+      },
+      "actions": [
+        {
+          "control": "VexLifeLanguageFamily.ChooseScreenLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.screen-language"
+          ]
+        }
+      ],
+      "expect": {
+        "act": {
+          "kind": "ADMIT",
+          "admittedState": "VexLifeLanguageFamily.ScreenChosen",
+          "axisUpdates": {
+            "screenLanguage": "control.code"
+          },
+          "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+        },
+        "effectFree": false
+      },
+      "deeper": [
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "executionClass": "A",
+          "status": "ASSERTABLE_FROM_SOURCE"
+        }
+      ],
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
+    },
+    {
+      "caseRef": "case:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0",
+      "routeRef": "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0",
+      "family": "VexLifeLanguageFamily",
+      "executionClass": "A",
+      "target": {
+        "state": "VexLifeLanguageFamily.ScreenChosen",
+        "control": "VexLifeLanguageFamily.FollowReplyLanguage"
+      },
+      "preconditions": {
+        "state": "VexLifeLanguageFamily.ScreenChosen",
+        "guards": []
+      },
+      "actions": [
+        {
+          "control": "VexLifeLanguageFamily.FollowReplyLanguage",
+          "elementRefs": [
+            "element.vexlife-workspace.header.utilities.language-panel.reply-language",
+            "element.vexlife-workspace.header.utilities.language-panel.screen-language",
+            "key:workspace.label.screen-language-follow"
+          ]
+        }
+      ],
+      "expect": {
+        "act": {
+          "kind": "ADMIT",
+          "admittedState": "VexLifeLanguageFamily.FollowingReplies",
+          "axisUpdates": {},
+          "effect": "VexLifeLanguageFamily.Effect.SaveChoices"
+        },
+        "effectFree": false
+      },
+      "deeper": [
+        {
+          "step": "REALIZATION",
+          "coordinate": "VexLifeLanguageFamily.Effect.SaveChoices",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "OBSERVATION",
+          "coordinate": "VexLifeLanguageFamily.stateFor",
+          "executionClass": "B",
+          "status": "HELD_NO_HARNESS_IN_LANE"
+        },
+        {
+          "step": "PROJECTION",
+          "coordinate": "VexLifeLanguageFamily.DisplayState",
+          "executionClass": "A",
+          "status": "ASSERTABLE_FROM_SOURCE"
+        }
+      ],
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlDownload:0",
@@ -6505,7 +7296,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlRedownload:0",
@@ -6540,7 +7331,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlRemove:0",
@@ -6576,7 +7367,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlUse:0",
@@ -6612,7 +7403,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeMemoryReviewFamily.Pending:Decline:0",
@@ -6658,7 +7449,7 @@
           "status": "HELD_NO_HARNESS_IN_LANE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeMemoryReviewFamily.Pending:Keep:0",
@@ -6704,7 +7495,7 @@
           "status": "HELD_NO_HARNESS_IN_LANE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeMemoryReviewFamily.Pending:NotNow:0",
@@ -6750,7 +7541,7 @@
           "status": "HELD_NO_HARNESS_IN_LANE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:Download:0",
@@ -6798,7 +7589,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:ForgetImportedModel:0",
@@ -6849,7 +7640,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:ForgetImportedModel:1",
@@ -6898,7 +7689,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:Redownload:0",
@@ -6946,7 +7737,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:Remove:0",
@@ -6997,7 +7788,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:Remove:1",
@@ -7046,7 +7837,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:Select:0",
@@ -7090,7 +7881,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:SetPromptCacheEntries:0",
@@ -7138,7 +7929,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:Use:0",
@@ -7189,7 +7980,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeModelsFamily.State:UseRecommendedRuntimeConfiguration:0",
@@ -7238,7 +8029,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifePrivateModeFamily.Kept:Begin:0",
@@ -7290,7 +8081,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifePrivateModeFamily.Private:End:0",
@@ -7342,7 +8133,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.Current:Cancel:0",
@@ -7380,7 +8171,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.Current:OpenCurrent:0",
@@ -7427,7 +8218,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.HeldUnknown:Cancel:0",
@@ -7465,7 +8256,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.HomeFormationRequired:Cancel:0",
@@ -7503,7 +8294,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.HomeFormationRequired:FormHome:0",
@@ -7549,7 +8340,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.HomeHeld:Cancel:0",
@@ -7587,7 +8378,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.HostHeld:Cancel:0",
@@ -7625,7 +8416,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.ModelFilesHeld:Cancel:0",
@@ -7663,7 +8454,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.RepairRequired:Cancel:0",
@@ -7701,7 +8492,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.RepairRequired:ConvergeDesired:0",
@@ -7748,7 +8539,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.ServiceRecoveryRequired:Cancel:0",
@@ -7786,7 +8577,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.ServiceRecoveryRequired:RecoverStaleService:0",
@@ -7832,7 +8623,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.SetupRequired:Cancel:0",
@@ -7870,7 +8661,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.SetupRequired:SetUp:0",
@@ -7916,7 +8707,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.StartRequired:Cancel:0",
@@ -7954,7 +8745,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.StartRequired:Start:0",
@@ -8000,7 +8791,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.StorageHeld:Cancel:0",
@@ -8038,7 +8829,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:Cancel:0",
@@ -8076,7 +8867,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:ConvergeDesired:0",
@@ -8123,7 +8914,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:OpenCurrent:0",
@@ -8170,7 +8961,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.UpdateRepairRequired:Cancel:0",
@@ -8208,7 +8999,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeProdEntryFamily.UpdateRepairRequired:ConvergeDesired:0",
@@ -8255,7 +9046,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeReleaseInboxFamily.State:Control.Dismiss:0",
@@ -8303,7 +9094,7 @@
           "status": "HELD_NO_HARNESS_IN_LANE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeReleaseInboxFamily.State:Control.View:0",
@@ -8351,7 +9142,7 @@
           "status": "HELD_NO_HARNESS_IN_LANE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeVisionFamily.Engaged:Stop:0",
@@ -8403,7 +9194,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeVisionFamily.Held:Stop:0",
@@ -8457,7 +9248,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeVisionFamily.Ready:Engage:0",
@@ -8509,7 +9300,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeVoiceInputFamily.Failed:Start:0",
@@ -8562,7 +9353,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeVoiceInputFamily.Listening:Stop:0",
@@ -8614,7 +9405,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeVoiceInputFamily.Ready:Start:0",
@@ -8667,7 +9458,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0",
@@ -8719,7 +9510,7 @@
           "status": "ASSERTABLE_FROM_SOURCE"
         }
       ],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeContextProfileFamily.ProductDefault:RestoreProductDefault",
@@ -8749,7 +9540,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeContextProfileFamily.ProductDefault:Save",
@@ -8779,7 +9570,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeDiagnosticsFamily.Recording:StopEnhanced",
@@ -8809,7 +9600,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeDiagnosticsFamily.RecordingEnhanced:StartEnhanced",
@@ -8839,7 +9630,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:Decline",
@@ -8869,7 +9660,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:Keep",
@@ -8899,7 +9690,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:NotNow",
@@ -8929,7 +9720,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifePrivateModeFamily.Kept:End",
@@ -8959,7 +9750,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifePrivateModeFamily.Private:Begin",
@@ -8989,7 +9780,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.Current:ConvergeDesired",
@@ -9019,7 +9810,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.Current:FormHome",
@@ -9049,7 +9840,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.Current:RecoverStaleService",
@@ -9079,7 +9870,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.Current:SetUp",
@@ -9109,7 +9900,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.Current:Start",
@@ -9139,7 +9930,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:ConvergeDesired",
@@ -9169,7 +9960,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:FormHome",
@@ -9199,7 +9990,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:OpenCurrent",
@@ -9229,7 +10020,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:RecoverStaleService",
@@ -9259,7 +10050,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:SetUp",
@@ -9289,7 +10080,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:Start",
@@ -9319,7 +10110,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:ConvergeDesired",
@@ -9349,7 +10140,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:OpenCurrent",
@@ -9379,7 +10170,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:RecoverStaleService",
@@ -9409,7 +10200,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:SetUp",
@@ -9439,7 +10230,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:Start",
@@ -9469,7 +10260,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:ConvergeDesired",
@@ -9499,7 +10290,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:FormHome",
@@ -9529,7 +10320,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:OpenCurrent",
@@ -9559,7 +10350,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:RecoverStaleService",
@@ -9589,7 +10380,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:SetUp",
@@ -9619,7 +10410,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:Start",
@@ -9649,7 +10440,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:ConvergeDesired",
@@ -9679,7 +10470,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:FormHome",
@@ -9709,7 +10500,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:OpenCurrent",
@@ -9739,7 +10530,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:RecoverStaleService",
@@ -9769,7 +10560,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:SetUp",
@@ -9799,7 +10590,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:Start",
@@ -9829,7 +10620,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:ConvergeDesired",
@@ -9859,7 +10650,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:FormHome",
@@ -9889,7 +10680,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:OpenCurrent",
@@ -9919,7 +10710,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:RecoverStaleService",
@@ -9949,7 +10740,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:SetUp",
@@ -9979,7 +10770,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:Start",
@@ -10009,7 +10800,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:FormHome",
@@ -10039,7 +10830,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:OpenCurrent",
@@ -10069,7 +10860,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:RecoverStaleService",
@@ -10099,7 +10890,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:SetUp",
@@ -10129,7 +10920,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:Start",
@@ -10159,7 +10950,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:ConvergeDesired",
@@ -10189,7 +10980,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:FormHome",
@@ -10219,7 +11010,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:OpenCurrent",
@@ -10249,7 +11040,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:SetUp",
@@ -10279,7 +11070,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:Start",
@@ -10309,7 +11100,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:ConvergeDesired",
@@ -10339,7 +11130,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:FormHome",
@@ -10369,7 +11160,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:OpenCurrent",
@@ -10399,7 +11190,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:RecoverStaleService",
@@ -10429,7 +11220,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:Start",
@@ -10459,7 +11250,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:ConvergeDesired",
@@ -10489,7 +11280,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:FormHome",
@@ -10519,7 +11310,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:OpenCurrent",
@@ -10549,7 +11340,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:RecoverStaleService",
@@ -10579,7 +11370,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:SetUp",
@@ -10609,7 +11400,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:ConvergeDesired",
@@ -10639,7 +11430,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:FormHome",
@@ -10669,7 +11460,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:OpenCurrent",
@@ -10699,7 +11490,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:RecoverStaleService",
@@ -10729,7 +11520,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:SetUp",
@@ -10759,7 +11550,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:Start",
@@ -10789,7 +11580,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:FormHome",
@@ -10819,7 +11610,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:RecoverStaleService",
@@ -10849,7 +11640,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:SetUp",
@@ -10879,7 +11670,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:Start",
@@ -10909,7 +11700,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:FormHome",
@@ -10939,7 +11730,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:OpenCurrent",
@@ -10969,7 +11760,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:RecoverStaleService",
@@ -10999,7 +11790,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:SetUp",
@@ -11029,7 +11820,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:Start",
@@ -11059,7 +11850,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVisionFamily.Engaged:Engage",
@@ -11089,7 +11880,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVisionFamily.Held:Engage",
@@ -11119,7 +11910,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVisionFamily.Looking:Engage",
@@ -11149,7 +11940,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVisionFamily.Looking:Stop",
@@ -11179,7 +11970,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVisionFamily.Ready:Stop",
@@ -11209,7 +12000,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVisionFamily.Selecting:Engage",
@@ -11239,7 +12030,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVisionFamily.Selecting:Stop",
@@ -11269,7 +12060,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVoiceInputFamily.Failed:Stop",
@@ -11299,7 +12090,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVoiceInputFamily.Held:Start",
@@ -11329,7 +12120,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVoiceInputFamily.Held:Stop",
@@ -11359,7 +12150,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVoiceInputFamily.Listening:Start",
@@ -11389,7 +12180,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVoiceInputFamily.Ready:Stop",
@@ -11419,7 +12210,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVoiceInputFamily.RequestingMicrophone:Start",
@@ -11449,7 +12240,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVoiceInputFamily.Stopping:Start",
@@ -11479,7 +12270,7 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     },
     {
       "caseRef": "case:reject:VexLifeVoiceInputFamily.Stopping:Stop",
@@ -11509,8 +12300,8 @@
         "effectFree": true
       },
       "deeper": [],
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85"
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c"
     }
   ],
-  "manifestFingerprint": "199835a52d29f2281c8b52c15f37aaa427fa0f34059475066965d77e8e8086ea"
+  "manifestFingerprint": "c912f95ec871692eac35fab3bc163564b57bfd183bfb02242f8e913202e44edc"
 }

@@ -493,6 +493,14 @@ function readAdmittedState(raw, ctx, cell) {
     return { variant: cell.state, axisUpdates: updates };
   }
   if (text === 'currentState') return { variant: cell.state, axisUpdates: {} };
+  // `when (currentState) { is A -> ...; is B -> ... }` inside admit(): the cell already fixes which
+  // variant currentState is, so partial evaluation picks that branch.
+  if (/^when\s*\(\s*currentState\s*\)/.test(text)) {
+    const tree = parseWhen(stripComments(raw).trim());
+    const branch = tree.branches.find((row) => row.conds.some((cond) => variantMatch(cond.replace(/^is\s+/, ''), ctx.resolver.states, ctx.family)?.symbol === cell.state))
+      ?? tree.branches.find((row) => row.conds[0] === 'else');
+    if (branch && branch.expr.k === 'UNKNOWN') return readAdmittedState(branch.expr.text, ctx, cell);
+  }
   const name = /^([\w.]+?)(?:\s*\(|$)/.exec(stripQualifier(text, ctx.family));
   const variant = name ? variantMatch(name[1], ctx.resolver.states, ctx.family) : null;
   if (variant) return { variant: variant.symbol, axisUpdates: {} };
@@ -678,7 +686,14 @@ function displayControls(text, family, stateType, states, controls, consts) {
   if (!match) return null;
   const open = match.index + match[0].length - 1;
   const close = matchClose(text, open);
+  // A displayStateFor that builds one DisplayState without branching projects every State the same
+  // way and claims no per-state Controls; only a `when` inside its own body is read per State.
+  const next = /\n {0,4}(?:override |private |internal |public )?(?:fun|val|const|data|sealed|object|enum|\})\b/g;
+  next.lastIndex = close;
+  const bodyEnd = next.exec(text)?.index ?? text.length;
   const whenAt = text.indexOf('when', close);
+  // One DisplayState for every State: each State is projected, and no Control is claimed per State.
+  if (whenAt < 0 || whenAt > bodyEnd) return states.map((state) => ({ state: state.symbol, controls: [] }));
   const brace = text.indexOf('{', whenAt);
   const tree = parseWhen(text.slice(whenAt, matchClose(text, brace) + 1));
   const controlByConst = new Map();

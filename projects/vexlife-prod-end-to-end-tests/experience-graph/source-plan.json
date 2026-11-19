@@ -47,10 +47,10 @@
       "label": "Localization: script-aware and complete",
       "axis": "LOCALIZATION",
       "branch": "VXG-111826-claude-candidate-localization",
-      "commit": "e4229b60cf8edc73cbe48664d9e8904d4b050114",
+      "commit": "4d73847828416ae4d9fc81434fdf12f736f75ad0",
       "basis": "main",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "summary": "zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages."
+      "summary": "zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages, and the screen language as its own Home choice beside the reply language."
     },
     {
       "buildRef": "candidate-design-foundation",

@@ -12,7 +12,7 @@ preserved    main projection at generated/ is never rewritten by a candidate bui
 |---|---|---|---|---|---|---|---|
 | `candidate-design-foundation` | DESIGN | `VXG-111826-claude-candidate-design-foundation` @ `d9f0bb995556` | NO_GRAPH_CHANGE | 0 | 159 → 159 | — | — |
 | `candidate-keyed-elements` | IDENTITY | `VXG-111826-claude-candidate-keyed-elements` @ `e01a6cb1b108` | IMPROVES_MAIN | 0 | 159 → 134 | DATAKEY_ANCHOR_NOT_IN_MAIN 4, DATAKEY_UNRESOLVED 3, ELEMENT_WITHOUT_BINDING 3, FAMILY_READS_WIRE_STRING 1, LITERAL_SHADOWS_CONSTANT 13, TYPED_REF_BYPASSED 1 | — |
-| `candidate-localization` | LOCALIZATION | `VXG-111826-claude-candidate-localization` @ `e4229b60cf8e` | IMPROVES_MAIN | 0 | 159 → 155 | LANGUAGE_INCOMPLETE 2, PARTIAL_LANGUAGE_SERVED 1, SCRIPT_COLLAPSE 1 | — |
+| `candidate-localization` | LOCALIZATION | `VXG-111826-claude-candidate-localization` @ `4d7384782841` | IMPROVES_MAIN | 0 | 159 → 155 | LANGUAGE_INCOMPLETE 2, MISSING_CONTROL_LAW 1, PARTIAL_LANGUAGE_SERVED 1, SCRIPT_COLLAPSE 1 | DATAKEY_ANCHOR_NOT_IN_MAIN 1 |
 
 ## `candidate-design-foundation` — Design foundation: one vocabulary, one relationship legend
 
@@ -32,10 +32,10 @@ Law and manifestation edges: +5 / −0 / changed 0. Main's executed law proof st
 
 ## `candidate-localization` — Localization: script-aware and complete
 
-zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages.
+zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages, and the screen language as its own Home choice beside the reply language.
 
-Route counts: main {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0} → candidate {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0}.
+Route counts: main {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0} → candidate {"CLEARED":19,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0}.
 
-Law and manifestation edges: +0 / −0 / changed 0. Main's executed law proof stays valid (Family law unchanged).
+Law and manifestation edges: +25 / −0 / changed 0. Main's executed law proof must be re-run (Family law changed).
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-PROD][E2E][EXPERIENCE-GRAPH][BRANCHES] -->

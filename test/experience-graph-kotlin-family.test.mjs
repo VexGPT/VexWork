@@ -157,3 +157,69 @@ test('the reader refuses non-Kotlin, empty and Family-less input', () => {
   assert.throws(() => readFamilyLaw({ path: 'Family.kt', text: 'package x\nclass Plain(val a: Int)\n' }), /declares no Family object/);
   assert.throws(() => readFamilyLaw({ path: 'Family.kt', text: 'object VexLifeBadFamily : VexFamilyContract<A, B>() {}' }), /must carry Family, State, Control, Effect/);
 });
+
+test('partial evaluation reads when(currentState) inside admit(), and a displayStateFor without a when projects every State uniformly', () => {
+  const text = `package vexlife.person
+
+object VexLifeChoiceFamily :
+    VexFamilyContract<
+        VexLifeChoiceFamily,
+        VexLifeChoiceFamily.State,
+        VexLifeChoiceFamily.Control,
+        VexLifeChoiceFamily.Effect,
+    >() {
+    sealed interface State : VexFamilyContract.State<VexLifeChoiceFamily> {
+        val stateRef: String
+        val reply: String
+    }
+
+    data class Following(override val reply: String) : State {
+        override val stateRef: String = StateFollowing
+    }
+
+    data class Chosen(override val reply: String, val screen: String) : State {
+        override val stateRef: String = StateChosen
+    }
+
+    sealed interface Control : VexFamilyContract.Control<VexLifeChoiceFamily> {
+        val controlRef: String
+    }
+
+    data class ChooseReply(val code: String) : Control {
+        override val controlRef: String = ControlChooseReply
+    }
+
+    sealed interface Effect : VexFamilyContract.Effect<VexLifeChoiceFamily> {
+        data object Save : Effect
+    }
+
+    data class DisplayState(val reply: String) : VexFamilyContract.DisplayState<VexLifeChoiceFamily, State>
+
+    override fun act(currentState: State, control: Control): Act<VexLifeChoiceFamily, State, Effect>? =
+        when (control) {
+            is ChooseReply ->
+                admit(
+                    when (currentState) {
+                        is Following -> Following(control.code)
+                        is Chosen -> currentState.copy(reply = control.code)
+                    },
+                    Effect.Save,
+                )
+        }
+
+    override fun displayStateFor(state: State): DisplayState = DisplayState(reply = state.reply)
+
+    fun stateFor(reply: String): State = when (reply) { "" -> Following("en") else -> Following(reply) }
+
+    const val StateFollowing = "FOLLOWING"
+    const val StateChosen = "CHOSEN"
+    const val ControlChooseReply = "CHOOSE_REPLY"
+}
+`;
+  const law = readFamilyLaw({ path: 'src/commonMain/kotlin/vexlife/person/VexLifeChoiceFamily.kt', text });
+  assert.deepEqual(law.debt, []);
+  const admitted = Object.fromEntries(law.cells.map((cell) => [cell.state, cell.outcomes[0].admittedState]));
+  assert.deepEqual(admitted.Following, { variant: 'Following', axisUpdates: {} });
+  assert.deepEqual(admitted.Chosen, { variant: 'Chosen', axisUpdates: { reply: 'control.code' } }, 'only the reply moves');
+  assert.deepEqual(law.projection, [{ state: 'Following', controls: [] }, { state: 'Chosen', controls: [] }], 'every State is projected; no per-state Controls are claimed');
+});

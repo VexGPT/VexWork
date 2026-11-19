@@ -143,12 +143,12 @@
     {
       "buildRef": "candidate-localization",
       "label": "Localization: script-aware and complete",
-      "summary": "zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages.",
+      "summary": "zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages, and the screen language as its own Home choice beside the reply language.",
       "axis": "LOCALIZATION",
       "branch": "VXG-111826-claude-candidate-localization",
-      "commit": "e4229b60cf8edc73cbe48664d9e8904d4b050114",
+      "commit": "4d73847828416ae4d9fc81434fdf12f736f75ad0",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85",
+      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -157,39 +157,80 @@
           "UNKNOWN": 0
         },
         "candidate": {
-          "CLEARED": 13,
+          "CLEARED": 19,
           "FRONTIER_DEBT": 53,
           "HELD": 0,
           "UNKNOWN": 0
         }
       },
       "routeFlips": [],
-      "routesAdded": [],
+      "routesAdded": [
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+        "route:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0"
+      ],
       "routesRemoved": [],
       "debt": {
         "main": 159,
         "candidate": 155,
         "resolvedByKind": {
           "LANGUAGE_INCOMPLETE": 2,
+          "MISSING_CONTROL_LAW": 1,
           "PARTIAL_LANGUAGE_SERVED": 1,
           "SCRIPT_COLLAPSE": 1
         },
-        "introducedByKind": {},
+        "introducedByKind": {
+          "DATAKEY_ANCHOR_NOT_IN_MAIN": 1
+        },
         "resolved": [
           "debt:LANGUAGE_INCOMPLETE:localization:release-alerts",
           "debt:LANGUAGE_INCOMPLETE:localization:workspace",
+          "debt:MISSING_CONTROL_LAW:element.vexlife-workspace.header.utilities.quick-actions.language",
           "debt:PARTIAL_LANGUAGE_SERVED:VexLifeProdLocalService.handleStrings",
           "debt:SCRIPT_COLLAPSE:localization:reply:zh-Hant"
         ],
-        "introduced": []
+        "introduced": [
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeLanguageFamily"
+        ]
       },
       "edges": {
-        "added": [],
+        "added": [
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.FollowingReplies:when:FollowingReplies:1",
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.ScreenChosen:when:ScreenChosen:1",
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.ScreenChosen:when:FollowingReplies:0",
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.ScreenChosen:when:ScreenChosen:1",
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.FollowReplyLanguage:VexLifeLanguageFamily.FollowingReplies:when:ScreenChosen:0",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.reply-language:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.reply-language:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.reply-language:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.screen-language:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.screen-language:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.screen-language:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:MANIFESTS:key:workspace.label.reply-language:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:MANIFESTS:key:workspace.label.screen-language-follow:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:MANIFESTS:key:workspace.label.screen-language:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.FollowingReplies:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.FollowingReplies:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.FollowingReplies:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.ScreenChosen:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.ScreenChosen:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.ScreenChosen:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:FollowingReplies:1",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:1",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:FollowingReplies:0",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:1",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.FollowReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:0"
+        ],
         "removed": [],
         "changed": []
       },
-      "lawProofReusable": true,
-      "familiesAdded": [],
+      "lawProofReusable": false,
+      "familiesAdded": [
+        "VexLifeLanguageFamily"
+      ],
       "familiesRemoved": [],
       "verdict": "IMPROVES_MAIN"
     }
