@@ -447,3 +447,38 @@ Repair shape:
 - regression proves equal semantic law with different probe identity is not reusable.
 
 Next unconsumed edge: **Depth 10 read-only proof + generated drift discovery**. Generated mutation remains held until the generator itself returns the exact stale path set.
+
+
+## Depth 10 consumed — ERG-REV-005 source proof and exact generated drift
+
+Depth 10 is consumed evidence on exact head `8c4572c778e5943ec7faae13200ec5033959a82d` / tree `a1783068fea0b4175cd142ba44eb2804e2d58ea9`.
+
+- branch proof regression: 3/3 PASS;
+- generator syntax check: PASS;
+- source-owned `--fetch --check`: canonical drift reached;
+- no mutation;
+- first substantive failure: NONE.
+
+The exact generated drift is five paths only:
+- main generated Experience Relationship Graph JSON;
+- candidate-keyed-elements graph JSON;
+- candidate-localization graph JSON;
+- candidate-design-foundation graph JSON;
+- generated BRANCHES.md.
+
+The drift shape matches ERG-REV-005: graph snapshots gain non-semantic law-probe identity metadata and the human branch report gains the stronger law-proof reuse wording. No branches.json, route/frontier, law-proof, convergence, perturbation, or generated Kotlin probe source drift is present.
+
+### Depth 11 routing
+
+The connected GitHub provider has exact write capability, so fresh Relay formation must not claim provider write is unavailable merely to let the host push.
+
+Depth 11 uses the host only for the effects the host owns:
+- regenerate exactly the five paths;
+- create one local commit;
+- bind exact candidate head/tree;
+- run all 11 Experience Graph tests;
+- run offline verify;
+- run fresh pinned-source `--fetch --check`;
+- return exact source bytes and candidate evidence.
+
+Remote publication is held from the host task. After the RETURN is consumed, Operations will publish the exact returned bytes through the connected GitHub provider, verify provider tree equality with the host-proven tree, and resume fresh Independent Assurance without replaying the host proof.
