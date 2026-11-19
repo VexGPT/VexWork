@@ -22,7 +22,7 @@ test('relationship lattice seed currentness is internally consistent', () => {
   assert.deepEqual(result, { ok: true, errors: [] });
 
   assert.equal(
-    seed.sourceBindings.vexLifeProdMain,
+    seed.sourceBindings.vexlifeProdMain,
     '98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0',
   );
   assert.ok(
@@ -44,7 +44,7 @@ test('relationship lattice seed currentness is internally consistent', () => {
 
 test('validator rejects stale or contradictory currentness instead of silently projecting it', () => {
   const seed = readSeed();
-  seed.sourceBindings.vexLifeProdMain = '605c635ae2d034a1c4d605e829faa4813de071c3';
+  seed.sourceBindings.vexlifeProdMain = '605c635ae2d034a1c4d605e829faa4813de071c3';
   seed.sourceBindings.activeCandidates.push({
     ref: 'github.pull.vexlife-prod.310',
     meaning: 'stale merged candidate',
