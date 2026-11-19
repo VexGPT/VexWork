@@ -72,7 +72,21 @@
     "productSourceTruth": "Blueprint owns control identity/meaning; VexWeb owns spatial placement; Product exporter joins them by ref.",
     "experienceGraphImpact": "FRAME/SEAM/REGION/HANDLE additions are spatial/presentation facts. Existing semantic BUTTON/FIELD pathways remain the graph's Family/control inputs.",
     "knownExtractorDebt": "Experience Graph currently expands SCAE_FAMILY elements across every Family Control instead of using the Product Lens control label to preserve exact control subset.",
-    "currentMitigation": "Human convergence fails closed with AMBIGUOUS_MANIFESTATION_BINDING; no first-element guess is accepted.",
-    "rightfulFutureCorrection": "Teach the Experience Graph Lens reader to preserve the pathway's declared control subset, then regenerate derived graph artifacts on an admitted repository execution surface."
+    "currentMitigation": "R1 human convergence fails closed with AMBIGUOUS_MANIFESTATION_BINDING. R2 source correction is formed but ungenerated.",
+    "rightfulFutureCorrection": "Regenerate Product R2 Lens JSON, then regenerate Experience Graph R2 with the control-subset reader; verify Language MANIFESTS edges become reply->CHOOSE_REPLY_LANGUAGE and screen->CHOOSE_SCREEN_LANGUAGE/FOLLOW_REPLY_LANGUAGE."
+  },
+  "experienceGraphSuccessorCandidate": {
+    "repository": "VexGPT/VexWork",
+    "branch": "VXG-111926-vexlife-prod-e2e-experience-convergence-r2",
+    "head": "a418759be2a8e717aeddec0bb75b6cf75410c23f",
+    "parentConvergenceHead": "5972a6e9ef56012642f081c885e896e1a8c28b1e",
+    "sourceCorrection": "FORMED",
+    "generatedGraphArtifacts": "HELD_STALE_UNTIL_REGENERATION_FROM_PRODUCT_R2",
+    "correction": "Preserve Product Lens pathway Control subsets. MANIFESTS edges now select only Family Controls explicitly named by the Lens CONTROL node; unknown declared refs fail closed.",
+    "proofSource": [
+      "test/experience-graph-product-wiring.test.mjs preserves controlRefs",
+      "test/experience-graph.test.mjs holds subset manifestation and unknown-ref fail-closed behavior"
+    ],
+    "meaning": "Source-only successor. It must regenerate Experience Graph artifacts from the exact regenerated Product R2 Lens before any new graph fingerprint or clearance is claimed."
   }
 }
