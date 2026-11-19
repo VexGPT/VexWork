@@ -9,7 +9,7 @@ export function fixtureLaws() {
   return FAMILY_SOURCES.map(readFamilyLaw);
 }
 
-export function fixtureGraph({ commit = COMMIT, families = fixtureLaws(), lens = LENS, send = SEND_SOURCES, localization = null, stringIdentity = null } = {}) {
+export function fixtureGraph({ commit = COMMIT, families = fixtureLaws(), lens = LENS, send = SEND_SOURCES, localization = null, stringIdentity = null, lawProbeSourceSha256 = '0'.repeat(64) } = {}) {
   const files = [...WIRING_FILES, ...FAMILY_SOURCES];
   return compileExperienceGraph({
     source: {
@@ -27,7 +27,10 @@ export function fixtureGraph({ commit = COMMIT, families = fixtureLaws(), lens =
     untypedLiterals: readUntypedControlLiterals({ families, files }),
     localization,
     stringIdentity,
-    extractor: { modules: [{ path: 'x.mjs', blobSha1: '0'.repeat(40) }] },
+    extractor: {
+      modules: [{ path: 'x.mjs', blobSha1: '0'.repeat(40) }],
+      lawProbeSourceSha256,
+    },
   });
 }
 

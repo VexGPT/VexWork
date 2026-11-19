@@ -164,6 +164,11 @@ export function buildGraphFromCheckout(checkout, plan, commit) {
     ...(stringIdentity ? [markup?.path, runtime?.path, ...stringIdentity.kotlinLiterals.map((row) => row.sourcePath), ...stringIdentity.reflection.map((row) => row.sourcePath)] : []),
   ].filter((relative) => relative && exists(relative)));
   const textByPath = new Map([...mainFiles, ...testFiles, ...catalogFiles, lensFile].map((file) => [file.path, file.text]));
+  const lawProbe = planLawProbe({
+    laws: families,
+    enumIndex: indexEnums(mainFiles),
+    sourceTexts: new Map(mainFiles.map((file) => [file.path, file.text])),
+  });
   const graph = compileExperienceGraph({
     source: {
       repository: plan.repository,
@@ -177,12 +182,15 @@ export function buildGraphFromCheckout(checkout, plan, commit) {
     untypedLiterals: untyped,
     localization,
     stringIdentity,
-    extractor: { modules: extractorFingerprint() },
+    extractor: {
+      modules: extractorFingerprint(),
+      lawProbeSourceSha256: sha256(lawProbe.kotlinSource),
+    },
   });
   const relaySources = mainFiles
     .filter((file) => /\b(?:object|class|interface) (\w*Relay\w*)/.test(file.text))
     .map((file) => ({ symbol: /\b(?:object|class|interface) (\w*Relay\w*)/.exec(file.text)[1], sourcePath: file.path, blobSha1: gitBlobSha1(file.text) }));
-  return { graph, families, mainFiles, relaySources };
+  return { graph, families, mainFiles, relaySources, lawProbe };
 }
 
 function convergenceInputs({ lawEvidence, perturbationEvidence, priorGraph }) {
@@ -286,7 +294,7 @@ function generate(args) {
     const head = git(checkout, 'rev-parse', 'HEAD');
     if (head !== plan.commit) throw new Error(`checkout ${checkout} is at ${head}, source plan pins ${plan.commit}`);
   }
-  const { graph, families, mainFiles, relaySources } = buildGraphFromCheckout(checkout, plan, plan.commit);
+  const { graph, relaySources, lawProbe: probe } = buildGraphFromCheckout(checkout, plan, plan.commit);
 
   let changeImpact = null;
   if (plan.priorCommit && (args.prior || args.flags.has('fetch'))) {
@@ -299,11 +307,6 @@ function generate(args) {
     changeImpact = optionalJson(OUTPUTS.convergence)?.queries?.changeImpact ?? null;
   }
 
-  const probe = planLawProbe({
-    laws: families,
-    enumIndex: indexEnums(mainFiles),
-    sourceTexts: new Map(mainFiles.map((file) => [file.path, file.text])),
-  });
   const lawEvidence = optionalJson(EVIDENCE.law);
   const perturbationEvidence = optionalJson(EVIDENCE.perturbation);
   const derived = deriveAll(graph, {
@@ -311,7 +314,7 @@ function generate(args) {
     perturbationEvidence,
     relaySources,
     changeImpact,
-    currentProbeSourceSha256: sha256(probe.kotlinSource),
+    currentProbeSourceSha256: graph.extractor.lawProbeSourceSha256,
   });
 
   const drift = [];
@@ -379,6 +382,7 @@ export function verify() {
   const checkedInProbe = fs.readFileSync(path.join(ROOT, OUTPUTS.probe), 'utf8');
   const checkedInProbeSha256 = sha256(checkedInProbe);
   const checkedInProbePlan = readJson(OUTPUTS.probePlan);
+  if (recorded.extractor?.lawProbeSourceSha256 !== checkedInProbeSha256) problems.push('graph extractor probe identity does not match the checked-in probe source');
   if (checkedInProbePlan.graphFingerprint !== graph.fingerprint) problems.push('law-probe plan is not bound to the checked-in graph fingerprint');
   if (lawEvidence && lawEvidence.probeSourceSha256 !== checkedInProbeSha256) problems.push('law evidence was produced by a different probe source; rerun the Product law probe');
   const derived = deriveAll(graph, {

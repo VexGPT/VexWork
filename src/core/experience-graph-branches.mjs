@@ -87,8 +87,14 @@ export function compareBuild(main, candidate) {
       introduced: introduced.map((row) => row.ref).sort(compare),
     },
     edges: { added: graphDelta.edgesAdded, removed: graphDelta.edgesRemoved, changed: graphDelta.edgesChanged },
-    // Executed law proof bound to main stays valid for a candidate that leaves Family law unchanged.
-    lawProofReusable: lawFingerprint(main.graph) === lawFingerprint(candidate.graph),
+    // Executed law proof bound to main stays valid only when both Family-law semantics and the
+    // generated probe that exercises them are byte-identical. Probe identity lives in extractor
+    // metadata, outside semantic graph fingerprint, so proof currentness cannot be inferred from
+    // semantic edge equality alone.
+    lawProofReusable:
+      lawFingerprint(main.graph) === lawFingerprint(candidate.graph)
+      && typeof main.graph.extractor?.lawProbeSourceSha256 === 'string'
+      && main.graph.extractor.lawProbeSourceSha256 === candidate.graph.extractor?.lawProbeSourceSha256,
     familiesAdded: graphDelta.familiesAdded,
     familiesRemoved: graphDelta.familiesRemoved,
     verdict: regressed ? 'REGRESSES_MAIN' : introduced.length > resolved.length ? 'ADDS_DEBT' : cleared || resolved.length ? 'IMPROVES_MAIN' : 'NO_GRAPH_CHANGE',
@@ -146,7 +152,7 @@ export function renderBranchReport(branches) {
       lines.push(table(['route', 'main', 'candidate'], row.routeFlips.map((flip) => [`\`${flip.routeRef}\``, flip.from, flip.to])));
       lines.push('');
     }
-    lines.push(`Law and manifestation edges: +${row.edges.added.length} / −${row.edges.removed.length} / changed ${row.edges.changed.length}. Main's executed law proof ${row.lawProofReusable ? 'stays valid (Family law unchanged)' : 'must be re-run (Family law changed)'}.`);
+    lines.push(`Law and manifestation edges: +${row.edges.added.length} / −${row.edges.removed.length} / changed ${row.edges.changed.length}. Main's executed law proof ${row.lawProofReusable ? 'stays valid (Family law + probe identity unchanged)' : 'must be re-run (Family law or probe identity changed/unproven)'}.`);
     lines.push('');
   }
   lines.push('<!-- [VXG RealForever][VEXWORK][VEXLIFE-PROD][E2E][EXPERIENCE-GRAPH][BRANCHES] -->');
