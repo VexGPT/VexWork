@@ -13,6 +13,13 @@ function result() {
   return deriveHumanExperienceConvergence(graph, derivation, seed);
 }
 
+function candidateResult() {
+  const graph = readJson('../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/consolidated-claude/experience-relationship-graph.json');
+  const derivation = readJson('../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/consolidated-claude/routes.json');
+  const seed = readJson('../projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json');
+  return deriveHumanExperienceConvergence(graph, derivation, seed);
+}
+
 test('structural route completeness does not overclaim end-to-end human proof', () => {
   const convergence = result();
   const vision = convergence.focusFamilies.find((row) => row.family === 'VexLifeVisionFamily');
@@ -70,12 +77,24 @@ test('mechanical connectivity does not impersonate a curated semantic relationsh
   assert.deepEqual(convergence.relationships[0].graphPath, ['edge:1', 'edge:2']);
 });
 
-test('candidate Language Family remains unknown on the old checked-in Product graph', () => {
-  const convergence = result();
+test('candidate Language Family is mechanically present in Claude consolidated topology but not human-E2E cleared', () => {
+  const oldMain = result();
+  const before = oldMain.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
+  assert.ok(before);
+  assert.equal(before.status, 'UNKNOWN');
+
+  const convergence = candidateResult();
+  const languageFamily = convergence.focusFamilies.find((row) => row.family === 'VexLifeLanguageFamily');
+  assert.ok(languageFamily);
+  assert.equal(languageFamily.structural.CLEARED, 6);
+  assert.equal(languageFamily.routeCount, 6);
+  assert.equal(languageFamily.experience.CLEARED, 0);
+  assert.equal(languageFamily.experience.FRONTIER_DEBT, 6);
+
   const language = convergence.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
   assert.ok(language);
-  assert.equal(language.status, 'UNKNOWN');
-  assert.ok(language.missing.some((row) => row.predicate === 'NO_MECHANICAL_ROUTE_SELECTED_YET'));
+  assert.equal(language.status, 'FRONTIER_DEBT');
+  assert.ok(language.missing.some((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION'));
 });
 
 test('current human journeys preserve Product truth that the old source pin could not mechanically derive', () => {
