@@ -346,8 +346,8 @@ basis
   4aad5e0055cdc2a9fada2f1e63200c7772850a81
 
 current correction head
-  2bef812d7ca7f7a9a947768ecaef9dd67d150475
-  tree 62f11d3aa5f0ee214eb18c351c80261b22363a02
+  ffe2a4f766429979ebe0be4ba8b82ff414a292af
+  tree 5f9bd93ea7cb2736ce0938357f47554ebc55e105
 ```
 
 It is exactly three commits / thirteen paths ahead of Claude and remains zero behind that basis:
@@ -357,6 +357,7 @@ It is exactly three commits / thirteen paths ahead of Claude and remains zero be
 3. `d7bee6967250169672999f022c2a2159d1c74751` — browser `REALIZED_BY` requires actual Effect dispatch into a `realize*` handler; carriage-only fixture refuses realization.
 4. `67b88aa8a4636e770902adf3fcbe51c98301a950` — repairs the over-escaped browser-handler RegExp literal discovered by Depth 04.
 5. `2bef812d7ca7f7a9a947768ecaef9dd67d150475` — makes probe-currentness tests explicit after Depth 05 proved the production contract was correctly fail-closed while two older assertions were stale.
+6. `ffe2a4f766429979ebe0be4ba8b82ff414a292af` — defines the missing SHA-256 helper exposed by Depth 07 before generated drift comparison could run.
 
 Depth 04 is consumed evidence: the VexLocalBridge carrier passed and the inner exact head/tree checks passed, then the first SourceOwner test command stopped before test bodies because the browser handler RegExp could not parse. The failure was candidate-owned; no source or provider mutation occurred.
 
@@ -364,7 +365,11 @@ Depth 05 is consumed evidence: exact head/tree checks passed and 24/26 focused t
 
 Depth 06 is consumed evidence: outer VexLocalBridge PASS; inner ExactHeadSourceOwnerProof PASS on exact head `2bef812d7ca7f7a9a947768ecaef9dd67d150475` / tree `62f11d3aa5f0ee214eb18c351c80261b22363a02`; all 26 focused tests passed and the exact 13-path review snapshot formed. No source or provider mutation occurred.
 
-The next unconsumed edge is **generated Experience Graph artifact currentization on the same #321**, followed by exact-head SourceOwner proof of the currentized candidate before fresh Independent Assurance.
+Depth 07 is consumed evidence: outer/inner Relay transport passed and exact head/tree binding passed, but the generator did **not** reach drift comparison. Its admitted observation command exited 1 with `sha256 is not defined`. The PASS task disposition therefore means the observation returned, not that currentization drift was discovered. No generated mutation is admitted from this return.
+
+The missing helper is repaired at `ffe2a4f766429979ebe0be4ba8b82ff414a292af` (tree `5f9bd93ea7cb2736ce0938357f47554ebc55e105`) by defining the SHA-256 helper already called by the law-probe currentness path.
+
+The next unconsumed edge is **Depth 07B: rerun the same non-mutating generated-drift discovery against the repaired exact head**. Generated Experience Graph currentization remains held until that run returns an actual drift set.
 
 ## Fresh reviewer handoff rule
 
