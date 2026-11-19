@@ -36,7 +36,7 @@
   "productSuccessorCandidate": {
     "repository": "VexGPT/VexLife-Prod",
     "branch": "VXG-111926-vexlife-prod-experience-convergence-r2",
-    "head": "2d1843c1ce7d69d1242b0f9bd1a4574727e028ca",
+    "head": "553e954d1295eb272ac172f9eafbb4467172e20b",
     "parentRunnableCandidate": "af21cccce50262c4f0b4980b993e496b4449ab67",
     "composes": [
       {
