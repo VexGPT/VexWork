@@ -36,7 +36,7 @@
   "productSuccessorCandidate": {
     "repository": "VexGPT/VexLife-Prod",
     "branch": "VXG-111926-vexlife-prod-experience-convergence-r2",
-    "head": "2d1843c1ce7d69d1242b0f9bd1a4574727e028ca",
+    "head": "553e954d1295eb272ac172f9eafbb4467172e20b",
     "parentRunnableCandidate": "af21cccce50262c4f0b4980b993e496b4449ab67",
     "composes": [
       {
@@ -78,7 +78,6 @@
   "experienceGraphSuccessorCandidate": {
     "repository": "VexGPT/VexWork",
     "branch": "VXG-111926-vexlife-prod-e2e-experience-convergence-r2",
-    "head": "a418759be2a8e717aeddec0bb75b6cf75410c23f",
     "parentConvergenceHead": "5972a6e9ef56012642f081c885e896e1a8c28b1e",
     "sourceCorrection": "FORMED",
     "generatedGraphArtifacts": "HELD_STALE_UNTIL_REGENERATION_FROM_PRODUCT_R2",
@@ -87,6 +86,7 @@
       "test/experience-graph-product-wiring.test.mjs preserves controlRefs",
       "test/experience-graph.test.mjs holds subset manifestation and unknown-ref fail-closed behavior"
     ],
-    "meaning": "Source-only successor. It must regenerate Experience Graph artifacts from the exact regenerated Product R2 Lens before any new graph fingerprint or clearance is claimed."
+    "meaning": "Source-only successor. It must regenerate Experience Graph artifacts from the exact regenerated Product R2 Lens before any new graph fingerprint or clearance is claimed.",
+    "sourceCorrectionHead": "a418759be2a8e717aeddec0bb75b6cf75410c23f"
   }
 }
