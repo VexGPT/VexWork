@@ -117,6 +117,91 @@ test('ordinary graph uses the handoff edge vocabulary and projects into existing
   }
 });
 
+test('Memory Review keeps cross-owner realization explicit instead of forming one mega-Memory owner', () => {
+  const seed = readSeed();
+  const graph = formExperienceRelationshipGraph(seed);
+
+  assert.ok(
+    graph.relationships.some(
+      (relationship) =>
+        relationship.kind === 'REALIZED_BY'
+        && relationship.fromRef === 'VexLifeMemoryReviewFamily.Effect.Accept'
+        && relationship.toRef === 'VexLifeMemoryReviewOwner.keep',
+    ),
+  );
+  assert.ok(
+    graph.relationships.some(
+      (relationship) =>
+        relationship.kind === 'RETURNS_TO'
+        && relationship.fromRef === 'VexLifeMemoryReviewOwner.keep'
+        && relationship.toRef === 'VexLifeMemoryReviewOwner.observe',
+    ),
+  );
+  assert.ok(
+    graph.relationships.some(
+      (relationship) =>
+        relationship.kind === 'OBSERVES_AS'
+        && relationship.fromRef === 'VexLifeMemoryReviewOwner.observe'
+        && relationship.toRef === 'VexLifeMemoryReviewFamily.State',
+    ),
+  );
+  assert.ok(
+    graph.relationships.some(
+      (relationship) =>
+        relationship.kind === 'CONSUMED_BY'
+        && relationship.fromRef === 'VexLifeMemoryReviewOwner.keep'
+        && relationship.toRef === 'VexLifeSemanticAcceptanceWriter.keepWithConversationLease',
+    ),
+  );
+  assert.ok(
+    graph.relationships.some(
+      (relationship) =>
+        relationship.kind === 'CONSUMED_BY'
+        && relationship.fromRef === 'VexLifeSemanticAcceptanceWriter.keepWithConversationLease'
+        && relationship.toRef === 'VexLifeScoreContinuity.appendAcceptedStatement',
+    ),
+  );
+  assert.ok(
+    graph.debts.some(
+      (debt) =>
+        debt.debtClass === 'MISSING_PROJECTION_EDGE'
+        && debt.coordinateRefs.includes('VexLifeMemoryReviewFamily'),
+    ),
+    'the current graph should keep the unresolved human projection explicit',
+  );
+});
+
+test('Context Profile capture and Vex Context projection are current-main relationships after #251 merge', () => {
+  const seed = readSeed();
+  const graph = formExperienceRelationshipGraph(seed);
+
+  assert.ok(
+    graph.relationships.some(
+      (relationship) =>
+        relationship.kind === 'CAPTURED_AT_SEND'
+        && relationship.fromRef === 'VexLifeContextProfileFamily'
+        && relationship.toRef === 'DirectPromptContext',
+    ),
+  );
+  assert.ok(
+    graph.relationships.some(
+      (relationship) =>
+        relationship.kind === 'PROJECTS_TO'
+        && relationship.fromRef === 'DirectCompanionTurn'
+        && relationship.toRef === 'element.vexlife-workspace.browser.vex-context',
+    ),
+  );
+
+  const contextProfile = seed.coordinates.find(
+    (coordinate) => coordinate.coordinate === 'VexLifeContextProfileFamily',
+  );
+  const vexContext = seed.coordinates.find(
+    (coordinate) => coordinate.coordinate === 'element.vexlife-workspace.browser.vex-context',
+  );
+  assert.equal(contextProfile?.disposition, 'CURRENT_MAIN');
+  assert.equal(vexContext?.disposition, 'CURRENT_MAIN');
+});
+
 test('Vision READY + ENGAGE traverses the ordinary graph through BoardJourney before becoming a test manifest', () => {
   const seed = readSeed();
   const route = deriveFamilyControlRouteManifest(seed, {
