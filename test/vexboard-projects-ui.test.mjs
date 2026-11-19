@@ -46,7 +46,7 @@ test('each project shows its pointers, its currency against GitHub, and how to o
   assert.match(projects, /Run npm run lens:main to move Main\./);
   assert.match(projects, /Catalog\.sourceRefFromInput\(input\.value, subject\.repository\.url\)/);
   assert.match(projects, /h\('summary', \{\}, 'Earlier canvas trials'\)/);
-  assert.doesNotMatch(projects, /'No Screen Lens yet'/);
+  assert.match(projects, /'No Screen Lens yet'/, 'the generic NOT_BUILT renderer remains available even though current Android and Prod subjects are GENERATED');
   assert.match(projects, /catalog\.trials\.length \? h\('details'/);
   assert.match(projects, /href: `\.\.\/\?project=\$\{encodeURIComponent\(ref\)\}`/);
 });
