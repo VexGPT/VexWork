@@ -275,7 +275,12 @@ function addRealization(builder, realization, laws, surface) {
     });
     builder.edge('REALIZED_BY', effectRef(law, site.effect), owner, {
       family: site.family, sourceRef: sourceRef(site.sourcePath, site.line),
-      detail: { realizationClass: site.realizationClass, lines: site.lines },
+      detail: {
+        realizationClass: site.realizationClass,
+        lines: site.lines,
+        handler: site.handler ?? null,
+        carriedKey: site.carriedKey ?? null,
+      },
     });
     (realizersByFamily.get(site.family) ?? realizersByFamily.set(site.family, new Set()).get(site.family)).add(site.owner);
     for (const delegate of site.delegates ?? []) {

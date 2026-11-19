@@ -953,9 +953,22 @@ class VexLifeStock(private val home: String) {
 }
 `;
 
+export const BROWSER_RUNTIME_CARRIAGE_ONLY = `package vexlife.web
+
+object VexLifeWebRuntimeArtifacts {
+    fun runtimeJavaScript(): String =
+        """
+        const dictation = {
+          beginDictation: \${jsString(VexLifeDictationFamily.EffectBeginDictation)},
+          endDictation: \${jsString(VexLifeDictationFamily.EffectEndDictation)},
+        };
+        """
+}
+`;
+
 export const BROWSER_RUNTIME = `package vexlife.web
 
-/** Generated browser runtime: dictation is realized in JavaScript inside a Kotlin string. */
+/** Generated browser runtime: Effect refs are carried, then consumed by exact realization dispatch. */
 object VexLifeWebRuntimeArtifacts {
     fun runtimeJavaScript(): String {
         val startedState = VexLifeDictationFamily.observeStarted()
@@ -965,6 +978,11 @@ object VexLifeWebRuntimeArtifacts {
               beginDictation: \${jsString(VexLifeDictationFamily.EffectBeginDictation)},
               endDictation: \${jsString(VexLifeDictationFamily.EffectEndDictation)},
             };
+            if (act.effectRef === dictation.beginDictation) {
+              await realizeBeginDictation();
+            } else if (act.effectRef === dictation.endDictation) {
+              await realizeEndDictation();
+            }
             const enhanced = display.controls.find((control) => control.controlRef === 'CLEAR');
         """
     }

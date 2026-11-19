@@ -3,7 +3,7 @@ import test from 'node:test';
 
 import { readFamilyLaw } from '../src/core/experience-graph-kotlin-family.mjs';
 import { readLensSurface, readRealizationSites, readSendBoundary, readUntypedControlLiterals } from '../src/core/experience-graph-product-wiring.mjs';
-import { FAMILY_SOURCES, LENS, SEND_SOURCES, WIRING_FILES } from './fixtures/experience-graph/fixtures.mjs';
+import { BROWSER_RUNTIME_CARRIAGE_ONLY, FAMILY_SOURCES, LENS, SEND_SOURCES, WIRING_FILES } from './fixtures/experience-graph/fixtures.mjs';
 
 const families = FAMILY_SOURCES.map(readFamilyLaw);
 const files = [...WIRING_FILES, ...FAMILY_SOURCES];
@@ -42,10 +42,19 @@ test('realization sites find the owning class, typed delegates and browser-runti
   const begin = realizations.find((row) => row.family === 'VexLifeQuietFamily' && row.effect === 'Effect.BeginQuiet');
   assert.deepEqual(begin.delegates.map((row) => row.type), ['VexLifeQuietConversation'], 'library-typed locals are not delegates');
   const dictation = realizations.filter((row) => row.family === 'VexLifeDictationFamily');
-  assert.deepEqual(dictation.map((row) => [row.effect, row.owner, row.realizationClass]), [
-    ['BeginDictation', 'VexLifeWebRuntimeArtifacts', 'BROWSER_RUNTIME'],
-    ['EndDictation', 'VexLifeWebRuntimeArtifacts', 'BROWSER_RUNTIME'],
+  assert.deepEqual(dictation.map((row) => [row.effect, row.owner, row.realizationClass, row.handler]), [
+    ['BeginDictation', 'VexLifeWebRuntimeArtifacts', 'BROWSER_RUNTIME', 'realizeBeginDictation'],
+    ['EndDictation', 'VexLifeWebRuntimeArtifacts', 'BROWSER_RUNTIME', 'realizeEndDictation'],
   ]);
+
+  const carriageOnlyFiles = [
+    ...WIRING_FILES.filter((file) => file.path !== 'src/commonMain/kotlin/vexlife/web/VexLifeWebRuntimeArtifacts.kt'),
+    { path: 'src/commonMain/kotlin/vexlife/web/VexLifeWebRuntimeArtifacts.kt', text: BROWSER_RUNTIME_CARRIAGE_ONLY },
+    ...FAMILY_SOURCES,
+  ];
+  const carriedOnly = readRealizationSites({ families, files: carriageOnlyFiles }).realizations
+    .filter((row) => row.family === 'VexLifeDictationFamily');
+  assert.deepEqual(carriedOnly, [], 'serializing Effect refs into browser vocabulary is not realization evidence');
   assert.ok(realizations.some((row) => row.family === 'VexLifeStockFamily' && row.owner === 'VexLifeStock'));
 
   const forms = Object.fromEntries(returns.map((row) => [`${row.family}:${row.observation}`, row.returnForm]));

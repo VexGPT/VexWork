@@ -182,8 +182,31 @@ function branchDelegates(text, index, file) {
   return [...delegates.values()];
 }
 
-// Effects realized by a JVM owner (when-branch on the Effect) or carried into the generated browser
-// runtime (the Effect's ref constant interpolated into runtime source), plus observation call sites.
+// Browser realization requires more than carrying an Effect ref into generated JavaScript.
+// The Product must visibly dispatch an act.effectRef matching that carried key into a realize* handler.
+function browserEffectHandlers(text, family, constName) {
+  const carried = new RegExp(`(\\w+)\\s*:\\s*\\$\\{jsString\\(${escape(family)}\\.${escape(constName)}\\)\\}`, 'g');
+  const handlers = [];
+  for (const row of text.matchAll(carried)) {
+    const key = row[1];
+    const dispatch = new RegExp(`if\\s*\\([^)]*\\beffectRef\\s*===\\s*[\\w.]+\\.${escape(key)}\\s*\\)\\s*\\{`, 'g');
+    for (const branch of text.matchAll(dispatch)) {
+      const open = text.indexOf('{', branch.index);
+      if (open < 0) continue;
+      let close;
+      try { close = matchClose(text, open); } catch { continue; }
+      const body = text.slice(open + 1, close);
+      const realize = /\\b(?:await\\s+)?(realize[A-Z]\\w*)\\s*\\(/.exec(body);
+      if (!realize) continue;
+      handlers.push({ key, handler: realize[1], line: lineAt(text, branch.index) });
+    }
+  }
+  return handlers;
+}
+
+// Effects realized by a JVM owner (when-branch on the Effect) or by an exact generated-browser
+// dispatch that consumes the carried Effect ref and invokes a realize* handler, plus observation
+// call sites. Effect vocabulary carriage alone is not realization evidence.
 export function readRealizationSites({ families, files }) {
   assert(Array.isArray(families) && Array.isArray(files), 'realization reader needs Family law and source files');
   const sites = [];
@@ -197,7 +220,6 @@ export function readRealizationSites({ families, files }) {
       ].filter(Boolean);
       const handler = new RegExp(`(?:\\bis\\s+)?(?:${forms.map(escape).join('|')})\\b(?:\\s*\\(|\\s*->)`, 'g');
       const constName = effect.refSource === 'CONSTANT' ? `Effect${effect.name}` : null;
-      const runtime = constName ? new RegExp(`\\$\\{jsString\\(${escape(law.family)}\\.${escape(constName)}\\)\\}`, 'g') : null;
       for (const file of files) {
         if (file.path === ownFile) continue;
         const clean = file.text;
@@ -206,9 +228,19 @@ export function readRealizationSites({ families, files }) {
           if (!/->/.test(tail.split('\n')[0]) && !/^\s*(?:is\s+)?[\w.]+\s*->/.test(tail)) continue;
           sites.push({ family: law.family, effect: effect.symbol, owner: enclosingOwner(clean, match.index, file), sourcePath: file.path, line: lineAt(clean, match.index), realizationClass: 'JVM_OWNER', delegates: branchDelegates(clean, match.index, file) });
         }
-        if (runtime) {
-          for (const match of clean.matchAll(runtime)) {
-            sites.push({ family: law.family, effect: effect.symbol, owner: enclosingOwner(clean, match.index, file), sourcePath: file.path, line: lineAt(clean, match.index), realizationClass: 'BROWSER_RUNTIME' });
+        if (constName) {
+          for (const handler of browserEffectHandlers(clean, law.family, constName)) {
+            const at = clean.split('\n').slice(0, handler.line - 1).reduce((sum, line) => sum + line.length + 1, 0);
+            sites.push({
+              family: law.family,
+              effect: effect.symbol,
+              owner: enclosingOwner(clean, at, file),
+              sourcePath: file.path,
+              line: handler.line,
+              realizationClass: 'BROWSER_RUNTIME',
+              handler: handler.handler,
+              carriedKey: handler.key,
+            });
           }
         }
       }
