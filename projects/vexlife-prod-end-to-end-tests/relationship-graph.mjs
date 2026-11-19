@@ -273,6 +273,14 @@ export function formExperienceRelationshipGraph(seedInput) {
       coordinate.humanMeaning ?? coordinate.coordinate,
       coordinateSourceRefs(seed, coordinate.coordinate),
     );
+    if (coordinate.investigationNote) {
+      debts.push(Object.freeze({
+        debtClass: 'SCREEN_LENS_DEPTH_GAP',
+        coordinateRefs: Object.freeze([coordinate.coordinate]),
+        detail: coordinate.investigationNote,
+        sourceRefs: Object.freeze(coordinateSourceRefs(seed, coordinate.coordinate)),
+      }));
+    }
   }
 
   for (const row of seed.familyLawRows ?? []) {
@@ -451,15 +459,6 @@ export function formExperienceRelationshipGraph(seedInput) {
       addNode(downstreamCoordinate, 'OWNER', downstreamCoordinate, elementSources);
     }
 
-    const pathway = binding.currentPathwayRef ? coordinateByRef.get(binding.currentPathwayRef) : null;
-    if (pathway?.investigationNote) {
-      debts.push(Object.freeze({
-        debtClass: 'SCREEN_LENS_DEPTH_GAP',
-        coordinateRefs: Object.freeze([binding.elementRef, binding.currentPathwayRef]),
-        detail: pathway.investigationNote,
-        sourceRefs: Object.freeze(coordinateSourceRefs(seed, binding.currentPathwayRef)),
-      }));
-    }
   }
 
   for (const row of seed.crossOwnerRows ?? []) {
