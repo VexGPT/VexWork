@@ -445,6 +445,42 @@
       "currentProjection": null,
       "investigationNote": null,
       "journeyRefs": []
+    },
+    {
+      "coordinate": "element.vexlife-workspace.companion.vision",
+      "coordinateClass": "ELEMENT",
+      "disposition": "CURRENT_MAIN",
+      "sourcePath": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+      "humanMeaning": "Choose or release the window selected for Vision through the current Vision Family relationship.",
+      "relatedCoordinates": [
+        "pathway.vexlife-prod.vision.selected-scope",
+        "VexLifeVisionFamily"
+      ],
+      "availabilityPredicates": [],
+      "currentLimitation": null,
+      "currentProjection": "pathway.vexlife-prod.vision.selected-scope",
+      "investigationNote": null,
+      "journeyRefs": [
+        "journey.vision.engage-stop"
+      ]
+    },
+    {
+      "coordinate": "pathway.vexlife-prod.vision.selected-scope",
+      "coordinateClass": "PATHWAY",
+      "disposition": "CURRENT_MAIN",
+      "sourcePath": "src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
+      "humanMeaning": "Current Product Screen Lens projection of the Vision Family selected-scope relationship.",
+      "relatedCoordinates": [
+        "element.vexlife-workspace.companion.vision",
+        "VexLifeVisionFamily"
+      ],
+      "availabilityPredicates": [],
+      "currentLimitation": null,
+      "currentProjection": "SCAE_FAMILY",
+      "investigationNote": null,
+      "journeyRefs": [
+        "journey.vision.engage-stop"
+      ]
     }
   ],
   "familyLawRows": [
@@ -464,7 +500,9 @@
         "ENGAGED",
         "HELD"
       ],
-      "projection": "VexLifeVisionFamily.displayStateFor(observed State)"
+      "projection": "VexLifeVisionFamily.displayStateFor(observed State)",
+      "realizationRef": "VexLifeProdVisionRuntime",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/vision/VexLifeProdVisionRuntime.kt"
     },
     {
       "family": "VexLifeVisionFamily",
@@ -481,7 +519,9 @@
         "READY",
         "HELD"
       ],
-      "projection": "VexLifeVisionFamily.displayStateFor(observed State)"
+      "projection": "VexLifeVisionFamily.displayStateFor(observed State)",
+      "realizationRef": "VexLifeProdVisionRuntime",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/vision/VexLifeProdVisionRuntime.kt"
     },
     {
       "family": "VexLifeMemoryReviewFamily",
@@ -677,6 +717,20 @@
       "downstreamCoordinates": [
         "DirectPromptContext",
         "DirectConversationStore"
+      ]
+    },
+    {
+      "elementRef": "element.vexlife-workspace.companion.vision",
+      "currentPathwayRef": "pathway.vexlife-prod.vision.selected-scope",
+      "semanticOwner": "VexLifeVisionFamily",
+      "humanControlMeaning": "Use the lawful current Vision control: choose a window when READY, or release the selected/held window when STOP is offered.",
+      "downstreamCoordinates": [
+        "VexLifeVisionFamily.Control",
+        "VexLifeVisionFamily.Effect",
+        "VexLifeProdVisionRuntime",
+        "VexLifeVisionFamily.observe",
+        "VexLifeVisionFamily.State",
+        "VexLifeVisionFamily.displayStateFor"
       ]
     }
   ],
