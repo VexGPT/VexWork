@@ -346,8 +346,8 @@ basis
   4aad5e0055cdc2a9fada2f1e63200c7772850a81
 
 current correction head
-  d7bee6967250169672999f022c2a2159d1c74751
-  tree 657e443cd41fc34d3bff3d54d236687dc4d85a06
+  67b88aa8a4636e770902adf3fcbe51c98301a950
+  tree 9231d7b458b6b589d78b189f5d70568a3d21002c
 ```
 
 It is exactly three commits / thirteen paths ahead of Claude and remains zero behind that basis:
@@ -355,8 +355,11 @@ It is exactly three commits / thirteen paths ahead of Claude and remains zero be
 1. `e5f1eda68e2cf4d526570ae338afdbe19f945169` — unread law stays fail-closed rather than becoming generated REJECT truth;
 2. `32b440fa59ae8399a968c0e7a143abc2ba885378` — law evidence currentness binds the probe source; report separates law-cell proof from case projection;
 3. `d7bee6967250169672999f022c2a2159d1c74751` — browser `REALIZED_BY` requires actual Effect dispatch into a `realize*` handler; carriage-only fixture refuses realization.
+4. `67b88aa8a4636e770902adf3fcbe51c98301a950` — repairs the over-escaped browser-handler RegExp literal discovered by Depth 04.
 
-The next unconsumed edge is **host ExactHeadSourceOwnerProof of this correction depth**, fixed-base `4aad5e0...` -> exact head `d7bee69...`. Generated Experience Graph artifacts are intentionally not currentized in this proof; that is the next depth on the same #321 after this return is consumed.
+Depth 04 is consumed evidence: the VexLocalBridge carrier passed and the inner exact head/tree checks passed, then the first SourceOwner test command stopped before test bodies because the browser handler RegExp could not parse. The failure is candidate-owned; no source or provider mutation occurred.
+
+The next unconsumed edge is a **fresh host ExactHeadSourceOwnerProof of the repaired correction depth**, fixed-base `4aad5e0...` -> exact head `67b88aa...`. Generated Experience Graph artifacts remain intentionally not currentized until this correction proof passes.
 
 ## Fresh reviewer handoff rule
 
