@@ -2297,9 +2297,11 @@ function bindStaticView(frame, expression, { interactive }) {
     flip('EXPERIENCE');
   }, true);
   doc.addEventListener('click', (event) => {
-    const nativeSelect = event.target instanceof doc.defaultView.Element ? event.target.closest('select') : null;
+    const targetElement = event.target instanceof doc.defaultView.Element ? event.target : null;
+    if (targetElement?.closest('.vexboard-lens-travel')) return;
+    const nativeSelect = targetElement?.closest('select') ?? null;
     if (nativeSelect && (view.interactionBindings ?? []).some((binding) => binding.kind === 'SELECT' && staticSelectNode(doc, view, binding) === nativeSelect)) {
-      // Keep the browser's native select interaction intact; its change event drives the source-derived expression.
+      // Keep browser-native and Lens support controls intact; their own handlers drive the source-derived destination.
       return;
     }
     event.preventDefault();
