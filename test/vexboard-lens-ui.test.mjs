@@ -124,6 +124,16 @@ test('existing board markers sit on borders and frame titles are never covered',
   assert.match(board, /\.shape:not\(\.DIAMOND\):not\(\.FRAME\)>\.kind-marker\{bottom:-7px/);
 });
 
+
+test('project switching supports Product-exported Lens subjects without introducing a Product-specific renderer', () => {
+  assert.match(page, /subject\.lens\.exportedLens/);
+  assert.match(page, /Source\.readExportedLensCommit/);
+  assert.match(page, /Catalog\.bindLensBuildSource/);
+  assert.match(page, /loadBuildLens\(subject, build\)/);
+  assert.match(page, /Builds and source projections/);
+  assert.doesNotMatch(page, /projectVexLifeProd|vexlife-prod.*adapter/i);
+});
+
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][UI-TEST]
 
 test('search, impact, coverage and briefs are wired from the shared query module', () => {
