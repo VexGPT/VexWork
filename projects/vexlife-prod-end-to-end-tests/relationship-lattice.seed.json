@@ -707,7 +707,8 @@
           "DirectPromptContext.Receipt.browserContextIncluded"
         ]
       },
-      "note": "The elementRef is the stable surface address. It is not itself the semantic law. Current Blueprint local-interaction binding is shallower than the runtime relationship and is an explicit Screen Lens/projectability investigation edge."
+      "note": "The elementRef is the stable surface address. It is not itself the semantic law. Current Blueprint local-interaction binding is shallower than the runtime relationship and is an explicit Screen Lens/projectability investigation edge.",
+      "currentPathwayRef": "pathway.vexlife-prod.local.companion.conversation.context-share"
     },
     {
       "elementRef": "element.vexlife-workspace.companion.conversation.send",
