@@ -1952,6 +1952,48 @@ function applyStaticViewStateBindings(doc, view, resolved) {
   }
 }
 
+function expressionForPresenceOutcome(presenceRef, outcome) {
+  return expressionsNow().find((expression) =>
+    String(presenceFor(expression.context).presence.get(presenceRef)?.value ?? '') === String(outcome)
+  ) ?? null;
+}
+function contextWithPresenceOutcome(presenceRef, outcome) {
+  const canonical = expressionForPresenceOutcome(presenceRef, outcome);
+  const overrides = { ...state.realization.overrides };
+  delete overrides[presenceRef];
+  const canonicalOverride = canonical?.context?.overrides?.[presenceRef];
+  if (canonicalOverride !== undefined) overrides[presenceRef] = canonicalOverride;
+  else if (!canonical) overrides[presenceRef] = outcome;
+  return Object.freeze({
+    exampleRef: state.realization.exampleRef,
+    overrides: Object.freeze(overrides),
+  });
+}
+function staticSelectNode(doc, view, binding) {
+  const owner = staticViewTargetNodes(doc, view, binding.elementRef)[0] ?? null;
+  if (!owner) return null;
+  return owner.matches?.('select') ? owner : owner.querySelector?.('select') ?? null;
+}
+function applyStaticSelectBindings(doc, view, resolved) {
+  for (const binding of view.interactionBindings ?? []) {
+    if (binding.kind !== 'SELECT') continue;
+    const select = staticSelectNode(doc, view, binding);
+    if (!select) continue;
+    const outcome = String(resolved?.presence?.get(binding.presenceRef)?.value ?? '');
+    const option = binding.options.find((entry) => entry.outcome === outcome);
+    if (option && select.value !== option.value) select.value = option.value;
+  }
+}
+function applyStaticToggleBindings(doc, view, resolved) {
+  for (const binding of view.interactionBindings ?? []) {
+    if (binding.kind !== 'TOGGLE') continue;
+    const target = staticViewTargetNodes(doc, view, binding.targetRef)[0] ?? null;
+    if (!target) continue;
+    const open = String(resolved?.presence?.get(binding.presenceRef)?.value ?? '') === 'OPEN';
+    target.setAttribute(binding.attribute, open ? binding.openValue : binding.closedValue);
+  }
+}
+
 const staticSplitKey = (binding) => `${screenRef()}|${binding.elementRef}`;
 const staticSplitProjection = (binding) => state.splitProjection.get(staticSplitKey(binding)) ?? null;
 function staticSplitLabels(binding) {
@@ -1990,6 +2032,27 @@ function applyStaticSplitProjection(doc, view, binding) {
 function applyStaticSplitProjections(doc, view) {
   for (const binding of view.interactionBindings ?? []) if (binding.kind === 'SPLIT') applyStaticSplitProjection(doc, view, binding);
 }
+function applyStaticViewProjection(doc, view, expression) {
+  const screen = currentScreen();
+  const resolved = screen.realization ? presenceFor(expression.context) : null;
+  for (const element of screen.elements) {
+    const info = resolved?.elements.get(element.ref);
+    if (info) {
+      for (const node of staticViewNodes(doc, view, element.ref)) {
+        if (PRESENTED.has(info.state)) node.removeAttribute('hidden');
+        else node.setAttribute('hidden', '');
+      }
+    }
+    const delta = deltaClass(element).trim();
+    if (delta) for (const node of staticViewNodes(doc, view, element.ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-delta', delta);
+  }
+  applyStaticViewStateBindings(doc, view, resolved);
+  applyStaticSelectBindings(doc, view, resolved);
+  applyStaticToggleBindings(doc, view, resolved);
+  applyStaticSplitProjections(doc, view);
+  refreshStaticViewInspectionMarks(doc, view);
+  return resolved;
+}
 function setStaticSplitPhase(binding, phase) {
   const key = staticSplitKey(binding);
   if (phase === 'BALANCED') state.splitProjection.delete(key);
@@ -2002,6 +2065,21 @@ function setStaticSplitPhase(binding, phase) {
     refreshStaticViewActions(wrapper);
     scheduleBridge();
   } else render();
+}
+function renderStaticToggleControl(binding) {
+  const element = Lens.elementFor(state.lens, binding.elementRef);
+  const outcome = presenceNow().presence.get(binding.presenceRef)?.value;
+  const open = outcome === 'OPEN';
+  const label = `${open ? 'Close' : 'Open'} ${(element?.label ?? 'presentation').toLowerCase()}`;
+  return h('button', {
+    class: 'tool product-view-travel',
+    type: 'button',
+    title: label,
+    onclick: (event) => {
+      event.stopPropagation();
+      setStaticPresenceOutcome(binding.presenceRef, open ? 'CLOSED' : 'OPEN');
+    },
+  }, label);
 }
 function renderStaticSplitControl(binding) {
   const element = Lens.elementFor(state.lens, binding.elementRef);
@@ -2029,6 +2107,18 @@ function renderStaticSplitControl(binding) {
   select.value = phase;
   return h('label', { class: 'product-view-phase', title: 'Browser-local spatial projection; Product state is unchanged.' },
     h('span', {}, 'View'), select);
+}
+function bindStaticSelectInteractions(doc, view) {
+  for (const binding of view.interactionBindings ?? []) {
+    if (binding.kind !== 'SELECT') continue;
+    const select = staticSelectNode(doc, view, binding);
+    if (!select) continue;
+    select.addEventListener('change', (event) => {
+      event.stopPropagation();
+      const option = binding.options.find((entry) => entry.value === select.value);
+      if (option) setStaticPresenceOutcome(binding.presenceRef, option.outcome);
+    });
+  }
 }
 function bindStaticSplitInteractions(doc, view) {
   for (const binding of view.interactionBindings ?? []) {
@@ -2154,29 +2244,14 @@ function bindStaticView(frame, expression, { interactive }) {
   if (!doc) return;
   const screen = currentScreen();
   const view = screen.view;
-  const presence = screen.realization ? presenceFor(expression.context) : null;
-  for (const element of screen.elements) {
-    const info = presence?.elements.get(element.ref);
-    if (info) {
-      for (const node of staticViewNodes(doc, view, element.ref)) {
-        if (PRESENTED.has(info.state)) node.removeAttribute('hidden');
-        else node.setAttribute('hidden', '');
-      }
-    }
-    const delta = deltaClass(element).trim();
-    if (delta) for (const node of staticViewNodes(doc, view, element.ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-delta', delta);
-  }
-  applyStaticViewStateBindings(doc, view, presence);
-  applyStaticSplitProjections(doc, view);
-  const marks = selectionPathRefs();
-  for (const ref of marks.ancestors) for (const node of staticViewNodes(doc, view, ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-ancestor', '');
-  if (marks.selected) for (const node of staticViewNodes(doc, view, marks.selected, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-selected', '');
+  applyStaticViewProjection(doc, view, expression);
 
   // Structure explains presentation by observing the Product stylesheet that the browser actually
   // applies. A changed observation refreshes the outer Lens once; the stylesheet remains the renderer.
+  const marks = selectionPathRefs();
   if (interactive && marks.selected && rememberStaticViewPresentation(doc, view, marks.selected)) {
     queueMicrotask(() => {
-      if (state.anchorElementRef === marks.selected && activeExpression().ref === expression.ref) render();
+      if (state.anchorElementRef === marks.selected && activeExpression().ref === expression.ref) refreshStaticSelectionInPlace();
     });
   }
 
@@ -2192,6 +2267,7 @@ function bindStaticView(frame, expression, { interactive }) {
     return null;
   };
   doc.addEventListener('submit', (event) => event.preventDefault(), true);
+  bindStaticSelectInteractions(doc, view);
   bindStaticSplitInteractions(doc, view);
   // An iframe is a separate event world, so the outer Experience-side contextmenu handler cannot
   // see a Product-view right-click. Forward the same Screen Lens gesture law explicitly.
@@ -2202,6 +2278,11 @@ function bindStaticView(frame, expression, { interactive }) {
     flip('EXPERIENCE');
   }, true);
   doc.addEventListener('click', (event) => {
+    const nativeSelect = event.target instanceof doc.defaultView.Element ? event.target.closest('select') : null;
+    if (nativeSelect && (view.interactionBindings ?? []).some((binding) => binding.kind === 'SELECT' && staticSelectNode(doc, view, binding) === nativeSelect)) {
+      event.stopPropagation();
+      return;
+    }
     event.preventDefault();
     event.stopPropagation();
     const node = closestSelector && event.target instanceof doc.defaultView.Element ? event.target.closest(closestSelector) : null;
@@ -2221,7 +2302,11 @@ function bindStaticView(frame, expression, { interactive }) {
     const node = closestSelector && event.target instanceof doc.defaultView.Element ? event.target.closest(closestSelector) : null;
     const ref = refFor(node);
     const element = ref ? Lens.elementFor(state.lens, ref) : null;
-    if (element?.navigatesTo) travel(element);
+    const toggle = ref ? (view.interactionBindings ?? []).find((binding) => binding.kind === 'TOGGLE' && binding.elementRef === ref) ?? null : null;
+    if (toggle) {
+      const open = presenceNow().presence.get(toggle.presenceRef)?.value === 'OPEN';
+      setStaticPresenceOutcome(toggle.presenceRef, open ? 'CLOSED' : 'OPEN');
+    } else if (element?.navigatesTo) travel(element);
     else if (ref) exposeElement(ref);
   }, true);
 }
@@ -2230,9 +2315,11 @@ function renderStaticViewActions() {
   const selected = state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
   const destination = selected ? destinationForElement(selected) : null;
   const splitBinding = selected ? (screen.view?.interactionBindings ?? []).find((binding) => binding.kind === 'SPLIT' && binding.elementRef === selected.ref) ?? null : null;
-  return destination || splitBinding
+  const toggleBinding = selected ? (screen.view?.interactionBindings ?? []).find((binding) => binding.kind === 'TOGGLE' && binding.elementRef === selected.ref) ?? null : null;
+  return destination || splitBinding || toggleBinding
     ? h('div', { class: 'product-view-actions' },
         splitBinding ? renderStaticSplitControl(splitBinding) : null,
+        toggleBinding ? renderStaticToggleControl(toggleBinding) : null,
         destination ? h('button', {
           class: 'tool product-view-travel',
           type: 'button',
@@ -3541,7 +3628,7 @@ function refreshStaticViewInspectionMarks(doc, view) {
     state.presentationRules = null;
   }
 }
-function refreshStaticSelectionInPlace() {
+function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } = {}) {
   const screen = currentScreen();
   if (!screen?.view || !refs.main || state.overlay) return false;
   const wrapper = refs.main.querySelector('.current-product-view');
@@ -3549,8 +3636,16 @@ function refreshStaticSelectionInPlace() {
   const doc = frame?.contentDocument;
   if (!wrapper || !doc) return false;
 
-  refreshStaticViewInspectionMarks(doc, screen.view);
+  applyStaticViewProjection(doc, screen.view, activeExpression());
   refreshStaticViewActions(wrapper);
+
+  const slot = wrapper.closest('.xslot');
+  const oldCaption = slot?.querySelector('.xcap');
+  if (oldCaption) oldCaption.replaceWith(expressionCaption(activeExpression()));
+  if (updateExpressionRail) {
+    const oldRail = document.querySelector('.lens > .xrail');
+    if (oldRail) oldRail.replaceWith(renderExpressionRail());
+  }
 
   const experience = refs.main.querySelector('.side[data-side="EXPERIENCE"]');
   const oldStructure = experience?.querySelector('.face[data-face="STRUCTURE"]');
@@ -3578,6 +3673,15 @@ function refreshStaticSelectionInPlace() {
     drawBridge();
   });
   return true;
+}
+function setStaticPresenceOutcome(presenceRef, outcome) {
+  state.realization = contextWithPresenceOutcome(presenceRef, outcome);
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
+  if (!refreshStaticLensAroundMountedProduct({ updateExpressionRail: true })) render();
+}
+function refreshStaticSelectionInPlace() {
+  return refreshStaticLensAroundMountedProduct();
 }
 function syncUrl() {
   const next = new URLSearchParams(location.search);
