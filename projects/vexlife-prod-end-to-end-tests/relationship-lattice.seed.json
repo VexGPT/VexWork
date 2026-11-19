@@ -50,6 +50,11 @@
       "ref": "github.branch.vexlife-prod.VXG-111926-vexlife-prod-experience-convergence-r2",
       "commit": "553e954d1295eb272ac172f9eafbb4467172e20b",
       "meaning": "Source-converged successor: runnable R1 + #385 spatial exporter while preserving #380 semantic pathways. Generated Lens JSON intentionally not hand-edited; regeneration held."
+    },
+    "experienceGraphSuccessorCandidate": {
+      "ref": "github.branch.vexwork.VXG-111926-vexlife-prod-e2e-experience-convergence-r2",
+      "meaning": "Source-corrected Experience Graph Lens reader that preserves declared Family Control subsets; generated graph artifacts intentionally held until exact Product R2 Lens regeneration.",
+      "sourceCorrectionCommit": "a418759be2a8e717aeddec0bb75b6cf75410c23f"
     }
   },
   "topologyLayers": [

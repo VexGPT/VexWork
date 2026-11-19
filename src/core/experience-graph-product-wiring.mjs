@@ -60,6 +60,9 @@ export function readLensSurface(lens) {
     const role = (name) => pathway.nodes.filter((node) => node.role === name);
     const control = role('CONTROL')[0] ?? null;
     const family = control ? control.symbol.replace(/\.Control$/, '') : null;
+    const controlRefs = control
+      ? control.label.split('·').map((value) => value.trim()).filter(Boolean)
+      : [];
     const method = role('METHOD')[0] ?? null;
     const effect = role('EFFECT')[0] ?? null;
     const projection = role('PROJECTION')[0] ?? null;
@@ -93,6 +96,7 @@ export function readLensSurface(lens) {
       pathwayRef: pathway.pathwayRef,
       disposition: pathway.disposition,
       family,
+      controlRefs: Object.freeze(controlRefs),
       dispatch: node(dispatch),
       method: node(method),
       projection: node(projection),

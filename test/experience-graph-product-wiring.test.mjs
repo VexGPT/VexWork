@@ -18,6 +18,7 @@ test('Screen Lens surface keeps element bindings and Family pathway depth as Pro
 
   const sightPathway = surface.pathways.find((pathway) => pathway.pathwayRef === 'pathway.fixture.sight');
   assert.equal(sightPathway.family, 'VexLifeSightFamily');
+  assert.deepEqual(sightPathway.controlRefs, ['ENGAGE', 'STOP']);
   assert.equal(sightPathway.dispatch.symbol, 'VexLifeProdLocalService');
   assert.equal(sightPathway.dispatch.sourcePath, 'src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt');
   assert.deepEqual(sightPathway.depth.map((node) => [node.role, node.symbol]), [['CONNECTION', 'VexLifeSightRuntime'], ['PARTNER', 'OS picker session']]);
