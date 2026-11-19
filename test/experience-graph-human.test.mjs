@@ -70,6 +70,14 @@ test('mechanical connectivity does not impersonate a curated semantic relationsh
   assert.deepEqual(convergence.relationships[0].graphPath, ['edge:1', 'edge:2']);
 });
 
+test('candidate Language Family remains unknown on the old checked-in Product graph', () => {
+  const convergence = result();
+  const language = convergence.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
+  assert.ok(language);
+  assert.equal(language.status, 'UNKNOWN');
+  assert.ok(language.missing.some((row) => row.predicate === 'NO_MECHANICAL_ROUTE_SELECTED_YET'));
+});
+
 test('current human journeys preserve Product truth that the old source pin could not mechanically derive', () => {
   const convergence = result();
   const sourceReturn = convergence.journeys.find((row) => row.journeyRef === 'journey.conversation.source-return-host-truth');
