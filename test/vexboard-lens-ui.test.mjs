@@ -199,10 +199,17 @@ test('expression carousel preserves the lived desktop and phone-width interactio
   assert.match(page, /ondblclick: \(\) => \(element\.navigatesTo \? travel\(element\) : exposeElement\(element\.ref\)\)/, 'Structure double-click traverses to that source-derived expression');
 });
 
-test('Structure keeps a real scroll boundary inside the flipped Experience face', () => {
+test('Structure keeps a real scroll boundary and viewport continuity while bridge geometry follows it', () => {
   assert.match(page, /\.structure\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;/);
   assert.match(page, /const kept = \{ phone: .* structure: document\.querySelector\('\.face\[data-face="STRUCTURE"\] \.structure'\)\?\.scrollTop \?\? 0 \}/);
   assert.match(page, /if \(structure\) structure\.scrollTop = kept\.structure;/);
+  assert.match(page, /function replaceStructureFacePreservingViewport\(experience\)/);
+  assert.match(page, /const scrollTop = oldStructure\.querySelector\('\.structure'\)\?\.scrollTop \?\? 0;/);
+  assert.match(page, /nextScroller\.scrollTop = scrollTop;/, 'mounted-Product inspection/presence refresh keeps the same Structure viewport');
+  assert.match(page, /function bridgeRelationship\(\)/, 'bridge relationship identity is resolved separately from its current geometry');
+  assert.match(page, /function drawBridge\(relationship = bridgeRelationship\(\)\)/);
+  assert.match(page, /const scheduleBridge = \(\) => \{[\s\S]*if \(bridgeFrame\) return;[\s\S]*bridgeFrame = requestAnimationFrame\(\(\) => \{[\s\S]*bridgeFrame = 0;[\s\S]*drawBridge\(\);/, 'scroll-driven bridge observation coalesces to one continuous animation-frame update');
+  assert.doesNotMatch(page, /cancelAnimationFrame\(bridgeFrame\)/, 'scroll observation does not repeatedly cancel/restart the pending bridge frame');
 });
 
 test('expression stepping animates the whole three-card carousel handoff instead of teleporting neighbours', () => {
