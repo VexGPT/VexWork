@@ -179,6 +179,7 @@ function normalizeScreenView(input, screenRef) {
         kind,
         elementRef: text(binding.elementRef, `${screenRef} view interactionBindings[${bindingIndex}] elementRef`),
         targetRef: text(binding.targetRef, `${screenRef} view interactionBindings[${bindingIndex}] targetRef`),
+        presenceRef: text(binding.presenceRef, `${screenRef} view interactionBindings[${bindingIndex}] presenceRef`),
         attribute: stateAttribute(binding.attribute, `${screenRef} view interactionBindings[${bindingIndex}] attribute`),
         closedValue: String(binding.closedValue ?? ''),
         openValue: String(binding.openValue ?? ''),
@@ -401,6 +402,9 @@ export function normalizeScreenLens(input) {
       }
       if (binding.kind === 'TOGGLE') {
         if (!lensRefs.has(binding.targetRef)) fail(`${screen.screenRef} view toggle binding target ${binding.targetRef} is not a lens ref`);
+        const presence = screen.realization?.presence.find((entry) => entry.ref === binding.presenceRef);
+        if (!presence) fail(`${screen.screenRef} view toggle binding presence ${binding.presenceRef} is not declared`);
+        if (presence.kind !== 'PRESENTATION') fail(`${screen.screenRef} view toggle binding presence ${binding.presenceRef} is not PRESENTATION`);
       }
     }
     const layout = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.layout;
