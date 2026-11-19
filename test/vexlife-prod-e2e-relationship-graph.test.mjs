@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 
 import {
   EXPERIENCE_RELATIONSHIP_EDGE_KINDS,
+  deriveEdgeRouteManifest,
   deriveFamilyControlRouteManifest,
   deriveJourneyRouteManifest,
   formExperienceRelationshipGraph,
@@ -200,6 +201,63 @@ test('Context Profile capture and Vex Context projection are current-main relati
   );
   assert.equal(contextProfile?.disposition, 'CURRENT_MAIN');
   assert.equal(vexContext?.disposition, 'CURRENT_MAIN');
+});
+
+test('exact edge selection preserves reverse prerequisites and forward consequences', () => {
+  const seed = readSeed();
+  const vision = deriveEdgeRouteManifest(seed, {
+    kind: 'REQUESTS_EFFECT',
+    fromRef: 'VexLifeVisionFamily.Control',
+    toRef: 'VexLifeVisionFamily.Effect.EngageScope',
+    context: {
+      family: 'VexLifeVisionFamily',
+      currentState: 'VexLifeVisionFamily.Ready (stateRef=READY)',
+      control: 'VexLifeVisionFamily.Engage (controlRef=ENGAGE)',
+    },
+  });
+
+  assert.deepEqual(
+    vision.reverseHumanPath.map((relationship) => relationship.kind),
+    ['MANIFESTS'],
+  );
+  assert.deepEqual(
+    vision.prerequisiteRelationships.map((relationship) => relationship.predicate),
+    [{
+      currentState: 'VexLifeVisionFamily.Ready (stateRef=READY)',
+      control: 'VexLifeVisionFamily.Engage (controlRef=ENGAGE)',
+    }],
+    'the selected ENGAGE edge must not inherit the sibling STOP precondition',
+  );
+  assert.deepEqual(
+    vision.forwardConsequencePath.map((relationship) => relationship.kind),
+    ['REALIZED_BY', 'RETURNS_TO', 'OBSERVES_AS', 'PROJECTS_TO'],
+  );
+  assert.deepEqual(
+    vision.boardJourney.steps.map((step) => step.semanticRef),
+    [
+      'element.vexlife-workspace.companion.vision',
+      'VexLifeVisionFamily.Control',
+      'VexLifeVisionFamily.Effect.EngageScope',
+      'VexLifeProdVisionRuntime',
+      'VexLifeVisionFamily.observe',
+      'VexLifeVisionFamily.State',
+      'VexLifeVisionFamily.displayStateFor',
+    ],
+  );
+
+  const profileCapture = deriveEdgeRouteManifest(seed, {
+    kind: 'CAPTURED_AT_SEND',
+    fromRef: 'VexLifeContextProfileFamily',
+    toRef: 'DirectPromptContext',
+  });
+  assert.equal(profileCapture.boardJourney, null);
+  assert.ok(profileCapture.missingPredicates.includes('MISSING_MANIFESTATION_BINDING'));
+  assert.ok(profileCapture.missingPredicates.includes('MISSING_PROJECTION_EDGE'));
+  assert.deepEqual(
+    profileCapture.reverseHumanPath,
+    [],
+    'current graph truth must not invent a human path for Context Profile when no manifestation edge is yet projected',
+  );
 });
 
 test('Vision READY + ENGAGE traverses the ordinary graph through BoardJourney before becoming a test manifest', () => {
