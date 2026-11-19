@@ -567,6 +567,18 @@ D53 The Surface draws what the expression presents
               condition folds into one `if` line; placement by selection, by whole registration group, by
               co-realization in one feature choice, and within the nearest registered element;
               Shift-click combines expressions (custom)
+D54 A screen whose source authors frames is drawn as a workspace, not a phone
+    why       "the VexLife-Prod screen lens was recycling the layouts given to Android type … we need one
+              for browser" (lived feedback); Prod's VexWeb Surface is a Frame of seams and regions
+    how       the exporter projects its own spatial model into optional screens[].layout (FRAME: seams with
+              axis, between, span and Ratio allocation; regions bounded by frame edges or seams; chrome on
+              a seam; overlays). The Surface draws regions at the authored allocations, seams as lines,
+              seam handles where they sit, overlays above; elements gain FRAME / SEAM / HANDLE kinds and
+              optional layer and interactions. The inspector's "Where it sits" reads the same facts
+    choice    the renderer is selected by the presence of screens[].layout, never by subject; a screen
+              without one keeps the phone realization unchanged (Android; Prod commits before the export)
+    boundary  geometry is proportional only (no pixels, no CSS from source); unknown kinds, axes, edges,
+              allocations, containment and seam cycles fail closed; no Family is invented for a handle
 ```
 
 ## Data contract
@@ -590,6 +602,11 @@ Optional, additive sections (SCREEN-LENS-PROJECTABILITY.md):
 ```text
 screens[].realization  status, entry, rendersRegisteredTree, realizers, presence[], templates[],
                        elements[] (facts), opaque[], held[]
+screens[].layout       kind FRAME, symbol, source, root, frames[] (ref, seams[] with axis, between,
+                       span, allocation {before, after}; regions[] with start, end, top, bottom;
+                       chrome[] with seamRef), overlays[] (D54)
+elements[].layer       CONTENT | CHROME | TRANSIENT | MODAL (optional)
+elements[].interactions ACTIVATE | RESIZE | COLLAPSE_BEFORE | COLLAPSE_AFTER (optional)
 examples[]             PREVIEW | GOLDEN | JOURNEY with subject, setup, fixture provenance,
                        configurations, evidence, steps, related
 examplesHeld[]         examples source does not let VexBoard address yet, with the reason

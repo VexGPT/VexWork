@@ -122,6 +122,39 @@ a{color:var(--focus)}
 .phone-body{flex:1;min-height:0;overflow:auto;padding:14px 14px 84px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin}
 .phone-bottom{display:flex;justify-content:space-around;height:58px;border-top:1px solid #eceff4;background:#fff}
 .phone-held{border:1.5px dashed #cfd5df;border-radius:12px;padding:16px;color:var(--muted);font-size:13px}
+/* A screen the product realizes as frames of regions divided by seams (a browser workspace). Its
+   geometry comes from the screen's source-derived layout; nothing here is product-specific. */
+.main.wide{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.xslot.wide{width:100%}
+.xstage.wide .xpeek{display:none}
+.workspace{position:relative;width:100%;flex:1;min-height:420px;display:flex;flex-direction:column;border:1px solid #cfd5df;border-radius:10px;background:#fbfbfd;box-shadow:0 18px 40px -26px #18213a55;overflow:hidden}
+.workspace.dimmed [data-ref]:not(.sel):not(.anc){opacity:.46}
+.workspace.dimmed [data-ref]:not(.sel):not(.anc) [data-ref],.workspace.dimmed .sel [data-ref]{opacity:1}
+.workspace.dimmed .ws-region,.workspace.dimmed .ws-frame{opacity:1 !important}
+.workspace .ws-frame{position:relative;flex:1;min-height:0;width:100%;height:100%}
+.workspace .ws-region{position:absolute;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;background:#fbfbfd}
+.ws-region.chrome{background:#fff}
+.workspace .ws-tag{position:absolute;top:3px;right:8px;z-index:3;padding:0 6px;border:0;border-radius:999px;background:#eef1f5cc;color:var(--faint);font:500 10px/16px var(--mono);cursor:pointer}
+.workspace .ws-tag:hover,.workspace .ws-tag.sel{background:var(--ink);color:#fff}
+.ws-scroll{flex:1;min-height:0;overflow:auto;padding:10px 12px 14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin}
+.ws-scroll.inline{flex-direction:row;align-items:center;overflow-x:auto;overflow-y:hidden;padding:4px 64px 4px 12px}
+.ws-scroll.inline .el-column{flex-direction:row;flex-wrap:nowrap;align-items:center;gap:8px}
+.ws-scroll.inline .el-field{min-width:140px;height:30px}
+.ws-scroll.inline .el-button{height:28px;padding:0 10px;font-size:12px;white-space:nowrap}
+.ws-scroll.inline .el-row{flex-wrap:nowrap}
+.ws-scroll .el-toolbar{flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid #eceff4;background:#fff;border-radius:8px}
+.workspace .ws-seam{position:absolute;z-index:3;background:#d3d9e3;cursor:pointer}
+.workspace .ws-seam.v{width:3px;transform:translateX(-1.5px)}
+.workspace .ws-seam.h{height:3px;transform:translateY(-1.5px)}
+.workspace .ws-seam:hover,.workspace .ws-seam.sel{background:var(--r-CONTAINER,#7a8597)}
+.workspace .ws-handle{position:absolute;z-index:4;width:20px;height:40px;transform:translate(-50%,-50%);display:grid;place-items:center;border:1px solid #c3cad6;border-radius:10px;background:#fff;color:var(--muted);font-size:12px;cursor:pointer;box-shadow:0 2px 6px -3px #18213a55}
+.ws-handle.has-path::before{content:'';position:absolute;top:-3px;right:-3px;width:7px;height:7px;border-radius:50%;background:var(--r-ELEMENT);border:1.5px solid #fff}
+.workspace .ws-overlay{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:6;max-width:46%;display:flex;flex-direction:column;gap:4px;padding:12px 8px 6px;border:1.5px dashed #b6bfcd;border-radius:10px;background:#ffffffd9}
+.el-place{display:flex;align-items:flex-start;min-height:30px;padding:6px 10px;border:1px dashed #cfd5df;border-radius:8px;background:repeating-linear-gradient(135deg,transparent 0 9px,#f4f6f9 9px 10px);color:var(--faint);font:500 11px/16px var(--mono)}
+.el-place.fill{min-height:110px}
+.workspace .ws-overlay > .ws-tag{top:-9px;left:10px;right:auto;background:#fff;border:1px dashed #b6bfcd}
+.ws-transient{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:#1d2433;color:#fff;font-size:12px}
+.ws-transient small{color:#c9d1de;font-size:10.5px}
 [data-ref]{position:relative;border-radius:10px;transition:opacity .15s,box-shadow .15s}
 [data-ref].sel{z-index:3;box-shadow:0 0 0 2px var(--r-ELEMENT),0 8px 22px -10px #2563eb88}
 [data-ref].anc{box-shadow:0 0 0 1.5px color-mix(in srgb,var(--r-CONTAINER) 55%,transparent)}
@@ -130,6 +163,7 @@ a{color:var(--focus)}
 .el-row{display:flex;flex-wrap:wrap;gap:8px;border-radius:8px}
 .el-text{margin:0;font-size:13px;color:var(--muted)}.el-text.TITLE{color:var(--ink);font-weight:600;font-size:14px}
 .el-image{font-weight:600;letter-spacing:-.01em}
+.el-field-row{flex-wrap:nowrap;align-items:center}.el-field-row > .el-field{flex:1;min-width:120px}
 .el-field{display:flex;align-items:center;height:40px;padding:0 12px;border:1px solid #cfd5df;border-radius:10px;background:#fff;color:var(--faint);font-size:13px}
 .el-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;border:1px solid #e3e7ee;border-radius:14px;background:#fff;text-align:left;font-weight:500}
 .el-toggle .switch{width:38px;height:22px;border-radius:999px;background:#d7dce5;position:relative;flex:none}
@@ -579,6 +613,7 @@ import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
 import * as Revision from '../src/shared/vexboard-screen-lens-revision.mjs';
 import * as Realization from '../src/shared/vexboard-screen-lens-realization.mjs';
 import * as Expressions from '../src/shared/vexboard-screen-lens-source-expressions.mjs';
+import * as Frames from '../src/shared/vexboard-screen-lens-frames.mjs';
 
 const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const LENS_DIR = '../projects/vexboard/lens/';
@@ -613,23 +648,46 @@ async function projectCommitLens(subject, ref, onProgress) {
   const { Adapter, Source } = await commitTools();
   const githubFetch = (url, init) => fetch(url, init);
   const resolved = await Source.resolveCommit({ repositoryUrl: subject.repository.url, ref, fetch: githubFetch });
-  const key = `${subject.slug}.${resolved.sha}.${Adapter.ADAPTER_VERSION}`;
+  const strategy = subject.lens.exportedLens ? `export:${subject.lens.exportedLens}` : Adapter.ADAPTER_VERSION;
+  const key = `${subject.slug}.${resolved.sha}.${strategy}`;
   const cached = commitLenses.get(key);
   if (cached) return cached;
+  if (subject.lens.exportedLens) {
+    const result = await Source.readExportedLensCommit({
+      repositoryUrl: subject.repository.url,
+      sourcePath: subject.lens.exportedLens,
+      ref,
+      resolved,
+      fetch: githubFetch,
+      onProgress,
+    });
+    const build = { commit: result.commit.sha, observedAt: result.commit.date?.slice(0, 10) ?? null };
+    const value = {
+      lens: Catalog.bindLensBuildSource(result.lens, build),
+      commit: { ...result.commit, fileCount: 1, misses: [] },
+    };
+    commitLenses.set(key, value);
+    return value;
+  }
   const [adapter, overlay] = await Promise.all([fetchJson(LENS_DIR + subject.lens.adapter), subject.lens.overlay ? fetchJson(LENS_DIR + subject.lens.overlay) : null]);
   const result = await Source.projectCommit({ adapter, overlay, ref, resolved, fetch: githubFetch, project: Adapter.projectAndroidScreenLens, readPlan: Adapter.adapterReadPlan, onProgress });
   const value = { lens: result.lens, commit: { ...result.commit, fileCount: result.fileCount, misses: result.report.overlayMisses ?? [] } };
   commitLenses.set(key, value);
   return value;
 }
+async function loadBuildLens(subject, build) {
+  const raw = await fetchJson(LENS_DIR + build.lens);
+  return Lens.normalizeScreenLens(Catalog.bindLensBuildSource(raw, build));
+}
 const stableLenses = new Map();
 async function stableLensFor(subject) {
-  if (!stableLenses.has(subject.slug)) stableLenses.set(subject.slug, fetchJson(LENS_DIR + Catalog.buildFor(subject, 'stable').lens).then((raw) => Lens.normalizeScreenLens(raw)));
+  const stable = Catalog.buildFor(subject, 'stable');
+  if (!stableLenses.has(subject.slug)) stableLenses.set(subject.slug, loadBuildLens(subject, stable));
   return stableLenses.get(subject.slug);
 }
 async function lensForRequest(request, onProgress) {
   if (request.mode === 'LEGACY') return { lens: Lens.normalizeScreenLens(await fetchJson(lensUrlFromParams())), commit: null };
-  if (request.mode === 'BUILD') return { lens: Lens.normalizeScreenLens(await fetchJson(LENS_DIR + request.build.lens)), commit: null };
+  if (request.mode === 'BUILD') return { lens: await loadBuildLens(request.subject, request.build), commit: null };
   const projected = await projectCommitLens(request.subject, request.commitRef, onProgress);
   return { lens: Lens.normalizeScreenLens(projected.lens), commit: projected.commit };
 }
@@ -1055,7 +1113,7 @@ function renderProjectMenu(subject) {
       'aria-current': entry.subjectRef === subject.subjectRef ? 'page' : null,
     }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, entry.label), h('span', { class: 'md' }, line(entry)))),
     h('hr'),
-    h('a', { href: './projects.html' }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, 'All projects'), h('span', { class: 'md' }, 'Builds, boards and earlier canvas trials'))));
+    h('a', { href: './projects.html' }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, 'All projects'), h('span', { class: 'md' }, 'Builds and source projections'))));
   return wrap;
 }
 function renderBuildSwitch(subject) {
@@ -1326,7 +1384,7 @@ function flashElement(ref) {
   const phone = document.querySelector('.face[data-face="SURFACE"] .current-phone');
   const node = (state.faces.EXPERIENCE === 'SURFACE' ? phone : document.querySelector('.face[data-face="STRUCTURE"]'))?.querySelector(`[data-ref="${CSS.escape(ref ?? '')}"]`);
   if (!node) return;
-  const body = node.closest('.phone-body') ?? node.closest('.structure');
+  const body = node.closest('.phone-body') ?? node.closest('.ws-scroll') ?? node.closest('.structure');
   if (body) {
     const box = node.getBoundingClientRect(); const view = body.getBoundingClientRect();
     if (box.top < view.top + 8 || box.bottom > view.bottom - 8) body.scrollTop += box.top - view.top - Math.max(16, (view.height - box.height) / 3);
@@ -1665,7 +1723,8 @@ function renderSurfaceElement(tree, marks, context) {
   }).filter(Boolean);
   let node;
   switch (element.kind) {
-    case 'COLUMN': case 'REGION': node = h('div', { class: 'el-column' }, kids()); break;
+    // A chrome-layer group of plain controls is a toolbar: its controls sit side by side.
+    case 'COLUMN': case 'REGION': node = h('div', { class: `el-column${element.layer === 'CHROME' && shown.length && shown.every((child) => !child.children.length) ? ' el-toolbar' : ''}` }, kids()); break;
     case 'CARD': node = h('div', { class: 'el-card' }, kids()); break;
     case 'ROW': case 'STACK': node = h('div', { class: `el-row${shown.length && shown.every((child) => child.element.style === 'Navigation') ? ' chips' : ''}${iconRow ? ' icons' : ''}` }, kids()); break;
     case 'TEXT': node = h('p', { class: `el-text ${element.textRole ?? ''}` }, element.label); break;
@@ -1675,7 +1734,8 @@ function renderSurfaceElement(tree, marks, context) {
     case 'FAB': node = element.label.length <= 2 ? h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.label) : h('button', { class: 'el-button', type: 'button' }, element.label); break;
     case 'MENU': node = h('div', { class: `el-menu${context.fabOpen ? '' : ' closed'}` }, kids()); break;
     case 'MENU_ITEM': node = h('button', { class: 'el-menuitem', type: 'button' }, element.label); break;
-    case 'FIELD': node = h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
+    // A field that holds controls (a composer with its send button) draws them beside it.
+    case 'FIELD': node = shown.length ? h('div', { class: 'el-row el-field-row' }, h('div', { class: 'el-field' }, h('span', {}, element.label)), kids()) : h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
     default: node = h('div', {}, element.label);
   }
   for (const ref of placements.byTarget.get(element.ref) ?? []) {
@@ -1694,6 +1754,9 @@ function renderSurfaceElement(tree, marks, context) {
     const group = h('div', { class: 'reg-group', title: 'Registered grouping. Source realizes its children elsewhere (or not yet traced); it is not a visible container.' }, h('span', { class: 'reg-label' }, `${element.label} · registered group`), ...node.childNodes);
     node = group;
   }
+  // Inside a workspace region an empty container is still a place (a browser viewport, a timeline
+  // whose items arrive at runtime): drawn as an outlined placeholder so its depth stays visible.
+  if (context.showEmpty && CONTAINER_KINDS.has(element.kind) && !node.childNodes.length) node = h('div', { class: `el-place${element.slot === 'FillAvailable' ? ' fill' : ''}` }, h('span', {}, element.label));
   markElement(node, element, marks);
   if (info && info.state !== 'SOURCE' && !(info.state === 'UNTRACED' && context.placedRef === element.ref)) node.classList.add(`pres-${info.state}`);
   const go = travelButton(element);
@@ -1812,20 +1875,100 @@ function renderPhone(expression, { interactive }) {
   }
   return phone;
 }
+// One workspace: a screen whose source realizes it as frames of regions divided by seams. Each
+// region is drawn where the layout puts it and scrolls on its own; seams and their handles sit on
+// the frame's own lines; overlays float above. Everything drawn is a Lens element, so it selects,
+// inspects and bridges to Behavior exactly like a control on a phone.
+const NOMINAL_WORKSPACE = Object.freeze({ width: 16, height: 10 });
+function renderWorkspace(expression, { interactive }) {
+  const screen = currentScreen();
+  const layout = screen.layout;
+  const marks = interactive ? selectionPathRefs() : { selected: null, ancestors: new Set() };
+  const presence = screen.realization ? presenceFor(expression.context) : null;
+  const own = Lens.elementTree(screen.elements);
+  const context = { presence, trees: own, showEmpty: true };
+  const frames = new Map(layout.frames.map((frame) => [frame.ref, frame]));
+  const elementOf = (ref) => screen.elements.find((element) => element.ref === ref);
+  const tag = (element) => markElement(h('button', { class: 'ws-tag', type: 'button' }, element.label), element, marks);
+  function renderFrame(frame, size) {
+    const geometry = Frames.frameGeometry(frame);
+    const node = h('div', { class: 'ws-frame' });
+    markElement(node, elementOf(frame.ref), marks);
+    for (const box of geometry.regions) {
+      const element = elementOf(box.ref);
+      const width = (box.right - box.left) * size.width;
+      const height = (box.bottom - box.top) * size.height;
+      const region = h('div', { class: `ws-region${element.layer === 'CHROME' ? ' chrome' : ''}`, style: `left:${box.left * 100}%;top:${box.top * 100}%;width:${(box.right - box.left) * 100}%;height:${(box.bottom - box.top) * 100}%` });
+      const tree = findTree(own, box.ref);
+      const nested = (tree?.children ?? []).filter((child) => frames.has(child.element.ref));
+      if (nested.length) {
+        region.append(...nested.map((child) => renderFrame(frames.get(child.element.ref), { width, height })));
+        markElement(region, element, marks);
+      } else {
+        // A region far wider than tall (a header band) lays its content along its length.
+        const inline = width / Math.max(height, 0.001) >= 4;
+        const scroll = h('div', { class: `ws-scroll${inline ? ' inline' : ''}` });
+        // A band shows its controls; closed panels inside it (an empty dropdown list) stay out of the way.
+        for (const child of tree?.children ?? []) { const drawn = renderSurfaceElement(child, marks, { ...context, showEmpty: !inline }); if (drawn) scroll.append(drawn); }
+        region.append(scroll, tag(element));
+      }
+      node.append(region);
+    }
+    for (const seam of geometry.seams) {
+      const vertical = seam.axis === 'VERTICAL';
+      const line = h('div', { class: `ws-seam ${vertical ? 'v' : 'h'}`, style: vertical ? `left:${seam.at * 100}%;top:${seam.from * 100}%;height:${(seam.to - seam.from) * 100}%` : `top:${seam.at * 100}%;left:${seam.from * 100}%;width:${(seam.to - seam.from) * 100}%` });
+      markElement(line, elementOf(seam.ref), marks);
+      line.title += `\nAllocation ${seam.allocation.before} : ${seam.allocation.after}`;
+      node.append(line);
+    }
+    for (const chrome of geometry.chrome) {
+      const element = elementOf(chrome.ref);
+      const seam = geometry.seams.find((entry) => entry.ref === chrome.seamRef);
+      const vertical = seam?.axis !== 'HORIZONTAL';
+      const handle = h('button', { class: 'ws-handle', type: 'button', 'aria-label': element.label, style: chrome.at === null ? 'left:50%;top:50%' : vertical ? `left:${chrome.at * 100}%;top:50%` : `top:${chrome.at * 100}%;left:50%` }, vertical ? '⟷' : '↕');
+      markElement(handle, element, marks);
+      if (element.interactions.length) handle.title += `\n${element.interactions.map((value) => value.replace('_', ' ').toLowerCase()).join(' · ')}`;
+      node.append(handle);
+    }
+    return node;
+  }
+  const root = frames.get(layout.root);
+  const workspace = h('div', { class: `workspace${interactive ? ' current-phone current-workspace' : ''}${marks.selected ? ' dimmed' : ''}`, 'aria-label': `${screen.label} surface · ${expression.where} · ${expression.what}` }, renderFrame(root, NOMINAL_WORKSPACE));
+  for (const ref of layout.overlays) {
+    const element = elementOf(ref);
+    const tree = findTree(own, ref);
+    const layer = h('div', { class: 'ws-overlay' }, tag(element));
+    markElement(layer, element, marks);
+    for (const child of tree?.children ?? []) {
+      const drawn = child.children.length
+        ? renderSurfaceElement(child, marks, context)
+        : markElement(h('div', { class: 'ws-transient' }, h('span', {}, child.element.label), h('small', {}, [child.element.layer, child.element.style?.replace(/(?<=[a-z])(?=[A-Z])/g, ' ')].filter(Boolean).join(' · ').toLowerCase())), child.element, marks);
+      if (drawn) layer.append(drawn);
+    }
+    workspace.append(layer);
+  }
+  if (!interactive) {
+    for (const node of workspace.querySelectorAll('[data-ref]')) { node.dataset.peekRef = node.dataset.ref; delete node.dataset.ref; }
+    workspace.inert = true;
+  }
+  return workspace;
+}
+const renderScreenSurface = (expression, options) => (currentScreen().layout ? renderWorkspace(expression, options) : renderPhone(expression, options));
 function renderSurface() {
   const list = expressionsNow();
   const active = activeExpression();
   const index = list.indexOf(active);
-  const current = h('div', { class: 'xslot' }, expressionCaption(active), renderPhone(active, { interactive: true }));
+  const wide = Boolean(currentScreen().layout);
+  const current = h('div', { class: `xslot${wide ? ' wide' : ''}` }, expressionCaption(active), renderScreenSurface(active, { interactive: true }));
   const peek = (expression, side) => {
     if (!expression) return null;
     const wrap = h('div', { class: `xpeek ${side} kind-${expression.kind}`, role: 'button', title: expressionTitle(expression), 'aria-label': `${side === 'prev' ? 'Previous' : 'Next'} expression: ${expression.where} · ${expression.what}` },
       h('span', { class: 'xpeek-label' }, kindChip(expression), h('b', {}, expression.where), h('span', {}, truncate(expression.what, 30))),
-      renderPhone(expression, { interactive: false }));
+      renderScreenSurface(expression, { interactive: false }));
     wrap.addEventListener('click', (event) => { event.stopPropagation(); setExpression(expression.ref); });
     return wrap;
   };
-  const stage = h('div', { class: `xstage${state.motion ? ` enter-${state.motion}` : ''}` },
+  const stage = h('div', { class: `xstage${wide ? ' wide' : ''}${state.motion ? ` enter-${state.motion}` : ''}` },
     current, peek(index < 0 ? null : list[index - 1], 'prev'), peek(index < 0 ? list[0] : list[index + 1], 'next'));
   const surface = h('div', { class: 'surface', onclick: () => clearSelection() }, stage);
   wireSwipe(surface);
@@ -2188,7 +2331,7 @@ function bridgeExit(leftFace, anchorRef, from, preferAbove) {
   if (!phone || !anchorNode) return direct;
   const a = anchorNode.getBoundingClientRect();
   const right = phone.getBoundingClientRect().right;
-  const body = phone.querySelector('.phone-body').getBoundingClientRect();
+  const body = (phone.querySelector('.phone-body') ?? phone).getBoundingClientRect();
   const leaves = [...phone.querySelectorAll('[data-ref], .travel')]
     .filter((node) => node.classList.contains('travel') || (node !== anchorNode && !anchorNode.contains(node) && !node.contains(anchorNode) && !node.querySelector('[data-ref]')))
     .map((node) => node.getBoundingClientRect())
@@ -2375,6 +2518,33 @@ function wireTrayResize(handle, tray) {
     if (next !== null) { event.preventDefault(); apply(next); }
   });
 }
+// Where a frame, seam, region or handle sits, in the screen's own layout words.
+function spatialBlock(element) {
+  const layout = currentScreen().layout;
+  const role = Frames.layoutRole(layout, element.ref);
+  if (!role && !element.layer && !element.interactions.length) return null;
+  const name = (ref) => (ref.startsWith('FRAME_') ? `frame ${ref.slice(6).toLowerCase()}` : labelOf(ref));
+  const rows = [];
+  if (role?.role === 'FRAME') {
+    rows.push(['Divided by', role.frame.seams.map((seam) => `${labelOf(seam.ref)} (${seam.axis.toLowerCase()}, ${seam.allocation.before} : ${seam.allocation.after})`).join('; ') || 'no seam']);
+    rows.push(['Regions', role.frame.regions.map((region) => labelOf(region.ref)).join(', ')]);
+  }
+  if (role?.role === 'SEAM') {
+    const before = role.frame.regions.filter((region) => region.end === element.ref || region.bottom === element.ref).map((region) => labelOf(region.ref));
+    const after = role.frame.regions.filter((region) => region.start === element.ref || region.top === element.ref).map((region) => labelOf(region.ref));
+    rows.push(['Axis', role.seam.axis.toLowerCase()]);
+    rows.push(['Allocation', `${role.seam.allocation.before} : ${role.seam.allocation.after} of ${name(role.seam.between[0])} → ${name(role.seam.between[1])}`]);
+    rows.push(['Between', `${before.join(', ') || '—'} | ${after.join(', ') || '—'}`]);
+    const handles = role.frame.chrome.filter((entry) => entry.seamRef === element.ref).map((entry) => labelOf(entry.ref));
+    if (handles.length) rows.push(['Handle', handles.join(', ')]);
+  }
+  if (role?.role === 'REGION') rows.push(['Bounds', `${name(role.region.start)} → ${name(role.region.end)}, ${name(role.region.top)} → ${name(role.region.bottom)}`], ['Frame', labelOf(role.frame.ref)]);
+  if (role?.role === 'CHROME') rows.push(['On seam', role.chrome.seamRef ? labelOf(role.chrome.seamRef) : 'the frame'], ['Frame', labelOf(role.frame.ref)]);
+  if (role?.role === 'OVERLAY') rows.push(['Drawn', 'above the frame, as an overlay layer']);
+  if (element.layer) rows.push(['Layer', element.layer.toLowerCase()]);
+  if (element.interactions.length) rows.push(['Touched by', element.interactions.map((value) => value.replace('_', ' ').toLowerCase()).join(' · ')]);
+  return h('div', {}, h('h3', {}, 'Where it sits'), dl(rows), layout?.source ? h('div', { class: 'links', style: 'margin-top:8px' }, sourceLink(layout.source)) : null);
+}
 function renderTray() {
   const bounds = trayHeightBounds();
   state.trayHeight = clampTrayHeight(state.trayHeight);
@@ -2427,6 +2597,7 @@ function renderTray() {
           pathway ? [h('h3', { style: 'margin-top:10px' }, 'Result for the human'), h('p', {}, pathway.returns ?? '')] : null,
           element.navigatesTo ? h('button', { class: 'go', onclick: () => travel(element) }, element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`) : null),
         elementPresenceBlock(element),
+        spatialBlock(element),
         elementImpact(element),
         notesBlock(element.ref)));
     return tray;
@@ -2856,7 +3027,7 @@ function placeSurfaceFloaters() {
     const below = [each.querySelector('.region-bottom'), each.querySelector('.phone-bottom')].reduce((sum, part) => sum + (part?.offsetHeight ?? 0), 0);
     floating.style.bottom = `${below + 14}px`;
   }
-  const body = phone.querySelector('.phone-body');
+  const body = phone.querySelector('.phone-body') ?? phone;
   const anchorNode = state.anchorElementRef ? phone.querySelector(`[data-ref="${CSS.escape(state.anchorElementRef)}"]`) : null;
   // An opened sheet keeps the control that opened it in view, above the sheet.
   const sheet = phone.querySelector('.sheet-zone');
@@ -2920,7 +3091,7 @@ function render() {
   const focusedRef = document.activeElement?.dataset?.ref ?? document.activeElement?.dataset?.nodeRef ?? null;
   const kept = { phone: document.querySelector('.current-phone .phone-body')?.scrollTop ?? 0, structure: document.querySelector('.face[data-face="STRUCTURE"] .structure')?.scrollTop ?? 0 };
   const root = h('div', { class: 'lens' });
-  const main = h('main', { class: 'main' }, renderExperienceSide(), renderBehaviorSide());
+  const main = h('main', { class: `main${currentScreen().layout ? ' wide' : ''}` }, renderExperienceSide(), renderBehaviorSide());
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
