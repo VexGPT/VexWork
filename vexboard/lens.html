@@ -397,7 +397,7 @@ a{color:var(--focus)}
 .xkind.PREVIEW{background:color-mix(in srgb,var(--pres-example) 12%,#fff);color:var(--pres-example)}.xkind.GOLDEN{background:#fdf2e3;color:#9a3412}.xkind.JOURNEY{background:#e6f4f1;color:#0f766e}
 
 /* Structure face */
-.structure{flex:1;overflow:auto;padding:16px 16px 28px}
+.structure{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;padding:16px 16px 28px}
 .struct-section{margin-bottom:18px}
 .struct-section header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:2px 0 8px}
 .struct-section h3{margin:0;font-size:13.5px;font-weight:600}
@@ -2053,6 +2053,14 @@ function bindStaticView(frame, expression, { interactive }) {
     return null;
   };
   doc.addEventListener('submit', (event) => event.preventDefault(), true);
+  // An iframe is a separate event world, so the outer Experience-side contextmenu handler cannot
+  // see a Product-view right-click. Forward the same Screen Lens gesture law explicitly.
+  doc.addEventListener('contextmenu', (event) => {
+    if (event.shiftKey) return;
+    event.preventDefault();
+    event.stopPropagation();
+    flip('EXPERIENCE');
+  }, true);
   doc.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
