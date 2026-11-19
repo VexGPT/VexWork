@@ -251,7 +251,7 @@ test('selected controls preview the screen or expression they lead to before tra
   assert.match(page, /Show \$\{expression\.where\} · \$\{truncate\(expression\.what, 34\)\}/);
   assert.match(page, /destination\.go\(\)/);
   assert.match(page, /class: 'tool product-view-travel'/, 'static Product controls expose a visible state-travel action');
-  assert.match(page, /interactive && destination \? h\('button'/, 'the explicit action appears only when the selected Product control leads somewhere');
+  assert.match(page, /const actions = interactive && \(destination \|\| splitBinding\)/, 'Product actions appear only when the selected control has a destination or spatial binding');
 });
 
 test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
