@@ -289,7 +289,14 @@ test('a source-owned static view is mounted generically and bound through stable
   assert.match(page, /Browser-local spatial projection; Product state is unchanged/);
   assert.match(page, /function bindStaticSplitInteractions\(doc, view\)/);
   assert.match(page, /handle\.addEventListener\('pointermove'/, 'the real Product handle can be dragged');
+  assert.match(page, /function refreshStaticSelectionInPlace\(\)/, 'selection can update the Lens around a mounted Product without recreating its iframe');
+  assert.match(page, /if \(!refreshStaticSelectionInPlace\(\)\) render\(\);/, 'element selection falls back to full render only when no static Product view is mounted');
+  assert.match(page, /current-product-view/, 'the interactive Product manifestation has a stable host for in-place selection updates');
+  assert.match(page, /function refreshStaticViewInspectionMarks\(doc, view\)/);
+  assert.match(page, /oldBehavior\.replaceWith\(renderBehaviorSide\(\)\)/);
+  assert.match(page, /oldTray\.replaceWith\(renderTray\(\)\)/);
   assert.match(page, /target\.style\.setProperty\(binding\.styleProperty/, 'dragging writes only the Product-exported CSS custom property');
+  assert.match(page, /function setStaticSplitPhase\(binding, phase\)[\s\S]*applyStaticSplitProjection\(doc, currentScreen\(\)\.view, binding\)/, 'split phase changes mutate the mounted Product presentation in place');
   assert.match(page, /target\.setAttribute\(binding\.collapsedAttribute, binding\.collapsedAfterValue\)/);
   assert.match(page, /target\.setAttribute\(binding\.collapsedAttribute, binding\.collapsedBeforeValue\)/);
   assert.match(page, /candidate\.node\.matches\(rule\.selector\)/, 'CSS relationships come from browser selector matching');
