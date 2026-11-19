@@ -227,4 +227,234 @@
 
           <details class="context-section context-after" data-vex-ref="element.vexlife-workspace.browser.vex-context.after" data-context-kind="after">
             <summary><span>After the turn</span><small>What stayed</small></summary>
-            <div class=
+            <div class="context-section-body" id="context-after-body"></div>
+          </details>
+        </section>
+      </section>
+    </section>
+
+    <div class="seam" id="seam" data-vex-structural-ref="vexweb.vexlife-workspace.p1.body.seam.browser-companion.handle" role="separator" aria-orientation="vertical" tabindex="0"
+      aria-label="Resize browser and companion" aria-valuemin="15" aria-valuemax="85">
+      <button class="seam-collapse seam-collapse-before" type="button" id="collapse-before" aria-label="Hide browser" title="Hide browser">
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2 3.5 6l4 4"/></svg>
+      </button>
+      <span class="seam-grip" aria-hidden="true">
+        <svg viewBox="0 0 24 12"><path d="M2 6h20M6 2 2 6l4 4M18 2l4 4-4 4"/></svg>
+      </span>
+      <button class="seam-collapse seam-collapse-after" type="button" id="collapse-after" aria-label="Hide companion" title="Hide companion">
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m4.5 2 4 4-4 4"/></svg>
+      </button>
+    </div>
+
+    <section class="region region-companion" data-vex-ref="element.vexlife-workspace.companion" data-vex-structural-ref="vexweb.vexlife-workspace.p1.body.region.companion" aria-labelledby="companion-title">
+      <div class="companion-head" data-vex-structural-ref="vexweb.vexlife-workspace.p1.body.companion.header">
+        <h1 class="companion-title" id="companion-title">Converse with Vex</h1>
+        <p class="companion-status" data-vex-ref="element.vexlife-workspace.companion.companion-status" id="companion-status" role="status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="companion-status-text">Vex not checked</span>
+          <span class="status-model" id="companion-status-model"></span>
+        </p>
+        <button class="quiet-button" type="button" data-vex-legacy="CompanionCheck" id="companion-check" hidden>Check again</button>
+        <button class="outline-button private-mode" type="button" data-vex-ref="element.vexlife-workspace.companion.private-mode" id="private-mode" aria-pressed="false" title="Everything you and Vex say here is kept in your Vex Home.">
+          <span class="private-dot" aria-hidden="true"></span><span id="private-mode-label">Kept in your archives</span>
+        </button>
+        <button class="outline-button vision-control" type="button" data-vex-ref="element.vexlife-workspace.companion.vision" id="vision-control"
+          aria-describedby="vision-control-status" aria-disabled="true" disabled title="Vision availability is checking">
+          <svg class="vision-mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.4 10s2.8-4.3 7.6-4.3 7.6 4.3 7.6 4.3-2.8 4.3-7.6 4.3S2.4 10 2.4 10Z"/><circle cx="10" cy="10" r="2.3"/></svg>
+          <span>Vision</span>
+          <span class="vision-state">Held</span>
+        </button>
+        <span class="visually-hidden" id="vision-control-status">Vision route availability is checking.</span>
+        <button class="outline-button view-switch" type="button" data-vex-ref="element.vexlife-workspace.companion.view-switch" id="view-switch" aria-controls="view-settings" aria-expanded="false">Settings</button>
+      </div>
+
+      <div class="conversation" data-vex-ref="element.vexlife-workspace.companion.conversation" data-vex-structural-parent="vexweb.vexlife-workspace.p1.body.companion.content" id="view-conversation">
+        <section class="private-banner" data-vex-ref="element.vexlife-workspace.companion.conversation.private-banner" id="private-banner" aria-live="polite" hidden>
+          <p class="private-banner-text" id="private-banner-text"></p>
+          <ul class="private-notes" id="private-notes"></ul>
+          <div class="private-proposal" id="private-proposal" hidden>
+            <p class="private-proposal-text" id="private-proposal-text"></p>
+            <div class="private-proposal-actions">
+              <button class="outline-button" type="button" id="private-keep">Keep this note</button>
+              <button class="quiet-button" type="button" id="private-decline">Don't keep</button>
+            </div>
+          </div>
+          <button class="quiet-button" type="button" id="private-propose">Keep something…</button>
+        </section>
+        <ol class="timeline" data-vex-ref="element.vexlife-workspace.companion.conversation.timeline" id="timeline" aria-label="Conversation with Vex"></ol>
+        <button class="outline-button jump-latest" type="button" data-vex-ref="element.vexlife-workspace.companion.conversation.jump-latest" id="jump-latest" hidden>New messages</button>
+
+        <div class="composer" data-vex-ref="element.vexlife-workspace.companion.conversation.composer">
+          <p class="response-progress" data-vex-ref="element.vexlife-workspace.companion.conversation.response-progress" id="response-progress" role="status" aria-live="polite" hidden></p>
+
+          <div class="ticket" data-vex-ref="element.vexlife-workspace.companion.conversation.context-receipt" id="ticket" hidden>
+            <div class="ticket-body">
+              <p class="ticket-title" id="ticket-title"></p>
+              <p class="ticket-line" id="ticket-line"></p>
+              <p class="ticket-source"><span id="ticket-url"></span> <span class="ticket-hash" id="ticket-hash"></span></p>
+              <p class="ticket-diverged" id="ticket-diverged" hidden>You've moved inside the page since you included it. Vex still gets the page named here.</p>
+            </div>
+            <button class="ticket-view" type="button" id="ticket-view">View text</button>
+          </div>
+
+          <div class="composer-controls">
+            <button class="share" type="button" data-vex-ref="element.vexlife-workspace.companion.conversation.context-share" id="context-share" aria-pressed="false">
+              <span class="share-box" aria-hidden="true"></span>
+              <span id="context-share-label">Include this page</span>
+            </button>
+            <p class="composer-hold" id="composer-hold" role="status"></p>
+          </div>
+
+          <form class="compose-row" id="compose-form">
+            <label class="visually-hidden" for="draft">Message Vex</label>
+            <textarea id="draft" rows="1" placeholder="Message Vex" enterkeyhint="send"></textarea>
+            <div class="voice-input-shell">
+              <button class="voice-input" type="button" data-vex-ref="element.vexlife-workspace.companion.conversation.voice-input" id="voice-input" aria-pressed="false" aria-expanded="false" aria-label="workspace.button.voice-input-start">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3.5" width="6" height="11" rx="3"/><path d="M6.5 10.5a5.5 5.5 0 0 0 11 0M12 16v4M9 20h6"/></svg>
+              </button>
+              <div class="voice-input-overlay" id="voice-input-overlay" hidden>
+                <canvas id="voice-waveform" width="112" height="44" aria-hidden="true"></canvas>
+                <p id="voice-input-status" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+            <button class="send" type="submit" data-vex-ref="element.vexlife-workspace.companion.conversation.send" id="send">Send</button>
+            <button class="stop" type="button" data-vex-ref="element.vexlife-workspace.companion.conversation.stop" id="stop" hidden>Stop</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="settings" data-vex-ref="element.vexlife-workspace.companion.settings" data-vex-structural-parent="vexweb.vexlife-workspace.p1.body.companion.content" id="view-settings" hidden>
+        <section class="setting" data-vex-ref="element.vexlife-workspace.companion.settings.context" aria-labelledby="context-heading">
+          <div class="setting-row">
+            <h2 id="context-heading">Context window</h2>
+            <ul class="legend" aria-hidden="true">
+              <li class="legend-core">Input</li><li class="legend-used">Reserved</li><li class="legend-remaining">Remaining</li>
+            </ul>
+          </div>
+          <div class="meter" data-vex-ref="element.vexlife-workspace.companion.settings.context.context-window" id="context-window" role="img" aria-label="Context window not measured yet">
+            <span class="meter-core" id="context-core"></span>
+            <span class="meter-used" id="context-used"></span>
+            <span class="meter-remaining" id="context-remaining"></span>
+            <span class="meter-text" id="context-text">Not exposed yet</span>
+          </div>
+          <p class="setting-note-line" id="context-note"></p>
+        </section>
+
+        <section class="setting" data-vex-ref="element.vexlife-workspace.companion.settings.resources" aria-labelledby="memory-heading">
+          <h2 id="memory-heading">Current resources</h2>
+          <div class="meter" data-vex-ref="element.vexlife-workspace.companion.settings.resources.memory" id="memory" role="img" aria-label="System memory not measured yet">
+            <span class="meter-used" id="memory-used"></span>
+            <span class="meter-remaining" id="memory-remaining"></span>
+            <span class="meter-text" id="memory-text">Measuring</span>
+          </div>
+          <p class="setting-note-line" id="resource-note">Current machine and model resource truth has not been observed yet.</p>
+
+          <div class="toggle-row">
+            <span class="toggle-label" id="thoughts-label">Viewable thoughts</span>
+            <button class="switch" type="button" role="switch" data-vex-ref="element.vexlife-workspace.companion.settings.thought-visibility" id="thought-visibility" aria-checked="true" aria-labelledby="thoughts-label"><span></span></button>
+          </div>
+          <div class="toggle-row">
+            <span class="toggle-label" id="alert-label">Low memory alert</span>
+            <span class="toggle-detail" id="alert-threshold">Not connected</span>
+            <button class="switch" type="button" role="switch" data-vex-ref="element.vexlife-workspace.companion.settings.resources.low-memory-alert" id="low-memory-alert" aria-checked="true" aria-labelledby="alert-label alert-threshold"><span></span></button>
+          </div>
+        </section>
+
+        <section class="setting" data-vex-ref="element.vexlife-workspace.companion.settings.home" aria-labelledby="home-heading">
+          <h2 id="home-heading">VexLife Home</h2>
+          <p class="setting-note-line" id="home-current-state">Current Home has not been observed yet.</p>
+          <div class="home-row">
+            <button class="outline-button wide" type="button" data-vex-ref="element.vexlife-workspace.companion.settings.home.directories" id="home-directories" disabled>View accessible directories</button>
+            <button class="outline-button" type="button" data-vex-ref="element.vexlife-workspace.companion.settings.home.add-directory" id="home-add" disabled>Add</button>
+          </div>
+          <p class="setting-note-line">This presentation does not open or mutate your Vex Home. Canonical Conversation stays upstream in VexLife; browser-context receipts are kept separately in <span class="path" id="setting-data-dir"></span>.</p>
+        </section>
+
+        <section class="setting" data-vex-ref="element.vexlife-workspace.companion.settings.continuity" aria-labelledby="continuity-heading">
+          <h2 id="continuity-heading">Continuity</h2>
+          <div class="memory-state" data-vex-ref="element.vexlife-workspace.companion.settings.continuity.memory" id="vex-memory">
+            <p class="memory-label" id="vex-memory-label">Memory · Checking</p>
+            <p class="setting-note-line" id="vex-memory-detail">VexLife hasn't read Vex's Memory yet.</p>
+            <p class="setting-note-line" id="memory-note"></p>
+          </div>
+          <div class="home-row">
+            <span class="home-label">Continuity mode</span>
+            <button class="outline-button state" type="button" data-vex-ref="element.vexlife-workspace.companion.settings.continuity.continuity-mode" id="continuity-mode" disabled>Not available yet</button>
+            <span class="home-label">Dream sync</span>
+            <button class="outline-button state" type="button" data-vex-ref="element.vexlife-workspace.companion.settings.continuity.dream-sync" id="dream-sync" disabled>Not available yet</button>
+          </div>
+          <p class="setting-note-line">Continuity mode will choose how another device reaches Vex: as a window onto this Mac's Vex, or as a Vex of its own. Dream sync will let Vex propose what to keep from your conversations so you can accept or decline each one before anything is kept or shared. Neither exists in VexLife-Prod yet.</p>
+        </section>
+
+
+        <section class="setting" data-vex-ref="element.vexlife-workspace.companion.settings.models" aria-labelledby="models-heading">
+          <h2 id="models-heading" data-vex-text="workspace.heading.models"></h2>
+          <p class="setting-note-line" data-vex-text="workspace.description.models"></p>
+
+          <div class="model-import-card">
+            <p class="memory-label" data-vex-text="workspace.heading.model-import"></p>
+            <p class="setting-note-line" data-vex-text="workspace.description.model-import"></p>
+            <label class="model-import-field">
+              <span data-vex-text="workspace.label.model-import-url"></span>
+              <input id="model-import-url" type="url" inputmode="url" autocomplete="off" spellcheck="false">
+            </label>
+            <div class="model-import-actions">
+              <button class="outline-button" id="model-import-check" type="button" data-vex-text="workspace.button.model-import-check"></button>
+              <button class="outline-button" id="model-import-add" type="button" data-vex-text="workspace.button.model-import-add" hidden></button>
+            </div>
+            <p class="setting-note-line" id="model-import-result" role="status" aria-live="polite"></p>
+            <p class="model-import-facts" id="model-import-facts"></p>
+          </div>
+
+          <div class="model-state-card" data-vex-ref="element.vexlife-workspace.companion.settings.models.state" id="models-state">
+            <p class="memory-label" data-vex-text="workspace.heading.model-swap-process"></p>
+            <p class="setting-note-line" id="models-current-state"></p>
+          </div>
+
+          <div class="model-choice-field" data-vex-ref="element.vexlife-workspace.companion.settings.models.choice">
+            <span class="home-label" id="model-choice-label" data-vex-text="workspace.label.model-choice"></span>
+            <div class="model-choice-row">
+              <select id="model-choice" aria-labelledby="model-choice-label"></select>
+              <div class="model-choice-actions" data-vex-ref="element.vexlife-workspace.companion.settings.models.list" id="models-list"></div>
+            </div>
+            <p class="model-choice-facts" id="model-choice-facts"></p>
+            <p class="model-choice-notes" id="model-choice-notes"></p>
+          </div>
+
+          <div class="model-configuration" data-vex-ref="element.vexlife-workspace.companion.settings.models.configuration" id="model-configuration">
+            <div>
+              <p class="memory-label" data-vex-text="workspace.heading.model-configuration"></p>
+              <p class="setting-note-line" id="model-configuration-recommendation"></p>
+            </div>
+            <label class="model-cache-field" data-vex-ref="element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries">
+              <span data-vex-text="workspace.label.model-prompt-cache-entries"></span>
+              <select id="model-prompt-cache-entries"></select>
+            </label>
+            <p class="setting-note-line" data-vex-text="workspace.description.model-prompt-cache-entries"></p>
+            <div class="model-configuration-actions">
+              <button class="outline-button" data-vex-ref="element.vexlife-workspace.companion.settings.models.configuration.use-recommended" id="model-use-recommended" type="button" data-vex-text="workspace.button.model-use-recommended"></button>
+            </div>
+            <div class="model-activation">
+              <p class="model-activation-title" data-vex-text="workspace.heading.model-activation"></p>
+              <p class="setting-note-line" data-vex-text="workspace.description.model-start-effect"></p>
+              <button class="model-start-button" data-vex-ref="element.vexlife-workspace.companion.settings.models.configuration.start" id="model-start" type="button" data-vex-text="workspace.button.model-start"></button>
+            </div>
+          </div>
+
+          <p class="setting-note-line" id="models-note"></p>
+        </section>
+
+        <section class="setting" data-vex-ref="element.vexlife-workspace.companion.settings.local-asr" aria-labelledby="local-asr-heading">
+          <h2 id="local-asr-heading" data-vex-text="workspace.heading.local-asr"></h2>
+          <p class="setting-note-line" data-vex-text="workspace.description.local-asr"></p>
+          <div class="local-asr-row">
+            <label for="local-asr-selection" data-vex-text="workspace.label.local-asr-selection"></label>
+            <select id="local-asr-selection" data-vex-ref="element.vexlife-workspace.companion.settings.local-asr.selection" disabled></select>
+          </div>
+          <div class="models-list" id="local-asr-models-list" data-vex-ref="element.vexlife-workspace.companion.settings.local-asr.models-list"></div>
+          <div class="local-asr-row">
+            <label for="local-asr-spoken-language" data-vex-text="workspace.label.local-asr-spoken-language"></label>
+            <select id="local-asr-spoken-language" data-vex-ref="element.vexlife-workspace.companion.settings.local-asr.spoken-language" disabled></select>
+          </div>
+          <p class="setting-note-line" data-vex-text="workspace.description.local-asr-spoken-language-note"></p>
+          <div c
