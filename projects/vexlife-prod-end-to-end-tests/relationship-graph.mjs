@@ -299,7 +299,7 @@ export function formExperienceRelationshipGraph(seedInput) {
         sourceRefs: Object.freeze(sources),
       }));
     }
-    const observationSymbol = sourceSymbolOrNull(row.observation);
+    const observationSymbol = stableRefOrNull(row.observationRef) ?? sourceSymbolOrNull(row.observation);
     const observationRef = observationSymbol
       ? addNode(observationSymbol, 'OBSERVATION', row.observation, sources)
       : null;
