@@ -72,6 +72,7 @@ export const EVIDENCE = Object.freeze({
 
 const readJson = (file) => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
 const stable = (value) => `${JSON.stringify(value, null, 2)}\n`;
+const sha256 = (text) => crypto.createHash('sha256').update(text).digest('hex');
 export const gitBlobSha1 = (text) => crypto.createHash('sha1').update(`blob ${Buffer.byteLength(text)}\0`).update(text).digest('hex');
 const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 1 << 28 }).trim();
 
