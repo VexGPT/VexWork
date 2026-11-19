@@ -208,9 +208,17 @@ test('the hand-authored seed lattice is now checkable against the derived graph'
   const graph = json(OUTPUTS.graph);
   const refs = new Set(graph.nodes.map((node) => node.ref));
   const edges = new Set(graph.edges.map((edge) => edge.ref));
-  for (const coordinate of seed.coordinates.filter((row) => row.coordinateClass === 'FAMILY_OR_SEMANTIC_OWNER')) {
-    assert.ok(refs.has(coordinate.coordinate), `${coordinate.coordinate} from the seed is a derived Family`);
+  const mainDispositions = new Set(['CURRENT_MAIN', 'CURRENT_MAIN_PLUS_ACTIVE_EVOLUTION', 'CURRENT_MAIN_HELD_CONNECTOR']);
+  for (const coordinate of seed.coordinates.filter(
+    (row) => row.coordinateClass === 'FAMILY_OR_SEMANTIC_OWNER' && mainDispositions.has(row.disposition),
+  )) {
+    assert.ok(refs.has(coordinate.coordinate), `${coordinate.coordinate} from the seed is a derived current-main Family`);
   }
+  const r2 = json(`${GENERATED}/builds/candidate-convergence-r2/experience-relationship-graph.json`);
+  assert.ok(
+    r2.nodes.some((node) => node.ref === 'VexLifeLanguageFamily'),
+    'the ACTIVE_CANDIDATE Language Family belongs to the exact R2 candidate graph, not the preserved main graph',
+  );
   assert.ok(edges.has('edge:REQUESTS_EFFECT:VexLifeVisionFamily.Engage:VexLifeVisionFamily.Effect.EngageScope:when:Ready:0'));
   assert.ok(edges.has('edge:REQUESTS_EFFECT:VexLifeVisionFamily.Stop:VexLifeVisionFamily.Effect.StopScope:when:Engaged:0'));
   assert.ok(edges.has('edge:REQUESTS_EFFECT:VexLifeMemoryReviewFamily.Keep:VexLifeMemoryReviewFamily.Effect.Accept:when:Pending:0'));
