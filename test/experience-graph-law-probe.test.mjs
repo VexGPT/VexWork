@@ -124,8 +124,30 @@ test('law evidence is bound to the Family law it exercised, not to presentation 
   assert.match(evidence.probeSourceSha256, /^[0-9a-f]{64}$/);
   assert.equal(evidence.lawFingerprint, lawFingerprint(graph));
   assert.ok(evidence.plan.every((family) => family.states.every((state) => state.fixtures.every((label) => typeof label === 'string'))));
-  assert.equal(compareLawEvidence({ graph, derivation, evidence: { ...evidence, lawFingerprint: '0'.repeat(64) } }).current, false);
-  assert.equal(compareLawEvidence({ graph, derivation, evidence: { ...evidence, source: { ...evidence.source, commit: 'f'.repeat(40) } } }).current, false);
+  assert.equal(compareLawEvidence({
+    graph,
+    derivation,
+    evidence,
+    currentProbeSourceSha256: evidence.probeSourceSha256,
+  }).current, true);
+  assert.equal(compareLawEvidence({
+    graph,
+    derivation,
+    evidence,
+    currentProbeSourceSha256: '0'.repeat(64),
+  }).current, false, 'changed probe semantics stale previously executed evidence');
+  assert.equal(compareLawEvidence({
+    graph,
+    derivation,
+    evidence: { ...evidence, lawFingerprint: '0'.repeat(64) },
+    currentProbeSourceSha256: evidence.probeSourceSha256,
+  }).current, false);
+  assert.equal(compareLawEvidence({
+    graph,
+    derivation,
+    evidence: { ...evidence, source: { ...evidence.source, commit: 'f'.repeat(40) } },
+    currentProbeSourceSha256: evidence.probeSourceSha256,
+  }).current, false);
   // A presentation-only change (an element and its MANIFESTS row) leaves the law fingerprint and the proof current.
   const presentation = normalizeExperienceGraph({ ...graph, edges: graph.edges.filter((edge) => edge.kind !== 'MANIFESTS') });
   assert.notEqual(presentation.fingerprint, graph.fingerprint);

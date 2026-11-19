@@ -45,7 +45,10 @@ export function renderExperienceReport({ graph, frontier, routes, perturbations,
   lines.push(`edge kinds   ${Object.entries(edgeKinds).sort(([a], [b]) => compare(a, b)).map(([kind, count]) => `${kind} ${count}`).join(' · ')}`);
   lines.push(`routes       ${Object.entries(routes.counts).map(([status, count]) => `${status} ${count}`).join(' · ')}`);
   lines.push(`test cases   ${routes.cases.length} generated (manifest ${routes.manifestFingerprint.slice(0, 12)})`);
-  if (lawProof) lines.push(`law proof    ${Object.entries(lawProof.caseCounts).map(([status, count]) => `${status} ${count}`).join(' · ')}   current=${lawProof.current}`);
+  if (lawProof) {
+    lines.push(`law cells    ${Object.entries(lawProof.cellCounts).map(([status, count]) => `${status} ${count}`).join(' · ')}   current=${lawProof.current}`);
+    lines.push(`test cases   ${Object.entries(lawProof.caseCounts).map(([status, count]) => `${status} ${count}`).join(' · ')}   executed-law projection`);
+  }
   lines.push(`debt         ${frontier.debt.length} (${Object.entries(frontier.byClass).filter(([, count]) => count).map(([key, count]) => `${key} ${count}`).join(' · ')})`);
   lines.push(`perturbation ${Object.entries(perturbations.answers).map(([state, count]) => `${state} ${count}`).join(' · ')}`);
   lines.push('~~~');

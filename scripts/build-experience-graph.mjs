@@ -43,6 +43,7 @@ const EXTRACTOR_MODULES = [
   'src/core/experience-graph-localization.mjs',
   'src/core/experience-graph-identity.mjs',
   'src/core/experience-graph.mjs',
+  'src/core/experience-graph-law-probe.mjs',
 ];
 
 export const buildOutputs = (buildRef) => Object.freeze({
@@ -206,7 +207,7 @@ function convergenceInputs({ lawEvidence, perturbationEvidence, priorGraph }) {
 }
 
 // graph (+ evidence) -> every derived artifact. Offline and deterministic.
-export function deriveAll(graph, { lawEvidence = null, perturbationEvidence = null, relaySources = [], changeImpact = null } = {}) {
+export function deriveAll(graph, { lawEvidence = null, perturbationEvidence = null, relaySources = [], changeImpact = null, currentProbeSourceSha256 = null } = {}) {
   let frontier = deriveFrontier(graph);
   const routes = deriveRoutes(graph, frontier);
   const perturbations = derivePerturbations(graph, { evidence: perturbationEvidence });
@@ -217,7 +218,12 @@ export function deriveAll(graph, { lawEvidence = null, perturbationEvidence = nu
     inputs: convergenceInputs({ lawEvidence, perturbationEvidence, priorGraph: changeImpact }),
   });
   if (changeImpact) convergence.queries.changeImpact = changeImpact;
-  const lawProof = lawEvidence ? compareLawEvidence({ graph, derivation: routes, evidence: lawEvidence }) : null;
+  const lawProof = lawEvidence ? compareLawEvidence({
+    graph,
+    derivation: routes,
+    evidence: lawEvidence,
+    currentProbeSourceSha256,
+  }) : null;
   // Class F is known only after the probe ran; it never changes a route, so it joins the frontier last.
   if (lawProof) frontier = withTestSeamDebt(frontier, lawProof);
   const board = experienceBoardGraph(graph);
@@ -299,7 +305,13 @@ function generate(args) {
   });
   const lawEvidence = optionalJson(EVIDENCE.law);
   const perturbationEvidence = optionalJson(EVIDENCE.perturbation);
-  const derived = deriveAll(graph, { lawEvidence, perturbationEvidence, relaySources, changeImpact });
+  const derived = deriveAll(graph, {
+    lawEvidence,
+    perturbationEvidence,
+    relaySources,
+    changeImpact,
+    currentProbeSourceSha256: sha256(probe.kotlinSource),
+  });
 
   const drift = [];
   writeOut(OUTPUTS.graph, stable(graph), check, drift);
@@ -362,11 +374,18 @@ export function verify() {
     problems.push('extractor modules changed since the graph was generated; regenerate with --fetch or --source');
   }
   const convergence = readJson(OUTPUTS.convergence);
+  const lawEvidence = optionalJson(EVIDENCE.law);
+  const checkedInProbe = fs.readFileSync(path.join(ROOT, OUTPUTS.probe), 'utf8');
+  const checkedInProbeSha256 = sha256(checkedInProbe);
+  const checkedInProbePlan = readJson(OUTPUTS.probePlan);
+  if (checkedInProbePlan.graphFingerprint !== graph.fingerprint) problems.push('law-probe plan is not bound to the checked-in graph fingerprint');
+  if (lawEvidence && lawEvidence.probeSourceSha256 !== checkedInProbeSha256) problems.push('law evidence was produced by a different probe source; rerun the Product law probe');
   const derived = deriveAll(graph, {
-    lawEvidence: optionalJson(EVIDENCE.law),
+    lawEvidence,
     perturbationEvidence: optionalJson(EVIDENCE.perturbation),
     relaySources: convergence.relaySources ?? [],
     changeImpact: convergence.queries?.changeImpact ?? null,
+    currentProbeSourceSha256: checkedInProbeSha256,
   });
   const expect = [
     [OUTPUTS.frontier, stable(derived.frontier)],

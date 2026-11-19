@@ -191,7 +191,8 @@ test('the generated report summarizes the graph and names its proof and frontier
   assert.match(report, /## Cleared routes/);
   assert.match(report, /route:VexLifeVisionFamily\.Ready:Engage:0/);
   assert.match(report, /## Frontier debt — highest leverage first/);
-  assert.match(report, /law proof {4}PASS \d+/);
+  assert.match(report, /law cells {4}PASS \d+/);
+  assert.match(report, /test cases {3}PASS \d+.*executed-law projection/);
   const without = renderExperienceReport({
     graph,
     frontier: json(OUTPUTS.frontier),

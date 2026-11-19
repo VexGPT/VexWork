@@ -300,12 +300,16 @@ const sameOutcome = (expected, actual) => (expected.kind === 'REJECT'
   ? actual === 'REJECT'
   : actual !== 'REJECT' && actual.admitted === expected.admitted && actual.effect === expected.effect);
 
-export function compareLawEvidence({ graph, derivation, evidence }) {
+export function compareLawEvidence({ graph, derivation, evidence, currentProbeSourceSha256 = null }) {
   assert(evidence?.schemaVersion === LAW_EVIDENCE_SCHEMA, 'law evidence schema mismatch');
   const index = graphIndex(graph);
   const law = lawFingerprint(graph);
-  const current = evidence.source.commit === graph.source.commit
+  const sourceCurrent = evidence.source.commit === graph.source.commit
     && (evidence.lawFingerprint ? evidence.lawFingerprint === law : evidence.graphFingerprint === graph.fingerprint);
+  const probeCurrent = typeof currentProbeSourceSha256 === 'string'
+    && currentProbeSourceSha256.length === 64
+    && evidence.probeSourceSha256 === currentProbeSourceSha256;
+  const current = sourceCurrent && probeCurrent;
   const rowsByCell = new Map();
   for (const row of evidence.rows) {
     const key = `${row.family}|${row.state}|${row.control}`;
@@ -358,6 +362,10 @@ export function compareLawEvidence({ graph, derivation, evidence }) {
   const count = (rows) => Object.fromEntries(CELL_RESULTS.map((name) => [name, rows.filter((row) => row.status === name).length]));
   return {
     current,
+    sourceCurrent,
+    probeCurrent,
+    evidenceProbeSourceSha256: evidence.probeSourceSha256 ?? null,
+    currentProbeSourceSha256,
     evidenceLawFingerprint: evidence.lawFingerprint ?? null,
     lawFingerprint: law,
     cellCounts: count(cells),
