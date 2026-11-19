@@ -13,7 +13,7 @@
 // Pure: plans and compares; it does not run Kotlin itself.
 
 import { matchClose } from './vexboard-kotlin-source.mjs';
-import { canonicalJson, graphIndex, sha256 } from './experience-graph.mjs';
+import { canonicalJson, graphIndex, lawFingerprint, sha256 } from './experience-graph.mjs';
 
 export const LAW_PROBE_SCHEMA = 'vexwork.experience-graph.law-probe/v1';
 export const LAW_EVIDENCE_SCHEMA = 'vexwork.experience-graph.law-evidence/v1';
@@ -299,7 +299,9 @@ const sameOutcome = (expected, actual) => (expected.kind === 'REJECT'
 export function compareLawEvidence({ graph, derivation, evidence }) {
   assert(evidence?.schemaVersion === LAW_EVIDENCE_SCHEMA, 'law evidence schema mismatch');
   const index = graphIndex(graph);
-  const current = evidence.graphFingerprint === graph.fingerprint && evidence.source.commit === graph.source.commit;
+  const law = lawFingerprint(graph);
+  const current = evidence.source.commit === graph.source.commit
+    && (evidence.lawFingerprint ? evidence.lawFingerprint === law : evidence.graphFingerprint === graph.fingerprint);
   const rowsByCell = new Map();
   for (const row of evidence.rows) {
     const key = `${row.family}|${row.state}|${row.control}`;
@@ -349,8 +351,8 @@ export function compareLawEvidence({ graph, derivation, evidence }) {
   const count = (rows) => Object.fromEntries(CELL_RESULTS.map((name) => [name, rows.filter((row) => row.status === name).length]));
   return {
     current,
-    evidenceGraphFingerprint: evidence.graphFingerprint,
-    graphFingerprint: graph.fingerprint,
+    evidenceLawFingerprint: evidence.lawFingerprint ?? null,
+    lawFingerprint: law,
     cellCounts: count(cells),
     caseCounts: count(cases),
     cells,
@@ -363,6 +365,7 @@ export function lawEvidence({ graph, plan, rows, runner }) {
   return {
     schemaVersion: LAW_EVIDENCE_SCHEMA,
     graphFingerprint: graph.fingerprint,
+    lawFingerprint: lawFingerprint(graph),
     source: { repository: graph.source.repository, commit: graph.source.commit },
     probeSourceSha256: sha256(plan.kotlinSource),
     runner,

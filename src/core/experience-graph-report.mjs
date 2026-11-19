@@ -81,6 +81,35 @@ export function renderExperienceReport({ graph, frontier, routes, perturbations,
   const unblocking = frontier.debt.filter((row) => !convergence.queries.debtDependents.some((entry) => entry.debtRef === row.ref));
   lines.push(`${unblocking.length} further debt rows block no derived route yet (for example unbound elements whose relationship the graph cannot see at all).`);
   lines.push('');
+  if (graph.localization) {
+    const loc = graph.localization;
+    lines.push('## Keyed elements and localization');
+    lines.push('');
+    lines.push('The catalog key is the Product\'s own element identity (`docs/CULTURE.md`). Keys whose `dataKey` names a Family Control manifest it; keys naming a Family State surface its DisplayState.');
+    lines.push('');
+    lines.push(table(['scope', 'keys', 'dataKeys', 'complete languages', 'languages with gaps'], loc.scopes.map((scope) => [
+      scope.scope, scope.keyCount, scope.dataKeyCount, scope.completeLanguages.join(' ') || '—',
+      Object.entries(scope.missingByLanguage).filter(([, missing]) => missing).map(([language, missing]) => `${language} −${missing}`).join(' ') || '—',
+    ])));
+    lines.push('');
+    const resolutions = {};
+    for (const row of loc.dataKeys) resolutions[row.resolution] = (resolutions[row.resolution] ?? 0) + 1;
+    lines.push(`dataKey resolution: ${Object.entries(resolutions).sort(([a], [b]) => compare(a, b)).map(([name, count]) => `${name} ${count}`).join(' · ')}. Keyed markup joins ${loc.keyedMarkup.length} Lens element(s) to their key; the reserved \`lens\` namespace is used by ${loc.lensKeys.length} key(s).`);
+    lines.push('');
+    lines.push(table(['Family DisplayState', 'text form', 'String text fields'], loc.displayText.map((row) => [row.family, row.form, row.hardcodedFields.join(', ') || '—'])));
+    lines.push('');
+  }
+  if (graph.stringIdentity) {
+    const identity = graph.stringIdentity;
+    const kinds = {};
+    for (const row of frontier.debt) if (['LITERAL_SHADOWS_CONSTANT', 'UNOWNED_WIRE_LITERAL', 'FAMILY_READS_WIRE_STRING', 'TYPED_REF_BYPASSED', 'UNTYPED_INTERACTIVE', 'REFLECTION_IDENTITY'].includes(row.kind)) kinds[row.kind] = (kinds[row.kind] ?? 0) + 1;
+    lines.push('## String identity outside its owner');
+    lines.push('');
+    lines.push(table(['finding', 'rows'], Object.entries(kinds).sort(([a], [b]) => compare(a, b))));
+    lines.push('');
+    if (identity.domIds) lines.push(`DOM: ${identity.domIds.rows.length} elements are bound by id string (${identity.domIds.rows.filter((row) => row.kind === 'TYPED_REF_BYPASSED').length} of them carry a typed data-vex-ref the runtime never selects by; ${identity.domIds.typedSelectors} data-vex-ref lookups). Reflection: ${identity.reflection.length} reflected names, ${identity.reflection.filter((row) => row.use === 'REFLECTION_IDENTITY').length} used as identity.`);
+    lines.push('');
+  }
   lines.push('## Perturbation questions answered or still open');
   lines.push('');
   const shown = perturbations.questions.filter((row) => row.answerState !== 'EXPECTED_FROM_LAW' || row.consideration === 'CAPTURE_RACE' || row.consideration === 'STALE_OBSERVATION');

@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import { LAW_EVIDENCE_SCHEMA, compareLawEvidence, indexEnums, lawEvidence, planLawProbe } from '../src/core/experience-graph-law-probe.mjs';
 import { deriveFrontier, deriveRoutes } from '../src/core/experience-graph-derivation.mjs';
+import { lawFingerprint, normalizeExperienceGraph } from '../src/core/experience-graph.mjs';
 import { fixtureGraph, fixtureLaws } from './fixtures/experience-graph/graph.mjs';
 import { FAMILY_SOURCES, KIND_CONTRACT } from './fixtures/experience-graph/fixtures.mjs';
 
@@ -101,13 +102,24 @@ test('law evidence passes when executed outcomes land inside the graph and fails
   assert.equal(exhaustive.cells.find((cell) => cell.state === 'RuntimeAvailability.State.Unavailable').status, 'PASS', 'an exhaustive payload when never refuses');
 });
 
-test('law evidence is bound to the graph it was produced for', () => {
+test('law evidence is bound to the Family law it exercised, not to presentation or localization around it', () => {
   const graph = fixtureGraph();
   const derivation = deriveRoutes(graph, deriveFrontier(graph));
   const evidence = evidenceFor(graph, []);
   assert.equal(evidence.schemaVersion, LAW_EVIDENCE_SCHEMA);
   assert.match(evidence.probeSourceSha256, /^[0-9a-f]{64}$/);
+  assert.equal(evidence.lawFingerprint, lawFingerprint(graph));
   assert.ok(evidence.plan.every((family) => family.states.every((state) => state.fixtures.every((label) => typeof label === 'string'))));
-  assert.equal(compareLawEvidence({ graph, derivation, evidence: { ...evidence, graphFingerprint: '0'.repeat(64) } }).current, false);
+  assert.equal(compareLawEvidence({ graph, derivation, evidence: { ...evidence, lawFingerprint: '0'.repeat(64) } }).current, false);
+  assert.equal(compareLawEvidence({ graph, derivation, evidence: { ...evidence, source: { ...evidence.source, commit: 'f'.repeat(40) } } }).current, false);
+  // A presentation-only change (an element and its MANIFESTS row) leaves the law fingerprint and the proof current.
+  const presentation = normalizeExperienceGraph({ ...graph, edges: graph.edges.filter((edge) => edge.kind !== 'MANIFESTS') });
+  assert.notEqual(presentation.fingerprint, graph.fingerprint);
+  assert.equal(lawFingerprint(presentation), lawFingerprint(graph));
+  assert.equal(compareLawEvidence({ graph: presentation, derivation, evidence }).current, true);
+  // Older evidence without a law fingerprint still binds to the whole graph.
+  const { lawFingerprint: omitted, ...legacy } = evidence;
+  void omitted;
+  assert.equal(compareLawEvidence({ graph: presentation, derivation, evidence: legacy }).current, false);
   assert.throws(() => compareLawEvidence({ graph, derivation, evidence: { schemaVersion: 'x' } }), /law evidence schema mismatch/);
 });

@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "vexwork.experience-graph.branches/v1",
+  "main": {
+    "commit": "a58777106b08bd58c167608fa0115729185ae3dd",
+    "graphFingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924",
+    "routeCounts": {
+      "CLEARED": 13,
+      "FRONTIER_DEBT": 53,
+      "HELD": 0,
+      "UNKNOWN": 0
+    },
+    "debt": 159
+  },
+  "preserved": "main projection at generated/ is never rewritten by a candidate build",
+  "candidates": [
+    {
+      "buildRef": "candidate-design-foundation",
+      "label": "Design foundation: one vocabulary, one relationship legend",
+      "summary": "Token law, readable contrast in both themes, and the Vex Context relationship legend carried onto thoughts and model cards (presentation only; the graph should not move).",
+      "axis": "DESIGN",
+      "branch": "VXG-111826-claude-candidate-design-foundation",
+      "commit": "d9f0bb995556e7b16bb7d5fc9c93720c7b423472",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "0a152cc513c318bbc9551e05c53881d66ef26adb20c86af023af0343b1af5209",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "debt": {
+        "main": 159,
+        "candidate": 159,
+        "resolvedByKind": {},
+        "introducedByKind": {},
+        "resolved": [],
+        "introduced": []
+      },
+      "edges": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "verdict": "NO_GRAPH_CHANGE"
+    },
+    {
+      "buildRef": "candidate-keyed-elements",
+      "label": "Keyed elements: identity through owners",
+      "summary": "Workspace dataKeys owned in main source, Lens elements named by their keys, typed element lookups and owner constants in the browser runtime, Vision scope state decoded at the boundary.",
+      "axis": "IDENTITY",
+      "branch": "VXG-111826-claude-candidate-keyed-elements",
+      "commit": "e01a6cb1b108f1607b5a32cc6f82a9e68af50ad6",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "d1a6f4db3b8bdeedd4e8f74ea8c575d047aa5d0e88bb58231c340a25f397eba8",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "debt": {
+        "main": 159,
+        "candidate": 134,
+        "resolvedByKind": {
+          "DATAKEY_ANCHOR_NOT_IN_MAIN": 4,
+          "DATAKEY_UNRESOLVED": 3,
+          "ELEMENT_WITHOUT_BINDING": 3,
+          "FAMILY_READS_WIRE_STRING": 1,
+          "LITERAL_SHADOWS_CONSTANT": 13,
+          "TYPED_REF_BYPASSED": 1
+        },
+        "introducedByKind": {},
+        "resolved": [
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeLocalAsrProvider",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeModelsFamily",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeReleaseInboxFamily",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeVoiceInputFamily",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.preview-update-available",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.update-available",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.viewed",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.clear-history",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries",
+          "debt:FAMILY_READS_WIRE_STRING:VexLifeVisionFamily",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CLEAR_HISTORY#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#2",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#3",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#4",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#5",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#6",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#7",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:NOT_LAWFUL_NOW#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:PRIVATE#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:RUNTIME_REFUSED#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:START_ENHANCED#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:STOP_ENHANCED#1",
+          "debt:TYPED_REF_BYPASSED:runtime:VexLifeWebP1RuntimeArtifacts.kt"
+        ],
+        "introduced": []
+      },
+      "edges": {
+        "added": [
+          "edge:MANIFESTS:element.vexlife-workspace.companion.conversation.voice-input:VexLifeVoiceInputFamily.Stop:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.clear-history:VexLifeDiagnosticsFamily.ClearHistory:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture:VexLifeDiagnosticsFamily.StartEnhanced:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture:VexLifeDiagnosticsFamily.StopEnhanced:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries:VexLifeModelsFamily.SetPromptCacheEntries:key"
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "verdict": "IMPROVES_MAIN"
+    },
+    {
+      "buildRef": "candidate-localization",
+      "label": "Localization: script-aware and complete",
+      "summary": "zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages.",
+      "axis": "LOCALIZATION",
+      "branch": "VXG-111826-claude-candidate-localization",
+      "commit": "e4229b60cf8edc73cbe48664d9e8904d4b050114",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "debt": {
+        "main": 159,
+        "candidate": 155,
+        "resolvedByKind": {
+          "LANGUAGE_INCOMPLETE": 2,
+          "PARTIAL_LANGUAGE_SERVED": 1,
+          "SCRIPT_COLLAPSE": 1
+        },
+        "introducedByKind": {},
+        "resolved": [
+          "debt:LANGUAGE_INCOMPLETE:localization:release-alerts",
+          "debt:LANGUAGE_INCOMPLETE:localization:workspace",
+          "debt:PARTIAL_LANGUAGE_SERVED:VexLifeProdLocalService.handleStrings",
+          "debt:SCRIPT_COLLAPSE:localization:reply:zh-Hant"
+        ],
+        "introduced": []
+      },
+      "edges": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "verdict": "IMPROVES_MAIN"
+    }
+  ]
+}

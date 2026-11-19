@@ -4,15 +4,16 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
-import { EVIDENCE, OUTPUTS, extractorFingerprint, verify } from '../scripts/build-experience-graph.mjs';
+import { EVIDENCE, OUTPUTS, buildOutputs, extractorFingerprint, verify } from '../scripts/build-experience-graph.mjs';
 import { renderExperienceReport } from '../src/core/experience-graph-report.mjs';
-import { experienceBoardGraph } from '../src/core/experience-graph.mjs';
+import { experienceBoardGraph, lawFingerprint, normalizeExperienceGraph } from '../src/core/experience-graph.mjs';
 import { advanceBoardJourney, createBoardJourney } from '../src/shared/vexboard-journey.mjs';
 import { calculateBoardJourneyPathways } from '../src/shared/vexboard-journey-pathway-analysis.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const json = (file) => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
 const PROJECT = 'projects/vexlife-prod-end-to-end-tests';
+const PLAN_FILE = `${PROJECT}/experience-graph/source-plan.json`;
 
 test('checked-in Experience Relationship Graph artifacts reproduce offline from the graph and current derivations', () => {
   const { problems } = verify();
@@ -34,29 +35,86 @@ test('the graph is pinned to re-observed VexLife-Prod main, where #251 Context P
   assert.ok(impact.edgesAdded.includes('edge:CAPTURED_AT_SEND:VexLifeContextProfileStore:DirectCompanionTurn.Intent.contextProfile'));
 });
 
-test('patient-zero neighborhoods: Vision and Private clear; VoiceInput is held at its exact Screen Lens frontier', () => {
+test('patient-zero neighborhoods: Vision, Private, VoiceInput and Diagnostics clear once keyed elements are read as identity', () => {
   const routes = json(OUTPUTS.routes);
   assert.deepEqual(routes.routes.filter((route) => route.status === 'CLEARED').map((route) => route.routeRef), [
+    'route:VexLifeDiagnosticsFamily.Recording:ClearHistory:0',
+    'route:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0',
+    'route:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0',
+    'route:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0',
     'route:VexLifePrivateModeFamily.Kept:Begin:0',
     'route:VexLifePrivateModeFamily.Private:End:0',
     'route:VexLifeVisionFamily.Engaged:Stop:0',
     'route:VexLifeVisionFamily.Held:Stop:0',
     'route:VexLifeVisionFamily.Ready:Engage:0',
+    'route:VexLifeVoiceInputFamily.Failed:Start:0',
+    'route:VexLifeVoiceInputFamily.Listening:Stop:0',
+    'route:VexLifeVoiceInputFamily.Ready:Start:0',
+    'route:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0',
   ]);
+  // VoiceInput's Lens element and its catalog key are one element: markup carries both identities.
   const start = routes.routes.find((route) => route.routeRef === 'route:VexLifeVoiceInputFamily.Ready:Start:0');
-  assert.equal(start.status, 'FRONTIER_DEBT');
-  assert.deepEqual(start.missing.map((row) => row.predicate), ['MISSING_STABLE_ELEMENT_BINDING', 'PROJECTION_NOT_SURFACED']);
+  assert.deepEqual(start.steps.find((step) => step.step === 'HUMAN_ACTION').elementRefs, [
+    'element.vexlife-workspace.companion.conversation.voice-input',
+    'key:workspace.button.voice-input-start',
+  ]);
   const frontier = json(OUTPUTS.frontier);
-  assert.deepEqual(frontier.debt.find((row) => row.coordinate === 'VexLifeVoiceInputFamily.Start').hints, ['element.vexlife-workspace.companion.conversation.voice-input']);
-  assert.ok(frontier.debt.some((row) => row.kind === 'UNTYPED_MANIFESTATION' && row.coordinate === 'VexLifeDiagnosticsFamily.StartEnhanced'));
-  assert.ok(frontier.debt.some((row) => row.kind === 'MISSING_ACT_LAW' && row.coordinate === 'VexLifeLocalAsrModelsFamily'));
+  const has = (kind, coordinate) => frontier.debt.some((row) => row.kind === kind && row.coordinate === coordinate);
+  assert.ok(!has('MISSING_MANIFESTATION_BINDING', 'VexLifeVoiceInputFamily.Start'));
+  assert.ok(!has('PROJECTION_NOT_SURFACED', 'VexLifeProdEntryFamily.DisplayState'), 'Entry is surfaced by setup keys in the native window');
+  assert.ok(has('MISSING_MANIFESTATION_BINDING', 'VexLifeProdEntryFamily.Cancel'), 'Cancel is the one Entry Control no key names');
+  assert.ok(has('MISSING_ACT_LAW', 'VexLifeLocalAsrModelsFamily'));
   assert.equal(routes.journeys.find((journey) => journey.journeyRef === 'journey:gate:PRIVATE_MODE_ON').status, 'CLEARED');
+  for (const journey of routes.journeys.filter((row) => row.status !== 'CLEARED')) assert.ok(journey.missing.length, `${journey.journeyRef} says what it is missing`);
+});
+
+test('localization and string-identity frontier name the real Product edges', () => {
+  const frontier = json(OUTPUTS.frontier);
+  const has = (kind, coordinate) => frontier.debt.some((row) => row.kind === kind && row.coordinate === coordinate);
+  assert.ok(has('SCRIPT_COLLAPSE', 'localization:reply:zh-Hant'));
+  assert.ok(has('PARTIAL_LANGUAGE_SERVED', 'VexLifeProdLocalService.handleStrings'));
+  assert.ok(has('LANGUAGE_INCOMPLETE', 'localization:workspace'));
+  assert.ok(has('LANGUAGE_INCOMPLETE', 'localization:release-alerts'));
+  for (const family of ['VexLifeContextProfileFamily', 'VexLifeMemoryFamily', 'VexLifePrivateModeFamily', 'VexLifeVisionFamily']) {
+    assert.ok(has('HARDCODED_DISPLAY_TEXT', `${family}.DisplayState`), family);
+  }
+  assert.ok(has('FAMILY_READS_WIRE_STRING', 'VexLifeVisionFamily'));
+  assert.ok(has('DATAKEY_ANCHOR_NOT_IN_MAIN', 'dataKey:VexLifeVoiceInputFamily'));
+  const shadow = frontier.debt.find((row) => row.kind === 'LITERAL_SHADOWS_CONSTANT' && /:START_ENHANCED#\d+$/.test(row.coordinate));
+  assert.ok(shadow.hints.includes('VexLifeDiagnosticsFamily.ControlStartEnhanced'));
+  assert.ok(frontier.debt.some((row) => row.kind === 'TYPED_REF_BYPASSED'));
+  assert.ok(!frontier.debt.some((row) => row.kind === 'REFLECTION_IDENTITY'), 'reflected names only ever become evidence text');
+  assert.ok(frontier.byClass.F > 0, 'law-probe test seams are class F');
+});
+
+test('branch dynamics: candidates are projected against preserved main and say what they move', () => {
+  const plan = json(PLAN_FILE);
+  const branches = json(OUTPUTS.branches);
+  const graph = json(OUTPUTS.graph);
+  assert.equal(branches.main.commit, plan.commit);
+  assert.equal(branches.main.graphFingerprint, graph.fingerprint, 'main projection is the one checked in at generated/');
+  const by = Object.fromEntries(branches.candidates.map((row) => [row.buildRef, row]));
+  assert.deepEqual(Object.keys(by).sort(), plan.builds.map((row) => row.buildRef).sort());
+  for (const row of branches.candidates) {
+    assert.equal(row.basisCommit, plan.commit);
+    assert.equal(row.routeFlips.filter((flip) => flip.from === 'CLEARED').length, 0, `${row.buildRef} regresses no CLEARED route`);
+    assert.equal(row.lawProofReusable, true, `${row.buildRef} leaves Family law unchanged, so main's executed proof still holds`);
+    assert.equal(json(buildOutputs(row.buildRef).graph).source.commit, row.commit);
+  }
+  const keyed = by['candidate-keyed-elements'];
+  assert.equal(keyed.verdict, 'IMPROVES_MAIN');
+  assert.deepEqual(keyed.debt.introduced, []);
+  for (const kind of ['DATAKEY_ANCHOR_NOT_IN_MAIN', 'FAMILY_READS_WIRE_STRING', 'TYPED_REF_BYPASSED', 'LITERAL_SHADOWS_CONSTANT', 'DATAKEY_UNRESOLVED']) assert.ok(keyed.debt.resolvedByKind[kind] > 0, kind);
+  const localization = by['candidate-localization'];
+  assert.equal(localization.verdict, 'IMPROVES_MAIN');
+  assert.deepEqual(localization.debt.resolvedByKind, { LANGUAGE_INCOMPLETE: 2, PARTIAL_LANGUAGE_SERVED: 1, SCRIPT_COLLAPSE: 1 });
+  assert.equal(by['candidate-design-foundation'].verdict, 'NO_GRAPH_CHANGE', 'presentation-only: its law is held by the Product\'s own token test');
 });
 
 test('deterministic proof: executed Family law never disagrees with the graph and is bound to it', () => {
   const evidence = json(EVIDENCE.law);
   const graph = json(OUTPUTS.graph);
-  assert.equal(evidence.graphFingerprint, graph.fingerprint);
+  assert.equal(evidence.lawFingerprint, lawFingerprint(normalizeExperienceGraph(graph)));
   assert.equal(evidence.runner.productSourceModified, false);
   const proof = json(OUTPUTS.lawProof);
   assert.equal(proof.current, true);

@@ -4,13 +4,13 @@
 
 ~~~text
 source       VexGPT/VexLife-Prod @ a58777106b08bd58c167608fa0115729185ae3dd
-graph        2be14bdb0e3e89f79135d168cd13277ad7143a933f32e40fe617183a8b2c872a
-nodes/edges  225 / 270   (VexBoard projection: 225 nodes, 270 relationships)
-edge kinds   ADMITS_STATE 8 · CAPTURED_AT_SEND 4 · CONSUMED_BY 7 · MANIFESTS 5 · OBSERVES_AS 29 · OFFERS 63 · PROJECTS_TO 49 · REALIZED_BY 47 · REQUESTS_EFFECT 46 · RETURNS_TO 12
-routes       CLEARED 5 · FRONTIER_DEBT 61 · HELD 0 · UNKNOWN 0
-test cases   159 generated (manifest 2841514f6261)
+graph        de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924
+nodes/edges  293 / 341   (VexBoard projection: 293 nodes, 341 relationships)
+edge kinds   ADMITS_STATE 8 · CAPTURED_AT_SEND 4 · CONSUMED_BY 7 · MANIFESTS 34 · OBSERVES_AS 29 · OFFERS 63 · PROJECTS_TO 91 · REALIZED_BY 47 · REQUESTS_EFFECT 46 · RETURNS_TO 12
+routes       CLEARED 13 · FRONTIER_DEBT 53 · HELD 0 · UNKNOWN 0
+test cases   159 generated (manifest 2af34b67ca99)
 law proof    PASS 110 · PASS_PARTIAL 0 · FAIL 0 · FIXTURE_REJECTED 21 · NOT_RUN 28   current=true
-debt         74 (A 2 · B 59 · D 3 · E 10)
+debt         164 (A 2 · B 139 · D 3 · E 15 · F 5)
 perturbation EXPECTED_FROM_LAW 33 · ANSWERED_BY_EVIDENCE 6 · STALE_EVIDENCE 0 · UNKNOWN 61
 ~~~
 
@@ -18,20 +18,72 @@ perturbation EXPECTED_FROM_LAW 33 · ANSWERED_BY_EVIDENCE 6 · STALE_EVIDENCE 0 
 
 | Family | routes | CLEARED | FRONTIER_DEBT | debt rows | law cells proven |
 |---|---|---|---|---|---|
-| HereticRuntimeAvailability | 4 | 0 | 4 | 3 | 1/3 |
-| VexLifeContextProfileFamily | 8 | 0 | 8 | 6 | 0/10 |
-| VexLifeDiagnosticsFamily | 4 | 0 | 4 | 4 | 6/6 |
+| HereticRuntimeAvailability | 4 | 0 | 4 | 4 | 1/3 |
+| VexLifeContextProfileFamily | 8 | 0 | 8 | 8 | 0/10 |
+| VexLifeDiagnosticsFamily | 4 | 4 | 0 | 1 | 6/6 |
 | VexLifeLocalAsrModelsFamily | 4 | 0 | 4 | 6 | 0/0 |
-| VexLifeMemoryFamily | 0 | 0 | 0 | 1 | 0/0 |
+| VexLifeMemoryFamily | 0 | 0 | 0 | 2 | 0/0 |
 | VexLifeMemoryReviewFamily | 3 | 0 | 3 | 4 | 6/6 |
-| VexLifeModelsFamily | 10 | 0 | 10 | 10 | 0/8 |
-| VexLifePrivateModeFamily | 2 | 2 | 0 | 0 | 4/4 |
-| VexLifeProdEntryFamily | 22 | 0 | 22 | 9 | 70/91 |
-| VexLifeReleaseInboxFamily | 2 | 0 | 2 | 3 | 0/2 |
-| VexLifeVisionFamily | 3 | 3 | 0 | 0 | 10/10 |
-| VexLifeVoiceInputFamily | 4 | 0 | 4 | 3 | 12/12 |
+| VexLifeModelsFamily | 10 | 0 | 10 | 4 | 0/8 |
+| VexLifePrivateModeFamily | 2 | 2 | 0 | 1 | 4/4 |
+| VexLifeProdEntryFamily | 22 | 0 | 22 | 4 | 70/91 |
+| VexLifeReleaseInboxFamily | 2 | 0 | 2 | 6 | 0/2 |
+| VexLifeVisionFamily | 3 | 3 | 0 | 2 | 10/10 |
+| VexLifeVoiceInputFamily | 4 | 4 | 0 | 1 | 12/12 |
 
 ## Cleared routes (every coordinate stably addressable)
+
+### `route:VexLifeDiagnosticsFamily.Recording:ClearHistory:0`
+
+~~~text
+<subject:user>
+  -> <element:key:workspace.button.diagnostics-clear-history>
+  -> <state:RECORDING>
+  -> <control:CLEAR_HISTORY>
+  -> <effect:ClearDebugHistory>
+  -> <realized-by:VexLifeDiagnostics + VexChronologyFile>
+  -> <observed:Recording | RecordingEnhanced>
+  -> <projection:key:workspace.status.diagnostics-enhanced-off>
+~~~
+
+### `route:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0`
+
+~~~text
+<subject:user>
+  -> <element:key:workspace.button.diagnostics-start-enhanced>
+  -> <state:RECORDING>
+  -> <control:START_ENHANCED>
+  -> <effect:BeginEnhancedCapture>
+  -> <realized-by:VexLifeDiagnostics + VexChronologyFile>
+  -> <observed:Recording | RecordingEnhanced>
+  -> <projection:key:workspace.status.diagnostics-enhanced-off>
+~~~
+
+### `route:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0`
+
+~~~text
+<subject:user>
+  -> <element:key:workspace.button.diagnostics-clear-history>
+  -> <state:RECORDING_ENHANCED>
+  -> <control:CLEAR_HISTORY>
+  -> <effect:ClearDebugHistory>
+  -> <realized-by:VexLifeDiagnostics + VexChronologyFile>
+  -> <observed:Recording | RecordingEnhanced>
+  -> <projection:key:workspace.status.diagnostics-enhanced-off>
+~~~
+
+### `route:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0`
+
+~~~text
+<subject:user>
+  -> <element:key:workspace.button.diagnostics-stop-enhanced>
+  -> <state:RECORDING_ENHANCED>
+  -> <control:STOP_ENHANCED>
+  -> <effect:EndEnhancedCapture>
+  -> <realized-by:VexLifeDiagnostics + VexChronologyFile>
+  -> <observed:Recording | RecordingEnhanced>
+  -> <projection:key:workspace.status.diagnostics-enhanced-off>
+~~~
 
 ### `route:VexLifePrivateModeFamily.Kept:Begin:0`
 
@@ -98,12 +150,68 @@ perturbation EXPECTED_FROM_LAW 33 · ANSWERED_BY_EVIDENCE 6 · STALE_EVIDENCE 0 
   -> <projection:element.vexlife-workspace.companion.vision>
 ~~~
 
+### `route:VexLifeVoiceInputFamily.Failed:Start:0`
+
+~~~text
+<subject:user>
+  -> <element:element.vexlife-workspace.companion.conversation.voice-input>
+  -> <state:FAILED>
+  -> <control:START>
+  -> <admit:RequestingMicrophone>
+  -> <effect:BeginLocalDictation>
+  -> <realized-by:VexLifeWebP1RuntimeArtifacts>
+  -> <observed:Failed | Held | Listening | Ready>
+  -> <projection:key:workspace.status.voice-input-listening>
+~~~
+
+### `route:VexLifeVoiceInputFamily.Listening:Stop:0`
+
+~~~text
+<subject:user>
+  -> <element:key:workspace.button.voice-input-stop>
+  -> <state:LISTENING>
+  -> <control:STOP>
+  -> <admit:Stopping>
+  -> <effect:EndLocalDictation>
+  -> <realized-by:VexLifeWebP1RuntimeArtifacts>
+  -> <observed:Failed | Held | Listening | Ready>
+  -> <projection:key:workspace.status.voice-input-listening>
+~~~
+
+### `route:VexLifeVoiceInputFamily.Ready:Start:0`
+
+~~~text
+<subject:user>
+  -> <element:element.vexlife-workspace.companion.conversation.voice-input>
+  -> <state:READY>
+  -> <control:START>
+  -> <admit:RequestingMicrophone>
+  -> <effect:BeginLocalDictation>
+  -> <realized-by:VexLifeWebP1RuntimeArtifacts>
+  -> <observed:Failed | Held | Listening | Ready>
+  -> <projection:key:workspace.status.voice-input-listening>
+~~~
+
+### `route:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0`
+
+~~~text
+<subject:user>
+  -> <element:key:workspace.button.voice-input-stop>
+  -> <state:REQUESTING_MICROPHONE>
+  -> <control:STOP>
+  -> <admit:Stopping>
+  -> <effect:EndLocalDictation>
+  -> <realized-by:VexLifeWebP1RuntimeArtifacts>
+  -> <observed:Failed | Held | Listening | Ready>
+  -> <projection:key:workspace.status.voice-input-listening>
+~~~
+
 ## Journeys the graph joins across owners
 
 | journey | shape | status | feeding routes | missing |
 |---|---|---|---|---|
 | `journey:capture:browserContext:VexLifeProdServiceContract.SendRequest.browserContext` | MUTABLE_CURRENT_TRUTH_CAPTURED_AT_SEND | FRONTIER_DEBT | 0 | NO_FAMILY_ROUTE_REALIZES_CURRENT_TRUTH @ `VexLifeProdServiceContract.SendRequest.browserContext` |
-| `journey:capture:contextProfile:VexLifeContextProfileStore` | MUTABLE_CURRENT_TRUTH_CAPTURED_AT_SEND | FRONTIER_DEBT | 8 | — |
+| `journey:capture:contextProfile:VexLifeContextProfileStore` | MUTABLE_CURRENT_TRUTH_CAPTURED_AT_SEND | FRONTIER_DEBT | 8 | MISSING_STABLE_ELEMENT_BINDING @ `VexLifeContextProfileFamily.Import`; MISSING_STABLE_ELEMENT_BINDING @ `VexLifeContextProfileFamily.RestoreProductDefault`; MISSING_STABLE_ELEMENT_BINDING @ `VexLifeContextProfileFamily.Save`; MISSING_STABLE_ELEMENT_BINDING @ `VexLifeContextProfileFamily.SaveAs`; MISSING_STABLE_ELEMENT_BINDING @ `VexLifeContextProfileFamily.Use`; PROJECTION_NOT_SURFACED @ `VexLifeContextProfileFamily.DisplayState` |
 | `journey:capture:contextProfile:VexLifeFoundationalField` | MUTABLE_CURRENT_TRUTH_CAPTURED_AT_SEND | FRONTIER_DEBT | 0 | NO_FAMILY_ROUTE_REALIZES_CURRENT_TRUTH @ `VexLifeFoundationalField` |
 | `journey:capture:personContext:VexLifePersonSettingsStore` | MUTABLE_CURRENT_TRUTH_CAPTURED_AT_SEND | FRONTIER_DEBT | 0 | NO_FAMILY_ROUTE_REALIZES_CURRENT_TRUTH @ `VexLifePersonSettingsStore` |
 | `journey:gate:MODEL_SWITCH_HELD` | CURRENT_STATE_GATES_SEND_ADMISSION | UNKNOWN | 0 | NO_ROUTE_REACHES_GATING_TRUTH @ `VexLifeModels.switchHeld` |
@@ -114,23 +222,14 @@ perturbation EXPECTED_FROM_LAW 33 · ANSWERED_BY_EVIDENCE 6 · STALE_EVIDENCE 0 
 
 | debt | class | blocks routes | rightful repair coordinate |
 |---|---|---|---|
-| `PROJECTION_NOT_SURFACED` | E PROJECTION_MISSING | 22 | `VexLifeProdEntryFamily.DisplayState` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 13 | `VexLifeProdEntryFamily.Cancel` |
 | `PROJECTION_NOT_SURFACED` | E PROJECTION_MISSING | 10 | `VexLifeModelsFamily.DisplayState` |
+| `HARDCODED_DISPLAY_TEXT` | E PROJECTION_MISSING | 8 | `VexLifeContextProfileFamily.DisplayState` |
 | `PROJECTION_NOT_SURFACED` | E PROJECTION_MISSING | 8 | `VexLifeContextProfileFamily.DisplayState` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 4 | `HereticRuntimeAvailability.Control.EnsureAvailable` |
-| `PROJECTION_NOT_SURFACED` | E PROJECTION_MISSING | 4 | `VexLifeDiagnosticsFamily.DisplayState` |
-| `PROJECTION_NOT_SURFACED` | E PROJECTION_MISSING | 4 | `VexLifeVoiceInputFamily.DisplayState` |
-| `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 3 | `VexLifeProdEntryFamily.ConvergeDesired` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeContextProfileFamily.Import` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeContextProfileFamily.SaveAs` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeContextProfileFamily.Use` |
-| `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeModelsFamily.ForgetImportedModel` |
-| `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeModelsFamily.Remove` |
-| `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeProdEntryFamily.OpenCurrent` |
-| `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeVoiceInputFamily.Start` |
-| `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeVoiceInputFamily.Stop` |
-| `UNTYPED_MANIFESTATION` | B EXTRACTION_OR_PROJECTABILITY | 2 | `VexLifeDiagnosticsFamily.ClearHistory` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 1 | `VexLifeContextProfileFamily.RestoreProductDefault` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 1 | `VexLifeContextProfileFamily.Save` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 1 | `VexLifeLocalAsrModelsFamily.ControlDownload` |
@@ -139,8 +238,45 @@ perturbation EXPECTED_FROM_LAW 33 · ANSWERED_BY_EVIDENCE 6 · STALE_EVIDENCE 0 
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 1 | `VexLifeLocalAsrModelsFamily.ControlUse` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 1 | `VexLifeMemoryReviewFamily.Decline` |
 | `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 1 | `VexLifeMemoryReviewFamily.Keep` |
+| `MISSING_MANIFESTATION_BINDING` | B EXTRACTION_OR_PROJECTABILITY | 1 | `VexLifeMemoryReviewFamily.NotNow` |
 
-34 further debt rows block no derived route yet (for example unbound elements whose relationship the graph cannot see at all).
+147 further debt rows block no derived route yet (for example unbound elements whose relationship the graph cannot see at all).
+
+## Keyed elements and localization
+
+The catalog key is the Product's own element identity (`docs/CULTURE.md`). Keys whose `dataKey` names a Family Control manifest it; keys naming a Family State surface its DisplayState.
+
+| scope | keys | dataKeys | complete languages | languages with gaps |
+|---|---|---|---|---|
+| release-alerts | 9 | 5 | en | — |
+| setup | 175 | 103 | ar de en es fr hi ja ko pt zh | — |
+| workspace | 129 | 49 | en | ar −82 de −82 es −82 fr −82 hi −82 ja −82 ko −82 pt −82 zh −82 |
+
+dataKey resolution: FAMILY_CONTROL 26 · FAMILY_DETAIL 23 · FAMILY_STATE 42 · OWNER_DETAIL 62 · UNANCHORED 1 · UNRESOLVED_REF 3. Keyed markup joins 4 Lens element(s) to their key; the reserved `lens` namespace is used by 0 key(s).
+
+| Family DisplayState | text form | String text fields |
+|---|---|---|
+| VexLifeContextProfileFamily | HARDCODED | label, detail |
+| VexLifeDiagnosticsFamily | KEYED | — |
+| VexLifeMemoryFamily | HARDCODED | label, detail |
+| VexLifeModelsFamily | KEYED | — |
+| VexLifePrivateModeFamily | HARDCODED | label, detail, primaryLabel |
+| VexLifeProdEntryFamily | KEYED | — |
+| VexLifeReleaseInboxFamily | KEYED | — |
+| VexLifeVisionFamily | HARDCODED | label, detail, primaryLabel |
+| VexLifeVoiceInputFamily | KEYED | — |
+
+## String identity outside its owner
+
+| finding | rows |
+|---|---|
+| FAMILY_READS_WIRE_STRING | 2 |
+| LITERAL_SHADOWS_CONSTANT | 36 |
+| TYPED_REF_BYPASSED | 1 |
+| UNOWNED_WIRE_LITERAL | 9 |
+| UNTYPED_INTERACTIVE | 1 |
+
+DOM: 165 elements are bound by id string (46 of them carry a typed data-vex-ref the runtime never selects by; 0 data-vex-ref lookups). Reflection: 26 reflected names, 0 used as identity.
 
 ## Perturbation questions answered or still open
 

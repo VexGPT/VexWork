@@ -365,7 +365,48 @@ function addSendBoundary(builder, send, laws) {
   }
 }
 
-export function compileExperienceGraph({ source, families, surface, realization, sendBoundary, untypedLiterals = [], extractor }) {
+// Catalog keys are the Product's own element identity (docs/CULTURE.md "the key is the element").
+// A key whose dataKey names a Family Control manifests it; one naming a Family State is where the
+// DisplayState is surfaced. A Lens element that carries the key in markup (or a key that names its
+// Lens element in the reserved `lens` namespace) is the same element in both identity systems.
+function addLocalization(builder, localization, surface) {
+  if (!localization) return;
+  const keyRows = new Map((localization.keys ?? []).map((row) => [row.key, row]));
+  const keyNode = (row) => {
+    const key = keyRows.get(row.key) ?? {};
+    return builder.node(`key:${row.key}`, 'ELEMENT', {
+      label: row.key,
+      sourceRef: key.sourcePath ? sourceRef(key.sourcePath, key.line) : null,
+      detail: { identity: 'LOCALIZATION_KEY', key: row.key, scope: row.scope, surfaces: key.surfaces ?? [], dataKey: row.dataKey, anchor: row.anchor },
+    });
+  };
+  const controlsByKey = new Map();
+  for (const row of localization.dataKeys) {
+    if (row.resolution === 'FAMILY_CONTROL' && builder.nodes.has(row.target)) {
+      const ref = keyNode(row);
+      builder.edge('MANIFESTS', ref, row.target, { family: row.family, sourceRef: builder.nodes.get(ref).sourceRef, detail: { identity: 'LOCALIZATION_KEY', dataKey: row.dataKey, anchor: row.anchor } });
+      controlsByKey.set(row.key, row);
+    } else if (row.resolution === 'FAMILY_STATE' && builder.nodes.has(`${row.family}.DisplayState`)) {
+      const ref = keyNode(row);
+      builder.edge('PROJECTS_TO', `${row.family}.DisplayState`, ref, { family: row.family, sourceRef: builder.nodes.get(ref).sourceRef, detail: { identity: 'LOCALIZATION_KEY', state: row.target, dataKey: row.dataKey, anchor: row.anchor } });
+    }
+  }
+  const lensBySymbol = new Map(surface.elements.filter((element) => builder.nodes.has(element.elementRef) && element.symbol).map((element) => [element.symbol.split('.').at(-1), element.elementRef]));
+  const lensRefs = new Set(surface.elements.map((element) => element.elementRef));
+  const links = [
+    ...(localization.keyedMarkup ?? []).flatMap((row) => row.keys.map((key) => ({ elementRef: lensBySymbol.get(row.elementSymbol), key, via: 'MARKUP_COLOCATION', sourceRef: sourceRef(row.sourcePath, row.line) }))),
+    ...(localization.keys ?? []).filter((row) => row.lens && lensRefs.has(row.lens)).map((row) => ({ elementRef: row.lens, key: row.key, via: 'LENS_NAMESPACE', sourceRef: sourceRef(row.sourcePath, row.line) })),
+  ];
+  for (const link of links) {
+    const control = controlsByKey.get(link.key);
+    if (!link.elementRef || !control || !builder.nodes.has(link.elementRef)) continue;
+    const ref = `edge:MANIFESTS:${link.elementRef}:${control.target}:key`;
+    if (builder.edges.has(ref)) continue;
+    builder.edge('MANIFESTS', link.elementRef, control.target, { family: control.family, qualifier: 'key', sourceRef: link.sourceRef, detail: { identity: 'LOCALIZATION_KEY', key: link.key, via: link.via } });
+  }
+}
+
+export function compileExperienceGraph({ source, families, surface, realization, sendBoundary, untypedLiterals = [], localization = null, stringIdentity = null, extractor }) {
   assert(source && typeof source.commit === 'string' && /^[0-9a-f]{40}$/.test(source.commit), 'graph source must carry one exact commit');
   assert(Array.isArray(families) && families.length > 0, 'graph needs Family law');
   const builder = new GraphBuilder();
@@ -373,6 +414,7 @@ export function compileExperienceGraph({ source, families, surface, realization,
   addSurface(builder, surface, families);
   addRealization(builder, realization, families, surface);
   addSendBoundary(builder, sendBoundary, families);
+  addLocalization(builder, localization, surface);
 
   const extractionDebt = families.flatMap((law) => law.debt.map((item) => ({ family: law.family, ...item })));
   return normalizeExperienceGraph({
@@ -388,6 +430,18 @@ export function compileExperienceGraph({ source, families, surface, realization,
     edges: [...builder.edges.values()],
     extractionDebt,
     untypedControlLiterals: untypedLiterals.map((row) => ({ control: `${row.family}.${row.control}`, controlRef: row.controlRef, sourceRef: sourceRef(row.sourcePath, row.line) })),
+    localization: localization ? {
+      schemaVersion: localization.schemaVersion,
+      scopes: localization.scopes,
+      prefixes: localization.prefixes,
+      dataKeys: localization.dataKeys,
+      lensKeys: (localization.keys ?? []).filter((row) => row.lens).map((row) => ({ key: row.key, lens: row.lens })),
+      keyedMarkup: localization.keyedMarkup,
+      selection: localization.selection,
+      scripts: localization.scripts,
+      displayText: localization.displayText,
+    } : null,
+    stringIdentity,
   });
 }
 
@@ -396,6 +450,19 @@ export function graphFingerprint(graph) {
   void fingerprint;
   void extractor;
   return sha256(canonicalJson(semantic));
+}
+
+// The Family-law subgraph an executed law probe exercises: Families, States, Controls, Effects and
+// the act() edges between them. Presentation, localization or wiring changes leave it unchanged,
+// so executed law evidence stays current across them (and across candidate builds that do not
+// touch Family law).
+const LAW_ROLES = new Set(['FAMILY', 'STATE', 'CONTROL', 'EFFECT']);
+const LAW_EDGES = new Set(['OFFERS', 'REQUESTS_EFFECT', 'ADMITS_STATE']);
+export function lawFingerprint(graph) {
+  return sha256(canonicalJson({
+    nodes: graph.nodes.filter((node) => LAW_ROLES.has(node.role)).map(({ ref, role, family, detail }) => ({ ref, role, family, detail })),
+    edges: graph.edges.filter((edge) => LAW_EDGES.has(edge.kind)).map(({ ref, guards, whenState, detail }) => ({ ref, guards, whenState, detail })),
+  }));
 }
 
 export function normalizeExperienceGraph(input) {
@@ -429,6 +496,8 @@ export function normalizeExperienceGraph(input) {
     edges,
     extractionDebt: [...(input.extractionDebt ?? [])],
     untypedControlLiterals: [...(input.untypedControlLiterals ?? [])].sort((a, b) => compare(`${a.control}${a.sourceRef}`, `${b.control}${b.sourceRef}`)),
+    localization: input.localization ?? null,
+    stringIdentity: input.stringIdentity ?? null,
   };
   return { ...graph, fingerprint: graphFingerprint(graph) };
 }

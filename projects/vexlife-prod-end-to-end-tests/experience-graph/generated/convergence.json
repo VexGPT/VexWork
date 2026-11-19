@@ -1,6 +1,6 @@
 {
   "schemaVersion": "vexwork.experience-graph.convergence/v1",
-  "graphFingerprint": "2be14bdb0e3e89f79135d168cd13277ad7143a933f32e40fe617183a8b2c872a",
+  "graphFingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924",
   "joins": [
     {
       "joinRef": "join:DirectCompanionTurn",
@@ -399,32 +399,32 @@
         },
         {
           "routeRef": "route:VexLifeDiagnosticsFamily.Recording:ClearHistory:0",
-          "status": "FRONTIER_DEBT",
-          "readiness": "DEBT_BLOCKED",
+          "status": "CLEARED",
+          "readiness": "HELD",
           "deeperClasses": [
             "B"
           ]
         },
         {
           "routeRef": "route:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0",
-          "status": "FRONTIER_DEBT",
-          "readiness": "DEBT_BLOCKED",
+          "status": "CLEARED",
+          "readiness": "HELD",
           "deeperClasses": [
             "B"
           ]
         },
         {
           "routeRef": "route:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0",
-          "status": "FRONTIER_DEBT",
-          "readiness": "DEBT_BLOCKED",
+          "status": "CLEARED",
+          "readiness": "HELD",
           "deeperClasses": [
             "B"
           ]
         },
         {
           "routeRef": "route:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0",
-          "status": "FRONTIER_DEBT",
-          "readiness": "DEBT_BLOCKED",
+          "status": "CLEARED",
+          "readiness": "HELD",
           "deeperClasses": [
             "B"
           ]
@@ -763,32 +763,32 @@
         },
         {
           "routeRef": "route:VexLifeVoiceInputFamily.Failed:Start:0",
-          "status": "FRONTIER_DEBT",
-          "readiness": "DEBT_BLOCKED",
+          "status": "CLEARED",
+          "readiness": "HELD",
           "deeperClasses": [
             "C"
           ]
         },
         {
           "routeRef": "route:VexLifeVoiceInputFamily.Listening:Stop:0",
-          "status": "FRONTIER_DEBT",
-          "readiness": "DEBT_BLOCKED",
+          "status": "CLEARED",
+          "readiness": "HELD",
           "deeperClasses": [
             "C"
           ]
         },
         {
           "routeRef": "route:VexLifeVoiceInputFamily.Ready:Start:0",
-          "status": "FRONTIER_DEBT",
-          "readiness": "DEBT_BLOCKED",
+          "status": "CLEARED",
+          "readiness": "HELD",
           "deeperClasses": [
             "C"
           ]
         },
         {
           "routeRef": "route:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0",
-          "status": "FRONTIER_DEBT",
-          "readiness": "DEBT_BLOCKED",
+          "status": "CLEARED",
+          "readiness": "HELD",
           "deeperClasses": [
             "C"
           ]
@@ -1594,8 +1594,8 @@
       "routeCounts": {
         "READY_PARALLEL": 0,
         "READY_SERIAL": 3,
-        "DEBT_BLOCKED": 61,
-        "HELD": 2,
+        "DEBT_BLOCKED": 53,
+        "HELD": 10,
         "UNAVAILABLE": 0
       },
       "caseCounts": {
@@ -1607,34 +1607,6 @@
       }
     },
     "debtDependents": [
-      {
-        "debtRef": "debt:PROJECTION_NOT_SURFACED:VexLifeProdEntryFamily.DisplayState",
-        "debtClass": "E",
-        "dependentRoutes": [
-          "route:VexLifeProdEntryFamily.Current:Cancel:0",
-          "route:VexLifeProdEntryFamily.Current:OpenCurrent:0",
-          "route:VexLifeProdEntryFamily.HeldUnknown:Cancel:0",
-          "route:VexLifeProdEntryFamily.HomeFormationRequired:Cancel:0",
-          "route:VexLifeProdEntryFamily.HomeFormationRequired:FormHome:0",
-          "route:VexLifeProdEntryFamily.HomeHeld:Cancel:0",
-          "route:VexLifeProdEntryFamily.HostHeld:Cancel:0",
-          "route:VexLifeProdEntryFamily.ModelFilesHeld:Cancel:0",
-          "route:VexLifeProdEntryFamily.RepairRequired:Cancel:0",
-          "route:VexLifeProdEntryFamily.RepairRequired:ConvergeDesired:0",
-          "route:VexLifeProdEntryFamily.ServiceRecoveryRequired:Cancel:0",
-          "route:VexLifeProdEntryFamily.ServiceRecoveryRequired:RecoverStaleService:0",
-          "route:VexLifeProdEntryFamily.SetupRequired:Cancel:0",
-          "route:VexLifeProdEntryFamily.SetupRequired:SetUp:0",
-          "route:VexLifeProdEntryFamily.StartRequired:Cancel:0",
-          "route:VexLifeProdEntryFamily.StartRequired:Start:0",
-          "route:VexLifeProdEntryFamily.StorageHeld:Cancel:0",
-          "route:VexLifeProdEntryFamily.UpdateAvailable:Cancel:0",
-          "route:VexLifeProdEntryFamily.UpdateAvailable:ConvergeDesired:0",
-          "route:VexLifeProdEntryFamily.UpdateAvailable:OpenCurrent:0",
-          "route:VexLifeProdEntryFamily.UpdateRepairRequired:Cancel:0",
-          "route:VexLifeProdEntryFamily.UpdateRepairRequired:ConvergeDesired:0"
-        ]
-      },
       {
         "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.Cancel",
         "debtClass": "B",
@@ -1671,6 +1643,20 @@
         ]
       },
       {
+        "debtRef": "debt:HARDCODED_DISPLAY_TEXT:VexLifeContextProfileFamily.DisplayState",
+        "debtClass": "E",
+        "dependentRoutes": [
+          "route:VexLifeContextProfileFamily.ProductDefault:Import:0",
+          "route:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
+          "route:VexLifeContextProfileFamily.ProductDefault:Use:0",
+          "route:VexLifeContextProfileFamily.Saved:Import:0",
+          "route:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0",
+          "route:VexLifeContextProfileFamily.Saved:Save:0",
+          "route:VexLifeContextProfileFamily.Saved:SaveAs:0",
+          "route:VexLifeContextProfileFamily.Saved:Use:0"
+        ]
+      },
+      {
         "debtRef": "debt:PROJECTION_NOT_SURFACED:VexLifeContextProfileFamily.DisplayState",
         "debtClass": "E",
         "dependentRoutes": [
@@ -1695,35 +1681,6 @@
         ]
       },
       {
-        "debtRef": "debt:PROJECTION_NOT_SURFACED:VexLifeDiagnosticsFamily.DisplayState",
-        "debtClass": "E",
-        "dependentRoutes": [
-          "route:VexLifeDiagnosticsFamily.Recording:ClearHistory:0",
-          "route:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0",
-          "route:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0",
-          "route:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0"
-        ]
-      },
-      {
-        "debtRef": "debt:PROJECTION_NOT_SURFACED:VexLifeVoiceInputFamily.DisplayState",
-        "debtClass": "E",
-        "dependentRoutes": [
-          "route:VexLifeVoiceInputFamily.Failed:Start:0",
-          "route:VexLifeVoiceInputFamily.Listening:Stop:0",
-          "route:VexLifeVoiceInputFamily.Ready:Start:0",
-          "route:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.ConvergeDesired",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeProdEntryFamily.RepairRequired:ConvergeDesired:0",
-          "route:VexLifeProdEntryFamily.UpdateAvailable:ConvergeDesired:0",
-          "route:VexLifeProdEntryFamily.UpdateRepairRequired:ConvergeDesired:0"
-        ]
-      },
-      {
         "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.Import",
         "debtClass": "B",
         "dependentRoutes": [
@@ -1745,54 +1702,6 @@
         "dependentRoutes": [
           "route:VexLifeContextProfileFamily.ProductDefault:Use:0",
           "route:VexLifeContextProfileFamily.Saved:Use:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeModelsFamily.ForgetImportedModel",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeModelsFamily.State:ForgetImportedModel:0",
-          "route:VexLifeModelsFamily.State:ForgetImportedModel:1"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeModelsFamily.Remove",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeModelsFamily.State:Remove:0",
-          "route:VexLifeModelsFamily.State:Remove:1"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.OpenCurrent",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeProdEntryFamily.Current:OpenCurrent:0",
-          "route:VexLifeProdEntryFamily.UpdateAvailable:OpenCurrent:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeVoiceInputFamily.Start",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeVoiceInputFamily.Failed:Start:0",
-          "route:VexLifeVoiceInputFamily.Ready:Start:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeVoiceInputFamily.Stop",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeVoiceInputFamily.Listening:Stop:0",
-          "route:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0"
-        ]
-      },
-      {
-        "debtRef": "debt:UNTYPED_MANIFESTATION:VexLifeDiagnosticsFamily.ClearHistory",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeDiagnosticsFamily.Recording:ClearHistory:0",
-          "route:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0"
         ]
       },
       {
@@ -1856,104 +1765,6 @@
         "debtClass": "B",
         "dependentRoutes": [
           "route:VexLifeMemoryReviewFamily.Pending:NotNow:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeModelsFamily.Download",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeModelsFamily.State:Download:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeModelsFamily.Redownload",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeModelsFamily.State:Redownload:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeModelsFamily.Select",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeModelsFamily.State:Select:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeModelsFamily.SetPromptCacheEntries",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeModelsFamily.State:SetPromptCacheEntries:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeModelsFamily.Use",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeModelsFamily.State:Use:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeModelsFamily.UseRecommendedRuntimeConfiguration",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeModelsFamily.State:UseRecommendedRuntimeConfiguration:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.FormHome",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeProdEntryFamily.HomeFormationRequired:FormHome:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.RecoverStaleService",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeProdEntryFamily.ServiceRecoveryRequired:RecoverStaleService:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.SetUp",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeProdEntryFamily.SetupRequired:SetUp:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.Start",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeProdEntryFamily.StartRequired:Start:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeReleaseInboxFamily.Control.Dismiss",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeReleaseInboxFamily.State:Control.Dismiss:0"
-        ]
-      },
-      {
-        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeReleaseInboxFamily.Control.View",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeReleaseInboxFamily.State:Control.View:0"
-        ]
-      },
-      {
-        "debtRef": "debt:UNTYPED_MANIFESTATION:VexLifeDiagnosticsFamily.StartEnhanced",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0"
-        ]
-      },
-      {
-        "debtRef": "debt:UNTYPED_MANIFESTATION:VexLifeDiagnosticsFamily.StopEnhanced",
-        "debtClass": "B",
-        "dependentRoutes": [
-          "route:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0"
         ]
       }
     ],

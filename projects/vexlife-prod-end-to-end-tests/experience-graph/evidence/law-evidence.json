@@ -1,6 +1,7 @@
 {
   "schemaVersion": "vexwork.experience-graph.law-evidence/v1",
-  "graphFingerprint": "2be14bdb0e3e89f79135d168cd13277ad7143a933f32e40fe617183a8b2c872a",
+  "graphFingerprint": "8d4957b0784aa550853770822c5ef3a73819edd721337924307c6398ebd90751",
+  "lawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
   "source": {
     "repository": "VexGPT/VexLife-Prod",
     "commit": "a58777106b08bd58c167608fa0115729185ae3dd"

@@ -1,7 +1,7 @@
 {
   "current": true,
-  "evidenceGraphFingerprint": "2be14bdb0e3e89f79135d168cd13277ad7143a933f32e40fe617183a8b2c872a",
-  "graphFingerprint": "2be14bdb0e3e89f79135d168cd13277ad7143a933f32e40fe617183a8b2c872a",
+  "evidenceLawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
+  "lawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
   "cellCounts": {
     "PASS": 109,
     "PASS_PARTIAL": 0,

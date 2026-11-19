@@ -8,11 +8,59 @@
   "priorCommit": "98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0",
   "priorCommitNote": "Handoff-pinned main (#331 merge). Used only as the prior revision for graph change impact.",
   "familyRoot": "src/commonMain",
-  "wiringRoots": ["src/commonMain", "src/jvmMain"],
+  "wiringRoots": [
+    "src/commonMain",
+    "src/jvmMain"
+  ],
   "lens": "docs/lens/vexlife-prod.screen-lens.json",
   "sendBoundary": {
     "turn": "src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt",
     "prompt": "src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
     "service": "src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt"
-  }
+  },
+  "localization": {
+    "catalogRoot": "localization/strings/source",
+    "anchorTestRoots": [
+      "src/jvmTest",
+      "src/commonTest"
+    ],
+    "settings": "src/commonMain/kotlin/vexlife/person/VexLifePersonSettings.kt",
+    "strings": "src/jvmMain/kotlin/vexlife/text/VexLifeStrings.kt"
+  },
+  "identity": {
+    "markup": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1ExperienceMarkup.kt",
+    "runtime": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
+  },
+  "builds": [
+    {
+      "buildRef": "candidate-keyed-elements",
+      "label": "Keyed elements: identity through owners",
+      "axis": "IDENTITY",
+      "branch": "VXG-111826-claude-candidate-keyed-elements",
+      "commit": "e01a6cb1b108f1607b5a32cc6f82a9e68af50ad6",
+      "basis": "main",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "summary": "Workspace dataKeys owned in main source, Lens elements named by their keys, typed element lookups and owner constants in the browser runtime, Vision scope state decoded at the boundary."
+    },
+    {
+      "buildRef": "candidate-localization",
+      "label": "Localization: script-aware and complete",
+      "axis": "LOCALIZATION",
+      "branch": "VXG-111826-claude-candidate-localization",
+      "commit": "e4229b60cf8edc73cbe48664d9e8904d4b050114",
+      "basis": "main",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "summary": "zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages."
+    },
+    {
+      "buildRef": "candidate-design-foundation",
+      "label": "Design foundation: one vocabulary, one relationship legend",
+      "axis": "DESIGN",
+      "branch": "VXG-111826-claude-candidate-design-foundation",
+      "commit": "d9f0bb995556e7b16bb7d5fc9c93720c7b423472",
+      "basis": "main",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "summary": "Token law, readable contrast in both themes, and the Vex Context relationship legend carried onto thoughts and model cards (presentation only; the graph should not move)."
+    }
+  ]
 }

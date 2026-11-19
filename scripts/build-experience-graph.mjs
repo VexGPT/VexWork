@@ -4,6 +4,8 @@
 //   node scripts/build-experience-graph.mjs --fetch            sparse-fetch the pinned Product commit(s), regenerate
 //   node scripts/build-experience-graph.mjs --source <dir>     regenerate from an existing checkout at the pinned commit
 //   node scripts/build-experience-graph.mjs --fetch --check    regenerate in memory; fail if checked-in output differs
+//   node scripts/build-experience-graph.mjs --build <candidate-ref> [--source <checkout>]
+//                                                              project one candidate branch build against preserved main
 //   node scripts/build-experience-graph.mjs --verify           offline: derived artifacts reproduce from the checked-in
 //                                                              graph, extractor blobs match, law proof recomputes
 //
@@ -25,6 +27,10 @@ import { derivePerturbations } from '../src/core/experience-graph-perturbation.m
 import { deriveConvergence, diffExperienceGraphs } from '../src/core/experience-graph-convergence.mjs';
 import { compareLawEvidence, indexEnums, planLawProbe } from '../src/core/experience-graph-law-probe.mjs';
 import { renderExperienceReport } from '../src/core/experience-graph-report.mjs';
+import { readLocalization } from '../src/core/experience-graph-localization.mjs';
+import { readStringIdentity } from '../src/core/experience-graph-identity.mjs';
+import { withTestSeamDebt } from '../src/core/experience-graph-derivation.mjs';
+import { compareBuilds, normalizeBuilds, renderBranchReport } from '../src/core/experience-graph-branches.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = 'projects/vexlife-prod-end-to-end-tests/experience-graph';
@@ -34,10 +40,20 @@ const EXTRACTOR_MODULES = [
   'src/core/vexboard-kotlin-source.mjs',
   'src/core/experience-graph-kotlin-family.mjs',
   'src/core/experience-graph-product-wiring.mjs',
+  'src/core/experience-graph-localization.mjs',
+  'src/core/experience-graph-identity.mjs',
   'src/core/experience-graph.mjs',
 ];
 
+export const buildOutputs = (buildRef) => Object.freeze({
+  graph: `${GENERATED}/builds/${buildRef}/experience-relationship-graph.json`,
+  frontier: `${GENERATED}/builds/${buildRef}/frontier.json`,
+  routes: `${GENERATED}/builds/${buildRef}/routes.json`,
+});
+
 export const OUTPUTS = Object.freeze({
+  branches: `${GENERATED}/branches.json`,
+  branchReport: `${GENERATED}/BRANCHES.md`,
   graph: `${GENERATED}/experience-relationship-graph.json`,
   frontier: `${GENERATED}/frontier.json`,
   routes: `${GENERATED}/routes.json`,
@@ -92,6 +108,12 @@ function listKotlin(checkout, roots) {
   return out.sort();
 }
 
+function listJson(checkout, root) {
+  const dir = path.join(checkout, root);
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((name) => name.endsWith('.json')).sort().map((name) => `${root}/${name}`);
+}
+
 export function extractorFingerprint(root = ROOT) {
   return EXTRACTOR_MODULES.map((module) => ({ path: module, blobSha1: gitBlobSha1(fs.readFileSync(path.join(root, module), 'utf8')) }));
 }
@@ -109,6 +131,24 @@ export function buildGraphFromCheckout(checkout, plan, commit) {
   const realization = readRealizationSites({ families, files: mainFiles });
   const sendBoundary = readSendBoundary({ turnSource: read(plan.sendBoundary.turn), promptSource: read(plan.sendBoundary.prompt), serviceSource: read(plan.sendBoundary.service) });
   const untyped = readUntypedControlLiterals({ families, files: mainFiles });
+  const exists = (relative) => relative && fs.existsSync(path.join(checkout, relative));
+  const loc = plan.localization;
+  const catalogFiles = loc ? listJson(checkout, loc.catalogRoot).map((relative) => ({ scope: path.basename(relative, '.json'), ...read(relative) })) : [];
+  const testFiles = loc ? listKotlin(checkout, loc.anchorTestRoots).map(read) : [];
+  const markup = exists(plan.identity?.markup) ? read(plan.identity.markup) : null;
+  const runtime = exists(plan.identity?.runtime) ? read(plan.identity.runtime) : null;
+  const familyPaths = new Set(familyFiles.map((file) => file.path));
+  const localization = loc ? readLocalization({
+    catalogFiles,
+    anchorFiles: [...mainFiles, ...testFiles],
+    settings: exists(loc.settings) ? read(loc.settings) : null,
+    strings: exists(loc.strings) ? read(loc.strings) : null,
+    selectionFiles: mainFiles,
+    markup,
+    laws: families,
+    familyFiles,
+  }) : null;
+  const stringIdentity = plan.identity ? readStringIdentity({ mainFiles, familyPaths, markup, runtime, laws: families }) : null;
 
   const contributing = new Set([
     ...familyFiles.map((file) => file.path),
@@ -117,8 +157,11 @@ export function buildGraphFromCheckout(checkout, plan, commit) {
     ...realization.realizations.map((row) => row.sourcePath),
     ...realization.returns.map((row) => row.sourcePath),
     ...untyped.map((row) => row.sourcePath),
-  ]);
-  const textByPath = new Map([...mainFiles, lensFile].map((file) => [file.path, file.text]));
+    ...catalogFiles.map((file) => file.path),
+    ...(localization ? [...localization.dataKeys.map((row) => row.anchorSourcePath), ...localization.selection.map((row) => row.sourcePath), localization.scripts?.sourcePath, loc?.strings] : []),
+    ...(stringIdentity ? [markup?.path, runtime?.path, ...stringIdentity.kotlinLiterals.map((row) => row.sourcePath), ...stringIdentity.reflection.map((row) => row.sourcePath)] : []),
+  ].filter((relative) => relative && exists(relative)));
+  const textByPath = new Map([...mainFiles, ...testFiles, ...catalogFiles, lensFile].map((file) => [file.path, file.text]));
   const graph = compileExperienceGraph({
     source: {
       repository: plan.repository,
@@ -130,6 +173,8 @@ export function buildGraphFromCheckout(checkout, plan, commit) {
     realization,
     sendBoundary,
     untypedLiterals: untyped,
+    localization,
+    stringIdentity,
     extractor: { modules: extractorFingerprint() },
   });
   const relaySources = mainFiles
@@ -162,7 +207,7 @@ function convergenceInputs({ lawEvidence, perturbationEvidence, priorGraph }) {
 
 // graph (+ evidence) -> every derived artifact. Offline and deterministic.
 export function deriveAll(graph, { lawEvidence = null, perturbationEvidence = null, relaySources = [], changeImpact = null } = {}) {
-  const frontier = deriveFrontier(graph);
+  let frontier = deriveFrontier(graph);
   const routes = deriveRoutes(graph, frontier);
   const perturbations = derivePerturbations(graph, { evidence: perturbationEvidence });
   const convergence = deriveConvergence(graph, {
@@ -173,6 +218,8 @@ export function deriveAll(graph, { lawEvidence = null, perturbationEvidence = nu
   });
   if (changeImpact) convergence.queries.changeImpact = changeImpact;
   const lawProof = lawEvidence ? compareLawEvidence({ graph, derivation: routes, evidence: lawEvidence }) : null;
+  // Class F is known only after the probe ran; it never changes a route, so it joins the frontier last.
+  if (lawProof) frontier = withTestSeamDebt(frontier, lawProof);
   const board = experienceBoardGraph(graph);
   const report = renderExperienceReport({ graph, frontier, routes, perturbations, convergence, lawProof, board });
   return { frontier, routes, perturbations, convergence, lawProof, report };
@@ -191,9 +238,42 @@ function writeOut(file, text, check, drift) {
 
 const optionalJson = (file) => (fs.existsSync(path.join(ROOT, file)) ? readJson(file) : null);
 
+// One candidate build: same extractor, same derivation, its own output directory.
+export function projectBuild(checkout, plan, build) {
+  const { graph } = buildGraphFromCheckout(checkout, plan, build.commit);
+  const frontier = deriveFrontier(graph);
+  return { build, graph, frontier, routes: deriveRoutes(graph, frontier) };
+}
+
+// Candidates are compared against main's graph-derived frontier (class F rows come from main's
+// executed probe only and would otherwise read as "resolved" by every candidate).
+export function branchProjection(mainGraph, candidates) {
+  const frontier = deriveFrontier(mainGraph);
+  const branches = compareBuilds({ main: { graph: mainGraph, frontier, routes: deriveRoutes(mainGraph, frontier) }, candidates });
+  return { branches, report: renderBranchReport(branches) };
+}
+
+function checkedInBuild(build) {
+  const files = buildOutputs(build.buildRef);
+  if (!fs.existsSync(path.join(ROOT, files.graph))) return null;
+  const graph = normalizeExperienceGraph(readJson(files.graph));
+  if (graph.source.commit !== build.commit) return null;
+  const frontier = deriveFrontier(graph);
+  return { build, graph, frontier, routes: deriveRoutes(graph, frontier) };
+}
+
+function writeBuild(projected, check, drift) {
+  const files = buildOutputs(projected.build.buildRef);
+  writeOut(files.graph, stable(projected.graph), check, drift);
+  writeOut(files.frontier, stable(projected.frontier), check, drift);
+  writeOut(files.routes, stable(projected.routes), check, drift);
+}
+
 function generate(args) {
   const plan = readJson(PLAN);
   const check = args.flags.has('check');
+  const builds = normalizeBuilds(plan);
+  if (args.build) return generateBuild(args, plan, builds, check);
   const checkout = args.source ? path.resolve(args.source) : fetchCheckout(plan, plan.commit);
   if (args.source) {
     const head = git(checkout, 'rev-parse', 'HEAD');
@@ -231,11 +311,45 @@ function generate(args) {
   writeOut(OUTPUTS.probePlan, stable({ schemaVersion: probe.schemaVersion, graphFingerprint: graph.fingerprint, families: probe.families.map(({ family, instance, runnable, notRunnable, states, controls }) => ({ family, instance, runnable, notRunnable, states, controls })) }), check, drift);
   if (derived.lawProof) writeOut(OUTPUTS.lawProof, stable(derived.lawProof), check, drift);
   writeOut(OUTPUTS.report, derived.report, check, drift);
+
+  const candidates = [];
+  for (const build of builds) {
+    const projected = args.flags.has('fetch') ? projectBuild(fetchCheckout(plan, build.commit), plan, build) : checkedInBuild(build);
+    if (!projected) throw new Error(`candidate ${build.buildRef} has no projection at ${build.commit}; run --fetch or --build ${build.buildRef} --source <checkout>`);
+    if (args.flags.has('fetch')) writeBuild(projected, check, drift);
+    candidates.push(projected);
+  }
+  const { branches, report: branchReport } = branchProjection(graph, candidates);
+  writeOut(OUTPUTS.branches, stable(branches), check, drift);
+  writeOut(OUTPUTS.branchReport, branchReport, check, drift);
   if (check && drift.length) {
     console.error(`experience graph drift:\n${drift.map((file) => `  ${file}`).join('\n')}`);
     process.exit(1);
   }
   console.log(`${check ? 'checked' : 'wrote'} experience graph ${graph.fingerprint.slice(0, 12)} · ${graph.nodes.length} nodes · ${graph.edges.length} edges · routes ${JSON.stringify(derived.routes.counts)}`);
+}
+
+function generateBuild(args, plan, builds, check) {
+  const build = builds.find((row) => row.buildRef === args.build);
+  if (!build) throw new Error(`no candidate build ${args.build} in the source plan`);
+  const checkout = args.source ? path.resolve(args.source) : fetchCheckout(plan, build.commit);
+  if (args.source) {
+    const head = git(checkout, 'rev-parse', 'HEAD');
+    if (head !== build.commit) throw new Error(`checkout ${checkout} is at ${head}, ${build.buildRef} pins ${build.commit}`);
+  }
+  const drift = [];
+  const projected = projectBuild(checkout, plan, build);
+  writeBuild(projected, check, drift);
+  const mainGraph = normalizeExperienceGraph(readJson(OUTPUTS.graph));
+  const candidates = builds.map((row) => (row.buildRef === build.buildRef ? projected : checkedInBuild(row))).filter(Boolean);
+  const { branches, report } = branchProjection(mainGraph, candidates);
+  writeOut(OUTPUTS.branches, stable(branches), check, drift);
+  writeOut(OUTPUTS.branchReport, report, check, drift);
+  if (check && drift.length) {
+    console.error(`experience graph drift:\n${drift.map((file) => `  ${file}`).join('\n')}`);
+    process.exit(1);
+  }
+  console.log(`${check ? 'checked' : 'wrote'} candidate ${build.buildRef} ${projected.graph.fingerprint.slice(0, 12)} · routes ${JSON.stringify(projected.routes.counts)} · debt ${projected.frontier.debt.length}`);
 }
 
 export function verify() {
@@ -262,6 +376,27 @@ export function verify() {
     [OUTPUTS.report, derived.report],
   ];
   if (derived.lawProof) expect.push([OUTPUTS.lawProof, stable(derived.lawProof)]);
+  const plan = readJson(PLAN);
+  const candidates = [];
+  for (const build of normalizeBuilds(plan)) {
+    const files = buildOutputs(build.buildRef);
+    if (!fs.existsSync(path.join(ROOT, files.graph))) {
+      problems.push(`candidate ${build.buildRef} has no checked-in projection`);
+      continue;
+    }
+    const recordedBuild = readJson(files.graph);
+    const projected = checkedInBuild(build);
+    if (!projected) {
+      problems.push(`candidate ${build.buildRef} projection is not at its pinned commit ${build.commit}`);
+      continue;
+    }
+    if (recordedBuild.fingerprint !== projected.graph.fingerprint) problems.push(`candidate ${build.buildRef} graph fingerprint does not recompute`);
+    if (JSON.stringify(recordedBuild.extractor?.modules) !== JSON.stringify(current)) problems.push(`candidate ${build.buildRef} was projected by a different extractor; regenerate with --fetch`);
+    expect.push([files.frontier, stable(projected.frontier)], [files.routes, stable(projected.routes)]);
+    candidates.push(projected);
+  }
+  const { branches, report: branchReport } = branchProjection(graph, candidates);
+  expect.push([OUTPUTS.branches, stable(branches)], [OUTPUTS.branchReport, branchReport]);
   for (const [file, text] of expect) {
     if (fs.readFileSync(path.join(ROOT, file), 'utf8') !== text) problems.push(`${file} does not reproduce from the checked-in graph`);
   }
