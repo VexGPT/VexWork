@@ -138,12 +138,12 @@ try {
     authority:{
       authorityRef:'authority.vexwork.vexlife-prod-e2e.generated-local-proof',
       authorityMode:'EXACT_STAGE_EFFECTS',
-      grantedEffects:['CHECK_AUTH','READ_REPOSITORY','CHECK_STATE','RUN_LOCAL_COMMAND','CREATE_COMMIT','FORM_RESULT'],
+      grantedEffects:['CHECK_AUTH','READ_REPOSITORY','CHECK_STATE','QUERY_PROVIDER','RUN_LOCAL_COMMAND','CREATE_COMMIT','FORM_RESULT'],
       conditionalEffects:[],
       consumedEffects:[],
-      remainingEffects:['CHECK_AUTH','READ_REPOSITORY','CHECK_STATE','RUN_LOCAL_COMMAND','CREATE_COMMIT','FORM_RESULT'],
+      remainingEffects:['CHECK_AUTH','READ_REPOSITORY','CHECK_STATE','QUERY_PROVIDER','RUN_LOCAL_COMMAND','CREATE_COMMIT','FORM_RESULT'],
       heldEffects:[
-        'WRITE_SOURCE','QUERY_PROVIDER','CREATE_BRANCH','PUSH_BRANCH','CREATE_PULL_REQUEST',
+        'WRITE_SOURCE','CREATE_BRANCH','PUSH_BRANCH','CREATE_PULL_REQUEST',
         'UPDATE_COORDINATION_METADATA','APPROVE_EXACT_HEAD','MARK_READY','ORDINARY_MERGE'
       ],
       repositoryMembranes:[{repositoryRef:'primary',allowedPaths:[...generated]}],
