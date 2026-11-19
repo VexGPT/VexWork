@@ -4,7 +4,7 @@
   "projectRef": "project.vexlife-prod.end-to-end-tests",
   "purpose": "Read-only experience-validation map over existing Product coordinates and exact source symbols. It does not mint parallel feature/relationship identities. VexLife-Prod and VexArchitecture sources remain the owners of Family, State, Control, Act, Effect, observation, realization and projection meaning.",
   "sourceBindings": {
-    "vexlifeProdMain": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+    "vexlifeProdMain": "152c323ee6c3d4a43243d0a9c9b6de2ce11f605b",
     "vexWorkMain": "d70da76d9f95645ee83dc09c7cf7384b6c572cf5",
     "vexLifeAndroidMain": "d857a92371555472e0303b18eadf353da2a868d6",
     "activeCandidates": [
@@ -27,8 +27,17 @@
       {
         "ref": "github.pull.vexwork.310",
         "meaning": "shared continuity-pressure harness"
+      },
+      {
+        "ref": "github.pull.vexlife-prod.380",
+        "meaning": "Claude consolidated UI/identity/localization/design candidate, tested here together with current Product main."
       }
-    ]
+    ],
+    "experienceCandidate": {
+      "ref": "github.branch.vexlife-prod.VXG-111926-vexlife-prod-experience-convergence-r1",
+      "commit": "af21cccce50262c4f0b4980b993e496b4449ab67",
+      "meaning": "Current VexLife-Prod main plus Claude consolidated #380; runnable Product candidate for Experience Graph convergence."
+    }
   },
   "topologyLayers": [
     {
@@ -336,6 +345,14 @@
       "disposition": "CURRENT_MAIN",
       "sourceRef": null,
       "humanMeaning": "Exact provider materialization and receipt, including current-main Context Profile capture and reply-language/turn-context relationships."
+    },
+    {
+      "coordinate": "DirectConversationSourceReturn",
+      "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
+      "disposition": "CURRENT_MAIN",
+      "sourcePath": "src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+      "sourceRef": null,
+      "humanMeaning": "Product-owned Conversation source-return control and execution result. Protocol availability is not lookup execution; only an actual returned/no-match/held execution result is host-action truth."
     },
     {
       "coordinate": "VexLifeCurrentMemoryProviderSelection",
@@ -647,7 +664,7 @@
       "to": "DirectPromptContext",
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "CAPTURED_AT_SEND",
-      "humanMeaning": "The active Context Profile revision is captured when Send is accepted and stays fixed through provider stages of that turn."
+      "humanMeaning": "The active Context Profile revision, including its optional human-selected lower input-token budget, is captured when Send is accepted and stays fixed through provider stages of that turn; later profile edits belong to a later Send."
     },
     {
       "from": "VexLifeVoiceInputFamily",
@@ -704,6 +721,13 @@
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "CONSUMED_BY",
       "humanMeaning": "After semantic acceptance is current, the accepted statement is admitted into current Score continuity without making Memory Review the Score owner."
+    },
+    {
+      "from": "DirectConversationSourceReturn",
+      "to": "DirectPromptContext",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
+      "kind": "SOURCE_RETURN_RESULT_MATERIALIZES_IN_PROMPT",
+      "humanMeaning": "Source Return may add an executed Product result to the same turn's prompt context, but protocol availability, model reasoning, planning, or narration must never be treated as lookup execution."
     }
   ],
   "surfaceBindings": [
@@ -876,6 +900,17 @@
       "coordinateRefs": [
         "element.vexlife-workspace.companion.conversation.context-share",
         "pathway.vexlife-prod.conversation.send"
+      ]
+    },
+    {
+      "journeyRef": "journey.conversation.source-return-host-truth",
+      "shardRef": "conversation",
+      "disposition": "CURRENT_FOCUSED",
+      "humanOutcome": "When Vex needs older Conversation source, prove that protocol availability is not narrated as retrieval and only an executed Product source-return result may support returned-source claims.",
+      "coordinateRefs": [
+        "DirectConversationSourceReturn",
+        "DirectPromptContext",
+        "element.vexlife-workspace.browser.vex-context"
       ]
     }
   ],
@@ -1422,8 +1457,8 @@
     }
   },
   "currentness": {
-    "observedAt": "2026-11-18",
-    "vexLifeProdMain": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+    "observedAt": "2026-11-19",
+    "vexLifeProdMain": "152c323ee6c3d4a43243d0a9c9b6de2ce11f605b",
     "mergedPressure": {
       "251": {
         "state": "MERGED",
@@ -1442,6 +1477,10 @@
       "343": {
         "state": "OPEN_DRAFT",
         "head": "78c6fe406fa223ddf0034295734c39d7db2558f5"
+      },
+      "380": {
+        "state": "OPEN_DRAFT",
+        "head": "37ae931d402eb29bad2601bb0cc8479f55750928"
       }
     }
   }
