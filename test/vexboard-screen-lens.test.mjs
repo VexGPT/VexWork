@@ -185,7 +185,7 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
   };
   assert.throws(() => Lens.normalizeScreenLens(badSplitProperty), /CSS custom property/);
 
-  const badSplitTarget = clone();
+  const badSplitTarget = JSON.parse(JSON.stringify(input));
   badSplitTarget.screens[3].view = {
     ...input.screens[3].view,
     interactionBindings: [{ ...input.screens[3].view.interactionBindings[0], targetRef: 'element.nope' }],
