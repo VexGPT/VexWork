@@ -244,6 +244,8 @@ test('selected controls preview the screen or expression they lead to before tra
   assert.match(page, /Follow → \$\{destination\.title\}/);
   assert.match(page, /Show \$\{expression\.where\} · \$\{truncate\(expression\.what, 34\)\}/);
   assert.match(page, /destination\.go\(\)/);
+  assert.match(page, /class: 'tool product-view-travel'/, 'static Product controls expose a visible state-travel action');
+  assert.match(page, /interactive && destination \? h\('button'/, 'the explicit action appears only when the selected Product control leads somewhere');
 });
 
 test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
@@ -269,6 +271,13 @@ test('a source-owned static view is mounted generically and bound through stable
   assert.match(page, /view\.anchors\.structuralAttribute/);
   assert.match(page, /view\.anchors\.structuralParentAttribute/);
   assert.match(page, /staticViewNodes\(doc, view, marks\.selected, \{ includeStructuralParents: true \}\)/);
+  assert.match(page, /data-vex-product-style/, 'the Product stylesheet is distinguishable from Lens inspection CSS');
+  assert.match(page, /function staticViewStyleRules\(doc\)/);
+  assert.match(page, /function staticViewPresentationRules\(doc, view, ref\)/);
+  assert.match(page, /candidate\.node\.matches\(rule\.selector\)/, 'CSS relationships come from browser selector matching');
+  assert.match(page, /declarations: rule\.style\.cssText/, 'the Product rule block stays inspectable without becoming VexBoard rendering authority');
+  assert.match(page, /h\('h3', \{\}, 'Presentation rules'\)/);
+  assert.match(page, /The browser, not VexBoard, applies them/);
   assert.match(page, /currentScreen\(\)\.view \? renderStaticView\(expression, options\)/);
   assert.doesNotMatch(page, /vexlife-prod[^\n]{0,100}renderStaticView|renderStaticView[^\n]{0,100}vexlife-prod/i, 'static view projection stays subject-agnostic');
 });
