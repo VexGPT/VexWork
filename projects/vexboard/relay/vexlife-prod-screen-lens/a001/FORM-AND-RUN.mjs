@@ -63,16 +63,16 @@ try {
     correlationRef:'correlation.vexwork.vexlife-prod-screen-lens.source-owner', packageRef,
     original:{
       originalIntent:'Make VexLife-Prod a first-class peer of VexLife Android inside the existing VexBoard Screen Lens experience.',
-      originalGoal:'Prove exact VexWork PR #325 before raw-git human witness of Prod Stable/Main/Commit and Android Stable.',
+      originalGoal:'Prove exact VexWork PR #327 correction stacked on #325 before raw-git human witness of Prod Stable/Main/Commit and Android Stable.',
       userProtectedIntent:'Projects -> Android or VexLife-Prod -> the same Screen Lens Surface/Structure/Behavior/Depth experience; no generic canvas replacement; no READY or merge before Victor witnesses the exact candidate.',
-      sourceRefs:['github.pull.vexwork.321','github.pull.vexwork.325','projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md']
+      sourceRefs:['github.pull.vexwork.321','github.pull.vexwork.325','github.pull.vexwork.327','projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md']
     },
     lane:{
       entryClass:'SAME_LANE_SUCCESSOR', scopeMode:'STAGE_BOUNDED',
-      laneRef:'lane.vexwork.vexlife-prod-e2e.chatgpt', parentRootRef:'github.pull.vexwork.325',
-      workRef:'github.pull.vexwork.325', claimRef:'github.pull.vexwork.325',
+      laneRef:'lane.vexwork.vexlife-prod-e2e.chatgpt', parentRootRef:'github.pull.vexwork.327',
+      workRef:'github.pull.vexwork.327', claimRef:'github.pull.vexwork.327',
       returnRouteRef:'route.vexwork.vexlife-prod-screen-lens.source-owner-return',
-      ownerRef:'actor.chatgpt.vexlife-prod-screen-lens', rootHubRef:'github.pull.vexwork.325'
+      ownerRef:'actor.chatgpt.vexlife-prod-screen-lens', rootHubRef:'github.pull.vexwork.327'
     },
     role:{
       activeRole:'CODER', roleRef:'role.coder.vexwork.vexlife-prod-screen-lens',
@@ -87,7 +87,7 @@ try {
       duplicateAttemptMarker:`marker.${attemptRef}`, duplicateProtectionMode:'OUTER_RELAY_BOUND',
       formedAt:formed.toISOString(), expiresAtOrNull:innerExpires.toISOString()
     },
-    workspace:{mode:'RUN_ROOT',projectRef:'github.pull.vexwork.325',projectPath:'workspace',createRoot:true,createProjectPath:true},
+    workspace:{mode:'RUN_ROOT',projectRef:'github.pull.vexwork.327',projectPath:'workspace',createRoot:true,createProjectPath:true},
     repositories:[{
       repositoryRef:'primary',mode:'CLONE_IN_WORKSPACE',cloneTransport:'GIT',cloneUrl:request.candidate.cloneUrl,
       nameWithOwner:request.candidate.repository,localPath:'repositories/vexwork',remote:'origin',
@@ -105,7 +105,7 @@ try {
     source:{
       sourceSetRef:'source-set.vexwork.vexlife-prod-screen-lens.source-owner',
       sourceVersionRef:`source-version.vexwork.${request.candidate.head}`,
-      overlapEvidenceRef:'github.pull.vexwork.325.exact-head',activeConflictState:'NONE',
+      overlapEvidenceRef:'github.pull.vexwork.327.exact-head',activeConflictState:'NONE',
       candidateState:'EXACT',candidateHead:request.candidate.head,candidateTree:request.candidate.tree,
       expectedChangedPaths:sourcePaths,intentionallyUnchangedAuthorizedPaths:[]
     },
@@ -121,8 +121,8 @@ try {
     expectedTree:request.candidate.tree, branch:request.candidate.branch,
     proofCommands:request.proofCommands, maxFiles:10,
     stateRef:'state.vexwork.vexlife-prod-screen-lens.source-owner',currentLifecycleState:'SOURCE_READY',
-    currentGoal:'Prove exact VexWork PR #325 peer-Lens candidate before human raw-git witness.',
-    remainingGoals:['Consume canonical exact-head proof.','If PASS, freeze the exact #325 head for Victor raw-git witness.','Witness VexLife-Prod Stable/Main/Commit and Android Stable before any READY or merge decision.'],
+    currentGoal:'Prove exact VexWork PR #327 correction stacked on #325 peer-Lens candidate before human raw-git witness.',
+    remainingGoals:['Consume canonical exact-head proof.','If PASS, freeze the exact #327 correction head for Victor raw-git witness.','Witness VexLife-Prod Stable/Main/Commit and Android Stable before any READY or merge decision.'],
     onPass:{
       lifecycleState:'HOSTED_EVIDENCE_PENDING',nextFunction:'HUMAN_RAW_GIT_WITNESS',nextOwner:'Victor',
       whyThisIsNext:'SourceOwner proof establishes the exact candidate; Victor still owns the lived raw-git perception gate before integration.'
@@ -131,7 +131,7 @@ try {
   };
 
   const authorityEnvelope = {
-    authoritySchemaRef:'vextreme.effect-transaction/v1', semanticAdmissionRef:'github.pull.vexwork.325',
+    authoritySchemaRef:'vextreme.effect-transaction/v1', semanticAdmissionRef:'github.pull.vexwork.327',
     transactionRef:`transaction.vexwork.vexlife-prod-screen-lens.source-owner.${stamp}`,transactionVersion:1,
     allowedEffectRefs:['effect.vexrelay.execute'],heldEffectRefs:['effect.approve','effect.ready','effect.merge']
   };
@@ -143,11 +143,11 @@ try {
     requestRef:'request.vexwork.vexlife-prod-screen-lens.source-owner.carrier',
     correlationRef:'correlation.vexwork.vexlife-prod-screen-lens.source-owner.carrier',
     taskStorageKey:'task-vexwork-vexlife-prod-e2e-chatgpt-source-owner',attemptStorageKey:`attempt-${stamp}`,
-    requestingRoleRef:'Operations[VexLifeProdScreenLens]',requestingInstanceRef:'github.pull.vexwork.325',
-    parentOperationsRef:'github.pull.vexwork.325',returnRouteRef:'github.pull.vexwork.325',
+    requestingRoleRef:'Operations[VexLifeProdScreenLens]',requestingInstanceRef:'github.pull.vexwork.327',
+    parentOperationsRef:'github.pull.vexwork.327',returnRouteRef:'github.pull.vexwork.327',
     hostProfileRef:'macos-victor',repositoryExecutionProfileRefOrNull:'profile.repository.vextreme-sdk.macos-v1',repositoryRefOrNull:request.candidate.repository,
     baseRefOrNull:request.candidate.baseHead,headRefOrNull:request.candidate.head,treeRefOrNull:request.candidate.tree,
-    branchRefOrNull:request.candidate.branch,claimRefOrNull:'github.pull.vexwork.325',exactPathRefs:[...request.candidate.changedPaths],
+    branchRefOrNull:request.candidate.branch,claimRefOrNull:'github.pull.vexwork.327',exactPathRefs:[...request.candidate.changedPaths],
     authorityBinding:{
       authoritySchemaRef:'vextreme.effect-transaction/v1',authorityEnvelopePath:'authority/effect.json',authorityEnvelopeSha256:'0'.repeat(64),
       semanticAdmissionRef:'stale',transactionRef:'stale',transactionVersion:1,allowedEffectRefs:['stale'],heldEffectRefs:[]
