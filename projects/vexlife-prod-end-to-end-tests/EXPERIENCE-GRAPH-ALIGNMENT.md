@@ -346,8 +346,8 @@ basis
   4aad5e0055cdc2a9fada2f1e63200c7772850a81
 
 current correction head
-  67b88aa8a4636e770902adf3fcbe51c98301a950
-  tree 9231d7b458b6b589d78b189f5d70568a3d21002c
+  2bef812d7ca7f7a9a947768ecaef9dd67d150475
+  tree 62f11d3aa5f0ee214eb18c351c80261b22363a02
 ```
 
 It is exactly three commits / thirteen paths ahead of Claude and remains zero behind that basis:
@@ -356,10 +356,13 @@ It is exactly three commits / thirteen paths ahead of Claude and remains zero be
 2. `32b440fa59ae8399a968c0e7a143abc2ba885378` — law evidence currentness binds the probe source; report separates law-cell proof from case projection;
 3. `d7bee6967250169672999f022c2a2159d1c74751` — browser `REALIZED_BY` requires actual Effect dispatch into a `realize*` handler; carriage-only fixture refuses realization.
 4. `67b88aa8a4636e770902adf3fcbe51c98301a950` — repairs the over-escaped browser-handler RegExp literal discovered by Depth 04.
+5. `2bef812d7ca7f7a9a947768ecaef9dd67d150475` — makes probe-currentness tests explicit after Depth 05 proved the production contract was correctly fail-closed while two older assertions were stale.
 
-Depth 04 is consumed evidence: the VexLocalBridge carrier passed and the inner exact head/tree checks passed, then the first SourceOwner test command stopped before test bodies because the browser handler RegExp could not parse. The failure is candidate-owned; no source or provider mutation occurred.
+Depth 04 is consumed evidence: the VexLocalBridge carrier passed and the inner exact head/tree checks passed, then the first SourceOwner test command stopped before test bodies because the browser handler RegExp could not parse. The failure was candidate-owned; no source or provider mutation occurred.
 
-The next unconsumed edge is a **fresh host ExactHeadSourceOwnerProof of the repaired correction depth**, fixed-base `4aad5e0...` -> exact head `67b88aa...`. Generated Experience Graph artifacts remain intentionally not currentized until this correction proof passes.
+Depth 05 is consumed evidence: exact head/tree checks passed and 24/26 focused tests passed. The unread-law, perturbation and browser-realization corrections passed. The two failures were stale test assertions that expected law evidence to be current without supplying the new required current-probe identity. Production fail-closed behavior was preserved; only those assertions were corrected.
+
+The next unconsumed edge is a **fresh host ExactHeadSourceOwnerProof of the repaired correction depth**, fixed-base `4aad5e0...` -> exact head `2bef812...`. Generated Experience Graph artifacts remain intentionally not currentized until this correction proof passes.
 
 ## Fresh reviewer handoff rule
 
