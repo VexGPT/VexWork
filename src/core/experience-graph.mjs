@@ -245,8 +245,21 @@ function addSurface(builder, surface, laws) {
     const law = pathway.family ? lawByFamily.get(pathway.family) : null;
     const evidence = { capability: element.bindingTarget, pathwayRef: pathway.pathwayRef, disposition: pathway.disposition };
     if (law) {
-      for (const control of law.controls) {
-        builder.edge('MANIFESTS', element.elementRef, controlRef(law, control.symbol), { family: law.family, sourceRef: 'repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json', detail: evidence });
+      const declaredControlRefs = pathway.controlRefs ?? [];
+      const controls =
+        declaredControlRefs.length
+          ? law.controls.filter((control) => declaredControlRefs.includes(control.ref))
+          : law.controls;
+      if (declaredControlRefs.length) {
+        const found = new Set(controls.map((control) => control.ref));
+        const missing = declaredControlRefs.filter((ref) => !found.has(ref));
+        assert(
+          missing.length === 0,
+          `Lens pathway ${pathway.pathwayRef} names unknown ${law.family} Control refs: ${missing.join(', ')}`,
+        );
+      }
+      for (const control of controls) {
+        builder.edge('MANIFESTS', element.elementRef, controlRef(law, control.symbol), { family: law.family, sourceRef: 'repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json', detail: { ...evidence, declaredControlRefs } });
       }
       if (pathway.projection && builder.nodes.has(displayRef(law))) {
         builder.edge('PROJECTS_TO', displayRef(law), element.elementRef, { family: law.family, sourceRef: 'repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json', detail: evidence });
