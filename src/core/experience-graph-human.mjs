@@ -42,9 +42,9 @@ function routeCaseByRef(derivation) {
   return new Map((derivation.cases ?? []).filter((row) => row.routeRef).map((row) => [row.routeRef, row]));
 }
 
-function bindingForElements(seed, elementRefs) {
+function bindingsForElements(seed, elementRefs) {
   const refs = new Set(elementRefs ?? []);
-  return (seed.surfaceBindings ?? []).find((binding) => refs.has(binding.elementRef)) ?? null;
+  return (seed.surfaceBindings ?? []).filter((binding) => refs.has(binding.elementRef));
 }
 
 function experienceRoute(route, derivationCase, seed) {
@@ -54,13 +54,14 @@ function experienceRoute(route, derivationCase, seed) {
     detail: row.detail ?? null,
   }));
   const human = (route.steps ?? []).find((step) => step.step === 'HUMAN_ACTION') ?? null;
-  const binding = bindingForElements(seed, human?.elementRefs ?? []);
-  if (binding && !binding.deterministicActionRef) {
+  const elementRefs = human?.elementRefs ?? [];
+  const bindings = bindingsForElements(seed, elementRefs);
+  if (elementRefs.length && !bindings.some((binding) => binding.deterministicActionRef)) {
     pushMissing(
       missing,
       'MISSING_DETERMINISTIC_TEST_ACTION',
-      binding.elementRef,
-      'A stable human element exists, but this convergence has not earned one deterministic action binding for it.',
+      elementRefs[0],
+      'A stable human element exists, but this convergence has not earned one deterministic action binding for this route.',
     );
   }
   for (const deeper of derivationCase?.deeper ?? []) {
@@ -116,10 +117,12 @@ function relationshipAssessment(graph, row) {
   if (exact) {
     return Object.freeze({ ...row, coverage: 'DERIVED_EXACT', graphEdgeRef: exact.ref ?? null, graphPath: [] });
   }
+
+  // Connectivity is evidence, not semantic equivalence. A path between the same endpoints cannot
+  // promote a curated relationship into mechanically-derived truth unless the graph actually
+  // derives that relationship kind. Keep the curated ownership classification and attach the path
+  // only as supporting topology.
   const path = pathBetween(graph, row.from, row.to);
-  if (path) {
-    return Object.freeze({ ...row, coverage: 'DERIVED_PATH', graphEdgeRef: null, graphPath: Object.freeze(path) });
-  }
   const held = String(row.disposition ?? '').startsWith('HELD');
   return Object.freeze({
     ...row,
@@ -129,7 +132,7 @@ function relationshipAssessment(graph, row) {
         ? 'CURATED_SOURCE_RELATIONSHIP'
         : 'CURATED_HUMAN_RELATIONSHIP',
     graphEdgeRef: null,
-    graphPath: null,
+    graphPath: path ? Object.freeze(path) : null,
   });
 }
 
@@ -170,9 +173,9 @@ function journeyStatus(journey, routeRows, relationships, derivation) {
     const sourceReturn = relationships.find((row) => row.from === 'DirectConversationSourceReturn' && row.to === 'DirectPromptContext') ?? null;
     return Object.freeze({
       ...journey,
-      status: sourceReturn?.coverage === 'DERIVED_EXACT' || sourceReturn?.coverage === 'DERIVED_PATH' ? 'CLEARED' : 'FRONTIER_DEBT',
+      status: sourceReturn?.coverage === 'DERIVED_EXACT' ? 'CLEARED' : 'FRONTIER_DEBT',
       routeRefs: Object.freeze([]),
-      missing: Object.freeze(sourceReturn?.coverage?.startsWith('DERIVED') ? [] : [{ predicate: 'SOURCE_RETURN_RELATIONSHIP_NOT_MECHANICALLY_DERIVED', coordinate: 'DirectConversationSourceReturn' }]),
+      missing: Object.freeze(sourceReturn?.coverage === 'DERIVED_EXACT' ? [] : [{ predicate: 'SOURCE_RETURN_RELATIONSHIP_NOT_MECHANICALLY_DERIVED', coordinate: 'DirectConversationSourceReturn' }]),
       note: 'Protocol availability and host lookup execution remain separate truths.',
     });
   } else if (refs.size) {
