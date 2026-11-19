@@ -2721,7 +2721,15 @@ function drawBridge() {
   }
 }
 let bridgeFrame = 0;
+let bridgeScrollTimer = 0;
 const scheduleBridge = () => { cancelAnimationFrame(bridgeFrame); bridgeFrame = requestAnimationFrame(drawBridge); };
+const scheduleBridgeAfterScroll = () => {
+  // Scrolling is the person's foreground gesture. Do not run bridge geometry work on every wheel
+  // tick; hide the explanatory overlay while the pane moves, then redraw once the scroll settles.
+  clearBridge();
+  clearTimeout(bridgeScrollTimer);
+  bridgeScrollTimer = setTimeout(scheduleBridge, 90);
+};
 
 /* ---------- inspector tray ---------- */
 function sourceLink(source, label = 'Open source') {
@@ -3426,7 +3434,8 @@ function render() {
     placeSurfaceFloaters();
     drawBridge();
   });
-  for (const scroller of main.querySelectorAll('.surface,.structure,.phone-body')) scroller.addEventListener('scroll', scheduleBridge, { passive: true });
+  for (const scroller of main.querySelectorAll('.surface,.phone-body')) scroller.addEventListener('scroll', scheduleBridge, { passive: true });
+  for (const structure of main.querySelectorAll('.structure')) structure.addEventListener('scroll', scheduleBridgeAfterScroll, { passive: true });
   syncUrl();
 }
 
