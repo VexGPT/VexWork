@@ -413,9 +413,9 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.match(page, /function loadSourceCatalogs\(\)/);
   assert.match(page, /SourceResolver\.resolveBoardSource/);
   assert.match(page, /draft\.draftRef!==boardRef/);
-  assert.match(page, /openCatalogBoard\('board\.vexbusinessfactory\.system-anatomy\.patient-zero'\)/);
-  assert.match(page, /openCatalogBoard\('board\.vexbusinessfactory\.intent-topology\.patient-zero'\)/);
-  assert.match(page, /openCatalogBoard\(THEME_MODE_WORKSPACE_BOARD_REF\)/);
+  assert.match(page, /projects\/vexboard\/examples\/board-source-catalog\.json/);
+  assert.match(page, /projects\/vexlife-prod-end-to-end-tests\/experience-graph\/generated\/board-source-catalog\.json/);
+  assert.match(page, /openBoardRef\(VEXLIFE_PROD_EXPERIENCE_BOARD_REF\)/);
 
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.prototype-demo'), './prototype-demo.prototype.json');
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.self-map'), null);
