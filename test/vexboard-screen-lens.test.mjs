@@ -134,6 +134,17 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
         { op: 'SET_ATTRIBUTE', targetRef: 'screen.debug-menu', attribute: 'data-mode', value: 'dialog' },
       ],
     }],
+    interactionBindings: [{
+      kind: 'SPLIT',
+      elementRef: 'element.debug-menu.body',
+      targetRef: 'screen.debug-menu',
+      beforeRef: 'element.debug-menu.body.dark-mode',
+      afterRef: 'element.debug-menu.body.reset-log',
+      styleProperty: '--before',
+      collapsedAttribute: 'data-collapsed',
+      collapsedBeforeValue: 'before',
+      collapsedAfterValue: 'after',
+    }],
   };
   const projected = Lens.normalizeScreenLens(input).screens[3].view;
   assert.equal(projected.kind, 'STATIC_HTML_CSS');
@@ -142,6 +153,8 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
   assert.equal(projected.stateBindings[0].presenceRef, 'presence.debug-menu.dialog-open');
   assert.equal(projected.stateBindings[0].operations[0].attribute, 'open');
   assert.equal(projected.stateBindings[0].operations[1].targetRef, 'screen.debug-menu');
+  assert.equal(projected.interactionBindings[0].kind, 'SPLIT');
+  assert.equal(projected.interactionBindings[0].styleProperty, '--before');
   assert.match(projected.html, /Dark mode/);
 
   const executable = clone();
@@ -158,6 +171,20 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
     stateBindings: [{ presenceRef: 'presence.debug-menu.dialog-open', value: 'OPEN', operations: [{ op: 'SET_ATTRIBUTE', targetRef: 'element.debug-menu.body.dark-mode', attribute: 'onclick', value: 'x' }] }],
   };
   assert.throws(() => Lens.normalizeScreenLens(badStateAttribute), /safe presentation attribute/);
+
+  const badSplitProperty = clone();
+  badSplitProperty.screens[3].view = {
+    ...input.screens[3].view,
+    interactionBindings: [{ ...input.screens[3].view.interactionBindings[0], styleProperty: 'width' }],
+  };
+  assert.throws(() => Lens.normalizeScreenLens(badSplitProperty), /CSS custom property/);
+
+  const badSplitTarget = clone();
+  badSplitTarget.screens[3].view = {
+    ...input.screens[3].view,
+    interactionBindings: [{ ...input.screens[3].view.interactionBindings[0], targetRef: 'element.nope' }],
+  };
+  assert.throws(() => Lens.normalizeScreenLens(badSplitTarget), /split binding target .* is not a lens ref/);
 });
 
 test('chrome applies by placement, with always-visible controls kept on other screens', () => {
