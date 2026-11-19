@@ -55,18 +55,13 @@ function browserBootModuleClosure() {
   return visited;
 }
 
-test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
-  assert.match(page, /Create new/);
-  assert.match(page, /Open VexBoard self-map/);
-  assert.match(page, /Open VexBoard architecture/);
-  assert.match(page, /Open Living Screen Lens/);
+test('VexBoard Pages entry exposes only current projections plus local draft workflow', () => {
+  assert.match(page, /Open Projects/);
+  assert.match(page, /Open VexLife Prod Experience Graph/);
+  assert.match(page, /Open VexLife Android Screen Lens/);
+  assert.match(page, /Create local draft/);
   assert.match(page, /data-vexboard-entry="living-screen-lens"|dataset\.vexboardEntry='living-screen-lens'/);
-  assert.match(page, /Open prototype demo/);
-  assert.match(page, /Source examples/);
-  assert.match(page, /Open system anatomy example/);
-  assert.match(page, /Open intent topology example/);
-  assert.match(page, /Open current VexStream VexArchitecture walk/);
-  assert.match(page, /Open Theme Mode Origin Walk/);
+  assert.doesNotMatch(page, /Open VexBoard self-map|Open VexBoard architecture|Open prototype demo|Source examples|Open system anatomy example|Open intent topology example|Open current VexStream VexArchitecture walk|Open Theme Mode Origin Walk|Open Debug Menu Screen Lens/);
   assert.match(page, /Request edit → draft copy/);
   assert.match(page, /Save draft/);
   assert.match(page, /Browser-local proving copies · not source truth/);
@@ -503,8 +498,6 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /Screen design viewport/);
   assert.match(page, /viewportSelect\.onchange=\(\)=>setAndroidViewportProfile\(viewportSelect\.value\)/);
   assert.match(page, /androidViewportProfileRef:activeAndroidViewportProfileRef/);
-  assert.match(page, /Open VexLife Android Screen POC/);
-  assert.match(page, /VEXBOARD_ANDROID_POC_BOARD_REFS\.EXPERIENCE/);
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
@@ -764,9 +757,9 @@ test('prototype UI preserves the explicit interaction path beside BoardJourney a
     assert.match(returnBoardLine, new RegExp(field));
   }
 });
-test('VexStream living Blueprint is source-discoverable and Inspector consumes BoardEvidence without inventing observed proof', () => {
-  assert.match(page, /Open VexStream living Blueprint/);
-  assert.match(page, /board\.vexstream\.phone-desktop-connection\.living-blueprint/);
+test('historical VexStream evidence remains source-discoverable without staying on the front door', () => {
+  assert.doesNotMatch(page, /Open VexStream living Blueprint/);
+  assert.match(page, /projects\/vexboard\/examples\/board-source-catalog\.json/);
   assert.match(page, /vexboard-evidence\.mjs/);
   assert.match(page, /Evidence\.normalizeBoardEvidence/);
   assert.match(page, /Evidence\.evidenceForSemanticRef/);

@@ -18,8 +18,8 @@ test('Projects is the VexBoard front door, and every canvas deep link still open
   assert.ok(canvas.indexOf("location.replace('./projects.html'") < canvas.indexOf('<style>'), 'the redirect runs before the canvas paints');
   assert.match(canvas, /if\(new URLSearchParams\(location\.search\)\.get\('create'\)==='draft'\)\{await openBoard\(await Board\.createBlankDraft/);
   assert.match(canvas, /<a href="\.\/projects\.html">Projects<\/a>/);
-  assert.match(canvas, /entry\.dataset\.vexboardEntry='projects'/);
-  assert.match(canvas, /'Projects is now the way in'/);
+  assert.match(canvas, /projects\.dataset\.vexboardEntry='projects'/);
+  assert.match(canvas, /Open VexLife Prod Experience Graph/);
 });
 
 test('the projects page reads the Lens-subject catalog and Stable lenses, and writes nothing', () => {
@@ -39,15 +39,17 @@ test('local drafts are read with the key the draft owner defines', () => {
   assert.match(projects, /href: '\.\/\?canvas=home'/);
 });
 
-test('each project shows its pointers, its currency against GitHub, and how to open any commit', () => {
+test('current projects show Android Lens pointers plus the VexLife-Prod Experience Graph without stale placeholders', () => {
   assert.match(projects, /class: 'track', role: 'img'/);
   assert.match(projects, /Source\.compareCommits\(\{ repositoryUrl: subject\.repository\.url, base: main\.commit, head: branch/);
   assert.match(projects, /Could not check GitHub right now/);
   assert.match(projects, /Run npm run lens:main to move Main\./);
   assert.match(projects, /Catalog\.sourceRefFromInput\(input\.value, subject\.repository\.url\)/);
-  assert.match(projects, /h\('summary', \{\}, 'Earlier canvas trials'\)/);
-  assert.match(projects, /'No Screen Lens yet'/);
   assert.match(projects, /href: `\.\.\/\?project=\$\{encodeURIComponent\(ref\)\}`/);
+  assert.match(projects, /Experience Graph · current read-only inspection/);
+  assert.match(projects, /Open Experience Graph/);
+  assert.match(projects, /project\.vexlife-prod\.end-to-end-tests/);
+  assert.doesNotMatch(projects, /No Screen Lens yet|Earlier canvas trials|Perceivability alignment/);
 });
 
 test('the projects page and the any-commit adapter load in a browser without Node-only imports', () => {

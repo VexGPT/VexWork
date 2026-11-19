@@ -4,7 +4,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
-import { EVIDENCE, OUTPUTS, buildOutputs, extractorFingerprint, verify } from '../scripts/build-experience-graph.mjs';
+import { EVIDENCE, INSPECTION_FAMILIES, OUTPUTS, buildOutputs, extractorFingerprint, verify } from '../scripts/build-experience-graph.mjs';
 import { renderExperienceReport } from '../src/core/experience-graph-report.mjs';
 import { experienceBoardGraph, lawFingerprint, normalizeExperienceGraph } from '../src/core/experience-graph.mjs';
 import { advanceBoardJourney, createBoardJourney } from '../src/shared/vexboard-journey.mjs';
@@ -160,6 +160,23 @@ test('VexBoard traversal walks the real Vision route; pathway analysis finds the
   const analysis = calculateBoardJourneyPathways(board, journey);
   assert.equal(analysis.motifs.length, 1);
   assert.equal(analysis.motifs[0].anchorRef, 'VexLifeVisionFamily.Ready');
+});
+
+test('current VexBoard inspection is generated from the graph without claiming a Screen Lens', () => {
+  const board = json(OUTPUTS.inspectionBoard);
+  const catalog = json(OUTPUTS.inspectionCatalog);
+  assert.equal(board.schemaVersion, 'vexboard.local-draft/v1');
+  assert.equal(board.draftRef, 'board.vexlife-prod.experience-relationships.current');
+  assert.equal(board.mode, 'READ_ONLY_SOURCE');
+  assert.equal(board.projection.layoutIntent, 'SWIMLANE');
+  assert.ok(board.projection.items.every((item) => item.locked && item.visible));
+  const refs = new Set(board.graph.nodes.map((node) => node.nodeRef));
+  for (const family of INSPECTION_FAMILIES) assert.ok(refs.has(family), family);
+  assert.equal(refs.has('VexLifeModelsFamily'), false, 'inspection stays human-sized instead of projecting the whole graph');
+  assert.equal(catalog.schemaVersion, 'vexboard.board-source-catalog/v1');
+  assert.deepEqual(catalog.entries.map((entry) => entry.boardRef), [board.draftRef]);
+  assert.equal(catalog.entries[0].location, './vexboard-inspection.board.json');
+  assert.ok(board.graph.sourceRefs.some((ref) => ref.includes('experience-relationship-graph.json')));
 });
 
 test('the hand-authored seed lattice is now checkable against the derived graph', () => {

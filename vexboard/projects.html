@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VexBoard Projects</title>
-<meta name="description" content="Every project VexBoard can show: open a Screen Lens at its Stable or Main build or any commit, follow related boards, and see where each build pointer sits.">
+<meta name="description" content="Current VexBoard projections: the accepted Android Screen Lens plus the current VexLife-Prod Experience Relationship Graph inspection.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -149,6 +149,8 @@ import * as Source from '../src/shared/vexboard-lens-commit-source.mjs';
 const LENS_DIR = '../projects/vexboard/lens/';
 // Owned by vexboard-reader.js (VEXBOARD_DRAFT_STORAGE_KEY); read here, never written.
 const DRAFTS_KEY = 'vexboard.local-drafts/v1';
+const EXPERIENCE_BOARD_REF = 'board.vexlife-prod.experience-relationships.current';
+const EXPERIENCE_BOARD_URL = '../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/vexboard-inspection.board.json';
 const app = document.getElementById('app');
 
 function h(tag, attrs = {}, ...children) {
@@ -246,11 +248,6 @@ function buildRow(subject, build, extra) {
     build.summary ? h('span', { class: 'note' }, build.summary) : null);
 }
 
-function boardLinks(boards) {
-  return h('div', { class: 'boards' }, boards.map((board) => h('a', { class: board.role === 'TRIAL' ? 'trial' : '', href: Catalog.boardHref(board.boardRef), title: board.summary ?? board.boardRef },
-    board.label, h('span', {}, board.role === 'TRIAL' ? 'earlier canvas trial' : 'related board'))));
-}
-
 function facts(subject, extra = []) {
   return h('dl', { class: 'facts' },
     h('dt', {}, 'Source'), h('dd', {}, h('a', { href: subject.repository.url, target: '_blank', rel: 'noopener' }, subject.repository.url.replace('https://github.com/', '')), ' ', h('code', {}, subject.repositoryRef)),
@@ -267,8 +264,6 @@ function leadProject(subject, lens) {
   const trackSlot = h('div', {}, track(subject, null));
   liveHead(subject).then((live) => { trackSlot.replaceChildren(track(subject, live)); currencySlot.replaceChildren(currency(subject, live)); })
     .catch((error) => currencySlot.replaceChildren(currency(subject, null, error.message)));
-  const related = subject.boards.filter((board) => board.role === 'RELATED');
-  const trials = subject.boards.filter((board) => board.role === 'TRIAL');
   return h('article', { class: 'project lead', id: subject.slug },
     h('div', { class: 'info head' },
       h('span', { class: 'kind' }, h('span', { class: 'dot', 'aria-hidden': 'true' }), 'Screen Lens · generated from source'),
@@ -278,8 +273,6 @@ function leadProject(subject, lens) {
     h('div', { class: 'info more' },
       h('div', { class: 'label' }, 'Go straight to a screen'),
       h('nav', { class: 'screens', 'aria-label': `${subject.label} screens` }, lens.screens.map((screen) => h('a', { href: Catalog.lensHref(subject, { screen: screen.screenRef }) }, h('span', { class: `m ${screen.mapped}`, 'aria-hidden': 'true' }), screen.label))),
-      related.length ? [h('div', { class: 'label' }, 'Related boards'), boardLinks(related)] : null,
-      trials.length ? [h('div', { class: 'label' }, 'Earlier attempts for this project'), boardLinks(trials)] : null,
       facts(subject)),
     h('div', { class: 'builds' },
       h('h4', {}, 'Builds'),
@@ -290,19 +283,25 @@ function leadProject(subject, lens) {
       subject.lens.anyCommit ? anyCommitForm(subject) : null));
 }
 
-function pendingProject(subject) {
-  const headSlot = h('p', { class: 'headline' }, 'Checking GitHub…');
-  liveHead(subject).then((live) => headSlot.replaceChildren(`${live.branch} on GitHub is at `, h('code', {}, short(live.head.sha)), ` · ${day(live.head.date)} · ${live.head.message}`))
-    .catch((error) => headSlot.replaceChildren(`Could not check GitHub right now (${error.message}).`));
-  return h('article', { class: 'project', id: subject.slug },
+function experienceProject(board) {
+  const productCommit = board.sourceRefs?.find((ref) => ref.startsWith('repo.vexlife-prod:commit:'))?.split(':').at(-1) ?? 'unknown';
+  return h('article', { class: 'project', id: 'vexlife-prod-experience' },
     h('div', { class: 'info' },
-      h('span', { class: 'kind' }, h('span', { class: 'dot none', 'aria-hidden': 'true' }), 'No Screen Lens yet'),
-      h('h3', {}, subject.label),
-      h('p', { class: 'summary' }, subject.summary),
-      headSlot,
-      h('div', { class: 'pending' }, h('p', {}, subject.lens.reason), h('p', {}, h('b', {}, 'Next: '), subject.lens.next)),
-      subject.boards.length ? [h('div', { class: 'label' }, 'Boards'), boardLinks(subject.boards)] : null,
-      facts(subject)));
+      h('span', { class: 'kind' }, h('span', { class: 'dot', 'aria-hidden': 'true' }), 'Experience Graph · current read-only inspection'),
+      h('h3', {}, 'VexLife Prod'),
+      h('p', { class: 'summary' }, 'Current source-owned relationships projected into VexBoard without claiming a VexLife-Prod Screen Lens. Start with Voice, Vision, Diagnostics and Private Mode.'),
+      h('div', { class: 'stats' },
+        h('span', {}, h('b', {}, board.graph.nodes.length), ' projected coordinates'),
+        h('span', {}, h('b', {}, board.graph.relationships.length), ' relationships'),
+        h('span', {}, h('b', {}, 4), ' focused neighborhoods')),
+      h('p', { class: 'headline' }, 'Pinned Product source ', h('code', {}, short(productCommit)), ' · generated from the accepted Experience Relationship Graph.'),
+      h('p', {}, h('a', { class: 'open', href: Catalog.boardHref(EXPERIENCE_BOARD_REF) }, 'Open Experience Graph')),
+      h('div', { class: 'pending' },
+        h('p', {}, 'This is VexBoard inspection, not a Screen Lens placeholder.'),
+        h('p', {}, 'Historical perceivability/proving boards remain addressable by direct deep link, but are no longer primary navigation.')),
+      h('dl', { class: 'facts' },
+        h('dt', {}, 'Source'), h('dd', {}, h('a', { href: 'https://github.com/VexGPT/VexLife-Prod', target: '_blank', rel: 'noopener' }, 'VexGPT/VexLife-Prod'), ' ', h('code', {}, 'repo.vexlife-prod')),
+        h('dt', {}, 'VexWork'), h('dd', {}, h('a', { href: '../?project=project.vexlife-prod.end-to-end-tests' }, h('code', {}, 'project.vexlife-prod.end-to-end-tests'))))));
 }
 
 function draftsLine() {
@@ -315,20 +314,22 @@ function draftsLine() {
 }
 
 async function boot() {
-  const catalog = Catalog.normalizeLensCatalog(await fetchJson(`${LENS_DIR}catalog.json`));
+  const [catalogInput, experienceBoard] = await Promise.all([
+    fetchJson(`${LENS_DIR}catalog.json`),
+    fetchJson(EXPERIENCE_BOARD_URL),
+  ]);
+  const catalog = Catalog.normalizeLensCatalog(catalogInput);
   const withLens = catalog.subjects.filter((subject) => subject.lens.status === 'GENERATED');
   const lenses = await Promise.all(withLens.map(async (subject) => Lens.normalizeScreenLens(await fetchJson(LENS_DIR + Catalog.buildFor(subject, 'stable').lens))));
-  const others = catalog.subjects.filter((subject) => subject.lens.status !== 'GENERATED');
   app.replaceChildren(...[
     h('div', { class: 'intro' }, h('h1', {}, 'Projects'),
-      h('p', {}, 'Subjects VexBoard can project or relate. Open a Screen Lens at its Stable build, its Main build or any commit, follow related boards, and descend to VexWork for Project and lifecycle truth.')),
+      h('p', {}, 'Current VexBoard projections. Android uses the accepted Screen Lens. VexLife Prod uses the current Experience Relationship Graph inspection. Historical proving boards remain provenance, not front-door choices.')),
     withLens.map((subject, i) => leadProject(subject, lenses[i])),
-    others.length ? h('div', { class: 'others' }, others.map(pendingProject)) : null,
-    h('details', { id: 'trials', class: 'trials-section' },
-      h('summary', {}, 'Earlier canvas trials'),
-      h('p', { class: 'lede' }, 'These boards came before the Screen Lens. They stay readable as provenance, but new work starts from a subject above.'),
-      h('div', { class: 'trials' }, boardLinks(catalog.trials), draftsLine())),
-    h('footer', {}, 'Build pointers live in ', h('code', {}, 'projects/vexboard/lens/catalog.json'), '. Move Main with ', h('code', {}, 'npm run lens:main'), ', promote it to Stable with acceptance evidence using ', h('code', {}, 'npm run lens:promote -- --evidence <ref>'), ', and check both with ', h('code', {}, 'npm run lens:verify'), '.'),
+    h('section', {}, h('h2', {}, 'Current source maps'),
+      h('p', { class: 'lede' }, 'Relationship projections that are useful now without pretending they are Screen Lenses.'),
+      experienceProject(experienceBoard)),
+    h('section', {}, h('h2', {}, 'Local drafts'), draftsLine()),
+    h('footer', {}, 'Android Screen Lens pointers live in ', h('code', {}, 'projects/vexboard/lens/catalog.json'), '. VexLife-Prod inspection is regenerated from ', h('code', {}, 'projects/vexlife-prod-end-to-end-tests/experience-graph/generated/experience-relationship-graph.json'), '. Historical board deep links remain readable but are intentionally absent from this front door.'),
   ].flat(Infinity).filter(Boolean));
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
 }

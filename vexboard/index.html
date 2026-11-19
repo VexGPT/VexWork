@@ -104,9 +104,10 @@ async function ensureFamilyKotlin(){
   return FamilyKotlin;
 }
 const THEME_MODE_WORKSPACE_BOARD_REF='board.vexlife.debug-menu.theme-mode.origin-walk';
-const VEXSTREAM_PLAYBACK_ARCHITECTURE_BOARD_REF='board.vexlife-android.vexstream-playback.vexarchitecture';
+const VEXLIFE_PROD_EXPERIENCE_BOARD_REF='board.vexlife-prod.experience-relationships.current';
 const sourceCatalogUrls=Object.freeze([
   '../projects/vexboard/examples/board-source-catalog.json',
+  '../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/board-source-catalog.json',
 ]);
 const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')||null;
 const cameraAnimator=createCameraAnimator({
@@ -285,34 +286,23 @@ function landing(){
   drawerMode=null;
   current=null;selected=null;journey=null;journeyPathwayAnalysis=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();activeAndroidViewportProfileRef=null;androidProjectionSources=new Map();closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
   const box=el('section','landing');
-  const entry=el('article','card');entry.dataset.vexboardEntry='projects';
-  const entryLink=el('a','btn violet','Open Projects');entryLink.href='./projects.html';
-  entry.append(el('div','tiny','Earlier canvas'),el('h3','','Projects is now the way in'),el('p','','This canvas came before the Screen Lens. Its boards stay readable here; new work starts from a project.'),entryLink);
-  box.append(entry);
-  box.append(el('div','eyebrow','VexBoard canvas projection'),el('h1','','Design the map before implementation has to guess it.'),el('p','lede','Create a local semantic-board draft or inspect an existing source board through a zoomable, pannable, recursive canvas. Camera, focus and collapse are read-only view state; requesting edit still forks a browser-local draft copy rather than mutating source truth.'));
+  box.append(
+    el('div','eyebrow','VexBoard · current projections'),
+    el('h1','','Inspect what is current. Keep the old attempts out of the way.'),
+    el('p','lede','Open the accepted Android Screen Lens, inspect the current VexLife-Prod Experience Relationship Graph, or create a browser-local draft. Historical proving boards still resolve by deep link, but they are no longer front-door choices.'),
+  );
   const actions=el('div','row');
-  const create=el('button','btn primary','Create new');create.onclick=async()=>openBoard(await Board.createBlankDraft({draftRef:ref('draft.vexboard')}));
-  const open=el('button','btn violet','Open VexBoard self-map');open.onclick=async()=>openBuiltInBoard('board.vexboard.self-map');
-  const architecture=el('button','btn violet','Open VexBoard architecture');architecture.onclick=async()=>openBuiltInBoard('board.vexboard.architecture-convergence');
-  const livingLens=el('a','btn violet','Open Living Screen Lens');livingLens.href='./lens.html';livingLens.dataset.vexboardEntry='living-screen-lens';
-  const simulate=el('button','btn violet','Open prototype demo');simulate.onclick=async()=>openBuiltInBoard('board.vexboard.prototype-demo');
-  actions.append(create,open,architecture,livingLens,simulate);
-  const examples=el('div','row');
-  const anatomy=el('button','btn','Open system anatomy example');anatomy.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.system-anatomy.patient-zero');
-  const intent=el('button','btn','Open intent topology example');intent.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.intent-topology.patient-zero');
-  const vexstream=el('button','btn violet','Open VexStream living Blueprint');vexstream.onclick=async()=>openCatalogBoard('board.vexstream.phone-desktop-connection.living-blueprint');
-  const androidPoc=el('button','btn violet','Open VexLife Android Screen POC');androidPoc.onclick=async()=>openCatalogBoard(AndroidProjector.VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE);
-  const architectureSlice=el('button','btn violet','Open current VexStream VexArchitecture walk');architectureSlice.onclick=async()=>openCatalogBoard(VEXSTREAM_PLAYBACK_ARCHITECTURE_BOARD_REF);
-  const themeMode=el('button','btn violet','Open Theme Mode Origin Walk');themeMode.onclick=async()=>openCatalogBoard(THEME_MODE_WORKSPACE_BOARD_REF);
-  const screenLens=el('a','btn violet','Open Debug Menu Screen Lens');screenLens.href='./lens.html';
-  examples.append(anatomy,intent,vexstream,androidPoc,architectureSlice,themeMode,screenLens);
-  box.append(actions,el('h2','','Source examples'),examples,el('h2','','Local drafts'));
+  const projects=el('a','btn primary','Open Projects');projects.href='./projects.html';projects.dataset.vexboardEntry='projects';
+  const experience=el('button','btn violet','Open VexLife Prod Experience Graph');experience.onclick=async()=>openBoardRef(VEXLIFE_PROD_EXPERIENCE_BOARD_REF);
+  const livingLens=el('a','btn violet','Open VexLife Android Screen Lens');livingLens.href='./lens.html?subject=vexlife-android';livingLens.dataset.vexboardEntry='living-screen-lens';
+  const create=el('button','btn','Create local draft');create.onclick=async()=>openBoard(await Board.createBlankDraft({draftRef:ref('draft.vexboard')}));
+  actions.append(projects,experience,livingLens,create);
+  box.append(actions,el('h2','','Local drafts'));
   const list=el('div','cards');
   for(const d of drafts()){const c=el('article','card');c.append(el('div','tiny',d.mode),el('h3','',d.title),el('p','',d.derivedFromRefOrNull?`Forked from ${d.derivedFromRefOrNull}`:'Independent local draft'));const b=el('button','btn','Resume draft');b.onclick=()=>openBoard(d,{boardRef:d.draftRef});c.append(b);list.append(c)}
-  if(!drafts().length){const c=el('article','card');c.append(el('div','tiny','No drafts yet'),el('h3','','Start with Create new'),el('p','','Browser-local proving copies · not source truth.'));list.append(c)}
+  if(!drafts().length){const c=el('article','card');c.append(el('div','tiny','No drafts yet'),el('h3','','Create a local draft if you need one'),el('p','','Browser-local proving copies · not source truth.'));list.append(c)}
   box.append(list);app.append(box);
 }
-
 async function act(name,args){
   const control=Board.controlFor(current,{controlRef:ref('control.vexboard'),actorRef:'actor.vexboard.human',act:name,arguments:args});
   const r=await Board.applyBoardControl({graph:current.graph,projection:current.projection,control});

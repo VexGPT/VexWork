@@ -52,6 +52,13 @@ export const buildOutputs = (buildRef) => Object.freeze({
   routes: `${GENERATED}/builds/${buildRef}/routes.json`,
 });
 
+export const INSPECTION_FAMILIES = Object.freeze([
+  'VexLifeVoiceInputFamily',
+  'VexLifeVisionFamily',
+  'VexLifeDiagnosticsFamily',
+  'VexLifePrivateModeFamily',
+]);
+
 export const OUTPUTS = Object.freeze({
   branches: `${GENERATED}/branches.json`,
   branchReport: `${GENERATED}/BRANCHES.md`,
@@ -64,6 +71,8 @@ export const OUTPUTS = Object.freeze({
   probePlan: `${GENERATED}/law-probe/plan.json`,
   lawProof: `${GENERATED}/law-proof.json`,
   report: `${GENERATED}/EXPERIENCE-GRAPH.md`,
+  inspectionBoard: `${GENERATED}/vexboard-inspection.board.json`,
+  inspectionCatalog: `${GENERATED}/board-source-catalog.json`,
 });
 export const EVIDENCE = Object.freeze({
   law: `${DIR}/evidence/law-evidence.json`,
@@ -268,6 +277,102 @@ export function branchProjection(mainGraph, candidates) {
   return { branches, report: renderBranchReport(branches) };
 }
 
+export function experienceInspectionBoard(graph) {
+  const selected = new Set(INSPECTION_FAMILIES);
+  const edges = graph.edges.filter((edge) => selected.has(edge.family));
+  const refs = new Set(INSPECTION_FAMILIES);
+  for (const edge of edges) {
+    refs.add(edge.from);
+    refs.add(edge.to);
+  }
+  const sourceNodes = graph.nodes.filter((node) => refs.has(node.ref));
+  const sourceByRef = new Map(sourceNodes.map((node) => [node.ref, node]));
+  const touchedFamilies = new Map(sourceNodes.map((node) => [node.ref, new Set()]));
+  for (const edge of edges) {
+    if (selected.has(edge.family)) {
+      touchedFamilies.get(edge.from)?.add(edge.family);
+      touchedFamilies.get(edge.to)?.add(edge.family);
+    }
+  }
+  const subset = { ...graph, nodes: sourceNodes, edges };
+  const boardGraph = experienceBoardGraph(subset);
+  const roleOrder = new Map(['FAMILY','ELEMENT','STATE','CONTROL','EFFECT','OWNER','OBSERVATION','PROJECTION','CAPTURE','RECEIPT'].map((role, index) => [role, index]));
+  const familyIndex = new Map(INSPECTION_FAMILIES.map((family, index) => [family, index]));
+  const familyFor = (ref) => {
+    const node = sourceByRef.get(ref);
+    if (selected.has(ref)) return ref;
+    if (selected.has(node?.family)) return node.family;
+    const touched = [...(touchedFamilies.get(ref) ?? [])].sort((left, right) => (familyIndex.get(left) ?? 99) - (familyIndex.get(right) ?? 99));
+    return touched[0] ?? INSPECTION_FAMILIES[0];
+  };
+  const lanes = new Map(INSPECTION_FAMILIES.map((family) => [family, []]));
+  for (const node of boardGraph.nodes) lanes.get(familyFor(node.nodeRef)).push(node);
+  for (const [family, nodes] of lanes) {
+    nodes.sort((left, right) => {
+      const a = sourceByRef.get(left.nodeRef);
+      const b = sourceByRef.get(right.nodeRef);
+      return (roleOrder.get(a?.role) ?? 99) - (roleOrder.get(b?.role) ?? 99)
+        || left.label.localeCompare(right.label)
+        || left.nodeRef.localeCompare(right.nodeRef);
+    });
+    const familyPos = nodes.findIndex((node) => node.nodeRef === family);
+    if (familyPos > 0) nodes.unshift(nodes.splice(familyPos, 1)[0]);
+  }
+  const items = [];
+  for (const [family, nodes] of lanes) {
+    const lane = familyIndex.get(family);
+    nodes.forEach((node, row) => {
+      const role = sourceByRef.get(node.nodeRef)?.role;
+      items.push({
+        projectionItemRef: `item:${node.nodeRef}`,
+        semanticRef: node.nodeRef,
+        shapeKind: role === 'CONTROL' ? 'ELLIPSE' : role === 'OBSERVATION' ? 'DIAMOND' : 'RECTANGLE',
+        bounds: { x: 80 + lane * 390, y: 90 + row * 96, width: 300, height: role === 'FAMILY' ? 76 : 68 },
+        layer: 1,
+        parentProjectionItemRefOrNull: null,
+        visible: true,
+        locked: true,
+      });
+    });
+  }
+  const sourceGraphRef = `${DIR}/generated/experience-relationship-graph.json`;
+  return {
+    schemaVersion: 'vexboard.local-draft/v1',
+    draftRef: 'board.vexlife-prod.experience-relationships.current',
+    title: 'VexLife Prod — Experience Relationships',
+    mode: 'READ_ONLY_SOURCE',
+    derivedFromRefOrNull: null,
+    savedAtOrNull: null,
+    graph: {
+      ...boardGraph,
+      sourceRefs: [...new Set([...boardGraph.sourceRefs, sourceGraphRef])].sort(),
+    },
+    projection: {
+      schemaVersion: 'vexboard.board-projection/v1',
+      projectionRef: 'projection.vexlife-prod.experience-relationships.current',
+      graphRef: boardGraph.graphRef,
+      layoutIntent: 'SWIMLANE',
+      items,
+      sourceRefs: [sourceGraphRef],
+    },
+    sourceRefs: [sourceGraphRef, `repo.vexlife-prod:commit:${graph.source.commit}`],
+  };
+}
+
+export function experienceInspectionCatalog(board) {
+  const sourceGraphRef = `${DIR}/generated/experience-relationship-graph.json`;
+  return {
+    schemaVersion: 'vexboard.board-source-catalog/v1',
+    catalogRef: 'catalog.vexlife-prod.experience-relationships',
+    entries: [{
+      boardRef: board.draftRef,
+      location: './vexboard-inspection.board.json',
+      sourceRefs: [sourceGraphRef],
+    }],
+    sourceRefs: [`${DIR}/README.md`, sourceGraphRef],
+  };
+}
+
 function checkedInBuild(build) {
   const files = buildOutputs(build.buildRef);
   if (!fs.existsSync(path.join(ROOT, files.graph))) return null;
@@ -327,6 +432,9 @@ function generate(args) {
   writeOut(OUTPUTS.probePlan, stable({ schemaVersion: probe.schemaVersion, graphFingerprint: graph.fingerprint, families: probe.families.map(({ family, instance, runnable, notRunnable, states, controls }) => ({ family, instance, runnable, notRunnable, states, controls })) }), check, drift);
   if (derived.lawProof) writeOut(OUTPUTS.lawProof, stable(derived.lawProof), check, drift);
   writeOut(OUTPUTS.report, derived.report, check, drift);
+  const inspectionBoard = experienceInspectionBoard(graph);
+  writeOut(OUTPUTS.inspectionBoard, stable(inspectionBoard), check, drift);
+  writeOut(OUTPUTS.inspectionCatalog, stable(experienceInspectionCatalog(inspectionBoard)), check, drift);
 
   const candidates = [];
   for (const build of builds) {
@@ -398,6 +506,8 @@ export function verify() {
     [OUTPUTS.perturbations, stable(derived.perturbations)],
     [OUTPUTS.convergence, stable(derived.convergence)],
     [OUTPUTS.report, derived.report],
+    [OUTPUTS.inspectionBoard, stable(experienceInspectionBoard(graph))],
+    [OUTPUTS.inspectionCatalog, stable(experienceInspectionCatalog(experienceInspectionBoard(graph)))],
   ];
   if (derived.lawProof) expect.push([OUTPUTS.lawProof, stable(derived.lawProof)]);
   const plan = readJson(PLAN);

@@ -32,11 +32,10 @@ const STABLE_COMMIT = buildFor(android, 'stable').commit;
 
 test('the committed catalog names every Lens subject VexBoard shows and where its builds point', () => {
   assert.equal(catalog.schemaVersion, LENS_CATALOG_SCHEMA);
-  assert.deepEqual(catalog.subjects.map((subject) => subject.slug), ['vexlife-android', 'vexlife-prod', 'vexboard']);
+  assert.deepEqual(catalog.subjects.map((subject) => subject.slug), ['vexlife-android']);
   assert.deepEqual(STANDING_BUILDS, ['stable', 'main']);
   assert.equal(android.lens.status, 'GENERATED');
   assert.deepEqual(android.lens.builds.map((build) => build.buildRef), ['stable', 'main']);
-  assert.equal(subjectFor(catalog, 'subject.vexlife-prod').lens.status, 'NOT_BUILT');
   assert.equal(subjectFor(catalog, 'nope'), null);
   assert.equal(subjectFor(catalog, null), null);
   assert.ok(Object.isFrozen(catalog.subjects[0].lens.builds));
@@ -60,8 +59,6 @@ test('the Stable pointer and the adapter pin agree, and every lens file exists',
     'the active patient zero is not buried under earlier trials');
   assert.ok(buildFor(android, 'stable').evidence.includes('github.pull.vexwork.238'), 'same-source Stable projection refinement carries acceptance evidence');
   assert.equal(sameCommit(android), buildFor(android, 'stable').commit === buildFor(android, 'main').commit);
-  assert.equal(sameCommit(subjectFor(catalog, 'vexboard')), false);
-  assert.equal(buildFor(subjectFor(catalog, 'vexboard'), 'stable'), null);
 });
 
 test('a lens URL resolves to a project and build, and bad input falls back to Stable with a reason', () => {
@@ -75,7 +72,8 @@ test('a lens URL resolves to a project and build, and bad input falls back to St
   assert.match(at('build=nightly').notice, /No build named "nightly"/);
   assert.match(at('subject=nope').notice, /No project named "nope"/);
   assert.equal(at('subject=nope').subject.slug, 'vexlife-android');
-  assert.equal(at('subject=vexlife-prod').mode, 'NO_LENS');
+  assert.equal(at('subject=vexlife-prod').mode, 'BUILD');
+  assert.match(at('subject=vexlife-prod').notice, /No project named "vexlife-prod"/);
   assert.equal(at('lens=examples/x.json').mode, 'LEGACY');
   const bad = at('commit=../../etc');
   assert.equal(bad.mode, 'BUILD');
@@ -125,7 +123,6 @@ test('advancing Main to Stable\'s commit shares Stable\'s file; to another commi
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'stable', { commit: SHA_B }), /Stable moves only through promoteBuild/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: 'abc' }), /full commit SHA/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: SHA_B }), /separateLens required/);
-  assert.throws(() => advanceBuild(rawCatalog, 'vexlife-prod', 'main', { commit: SHA_B }), /no generated lens/);
 });
 
 test('promoting Main moves Stable to Main\'s commit and folds the two files back into one', () => {
@@ -144,7 +141,6 @@ test('promoting Main moves Stable to Main\'s commit and folds the two files back
   assert.deepEqual([noop.changed, noop.copy, noop.retire], [false, null, null]);
   assert.throws(() => promoteBuild(ahead, 'vexlife-android', { on: '2026-11-07' }), /acceptance evidence/);
   assert.throws(() => promoteBuild(rawCatalog, 'vexlife-android', { on: 'tomorrow' }), /YYYY-MM-DD/);
-  assert.throws(() => promoteBuild(rawCatalog, 'vexboard', { on: '2026-11-07' }), /no generated lens/);
 });
 
 test('the catalog fails closed on shapes a reader could misread', () => {
@@ -152,7 +148,7 @@ test('the catalog fails closed on shapes a reader could misread', () => {
   const cases = [
     [(c) => { c.schemaVersion = 'x'; }, /schemaVersion/],
     [(c) => { c.subjects = []; }, /at least one subject/],
-    [(c) => { c.subjects[1].slug = 'vexlife-android'; c.subjects[1].subjectRef = 'subject.vexlife-android'; }, /duplicate subjectRef/],
+    [(c) => { c.subjects.push(clone(c.subjects[0])); }, /duplicate subjectRef/],
     [(c) => { c.subjects[0].slug = 'Bad Slug'; }, /slug must be/],
     [(c) => { c.subjects[0].subjectRef = 'subject.other'; }, /subjectRef must be subject\.vexlife-android/],
     [(c) => { c.subjects[0].repositoryRef = 'project.x'; }, /must start with repo\./],
@@ -174,11 +170,9 @@ test('the catalog fails closed on shapes a reader could misread', () => {
     [(c) => { c.subjects[0].lens.builds[0].evidence = []; }, /Stable needs acceptance evidence/],
     [(c) => { delete c.subjects[0].lens.builds[0].since; }, /Stable needs an acceptance date/],
     [(c) => { delete c.subjects[0].lens.builds[1].branch; }, /Main needs its source branch/],
-    [(c) => { c.subjects[1].lens.reason = ''; }, /reason required/],
     [(c) => { c.subjects[0].boards[0].role = 'PRIMARY'; }, /role must be one of/],
     [(c) => { c.subjects[0].boards[0].boardRef = 'lens.x.y'; }, /must start with board\./],
     [(c) => { c.defaultSubjectRef = 'subject.nope'; }, /not a subject/],
-    [(c) => { c.defaultSubjectRef = 'subject.vexboard'; }, /must have a generated lens/],
     [(c) => { c.subjects[0].vexworkProjectRefs = ['repo.x']; }, /must start with project\./],
   ];
   for (const [mutate, message] of cases) assert.throws(broken(mutate), message, String(message));
