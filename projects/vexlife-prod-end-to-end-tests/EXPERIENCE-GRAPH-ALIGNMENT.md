@@ -333,6 +333,31 @@ Next:
 - compare with independent ChatGPT candidate only if/when it actually exists;
 - inspect generated Project Registry / Workgraph / public workspace consequences only when this candidate approaches integration.
 
+## Active correction / Relay sibling
+
+The correction trajectory now lives in **VexWork PR #321**:
+
+```text
+branch
+  VXG-111826-vexlife-prod-e2e-experience-graph-relay-a001
+
+basis
+  Claude reviewed head
+  4aad5e0055cdc2a9fada2f1e63200c7772850a81
+
+current correction head
+  d7bee6967250169672999f022c2a2159d1c74751
+  tree 657e443cd41fc34d3bff3d54d236687dc4d85a06
+```
+
+It is exactly three commits / thirteen paths ahead of Claude and remains zero behind that basis:
+
+1. `e5f1eda68e2cf4d526570ae338afdbe19f945169` — unread law stays fail-closed rather than becoming generated REJECT truth;
+2. `32b440fa59ae8399a968c0e7a143abc2ba885378` — law evidence currentness binds the probe source; report separates law-cell proof from case projection;
+3. `d7bee6967250169672999f022c2a2159d1c74751` — browser `REALIZED_BY` requires actual Effect dispatch into a `realize*` handler; carriage-only fixture refuses realization.
+
+The next unconsumed edge is **host ExactHeadSourceOwnerProof of this correction depth**, fixed-base `4aad5e0...` -> exact head `d7bee69...`. Generated Experience Graph artifacts are intentionally not currentized in this proof; that is the next depth on the same #321 after this return is consumed.
+
 ## Fresh reviewer handoff rule
 
 A successor should begin from this file plus the exact Claude review head. Do **not** restart the whole history.
