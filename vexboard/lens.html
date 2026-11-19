@@ -953,17 +953,20 @@ function selectElement(elementRef, { keepFaces = true } = {}) {
     state.cameras.delete('DEPTH');
   }
   if (!keepFaces) state.faces.BEHAVIOR = 'BEHAVIOR';
-  render();
+  if (!refreshStaticSelectionInPlace()) render();
 }
 function selectNode(ref, { reveal = false } = {}) {
   const node = pathwayNode(ref);
   if (!node) return;
   state.selected = { kind: 'NODE', ref };
   if (reveal && state.faces.BEHAVIOR !== node.face) { state.faces.BEHAVIOR = node.face; }
-  render();
+  if (!refreshStaticSelectionInPlace()) render();
   if (reveal) requestAnimationFrame(() => revealNode(node.face, ref));
 }
-function clearSelection() { state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); }
+function clearSelection() {
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  if (!refreshStaticSelectionInPlace()) render();
+}
 
 function travel(element) {
   if (!element?.navigatesTo) return;
@@ -1991,7 +1994,14 @@ function setStaticSplitPhase(binding, phase) {
   const key = staticSplitKey(binding);
   if (phase === 'BALANCED') state.splitProjection.delete(key);
   else state.splitProjection.set(key, Object.freeze({ phase }));
-  render();
+  const wrapper = document.querySelector('.current-product-view');
+  const frame = wrapper?.querySelector('.product-view-frame');
+  const doc = frame?.contentDocument;
+  if (doc) {
+    applyStaticSplitProjection(doc, currentScreen().view, binding);
+    refreshStaticViewActions(wrapper);
+    scheduleBridge();
+  } else render();
 }
 function renderStaticSplitControl(binding) {
   const element = Lens.elementFor(state.lens, binding.elementRef);
@@ -2215,11 +2225,30 @@ function bindStaticView(frame, expression, { interactive }) {
     else if (ref) exposeElement(ref);
   }, true);
 }
+function renderStaticViewActions() {
+  const screen = currentScreen();
+  const selected = state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
+  const destination = selected ? destinationForElement(selected) : null;
+  const splitBinding = selected ? (screen.view?.interactionBindings ?? []).find((binding) => binding.kind === 'SPLIT' && binding.elementRef === selected.ref) ?? null : null;
+  return destination || splitBinding
+    ? h('div', { class: 'product-view-actions' },
+        splitBinding ? renderStaticSplitControl(splitBinding) : null,
+        destination ? h('button', {
+          class: 'tool product-view-travel',
+          type: 'button',
+          title: destination.title,
+          onclick: (event) => { event.stopPropagation(); destination.go(); },
+        }, destination.label) : null)
+    : null;
+}
+function refreshStaticViewActions(wrapper) {
+  if (!wrapper) return;
+  wrapper.querySelector('.product-view-actions')?.remove();
+  const actions = renderStaticViewActions();
+  if (actions) wrapper.append(actions);
+}
 function renderStaticView(expression, { interactive }) {
   const screen = currentScreen();
-  const selected = interactive && state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
-  const destination = selected ? destinationForElement(selected) : null;
-  const splitBinding = interactive && selected ? (screen.view.interactionBindings ?? []).find((binding) => binding.kind === 'SPLIT' && binding.elementRef === selected.ref) ?? null : null;
   const frame = h('iframe', {
     class: 'product-view-frame',
     title: `${screen.label} · Product-owned static view`,
@@ -2230,17 +2259,8 @@ function renderStaticView(expression, { interactive }) {
   frame.srcdoc = staticViewDocument(screen.view);
   frame.addEventListener('load', () => bindStaticView(frame, expression, { interactive }), { once: true });
   if (!interactive) frame.style.pointerEvents = 'none';
-  const actions = interactive && (destination || splitBinding)
-    ? h('div', { class: 'product-view-actions' },
-        splitBinding ? renderStaticSplitControl(splitBinding) : null,
-        destination ? h('button', {
-          class: 'tool product-view-travel',
-          type: 'button',
-          title: destination.title,
-          onclick: (event) => { event.stopPropagation(); destination.go(); },
-        }, destination.label) : null)
-    : null;
-  return h('div', { class: 'product-view', 'aria-label': `${screen.label} Product view · ${expression.where} · ${expression.what}` },
+  const actions = interactive ? renderStaticViewActions() : null;
+  return h('div', { class: `product-view${interactive ? ' current-product-view' : ''}`, 'aria-label': `${screen.label} Product view · ${expression.where} · ${expression.what}` },
     frame,
     actions,
     interactive ? h('p', { class: 'product-view-note' }, 'Product view · static HTML/CSS · no Product JavaScript') : null);
@@ -2493,10 +2513,12 @@ function realizationSection(screen) {
   return h('section', { class: 'struct-section', role: 'tree', 'aria-label': 'Realization' }, header, rows);
 }
 
+function renderStructureFace() {
+  return h('div', { class: 'face back', dataset: { face: 'STRUCTURE' } }, renderStructure(), h('span', { class: 'spine' }, 'Back: Surface'));
+}
 function renderExperienceSide() {
   const front = h('div', { class: 'face front', dataset: { face: 'SURFACE' } }, renderSurface(), h('span', { class: 'spine' }, 'Back: Structure'));
-  const back = h('div', { class: 'face back', dataset: { face: 'STRUCTURE' } }, renderStructure(), h('span', { class: 'spine' }, 'Back: Surface'));
-  return renderSide('EXPERIENCE', 'Experience', ['SURFACE', 'STRUCTURE'], front, back, 'Swipe for expressions · right-click to flip');
+  return renderSide('EXPERIENCE', 'Experience', ['SURFACE', 'STRUCTURE'], front, renderStructureFace(), 'Swipe for expressions · right-click to flip');
 }
 
 /* ---------- Behavior side ---------- */
@@ -3507,6 +3529,56 @@ function placeSurfaceFloaters() {
 }
 
 /* ---------- render ---------- */
+function refreshStaticViewInspectionMarks(doc, view) {
+  for (const node of doc.querySelectorAll('[data-vex-lens-selected]')) node.removeAttribute('data-vex-lens-selected');
+  for (const node of doc.querySelectorAll('[data-vex-lens-ancestor]')) node.removeAttribute('data-vex-lens-ancestor');
+  const marks = selectionPathRefs();
+  for (const ref of marks.ancestors) for (const node of staticViewNodes(doc, view, ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-ancestor', '');
+  if (marks.selected) {
+    for (const node of staticViewNodes(doc, view, marks.selected, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-selected', '');
+    rememberStaticViewPresentation(doc, view, marks.selected);
+  } else {
+    state.presentationRules = null;
+  }
+}
+function refreshStaticSelectionInPlace() {
+  const screen = currentScreen();
+  if (!screen?.view || !refs.main || state.overlay) return false;
+  const wrapper = refs.main.querySelector('.current-product-view');
+  const frame = wrapper?.querySelector('.product-view-frame');
+  const doc = frame?.contentDocument;
+  if (!wrapper || !doc) return false;
+
+  refreshStaticViewInspectionMarks(doc, screen.view);
+  refreshStaticViewActions(wrapper);
+
+  const experience = refs.main.querySelector('.side[data-side="EXPERIENCE"]');
+  const oldStructure = experience?.querySelector('.face[data-face="STRUCTURE"]');
+  if (oldStructure) {
+    const nextStructure = renderStructureFace();
+    oldStructure.replaceWith(nextStructure);
+    nextStructure.querySelector('.structure')?.addEventListener('scroll', scheduleBridge, { passive: true });
+  }
+
+  const oldBehavior = refs.main.querySelector('.side[data-side="BEHAVIOR"]');
+  if (oldBehavior) oldBehavior.replaceWith(renderBehaviorSide());
+
+  const oldTray = document.querySelector('.lens > .tray');
+  if (oldTray) oldTray.replaceWith(renderTray());
+
+  applyFlipState();
+  syncUrl();
+  requestAnimationFrame(() => {
+    applyCamera('BEHAVIOR');
+    applyCamera('DEPTH');
+    if (state.selected?.kind === 'ELEMENT' && state.faces.EXPERIENCE === 'STRUCTURE') {
+      document.querySelector(`.face[data-face="STRUCTURE"] [data-ref="${CSS.escape(state.selected.ref)}"]`)?.scrollIntoView({ block: 'nearest' });
+    }
+    placeSurfaceFloaters();
+    drawBridge();
+  });
+  return true;
+}
 function syncUrl() {
   const next = new URLSearchParams(location.search);
   const subject = currentSubject();
