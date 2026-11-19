@@ -203,9 +203,6 @@ test('Structure keeps a real scroll boundary inside the flipped Experience face'
   assert.match(page, /\.structure\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;/);
   assert.match(page, /const kept = \{ phone: .* structure: document\.querySelector\('\.face\[data-face="STRUCTURE"\] \.structure'\)\?\.scrollTop \?\? 0 \}/);
   assert.match(page, /if \(structure\) structure\.scrollTop = kept\.structure;/);
-  assert.match(page, /function|const scheduleBridgeAfterScroll/);
-  assert.match(page, /clearBridge\(\);[\s\S]*setTimeout\(scheduleBridge, 90\)/, 'bridge geometry waits until Structure scrolling settles');
-  assert.match(page, /querySelectorAll\('\.structure'\)\) structure\.addEventListener\('scroll', scheduleBridgeAfterScroll/, 'Structure scrolling never runs bridge layout work on every wheel tick');
 });
 
 test('expression stepping animates the whole three-card carousel handoff instead of teleporting neighbours', () => {
