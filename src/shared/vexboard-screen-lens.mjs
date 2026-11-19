@@ -142,22 +142,49 @@ function normalizeScreenView(input, screenRef) {
     return { presenceRef, value, operations };
   });
   const interactionBindings = (input.interactionBindings || []).map((binding, bindingIndex) => {
-    if (binding?.kind !== 'SPLIT') fail(`${screenRef} view interactionBindings[${bindingIndex}] kind is unknown`);
-    const styleProperty = text(binding.styleProperty, `${screenRef} view interactionBindings[${bindingIndex}] styleProperty`);
-    if (!/^--[a-z0-9]+(?:-[a-z0-9]+)*$/.test(styleProperty)) {
-      fail(`${screenRef} view interactionBindings[${bindingIndex}] styleProperty must be a CSS custom property`);
+    const kind = text(binding?.kind, `${screenRef} view interactionBindings[${bindingIndex}] kind`);
+    if (kind === 'SPLIT') {
+      const styleProperty = text(binding.styleProperty, `${screenRef} view interactionBindings[${bindingIndex}] styleProperty`);
+      if (!/^--[a-z0-9]+(?:-[a-z0-9]+)*$/.test(styleProperty)) {
+        fail(`${screenRef} view interactionBindings[${bindingIndex}] styleProperty must be a CSS custom property`);
+      }
+      return {
+        kind,
+        elementRef: text(binding.elementRef, `${screenRef} view interactionBindings[${bindingIndex}] elementRef`),
+        targetRef: text(binding.targetRef, `${screenRef} view interactionBindings[${bindingIndex}] targetRef`),
+        beforeRef: text(binding.beforeRef, `${screenRef} view interactionBindings[${bindingIndex}] beforeRef`),
+        afterRef: text(binding.afterRef, `${screenRef} view interactionBindings[${bindingIndex}] afterRef`),
+        styleProperty,
+        collapsedAttribute: stateAttribute(binding.collapsedAttribute, `${screenRef} view interactionBindings[${bindingIndex}] collapsedAttribute`),
+        collapsedBeforeValue: text(binding.collapsedBeforeValue, `${screenRef} view interactionBindings[${bindingIndex}] collapsedBeforeValue`),
+        collapsedAfterValue: text(binding.collapsedAfterValue, `${screenRef} view interactionBindings[${bindingIndex}] collapsedAfterValue`),
+      };
     }
-    return {
-      kind: 'SPLIT',
-      elementRef: text(binding.elementRef, `${screenRef} view interactionBindings[${bindingIndex}] elementRef`),
-      targetRef: text(binding.targetRef, `${screenRef} view interactionBindings[${bindingIndex}] targetRef`),
-      beforeRef: text(binding.beforeRef, `${screenRef} view interactionBindings[${bindingIndex}] beforeRef`),
-      afterRef: text(binding.afterRef, `${screenRef} view interactionBindings[${bindingIndex}] afterRef`),
-      styleProperty,
-      collapsedAttribute: stateAttribute(binding.collapsedAttribute, `${screenRef} view interactionBindings[${bindingIndex}] collapsedAttribute`),
-      collapsedBeforeValue: text(binding.collapsedBeforeValue, `${screenRef} view interactionBindings[${bindingIndex}] collapsedBeforeValue`),
-      collapsedAfterValue: text(binding.collapsedAfterValue, `${screenRef} view interactionBindings[${bindingIndex}] collapsedAfterValue`),
-    };
+    if (kind === 'SELECT') {
+      const options = (binding.options || []).map((entry, optionIndex) => ({
+        value: text(entry?.value, `${screenRef} view interactionBindings[${bindingIndex}] options[${optionIndex}] value`),
+        outcome: text(entry?.outcome, `${screenRef} view interactionBindings[${bindingIndex}] options[${optionIndex}] outcome`),
+      }));
+      if (!options.length) fail(`${screenRef} view interactionBindings[${bindingIndex}] SELECT needs options`);
+      if (new Set(options.map((entry) => entry.value)).size !== options.length) fail(`${screenRef} view interactionBindings[${bindingIndex}] SELECT option values must be unique`);
+      return {
+        kind,
+        elementRef: text(binding.elementRef, `${screenRef} view interactionBindings[${bindingIndex}] elementRef`),
+        presenceRef: text(binding.presenceRef, `${screenRef} view interactionBindings[${bindingIndex}] presenceRef`),
+        options,
+      };
+    }
+    if (kind === 'TOGGLE') {
+      return {
+        kind,
+        elementRef: text(binding.elementRef, `${screenRef} view interactionBindings[${bindingIndex}] elementRef`),
+        targetRef: text(binding.targetRef, `${screenRef} view interactionBindings[${bindingIndex}] targetRef`),
+        attribute: stateAttribute(binding.attribute, `${screenRef} view interactionBindings[${bindingIndex}] attribute`),
+        closedValue: String(binding.closedValue ?? ''),
+        openValue: String(binding.openValue ?? ''),
+      };
+    }
+    fail(`${screenRef} view interactionBindings[${bindingIndex}] kind ${kind} is unknown`);
   });
   return {
     kind: 'STATIC_HTML_CSS',
@@ -354,12 +381,27 @@ export function normalizeScreenLens(input) {
       }
     }
     for (const binding of screen.view?.interactionBindings ?? []) {
-      for (const [label, ref] of [['element', binding.elementRef], ['target', binding.targetRef], ['before', binding.beforeRef], ['after', binding.afterRef]]) {
-        if (!lensRefs.has(ref)) fail(`${screen.screenRef} view split binding ${label} ${ref} is not a lens ref`);
+      if (binding.kind === 'SPLIT') {
+        for (const [label, ref] of [['element', binding.elementRef], ['target', binding.targetRef], ['before', binding.beforeRef], ['after', binding.afterRef]]) {
+          if (!lensRefs.has(ref)) fail(`${screen.screenRef} view split binding ${label} ${ref} is not a lens ref`);
+        }
+        const handle = screen.elements.find((element) => element.ref === binding.elementRef);
+        if (!handle || handle.kind !== 'HANDLE') fail(`${screen.screenRef} view split binding ${binding.elementRef} is not a HANDLE`);
+        if (!handle.interactions.includes('RESIZE')) fail(`${screen.screenRef} view split binding ${binding.elementRef} does not declare RESIZE`);
+        continue;
       }
-      const handle = screen.elements.find((element) => element.ref === binding.elementRef);
-      if (!handle || handle.kind !== 'HANDLE') fail(`${screen.screenRef} view split binding ${binding.elementRef} is not a HANDLE`);
-      if (!handle.interactions.includes('RESIZE')) fail(`${screen.screenRef} view split binding ${binding.elementRef} does not declare RESIZE`);
+      if (!lensRefs.has(binding.elementRef)) fail(`${screen.screenRef} view ${binding.kind.toLowerCase()} binding element ${binding.elementRef} is not a lens ref`);
+      if (binding.kind === 'SELECT') {
+        const presence = screen.realization?.presence.find((entry) => entry.ref === binding.presenceRef);
+        if (!presence) fail(`${screen.screenRef} view select binding presence ${binding.presenceRef} is not declared`);
+        if (presence.kind !== 'SELECTION') fail(`${screen.screenRef} view select binding presence ${binding.presenceRef} is not a SELECTION`);
+        const outcomes = new Set([presence.defaultRef, ...(presence.choices ?? []).map((choice) => choice.targetRef)].filter(Boolean));
+        for (const option of binding.options) if (!outcomes.has(option.outcome)) fail(`${screen.screenRef} view select option outcome ${option.outcome} is not authored by ${binding.presenceRef}`);
+        continue;
+      }
+      if (binding.kind === 'TOGGLE') {
+        if (!lensRefs.has(binding.targetRef)) fail(`${screen.screenRef} view toggle binding target ${binding.targetRef} is not a lens ref`);
+      }
     }
     const layout = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.layout;
     screen.layout = normalizeScreenLayout(layout, { screenRef: screen.screenRef, elements: screen.elements });
