@@ -345,9 +345,9 @@ basis
   Claude reviewed head
   4aad5e0055cdc2a9fada2f1e63200c7772850a81
 
-current correction head
-  ffe2a4f766429979ebe0be4ba8b82ff414a292af
-  tree 5f9bd93ea7cb2736ce0938357f47554ebc55e105
+current currentized head
+  de8b7e33450545a9ac060c80094b253b75ee9a9c
+  tree fb93cc08becc7ea45b28e3f7011feeed4913428b
 ```
 
 It is exactly three commits / thirteen paths ahead of Claude and remains zero behind that basis:
@@ -373,7 +373,11 @@ Depth 07B is consumed evidence: the source-owned generator reached its intended 
 
 The exact generated-currentization membrane is 19 paths: the main graph/frontier/routes/perturbations/convergence, law-probe plan, law-proof, EXPERIENCE-GRAPH report; three graph/frontier/routes files for each of the three candidate builds; and branches.json / BRANCHES.md. The generated Kotlin probe source is not in the drift set.
 
-The next unconsumed edge is **Depth 08: mutate only those 19 generator-owned paths on the existing #321, prove focused tests + offline verify, make one signed-off commit, and non-force push only if every exact preflight/path predicate remains true**.
+Depth 08 is consumed evidence: exact race/path preflight passed; the source-owned generator changed exactly the 19 paths discovered by Depth 07B; focused tests and offline verification passed; one signed-off commit was created and non-force pushed to the existing #321. The published exact candidate is `de8b7e33450545a9ac060c80094b253b75ee9a9c` / tree `fb93cc08becc7ea45b28e3f7011feeed4913428b`, independently re-observed on GitHub. Inner disposition is correctly `HOSTED_VALIDATION_PENDING`: publication is complete, semantic clearance is not self-issued.
+
+On the published head the generated law proof reports `current=true`, `sourceCurrent=true`, `probeCurrent=true`, with matching evidence/current probe SHA-256s. The human report separates law-cell proof from executed-case counts. Route counts remain 13 CLEARED / 53 FRONTIER_DEBT / 0 HELD / 0 UNKNOWN.
+
+The next unconsumed edge is **Depth 09: whole-candidate ExactHeadSourceOwnerProof of `de8b7e33...` against Claude basis `4aad5e0...`**, covering all Experience Graph-owned tests, offline reproducibility, and a fresh pinned-source `--fetch --check`.
 
 ## Fresh reviewer handoff rule
 
