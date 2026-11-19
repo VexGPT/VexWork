@@ -409,6 +409,10 @@ The concrete examples are intentional judgment tests:
 
 See `CLAUDE-SCREEN-LENS-HANDOFF.md` for exact paths and the fresh-instance decision rules.
 
+The first working build of the graph, its derived routes / test manifests / frontier debt /
+perturbation questions / Relay gate, and executed Family-law proof lives in
+`experience-graph/README.md` (human view: `experience-graph/generated/EXPERIENCE-GRAPH.md`).
+
 ## Claude / Screen Lens relationship
 
 Do **not** create a second Screen Lens ownership lane here.

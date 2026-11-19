@@ -25,7 +25,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { ADAPTER_VERSION, adapterReadPlan, projectAndroidScreenLens } from '../src/core/vexboard-screen-lens-android-adapter.mjs';
-import { advanceBuild, buildFor, normalizeLensCatalog, promoteBuild, subjectFor } from '../src/shared/vexboard-lens-catalog.mjs';
+import { advanceBuild, bindLensBuildSource, buildFor, normalizeLensCatalog, promoteBuild, subjectFor } from '../src/shared/vexboard-lens-catalog.mjs';
 import { faceGraph, normalizeScreenLens, screenMapGraph } from '../src/shared/vexboard-screen-lens.mjs';
 import { layoutCollisions, layoutLensFace } from '../src/shared/vexboard-lens-layout.mjs';
 
@@ -72,6 +72,17 @@ function fetchCheckout(adapter, commit) {
   git(dir, 'remote', 'add', 'origin', adapter.repository.url);
   git(dir, 'config', 'core.sparseCheckout', 'true');
   fs.writeFileSync(path.join(dir, '.git', 'info', 'sparse-checkout'), `${[...adapter.read.map((entry) => `/${rootPath(adapter, entry)}`), ...(adapter.listings ?? []).map((entry) => `/${rootPath(adapter, entry)}`), ...(adapter.stringResources ?? []).map((resource) => `/${resource}`)].join('\n')}\n`);
+  git(dir, 'fetch', '-q', '--depth', '1', 'origin', commit);
+  git(dir, 'checkout', '-q', 'FETCH_HEAD');
+  return dir;
+}
+
+function fetchExportedCheckout(subject, commit) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'screen-lens-export-'));
+  git(dir, 'init', '-q');
+  git(dir, 'remote', 'add', 'origin', subject.repository.url);
+  git(dir, 'config', 'core.sparseCheckout', 'true');
+  fs.writeFileSync(path.join(dir, '.git', 'info', 'sparse-checkout'), `/${subject.lens.exportedLens}\n`);
   git(dir, 'fetch', '-q', '--depth', '1', 'origin', commit);
   git(dir, 'checkout', '-q', 'FETCH_HEAD');
   return dir;
@@ -165,8 +176,9 @@ function context(args) {
   if (!buildFor(subject, buildRef)) throw new Error(`${subject.label} has no ${buildRef} build`);
   return {
     legacy: false, rawCatalog, catalog, subject, buildRef,
-    adapterFile: lensFile(subject.lens.adapter),
+    adapterFile: subject.lens.adapter ? lensFile(subject.lens.adapter) : null,
     overlayFile: subject.lens.overlay ? lensFile(subject.lens.overlay) : null,
+    exportedLens: subject.lens.exportedLens,
   };
 }
 
@@ -177,6 +189,13 @@ function verifyFile(file, adapter, overlay, commit) {
   const stale = Object.keys(expected).filter((key) => expected[key] !== actual[key]);
   normalizeScreenLens(committed);
   return { stale, problems: verifyLayouts(committed), sourceCommit: actual.sourceCommit };
+}
+
+function verifyExportedFile(file, build) {
+  const text = fs.readFileSync(file, 'utf8');
+  const lens = normalizeScreenLens(bindLensBuildSource(JSON.parse(text), build));
+  const stale = gitBlobSha1(text) === build.sourceBlobSha1 ? [] : ['sourceBlobSha1'];
+  return { stale, problems: verifyLayouts(lens), sourceCommit: build.commit };
 }
 
 function verify(args) {
@@ -196,12 +215,14 @@ function verify(args) {
   const failures = [];
   for (const subject of catalog.subjects) {
     if (subject.lens.status !== 'GENERATED' || (args.subject && subject.slug !== args.subject)) continue;
-    const adapter = readJson(lensFile(subject.lens.adapter));
+    const adapter = subject.lens.adapter ? readJson(lensFile(subject.lens.adapter)) : null;
     const overlay = subject.lens.overlay ? readJson(lensFile(subject.lens.overlay)) : null;
     const stable = buildFor(subject, 'stable');
-    if (adapter.repository.commit !== stable.commit) failures.push(`${subject.slug}: adapter pin ${adapter.repository.commit.slice(0, 7)} disagrees with Stable ${stable.commit.slice(0, 7)} in ${CATALOG}`);
+    if (adapter && adapter.repository.commit !== stable.commit) failures.push(`${subject.slug}: adapter pin ${adapter.repository.commit.slice(0, 7)} disagrees with Stable ${stable.commit.slice(0, 7)} in ${CATALOG}`);
     for (const build of subject.lens.builds) {
-      const result = verifyFile(lensFile(build.lens), adapter, overlay, build.commit);
+      const result = subject.lens.exportedLens
+        ? verifyExportedFile(lensFile(build.lens), build)
+        : verifyFile(lensFile(build.lens), adapter, overlay, build.commit);
       const state = result.stale.length || result.problems.length ? 'STALE' : 'PASS';
       builds.push({ subject: subject.slug, build: build.buildRef, commit: build.commit, lens: `${LENS_DIR}/${build.lens}`, state, ...(state === 'PASS' ? {} : { stale: result.stale, problems: result.problems }) });
       if (state !== 'PASS') failures.push(`${subject.slug} ${build.buildRef}: ${[...result.stale.map((key) => `${key} differs`), ...result.problems].join('; ')}`);
@@ -226,8 +247,10 @@ function promote(args) {
   const commit = buildFor(subjectFor(normalizeLensCatalog(result.catalog), ctx.subject.slug), 'stable').commit;
   if (result.copy) fs.copyFileSync(lensFile(result.copy.from), lensFile(result.copy.to));
   if (result.retire) fs.rmSync(lensFile(result.retire), { force: true });
-  const adapter = readJson(ctx.adapterFile);
-  fs.writeFileSync(ctx.adapterFile, stable(pinTo(adapter, commit)));
+  if (ctx.adapterFile) {
+    const adapter = readJson(ctx.adapterFile);
+    fs.writeFileSync(ctx.adapterFile, stable(pinTo(adapter, commit)));
+  }
   fs.writeFileSync(path.join(ROOT, CATALOG), stable(result.catalog));
   console.log(JSON.stringify({ state: 'PASS', promoted: true, subject: ctx.subject.slug, from: before, to: commit, next: 'npm run lens:verify, then commit the catalog, adapter and lens' }, null, 2));
 }
@@ -272,15 +295,17 @@ function main() {
   if (args.flags.has('promote')) return promote(args);
 
   const ctx = context(args);
-  const adapterText = fs.readFileSync(ctx.adapterFile, 'utf8');
-  const adapter = JSON.parse(adapterText);
+  const exported = Boolean(!ctx.legacy && ctx.exportedLens);
+  const adapterText = ctx.adapterFile ? fs.readFileSync(ctx.adapterFile, 'utf8') : null;
+  const adapter = adapterText ? JSON.parse(adapterText) : null;
   const overlay = ctx.overlayFile ? readJson(ctx.overlayFile) : null;
   const build = ctx.legacy ? null : buildFor(ctx.subject, ctx.buildRef);
   const moving = Boolean(build && build.buildRef !== 'stable' && !args.commit && !args.flags.has('check') && !args.source);
+  const repositoryUrl = exported ? ctx.subject.repository.url : adapter.repository.url;
 
-  let commit = args.commit ?? (moving ? remoteForwardHead(adapter.repository.url, build.commit, build.branch ?? ctx.subject.repository.defaultBranch) : (build?.commit ?? adapter.repository.commit));
+  let commit = args.commit ?? (moving ? remoteForwardHead(repositoryUrl, build.commit, build.branch ?? ctx.subject.repository.defaultBranch) : (build?.commit ?? adapter.repository.commit));
   let source = args.source ? path.resolve(args.source) : null;
-  if (!source && args.flags.has('fetch')) source = fetchCheckout(adapter, commit);
+  if (!source && args.flags.has('fetch')) source = exported ? fetchExportedCheckout(ctx.subject, commit) : fetchCheckout(adapter, commit);
   if (!source) throw new Error('pass --source <checkout>, --fetch, --verify or --promote');
   let observedAt = null;
   let head = null;
@@ -298,12 +323,23 @@ function main() {
   }
   if (!/^[0-9a-f]{40}$/.test(commit)) throw new Error(`could not resolve ${commit} to a full commit SHA`);
 
-  const pinned = pinTo(adapter, commit);
-  const { lens, report } = projectAndroidScreenLens({ adapter: pinned, files: readSources(pinned, source), listing: readListing(pinned, source), overlay, observedAt });
-  normalizeScreenLens(lens);
+  let lens;
+  let report = null;
+  let output;
+  let sourceBlobSha1 = null;
+  if (exported) {
+    output = fs.readFileSync(path.join(source, ctx.exportedLens), 'utf8');
+    sourceBlobSha1 = gitBlobSha1(output);
+    lens = normalizeScreenLens(bindLensBuildSource(JSON.parse(output), { commit, observedAt }));
+  } else {
+    const pinned = pinTo(adapter, commit);
+    const projected = projectAndroidScreenLens({ adapter: pinned, files: readSources(pinned, source), listing: readListing(pinned, source), overlay, observedAt });
+    lens = normalizeScreenLens(projected.lens);
+    report = projected.report;
+    output = stable({ ...projected.lens, provenance: provenanceFor(pinned, overlay) });
+  }
   const problems = verifyLayouts(lens);
   if (problems.length) throw new Error(`generated lens has layout overlaps:\n${problems.join('\n')}`);
-  const output = stable({ ...lens, provenance: provenanceFor(pinned, overlay) });
 
   // Decide which file this build writes and how the pointers move.
   let outFile = ctx.outFile;
@@ -317,17 +353,37 @@ function main() {
       outFile = lensFile(build.lens);
       nextCatalog = stable(ctx.rawCatalog);
     } else {
-      const moved = advanceBuild(ctx.rawCatalog, ctx.subject.slug, build.buildRef, { commit, observedAt, separateLens: `${ctx.subject.slug}.${build.buildRef}.screen-lens.json` });
+      const moved = advanceBuild(ctx.rawCatalog, ctx.subject.slug, build.buildRef, {
+        commit,
+        observedAt,
+        separateLens: `${ctx.subject.slug}.${build.buildRef}.screen-lens.json`,
+        sourceBlobSha1,
+      });
       outFile = lensFile(moved.lens);
       shared = !moved.write;
       retire = moved.retire;
       nextCatalog = stable(moved.catalog);
     }
   }
-  const summary = { state: 'PASS', subject: ctx.subject?.slug ?? null, build: build?.buildRef ?? null, lens: path.relative(ROOT, outFile), sourceCommit: commit, sharesStable: shared, screens: report.screens, elements: report.elements, pathways: report.pathways, familyBonds: report.bonds.length, held: report.held.length, unknownCalls: report.unknownCalls.length, ...(report.realization ? { realization: report.realization } : {}), ...(report.examples ? { examples: report.examples } : {}) };
+  const summary = {
+    state: 'PASS',
+    subject: ctx.subject?.slug ?? null,
+    build: build?.buildRef ?? null,
+    lens: path.relative(ROOT, outFile),
+    sourceCommit: commit,
+    sharesStable: shared,
+    screens: report?.screens ?? lens.screens.length,
+    elements: report?.elements ?? lens.screens.reduce((sum, screen) => sum + screen.elements.length, 0),
+    pathways: report?.pathways ?? lens.pathways.length,
+    familyBonds: report?.bonds?.length ?? lens.pathways.filter((pathway) => pathway.disposition === 'SCAE_FAMILY').length,
+    held: report?.held?.length ?? 0,
+    unknownCalls: report?.unknownCalls?.length ?? 0,
+    ...(report?.realization ? { realization: report.realization } : {}),
+    ...(report?.examples ? { examples: report.examples } : {}),
+  };
   const current = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf8') : '';
   const catalogText = ctx.legacy ? null : fs.readFileSync(path.join(ROOT, CATALOG), 'utf8');
-  const adapterChanged = repinAdapter && stable(adapter) !== stable(pinned);
+  const adapterChanged = repinAdapter && !exported && stable(adapter) !== stable(pinTo(adapter, commit));
 
   if (args.flags.has('check')) {
     const catalogChanged = !ctx.legacy && stable(JSON.parse(catalogText)) !== nextCatalog;
@@ -341,7 +397,7 @@ function main() {
   if (shared && current !== output) throw new Error(`Main points at Stable's commit but Stable's lens is stale. Regenerate Stable first: node scripts/build-screen-lens.mjs --fetch`);
   if (!shared) fs.writeFileSync(outFile, output);
   if (retire) fs.rmSync(lensFile(retire), { force: true });
-  if (adapterChanged) fs.writeFileSync(ctx.adapterFile, stable(pinned));
+  if (adapterChanged) fs.writeFileSync(ctx.adapterFile, stable(pinTo(adapter, commit)));
   if (nextCatalog && nextCatalog !== stable(JSON.parse(catalogText))) fs.writeFileSync(path.join(ROOT, CATALOG), nextCatalog);
   console.log(JSON.stringify(args.flags.has('report') ? { ...summary, report } : summary, null, 2));
 }
