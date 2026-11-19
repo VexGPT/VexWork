@@ -20,7 +20,7 @@ Token law, readable contrast in both themes, and the Vex Context relationship le
 
 Route counts: main {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0} → candidate {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0}.
 
-Law and manifestation edges: +0 / −0 / changed 0. Main's executed law proof stays valid (Family law unchanged).
+Law and manifestation edges: +0 / −0 / changed 0. Main's executed law proof stays valid (Family law + probe identity unchanged).
 
 ## `candidate-keyed-elements` — Keyed elements: identity through owners
 
@@ -28,7 +28,7 @@ Workspace dataKeys owned in main source, Lens elements named by their keys, type
 
 Route counts: main {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0} → candidate {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0}.
 
-Law and manifestation edges: +5 / −0 / changed 0. Main's executed law proof stays valid (Family law unchanged).
+Law and manifestation edges: +5 / −0 / changed 0. Main's executed law proof stays valid (Family law + probe identity unchanged).
 
 ## `candidate-localization` — Localization: script-aware and complete
 
@@ -36,6 +36,6 @@ zh-Hant as its own screen language, complete-only serving, workspace and release
 
 Route counts: main {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0} → candidate {"CLEARED":13,"FRONTIER_DEBT":53,"HELD":0,"UNKNOWN":0}.
 
-Law and manifestation edges: +0 / −0 / changed 0. Main's executed law proof stays valid (Family law unchanged).
+Law and manifestation edges: +0 / −0 / changed 0. Main's executed law proof stays valid (Family law + probe identity unchanged).
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-PROD][E2E][EXPERIENCE-GRAPH][BRANCHES] -->

@@ -253,7 +253,8 @@
         "path": "src/core/experience-graph-law-probe.mjs",
         "blobSha1": "27adc4dd23e5786fc4ee8511e84c934ce9447f65"
       }
-    ]
+    ],
+    "lawProbeSourceSha256": "a4ffa41a3a1ebb2c8a95695ed1b5ac6c185177158266e94a81cb1a82e9fa332d"
   },
   "nodes": [
     {
