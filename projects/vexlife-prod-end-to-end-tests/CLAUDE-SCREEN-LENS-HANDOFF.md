@@ -24,24 +24,18 @@ projects/vexboard/SCREEN-LENS-PROJECTABILITY.md
 VexLife-Prod:
 
 ~~~text
-main 98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0
+main 605c635ae2d034a1c4d605e829faa4813de071c3
 src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt
 docs/lens/vexlife-prod.screen-lens.json
 PR #343 E2E excavation
-~~~
-
-Current-main Product pressure:
-
-~~~text
-#310 VoiceInput / local ASR (merged)
-#331 reply-language scripts / Composer output (merged)
 ~~~
 
 Active Product pressure to read but not promote to current main:
 
 ~~~text
 #251 Vex Context / Context Profiles
-#343 E2E validation excavation
+#310 VoiceInput / local ASR
+#331 reply-language scripts / Composer output
 ~~~
 
 
@@ -899,7 +893,7 @@ From those, generate candidate perturbation routes.
 
 ### Patient-zero examples
 
-**VoiceInput (current main; merged #310):**
+**VoiceInput (#310 active candidate):**
 
 ~~~text
 READY + START
