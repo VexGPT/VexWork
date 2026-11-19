@@ -12,7 +12,7 @@
 //
 // Pure: no file system, network or clock.
 
-import { graphIndex, sha256, canonicalJson } from './experience-graph.mjs';
+import { graphIndex, lawCellExtractionDebt, sha256, canonicalJson } from './experience-graph.mjs';
 
 export const EXPERIENCE_DERIVATION_SCHEMA = 'vexwork.experience-graph.derivation/v1';
 
@@ -434,6 +434,7 @@ export function deriveRoutes(graph, frontier) {
     for (const state of states) {
       for (const control of controls) {
         if (offered.has(`${state.ref}|${control.ref}`)) continue;
+        if (lawCellExtractionDebt(graph, family.ref, state.detail.symbol, control.detail.symbol).length) continue;
         cases.push({
           caseRef: `case:reject:${state.ref}:${control.detail.symbol}`,
           routeRef: null,

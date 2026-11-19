@@ -515,6 +515,13 @@ export function graphIndex(graph) {
   return { nodes, outgoing, incoming, edges: new Map(graph.edges.map((edge) => [edge.ref, edge])) };
 }
 
+// Extraction debt is semantic unreadability, not negative law. Downstream projections use this
+// exact cell query before interpreting the absence of an OFFERS edge as a lawful REJECT.
+export function lawCellExtractionDebt(graph, family, stateSymbol, controlSymbol) {
+  const cell = `${stateSymbol}×${controlSymbol}`;
+  return (graph.extractionDebt ?? []).filter((row) => row.family === family && row.cell === cell);
+}
+
 // Reverse: what must be true / what a human does to reach `ref`. Forward: what follows from it.
 const REVERSE_KINDS = new Set(['OFFERS', 'MANIFESTS', 'ADMITS_STATE', 'OBSERVES_AS', 'RETURNS_TO', 'REALIZED_BY', 'REQUESTS_EFFECT', 'CAPTURED_AT_SEND', 'CONSUMED_BY']);
 const FORWARD_KINDS = new Set(['REQUESTS_EFFECT', 'ADMITS_STATE', 'REALIZED_BY', 'RETURNS_TO', 'OBSERVES_AS', 'PROJECTS_TO', 'CONSUMED_BY', 'CAPTURED_AT_SEND', 'CONVERGES_IN', 'DERIVES_RELATIONSHIP']);

@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import { readFamilyLaw } from '../src/core/experience-graph-kotlin-family.mjs';
 import { LAW_EVIDENCE_SCHEMA, compareLawEvidence, indexEnums, lawEvidence, planLawProbe } from '../src/core/experience-graph-law-probe.mjs';
 import { deriveFrontier, deriveRoutes } from '../src/core/experience-graph-derivation.mjs';
 import { lawFingerprint, normalizeExperienceGraph } from '../src/core/experience-graph.mjs';
 import { fixtureGraph, fixtureLaws } from './fixtures/experience-graph/graph.mjs';
-import { FAMILY_SOURCES, KIND_CONTRACT } from './fixtures/experience-graph/fixtures.mjs';
+import { FAMILY_SOURCES, KIND_CONTRACT, UNREADABLE } from './fixtures/experience-graph/fixtures.mjs';
 
 function plan() {
   const files = [...FAMILY_SOURCES, { path: 'src/commonMain/kotlin/vexlife/kind/VexLifeKindContract.kt', text: KIND_CONTRACT }];
@@ -91,6 +92,19 @@ test('law evidence passes when executed outcomes land inside the graph and fails
   assert.match(proof.failures[0].detail, /graph does not allow/);
   assert.equal(proof.cases.find((row) => row.caseRef === 'case:VexLifeSightFamily.Ready:Engage:0').status, 'PASS');
   assert.equal(proof.cases.find((row) => row.caseRef.startsWith('case:VexLifeSpeechModelsFamily')).status, 'NOT_RUN');
+
+  const oddGraph = fixtureGraph({
+    families: [...fixtureLaws(), readFamilyLaw({ path: 'src/commonMain/kotlin/vexlife/odd/VexLifeOddFamily.kt', text: UNREADABLE })],
+  });
+  const oddDerivation = deriveRoutes(oddGraph, deriveFrontier(oddGraph));
+  const odd = compareLawEvidence({
+    graph: oddGraph,
+    derivation: oddDerivation,
+    evidence: evidenceFor(oddGraph, [row('VexLifeOddFamily', 'One', 'Wait', 'REJECT')]),
+  });
+  const unread = odd.cells.find((cell) => cell.state === 'VexLifeOddFamily.One' && cell.control === 'VexLifeOddFamily.Wait');
+  assert.equal(unread.status, 'NOT_RUN', 'executed evidence does not turn unread graph law into a REJECT proof');
+  assert.match(unread.detail, /graph extraction debt blocks semantic comparison/);
 
   const rejected = compareLawEvidence({ graph, derivation, evidence: evidenceFor(graph, [row('VexLifeQuietFamily', 'Quiet', 'End', { error: 'IllegalArgumentException: bad' })]) });
   assert.equal(rejected.cells.find((cell) => cell.state === 'VexLifeQuietFamily.Quiet' && cell.control === 'VexLifeQuietFamily.End').status, 'FIXTURE_REJECTED');

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import { ANSWER_STATES, PERTURBATION_CLASSES, PERTURBATION_EVIDENCE_SCHEMA, derivePerturbations } from '../src/core/experience-graph-perturbation.mjs';
+import { normalizeExperienceGraph } from '../src/core/experience-graph.mjs';
 import { fixtureGraph } from './fixtures/experience-graph/graph.mjs';
 
 const byRef = (result) => Object.fromEntries(result.questions.map((row) => [row.perturbationRef, row]));
@@ -65,6 +66,20 @@ test('axis busy guards, Send capture law and idempotency identity generate their
   assert.deepEqual(Object.keys(result.notGenerated), ['TEARDOWN', 'ORDERING']);
   assert.equal(result.counts.TEARDOWN, 0);
   assert.equal(result.counts.ORDERING, 0);
+});
+
+test('extraction debt blocks missing OFFERS from becoming an expected REJECT perturbation', () => {
+  const graph = fixtureGraph();
+  const unread = normalizeExperienceGraph({
+    ...graph,
+    extractionDebt: [
+      ...graph.extractionDebt,
+      { family: 'VexLifeDictationFamily', kind: 'UNREAD_ACT_FORM', detail: 'fixture delegated law', cell: 'Requesting×Start' },
+    ],
+  });
+  const row = byRef(derivePerturbations(unread))['perturbation:REENTRY:VexLifeDictationFamily:Ready+Start'];
+  assert.equal(row.answerState, 'UNKNOWN');
+  assert.match(row.expected, /extraction debt blocks a REJECT\/ACT conclusion/);
 });
 
 test('source-review evidence answers a question only while its source blob is current', () => {

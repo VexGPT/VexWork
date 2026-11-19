@@ -13,7 +13,7 @@
 // Pure: plans and compares; it does not run Kotlin itself.
 
 import { matchClose } from './vexboard-kotlin-source.mjs';
-import { canonicalJson, graphIndex, lawFingerprint, sha256 } from './experience-graph.mjs';
+import { canonicalJson, graphIndex, lawCellExtractionDebt, lawFingerprint, sha256 } from './experience-graph.mjs';
 
 export const LAW_PROBE_SCHEMA = 'vexwork.experience-graph.law-probe/v1';
 export const LAW_EVIDENCE_SCHEMA = 'vexwork.experience-graph.law-evidence/v1';
@@ -271,9 +271,13 @@ ${calls}
 
 // ---- evidence comparison ---------------------------------------------------------------------
 
-function expectedOutcomes(index, family, stateRef, controlRef) {
+function expectedOutcomes(graph, index, family, stateRef, controlRef) {
+  const stateSymbol = index.nodes.get(stateRef)?.detail?.symbol ?? stateRef.split('.').at(-1);
+  const controlSymbol = index.nodes.get(controlRef)?.detail?.symbol ?? controlRef.split('.').at(-1);
+  const unread = lawCellExtractionDebt(graph, family, stateSymbol, controlSymbol);
+  if (unread.length) return { allowed: [], lawful: [], guarded: false, unread };
   const offers = index.edges.get(`edge:OFFERS:${stateRef}:${controlRef}`);
-  if (!offers) return { allowed: [{ kind: 'REJECT' }], lawful: [], guarded: false };
+  if (!offers) return { allowed: [{ kind: 'REJECT' }], lawful: [], guarded: false, unread: [] };
   const rows = (index.outgoing.get(controlRef) ?? []).filter((edge) => edge.whenState === stateRef && (edge.kind === 'REQUESTS_EFFECT' || edge.kind === 'ADMITS_STATE'));
   const byQualifier = new Map();
   for (const edge of rows) {
@@ -315,11 +319,14 @@ export function compareLawEvidence({ graph, derivation, evidence }) {
     for (const state of states) {
       for (const control of controls) {
         const rows = rowsByCell.get(`${family.ref}|${state.detail.symbol}|${control.detail.symbol}`) ?? [];
-        const expected = expectedOutcomes(index, family.ref, state.ref, control.ref);
+        const expected = expectedOutcomes(graph, index, family.ref, state.ref, control.ref);
         const executed = rows.filter((row) => !(row.result && typeof row.result === 'object' && 'error' in row.result));
         let status;
         let detail = null;
-        if (!rows.length) {
+        if (expected.unread?.length) {
+          status = 'NOT_RUN';
+          detail = `graph extraction debt blocks semantic comparison: ${expected.unread.map((row) => row.kind).join(', ')}`;
+        } else if (!rows.length) {
           status = 'NOT_RUN';
           const reason = !plan ? 'Family not planned' : !plan.runnable ? plan.notRunnable ?? 'no runnable fixtures'
             : plan.states.find((entry) => entry.variant === state.detail.symbol)?.notFixturable

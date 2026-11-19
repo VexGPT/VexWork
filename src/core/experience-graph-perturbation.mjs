@@ -12,7 +12,7 @@
 //
 // Pure: no file system, network or clock.
 
-import { graphIndex } from './experience-graph.mjs';
+import { graphIndex, lawCellExtractionDebt } from './experience-graph.mjs';
 
 export const EXPERIENCE_PERTURBATION_SCHEMA = 'vexwork.experience-graph.perturbation/v1';
 export const PERTURBATION_EVIDENCE_SCHEMA = 'vexwork.experience-graph.perturbation-evidence/v1';
@@ -26,9 +26,13 @@ export const ANSWER_STATES = Object.freeze(['EXPECTED_FROM_LAW', 'ANSWERED_BY_EV
 const compare = (left, right) => (left < right ? -1 : left > right ? 1 : 0);
 const short = (ref) => ref.split('.').slice(1).join('.') || ref;
 
-function lawOutcome(index, stateRef, controlRef) {
+function lawOutcome(graph, index, family, stateRef, controlRef) {
+  const stateSymbol = index.nodes.get(stateRef)?.detail?.symbol ?? stateRef.split('.').at(-1);
+  const controlSymbol = index.nodes.get(controlRef)?.detail?.symbol ?? controlRef.split('.').at(-1);
+  const unread = lawCellExtractionDebt(graph, family, stateSymbol, controlSymbol);
+  if (unread.length) return { kind: 'UNKNOWN', effects: [], admitted: [], guarded: false, unread };
   const offers = index.edges.get(`edge:OFFERS:${stateRef}:${controlRef}`);
-  if (!offers) return { kind: 'REJECT', effects: [], admitted: [], guarded: false };
+  if (!offers) return { kind: 'REJECT', effects: [], admitted: [], guarded: false, unread: [] };
   const rows = (index.outgoing.get(controlRef) ?? []).filter((edge) => edge.whenState === stateRef);
   return {
     kind: rows.some((edge) => edge.kind === 'ADMITS_STATE') ? 'ADMIT' : 'STAY',
@@ -100,7 +104,7 @@ export function derivePerturbations(graph, { evidence = null } = {}) {
     const base = `${short(window.origin)}+${short(window.control)}`;
 
     // REENTRY: the same Control again while its Effect is in flight.
-    const again = lawOutcome(index, window.window, window.control);
+    const again = lawOutcome(graph, index, family, window.window, window.control);
     push({
       perturbationRef: `perturbation:REENTRY:${family}:${base}`,
       consideration: 'REENTRY',
@@ -113,7 +117,9 @@ export function derivePerturbations(graph, { evidence = null } = {}) {
       answerState: again.kind === 'REJECT' ? 'EXPECTED_FROM_LAW' : 'UNKNOWN',
       expected: again.kind === 'REJECT'
         ? `act() rejects ${short(window.control)} in ${short(window.window)}: no admitted State, no Effect`
-        : `act() admits ${again.kind}${again.effects.length ? ` + ${again.effects.map(short).join(', ')}` : ''}; whether the realization fences a second ${short(window.effect)} is not stated by Family law`,
+        : again.kind === 'UNKNOWN'
+          ? `Family law cell is unread (${again.unread.map((row) => row.kind).join(', ')}); extraction debt blocks a REJECT/ACT conclusion`
+          : `act() admits ${again.kind}${again.effects.length ? ` + ${again.effects.map(short).join(', ')}` : ''}; whether the realization fences a second ${short(window.effect)} is not stated by Family law`,
       proofClass: again.kind === 'REJECT' ? 'A' : 'B',
     });
 
@@ -121,7 +127,7 @@ export function derivePerturbations(graph, { evidence = null } = {}) {
     const activeOwners = realizers(index, window.effect, family);
     for (const control of controls) {
       if (control.ref === window.control) continue;
-      const outcome = lawOutcome(index, window.window, control.ref);
+      const outcome = lawOutcome(graph, index, family, window.window, control.ref);
       // In an unchanged State a refused Control is exactly the ordinary negative case; only a
       // transient (admitted) State or a still-lawful Control adds timing meaning.
       if (window.windowForm === 'UNCHANGED_STATE_EFFECT_ACTIVE' && outcome.kind === 'REJECT') continue;
@@ -144,6 +150,8 @@ export function derivePerturbations(graph, { evidence = null } = {}) {
         answerState: outcome.kind === 'REJECT' ? 'EXPECTED_FROM_LAW' : 'UNKNOWN',
         expected: outcome.kind === 'REJECT'
           ? `act() rejects ${short(control.ref)} in ${short(window.window)}: effect-free`
+          : outcome.kind === 'UNKNOWN'
+          ? `Family law cell is unread (${outcome.unread.map((row) => row.kind).join(', ')}); extraction debt blocks a REJECT/ACT conclusion`
           : `act() ${outcome.kind}${outcome.admitted.length ? ` -> ${outcome.admitted.map(short).join(', ')}` : ''}${outcome.effects.length ? ` + ${outcome.effects.map(short).join(', ')}` : ''}; what happens to the in-flight ${short(window.effect)} is owned by its realization`,
         proofClass: outcome.kind === 'REJECT' ? 'A' : 'B',
       });
@@ -152,7 +160,7 @@ export function derivePerturbations(graph, { evidence = null } = {}) {
     // STALE_OBSERVATION: an observation that does not read current State, whose successor differs
     // from a newer State another Control admits during this window.
     const newer = controls
-      .map((control) => ({ control, outcome: lawOutcome(index, window.window, control.ref) }))
+      .map((control) => ({ control, outcome: lawOutcome(graph, index, family, window.window, control.ref) }))
       .filter(({ outcome }) => outcome.kind === 'ADMIT');
     if (!newer.length) continue;
     // Only observations the in-flight Effect's own realization returns can arrive late from it.

@@ -46,6 +46,7 @@ test('a Control reached only through a raw literal is UNTYPED_MANIFESTATION; unr
   assert.ok(oddFrontier.debt.some((entry) => entry.kind === 'UNRESOLVED_EFFECT' && entry.debtClass === 'B' && entry.coordinate === 'VexLifeOddFamily:One×Go'));
   const routes = deriveRoutes(odd, oddFrontier);
   assert.equal(routes.routes.find((route) => route.routeRef.startsWith('route:VexLifeOddFamily.One:Go')).status, 'UNKNOWN');
+  assert.ok(!routes.cases.some((testCase) => testCase.target.control === 'VexLifeOddFamily.Wait'), 'unread Wait cells never become generated REJECT cases');
 });
 
 test('routes are CLEARED only when every coordinate is addressable; others carry the smallest missing predicates', () => {
