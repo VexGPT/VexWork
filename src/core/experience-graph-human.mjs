@@ -152,7 +152,9 @@ function journeyStatus(journey, routeRows, relationships, derivation) {
   const named = journey.journeyRef;
   let routes = [];
   if (named === 'journey.vision.engage-stop') routes = routeRows.filter((route) => route.family === 'VexLifeVisionFamily');
-  else if (named === 'journey.voice.spoken-composer-reply-separation') {
+  else if (['journey.language.reply-switch-history', 'journey.language.reply-screen-independence'].includes(named)) {
+    routes = routeRows.filter((route) => route.family === 'VexLifeLanguageFamily');
+  } else if (named === 'journey.voice.spoken-composer-reply-separation') {
     routes = routeRows.filter((route) => ['VexLifeVoiceInputFamily', 'VexLifeLanguageFamily'].includes(route.family));
   } else if (named === 'journey.context.profile-next-turn') routes = routeRows.filter((route) => route.family === 'VexLifeContextProfileFamily');
   else if (named.startsWith('journey.memory.')) routes = routeRows.filter((route) => route.family === 'VexLifeMemoryReviewFamily');
