@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>VexLife</title>
+<link rel="stylesheet" href="vexweb.css">
+<script type="module" src="vexweb.js"></script>
+</head>
+<body>
+<div class="workspace" id="workspace" data-vex-screen="screen.vexlife-workspace" data-vex-structural-ref="vexweb.vexlife-workspace.p1.frame">
+
+  <header class="chrome" data-vex-ref="element.vexlife-workspace.header" data-vex-structural-ref="vexweb.vexlife-workspace.p1.region.header">
+    <a class="brand" data-vex-ref="element.vexlife-workspace.header.brand" href="/" aria-label="VexLife">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><path d="M 51.89 109.32 A 50 50 0 1 1 68.11 109.32 L 39.73 35.68 L 60 65.41 L 80.27 35.68 Z"/></svg>
+      </span>
+      <span class="brand-name">VexLife</span>
+    </a>
+
+    <form class="address" id="address-form" autocomplete="off">
+      <label class="visually-hidden" for="query">Page address</label>
+      <input id="query" data-vex-ref="element.vexlife-workspace.header.browser-query" type="text" list="page-suggestions" spellcheck="false"
+        inputmode="url" placeholder="Type a web address" title="">
+      <datalist id="page-suggestions">
+        <option value="vgong24.github.io/Vextreme/pages/terrain-map.html">Vextreme terrain</option>
+        <option value="vexgpt.github.io/VexWork/orientation.html">VexWork orientation</option>
+        <option value="vexgpt.github.io/VexWork/">VexWork navigator</option>
+        <option value="vgong24.github.io/VexLife/">VexLife</option>
+      </datalist>
+      <button class="icon-button" type="button" id="reload" aria-label="Reload page" title="Reload page">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 8.2A5.8 5.8 0 1 0 15.8 12"/><path d="M15.9 3.8v4.6h-4.6"/></svg>
+      </button>
+      <p class="address-error" id="address-error" role="status" hidden></p>
+    </form>
+
+    <label class="app-selector">
+      <span class="visually-hidden">App</span>
+      <select id="app-selector" data-vex-ref="element.vexlife-workspace.header.app-selector">
+        <option value="source-template">Source template</option>
+        <option value="archives">Archives</option>
+        <option value="vex-context">Vex context</option>
+        <option value="browser">Browser</option>
+      </select>
+    </label>
+
+    <div class="utilities" data-vex-ref="element.vexlife-workspace.header.utilities">
+      <ul class="quick-actions" data-vex-ref="element.vexlife-workspace.header.utilities.quick-actions" id="quick-actions" aria-label="Quick actions"><li hidden data-vex-ref="element.vexlife-workspace.header.utilities.quick-actions.vex-summon"><button type="button" id="vex-summon" hidden></button></li><li hidden data-vex-ref="element.vexlife-workspace.header.utilities.quick-actions.vision"><button type="button" id="vision-quick-access-source" hidden></button></li><li hidden data-vex-ref="element.vexlife-workspace.header.utilities.quick-actions.speech"><button type="button" id="speech-source" hidden></button></li><li hidden data-vex-ref="element.vexlife-workspace.header.utilities.quick-actions.language"><button type="button" id="language-source" hidden></button></li><li hidden data-vex-ref="element.vexlife-workspace.header.utilities.quick-actions.release-alerts"><button type="button" id="release-alerts-source" hidden></button></li></ul>
+      <section class="release-alerts-panel" data-vex-ref="element.vexlife-workspace.header.utilities.release-alerts-panel" id="release-alerts-panel" aria-labelledby="release-alerts-title" hidden>
+        <p class="release-alerts-title" id="release-alerts-title"></p>
+        <p class="release-alerts-empty" id="release-alerts-empty"></p>
+        <ol class="release-alerts-list" data-vex-ref="element.vexlife-workspace.header.utilities.release-alerts-panel.release-alerts-list" id="release-alerts-list"></ol>
+      </section>
+      <section class="language-panel" data-vex-ref="element.vexlife-workspace.header.utilities.language-panel" id="language-panel" aria-labelledby="reply-language-label" hidden>
+        <label class="language-field" data-vex-ref="element.vexlife-workspace.header.utilities.language-panel.reply-language">
+          <span class="language-title" id="reply-language-label" data-vex-text="workspace.label.reply-language">workspace.label.reply-language</span>
+          <select id="reply-language"></select>
+        </label>
+        <p class="language-note" data-vex-text="workspace.description.reply-language">workspace.description.reply-language</p>
+        <label class="language-field" data-vex-ref="element.vexlife-workspace.header.utilities.language-panel.screen-language">
+          <span class="language-title" data-vex-text="workspace.label.screen-language">workspace.label.screen-language</span>
+          <select id="screen-language"></select>
+        </label>
+        <p class="language-note" data-vex-text="workspace.description.screen-language">workspace.description.screen-language</p>
+      </section>
+      <section class="speech" id="speech" aria-label="Speech" hidden>
+        <div class="speech-head">
+          <span class="speech-title">Speak Vex aloud</span>
+          <button class="switch" type="button" role="switch" id="speech-switch" aria-checked="false" aria-label="Speak Vex aloud"><span></span></button>
+        </div>
+        <p class="speech-status" id="speech-status" role="status">Speech is off. You can still choose where to start reading.</p>
+        <label class="speech-field"><span>Voice</span><select id="speech-voice"></select></label>
+        <label class="speech-check"><input type="checkbox" id="speech-thoughts"> Read out thoughts</label>
+        <label class="speech-field"><span>Speed</span><input type="range" id="speech-rate" min="0.7" max="1.6" step="0.1" value="1"><output id="speech-rate-value">1.0×</output></label>
+        <div class="speech-controls">
+          <button class="icon-button" type="button" id="speech-previous" aria-label="Previous message" title="Previous message"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M14 4.5 7 10l7 5.5z"/><path class="glyph-line" d="M5.5 4.5v11"/></svg></button>
+          <button class="icon-button speech-play" type="button" id="speech-play" aria-label="Play" title="Play"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="glyph-play" d="M6.5 4.5 15 10l-8.5 5.5z"/><path class="glyph-pause" d="M7 4.5v11M13 4.5v11"/></svg></button>
+          <button class="icon-button" type="button" id="speech-stop" aria-label="Stop" title="Stop"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5.5" y="5.5" width="9" height="9" rx="1"/></svg></button>
+          <button class="icon-button" type="button" id="speech-next" aria-label="Next message" title="Next message"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4.5 13 10l-7 5.5z"/><path class="glyph-line" d="M14.5 4.5v11"/></svg></button>
+          <button class="quiet-button" type="button" id="speech-choose" aria-pressed="false">Start here…</button>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main class="frame" id="frame" data-vex-structural-ref="vexweb.vexlife-workspace.p1.body.frame" data-vex-structural-parent="vexweb.vexlife-workspace.p1.region.body">
+    <section class="region region-browser" data-vex-ref="element.vexlife-workspace.browser" data-vex-structural-ref="vexweb.vexlife-workspace.p1.body.region.browser" aria-label="Browser">
+      <p class="frame-status" data-vex-ref="element.vexlife-workspace.browser.frame-status" id="frame-status" role="status" hidden></p>
+      <nav class="family" data-vex-ref="element.vexlife-workspace.browser.source-template-family" id="source-template-family" aria-label="Source template" hidden>
+        <button type="button" class="family-member" data-family-key="vextreme" data-family-home="https://vgong24.github.io/Vextreme/pages/terrain-map.html" data-family-scope="https://vgong24.github.io/Vextreme/">Vextreme</button>
+        <button type="button" class="family-member" data-family-key="vexlife" data-family-home="https://vgong24.github.io/VexLife/" data-family-scope="https://vgong24.github.io/VexLife/">VexLife</button>
+        <button type="button" class="family-member" data-family-key="vexwork" data-family-home="https://vexgpt.github.io/VexWork/" data-family-scope="https://vexgpt.github.io/VexWork/">VexWork</button>
+        <span class="family-note">Victor's live work, read-only</span>
+      </nav>
+      <div class="viewport" data-vex-ref="element.vexlife-workspace.browser.viewport">
+        <iframe id="page-frame" title="Opened page" referrerpolicy="no-referrer"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads allow-modals"></iframe>
+        <iframe id="context-frame" class="context-frame" title="Vex page context provider" referrerpolicy="no-referrer"
+          sandbox="allow-scripts allow-same-origin" aria-hidden="true" tabindex="-1"></iframe>
+        <div class="viewport-empty" id="viewport-empty"><p>Open a web page from the address field. Vex page context is separate and may not be available for every page.</p></div>
+      </div>
+      <section class="archives" data-vex-ref="element.vexlife-workspace.browser.archives" id="archives" aria-labelledby="archives-heading" hidden>
+        <header class="archives-head">
+          <h2 id="archives-heading">Your archives</h2>
+          <p class="archives-summary" id="archives-summary">Checking your conversation…</p>
+        </header>
+        <ol class="archives-timeline" data-vex-ref="element.vexlife-workspace.browser.archives.timeline" id="archives-timeline" aria-label="Conversation by day"></ol>
+      </section>
+      <section class="vex-context" data-vex-ref="element.vexlife-workspace.browser.vex-context" id="vex-context" aria-labelledby="vex-context-heading" hidden>
+        <header class="vex-context-head">
+          <div>
+            <h2 id="vex-context-heading">Vex context</h2>
+            <p>See what shaped Vex's last reply, and choose how the next turn is put together.</p>
+          </div>
+          <span class="context-profile-badge" id="context-profile-badge">VexLife default</span>
+        </header>
+
+        <section class="context-profile-card" data-vex-ref="element.vexlife-workspace.browser.vex-context.profile" aria-labelledby="context-profile-heading">
+          <div class="context-profile-title">
+            <div>
+              <h3 id="context-profile-heading">Context profile</h3>
+              <p id="context-profile-summary">Checking your saved context relationship…</p>
+            </div>
+            <button class="quiet-button" type="button" data-vex-ref="element.vexlife-workspace.browser.vex-context.profile.view-in-home" id="context-profile-home">View in Vex Home</button>
+          </div>
+          <label class="context-profile-field">
+            <span>Saved profile</span>
+            <select id="context-profile-choice" aria-label="Choose a saved Context Profile"></select>
+          </label>
+          <label class="context-profile-field">
+            <span>Name</span>
+            <input id="context-profile-name" maxlength="80" value="VexLife Default">
+          </label>
+          <label class="context-profile-field">
+            <span>Foundation</span>
+            <select id="context-profile-foundation-mode">
+              <option value="PRODUCT_DEFAULT">VexLife foundation</option>
+              <option value="EXTEND_PRODUCT_DEFAULT">VexLife foundation + my extension</option>
+            </select>
+          </label>
+          <label class="context-profile-field context-profile-foundation-text" id="context-profile-foundation-field" hidden>
+            <span>My foundation</span>
+            <textarea id="context-profile-foundation-text" rows="7" maxlength="16000" placeholder="Write the context you want Vex to receive here."></textarea>
+            <small>Configuration only. This does not copy your conversations or memories into the profile.</small>
+          </label>
+          <div class="context-profile-actions" data-vex-ref="element.vexlife-workspace.browser.vex-context.profile.save">
+            <button class="outline-button" type="button" id="context-profile-save">Save</button>
+            <button class="quiet-button" type="button" id="context-profile-save-as">Save as…</button>
+            <button class="quiet-button" type="button" data-vex-ref="element.vexlife-workspace.browser.vex-context.profile.restore-default" id="context-profile-restore">Restore VexLife default</button>
+            <a class="quiet-button context-profile-export" data-vex-ref="element.vexlife-workspace.browser.vex-context.profile.portability" id="context-profile-export" href="/api/v1/context-profiles/export" download>Export</a>
+            <label class="quiet-button context-profile-import" for="context-profile-import">Import</label>
+            <input id="context-profile-import" type="file" accept=".json,.vexcontext.json,application/json" hidden>
+          </div>
+          <p class="context-profile-note" id="context-profile-note" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="context-changes" data-vex-ref="element.vexlife-workspace.browser.vex-context.changes" aria-labelledby="context-changes-heading">
+          <h3 id="context-changes-heading">Context changes</h3>
+          <div id="context-changes-list" class="context-change-list">
+            <p class="context-empty">No completed turn yet. Vex will show changes here as your context relationship develops.</p>
+          </div>
+        </section>
+
+        <section class="context-causal" aria-labelledby="context-causal-heading">
+          <div class="context-causal-heading">
+            <div>
+              <h3 id="context-causal-heading">What Vex received</h3>
+              <p id="vex-context-turn-summary">No completed turn yet.</p>
+            </div>
+            <span id="vex-context-budget" class="context-budget"></span>
+          </div>
+
+          <div class="context-stack" data-vex-ref="element.vexlife-workspace.browser.vex-context.input">
+            <details class="context-section context-foundation" data-context-kind="foundation" open>
+              <summary><span>Foundation</span><small id="context-foundation-status">Standing context</small></summary>
+              <div class="context-section-body" id="context-foundation-body"></div>
+            </details>
+            <details class="context-section context-memory" data-context-kind="memory">
+              <summary><span>Structured Memory</span><small id="context-memory-status">Checking</small></summary>
+              <div class="context-section-body" id="context-memory-body"></div>
+            </details>
+            <details class="context-section context-continuity" data-context-kind="continuity">
+              <summary><span>Conversation continuity</span><small id="context-continuity-status">Checking</small></summary>
+              <div class="context-section-body" id="context-continuity-body"></div>
+            </details>
+            <details class="context-section context-conversation" data-context-kind="conversation" open>
+              <summary><span>Conversation</span><small id="context-conversation-status">Checking</small></summary>
+              <div class="context-section-body" id="context-conversation-body"></div>
+            </details>
+            <details class="context-section context-browser" data-context-kind="browser">
+              <summary><span>Browser / things Vex reached</span><small id="context-browser-status">Checking</small></summary>
+              <div class="context-section-body" id="context-browser-body"></div>
+            </details>
+            <details class="context-section context-request" data-context-kind="request" open>
+              <summary><span>Your message</span><small id="context-request-status">Current request</small></summary>
+              <div class="context-section-body" id="context-request-body"></div>
+            </details>
+            <details class="context-section context-exact" data-context-kind="exact">
+              <summary><span>How Vex put it together</span><small>Exact order available</small></summary>
+              <ol class="context-component-list" id="context-component-list"></ol>
+            </details>
+          </div>
+
+          <div class="context-flow-arrow" aria-hidden="true">↓</div>
+
+          <details class="context-section context-process" data-vex-ref="element.vexlife-workspace.browser.vex-context.process" data-context-kind="process" open>
+            <summary><span>Vex's working process</span><small id="context-process-status">Session view</small></summary>
+            <label class="context-process-setting">
+              <span>Show process from</span>
+              <select id="context-process-retention">
+                <option value="SESSION_ONLY">This browser session</option>
+                <option value="PREVIOUS_TURN">Previous reply only</option>
+              </select>
+            </label>
+            <div class="context-section-body" id="context-process-body"></div>
+          </details>
+
+          <div class="context-flow-arrow" aria-hidden="true">↓</div>
+
+          <details class="context-section context-output" data-vex-ref="element.vexlife-workspace.browser.vex-context.output" data-context-kind="output" open>
+            <summary><span>Vex's reply</span><small>Exact reply</small></summary>
+            <div class="context-section-body" id="context-output-body"></div>
+          </details>
+
+          <div class="context-flow-arrow" aria-hidden="true">↓</div>
+
+          <details class="context-section context-after" data-vex-ref="element.vexlife-workspace.browser.vex-context.after" data-context-kind="after">
+            <summary><span>After the turn</span><small>What stayed</small></summary>
+            <div class=
