@@ -127,7 +127,10 @@ a{color:var(--focus)}
 .product-view{position:relative;width:100%;flex:1;min-height:420px;border:1px solid #cfd5df;border-radius:10px;background:#fbfbfd;box-shadow:0 18px 40px -26px #18213a55;overflow:hidden}
 .product-view-frame{display:block;width:100%;height:100%;min-height:420px;border:0;background:#fff}
 .product-view-note{position:absolute;left:8px;bottom:8px;z-index:4;margin:0;padding:3px 7px;border:1px solid #cfd5df;border-radius:999px;background:#ffffffdd;color:var(--faint);font:500 10px/16px var(--mono);pointer-events:none}
-.product-view-travel{position:absolute;right:10px;top:10px;z-index:5;max-width:min(70%,360px);box-shadow:0 5px 18px -10px #18213aaa}
+.product-view-actions{position:absolute;right:10px;top:10px;z-index:5;display:flex;align-items:center;gap:6px;max-width:min(82%,560px)}
+.product-view-travel{position:static;max-width:280px;box-shadow:0 5px 18px -10px #18213aaa}
+.product-view-phase{display:flex;align-items:center;gap:6px;height:30px;padding:0 6px 0 9px;border:1px solid #cfd5df;border-radius:8px;background:#fffffff2;box-shadow:0 5px 18px -10px #18213aaa;color:var(--muted);font-size:11.5px}
+.product-view-phase select{height:24px;max-width:220px;border:0;background:transparent;color:var(--ink);font:500 11.5px var(--sans);outline:none}
 
 /* A screen the product realizes as frames of regions divided by seams (a browser workspace). Its
    geometry comes from the screen's source-derived layout; nothing here is product-specific. */
@@ -914,6 +917,9 @@ const state = {
   // Read-only browser observation of which Product CSS blocks shape the currently selected
   // stable Product identity. Never persisted and never used as rendering authority.
   presentationRules: null,
+  // Browser-local spatial projection only. A split override changes how the static Product view is
+  // presented here; it never writes Product State or persists beyond this Lens session.
+  splitProjection: new Map(),
 };
 let refs = {};
 
@@ -1943,6 +1949,128 @@ function applyStaticViewStateBindings(doc, view, resolved) {
   }
 }
 
+const staticSplitKey = (binding) => `${screenRef()}|${binding.elementRef}`;
+const staticSplitProjection = (binding) => state.splitProjection.get(staticSplitKey(binding)) ?? null;
+function staticSplitLabels(binding) {
+  const label = (ref) => (Lens.elementFor(state.lens, ref)?.label ?? ref).replace(/\s+region$/i, '');
+  return { before: label(binding.beforeRef), after: label(binding.afterRef) };
+}
+function applyStaticSplitProjection(doc, view, binding) {
+  const target = staticViewTargetNodes(doc, view, binding.targetRef)[0] ?? null;
+  const handle = staticViewTargetNodes(doc, view, binding.elementRef)[0] ?? null;
+  if (!target || !handle) return;
+  const projected = staticSplitProjection(binding);
+  target.removeAttribute(binding.collapsedAttribute);
+  target.style.removeProperty(binding.styleProperty);
+  if (projected?.phase === 'BEFORE_ONLY') target.setAttribute(binding.collapsedAttribute, binding.collapsedAfterValue);
+  else if (projected?.phase === 'AFTER_ONLY') target.setAttribute(binding.collapsedAttribute, binding.collapsedBeforeValue);
+  else if (projected?.phase === 'CUSTOM') target.style.setProperty(binding.styleProperty, `${projected.ratio.toFixed(2)}%`);
+  const min = Number(handle.getAttribute('aria-valuemin')) || 15;
+  const max = Number(handle.getAttribute('aria-valuemax')) || 85;
+  const labels = staticSplitLabels(binding);
+  let ratio = 50;
+  if (projected?.phase === 'BEFORE_ONLY') ratio = 100;
+  else if (projected?.phase === 'AFTER_ONLY') ratio = 0;
+  else if (projected?.phase === 'CUSTOM') ratio = projected.ratio;
+  else {
+    const authored = doc.defaultView.getComputedStyle(target).getPropertyValue(binding.styleProperty).trim();
+    if (authored.endsWith('%') && Number.isFinite(Number.parseFloat(authored))) ratio = Number.parseFloat(authored);
+  }
+  handle.setAttribute('aria-valuemin', String(min));
+  handle.setAttribute('aria-valuemax', String(max));
+  handle.setAttribute('aria-valuenow', String(Math.round(ratio)));
+  handle.setAttribute('aria-valuetext',
+    projected?.phase === 'BEFORE_ONLY' ? `${labels.before} only`
+      : projected?.phase === 'AFTER_ONLY' ? `${labels.after} only`
+      : `${labels.before} ${Math.round(ratio)} percent · ${labels.after} ${Math.round(100 - ratio)} percent`);
+}
+function applyStaticSplitProjections(doc, view) {
+  for (const binding of view.interactionBindings ?? []) if (binding.kind === 'SPLIT') applyStaticSplitProjection(doc, view, binding);
+}
+function setStaticSplitPhase(binding, phase) {
+  const key = staticSplitKey(binding);
+  if (phase === 'BALANCED') state.splitProjection.delete(key);
+  else state.splitProjection.set(key, Object.freeze({ phase }));
+  render();
+}
+function renderStaticSplitControl(binding) {
+  const element = Lens.elementFor(state.lens, binding.elementRef);
+  if (!element) return null;
+  const allowed = new Set(element.interactions);
+  const labels = staticSplitLabels(binding);
+  const projected = staticSplitProjection(binding);
+  const phase = projected?.phase ?? 'BALANCED';
+  const options = [];
+  if (allowed.has('COLLAPSE_AFTER')) options.push(h('option', { value: 'BEFORE_ONLY' }, `${labels.before} only`));
+  options.push(h('option', { value: 'BALANCED' }, 'Balanced'));
+  if (allowed.has('COLLAPSE_BEFORE')) options.push(h('option', { value: 'AFTER_ONLY' }, `${labels.after} only`));
+  if (phase === 'CUSTOM') {
+    const ratio = Math.round(projected.ratio);
+    options.push(h('option', { value: 'CUSTOM', disabled: true }, `Custom · ${labels.before} ${ratio} / ${labels.after} ${100 - ratio}`));
+  }
+  const select = h('select', {
+    'aria-label': `Spatial phase for ${element.label}`,
+    onchange: (event) => {
+      event.stopPropagation();
+      if (event.target.value !== 'CUSTOM') setStaticSplitPhase(binding, event.target.value);
+    },
+    onclick: (event) => event.stopPropagation(),
+  }, options);
+  select.value = phase;
+  return h('label', { class: 'product-view-phase', title: 'Browser-local spatial projection; Product state is unchanged.' },
+    h('span', {}, 'View'), select);
+}
+function bindStaticSplitInteractions(doc, view) {
+  for (const binding of view.interactionBindings ?? []) {
+    if (binding.kind !== 'SPLIT') continue;
+    const element = Lens.elementFor(state.lens, binding.elementRef);
+    if (!element?.interactions.includes('RESIZE')) continue;
+    const handle = staticViewTargetNodes(doc, view, binding.elementRef)[0] ?? null;
+    const target = staticViewTargetNodes(doc, view, binding.targetRef)[0] ?? null;
+    if (!handle || !target) continue;
+    let start = null;
+    let moved = false;
+    handle.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || event.target.closest('button')) return;
+      start = { x: event.clientX, y: event.clientY };
+      moved = false;
+      handle.setPointerCapture(event.pointerId);
+    });
+    handle.addEventListener('pointermove', (event) => {
+      if (!start || !handle.hasPointerCapture(event.pointerId)) return;
+      const dx = event.clientX - start.x;
+      const dy = event.clientY - start.y;
+      if (!moved && Math.hypot(dx, dy) < 3) return;
+      moved = true;
+      event.preventDefault();
+      const box = target.getBoundingClientRect();
+      const grip = handle.getBoundingClientRect();
+      const vertical = grip.height >= grip.width;
+      const span = vertical ? box.width : box.height;
+      if (span <= 0) return;
+      const position = vertical ? event.clientX - box.left : event.clientY - box.top;
+      const min = Number(handle.getAttribute('aria-valuemin')) || 15;
+      const max = Number(handle.getAttribute('aria-valuemax')) || 85;
+      const ratio = Math.min(max, Math.max(min, (position / span) * 100));
+      state.splitProjection.set(staticSplitKey(binding), Object.freeze({ phase: 'CUSTOM', ratio }));
+      applyStaticSplitProjection(doc, view, binding);
+    });
+    const finish = (event) => {
+      if (!start) return;
+      const dragged = moved;
+      start = null;
+      moved = false;
+      if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId);
+      if (!dragged) return;
+      handle.setAttribute('data-vex-lens-dragged', '');
+      rememberStaticViewPresentation(doc, view, binding.elementRef);
+      selectElement(binding.elementRef);
+    };
+    handle.addEventListener('pointerup', finish);
+    handle.addEventListener('pointercancel', (event) => { start = null; moved = false; if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId); });
+  }
+}
+
 function staticViewStyleRules(doc) {
   const style = doc.querySelector('style[data-vex-product-style]');
   const sheet = style?.sheet;
@@ -2029,6 +2157,7 @@ function bindStaticView(frame, expression, { interactive }) {
     if (delta) for (const node of staticViewNodes(doc, view, element.ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-delta', delta);
   }
   applyStaticViewStateBindings(doc, view, presence);
+  applyStaticSplitProjections(doc, view);
   const marks = selectionPathRefs();
   for (const ref of marks.ancestors) for (const node of staticViewNodes(doc, view, ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-ancestor', '');
   if (marks.selected) for (const node of staticViewNodes(doc, view, marks.selected, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-selected', '');
@@ -2053,6 +2182,7 @@ function bindStaticView(frame, expression, { interactive }) {
     return null;
   };
   doc.addEventListener('submit', (event) => event.preventDefault(), true);
+  bindStaticSplitInteractions(doc, view);
   // An iframe is a separate event world, so the outer Experience-side contextmenu handler cannot
   // see a Product-view right-click. Forward the same Screen Lens gesture law explicitly.
   doc.addEventListener('contextmenu', (event) => {
@@ -2066,6 +2196,10 @@ function bindStaticView(frame, expression, { interactive }) {
     event.stopPropagation();
     const node = closestSelector && event.target instanceof doc.defaultView.Element ? event.target.closest(closestSelector) : null;
     const ref = refFor(node);
+    if (node?.hasAttribute('data-vex-lens-dragged')) {
+      node.removeAttribute('data-vex-lens-dragged');
+      return;
+    }
     if (ref) {
       rememberStaticViewPresentation(doc, view, ref);
       selectElement(ref);
@@ -2085,6 +2219,7 @@ function renderStaticView(expression, { interactive }) {
   const screen = currentScreen();
   const selected = interactive && state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
   const destination = selected ? destinationForElement(selected) : null;
+  const splitBinding = interactive && selected ? (screen.view.interactionBindings ?? []).find((binding) => binding.kind === 'SPLIT' && binding.elementRef === selected.ref) ?? null : null;
   const frame = h('iframe', {
     class: 'product-view-frame',
     title: `${screen.label} · Product-owned static view`,
@@ -2095,14 +2230,19 @@ function renderStaticView(expression, { interactive }) {
   frame.srcdoc = staticViewDocument(screen.view);
   frame.addEventListener('load', () => bindStaticView(frame, expression, { interactive }), { once: true });
   if (!interactive) frame.style.pointerEvents = 'none';
+  const actions = interactive && (destination || splitBinding)
+    ? h('div', { class: 'product-view-actions' },
+        splitBinding ? renderStaticSplitControl(splitBinding) : null,
+        destination ? h('button', {
+          class: 'tool product-view-travel',
+          type: 'button',
+          title: destination.title,
+          onclick: (event) => { event.stopPropagation(); destination.go(); },
+        }, destination.label) : null)
+    : null;
   return h('div', { class: 'product-view', 'aria-label': `${screen.label} Product view · ${expression.where} · ${expression.what}` },
     frame,
-    interactive && destination ? h('button', {
-      class: 'tool product-view-travel',
-      type: 'button',
-      title: destination.title,
-      onclick: (event) => { event.stopPropagation(); destination.go(); },
-    }, destination.label) : null,
+    actions,
     interactive ? h('p', { class: 'product-view-note' }, 'Product view · static HTML/CSS · no Product JavaScript') : null);
 }
 
