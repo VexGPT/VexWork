@@ -482,3 +482,57 @@ Depth 11 uses the host only for the effects the host owns:
 - return exact source bytes and candidate evidence.
 
 Remote publication is held from the host task. After the RETURN is consumed, Operations will publish the exact returned bytes through the connected GitHub provider, verify provider tree equality with the host-proven tree, and resume fresh Independent Assurance without replaying the host proof.
+
+
+## Depth 11 consumed — host-proven tree published through provider; fresh Assurance CLEAR
+
+Depth 11 outer and inner returns both PASS.
+
+Host local candidate:
+
+```text
+parent
+  8c4572c778e5943ec7faae13200ec5033959a82d
+
+local head
+  03e41da7996c760209dfa282f8a75baf878cf83c
+
+tree
+  e14fa31ff5883ce31e9955b9cf316defd5afb4e3
+```
+
+The host changed exactly the five generator-owned paths discovered by Depth 10, committed them locally, and then proved the committed candidate:
+
+- all eleven Experience Graph test files: 69/69 PASS;
+- offline `--verify`: PASS;
+- fresh pinned-source `--fetch --check`: PASS;
+- exact review snapshot: PASS;
+- first substantive failure: NONE;
+- remote push intentionally held.
+
+Operations reconstructed the exact five returned source bytes through the connected GitHub provider. Before moving #321, the provider tree was formed and compared to the host-proven tree:
+
+```text
+host tree
+  e14fa31ff5883ce31e9955b9cf316defd5afb4e3
+
+provider formed tree
+  e14fa31ff5883ce31e9955b9cf316defd5afb4e3
+
+tree identity
+  PASS
+```
+
+The provider then published:
+
+```text
+provider head
+  20d6317b9e38e3fefaeb0615fafaf1f34d4d99c5
+
+provider tree
+  e14fa31ff5883ce31e9955b9cf316defd5afb4e3
+```
+
+Fresh FOUNDATION Independent Assurance on that exact provider head/tree returned **CLEAR**. ERG-REV-001/002/003/004/005 are closed. The provider review event is COMMENT only; CLEAR does not imply GitHub APPROVE, READY, or merge authority.
+
+The next earned edge is human-facing **VexBoard Experience Graph inspection**. Current `subject.vexlife-prod` Screen Lens remains truthfully `NOT_BUILT`; the existing browser any-commit Screen Lens adapter is VexLife-Android-only. The Experience Relationship Graph already emits ordinary `vexboard.board-graph/v1`, so human preview should consume that projection without mislabeling it as a VexLife-Prod Screen Lens or inventing a second semantic owner.
