@@ -287,7 +287,18 @@ export function formExperienceRelationshipGraph(seedInput) {
     const sources = familySourceRefs(seed, row.family);
     const stateRef = addNode(`${row.family}.State`, 'STATE', `${row.family} State`, sources);
     const controlRef = addNode(`${row.family}.Control`, 'CONTROL', `${row.family} Control`, sources);
-    const effectRef = row.act?.effect ? addNode(row.act.effect, 'EFFECT', row.act.effect, sources) : null;
+    const effectSymbol = sourceSymbolOrNull(row.act?.effect);
+    const effectRef = effectSymbol
+      ? addNode(effectSymbol, 'EFFECT', row.act.effect, sources)
+      : null;
+    if (row.act?.effect && !effectRef) {
+      debts.push(Object.freeze({
+        debtClass: 'MISSING_GRAPH_COORDINATE',
+        coordinateRefs: Object.freeze([row.act.effect]),
+        detail: `Effect source coordinate is not stably addressable: ${row.act.effect}`,
+        sourceRefs: Object.freeze(sources),
+      }));
+    }
     const observationSymbol = sourceSymbolOrNull(row.observation);
     const observationRef = observationSymbol
       ? addNode(observationSymbol, 'OBSERVATION', row.observation, sources)
