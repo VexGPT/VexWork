@@ -73,7 +73,7 @@ missing source readability != permission to guess semantics
 
 **Coherent enough to enter focused adversarial testing and continued source review.**
 
-**Not clear for semantic acceptance yet.** One candidate-owned fail-closed defect has already been established, and the primary human report has a proof-vocabulary/counting ambiguity.
+**Not clear for semantic acceptance yet.** Three candidate-owned soundness/currentness defects are now established: unread law can become asserted REJECT truth; executed law evidence can remain `current=true` after the probe generator/plan changes; and browser Effect vocabulary carriage can be promoted to `REALIZED_BY` without proving the actual handler. The primary human report also has a smaller proof-vocabulary/counting ambiguity.
 
 Reported green commands / coverage from the Claude candidate remain candidate evidence until independently reproduced. This node has not re-run `npm test`, `npm run experience:verify`, or the Product law probe.
 
@@ -166,6 +166,74 @@ The handoff correctly distinguishes cells from generated cases, but the primary 
 
 Correction should either name the headline **test-case proof** or display both cell and case counts explicitly. Final severity remains part of review synthesis, but this must be corrected or deliberately justified before a clean semantic disposition.
 
+## Finding ERG-REV-003 — BLOCKING: law evidence currentness does not bind the probe that produced it
+
+`lawEvidence()` records `probeSourceSha256`, but `compareLawEvidence()` never compares that field with the current generated probe.
+
+The offline `experience:verify` path also:
+
+- fingerprints the graph extractor modules, but not `experience-graph-law-probe.mjs`;
+- recomputes graph-derived artifacts and `law-proof.json` from the stored evidence;
+- does not regenerate/check `generated/law-probe/ExperienceLawProbeTest.kt` or `generated/law-probe/plan.json`.
+
+The host runner is stricter **when a new probe is actually executed**: `run-experience-law-probe.mjs` regenerates the plan and refuses to run if the checked-in probe differs. That does not close offline evidence freshness.
+
+Therefore this transition is currently possible in the contract:
+
+```text
+change probe planner / fixture semantics
+-> do not rerun Product probe
+-> old evidence still has same Product commit + Family-law fingerprint
+-> compareLawEvidence() reports current=true
+-> experience:verify can accept the old execution as current
+```
+
+This finding does not assert that the evidence at the present head was produced by a different probe. It establishes that the candidate's **future currentness predicate is incomplete**.
+
+Correction / proof owed:
+
+1. bind executed evidence to the current probe source/plan identity actually used for comparison;
+2. make offline verification fail when current probe generation differs from the evidence/checked-in probe;
+3. regression: change only probe-generation semantics while Product Family law stays byte-identical and prove old evidence becomes stale / verification fails;
+4. preserve the intended optimization that unrelated presentation/localization changes do not invalidate Family-law evidence.
+
+## Finding ERG-REV-004 — BLOCKING: browser Effect vocabulary carriage is promoted to `REALIZED_BY`
+
+For browser-runtime Effects, `readRealizationSites()` treats this form as realization evidence:
+
+```text
+${jsString(Family.EffectConstant)}
+```
+
+At the current VexLife-Prod pin, the graph's two VoiceInput `REALIZED_BY` edges cite:
+
+```text
+VexLifeWebP1RuntimeArtifacts.kt:L357
+VexLifeWebP1RuntimeArtifacts.kt:L358
+```
+
+Those lines only define the JavaScript vocabulary object:
+
+```text
+effect: {
+  beginLocalDictation: <Family effect ref>,
+  endLocalDictation: <Family effect ref>
+}
+```
+
+The actual realization relationship is later, where the runtime compares `act.effectRef` with those values and calls `realizeBeginLocalDictation(...)` / `realizeEndLocalDictation(...)`.
+
+So today's Product happens to contain the real handler, but the extractor does not prove it. If the handler branches were removed while the vocabulary object remained, the graph would continue to claim `REALIZED_BY`.
+
+This is materially different from a cosmetic sourceRef problem: `REALIZED_BY` participates in route clearance, observation traversal, perturbation generation, and debt classification.
+
+Correction / proof owed:
+
+1. distinguish **effect identity carried into runtime** from **effect actually consumed/realized**;
+2. source-prove the dispatch/handler relationship before emitting `REALIZED_BY`;
+3. adversarial regression: a fixture that only serializes/interpolates the Effect ref must not satisfy realization;
+4. positive control: the current Voice handler should still resolve to the browser realization owner, ideally with the handler coordinate as evidence.
+
 ## Review slices / successor queue
 
 ### A — extraction + Family law
@@ -194,7 +262,7 @@ Next:
 Status: **partially reviewed**
 
 Observed:
-- law evidence is source-commit + Family-law-fingerprint bound;
+- law evidence is source-commit + Family-law-fingerprint bound, but ERG-REV-003 shows the producing probe identity is not part of the currentness predicate;
 - perturbation source-review evidence is blob-currentness bound;
 - current joins remain ordinary consumption;
 - Relay gate does not manufacture a Relay.
@@ -205,7 +273,10 @@ Next:
 - investigate Voice stale-observation finding separately from reproduced runtime defect.
 
 ### B — identity + localization + projectability
-Status: **source inspected; no terminal disposition**
+Status: **source inspected; blocking realization-evidence finding established**
+
+Observed:
+- ERG-REV-004 shows browser Effect vocabulary carriage is too weak to prove `REALIZED_BY`.
 
 Next:
 - falsify dataKey anchor strength/owner selection;
@@ -222,7 +293,7 @@ Observed:
 - Product experiment heads match source plan.
 
 Next:
-- independently reproduce `experience:verify` and the deterministic floor;
+- close ERG-REV-003, then independently reproduce `experience:verify` and the deterministic floor;
 - verify generated artifact drift/currentness under a clean checkout;
 - judge whether four checked-in full graph/frontier/route projections are the smallest justified durable shape.
 
