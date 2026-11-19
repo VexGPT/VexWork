@@ -180,8 +180,8 @@ test('Context Profile capture and Vex Context projection are current-main relati
     graph.relationships.some(
       (relationship) =>
         relationship.kind === 'CAPTURED_AT_SEND'
-        && relationship.fromRef === 'VexLifeContextProfileFamily'
-        && relationship.toRef === 'DirectPromptContext',
+        && relationship.fromRef === 'VexLifeContextProfileStore'
+        && relationship.toRef === 'DirectCompanionTurn.Intent.contextProfile',
     ),
   );
   assert.ok(
@@ -247,8 +247,8 @@ test('exact edge selection preserves reverse prerequisites and forward consequen
 
   const profileCapture = deriveEdgeRouteManifest(seed, {
     kind: 'CAPTURED_AT_SEND',
-    fromRef: 'VexLifeContextProfileFamily',
-    toRef: 'DirectPromptContext',
+    fromRef: 'VexLifeContextProfileStore',
+    toRef: 'DirectCompanionTurn.Intent.contextProfile',
   });
   assert.equal(profileCapture.boardJourney, null);
   assert.ok(profileCapture.missingPredicates.includes('MISSING_MANIFESTATION_BINDING'));
