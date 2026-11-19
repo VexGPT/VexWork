@@ -243,7 +243,7 @@
       },
       {
         "path": "src/core/experience-graph-product-wiring.mjs",
-        "blobSha1": "db310af427f81cdf6e93fcb47b2f6bd11ff1eba6"
+        "blobSha1": "c54b93acf4edb6aedbf6f5433c35283da262c5ea"
       },
       {
         "path": "src/core/experience-graph-localization.mjs",
@@ -255,7 +255,7 @@
       },
       {
         "path": "src/core/experience-graph.mjs",
-        "blobSha1": "095732587d55b2e3f6d81536a8c0da14319071b7"
+        "blobSha1": "2c7ba130a8d12ce7bbdca44c876e0be0cdd05e87"
       }
     ]
   },
@@ -4891,7 +4891,11 @@
       "detail": {
         "capability": "conversation.private",
         "pathwayRef": "pathway.vexlife-prod.conversation.private",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "BEGIN",
+          "END"
+        ]
       }
     },
     {
@@ -4906,7 +4910,11 @@
       "detail": {
         "capability": "conversation.private",
         "pathwayRef": "pathway.vexlife-prod.conversation.private",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "BEGIN",
+          "END"
+        ]
       }
     },
     {
@@ -4951,7 +4959,11 @@
       "detail": {
         "capability": "vision.selected-scope",
         "pathwayRef": "pathway.vexlife-prod.vision.selected-scope",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "ENGAGE",
+          "STOP"
+        ]
       }
     },
     {
@@ -4966,7 +4978,11 @@
       "detail": {
         "capability": "vision.selected-scope",
         "pathwayRef": "pathway.vexlife-prod.vision.selected-scope",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "ENGAGE",
+          "STOP"
+        ]
       }
     },
     {
@@ -4981,52 +4997,10 @@
       "detail": {
         "capability": "person.reply-language",
         "pathwayRef": "pathway.vexlife-prod.person.reply-language",
-        "disposition": "SCAE_FAMILY"
-      }
-    },
-    {
-      "ref": "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.reply-language:VexLifeLanguageFamily.ChooseScreenLanguage",
-      "kind": "MANIFESTS",
-      "from": "element.vexlife-workspace.header.utilities.language-panel.reply-language",
-      "to": "VexLifeLanguageFamily.ChooseScreenLanguage",
-      "family": "VexLifeLanguageFamily",
-      "whenState": null,
-      "guards": [],
-      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
-      "detail": {
-        "capability": "person.reply-language",
-        "pathwayRef": "pathway.vexlife-prod.person.reply-language",
-        "disposition": "SCAE_FAMILY"
-      }
-    },
-    {
-      "ref": "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.reply-language:VexLifeLanguageFamily.FollowReplyLanguage",
-      "kind": "MANIFESTS",
-      "from": "element.vexlife-workspace.header.utilities.language-panel.reply-language",
-      "to": "VexLifeLanguageFamily.FollowReplyLanguage",
-      "family": "VexLifeLanguageFamily",
-      "whenState": null,
-      "guards": [],
-      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
-      "detail": {
-        "capability": "person.reply-language",
-        "pathwayRef": "pathway.vexlife-prod.person.reply-language",
-        "disposition": "SCAE_FAMILY"
-      }
-    },
-    {
-      "ref": "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.screen-language:VexLifeLanguageFamily.ChooseReplyLanguage",
-      "kind": "MANIFESTS",
-      "from": "element.vexlife-workspace.header.utilities.language-panel.screen-language",
-      "to": "VexLifeLanguageFamily.ChooseReplyLanguage",
-      "family": "VexLifeLanguageFamily",
-      "whenState": null,
-      "guards": [],
-      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
-      "detail": {
-        "capability": "person.screen-language",
-        "pathwayRef": "pathway.vexlife-prod.person.screen-language",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "CHOOSE_REPLY_LANGUAGE"
+        ]
       }
     },
     {
@@ -5041,7 +5015,11 @@
       "detail": {
         "capability": "person.screen-language",
         "pathwayRef": "pathway.vexlife-prod.person.screen-language",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "CHOOSE_SCREEN_LANGUAGE",
+          "FOLLOW_REPLY_LANGUAGE"
+        ]
       }
     },
     {
@@ -5056,7 +5034,11 @@
       "detail": {
         "capability": "person.screen-language",
         "pathwayRef": "pathway.vexlife-prod.person.screen-language",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "CHOOSE_SCREEN_LANGUAGE",
+          "FOLLOW_REPLY_LANGUAGE"
+        ]
       }
     },
     {
@@ -15888,5 +15870,5 @@
       }
     ]
   },
-  "fingerprint": "e5d9eeb7e80798314e02c6f6fce865cf0c0fcd8042408794d1b09e321f446ad4"
+  "fingerprint": "1ae1ce49b30f7c7e6fa63d7723d5c3121402589463a76f98b3e0033fd3ddfa80"
 }

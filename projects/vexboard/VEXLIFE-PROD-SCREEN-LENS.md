@@ -274,7 +274,7 @@ Before broad implementation:
 6. Do not create another graph engine, another Screen Lens schema, or another human-facing canvas route.
 7. Produce raw-git preview before any integration/merge decision.
 
-## Browser workspace realization (candidate, not accepted)
+## Browser workspace realization (composed R2 candidate, not accepted)
 
 Lived finding (2026-11-19): the Prod Lens drew the browser workspace inside Android's phone frame.
 
@@ -283,27 +283,24 @@ VEXWEB_FRAME_TOPOLOGY != PHONE_TOPOLOGY
 OUTER_MACOS_WINDOW    != PRODUCT_IDENTITY
 ```
 
-Candidate pair, both `VXG-111926-claude-vexlife-prod-browser-workspace-lens-a001`:
+Foreground convergence:
 
-- VexLife-Prod: `VexLifeProdScreenLens` walks `VexLifeWebP1.Surface` (content + overlay root) and exports
-  `screens[].layout` (FRAME, seams, regions, seam chrome, overlays) plus FRAME / SEAM / HANDLE / REGION
-  elements, `layer` and `interactions`. Send, Vision and Private Mode keep their pathways; each element's
-  parent is its VexWeb container. The seam handle gets a TYPED_PRESENTATION pathway (local spatial
-  binding → seam → the regions before/after it); no Family is invented.
-- VexWork (stacked on #327): `src/shared/vexboard-screen-lens-frames.mjs` normalizes and measures the
-  layout; the Surface draws a workspace when a screen carries one and the phone otherwise (D54).
+- VexLife-Prod #387 / VXG-111926-vexlife-prod-experience-convergence-r2: Product semantic identity and VexWeb spatial truth are composed in one exporter; exact generated Product Lens commit: `479544c5c319ad796a0853125ae131d85afc9671`.
+- VexWork #328 / VXG-111926-vexlife-prod-e2e-experience-convergence-r1: Experience Graph control-subset correction, peer Product Lens integration, and generic browser-workspace renderer live on one foreground branch.
+- Product owns Blueprint meaning and VexWeb placement. VexWork projects; it does not become Product authority.
 
-Stable `5b93204` and Main `152c323` predate the export, so they still draw as a phone; the workspace is
-witnessed through Commit projection of the Product candidate head. Nothing here requires a merge to main.
+The Product export carries FRAME / SEAM / REGION / HANDLE layout, layers and interactions while retaining Send, Vision, Private Mode, reply-language and screen-language semantic pathways. The Browser/Companion seam remains TYPED_PRESENTATION; no Family is invented for resizing.
 
-Witness checklist for the candidate:
+Stable `5b93204` and Main `152c323` predate this export, so the composed workspace is witnessed through Commit projection of Product #387. Nothing requires Product or VexWork main integration merely to perceive the candidate.
 
-1. `lens.html?subject=vexlife-prod&commit=<Product candidate head>` draws header band, Browser | seam |
-   Companion, and the overlay layer — not a phone;
-2. clicking Send, Vision and Private Mode still bridges to their Behavior graphs;
-3. clicking the seam handle shows its spatial pathway and "Where it sits" (axis, allocation, regions);
-4. Structure shows Workspace frame › Header / Body frame › Browser / Companion nesting;
-5. VexLife-Android Stable and Main are unchanged.
+Witness checklist for the composed candidate:
+
+1. `lens.html?subject=vexlife-prod&commit=<Product #387 head>` draws header band, Browser | seam | Companion, and overlay — not a phone;
+2. reply language manifests only CHOOSE_REPLY_LANGUAGE; screen language manifests CHOOSE_SCREEN_LANGUAGE + FOLLOW_REPLY_LANGUAGE;
+3. Send, Vision and Private Mode still bridge to their Behavior/Depth pathways;
+4. the seam handle shows its spatial pathway and source-authored allocation;
+5. Structure shows Workspace frame > Header / Body frame > Browser / Companion;
+6. VexLife-Android Stable remains the accepted phone realization.
 
 ## Human witness gate
 
@@ -348,7 +345,7 @@ Re-observe mutable branch heads before implementing. Preserve completed proof ra
 This intention source does not claim:
 
 - that the current VexLife-Prod exported Lens is visually final;
-- that all 81 elements or 11 pathways are complete/current enough for acceptance;
+- that an element/pathway count, by itself, proves Product or human acceptance;
 - that every Experience Graph relationship belongs in the Screen Lens;
 - that VexLife-Prod Stable/Main pointers have already been admitted in VexWork;
 - that #323 should merge;

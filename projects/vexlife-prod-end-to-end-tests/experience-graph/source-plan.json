@@ -120,6 +120,16 @@
         "scope-design-foundation"
       ],
       "summary": "All seven scopes merged in order, with the resolutions between them made once."
+    },
+    {
+      "buildRef": "candidate-convergence-r2",
+      "label": "Product R2 semantic + spatial convergence",
+      "axis": "ALL",
+      "branch": "VXG-111926-vexlife-prod-experience-convergence-r2",
+      "commit": "479544c5c319ad796a0853125ae131d85afc9671",
+      "basis": "main",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "summary": "Current Product source composed with #380 semantic evolution and #385 VexWeb browser-workspace Screen Lens realization."
     }
   ]
 }

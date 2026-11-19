@@ -6,8 +6,7 @@ import { normalizeScreenLens } from '../src/shared/vexboard-screen-lens.mjs';
 import { frameGeometry, layoutRole, normalizeScreenLayout } from '../src/shared/vexboard-screen-lens-frames.mjs';
 
 const read = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url), 'utf8'));
-// Exported by VexLife-Prod's own VexLifeProdScreenLens from VexLifeWebP1.Surface (candidate
-// VXG-111926-claude-vexlife-prod-browser-workspace-lens-a001).
+// Exported by the composed VexLife-Prod R2 candidate (#387); refreshed from the exact Product-owned export.
 const workspace = read('./fixtures/screen-lens/vexlife-prod.browser-workspace.screen-lens.json');
 
 const FRAME = 'vexweb.vexlife-workspace.p1.frame';

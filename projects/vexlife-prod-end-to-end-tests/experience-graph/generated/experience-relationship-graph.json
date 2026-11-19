@@ -235,7 +235,7 @@
       },
       {
         "path": "src/core/experience-graph-product-wiring.mjs",
-        "blobSha1": "db310af427f81cdf6e93fcb47b2f6bd11ff1eba6"
+        "blobSha1": "c54b93acf4edb6aedbf6f5433c35283da262c5ea"
       },
       {
         "path": "src/core/experience-graph-localization.mjs",
@@ -247,7 +247,7 @@
       },
       {
         "path": "src/core/experience-graph.mjs",
-        "blobSha1": "095732587d55b2e3f6d81536a8c0da14319071b7"
+        "blobSha1": "2c7ba130a8d12ce7bbdca44c876e0be0cdd05e87"
       }
     ]
   },
@@ -4586,7 +4586,11 @@
       "detail": {
         "capability": "conversation.private",
         "pathwayRef": "pathway.vexlife-prod.conversation.private",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "BEGIN",
+          "END"
+        ]
       }
     },
     {
@@ -4601,7 +4605,11 @@
       "detail": {
         "capability": "conversation.private",
         "pathwayRef": "pathway.vexlife-prod.conversation.private",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "BEGIN",
+          "END"
+        ]
       }
     },
     {
@@ -4646,7 +4654,11 @@
       "detail": {
         "capability": "vision.selected-scope",
         "pathwayRef": "pathway.vexlife-prod.vision.selected-scope",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "ENGAGE",
+          "STOP"
+        ]
       }
     },
     {
@@ -4661,7 +4673,11 @@
       "detail": {
         "capability": "vision.selected-scope",
         "pathwayRef": "pathway.vexlife-prod.vision.selected-scope",
-        "disposition": "SCAE_FAMILY"
+        "disposition": "SCAE_FAMILY",
+        "declaredControlRefs": [
+          "ENGAGE",
+          "STOP"
+        ]
       }
     },
     {
@@ -15004,5 +15020,5 @@
       }
     ]
   },
-  "fingerprint": "4cf0e4e03c8decacce99dff79d15158c1edad0dc5260eeb3d1071f6b680f8a00"
+  "fingerprint": "7c4f1615deb1a67192f758d66eccb8e87cb6279e50200737c944b4f35f0566c6"
 }

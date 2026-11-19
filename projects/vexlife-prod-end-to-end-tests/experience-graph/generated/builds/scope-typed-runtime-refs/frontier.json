@@ -1,6 +1,6 @@
 {
   "schemaVersion": "vexwork.experience-graph.derivation/v1",
-  "graphFingerprint": "f1c2fc086bfc3e9225f0cc439573a1a884886fd64e1c8990352bdc24f6176f1d",
+  "graphFingerprint": "b9bb4b37423aefd2ca05885d4bdd60ac1e902d5da57e0b2ffff25b051dfb7048",
   "debt": [
     {
       "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeCapabilityBridge",

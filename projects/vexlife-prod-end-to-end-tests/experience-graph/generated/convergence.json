@@ -1,6 +1,6 @@
 {
   "schemaVersion": "vexwork.experience-graph.convergence/v1",
-  "graphFingerprint": "4cf0e4e03c8decacce99dff79d15158c1edad0dc5260eeb3d1071f6b680f8a00",
+  "graphFingerprint": "7c4f1615deb1a67192f758d66eccb8e87cb6279e50200737c944b4f35f0566c6",
   "joins": [
     {
       "joinRef": "join:DirectCompanionTurn",
@@ -1781,7 +1781,7 @@
         "invalidated": "any probe evidence bound to the prior graph fingerprint for an impacted route",
         "reusable": "law evidence for cells whose OFFERS / REQUESTS_EFFECT / ADMITS_STATE rows are unchanged"
       },
-      "priorGraphFingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924"
+      "priorGraphFingerprint": "3c166150fa424e2b04eab1a87f6dff408bfdb3333943a175161aca16ca9ced76"
     }
   }
 }
