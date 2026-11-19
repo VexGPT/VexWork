@@ -196,7 +196,7 @@ function browserEffectHandlers(text, family, constName) {
       let close;
       try { close = matchClose(text, open); } catch { continue; }
       const body = text.slice(open + 1, close);
-      const realize = /\\b(?:await\\s+)?(realize[A-Z]\\w*)\\s*\\(/.exec(body);
+      const realize = /\b(?:await\s+)?(realize[A-Z]\w*)\s*\(/.exec(body);
       if (!realize) continue;
       handlers.push({ key, handler: realize[1], line: lineAt(text, branch.index) });
     }
