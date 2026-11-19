@@ -115,11 +115,22 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
       structuralAttribute: 'data-vex-structural-ref',
       structuralParentAttribute: 'data-vex-structural-parent',
     },
+    stateBindings: [{
+      presenceRef: 'presence.debug-menu.dialog-open',
+      value: 'OPEN',
+      operations: [
+        { op: 'SET_ATTRIBUTE', targetRef: 'element.debug-menu.body.dark-mode', attribute: 'open', value: '' },
+        { op: 'SET_ATTRIBUTE', targetRef: 'screen.debug-menu', attribute: 'data-mode', value: 'dialog' },
+      ],
+    }],
   };
   const projected = Lens.normalizeScreenLens(input).screens[3].view;
   assert.equal(projected.kind, 'STATIC_HTML_CSS');
   assert.equal(projected.scriptPolicy, 'NONE');
   assert.equal(projected.anchors.elementAttribute, 'data-vex-ref');
+  assert.equal(projected.stateBindings[0].presenceRef, 'presence.debug-menu.dialog-open');
+  assert.equal(projected.stateBindings[0].operations[0].attribute, 'open');
+  assert.equal(projected.stateBindings[0].operations[1].targetRef, 'screen.debug-menu');
   assert.match(projected.html, /Dark mode/);
 
   const executable = clone();
@@ -129,6 +140,13 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
   const badAnchor = clone();
   badAnchor.screens[3].view = { ...input.screens[3].view, anchors: { ...input.screens[3].view.anchors, elementAttribute: 'class' } };
   assert.throws(() => Lens.normalizeScreenLens(badAnchor), /data-\* attribute/);
+
+  const badStateAttribute = clone();
+  badStateAttribute.screens[3].view = {
+    ...input.screens[3].view,
+    stateBindings: [{ presenceRef: 'presence.debug-menu.dialog-open', value: 'OPEN', operations: [{ op: 'SET_ATTRIBUTE', targetRef: 'element.debug-menu.body.dark-mode', attribute: 'onclick', value: 'x' }] }],
+  };
+  assert.throws(() => Lens.normalizeScreenLens(badStateAttribute), /safe presentation attribute/);
 });
 
 test('chrome applies by placement, with always-visible controls kept on other screens', () => {
