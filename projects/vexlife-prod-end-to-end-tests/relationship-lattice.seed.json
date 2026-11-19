@@ -31,12 +31,25 @@
       {
         "ref": "github.pull.vexlife-prod.380",
         "meaning": "Claude consolidated UI/identity/localization/design candidate, tested here together with current Product main."
+      },
+      {
+        "ref": "github.pull.vexlife-prod.385",
+        "meaning": "VexWeb-derived browser-workspace spatial Screen Lens export candidate; projection-only, awaiting human raw-git witness."
+      },
+      {
+        "ref": "github.pull.vexwork.329",
+        "meaning": "Generic VexBoard workspace-frame renderer for optional Product Screen Lens layout; projection-only, stacked on #327."
       }
     ],
     "experienceCandidate": {
       "ref": "github.branch.vexlife-prod.VXG-111926-vexlife-prod-experience-convergence-r1",
       "commit": "af21cccce50262c4f0b4980b993e496b4449ab67",
       "meaning": "Current VexLife-Prod main plus Claude consolidated #380; runnable Product candidate for Experience Graph convergence."
+    },
+    "experienceSuccessorCandidate": {
+      "ref": "github.branch.vexlife-prod.VXG-111926-vexlife-prod-experience-convergence-r2",
+      "commit": "2d1843c1ce7d69d1242b0f9bd1a4574727e028ca",
+      "meaning": "Source-converged successor: runnable R1 + #385 spatial exporter while preserving #380 semantic pathways. Generated Lens JSON intentionally not hand-edited; regeneration held."
     }
   },
   "topologyLayers": [
@@ -1530,6 +1543,10 @@
       "380": {
         "state": "OPEN_DRAFT",
         "head": "37ae931d402eb29bad2601bb0cc8479f55750928"
+      },
+      "385": {
+        "state": "OPEN_DRAFT_AWAITING_HUMAN_RAW_GIT_WITNESS",
+        "head": "55ce7a1e35dcb49d01d3d29d472a177fe5a43f8b"
       }
     }
   }
