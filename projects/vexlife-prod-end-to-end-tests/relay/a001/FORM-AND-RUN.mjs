@@ -145,7 +145,7 @@ try {
     taskStorageKey:'task-vexwork-vexlife-prod-e2e-chatgpt-source-owner',attemptStorageKey:`attempt-${stamp}`,
     requestingRoleRef:'Operations[ChatGPT]',requestingInstanceRef:'instance.chatgpt.vexlife-prod-e2e-route-prototype.20261118.a001',
     parentOperationsRef:'project.vexlife-prod.end-to-end-tests',returnRouteRef:'github.pull.vexwork.320',
-    hostProfileRef:'macos-victor',repositoryExecutionProfileRefOrNull:null,repositoryRefOrNull:request.candidate.repository,
+    hostProfileRef:'macos-victor',repositoryExecutionProfileRefOrNull:'profile.repository.vextreme-sdk.macos-v1',repositoryRefOrNull:request.candidate.repository,
     baseRefOrNull:request.candidate.baseHead,headRefOrNull:request.candidate.head,treeRefOrNull:request.candidate.tree,
     branchRefOrNull:request.candidate.branch,claimRefOrNull:'github.pull.vexwork.320',exactPathRefs:[...request.candidate.changedPaths],
     authorityBinding:{
