@@ -4,12 +4,13 @@
 
 ~~~text
 source       VexGPT/VexLife-Prod @ a58777106b08bd58c167608fa0115729185ae3dd
-graph        de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924
+graph        98a859ab0def4c4cf08ebe9b0f138dff7fed59f1e10069f5875f76a375c409b9
 nodes/edges  293 / 341   (VexBoard projection: 293 nodes, 341 relationships)
 edge kinds   ADMITS_STATE 8 · CAPTURED_AT_SEND 4 · CONSUMED_BY 7 · MANIFESTS 34 · OBSERVES_AS 29 · OFFERS 63 · PROJECTS_TO 91 · REALIZED_BY 47 · REQUESTS_EFFECT 46 · RETURNS_TO 12
 routes       CLEARED 13 · FRONTIER_DEBT 53 · HELD 0 · UNKNOWN 0
-test cases   159 generated (manifest 2af34b67ca99)
-law proof    PASS 110 · PASS_PARTIAL 0 · FAIL 0 · FIXTURE_REJECTED 21 · NOT_RUN 28   current=true
+test cases   159 generated (manifest 810320078b8b)
+law cells    PASS 109 · PASS_PARTIAL 0 · FAIL 0 · FIXTURE_REJECTED 21 · NOT_RUN 22   current=true
+test cases   PASS 110 · PASS_PARTIAL 0 · FAIL 0 · FIXTURE_REJECTED 21 · NOT_RUN 28   executed-law projection
 debt         164 (A 2 · B 139 · D 3 · E 15 · F 5)
 perturbation EXPECTED_FROM_LAW 33 · ANSWERED_BY_EVIDENCE 6 · STALE_EVIDENCE 0 · UNKNOWN 61
 ~~~

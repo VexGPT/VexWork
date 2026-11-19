@@ -1,5 +1,9 @@
 {
   "current": true,
+  "sourceCurrent": true,
+  "probeCurrent": true,
+  "evidenceProbeSourceSha256": "a4ffa41a3a1ebb2c8a95695ed1b5ac6c185177158266e94a81cb1a82e9fa332d",
+  "currentProbeSourceSha256": "a4ffa41a3a1ebb2c8a95695ed1b5ac6c185177158266e94a81cb1a82e9fa332d",
   "evidenceLawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
   "lawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
   "cellCounts": {

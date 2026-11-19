@@ -235,7 +235,7 @@
       },
       {
         "path": "src/core/experience-graph-product-wiring.mjs",
-        "blobSha1": "db310af427f81cdf6e93fcb47b2f6bd11ff1eba6"
+        "blobSha1": "fa40165dcbebbf586b8c7a9feac0bdbbfcf28f25"
       },
       {
         "path": "src/core/experience-graph-localization.mjs",
@@ -247,7 +247,11 @@
       },
       {
         "path": "src/core/experience-graph.mjs",
-        "blobSha1": "095732587d55b2e3f6d81536a8c0da14319071b7"
+        "blobSha1": "f6be041a7cdff89a82ec82a859bc78356a257b5f"
+      },
+      {
+        "path": "src/core/experience-graph-law-probe.mjs",
+        "blobSha1": "27adc4dd23e5786fc4ee8511e84c934ce9447f65"
       }
     ]
   },
@@ -7778,7 +7782,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           624
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7794,7 +7800,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           653
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7810,7 +7818,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           1811
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7826,7 +7836,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           1777
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7842,7 +7854,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           1793
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7858,7 +7872,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           1803
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7874,7 +7890,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           1768
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7903,7 +7921,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           121
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7919,7 +7939,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           133
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7935,7 +7957,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           128
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7951,7 +7975,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           597
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7967,7 +7993,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           547
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7983,7 +8011,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           572
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -7999,7 +8029,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           587
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8015,7 +8047,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           614
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8031,7 +8065,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           591
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8047,7 +8083,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           589
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8063,7 +8101,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           570
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8079,7 +8119,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           528
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8095,7 +8137,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           554
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8124,7 +8168,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           2924
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8140,7 +8186,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           2928
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8157,7 +8205,9 @@
         "lines": [
           1207,
           1285
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8174,7 +8224,9 @@
         "lines": [
           1205,
           1240
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8191,7 +8243,9 @@
         "lines": [
           1204,
           1231
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8208,7 +8262,9 @@
         "lines": [
           1206,
           1262
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8328,7 +8384,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           112
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8344,7 +8402,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           103
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8373,7 +8433,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           1382
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8389,7 +8451,9 @@
         "realizationClass": "JVM_OWNER",
         "lines": [
           1383
-        ]
+        ],
+        "handler": null,
+        "carriedKey": null
       }
     },
     {
@@ -8400,12 +8464,14 @@
       "family": "VexLifeVoiceInputFamily",
       "whenState": null,
       "guards": [],
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L357",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1391",
       "detail": {
         "realizationClass": "BROWSER_RUNTIME",
         "lines": [
-          357
-        ]
+          1391
+        ],
+        "handler": "realizeBeginLocalDictation",
+        "carriedKey": "beginLocalDictation"
       }
     },
     {
@@ -8416,12 +8482,14 @@
       "family": "VexLifeVoiceInputFamily",
       "whenState": null,
       "guards": [],
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L358",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1399",
       "detail": {
         "realizationClass": "BROWSER_RUNTIME",
         "lines": [
-          358
-        ]
+          1399
+        ],
+        "handler": "realizeEndLocalDictation",
+        "carriedKey": "endLocalDictation"
       }
     },
     {
@@ -14943,5 +15011,5 @@
       }
     ]
   },
-  "fingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924"
+  "fingerprint": "98a859ab0def4c4cf08ebe9b0f138dff7fed59f1e10069f5875f76a375c409b9"
 }

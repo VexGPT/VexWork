@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.experience-graph.branches/v1",
   "main": {
     "commit": "a58777106b08bd58c167608fa0115729185ae3dd",
-    "graphFingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924",
+    "graphFingerprint": "98a859ab0def4c4cf08ebe9b0f138dff7fed59f1e10069f5875f76a375c409b9",
     "routeCounts": {
       "CLEARED": 13,
       "FRONTIER_DEBT": 53,
@@ -21,7 +21,7 @@
       "branch": "VXG-111826-claude-candidate-design-foundation",
       "commit": "d9f0bb995556e7b16bb7d5fc9c93720c7b423472",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "0a152cc513c318bbc9551e05c53881d66ef26adb20c86af023af0343b1af5209",
+      "graphFingerprint": "57b9b57cf403bd8a39c224b105016b1c0ae05cb784e5f0399d5090d012b537e6",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -65,7 +65,7 @@
       "branch": "VXG-111826-claude-candidate-keyed-elements",
       "commit": "e01a6cb1b108f1607b5a32cc6f82a9e68af50ad6",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "d1a6f4db3b8bdeedd4e8f74ea8c575d047aa5d0e88bb58231c340a25f397eba8",
+      "graphFingerprint": "c722c3ab1291fb90e6b908e9d3ee3481031a9c3e28cf0e2534e80bae0370b975",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -148,7 +148,7 @@
       "branch": "VXG-111826-claude-candidate-localization",
       "commit": "e4229b60cf8edc73cbe48664d9e8904d4b050114",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "1dc560de658fe231ed30c123cade146bc679037080638f67643f6f2f0f99dc85",
+      "graphFingerprint": "984b5c0bc8c799eb4cf22d0d73b104ad7b644add13bcea9f6cbdbe47fea25aff",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
