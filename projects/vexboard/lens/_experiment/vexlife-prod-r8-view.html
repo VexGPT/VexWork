@@ -457,4 +457,55 @@
             <select id="local-asr-spoken-language" data-vex-ref="element.vexlife-workspace.companion.settings.local-asr.spoken-language" disabled></select>
           </div>
           <p class="setting-note-line" data-vex-text="workspace.description.local-asr-spoken-language-note"></p>
-          <div c
+          <div class="local-asr-row">
+            <label for="local-asr-composer-output" data-vex-text="workspace.label.local-asr-composer-output"></label>
+            <select id="local-asr-composer-output" data-vex-ref="element.vexlife-workspace.companion.settings.local-asr.composer-output" disabled></select>
+          </div>
+          <p class="setting-note-line" data-vex-text="workspace.description.local-asr-composer-output-note"></p>
+          <p class="setting-note-line" data-vex-ref="element.vexlife-workspace.companion.settings.local-asr.status" id="local-asr-status" role="status"></p>
+          <p class="setting-note-line" id="local-asr-note" data-vex-text="workspace.description.local-asr-note"></p>
+          <p class="setting-note-line" id="local-asr-storage-note" data-vex-ref="element.vexlife-workspace.companion.settings.local-asr.storage-note"></p>
+        </section>
+
+        <section class="setting" data-vex-ref="element.vexlife-workspace.companion.settings.diagnostics" aria-labelledby="diagnostics-heading">
+          <h2 id="diagnostics-heading" data-vex-text="workspace.heading.diagnostics"></h2>
+          <div class="memory-state" data-vex-ref="element.vexlife-workspace.companion.settings.diagnostics.trace" id="diagnostics-trace">
+            <p class="memory-label" id="diagnostics-status"></p>
+            <p class="setting-note-line" id="diagnostics-capture"></p>
+            <p class="setting-note-line" id="diagnostics-records"></p>
+          </div>
+          <p class="setting-note-line" data-vex-text="workspace.description.diagnostics"></p>
+          <div class="home-row">
+            <button class="outline-button" type="button" data-vex-ref="element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture" id="diagnostics-enhanced" disabled></button>
+            <button class="outline-button" type="button" data-vex-ref="element.vexlife-workspace.companion.settings.diagnostics.clear-history" id="diagnostics-clear" disabled></button>
+            <a class="outline-button" data-vex-ref="element.vexlife-workspace.companion.settings.diagnostics.export" id="diagnostics-export" href="/api/v1/diagnostics/export" download data-vex-text="workspace.button.diagnostics-export"></a>
+          </div>
+          <p class="setting-note-line" data-vex-text="workspace.description.diagnostics-enhanced-note"></p>
+          <p class="setting-note-line" data-vex-text="workspace.description.diagnostics-export-note"></p>
+        </section>
+
+        <section class="setting setting-renderer">
+          <p class="setting-note-line" id="setting-renderer"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="sheet" data-vex-ref="element.vexlife-workspace.companion.conversation.context-inspector" id="inspector" aria-labelledby="inspector-title">
+    <div class="sheet-head">
+      <h2 id="inspector-title">What Vex receives</h2>
+      <button class="quiet-button" type="button" id="inspector-close">Close</button>
+    </div>
+    <dl class="facts" id="inspector-facts"></dl>
+    <pre class="inspector-text" id="inspector-text"></pre>
+  </dialog>
+
+
+  <div class="overlay" id="overlay-root" data-vex-structural-ref="vexweb.vexlife-workspace.p1.overlay">
+    <p class="snackbar" id="snackbar" data-vex-structural-ref="vexweb.vexlife-workspace.p1.overlay.snackbar" role="status" aria-live="polite" hidden></p>
+  </div>
+
+  <p class="binding-failure" id="binding-failure" role="alert" hidden></p>
+</div>
+</body>
+</html>
