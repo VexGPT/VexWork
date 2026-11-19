@@ -2896,31 +2896,43 @@ function bridgeExit(leftFace, anchorRef, from, preferAbove) {
   }
   return direct;
 }
-function drawBridge() {
+// Relationship truth is stable across viewport motion. Resolve that identity first; geometry below
+// only manifests where the already-known relationship sits right now.
+function bridgeRelationship() {
+  const pathway = currentPathway();
+  const anchorRef = state.anchorElementRef ?? (pathway?.disposition === 'EXPRESSION' ? activeExpression().focusRef : null);
+  if (!anchorRef || !pathway) return null;
+  return Object.freeze({
+    pathway,
+    anchorRef,
+    behaviorFace: state.faces.BEHAVIOR,
+    entryRef: entryRefForFace(state.faces.BEHAVIOR),
+  });
+}
+function drawBridge(relationship = bridgeRelationship()) {
   const svg = refs.bridge;
   if (!svg) return;
   svg.replaceChildren();
-  const pathway = currentPathway();
-  // The bridge leaves the picked control, or, with none picked, where the Surface shows the expression.
-  const anchorRef = state.anchorElementRef ?? (pathway?.disposition === 'EXPRESSION' ? activeExpression().focusRef : null);
-  if (!anchorRef || !pathway || window.matchMedia('(max-width:900px)').matches) return;
+  if (!relationship || window.matchMedia('(max-width:900px)').matches) return;
+  const { pathway, anchorRef, behaviorFace, entryRef } = relationship;
   const main = refs.main.getBoundingClientRect();
   const leftFace = document.querySelector(`.flipper[data-side="EXPERIENCE"] .face[data-face="${state.faces.EXPERIENCE}"]`);
-  const rightFace = document.querySelector(`.flipper[data-side="BEHAVIOR"] .face[data-face="${state.faces.BEHAVIOR}"]`);
+  const rightFace = document.querySelector(`.flipper[data-side="BEHAVIOR"] .face[data-face="${behaviorFace}"]`);
   if (!leftFace || !rightFace) return;
   const from = visibleRect(leftFace.querySelector(`[data-ref="${CSS.escape(anchorRef)}"]`), leftFace);
-  const entry = entryRefForFace(state.faces.BEHAVIOR);
+  const entry = entryRef;
   const viewport = rightFace.querySelector('.graph');
-  const stripTarget = state.faces.BEHAVIOR === 'BEHAVIOR' ? rightFace.querySelector('.doorway button') : null;
+  const stripTarget = behaviorFace === 'BEHAVIOR' ? rightFace.querySelector('.doorway button') : null;
   const to = stripTarget ? visibleRect(stripTarget, rightFace) : (entry && viewport ? visibleRect(rightFace.querySelector(`[data-node-ref="${CSS.escape(entry)}"]`), viewport) : null);
   if (!from || !to) return;
-  const entryNode = pathwayNode(stripTarget ? stripTarget.dataset.nodeRef : entry);
+  const entryNode = pathway.nodes.find((node) => node.ref === (stripTarget ? stripTarget.dataset.nodeRef : entry));
+  if (!entryNode) return;
   const defs = s('defs');
   const gradient = s('linearGradient', { id: 'bridge-gradient', x1: '0', x2: '1', y1: '0', y2: '0' });
   const stopA = s('stop', { offset: '0' }); stopA.style.stopColor = 'var(--r-ELEMENT)';
   const stopB = s('stop', { offset: '1' }); stopB.style.stopColor = `var(--r-${entryNode.role})`;
   gradient.append(stopA, stopB); defs.append(gradient); svg.append(defs);
-  const exit = bridgeExit(leftFace, anchorRef, from, state.faces.BEHAVIOR === 'BEHAVIOR' && Boolean(pathway.returnRef));
+  const exit = bridgeExit(leftFace, anchorRef, from, behaviorFace === 'BEHAVIOR' && Boolean(pathway.returnRef));
   const sideX = Math.min(from.right, from.clip.right) - main.left;
   let x1 = sideX;
   let y1 = from.midY - main.top;
@@ -2957,7 +2969,7 @@ function drawBridge() {
   gradient.setAttribute('gradientUnits', 'userSpaceOnUse'); gradient.setAttribute('x1', capA.x); gradient.setAttribute('x2', capB.x); gradient.setAttribute('y1', y1); gradient.setAttribute('y2', y1);
   const out = s('path', { d, class: 'out', stroke: 'url(#bridge-gradient)', 'stroke-dasharray': to.offscreen ? '7 5' : null });
   svg.append(out, s('circle', { cx: capA.x, cy: capA.y, r: 4.5, class: 'cap', fill: 'var(--r-ELEMENT)' }), s('circle', { cx: capB.x, cy: capB.y, r: 4.5, class: 'cap', fill: `var(--r-${entryNode.role})` }));
-  if (state.faces.BEHAVIOR === 'BEHAVIOR' && pathway.returnRef) {
+  if (behaviorFace === 'BEHAVIOR' && pathway.returnRef) {
     const back = visibleRect(rightFace.querySelector(`[data-node-ref="${CSS.escape(pathway.returnRef)}"]`), viewport);
     if (back && !back.offscreen) {
       const rx = back.left - main.left;
@@ -2970,7 +2982,15 @@ function drawBridge() {
   }
 }
 let bridgeFrame = 0;
-const scheduleBridge = () => { cancelAnimationFrame(bridgeFrame); bridgeFrame = requestAnimationFrame(drawBridge); };
+// Viewport motion owns the gesture. The bridge observes the latest geometry once per animation
+// frame without clearing itself or restarting the pending observation on every scroll event.
+const scheduleBridge = () => {
+  if (bridgeFrame) return;
+  bridgeFrame = requestAnimationFrame(() => {
+    bridgeFrame = 0;
+    drawBridge();
+  });
+};
 
 /* ---------- inspector tray ---------- */
 function sourceLink(source, label = 'Open source') {
@@ -3628,6 +3648,18 @@ function refreshStaticViewInspectionMarks(doc, view) {
     state.presentationRules = null;
   }
 }
+function replaceStructureFacePreservingViewport(experience) {
+  const oldStructure = experience?.querySelector('.face[data-face="STRUCTURE"]');
+  if (!oldStructure) return;
+  const scrollTop = oldStructure.querySelector('.structure')?.scrollTop ?? 0;
+  const nextStructure = renderStructureFace();
+  oldStructure.replaceWith(nextStructure);
+  const nextScroller = nextStructure.querySelector('.structure');
+  if (nextScroller) {
+    nextScroller.scrollTop = scrollTop;
+    nextScroller.addEventListener('scroll', scheduleBridge, { passive: true });
+  }
+}
 function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } = {}) {
   const screen = currentScreen();
   if (!screen?.view || !refs.main || state.overlay) return false;
@@ -3648,12 +3680,7 @@ function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } 
   }
 
   const experience = refs.main.querySelector('.side[data-side="EXPERIENCE"]');
-  const oldStructure = experience?.querySelector('.face[data-face="STRUCTURE"]');
-  if (oldStructure) {
-    const nextStructure = renderStructureFace();
-    oldStructure.replaceWith(nextStructure);
-    nextStructure.querySelector('.structure')?.addEventListener('scroll', scheduleBridge, { passive: true });
-  }
+  replaceStructureFacePreservingViewport(experience);
 
   const oldBehavior = refs.main.querySelector('.side[data-side="BEHAVIOR"]');
   if (oldBehavior) oldBehavior.replaceWith(renderBehaviorSide());
