@@ -28,7 +28,7 @@ test('relationship lattice seed currentness is internally consistent', () => {
 
   assert.equal(
     seed.sourceBindings.vexlifeProdMain,
-    'a58777106b08bd58c167608fa0115729185ae3dd',
+    'fb4ea859949f2fcba47bf55857669df37d2730ce',
   );
   assert.equal(
     Object.prototype.hasOwnProperty.call(seed.sourceBindings, 'vexLifeProdMain'),
@@ -271,9 +271,17 @@ test('Vision READY + ENGAGE traverses the ordinary graph through BoardJourney be
 
   assert.equal(route.sourceBinding.vexLifeProdMain, seed.currentness.vexLifeProdMain);
   assert.equal(route.preconditions.currentState, 'VexLifeVisionFamily.Ready (stateRef=READY)');
-  assert.equal(route.preconditions.lawfulControlRelationship.kind, 'OFFERS');
+  assert.equal(route.preconditions.lawfulControlRelationships.length, 1);
+  assert.equal(route.preconditions.lawfulControlRelationships[0].kind, 'OFFERS');
+  assert.deepEqual(
+    route.preconditions.lawfulControlRelationships[0].predicate,
+    {
+      currentState: 'VexLifeVisionFamily.Ready (stateRef=READY)',
+      control: 'VexLifeVisionFamily.Engage (controlRef=ENGAGE)',
+    },
+  );
   assert.equal(route.actions[0].elementRef, 'element.vexlife-workspace.companion.vision');
-  assert.equal(route.actions[0].controlRef, 'ENGAGE');
+  assert.equal(route.target.controlRef, 'ENGAGE');
 
   assert.deepEqual(
     route.relationshipTraversal.map((relationship) => relationship.kind),
