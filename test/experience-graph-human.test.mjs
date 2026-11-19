@@ -14,8 +14,8 @@ function result() {
 }
 
 function candidateResult() {
-  const graph = readJson('../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/consolidated-claude/experience-relationship-graph.json');
-  const derivation = readJson('../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/consolidated-claude/routes.json');
+  const graph = readJson('../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/candidate-convergence-r2/experience-relationship-graph.json');
+  const derivation = readJson('../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/candidate-convergence-r2/routes.json');
   const seed = readJson('../projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json');
   return deriveHumanExperienceConvergence(graph, derivation, seed);
 }
@@ -88,7 +88,7 @@ test('mechanical connectivity does not impersonate a curated semantic relationsh
   assert.deepEqual(convergence.relationships[0].graphPath, ['edge:1', 'edge:2']);
 });
 
-test('candidate Language Family is mechanically present in Claude consolidated topology but not human-E2E cleared', () => {
+test('candidate Language Family is mechanically present in exact Product R2 topology but not human-E2E cleared', () => {
   const oldMain = result();
   const before = oldMain.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
   assert.ok(before);
@@ -108,14 +108,21 @@ test('candidate Language Family is mechanically present in Claude consolidated t
   assert.ok(language.missing.some((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION'));
 });
 
-test('ambiguous Family manifestations fail closed instead of selecting the first element', () => {
+test('Lens-declared Control subsets remove manifestation ambiguity without inventing deterministic execution proof', () => {
   const convergence = candidateResult();
   const language = convergence.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
   assert.ok(language);
-  assert.ok(language.missing.some((row) => row.predicate === 'AMBIGUOUS_MANIFESTATION_BINDING'));
-  const deterministic = language.missing.find((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION');
-  assert.ok(deterministic);
-  assert.ok(String(deterministic.coordinate).startsWith('VexLifeLanguageFamily.'));
+  assert.equal(
+    language.missing.some((row) => row.predicate === 'AMBIGUOUS_MANIFESTATION_BINDING'),
+    false,
+    'R2 must not widen reply/screen Controls back across both interactive elements',
+  );
+  const deterministic = language.missing.filter((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION');
+  assert.ok(deterministic.length > 0, 'precise manifestation does not itself earn a browser/runtime action harness');
+  assert.ok(
+    deterministic.every((row) => String(row.coordinate).startsWith('element.vexlife-workspace.header.utilities.language-panel.')),
+    'remaining action debt should be attached to the precise reply/screen controls',
+  );
 });
 
 test('language routes stay scoped to the human journey they mean', () => {
