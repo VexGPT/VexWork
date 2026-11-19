@@ -1590,10 +1590,16 @@
           {
             "ref": "presence.vexlife-workspace.header.quick-actions-open",
             "kind": "PRESENTATION",
-            "subjectRef": "element.vexlife-workspace.header.utilities.quick-actions",
             "owner": "VexLifeWebP1RuntimeArtifacts",
             "condition": "state.quickActionsOpen",
-            "source": "common:web/VexLifeWebP1RuntimeArtifacts.kt"
+            "source": "common:web/VexLifeWebP1RuntimeArtifacts.kt",
+            "realizedBy": "QuickActions",
+            "realizes": [
+              "element.vexlife-workspace.header.utilities.quick-actions.speech",
+              "element.vexlife-workspace.header.utilities.quick-actions.language",
+              "element.vexlife-workspace.header.utilities.quick-actions.vision",
+              "element.vexlife-workspace.header.utilities.quick-actions.release-alerts"
+            ]
           },
           {
             "ref": "presence.vexlife-workspace.header.language-panel-open",
