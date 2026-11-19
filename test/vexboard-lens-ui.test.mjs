@@ -290,6 +290,11 @@ test('a source-owned static view is mounted generically and bound through stable
   assert.match(page, /function bindStaticSplitInteractions\(doc, view\)/);
   assert.match(page, /handle\.addEventListener\('pointermove'/, 'the real Product handle can be dragged');
   assert.match(page, /function refreshStaticSelectionInPlace\(\)/, 'selection can update the Lens around a mounted Product without recreating its iframe');
+  assert.match(page, /function setStaticPresenceOutcome\(presenceRef, outcome\)/, 'source-derived Product selection/presentation changes can update the mounted Product in place');
+  assert.match(page, /function bindStaticSelectInteractions\(doc, view\)/);
+  assert.match(page, /select\.addEventListener\('change'/, 'native Product selects drive source-derived presence');
+  assert.match(page, /function renderStaticToggleControl\(binding\)/, 'Product presentation toggles get an explicit Open/Close affordance');
+  assert.match(page, /binding\.kind === 'TOGGLE' && binding\.elementRef === ref/, 'double-click can follow a Product-authored toggle relationship');
   assert.match(page, /if \(!refreshStaticSelectionInPlace\(\)\) render\(\);/, 'element selection falls back to full render only when no static Product view is mounted');
   assert.match(page, /current-product-view/, 'the interactive Product manifestation has a stable host for in-place selection updates');
   assert.match(page, /function refreshStaticViewInspectionMarks\(doc, view\)/);
