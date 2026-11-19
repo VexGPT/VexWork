@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "vexboard.board-source-catalog/v1",
+  "catalogRef": "catalog.vexlife-prod.experience-relationships",
+  "entries": [
+    {
+      "boardRef": "board.vexlife-prod.experience-relationships.current",
+      "location": "./vexboard-inspection.board.json",
+      "sourceRefs": [
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/experience-relationship-graph.json"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    "projects/vexlife-prod-end-to-end-tests/experience-graph/README.md",
+    "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/experience-relationship-graph.json"
+  ]
+}

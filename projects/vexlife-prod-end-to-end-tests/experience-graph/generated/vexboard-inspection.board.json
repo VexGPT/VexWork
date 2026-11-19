@@ -1,0 +1,2926 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexlife-prod.experience-relationships.current",
+  "title": "VexLife Prod — Experience Relationships",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexlife-prod.experience-relationships",
+    "nodes": [
+      {
+        "nodeRef": "VexChronologyFile",
+        "kind": "PROCESS",
+        "label": "OWNER · VexChronologyFile",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": []
+      },
+      {
+        "nodeRef": "VexLifeDiagnostics",
+        "kind": "PROCESS",
+        "label": "OWNER · VexLifeDiagnostics",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnostics.state",
+        "kind": "DECISION",
+        "label": "OBSERVATION · VexLifeDiagnostics.state",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt:L82"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily",
+        "kind": "CONTAINER",
+        "label": "FAMILY · VexLifeDiagnosticsFamily",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.ClearHistory",
+        "kind": "CONTROL",
+        "label": "CONTROL · CLEAR_HISTORY",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L53"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.DisplayState",
+        "kind": "ARTIFACT",
+        "label": "PROJECTION · DisplayState",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.Effect.BeginEnhancedCapture",
+        "kind": "PROCESS",
+        "label": "EFFECT · BeginEnhancedCapture",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L58"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.Effect.ClearDebugHistory",
+        "kind": "PROCESS",
+        "label": "EFFECT · ClearDebugHistory",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L63"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.Effect.EndEnhancedCapture",
+        "kind": "PROCESS",
+        "label": "EFFECT · EndEnhancedCapture",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L60"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.Recording",
+        "kind": "SCENE",
+        "label": "STATE · RECORDING",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L28"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+        "kind": "SCENE",
+        "label": "STATE · RECORDING_ENHANCED",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L33"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.StartEnhanced",
+        "kind": "CONTROL",
+        "label": "CONTROL · START_ENHANCED",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L45"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeDiagnosticsFamily.StopEnhanced",
+        "kind": "CONTROL",
+        "label": "CONTROL · STOP_ENHANCED",
+        "parentRefOrNull": "VexLifeDiagnosticsFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L49"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateConversation",
+        "kind": "PROCESS",
+        "label": "OWNER · VexLifePrivateConversation",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifePrivateConversation.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateConversation.IntervalRecord",
+        "kind": "PROCESS",
+        "label": "OWNER · VexLifePrivateConversation.IntervalRecord",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifePrivateConversation.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateConversation.state",
+        "kind": "DECISION",
+        "label": "OBSERVATION · VexLifePrivateConversation.state",
+        "parentRefOrNull": "VexLifePrivateModeFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifePrivateConversation.kt:L86"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateModeFamily",
+        "kind": "CONTAINER",
+        "label": "FAMILY · VexLifePrivateModeFamily",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateModeFamily.Begin",
+        "kind": "CONTROL",
+        "label": "CONTROL · BEGIN",
+        "parentRefOrNull": "VexLifePrivateModeFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L46"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateModeFamily.DisplayState",
+        "kind": "ARTIFACT",
+        "label": "PROJECTION · DisplayState",
+        "parentRefOrNull": "VexLifePrivateModeFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateModeFamily.Effect.BeginPrivate",
+        "kind": "PROCESS",
+        "label": "EFFECT · BeginPrivate",
+        "parentRefOrNull": "VexLifePrivateModeFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L56"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateModeFamily.Effect.EndPrivate",
+        "kind": "PROCESS",
+        "label": "EFFECT · EndPrivate",
+        "parentRefOrNull": "VexLifePrivateModeFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L59"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateModeFamily.End",
+        "kind": "CONTROL",
+        "label": "CONTROL · END",
+        "parentRefOrNull": "VexLifePrivateModeFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L50"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateModeFamily.Kept",
+        "kind": "SCENE",
+        "label": "STATE · KEPT",
+        "parentRefOrNull": "VexLifePrivateModeFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L28"
+        ]
+      },
+      {
+        "nodeRef": "VexLifePrivateModeFamily.Private",
+        "kind": "SCENE",
+        "label": "STATE · PRIVATE",
+        "parentRefOrNull": "VexLifePrivateModeFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L32"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeProdLocalService",
+        "kind": "PROCESS",
+        "label": "OWNER · VexLifeProdLocalService",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeProdLocalService.observedVisionState",
+        "kind": "DECISION",
+        "label": "OBSERVATION · VexLifeProdLocalService.observedVisionState",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1328"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeProdServiceContract.VisionSelectedScopeProjection",
+        "kind": "PROCESS",
+        "label": "OWNER · VexLifeProdServiceContract.VisionSelectedScopeProjection",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/service/VexLifeProdServiceContract.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeProdVisionRuntime",
+        "kind": "PROCESS",
+        "label": "OWNER · VexLifeProdVisionRuntime",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/vision/VexLifeProdVisionRuntime.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily",
+        "kind": "CONTAINER",
+        "label": "FAMILY · VexLifeVisionFamily",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.DisplayState",
+        "kind": "ARTIFACT",
+        "label": "PROJECTION · DisplayState",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Effect.EngageScope",
+        "kind": "PROCESS",
+        "label": "EFFECT · EngageScope",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L85"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Effect.StopScope",
+        "kind": "PROCESS",
+        "label": "EFFECT · StopScope",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L88"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Engage",
+        "kind": "CONTROL",
+        "label": "CONTROL · ENGAGE",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L75"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Engaged",
+        "kind": "SCENE",
+        "label": "STATE · ENGAGED",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L59"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Held",
+        "kind": "SCENE",
+        "label": "STATE · HELD",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L44"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Looking",
+        "kind": "SCENE",
+        "label": "STATE · LOOKING",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L67"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Ready",
+        "kind": "SCENE",
+        "label": "STATE · READY",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L49"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Selecting",
+        "kind": "SCENE",
+        "label": "STATE · SELECTING",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L54"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.Stop",
+        "kind": "CONTROL",
+        "label": "CONTROL · STOP",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L79"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVisionFamily.observe",
+        "kind": "DECISION",
+        "label": "OBSERVATION · observe()",
+        "parentRefOrNull": "VexLifeVisionFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L126"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily",
+        "kind": "CONTAINER",
+        "label": "FAMILY · VexLifeVoiceInputFamily",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.BeginLocalDictation",
+        "kind": "PROCESS",
+        "label": "EFFECT · BeginLocalDictation",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L113"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.DisplayState",
+        "kind": "ARTIFACT",
+        "label": "PROJECTION · DisplayState",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.EndLocalDictation",
+        "kind": "PROCESS",
+        "label": "EFFECT · EndLocalDictation",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L117"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.Failed",
+        "kind": "SCENE",
+        "label": "STATE · FAILED",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L51"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.Held",
+        "kind": "SCENE",
+        "label": "STATE · HELD",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L47"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.Listening",
+        "kind": "SCENE",
+        "label": "STATE · LISTENING",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L39"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.Ready",
+        "kind": "SCENE",
+        "label": "STATE · READY",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L31"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.RequestingMicrophone",
+        "kind": "SCENE",
+        "label": "STATE · REQUESTING_MICROPHONE",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L35"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.Start",
+        "kind": "CONTROL",
+        "label": "CONTROL · START",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L101"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.Stop",
+        "kind": "CONTROL",
+        "label": "CONTROL · STOP",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L105"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.Stopping",
+        "kind": "SCENE",
+        "label": "STATE · STOPPING",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L43"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.observeCapability",
+        "kind": "DECISION",
+        "label": "OBSERVATION · observeCapability()",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L168"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.observeFailure",
+        "kind": "DECISION",
+        "label": "OBSERVATION · observeFailure()",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L184"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeVoiceInputFamily.observeRecognitionStarted",
+        "kind": "DECISION",
+        "label": "OBSERVATION · observeRecognitionStarted()",
+        "parentRefOrNull": "VexLifeVoiceInputFamily",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L181"
+        ]
+      },
+      {
+        "nodeRef": "VexLifeWebP1RuntimeArtifacts",
+        "kind": "PROCESS",
+        "label": "OWNER · VexLifeWebP1RuntimeArtifacts",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
+        ]
+      },
+      {
+        "nodeRef": "element.vexlife-workspace.companion.conversation.voice-input",
+        "kind": "PORTAL",
+        "label": "ELEMENT · Voice input",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "nodeRef": "element.vexlife-workspace.companion.private-mode",
+        "kind": "PORTAL",
+        "label": "ELEMENT · Private mode",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "nodeRef": "element.vexlife-workspace.companion.vision",
+        "kind": "PORTAL",
+        "label": "ELEMENT · Vision",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.button.diagnostics-clear-history",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.button.diagnostics-clear-history",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L122"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.button.diagnostics-start-enhanced",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.button.diagnostics-start-enhanced",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L100"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.button.diagnostics-stop-enhanced",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.button.diagnostics-stop-enhanced",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L111"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.button.voice-input-start",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.button.voice-input-start",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2183"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.button.voice-input-stop",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.button.voice-input-stop",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2194"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.description.diagnostics-clear-confirm",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.description.diagnostics-clear-confirm",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L164"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.status.diagnostics-enhanced-off",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.status.diagnostics-enhanced-off",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L48"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.status.diagnostics-enhanced-on",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.status.diagnostics-enhanced-on",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L59"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.status.diagnostics-recording",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.status.diagnostics-recording",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L37"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.status.voice-input-listening",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.status.voice-input-listening",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2546"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.status.voice-input-ready",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.status.voice-input-ready",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2557"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.status.voice-input-requesting-microphone",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.status.voice-input-requesting-microphone",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2568"
+        ]
+      },
+      {
+        "nodeRef": "key:workspace.status.voice-input-stopping",
+        "kind": "PORTAL",
+        "label": "ELEMENT · workspace.status.voice-input-stopping",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2579"
+        ]
+      },
+      {
+        "nodeRef": "vexlife-prod.vision.picker",
+        "kind": "PROCESS",
+        "label": "OWNER · SDK selected-scope session",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": []
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "edge:ADMITS_STATE:VexLifeVoiceInputFamily.Start:VexLifeVoiceInputFamily.RequestingMicrophone:when:Failed:0",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.Start",
+        "toRef": "VexLifeVoiceInputFamily.RequestingMicrophone",
+        "labelOrNull": "ADMITS_STATE",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:ADMITS_STATE:VexLifeVoiceInputFamily.Start:VexLifeVoiceInputFamily.RequestingMicrophone:when:Ready:0",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.Start",
+        "toRef": "VexLifeVoiceInputFamily.RequestingMicrophone",
+        "labelOrNull": "ADMITS_STATE",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:ADMITS_STATE:VexLifeVoiceInputFamily.Stop:VexLifeVoiceInputFamily.Stopping:when:Listening:0",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.Stop",
+        "toRef": "VexLifeVoiceInputFamily.Stopping",
+        "labelOrNull": "ADMITS_STATE",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:ADMITS_STATE:VexLifeVoiceInputFamily.Stop:VexLifeVoiceInputFamily.Stopping:when:RequestingMicrophone:0",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.Stop",
+        "toRef": "VexLifeVoiceInputFamily.Stopping",
+        "labelOrNull": "ADMITS_STATE",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:element.vexlife-workspace.companion.conversation.voice-input:VexLifeVoiceInputFamily.Start:key",
+        "kind": "REFERENCE",
+        "fromRef": "element.vexlife-workspace.companion.conversation.voice-input",
+        "toRef": "VexLifeVoiceInputFamily.Start",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1ExperienceMarkup.kt:L327"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:element.vexlife-workspace.companion.private-mode:VexLifePrivateModeFamily.Begin",
+        "kind": "REFERENCE",
+        "fromRef": "element.vexlife-workspace.companion.private-mode",
+        "toRef": "VexLifePrivateModeFamily.Begin",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:element.vexlife-workspace.companion.private-mode:VexLifePrivateModeFamily.End",
+        "kind": "REFERENCE",
+        "fromRef": "element.vexlife-workspace.companion.private-mode",
+        "toRef": "VexLifePrivateModeFamily.End",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:element.vexlife-workspace.companion.vision:VexLifeVisionFamily.Engage",
+        "kind": "REFERENCE",
+        "fromRef": "element.vexlife-workspace.companion.vision",
+        "toRef": "VexLifeVisionFamily.Engage",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:element.vexlife-workspace.companion.vision:VexLifeVisionFamily.Stop",
+        "kind": "REFERENCE",
+        "fromRef": "element.vexlife-workspace.companion.vision",
+        "toRef": "VexLifeVisionFamily.Stop",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:key:workspace.button.diagnostics-clear-history:VexLifeDiagnosticsFamily.ClearHistory",
+        "kind": "REFERENCE",
+        "fromRef": "key:workspace.button.diagnostics-clear-history",
+        "toRef": "VexLifeDiagnosticsFamily.ClearHistory",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L122"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:key:workspace.button.diagnostics-start-enhanced:VexLifeDiagnosticsFamily.StartEnhanced",
+        "kind": "REFERENCE",
+        "fromRef": "key:workspace.button.diagnostics-start-enhanced",
+        "toRef": "VexLifeDiagnosticsFamily.StartEnhanced",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L100"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:key:workspace.button.diagnostics-stop-enhanced:VexLifeDiagnosticsFamily.StopEnhanced",
+        "kind": "REFERENCE",
+        "fromRef": "key:workspace.button.diagnostics-stop-enhanced",
+        "toRef": "VexLifeDiagnosticsFamily.StopEnhanced",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L111"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:key:workspace.button.voice-input-start:VexLifeVoiceInputFamily.Start",
+        "kind": "REFERENCE",
+        "fromRef": "key:workspace.button.voice-input-start",
+        "toRef": "VexLifeVoiceInputFamily.Start",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2183"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:key:workspace.button.voice-input-stop:VexLifeVoiceInputFamily.Stop",
+        "kind": "REFERENCE",
+        "fromRef": "key:workspace.button.voice-input-stop",
+        "toRef": "VexLifeVoiceInputFamily.Stop",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2194"
+        ]
+      },
+      {
+        "relationshipRef": "edge:MANIFESTS:key:workspace.description.diagnostics-clear-confirm:VexLifeDiagnosticsFamily.ClearHistory",
+        "kind": "REFERENCE",
+        "fromRef": "key:workspace.description.diagnostics-clear-confirm",
+        "toRef": "VexLifeDiagnosticsFamily.ClearHistory",
+        "labelOrNull": "MANIFESTS",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L164"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeDiagnostics.state:VexLifeDiagnosticsFamily.Recording",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeDiagnostics.state",
+        "toRef": "VexLifeDiagnosticsFamily.Recording",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt:L82"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeDiagnostics.state:VexLifeDiagnosticsFamily.RecordingEnhanced",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeDiagnostics.state",
+        "toRef": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt:L82"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifePrivateConversation.state:VexLifePrivateModeFamily.Kept",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifePrivateConversation.state",
+        "toRef": "VexLifePrivateModeFamily.Kept",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifePrivateConversation.kt:L86"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifePrivateConversation.state:VexLifePrivateModeFamily.Private",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifePrivateConversation.state",
+        "toRef": "VexLifePrivateModeFamily.Private",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifePrivateConversation.kt:L86"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeProdLocalService.observedVisionState:VexLifeVisionFamily.Engaged",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeProdLocalService.observedVisionState",
+        "toRef": "VexLifeVisionFamily.Engaged",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1328"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeProdLocalService.observedVisionState:VexLifeVisionFamily.Held",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeProdLocalService.observedVisionState",
+        "toRef": "VexLifeVisionFamily.Held",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1328"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeProdLocalService.observedVisionState:VexLifeVisionFamily.Looking",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeProdLocalService.observedVisionState",
+        "toRef": "VexLifeVisionFamily.Looking",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1328"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeProdLocalService.observedVisionState:VexLifeVisionFamily.Ready",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeProdLocalService.observedVisionState",
+        "toRef": "VexLifeVisionFamily.Ready",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1328"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeProdLocalService.observedVisionState:VexLifeVisionFamily.Selecting",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeProdLocalService.observedVisionState",
+        "toRef": "VexLifeVisionFamily.Selecting",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1328"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVisionFamily.observe:VexLifeVisionFamily.Engaged",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVisionFamily.observe",
+        "toRef": "VexLifeVisionFamily.Engaged",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L126"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVisionFamily.observe:VexLifeVisionFamily.Held",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVisionFamily.observe",
+        "toRef": "VexLifeVisionFamily.Held",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L126"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVisionFamily.observe:VexLifeVisionFamily.Looking",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVisionFamily.observe",
+        "toRef": "VexLifeVisionFamily.Looking",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L126"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVisionFamily.observe:VexLifeVisionFamily.Ready",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVisionFamily.observe",
+        "toRef": "VexLifeVisionFamily.Ready",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L126"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVisionFamily.observe:VexLifeVisionFamily.Selecting",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVisionFamily.observe",
+        "toRef": "VexLifeVisionFamily.Selecting",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L126"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVoiceInputFamily.observeCapability:VexLifeVoiceInputFamily.Held",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.observeCapability",
+        "toRef": "VexLifeVoiceInputFamily.Held",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L168"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVoiceInputFamily.observeCapability:VexLifeVoiceInputFamily.Ready",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.observeCapability",
+        "toRef": "VexLifeVoiceInputFamily.Ready",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L168"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVoiceInputFamily.observeFailure:VexLifeVoiceInputFamily.Failed",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.observeFailure",
+        "toRef": "VexLifeVoiceInputFamily.Failed",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L184"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OBSERVES_AS:VexLifeVoiceInputFamily.observeRecognitionStarted:VexLifeVoiceInputFamily.Listening",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.observeRecognitionStarted",
+        "toRef": "VexLifeVoiceInputFamily.Listening",
+        "labelOrNull": "OBSERVES_AS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L181"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeDiagnosticsFamily.Recording:VexLifeDiagnosticsFamily.ClearHistory",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeDiagnosticsFamily.Recording",
+        "toRef": "VexLifeDiagnosticsFamily.ClearHistory",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L78"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeDiagnosticsFamily.Recording:VexLifeDiagnosticsFamily.StartEnhanced",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeDiagnosticsFamily.Recording",
+        "toRef": "VexLifeDiagnosticsFamily.StartEnhanced",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L78"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeDiagnosticsFamily.RecordingEnhanced:VexLifeDiagnosticsFamily.ClearHistory",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+        "toRef": "VexLifeDiagnosticsFamily.ClearHistory",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L78"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeDiagnosticsFamily.RecordingEnhanced:VexLifeDiagnosticsFamily.StopEnhanced",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+        "toRef": "VexLifeDiagnosticsFamily.StopEnhanced",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L78"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifePrivateModeFamily.Kept:VexLifePrivateModeFamily.Begin",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifePrivateModeFamily.Kept",
+        "toRef": "VexLifePrivateModeFamily.Begin",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L77"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifePrivateModeFamily.Private:VexLifePrivateModeFamily.End",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifePrivateModeFamily.Private",
+        "toRef": "VexLifePrivateModeFamily.End",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L77"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeVisionFamily.Engaged:VexLifeVisionFamily.Stop",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVisionFamily.Engaged",
+        "toRef": "VexLifeVisionFamily.Stop",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L138"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeVisionFamily.Held:VexLifeVisionFamily.Stop",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVisionFamily.Held",
+        "toRef": "VexLifeVisionFamily.Stop",
+        "labelOrNull": "OFFERS · when currentState.reason == HoldReason.ScreenSafetyNotCurrent",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L138"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeVisionFamily.Ready:VexLifeVisionFamily.Engage",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVisionFamily.Ready",
+        "toRef": "VexLifeVisionFamily.Engage",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L138"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeVoiceInputFamily.Failed:VexLifeVoiceInputFamily.Start",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.Failed",
+        "toRef": "VexLifeVoiceInputFamily.Start",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeVoiceInputFamily.Listening:VexLifeVoiceInputFamily.Stop",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.Listening",
+        "toRef": "VexLifeVoiceInputFamily.Stop",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeVoiceInputFamily.Ready:VexLifeVoiceInputFamily.Start",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.Ready",
+        "toRef": "VexLifeVoiceInputFamily.Start",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:OFFERS:VexLifeVoiceInputFamily.RequestingMicrophone:VexLifeVoiceInputFamily.Stop",
+        "kind": "TRANSITION",
+        "fromRef": "VexLifeVoiceInputFamily.RequestingMicrophone",
+        "toRef": "VexLifeVoiceInputFamily.Stop",
+        "labelOrNull": "OFFERS",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeDiagnosticsFamily.DisplayState:key:workspace.status.diagnostics-enhanced-off",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeDiagnosticsFamily.DisplayState",
+        "toRef": "key:workspace.status.diagnostics-enhanced-off",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L48"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeDiagnosticsFamily.DisplayState:key:workspace.status.diagnostics-enhanced-on",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeDiagnosticsFamily.DisplayState",
+        "toRef": "key:workspace.status.diagnostics-enhanced-on",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L59"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeDiagnosticsFamily.DisplayState:key:workspace.status.diagnostics-recording",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeDiagnosticsFamily.DisplayState",
+        "toRef": "key:workspace.status.diagnostics-recording",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L37"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeDiagnosticsFamily.Recording:VexLifeDiagnosticsFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeDiagnosticsFamily.Recording",
+        "toRef": "VexLifeDiagnosticsFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeDiagnosticsFamily.RecordingEnhanced:VexLifeDiagnosticsFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+        "toRef": "VexLifeDiagnosticsFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifePrivateModeFamily.DisplayState:element.vexlife-workspace.companion.private-mode",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifePrivateModeFamily.DisplayState",
+        "toRef": "element.vexlife-workspace.companion.private-mode",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifePrivateModeFamily.Kept:VexLifePrivateModeFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifePrivateModeFamily.Kept",
+        "toRef": "VexLifePrivateModeFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifePrivateModeFamily.Private:VexLifePrivateModeFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifePrivateModeFamily.Private",
+        "toRef": "VexLifePrivateModeFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVisionFamily.DisplayState:element.vexlife-workspace.companion.vision",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVisionFamily.DisplayState",
+        "toRef": "element.vexlife-workspace.companion.vision",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVisionFamily.Engaged:VexLifeVisionFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVisionFamily.Engaged",
+        "toRef": "VexLifeVisionFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVisionFamily.Held:VexLifeVisionFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVisionFamily.Held",
+        "toRef": "VexLifeVisionFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVisionFamily.Looking:VexLifeVisionFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVisionFamily.Looking",
+        "toRef": "VexLifeVisionFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVisionFamily.Ready:VexLifeVisionFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVisionFamily.Ready",
+        "toRef": "VexLifeVisionFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVisionFamily.Selecting:VexLifeVisionFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVisionFamily.Selecting",
+        "toRef": "VexLifeVisionFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.DisplayState:key:workspace.status.voice-input-listening",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.DisplayState",
+        "toRef": "key:workspace.status.voice-input-listening",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2546"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.DisplayState:key:workspace.status.voice-input-ready",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.DisplayState",
+        "toRef": "key:workspace.status.voice-input-ready",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2557"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.DisplayState:key:workspace.status.voice-input-requesting-microphone",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.DisplayState",
+        "toRef": "key:workspace.status.voice-input-requesting-microphone",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2568"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.DisplayState:key:workspace.status.voice-input-stopping",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.DisplayState",
+        "toRef": "key:workspace.status.voice-input-stopping",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:localization/strings/source/workspace.json:L2579"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.Failed:VexLifeVoiceInputFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.Failed",
+        "toRef": "VexLifeVoiceInputFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.Held:VexLifeVoiceInputFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.Held",
+        "toRef": "VexLifeVoiceInputFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.Listening:VexLifeVoiceInputFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.Listening",
+        "toRef": "VexLifeVoiceInputFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.Ready:VexLifeVoiceInputFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.Ready",
+        "toRef": "VexLifeVoiceInputFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.RequestingMicrophone:VexLifeVoiceInputFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.RequestingMicrophone",
+        "toRef": "VexLifeVoiceInputFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:PROJECTS_TO:VexLifeVoiceInputFamily.Stopping:VexLifeVoiceInputFamily.DisplayState",
+        "kind": "REFERENCE",
+        "fromRef": "VexLifeVoiceInputFamily.Stopping",
+        "toRef": "VexLifeVoiceInputFamily.DisplayState",
+        "labelOrNull": "PROJECTS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeDiagnostics:VexChronologyFile:VexLifeDiagnosticsFamily",
+        "kind": "FLOW",
+        "fromRef": "VexLifeDiagnostics",
+        "toRef": "VexChronologyFile",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt:L133"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeDiagnosticsFamily.Effect.BeginEnhancedCapture:VexLifeDiagnostics",
+        "kind": "FLOW",
+        "fromRef": "VexLifeDiagnosticsFamily.Effect.BeginEnhancedCapture",
+        "toRef": "VexLifeDiagnostics",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt:L121"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeDiagnosticsFamily.Effect.ClearDebugHistory:VexLifeDiagnostics",
+        "kind": "FLOW",
+        "fromRef": "VexLifeDiagnosticsFamily.Effect.ClearDebugHistory",
+        "toRef": "VexLifeDiagnostics",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt:L133"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeDiagnosticsFamily.Effect.EndEnhancedCapture:VexLifeDiagnostics",
+        "kind": "FLOW",
+        "fromRef": "VexLifeDiagnosticsFamily.Effect.EndEnhancedCapture",
+        "toRef": "VexLifeDiagnostics",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt:L128"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifePrivateConversation:VexLifePrivateConversation.IntervalRecord",
+        "kind": "FLOW",
+        "fromRef": "VexLifePrivateConversation",
+        "toRef": "VexLifePrivateConversation.IntervalRecord",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifePrivateModeFamily.Effect.BeginPrivate:VexLifeProdLocalService",
+        "kind": "FLOW",
+        "fromRef": "VexLifePrivateModeFamily.Effect.BeginPrivate",
+        "toRef": "VexLifeProdLocalService",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L2924"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifePrivateModeFamily.Effect.EndPrivate:VexLifeProdLocalService",
+        "kind": "FLOW",
+        "fromRef": "VexLifePrivateModeFamily.Effect.EndPrivate",
+        "toRef": "VexLifeProdLocalService",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L2928"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeProdLocalService:VexLifePrivateConversation",
+        "kind": "FLOW",
+        "fromRef": "VexLifeProdLocalService",
+        "toRef": "VexLifePrivateConversation",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeProdLocalService:VexLifePrivateConversation:VexLifePrivateModeFamily",
+        "kind": "FLOW",
+        "fromRef": "VexLifeProdLocalService",
+        "toRef": "VexLifePrivateConversation",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L2924"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeProdLocalService:VexLifeProdVisionRuntime",
+        "kind": "FLOW",
+        "fromRef": "VexLifeProdLocalService",
+        "toRef": "VexLifeProdVisionRuntime",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeProdLocalService:VexLifeProdVisionRuntime:VexLifeVisionFamily",
+        "kind": "FLOW",
+        "fromRef": "VexLifeProdLocalService",
+        "toRef": "VexLifeProdVisionRuntime",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1382"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeProdVisionRuntime:vexlife-prod.vision.picker",
+        "kind": "FLOW",
+        "fromRef": "VexLifeProdVisionRuntime",
+        "toRef": "vexlife-prod.vision.picker",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeVisionFamily.Effect.EngageScope:VexLifeProdLocalService",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVisionFamily.Effect.EngageScope",
+        "toRef": "VexLifeProdLocalService",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1382"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeVisionFamily.Effect.StopScope:VexLifeProdLocalService",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVisionFamily.Effect.StopScope",
+        "toRef": "VexLifeProdLocalService",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1383"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeVoiceInputFamily.BeginLocalDictation:VexLifeWebP1RuntimeArtifacts",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVoiceInputFamily.BeginLocalDictation",
+        "toRef": "VexLifeWebP1RuntimeArtifacts",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1391"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:VexLifeVoiceInputFamily.EndLocalDictation:VexLifeWebP1RuntimeArtifacts",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVoiceInputFamily.EndLocalDictation",
+        "toRef": "VexLifeWebP1RuntimeArtifacts",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1399"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REALIZED_BY:vexlife-prod.vision.picker:VexLifeProdServiceContract.VisionSelectedScopeProjection",
+        "kind": "FLOW",
+        "fromRef": "vexlife-prod.vision.picker",
+        "toRef": "VexLifeProdServiceContract.VisionSelectedScopeProjection",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeDiagnosticsFamily.ClearHistory:VexLifeDiagnosticsFamily.Effect.ClearDebugHistory:when:Recording:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeDiagnosticsFamily.ClearHistory",
+        "toRef": "VexLifeDiagnosticsFamily.Effect.ClearDebugHistory",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L78"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeDiagnosticsFamily.ClearHistory:VexLifeDiagnosticsFamily.Effect.ClearDebugHistory:when:RecordingEnhanced:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeDiagnosticsFamily.ClearHistory",
+        "toRef": "VexLifeDiagnosticsFamily.Effect.ClearDebugHistory",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L78"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeDiagnosticsFamily.StartEnhanced:VexLifeDiagnosticsFamily.Effect.BeginEnhancedCapture:when:Recording:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeDiagnosticsFamily.StartEnhanced",
+        "toRef": "VexLifeDiagnosticsFamily.Effect.BeginEnhancedCapture",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L78"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeDiagnosticsFamily.StopEnhanced:VexLifeDiagnosticsFamily.Effect.EndEnhancedCapture:when:RecordingEnhanced:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeDiagnosticsFamily.StopEnhanced",
+        "toRef": "VexLifeDiagnosticsFamily.Effect.EndEnhancedCapture",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/diagnostics/VexLifeDiagnosticsFamily.kt:L78"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifePrivateModeFamily.Begin:VexLifePrivateModeFamily.Effect.BeginPrivate:when:Kept:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifePrivateModeFamily.Begin",
+        "toRef": "VexLifePrivateModeFamily.Effect.BeginPrivate",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L77"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifePrivateModeFamily.End:VexLifePrivateModeFamily.Effect.EndPrivate:when:Private:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifePrivateModeFamily.End",
+        "toRef": "VexLifePrivateModeFamily.Effect.EndPrivate",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L77"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeVisionFamily.Engage:VexLifeVisionFamily.Effect.EngageScope:when:Ready:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVisionFamily.Engage",
+        "toRef": "VexLifeVisionFamily.Effect.EngageScope",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L138"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeVisionFamily.Stop:VexLifeVisionFamily.Effect.StopScope:when:Engaged:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVisionFamily.Stop",
+        "toRef": "VexLifeVisionFamily.Effect.StopScope",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L138"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeVisionFamily.Stop:VexLifeVisionFamily.Effect.StopScope:when:Held:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVisionFamily.Stop",
+        "toRef": "VexLifeVisionFamily.Effect.StopScope",
+        "labelOrNull": "REQUESTS_EFFECT · when currentState.reason == HoldReason.ScreenSafetyNotCurrent",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L138"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeVoiceInputFamily.Start:VexLifeVoiceInputFamily.BeginLocalDictation:when:Failed:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVoiceInputFamily.Start",
+        "toRef": "VexLifeVoiceInputFamily.BeginLocalDictation",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeVoiceInputFamily.Start:VexLifeVoiceInputFamily.BeginLocalDictation:when:Ready:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVoiceInputFamily.Start",
+        "toRef": "VexLifeVoiceInputFamily.BeginLocalDictation",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeVoiceInputFamily.Stop:VexLifeVoiceInputFamily.EndLocalDictation:when:Listening:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVoiceInputFamily.Stop",
+        "toRef": "VexLifeVoiceInputFamily.EndLocalDictation",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:REQUESTS_EFFECT:VexLifeVoiceInputFamily.Stop:VexLifeVoiceInputFamily.EndLocalDictation:when:RequestingMicrophone:0",
+        "kind": "FLOW",
+        "fromRef": "VexLifeVoiceInputFamily.Stop",
+        "toRef": "VexLifeVoiceInputFamily.EndLocalDictation",
+        "labelOrNull": "REQUESTS_EFFECT",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/voiceinput/VexLifeVoiceInputFamily.kt:L189"
+        ]
+      },
+      {
+        "relationshipRef": "edge:RETURNS_TO:VexLifeDiagnostics:VexLifeDiagnostics.state",
+        "kind": "DATA",
+        "fromRef": "VexLifeDiagnostics",
+        "toRef": "VexLifeDiagnostics.state",
+        "labelOrNull": "RETURNS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/diagnostics/VexLifeDiagnostics.kt:L82"
+        ]
+      },
+      {
+        "relationshipRef": "edge:RETURNS_TO:VexLifePrivateConversation:VexLifePrivateConversation.state",
+        "kind": "DATA",
+        "fromRef": "VexLifePrivateConversation",
+        "toRef": "VexLifePrivateConversation.state",
+        "labelOrNull": "RETURNS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifePrivateConversation.kt:L86"
+        ]
+      },
+      {
+        "relationshipRef": "edge:RETURNS_TO:VexLifeProdLocalService:VexLifeProdLocalService.observedVisionState",
+        "kind": "DATA",
+        "fromRef": "VexLifeProdLocalService",
+        "toRef": "VexLifeProdLocalService.observedVisionState",
+        "labelOrNull": "RETURNS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1328"
+        ]
+      },
+      {
+        "relationshipRef": "edge:RETURNS_TO:VexLifeProdLocalService:VexLifeVisionFamily.observe",
+        "kind": "DATA",
+        "fromRef": "VexLifeProdLocalService",
+        "toRef": "VexLifeVisionFamily.observe",
+        "labelOrNull": "RETURNS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L1331"
+        ]
+      },
+      {
+        "relationshipRef": "edge:RETURNS_TO:VexLifeWebP1RuntimeArtifacts:VexLifeVoiceInputFamily.observeCapability",
+        "kind": "DATA",
+        "fromRef": "VexLifeWebP1RuntimeArtifacts",
+        "toRef": "VexLifeVoiceInputFamily.observeCapability",
+        "labelOrNull": "RETURNS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L231"
+        ]
+      },
+      {
+        "relationshipRef": "edge:RETURNS_TO:VexLifeWebP1RuntimeArtifacts:VexLifeVoiceInputFamily.observeFailure",
+        "kind": "DATA",
+        "fromRef": "VexLifeWebP1RuntimeArtifacts",
+        "toRef": "VexLifeVoiceInputFamily.observeFailure",
+        "labelOrNull": "RETURNS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L257"
+        ]
+      },
+      {
+        "relationshipRef": "edge:RETURNS_TO:VexLifeWebP1RuntimeArtifacts:VexLifeVoiceInputFamily.observeRecognitionStarted",
+        "kind": "DATA",
+        "fromRef": "VexLifeWebP1RuntimeArtifacts",
+        "toRef": "VexLifeVoiceInputFamily.observeRecognitionStarted",
+        "labelOrNull": "RETURNS_TO",
+        "sourceRefs": [
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L265"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/experience-relationship-graph.json",
+      "repo.vexlife-prod:commit:a58777106b08bd58c167608fa0115729185ae3dd"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexlife-prod.experience-relationships.current",
+    "graphRef": "graph.vexlife-prod.experience-relationships",
+    "layoutIntent": "SWIMLANE",
+    "items": [
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily",
+        "semanticRef": "VexLifeVoiceInputFamily",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 90,
+          "width": 300,
+          "height": 76
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:element.vexlife-workspace.companion.conversation.voice-input",
+        "semanticRef": "element.vexlife-workspace.companion.conversation.voice-input",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 186,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.button.voice-input-start",
+        "semanticRef": "key:workspace.button.voice-input-start",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 282,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.button.voice-input-stop",
+        "semanticRef": "key:workspace.button.voice-input-stop",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 378,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.status.voice-input-listening",
+        "semanticRef": "key:workspace.status.voice-input-listening",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 474,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.status.voice-input-ready",
+        "semanticRef": "key:workspace.status.voice-input-ready",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 570,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.status.voice-input-requesting-microphone",
+        "semanticRef": "key:workspace.status.voice-input-requesting-microphone",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 666,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.status.voice-input-stopping",
+        "semanticRef": "key:workspace.status.voice-input-stopping",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 762,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.Failed",
+        "semanticRef": "VexLifeVoiceInputFamily.Failed",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 858,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.Held",
+        "semanticRef": "VexLifeVoiceInputFamily.Held",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 954,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.Listening",
+        "semanticRef": "VexLifeVoiceInputFamily.Listening",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 1050,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.Ready",
+        "semanticRef": "VexLifeVoiceInputFamily.Ready",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 1146,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.RequestingMicrophone",
+        "semanticRef": "VexLifeVoiceInputFamily.RequestingMicrophone",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 1242,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.Stopping",
+        "semanticRef": "VexLifeVoiceInputFamily.Stopping",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 1338,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.Start",
+        "semanticRef": "VexLifeVoiceInputFamily.Start",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 80,
+          "y": 1434,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.Stop",
+        "semanticRef": "VexLifeVoiceInputFamily.Stop",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 80,
+          "y": 1530,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.BeginLocalDictation",
+        "semanticRef": "VexLifeVoiceInputFamily.BeginLocalDictation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 1626,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.EndLocalDictation",
+        "semanticRef": "VexLifeVoiceInputFamily.EndLocalDictation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 1722,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeWebP1RuntimeArtifacts",
+        "semanticRef": "VexLifeWebP1RuntimeArtifacts",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 1818,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.observeCapability",
+        "semanticRef": "VexLifeVoiceInputFamily.observeCapability",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 80,
+          "y": 1914,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.observeFailure",
+        "semanticRef": "VexLifeVoiceInputFamily.observeFailure",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 80,
+          "y": 2010,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.observeRecognitionStarted",
+        "semanticRef": "VexLifeVoiceInputFamily.observeRecognitionStarted",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 80,
+          "y": 2106,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVoiceInputFamily.DisplayState",
+        "semanticRef": "VexLifeVoiceInputFamily.DisplayState",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 2202,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily",
+        "semanticRef": "VexLifeVisionFamily",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 90,
+          "width": 300,
+          "height": 76
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:element.vexlife-workspace.companion.vision",
+        "semanticRef": "element.vexlife-workspace.companion.vision",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 186,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Engaged",
+        "semanticRef": "VexLifeVisionFamily.Engaged",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 282,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Held",
+        "semanticRef": "VexLifeVisionFamily.Held",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 378,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Looking",
+        "semanticRef": "VexLifeVisionFamily.Looking",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 474,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Ready",
+        "semanticRef": "VexLifeVisionFamily.Ready",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 570,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Selecting",
+        "semanticRef": "VexLifeVisionFamily.Selecting",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 666,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Engage",
+        "semanticRef": "VexLifeVisionFamily.Engage",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 470,
+          "y": 762,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Stop",
+        "semanticRef": "VexLifeVisionFamily.Stop",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 470,
+          "y": 858,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Effect.EngageScope",
+        "semanticRef": "VexLifeVisionFamily.Effect.EngageScope",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 954,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.Effect.StopScope",
+        "semanticRef": "VexLifeVisionFamily.Effect.StopScope",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 1050,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:vexlife-prod.vision.picker",
+        "semanticRef": "vexlife-prod.vision.picker",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 1146,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeProdLocalService",
+        "semanticRef": "VexLifeProdLocalService",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 1242,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeProdServiceContract.VisionSelectedScopeProjection",
+        "semanticRef": "VexLifeProdServiceContract.VisionSelectedScopeProjection",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 1338,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeProdVisionRuntime",
+        "semanticRef": "VexLifeProdVisionRuntime",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 1434,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.observe",
+        "semanticRef": "VexLifeVisionFamily.observe",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 470,
+          "y": 1530,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeProdLocalService.observedVisionState",
+        "semanticRef": "VexLifeProdLocalService.observedVisionState",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 470,
+          "y": 1626,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeVisionFamily.DisplayState",
+        "semanticRef": "VexLifeVisionFamily.DisplayState",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 1722,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily",
+        "semanticRef": "VexLifeDiagnosticsFamily",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 90,
+          "width": 300,
+          "height": 76
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.button.diagnostics-clear-history",
+        "semanticRef": "key:workspace.button.diagnostics-clear-history",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 186,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.button.diagnostics-start-enhanced",
+        "semanticRef": "key:workspace.button.diagnostics-start-enhanced",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 282,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.button.diagnostics-stop-enhanced",
+        "semanticRef": "key:workspace.button.diagnostics-stop-enhanced",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 378,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.description.diagnostics-clear-confirm",
+        "semanticRef": "key:workspace.description.diagnostics-clear-confirm",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 474,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.status.diagnostics-enhanced-off",
+        "semanticRef": "key:workspace.status.diagnostics-enhanced-off",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 570,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.status.diagnostics-enhanced-on",
+        "semanticRef": "key:workspace.status.diagnostics-enhanced-on",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 666,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:key:workspace.status.diagnostics-recording",
+        "semanticRef": "key:workspace.status.diagnostics-recording",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 762,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.Recording",
+        "semanticRef": "VexLifeDiagnosticsFamily.Recording",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 858,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.RecordingEnhanced",
+        "semanticRef": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 954,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.ClearHistory",
+        "semanticRef": "VexLifeDiagnosticsFamily.ClearHistory",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 860,
+          "y": 1050,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.StartEnhanced",
+        "semanticRef": "VexLifeDiagnosticsFamily.StartEnhanced",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 860,
+          "y": 1146,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.StopEnhanced",
+        "semanticRef": "VexLifeDiagnosticsFamily.StopEnhanced",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 860,
+          "y": 1242,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.Effect.BeginEnhancedCapture",
+        "semanticRef": "VexLifeDiagnosticsFamily.Effect.BeginEnhancedCapture",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 1338,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.Effect.ClearDebugHistory",
+        "semanticRef": "VexLifeDiagnosticsFamily.Effect.ClearDebugHistory",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 1434,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.Effect.EndEnhancedCapture",
+        "semanticRef": "VexLifeDiagnosticsFamily.Effect.EndEnhancedCapture",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 1530,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexChronologyFile",
+        "semanticRef": "VexChronologyFile",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 1626,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnostics",
+        "semanticRef": "VexLifeDiagnostics",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 1722,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnostics.state",
+        "semanticRef": "VexLifeDiagnostics.state",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 860,
+          "y": 1818,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifeDiagnosticsFamily.DisplayState",
+        "semanticRef": "VexLifeDiagnosticsFamily.DisplayState",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 860,
+          "y": 1914,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateModeFamily",
+        "semanticRef": "VexLifePrivateModeFamily",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 90,
+          "width": 300,
+          "height": 76
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:element.vexlife-workspace.companion.private-mode",
+        "semanticRef": "element.vexlife-workspace.companion.private-mode",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 186,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateModeFamily.Kept",
+        "semanticRef": "VexLifePrivateModeFamily.Kept",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 282,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateModeFamily.Private",
+        "semanticRef": "VexLifePrivateModeFamily.Private",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 378,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateModeFamily.Begin",
+        "semanticRef": "VexLifePrivateModeFamily.Begin",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 1250,
+          "y": 474,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateModeFamily.End",
+        "semanticRef": "VexLifePrivateModeFamily.End",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 1250,
+          "y": 570,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateModeFamily.Effect.BeginPrivate",
+        "semanticRef": "VexLifePrivateModeFamily.Effect.BeginPrivate",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 666,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateModeFamily.Effect.EndPrivate",
+        "semanticRef": "VexLifePrivateModeFamily.Effect.EndPrivate",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 762,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateConversation",
+        "semanticRef": "VexLifePrivateConversation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 858,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateConversation.IntervalRecord",
+        "semanticRef": "VexLifePrivateConversation.IntervalRecord",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 954,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateConversation.state",
+        "semanticRef": "VexLifePrivateConversation.state",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 1250,
+          "y": 1050,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item:VexLifePrivateModeFamily.DisplayState",
+        "semanticRef": "VexLifePrivateModeFamily.DisplayState",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 1146,
+          "width": 300,
+          "height": 68
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/experience-relationship-graph.json"
+    ]
+  },
+  "sourceRefs": [
+    "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/experience-relationship-graph.json",
+    "repo.vexlife-prod:commit:a58777106b08bd58c167608fa0115729185ae3dd"
+  ]
+}
