@@ -127,6 +127,7 @@ a{color:var(--focus)}
 .product-view{position:relative;width:100%;flex:1;min-height:420px;border:1px solid #cfd5df;border-radius:10px;background:#fbfbfd;box-shadow:0 18px 40px -26px #18213a55;overflow:hidden}
 .product-view-frame{display:block;width:100%;height:100%;min-height:420px;border:0;background:#fff}
 .product-view-note{position:absolute;left:8px;bottom:8px;z-index:4;margin:0;padding:3px 7px;border:1px solid #cfd5df;border-radius:999px;background:#ffffffdd;color:var(--faint);font:500 10px/16px var(--mono);pointer-events:none}
+.product-view-travel{position:absolute;right:10px;top:10px;z-index:5;max-width:min(70%,360px);box-shadow:0 5px 18px -10px #18213aaa}
 
 /* A screen the product realizes as frames of regions divided by seams (a browser workspace). Its
    geometry comes from the screen's source-derived layout; nothing here is product-specific. */
@@ -910,6 +911,9 @@ const state = {
   realization: Realization.emptyRealizationContext(),
   motion: null, // 'next' | 'prev' for one render after the expression changes
   flashRef: null, // the element to bring into view after the expression changes
+  // Read-only browser observation of which Product CSS blocks shape the currently selected
+  // stable Product identity. Never persisted and never used as rendering authority.
+  presentationRules: null,
 };
 let refs = {};
 
@@ -1901,7 +1905,7 @@ function staticViewDocument(view) {
 [data-vex-lens-flash]{animation:vexboard-lens-flash .8s ease-out}
 @keyframes vexboard-lens-flash{0%,35%{outline:4px solid Highlight;outline-offset:-4px}100%{outline-color:transparent}}
 `;
-  const injection = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'"><style>${css}</style><style>${lensCss}</style>`;
+  const injection = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'"><style data-vex-product-style>${css}</style><style data-vex-lens-style>${lensCss}</style>`;
   return /<head(?:\s[^>]*)?>/i.test(html)
     ? html.replace(/<head(\s[^>]*)?>/i, (match) => match + injection)
     : `<!doctype html><html><head>${injection}</head><body>${html}</body></html>`;
@@ -1917,6 +1921,75 @@ function staticViewNodes(doc, view, ref, { includeStructuralParents = false } = 
     for (const node of doc.querySelectorAll(staticViewSelector(attribute, ref))) if (!nodes.includes(node)) nodes.push(node);
   }
   return nodes;
+}
+
+function staticViewStyleRules(doc) {
+  const style = doc.querySelector('style[data-vex-product-style]');
+  const sheet = style?.sheet;
+  if (!sheet) return [];
+  const out = [];
+  const walk = (rules, conditions = []) => {
+    for (const rule of Array.from(rules ?? [])) {
+      if (typeof rule.selectorText === 'string' && rule.style) {
+        out.push(Object.freeze({
+          selector: rule.selectorText,
+          declarations: rule.style.cssText,
+          conditions: Object.freeze([...conditions]),
+        }));
+        continue;
+      }
+      if (!rule.cssRules) continue;
+      const condition =
+        rule.conditionText ??
+        rule.media?.mediaText ??
+        rule.name ??
+        null;
+      walk(rule.cssRules, condition ? [...conditions, String(condition)] : conditions);
+    }
+  };
+  walk(sheet.cssRules);
+  return out;
+}
+
+function staticViewPresentationRules(doc, view, ref) {
+  const targets = staticViewNodes(doc, view, ref, { includeStructuralParents: true });
+  if (!targets.length) return [];
+  const candidates = [];
+  const seen = new Set();
+  for (const target of targets) {
+    for (let node = target; node instanceof doc.defaultView.Element; node = node.parentElement) {
+      if (seen.has(node)) continue;
+      seen.add(node);
+      candidates.push({ node, relation: targets.includes(node) ? 'direct' : 'ancestor' });
+    }
+  }
+  const matched = [];
+  const duplicate = new Set();
+  for (const rule of staticViewStyleRules(doc)) {
+    for (const candidate of candidates) {
+      let applies = false;
+      try { applies = candidate.node.matches(rule.selector); } catch { /* unsupported/pseudo selector stays unclaimed */ }
+      if (!applies) continue;
+      const key = `${candidate.relation}|${rule.conditions.join(' > ')}|${rule.selector}|${rule.declarations}`;
+      if (duplicate.has(key)) continue;
+      duplicate.add(key);
+      matched.push(Object.freeze({ ...rule, relation: candidate.relation }));
+    }
+  }
+  return Object.freeze(matched);
+}
+
+function rememberStaticViewPresentation(doc, view, ref) {
+  const next = {
+    screenRef: screenRef(),
+    expressionRef: activeExpression().ref,
+    ref,
+    rules: staticViewPresentationRules(doc, view, ref),
+  };
+  const key = JSON.stringify(next);
+  if (state.presentationRules?.key === key) return false;
+  state.presentationRules = Object.freeze({ ...next, key });
+  return true;
 }
 function bindStaticView(frame, expression, { interactive }) {
   const doc = frame.contentDocument;
@@ -1939,6 +2012,14 @@ function bindStaticView(frame, expression, { interactive }) {
   for (const ref of marks.ancestors) for (const node of staticViewNodes(doc, view, ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-ancestor', '');
   if (marks.selected) for (const node of staticViewNodes(doc, view, marks.selected, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-selected', '');
 
+  // Structure explains presentation by observing the Product stylesheet that the browser actually
+  // applies. A changed observation refreshes the outer Lens once; the stylesheet remains the renderer.
+  if (interactive && marks.selected && rememberStaticViewPresentation(doc, view, marks.selected)) {
+    queueMicrotask(() => {
+      if (state.anchorElementRef === marks.selected && activeExpression().ref === expression.ref) render();
+    });
+  }
+
   if (!interactive) return;
   const directAttributes = [view.anchors.elementAttribute, view.anchors.structuralAttribute].filter(Boolean);
   const closestSelector = directAttributes.map((attribute) => `[${CSS.escape(attribute)}]`).join(',');
@@ -1956,8 +2037,10 @@ function bindStaticView(frame, expression, { interactive }) {
     event.stopPropagation();
     const node = closestSelector && event.target instanceof doc.defaultView.Element ? event.target.closest(closestSelector) : null;
     const ref = refFor(node);
-    if (ref) selectElement(ref);
-    else clearSelection();
+    if (ref) {
+      rememberStaticViewPresentation(doc, view, ref);
+      selectElement(ref);
+    } else clearSelection();
   }, true);
   doc.addEventListener('dblclick', (event) => {
     event.preventDefault();
@@ -1971,6 +2054,8 @@ function bindStaticView(frame, expression, { interactive }) {
 }
 function renderStaticView(expression, { interactive }) {
   const screen = currentScreen();
+  const selected = interactive && state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
+  const destination = selected ? destinationForElement(selected) : null;
   const frame = h('iframe', {
     class: 'product-view-frame',
     title: `${screen.label} · Product-owned static view`,
@@ -1983,6 +2068,12 @@ function renderStaticView(expression, { interactive }) {
   if (!interactive) frame.style.pointerEvents = 'none';
   return h('div', { class: 'product-view', 'aria-label': `${screen.label} Product view · ${expression.where} · ${expression.what}` },
     frame,
+    interactive && destination ? h('button', {
+      class: 'tool product-view-travel',
+      type: 'button',
+      title: destination.title,
+      onclick: (event) => { event.stopPropagation(); destination.go(); },
+    }, destination.label) : null,
     interactive ? h('p', { class: 'product-view-note' }, 'Product view · static HTML/CSS · no Product JavaScript') : null);
 }
 
@@ -2179,8 +2270,28 @@ function renderStructure() {
     if (!rows.length) rows.push(h('p', { class: 'hint', style: 'white-space:normal' }, owner.summary ?? 'Nothing projected yet.'));
     sections.push(h('section', { class: 'struct-section', role: 'tree', 'aria-label': header.textContent }, header, rows));
   }
+  const presentation = presentationRulesSection(screen);
+  if (presentation) sections.push(presentation);
   if (screen.realization) sections.push(realizationSection(screen));
   return h('div', { class: 'structure' }, sections);
+}
+function presentationRulesSection(screen) {
+  const observed = state.presentationRules;
+  if (!screen.view || !state.anchorElementRef || !observed) return null;
+  if (observed.screenRef !== screen.screenRef || observed.expressionRef !== activeExpression().ref || observed.ref !== state.anchorElementRef) return null;
+  const header = h('header', {},
+    chip('REALIZATION'),
+    h('h3', {}, 'Presentation rules'),
+    screen.view.cssSource ? h('code', { class: 'mono', style: 'font-size:11.5px;color:var(--faint)' }, screen.view.cssSource) : null,
+    h('p', {}, 'Product CSS blocks the browser currently matches to this stable Product identity. Direct rules match the selected boundary; ancestor rules may supply inherited/cascaded presentation. The browser, not VexBoard, applies them.'));
+  const rows = observed.rules.length ? observed.rules.map((rule) =>
+    h('div', { class: 'srow', style: '--d:0;--guide:none' },
+      h('span', { class: 'pres-chip SOURCE' }, rule.relation),
+      h('span', { class: 'slabel' }, rule.selector),
+      rule.conditions.length ? h('span', { class: 'sintent' }, rule.conditions.join(' > ')) : null,
+      h('span', { class: 'sdecl' }, rule.declarations || '(no declarations)'))) :
+    [h('p', { class: 'hint', style: 'white-space:normal' }, 'No directly matched Product CSS rule was observable for this stable boundary in the current expression.')];
+  return h('section', { class: 'struct-section', 'aria-label': 'Presentation rules' }, header, rows);
 }
 function structurePresence(element) {
   const info = currentScreen().realization ? presenceOf(element.ref) : null;
