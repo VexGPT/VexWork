@@ -789,7 +789,13 @@ export function deriveEdgeRouteManifest(seedInput, selector) {
   const { incoming } = relationshipsByDirection(graph);
   const humanPathKeys = new Set((humanPath ?? []).map(semanticRelationshipKey));
   const prerequisiteRelationships = (incoming.get(targetRelationship.fromRef) ?? [])
-    .filter((relationship) => !humanPathKeys.has(semanticRelationshipKey(relationship)));
+    .filter((relationship) => !humanPathKeys.has(semanticRelationshipKey(relationship)))
+    .filter(
+      (relationship) =>
+        targetRelationship.context === null
+        || relationship.context === null
+        || exactSemanticValue(relationship.context, targetRelationship.context),
+    );
 
   const actions = humanPath?.length
     ? [elementAction(seed, humanPath[0].fromRef)]
