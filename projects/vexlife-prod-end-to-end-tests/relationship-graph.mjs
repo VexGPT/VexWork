@@ -36,8 +36,8 @@ export function validateRelationshipLatticeSeed(seed) {
   if (isObject(seed.sourceBindings) && isObject(seed.currentness)) {
     add(
       errors,
-      seed.sourceBindings.vexLifeProdMain === seed.currentness.vexLifeProdMain,
-      'sourceBindings.vexLifeProdMain must equal currentness.vexLifeProdMain',
+      seed.sourceBindings.vexlifeProdMain === seed.currentness.vexLifeProdMain,
+      'sourceBindings.vexlifeProdMain must equal currentness.vexLifeProdMain',
     );
 
     const merged = new Set(Object.keys(seed.currentness.mergedPressure ?? {}));
