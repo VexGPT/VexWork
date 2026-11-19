@@ -153,6 +153,11 @@ a{color:var(--focus)}
 .el-place{display:flex;align-items:flex-start;min-height:30px;padding:6px 10px;border:1px dashed #cfd5df;border-radius:8px;background:repeating-linear-gradient(135deg,transparent 0 9px,#f4f6f9 9px 10px);color:var(--faint);font:500 11px/16px var(--mono)}
 .el-place.fill{min-height:110px}
 .workspace .ws-overlay > .ws-tag{top:-9px;left:10px;right:auto;background:#fff;border:1px dashed #b6bfcd}
+.workspace .ws-float{position:absolute;z-index:7;right:14px;top:54px;max-width:min(42%,420px);max-height:calc(100% - 74px);overflow:auto;padding:10px;border:1px solid #cfd5df;border-radius:12px;background:#fff;box-shadow:0 18px 38px -20px #18213a99}
+.workspace .ws-float.modal{left:50%;right:auto;top:50%;transform:translate(-50%,-50%);width:min(68%,620px);max-width:620px;z-index:8;box-shadow:0 22px 56px -20px #18213acc}
+.workspace .ws-float.transient{left:50%;right:auto;top:auto;bottom:12px;transform:translateX(-50%);width:auto;max-width:60%;background:#1d2433;color:#fff;border-color:#1d2433}
+.workspace .ws-float > .ws-float-label{margin:0 0 7px;color:var(--faint);font:600 10px/14px var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.workspace .ws-float.transient > .ws-float-label{color:#c9d1de}
 .ws-transient{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:#1d2433;color:#fff;font-size:12px}
 .ws-transient small{color:#c9d1de;font-size:10.5px}
 [data-ref]{position:relative;border-radius:10px;transition:opacity .15s,box-shadow .15s}
@@ -1909,7 +1914,11 @@ function renderWorkspace(expression, { interactive }) {
         const inline = width / Math.max(height, 0.001) >= 4;
         const scroll = h('div', { class: `ws-scroll${inline ? ' inline' : ''}` });
         // A band shows its controls; closed panels inside it (an empty dropdown list) stay out of the way.
-        for (const child of tree?.children ?? []) { const drawn = renderSurfaceElement(child, marks, { ...context, showEmpty: !inline }); if (drawn) scroll.append(drawn); }
+        for (const child of tree?.children ?? []) {
+          if (child.element.slot === 'Overlay') continue;
+          const drawn = renderSurfaceElement(child, marks, { ...context, showEmpty: !inline });
+          if (drawn) scroll.append(drawn);
+        }
         region.append(scroll, tag(element));
       }
       node.append(region);
@@ -1934,17 +1943,62 @@ function renderWorkspace(expression, { interactive }) {
   }
   const root = frames.get(layout.root);
   const workspace = h('div', { class: `workspace${interactive ? ' current-phone current-workspace' : ''}${marks.selected ? ' dimmed' : ''}`, 'aria-label': `${screen.label} surface · ${expression.where} · ${expression.what}` }, renderFrame(root, NOMINAL_WORKSPACE));
+  // Surface overlay roots are structural. Presence decides whether any child is actually
+  // projected in this expression; an empty overlay root is not itself visible experience.
+  const overlayRootRefs = new Set(layout.overlays);
+  const parentByRef = new Map(screen.elements.map((element) => [element.ref, element.parentRef]));
+  const withinOverlayRoot = (ref) => {
+    for (let at = ref; at; at = parentByRef.get(at)) if (overlayRootRefs.has(at)) return true;
+    return false;
+  };
+  const layoutChromeRefs = new Set(layout.frames.flatMap((frame) => frame.chrome.map((entry) => entry.ref)));
+  const isPresented = (ref) => {
+    if (!presence) return true;
+    const info = presence.elements.get(ref);
+    return !info || PRESENTED.has(info.state);
+  };
+
   for (const ref of layout.overlays) {
     const element = elementOf(ref);
     const tree = findTree(own, ref);
-    const layer = h('div', { class: 'ws-overlay' }, tag(element));
-    markElement(layer, element, marks);
+    const drawnChildren = [];
     for (const child of tree?.children ?? []) {
+      if (!isPresented(child.element.ref)) continue;
       const drawn = child.children.length
         ? renderSurfaceElement(child, marks, context)
-        : markElement(h('div', { class: 'ws-transient' }, h('span', {}, child.element.label), h('small', {}, [child.element.layer, child.element.style?.replace(/(?<=[a-z])(?=[A-Z])/g, ' ')].filter(Boolean).join(' · ').toLowerCase())), child.element, marks);
-      if (drawn) layer.append(drawn);
+        : markElement(
+            h('div', { class: 'ws-transient' },
+              h('span', {}, child.element.label),
+              h('small', {}, [child.element.layer, child.element.style?.replace(/(?<=[a-z])(?=[A-Z])/g, ' ')].filter(Boolean).join(' · ').toLowerCase())),
+            child.element,
+            marks,
+          );
+      if (drawn) drawnChildren.push(drawn);
     }
+    if (!drawnChildren.length && presence) continue;
+    const layer = h('div', { class: 'ws-overlay' }, tag(element), ...drawnChildren);
+    markElement(layer, element, marks);
+    workspace.append(layer);
+  }
+
+  // Content-tree elements whose Product placement is Overlay float above the frame instead of
+  // being flattened into its region flow. The rule is source-shaped and subject-agnostic.
+  const floating = screen.elements.filter((element) =>
+    element.slot === 'Overlay'
+    && !layoutChromeRefs.has(element.ref)
+    && !withinOverlayRoot(element.ref)
+    && !(element.parentRef && screen.elements.find((candidate) => candidate.ref === element.parentRef)?.slot === 'Overlay')
+  );
+  for (const element of floating) {
+    if (!isPresented(element.ref)) continue;
+    const tree = findTree(own, element.ref);
+    const drawn = tree ? renderSurfaceElement(tree, marks, context) : null;
+    if (!drawn) continue;
+    const modal = element.kind === 'DIALOG' || element.layer === 'MODAL';
+    const transient = element.layer === 'TRANSIENT' && !modal;
+    const layer = h('div', { class: `ws-float${modal ? ' modal' : transient ? ' transient' : ''}` },
+      h('p', { class: 'ws-float-label' }, element.label),
+      drawn);
     workspace.append(layer);
   }
   if (!interactive) {

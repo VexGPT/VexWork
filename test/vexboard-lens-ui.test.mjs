@@ -272,4 +272,10 @@ test('a screen whose source authors a frame layout is drawn as a workspace, chos
   assert.match(page, /\.workspace \.ws-region\{position:absolute/, 'region placement outranks the generic [data-ref] positioning');
   assert.match(page, /function spatialBlock\(element\)/, 'the inspector says where a frame, seam, region or handle sits');
   assert.match(page, /\['Touched by', element\.interactions/);
+  assert.match(page, /if \(child\.element\.slot === 'Overlay'\) continue;/, 'source-authored floating presentation does not flatten into region flow');
+  assert.match(page, /const isPresented = \(ref\) =>/, 'workspace overlays honor the same realization presence as the phone renderer');
+  assert.match(page, /if \(!drawnChildren\.length && presence\) continue;/, 'closed structural overlay roots disappear from the Surface');
+  assert.match(page, /element\.slot === 'Overlay'[\s\S]*!layoutChromeRefs\.has\(element\.ref\)[\s\S]*!withinOverlayRoot\(element\.ref\)/, 'floating content overlays remain distinct from seam chrome and surface overlay roots');
+  assert.match(page, /element\.kind === 'DIALOG' \|\| element\.layer === 'MODAL'/, 'modal source presentation receives a workspace-modal realization');
+  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,80}ws-float|ws-float[^\n]{0,80}vexlife-prod/, 'floating presentation stays generic rather than Product-special-cased');
 });
