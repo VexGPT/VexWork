@@ -259,6 +259,20 @@ test('nothing the lens adds on the surface covers a control: chips, opened overl
   assert.match(page, /if \(!crosses\(from\.midY, a\.right\)\) return direct;/, 'the bridge only detours when the side exit would cross a sibling');
 });
 
+test('a source-owned static view is mounted generically and bound through stable Product identities', () => {
+  assert.match(page, /function renderStaticView\(expression, \{ interactive \}\)/);
+  assert.match(page, /function staticViewDocument\(view\)/);
+  assert.match(page, /scriptPolicy must be NONE|no Product JavaScript/);
+  assert.match(page, /sandbox: 'allow-same-origin'/);
+  assert.doesNotMatch(page, /sandbox: 'allow-same-origin allow-scripts'/);
+  assert.match(page, /view\.anchors\.elementAttribute/);
+  assert.match(page, /view\.anchors\.structuralAttribute/);
+  assert.match(page, /view\.anchors\.structuralParentAttribute/);
+  assert.match(page, /staticViewNodes\(doc, view, marks\.selected, \{ includeStructuralParents: true \}\)/);
+  assert.match(page, /currentScreen\(\)\.view \? renderStaticView\(expression, options\)/);
+  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,100}renderStaticView|renderStaticView[^\n]{0,100}vexlife-prod/i, 'static view projection stays subject-agnostic');
+});
+
 test('a screen whose source authors a frame layout is drawn as a workspace, chosen from layout facts only', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-frames\.mjs'/);
   assert.match(page, /function renderWorkspace\(expression, \{ interactive \}\)/);

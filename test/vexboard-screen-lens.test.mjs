@@ -100,6 +100,37 @@ test('optional fields default cleanly', () => {
   assert.equal(Lens.sourcePath(minimal, 'app:x.kt'), 'app:x.kt');
 });
 
+test('a static Product view keeps source HTML/CSS and stable identity anchors without executable Product code', () => {
+  const input = clone();
+  input.screens[3].view = {
+    kind: 'STATIC_HTML_CSS',
+    html: '<!doctype html><html><body><button data-vex-ref="element.debug-menu.body.dark-mode">Dark mode</button></body></html>',
+    css: '[data-vex-ref]{display:block}',
+    scriptPolicy: 'NONE',
+    htmlSource: 'app:ui/View.kt',
+    cssSource: 'app:ui/ViewStyle.kt',
+    anchors: {
+      screenAttribute: 'data-vex-screen',
+      elementAttribute: 'data-vex-ref',
+      structuralAttribute: 'data-vex-structural-ref',
+      structuralParentAttribute: 'data-vex-structural-parent',
+    },
+  };
+  const projected = Lens.normalizeScreenLens(input).screens[3].view;
+  assert.equal(projected.kind, 'STATIC_HTML_CSS');
+  assert.equal(projected.scriptPolicy, 'NONE');
+  assert.equal(projected.anchors.elementAttribute, 'data-vex-ref');
+  assert.match(projected.html, /Dark mode/);
+
+  const executable = clone();
+  executable.screens[3].view = { ...input.screens[3].view, scriptPolicy: 'SOURCE' };
+  assert.throws(() => Lens.normalizeScreenLens(executable), /scriptPolicy must be NONE/);
+
+  const badAnchor = clone();
+  badAnchor.screens[3].view = { ...input.screens[3].view, anchors: { ...input.screens[3].view.anchors, elementAttribute: 'class' } };
+  assert.throws(() => Lens.normalizeScreenLens(badAnchor), /data-\* attribute/);
+});
+
 test('chrome applies by placement, with always-visible controls kept on other screens', () => {
   const home = Lens.elementsForScreen(lens, 'screen.home').map((element) => element.ref);
   assert.ok(home.includes('element.shell.fab.add'));

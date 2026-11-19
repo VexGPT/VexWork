@@ -100,6 +100,37 @@ function optionalText(value, label) {
   return text(value, label);
 }
 
+function normalizeScreenView(input, screenRef) {
+  if (input === undefined || input === null) return null;
+  if (!input || typeof input !== 'object') fail(`${screenRef} view must be an object`);
+  if (input.kind !== 'STATIC_HTML_CSS') fail(`${screenRef} view kind ${input.kind} is unknown`);
+  if (input.scriptPolicy !== 'NONE') fail(`${screenRef} static view scriptPolicy must be NONE`);
+  const attribute = (value, label, { required = false } = {}) => {
+    if (value === undefined || value === null) {
+      if (required) fail(`${label} is required`);
+      return null;
+    }
+    const name = text(value, label);
+    if (!/^data-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name)) fail(`${label} must be a data-* attribute`);
+    return name;
+  };
+  const anchors = input.anchors && typeof input.anchors === 'object' ? input.anchors : {};
+  return {
+    kind: 'STATIC_HTML_CSS',
+    html: text(input.html, `${screenRef} view html`),
+    css: text(input.css, `${screenRef} view css`),
+    scriptPolicy: 'NONE',
+    htmlSource: optionalText(input.htmlSource, `${screenRef} view htmlSource`),
+    cssSource: optionalText(input.cssSource, `${screenRef} view cssSource`),
+    anchors: {
+      screenAttribute: attribute(anchors.screenAttribute, `${screenRef} view screenAttribute`),
+      elementAttribute: attribute(anchors.elementAttribute, `${screenRef} view elementAttribute`, { required: true }),
+      structuralAttribute: attribute(anchors.structuralAttribute, `${screenRef} view structuralAttribute`, { required: true }),
+      structuralParentAttribute: attribute(anchors.structuralParentAttribute, `${screenRef} view structuralParentAttribute`),
+    },
+  };
+}
+
 function freezeDeep(value) {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
     Object.values(value).forEach(freezeDeep);
@@ -195,6 +226,7 @@ export function normalizeScreenLens(input) {
       source: optionalText(entry.source, `${screenRef} source`),
       mapped: entry.mapped,
       summary: optionalText(entry.summary, `${screenRef} summary`),
+      view: normalizeScreenView(entry.view, screenRef),
       elements,
     };
   });
