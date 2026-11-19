@@ -28,7 +28,7 @@ test('relationship lattice seed currentness is internally consistent', () => {
 
   assert.equal(
     seed.sourceBindings.vexlifeProdMain,
-    'fb4ea859949f2fcba47bf55857669df37d2730ce',
+    '152c323ee6c3d4a43243d0a9c9b6de2ce11f605b',
   );
   assert.equal(
     Object.prototype.hasOwnProperty.call(seed.sourceBindings, 'vexLifeProdMain'),
