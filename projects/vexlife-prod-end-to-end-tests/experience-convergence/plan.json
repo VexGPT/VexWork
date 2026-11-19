@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "vexwork.vexlife-prod-experience-convergence-plan/v1",
+  "productCandidate": {
+    "repository": "VexGPT/VexLife-Prod",
+    "branch": "VXG-111926-vexlife-prod-experience-convergence-r1",
+    "commit": "af21cccce50262c4f0b4980b993e496b4449ab67",
+    "currentMain": "152c323ee6c3d4a43243d0a9c9b6de2ce11f605b",
+    "claudeConsolidated": "37ae931d402eb29bad2601bb0cc8479f55750928",
+    "meaning": "Exact runnable merge of current VexLife-Prod main with Claude's seven-scope consolidated Product candidate."
+  },
+  "graphCandidate": {
+    "repository": "VexGPT/VexWork",
+    "branch": "VXG-111926-vexlife-prod-e2e-experience-convergence-r1",
+    "mechanicalParent": "62bf49ac1fd7c30a4ea03847d5946e6ffb8cd9d4",
+    "humanParent": "9ddc81c72ce36398c2eb849cf1c39110ed33c88a"
+  },
+  "question": "Can one source-derived Experience Graph explain the current Product plus Claude's UI/language/voice/identity changes while preserving human journeys and refusing to call a route end-to-end complete before its execution proof exists?",
+  "screenLensBoundary": "Screen Lens may project the result; it does not own or repair Experience Graph semantic truth in this experiment."
+}
