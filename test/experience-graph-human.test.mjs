@@ -108,6 +108,16 @@ test('candidate Language Family is mechanically present in Claude consolidated t
   assert.ok(language.missing.some((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION'));
 });
 
+test('ambiguous Family manifestations fail closed instead of selecting the first element', () => {
+  const convergence = candidateResult();
+  const language = convergence.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
+  assert.ok(language);
+  assert.ok(language.missing.some((row) => row.predicate === 'AMBIGUOUS_MANIFESTATION_BINDING'));
+  const deterministic = language.missing.find((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION');
+  assert.ok(deterministic);
+  assert.ok(String(deterministic.coordinate).startsWith('VexLifeLanguageFamily.'));
+});
+
 test('language routes stay scoped to the human journey they mean', () => {
   const convergence = candidateResult();
 
