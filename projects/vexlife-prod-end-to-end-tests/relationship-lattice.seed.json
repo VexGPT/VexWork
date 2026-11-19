@@ -534,7 +534,10 @@
       "possibleObservedSuccessors": [
         "Review may become Idle through owner realization; accepted semantic Memory becomes independently observable"
       ],
-      "projection": "Memory review / Memory projections from their rightful owners"
+      "projection": "Memory review / Memory projections from their rightful owners",
+      "observationRef": "VexLifeMemoryReviewOwner.observe",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/memory/VexLifeMemoryReviewOwner.kt",
+      "realizationRef": "VexLifeMemoryReviewOwner.keep"
     },
     {
       "family": "VexLifeMemoryReviewFamily",
@@ -550,7 +553,10 @@
       "possibleObservedSuccessors": [
         "Idle or later Pending according to rightful owner"
       ],
-      "projection": "Memory review projection"
+      "projection": "Memory review projection",
+      "observationRef": "VexLifeMemoryReviewOwner.observe",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/memory/VexLifeMemoryReviewOwner.kt",
+      "realizationRef": "VexLifeMemoryReviewOwner.writeDecisionAndResolve"
     },
     {
       "family": "VexLifeMemoryReviewFamily",
@@ -566,7 +572,10 @@
       "possibleObservedSuccessors": [
         "Idle"
       ],
-      "projection": "Memory review projection"
+      "projection": "Memory review projection",
+      "observationRef": "VexLifeMemoryReviewOwner.observe",
+      "realizationSourcePath": "src/jvmMain/kotlin/vexlife/memory/VexLifeMemoryReviewOwner.kt",
+      "realizationRef": "VexLifeMemoryReviewOwner.writeDecisionAndResolve"
     }
   ],
   "crossOwnerRows": [
@@ -681,6 +690,20 @@
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "OPTIONAL_CURRENT_PAGE_CONTEXT",
       "humanMeaning": "The visible ContextShare control is available only when current page identity/context is lawfully known; when included, the next ordinary Send may carry the exact normalized browser context into prompt materialization."
+    },
+    {
+      "from": "VexLifeMemoryReviewOwner.keep",
+      "to": "VexLifeSemanticAcceptanceWriter.keepWithConversationLease",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
+      "kind": "CONSUMED_BY",
+      "humanMeaning": "Keeping an accepted review crosses from the Memory Review owner into the semantic-acceptance writer while the canonical Conversation lease remains held."
+    },
+    {
+      "from": "VexLifeSemanticAcceptanceWriter.keepWithConversationLease",
+      "to": "VexLifeScoreContinuity.appendAcceptedStatement",
+      "disposition": "CURRENT_SOURCE_RELATIONSHIP",
+      "kind": "CONSUMED_BY",
+      "humanMeaning": "After semantic acceptance is current, the accepted statement is admitted into current Score continuity without making Memory Review the Score owner."
     }
   ],
   "surfaceBindings": [
