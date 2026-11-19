@@ -115,6 +115,32 @@ function normalizeScreenView(input, screenRef) {
     return name;
   };
   const anchors = input.anchors && typeof input.anchors === 'object' ? input.anchors : {};
+  const stateAttribute = (value, label) => {
+    const name = text(value, label);
+    if (!/^(?:data-[a-z0-9]+(?:-[a-z0-9]+)*|aria-[a-z0-9]+(?:-[a-z0-9]+)*|hidden|open|inert)$/.test(name)) {
+      fail(`${label} must be a safe presentation attribute`);
+    }
+    return name;
+  };
+  const stateBindings = (input.stateBindings || []).map((binding, bindingIndex) => {
+    const presenceRef = text(binding?.presenceRef, `${screenRef} view stateBindings[${bindingIndex}] presenceRef`);
+    const value = String(binding?.value ?? '');
+    if (!value) fail(`${screenRef} view stateBindings[${bindingIndex}] value is required`);
+    const operations = (binding.operations || []).map((operation, operationIndex) => {
+      if (operation?.op !== 'SET_ATTRIBUTE' && operation?.op !== 'REMOVE_ATTRIBUTE') {
+        fail(`${screenRef} view stateBindings[${bindingIndex}] operation[${operationIndex}] op is unknown`);
+      }
+      const out = {
+        op: operation.op,
+        targetRef: text(operation.targetRef, `${screenRef} view stateBindings[${bindingIndex}] operation[${operationIndex}] targetRef`),
+        attribute: stateAttribute(operation.attribute, `${screenRef} view stateBindings[${bindingIndex}] operation[${operationIndex}] attribute`),
+      };
+      if (operation.op === 'SET_ATTRIBUTE') out.value = String(operation.value ?? '');
+      return out;
+    });
+    if (!operations.length) fail(`${screenRef} view stateBindings[${bindingIndex}] needs an operation`);
+    return { presenceRef, value, operations };
+  });
   return {
     kind: 'STATIC_HTML_CSS',
     html: text(input.html, `${screenRef} view html`),
@@ -128,6 +154,7 @@ function normalizeScreenView(input, screenRef) {
       structuralAttribute: attribute(anchors.structuralAttribute, `${screenRef} view structuralAttribute`, { required: true }),
       structuralParentAttribute: attribute(anchors.structuralParentAttribute, `${screenRef} view structuralParentAttribute`),
     },
+    stateBindings,
   };
 }
 
@@ -298,6 +325,15 @@ export function normalizeScreenLens(input) {
   for (const screen of screens) {
     const raw = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.realization;
     screen.realization = normalizeScreenRealization(raw, { screenRef: screen.screenRef, knownRefs: lensRefs });
+    if (screen.view?.stateBindings.length) {
+      const presenceRefs = new Set(screen.realization?.presence.map((entry) => entry.ref) ?? []);
+      for (const binding of screen.view.stateBindings) {
+        if (!presenceRefs.has(binding.presenceRef)) fail(`${screen.screenRef} view state binding presence ${binding.presenceRef} is not declared`);
+        for (const operation of binding.operations) {
+          if (!lensRefs.has(operation.targetRef)) fail(`${screen.screenRef} view state binding target ${operation.targetRef} is not a lens ref`);
+        }
+      }
+    }
     const layout = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.layout;
     screen.layout = normalizeScreenLayout(layout, { screenRef: screen.screenRef, elements: screen.elements });
   }
