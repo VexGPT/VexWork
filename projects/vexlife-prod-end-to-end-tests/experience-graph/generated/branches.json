@@ -11,144 +11,26 @@
     },
     "debt": 159
   },
-  "preserved": "main projection at generated/ is never rewritten by a candidate build",
+  "preserved": "main projection at generated/ is never rewritten by any build",
   "candidates": [
     {
-      "buildRef": "candidate-design-foundation",
-      "label": "Design foundation: one vocabulary, one relationship legend",
-      "summary": "Token law, readable contrast in both themes, and the Vex Context relationship legend carried onto thoughts and model cards (presentation only; the graph should not move).",
-      "axis": "DESIGN",
-      "branch": "VXG-111826-claude-candidate-design-foundation",
-      "commit": "d9f0bb995556e7b16bb7d5fc9c93720c7b423472",
+      "buildRef": "consolidated-claude",
+      "kind": "consolidated",
+      "stackedOn": null,
+      "members": [
+        "scope-vision-scope-state",
+        "scope-keyed-elements",
+        "scope-typed-runtime-refs",
+        "scope-language-choices",
+        "scope-design-foundation"
+      ],
+      "label": "Everything Claude changed, merged once",
+      "summary": "All seven scopes merged in order, with the resolutions between them made once.",
+      "axis": "ALL",
+      "branch": "VXG-111826-claude-consolidated",
+      "commit": "117f266956e926f183fda58ea6abe7123d06de42",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "0a152cc513c318bbc9551e05c53881d66ef26adb20c86af023af0343b1af5209",
-      "routeCounts": {
-        "main": {
-          "CLEARED": 13,
-          "FRONTIER_DEBT": 53,
-          "HELD": 0,
-          "UNKNOWN": 0
-        },
-        "candidate": {
-          "CLEARED": 13,
-          "FRONTIER_DEBT": 53,
-          "HELD": 0,
-          "UNKNOWN": 0
-        }
-      },
-      "routeFlips": [],
-      "routesAdded": [],
-      "routesRemoved": [],
-      "debt": {
-        "main": 159,
-        "candidate": 159,
-        "resolvedByKind": {},
-        "introducedByKind": {},
-        "resolved": [],
-        "introduced": []
-      },
-      "edges": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "lawProofReusable": true,
-      "familiesAdded": [],
-      "familiesRemoved": [],
-      "verdict": "NO_GRAPH_CHANGE"
-    },
-    {
-      "buildRef": "candidate-keyed-elements",
-      "label": "Keyed elements: identity through owners",
-      "summary": "Workspace dataKeys owned in main source, Lens elements named by their keys, typed element lookups and owner constants in the browser runtime, Vision scope state decoded at the boundary.",
-      "axis": "IDENTITY",
-      "branch": "VXG-111826-claude-candidate-keyed-elements",
-      "commit": "e01a6cb1b108f1607b5a32cc6f82a9e68af50ad6",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "d1a6f4db3b8bdeedd4e8f74ea8c575d047aa5d0e88bb58231c340a25f397eba8",
-      "routeCounts": {
-        "main": {
-          "CLEARED": 13,
-          "FRONTIER_DEBT": 53,
-          "HELD": 0,
-          "UNKNOWN": 0
-        },
-        "candidate": {
-          "CLEARED": 13,
-          "FRONTIER_DEBT": 53,
-          "HELD": 0,
-          "UNKNOWN": 0
-        }
-      },
-      "routeFlips": [],
-      "routesAdded": [],
-      "routesRemoved": [],
-      "debt": {
-        "main": 159,
-        "candidate": 134,
-        "resolvedByKind": {
-          "DATAKEY_ANCHOR_NOT_IN_MAIN": 4,
-          "DATAKEY_UNRESOLVED": 3,
-          "ELEMENT_WITHOUT_BINDING": 3,
-          "FAMILY_READS_WIRE_STRING": 1,
-          "LITERAL_SHADOWS_CONSTANT": 13,
-          "TYPED_REF_BYPASSED": 1
-        },
-        "introducedByKind": {},
-        "resolved": [
-          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeLocalAsrProvider",
-          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeModelsFamily",
-          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeReleaseInboxFamily",
-          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeVoiceInputFamily",
-          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.preview-update-available",
-          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.update-available",
-          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.viewed",
-          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.clear-history",
-          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture",
-          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries",
-          "debt:FAMILY_READS_WIRE_STRING:VexLifeVisionFamily",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CLEAR_HISTORY#1",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#1",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#2",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#3",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#4",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#5",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#6",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#7",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:NOT_LAWFUL_NOW#1",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:PRIVATE#1",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:RUNTIME_REFUSED#1",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:START_ENHANCED#1",
-          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:STOP_ENHANCED#1",
-          "debt:TYPED_REF_BYPASSED:runtime:VexLifeWebP1RuntimeArtifacts.kt"
-        ],
-        "introduced": []
-      },
-      "edges": {
-        "added": [
-          "edge:MANIFESTS:element.vexlife-workspace.companion.conversation.voice-input:VexLifeVoiceInputFamily.Stop:key",
-          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.clear-history:VexLifeDiagnosticsFamily.ClearHistory:key",
-          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture:VexLifeDiagnosticsFamily.StartEnhanced:key",
-          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture:VexLifeDiagnosticsFamily.StopEnhanced:key",
-          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries:VexLifeModelsFamily.SetPromptCacheEntries:key"
-        ],
-        "removed": [],
-        "changed": []
-      },
-      "lawProofReusable": true,
-      "familiesAdded": [],
-      "familiesRemoved": [],
-      "verdict": "IMPROVES_MAIN"
-    },
-    {
-      "buildRef": "candidate-localization",
-      "label": "Localization: script-aware and complete",
-      "summary": "zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages, and the screen language as its own Home choice beside the reply language.",
-      "axis": "LOCALIZATION",
-      "branch": "VXG-111826-claude-candidate-localization",
-      "commit": "4d73847828416ae4d9fc81434fdf12f736f75ad0",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "bf072ae7ad61c818697ab78e1ee00afbb7216148d136881a1ca2d721af12ce0c",
+      "graphFingerprint": "d3550cde3fa2719c67b4729a9a49986ef7f74f452f8d5ff453144519855fdd72",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -173,6 +55,335 @@
         "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0"
       ],
       "routesRemoved": [],
+      "clearedRoutes": [
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+        "route:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0"
+      ],
+      "debt": {
+        "main": 159,
+        "candidate": 129,
+        "resolvedByKind": {
+          "DATAKEY_ANCHOR_NOT_IN_MAIN": 4,
+          "DATAKEY_UNRESOLVED": 3,
+          "ELEMENT_WITHOUT_BINDING": 3,
+          "FAMILY_READS_WIRE_STRING": 1,
+          "LANGUAGE_INCOMPLETE": 2,
+          "LITERAL_SHADOWS_CONSTANT": 13,
+          "MISSING_CONTROL_LAW": 1,
+          "PARTIAL_LANGUAGE_SERVED": 1,
+          "SCRIPT_COLLAPSE": 1,
+          "TYPED_REF_BYPASSED": 1
+        },
+        "introducedByKind": {},
+        "resolved": [
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeLocalAsrProvider",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeModelsFamily",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeReleaseInboxFamily",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeVoiceInputFamily",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.preview-update-available",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.update-available",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.viewed",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.clear-history",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries",
+          "debt:FAMILY_READS_WIRE_STRING:VexLifeVisionFamily",
+          "debt:LANGUAGE_INCOMPLETE:localization:release-alerts",
+          "debt:LANGUAGE_INCOMPLETE:localization:workspace",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CLEAR_HISTORY#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#2",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#3",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#4",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#5",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#6",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#7",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:NOT_LAWFUL_NOW#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:PRIVATE#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:RUNTIME_REFUSED#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:START_ENHANCED#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:STOP_ENHANCED#1",
+          "debt:MISSING_CONTROL_LAW:element.vexlife-workspace.header.utilities.quick-actions.language",
+          "debt:PARTIAL_LANGUAGE_SERVED:VexLifeProdLocalService.handleStrings",
+          "debt:SCRIPT_COLLAPSE:localization:reply:zh-Hant",
+          "debt:TYPED_REF_BYPASSED:runtime:VexLifeWebP1RuntimeArtifacts.kt"
+        ],
+        "introduced": []
+      },
+      "edges": {
+        "added": [
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.FollowingReplies:when:FollowingReplies:1",
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.ScreenChosen:when:ScreenChosen:1",
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.ScreenChosen:when:FollowingReplies:0",
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.ScreenChosen:when:ScreenChosen:1",
+          "edge:ADMITS_STATE:VexLifeLanguageFamily.FollowReplyLanguage:VexLifeLanguageFamily.FollowingReplies:when:ScreenChosen:0",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.conversation.voice-input:VexLifeVoiceInputFamily.Stop:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.clear-history:VexLifeDiagnosticsFamily.ClearHistory:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture:VexLifeDiagnosticsFamily.StartEnhanced:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture:VexLifeDiagnosticsFamily.StopEnhanced:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries:VexLifeModelsFamily.SetPromptCacheEntries:key",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.reply-language:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.reply-language:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.reply-language:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.screen-language:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.screen-language:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:MANIFESTS:element.vexlife-workspace.header.utilities.language-panel.screen-language:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:MANIFESTS:key:workspace.label.reply-language:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:MANIFESTS:key:workspace.label.screen-language-follow:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:MANIFESTS:key:workspace.label.screen-language:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.FollowingReplies:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.FollowingReplies:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.FollowingReplies:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.ScreenChosen:VexLifeLanguageFamily.ChooseReplyLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.ScreenChosen:VexLifeLanguageFamily.ChooseScreenLanguage",
+          "edge:OFFERS:VexLifeLanguageFamily.ScreenChosen:VexLifeLanguageFamily.FollowReplyLanguage",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:FollowingReplies:1",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:1",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:FollowingReplies:0",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.ChooseScreenLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:1",
+          "edge:REQUESTS_EFFECT:VexLifeLanguageFamily.FollowReplyLanguage:VexLifeLanguageFamily.Effect.SaveChoices:when:ScreenChosen:0"
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": false,
+      "familiesAdded": [
+        "VexLifeLanguageFamily"
+      ],
+      "familiesRemoved": [],
+      "verdict": "IMPROVES_MAIN"
+    },
+    {
+      "buildRef": "scope-complete-translations",
+      "kind": "scope",
+      "stackedOn": "scope-zh-hant-script",
+      "members": null,
+      "label": "Complete workspace text; complete languages only",
+      "summary": "Workspace and release-alert text in all eleven screen languages, and only complete languages are served.",
+      "axis": "LOCALIZATION",
+      "branch": "VXG-111826-claude-scope-complete-translations",
+      "commit": "7ab31f82762e12e3046bd3fa1a69b1ef10ebd8ab",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "5a5cb66c22facf62080d286674a74f308df9ccac0890273366a7fea9a0bcd534",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "clearedRoutes": [],
+      "debt": {
+        "main": 159,
+        "candidate": 155,
+        "resolvedByKind": {
+          "LANGUAGE_INCOMPLETE": 2,
+          "PARTIAL_LANGUAGE_SERVED": 1,
+          "SCRIPT_COLLAPSE": 1
+        },
+        "introducedByKind": {},
+        "resolved": [
+          "debt:LANGUAGE_INCOMPLETE:localization:release-alerts",
+          "debt:LANGUAGE_INCOMPLETE:localization:workspace",
+          "debt:PARTIAL_LANGUAGE_SERVED:VexLifeProdLocalService.handleStrings",
+          "debt:SCRIPT_COLLAPSE:localization:reply:zh-Hant"
+        ],
+        "introduced": []
+      },
+      "edges": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "verdict": "IMPROVES_MAIN",
+      "own": {
+        "resolved": [
+          "debt:LANGUAGE_INCOMPLETE:localization:release-alerts",
+          "debt:LANGUAGE_INCOMPLETE:localization:workspace",
+          "debt:PARTIAL_LANGUAGE_SERVED:VexLifeProdLocalService.handleStrings"
+        ],
+        "introduced": [],
+        "reopened": [],
+        "cleared": []
+      }
+    },
+    {
+      "buildRef": "scope-design-foundation",
+      "kind": "scope",
+      "stackedOn": null,
+      "members": null,
+      "label": "Design foundation aligned with Vextreme v2",
+      "summary": "Vextreme Design Foundation v2 tokens, both themes authored, and the relationship legend as quiet rails (presentation only; the graph should not move).",
+      "axis": "DESIGN",
+      "branch": "VXG-111826-claude-scope-design-foundation",
+      "commit": "b64ebb264c580e5ad646304be0c4c0e5d0c6f442",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "e0992c6e0cea3c991ef7e88a97d7b6ff8005f21ea5a3ddb8375fa8a8e31b2ae4",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "clearedRoutes": [],
+      "debt": {
+        "main": 159,
+        "candidate": 159,
+        "resolvedByKind": {},
+        "introducedByKind": {},
+        "resolved": [],
+        "introduced": []
+      },
+      "edges": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "verdict": "NO_GRAPH_CHANGE"
+    },
+    {
+      "buildRef": "scope-keyed-elements",
+      "kind": "scope",
+      "stackedOn": null,
+      "members": null,
+      "label": "Keyed elements named from their owners",
+      "summary": "Workspace and release-alert dataKeys come from an owner registry in main source, and Screen Lens elements are named by their keys.",
+      "axis": "IDENTITY",
+      "branch": "VXG-111826-claude-scope-keyed-elements",
+      "commit": "cf4c0212dbb559edf71ed611178c8830745bcede",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "0be00e658cba573eb50a71e42fb280369ccb5234a2187d49e40929d6015e6fe7",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "clearedRoutes": [],
+      "debt": {
+        "main": 159,
+        "candidate": 149,
+        "resolvedByKind": {
+          "DATAKEY_ANCHOR_NOT_IN_MAIN": 4,
+          "DATAKEY_UNRESOLVED": 3,
+          "ELEMENT_WITHOUT_BINDING": 3
+        },
+        "introducedByKind": {},
+        "resolved": [
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeLocalAsrProvider",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeModelsFamily",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeReleaseInboxFamily",
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeVoiceInputFamily",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.preview-update-available",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.update-available",
+          "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.viewed",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.clear-history",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture",
+          "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries"
+        ],
+        "introduced": []
+      },
+      "edges": {
+        "added": [
+          "edge:MANIFESTS:element.vexlife-workspace.companion.conversation.voice-input:VexLifeVoiceInputFamily.Stop:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.clear-history:VexLifeDiagnosticsFamily.ClearHistory:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture:VexLifeDiagnosticsFamily.StartEnhanced:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture:VexLifeDiagnosticsFamily.StopEnhanced:key",
+          "edge:MANIFESTS:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries:VexLifeModelsFamily.SetPromptCacheEntries:key"
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "verdict": "IMPROVES_MAIN"
+    },
+    {
+      "buildRef": "scope-language-choices",
+      "kind": "scope",
+      "stackedOn": "scope-complete-translations",
+      "members": null,
+      "label": "Two language choices, one Family",
+      "summary": "The screen language is its own Home choice beside Vex's reply language; VexLifeLanguageFamily owns how the two move.",
+      "axis": "LOCALIZATION",
+      "branch": "VXG-111826-claude-scope-language-choices",
+      "commit": "73ee64a0d2fbd18f11aebfd8c49832fcc440f364",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "943588e39408791a0179a2ddae7474436ba212f1fb2a94ddb4e3a425d328d22d",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 19,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+        "route:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0"
+      ],
+      "routesRemoved": [],
+      "clearedRoutes": [
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+        "route:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+        "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0"
+      ],
       "debt": {
         "main": 159,
         "candidate": 155,
@@ -232,7 +443,229 @@
         "VexLifeLanguageFamily"
       ],
       "familiesRemoved": [],
+      "verdict": "IMPROVES_MAIN",
+      "own": {
+        "resolved": [
+          "debt:MISSING_CONTROL_LAW:element.vexlife-workspace.header.utilities.quick-actions.language"
+        ],
+        "introduced": [
+          "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeLanguageFamily"
+        ],
+        "reopened": [],
+        "cleared": [
+          "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
+          "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
+          "route:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
+          "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
+          "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+          "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0"
+        ]
+      }
+    },
+    {
+      "buildRef": "scope-typed-runtime-refs",
+      "kind": "scope",
+      "stackedOn": null,
+      "members": null,
+      "label": "Typed refs and owner constants in the browser runtime",
+      "summary": "The browser runtime finds typed elements by their Blueprint ref and compares owner constants instead of copied strings.",
+      "axis": "IDENTITY",
+      "branch": "VXG-111826-claude-scope-typed-runtime-refs",
+      "commit": "c6d6558ec423fc55dcdaac1c585b07e023efd90e",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "7b296f09115c44c176db4df449010475836ebcb625e0c5da7e5205deb632931e",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "clearedRoutes": [],
+      "debt": {
+        "main": 159,
+        "candidate": 145,
+        "resolvedByKind": {
+          "LITERAL_SHADOWS_CONSTANT": 13,
+          "TYPED_REF_BYPASSED": 1
+        },
+        "introducedByKind": {},
+        "resolved": [
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CLEAR_HISTORY#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#2",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#3",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#4",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#5",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#6",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#7",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:NOT_LAWFUL_NOW#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:PRIVATE#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:RUNTIME_REFUSED#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:START_ENHANCED#1",
+          "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:STOP_ENHANCED#1",
+          "debt:TYPED_REF_BYPASSED:runtime:VexLifeWebP1RuntimeArtifacts.kt"
+        ],
+        "introduced": []
+      },
+      "edges": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
       "verdict": "IMPROVES_MAIN"
+    },
+    {
+      "buildRef": "scope-vision-scope-state",
+      "kind": "scope",
+      "stackedOn": null,
+      "members": null,
+      "label": "Vision scope state decoded at the boundary",
+      "summary": "VexLifeVisionFamily decodes the service's scope state once, at the boundary, instead of the service comparing raw strings.",
+      "axis": "IDENTITY",
+      "branch": "VXG-111826-claude-scope-vision-scope-state",
+      "commit": "22170e54d4ebaf7fdc1d14f184b3770ff033fcfe",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "0ac206f408c4fa196d602d2323a3282b3de7104660f08840687d346cea25731a",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "clearedRoutes": [],
+      "debt": {
+        "main": 159,
+        "candidate": 158,
+        "resolvedByKind": {
+          "FAMILY_READS_WIRE_STRING": 1
+        },
+        "introducedByKind": {},
+        "resolved": [
+          "debt:FAMILY_READS_WIRE_STRING:VexLifeVisionFamily"
+        ],
+        "introduced": []
+      },
+      "edges": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "verdict": "IMPROVES_MAIN"
+    },
+    {
+      "buildRef": "scope-zh-hant-script",
+      "kind": "scope",
+      "stackedOn": null,
+      "members": null,
+      "label": "Traditional Chinese as its own screen language",
+      "summary": "zh-Hant is a screen language of its own, so a reader of Traditional Chinese never sees a Simplified screen.",
+      "axis": "LOCALIZATION",
+      "branch": "VXG-111826-claude-scope-zh-hant-script",
+      "commit": "d6ca30db0083571c918180de8fe4a8ad25ac1afd",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "graphFingerprint": "f16210adb1c2135991cf8792aeddd6f08a7e6576a6dfb78b67b7adc5af7cd126",
+      "routeCounts": {
+        "main": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        },
+        "candidate": {
+          "CLEARED": 13,
+          "FRONTIER_DEBT": 53,
+          "HELD": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "routeFlips": [],
+      "routesAdded": [],
+      "routesRemoved": [],
+      "clearedRoutes": [],
+      "debt": {
+        "main": 159,
+        "candidate": 158,
+        "resolvedByKind": {
+          "SCRIPT_COLLAPSE": 1
+        },
+        "introducedByKind": {},
+        "resolved": [
+          "debt:SCRIPT_COLLAPSE:localization:reply:zh-Hant"
+        ],
+        "introduced": []
+      },
+      "edges": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "lawProofReusable": true,
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "verdict": "IMPROVES_MAIN"
+    }
+  ],
+  "consolidations": [
+    {
+      "buildRef": "consolidated-claude",
+      "members": [
+        "scope-vision-scope-state",
+        "scope-keyed-elements",
+        "scope-typed-runtime-refs",
+        "scope-language-choices",
+        "scope-design-foundation"
+      ],
+      "merged": [
+        "scope-complete-translations",
+        "scope-design-foundation",
+        "scope-keyed-elements",
+        "scope-language-choices",
+        "scope-typed-runtime-refs",
+        "scope-vision-scope-state",
+        "scope-zh-hant-script"
+      ],
+      "scopesLeftOut": [],
+      "missingResolutions": [],
+      "missingClearedRoutes": [],
+      "introducedByMerge": [],
+      "resolvedByMerge": [],
+      "regressedRoutes": [],
+      "counts": {
+        "resolved": 30,
+        "resolvedByScopes": 30,
+        "cleared": 6,
+        "clearedByScopes": 6
+      },
+      "gaps": [],
+      "verdict": "COMPLETE"
     }
   ]
 }

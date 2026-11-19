@@ -1,6 +1,6 @@
 {
   "schemaVersion": "vexwork.experience-graph.derivation/v1",
-  "graphFingerprint": "d1a6f4db3b8bdeedd4e8f74ea8c575d047aa5d0e88bb58231c340a25f397eba8",
+  "graphFingerprint": "7b296f09115c44c176db4df449010475836ebcb625e0c5da7e5205deb632931e",
   "debt": [
     {
       "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeCapabilityBridge",
@@ -27,10 +27,40 @@
       "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
       "coordinate": "dataKey:VexLifeDiagnosticsFamily",
       "family": "VexLifeDiagnosticsFamily",
-      "detail": "1 dataKey(s) under diagnostics:export (CATALOG_DECLARED) map to VexLifeDiagnosticsFamily without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
+      "detail": "8 dataKey(s) under diagnostics:control (TEST_SOURCE + CATALOG_DECLARED), diagnostics:export (CATALOG_DECLARED), diagnostics:state (TEST_SOURCE + CATALOG_DECLARED) map to VexLifeDiagnosticsFamily without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
       "sourceRef": null,
       "hints": [
-        "diagnostics:export"
+        "diagnostics:control",
+        "diagnostics:export",
+        "diagnostics:state"
+      ]
+    },
+    {
+      "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeLocalAsrProvider",
+      "kind": "DATAKEY_ANCHOR_NOT_IN_MAIN",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "dataKey:VexLifeLocalAsrProvider",
+      "family": null,
+      "detail": "5 dataKey(s) under local-asr:state (TEST_SOURCE) map to VexLifeLocalAsrProvider without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
+      "sourceRef": null,
+      "hints": [
+        "local-asr:state"
+      ]
+    },
+    {
+      "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeModelsFamily",
+      "kind": "DATAKEY_ANCHOR_NOT_IN_MAIN",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "dataKey:VexLifeModelsFamily",
+      "family": "VexLifeModelsFamily",
+      "detail": "15 dataKey(s) under model:control (TEST_SOURCE + CATALOG_DECLARED), model:files (TEST_SOURCE + CATALOG_DECLARED), model:standing (TEST_SOURCE + CATALOG_DECLARED) map to VexLifeModelsFamily without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
+      "sourceRef": null,
+      "hints": [
+        "model:control",
+        "model:files",
+        "model:standing"
       ]
     },
     {
@@ -45,6 +75,69 @@
       "hints": [
         "setup:progress"
       ]
+    },
+    {
+      "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeReleaseInboxFamily",
+      "kind": "DATAKEY_ANCHOR_NOT_IN_MAIN",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "dataKey:VexLifeReleaseInboxFamily",
+      "family": "VexLifeReleaseInboxFamily",
+      "detail": "5 dataKey(s) under release-alerts:control (CATALOG_DECLARED), release-alerts:state (CATALOG_DECLARED) map to VexLifeReleaseInboxFamily without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
+      "sourceRef": null,
+      "hints": [
+        "release-alerts:control",
+        "release-alerts:state"
+      ]
+    },
+    {
+      "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeVoiceInputFamily",
+      "kind": "DATAKEY_ANCHOR_NOT_IN_MAIN",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "dataKey:VexLifeVoiceInputFamily",
+      "family": "VexLifeVoiceInputFamily",
+      "detail": "13 dataKey(s) under voice-input:control (TEST_SOURCE), voice-input:failure (TEST_SOURCE), voice-input:reason (TEST_SOURCE), voice-input:state (TEST_SOURCE) map to VexLifeVoiceInputFamily without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
+      "sourceRef": null,
+      "hints": [
+        "voice-input:control",
+        "voice-input:failure",
+        "voice-input:reason",
+        "voice-input:state"
+      ]
+    },
+    {
+      "ref": "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.preview-update-available",
+      "kind": "DATAKEY_UNRESOLVED",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:release-alerts.status.preview-update-available",
+      "family": "VexLifeReleaseInboxFamily",
+      "detail": "dataKey release-alerts:state:UNREAD_PREVIEW is anchored to VexLifeReleaseInboxFamily but names a state ref that Family does not own",
+      "sourceRef": null,
+      "hints": []
+    },
+    {
+      "ref": "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.update-available",
+      "kind": "DATAKEY_UNRESOLVED",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:release-alerts.status.update-available",
+      "family": "VexLifeReleaseInboxFamily",
+      "detail": "dataKey release-alerts:state:UNREAD is anchored to VexLifeReleaseInboxFamily but names a state ref that Family does not own",
+      "sourceRef": null,
+      "hints": []
+    },
+    {
+      "ref": "debt:DATAKEY_UNRESOLVED:key:release-alerts.status.viewed",
+      "kind": "DATAKEY_UNRESOLVED",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:release-alerts.status.viewed",
+      "family": "VexLifeReleaseInboxFamily",
+      "detail": "dataKey release-alerts:state:VIEWED is anchored to VexLifeReleaseInboxFamily but names a state ref that Family does not own",
+      "sourceRef": null,
+      "hints": []
     },
     {
       "ref": "debt:DATAKEY_UNRESOLVED:key:workspace.status.local-asr-selected",
@@ -146,6 +239,28 @@
       "hints": []
     },
     {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.clear-history",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.diagnostics.clear-history",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
       "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.export",
       "kind": "ELEMENT_WITHOUT_BINDING",
       "debtClass": "B",
@@ -217,6 +332,17 @@
       "debtClass": "B",
       "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
       "coordinate": "element.vexlife-workspace.companion.settings.models.choice",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries",
       "family": null,
       "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
       "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
@@ -692,7 +818,7 @@
       "coordinate": "key:workspace.status.voice-input-listening",
       "family": null,
       "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
-      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2556",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2546",
       "hints": []
     },
     {
@@ -703,7 +829,7 @@
       "coordinate": "key:workspace.status.voice-input-ready",
       "family": null,
       "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
-      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2567",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2557",
       "hints": []
     },
     {
@@ -714,7 +840,7 @@
       "coordinate": "key:workspace.status.voice-input-requesting-microphone",
       "family": null,
       "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
-      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2578",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2568",
       "hints": []
     },
     {
@@ -725,7 +851,7 @@
       "coordinate": "key:workspace.status.voice-input-stopping",
       "family": null,
       "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
-      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2589",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2579",
       "hints": []
     },
     {
@@ -737,6 +863,17 @@
       "family": "VexLifeProdEntryFamily",
       "detail": "VexLifeProdEntryFamily law branches on wire strings (\"PLATFORM_UNSUPPORTED\" L643, \"ARCHITECTURE_UNSUPPORTED\" L644, \"SYSTEM_MEMORY_UNKNOWN\" L646, \"INSUFFICIENT_SYSTEM_MEMORY\" L648); the culture keeps wire strings at the serialization boundary and hands the Family a typed value",
       "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/entry/VexLifeProdEntryFamily.kt:L643",
+      "hints": []
+    },
+    {
+      "ref": "debt:FAMILY_READS_WIRE_STRING:VexLifeVisionFamily",
+      "kind": "FAMILY_READS_WIRE_STRING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeVisionFamily",
+      "family": "VexLifeVisionFamily",
+      "detail": "VexLifeVisionFamily law branches on wire strings (\"ENDED\" L130, \"HELD\" L131, \"SELECTING\" L132, \"ENGAGED\" L133, \"LOOKING\" L134); the culture keeps wire strings at the serialization boundary and hands the Family a typed value",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L130",
       "hints": []
     },
     {
@@ -812,7 +949,7 @@
       "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
       "coordinate": "lens:screen.vexlife-workspace",
       "family": null,
-      "detail": "30 of 36 Screen Lens buttons/fields carry no catalog key in either identity system (markup co-location or the reserved `lens` namespace, used by 10 keys): the Lens and the catalog cannot be joined for them",
+      "detail": "33 of 36 Screen Lens buttons/fields carry no catalog key in either identity system (markup co-location or the reserved `lens` namespace, used by 0 keys): the Lens and the catalog cannot be joined for them",
       "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
       "hints": [
         "element.vexlife-workspace.browser.vex-context.profile.portability",
@@ -827,6 +964,8 @@
         "element.vexlife-workspace.companion.private-mode",
         "element.vexlife-workspace.companion.settings.continuity.continuity-mode",
         "element.vexlife-workspace.companion.settings.continuity.dream-sync",
+        "element.vexlife-workspace.companion.settings.diagnostics.clear-history",
+        "element.vexlife-workspace.companion.settings.diagnostics.enhanced-capture",
         "element.vexlife-workspace.companion.settings.diagnostics.export",
         "element.vexlife-workspace.companion.settings.home.add-directory",
         "element.vexlife-workspace.companion.settings.home.directories",
@@ -834,6 +973,7 @@
         "element.vexlife-workspace.companion.settings.local-asr.selection",
         "element.vexlife-workspace.companion.settings.local-asr.spoken-language",
         "element.vexlife-workspace.companion.settings.models.choice",
+        "element.vexlife-workspace.companion.settings.models.configuration.prompt-cache-entries",
         "element.vexlife-workspace.companion.settings.resources.low-memory-alert",
         "element.vexlife-workspace.companion.settings.thought-visibility",
         "element.vexlife-workspace.companion.view-switch",
@@ -1669,7 +1809,7 @@
   ],
   "byClass": {
     "A": 2,
-    "B": 114,
+    "B": 125,
     "C": 0,
     "D": 3,
     "E": 15,

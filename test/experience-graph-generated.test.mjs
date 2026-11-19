@@ -102,22 +102,51 @@ test('branch dynamics: candidates are projected against preserved main and say w
     assert.equal(row.lawProofReusable, row.familiesAdded.length === 0 && row.familiesRemoved.length === 0 && row.edges.changed.length === 0, row.buildRef);
     assert.equal(json(buildOutputs(row.buildRef).graph).source.commit, row.commit);
   }
-  const keyed = by['candidate-keyed-elements'];
-  assert.equal(keyed.verdict, 'IMPROVES_MAIN');
-  assert.deepEqual(keyed.debt.introduced, []);
-  for (const kind of ['DATAKEY_ANCHOR_NOT_IN_MAIN', 'FAMILY_READS_WIRE_STRING', 'TYPED_REF_BYPASSED', 'LITERAL_SHADOWS_CONSTANT', 'DATAKEY_UNRESOLVED']) assert.ok(keyed.debt.resolvedByKind[kind] > 0, kind);
-  const localization = by['candidate-localization'];
-  assert.equal(localization.verdict, 'IMPROVES_MAIN');
-  assert.equal(localization.lawProofReusable, false, 'a new Family needs its own executed proof');
-  assert.equal(keyed.lawProofReusable, true);
-  assert.deepEqual(localization.debt.resolvedByKind, { LANGUAGE_INCOMPLETE: 2, MISSING_CONTROL_LAW: 1, PARTIAL_LANGUAGE_SERVED: 1, SCRIPT_COLLAPSE: 1 });
+  // Identity scopes: each resolves its own debt and introduces none.
+  for (const ref of ['scope-vision-scope-state', 'scope-keyed-elements', 'scope-typed-runtime-refs']) {
+    assert.equal(by[ref].verdict, 'IMPROVES_MAIN', ref);
+    assert.deepEqual(by[ref].debt.introduced, [], ref);
+    assert.equal(by[ref].lawProofReusable, true, ref);
+  }
+  assert.deepEqual(by['scope-vision-scope-state'].debt.resolvedByKind, { FAMILY_READS_WIRE_STRING: 1 });
+  for (const kind of ['DATAKEY_ANCHOR_NOT_IN_MAIN', 'DATAKEY_UNRESOLVED']) assert.ok(by['scope-keyed-elements'].debt.resolvedByKind[kind] > 0, kind);
+  for (const kind of ['TYPED_REF_BYPASSED', 'LITERAL_SHADOWS_CONSTANT']) assert.ok(by['scope-typed-runtime-refs'].debt.resolvedByKind[kind] > 0, kind);
+  // Localization is one stack: script, then complete text, then the two choices.
+  assert.deepEqual(by['scope-zh-hant-script'].debt.resolvedByKind, { SCRIPT_COLLAPSE: 1 });
+  assert.equal(by['scope-complete-translations'].stackedOn, 'scope-zh-hant-script');
+  assert.deepEqual(by['scope-complete-translations'].own.reopened, []);
+  const choices = by['scope-language-choices'];
+  assert.equal(choices.stackedOn, 'scope-complete-translations');
+  assert.deepEqual(choices.debt.resolvedByKind, { LANGUAGE_INCOMPLETE: 2, MISSING_CONTROL_LAW: 1, PARTIAL_LANGUAGE_SERVED: 1, SCRIPT_COLLAPSE: 1 });
+  assert.equal(choices.lawProofReusable, false, 'a new Family needs its own executed proof');
   // The two language choices become VexLifeLanguageFamily: six new routes, every one CLEARED.
-  assert.deepEqual(localization.familiesAdded, ['VexLifeLanguageFamily']);
-  const languageRoutes = json(buildOutputs('candidate-localization').routes).routes.filter((route) => route.routeRef.startsWith('route:VexLifeLanguageFamily.'));
+  assert.deepEqual(choices.familiesAdded, ['VexLifeLanguageFamily']);
+  const languageRoutes = json(buildOutputs('scope-language-choices').routes).routes.filter((route) => route.routeRef.startsWith('route:VexLifeLanguageFamily.'));
   assert.equal(languageRoutes.length, 6);
   assert.ok(languageRoutes.every((route) => route.status === 'CLEARED'));
-  assert.equal(localization.routeCounts.candidate.CLEARED, localization.routeCounts.main.CLEARED + 6);
-  assert.equal(by['candidate-design-foundation'].verdict, 'NO_GRAPH_CHANGE', 'presentation-only: its law is held by the Product\'s own token test');
+  assert.equal(choices.own.cleared.length, 6);
+  // Alone, the language dataKeys are anchored only in a test; the owner registry that anchors them
+  // in main arrives with scope-keyed-elements, which is why keyed-elements merges first.
+  assert.deepEqual(choices.debt.introduced, ['debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeLanguageFamily']);
+  assert.equal(by['scope-design-foundation'].verdict, 'NO_GRAPH_CHANGE', 'presentation-only: its law is held by the Product\'s own token test');
+});
+
+test('consolidation: the consolidated branch keeps everything every scope fixes and brings nothing new', () => {
+  const plan = json(PLAN_FILE);
+  const branches = json(OUTPUTS.branches);
+  const scopes = plan.builds.filter((row) => row.buildRef.startsWith('scope-')).map((row) => row.buildRef).sort();
+  assert.equal(branches.consolidations.length, 1);
+  const [check] = branches.consolidations;
+  assert.equal(check.buildRef, 'consolidated-claude');
+  assert.equal(check.verdict, 'COMPLETE', JSON.stringify(check.gaps));
+  assert.deepEqual(check.merged, scopes, 'every scope is merged, named or beneath a named scope');
+  assert.deepEqual(check.missingResolutions, []);
+  assert.deepEqual(check.missingClearedRoutes, []);
+  assert.deepEqual(check.introducedByMerge, []);
+  assert.deepEqual(check.regressedRoutes, []);
+  const consolidated = branches.candidates.find((row) => row.buildRef === 'consolidated-claude');
+  assert.equal(consolidated.debt.introduced.length, 0, 'the resolutions between scopes leave nothing behind');
+  assert.equal(consolidated.debt.main - consolidated.debt.candidate, check.counts.resolvedByScopes);
 });
 
 test('deterministic proof: executed Family law never disagrees with the graph and is bound to it', () => {

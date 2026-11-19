@@ -33,34 +33,93 @@
   },
   "builds": [
     {
-      "buildRef": "candidate-keyed-elements",
-      "label": "Keyed elements: identity through owners",
+      "buildRef": "scope-vision-scope-state",
+      "label": "Vision scope state decoded at the boundary",
       "axis": "IDENTITY",
-      "branch": "VXG-111826-claude-candidate-keyed-elements",
-      "commit": "e01a6cb1b108f1607b5a32cc6f82a9e68af50ad6",
+      "branch": "VXG-111826-claude-scope-vision-scope-state",
+      "commit": "22170e54d4ebaf7fdc1d14f184b3770ff033fcfe",
       "basis": "main",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "summary": "Workspace dataKeys owned in main source, Lens elements named by their keys, typed element lookups and owner constants in the browser runtime, Vision scope state decoded at the boundary."
+      "summary": "VexLifeVisionFamily decodes the service's scope state once, at the boundary, instead of the service comparing raw strings."
     },
     {
-      "buildRef": "candidate-localization",
-      "label": "Localization: script-aware and complete",
+      "buildRef": "scope-keyed-elements",
+      "label": "Keyed elements named from their owners",
+      "axis": "IDENTITY",
+      "branch": "VXG-111826-claude-scope-keyed-elements",
+      "commit": "cf4c0212dbb559edf71ed611178c8830745bcede",
+      "basis": "main",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "summary": "Workspace and release-alert dataKeys come from an owner registry in main source, and Screen Lens elements are named by their keys."
+    },
+    {
+      "buildRef": "scope-typed-runtime-refs",
+      "label": "Typed refs and owner constants in the browser runtime",
+      "axis": "IDENTITY",
+      "branch": "VXG-111826-claude-scope-typed-runtime-refs",
+      "commit": "c6d6558ec423fc55dcdaac1c585b07e023efd90e",
+      "basis": "main",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "summary": "The browser runtime finds typed elements by their Blueprint ref and compares owner constants instead of copied strings."
+    },
+    {
+      "buildRef": "scope-zh-hant-script",
+      "label": "Traditional Chinese as its own screen language",
       "axis": "LOCALIZATION",
-      "branch": "VXG-111826-claude-candidate-localization",
-      "commit": "4d73847828416ae4d9fc81434fdf12f736f75ad0",
+      "branch": "VXG-111826-claude-scope-zh-hant-script",
+      "commit": "d6ca30db0083571c918180de8fe4a8ad25ac1afd",
       "basis": "main",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "summary": "zh-Hant as its own screen language, complete-only serving, workspace and release-alerts complete in all eleven screen languages, and the screen language as its own Home choice beside the reply language."
+      "summary": "zh-Hant is a screen language of its own, so a reader of Traditional Chinese never sees a Simplified screen."
     },
     {
-      "buildRef": "candidate-design-foundation",
-      "label": "Design foundation: one vocabulary, one relationship legend",
-      "axis": "DESIGN",
-      "branch": "VXG-111826-claude-candidate-design-foundation",
-      "commit": "d9f0bb995556e7b16bb7d5fc9c93720c7b423472",
+      "buildRef": "scope-complete-translations",
+      "label": "Complete workspace text; complete languages only",
+      "axis": "LOCALIZATION",
+      "branch": "VXG-111826-claude-scope-complete-translations",
+      "commit": "7ab31f82762e12e3046bd3fa1a69b1ef10ebd8ab",
       "basis": "main",
       "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "summary": "Token law, readable contrast in both themes, and the Vex Context relationship legend carried onto thoughts and model cards (presentation only; the graph should not move)."
+      "stackedOn": "scope-zh-hant-script",
+      "summary": "Workspace and release-alert text in all eleven screen languages, and only complete languages are served."
+    },
+    {
+      "buildRef": "scope-language-choices",
+      "label": "Two language choices, one Family",
+      "axis": "LOCALIZATION",
+      "branch": "VXG-111826-claude-scope-language-choices",
+      "commit": "73ee64a0d2fbd18f11aebfd8c49832fcc440f364",
+      "basis": "main",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "stackedOn": "scope-complete-translations",
+      "summary": "The screen language is its own Home choice beside Vex's reply language; VexLifeLanguageFamily owns how the two move."
+    },
+    {
+      "buildRef": "scope-design-foundation",
+      "label": "Design foundation aligned with Vextreme v2",
+      "axis": "DESIGN",
+      "branch": "VXG-111826-claude-scope-design-foundation",
+      "commit": "b64ebb264c580e5ad646304be0c4c0e5d0c6f442",
+      "basis": "main",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "summary": "Vextreme Design Foundation v2 tokens, both themes authored, and the relationship legend as quiet rails (presentation only; the graph should not move)."
+    },
+    {
+      "buildRef": "consolidated-claude",
+      "label": "Everything Claude changed, merged once",
+      "axis": "ALL",
+      "branch": "VXG-111826-claude-consolidated",
+      "commit": "117f266956e926f183fda58ea6abe7123d06de42",
+      "basis": "main",
+      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "members": [
+        "scope-vision-scope-state",
+        "scope-keyed-elements",
+        "scope-typed-runtime-refs",
+        "scope-language-choices",
+        "scope-design-foundation"
+      ],
+      "summary": "All seven scopes merged in order, with the resolutions between them made once."
     }
   ]
 }

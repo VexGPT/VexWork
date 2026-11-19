@@ -37,10 +37,30 @@ npm run experience:build    fetch the pinned commits and regenerate generated/
 npm run experience:probe -- --source <VexLife-Prod checkout at the pinned commit> [--work <dir>]
                             run the generated probe against the compiled, unmodified Product
                             (git-archive copy, probe in jvmTest only), then rebuild
-node scripts/build-experience-graph.mjs --build <candidate-ref> --source <checkout at its commit>
-                            project one candidate branch into generated/builds/<ref>/ and
-                            recompute generated/branches.json + BRANCHES.md against main
+node scripts/build-experience-graph.mjs --build <build-ref> --source <checkout at its commit>
+                            project one build into generated/builds/<ref>/ and recompute
+                            generated/branches.json + BRANCHES.md against main
 ~~~
+
+## Scopes and the consolidated branch
+
+Every build in `source-plan.json` is an exact commit on a named VexLife-Prod branch, cut from the
+pinned main and compared against main's preserved projection. The buildRef says what kind it is:
+
+~~~text
+scope-*          one reviewable scope; one sibling PR. May be stackedOn an earlier scope (its PR
+                 targets that scope's branch), and then also reports what it adds on top of it.
+consolidated-*   one branch that merges the named members (and everything stacked beneath them)
+                 in order, with the resolutions between scopes made once; one consolidated PR.
+candidate-*      an exploratory branch, not meant to merge as-is.
+~~~
+
+`generated/BRANCHES.md` holds the consolidation check. A consolidated build is COMPLETE only when
+every scope is merged, every debt row a scope resolves stays resolved, every route a scope clears
+stays CLEARED, the merge introduces no debt that no scope introduced, and no CLEARED route
+regresses. Building a consolidated build with `--source` also proves in git that every scope
+commit is an ancestor of it. So a reviewer can merge scopes one at a time and know, before merging
+the consolidated branch, that nothing has been left behind.
 
 The pinned Product commit, the prior commit used for change impact, and the read roots live in
 `source-plan.json`. Moving the pin is a deliberate, reviewed change; nothing re-pins itself.

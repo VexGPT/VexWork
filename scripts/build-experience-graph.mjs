@@ -4,8 +4,10 @@
 //   node scripts/build-experience-graph.mjs --fetch            sparse-fetch the pinned Product commit(s), regenerate
 //   node scripts/build-experience-graph.mjs --source <dir>     regenerate from an existing checkout at the pinned commit
 //   node scripts/build-experience-graph.mjs --fetch --check    regenerate in memory; fail if checked-in output differs
-//   node scripts/build-experience-graph.mjs --build <candidate-ref> [--source <checkout>]
-//                                                              project one candidate branch build against preserved main
+//   node scripts/build-experience-graph.mjs --build <build-ref> [--source <checkout>]
+//                                                              project one candidate, scope or consolidated build against
+//                                                              preserved main (a consolidated build with --source also
+//                                                              proves in git that every scope commit is merged)
 //   node scripts/build-experience-graph.mjs --verify           offline: derived artifacts reproduce from the checked-in
 //                                                              graph, extractor blobs match, law proof recomputes
 //
@@ -331,11 +333,24 @@ function generate(args) {
 
 function generateBuild(args, plan, builds, check) {
   const build = builds.find((row) => row.buildRef === args.build);
-  if (!build) throw new Error(`no candidate build ${args.build} in the source plan`);
+  if (!build) throw new Error(`no build ${args.build} in the source plan`);
   const checkout = args.source ? path.resolve(args.source) : fetchCheckout(plan, build.commit);
   if (args.source) {
     const head = git(checkout, 'rev-parse', 'HEAD');
     if (head !== build.commit) throw new Error(`checkout ${checkout} is at ${head}, ${build.buildRef} pins ${build.commit}`);
+  }
+  if (build.kind === 'consolidated' && args.source) {
+    // The graph check says nothing went missing; git says every scope commit is really merged.
+    const byBuild = new Map(builds.map((row) => [row.buildRef, row]));
+    for (const member of build.members) {
+      for (let at = byBuild.get(member); at; at = at.stackedOn ? byBuild.get(at.stackedOn) : null) {
+        try {
+          git(checkout, 'merge-base', '--is-ancestor', at.commit, 'HEAD');
+        } catch {
+          throw new Error(`${build.buildRef} does not contain ${at.buildRef} @ ${at.commit}`);
+        }
+      }
+    }
   }
   const drift = [];
   const projected = projectBuild(checkout, plan, build);
@@ -349,7 +364,7 @@ function generateBuild(args, plan, builds, check) {
     console.error(`experience graph drift:\n${drift.map((file) => `  ${file}`).join('\n')}`);
     process.exit(1);
   }
-  console.log(`${check ? 'checked' : 'wrote'} candidate ${build.buildRef} ${projected.graph.fingerprint.slice(0, 12)} · routes ${JSON.stringify(projected.routes.counts)} · debt ${projected.frontier.debt.length}`);
+  console.log(`${check ? 'checked' : 'wrote'} ${build.kind} ${build.buildRef} ${projected.graph.fingerprint.slice(0, 12)} · routes ${JSON.stringify(projected.routes.counts)} · debt ${projected.frontier.debt.length}`);
 }
 
 export function verify() {
