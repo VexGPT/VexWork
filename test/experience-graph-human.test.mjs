@@ -41,6 +41,35 @@ test('human-semantic relationships supplement the extractor without becoming a s
   assert.equal(sourceReturn.coverage, 'CURATED_HUMAN_RELATIONSHIP');
 });
 
+test('mechanical connectivity does not impersonate a curated semantic relationship', () => {
+  const graph = {
+    source: { repository: 'VexGPT/VexLife-Prod', commit: 'a'.repeat(40) },
+    edges: [
+      { ref: 'edge:1', kind: 'CONSUMED_BY', from: 'HumanOwner', to: 'MiddleOwner' },
+      { ref: 'edge:2', kind: 'PROJECTS_TO', from: 'MiddleOwner', to: 'PromptOwner' },
+    ],
+  };
+  const derivation = { routes: [], cases: [], journeys: [] };
+  const seed = {
+    projectRef: 'project.vexlife-prod.end-to-end-tests',
+    currentness: { vexLifeProdMain: 'b'.repeat(40) },
+    sourceBindings: {},
+    surfaceBindings: [],
+    journeySeeds: [],
+    loopSeeds: [],
+    crossOwnerRows: [{
+      from: 'HumanOwner',
+      to: 'PromptOwner',
+      kind: 'SOURCE_RETURN_RESULT_MATERIALIZES_IN_PROMPT',
+      disposition: 'CURRENT_SOURCE_RELATIONSHIP',
+      humanMeaning: 'A human-semantic relationship that is not mechanically derived by the two incidental edges.',
+    }],
+  };
+  const convergence = deriveHumanExperienceConvergence(graph, derivation, seed);
+  assert.equal(convergence.relationships[0].coverage, 'CURATED_HUMAN_RELATIONSHIP');
+  assert.deepEqual(convergence.relationships[0].graphPath, ['edge:1', 'edge:2']);
+});
+
 test('current human journeys preserve Product truth that the old source pin could not mechanically derive', () => {
   const convergence = result();
   const sourceReturn = convergence.journeys.find((row) => row.journeyRef === 'journey.conversation.source-return-host-truth');
