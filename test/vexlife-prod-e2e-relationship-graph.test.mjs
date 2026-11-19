@@ -27,7 +27,7 @@ test('relationship lattice seed currentness is internally consistent', () => {
 
   assert.equal(
     seed.sourceBindings.vexlifeProdMain,
-    '98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0',
+    'a58777106b08bd58c167608fa0115729185ae3dd',
   );
   assert.equal(
     Object.prototype.hasOwnProperty.call(seed.sourceBindings, 'vexLifeProdMain'),
@@ -39,6 +39,13 @@ test('relationship lattice seed currentness is internally consistent', () => {
       (candidate) => candidate.ref === 'github.pull.vexlife-prod.343',
     ),
   );
+  assert.ok(
+    !seed.sourceBindings.activeCandidates.some(
+      (candidate) => candidate.ref === 'github.pull.vexlife-prod.251',
+    ),
+    'merged #251 must no longer remain active',
+  );
+  assert.equal(seed.currentness.mergedPressure['251']?.state, 'MERGED');
   assert.ok(
     !seed.sourceBindings.activeCandidates.some(
       (candidate) => ['github.pull.vexlife-prod.310', 'github.pull.vexlife-prod.331'].includes(candidate.ref),
