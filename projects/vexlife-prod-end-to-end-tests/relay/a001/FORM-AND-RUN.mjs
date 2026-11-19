@@ -165,8 +165,39 @@ try {
     recipe:request.sdk.recipe,seed,stage,outerTaskTemplate,authorityEnvelope,
     outputDirectory:downloads,outputStem:'VEXWORK-E2E-CHATGPT-SOURCE-OWNER-A001',ttlMs:4*60*60*1000
   });
+  const innerManifest = formedCarrier.inner.manifest;
+  const innerRepository = innerManifest.repositories?.find((entry) => entry.repositoryRef === 'primary');
+  if (innerManifest.workspace?.mode !== 'RUN_ROOT'
+      || innerManifest.workspace?.createRoot !== true
+      || innerManifest.workspace?.createProjectPath !== true) {
+    throw new Error('FORMED_INNER_RUN_ROOT_BINDING_INVALID');
+  }
+  if (innerRepository?.checkoutRef !== request.candidate.head
+      || innerRepository?.expectedHead !== request.candidate.head
+      || innerManifest.source?.candidateHead !== request.candidate.head
+      || innerManifest.source?.candidateTree !== request.candidate.tree) {
+    throw new Error('FORMED_INNER_CANDIDATE_BINDING_INVALID');
+  }
+  if (formedCarrier.outer.task?.repositoryExecutionProfileRefOrNull !== 'profile.repository.vextreme-sdk.macos-v1') {
+    throw new Error('FORMED_OUTER_REPOSITORY_EXECUTION_PROFILE_INVALID');
+  }
+  const expectedOperationActions = [
+    'REPOSITORY_STATE',
+    'EXPECTED_HEAD',
+    'EXPECTED_TREE',
+    'COMMAND',
+    'COMMAND',
+    'REVIEW_SNAPSHOT',
+    'CANONICAL_RETURN',
+  ];
+  const observedOperationActions = innerManifest.operations.map((operation) => operation.action);
+  if (JSON.stringify(observedOperationActions) !== JSON.stringify(expectedOperationActions)) {
+    throw new Error(`FORMED_INNER_OPERATION_SET_INVALID:${observedOperationActions.join(',')}`);
+  }
+
   const taskZip = formedCarrier.outer.finalZip;
   const digest = formedCarrier.outer.digest;
+  console.log('VexRelay: formed manifest preflight PASS');
   console.log(`VexRelay: formed canonical task ${taskZip}`);
   console.log(`VexRelay: task sha256 ${digest}`);
   const bootstrap = renderMacSourceBootstrapCommand({packageSha256:digest,sdkHead:request.sdk.head,sdkTree:request.sdk.tree});
