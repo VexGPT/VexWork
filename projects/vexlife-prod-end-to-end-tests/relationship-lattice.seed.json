@@ -38,7 +38,15 @@
       },
       {
         "ref": "github.pull.vexwork.329",
-        "meaning": "Generic VexBoard workspace-frame renderer for optional Product Screen Lens layout; projection-only, stacked on #327."
+        "meaning": "Historical input: generic workspace-frame renderer now inherited by foreground VexWork convergence #328."
+      },
+      {
+        "ref": "github.pull.vexlife-prod.387",
+        "meaning": "Foreground Product convergence: #380 semantic evolution + #385 browser-workspace spatial export, with the Product-owned Lens regenerated at the exact published candidate head."
+      },
+      {
+        "ref": "github.pull.vexwork.328",
+        "meaning": "Single foreground VexWork convergence: source-derived Experience Graph + precise Lens Control subsets + peer Product Screen Lens + browser-workspace renderer."
       }
     ],
     "experienceCandidate": {
@@ -48,12 +56,12 @@
     },
     "experienceSuccessorCandidate": {
       "ref": "github.branch.vexlife-prod.VXG-111926-vexlife-prod-experience-convergence-r2",
-      "commit": "553e954d1295eb272ac172f9eafbb4467172e20b",
-      "meaning": "Source-converged successor: runnable R1 + #385 spatial exporter while preserving #380 semantic pathways. Generated Lens JSON intentionally not hand-edited; regeneration held."
+      "commit": "479544c5c319ad796a0853125ae131d85afc9671",
+      "meaning": "Foreground Product convergence #387: semantic + spatial source composed and Product-owned Screen Lens regenerated/published (97 elements, 15 pathways, FRAME layout)."
     },
     "experienceGraphSuccessorCandidate": {
-      "ref": "github.branch.vexwork.VXG-111926-vexlife-prod-e2e-experience-convergence-r2",
-      "meaning": "Source-corrected Experience Graph Lens reader that preserves declared Family Control subsets; generated graph artifacts intentionally held until exact Product R2 Lens regeneration.",
+      "ref": "github.pull.vexwork.328",
+      "meaning": "Single foreground VexWork convergence. Product R2 Lens is now published; generated graph artifacts are being regenerated with exact Lens-declared Family Control subsets before human witness.",
       "sourceCorrectionCommit": "a418759be2a8e717aeddec0bb75b6cf75410c23f"
     }
   },
@@ -1550,8 +1558,12 @@
         "head": "37ae931d402eb29bad2601bb0cc8479f55750928"
       },
       "385": {
-        "state": "OPEN_DRAFT_AWAITING_HUMAN_RAW_GIT_WITNESS",
+        "state": "OPEN_DRAFT_SUPERSEDED_BY_387",
         "head": "55ce7a1e35dcb49d01d3d29d472a177fe5a43f8b"
+      },
+      "387": {
+        "state": "OPEN_DRAFT_FOREGROUND_CONVERGENCE",
+        "head": "479544c5c319ad796a0853125ae131d85afc9671"
       }
     }
   }
