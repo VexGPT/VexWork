@@ -413,3 +413,37 @@ At the current checkpoint:
 - No Victor technical action is required for this review node.
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-PROD][EXPERIENCE-GRAPH][ALIGNMENT][REVIEW] -->
+
+
+## Fresh Independent Assurance finding after Depth 09
+
+Depth 09 closed the whole-currentized SourceOwner proof on `de8b7e33450545a9ac060c80094b253b75ee9a9c`: 68/68 Experience Graph tests PASS, offline verification PASS, fresh pinned-source `--fetch --check` PASS, exact review snapshot PASS.
+
+Fresh FOUNDATION Assurance then returned **CORRECTIONS_REQUIRED** for one new blocking finding:
+
+### ERG-REV-005 — branch law-proof reuse must bind probe identity
+
+`src/core/experience-graph-branches.mjs` still declared main executed law proof reusable from `lawFingerprint(main) === lawFingerprint(candidate)` alone.
+
+That is weaker than the repaired evidence-currentness contract. A candidate can leave semantic law edges unchanged while changing fixture/probe formation, so reusable executed evidence must require both compatible Family-law identity and compatible generated probe identity.
+
+The current three Claude Product candidate rows are not presently falsified by this gap; it is a fail-closed defect in the reusable foundation rule.
+
+Bounded source repair is now on #321:
+
+```text
+head
+  8c4572c778e5943ec7faae13200ec5033959a82d
+
+tree
+  a1783068fea0b4175cd142ba44eb2804e2d58ea9
+```
+
+Repair shape:
+- graph extractor metadata carries `lawProbeSourceSha256`;
+- semantic graph fingerprint still excludes extractor metadata;
+- branch proof reuse requires law fingerprint + probe SHA equality;
+- main offline verification binds graph metadata back to checked-in probe source;
+- regression proves equal semantic law with different probe identity is not reusable.
+
+Next unconsumed edge: **Depth 10 read-only proof + generated drift discovery**. Generated mutation remains held until the generator itself returns the exact stale path set.
