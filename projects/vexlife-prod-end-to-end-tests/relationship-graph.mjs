@@ -280,18 +280,30 @@ export function formExperienceRelationshipGraph(seedInput) {
     const stateRef = addNode(`${row.family}.State`, 'STATE', `${row.family} State`, sources);
     const controlRef = addNode(`${row.family}.Control`, 'CONTROL', `${row.family} Control`, sources);
     const effectRef = row.act?.effect ? addNode(row.act.effect, 'EFFECT', row.act.effect, sources) : null;
-    const observationRef = addNode(
-      sourceSymbolOrNull(row.observation),
-      'OBSERVATION',
-      row.observation,
-      sources,
-    );
-    const projectionRef = addNode(
-      sourceSymbolOrNull(row.projection),
-      'PROJECTION',
-      row.projection,
-      sources,
-    );
+    const observationSymbol = sourceSymbolOrNull(row.observation);
+    const observationRef = observationSymbol
+      ? addNode(observationSymbol, 'OBSERVATION', row.observation, sources)
+      : null;
+    if (row.observation && !observationRef) {
+      debts.push(Object.freeze({
+        debtClass: 'MISSING_OBSERVATION_EDGE',
+        coordinateRefs: Object.freeze([row.family]),
+        detail: row.observation,
+        sourceRefs: Object.freeze(sources),
+      }));
+    }
+    const projectionSymbol = sourceSymbolOrNull(row.projection);
+    const projectionRef = projectionSymbol
+      ? addNode(projectionSymbol, 'PROJECTION', row.projection, sources)
+      : null;
+    if (row.projection && !projectionRef) {
+      debts.push(Object.freeze({
+        debtClass: 'MISSING_PROJECTION_EDGE',
+        coordinateRefs: Object.freeze([row.family]),
+        detail: row.projection,
+        sourceRefs: Object.freeze(sources),
+      }));
+    }
     const realizationSources = [
       ...sources,
       row.realizationSourcePath ? `repo.vexlife-prod:${row.realizationSourcePath}` : null,
@@ -429,6 +441,16 @@ export function formExperienceRelationshipGraph(seedInput) {
       }));
     }
 
+    for (const stateCoordinate of binding.runtimeRelationship?.currentStateCoordinates ?? []) {
+      addNode(stateCoordinate, 'STATE', stateCoordinate, elementSources);
+    }
+    for (const downstreamCoordinate of [
+      ...(binding.runtimeRelationship?.downstreamCoordinates ?? []),
+      ...(binding.downstreamCoordinates ?? []),
+    ]) {
+      addNode(downstreamCoordinate, 'OWNER', downstreamCoordinate, elementSources);
+    }
+
     const pathway = binding.currentPathwayRef ? coordinateByRef.get(binding.currentPathwayRef) : null;
     if (pathway?.investigationNote) {
       debts.push(Object.freeze({
@@ -545,7 +567,7 @@ export function projectExperienceRelationshipGraphToBoardGraph(graphInput) {
     })),
     relationships: boardRelationships,
     sourceRefs: [
-      `project.${graphInput.sourceBinding.projectRef}`,
+      graphInput.sourceBinding.projectRef,
     ].filter((ref) => STABLE_REF.test(ref)),
   });
 
