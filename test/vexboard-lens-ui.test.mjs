@@ -125,12 +125,15 @@ test('existing board markers sit on borders and frame titles are never covered',
 });
 
 
-test('project switching supports Product-exported Lens subjects without introducing a Product-specific renderer', () => {
+test('project switching supports Product-exported and legacy experiment lenses without introducing a Product-specific renderer', () => {
   assert.match(page, /subject\.lens\.exportedLens/);
   assert.match(page, /Source\.readExportedLensCommit/);
   assert.match(page, /Catalog\.bindLensBuildSource/);
   assert.match(page, /loadBuildLens\(subject, build\)/);
   assert.match(page, /Builds and source projections/);
+  assert.match(page, /function catalogSubjectForCurrentLens\(\)/, 'a legacy experiment can still inherit its catalog project identity');
+  assert.match(page, /snapshot\?\.repositoryRef && subject\.repositoryRef === snapshot\.repositoryRef/);
+  assert.match(page, /requestSubject \? renderBuildSwitch\(requestSubject\) : null/, 'legacy experiments show project chrome without impersonating Stable or Main');
   assert.doesNotMatch(page, /projectVexLifeProd|vexlife-prod.*adapter/i);
 });
 
@@ -250,15 +253,26 @@ test('lived usability gives the inspector a resizable attention boundary and mak
   assert.match(page, /renderExpressionFinder\(list\)/);
 });
 
-test('selected controls preview the screen or expression they lead to before traversal', () => {
+test('selected controls preview and visibly support the screen or expression they lead to before traversal', () => {
   assert.match(page, /function destinationForElement\(element\)/);
   assert.match(page, /function expressionTargetForElement\(ref\)/);
   assert.match(page, /Expressions\.expressionForControl\(state\.lens, screenRef\(\), list, ref\)/);
   assert.match(page, /Follow → \$\{destination\.title\}/);
   assert.match(page, /Show \$\{expression\.where\} · \$\{truncate\(expression\.what, 34\)\}/);
-  assert.match(page, /destination\.go\(\)/);
-  assert.match(page, /class: 'tool product-view-travel'/, 'static Product controls expose a visible state-travel action');
-  assert.match(page, /function renderStaticViewActions\(\)[\s\S]*return destination \|\| splitBinding \|\| toggleBinding/, 'Product actions appear only when the selected control has a destination, spatial binding, or Product presentation toggle');
+  assert.match(page, /function refreshStaticViewTravelBadge\(doc, view\)/);
+  assert.match(page, /badge\.textContent = 'Go'/, 'static Product destinations use the same compact Go affordance as the Android Surface');
+  assert.match(page, /badge\.addEventListener\('click',[\s\S]*destination\.go\(\)/);
+  assert.match(page, /data-vex-lens-has-selection/, 'static Product selection gets a VexBoard support-layer focus treatment');
+  assert.match(page, /function renderStaticViewActions\(\)[\s\S]*return splitBinding \|\| toggleBinding/, 'detached Product actions remain only for spatial/toggle affordances');
+  assert.doesNotMatch(page, /class: 'tool product-view-travel'/, 'destination travel is attached to the selected Product control instead of a detached corner action');
+});
+
+test('static Product support layers keep selected identity and bridge geometry visible across the iframe boundary', () => {
+  assert.match(page, /function staticProductVisibleRect\(leftFace, ref\)/);
+  assert.match(page, /frameBox\.left \+ nodeBox\.left/);
+  assert.match(page, /function surfaceVisibleRect\(leftFace, ref\)/);
+  assert.match(page, /const from = surfaceVisibleRect\(leftFace, anchorRef\)/, 'the causal bridge can originate at the selected Product control inside the iframe');
+  assert.match(page, /doc\.addEventListener\('scroll', scheduleBridge, \{ capture: true, passive: true \}\)/, 'Product-local scrolling keeps bridge geometry current');
 });
 
 test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
