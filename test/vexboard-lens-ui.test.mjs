@@ -124,6 +124,16 @@ test('existing board markers sit on borders and frame titles are never covered',
   assert.match(board, /\.shape:not\(\.DIAMOND\):not\(\.FRAME\)>\.kind-marker\{bottom:-7px/);
 });
 
+
+test('project switching supports Product-exported Lens subjects without introducing a Product-specific renderer', () => {
+  assert.match(page, /subject\.lens\.exportedLens/);
+  assert.match(page, /Source\.readExportedLensCommit/);
+  assert.match(page, /Catalog\.bindLensBuildSource/);
+  assert.match(page, /loadBuildLens\(subject, build\)/);
+  assert.match(page, /Builds and source projections/);
+  assert.doesNotMatch(page, /projectVexLifeProd|vexlife-prod.*adapter/i);
+});
+
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][UI-TEST]
 
 test('search, impact, coverage and briefs are wired from the shared query module', () => {
@@ -177,9 +187,10 @@ test('Surface realizes source-authored presentation rather than flattening it in
 });
 
 test('expression carousel preserves the lived desktop and phone-width interaction shape', () => {
-  assert.match(page, /class: 'xslot'/);
+  assert.match(page, /class: `xslot\$\{wide \? ' wide' : ''\}`/);
   assert.match(page, /class: `xpeek \$\{side\} kind-\$\{expression\.kind\}`/);
-  assert.match(page, /renderPhone\(expression, \{ interactive: false \}\)/);
+  assert.match(page, /renderScreenSurface\(expression, \{ interactive: false \}\)/);
+  assert.match(page, /const renderScreenSurface = \(expression, options\) => \(currentScreen\(\)\.view \? renderStaticView\(expression, options\) : currentScreen\(\)\.layout \? renderWorkspace\(expression, options\) : renderPhone\(expression, options\)\)/, 'a screen without a static view or layout keeps the phone carousel');
   assert.match(page, /function wireSwipe\(surface\)/);
   assert.match(page, /Math\.abs\(dx\) > 70/);
   assert.match(page, /event\.key === 'ArrowRight' \|\| event\.key === 'ArrowLeft'/);
@@ -246,4 +257,39 @@ test('nothing the lens adds on the surface covers a control: chips, opened overl
   assert.match(page, /body\.scrollTop \+= cover/, 'a sheet scrolls its opener above it');
   assert.match(page, /function bridgeExit\(/);
   assert.match(page, /if \(!crosses\(from\.midY, a\.right\)\) return direct;/, 'the bridge only detours when the side exit would cross a sibling');
+});
+
+test('a source-owned static view is mounted generically and bound through stable Product identities', () => {
+  assert.match(page, /function renderStaticView\(expression, \{ interactive \}\)/);
+  assert.match(page, /function staticViewDocument\(view\)/);
+  assert.match(page, /scriptPolicy must be NONE|no Product JavaScript/);
+  assert.match(page, /sandbox: 'allow-same-origin'/);
+  assert.doesNotMatch(page, /sandbox: 'allow-same-origin allow-scripts'/);
+  assert.match(page, /view\.anchors\.elementAttribute/);
+  assert.match(page, /view\.anchors\.structuralAttribute/);
+  assert.match(page, /view\.anchors\.structuralParentAttribute/);
+  assert.match(page, /staticViewNodes\(doc, view, marks\.selected, \{ includeStructuralParents: true \}\)/);
+  assert.match(page, /currentScreen\(\)\.view \? renderStaticView\(expression, options\)/);
+  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,100}renderStaticView|renderStaticView[^\n]{0,100}vexlife-prod/i, 'static view projection stays subject-agnostic');
+});
+
+test('a screen whose source authors a frame layout is drawn as a workspace, chosen from layout facts only', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-frames\.mjs'/);
+  assert.match(page, /function renderWorkspace\(expression, \{ interactive \}\)/);
+  assert.match(page, /const geometry = Frames\.frameGeometry\(frame\)/, 'regions, seams and handles sit where the layout puts them');
+  assert.doesNotMatch(page, /slug === 'vexlife-prod'|subject\.slug === ['"]vexlife/, 'no subject-name special case selects the realization');
+  // Every drawn frame, region, seam, handle and overlay is a Lens element: selectable and inspectable.
+  for (const marked of [/markElement\(line, elementOf\(seam\.ref\), marks\)/, /markElement\(handle, element, marks\)/, /markElement\(layer, element, marks\)/, /markElement\(node, elementOf\(frame\.ref\), marks\)/]) assert.match(page, marked);
+  // Each region scrolls on its own; a band far wider than tall lays its controls along its length.
+  assert.match(page, /class: `ws-scroll\$\{inline \? ' inline' : ''\}`/);
+  assert.match(page, /\.main\.wide\{grid-template-columns:minmax\(0,1\.6fr\) minmax\(0,1fr\)\}/);
+  assert.match(page, /\.workspace \.ws-region\{position:absolute/, 'region placement outranks the generic [data-ref] positioning');
+  assert.match(page, /function spatialBlock\(element\)/, 'the inspector says where a frame, seam, region or handle sits');
+  assert.match(page, /\['Touched by', element\.interactions/);
+  assert.match(page, /if \(child\.element\.slot === 'Overlay'\) continue;/, 'source-authored floating presentation does not flatten into region flow');
+  assert.match(page, /const isPresented = \(ref\) =>/, 'workspace overlays honor the same realization presence as the phone renderer');
+  assert.match(page, /if \(!drawnChildren\.length && presence\) continue;/, 'closed structural overlay roots disappear from the Surface');
+  assert.match(page, /element\.slot === 'Overlay'[\s\S]*!layoutChromeRefs\.has\(element\.ref\)[\s\S]*!withinOverlayRoot\(element\.ref\)/, 'floating content overlays remain distinct from seam chrome and surface overlay roots');
+  assert.match(page, /element\.kind === 'DIALOG' \|\| element\.layer === 'MODAL'/, 'modal source presentation receives a workspace-modal realization');
+  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,80}ws-float|ws-float[^\n]{0,80}vexlife-prod/, 'floating presentation stays generic rather than Product-special-cased');
 });
