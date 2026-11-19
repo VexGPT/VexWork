@@ -12,32 +12,33 @@ This is the small convergence experiment between the two independent VexLife-Pro
 
 That distinction is the main convergence. A structurally complete Vision or Voice route may still be `FRONTIER_DEBT` as a human E2E claim when the deterministic/browser/runtime harness is missing.
 
-## What to run
+## Execution boundary
 
-Have two checkouts next to each other (the directory names do not matter):
+The commands below are **developer/source-owner proof operations**, not a Victor-facing manual
+handoff. They may be executed by VexRelay or another admitted repository execution surface.
+
+For Victor on macOS, the current accepted human realization remains:
 
 ```text
-VexLife-Prod  -> branch VXG-111926-vexlife-prod-experience-convergence-r1
-VexWork       -> branch VXG-111926-vexlife-prod-e2e-experience-convergence-r1
+one digest-bound VexLocalBridge ZIP
++ one exact Bash copy/paste command
++ one canonical RETURN ZIP
 ```
 
-First prove the runnable Product candidate:
+Do not turn the following source proof into a human checklist:
 
 ```bash
-cd VexLife-Prod
+# Product source proof
 ./gradlew jvmTest checkVexLifeStrings generateVexLifeProdScreenLens generateVexLifeWebP1 verifyVexLifeWebP1
-```
 
-Then inspect that exact Product through the converged graph:
-
-```bash
-cd ../VexWork
-npm test
+# VexWork source proof
+node --test test/experience-graph-human.test.mjs test/vexlife-prod-e2e-relationship-graph.test.mjs
 npm run experience:verify
-npm run experience:converge -- --source ../VexLife-Prod
+npm run experience:converge -- --source <exact-VexLife-Prod-checkout>
 ```
 
-The last command is the human-readable result. It does not rewrite Screen Lens or Product source.
+The final convergence command reads one exact Product checkout and emits the human-readable
+structural-vs-experience result. It does not rewrite Screen Lens or Product source.
 
 ## What a person is actually checking
 
