@@ -190,7 +190,7 @@ test('expression carousel preserves the lived desktop and phone-width interactio
   assert.match(page, /class: `xslot\$\{wide \? ' wide' : ''\}`/);
   assert.match(page, /class: `xpeek \$\{side\} kind-\$\{expression\.kind\}`/);
   assert.match(page, /renderScreenSurface\(expression, \{ interactive: false \}\)/);
-  assert.match(page, /const renderScreenSurface = \(expression, options\) => \(currentScreen\(\)\.layout \? renderWorkspace\(expression, options\) : renderPhone\(expression, options\)\)/, 'a screen without a layout keeps the phone carousel');
+  assert.match(page, /const renderScreenSurface = \(expression, options\) => \(currentScreen\(\)\.view \? renderStaticView\(expression, options\) : currentScreen\(\)\.layout \? renderWorkspace\(expression, options\) : renderPhone\(expression, options\)\)/, 'a screen without a static view or layout keeps the phone carousel');
   assert.match(page, /function wireSwipe\(surface\)/);
   assert.match(page, /Math\.abs\(dx\) > 70/);
   assert.match(page, /event\.key === 'ArrowRight' \|\| event\.key === 'ArrowLeft'/);
