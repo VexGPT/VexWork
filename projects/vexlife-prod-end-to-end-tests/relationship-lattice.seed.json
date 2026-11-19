@@ -683,11 +683,11 @@
       "humanMeaning": "The current reply-language setting is captured into Person Context for an accepted Send."
     },
     {
-      "from": "VexLifeContextProfileFamily",
-      "to": "DirectPromptContext",
+      "from": "VexLifeContextProfileStore",
+      "to": "DirectCompanionTurn.Intent.contextProfile",
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "CAPTURED_AT_SEND",
-      "humanMeaning": "The active Context Profile revision, including its optional human-selected lower input-token budget, is captured when Send is accepted and stays fixed through provider stages of that turn; later profile edits belong to a later Send."
+      "humanMeaning": "The service reads the active Context Profile and captures that exact revision into the accepted Send Intent. The captured profile includes its optional human-selected lower input-token budget; later profile edits belong to a later Send."
     },
     {
       "from": "VexLifeVoiceInputFamily",
