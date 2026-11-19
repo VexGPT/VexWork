@@ -2280,7 +2280,7 @@ function bindStaticView(frame, expression, { interactive }) {
   doc.addEventListener('click', (event) => {
     const nativeSelect = event.target instanceof doc.defaultView.Element ? event.target.closest('select') : null;
     if (nativeSelect && (view.interactionBindings ?? []).some((binding) => binding.kind === 'SELECT' && staticSelectNode(doc, view, binding) === nativeSelect)) {
-      event.stopPropagation();
+      // Keep the browser's native select interaction intact; its change event drives the source-derived expression.
       return;
     }
     event.preventDefault();
