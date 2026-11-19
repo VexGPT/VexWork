@@ -214,7 +214,7 @@ test('the hand-authored seed lattice is now checkable against the derived graph'
   )) {
     assert.ok(refs.has(coordinate.coordinate), `${coordinate.coordinate} from the seed is a derived current-main Family`);
   }
-  const r2 = json(`${GENERATED}/builds/candidate-convergence-r2/experience-relationship-graph.json`);
+  const r2 = json(buildOutputs('candidate-convergence-r2').graph);
   assert.ok(
     r2.nodes.some((node) => node.ref === 'VexLifeLanguageFamily'),
     'the ACTIVE_CANDIDATE Language Family belongs to the exact R2 candidate graph, not the preserved main graph',
