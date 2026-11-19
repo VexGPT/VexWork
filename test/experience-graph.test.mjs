@@ -14,6 +14,7 @@ import {
 } from '../src/core/experience-graph.mjs';
 import { advanceBoardJourney, createBoardJourney, journeyChoices } from '../src/shared/vexboard-journey.mjs';
 import { fixtureGraph } from './fixtures/experience-graph/graph.mjs';
+import { LENS } from './fixtures/experience-graph/fixtures.mjs';
 
 const edge = (graph, ref) => graph.edges.find((row) => row.ref === ref);
 
@@ -64,6 +65,30 @@ test('compiled graph keeps existing coordinates, typed edges and State predicate
 
   assert.deepEqual(graph.untypedControlLiterals.map((row) => row.control), ['VexLifeQuietFamily.Clear']);
   assert.deepEqual(graph.extractionDebt.map((row) => row.kind), ['MISSING_ACT_LAW']);
+});
+
+test('Lens-declared Control subsets prevent one element from manifesting every Family Control', () => {
+  const narrowed = structuredClone(LENS);
+  narrowed.pathways
+    .find((pathway) => pathway.pathwayRef === 'pathway.fixture.sight')
+    .nodes.find((node) => node.role === 'CONTROL').label = 'ENGAGE';
+
+  const graph = fixtureGraph({ lens: narrowed });
+  assert.ok(edge(graph, 'edge:MANIFESTS:element.workspace.sight:VexLifeSightFamily.Engage'));
+  assert.equal(
+    edge(graph, 'edge:MANIFESTS:element.workspace.sight:VexLifeSightFamily.Stop'),
+    undefined,
+    'a pathway that names ENGAGE must not widen to every Sight Control',
+  );
+
+  const invalid = structuredClone(LENS);
+  invalid.pathways
+    .find((pathway) => pathway.pathwayRef === 'pathway.fixture.sight')
+    .nodes.find((node) => node.role === 'CONTROL').label = 'ENGAGE · NOT_REAL';
+  assert.throws(
+    () => fixtureGraph({ lens: invalid }),
+    /Lens pathway pathway\.fixture\.sight names unknown VexLifeSightFamily Control refs: NOT_REAL/,
+  );
 });
 
 test('fingerprint is semantic: node / edge order and extractor identity do not move it', () => {
