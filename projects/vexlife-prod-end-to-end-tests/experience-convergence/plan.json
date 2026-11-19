@@ -15,5 +15,22 @@
     "humanParent": "9ddc81c72ce36398c2eb849cf1c39110ed33c88a"
   },
   "question": "Can one source-derived Experience Graph explain the current Product plus Claude's UI/language/voice/identity changes while preserving human journeys and refusing to call a route end-to-end complete before its execution proof exists?",
-  "screenLensBoundary": "Screen Lens may project the result; it does not own or repair Experience Graph semantic truth in this experiment."
+  "screenLensBoundary": "Screen Lens may project the result; it does not own or repair Experience Graph semantic truth in this experiment.",
+  "mechanicalProjectionReuse": {
+    "projectionCommit": "37ae931d402eb29bad2601bb0cc8479f55750928",
+    "targetProductCommit": "af21cccce50262c4f0b4980b993e496b4449ab67",
+    "projectionArtifact": "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/consolidated-claude/experience-relationship-graph.json",
+    "routeArtifact": "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/consolidated-claude/routes.json",
+    "lateDeltaGraphContributingPaths": [
+      "src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+    ],
+    "observation": "The only late-main path consumed by the mechanical graph changed Context Profile input-budget calculation only; it did not change the extractor-read Intent fields, Send captures, admission gates, or Receipt-field flow.",
+    "reusableFor": "NODE_EDGE_ROUTE_SEMANTIC_TOPOLOGY",
+    "notReusableFor": [
+      "EXACT_SOURCE_COMMIT_BINDING",
+      "EXACT_SOURCE_FILE_BLOB_SET",
+      "GRAPH_FINGERPRINT",
+      "HOST_OR_LIVED_PROOF"
+    ]
+  }
 }
