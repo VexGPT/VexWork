@@ -613,23 +613,46 @@ async function projectCommitLens(subject, ref, onProgress) {
   const { Adapter, Source } = await commitTools();
   const githubFetch = (url, init) => fetch(url, init);
   const resolved = await Source.resolveCommit({ repositoryUrl: subject.repository.url, ref, fetch: githubFetch });
-  const key = `${subject.slug}.${resolved.sha}.${Adapter.ADAPTER_VERSION}`;
+  const strategy = subject.lens.exportedLens ? `export:${subject.lens.exportedLens}` : Adapter.ADAPTER_VERSION;
+  const key = `${subject.slug}.${resolved.sha}.${strategy}`;
   const cached = commitLenses.get(key);
   if (cached) return cached;
+  if (subject.lens.exportedLens) {
+    const result = await Source.readExportedLensCommit({
+      repositoryUrl: subject.repository.url,
+      sourcePath: subject.lens.exportedLens,
+      ref,
+      resolved,
+      fetch: githubFetch,
+      onProgress,
+    });
+    const build = { commit: result.commit.sha, observedAt: result.commit.date?.slice(0, 10) ?? null };
+    const value = {
+      lens: Catalog.bindLensBuildSource(result.lens, build),
+      commit: { ...result.commit, fileCount: 1, misses: [] },
+    };
+    commitLenses.set(key, value);
+    return value;
+  }
   const [adapter, overlay] = await Promise.all([fetchJson(LENS_DIR + subject.lens.adapter), subject.lens.overlay ? fetchJson(LENS_DIR + subject.lens.overlay) : null]);
   const result = await Source.projectCommit({ adapter, overlay, ref, resolved, fetch: githubFetch, project: Adapter.projectAndroidScreenLens, readPlan: Adapter.adapterReadPlan, onProgress });
   const value = { lens: result.lens, commit: { ...result.commit, fileCount: result.fileCount, misses: result.report.overlayMisses ?? [] } };
   commitLenses.set(key, value);
   return value;
 }
+async function loadBuildLens(subject, build) {
+  const raw = await fetchJson(LENS_DIR + build.lens);
+  return Lens.normalizeScreenLens(Catalog.bindLensBuildSource(raw, build));
+}
 const stableLenses = new Map();
 async function stableLensFor(subject) {
-  if (!stableLenses.has(subject.slug)) stableLenses.set(subject.slug, fetchJson(LENS_DIR + Catalog.buildFor(subject, 'stable').lens).then((raw) => Lens.normalizeScreenLens(raw)));
+  const stable = Catalog.buildFor(subject, 'stable');
+  if (!stableLenses.has(subject.slug)) stableLenses.set(subject.slug, loadBuildLens(subject, stable));
   return stableLenses.get(subject.slug);
 }
 async function lensForRequest(request, onProgress) {
   if (request.mode === 'LEGACY') return { lens: Lens.normalizeScreenLens(await fetchJson(lensUrlFromParams())), commit: null };
-  if (request.mode === 'BUILD') return { lens: Lens.normalizeScreenLens(await fetchJson(LENS_DIR + request.build.lens)), commit: null };
+  if (request.mode === 'BUILD') return { lens: await loadBuildLens(request.subject, request.build), commit: null };
   const projected = await projectCommitLens(request.subject, request.commitRef, onProgress);
   return { lens: Lens.normalizeScreenLens(projected.lens), commit: projected.commit };
 }
@@ -1055,7 +1078,7 @@ function renderProjectMenu(subject) {
       'aria-current': entry.subjectRef === subject.subjectRef ? 'page' : null,
     }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, entry.label), h('span', { class: 'md' }, line(entry)))),
     h('hr'),
-    h('a', { href: './projects.html' }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, 'All projects'), h('span', { class: 'md' }, 'Builds, boards and earlier canvas trials'))));
+    h('a', { href: './projects.html' }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, 'All projects'), h('span', { class: 'md' }, 'Builds and source projections'))));
   return wrap;
 }
 function renderBuildSwitch(subject) {
