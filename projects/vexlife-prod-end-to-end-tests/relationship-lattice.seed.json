@@ -326,11 +326,34 @@
       ]
     },
     {
+      "coordinate": "VexLifeLanguageFamily",
+      "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
+      "disposition": "ACTIVE_CANDIDATE",
+      "sourcePath": "src/commonMain/kotlin/vexlife/person/VexLifeLanguageFamily.kt",
+      "sourceRef": "github.pull.vexlife-prod.380",
+      "stateRefs": [
+        "FOLLOWING_REPLIES",
+        "SCREEN_CHOSEN"
+      ],
+      "stateShapes": [],
+      "stateAxes": [
+        "replyLanguage",
+        "screenLanguage",
+        "followsReplies"
+      ],
+      "controlRefs": [
+        "CHOOSE_REPLY_LANGUAGE",
+        "CHOOSE_SCREEN_LANGUAGE",
+        "FOLLOW_REPLY_LANGUAGE"
+      ],
+      "humanMeaning": "Candidate semantic owner for the person's two language choices: what Vex replies in and what VexLife screens are written in. Choosing one never moves the other; screens may explicitly follow replies."
+    },
+    {
       "coordinate": "VexLifePersonSettings",
       "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
-      "disposition": "CURRENT_MAIN",
+      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_EVOLUTION",
       "sourceRef": null,
-      "humanMeaning": "Current person reply-language preference; script-specific reply-language behavior is on current main through merged #331."
+      "humanMeaning": "Person language settings. Current main owns reply-language behavior; the convergence candidate adds an independent screen-language choice whose movement is owned by VexLifeLanguageFamily."
     },
     {
       "coordinate": "DirectCompanionTurn",
@@ -856,7 +879,19 @@
       "journeyRef": "journey.language.reply-switch-history",
       "shardRef": "voice-language",
       "disposition": "CURRENT_MAIN",
-      "humanOutcome": "Speak/send across reply-language changes and prove current turn behavior changes without rewriting historical turn context."
+      "humanOutcome": "Change Vex reply language across Sends and prove accepted turns keep their captured reply context; when the candidate Language Family is present, a separately chosen screen language must not move with the reply choice."
+    },
+    {
+      "journeyRef": "journey.language.reply-screen-independence",
+      "shardRef": "voice-language",
+      "disposition": "ACTIVE_CANDIDATE",
+      "sourceRef": "github.pull.vexlife-prod.380",
+      "humanOutcome": "Change what Vex replies in without moving an explicitly chosen VexLife screen language; change the screen language without moving Vex replies; then choose Follow replies and prove the screens derive from reply language again.",
+      "coordinateRefs": [
+        "VexLifeLanguageFamily",
+        "VexLifePersonSettings",
+        "DirectPromptContext"
+      ]
     },
     {
       "journeyRef": "journey.voice.spoken-composer-reply-separation",
@@ -1043,6 +1078,20 @@
         "navigation invalidates prior context",
         "unexpected embedded navigation clears identity/context",
         "ContextShare stays unavailable until identity is lawfully re-earned"
+      ]
+    },
+    {
+      "loopRef": "loop.language.reply-screen-independence",
+      "journeyRefs": [
+        "journey.language.reply-screen-independence"
+      ],
+      "shape": [
+        "screens follow reply language",
+        "choose explicit screen language",
+        "change reply language; screen choice stays",
+        "change screen language; reply choice stays",
+        "Follow replies",
+        "screen language derives from reply language again"
       ]
     }
   ],
