@@ -102,6 +102,17 @@ test('optional fields default cleanly', () => {
 
 test('a static Product view keeps source HTML/CSS and stable identity anchors without executable Product code', () => {
   const input = clone();
+  input.screens[3].realization = {
+    status: 'PROJECTED',
+    rendersRegisteredTree: 'screen.debug-menu',
+    realizers: [],
+    presence: [{
+      ref: 'presence.debug-menu.dialog-open',
+      kind: 'PRESENTATION',
+      subjectRef: 'element.debug-menu.body.dark-mode',
+      condition: 'presentation.dialogOpen',
+    }],
+  };
   input.screens[3].view = {
     kind: 'STATIC_HTML_CSS',
     html: '<!doctype html><html><body><button data-vex-ref="element.debug-menu.body.dark-mode">Dark mode</button></body></html>',
