@@ -149,7 +149,7 @@ try {
         'RUN_LOCAL_COMMAND','CREATE_BRANCH','CREATE_COMMIT','PUSH_BRANCH','FORM_RESULT'
       ],
       heldEffects:[
-        'WRITE_SOURCE','CREATE_PULL_REQUEST','UPDATE_COORDINATION_METADATA',
+        'CREATE_PULL_REQUEST','UPDATE_COORDINATION_METADATA',
         'APPROVE_EXACT_HEAD','MARK_READY','ORDINARY_MERGE'
       ],
       repositoryMembranes:[{repositoryRef:'primary',allowedPaths:[...generated]}],
