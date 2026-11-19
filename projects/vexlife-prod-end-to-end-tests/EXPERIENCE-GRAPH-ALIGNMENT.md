@@ -71,11 +71,30 @@ missing source readability != permission to guess semantics
 
 ## Current disposition
 
-**Coherent enough to enter focused adversarial testing and continued source review.**
+**QA disposition for Claude head `4aad5e0055cdc2a9fada2f1e63200c7772850a81`: `CORRECTIONS_REQUIRED`.**
 
-**Not clear for semantic acceptance yet.** Three candidate-owned soundness/currentness defects are now established: unread law can become asserted REJECT truth; executed law evidence can remain `current=true` after the probe generator/plan changes; and browser Effect vocabulary carriage can be promoted to `REALIZED_BY` without proving the actual handler. The primary human report also has a smaller proof-vocabulary/counting ambiguity.
+The architecture is coherent enough to enter focused adversarial testing and continued source review. It is not semantically clear yet. Three candidate-owned soundness/currentness defects are now established: unread law can become asserted REJECT truth; executed law evidence can remain `current=true` after the probe generator/plan changes; and browser Effect vocabulary carriage can be promoted to `REALIZED_BY` without proving the actual handler. The primary human report also has a smaller proof-vocabulary/counting ambiguity.
 
 Reported green commands / coverage from the Claude candidate remain candidate evidence until independently reproduced. This node has not re-run `npm test`, `npm run experience:verify`, or the Product law probe.
+
+### Independent-execution observation
+
+A local checkout of the exact Claude head was attempted from this review session so the reported test suite could be reproduced independently. The current container failed before checkout with:
+
+```text
+Could not resolve host: github.com
+```
+
+No candidate command was executed and no test result was produced by that attempt.
+
+Provider-side observation of the Claude head also exposed **no status contexts and no check runs** at review time. This is not a candidate failure; it means there is no independently observed hosted execution to substitute for the unavailable local rerun.
+
+Held only by this execution-surface limit:
+- independent reproduction of `npm test`;
+- independent reproduction of `npm run experience:verify`;
+- independent clean-checkout drift/currentness proof.
+
+Source-level falsification and live repository/currentness review remain available and continued.
 
 ## Finding ERG-REV-001 — BLOCKING: unread law cells can become asserted REJECT truth
 
@@ -285,9 +304,11 @@ Next:
 - verify localization completeness/script findings against exact Product source.
 
 ### E — build / generated artifacts / currentness
-Status: **live pins re-observed; execution not independently rerun**
+Status: **live pins re-observed; independent execution attempted but unavailable before checkout**
 
 Observed:
+- exact local checkout attempt could not start because this session could not resolve `github.com`; no candidate test was run;
+- Claude head exposed no provider status contexts / check runs at observation time;
 - source plan pins current VexLife-Prod main `a587771...`;
 - Claude branch is exact 3-commit descendant of project base;
 - Product experiment heads match source plan.
@@ -341,8 +362,8 @@ At the current checkpoint:
 
 - Claude's direction is recognizably aligned with the intended graph-first architecture.
 - The work is structured enough that **testing should begin now**, especially adversarial fail-closed tests.
-- Existing green counts are useful but are not enough for clearance.
-- The first blocking issue is local and repairable; it does not imply the entire architecture should be discarded.
+- Existing green counts are useful candidate evidence but are not enough for clearance, and this reviewer has not independently reproduced them.
+- The blocking issues are local to proof/derivation boundaries and look repairable; they do not imply the entire architecture should be discarded.
 - No Victor technical action is required for this review node.
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-PROD][EXPERIENCE-GRAPH][ALIGNMENT][REVIEW] -->
