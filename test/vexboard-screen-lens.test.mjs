@@ -102,6 +102,12 @@ test('optional fields default cleanly', () => {
 
 test('a static Product view keeps source HTML/CSS and stable identity anchors without executable Product code', () => {
   const input = clone();
+  input.screens[3].elements.push({
+    ref: 'element.debug-menu.split-handle',
+    kind: 'HANDLE',
+    label: 'Debug split handle',
+    interactions: ['RESIZE', 'COLLAPSE_BEFORE', 'COLLAPSE_AFTER'],
+  });
   input.screens[3].realization = {
     status: 'PROJECTED',
     rendersRegisteredTree: 'screen.debug-menu',
@@ -136,7 +142,7 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
     }],
     interactionBindings: [{
       kind: 'SPLIT',
-      elementRef: 'element.debug-menu.body',
+      elementRef: 'element.debug-menu.split-handle',
       targetRef: 'screen.debug-menu',
       beforeRef: 'element.debug-menu.body.dark-mode',
       afterRef: 'element.debug-menu.body.reset-log',
