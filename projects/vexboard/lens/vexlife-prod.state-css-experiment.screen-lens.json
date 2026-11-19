@@ -1472,6 +1472,19 @@
               }
             ]
           }
+        ],
+        "interactionBindings": [
+          {
+            "kind": "SPLIT",
+            "elementRef": "vexweb.vexlife-workspace.p1.body.seam.browser-companion.handle",
+            "targetRef": "vexweb.vexlife-workspace.p1.body.frame",
+            "beforeRef": "vexweb.vexlife-workspace.p1.body.region.browser",
+            "afterRef": "vexweb.vexlife-workspace.p1.body.region.companion",
+            "styleProperty": "--before",
+            "collapsedAttribute": "data-collapsed",
+            "collapsedBeforeValue": "before",
+            "collapsedAfterValue": "after"
+          }
         ]
       },
       "realization": {
