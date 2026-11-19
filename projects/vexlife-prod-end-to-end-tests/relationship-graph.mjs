@@ -536,6 +536,13 @@ function boardRelationshipKind(kind) {
   return 'FLOW';
 }
 
+/**
+ * Project the source-coordinate relationship tuples into the existing VexBoard traversal contract.
+ *
+ * BoardGraph requires a relationshipRef for navigation. The numbered refs formed below are therefore
+ * projection-only traversal handles. They are never Product/ERG semantic identities: semantic meaning
+ * remains the typed tuple retained in semanticsByRelationshipRef and its exact source coordinates.
+ */
 export function projectExperienceRelationshipGraphToBoardGraph(graphInput) {
   if (graphInput?.schemaVersion !== EXPERIENCE_RELATIONSHIP_GRAPH_SCHEMA) {
     throw new TypeError('Experience Relationship Graph schema mismatch');
