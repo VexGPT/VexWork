@@ -629,6 +629,208 @@ function advanceWithBoardJourney(projection, journey, relationship) {
   return advanceBoardJourney(projection.boardGraph, journey, relationshipRef);
 }
 
+function relationshipsByDirection(graph) {
+  const incoming = new Map();
+  const outgoing = new Map();
+  for (const relationship of graph.relationships) {
+    if (!incoming.has(relationship.toRef)) incoming.set(relationship.toRef, []);
+    if (!outgoing.has(relationship.fromRef)) outgoing.set(relationship.fromRef, []);
+    incoming.get(relationship.toRef).push(relationship);
+    outgoing.get(relationship.fromRef).push(relationship);
+  }
+  for (const values of [...incoming.values(), ...outgoing.values()]) {
+    values.sort((left, right) => semanticRelationshipKey(left).localeCompare(semanticRelationshipKey(right)));
+  }
+  return { incoming, outgoing };
+}
+
+function exactSemanticValue(left, right) {
+  return JSON.stringify(left ?? null) === JSON.stringify(right ?? null);
+}
+
+export function selectExperienceRelationship(graphInput, selector) {
+  if (graphInput?.schemaVersion !== EXPERIENCE_RELATIONSHIP_GRAPH_SCHEMA) {
+    throw new TypeError('Experience Relationship Graph schema mismatch');
+  }
+  if (!isObject(selector)) throw new TypeError('relationship selector must be one object');
+  const matches = graphInput.relationships.filter(
+    (relationship) =>
+      (selector.kind === undefined || relationship.kind === selector.kind)
+      && (selector.fromRef === undefined || relationship.fromRef === selector.fromRef)
+      && (selector.toRef === undefined || relationship.toRef === selector.toRef)
+      && (selector.context === undefined || exactSemanticValue(relationship.context, selector.context))
+      && (selector.predicate === undefined || exactSemanticValue(relationship.predicate, selector.predicate))
+      && (selector.disposition === undefined || relationship.disposition === selector.disposition),
+  );
+  if (matches.length !== 1) {
+    throw new TypeError(`relationship selector must resolve exactly once; found ${matches.length}`);
+  }
+  return matches[0];
+}
+
+function shortestDirectedPath({
+  graph,
+  startRefs,
+  targetRef,
+  allowedKinds = null,
+  maxDepth = 12,
+}) {
+  const { outgoing } = relationshipsByDirection(graph);
+  const queue = [...startRefs]
+    .sort()
+    .map((startRef) => ({ nodeRef: startRef, path: [] }));
+  const visitedDepth = new Map(queue.map((entry) => [entry.nodeRef, 0]));
+
+  while (queue.length) {
+    const current = queue.shift();
+    if (current.nodeRef === targetRef) return current.path;
+    if (current.path.length >= maxDepth) continue;
+
+    for (const relationship of outgoing.get(current.nodeRef) ?? []) {
+      if (allowedKinds && !allowedKinds.has(relationship.kind)) continue;
+      const nextDepth = current.path.length + 1;
+      const priorDepth = visitedDepth.get(relationship.toRef);
+      if (priorDepth !== undefined && priorDepth <= nextDepth) continue;
+      visitedDepth.set(relationship.toRef, nextDepth);
+      queue.push({
+        nodeRef: relationship.toRef,
+        path: [...current.path, relationship],
+      });
+    }
+  }
+  return null;
+}
+
+function shortestForwardTerminalPath(graph, startRef, { maxDepth = 12 } = {}) {
+  const byRef = new Map(graph.nodes.map((node) => [node.nodeRef, node]));
+  const terminalRoles = new Set(['PROJECTION', 'ELEMENT']);
+  const { outgoing } = relationshipsByDirection(graph);
+  const queue = [{ nodeRef: startRef, path: [] }];
+  const visitedDepth = new Map([[startRef, 0]]);
+
+  while (queue.length) {
+    const current = queue.shift();
+    const node = byRef.get(current.nodeRef);
+    if (current.path.length > 0 && terminalRoles.has(node?.role)) return current.path;
+    if (current.path.length >= maxDepth) continue;
+
+    for (const relationship of outgoing.get(current.nodeRef) ?? []) {
+      // Human affordance edges describe how a person reaches semantic meaning; they are not
+      // downstream consequences of an already-selected target relationship.
+      if (relationship.kind === 'MANIFESTS' || relationship.kind === 'OFFERS') continue;
+      const nextDepth = current.path.length + 1;
+      const priorDepth = visitedDepth.get(relationship.toRef);
+      if (priorDepth !== undefined && priorDepth <= nextDepth) continue;
+      visitedDepth.set(relationship.toRef, nextDepth);
+      queue.push({
+        nodeRef: relationship.toRef,
+        path: [...current.path, relationship],
+      });
+    }
+  }
+  return [];
+}
+
+function relevantDebtsForRefs(graph, refs) {
+  const refSet = new Set(refs);
+  return graph.debts.filter(
+    (debt) => debt.coordinateRefs.some((ref) => refSet.has(ref)),
+  );
+}
+
+function boardJourneyForRelationships(projection, relationships, journeyRef) {
+  if (!relationships.length) return null;
+  let journey = createBoardJourney(projection.boardGraph, {
+    journeyRef,
+    boardRef: projection.boardGraph.graphRef,
+    startRef: relationships[0].fromRef,
+  });
+  for (const relationship of relationships) {
+    journey = advanceWithBoardJourney(projection, journey, relationship);
+  }
+  return journey;
+}
+
+function elementAction(seed, elementRef) {
+  const binding = (seed.surfaceBindings ?? []).find((candidate) => candidate.elementRef === elementRef);
+  return Object.freeze({
+    action: 'ACTIVATE_ELEMENT',
+    elementRef,
+    humanMeaning: binding?.humanControlMeaning ?? binding?.runtimeRelationship?.humanControlMeaning ?? null,
+    executionBindingRefOrNull: binding?.deterministicActionRef ?? null,
+  });
+}
+
+export function deriveEdgeRouteManifest(seedInput, selector) {
+  const seed = requireValidSeed(seedInput);
+  const graph = formExperienceRelationshipGraph(seed);
+  const projection = projectExperienceRelationshipGraphToBoardGraph(graph);
+  const targetRelationship = selectExperienceRelationship(graph, selector);
+  const nodeByRef = new Map(graph.nodes.map((node) => [node.nodeRef, node]));
+  const elementRefs = graph.nodes
+    .filter((node) => node.role === 'ELEMENT')
+    .map((node) => node.nodeRef);
+
+  const humanPath = shortestDirectedPath({
+    graph,
+    startRefs: elementRefs,
+    targetRef: targetRelationship.fromRef,
+    maxDepth: 12,
+  });
+  const forwardPath = shortestForwardTerminalPath(graph, targetRelationship.toRef, { maxDepth: 12 });
+  const concreteRelationships = humanPath === null
+    ? []
+    : [...humanPath, targetRelationship, ...forwardPath];
+  const concreteRefs = new Set(
+    [targetRelationship.fromRef, targetRelationship.toRef]
+      .concat(concreteRelationships.flatMap((relationship) => [relationship.fromRef, relationship.toRef])),
+  );
+
+  const { incoming } = relationshipsByDirection(graph);
+  const humanPathKeys = new Set((humanPath ?? []).map(semanticRelationshipKey));
+  const prerequisiteRelationships = (incoming.get(targetRelationship.fromRef) ?? [])
+    .filter((relationship) => !humanPathKeys.has(semanticRelationshipKey(relationship)));
+
+  const actions = humanPath?.length
+    ? [elementAction(seed, humanPath[0].fromRef)]
+    : [];
+  const missingPredicates = [];
+  if (humanPath === null) missingPredicates.push('MISSING_MANIFESTATION_BINDING');
+  if (!forwardPath.length && !['PROJECTION', 'ELEMENT'].includes(nodeByRef.get(targetRelationship.toRef)?.role)) {
+    missingPredicates.push('MISSING_PROJECTION_EDGE');
+  }
+  if (!actions.length || actions.some((action) => action.executionBindingRefOrNull === null)) {
+    missingPredicates.push('MISSING_DETERMINISTIC_TEST_ACTION');
+  }
+  for (const debt of relevantDebtsForRefs(graph, concreteRefs)) {
+    if (!missingPredicates.includes(debt.debtClass)) missingPredicates.push(debt.debtClass);
+  }
+
+  const boardJourney = concreteRelationships.length
+    ? boardJourneyForRelationships(
+        projection,
+        concreteRelationships,
+        `journey.vexlife-prod.e2e.edge.${targetRelationship.kind.toLowerCase()}.${targetRelationship.fromRef}`,
+      )
+    : null;
+
+  return Object.freeze({
+    schemaVersion: E2E_ROUTE_MANIFEST_SCHEMA,
+    routeRef: `route.edge.${targetRelationship.kind.toLowerCase()}.${targetRelationship.fromRef}.${targetRelationship.toRef}`,
+    sourceBinding: graph.sourceBinding,
+    targetRelationship,
+    routeStatus: missingPredicates.length ? 'FRONTIER_DEBT' : 'CLEARED',
+    missingPredicates: Object.freeze(missingPredicates),
+    prerequisiteRelationships: Object.freeze(prerequisiteRelationships),
+    actions: Object.freeze(actions),
+    reverseHumanPath: Object.freeze(humanPath ?? []),
+    forwardConsequencePath: Object.freeze(forwardPath),
+    relationshipTraversal: Object.freeze(concreteRelationships),
+    boardJourney,
+    executionClass: 'DETERMINISTIC_NERVOUS_SYSTEM',
+  });
+}
+
 export function deriveFamilyControlRouteManifest(
   seedInput,
   {
@@ -643,102 +845,36 @@ export function deriveFamilyControlRouteManifest(
   if (!row) {
     throw new TypeError(`family law row missing for ${family} ${currentStateRef} + ${controlRef}`);
   }
-  const graph = formExperienceRelationshipGraph(seed);
-  const projection = projectExperienceRelationshipGraphToBoardGraph(graph);
-  const context = relationshipContext(row);
-  const rowRelationships = relationshipsForContext(graph, context);
-  const controlTypeRef = `${family}.Control`;
-  const stateTypeRef = `${family}.State`;
+  const effectRef = sourceSymbolOrNull(row.act?.effect);
+  if (!effectRef) throw new TypeError('family law row effect is not stably addressable');
 
-  const manifestation = graph.relationships.find(
-    (relationship) =>
-      relationship.kind === 'MANIFESTS'
-      && relationship.fromRef === elementRef
-      && relationship.toRef === controlTypeRef,
-  );
-  if (!manifestation) {
-    throw new TypeError(`manifestation binding missing for ${elementRef} -> ${controlTypeRef}`);
-  }
-  const offers = rowRelationships.find(
-    (relationship) => relationship.kind === 'OFFERS'
-      && relationship.fromRef === stateTypeRef
-      && relationship.toRef === controlTypeRef,
-  );
-  const requestedEffect = rowRelationships.find(
-    (relationship) => relationship.kind === 'REQUESTS_EFFECT',
-  );
-  if (!offers || !requestedEffect) {
-    throw new TypeError('family route is missing OFFERS or REQUESTS_EFFECT');
-  }
-
-  const forwardKinds = ['REQUESTS_EFFECT', 'REALIZED_BY', 'RETURNS_TO', 'OBSERVES_AS', 'PROJECTS_TO'];
-  const forward = [];
-  let currentRef = controlTypeRef;
-  for (const kind of forwardKinds) {
-    const relationship = rowRelationships.find(
-      (candidate) => candidate.kind === kind && candidate.fromRef === currentRef,
-    );
-    if (!relationship) break;
-    forward.push(relationship);
-    currentRef = relationship.toRef;
-  }
-
-  let boardJourney = createBoardJourney(projection.boardGraph, {
-    journeyRef: `journey.vexlife-prod.e2e.${family}.${currentStateRef}.${controlRef}`,
-    boardRef: projection.boardGraph.graphRef,
-    startRef: elementRef,
+  const manifest = deriveEdgeRouteManifest(seed, {
+    kind: 'REQUESTS_EFFECT',
+    fromRef: `${family}.Control`,
+    toRef: effectRef,
+    context: relationshipContext(row),
   });
-  boardJourney = advanceWithBoardJourney(projection, boardJourney, manifestation);
-  for (const relationship of forward) {
-    boardJourney = advanceWithBoardJourney(projection, boardJourney, relationship);
-  }
 
-  const routeCoordinateRefs = new Set([
-    elementRef,
-    stateTypeRef,
-    controlTypeRef,
-    ...forward.flatMap((relationship) => [relationship.fromRef, relationship.toRef]),
-  ]);
-  const binding = (seed.surfaceBindings ?? []).find((candidate) => candidate.elementRef === elementRef);
-  const missingPredicates = [];
-  if (!binding?.deterministicActionRef) missingPredicates.push('MISSING_DETERMINISTIC_TEST_ACTION');
-  const relevantDebts = graph.debts.filter(
-    (debt) => debt.coordinateRefs.some((ref) => routeCoordinateRefs.has(ref)),
-  );
-  for (const debt of relevantDebts) {
-    if (!missingPredicates.includes(debt.debtClass)) missingPredicates.push(debt.debtClass);
+  const expectedElement = manifest.actions[0]?.elementRef ?? null;
+  if (expectedElement !== elementRef) {
+    throw new TypeError(`family route human element mismatch: ${expectedElement} != ${elementRef}`);
   }
 
   return Object.freeze({
-    schemaVersion: E2E_ROUTE_MANIFEST_SCHEMA,
+    ...manifest,
     routeRef: `route.${family}.${currentStateRef}.${controlRef}`,
-    sourceBinding: graph.sourceBinding,
     target: Object.freeze({
       family,
       currentStateRef,
       controlRef,
       effectRef: row.act.effect,
     }),
-    routeStatus: missingPredicates.length ? 'FRONTIER_DEBT' : 'CLEARED',
-    missingPredicates: Object.freeze(missingPredicates),
     preconditions: Object.freeze({
       currentState: row.currentState,
-      lawfulControlRelationship: Object.freeze(offers),
+      lawfulControlRelationships: Object.freeze(
+        manifest.prerequisiteRelationships.filter((relationship) => relationship.kind === 'OFFERS'),
+      ),
     }),
-    actions: Object.freeze([
-      Object.freeze({
-        action: 'ACTIVATE_ELEMENT',
-        elementRef,
-        controlRef,
-        humanMeaning: binding?.humanControlMeaning ?? null,
-        executionBindingRefOrNull: binding?.deterministicActionRef ?? null,
-      }),
-    ]),
-    relationshipTraversal: Object.freeze([
-      manifestation,
-      ...forward,
-    ]),
-    boardJourney,
     expected: Object.freeze({
       admittedState: row.act.admittedState,
       effect: row.act.effect,
@@ -746,7 +882,6 @@ export function deriveFamilyControlRouteManifest(
       possibleObservedSuccessors: Object.freeze([...(row.possibleObservedSuccessors ?? [])]),
       projection: row.projection,
     }),
-    executionClass: 'DETERMINISTIC_NERVOUS_SYSTEM',
   });
 }
 
