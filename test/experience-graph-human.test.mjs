@@ -108,6 +108,25 @@ test('candidate Language Family is mechanically present in Claude consolidated t
   assert.ok(language.missing.some((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION'));
 });
 
+test('language routes stay scoped to the human journey they mean', () => {
+  const convergence = candidateResult();
+
+  const replyHistory = convergence.journeys.find((row) => row.journeyRef === 'journey.language.reply-switch-history');
+  assert.ok(replyHistory);
+  assert.equal(replyHistory.routeRefs.length, 2);
+  assert.ok(replyHistory.routeRefs.every((ref) => ref.includes(':ChooseReplyLanguage:')));
+
+  const independence = convergence.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
+  assert.ok(independence);
+  assert.equal(independence.routeRefs.length, 6);
+
+  const voice = convergence.journeys.find((row) => row.journeyRef === 'journey.voice.spoken-composer-reply-separation');
+  assert.ok(voice);
+  const languageRoutes = voice.routeRefs.filter((ref) => ref.startsWith('route:VexLifeLanguageFamily.'));
+  assert.equal(languageRoutes.length, 2);
+  assert.ok(languageRoutes.every((ref) => ref.includes(':ChooseReplyLanguage:')));
+});
+
 test('current human journeys preserve Product truth that the old source pin could not mechanically derive', () => {
   const convergence = result();
   const sourceReturn = convergence.journeys.find((row) => row.journeyRef === 'journey.conversation.source-return-host-truth');
