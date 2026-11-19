@@ -262,6 +262,7 @@ test('selected controls preview and visibly support the screen or expression the
   assert.match(page, /function refreshStaticViewTravelBadge\(doc, view\)/);
   assert.match(page, /badge\.textContent = 'Go'/, 'static Product destinations use the same compact Go affordance as the Android Surface');
   assert.match(page, /badge\.addEventListener\('click',[\s\S]*destination\.go\(\)/);
+  assert.match(page, /targetElement\?\.closest\('\.vexboard-lens-travel'\)\) return;/, 'the iframe inspection interceptor yields to the Lens-owned Go support control');
   assert.match(page, /data-vex-lens-has-selection/, 'static Product selection gets a VexBoard support-layer focus treatment');
   assert.match(page, /function renderStaticViewActions\(\)[\s\S]*return splitBinding \|\| toggleBinding/, 'detached Product actions remain only for spatial/toggle affordances');
   assert.doesNotMatch(page, /class: 'tool product-view-travel'/, 'destination travel is attached to the selected Product control instead of a detached corner action');
