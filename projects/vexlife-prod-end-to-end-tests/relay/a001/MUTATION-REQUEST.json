@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "vexwork.vexrelay-generated-consequence-request/v1",
+  "continuity": "[VXG RealForever]",
+  "candidate": {
+    "repository": "VexGPT/VexWork",
+    "baseBranch": "VXG-111826-vexlife-prod-e2e-project-a001",
+    "baseHead": "e2bac13de991b5e7bc5160837e695ccce81e9575",
+    "branch": "VXG-111826-vexlife-prod-e2e-chatgpt-a001",
+    "head": "9ddc81c72ce36398c2eb849cf1c39110ed33c88a",
+    "tree": "5d4a1ec38240f9c99da3dfcab932bf71c60e408c",
+    "pullRequest": 320,
+    "generatedPaths": [
+      "blueprint/project-registry.json",
+      "workgraphs/public.json",
+      "public/workspace.json"
+    ]
+  },
+  "sdk": {
+    "repository": "vgong24/Vextreme-SDK",
+    "head": "8543c7d755faba04d4c4019c02e84f992667918a",
+    "tree": "6376f68279f0750ee6d3868b8472368199763064",
+    "contractRef": "source.vexrelay.current-contract/v1"
+  }
+}
