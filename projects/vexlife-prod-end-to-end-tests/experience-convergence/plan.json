@@ -32,5 +32,47 @@
       "GRAPH_FINGERPRINT",
       "HOST_OR_LIVED_PROOF"
     ]
+  },
+  "productSuccessorCandidate": {
+    "repository": "VexGPT/VexLife-Prod",
+    "branch": "VXG-111926-vexlife-prod-experience-convergence-r2",
+    "head": "2d1843c1ce7d69d1242b0f9bd1a4574727e028ca",
+    "parentRunnableCandidate": "af21cccce50262c4f0b4980b993e496b4449ab67",
+    "composes": [
+      {
+        "ref": "github.pull.vexlife-prod.380",
+        "meaning": "semantic identity / Language Family / typed runtime / localization / design consolidation"
+      },
+      {
+        "ref": "github.pull.vexlife-prod.385",
+        "meaning": "VexWeb-derived workspace spatial Screen Lens export"
+      }
+    ],
+    "sourceConvergence": "FORMED",
+    "generatedLensProjection": "HELD_STALE_UNTIL_SOURCE_OWNED_REGENERATION",
+    "humanWitness": "NOT_EARNED",
+    "mergeAuthorization": "NOT_EARNED",
+    "meaning": "Successor source convergence only. It preserves #380 semantic pathways and #385 spatial export in one exporter; it is not yet the runnable/lived Product candidate."
+  },
+  "screenLensProjectionCandidate": {
+    "productExport": {
+      "pr": 385,
+      "head": "55ce7a1e35dcb49d01d3d29d472a177fe5a43f8b",
+      "state": "CANDIDATE_AWAITING_HUMAN_RAW_GIT_WITNESS"
+    },
+    "vexWorkRenderer": {
+      "pr": 329,
+      "head": "04ba45bc6c1a8a8c83df2742dabc6a16d27e5b48",
+      "basePr": 327,
+      "state": "CANDIDATE_AWAITING_HUMAN_RAW_GIT_WITNESS"
+    },
+    "boundary": "Projection/rendering only. Experience Graph remains semantic/proof consumer and does not absorb VexBoard renderer ownership."
+  },
+  "screenLensConvergenceFinding": {
+    "productSourceTruth": "Blueprint owns control identity/meaning; VexWeb owns spatial placement; Product exporter joins them by ref.",
+    "experienceGraphImpact": "FRAME/SEAM/REGION/HANDLE additions are spatial/presentation facts. Existing semantic BUTTON/FIELD pathways remain the graph's Family/control inputs.",
+    "knownExtractorDebt": "Experience Graph currently expands SCAE_FAMILY elements across every Family Control instead of using the Product Lens control label to preserve exact control subset.",
+    "currentMitigation": "Human convergence fails closed with AMBIGUOUS_MANIFESTATION_BINDING; no first-element guess is accepted.",
+    "rightfulFutureCorrection": "Teach the Experience Graph Lens reader to preserve the pathway's declared control subset, then regenerate derived graph artifacts on an admitted repository execution surface."
   }
 }
