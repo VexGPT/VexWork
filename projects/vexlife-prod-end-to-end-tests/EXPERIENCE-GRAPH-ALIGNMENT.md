@@ -362,7 +362,9 @@ Depth 04 is consumed evidence: the VexLocalBridge carrier passed and the inner e
 
 Depth 05 is consumed evidence: exact head/tree checks passed and 24/26 focused tests passed. The unread-law, perturbation and browser-realization corrections passed. The two failures were stale test assertions that expected law evidence to be current without supplying the new required current-probe identity. Production fail-closed behavior was preserved; only those assertions were corrected.
 
-The next unconsumed edge is a **fresh host ExactHeadSourceOwnerProof of the repaired correction depth**, fixed-base `4aad5e0...` -> exact head `2bef812...`. Generated Experience Graph artifacts remain intentionally not currentized until this correction proof passes.
+Depth 06 is consumed evidence: outer VexLocalBridge PASS; inner ExactHeadSourceOwnerProof PASS on exact head `2bef812d7ca7f7a9a947768ecaef9dd67d150475` / tree `62f11d3aa5f0ee214eb18c351c80261b22363a02`; all 26 focused tests passed and the exact 13-path review snapshot formed. No source or provider mutation occurred.
+
+The next unconsumed edge is **generated Experience Graph artifact currentization on the same #321**, followed by exact-head SourceOwner proof of the currentized candidate before fresh Independent Assurance.
 
 ## Fresh reviewer handoff rule
 
