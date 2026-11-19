@@ -48,6 +48,17 @@ test('human-semantic relationships supplement the extractor without becoming a s
   assert.equal(sourceReturn.coverage, 'CURATED_HUMAN_RELATIONSHIP');
 });
 
+test('Context Profile accepted-Send capture reuses the exact mechanically-derived source edge', () => {
+  const convergence = candidateResult();
+  const capture = convergence.relationships.find(
+    (row) => row.kind === 'CAPTURED_AT_SEND'
+      && row.from === 'VexLifeContextProfileStore'
+      && row.to === 'DirectCompanionTurn.Intent.contextProfile',
+  );
+  assert.ok(capture);
+  assert.equal(capture.coverage, 'DERIVED_EXACT');
+});
+
 test('mechanical connectivity does not impersonate a curated semantic relationship', () => {
   const graph = {
     source: { repository: 'VexGPT/VexLife-Prod', commit: 'a'.repeat(40) },
