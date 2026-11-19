@@ -112,12 +112,25 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
     status: 'PROJECTED',
     rendersRegisteredTree: 'screen.debug-menu',
     realizers: [],
-    presence: [{
-      ref: 'presence.debug-menu.dialog-open',
-      kind: 'PRESENTATION',
-      subjectRef: 'element.debug-menu.body.dark-mode',
-      condition: 'presentation.dialogOpen',
-    }],
+    presence: [
+      {
+        ref: 'presence.debug-menu.dialog-open',
+        kind: 'PRESENTATION',
+        subjectRef: 'element.debug-menu.body.dark-mode',
+        condition: 'presentation.dialogOpen',
+      },
+      {
+        ref: 'presence.debug-menu.body-selection',
+        kind: 'SELECTION',
+        subjectRef: 'element.debug-menu.body',
+        defaultRef: 'element.debug-menu.body.dark-mode',
+        exhaustive: true,
+        choices: [
+          { condition: 'state.section === dark', targetRef: 'element.debug-menu.body.dark-mode', realizes: [] },
+          { condition: 'state.section === logs', targetRef: 'element.debug-menu.body.log-history', realizes: [] },
+        ],
+      },
+    ],
   };
   input.screens[3].view = {
     kind: 'STATIC_HTML_CSS',
@@ -140,17 +153,37 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
         { op: 'SET_ATTRIBUTE', targetRef: 'screen.debug-menu', attribute: 'data-mode', value: 'dialog' },
       ],
     }],
-    interactionBindings: [{
-      kind: 'SPLIT',
-      elementRef: 'element.debug-menu.split-handle',
-      targetRef: 'screen.debug-menu',
-      beforeRef: 'element.debug-menu.body.dark-mode',
-      afterRef: 'element.debug-menu.body.log-history.actions.reset',
-      styleProperty: '--before',
-      collapsedAttribute: 'data-collapsed',
-      collapsedBeforeValue: 'before',
-      collapsedAfterValue: 'after',
-    }],
+    interactionBindings: [
+      {
+        kind: 'SPLIT',
+        elementRef: 'element.debug-menu.split-handle',
+        targetRef: 'screen.debug-menu',
+        beforeRef: 'element.debug-menu.body.dark-mode',
+        afterRef: 'element.debug-menu.body.log-history.actions.reset',
+        styleProperty: '--before',
+        collapsedAttribute: 'data-collapsed',
+        collapsedBeforeValue: 'before',
+        collapsedAfterValue: 'after',
+      },
+      {
+        kind: 'SELECT',
+        elementRef: 'element.debug-menu.body.dark-mode',
+        presenceRef: 'presence.debug-menu.body-selection',
+        options: [
+          { value: 'dark', outcome: 'element.debug-menu.body.dark-mode' },
+          { value: 'logs', outcome: 'element.debug-menu.body.log-history' },
+        ],
+      },
+      {
+        kind: 'TOGGLE',
+        elementRef: 'element.debug-menu.body.log-history',
+        targetRef: 'element.debug-menu.body.log-history',
+        presenceRef: 'presence.debug-menu.dialog-open',
+        attribute: 'data-open',
+        closedValue: 'false',
+        openValue: 'true',
+      },
+    ],
   };
   const projected = Lens.normalizeScreenLens(input).screens[3].view;
   assert.equal(projected.kind, 'STATIC_HTML_CSS');
@@ -161,6 +194,10 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
   assert.equal(projected.stateBindings[0].operations[1].targetRef, 'screen.debug-menu');
   assert.equal(projected.interactionBindings[0].kind, 'SPLIT');
   assert.equal(projected.interactionBindings[0].styleProperty, '--before');
+  assert.equal(projected.interactionBindings[1].kind, 'SELECT');
+  assert.equal(projected.interactionBindings[1].options[1].outcome, 'element.debug-menu.body.log-history');
+  assert.equal(projected.interactionBindings[2].kind, 'TOGGLE');
+  assert.equal(projected.interactionBindings[2].presenceRef, 'presence.debug-menu.dialog-open');
   assert.match(projected.html, /Dark mode/);
 
   const executable = clone();
@@ -191,6 +228,14 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
     interactionBindings: [{ ...input.screens[3].view.interactionBindings[0], targetRef: 'element.nope' }],
   };
   assert.throws(() => Lens.normalizeScreenLens(badSplitTarget), /split binding target .* is not a lens ref/);
+
+  const badSelectOutcome = JSON.parse(JSON.stringify(input));
+  badSelectOutcome.screens[3].view.interactionBindings[1].options[0].outcome = 'element.debug-menu.body.events-simulator';
+  assert.throws(() => Lens.normalizeScreenLens(badSelectOutcome), /select option outcome .* is not authored/);
+
+  const badTogglePresence = JSON.parse(JSON.stringify(input));
+  badTogglePresence.screens[3].view.interactionBindings[2].presenceRef = 'presence.debug-menu.body-selection';
+  assert.throws(() => Lens.normalizeScreenLens(badTogglePresence), /toggle binding presence .* is not PRESENTATION/);
 });
 
 test('chrome applies by placement, with always-visible controls kept on other screens', () => {
