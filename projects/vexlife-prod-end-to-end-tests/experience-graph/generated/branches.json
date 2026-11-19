@@ -1,8 +1,8 @@
 {
   "schemaVersion": "vexwork.experience-graph.branches/v1",
   "main": {
-    "commit": "a58777106b08bd58c167608fa0115729185ae3dd",
-    "graphFingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924",
+    "commit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+    "graphFingerprint": "4cf0e4e03c8decacce99dff79d15158c1edad0dc5260eeb3d1071f6b680f8a00",
     "routeCounts": {
       "CLEARED": 13,
       "FRONTIER_DEBT": 53,
@@ -28,9 +28,9 @@
       "summary": "All seven scopes merged in order, with the resolutions between them made once.",
       "axis": "ALL",
       "branch": "VXG-111826-claude-consolidated",
-      "commit": "117f266956e926f183fda58ea6abe7123d06de42",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "d3550cde3fa2719c67b4729a9a49986ef7f74f452f8d5ff453144519855fdd72",
+      "commit": "37ae931d402eb29bad2601bb0cc8479f55750928",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "graphFingerprint": "192221f22b983a71366f55b2b6b6acfce8b939ec791d2b074189f43718b4a890",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -165,9 +165,9 @@
       "summary": "Workspace and release-alert text in all eleven screen languages, and only complete languages are served.",
       "axis": "LOCALIZATION",
       "branch": "VXG-111826-claude-scope-complete-translations",
-      "commit": "7ab31f82762e12e3046bd3fa1a69b1ef10ebd8ab",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "5a5cb66c22facf62080d286674a74f308df9ccac0890273366a7fea9a0bcd534",
+      "commit": "6fc0d0f441eb0516205a8e793fb73be08c1586ed",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "graphFingerprint": "f48f4cc23fc78653626bfaad0c9bf87e1d97bc2b4ae543b3186bb363490b08ab",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -232,9 +232,9 @@
       "summary": "Vextreme Design Foundation v2 tokens, both themes authored, and the relationship legend as quiet rails (presentation only; the graph should not move).",
       "axis": "DESIGN",
       "branch": "VXG-111826-claude-scope-design-foundation",
-      "commit": "b64ebb264c580e5ad646304be0c4c0e5d0c6f442",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "e0992c6e0cea3c991ef7e88a97d7b6ff8005f21ea5a3ddb8375fa8a8e31b2ae4",
+      "commit": "852a34dfcc93e13886a56dd84b9f800d590ee3a5",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "graphFingerprint": "a12e65d5d6fc11561d52c4a2e2b4e544be8279515cea93a91c5ae240418f5b10",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -280,9 +280,9 @@
       "summary": "Workspace and release-alert dataKeys come from an owner registry in main source, and Screen Lens elements are named by their keys.",
       "axis": "IDENTITY",
       "branch": "VXG-111826-claude-scope-keyed-elements",
-      "commit": "cf4c0212dbb559edf71ed611178c8830745bcede",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "0be00e658cba573eb50a71e42fb280369ccb5234a2187d49e40929d6015e6fe7",
+      "commit": "17cb5ad7e69e43dcd8b64a54ad72afeee6376031",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "graphFingerprint": "a0b9a6210bec160effc24fc38e010dd339b4dde266ea4461ab539d8cf42b74fd",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -349,9 +349,9 @@
       "summary": "The screen language is its own Home choice beside Vex's reply language; VexLifeLanguageFamily owns how the two move.",
       "axis": "LOCALIZATION",
       "branch": "VXG-111826-claude-scope-language-choices",
-      "commit": "73ee64a0d2fbd18f11aebfd8c49832fcc440f364",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "943588e39408791a0179a2ddae7474436ba212f1fb2a94ddb4e3a425d328d22d",
+      "commit": "e9c012650b18bf9dba98d4d262b05e4ba2c39f46",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "graphFingerprint": "e5d9eeb7e80798314e02c6f6fce865cf0c0fcd8042408794d1b09e321f446ad4",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -471,9 +471,9 @@
       "summary": "The browser runtime finds typed elements by their Blueprint ref and compares owner constants instead of copied strings.",
       "axis": "IDENTITY",
       "branch": "VXG-111826-claude-scope-typed-runtime-refs",
-      "commit": "c6d6558ec423fc55dcdaac1c585b07e023efd90e",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "7b296f09115c44c176db4df449010475836ebcb625e0c5da7e5205deb632931e",
+      "commit": "0d4c0f2d97dcaae2de45fe486fc20126400601f1",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "graphFingerprint": "f1c2fc086bfc3e9225f0cc439573a1a884886fd64e1c8990352bdc24f6176f1d",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -537,9 +537,9 @@
       "summary": "VexLifeVisionFamily decodes the service's scope state once, at the boundary, instead of the service comparing raw strings.",
       "axis": "IDENTITY",
       "branch": "VXG-111826-claude-scope-vision-scope-state",
-      "commit": "22170e54d4ebaf7fdc1d14f184b3770ff033fcfe",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "0ac206f408c4fa196d602d2323a3282b3de7104660f08840687d346cea25731a",
+      "commit": "ecb7b8c59093fdaef95dc5cb53dcb773fc97b6a4",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "graphFingerprint": "22b120254f810d5e6c891862d11e25e2d61f3e9c57d44c5c666a44f54d4fac02",
       "routeCounts": {
         "main": {
           "CLEARED": 13,
@@ -589,9 +589,9 @@
       "summary": "zh-Hant is a screen language of its own, so a reader of Traditional Chinese never sees a Simplified screen.",
       "axis": "LOCALIZATION",
       "branch": "VXG-111826-claude-scope-zh-hant-script",
-      "commit": "d6ca30db0083571c918180de8fe4a8ad25ac1afd",
-      "basisCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "graphFingerprint": "f16210adb1c2135991cf8792aeddd6f08a7e6576a6dfb78b67b7adc5af7cd126",
+      "commit": "f11c2c945b2a4f53ecd9b727770266a9e30bf55d",
+      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "graphFingerprint": "e08aed8bb198c1e0683aca1855c61c8acbae898bce2ccd13af99de29c66f2cff",
       "routeCounts": {
         "main": {
           "CLEARED": 13,

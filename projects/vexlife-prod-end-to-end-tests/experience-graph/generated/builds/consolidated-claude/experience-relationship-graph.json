@@ -3,7 +3,7 @@
   "graphRef": "graph.vexlife-prod.experience-relationships",
   "source": {
     "repository": "VexGPT/VexLife-Prod",
-    "commit": "117f266956e926f183fda58ea6abe7123d06de42",
+    "commit": "37ae931d402eb29bad2601bb0cc8479f55750928",
     "files": [
       {
         "path": "docs/lens/vexlife-prod.screen-lens.json",
@@ -91,7 +91,7 @@
       },
       {
         "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "blobSha1": "bf53b0bcdda0d2edecef401c9fde11bc210f3f02"
+        "blobSha1": "da6f28b6d7f2d2a92a600019a5bb59c3108fb48f"
       },
       {
         "path": "src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
@@ -13109,7 +13109,7 @@
         "literal": "READY",
         "subject": "option.currentState",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 724,
+        "line": 726,
         "owners": [
           "VexLifeLocalAsrProvider.Result.StateReady",
           "VexLifeProdEntryFamily.JourneyStepReady",
@@ -13124,7 +13124,7 @@
         "literal": "RETURNED",
         "subject": "use.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2499,
+        "line": 2752,
         "owners": [
           "ResultState.RETURNED",
           "State.RETURNED"
@@ -13135,7 +13135,7 @@
         "literal": "RESUME_LAST_VALID_HEAD_THEN_FORM_NEW_SEND_ATTEMPT",
         "subject": "route",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2579,
+        "line": 2832,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13143,7 +13143,7 @@
         "literal": "FORM_NEW_SEND_ATTEMPT_AND_RETRY",
         "subject": "route",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2581,
+        "line": 2834,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13151,7 +13151,7 @@
         "literal": "RETURNED",
         "subject": "use.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2608,
+        "line": 2861,
         "owners": [
           "ResultState.RETURNED",
           "State.RETURNED"
@@ -13162,7 +13162,7 @@
         "literal": "RETURNED",
         "subject": "use.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2658,
+        "line": 2911,
         "owners": [
           "ResultState.RETURNED",
           "State.RETURNED"
@@ -13173,7 +13173,7 @@
         "literal": "CARRIED",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3957,
+        "line": 4210,
         "owners": [
           "State.CARRIED"
         ],
@@ -13183,7 +13183,7 @@
         "literal": "CARRIED_PARTIAL",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3957,
+        "line": 4210,
         "owners": [
           "State.CARRIED_PARTIAL"
         ],
@@ -13193,7 +13193,7 @@
         "literal": "CARRIED",
         "subject": "prompt.profileFoundationState",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3994,
+        "line": 4247,
         "owners": [
           "State.CARRIED"
         ],
@@ -13203,7 +13203,7 @@
         "literal": "CARRIED",
         "subject": "prompt.profileFoundationState",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4004,
+        "line": 4257,
         "owners": [
           "State.CARRIED"
         ],
@@ -13213,7 +13213,7 @@
         "literal": "FAILED",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4427,
+        "line": 4680,
         "owners": [
           "ResultState.FAILED",
           "VexLifeVoiceInputFamily.Failed",
@@ -13225,7 +13225,7 @@
         "literal": "HELD",
         "subject": "field.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4517,
+        "line": 4770,
         "owners": [
           "FrameState.HELD",
           "State.HELD",
@@ -13241,7 +13241,7 @@
         "literal": "HELD",
         "subject": "modelImport.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4807,
+        "line": 5060,
         "owners": [
           "FrameState.HELD",
           "State.HELD",
@@ -13257,7 +13257,7 @@
         "literal": "READY",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4815,
+        "line": 5068,
         "owners": [
           "VexLifeLocalAsrProvider.Result.StateReady",
           "VexLifeProdEntryFamily.JourneyStepReady",
@@ -13272,7 +13272,7 @@
         "literal": "READY",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4816,
+        "line": 5069,
         "owners": [
           "VexLifeLocalAsrProvider.Result.StateReady",
           "VexLifeProdEntryFamily.JourneyStepReady",
@@ -13287,7 +13287,7 @@
         "literal": "CANDIDATE",
         "subject": "selected.standing",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4880,
+        "line": 5133,
         "owners": [
           "MemoryCandidateDisposition.CANDIDATE",
           "Standing.CANDIDATE"
@@ -13298,7 +13298,7 @@
         "literal": "READY",
         "subject": "selected.currentState",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5286,
+        "line": 5539,
         "owners": [
           "VexLifeLocalAsrProvider.Result.StateReady",
           "VexLifeProdEntryFamily.JourneyStepReady",
@@ -13313,7 +13313,7 @@
         "literal": "PROVIDER_SOURCE_NOT_CURRENT",
         "subject": "selected.currentDetailRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5294,
+        "line": 5547,
         "owners": [
           "VexLifeLocalAsrProvider.Result.DetailProviderSourceNotCurrent"
         ],
@@ -13323,7 +13323,7 @@
         "literal": "PROVIDER_EXECUTABLE_UNAVAILABLE",
         "subject": "selected.currentDetailRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5296,
+        "line": 5549,
         "owners": [
           "VexLifeLocalAsrProvider.Result.DetailProviderExecutableUnavailable"
         ],
@@ -13333,7 +13333,7 @@
         "literal": "MODEL_UNAVAILABLE",
         "subject": "selected.currentDetailRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5298,
+        "line": 5551,
         "owners": [
           "VexLifeLocalAsrProvider.Result.DetailModelUnavailable"
         ],
@@ -13343,7 +13343,7 @@
         "literal": "MODEL_DIGEST_NOT_CURRENT",
         "subject": "selected.currentDetailRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5300,
+        "line": 5553,
         "owners": [
           "VexLifeLocalAsrProvider.Result.DetailModelDigestNotCurrent"
         ],
@@ -13353,7 +13353,7 @@
         "literal": "PRESENT_EPHEMERAL",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5638,
+        "line": 5891,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13361,7 +13361,7 @@
         "literal": "PREVIOUS_TURN",
         "subject": "state.contextProcessRetention",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5652,
+        "line": 5905,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13369,7 +13369,7 @@
         "literal": "PHASE",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5773,
+        "line": 6026,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13377,7 +13377,7 @@
         "literal": "REASONING_DELTA",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5785,
+        "line": 6038,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13385,7 +13385,7 @@
         "literal": "REACH",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5795,
+        "line": 6048,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13393,7 +13393,7 @@
         "literal": "CONTENT_DELTA",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5816,
+        "line": 6069,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13401,7 +13401,7 @@
         "literal": "FAILED",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5827,
+        "line": 6080,
         "owners": [
           "ResultState.FAILED",
           "VexLifeVoiceInputFamily.Failed",
@@ -13413,7 +13413,7 @@
         "literal": "COMPLETED",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5834,
+        "line": 6087,
         "owners": [
           "Stage.COMPLETED",
           "StageStop.COMPLETED"
@@ -13424,7 +13424,7 @@
         "literal": "PREVIOUS_TURN",
         "subject": "ui.contextProcessRetentionSelect.value",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 6045,
+        "line": 6299,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -13432,7 +13432,7 @@
         "literal": "REALIZED",
         "subject": ".outcome",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 6073,
+        "line": 6327,
         "owners": [
           "VexLifeProdServiceContract.PrivateRealized",
           "VexLifeProdServiceContract.VisionControlRealized"
@@ -13956,7 +13956,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 380,
           "runtimeLines": [
-            540
+            541
           ]
         },
         {
@@ -13996,7 +13996,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 277,
           "runtimeLines": [
-            468
+            469
           ]
         },
         {
@@ -14006,7 +14006,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 276,
           "runtimeLines": [
-            467
+            468
           ]
         },
         {
@@ -14016,7 +14016,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": null,
           "runtimeLines": [
-            465
+            466
           ]
         },
         {
@@ -14026,7 +14026,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 330,
           "runtimeLines": [
-            486
+            487
           ]
         },
         {
@@ -14036,7 +14036,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 327,
           "runtimeLines": [
-            485
+            486
           ]
         },
         {
@@ -14136,7 +14136,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 357,
           "runtimeLines": [
-            495
+            496
           ]
         },
         {
@@ -14166,7 +14166,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 121,
           "runtimeLines": [
-            462
+            463
           ]
         },
         {
@@ -14196,7 +14196,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 362,
           "runtimeLines": [
-            499
+            500
           ]
         },
         {
@@ -14356,7 +14356,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 359,
           "runtimeLines": [
-            497
+            498
           ]
         },
         {
@@ -14386,7 +14386,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 325,
           "runtimeLines": [
-            478
+            479
           ]
         },
         {
@@ -14396,7 +14396,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 360,
           "runtimeLines": [
-            498
+            499
           ]
         },
         {
@@ -14406,7 +14406,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 358,
           "runtimeLines": [
-            496
+            497
           ]
         },
         {
@@ -14416,7 +14416,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 496,
           "runtimeLines": [
-            531
+            532
           ]
         },
         {
@@ -14426,7 +14426,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 497,
           "runtimeLines": [
-            532
+            533
           ]
         },
         {
@@ -14436,7 +14436,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 495,
           "runtimeLines": [
-            530
+            531
           ]
         },
         {
@@ -14446,7 +14446,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 332,
           "runtimeLines": [
-            487
+            488
           ]
         },
         {
@@ -14466,7 +14466,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 387,
           "runtimeLines": [
-            537
+            538
           ]
         },
         {
@@ -14476,7 +14476,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 519,
           "runtimeLines": [
-            555
+            556
           ]
         },
         {
@@ -14486,7 +14486,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 521,
           "runtimeLines": [
-            553
+            554
           ]
         },
         {
@@ -14496,7 +14496,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 522,
           "runtimeLines": [
-            554
+            555
           ]
         },
         {
@@ -14506,7 +14506,17 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": null,
           "runtimeLines": [
-            552
+            553
+          ]
+        },
+        {
+          "elementId": "language-source",
+          "tag": "button",
+          "elementSymbol": null,
+          "kind": "UNTYPED_INTERACTIVE",
+          "markupLine": 73,
+          "runtimeLines": [
+            2497
           ]
         },
         {
@@ -14516,7 +14526,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 488,
           "runtimeLines": [
-            528
+            529
           ]
         },
         {
@@ -14526,7 +14536,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 400,
           "runtimeLines": [
-            504
+            505
           ]
         },
         {
@@ -14536,7 +14546,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 369,
           "runtimeLines": [
-            502
+            503
           ]
         },
         {
@@ -14546,7 +14556,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 370,
           "runtimeLines": [
-            503
+            504
           ]
         },
         {
@@ -14556,7 +14566,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 368,
           "runtimeLines": [
-            501
+            502
           ]
         },
         {
@@ -14566,7 +14576,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 439,
           "runtimeLines": [
-            508
+            509
           ]
         },
         {
@@ -14576,7 +14586,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 442,
           "runtimeLines": [
-            509
+            510
           ]
         },
         {
@@ -14586,7 +14596,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 443,
           "runtimeLines": [
-            510
+            511
           ]
         },
         {
@@ -14596,7 +14606,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 449,
           "runtimeLines": [
-            518
+            519
           ]
         },
         {
@@ -14606,7 +14616,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 425,
           "runtimeLines": [
-            514
+            515
           ]
         },
         {
@@ -14616,7 +14626,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 424,
           "runtimeLines": [
-            513
+            514
           ]
         },
         {
@@ -14626,7 +14636,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 428,
           "runtimeLines": [
-            516
+            517
           ]
         },
         {
@@ -14636,7 +14646,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 427,
           "runtimeLines": [
-            515
+            516
           ]
         },
         {
@@ -14646,7 +14656,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 421,
           "runtimeLines": [
-            512
+            513
           ]
         },
         {
@@ -14656,7 +14666,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 453,
           "runtimeLines": [
-            519
+            520
           ]
         },
         {
@@ -14666,7 +14676,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 433,
           "runtimeLines": [
-            507
+            508
           ]
         },
         {
@@ -14676,7 +14686,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 466,
           "runtimeLines": [
-            522
+            523
           ]
         },
         {
@@ -14686,7 +14696,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 119,
           "runtimeLines": [
-            461
+            462
           ]
         },
         {
@@ -14696,7 +14706,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 295,
           "runtimeLines": [
-            544
+            545
           ]
         },
         {
@@ -14706,7 +14716,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 301,
           "runtimeLines": [
-            549
+            550
           ]
         },
         {
@@ -14716,7 +14726,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 300,
           "runtimeLines": [
-            548
+            549
           ]
         },
         {
@@ -14726,7 +14736,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 281,
           "runtimeLines": [
-            542
+            543
           ]
         },
         {
@@ -14736,7 +14746,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 296,
           "runtimeLines": [
-            545
+            546
           ]
         },
         {
@@ -14746,7 +14756,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 297,
           "runtimeLines": [
-            546
+            547
           ]
         },
         {
@@ -14756,7 +14766,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 298,
           "runtimeLines": [
-            547
+            548
           ]
         },
         {
@@ -14766,7 +14776,18 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 304,
           "runtimeLines": [
-            550
+            551
+          ]
+        },
+        {
+          "elementId": "quick-actions-trigger",
+          "tag": null,
+          "elementSymbol": null,
+          "kind": "PRESENTATION_SLOT",
+          "markupLine": null,
+          "runtimeLines": [
+            1451,
+            2470
           ]
         },
         {
@@ -14777,6 +14798,16 @@
           "markupLine": 76,
           "runtimeLines": [
             444
+          ]
+        },
+        {
+          "elementId": "release-alerts-source",
+          "tag": "button",
+          "elementSymbol": null,
+          "kind": "UNTYPED_INTERACTIVE",
+          "markupLine": 73,
+          "runtimeLines": [
+            2517
           ]
         },
         {
@@ -14806,7 +14837,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 372,
           "runtimeLines": [
-            536
+            537
           ]
         },
         {
@@ -14826,7 +14857,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 527,
           "runtimeLines": [
-            556
+            557
           ]
         },
         {
@@ -14836,7 +14867,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 91,
           "runtimeLines": [
-            449
+            450
           ]
         },
         {
@@ -14846,7 +14877,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 105,
           "runtimeLines": [
-            460
+            461
           ]
         },
         {
@@ -14856,7 +14887,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 104,
           "runtimeLines": [
-            459
+            460
           ]
         },
         {
@@ -14866,7 +14897,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 102,
           "runtimeLines": [
-            456
+            457
           ]
         },
         {
@@ -14876,7 +14907,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 101,
           "runtimeLines": [
-            458
+            459
           ]
         },
         {
@@ -14886,7 +14917,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 99,
           "runtimeLines": [
-            454
+            455
           ]
         },
         {
@@ -14896,7 +14927,17 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 99,
           "runtimeLines": [
-            455
+            456
+          ]
+        },
+        {
+          "elementId": "speech-source",
+          "tag": "button",
+          "elementSymbol": null,
+          "kind": "UNTYPED_INTERACTIVE",
+          "markupLine": 73,
+          "runtimeLines": [
+            2489
           ]
         },
         {
@@ -14906,7 +14947,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 96,
           "runtimeLines": [
-            451
+            452
           ]
         },
         {
@@ -14916,7 +14957,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 103,
           "runtimeLines": [
-            457
+            458
           ]
         },
         {
@@ -14926,7 +14967,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 94,
           "runtimeLines": [
-            450
+            451
           ]
         },
         {
@@ -14936,7 +14977,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 98,
           "runtimeLines": [
-            453
+            454
           ]
         },
         {
@@ -14946,7 +14987,17 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 97,
           "runtimeLines": [
-            452
+            453
+          ]
+        },
+        {
+          "elementId": "theme-quick-action",
+          "tag": null,
+          "elementSymbol": null,
+          "kind": "PRESENTATION_SLOT",
+          "markupLine": null,
+          "runtimeLines": [
+            2482
           ]
         },
         {
@@ -14956,7 +15007,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 316,
           "runtimeLines": [
-            483
+            484
           ]
         },
         {
@@ -14966,7 +15017,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 315,
           "runtimeLines": [
-            481
+            482
           ]
         },
         {
@@ -14976,7 +15027,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 314,
           "runtimeLines": [
-            480
+            481
           ]
         },
         {
@@ -14986,7 +15037,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 316,
           "runtimeLines": [
-            482
+            483
           ]
         },
         {
@@ -14996,7 +15047,7 @@
           "kind": "UNTYPED_INTERACTIVE",
           "markupLine": 319,
           "runtimeLines": [
-            484
+            485
           ]
         },
         {
@@ -15026,7 +15077,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 399,
           "runtimeLines": [
-            535
+            536
           ]
         },
         {
@@ -15036,7 +15087,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 398,
           "runtimeLines": [
-            505
+            506
           ]
         },
         {
@@ -15046,7 +15097,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 123,
           "runtimeLines": [
-            463
+            464
           ]
         },
         {
@@ -15056,7 +15107,17 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 289,
           "runtimeLines": [
-            470
+            471
+          ]
+        },
+        {
+          "elementId": "vision-quick-access-source",
+          "tag": "button",
+          "elementSymbol": null,
+          "kind": "UNTYPED_INTERACTIVE",
+          "markupLine": 73,
+          "runtimeLines": [
+            2503
           ]
         },
         {
@@ -15066,7 +15127,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 337,
           "runtimeLines": [
-            489
+            490
           ]
         },
         {
@@ -15076,7 +15137,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 339,
           "runtimeLines": [
-            490
+            491
           ]
         },
         {
@@ -15086,7 +15147,7 @@
           "kind": "PRESENTATION_SLOT",
           "markupLine": 338,
           "runtimeLines": [
-            491
+            492
           ]
         },
         {
@@ -15260,5 +15321,5 @@
       }
     ]
   },
-  "fingerprint": "d3550cde3fa2719c67b4729a9a49986ef7f74f452f8d5ff453144519855fdd72"
+  "fingerprint": "192221f22b983a71366f55b2b6b6acfce8b939ec791d2b074189f43718b4a890"
 }

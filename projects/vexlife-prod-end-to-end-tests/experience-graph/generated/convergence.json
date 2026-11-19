@@ -1,6 +1,6 @@
 {
   "schemaVersion": "vexwork.experience-graph.convergence/v1",
-  "graphFingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924",
+  "graphFingerprint": "4cf0e4e03c8decacce99dff79d15158c1edad0dc5260eeb3d1071f6b680f8a00",
   "joins": [
     {
       "joinRef": "join:DirectCompanionTurn",
@@ -1769,74 +1769,19 @@
       }
     ],
     "changeImpact": {
-      "priorCommit": "98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0",
-      "currentCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-      "familiesAdded": [
-        "VexLifeContextProfileFamily"
-      ],
+      "priorCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "currentCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "familiesAdded": [],
       "familiesRemoved": [],
-      "edgesAdded": [
-        "edge:CAPTURED_AT_SEND:VexLifeContextProfileStore:DirectCompanionTurn.Intent.contextProfile",
-        "edge:CAPTURED_AT_SEND:VexLifeFoundationalField:DirectCompanionTurn.Intent.contextProfile",
-        "edge:CONSUMED_BY:DirectCompanionTurn.Intent.contextProfile:DirectCompanionTurn",
-        "edge:OFFERS:VexLifeContextProfileFamily.ProductDefault:VexLifeContextProfileFamily.Import",
-        "edge:OFFERS:VexLifeContextProfileFamily.ProductDefault:VexLifeContextProfileFamily.SaveAs",
-        "edge:OFFERS:VexLifeContextProfileFamily.ProductDefault:VexLifeContextProfileFamily.Use",
-        "edge:OFFERS:VexLifeContextProfileFamily.Saved:VexLifeContextProfileFamily.Import",
-        "edge:OFFERS:VexLifeContextProfileFamily.Saved:VexLifeContextProfileFamily.RestoreProductDefault",
-        "edge:OFFERS:VexLifeContextProfileFamily.Saved:VexLifeContextProfileFamily.Save",
-        "edge:OFFERS:VexLifeContextProfileFamily.Saved:VexLifeContextProfileFamily.SaveAs",
-        "edge:OFFERS:VexLifeContextProfileFamily.Saved:VexLifeContextProfileFamily.Use",
-        "edge:REQUESTS_EFFECT:VexLifeContextProfileFamily.Import:VexLifeContextProfileFamily.Effect.ImportAsNew:when:ProductDefault:0",
-        "edge:REQUESTS_EFFECT:VexLifeContextProfileFamily.Import:VexLifeContextProfileFamily.Effect.ImportAsNew:when:Saved:0",
-        "edge:REQUESTS_EFFECT:VexLifeContextProfileFamily.RestoreProductDefault:VexLifeContextProfileFamily.Effect.SelectProductDefault:when:Saved:0",
-        "edge:REQUESTS_EFFECT:VexLifeContextProfileFamily.Save:VexLifeContextProfileFamily.Effect.Persist:when:Saved:0",
-        "edge:REQUESTS_EFFECT:VexLifeContextProfileFamily.SaveAs:VexLifeContextProfileFamily.Effect.PersistAsNew:when:ProductDefault:0",
-        "edge:REQUESTS_EFFECT:VexLifeContextProfileFamily.SaveAs:VexLifeContextProfileFamily.Effect.PersistAsNew:when:Saved:0",
-        "edge:REQUESTS_EFFECT:VexLifeContextProfileFamily.Use:VexLifeContextProfileFamily.Effect.SelectSaved:when:ProductDefault:0",
-        "edge:REQUESTS_EFFECT:VexLifeContextProfileFamily.Use:VexLifeContextProfileFamily.Effect.SelectSaved:when:Saved:0"
-      ],
+      "edgesAdded": [],
       "edgesRemoved": [],
       "edgesChanged": [],
-      "impactedRoutes": [
-        {
-          "routeRef": "route:VexLifeContextProfileFamily.ProductDefault:Import:0",
-          "side": "CURRENT"
-        },
-        {
-          "routeRef": "route:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
-          "side": "CURRENT"
-        },
-        {
-          "routeRef": "route:VexLifeContextProfileFamily.ProductDefault:Use:0",
-          "side": "CURRENT"
-        },
-        {
-          "routeRef": "route:VexLifeContextProfileFamily.Saved:Import:0",
-          "side": "CURRENT"
-        },
-        {
-          "routeRef": "route:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0",
-          "side": "CURRENT"
-        },
-        {
-          "routeRef": "route:VexLifeContextProfileFamily.Saved:Save:0",
-          "side": "CURRENT"
-        },
-        {
-          "routeRef": "route:VexLifeContextProfileFamily.Saved:SaveAs:0",
-          "side": "CURRENT"
-        },
-        {
-          "routeRef": "route:VexLifeContextProfileFamily.Saved:Use:0",
-          "side": "CURRENT"
-        }
-      ],
+      "impactedRoutes": [],
       "proof": {
         "invalidated": "any probe evidence bound to the prior graph fingerprint for an impacted route",
         "reusable": "law evidence for cells whose OFFERS / REQUESTS_EFFECT / ADMITS_STATE rows are unchanged"
       },
-      "priorGraphFingerprint": "64deef3a6d63c1f3bd5ee3cc474d4544bf1ee6e83f3926f46acc757df2e3a6a3"
+      "priorGraphFingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924"
     }
   }
 }

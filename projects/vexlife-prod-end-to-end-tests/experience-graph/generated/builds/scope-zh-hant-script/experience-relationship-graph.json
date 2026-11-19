@@ -3,7 +3,7 @@
   "graphRef": "graph.vexlife-prod.experience-relationships",
   "source": {
     "repository": "VexGPT/VexLife-Prod",
-    "commit": "d6ca30db0083571c918180de8fe4a8ad25ac1afd",
+    "commit": "f11c2c945b2a4f53ecd9b727770266a9e30bf55d",
     "files": [
       {
         "path": "docs/lens/vexlife-prod.screen-lens.json",
@@ -87,7 +87,7 @@
       },
       {
         "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "blobSha1": "5296f08cb27133f48153b46c85633d91f7c3373f"
+        "blobSha1": "9917ab23502b536f6ec335b678dbfbc240fc90e6"
       },
       {
         "path": "src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
@@ -9287,17 +9287,17 @@
     {
       "control": "VexLifeDiagnosticsFamily.ClearHistory",
       "controlRef": "CLEAR_HISTORY",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4695"
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4946"
     },
     {
       "control": "VexLifeDiagnosticsFamily.StartEnhanced",
       "controlRef": "START_ENHANCED",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4694"
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4945"
     },
     {
       "control": "VexLifeDiagnosticsFamily.StopEnhanced",
       "controlRef": "STOP_ENHANCED",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4694"
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4945"
     }
   ],
   "localization": {
@@ -12106,7 +12106,7 @@
         "literal": "READY",
         "subject": "option.currentState",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 716,
+        "line": 717,
         "owners": [
           "VexLifeLocalAsrProvider.Result.StateReady",
           "VexLifeProdEntryFamily.JourneyStepReady",
@@ -12121,7 +12121,7 @@
         "literal": "RETURNED",
         "subject": "use.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2470,
+        "line": 2721,
         "owners": [
           "ResultState.RETURNED",
           "State.RETURNED"
@@ -12132,7 +12132,7 @@
         "literal": "RESUME_LAST_VALID_HEAD_THEN_FORM_NEW_SEND_ATTEMPT",
         "subject": "route",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2550,
+        "line": 2801,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12140,7 +12140,7 @@
         "literal": "FORM_NEW_SEND_ATTEMPT_AND_RETRY",
         "subject": "route",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2552,
+        "line": 2803,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12148,7 +12148,7 @@
         "literal": "RETURNED",
         "subject": "use.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2579,
+        "line": 2830,
         "owners": [
           "ResultState.RETURNED",
           "State.RETURNED"
@@ -12159,7 +12159,7 @@
         "literal": "RETURNED",
         "subject": "use.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 2629,
+        "line": 2880,
         "owners": [
           "ResultState.RETURNED",
           "State.RETURNED"
@@ -12170,7 +12170,7 @@
         "literal": "PRIVATE",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3426,
+        "line": 3677,
         "owners": [
           "VexLifePrivateModeFamily.Private",
           "VexLifePrivateModeFamily.StatePrivate"
@@ -12181,7 +12181,7 @@
         "literal": "EXTEND_PRODUCT_DEFAULT",
         "subject": "mode",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3679,
+        "line": 3930,
         "owners": [
           "FoundationMode.EXTEND_PRODUCT_DEFAULT"
         ],
@@ -12191,7 +12191,7 @@
         "literal": "EXTEND_PRODUCT_DEFAULT",
         "subject": "ui.contextProfileFoundationMode.value",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3724,
+        "line": 3975,
         "owners": [
           "FoundationMode.EXTEND_PRODUCT_DEFAULT"
         ],
@@ -12201,7 +12201,7 @@
         "literal": "EXTEND_PRODUCT_DEFAULT",
         "subject": "active.definition.foundationMode",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3731,
+        "line": 3982,
         "owners": [
           "FoundationMode.EXTEND_PRODUCT_DEFAULT"
         ],
@@ -12211,7 +12211,7 @@
         "literal": "CARRIED",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3928,
+        "line": 4179,
         "owners": [
           "State.CARRIED"
         ],
@@ -12221,7 +12221,7 @@
         "literal": "CARRIED_PARTIAL",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3928,
+        "line": 4179,
         "owners": [
           "State.CARRIED_PARTIAL"
         ],
@@ -12231,7 +12231,7 @@
         "literal": "EXTEND_PRODUCT_DEFAULT",
         "subject": "profileMode",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3958,
+        "line": 4209,
         "owners": [
           "FoundationMode.EXTEND_PRODUCT_DEFAULT"
         ],
@@ -12241,7 +12241,7 @@
         "literal": "CARRIED",
         "subject": "prompt.profileFoundationState",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3965,
+        "line": 4216,
         "owners": [
           "State.CARRIED"
         ],
@@ -12251,7 +12251,7 @@
         "literal": "CARRIED",
         "subject": "prompt.profileFoundationState",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 3975,
+        "line": 4226,
         "owners": [
           "State.CARRIED"
         ],
@@ -12261,7 +12261,7 @@
         "literal": "EXTEND_PRODUCT_DEFAULT",
         "subject": "definition.foundationMode",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4320,
+        "line": 4571,
         "owners": [
           "FoundationMode.EXTEND_PRODUCT_DEFAULT"
         ],
@@ -12271,7 +12271,7 @@
         "literal": "EXTEND_PRODUCT_DEFAULT",
         "subject": "definition.foundationMode",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4344,
+        "line": 4595,
         "owners": [
           "FoundationMode.EXTEND_PRODUCT_DEFAULT"
         ],
@@ -12281,7 +12281,7 @@
         "literal": "FAILED",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4398,
+        "line": 4649,
         "owners": [
           "ResultState.FAILED",
           "VexLifeVoiceInputFamily.Failed",
@@ -12293,7 +12293,7 @@
         "literal": "HELD",
         "subject": "field.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4488,
+        "line": 4739,
         "owners": [
           "FrameState.HELD",
           "State.HELD",
@@ -12309,7 +12309,7 @@
         "literal": "START_ENHANCED",
         "subject": "control.controlRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4694,
+        "line": 4945,
         "owners": [
           "VexLifeDiagnosticsFamily.ControlStartEnhanced",
           "VexLifeDiagnosticsFamily.StartEnhanced"
@@ -12320,7 +12320,7 @@
         "literal": "STOP_ENHANCED",
         "subject": "control.controlRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4694,
+        "line": 4945,
         "owners": [
           "VexLifeDiagnosticsFamily.ControlStopEnhanced",
           "VexLifeDiagnosticsFamily.StopEnhanced"
@@ -12331,7 +12331,7 @@
         "literal": "CLEAR_HISTORY",
         "subject": "control.controlRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4695,
+        "line": 4946,
         "owners": [
           "VexLifeDiagnosticsFamily.ClearHistory",
           "VexLifeDiagnosticsFamily.ControlClearHistory"
@@ -12342,7 +12342,7 @@
         "literal": "HELD",
         "subject": "modelImport.state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4774,
+        "line": 5025,
         "owners": [
           "FrameState.HELD",
           "State.HELD",
@@ -12358,7 +12358,7 @@
         "literal": "READY",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4782,
+        "line": 5033,
         "owners": [
           "VexLifeLocalAsrProvider.Result.StateReady",
           "VexLifeProdEntryFamily.JourneyStepReady",
@@ -12373,7 +12373,7 @@
         "literal": "READY",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4783,
+        "line": 5034,
         "owners": [
           "VexLifeLocalAsrProvider.Result.StateReady",
           "VexLifeProdEntryFamily.JourneyStepReady",
@@ -12388,7 +12388,7 @@
         "literal": "CANDIDATE",
         "subject": "selected.standing",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 4847,
+        "line": 5098,
         "owners": [
           "MemoryCandidateDisposition.CANDIDATE",
           "Standing.CANDIDATE"
@@ -12399,7 +12399,7 @@
         "literal": "READY",
         "subject": "selected.currentState",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5253,
+        "line": 5504,
         "owners": [
           "VexLifeLocalAsrProvider.Result.StateReady",
           "VexLifeProdEntryFamily.JourneyStepReady",
@@ -12414,7 +12414,7 @@
         "literal": "PROVIDER_SOURCE_NOT_CURRENT",
         "subject": "selected.currentDetailRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5261,
+        "line": 5512,
         "owners": [
           "VexLifeLocalAsrProvider.Result.DetailProviderSourceNotCurrent"
         ],
@@ -12424,7 +12424,7 @@
         "literal": "PROVIDER_EXECUTABLE_UNAVAILABLE",
         "subject": "selected.currentDetailRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5263,
+        "line": 5514,
         "owners": [
           "VexLifeLocalAsrProvider.Result.DetailProviderExecutableUnavailable"
         ],
@@ -12434,7 +12434,7 @@
         "literal": "MODEL_UNAVAILABLE",
         "subject": "selected.currentDetailRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5265,
+        "line": 5516,
         "owners": [
           "VexLifeLocalAsrProvider.Result.DetailModelUnavailable"
         ],
@@ -12444,7 +12444,7 @@
         "literal": "MODEL_DIGEST_NOT_CURRENT",
         "subject": "selected.currentDetailRef",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5267,
+        "line": 5518,
         "owners": [
           "VexLifeLocalAsrProvider.Result.DetailModelDigestNotCurrent"
         ],
@@ -12454,7 +12454,7 @@
         "literal": "NOT_LAWFUL_NOW",
         "subject": "result.outcome",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5514,
+        "line": 5765,
         "owners": [
           "VexLifeProdServiceContract.PrivateNotLawfulNow",
           "VexLifeProdServiceContract.VisionControlNotLawfulNow"
@@ -12465,7 +12465,7 @@
         "literal": "RUNTIME_REFUSED",
         "subject": "result.outcome",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5516,
+        "line": 5767,
         "owners": [
           "VexLifeProdServiceContract.VisionControlRuntimeRefused"
         ],
@@ -12475,7 +12475,7 @@
         "literal": "PRESENT_EPHEMERAL",
         "subject": ".state",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5605,
+        "line": 5856,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12483,7 +12483,7 @@
         "literal": "PREVIOUS_TURN",
         "subject": "state.contextProcessRetention",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5619,
+        "line": 5870,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12491,7 +12491,7 @@
         "literal": "PHASE",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5740,
+        "line": 5991,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12499,7 +12499,7 @@
         "literal": "REASONING_DELTA",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5752,
+        "line": 6003,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12507,7 +12507,7 @@
         "literal": "REACH",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5762,
+        "line": 6013,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12515,7 +12515,7 @@
         "literal": "CONTENT_DELTA",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5783,
+        "line": 6034,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12523,7 +12523,7 @@
         "literal": "FAILED",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5794,
+        "line": 6045,
         "owners": [
           "ResultState.FAILED",
           "VexLifeVoiceInputFamily.Failed",
@@ -12535,7 +12535,7 @@
         "literal": "COMPLETED",
         "subject": ".type",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 5801,
+        "line": 6052,
         "owners": [
           "Stage.COMPLETED",
           "StageStop.COMPLETED"
@@ -12546,7 +12546,7 @@
         "literal": "PREVIOUS_TURN",
         "subject": "ui.contextProcessRetentionSelect.value",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 6014,
+        "line": 6266,
         "owners": [],
         "layer": "BROWSER_RUNTIME"
       },
@@ -12554,7 +12554,7 @@
         "literal": "EXTEND_PRODUCT_DEFAULT",
         "subject": "ui.contextProfileFoundationMode.value",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 6022,
+        "line": 6274,
         "owners": [
           "FoundationMode.EXTEND_PRODUCT_DEFAULT"
         ],
@@ -12564,7 +12564,7 @@
         "literal": "REALIZED",
         "subject": ".outcome",
         "sourcePath": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
-        "line": 6042,
+        "line": 6294,
         "owners": [
           "VexLifeProdServiceContract.PrivateRealized",
           "VexLifeProdServiceContract.VisionControlRealized"
@@ -13846,6 +13846,16 @@
           ]
         },
         {
+          "elementId": "language-source",
+          "tag": "button",
+          "elementSymbol": null,
+          "kind": "UNTYPED_INTERACTIVE",
+          "markupLine": 73,
+          "runtimeLines": [
+            2466
+          ]
+        },
+        {
           "elementId": "local-asr-composer-output",
           "tag": "select",
           "elementSymbol": "LocalAsrComposerOutput",
@@ -14276,6 +14286,17 @@
           ]
         },
         {
+          "elementId": "quick-actions-trigger",
+          "tag": null,
+          "elementSymbol": null,
+          "kind": "PRESENTATION_SLOT",
+          "markupLine": null,
+          "runtimeLines": [
+            1442,
+            2439
+          ]
+        },
+        {
           "elementId": "release-alerts-empty",
           "tag": "p",
           "elementSymbol": null,
@@ -14303,6 +14324,16 @@
           "markupLine": 74,
           "runtimeLines": [
             435
+          ]
+        },
+        {
+          "elementId": "release-alerts-source",
+          "tag": "button",
+          "elementSymbol": null,
+          "kind": "UNTYPED_INTERACTIVE",
+          "markupLine": 73,
+          "runtimeLines": [
+            2486
           ]
         },
         {
@@ -14456,6 +14487,16 @@
           ]
         },
         {
+          "elementId": "speech-source",
+          "tag": "button",
+          "elementSymbol": null,
+          "kind": "UNTYPED_INTERACTIVE",
+          "markupLine": 73,
+          "runtimeLines": [
+            2458
+          ]
+        },
+        {
           "elementId": "speech-status",
           "tag": "p",
           "elementSymbol": null,
@@ -14513,6 +14554,16 @@
           "markupLine": 336,
           "runtimeLines": [
             485
+          ]
+        },
+        {
+          "elementId": "theme-quick-action",
+          "tag": null,
+          "elementSymbol": null,
+          "kind": "PRESENTATION_SLOT",
+          "markupLine": null,
+          "runtimeLines": [
+            2451
           ]
         },
         {
@@ -14703,6 +14754,16 @@
           "markupLine": 282,
           "runtimeLines": [
             462
+          ]
+        },
+        {
+          "elementId": "vision-quick-access-source",
+          "tag": "button",
+          "elementSymbol": null,
+          "kind": "UNTYPED_INTERACTIVE",
+          "markupLine": 73,
+          "runtimeLines": [
+            2472
           ]
         },
         {
@@ -14916,5 +14977,5 @@
       }
     ]
   },
-  "fingerprint": "f16210adb1c2135991cf8792aeddd6f08a7e6576a6dfb78b67b7adc5af7cd126"
+  "fingerprint": "e08aed8bb198c1e0683aca1855c61c8acbae898bce2ccd13af99de29c66f2cff"
 }

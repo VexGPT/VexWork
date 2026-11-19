@@ -1,6 +1,6 @@
 {
   "schemaVersion": "vexwork.experience-graph.perturbation/v1",
-  "graphFingerprint": "de8a66858308f9e3e70282202f4047c077de42dc78fa1ffe2cbe2b038683e924",
+  "graphFingerprint": "4cf0e4e03c8decacce99dff79d15158c1edad0dc5260eeb3d1071f6b680f8a00",
   "counts": {
     "REENTRY": 34,
     "INTERRUPT": 21,
@@ -335,12 +335,12 @@
       "perturbing": "VexLifeVoiceInputFamily.Stop",
       "question": "Stop while BeginLocalDictation is in flight (Family at RequestingMicrophone)",
       "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "BEGIN CONTINUATION ABORTS — same realization path as READY + START: End clears desiredActive and bumps the session; Begin stops acquired tracks and returns (L1300).",
+      "expected": "BEGIN CONTINUATION ABORTS — same realization path as READY + START: End clears desiredActive and bumps the session; Begin stops acquired tracks and returns (L1301).",
       "proofClass": "B",
       "evidence": {
         "method": "SOURCE_REVIEW",
         "sourceRefs": [
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1300"
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1301"
         ],
         "current": true,
         "note": "Restart from FAILED uses the same Begin realization."
@@ -356,13 +356,13 @@
       "perturbing": "VexLifeVoiceInputFamily.Stop",
       "question": "Stop while BeginLocalDictation is in flight (Family at RequestingMicrophone)",
       "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "BEGIN CONTINUATION ABORTS — Family law admits STOPPING + EndLocalDictation. End clears desiredActive and bumps the session; when getUserMedia later resolves, Begin stops the acquired tracks and returns (L1300), and every later await re-checks the fence.",
+      "expected": "BEGIN CONTINUATION ABORTS — Family law admits STOPPING + EndLocalDictation. End clears desiredActive and bumps the session; when getUserMedia later resolves, Begin stops the acquired tracks and returns (L1301), and every later await re-checks the fence.",
       "proofClass": "B",
       "evidence": {
         "method": "SOURCE_REVIEW",
         "sourceRefs": [
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1191",
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1300"
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1192",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1301"
         ],
         "current": true,
         "note": "The audio-capture failure gap above is the one exception on this path."
@@ -1305,7 +1305,7 @@
       "newerState": "VexLifeVoiceInputFamily.Stopping",
       "question": "Stop admits Stopping; can a late observeCapability -> Held from the earlier BeginLocalDictation overwrite it?",
       "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "FENCED UNLESS FORCED — observeVoiceInputCapability returns early while voiceInputSessionOwnsState() (REQUESTING_MICROPHONE / LISTENING / STOPPING, L678–L681). Only the End/teardown completion forces a refresh, which is the intended successor rather than a stale arrival.",
+      "expected": "FENCED UNLESS FORCED — observeVoiceInputCapability returns early while voiceInputSessionOwnsState() (REQUESTING_MICROPHONE / LISTENING / STOPPING, L679–L682). Only the End/teardown completion forces a refresh, which is the intended successor rather than a stale arrival.",
       "proofClass": "C",
       "realizationSites": [
         "VexLifeWebP1RuntimeArtifacts"
@@ -1313,7 +1313,7 @@
       "evidence": {
         "method": "SOURCE_REVIEW",
         "sourceRefs": [
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L678"
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L679"
         ],
         "current": true,
         "note": "Same fence as the READY variant."
@@ -1332,7 +1332,7 @@
       "newerState": "VexLifeVoiceInputFamily.Stopping",
       "question": "Stop admits Stopping; can a late observeCapability -> Ready from the earlier BeginLocalDictation overwrite it?",
       "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "FENCED UNLESS FORCED — observeVoiceInputCapability returns early while voiceInputSessionOwnsState() (L678–L681); the forced refresh comes only from End/teardown completion, which is the intended successor.",
+      "expected": "FENCED UNLESS FORCED — observeVoiceInputCapability returns early while voiceInputSessionOwnsState() (L679–L682); the forced refresh comes only from End/teardown completion, which is the intended successor.",
       "proofClass": "C",
       "realizationSites": [
         "VexLifeWebP1RuntimeArtifacts"
@@ -1340,7 +1340,7 @@
       "evidence": {
         "method": "SOURCE_REVIEW",
         "sourceRefs": [
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L678"
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L679"
         ],
         "current": true,
         "note": "Same fence as the HELD variant."
@@ -1359,7 +1359,7 @@
       "newerState": "VexLifeVoiceInputFamily.Stopping",
       "question": "Stop admits Stopping; can a late observeFailure -> Failed from the earlier BeginLocalDictation overwrite it?",
       "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "PARTIALLY FENCED — the microphone failure branch (L1286) and the provider-prepare failure branch (L1313) return when `session !== dictation.session`. The audio-capture failure branch (catch around startVoiceCapture, L1327–L1340) has no session fence: if startVoiceCapture rejects after STOP, failVoiceInput -> settleVoiceInputFailure applies FAILED over the STOPPING / READY successor. Whether startVoiceCapture can reject inside that window is not proven from source.",
+      "expected": "PARTIALLY FENCED — the microphone failure branch (L1287) and the provider-prepare failure branch (L1314) return when `session !== dictation.session`. The audio-capture failure branch (catch around startVoiceCapture, L1328–L1341) has no session fence: if startVoiceCapture rejects after STOP, failVoiceInput -> settleVoiceInputFailure applies FAILED over the STOPPING / READY successor. Whether startVoiceCapture can reject inside that window is not proven from source.",
       "proofClass": "C",
       "realizationSites": [
         "VexLifeWebP1RuntimeArtifacts"
@@ -1367,10 +1367,10 @@
       "evidence": {
         "method": "SOURCE_REVIEW",
         "sourceRefs": [
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1286",
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1313",
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1327",
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1013"
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1287",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1314",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1328",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1014"
         ],
         "current": true,
         "note": "Source-proven unfenced path, not a reproduced defect."
@@ -1389,7 +1389,7 @@
       "newerState": "VexLifeVoiceInputFamily.Stopping",
       "question": "Stop admits Stopping; can a late observeRecognitionStarted -> Listening from the earlier BeginLocalDictation overwrite it?",
       "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "FENCED — STOP realizes End, which sets dictation.desiredActive = false and increments dictation.session (L1193–L1194). Begin re-checks `!dictation.desiredActive || session !== dictation.session` after every await and returns before applying recognitionStartedState (L1343 before L1351). A late recognition-started cannot move STOPPING/READY to LISTENING.",
+      "expected": "FENCED — STOP realizes End, which sets dictation.desiredActive = false and increments dictation.session (L1194–L1195). Begin re-checks `!dictation.desiredActive || session !== dictation.session` after every await and returns before applying recognitionStartedState (L1344 before L1352). A late recognition-started cannot move STOPPING/READY to LISTENING.",
       "proofClass": "C",
       "realizationSites": [
         "VexLifeWebP1RuntimeArtifacts"
@@ -1397,9 +1397,9 @@
       "evidence": {
         "method": "SOURCE_REVIEW",
         "sourceRefs": [
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1191",
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1343",
-          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1351"
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1192",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1344",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1352"
         ],
         "current": true,
         "note": "Fence lives in generated browser JavaScript, not typed Family law; executing it needs a browser-runtime harness (proof class C) that this lane does not have."

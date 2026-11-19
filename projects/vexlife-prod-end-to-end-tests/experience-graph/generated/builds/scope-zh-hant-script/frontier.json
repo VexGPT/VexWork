@@ -1,6 +1,6 @@
 {
   "schemaVersion": "vexwork.experience-graph.derivation/v1",
-  "graphFingerprint": "f16210adb1c2135991cf8792aeddd6f08a7e6576a6dfb78b67b7adc5af7cd126",
+  "graphFingerprint": "e08aed8bb198c1e0683aca1855c61c8acbae898bce2ccd13af99de29c66f2cff",
   "debt": [
     {
       "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeCapabilityBridge",
@@ -1009,7 +1009,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CANDIDATE#1",
       "family": null,
       "detail": "generated browser runtime compares selected.standing to the literal 'CANDIDATE' although source already owns that value (MemoryCandidateDisposition.CANDIDATE, Standing.CANDIDATE); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4847",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5098",
       "hints": [
         "MemoryCandidateDisposition.CANDIDATE",
         "Standing.CANDIDATE"
@@ -1023,7 +1023,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CARRIED#1",
       "family": null,
       "detail": "generated browser runtime compares .state to the literal 'CARRIED' although source already owns that value (State.CARRIED); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3928",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4179",
       "hints": [
         "State.CARRIED"
       ]
@@ -1036,7 +1036,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CARRIED#2",
       "family": null,
       "detail": "generated browser runtime compares prompt.profileFoundationState to the literal 'CARRIED' although source already owns that value (State.CARRIED); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3965",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4216",
       "hints": [
         "State.CARRIED"
       ]
@@ -1049,7 +1049,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CARRIED#3",
       "family": null,
       "detail": "generated browser runtime compares prompt.profileFoundationState to the literal 'CARRIED' although source already owns that value (State.CARRIED); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3975",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4226",
       "hints": [
         "State.CARRIED"
       ]
@@ -1062,7 +1062,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CARRIED_PARTIAL#1",
       "family": null,
       "detail": "generated browser runtime compares .state to the literal 'CARRIED_PARTIAL' although source already owns that value (State.CARRIED_PARTIAL); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3928",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4179",
       "hints": [
         "State.CARRIED_PARTIAL"
       ]
@@ -1075,7 +1075,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CLEAR_HISTORY#1",
       "family": null,
       "detail": "generated browser runtime compares control.controlRef to the literal 'CLEAR_HISTORY' although source already owns that value (VexLifeDiagnosticsFamily.ClearHistory, VexLifeDiagnosticsFamily.ControlClearHistory); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4695",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4946",
       "hints": [
         "VexLifeDiagnosticsFamily.ClearHistory",
         "VexLifeDiagnosticsFamily.ControlClearHistory"
@@ -1089,7 +1089,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:COMPLETED#1",
       "family": null,
       "detail": "generated browser runtime compares .type to the literal 'COMPLETED' although source already owns that value (Stage.COMPLETED, StageStop.COMPLETED); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5801",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6052",
       "hints": [
         "Stage.COMPLETED",
         "StageStop.COMPLETED"
@@ -1103,7 +1103,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#1",
       "family": null,
       "detail": "generated browser runtime compares mode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3679",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3930",
       "hints": [
         "FoundationMode.EXTEND_PRODUCT_DEFAULT"
       ]
@@ -1116,7 +1116,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#2",
       "family": null,
       "detail": "generated browser runtime compares ui.contextProfileFoundationMode.value to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3724",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3975",
       "hints": [
         "FoundationMode.EXTEND_PRODUCT_DEFAULT"
       ]
@@ -1129,7 +1129,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#3",
       "family": null,
       "detail": "generated browser runtime compares active.definition.foundationMode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3731",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3982",
       "hints": [
         "FoundationMode.EXTEND_PRODUCT_DEFAULT"
       ]
@@ -1142,7 +1142,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#4",
       "family": null,
       "detail": "generated browser runtime compares profileMode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3958",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4209",
       "hints": [
         "FoundationMode.EXTEND_PRODUCT_DEFAULT"
       ]
@@ -1155,7 +1155,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#5",
       "family": null,
       "detail": "generated browser runtime compares definition.foundationMode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4320",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4571",
       "hints": [
         "FoundationMode.EXTEND_PRODUCT_DEFAULT"
       ]
@@ -1168,7 +1168,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#6",
       "family": null,
       "detail": "generated browser runtime compares definition.foundationMode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4344",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4595",
       "hints": [
         "FoundationMode.EXTEND_PRODUCT_DEFAULT"
       ]
@@ -1181,7 +1181,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#7",
       "family": null,
       "detail": "generated browser runtime compares ui.contextProfileFoundationMode.value to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6022",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6274",
       "hints": [
         "FoundationMode.EXTEND_PRODUCT_DEFAULT"
       ]
@@ -1194,7 +1194,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:FAILED#1",
       "family": null,
       "detail": "generated browser runtime compares .state to the literal 'FAILED' although source already owns that value (ResultState.FAILED, VexLifeVoiceInputFamily.Failed, VexLifeVoiceInputFamily.StateFailed); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4398",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4649",
       "hints": [
         "ResultState.FAILED",
         "VexLifeVoiceInputFamily.Failed",
@@ -1209,7 +1209,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:FAILED#2",
       "family": null,
       "detail": "generated browser runtime compares .type to the literal 'FAILED' although source already owns that value (ResultState.FAILED, VexLifeVoiceInputFamily.Failed, VexLifeVoiceInputFamily.StateFailed); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5794",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6045",
       "hints": [
         "ResultState.FAILED",
         "VexLifeVoiceInputFamily.Failed",
@@ -1224,7 +1224,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:HELD#1",
       "family": null,
       "detail": "generated browser runtime compares field.state to the literal 'HELD' although source already owns that value (FrameState.HELD, State.HELD, VexLifeProdEntryFamily.JourneyHeld, VexLifeVisionFamily.Held, VexLifeVisionFamily.StateHeld, VexLifeVoiceInputFamily.Held, VexLifeVoiceInputFamily.StateHeld); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4488",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4739",
       "hints": [
         "FrameState.HELD",
         "State.HELD",
@@ -1243,7 +1243,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:HELD#2",
       "family": null,
       "detail": "generated browser runtime compares modelImport.state to the literal 'HELD' although source already owns that value (FrameState.HELD, State.HELD, VexLifeProdEntryFamily.JourneyHeld, VexLifeVisionFamily.Held, VexLifeVisionFamily.StateHeld, VexLifeVoiceInputFamily.Held, VexLifeVoiceInputFamily.StateHeld); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4774",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5025",
       "hints": [
         "FrameState.HELD",
         "State.HELD",
@@ -1262,7 +1262,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:MODEL_DIGEST_NOT_CURRENT#1",
       "family": null,
       "detail": "generated browser runtime compares selected.currentDetailRef to the literal 'MODEL_DIGEST_NOT_CURRENT' although source already owns that value (VexLifeLocalAsrProvider.Result.DetailModelDigestNotCurrent); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5267",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5518",
       "hints": [
         "VexLifeLocalAsrProvider.Result.DetailModelDigestNotCurrent"
       ]
@@ -1275,7 +1275,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:MODEL_UNAVAILABLE#1",
       "family": null,
       "detail": "generated browser runtime compares selected.currentDetailRef to the literal 'MODEL_UNAVAILABLE' although source already owns that value (VexLifeLocalAsrProvider.Result.DetailModelUnavailable); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5265",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5516",
       "hints": [
         "VexLifeLocalAsrProvider.Result.DetailModelUnavailable"
       ]
@@ -1288,7 +1288,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:NOT_LAWFUL_NOW#1",
       "family": null,
       "detail": "generated browser runtime compares result.outcome to the literal 'NOT_LAWFUL_NOW' although source already owns that value (VexLifeProdServiceContract.PrivateNotLawfulNow, VexLifeProdServiceContract.VisionControlNotLawfulNow); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5514",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5765",
       "hints": [
         "VexLifeProdServiceContract.PrivateNotLawfulNow",
         "VexLifeProdServiceContract.VisionControlNotLawfulNow"
@@ -1302,7 +1302,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PRIVATE#1",
       "family": null,
       "detail": "generated browser runtime compares .state to the literal 'PRIVATE' although source already owns that value (VexLifePrivateModeFamily.Private, VexLifePrivateModeFamily.StatePrivate); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3426",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3677",
       "hints": [
         "VexLifePrivateModeFamily.Private",
         "VexLifePrivateModeFamily.StatePrivate"
@@ -1316,7 +1316,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PROVIDER_EXECUTABLE_UNAVAILABLE#1",
       "family": null,
       "detail": "generated browser runtime compares selected.currentDetailRef to the literal 'PROVIDER_EXECUTABLE_UNAVAILABLE' although source already owns that value (VexLifeLocalAsrProvider.Result.DetailProviderExecutableUnavailable); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5263",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5514",
       "hints": [
         "VexLifeLocalAsrProvider.Result.DetailProviderExecutableUnavailable"
       ]
@@ -1329,7 +1329,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PROVIDER_SOURCE_NOT_CURRENT#1",
       "family": null,
       "detail": "generated browser runtime compares selected.currentDetailRef to the literal 'PROVIDER_SOURCE_NOT_CURRENT' although source already owns that value (VexLifeLocalAsrProvider.Result.DetailProviderSourceNotCurrent); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5261",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5512",
       "hints": [
         "VexLifeLocalAsrProvider.Result.DetailProviderSourceNotCurrent"
       ]
@@ -1342,7 +1342,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:READY#1",
       "family": null,
       "detail": "generated browser runtime compares option.currentState to the literal 'READY' although source already owns that value (VexLifeLocalAsrProvider.Result.StateReady, VexLifeProdEntryFamily.JourneyStepReady, VexLifeVisionFamily.Ready, VexLifeVisionFamily.StateReady, VexLifeVoiceInputFamily.Ready, VexLifeVoiceInputFamily.StateReady); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L716",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L717",
       "hints": [
         "VexLifeLocalAsrProvider.Result.StateReady",
         "VexLifeProdEntryFamily.JourneyStepReady",
@@ -1360,7 +1360,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:READY#2",
       "family": null,
       "detail": "generated browser runtime compares .state to the literal 'READY' although source already owns that value (VexLifeLocalAsrProvider.Result.StateReady, VexLifeProdEntryFamily.JourneyStepReady, VexLifeVisionFamily.Ready, VexLifeVisionFamily.StateReady, VexLifeVoiceInputFamily.Ready, VexLifeVoiceInputFamily.StateReady); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4782",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5033",
       "hints": [
         "VexLifeLocalAsrProvider.Result.StateReady",
         "VexLifeProdEntryFamily.JourneyStepReady",
@@ -1378,7 +1378,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:READY#3",
       "family": null,
       "detail": "generated browser runtime compares .state to the literal 'READY' although source already owns that value (VexLifeLocalAsrProvider.Result.StateReady, VexLifeProdEntryFamily.JourneyStepReady, VexLifeVisionFamily.Ready, VexLifeVisionFamily.StateReady, VexLifeVoiceInputFamily.Ready, VexLifeVoiceInputFamily.StateReady); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4783",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5034",
       "hints": [
         "VexLifeLocalAsrProvider.Result.StateReady",
         "VexLifeProdEntryFamily.JourneyStepReady",
@@ -1396,7 +1396,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:READY#4",
       "family": null,
       "detail": "generated browser runtime compares selected.currentState to the literal 'READY' although source already owns that value (VexLifeLocalAsrProvider.Result.StateReady, VexLifeProdEntryFamily.JourneyStepReady, VexLifeVisionFamily.Ready, VexLifeVisionFamily.StateReady, VexLifeVoiceInputFamily.Ready, VexLifeVoiceInputFamily.StateReady); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5253",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5504",
       "hints": [
         "VexLifeLocalAsrProvider.Result.StateReady",
         "VexLifeProdEntryFamily.JourneyStepReady",
@@ -1414,7 +1414,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:REALIZED#1",
       "family": null,
       "detail": "generated browser runtime compares .outcome to the literal 'REALIZED' although source already owns that value (VexLifeProdServiceContract.PrivateRealized, VexLifeProdServiceContract.VisionControlRealized); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6042",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6294",
       "hints": [
         "VexLifeProdServiceContract.PrivateRealized",
         "VexLifeProdServiceContract.VisionControlRealized"
@@ -1428,7 +1428,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RETURNED#1",
       "family": null,
       "detail": "generated browser runtime compares use.state to the literal 'RETURNED' although source already owns that value (ResultState.RETURNED, State.RETURNED); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2470",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2721",
       "hints": [
         "ResultState.RETURNED",
         "State.RETURNED"
@@ -1442,7 +1442,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RETURNED#2",
       "family": null,
       "detail": "generated browser runtime compares use.state to the literal 'RETURNED' although source already owns that value (ResultState.RETURNED, State.RETURNED); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2579",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2830",
       "hints": [
         "ResultState.RETURNED",
         "State.RETURNED"
@@ -1456,7 +1456,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RETURNED#3",
       "family": null,
       "detail": "generated browser runtime compares use.state to the literal 'RETURNED' although source already owns that value (ResultState.RETURNED, State.RETURNED); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2629",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2880",
       "hints": [
         "ResultState.RETURNED",
         "State.RETURNED"
@@ -1470,7 +1470,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RUNTIME_REFUSED#1",
       "family": null,
       "detail": "generated browser runtime compares result.outcome to the literal 'RUNTIME_REFUSED' although source already owns that value (VexLifeProdServiceContract.VisionControlRuntimeRefused); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5516",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5767",
       "hints": [
         "VexLifeProdServiceContract.VisionControlRuntimeRefused"
       ]
@@ -1483,7 +1483,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:START_ENHANCED#1",
       "family": null,
       "detail": "generated browser runtime compares control.controlRef to the literal 'START_ENHANCED' although source already owns that value (VexLifeDiagnosticsFamily.ControlStartEnhanced, VexLifeDiagnosticsFamily.StartEnhanced); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4694",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4945",
       "hints": [
         "VexLifeDiagnosticsFamily.ControlStartEnhanced",
         "VexLifeDiagnosticsFamily.StartEnhanced"
@@ -1497,7 +1497,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:STOP_ENHANCED#1",
       "family": null,
       "detail": "generated browser runtime compares control.controlRef to the literal 'STOP_ENHANCED' although source already owns that value (VexLifeDiagnosticsFamily.ControlStopEnhanced, VexLifeDiagnosticsFamily.StopEnhanced); renaming the owner would not fail the build",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4694",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4945",
       "hints": [
         "VexLifeDiagnosticsFamily.ControlStopEnhanced",
         "VexLifeDiagnosticsFamily.StopEnhanced"
@@ -1891,7 +1891,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CONTENT_DELTA#1",
       "family": null,
       "detail": "generated browser runtime compares .type to 'CONTENT_DELTA', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5783",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6034",
       "hints": []
     },
     {
@@ -1902,7 +1902,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:FORM_NEW_SEND_ATTEMPT_AND_RETRY#1",
       "family": null,
       "detail": "generated browser runtime compares route to 'FORM_NEW_SEND_ATTEMPT_AND_RETRY', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2552",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2803",
       "hints": []
     },
     {
@@ -1913,7 +1913,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PHASE#1",
       "family": null,
       "detail": "generated browser runtime compares .type to 'PHASE', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5740",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5991",
       "hints": []
     },
     {
@@ -1924,7 +1924,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PRESENT_EPHEMERAL#1",
       "family": null,
       "detail": "generated browser runtime compares .state to 'PRESENT_EPHEMERAL', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5605",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5856",
       "hints": []
     },
     {
@@ -1935,7 +1935,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PREVIOUS_TURN#1",
       "family": null,
       "detail": "generated browser runtime compares state.contextProcessRetention to 'PREVIOUS_TURN', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5619",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5870",
       "hints": []
     },
     {
@@ -1946,7 +1946,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PREVIOUS_TURN#2",
       "family": null,
       "detail": "generated browser runtime compares ui.contextProcessRetentionSelect.value to 'PREVIOUS_TURN', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6014",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6266",
       "hints": []
     },
     {
@@ -1957,7 +1957,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:REACH#1",
       "family": null,
       "detail": "generated browser runtime compares .type to 'REACH', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5762",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6013",
       "hints": []
     },
     {
@@ -1968,7 +1968,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:REASONING_DELTA#1",
       "family": null,
       "detail": "generated browser runtime compares .type to 'REASONING_DELTA', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5752",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6003",
       "hints": []
     },
     {
@@ -1979,7 +1979,7 @@
       "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RESUME_LAST_VALID_HEAD_THEN_FORM_NEW_SEND_ATTEMPT#1",
       "family": null,
       "detail": "generated browser runtime compares route to 'RESUME_LAST_VALID_HEAD_THEN_FORM_NEW_SEND_ATTEMPT', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
-      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2550",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2801",
       "hints": []
     },
     {
@@ -1989,7 +1989,7 @@
       "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
       "coordinate": "markup:VexLifeWebP1ExperienceMarkup.kt",
       "family": null,
-      "detail": "33 interactive elements the runtime binds have only a DOM id: no typed element identity names them",
+      "detail": "37 interactive elements the runtime binds have only a DOM id: no typed element identity names them",
       "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1ExperienceMarkup.kt",
       "hints": [
         "form#address-form",
@@ -2006,6 +2006,7 @@
         "button#context-profile-save-as",
         "textarea#draft",
         "button#inspector-close",
+        "button#language-source",
         "select#model-choice",
         "button#model-import-add",
         "button#model-import-check",
@@ -2014,17 +2015,20 @@
         "button#private-decline",
         "button#private-keep",
         "button#private-propose",
+        "button#release-alerts-source",
         "button#reload",
         "button#speech-choose",
         "button#speech-next",
         "button#speech-play",
         "button#speech-previous",
         "input#speech-rate",
+        "button#speech-source",
         "button#speech-stop",
         "button#speech-switch",
         "input#speech-thoughts",
         "select#speech-voice",
-        "button#ticket-view"
+        "button#ticket-view",
+        "button#vision-quick-access-source"
       ]
     }
   ],

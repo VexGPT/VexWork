@@ -21,18 +21,21 @@ test('checked-in Experience Relationship Graph artifacts reproduce offline from 
   assert.deepEqual(json(OUTPUTS.graph).extractor.modules, extractorFingerprint());
 });
 
-test('the graph is pinned to re-observed VexLife-Prod main, where #251 Context Profile is now current', () => {
+test('the graph is pinned to re-observed VexLife-Prod main: #368 Swirl restoration, presentation only', () => {
   const plan = json(`${PROJECT}/experience-graph/source-plan.json`);
   const graph = json(OUTPUTS.graph);
   assert.equal(graph.source.commit, plan.commit);
-  assert.equal(plan.commit, 'a58777106b08bd58c167608fa0115729185ae3dd');
+  assert.equal(plan.commit, 'fb4ea859949f2fcba47bf55857669df37d2730ce');
   const families = graph.nodes.filter((node) => node.role === 'FAMILY').map((node) => node.ref);
   assert.ok(families.includes('VexLifeContextProfileFamily'));
   assert.ok(families.includes('VexLifeVoiceInputFamily'));
+  // The prior pin is the #361 main; the Swirl restoration moved no Family law and no relationship.
   const impact = json(OUTPUTS.convergence).queries.changeImpact;
   assert.equal(impact.priorCommit, plan.priorCommit);
-  assert.deepEqual(impact.familiesAdded, ['VexLifeContextProfileFamily']);
-  assert.ok(impact.edgesAdded.includes('edge:CAPTURED_AT_SEND:VexLifeContextProfileStore:DirectCompanionTurn.Intent.contextProfile'));
+  assert.equal(plan.priorCommit, 'a58777106b08bd58c167608fa0115729185ae3dd');
+  assert.deepEqual([impact.familiesAdded, impact.familiesRemoved, impact.edgesAdded, impact.edgesRemoved, impact.edgesChanged], [[], [], [], [], []]);
+  // Every scope build is cut from this main, so all of them compare against the same basis.
+  for (const build of plan.builds) assert.equal(build.basisCommit, plan.commit, build.buildRef);
 });
 
 test('patient-zero neighborhoods: Vision, Private, VoiceInput and Diagnostics clear once keyed elements are read as identity', () => {
