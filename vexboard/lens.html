@@ -1923,6 +1923,26 @@ function staticViewNodes(doc, view, ref, { includeStructuralParents = false } = 
   return nodes;
 }
 
+function staticViewTargetNodes(doc, view, ref) {
+  const nodes = staticViewNodes(doc, view, ref, { includeStructuralParents: true });
+  const screenSelector = staticViewSelector(view.anchors.screenAttribute, ref);
+  if (screenSelector) for (const node of doc.querySelectorAll(screenSelector)) if (!nodes.includes(node)) nodes.push(node);
+  return nodes;
+}
+
+function applyStaticViewStateBindings(doc, view, resolved) {
+  for (const binding of view.stateBindings ?? []) {
+    const outcome = resolved?.presence?.get(binding.presenceRef);
+    if (String(outcome?.value ?? '') !== binding.value) continue;
+    for (const operation of binding.operations) {
+      for (const node of staticViewTargetNodes(doc, view, operation.targetRef)) {
+        if (operation.op === 'SET_ATTRIBUTE') node.setAttribute(operation.attribute, operation.value);
+        else if (operation.op === 'REMOVE_ATTRIBUTE') node.removeAttribute(operation.attribute);
+      }
+    }
+  }
+}
+
 function staticViewStyleRules(doc) {
   const style = doc.querySelector('style[data-vex-product-style]');
   const sheet = style?.sheet;
@@ -2008,6 +2028,7 @@ function bindStaticView(frame, expression, { interactive }) {
     const delta = deltaClass(element).trim();
     if (delta) for (const node of staticViewNodes(doc, view, element.ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-delta', delta);
   }
+  applyStaticViewStateBindings(doc, view, presence);
   const marks = selectionPathRefs();
   for (const ref of marks.ancestors) for (const node of staticViewNodes(doc, view, ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-ancestor', '');
   if (marks.selected) for (const node of staticViewNodes(doc, view, marks.selected, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-selected', '');
