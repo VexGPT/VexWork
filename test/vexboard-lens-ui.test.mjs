@@ -125,17 +125,36 @@ test('existing board markers sit on borders and frame titles are never covered',
 });
 
 
-test('project switching supports Product-exported Lens subjects without introducing a Product-specific renderer', () => {
+test('project switching supports Product-exported and legacy experiment lenses without introducing a Product-specific renderer', () => {
   assert.match(page, /subject\.lens\.exportedLens/);
   assert.match(page, /Source\.readExportedLensCommit/);
   assert.match(page, /Catalog\.bindLensBuildSource/);
   assert.match(page, /loadBuildLens\(subject, build\)/);
   assert.match(page, /Builds and source projections/);
+  assert.match(page, /function catalogSubjectForCurrentLens\(\)/, 'a legacy experiment can still inherit its catalog project identity');
+  assert.match(page, /snapshot\?\.repositoryRef && subject\.repositoryRef === snapshot\.repositoryRef/);
+  assert.match(page, /requestSubject \? renderBuildSwitch\(requestSubject\) : null/, 'legacy experiments show project chrome without impersonating Stable or Main');
   assert.doesNotMatch(page, /projectVexLifeProd|vexlife-prod.*adapter/i);
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][UI-TEST]
 
+test('Product-authored color mode is one shareable read-only Presentation axis', () => {
+  assert.match(page, /colorModes: new Map\(\)/, 'presentation choice stays browser-local in Lens state');
+  assert.match(page, /function renderColorModeSwitch\(\)/);
+  assert.match(page, /view\?\.colorMode/);
+  assert.match(page, /'aria-label': 'Product color mode'/);
+  assert.match(page, /h\('span', \{ class: 'mode-label' \}, 'Appearance'\)/);
+  assert.match(page, /function applyStaticColorMode\(doc, view\)/);
+  assert.match(page, /doc\.documentElement\.removeAttribute\(colorMode\.attribute\)/, 'System removes the authored override');
+  assert.match(page, /doc\.documentElement\.setAttribute\(colorMode\.attribute, option\.attributeValue\)/, 'Light\/Dark use only the Product-declared root attribute');
+  assert.match(page, /function setStaticColorMode\(ref\)[\s\S]*\.current-product-view \.product-view-frame[\s\S]*applyStaticColorMode\(doc, view\)/, 'mode changes update the mounted inert Product instead of remounting it');
+  assert.match(page, /next\.set\('presentation', colorMode\.ref\)/, 'an exact lived presentation is shareable');
+  assert.match(page, /params\.get\('presentation'\)/, 'a shared presentation coordinate is restored on boot');
+  assert.match(page, /staticViewDocument\(view\)[\s\S]*rootAttribute[\s\S]*option\.attributeValue/, 'the exact mode is present on first paint, before Product JavaScript could exist');
+  assert.doesNotMatch(page, /vexlife-prod\.presentation\.theme/, 'generic VexWork never copies a Product storage key');
+  assert.doesNotMatch(page, /subject\.slug[^\n]{0,120}colorMode|colorMode[^\n]{0,120}subject\.slug/i, 'presentation projection is selected from source facts, never a Product slug');
+});
 test('search, impact, coverage and briefs are wired from the shared query module', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-query\.mjs'/);
   assert.match(page, /Query\.searchLens\(state\.lens, searchState\.query, \{ currentScreenRef: screenRef\(\) \}\)/);
@@ -199,6 +218,19 @@ test('expression carousel preserves the lived desktop and phone-width interactio
   assert.match(page, /ondblclick: \(\) => \(element\.navigatesTo \? travel\(element\) : exposeElement\(element\.ref\)\)/, 'Structure double-click traverses to that source-derived expression');
 });
 
+test('Structure keeps a real scroll boundary and viewport continuity while bridge geometry follows it', () => {
+  assert.match(page, /\.structure\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;/);
+  assert.match(page, /const kept = \{ phone: .* structure: document\.querySelector\('\.face\[data-face="STRUCTURE"\] \.structure'\)\?\.scrollTop \?\? 0 \}/);
+  assert.match(page, /if \(structure\) structure\.scrollTop = kept\.structure;/);
+  assert.match(page, /function replaceStructureFacePreservingViewport\(experience\)/);
+  assert.match(page, /const scrollTop = oldStructure\.querySelector\('\.structure'\)\?\.scrollTop \?\? 0;/);
+  assert.match(page, /nextScroller\.scrollTop = scrollTop;/, 'mounted-Product inspection/presence refresh keeps the same Structure viewport');
+  assert.match(page, /function bridgeRelationship\(\)/, 'bridge relationship identity is resolved separately from its current geometry');
+  assert.match(page, /function drawBridge\(relationship = bridgeRelationship\(\)\)/);
+  assert.match(page, /const scheduleBridge = \(\) => \{[\s\S]*if \(bridgeFrame\) return;[\s\S]*bridgeFrame = requestAnimationFrame\(\(\) => \{[\s\S]*bridgeFrame = 0;[\s\S]*drawBridge\(\);/, 'scroll-driven bridge observation coalesces to one continuous animation-frame update');
+  assert.doesNotMatch(page, /cancelAnimationFrame\(bridgeFrame\)/, 'scroll observation does not repeatedly cancel/restart the pending bridge frame');
+});
+
 test('expression stepping animates the whole three-card carousel handoff instead of teleporting neighbours', () => {
   assert.match(page, /--x-shift:356px/);
   assert.match(page, /@keyframes x-center-from-next/);
@@ -237,13 +269,27 @@ test('lived usability gives the inspector a resizable attention boundary and mak
   assert.match(page, /renderExpressionFinder\(list\)/);
 });
 
-test('selected controls preview the screen or expression they lead to before traversal', () => {
+test('selected controls preview and visibly support the screen or expression they lead to before traversal', () => {
   assert.match(page, /function destinationForElement\(element\)/);
   assert.match(page, /function expressionTargetForElement\(ref\)/);
   assert.match(page, /Expressions\.expressionForControl\(state\.lens, screenRef\(\), list, ref\)/);
   assert.match(page, /Follow → \$\{destination\.title\}/);
   assert.match(page, /Show \$\{expression\.where\} · \$\{truncate\(expression\.what, 34\)\}/);
-  assert.match(page, /destination\.go\(\)/);
+  assert.match(page, /function refreshStaticViewTravelBadge\(doc, view\)/);
+  assert.match(page, /badge\.textContent = 'Go'/, 'static Product destinations use the same compact Go affordance as the Android Surface');
+  assert.match(page, /badge\.addEventListener\('click',[\s\S]*destination\.go\(\)/);
+  assert.match(page, /targetElement\?\.closest\('\.vexboard-lens-travel'\)\) return;/, 'the iframe inspection interceptor yields to the Lens-owned Go support control');
+  assert.match(page, /data-vex-lens-has-selection/, 'static Product selection gets a VexBoard support-layer focus treatment');
+  assert.match(page, /function renderStaticViewActions\(\)[\s\S]*return splitBinding \|\| toggleBinding/, 'detached Product actions remain only for spatial/toggle affordances');
+  assert.doesNotMatch(page, /class: 'tool product-view-travel'/, 'destination travel is attached to the selected Product control instead of a detached corner action');
+});
+
+test('static Product support layers keep selected identity and bridge geometry visible across the iframe boundary', () => {
+  assert.match(page, /function staticProductVisibleRect\(leftFace, ref\)/);
+  assert.match(page, /frameBox\.left \+ nodeBox\.left/);
+  assert.match(page, /function surfaceVisibleRect\(leftFace, ref\)/);
+  assert.match(page, /const from = surfaceVisibleRect\(leftFace, anchorRef\)/, 'the causal bridge can originate at the selected Product control inside the iframe');
+  assert.match(page, /doc\.addEventListener\('scroll', scheduleBridge, \{ capture: true, passive: true \}\)/, 'Product-local scrolling keeps bridge geometry current');
 });
 
 test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
@@ -265,10 +311,41 @@ test('a source-owned static view is mounted generically and bound through stable
   assert.match(page, /scriptPolicy must be NONE|no Product JavaScript/);
   assert.match(page, /sandbox: 'allow-same-origin'/);
   assert.doesNotMatch(page, /sandbox: 'allow-same-origin allow-scripts'/);
+  assert.match(page, /doc\.addEventListener\('contextmenu',[\s\S]*flip\('EXPERIENCE'\)/, 'right-click inside a Product iframe flips the same Experience side');
+  assert.match(page, /if \(event\.shiftKey\) return;/, 'Shift-right-click keeps the native browser escape hatch');
   assert.match(page, /view\.anchors\.elementAttribute/);
   assert.match(page, /view\.anchors\.structuralAttribute/);
   assert.match(page, /view\.anchors\.structuralParentAttribute/);
   assert.match(page, /staticViewNodes\(doc, view, marks\.selected, \{ includeStructuralParents: true \}\)/);
+  assert.match(page, /data-vex-product-style/, 'the Product stylesheet is distinguishable from Lens inspection CSS');
+  assert.match(page, /function staticViewStyleRules\(doc\)/);
+  assert.match(page, /function staticViewPresentationRules\(doc, view, ref\)/);
+  assert.match(page, /function applyStaticViewStateBindings\(doc, view, resolved\)/, 'Product-authored state bindings realize source-derived presentation without Product-specific VexWork logic');
+  assert.match(page, /resolved\?\.presence\?\.get\(binding\.presenceRef\)/);
+  assert.match(page, /operation\.op === 'SET_ATTRIBUTE'/);
+  assert.match(page, /function renderStaticSplitControl\(binding\)/, 'a selected split handle gets a discoverable Product-spatial phase control');
+  assert.match(page, /Browser-local spatial projection; Product state is unchanged/);
+  assert.match(page, /function bindStaticSplitInteractions\(doc, view\)/);
+  assert.match(page, /handle\.addEventListener\('pointermove'/, 'the real Product handle can be dragged');
+  assert.match(page, /function refreshStaticSelectionInPlace\(\)/, 'selection can update the Lens around a mounted Product without recreating its iframe');
+  assert.match(page, /function setStaticPresenceOutcome\(presenceRef, outcome\)/, 'source-derived Product selection/presentation changes can update the mounted Product in place');
+  assert.match(page, /function bindStaticSelectInteractions\(doc, view\)/);
+  assert.match(page, /select\.addEventListener\('change'/, 'native Product selects drive source-derived presence');
+  assert.match(page, /function renderStaticToggleControl\(binding\)/, 'Product presentation toggles get an explicit Open/Close affordance');
+  assert.match(page, /binding\.kind === 'TOGGLE' && binding\.elementRef === ref/, 'double-click can follow a Product-authored toggle relationship');
+  assert.match(page, /if \(!refreshStaticSelectionInPlace\(\)\) render\(\);/, 'element selection falls back to full render only when no static Product view is mounted');
+  assert.match(page, /current-product-view/, 'the interactive Product manifestation has a stable host for in-place selection updates');
+  assert.match(page, /function refreshStaticViewInspectionMarks\(doc, view\)/);
+  assert.match(page, /oldBehavior\.replaceWith\(renderBehaviorSide\(\)\)/);
+  assert.match(page, /oldTray\.replaceWith\(renderTray\(\)\)/);
+  assert.match(page, /target\.style\.setProperty\(binding\.styleProperty/, 'dragging writes only the Product-exported CSS custom property');
+  assert.match(page, /function setStaticSplitPhase\(binding, phase\)[\s\S]*applyStaticSplitProjection\(doc, currentScreen\(\)\.view, binding\)/, 'split phase changes mutate the mounted Product presentation in place');
+  assert.match(page, /target\.setAttribute\(binding\.collapsedAttribute, binding\.collapsedAfterValue\)/);
+  assert.match(page, /target\.setAttribute\(binding\.collapsedAttribute, binding\.collapsedBeforeValue\)/);
+  assert.match(page, /candidate\.node\.matches\(rule\.selector\)/, 'CSS relationships come from browser selector matching');
+  assert.match(page, /declarations: rule\.style\.cssText/, 'the Product rule block stays inspectable without becoming VexBoard rendering authority');
+  assert.match(page, /h\('h3', \{\}, 'Presentation rules'\)/);
+  assert.match(page, /The browser, not VexBoard, applies them/);
   assert.match(page, /currentScreen\(\)\.view \? renderStaticView\(expression, options\)/);
   assert.doesNotMatch(page, /vexlife-prod[^\n]{0,100}renderStaticView|renderStaticView[^\n]{0,100}vexlife-prod/i, 'static view projection stays subject-agnostic');
 });

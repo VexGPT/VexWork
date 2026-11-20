@@ -118,6 +118,39 @@ test('the typed intent of a control finds the expression it brings about; a sour
   assert.equal(exposing.where, 'Songs');
 });
 
+test('a source-authored local target travels only when it is an existing presentation outcome', () => {
+  const source = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8'));
+
+  const streamSource = source.screens.find((screen) => screen.screenRef === STREAM);
+  const albumsTab = streamSource.elements.find((element) => element.ref === 'element.vexstream-music.body.library-tabs.albums');
+  const library = streamSource.elements.find((element) => element.ref === 'element.vexstream-music.body.library');
+  const songsTab = streamSource.elements.find((element) => element.ref === 'element.vexstream-music.body.library-tabs.songs');
+  albumsTab.intent = 'local element.vexstream-music.body.library.albums';
+  library.intent = 'local element.vexstream-music.body.library';
+  songsTab.intent = 'local spatial vexweb.example.seam';
+
+  const debugSource = source.screens.find((screen) => screen.screenRef === 'screen.debug-menu');
+  const showLog = debugSource.elements.find((element) => element.ref === 'element.debug-menu.body.log-history.actions.show');
+  showLog.intent = 'local element.debug-menu.log-history.sheet';
+
+  const localLens = normalizeScreenLens(source);
+
+  const streamExpressions = X.expressionsFor(localLens, STREAM);
+  const streamDestination = (ref) => X.expressionForControl(localLens, STREAM, streamExpressions, ref);
+  const albums = streamDestination(albumsTab.ref);
+  assert.ok(albums, 'a local target that is an authored selection choice reaches that selection');
+  assert.equal(albums.context.overrides['presence.vexstream-music.body-library-selection'], 'element.vexstream-music.body.library.albums');
+  assert.equal(albums.focusRef, 'element.vexstream-music.body.library.albums');
+
+  const debugExpressions = X.expressionsFor(localLens, 'screen.debug-menu');
+  const sheet = X.expressionForControl(localLens, 'screen.debug-menu', debugExpressions, showLog.ref);
+  assert.ok(sheet, 'a local target that is an authored presentation subject reaches its open expression');
+  assert.equal(sheet.context.overrides['presence.debug-menu.log-history-sheet-open'], 'OPEN');
+
+  assert.equal(streamDestination(library.ref), null, 'an existing local target with no authored presentation outcome remains inspect-only');
+  assert.equal(streamDestination(songsTab.ref), null, 'local spatial relationships do not impersonate presentation travel');
+});
+
 test('a hand-set context is a custom expression, read the same way by both sides', () => {
   const context = R.withOverride(R.withOverride(R.emptyRealizationContext(), 'presence.vexstream-music.body-player-sheet-open', 'OPEN'), 'presence.vexstream-music.body-library-selection', 'element.vexstream-music.body.library.albums');
   assert.equal(X.expressionMatching(stream, context), null);
