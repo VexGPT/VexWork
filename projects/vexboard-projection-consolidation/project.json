@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexboard.projection-consolidation",
+  "label": "VexBoard Projection Consolidation",
+  "purpose": "Consolidate VexBoard Screen Lens projection across Android, VexLife-Prod and future platforms so one generic source-shaped projection grammar serves materially different products, while source-owned meaning, presentation content, currentness and legitimately different platform manifestations remain with their rightful owners instead of becoming duplicated VexBoard interfaces.",
+  "rootWorkRefs": [
+    "work.vexboard.projection-consolidation.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "projects/vexboard-projection-consolidation/README.md",
+    "project.vexboard",
+    "work.vexboard.source-projectors",
+    "project.vexarchitecture.vexboard-sync.20261113",
+    "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+    "projects/vexboard/SCREEN-LENS.md",
+    "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+    "github.pull.vexwork.366",
+    "github.pull.vexwork.367",
+    "github.pull.vexwork.368",
+    "github.pull.vexlife-prod.437",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
+    "projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md",
+    "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md",
+    "test/vexboard-screen-lens-conformance.test.mjs",
+    "test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json",
+    "github.pull.vexwork.377",
+    "human.victor.projection-foundation-acceptance-2026-11-20"
+  ],
+  "formedAt": "2026-11-20T11:44:00.000Z"
+}
