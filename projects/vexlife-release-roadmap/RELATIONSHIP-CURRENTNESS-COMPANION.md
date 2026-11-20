@@ -96,6 +96,7 @@ These Project audits already produced merged VexWork currentness corrections:
 | Connected Services | Terminal program/currentness relationship recovered while preserving its remaining human-acceptance meaning. | PR #342 |
 | Android Proof Orchestration | Accepted proof runner/currentness closed and downstream dependency truth released. | PR #343 |
 | VexStream Mobile Library | Large-library startup defect completed from later lived evidence; offline-artwork durability advanced to Verify; unresolved VexStream edges deliberately preserved. | PR #346 |
+| Interface Compound Relay | Four already-proven connective siblings currentized to completed; Interface source/currentness moved to Verify on the exact stable-front-door human witness; Debug Menu remains Ready and V5/V6 residue remains open. | PR #348 |
 
 ### VexStream relationship lesson
 
@@ -249,24 +250,16 @@ Clean current-main currentization is being carried separately.
 
 ---
 
-## Exact resume coordinate — Interface currentization
+## Interface currentization — integrated checkpoint
 
-The interrupted A001 branch was preserved, then cleanly re-formed after the relationship companion itself moved `public/workspace.json`.
-
-Current candidate:
+Merged VexWork threshold:
 
 ```text
-VexWork PR
+PR
 #348
 
-branch
-VXG-112026-interface-compound-currentness-a002
-
-base
-7e2bcc014de73c83577c51b24770e7677d6ed7d8
-
-candidate head before this companion update
-a92609e5641afce8d3524466283d1c9b7566f6cc
+merge
+ce58b19da1e5ed85aaf6acdbdc62f6769ffa3eb5
 ```
 
 Current truthful Project projection:
@@ -300,16 +293,30 @@ captured:
   later Home/navigation refinement
 ```
 
-### Next unconsumed edge
+The original-VexLife Interface Project remains independently open. New Beginnings / VexLife-Prod consumes its earned source/evidence but does not supersede these residual predicates.
+
+### Next unconsumed audit edge
 
 ```text
-1. validate PR #348 exact file/project delta against current main
-2. integrate if current
-3. update this checkpoint with the merged threshold
-4. continue the next not-yet-audited Project one Project at a time
+do not reopen audited Projects merely to reconstruct context
+
+already audited:
+  Welcome Wagon
+  VexLife ToCompletion
+  Connected Services
+  Android Proof Orchestration
+  VexStream Mobile Library
+  VexLife Android Current-State Refinement = CURRENT_AS_IS
+  Interface Compound Relay
+
+next:
+  select one not-yet-audited Project from current VexWork workspace
+  read only that Project's current entry + implicated owner evidence
+  classify CURRENT_AS_IS vs CURRENTIZE
+  write back here only after material relationship movement
 ```
 
-Do not recreate #183, replay VexLife product proof, or restart the portfolio scan.
+Do not restart the portfolio scan or replay product proof from this companion.
 
 ---
 
