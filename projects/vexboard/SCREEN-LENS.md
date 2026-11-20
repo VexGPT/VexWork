@@ -681,6 +681,19 @@ D54 A screen whose source authors frames is drawn as a workspace, not a phone
               without one keeps the phone realization unchanged (Android; Prod commits before the export)
     boundary  geometry is proportional only (no pixels, no CSS from source); unknown kinds, axes, edges,
               allocations, containment and seam cycles fail closed; no Family is invented for a handle
+D55 Identity genealogy is portable; naming remains source-owned
+    why       Android VexComposeScope / appendVexElementPath and VexStreamPresentationRefs proved two
+              recurring mechanics that should scale beyond Compose: nested presentation inherits a stable
+              parent, and runtime instances derive from stable identity rather than text or list position
+    how       src/shared/vexboard-screen-lens-identity.mjs defines two optional derivation laws:
+              DERIVED_CHILD = parentRef + normalized local path;
+              RUNTIME_INSTANCE = stable baseRef + UTF-8 hex(stable instance parts joined by NUL)
+    boundary  this is not one universal product namespace. A source-owned stable ref stays source-owned and
+              needs no derivation descriptor. element.*, pathway.*, presence.* and product-native refs keep
+              their different relationship meanings; VexBoard validates genealogy only when a producer
+              explicitly claims that a ref was mechanically derived
+    scale     Kotlin / Compose, HTML/JS, SwiftUI, native desktop, generated surfaces and future renderers may
+              implement the same formation law without importing another platform's UI framework
 ```
 
 ## Data contract
@@ -709,12 +722,13 @@ screens[].layout       kind FRAME, symbol, source, root, frames[] (ref, seams[] 
                        chrome[] with seamRef), overlays[] (D54)
 elements[].layer       CONTENT | CHROME | TRANSIENT | MODAL (optional)
 elements[].interactions ACTIVATE | RESIZE | COLLAPSE_BEFORE | COLLAPSE_AFTER (optional)
+elements[].identity     optional DERIVED_CHILD or RUNTIME_INSTANCE genealogy; source-owned refs need none
 examples[]             PREVIEW | GOLDEN | JOURNEY with subject, setup, fixture provenance,
                        configurations, evidence, steps, related
 examplesHeld[]         examples source does not let VexBoard address yet, with the reason
 ```
 
-`normalizeScreenLens` fails closed on unknown roles, faces, kinds, dispositions, broken parent or
+`normalizeScreenLens` also fails closed when a producer claims derived/runtime identity genealogy that does not recreate the emitted ref.\n\n`normalizeScreenLens` fails closed on unknown roles, faces, kinds, dispositions, broken parent or
 pathway references, containment cycles, unknown navigation targets and unknown annotation subjects.
 Unknown presence kinds, dangling subject/template/example refs and undeclared templates also fail closed.
 
