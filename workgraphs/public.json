@@ -8437,13 +8437,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T05:24:00.000Z",
-      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T05:21:27.000Z",
       "workRef": "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "V1.5 — long-context Memory pressure",
       "purpose": "Carry the lived context-cap finding into accepted product source: 192K active input, 16K reserved output, 208K hard Context Lease, up to 100K/100-page current attributed Memory, dynamic Memory yielding, and explicit zero-headroom handling without silent Memory promotion.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -8456,7 +8456,9 @@
         "repo.vexlife:src/core/living-journal-memory-projection.mjs",
         "repo.vexlife:src/core/daily-memory-dream.mjs",
         "repo.vexlife:src/core/score-context-continuity.mjs",
-        "human.lived-feedback.vexlife.interface-refinement.20261025"
+        "human.lived-feedback.vexlife.interface-refinement.20261025",
+        "github.commit.vexlife.8a1092a4f0de36cf4f3be3fd468aa0babcc2b448",
+        "github.commit.vexlife.6946f935221dc8b44a599d2fd5601aed14a1d8fb"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -18324,6 +18326,23 @@
         "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6"
       ],
       "createdAt": "2026-10-29T09:59:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.long-context.verifying.completed.merge927-current",
+      "workRef": "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #927 passed exact-head SourceOwner proof, Independent Assurance and Formal Review, then merged the approved 192K input / 16K output reserve / 208K hard Context Lease with dynamic up-to-100K/100-page Memory yielding and explicit zero-headroom behavior. Current accepted VexLife source still carries those exact prompt-admission laws.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.927",
+        "github.commit.vexlife.8a1092a4f0de36cf4f3be3fd468aa0babcc2b448",
+        "github.commit.vexlife.162a865b7ebc1c5b51763a15b87ae2ec0637e94a",
+        "github.commit.vexlife.6946f935221dc8b44a599d2fd5601aed14a1d8fb",
+        "repo.vexlife:src/core/browser-prompt-context-runtime.mjs"
+      ],
+      "createdAt": "2026-10-25T05:21:27.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
