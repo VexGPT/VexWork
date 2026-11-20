@@ -18,6 +18,11 @@ export const SCREEN_LENS_IDENTITY_KINDS = Object.freeze({
 
 export const SCREEN_LENS_INSTANCE_ENCODING = 'UTF8_HEX_NUL_PARTS';
 
+export const SCREEN_LENS_INSTANCE_CONTINUITY = Object.freeze({
+  STABLE_INSTANCE: 'STABLE_INSTANCE',
+  CURRENT_OCCURRENCE: 'CURRENT_OCCURRENCE',
+});
+
 function fail(message) {
   throw new TypeError(`screen lens identity: ${message}`);
 }
@@ -30,6 +35,14 @@ function text(value, label) {
 function optionalText(value, label) {
   if (value === undefined || value === null) return null;
   return text(value, label);
+}
+
+function instanceContinuity(value, label) {
+  const continuity = text(value, label);
+  if (!Object.values(SCREEN_LENS_INSTANCE_CONTINUITY).includes(continuity)) {
+    fail(`${label} ${continuity} is unknown`);
+  }
+  return continuity;
 }
 
 export function normalizeLensIdentityPath(value) {
@@ -75,11 +88,13 @@ export function normalizeInstanceIdentityContract(input, label = 'instance ident
   if (encoding !== SCREEN_LENS_INSTANCE_ENCODING) {
     fail(`${label} encoding ${encoding} is unknown`);
   }
+  const continuity = instanceContinuity(input.continuity, `${label} continuity`);
   return Object.freeze({
     kind: input.kind,
     baseRef,
     partSources: Object.freeze(partSources),
     encoding,
+    continuity,
   });
 }
 
@@ -111,10 +126,12 @@ export function normalizeElementIdentity(input, { ref, parentRef }) {
   }
   const expected = dynamicLensInstanceRef(baseRef, instanceParts);
   if (expected !== ref) fail(`${ref} does not match runtime instance identity ${expected}`);
+  const continuity = instanceContinuity(input.continuity, `${ref} identity continuity`);
   return Object.freeze({
     kind: input.kind,
     baseRef,
     instanceParts: Object.freeze(instanceParts),
     encoding,
+    continuity,
   });
 }
