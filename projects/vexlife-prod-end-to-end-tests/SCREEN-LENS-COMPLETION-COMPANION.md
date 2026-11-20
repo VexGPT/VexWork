@@ -375,16 +375,10 @@ retained inner RETURN sha256
 
 P006 formed successfully, bound the exact candidate, and executed the focused Gradle source-owner proof.
 
-Exact candidate:
+Exact candidate bound by the canonical RETURN:
 
 ```text
-head 0759f83ced61fca54d943ea860689d6f814349
-```
-
-Correction: the actual bound head in the canonical RETURN was:
-
-```text
-0759f83ced61fda24f1561ed92897e1055a7672b
+head 0759f83ced61fda24f1561ed92897e1055a7672b
 tree d7c1fb9ef620d03dd7d9af648179bfb4b43d89bf
 ```
 
