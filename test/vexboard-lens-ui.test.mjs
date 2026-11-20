@@ -393,3 +393,9 @@ test('browser and mouse Back/Forward revisit meaningful Lens viewpoints', () => 
   assert.doesNotMatch(page, /event\.button\s*===\s*[34]/, 'mouse side buttons use normal browser History semantics rather than vendor-specific interception');
   assert.match(page, /Browser or mouse Back \/ Forward revisits the Lens choices you traversed/);
 });
+
+
+test('static state consequences ignore gated-off inner presentation values', () => {
+  assert.match(page, /if \(outcome\?\.gate === false \|\| String\(outcome\?\.value \?\? ''\) !== binding\.value\) continue;/);
+  assert.match(page, /Gated-off relationships have no manifestation consequences/);
+});
