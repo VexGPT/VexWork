@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexstream-music.projectability",
+  "label": "VexStream Music Projectability",
+  "purpose": "Prove the accepted VexBoard Projection Consolidation foundation against current VexStream Music Desktop V4 by preserving existing semantic/product ownership, aligning only identity that current source cannot address truthfully, and projecting one Playback/Queue/lived-shell slice through the generic Screen Lens without product-specific reader branches or unnecessary V4 restructuring.",
+  "rootWorkRefs": [
+    "work.vexstream-music.projectability.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexstream-music"
+  ],
+  "sourceRefs": [
+    "projects/vexstream-music-projectability/README.md",
+    "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+    "project.vexboard.projection-consolidation",
+    "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md",
+    "projects/vexboard/SCREEN-LENS.md",
+    "repo.vexstream-music:v2/README.md",
+    "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
+    "repo.vexstream-music:v2/architecture/README.md",
+    "repo.vexstream-music:v2/web/index.html",
+    "repo.vexstream-music:v2/web/app.js",
+    "repo.vexstream-music:v2/web/features/playback/behavior.js",
+    "repo.vexstream-music:v2/web/features/queue/behavior.js",
+    "repo.vexstream-music:v2/web/features/player/composition.js"
+  ],
+  "formedAt": "2026-11-20T13:30:00.000Z"
+}
