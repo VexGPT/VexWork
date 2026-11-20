@@ -174,10 +174,18 @@ test('VexStream bounded Library terrain is expressed through the shared selectio
   assert.ok(find(LIBRARY, ALBUMS), 'Library / Albums alternate expression exists');
   assert.ok(find(LIBRARY, ARTISTS), 'Library / Artists alternate expression exists');
   assert.equal(screen.view?.scriptPolicy, 'NONE');
-  const libraryBindings = screen.view?.stateBindings?.filter((binding) =>
-    binding.presenceRef === shellRef || binding.presenceRef === modeRef
-  ) ?? [];
-  assert.equal(libraryBindings.length, 5, 'Library owns five source-view consequences even as later terrains add their own bindings');
+  const bindingPairs = new Set((screen.view?.stateBindings ?? []).map((binding) =>
+    binding.presenceRef + '::' + binding.value
+  ));
+  for (const [presenceRef, value] of [
+    [shellRef, HOME],
+    [shellRef, LIBRARY],
+    [modeRef, SONGS],
+    [modeRef, ALBUMS],
+    [modeRef, ARTISTS],
+  ]) {
+    assert.ok(bindingPairs.has(presenceRef + '::' + value), 'Library-required source-view consequence stays present: ' + value);
+  }
   assert.equal(vexstream.pathways.length, 7, 'presentation expansion does not manufacture semantic pathways');
 });
 
