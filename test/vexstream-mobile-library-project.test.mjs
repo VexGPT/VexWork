@@ -112,7 +112,7 @@ test('durable device library is terminal without closing separate Mobile Library
   assert.equal(clearData.sourceRefs.includes('github.issue.vexlife-android.162'), true);
 
   const root = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.outcome');
-  assert.equal(root.state, 'DECOMPOSED');
+  assert.equal(root.state, 'RUNNING');
 
   const storageHistory = graph.transitions.filter(
     (transition) => transition.workRef === storage.workRef,
@@ -144,7 +144,7 @@ test('Sort / Filter returns to active refinement when lived review cannot find f
   const controls = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.sort-filter-controls');
   assert.ok(browse);
   assert.ok(controls);
-  assert.equal(browse.state, 'DECOMPOSED');
+  assert.equal(browse.state, 'RUNNING');
   assert.equal(controls.parentWorkRefOrNull, browse.workRef);
   assert.equal(controls.state, 'RUNNING');
   assert.equal(controls.authorityDisposition, 'AUTHORIZED_BOUNDED');
@@ -193,11 +193,11 @@ test('Songs missing-content update is integrated and remains in Verify for lived
   assert.equal(needsHuman.cards.some((card) => card.workRef === item.workRef), false);
 });
 
-test('large offline library startup performance is a bounded active defect', () => {
+test('large offline library startup performance preserves the completed source correction', () => {
   const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.large-offline-startup-performance');
   assert.ok(item);
   assert.equal(item.workClass, 'DEFECT');
-  assert.equal(item.state, 'WAITING_HUMAN');
+  assert.equal(item.state, 'COMPLETED');
   assert.equal(item.workDisposition, 'ACTIVE');
   assert.equal(item.priorityClass, 'HIGH');
   assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.168'), true);
@@ -218,10 +218,10 @@ test('Playback Surfaces separates accepted projection from lived artwork converg
   assert.ok(offlineArtwork);
   assert.ok(currentArtwork);
   assert.ok(reconcile);
-  assert.equal(outcome.state, 'DECOMPOSED');
+  assert.equal(outcome.state, 'VERIFYING');
   assert.equal(artwork.state, 'COMPLETED');
   assert.equal(player.state, 'VERIFYING');
-  assert.equal(offlineArtwork.state, 'RUNNING');
+  assert.equal(offlineArtwork.state, 'VERIFYING');
   assert.equal(currentArtwork.state, 'VERIFYING');
   assert.equal(
     graph.transitions.some(

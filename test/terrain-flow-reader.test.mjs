@@ -14,87 +14,85 @@ import {
 const workspace = JSON.parse(fs.readFileSync(new URL('../public/workspace.json', import.meta.url), 'utf8'));
 const project = (ref) => workspace.projects.find((entry) => entry.project.projectRef === ref);
 
-test('ToCompletion surfaces normal-start Heretic integration as the active productization frontier', () => {
+test('ToCompletion treats terminal Heretic integration as historical under paused productization', () => {
   const p = project('project.vexlife.tocompletion');
-  const fronts = deepestCurrentFrontiers(p);
-  assert.deepEqual(fronts.map((item) => item.workRef), [
-    'work.vexlife.tocompletion.productization.heretic-normal-start-integration',
-  ]);
+  assert.deepEqual(deepestCurrentFrontiers(p), []);
 
   const rows = projectWorkfronts(p, { maxRows: 8 }).rows;
   const productization = rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
   assert.ok(productization);
-  assert.deepEqual(productization.currentItems.map((item) => item.workRef), [
-    'work.vexlife.tocompletion.productization.heretic-normal-start-integration',
+  assert.equal(productization.basis, 'LATEST_COMPLETED');
+  assert.deepEqual(productization.currentItems.map((item) => [item.workRef, item.state]), [
+    ['work.vexlife.tocompletion.productization.heretic-normal-start-integration', 'COMPLETED'],
   ]);
   assert.deepEqual(productization.nextDependencyItems.map((item) => item.workRef), []);
 });
 
-test('Operational Console keeps Terrain review while Antique Plate becomes the next Commerce frontier', () => {
+test('Operational Console keeps completed Terrain and Commerce as prior context while Antique Plate remains current', () => {
   const p = project('project.vexwork.operational-console');
   const rows = projectWorkfronts(p, { maxRows: 8 }).rows;
-  assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain'), true);
+  assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain'), false);
   assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.commerce-template'), false);
-  assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.antique-pilot'), true);
-  const terrain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
   const antique = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.antique-pilot');
-  assert.equal(terrain.currentItems.some((item) => item.state === 'VERIFYING'), true);
+  assert.ok(antique);
   assert.equal(antique.scopeState, 'RUNNING');
   assert.deepEqual(antique.currentItems.map((item) => item.workRef), [
     'work.vexwork.operational-console.antique-pilot',
   ]);
-  assert.equal(antique.currentItems[0].state, 'RUNNING');
+  assert.deepEqual(antique.priorItems.map((item) => [item.workRef, item.state]), [
+    ['work.vexwork.operational-console.commerce-template', 'COMPLETED'],
+  ]);
 });
 
-test('Connected Services Roadmap advances to VCS-06 after terminal VCS-05', () => {
+test('Connected Services Roadmap releases the human acceptance walk after terminal VCS-07', () => {
   const p = project('project.vexlife.connected-services');
   const roadmap = projectScopeRoadmap(p, { maxSteps: 4 });
-  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.connected-services.vcs06-architecture-extraction');
+  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.connected-services.human-acceptance-walk');
   assert.ok(row);
   assert.deepEqual(row.priorItems.map((item) => item.workRef), [
-    'work.vexlife.connected-services.vcs05-stream-stress',
+    'work.vexlife.connected-services.vcs07-deployment-choices',
   ]);
   assert.deepEqual(
     row.steps.map((step) => step.items.map((item) => item.workRef)),
     [
-      ['work.vexlife.connected-services.vcs06-architecture-extraction'],
-      ['work.vexlife.connected-services.vcs07-deployment-choices'],
+      ['work.vexlife.connected-services.human-acceptance-walk'],
     ],
   );
-  assert.deepEqual(row.steps.map((step) => step.basis), ['CURRENT', 'DEPENDENCY']);
+  assert.deepEqual(row.steps.map((step) => step.basis), ['CURRENT']);
 });
 
-test('ToCompletion Roadmap keeps ordinary productization current while developmental and lateral scopes remain unsequenced', () => {
+test('ToCompletion Roadmap preserves paused later scopes while dependency distance remains discoverable', () => {
   const p = project('project.vexlife.tocompletion');
   const roadmap = projectScopeRoadmap(p, { maxSteps: 4 });
-  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
+  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.tocompletion.p0b.foundation');
   assert.ok(row);
-  assert.equal(row.steps[0].items.some((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup'), true);
   assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning'), true);
   assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth'), true);
   assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion'), true);
+  assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup'), true);
 
   const p6 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p6.cultivation-training-birth');
-  assert.equal(p6.distance, null);
-  assert.equal(p6.basis, 'LATER_UNSEQUENCED');
+  assert.equal(p6.distance, 6);
+  assert.equal(p6.basis, 'DEPENDENCY');
 
   const p7 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p7.whole-product-expansion');
-  assert.equal(p7.distance, null);
-  assert.equal(p7.basis, 'LATER_UNSEQUENCED');
+  assert.equal(p7.distance, 5);
+  assert.equal(p7.basis, 'DEPENDENCY');
 });
 
-test('time lens preserves current workfronts while project activity counts accepted movement', () => {
+test('time lens preserves the current Antique workfront while project activity counts accepted movement', () => {
   const p = project('project.vexwork.operational-console');
   const nowMs = Date.parse('2026-10-23T06:20:00.000Z');
   const now = projectWorkfronts(p, { recentHours: 0, nowMs, maxRows: 8 });
   const day = projectWorkfronts(p, { recentHours: 24, nowMs, maxRows: 8 });
-  const terrainNow = now.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
-  const terrainDay = day.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
-  assert.deepEqual(terrainNow.currentItems.map((item) => item.workRef), terrainDay.currentItems.map((item) => item.workRef));
-  assert.equal(day.rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.commerce-template'), false);
+  const antiqueNow = now.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.antique-pilot');
+  const antiqueDay = day.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.antique-pilot');
+  assert.deepEqual(antiqueNow.currentItems.map((item) => item.workRef), antiqueDay.currentItems.map((item) => item.workRef));
+  assert.equal(day.rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain'), false);
 
   const summary = projectActivitySummary(p, { recentHours: 24, nowMs });
-  assert.equal(summary.review >= 1, true);
+  assert.equal(summary.running, 1);
+  assert.equal(summary.review, 0);
   assert.equal(summary.recentExactTransitionCount >= 1, true);
 });
 
@@ -106,12 +104,12 @@ test('completed Foundation collapses to a latest-completed workfront instead of 
   assert.equal(result.rows[0].basis, 'LATEST_COMPLETED');
 });
 
-test('local workfront roadmap keeps completed setup safety as prior context and normal-start Heretic integration current', () => {
+test('local workfront roadmap keeps completed setup safety and terminal Heretic integration as historical context', () => {
   const p = project('project.vexlife.tocompletion');
   const roadmap = projectRoadmap(p, { maxSteps: 4, maxRows: 8 });
   const productization = roadmap.rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
   assert.ok(productization);
-  assert.equal(productization.steps[0].basis, 'CURRENT');
+  assert.equal(productization.steps[0].basis, 'HISTORICAL');
   assert.deepEqual(productization.steps[0].items.map((item) => item.workRef), [
     'work.vexlife.tocompletion.productization.heretic-normal-start-integration',
   ]);
