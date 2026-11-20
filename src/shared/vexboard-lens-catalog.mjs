@@ -9,7 +9,7 @@
 
 export const LENS_CATALOG_SCHEMA = 'vexboard.lens-catalog/v1';
 export const STANDING_BUILDS = Object.freeze(['stable', 'main']);
-export const LENS_STATUSES = Object.freeze(['GENERATED', 'NOT_BUILT']);
+export const LENS_STATUSES = Object.freeze(['GENERATED', 'CANDIDATE', 'NOT_BUILT']);
 export const BOARD_ROLES = Object.freeze(['RELATED', 'TRIAL']);
 
 const SHA = /^[0-9a-f]{40}$/;
@@ -130,10 +130,11 @@ function normalizeLens(input, label) {
     return { status, reason: text(input.reason, `${label} reason`), next: text(input.next, `${label} next`) };
   }
   const builds = list(input.builds, `${label} builds`).map((build, index) => normalizeBuild(build, `${label} builds[${index}]`));
-  for (const buildRef of STANDING_BUILDS) {
-    const count = builds.filter((build) => build.buildRef === buildRef).length;
-    if (count !== 1) fail(`${label} needs exactly one ${buildRef} build`);
-  }
+  const stableCount = builds.filter((build) => build.buildRef === 'stable').length;
+  const mainCount = builds.filter((build) => build.buildRef === 'main').length;
+  if (mainCount !== 1) fail(`${label} needs exactly one main build`);
+  if (status === 'GENERATED' && stableCount !== 1) fail(`${label} generated lens needs exactly one stable build`);
+  if (status === 'CANDIDATE' && stableCount !== 0) fail(`${label} candidate lens cannot carry Stable before acceptance`);
   const byFile = new Map();
   for (const build of builds) {
     const other = byFile.get(build.lens);
@@ -156,7 +157,7 @@ function normalizeLens(input, label) {
     exportedLens,
     overlay,
     anyCommit: input.anyCommit === true,
-    builds: STANDING_BUILDS.map((buildRef) => builds.find((build) => build.buildRef === buildRef)),
+    builds: STANDING_BUILDS.map((buildRef) => builds.find((build) => build.buildRef === buildRef)).filter(Boolean),
   };
 }
 
@@ -201,7 +202,7 @@ export function normalizeLensCatalog(input) {
   const defaultSubjectRef = ref(input.defaultSubjectRef, 'defaultSubjectRef', 'subject');
   const fallback = subjects.find((subject) => subject.subjectRef === defaultSubjectRef);
   if (!fallback) fail(`defaultSubjectRef ${defaultSubjectRef} is not a subject`);
-  if (fallback.lens.status !== 'GENERATED') fail('defaultSubjectRef must have a generated lens');
+  if (fallback.lens.status === 'NOT_BUILT') fail('defaultSubjectRef must have a projectable lens');
   return freeze({
     schemaVersion: LENS_CATALOG_SCHEMA,
     catalogRef: ref(input.catalogRef, 'catalogRef', 'catalog'),
@@ -218,8 +219,12 @@ export function subjectFor(catalog, key) {
 }
 
 export function buildFor(subject, buildRef) {
-  if (subject?.lens?.status !== 'GENERATED') return null;
+  if (!subject?.lens || subject.lens.status === 'NOT_BUILT') return null;
   return subject.lens.builds.find((build) => build.buildRef === buildRef) ?? null;
+}
+
+export function defaultBuildFor(subject) {
+  return buildFor(subject, 'stable') ?? buildFor(subject, 'main');
 }
 
 export function sameCommit(subject) {
@@ -238,8 +243,8 @@ export function bindLensBuildSource(lensInput, build) {
   return copy;
 }
 
-// What a lens.html URL asks for. Unknown or invalid input falls back to the default subject's
-// Stable build and says why, so a mistyped link still opens something true.
+// What a lens.html URL asks for. Unknown or invalid input falls back to that subject's accepted
+// Stable build when it has one, otherwise its current Main candidate, and says why.
 export function resolveLensRequest(catalog, params) {
   const get = (key) => (typeof params?.get === 'function' ? params.get(key) : params?.[key]) ?? null;
   const legacy = get('lens');
@@ -248,23 +253,29 @@ export function resolveLensRequest(catalog, params) {
   let subject = subjectFor(catalog, get('subject'));
   if (get('subject') && !subject) notice = `No project named "${get('subject')}". Showing ${subjectFor(catalog, catalog.defaultSubjectRef).label}.`;
   subject ??= subjectFor(catalog, catalog.defaultSubjectRef);
-  if (subject.lens.status !== 'GENERATED') return { mode: 'NO_LENS', subject, build: null, commitRef: null, lensPath: null, notice };
+  if (subject.lens.status === 'NOT_BUILT') return { mode: 'NO_LENS', subject, build: null, commitRef: null, lensPath: null, notice };
+  const fallback = defaultBuildFor(subject);
+  const fallbackLabel = fallback?.label ?? 'available build';
   const commit = get('commit');
   if (commit) {
-    if (!subject.lens.anyCommit) notice = `${subject.label} cannot be projected at an arbitrary commit yet. Showing Stable.`;
+    if (!subject.lens.anyCommit) notice = `${subject.label} cannot be projected at an arbitrary commit yet. Showing ${fallbackLabel}.`;
     else {
       try {
         return { mode: 'COMMIT', subject, build: null, commitRef: sourceRefFromInput(commit, subject.repository.url), lensPath: null, notice };
       } catch (error) {
-        notice = `${error.message.replace(/^lens catalog: /, '')}. Showing Stable.`;
+        notice = `${error.message.replace(/^lens catalog: /, '')}. Showing ${fallbackLabel}.`;
       }
     }
   }
   const requested = get('build');
-  let build = buildFor(subject, requested ?? 'stable');
+  let build = requested ? buildFor(subject, requested) : fallback;
   if (!build) {
-    notice ??= `No build named "${requested}". Showing Stable.`;
-    build = buildFor(subject, 'stable');
+    if (requested === 'stable' && subject.lens.status === 'CANDIDATE') {
+      notice ??= `${subject.label} has no accepted Stable projection yet. Showing Main.`;
+    } else {
+      notice ??= `No build named "${requested}". Showing ${fallbackLabel}.`;
+    }
+    build = fallback;
   }
   return { mode: 'BUILD', subject, build, commitRef: null, lensPath: build.lens, notice };
 }
@@ -274,7 +285,7 @@ export function lensHref(subject, { build = null, commit = null, screen = null, 
   const query = new URLSearchParams();
   query.set('subject', subject.slug);
   if (commit) query.set('commit', commit);
-  else if (build && build !== 'stable') query.set('build', build);
+  else if (build && build !== defaultBuildFor(subject)?.buildRef) query.set('build', build);
   if (screen) query.set('screen', screen);
   if (element) query.set('element', element);
   if (left) query.set('left', left);
@@ -295,7 +306,7 @@ function plainCopy(catalog) {
 export function advanceBuild(catalogInput, subjectKey, buildRef, { commit, observedAt = null, separateLens, sourceBlobSha1 = null }) {
   const catalog = normalizeLensCatalog(catalogInput);
   const subject = subjectFor(catalog, subjectKey);
-  if (!subject || subject.lens.status !== 'GENERATED') fail(`${subjectKey} has no generated lens`);
+  if (!subject || subject.lens.status === 'NOT_BUILT') fail(`${subjectKey} has no projectable lens`);
   if (buildRef === 'stable') fail('Stable moves only through promoteBuild');
   if (!SHA.test(String(commit))) fail('advanceBuild needs a full commit SHA');
   const next = plainCopy(catalogInput);
@@ -310,28 +321,53 @@ export function advanceBuild(catalogInput, subjectKey, buildRef, { commit, obser
   if (sourceBlobSha1) build.sourceBlobSha1 = sourceBlobSha1;
   else if (target.lens.exportedLens) fail('advanceBuild needs sourceBlobSha1 for an exported Lens');
   else delete build.sourceBlobSha1;
-  build.lens = commit === stable.commit ? stable.lens : relativeJson(separateLens, 'separateLens');
+  build.lens = stable && commit === stable.commit ? stable.lens : relativeJson(separateLens, 'separateLens');
   normalizeLensCatalog(next);
   const stillUsed = next.subjects.some((entry) => entry.lens.builds?.some((candidate) => candidate.lens === previousLens));
-  return { catalog: next, lens: build.lens, write: build.lens !== stable.lens, retire: stillUsed ? null : previousLens };
+  return { catalog: next, lens: build.lens, write: !stable || build.lens !== stable.lens, retire: stillUsed ? null : previousLens };
 }
 
 // Promote Main to Stable: Stable takes Main's commit, and Main then shares Stable's lens file.
 export function promoteBuild(catalogInput, subjectKey, { on, evidence = [] }) {
   const catalog = normalizeLensCatalog(catalogInput);
   const subject = subjectFor(catalog, subjectKey);
-  if (!subject || subject.lens.status !== 'GENERATED') fail(`${subjectKey} has no generated lens`);
+  if (!subject || subject.lens.status === 'NOT_BUILT') fail(`${subjectKey} has no projectable lens`);
   if (!DATE.test(String(on))) fail('promoteBuild needs a YYYY-MM-DD date');
   const main = buildFor(subject, 'main');
   const stable = buildFor(subject, 'stable');
-  const changed = main.commit !== stable.commit;
+  const changed = !stable || main.commit !== stable.commit;
   if (!changed) return { catalog: plainCopy(catalogInput), changed: false, copy: null, retire: null };
   const promotionEvidence = list(evidence, 'promotion evidence').map((entry, index) => text(entry, `promotion evidence[${index}]`));
   if (!promotionEvidence.length) fail('promoteBuild needs acceptance evidence when Stable moves');
   const next = plainCopy(catalogInput);
   const target = next.subjects.find((entry) => entry.subjectRef === subject.subjectRef);
-  const nextStable = target.lens.builds.find((build) => build.buildRef === 'stable');
   const nextMain = target.lens.builds.find((build) => build.buildRef === 'main');
+
+  if (!stable) {
+    const stableLens = relativeJson(`${subject.slug}.screen-lens.json`, 'promoted Stable lens');
+    target.lens.status = 'GENERATED';
+    target.lens.builds.unshift({
+      buildRef: 'stable',
+      label: 'Stable',
+      summary: 'Accepted projection. Moves only when Main is promoted.',
+      commit: main.commit,
+      lens: stableLens,
+      since: on,
+      ...(main.observedAt ? { observedAt: main.observedAt } : {}),
+      evidence: promotionEvidence,
+      ...(main.sourceBlobSha1 ? { sourceBlobSha1: main.sourceBlobSha1 } : {}),
+    });
+    nextMain.lens = stableLens;
+    normalizeLensCatalog(next);
+    return {
+      catalog: next,
+      changed: true,
+      copy: main.lens !== stableLens ? { from: main.lens, to: stableLens } : null,
+      retire: main.lens !== stableLens ? main.lens : null,
+    };
+  }
+
+  const nextStable = target.lens.builds.find((build) => build.buildRef === 'stable');
   nextStable.commit = main.commit;
   nextStable.since = on;
   nextStable.evidence = promotionEvidence;
