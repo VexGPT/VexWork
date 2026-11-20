@@ -36,7 +36,7 @@ jobs:
       - name: Offline Lens build verification with bounded pre-existing Product pin debt
         run: |
           set +e
-          node scripts/build-screen-lens.mjs --verify > /tmp/lens-verify.json
+          node scripts/build-screen-lens.mjs --verify > /tmp/lens-verify.json 2>&1
           verify_status=$?
           set -e
           cat /tmp/lens-verify.json
