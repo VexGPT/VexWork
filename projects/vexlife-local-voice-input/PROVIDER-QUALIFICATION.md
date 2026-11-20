@@ -666,3 +666,29 @@ Can the selected runtime be packaged/currentized without coupling to Heretic?
 ~~~
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE][LOCAL-VOICE-INPUT][PROVIDER-QUALIFICATION] -->
+
+## Final provider disposition — accepted current Product
+
+The provider qualification sequence completed beyond this research checkpoint:
+
+~~~text
+sherpa 20M
+  direct JVM/native streaming seam = real
+  first fixture quality = not selected
+
+whisper.cpp Base English
+  exact 18/18 fixture words
+  direct JVM/JNA/Metal seam = proved
+  selected as first Product local-ASR relationship
+
+#310
+  persistent provider + progressive dictation accepted
+
+#338
+  Mac bundled provider + Windows materialized provider
+  final cross-platform lived VoiceInput accepted and merged
+~~~
+
+Provider qualification is therefore COMPLETED; future provider/model additions are separate qualification successors.
+
+<!-- [VXG RealForever][LOCAL-ASR][PROVIDER-QUALIFICATION][COMPLETED] -->

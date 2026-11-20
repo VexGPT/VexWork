@@ -61,9 +61,9 @@ test('Operational Console Terrain remains parallel to the existing completion ch
   const terrain = byRef.get('work.vexwork.operational-console.relational-terrain');
   const patient = byRef.get('work.vexwork.operational-console.relational-terrain.patient-zero');
   const temporal = byRef.get('work.vexwork.operational-console.relational-terrain.temporal-currentness');
-  assert.equal(terrain.state, 'RUNNING');
-  assert.equal(patient.state, 'VERIFYING');
-  assert.equal(temporal.state, 'WAITING_DEPENDENCIES');
+  assert.equal(terrain.state, 'COMPLETED');
+  assert.equal(patient.state, 'COMPLETED');
+  assert.equal(temporal.state, 'COMPLETED');
   assert.deepEqual(temporal.dependencyRefs, [patient.workRef]);
   assert.deepEqual(terrain.dependencyRefs, []);
 });
@@ -77,9 +77,12 @@ test('Operational Console board distinguishes admitted evolution from held futur
   const verify = board.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
   assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 24);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.outcome'), true);
-  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain'), false);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero'), false);
-  assert.equal(verify.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero'), true);
+  assert.equal(verify.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero'), false);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain.temporal-currentness'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-foundation'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-contract'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-projection'), true);

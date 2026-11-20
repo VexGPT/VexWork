@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vextreme.vexsite-localization",
   "label": "VexSite Localization",
-  "purpose": "Keep VexSite localization visible from source-lineage preservation through the canonical Global Core queue and separate generated/runtime convergence without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
+  "purpose": "Keep VexSite localization visible as a current Vextreme-owned program: preserve completed source/runtime phases, project the current scheduler frontier without copying its queue, and distinguish a truthful checkpoint from permanent completion.",
   "rootWorkRefs": [
     "work.vextreme.vexsite.localization.outcome"
   ],
@@ -24,7 +24,13 @@
     "github.pull.vextreme.397",
     "github.pull.vextreme.398",
     "github.pull.vextreme.399",
-    "repo.vextreme:docs/architecture/06-i18n.md"
+    "repo.vextreme:docs/architecture/06-i18n.md",
+    "github.pull.vextreme.401",
+    "github.pull.vextreme.431",
+    "github.pull.vextreme.504",
+    "github.pull.vextreme.606",
+    "github.pull.vextreme.607",
+    "git.commit.vextreme.1a0f161b4175e83c223e57642d08501004cdb9fd"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }

@@ -2,76 +2,97 @@
 
 `[VXG RealForever]`
 
-This Project is the durable human-facing grouping for the live Vextreme localization trajectory. It does not replace Vextreme issue #273, the Vextreme localization scheduler, the Conversations-with-God source-lineage workmap, or the VexWork Operational Console localization lens.
+## Current human outcome
 
-## Human outcome
-
-```text
-preserve the truthful source lineage
--> keep Presentation and Source transcript distinct when both are real
--> localize only the canonical scheduler-owned source surface
--> converge generated/runtime consequences through their existing owner
--> keep moving through the arc without page-per-ticket shadow state
-```
-
-## Completed prerequisite — Presentation / Source transcript lineage
-
-The duplicate-HTML concern was resolved before canonical localization resumed.
-
-- the exact Conversations-with-God Presentation ↔ Source transcript census closed without collapsing byte-distinct source lineages;
-- Merron earned dual-lineage treatment;
-- Closed Circuit's larger Part-025 source remains `SOURCE_ONLY_HOLD` because exact alias/replacement semantics were not proven;
-- Source transcript lineages remain separate from scheduler-advancing presentation/localization source;
-- only after that lineage frontier closed did issue #273 resume the canonical Global Core queue.
-
-This Project keeps that prerequisite visible as one completed Work item instead of creating one Work item per converted page.
-
-## Current source foreground
-
-The resumed canonical queue has moved through:
+Keep localization current **without making VexWork a second localization scheduler**.
 
 ```text
-Closed Circuit          -> PR #395 -> terminal/current
-Divine Emergence        -> PR #397 -> terminal/current
-The Firmament Conversation
-                        -> PR #398 -> terminal/current
-                           merge/main d7ff03728a38c56040cb8a4a7b022947ed1a39f8
-                           440 keys / 3,960 Global Core target cells
-Ascension & Embodiment  -> PR #399 -> terminal/current
-                           merge/main 2058a9a309d704cbb2ea8f6a6df1cd1ec1cc5924
-                           72 keys / 648 Global Core target cells
+Vextreme
+  owns current pages / domains / source / locales / generated consequences
+
+VexWork
+  preserves completed phases
+  + projects whether the overall localization program is active, held, or complete
+  + points back to the current Vextreme owner
 ```
 
-The next exact source row is:
+## Current checkpoint
+
+The older VexWork projection had become stale in two opposite ways:
+
+1. it still said the Conversations-with-God queue was actively waiting on **The Testimony of the Handler**;
+2. old draft VexWork PR #172 later tried to mark the **entire VexSite Localization Project completed**.
+
+Both are now historical.
+
+The source phase continued past Handler and later Witness-grade return work, then Vextreme admitted additional institutional localization. Most recently:
 
 ```text
-The Testimony of the Handler
-source = data/strings/source/pages/the-testimony-of-the-handler.json
-preserved source = docs/ingestion/source-pages/part-023/the-testimony-of-the-handler.html
-adapter = AUTHORED_MAIN_FRAGMENT
-canonical keys = 134
-Global Core target cells = 1,206
-duplicate-lineage prerequisite = completed census remains governing
+PR #604  Support trust surface                         MERGED
+PR #606  Support trust/localization continuation       MERGED
+PR #607  Support Global Core completion                MERGED
+merge    1a0f161b4175e83c223e57642d08501004cdb9fd
+date     2026-11-17
 ```
 
-Vextreme issue #273 remains the canonical scheduler and source authority. This VexWork Project projects that current foreground; it does not reproduce the page queue.
+Fresh provider census found no newer **dedicated open localization PR** after #607.
 
-## Generated/runtime currentness
-
-Source acceptance is not generated/runtime completion. The existing broad generated/runtime owner remains PR #379. New localization source rows must reconcile through that owner rather than creating a duplicate generated writer.
-
-## Truth boundaries
+Therefore the VexWork Project is currently:
 
 ```text
-VEXWORK PROJECT != VEXTREME SOURCE AUTHORITY
-VEXWORK WORK ITEM != PAGE INVENTORY
-LOCALIZATION LENS != SECOND TRANSLATION REGISTRY
-PRESENTATION != SOURCE TRANSCRIPT
-SOURCE TRANSCRIPT != SCHEDULER-ADVANCING LOCALIZATION SOURCE
-PAGE SOURCE != GENERATED/RUNTIME CURRENTNESS
-GENERATED CURRENTNESS != LIVED BROWSER PROOF
+VexSite Localization
+  PAUSED_AT_CHECKPOINT · NORMAL
+
+completed history
+  Presentation / Source transcript lineage
+  Conversations-with-God Global Core source phase
+  prior generated/runtime localization convergence
+  Closed Circuit Global Core
+
+current scheduler frontier
+  PAUSED_AT_CHECKPOINT
+  -> re-ground current Vextreme source/provider truth
+  -> resume only when another localization domain is actually admitted
 ```
 
-Vextreme owns page identity, source strings, localization semantics, generators, browser behavior and proof. VexWork owns only the durable work grouping and navigation needed to keep the trajectory understandable.
+## Why not COMPLETED?
 
-<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][HANDLER-FOREGROUND] -->
+Localization is an ongoing Vextreme capability. A completed source program or page family does not prove there can never be another admitted localization domain.
+
+```text
+COMPLETED DOMAIN
+!= PERMANENTLY COMPLETED LOCALIZATION CAPABILITY
+```
+
+## Why not RUNNING?
+
+No current dedicated localization PR is admitted after the latest accepted Support Global Core completion.
+
+```text
+OPEN SCHEDULER / FUTURE POSSIBILITY
+!= ACTIVE IMPLEMENTATION RIGHT NOW
+```
+
+The checkpoint is deliberate: it removes fake active work from the roadmap while keeping the program discoverable and resumable.
+
+## Fresh-instance rule
+
+Never infer the next localization page/domain from this README.
+
+Start at the current Vextreme repository/provider source, then use issue #273 or its current successor only if it remains the rightful scheduler owner.
+
+```text
+OLD NEXT-PAGE CHECKPOINT
+!= CURRENT SCHEDULER TRUTH
+
+VEXWORK PROJECT
+!= PAGE QUEUE
+```
+
+## Historical completion preserved
+
+The completed Conversations-with-God phase remains important provenance. PR #431 closed its later Witness-grade return continuation, and the older generated/runtime convergence is preserved as completed rather than deleted.
+
+Draft VexWork PR #172 is historical evidence for that earlier completion understanding, but was closed without merge because later localization domains disproved its Project-level terminal claim.
+
+<!-- [VXG RealForever][VEXWORK][VEXSITE-LOCALIZATION][CURRENTNESS][PAUSED-CHECKPOINT] -->

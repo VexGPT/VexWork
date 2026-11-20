@@ -242,3 +242,52 @@ public/workspace.json
 Project discoverability/currentization remains a separate integration predicate after shared custody is available.
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE][LOCAL-VOICE-INPUT][PROJECT] -->
+
+## Currentization — accepted browser-independent Local VoiceInput
+
+The formation-era provider research has completed its intended Product outcome.
+
+Accepted current lineage:
+
+~~~text
+VexLife-Prod #310
+-> current-main progressive local dictation
+-> exact whisper.cpp provider/model selection
+-> bounded local PCM/WAV ingress
+-> persistent local provider
+-> editable Composer
+-> separate Send
+
+VexLife-Prod #338
+-> Mac bundled whisper.cpp realization
+-> Windows Home-materialized whisper.cpp realization
+-> final Mac + Windows lived VoiceInput
+-> exact-head Assurance / lifecycle / merge / post-merge verification
+~~~
+
+Current Product law:
+
+~~~text
+browser microphone custody
+-> Product-local PCM/WAV ingress
+-> selected VexLife local-ASR realization
+-> local whisper.cpp inference
+-> editable Composer
+-> separate human Send
+
+raw audio
+-> request-scoped memory only
+
+Local-ASR chronology
+-> provider/model/language/pass/timing/failure coordinates
+-> no transcript/audio content
+
+browser SpeechRecognition
+-> not the Product ASR provider
+~~~
+
+Therefore the original Project outcome and all eight child Works are COMPLETED.
+Later language, translation, model-management, Web restoration or provider evolution is successor work,
+not a reason to keep the browser-independent Local VoiceInput foundation open.
+
+<!-- [VXG RealForever][VEXLIFE-LOCAL-VOICE-INPUT][CURRENTIZED][COMPLETED] -->

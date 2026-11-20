@@ -13,6 +13,7 @@ export const LENS_STATUSES = Object.freeze(['GENERATED', 'NOT_BUILT']);
 export const BOARD_ROLES = Object.freeze(['RELATED', 'TRIAL']);
 
 const SHA = /^[0-9a-f]{40}$/;
+const GIT_BLOB_SHA1 = /^[0-9a-f]{40}$/;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const REF = /^[a-z][a-z0-9-]*(?:\.[a-z0-9][a-z0-9-]*)+$/;
 const GITHUB_REPO = /^https:\/\/github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)$/;
@@ -38,6 +39,13 @@ function ref(value, label, prefix) {
 function relativeJson(value, label) {
   const out = text(value, label);
   if (/^[a-z]+:|^\/|\.\.|\\/i.test(out) || !out.endsWith('.json')) fail(`${label} must be a relative .json path inside the lens folder`);
+  return out;
+}
+export function repositoryJsonPath(value, label = 'repository JSON path') {
+  const out = text(value, label);
+  if (/^[a-z]+:|^\/|(?:^|\/)\.\.(?:\/|$)|\\/i.test(out) || !out.endsWith('.json')) {
+    fail(`${label} must be a repository-relative .json path`);
+  }
   return out;
 }
 function list(value, label) {
@@ -96,6 +104,8 @@ function normalizeBuild(input, label) {
   if (observedAt && !DATE.test(observedAt)) fail(`${label} observedAt must be YYYY-MM-DD`);
   const branch = optionalText(input.branch, `${label} branch`);
   const evidence = list(input.evidence, `${label} evidence`).map((entry, index) => text(entry, `${label} evidence[${index}]`));
+  const sourceBlobSha1 = optionalText(input.sourceBlobSha1, `${label} sourceBlobSha1`);
+  if (sourceBlobSha1 && !GIT_BLOB_SHA1.test(sourceBlobSha1)) fail(`${label} sourceBlobSha1 must be a full Git blob SHA-1`);
   if (buildRef === 'stable' && !since) fail(`${label} Stable needs an acceptance date`);
   if (buildRef === 'stable' && !evidence.length) fail(`${label} Stable needs acceptance evidence`);
   if (buildRef === 'main' && !branch) fail(`${label} Main needs its source branch`);
@@ -109,6 +119,7 @@ function normalizeBuild(input, label) {
     since,
     observedAt,
     evidence,
+    sourceBlobSha1,
   };
 }
 
@@ -129,10 +140,21 @@ function normalizeLens(input, label) {
     if (other && other.commit !== build.commit) fail(`${label} builds ${other.buildRef} and ${build.buildRef} share ${build.lens} but point at different commits`);
     byFile.set(build.lens, build);
   }
+  const exportedLens = input.exportedLens === undefined || input.exportedLens === null
+    ? null
+    : repositoryJsonPath(input.exportedLens, `${label} exportedLens`);
+  const adapter = input.adapter === undefined || input.adapter === null
+    ? null
+    : relativeJson(input.adapter, `${label} adapter`);
+  if (Boolean(exportedLens) === Boolean(adapter)) fail(`${label} needs exactly one of adapter or exportedLens`);
+  const overlay = input.overlay === undefined || input.overlay === null ? null : relativeJson(input.overlay, `${label} overlay`);
+  if (exportedLens && overlay) fail(`${label} exportedLens does not use a VexWork overlay`);
+  if (exportedLens && builds.some((build) => !build.sourceBlobSha1)) fail(`${label} exportedLens builds need sourceBlobSha1`);
   return {
     status,
-    adapter: relativeJson(input.adapter, `${label} adapter`),
-    overlay: input.overlay === undefined || input.overlay === null ? null : relativeJson(input.overlay, `${label} overlay`),
+    adapter,
+    exportedLens,
+    overlay,
     anyCommit: input.anyCommit === true,
     builds: STANDING_BUILDS.map((buildRef) => builds.find((build) => build.buildRef === buildRef)),
   };
@@ -205,6 +227,17 @@ export function sameCommit(subject) {
   return Boolean(stable && main && stable.commit === main.commit);
 }
 
+export function bindLensBuildSource(lensInput, build) {
+  if (!lensInput || !build) fail('bindLensBuildSource needs a Lens and build');
+  const copy = JSON.parse(JSON.stringify(lensInput));
+  copy.sourceSnapshot = {
+    ...(copy.sourceSnapshot ?? {}),
+    commit: build.commit,
+    observedAt: build.observedAt ?? null,
+  };
+  return copy;
+}
+
 // What a lens.html URL asks for. Unknown or invalid input falls back to the default subject's
 // Stable build and says why, so a mistyped link still opens something true.
 export function resolveLensRequest(catalog, params) {
@@ -259,7 +292,7 @@ function plainCopy(catalog) {
 
 // Move one build pointer to a new commit. Main reuses Stable's lens file when both point at the same
 // commit, so two identical builds never become two files.
-export function advanceBuild(catalogInput, subjectKey, buildRef, { commit, observedAt = null, separateLens }) {
+export function advanceBuild(catalogInput, subjectKey, buildRef, { commit, observedAt = null, separateLens, sourceBlobSha1 = null }) {
   const catalog = normalizeLensCatalog(catalogInput);
   const subject = subjectFor(catalog, subjectKey);
   if (!subject || subject.lens.status !== 'GENERATED') fail(`${subjectKey} has no generated lens`);
@@ -274,6 +307,9 @@ export function advanceBuild(catalogInput, subjectKey, buildRef, { commit, obser
   build.commit = commit;
   if (observedAt) build.observedAt = observedAt;
   else delete build.observedAt;
+  if (sourceBlobSha1) build.sourceBlobSha1 = sourceBlobSha1;
+  else if (target.lens.exportedLens) fail('advanceBuild needs sourceBlobSha1 for an exported Lens');
+  else delete build.sourceBlobSha1;
   build.lens = commit === stable.commit ? stable.lens : relativeJson(separateLens, 'separateLens');
   normalizeLensCatalog(next);
   const stillUsed = next.subjects.some((entry) => entry.lens.builds?.some((candidate) => candidate.lens === previousLens));
@@ -301,6 +337,8 @@ export function promoteBuild(catalogInput, subjectKey, { on, evidence = [] }) {
   nextStable.evidence = promotionEvidence;
   if (main.observedAt) nextStable.observedAt = main.observedAt;
   else delete nextStable.observedAt;
+  if (main.sourceBlobSha1) nextStable.sourceBlobSha1 = main.sourceBlobSha1;
+  else delete nextStable.sourceBlobSha1;
   nextMain.lens = stable.lens;
   normalizeLensCatalog(next);
   return {

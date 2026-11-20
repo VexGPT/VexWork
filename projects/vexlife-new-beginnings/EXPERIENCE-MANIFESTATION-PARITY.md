@@ -159,6 +159,304 @@ HELD
 
 Do not assume textual or visual sameness is required. Preserve the human outcome and design consistency while allowing VexLife-Prod's cleaner architecture to remain cleaner.
 
+## Current lived pressure — Companion turn interaction integrity
+
+The lived product exposed one relationship that must remain true while Browser, startup and Vision
+continue evolving:
+
+```text
+what the human sees about the current Vex turn
+=
+what the exact in-flight Vex turn is actually carrying / doing
+```
+
+This belongs under experience manifestation parity because it crosses the Conversation timeline,
+composer, current Context projection and canonical turn. It is not owned by startup sequencing or by
+the normal-Browser-provider successor.
+
+### Current-turn context != next-turn composer context
+
+Current Product source snapshots browser context when one Send attempt is formed.
+
+```text
+Send
+-> exact pending attempt
+-> browserContext captured for that attempt
+
+Include/change page context while Send is already in flight
+-> updates composer context for a later turn
+-> does not mutate the active attempt
+```
+
+Therefore:
+
+```text
+CURRENT_IN_FLIGHT_TURN_CONTEXT
+!= NEXT_TURN_COMPOSER_CONTEXT
+
+VISIBLE_PAGE_INCLUDED
+!= PROOF_CURRENT_TURN_RECEIVED_PAGE
+```
+
+The browser-context path itself is source-connected:
+
+```text
+Include page
+-> separate context-provider rendering
+-> Send BrowserContextInput
+-> DirectPromptContext.BrowserContext
+-> prompt materialization + receipt
+```
+
+Exact-head lived proof must still demonstrate that context included **before Send** reaches the same
+turn and that the current-turn UI identifies the context actually bound to it.
+
+### Lived clarification — captured page can be truthful while the visible page has moved
+
+Victor's lived Conversation `[96] -> [97]` showed Vex answering from a previously captured Terrain Map /
+Direct Contact page while the visible Browser had already navigated onward to a VexArchitecture page.
+The presentation simultaneously showed the web-hosted navigation warning and cleared current address/context.
+
+This is not evidence that BrowserContext failed to reach Vex. It demonstrates the distinction already
+required above:
+
+```text
+TURN-BOUND CAPTURED PAGE SNAPSHOT
+!= CURRENTLY VISIBLE CHILD PAGE AFTER IN-FRAME NAVIGATION
+```
+
+The current web-hosted Browser cannot observe exact arbitrary cross-origin child navigation. After that
+navigation it truthfully clears current address/context rather than pretending the old snapshot is current.
+The normal-browser-provider successor owns that terminal provider limitation.
+
+### Latency pressure — context acquisition vs model prefill
+
+Current source also separates two latency classes:
+
+```text
+Include this page
+-> separately render admitted Vex page
+-> reporter may inspect up to 200,000 rendered characters
+-> Product normalizes at most 12,000 characters into BrowserContext
+
+Page included
+-> context acquisition is complete
+-> later Send materializes BrowserContext with Conversation / Memory / continuity / capability context
+-> local model prompt prefill + generation
+```
+
+The 12,000-character BrowserContext is roughly a few thousand estimated tokens by the Product's current
+`bytes / 4 + framing` estimator; it is not itself a 200,000-character model prompt. But the whole direct
+prompt may consume a much larger bounded context (current input budget 192,000 tokens) because current
+Conversation, Memory and continuity are composed separately.
+
+Therefore a long delay *after* `Page included` / `Thinking` should not be attributed to web-page loading
+without prompt-receipt evidence. Current evidence makes local-model prompt prefill / overall context size a
+stronger candidate. The exact completed-turn Context projection already carries
+`providerMaterializedInputTokenEstimate` and BrowserContext character/ref fields; use those receipts before
+optimizing the browser loader.
+
+Permanent:
+
+```text
+PAGE INCLUDED != MODEL PREFILL COMPLETE
+VISIBLE PAGE MOVED != CAPTURED TURN CONTEXT MUTATED
+RENDERED_TEXT_SCAN_LIMIT != MODEL BROWSER_CONTEXT_SIZE
+SLOW TURN != SLOW PAGE LOAD WITHOUT TIMING / RECEIPT EVIDENCE
+```
+
+### Lived receipt — BrowserContext delivery is proven; latency remains unlocalized
+
+A completed lived turn now carries exact durable Context evidence:
+
+```text
+browserContextIncluded = true
+browserPageUrl = https://vgong24.github.io/Vextreme/pages/terrain-map.html?group=direct_contact&page=direct-contact
+browserTitle = Terrain Map — Vextreme
+browserContextCharacters = 319
+browserContextCapture = RENDERED
+providerMaterializedInputTokenEstimate = 15495
+inputTokenBudget = 192000
+memoryIncluded = false
+workingContinuityIncluded = false
+capabilityFrameIncluded = true
+```
+
+The corresponding Vex response described that page specifically. So the page-reading path itself is
+lived-proven for that turn.
+
+This also rules out two premature latency explanations for that observation:
+
+```text
+SLOW TURN != OVERSIZED BROWSER CONTEXT   # only 319 characters
+SLOW TURN != NEAR-MAX INPUT BUDGET       # 15,495 / 192,000 estimated tokens
+```
+
+Current durable turn evidence records provider identity/fingerprints but no elapsed phase timing.
+Latency therefore remains an evidence gap: do not attribute it to page rendering, prompt prefill, or
+generation until timing is observed.
+
+### Shared current state != active-turn materialization
+
+The continuity correction and Browser-provider successor sharpen the presentation contract:
+
+```text
+RIGHTFUL OWNER CURRENT STATE
+  may remain current outside the model window
+
+TURN-BOUND CONTEXT
+  is the exact bounded projection/snapshot materialized for one Send
+
+NEXT-TURN COMPOSER CONTEXT
+  may already point at newer owner state
+```
+
+For Browser specifically:
+
+```text
+Browser provider current page
+!= durable Memory
+!= prior turn's BrowserContext snapshot
+!= proof that the active model received the current visible page
+```
+
+The human surface should therefore project both relationships when they differ: what is current now at
+the provider/composer boundary, and what exact context identity the in-flight/completed turn actually
+received. Updating provider state must never retroactively mutate the context receipt of an active turn.
+
+This law generalizes without creating one global shared-memory owner:
+
+```text
+OWNER CURRENTNESS != PROMPT INCLUSION
+PROMPT INCLUSION != DURABLE MEMORY
+ABSENT FROM ACTIVE PROMPT != ABSENT FROM PRODUCT TRUTH
+```
+
+### Stop exists visually but has no real cancellation relationship
+
+Current authoring source contains a stable `Stop` element beside `Send`, but:
+
+```text
+Send
+-> Activate
+-> capability "conversation.send"
+
+Stop
+-> stable element only
+-> no capability binding
+-> generated control hidden
+-> no presentation handler
+-> no Product-service cancel route
+-> no active-turn cancellation owner exposed
+```
+
+Do not repair this by merely unhiding the button.
+
+The semantic relationship to earn is:
+
+```text
+human Stop
+-> exact active Companion attempt
+-> rightful runtime custody
+-> provider execution actually unwinds
+-> canonical Conversation reconciles the outcome
+-> composer releases
+-> replacement question forms a new Send attempt
+```
+
+### Current Product ownership / race boundary
+
+Current VexLife-Prod turn chronology is:
+
+```text
+Conversation writer lease
+-> durable REQUEST
+-> context/runtime selection
+-> synchronous streaming provider call
+-> durable RESPONSE
+-> durable Context
+-> canonical Conversation head commit
+-> writer lease release
+```
+
+The current service retains no per-turn Future / Job / cancellation handle, and the current synchronous
+HTTP/SSE transport does not make a Stop request itself terminal truth.
+
+A Stop path must therefore be concurrent with the occupied writer lease and must retain enough
+ephemeral custody to know when the exact provider occurrence has actually unwound.
+
+Existing durable Conversation meaning should be reused where it truthfully fits:
+
+```text
+durable REQUEST
++ no committed canonical completion
+-> valid off-head / AbandonedAttempt shape
+```
+
+No second durable cancellation ledger is earned by current evidence.
+
+The decisive race is:
+
+```text
+Stop wins before canonical head commit
+-> exact active turn unwinds
+-> no later canonical completion for that attempt
+
+completion wins first
+-> canonical head already exists
+-> later Stop cannot rewrite history
+```
+
+Permanent:
+
+```text
+STOP_REQUESTED != PROVIDER_STOPPED
+STOP_REQUESTED != TURN_CANCELLED
+BROWSER_FETCH_ABORT != MODEL_TURN_CANCEL
+ABANDONED_ATTEMPT != HUMAN_CANCEL_BY_DEFINITION
+UNSENT_DRAFT != QUEUED_OR_ACCEPTED_TURN
+CONTROL_IDENTITY != EFFECT_AUTHORITY
+```
+
+The exact execution mechanism remains a Product-source decision. Accepted VexLife-Android execution
+source is useful responsibility evidence—active work can have exact custody and cancellation without
+creating a second history owner—but it does not require copying Android `VexExecution` into this
+Product.
+
+### Bounded acceptance pressure
+
+A future implementation must prove both human projection and actual turn truth:
+
+```text
+context included before Send
+-> exact active request carries it
+-> prompt receipt binds the same context
+-> current-turn UI identifies that exact binding
+
+context changes while another turn is active
+-> UI presents it as next-turn context
+-> active-turn context remains unchanged
+
+human Stop while a cancellable turn is active
+-> Stop is offered only when a real cancellation path exists
+-> exact active provider occurrence is signaled
+-> cancellation/completion race resolves once
+-> cancelled attempt cannot later become canonical
+-> Conversation remains truthful
+-> composer releases
+-> replacement question uses a new Send identity
+```
+
+Candidate Work identity for later shared-Workgraph admission:
+
+```text
+work.vexlife.new-beginnings.companion-turn-interaction-integrity
+parent = work.vexlife.new-beginnings.experience-manifestation-parity
+```
+
+Shared Workgraph admission remains a separate coordination effect while another writer owns the New
+Beginnings segment. This source preserves the direction without creating that race.
+
 ## VexBoard-mappability pressure
 
 A meaningful relationship that needs to be inspectable should be source-addressable enough for a read-only projector to answer:

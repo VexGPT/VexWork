@@ -8,7 +8,7 @@
 // the catalog; the typed ref is validated before it is placed in a URL; fetched Kotlin is parsed as
 // text and never executed; nothing is written back anywhere; no token is used or stored.
 
-import { githubRepository, validateSourceRef } from './vexboard-lens-catalog.mjs';
+import { githubRepository, repositoryJsonPath, validateSourceRef } from './vexboard-lens-catalog.mjs';
 
 export const GITHUB_API = 'https://api.github.com';
 export const GITHUB_RAW = 'https://raw.githubusercontent.com';
@@ -102,6 +102,38 @@ async function inBatches(items, size, task) {
   };
   await Promise.all(Array.from({ length: Math.min(size, items.length) }, worker));
   return results;
+}
+
+export async function readExportedLensCommit({
+  repositoryUrl,
+  sourcePath,
+  ref,
+  resolved = null,
+  fetch: fetchImpl,
+  onProgress = () => {},
+}) {
+  const { owner, repo } = githubRepository(repositoryUrl);
+  const path = repositoryJsonPath(sourcePath, 'exported Lens sourcePath');
+  onProgress({ phase: 'RESOLVE', done: 0, total: 0 });
+  const commit = resolved && /^[0-9a-f]{40}$/.test(String(resolved.sha))
+    ? resolved
+    : await resolveCommit({ repositoryUrl, ref, fetch: fetchImpl });
+  onProgress({ phase: 'FETCH', done: 0, total: 1 });
+  let response;
+  try {
+    response = await fetchImpl(`${GITHUB_RAW}/${owner}/${repo}/${commit.sha}/${path.split('/').map(encodeURIComponent).join('/')}`);
+  } catch (error) {
+    throw new CommitSourceError(`Could not download ${path} (${error?.message ?? error}).`, 'NETWORK');
+  }
+  if (response.status === 404) throw new CommitSourceError(`${repo} has no ${path} at ${commit.sha.slice(0, 7)}.`, 'SHAPE');
+  if (!response.ok) throw new CommitSourceError(`Could not download ${path} (HTTP ${response.status}).`, 'HTTP');
+  const text = await response.text();
+  let lens;
+  try { lens = JSON.parse(text); }
+  catch (error) { throw new CommitSourceError(`${path} at ${commit.sha.slice(0, 7)} is not valid JSON: ${error.message}`, 'SHAPE'); }
+  onProgress({ phase: 'FETCH', done: 1, total: 1 });
+  onProgress({ phase: 'PROJECT', done: 1, total: 1 });
+  return { lens, text, commit, fileCount: 1 };
 }
 
 // `resolved` (from resolveCommit) skips the lookup when the caller already resolved the ref.

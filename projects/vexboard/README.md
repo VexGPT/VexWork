@@ -2,6 +2,36 @@
 
 `[VXG RealForever]`
 
+## Relationship-currentness checkpoint — 2026-11-20
+
+The Partner Source/Conversion projection pressure described later in this document has crossed its draft boundary:
+
+```text
+VexWork #276
+-> MERGED / accepted VexBoard Behavior + Depth projection slice
+
+VexLife-Android #219
+-> MERGED / accepted Partner Source + Conversion + Room/restart source lineage
+```
+
+This updates evidence/currentness only. The owning VexBoard Work states remain intentionally unchanged:
+
+```text
+Source Projectors + lived comparison          RUNNING
+Screen Lens realization recovery              RUNNING
+VexStream living Origin screenshot pilot      RUNNING
+Screen Lens projectability + expressions      SUPERSEDED
+Living Screen Lens currentness                 COMPLETED
+```
+
+The accepted Partner slice can now be consumed by E2E/VexBoard readers as current evidence. It does **not** imply that broader source projection, Stable/Main repinning, realization recovery, or expected-versus-observed lived comparison are complete.
+
+```text
+ACCEPTED SOURCE SLICE != BROADER PROJECT COMPLETION
+E2E CONSUMES VEXBOARD PROJECTION != VEXBOARD OWNS PRODUCT MEANING
+```
+
+
 ## Current VexArchitecture re-entry — 2026-11-03
 
 VexBoard's foundational substrate is no longer waiting for the architecture chain that originally fed it.
@@ -209,7 +239,7 @@ BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
 Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND · #215 slice accepted
 VexStream screenshot pilot            RUNNING / IMMEDIATE / AUTHORIZED_BOUNDED
 BusinessFactory company formation     CAPTURED / LATER / NO_AUTHORITY
-VexBoard root                         DECOMPOSED
+VexBoard root                         RUNNING
 ```
 
 This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. PR #108 then landed the first bounded read-only Source Projectors implementation, and PR #109 currentized that broader Work item to RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND while keeping lived comparison, evidence presentation, federation, and broader source families unfinished. BoardPatch remains dependency-ready with NO_AUTHORITY / NO_EFFECTS. This architecture source explains that state; it does not own or advance lifecycle truth.
