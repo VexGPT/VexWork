@@ -703,6 +703,9 @@ D55 Identity genealogy is portable; naming remains source-owned
     how       src/shared/vexboard-screen-lens-identity.mjs defines two optional derivation laws:
               DERIVED_CHILD = parentRef + normalized local path;
               RUNTIME_INSTANCE = stable baseRef + UTF-8 hex(stable instance parts joined by NUL)
+              STABLE_INSTANCE says the source parts survive reorder/reprojection for that instance;
+              CURRENT_OCCURRENCE says source lacks a stronger durable occurrence identity and the ref must
+              not be persisted across arbitrary rebuild/reorder as though it were durable
     boundary  this is not one universal product namespace. A source-owned stable ref stays source-owned and
               needs no derivation descriptor. element.*, pathway.*, presence.* and product-native refs keep
               their different relationship meanings; VexBoard validates genealogy only when a producer
@@ -738,6 +741,9 @@ screens[].layout       kind FRAME, symbol, source, root, frames[] (ref, seams[] 
 elements[].layer       CONTENT | CHROME | TRANSIENT | MODAL (optional)
 elements[].interactions ACTIVATE | RESIZE | COLLAPSE_BEFORE | COLLAPSE_AFTER (optional)
 elements[].identity     optional DERIVED_CHILD or RUNTIME_INSTANCE genealogy; source-owned refs need none
+templates[].instanceIdentity
+                       optional typed runtime formation: RUNTIME_INSTANCE baseRef + partSources +
+                       continuity, with DERIVED_CHILD contracts on nested template slots
 examples[]             PREVIEW | GOLDEN | JOURNEY with subject, setup, fixture provenance,
                        configurations, evidence, steps, related
 examplesHeld[]         examples source does not let VexBoard address yet, with the reason
