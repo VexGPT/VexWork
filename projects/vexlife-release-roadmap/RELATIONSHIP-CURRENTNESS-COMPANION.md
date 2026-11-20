@@ -295,6 +295,131 @@ captured:
 
 The original-VexLife Interface Project remains independently open. New Beginnings / VexLife-Prod consumes its earned source/evidence but does not supersede these residual predicates.
 
+## Foreground Product cluster audit — 2026-11-20
+
+This audit intentionally followed the current Product relationship cluster rather than restarting a portfolio scan.
+
+### VexLife New Beginnings
+
+Audit result:
+
+```text
+CURRENTIZE_CANDIDATE
+!= CURRENT_MAIN_YET
+```
+
+Current VexWork main still carries the older New Beginnings projection. Clean current-main reconciliation is formed as:
+
+```text
+VexWork PR #350
+base e22936f23db36c3b925bcf033bfd3641fda0cc4b
+head 7795310c93acb5c663e4696c226ac9c252f90185
+tree 96f23bee1dd23d0ce4bad2900824f40574a7ad17
+draft / mergeable
+```
+
+Material relationship result:
+
+- the old manifestation-parity READY edge has real current-main Product history through VexLife-Prod #49 -> #53 and later interaction/currentness work;
+- the broader experience edge is still not complete because visible `Stop` is not yet the same thing as a bound Conversation cancellation effect in the audited current Product source;
+- native Browser-provider proof was earned, while final Product BrowserViewport adoption remains separate;
+- persistent selected-scope Vision source is accepted, while lived current ENGAGE/LOOK proof remains separate;
+- Score -> reference-only WorkingSet reconnection and permission-aware Setup Journey mapping are already completed Product/source outcomes and must not be replayed;
+- the old Windows-absence note is provenance after later lived Windows/Mac runtime convergence.
+
+PR #350 carries the bounded Workgraph/README/generated-projection currentization. Exact semantic/provider review found no candidate correction; its only held predicate is VexWork's deterministic exact-head `npm run review` / `ExactHeadSourceOwnerProof` floor. No qualified package was available in the audit session, so merge remains correctly held and Victor has no loose/manual proof action.
+
+### [VexLife Local Artifacts]
+
+Audit result:
+
+```text
+project.vexlife.vexworks
+= CURRENT_AS_IS
+```
+
+Its current Workgraph already tells the truth:
+
+```text
+A0 Local Artifacts + Local Sources convergence   RUNNING
+A1 selected-model capability projection          CAPTURED
+A2 model selector                                CAPTURED
+A3 imported-model hookup                         CAPTURED
+A4 lived cross-model proof                       CAPTURED
+```
+
+VexLife-Prod #414 has materially converged A0 source — Conversation Stop, exact artifact custody/request binding, bounded TEXT/ZIP/DOCX/XLSX/PPTX reach, persistent Local Sources, current-turn capability admission, localization and Screen Lens consequences — but its own current entry still explicitly owes native JVM proof and lived Add Files / folder-source proof.
+
+Therefore:
+
+```text
+SOURCE CONVERGED
+!= A0 COMPLETED
+CURRENT_AS_IS
+!= NO PRODUCT MOVEMENT
+```
+
+No VexWork mutation is warranted.
+
+### VexLife-Prod End-to-End Experience Validation
+
+Audit result:
+
+```text
+CURRENTIZE_PENDING
+```
+
+The canonical Workgraph still says A0 RUNNING, A1 READY, and A2/A2R waiting. Accepted current VexWork main has moved materially beyond that projection.
+
+Current Project-owned evidence on main now includes:
+
+- the first working source-derived Experience Relationship Graph;
+- Product/Family law + wiring + Screen Lens/keyed-identity readers;
+- normalized graph + VexBoard projection;
+- route / journey / frontier-debt derivation;
+- generated deterministic cases;
+- executed Family-law probe;
+- perturbation questions with source/evidence answers;
+- branch/build comparison and consolidation checks;
+- graph-operations Relay gate / convergence inspection.
+
+The generated human report currently projects:
+
+```text
+293 nodes
+341 relationships
+13 CLEARED routes
+53 FRONTIER_DEBT routes
+159 generated test cases
+law proof PASS 110 / FAIL 0
+```
+
+Therefore the relationship audit supports this Work projection:
+
+```text
+A0 experience/topology foundation          COMPLETED
+A1 Screen Lens choice-discovery            RUNNING
+A2 journey/branch/loop coverage            RUNNING
+A2R graph-operations Relay convergence     RUNNING
+A3 deterministic nervous-system shards     WAITING_DEPENDENCIES
+A4 live/lived validation                   WAITING_DEPENDENCIES
+A5 release threshold                       WAITING_DEPENDENCIES
+A6 foundationalization                     WAITING_DEPENDENCIES
+```
+
+A0 is earned by accepted on-main graph infrastructure + executed proof. A1 remains open because real projectability/frontier gaps remain. A2 has actual route/journey/branch/debt/test-case implementation and is no longer waiting to begin. A2R has exercised the Relay gate and correctly classified current questions, but remains an active post-map convergence surface rather than a terminal universal Relay.
+
+The Workgraph writeback is intentionally **not** being formed while VexWork #350 owns the shared generated projection surfaces:
+
+```text
+workgraphs/public.json
+public/workspace.json
+```
+
+That is a coordination hold on writeback, not uncertainty about the audit result. After #350 leaves those paths, currentize the E2E segment/README and regenerate through ordinary repository-owned generation; do not repeat this audit.
+
+---
+
 ### Next unconsumed audit edge
 
 ```text
@@ -309,11 +434,16 @@ already audited:
   VexLife Android Current-State Refinement = CURRENT_AS_IS
   Interface Compound Relay
 
+newly audited in foreground cluster:
+  VexLife New Beginnings = CURRENTIZE_CANDIDATE / PR #350 proof-held
+  [VexLife Local Artifacts] = CURRENT_AS_IS
+  VexLife-Prod End-to-End Experience Validation = CURRENTIZE_PENDING / generated-path coordination hold
+
 next:
-  select one not-yet-audited Project from current VexWork workspace
-  read only that Project's current entry + implicated owner evidence
+  audit project.vexlife.application-level-settings
+  read only that Project's current entry + exact Product evidence it names
   classify CURRENT_AS_IS vs CURRENTIZE
-  write back here only after material relationship movement
+  do not reopen the foreground cluster unless #350/proof or E2E writeback state materially changes
 ```
 
 Do not restart the portfolio scan or replay product proof from this companion.
