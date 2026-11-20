@@ -139,6 +139,22 @@ test('project switching supports Product-exported and legacy experiment lenses w
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][UI-TEST]
 
+test('Product-authored color mode is one shareable read-only Presentation axis', () => {
+  assert.match(page, /colorModes: new Map\(\)/, 'presentation choice stays browser-local in Lens state');
+  assert.match(page, /function renderColorModeSwitch\(\)/);
+  assert.match(page, /view\?\.colorMode/);
+  assert.match(page, /'aria-label': 'Product color mode'/);
+  assert.match(page, /h\('span', \{ class: 'mode-label' \}, 'Appearance'\)/);
+  assert.match(page, /function applyStaticColorMode\(doc, view\)/);
+  assert.match(page, /doc\.documentElement\.removeAttribute\(colorMode\.attribute\)/, 'System removes the authored override');
+  assert.match(page, /doc\.documentElement\.setAttribute\(colorMode\.attribute, option\.attributeValue\)/, 'Light\/Dark use only the Product-declared root attribute');
+  assert.match(page, /function setStaticColorMode\(ref\)[\s\S]*\.current-product-view \.product-view-frame[\s\S]*applyStaticColorMode\(doc, view\)/, 'mode changes update the mounted inert Product instead of remounting it');
+  assert.match(page, /next\.set\('presentation', colorMode\.ref\)/, 'an exact lived presentation is shareable');
+  assert.match(page, /params\.get\('presentation'\)/, 'a shared presentation coordinate is restored on boot');
+  assert.match(page, /staticViewDocument\(view\)[\s\S]*rootAttribute[\s\S]*option\.attributeValue/, 'the exact mode is present on first paint, before Product JavaScript could exist');
+  assert.doesNotMatch(page, /vexlife-prod\.presentation\.theme/, 'generic VexWork never copies a Product storage key');
+  assert.doesNotMatch(page, /subject\.slug[^\n]{0,120}colorMode|colorMode[^\n]{0,120}subject\.slug/i, 'presentation projection is selected from source facts, never a Product slug');
+});
 test('search, impact, coverage and briefs are wired from the shared query module', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-query\.mjs'/);
   assert.match(page, /Query\.searchLens\(state\.lens, searchState\.query, \{ currentScreenRef: screenRef\(\) \}\)/);
