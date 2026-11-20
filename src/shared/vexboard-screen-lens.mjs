@@ -576,8 +576,9 @@ export function elementsUsingPathway(lens, pathwayRef) {
     .filter((element) => element.pathwayRef === pathwayRef);
 }
 
-export function containedPathways(lens, containerRef) {
+export function containedPathways(lens, containerRef, { excludedElementRefs = [] } = {}) {
   const anchor = elementFor(lens, containerRef);
+  const excluded = excludedElementRefs instanceof Set ? excludedElementRefs : new Set(excludedElementRefs);
   if (!anchor) return Object.freeze([]);
   const owner = [...lens.chrome, ...lens.screens].find((entry) => entry.elements.some((element) => element.ref === containerRef));
   if (!owner) return Object.freeze([]);
@@ -593,7 +594,7 @@ export function containedPathways(lens, containerRef) {
   const seen = new Set();
   const pathways = [];
   for (const element of owner.elements) {
-    if (!element.pathwayRef || !isDescendant(element) || seen.has(element.pathwayRef)) continue;
+    if (excluded.has(element.ref) || !element.pathwayRef || !isDescendant(element) || seen.has(element.pathwayRef)) continue;
     const pathway = pathwayFor(lens, element.pathwayRef);
     if (!pathway) continue;
     seen.add(pathway.pathwayRef);
@@ -603,8 +604,9 @@ export function containedPathways(lens, containerRef) {
 }
 
 export function aggregateContainedFaceGraph(lens, containerRef, face, options = {}) {
-  const pathways = containedPathways(lens, containerRef);
-  const graphs = pathways.map((pathway) => faceGraph(pathway, face, options));
+  const { excludedElementRefs = [], ...faceOptions } = options;
+  const pathways = containedPathways(lens, containerRef, { excludedElementRefs });
+  const graphs = pathways.map((pathway) => faceGraph(pathway, face, faceOptions));
   return freezeDeep({
     face,
     pathwayRefs: pathways.map((pathway) => pathway.pathwayRef),
