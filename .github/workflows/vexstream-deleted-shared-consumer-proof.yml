@@ -1,0 +1,61 @@
+name: VexStream Deleted Shared Consumer Proof
+
+on:
+  push:
+    branches:
+      - VXG-112026-vexstream-music-projectability-a001
+    paths:
+      - '.github/workflows/vexstream-deleted-shared-consumer-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Syntax
+        run: |
+          node --check src/shared/vexboard-screen-lens-identity.mjs
+          node --check src/shared/vexboard-screen-lens.mjs
+          node --check src/shared/vexboard-screen-lens-realization.mjs
+      - name: Four-subject Screen Lens proof
+        run: |
+          node --test \
+            test/vexboard-screen-lens-conformance.test.mjs \
+            test/vexboard-lens-ui.test.mjs \
+            test/vexboard-screen-lens.test.mjs \
+            test/vexboard-screen-lens-realization.test.mjs \
+            test/vexboard-screen-lens-source-expressions.test.mjs \
+            test/vexboard-screen-lens-frames.test.mjs
+      - name: Exact merged VexStream binding
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const project=JSON.parse(fs.readFileSync('projects/vexstream-music-projectability/project.json','utf8'));
+          const lens=JSON.parse(fs.readFileSync('projects/vexboard/lens/vexstream-music.candidate.screen-lens.json','utf8'));
+          const screen=lens.screens[0];
+          assert.ok(project.sourceRefs.includes('github.pull.vexstream-music.32'));
+          assert.equal(lens.sourceSnapshot.commit,'03c1fe43ea90ccdc3be7c78193b209c15f3d5102');
+          assert.equal(screen.elements.length,81);
+          assert.equal(lens.pathways.length,13);
+          assert.equal(screen.realization.presence.length,7);
+          assert.equal(screen.realization.templates.length,3);
+          const trash=screen.realization.templates.find(x=>x.ref==='template.vexstream.trash.item');
+          assert.equal(trash.instanceIdentity.continuity,'STABLE_INSTANCE');
+          assert.deepEqual(trash.instanceIdentity.partSources,['item.id']);
+          assert.equal(screen.elements.some(x=>x.ref.startsWith('element.vexstream.trash.item.dynamic.utf8hex.')),false);
+          console.log(JSON.stringify({
+            state:'PASS',
+            source:lens.sourceSnapshot.commit,
+            elements:screen.elements.length,
+            pathways:lens.pathways.length,
+            presence:screen.realization.presence.length,
+            templates:screen.realization.templates.length
+          },null,2));
+          NODE
