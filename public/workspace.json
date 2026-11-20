@@ -28370,7 +28370,13 @@
         "workDisposition": "PARKED",
         "priorityClass": "NORMAL",
         "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
+        "childWorkRefs": [
+          "work.vexlife.application-level-settings.home-management",
+          "work.vexlife.application-level-settings.reentry-contract",
+          "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+          "work.vexlife.application-level-settings.reset-uninstall",
+          "work.vexlife.application-level-settings.surface"
+        ],
         "dependencyRefs": [],
         "repositoryRefs": [
           "repo.vexlife-prod"
@@ -28651,7 +28657,11 @@
         "workDisposition": "PARKED",
         "priorityClass": "LOW",
         "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
+        "childWorkRefs": [
+          "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "work.vexlife.blueprint-source-of-truth.reusable-v1",
+          "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
+        ],
         "dependencyRefs": [],
         "repositoryRefs": [
           "repo.vexwork",
@@ -28687,7 +28697,18 @@
         "workDisposition": "PARKED",
         "priorityClass": "LOW",
         "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
-        "childWorkRefs": [],
+        "childWorkRefs": [
+          "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction",
+          "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+          "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime",
+          "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts",
+          "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection",
+          "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+          "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
+          "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior",
+          "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity",
+          "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap"
+        ],
         "dependencyRefs": [],
         "repositoryRefs": [
           "repo.vexwork",
