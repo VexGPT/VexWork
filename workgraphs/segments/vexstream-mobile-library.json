@@ -564,9 +564,9 @@
       "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
       "label": "Large offline library cold-start performance",
-      "purpose": "Resolve the 785-song Android cold-launch defect without weakening local-media integrity: the integrity-preserving source correction is merged, and the remaining obligation is Victor's lived current-main startup observation while broader cross-feature scalability/SCAE review remains separate.",
+      "purpose": "Resolve the 785-song Android cold-launch defect without weakening local-media integrity. PR #169 moved restore/integrity work off the first-draw path with receipt-bounded verification; later lived use recorded in Android issue #170 confirmed VexLife can draw while local downloads continue restoring, and PR #171 separately fixed the temporary loading/empty-state presentation ambiguity.",
       "workClass": "DEFECT",
-      "state": "WAITING_HUMAN",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -589,7 +589,9 @@
         "repo.vexlife-android:docs/foundation/test-proof/README.md",
         "github.pull.vexlife-android.169",
         "github.commit.vexlife-android.dbce2fac5eeace83774c71a837904fd7340bb8dc",
-        "github.pull.vexlife-android.171"
+        "github.pull.vexlife-android.171",
+        "github.issue.vexlife-android.170",
+        "github.commit.vexlife-android.fad3a7dcbd9d1fdae84f4c8df0d438d90692d2cc"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -598,7 +600,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T07:16:00.000Z",
-      "updatedAt": "2026-10-25T00:59:26.000Z"
+      "updatedAt": "2026-11-20T06:42:09.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -739,7 +741,7 @@
       "label": "Offline artwork durability",
       "purpose": "Fix the observed Android experience where downloaded/local-only VexStream songs lose available cover art across restart or render generic placeholders: persist the admitted artwork source, keep a bounded app-private companion image for downloaded media, prefer local artwork in track/full-player presentation, and preserve audio integrity as independent truth.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -787,7 +789,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T03:50:45.000Z",
-      "updatedAt": "2026-10-25T07:10:00.000Z"
+      "updatedAt": "2026-11-20T06:42:09.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1481,6 +1483,54 @@
         "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a"
       ],
       "createdAt": "2026-10-27T02:54:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.large-offline-startup-performance.verifying.lived-first-draw-recovered",
+      "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
+      "priorState": "WAITING_HUMAN",
+      "nextState": "VERIFYING",
+      "reason": "The outstanding human predicate arrived in later lived use: after the merged PR #169 startup correction, VexLife drew before the offline library finished restoring instead of blocking first draw on full-library media hashing. Android issue #170 captured that observed current-main behavior; the resulting temporary loading/empty-state ambiguity was a separate presentation defect.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife-android.168",
+        "github.pull.vexlife-android.169",
+        "github.commit.vexlife-android.dbce2fac5eeace83774c71a837904fd7340bb8dc",
+        "github.issue.vexlife-android.170"
+      ],
+      "createdAt": "2026-11-20T06:42:09.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.large-offline-startup-performance.completed.lived-first-draw-and-loading-truth",
+      "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The large-library startup defect no longer has an unconsumed acceptance edge: lived use proved first draw is no longer held behind offline restoration, and PR #171 terminally source-accepted the follow-up loading-truth projection so background restore cannot masquerade as a terminal empty library.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife-android.170",
+        "github.pull.vexlife-android.171",
+        "github.commit.vexlife-android.fad3a7dcbd9d1fdae84f4c8df0d438d90692d2cc"
+      ],
+      "createdAt": "2026-11-20T06:42:09.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.offline-artwork-durability.verifying.pr177-source-integrated",
+      "workRef": "work.vexstream.mobile-library.offline-artwork-durability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #177 completed the source-owned offline-artwork durability slice: corrected SourceOwner A003 PASS, fresh Independent Assurance CLEAR_ON_EXACT_HEAD, and tree-exact integration all landed on Android main. Its own terminal receipt explicitly leaves lived restart/product verification separate, so the truthful current state is Verify rather than Active or Done.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.177",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a003.return.sha256.2443f793062ff20cab1b8b5a864a6977963814cdc26e72b7923654cecb3f2b6c",
+        "github.comment.vexlife-android.pr177.6393677656.assurance-clear",
+        "github.commit.vexlife-android.c5c2014733572da22cb320ec32801f10bcbedf65",
+        "github.comment.vexlife-android.pr177.6393685461.post-merge-tree-exact"
+      ],
+      "createdAt": "2026-11-20T06:42:09.000Z"
     }
   ],
   "sourceRefs": [
