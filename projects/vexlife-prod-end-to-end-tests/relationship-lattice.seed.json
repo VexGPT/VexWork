@@ -4,8 +4,8 @@
   "projectRef": "project.vexlife-prod.end-to-end-tests",
   "purpose": "Read-only experience-validation map over existing Product coordinates and exact source symbols. It does not mint parallel feature/relationship identities. VexLife-Prod and VexArchitecture sources remain the owners of Family, State, Control, Act, Effect, observation, realization and projection meaning.",
   "sourceBindings": {
-    "vexlifeProdMain": "152c323ee6c3d4a43243d0a9c9b6de2ce11f605b",
-    "vexWorkMain": "d70da76d9f95645ee83dc09c7cf7384b6c572cf5",
+    "vexlifeProdMain": "146b0d482517201b85990a9d7b0b9ebf04075fd9",
+    "vexWorkMain": "32a8eeda0cd464ffc06f150fe25a806bb0949afd",
     "vexLifeAndroidMain": "d857a92371555472e0303b18eadf353da2a868d6",
     "activeCandidates": [
       {
@@ -42,11 +42,23 @@
       },
       {
         "ref": "github.pull.vexlife-prod.387",
-        "meaning": "Foreground Product convergence: #380 semantic evolution + #385 browser-workspace spatial export, with the Product-owned Lens regenerated at the exact published candidate head."
+        "meaning": "Historical semantic/spatial convergence input to current Product successor #402; not the foreground release candidate."
       },
       {
         "ref": "github.pull.vexwork.328",
-        "meaning": "Single foreground VexWork convergence: source-derived Experience Graph + precise Lens Control subsets + peer Product Screen Lens + browser-workspace renderer."
+        "meaning": "Merged historical convergence input: Experience Graph + precise Lens Control subsets + browser-workspace renderer. Current work must consume its accepted effects rather than treat the PR as foreground."
+      },
+      {
+        "ref": "github.pull.vexlife-prod.402",
+        "meaning": "Foreground Product successor: current semantic/runtime truth + component addressability + regenerated Product-owned Screen Lens; source-proved, human presentation continuity still under recovery."
+      },
+      {
+        "ref": "github.pull.vexwork.331",
+        "meaning": "Generic Screen Lens currentization preserving the accepted Lens shell; open draft and predecessor of the accepted-state recovery."
+      },
+      {
+        "ref": "github.pull.vexwork.335",
+        "meaning": "Accepted lived Screen Lens state recovery: exact accepted Product state/CSS projection restored on top of #331; recovery/learning anchor, not Product semantic authority."
       }
     ],
     "experienceCandidate": {
@@ -777,6 +789,20 @@
       "disposition": "CURRENT_SOURCE_RELATIONSHIP",
       "kind": "SOURCE_RETURN_RESULT_MATERIALIZES_IN_PROMPT",
       "humanMeaning": "Source Return may add an executed Product result to the same turn's prompt context, but protocol availability, model reasoning, planning, or narration must never be treated as lookup execution."
+    },
+    {
+      "from": "VexLifeWebP1RuntimeArtifacts",
+      "to": "VexLifeProdScreenLens",
+      "disposition": "CURRENT_PRESENTATION_PRESSURE",
+      "kind": "PROJECTS_PRESENTATION_STATE",
+      "humanMeaning": "Runtime-created presentation such as Quick Actions, theme/color mode and transient panels must become source-projectable without executing Product JavaScript. Absence from a static Screen Lens manifestation is not evidence that the Product feature is absent."
+    },
+    {
+      "from": "VexLifeProdScreenLens",
+      "to": "github.pull.vexwork.335",
+      "disposition": "ACTIVE_RECOVERY",
+      "kind": "PRESERVES_ACCEPTED_PROJECTION",
+      "humanMeaning": "A human-accepted projection remains evidence until every learned identity, relationship and presentation state it carries has moved to its rightful Product/exporter source. Provisional names such as experiment, sample or fixture do not make accepted meaning disposable."
     }
   ],
   "surfaceBindings": [
@@ -973,6 +999,18 @@
         "DirectPromptContext",
         "element.vexlife-workspace.browser.vex-context"
       ]
+    },
+    {
+      "journeyRef": "journey.screen-lens.accepted-projection-continuity",
+      "shardRef": "screen-lens",
+      "disposition": "ACTIVE_CANDIDATE",
+      "sourceRef": "github.pull.vexwork.335",
+      "humanOutcome": "Open VexLife Prod through one first-class Screen Lens, move among Project and Revision without losing Screen/Expression/Presentation/Face context, project Product-authored System/Light/Dark and runtime presentation states without executing Product JavaScript, and retire provisional artifacts only after deleting them loses no accepted truth.",
+      "coordinateRefs": [
+        "VexLifeProdScreenLens",
+        "VexLifeWebP1RuntimeArtifacts",
+        "VexLifeWorkspaceBlueprint"
+      ]
     }
   ],
   "loopSeeds": [
@@ -1119,6 +1157,23 @@
         "Follow replies",
         "screen language derives from reply language again"
       ]
+    },
+    {
+      "loopRef": "loop.screen-lens.orthogonal-context",
+      "journeyRefs": [
+        "journey.screen-lens.accepted-projection-continuity"
+      ],
+      "shape": [
+        "choose Project",
+        "choose Revision",
+        "choose Screen",
+        "choose source-derived Expression",
+        "choose Product-authored Presentation mode",
+        "flip Surface/Structure or Behavior/Depth",
+        "change one axis",
+        "all unrelated axes remain stable",
+        "return to accepted projection without legacy/special entry mode"
+      ]
     }
   ],
   "permutationAxes": [
@@ -1153,6 +1208,30 @@
     {
       "axisRef": "axis.execution-class",
       "meaning": "Pure/source, deterministic nervous system, isolated service, live model, lived lifecycle, release/publication."
+    },
+    {
+      "axisRef": "axis.screen-lens-project",
+      "meaning": "Which Product/subject is being inspected; changing Project must not create a different Lens application."
+    },
+    {
+      "axisRef": "axis.screen-lens-revision",
+      "meaning": "Stable / Main / exact commit or other admitted revision coordinate; revision navigation must remain available from every projection."
+    },
+    {
+      "axisRef": "axis.screen-lens-screen",
+      "meaning": "Which human-facing screen is being inspected."
+    },
+    {
+      "axisRef": "axis.screen-lens-expression",
+      "meaning": "Which source-derived Product state/presentation combination is being projected; custom browser-local combinations never become Product truth."
+    },
+    {
+      "axisRef": "axis.screen-lens-presentation",
+      "meaning": "Product-authored presentation state such as System / Light / Dark; presentation state is distinct from semantic State and from any future presentation-family/theme choice."
+    },
+    {
+      "axisRef": "axis.screen-lens-face",
+      "meaning": "Surface / Structure and Behavior / Depth are views of the same stable identities, not separate maps."
     }
   ],
   "permutationLaw": "Do not Cartesian-expand every axis. Form a permutation case only when source proves that two or more axes materially interact in the human pathway or failure boundary.",
@@ -1224,6 +1303,28 @@
         "voice_second_conversation",
         "current_setting_rewrites_history",
         "vex_context_becomes_truth_owner"
+      ]
+    },
+    {
+      "example": "ScreenLensCompletion",
+      "sourceCoordinates": [
+        "VexLifeProdScreenLens",
+        "VexLifeWebP1RuntimeArtifacts",
+        "VexLifeWorkspaceBlueprint",
+        "github.pull.vexwork.331",
+        "github.pull.vexwork.335"
+      ],
+      "disposition": "ACTIVE_CANDIDATE",
+      "pattern": "Project × Revision × Screen × Expression × Presentation × Face stay orthogonal; Product source owns meaning/presentation facts, Screen Lens projects them read-only, and accepted learned truth is promoted before provisional carriers are retired.",
+      "prevents": [
+        "experiment_name_means_disposable",
+        "fixture_removed_before_learned_truth_promoted",
+        "static_projection_absence_equals_product_feature_absence",
+        "legacy_entry_becomes_second_screen_lens",
+        "project_switching_disappears_in_candidate_view",
+        "presentation_mode_collapses_with_semantic_state",
+        "light_dark_depends_accidentally_on_witness_browser",
+        "product_specific_renderer_branch"
       ]
     }
   ],
@@ -1532,8 +1633,8 @@
     }
   },
   "currentness": {
-    "observedAt": "2026-11-19",
-    "vexLifeProdMain": "152c323ee6c3d4a43243d0a9c9b6de2ce11f605b",
+    "observedAt": "2026-11-20",
+    "vexLifeProdMain": "146b0d482517201b85990a9d7b0b9ebf04075fd9",
     "mergedPressure": {
       "251": {
         "state": "MERGED",
@@ -1562,9 +1663,52 @@
         "head": "55ce7a1e35dcb49d01d3d29d472a177fe5a43f8b"
       },
       "387": {
-        "state": "OPEN_DRAFT_FOREGROUND_CONVERGENCE",
+        "state": "OPEN_DRAFT_HISTORICAL_INPUT_TO_402",
         "head": "479544c5c319ad796a0853125ae131d85afc9671"
+      },
+      "402": {
+        "state": "OPEN_DRAFT_FOREGROUND_PRODUCT_SUCCESSOR",
+        "head": "2f9c0fdb667585a68f45a5bc834f67cac2af688c"
+      },
+      "vexwork-331": {
+        "state": "OPEN_DRAFT_GENERIC_LENS_CURRENTIZATION",
+        "head": "ba58826af1704a58782bfa36b8acef375e19b0f3"
+      },
+      "vexwork-335": {
+        "state": "OPEN_DRAFT_ACCEPTED_STATE_RECOVERY",
+        "head": "20519f95951d7d36c2be55a4fd25f86ed89efa5a"
       }
     }
+  },
+  "screenLensCompletionPolicy": {
+    "purpose": "Make Screen Lens one scalable read-only application whose Product-specific meaning comes from source, not from special renderer branches or disposable witness artifacts.",
+    "orthogonalAxes": [
+      "Project",
+      "Revision",
+      "Screen",
+      "Expression",
+      "Presentation",
+      "Face"
+    ],
+    "laws": [
+      "Every meaningful projection belongs to a Project and admitted Revision; a special/legacy lens URL must not become a second navigation model.",
+      "Phone/workspace/other realization is selected from source-authored layout facts, never subject name.",
+      "Expressions are derived from source-owned realization relationships; browser-local custom combinations remain projections, not Product truth.",
+      "Runtime presentation facts that matter to the human must be source-projectable without executing arbitrary Product JavaScript inside VexBoard.",
+      "Static Screen Lens absence does not prove Product feature absence.",
+      "System/Light/Dark is explicit Product-authored presentation state; it must not silently depend on the witness browser's preference when a comparison or accepted witness needs an exact mode.",
+      "Surface/Structure/Behavior/Depth share stable identities and do not own duplicate maps.",
+      "Human acceptance and source authority are separate coordinates: accepted candidate != Stable, and provisional carrier != disposable meaning.",
+      "A fixture/sample/experiment may be retired only after its learned identities, relationships, presentation states and accepted outcome are represented by rightful source/generated projection."
+    ],
+    "promotionOrder": [
+      "recover accepted lived truth",
+      "identify which accepted facts are absent from canonical Product/exporter source",
+      "promote those facts to rightful Product/source owner",
+      "regenerate canonical Screen Lens projection",
+      "re-witness the same human state through normal Project/Revision navigation",
+      "only then retire provisional carrier"
+    ],
+    "completionCriterion": "Deleting every provisional experiment/sample/fixture loses no required correctness, continuity, authority, proof or human-accepted meaning because all earned truth is reproducible from rightful source."
   }
 }
