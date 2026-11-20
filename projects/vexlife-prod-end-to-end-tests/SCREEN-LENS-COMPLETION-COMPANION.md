@@ -198,10 +198,12 @@ SourceOwner P001 PASS
 #421
 Spiral / Theme / Support source-addressability
 base 9d07ae93ffa95f6780a2d7756add27efb1f8d228
-head 0759f83ced61fda24f1561ed92897e1055a7672b
-tree d7c1fb9ef620d03dd7d9af648179bfb4b43d89bf
+head cd2560024cced859d89aff0e9815ab72cdaf44d9
+tree 3f296f3cc899ad84c6838d92c2ae5d1fb22ddf37
 14 changed paths
-SourceOwner proof current attempt P006
+P006 reached compilation and exposed candidate source defect
+defect corrected at cd2560024...
+SourceOwner current attempt P007 via GitHub runner
 ```
 
 #421 makes the following visible runtime affordances first-class Product coordinates:
@@ -359,29 +361,120 @@ No human execution occurred.
 
 This is why package formation is now preflighted before handoff.
 
----
+### P006 — first attempt to reach Product compilation
 
-## Current runnable download — P006
-
-Current ChatGPT-delivered artifact:
+Victor returned:
 
 ```text
-VEXLIFE-PROD-PR421-SCREEN-LENS-SPIRAL-ADDRESSABILITY-SOURCEOWNER-20261120-P006
-sha256
-169e6445dadcc3b3d64da1d06ea2ab8d278789b6610c25767ed3b999bb7df3d8
+outer RETURN sha256
+45630c39557a7048195fc30bf9bbdba473634eb792f5bd3c348201f2bd46cf4e
+
+retained inner RETURN sha256
+9dbf8714d43fdf7193f198d23af7dc37e25599d8005b1cc42afd595161315831
 ```
 
+P006 formed successfully, bound the exact candidate, and executed the focused Gradle source-owner proof.
+
 Exact candidate:
+
+```text
+head 0759f83ced61fca54d943ea860689d6f814349
+```
+
+Correction: the actual bound head in the canonical RETURN was:
+
+```text
+0759f83ced61fda24f1561ed92897e1055a7672b
+tree d7c1fb9ef620d03dd7d9af648179bfb4b43d89bf
+```
+
+The proof reached `compileKotlinJvm` and failed with:
+
+```text
+VexWeb.kt:1254
+NO_ELSE_IN_WHEN
+
+Add:
+is ExternalNavigation
+is PresentationAction
+```
+
+Interpretation:
+
+```text
+P006 wrapper / carriage
+= valid enough to reach exact candidate compilation
+
+P006 failure
+= candidate-owned #421 source defect
+!= relay formation defect
+```
+
+The Relay result classified the nonzero command generically as an environment finding, but the compiler stderr proves the actionable cause is Product source: one exhaustive `VexWeb.Binding` consumer was not updated for the two newly introduced sealed binding types.
+
+Repair:
+
+```text
+#421 commit
+cd2560024cced859d89aff0e9815ab72cdaf44d9
+
+Surface validation now treats:
+PresentationAction
+ExternalNavigation
+Capability
+
+as non-targeted valid binding meanings while retaining target-existence checks for LocalSpatial / LocalInteraction.
+```
+
+---
+
+## Current GitHub-hosted runner — P007
+
+The companion PR is now the executable handoff surface.
+
+Victor should **not** manually download a ChatGPT ZIP for this lane.
+
+Current runner:
+
+```text
+projects/vexlife-prod-end-to-end-tests/screen-lens-completion/RUN-LATEST.command
+```
+
+The runner reconstructs the exact Relay ZIP from companion-owned package bytes:
+
+```text
+projects/vexlife-prod-end-to-end-tests/screen-lens-completion/packages/P007.zip.b64
+```
+
+Package asset commit:
+
+```text
+7a1229d4075e4b9a1f6590dea42594077565b7cc
+```
+
+Expected reconstructed package SHA-256:
+
+```text
+50f94dafd4e602535bf62b55c81673c9348b81715359875edbe056e487a20c3e
+```
+
+Runner commit carrying the current execution surface:
+
+```text
+6120fb2e8cb9b8897ffc6ba400edb068a98243ee
+```
+
+Exact Product candidate:
 
 ```text
 base
 9d07ae93ffa95f6780a2d7756add27efb1f8d228
 
 head
-0759f83ced61fda24f1561ed92897e1055a7672b
+cd2560024cced859d89aff0e9815ab72cdaf44d9
 
 tree
-d7c1fb9ef620d03dd7d9af648179bfb4b43d89bf
+3f296f3cc899ad84c6838d92c2ae5d1fb22ddf37
 
 base branch
 VXG-112026-screen-lens-presentation-promotion-a002
@@ -390,23 +483,21 @@ candidate branch
 VXG-112026-screen-lens-spiral-addressability-a001
 ```
 
-P006 preflight before delivery:
+Human run model:
 
 ```text
-current Relay contract read
-sourceRefs unique
-REVIEW_SNAPSHOT maxFiles = 10
-exact base/head/tree pinned
-real baseBranch pinned
-actual JVM major reported
-bash -n PASS
-embedded formation JS node --check PASS
-package digest verified
+one GitHub-hosted command
+-> fetch exact companion-owned package bytes
+-> reconstruct exact Relay ZIP locally
+-> verify SHA-256
+-> execute the ZIP through current accepted VexLocalBridge/VexRelay
+-> produce canonical RETURN
 ```
 
-The downloadable ZIP itself is delivered through the current ChatGPT conversation. Chat sandbox URLs are not durable repository coordinates, so **the filename + digest + exact attempt/candidate are what this companion preserves**. A future instance must form a fresh package from the current Relay contract when package bytes are no longer available or any immutable input changed.
+The package remains the accepted carrier contract; GitHub now owns delivery of those exact bytes so ChatGPT does not need to hand Victor a sandbox download.
 
-Never reconstruct a package by guessing from an older chat.
+Future instances update **both** the package asset and `RUN-LATEST.command` when a new attempt is formed, then append the result to the companion PR comment ledger.
+
 
 ---
 
@@ -461,10 +552,11 @@ Future instances should continue the run loop here, not ask Victor to reconstruc
 READ companion + exact current source
 -> read current Relay contract
 -> identify next unconsumed source/proof edge
--> form fresh package in ChatGPT
+-> form fresh package from the current Relay contract
 -> static-preflight the formation source
--> record package filename + SHA + candidate in companion PR comment
--> give Victor one digest-bound command
+-> commit exact package bytes + RUN-LATEST.command to companion PR
+-> record runner commit + package SHA + candidate in companion PR comment
+-> give Victor one GitHub-hosted command; no manual ChatGPT download
 -> consume exact RETURN
 -> record PASS/failure + RETURN SHA in companion PR comment
 -> classify source vs harness/environment failure
@@ -543,7 +635,7 @@ Do not let fluency collapse those states.
 At companion formation, the next edge is:
 
 ```text
-run P006 against exact #421
+run P007 from the GitHub-hosted #344 runner against corrected exact #421
 -> consume canonical RETURN
 -> if PASS:
      Product Spiral/Theme/Support identity source is proved
@@ -555,6 +647,6 @@ run P006 against exact #421
      -> retire provisional recovery carrier only when it carries no unique truth
 ```
 
-If P006 fails before proof execution, classify the exact wrapper/contract failure here and form the smallest fresh attempt. Do not modify Product source merely to make Relay formation succeed.
+P006 already reached proof execution and exposed a Product compile defect, which was repaired in #421. If P007 stops, classify the exact next source/harness/environment edge, append it to the #344 run ledger, update the GitHub runner if a fresh attempt is required, and continue.
 
 <!-- [VXG RealForever][VEXWORK][SCREEN-LENS][COMPLETION-COMPANION] -->
