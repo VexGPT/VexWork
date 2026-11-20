@@ -189,7 +189,7 @@ test('the Lens derives expressions from source realization for every Screen', ()
 
 test('source-derived expressions are an unconditional top-level Lens dimension', () => {
   assert.match(page, /grid-template-rows:auto auto auto minmax\(0,1fr\) auto/, 'the expression rail owns one top-level row');
-  assert.match(page, /root\.append\(renderBar\(\), renderAtlas\(\), renderExpressionRail\(\), main, renderTray\(\)\)/, 'every Screen receives a source expression rail, so main never falls into an auto row');
+  assert.match(page, /root\.append\([\s\S]*guardedRender\('Header',renderBar\)[\s\S]*guardedRender\('Screen walk \/ Atlas',renderAtlas\)[\s\S]*guardedRender\('Expressions',renderExpressionRail\)[\s\S]*main[\s\S]*guardedRender\('Inspector',renderTray\)/, 'every Screen receives a source expression rail even when local regions degrade behind diagnostic boundaries');
   assert.doesNotMatch(page, /const expressionRail = renderExpressionRail\(\);\s*if \(expressionRail\)/, 'the rail is not conditional on a two-Screen fixture registry');
   assert.match(page, /function renderPhone\(expression, \{ interactive \}\)/);
   assert.match(page, /function renderStructure\(\)[\s\S]*const expression = activeExpression\(\)/);
@@ -458,4 +458,33 @@ test('selected identities recurse into their active projected realization relati
   assert.match(page, /graph\?\.nodes\.some\(\(node\) => node\.elementRef === state\.anchorElementRef\)/);
   assert.match(page, /Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? projectedRelationshipForAnchor\(\)/);
   assert.match(page, /Reuse that already-derived expression graph only when it actually contains the selected identity/);
+});
+
+
+test('legacy Lens shorthand resolves in the canonical Lens directory', () => {
+  assert.ok(page.includes("return /^[^/]+\\.json$/i.test(requested)?LENS_DIR+requested:requested;"));
+  assert.match(page, /lens must be a relative \.json path on this site/);
+});
+
+test('runtime viewer faults stay visible as diagnostics without replacing an already rendered Lens', () => {
+  assert.match(page, /window\.__VEXBOARD_REPORT_DIAGNOSTIC__=reportDiagnostic/);
+  assert.match(page, /Boolean\(state\.lens&&document\.querySelector\('\.lens'\)\)/);
+  assert.match(page, /diagnostic-dock/);
+  assert.match(page, /Diagnostics · Lens kept running/);
+  assert.match(page, /function diagnosticInline\(scope,error\)/);
+  assert.match(page, /function guardedRender\(scope,renderFn\)/);
+  assert.match(page, /guardedRender\('Experience',renderExperienceSide\)/);
+  assert.match(page, /guardedRender\('Behavior \/ Depth',renderBehaviorSide\)/);
+  assert.match(page, /guardedRender\('Screen walk \/ Atlas',renderAtlas\)/);
+  assert.match(page, /guardedRender\('Expressions',renderExpressionRail\)/);
+  assert.match(page, /guardedRender\('Inspector',renderTray\)/);
+});
+
+test('missing browser-local walk state recovers visibly to source entry instead of null-crashing the viewer', () => {
+  assert.match(page, /function ensureWalk\(\)/);
+  assert.match(page, /if\(state\.walk\?\.steps\?\.length\)return state\.walk/);
+  assert.match(page, /state\.walk=Lens\.createScreenWalk\(state\.lens,state\.lens\.entryScreenRef\)/);
+  assert.match(page, /Browser-local screen walk was null or empty; recovered to the Lens entry screen/);
+  assert.match(page, /kind:'NULL_STATE'/);
+  assert.match(page, /const walk=ensureWalk\(\)/);
 });
