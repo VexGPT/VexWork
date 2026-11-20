@@ -23,6 +23,27 @@ without rewriting ADB discovery, emulator boot, target selection, cleanup, or co
 This Project groups that cross-lane outcome. Android product/proof semantics remain owned by
 VexLife-Android; reusable host/device coordination remains owned by Vextreme-SDK / VexLocalBridge.
 
+## Current checkpoint
+
+The first reusable slice is terminal accepted and has been consumed by real Android proof:
+
+```text
+API target runner           = COMPLETED
+VexRelay target integration = READY
+device lease / wait queue   = READY
+Project root                = DECOMPOSED · HIGH
+```
+
+Accepted runner lineage:
+
+- SDK PR #1895 merged the reusable API-compatible target runner;
+- SDK PR #1896 currentized emulator renderer selection and passed real API28 configured-AVD boot / exact target identity / task-owned cleanup;
+- VexStream subsequently consumed the runner for API36 and API28 native proof.
+
+The remaining two rows are genuine work, not stale board debt. Current SDK runner source still states that **VexRelay schema/adapter integration** and a **general cross-lane lease/wait queue** are not supported by this slice; the current Relay contract also exposes no Android proof-target integration. The runner remains `waitPolicy = NONE`.
+
+Therefore completion of the runner releases both downstream dependencies to READY; it does not imply their implementation.
+
 ## Why this Project exists now
 
 VexStream durable-device storage exposed repeated pressure while proving one exact source candidate:

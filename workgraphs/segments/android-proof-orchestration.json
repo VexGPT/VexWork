@@ -25,11 +25,15 @@
         "projects/android-proof-orchestration/README.md",
         "github.issue.vextreme-sdk.1894",
         "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
-        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md",
+        "github.pull.vextreme-sdk.1895",
+        "github.pull.vextreme-sdk.1896",
+        "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151",
+        "github.issue.vexlife-android.157.comment.6361100553"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T03:15:48.000Z",
-      "updatedAt": "2026-10-23T03:15:48.000Z"
+      "updatedAt": "2026-10-23T07:18:25.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -38,7 +42,7 @@
       "label": "Reusable API target runner",
       "purpose": "Provide one reusable host runner that accepts an Android API requirement and proof command, inventories eligible physical/emulated targets, boots an already-configured compatible AVD when needed, records exact target identity, runs the caller-owned proof, and cleans up only task-started emulators.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -55,11 +59,16 @@
         "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
         "repo.vexlife-android:docs/foundation/test-proof/README.md",
         "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md",
-        "repo.vextreme-sdk:lib/cross-platform-tests/vexstream-v4-android-lived-proof.js"
+        "repo.vextreme-sdk:lib/cross-platform-tests/vexstream-v4-android-lived-proof.js",
+        "github.pull.vextreme-sdk.1895",
+        "github.commit.vextreme-sdk.fa56ea1fc39bd2f0c29c05121a40ff2ad642ea2b",
+        "github.pull.vextreme-sdk.1896",
+        "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151",
+        "github.issue.vexlife-android.157.comment.6361100553"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T03:15:48.000Z",
-      "updatedAt": "2026-10-23T03:15:48.000Z"
+      "updatedAt": "2026-10-23T07:18:25.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -68,7 +77,7 @@
       "label": "VexRelay Android target integration",
       "purpose": "Bind the reusable API target runner into current VexRelay Android host proof so formed tasks request target capabilities instead of embedding bespoke ADB/AVD discovery and cleanup shell.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.android-proof-orchestration.api-target-runner"
@@ -84,11 +93,13 @@
       "sourceRefs": [
         "github.issue.vextreme-sdk.1894",
         "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
-        "repo.vextreme-sdk:docs/private-continuity/vexrelay/current-contract.json"
+        "repo.vextreme-sdk:docs/private-continuity/vexrelay/current-contract.json",
+        "repo.vextreme-sdk:docs/process/android-proof-target-runner.md",
+        "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T03:15:48.000Z",
-      "updatedAt": "2026-10-23T03:15:48.000Z"
+      "updatedAt": "2026-10-23T07:18:25.001Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -97,7 +108,7 @@
       "label": "Android device lease and wait queue",
       "purpose": "Coordinate concurrent Android proof lanes so a compatible free isolated AVD is preferred, shared physical targets are not raced, bounded waiting is explicit, and only task-owned emulator instances are released.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.android-proof-orchestration.api-target-runner"
@@ -111,14 +122,88 @@
       ],
       "sourceRefs": [
         "github.issue.vextreme-sdk.1894",
-        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md",
+        "repo.vextreme-sdk:docs/process/android-proof-target-runner.md",
+        "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T03:15:48.000Z",
-      "updatedAt": "2026-10-23T03:15:48.000Z"
+      "updatedAt": "2026-10-23T07:18:25.002Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-proof-orchestration.api-target-runner.running.pr1895",
+      "workRef": "work.android-proof-orchestration.api-target-runner",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "SDK PR #1895 began the reusable API-capability target runner implementation after the cross-lane host gap was source-admitted.",
+      "actorRef": "role.android-proof-orchestration.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vextreme-sdk.1895"
+      ],
+      "createdAt": "2026-10-23T04:30:46.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-proof-orchestration.api-target-runner.verifying.real-host-currentness",
+      "workRef": "work.android-proof-orchestration.api-target-runner",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #1895 was source-accepted and first real API28 consumption exposed renderer-currentness pressure; PR #1896 entered exact real-host verification without widening the runner contract.",
+      "actorRef": "role.android-proof-orchestration.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vextreme-sdk.fa56ea1fc39bd2f0c29c05121a40ff2ad642ea2b",
+        "github.pull.vextreme-sdk.1896"
+      ],
+      "createdAt": "2026-10-23T07:11:52.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-proof-orchestration.api-target-runner.completed.api28-current",
+      "workRef": "work.android-proof-orchestration.api-target-runner",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #1896 merged the renderer-currentness repair after focused proof plus real API28 configured-AVD boot, exact target identity and task-owned cleanup passed; VexStream subsequently consumed the accepted runner for native API-matrix proof.",
+      "actorRef": "role.android-proof-orchestration.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vextreme-sdk.1896",
+        "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151",
+        "github.issue.vexlife-android.157.comment.6361100553"
+      ],
+      "createdAt": "2026-10-23T07:18:25.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-proof-orchestration.vexrelay-integration.ready.runner-terminal",
+      "workRef": "work.android-proof-orchestration.vexrelay-integration",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The reusable target runner dependency is terminal. Current SDK source still explicitly excludes VexRelay schema/adapter integration, so this row is released to READY rather than falsely completed.",
+      "actorRef": "role.android-proof-orchestration.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151",
+        "repo.vextreme-sdk:docs/process/android-proof-target-runner.md",
+        "repo.vextreme-sdk:docs/private-continuity/vexrelay/current-contract.json"
+      ],
+      "createdAt": "2026-10-23T07:18:25.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-proof-orchestration.device-lease-queue.ready.runner-terminal",
+      "workRef": "work.android-proof-orchestration.device-lease-queue",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The reusable target runner dependency is terminal. Current runner source retains waitPolicy=NONE and explicitly excludes a general cross-lane lease/wait queue, so this row is released to READY rather than falsely completed.",
+      "actorRef": "role.android-proof-orchestration.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151",
+        "repo.vextreme-sdk:docs/process/android-proof-target-runner.md"
+      ],
+      "createdAt": "2026-10-23T07:18:25.002Z"
+    }
+  ],
   "sourceRefs": [
     "project.android-proof-orchestration"
   ],
