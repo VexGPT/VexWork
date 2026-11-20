@@ -2,6 +2,228 @@
 
 `[VXG RealForever]`
 
+## Relationship-currentness checkpoint — 2026-11-20
+
+The Partner Source/Conversion projection pressure described later in this document has crossed its draft boundary:
+
+```text
+VexWork #276
+-> MERGED / accepted VexBoard Behavior + Depth projection slice
+
+VexLife-Android #219
+-> MERGED / accepted Partner Source + Conversion + Room/restart source lineage
+```
+
+This updates evidence/currentness only. The owning VexBoard Work states remain intentionally unchanged:
+
+```text
+Source Projectors + lived comparison          RUNNING
+Screen Lens realization recovery              RUNNING
+VexStream living Origin screenshot pilot      RUNNING
+Screen Lens projectability + expressions      SUPERSEDED
+Living Screen Lens currentness                 COMPLETED
+```
+
+The accepted Partner slice can now be consumed by E2E/VexBoard readers as current evidence. It does **not** imply that broader source projection, Stable/Main repinning, realization recovery, or expected-versus-observed lived comparison are complete.
+
+```text
+ACCEPTED SOURCE SLICE != BROADER PROJECT COMPLETION
+E2E CONSUMES VEXBOARD PROJECTION != VEXBOARD OWNS PRODUCT MEANING
+```
+
+
+## Current VexArchitecture re-entry — 2026-11-03
+
+VexBoard's foundational substrate is no longer waiting for the architecture chain that originally fed it.
+The current architecture context is the accepted VexArchitecture body in VexLife-Android plus the completed
+VexWork VexArchitecture Alignment.
+
+~~~text
+VexLife-Android current source
+  -> architecture/vexarchitecture/README.md
+  -> architecture/vexarchitecture/REFINED-BOUNDARIES.md
+  -> exact owning source + tests
+
+VexArchitecture implementation origin
+  -> PR #209 / merge 66c866dea6a8dd78e2946da88715c4deb78c1847
+
+VexWork alignment
+  -> PR #210 / merge d1def6a746646350364266121191b30c7b4e9727
+  -> VexBoard consumes already-owned relationship/currentness truth
+  -> VexBoard does not become healer, WorkState owner, history owner or source authority
+~~~
+
+The earlier Family-Circuit-only projection is a useful **slice**, not the current architectural baseline.
+Family semantics and Execution remain part of VexArchitecture; so do outside truth, construction/lifetime,
+Logger chronology, Relay/convergence and presentation. A VexBoard view may teach one slice, but it must
+not become a second architecture ontology.
+
+Current living-source projection advance:
+
+~~~text
+VexWork PR #215 / merge cd1264763e315d3bc2b6db80115806a102ed339b
+-> accepted one read-only VexLife-Android / VexStream Playback VexArchitecture relationship slice
+-> existing Android source-projector boundary
+-> REFERENCE / ANNOTATION BoardGraph
+-> no semantic / execution / history / healing / lifecycle authority transfer
+
+projection sourceRevisionRef
+  4d357c48eb5a25797513708f800e61a87e0195c0
+
+current Android main after PR #211
+  305a09eac1fabebcf2241bd207386950f41121f2
+
+#211 changed ThemeMode / behavior-foundation paths, not the VexStream Playback paths projected by #215.
+Therefore the projected VexStream source bytes remain valid evidence while automatic sourceRevision
+rebinding/currentization remains explicitly unproved.
+~~~
+
+This advances the living Source Projectors patient zero; it does **not** complete the broader
+source-projectors/lived-comparison or screenshot-evidence Work.
+
+Cascade already closed:
+
+~~~text
+BoardGraph                              COMPLETED
+Canvas Projection                      COMPLETED
+BoardJourney + typed/clickable sim     COMPLETED
+lived canvas usability threshold       COMPLETED
+
+blank browser recovery / self-map
+  PR #184
+  provider integration PASS
+  lived Pages acceptance PASS
+
+navigation-first primary drag
+  PR #186
+  provider/source integration PASS
+
+VexWork -> VexBoard relationship projection alignment
+  PR #210 A5
+  COMPLETED
+~~~
+
+Accordingly, the bounded VexSync <-> VexBoard architecture-convergence item is complete rather than a
+standing prerequisite for another architecture layer.
+
+The Living Screen Lens currentness/projection-truth trajectory is now **COMPLETED** through PR #238 and closure PR #250. Its accepted VexLife-Android Stable/Main source pin remains `305a09eac1fabebcf2241bd207386950f41121f2`; live VexLife-Android `main` currently equals that Stable pin, so the first future `lens:main` movement is a source-movement wake condition rather than unfinished Screen Lens work.
+
+What remains open in VexBoard is narrower and consumer-driven:
+
+~~~text
+Source Projectors + lived comparison         RUNNING · Screen Lens substrate complete; broader lived comparison remains
+Screen Lens projectability + expressions     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND · Android patient zero accepted/merged; VexBoard expression contract foreground
+Fractal semantic composition / spatial       RUNNING when real consumers pressure it
+VexStream living Origin screenshot pilot     RUNNING · source projection accepted; expected/observed evidence comparison still open
+AI BoardPatch authoring                      READY / NO_AUTHORITY / NO_EFFECTS
+Origin rename propagation debt               PARKED
+~~~
+
+The Android projectability patient zero is now accepted on VexLife-Android through PR #212 /
+merge `ecbb6987d1da338fa0adf7297456d3f652f04155`: Songs/Downloads use the existing stable repeated-item
+owner, collection cards carry their existing runtime row identity into Vex Compose, and no runtime-row
+registry, `vexItems` ontology, Scenario coupling or VexBoard-specific Android AST was introduced. A007
+differential proof reproduced the remaining VexStream image-comparison mismatch with zero Screen Lens
+paths, so that visual baseline pressure remains separately owned rather than blocking the projectability
+slice.
+
+The next Screen Lens evolution is preserved separately in
+`projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md`. It keeps the accepted Screen Lens
+currentness body closed, ports the useful pressure from the 2026-11-06 Claude handoff, and records the
+simultaneous Android/VexBoard plan before implementation: establish a lawful projectability language from
+real Android pressure, align only non-projectable existing meaning, derive bounded expressions without
+Cartesian-product noise or Scenario ownership, then implement the VexBoard contract/components and bounded
+source adapter.
+
+For current consumers, VexBoard's role is to project, traverse, compare and make already-owned semantic
+relationships perceptible. Real VexStream, Vex Universe, VexLife-Prod or other consumer pressure may
+expose missing projection/composition/evidence seams; VexBoard should not prebuild another architecture
+merely because an older foundation chain once depended on it.
+
+## Current continuation sequence across related Projects
+
+These Projects are related, but they are **not one serial dependency chain**.
+
+~~~text
+FOREGROUND — VEXBOARD
+  work.vexboard.vexstream-screenshot-pilot
+  + work.vexboard.source-projectors
+  -> prove one living Origin vertical slice from current source/evidence
+  -> earn the smallest reusable projection/evidence/construction seams
+
+THEN / SECOND CONSUMER — VEX UNIVERSE
+  work.vex-universe.journey-evidence-patient-zero
+  -> consume the accepted VexBoard substrate
+  -> pressure reuse with a genuinely different journey/evidence domain
+  -> do not reopen universal architecture
+
+PARALLEL — OPERATIONAL CONSOLE
+  work.vexwork.operational-console.antique-pilot
+  work.vexwork.operational-console.relational-terrain.*
+  -> continue on its own product/lived predicates
+  -> may later supply dynamic Work/attention projection pressure
+  -> is not a prerequisite for VexBoard or Vex Universe
+
+LINEAGE / PARKED — VEXLIFE BLUEPRINT SOURCE OF TRUTH
+  completed portability/parity proof remains reusable evidence
+  unfinished MAUI/Mac target leg remains parked
+  -> consult for earned construction/proof lessons
+  -> do not resume it to unblock VexBoard
+~~~
+
+### VexBoard internal order
+
+Within the VexBoard foreground, prefer this order:
+
+~~~text
+1. Living Origin / source-projection patient zero
+   current VexStream feature source + evidence
+   -> bounded VexBoard Feature Board
+   -> intended/observed comparison at stable semantic coordinates
+
+2. Source Projectors + lived comparison
+   implement only the adapters/evidence seams the patient zero actually requires
+   -> avoid a generic projector framework before repeated consumers earn it
+
+3. Publish/readiness + immutable Board revision
+   once one authored/reverse-adopted board is coherent enough to claim an intended design
+   -> working Board != published Board revision
+
+4. Target compilation patient zero
+   published VexBoard design
+   -> separately governed target adapter
+   -> target-native source candidate
+   -> target-owned build/lifecycle proof
+   -> target must not silently redesign the accepted Board
+
+5. Round-trip evidence
+   accepted target source / lived result
+   -> project back against the same published Board coordinates
+   -> expose currentness/drift instead of assuming successful compilation means design fidelity
+
+6. Second materially different consumer
+   Vex Universe journey/evidence patient zero
+   -> pressure whether the seams are truly reusable before extracting broader abstractions
+
+7. BoardPatch authoring
+   only after published-design and target-round-trip semantics are concrete enough that AI mutation
+   can reuse the same Board Control / validation / release boundaries without inventing a second model
+~~~
+
+Fractal semantic composition / spatial layout may advance **in parallel only when one of those real
+consumers exposes a concrete composition or layout limit**. It is not a prerequisite to finish in the
+abstract.
+
+The Operational Console remains parallel because its current foreground is the lived Antique Plate
+commerce pilot and its Terrain/currentness experience. Those Work items answer a different product
+question. VexBoard may project their already-owned Work/attention truth, but should not absorb the
+Operational Console as another VexBoard subsystem.
+
+The VexLife Blueprint Source-of-Truth Project remains predecessor lineage. Its useful portable
+meaning/construction/proof lessons are already carried forward; its parked target-specific residue does
+not gate this sequence.
+
+
 ## Current formation status
 
 ```text
@@ -14,10 +236,10 @@ Canvas Projection                     COMPLETED
 BoardJourney + simulation             COMPLETED
 animated semantic traversal           ACCEPTED / PR #98 MERGED
 BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
-Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
+Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND · #215 slice accepted
 VexStream screenshot pilot            RUNNING / IMMEDIATE / AUTHORIZED_BOUNDED
 BusinessFactory company formation     CAPTURED / LATER / NO_AUTHORITY
-VexBoard root                         DECOMPOSED
+VexBoard root                         RUNNING
 ```
 
 This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. PR #108 then landed the first bounded read-only Source Projectors implementation, and PR #109 currentized that broader Work item to RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND while keeping lived comparison, evidence presentation, federation, and broader source families unfinished. BoardPatch remains dependency-ready with NO_AUTHORITY / NO_EFFECTS. This architecture source explains that state; it does not own or advance lifecycle truth.
@@ -422,6 +644,42 @@ Once this foundational language is coherent enough for the next concrete consume
 
 PR #182's exact-head SourceOwner evidence remains valid while this language work proceeds.
 Independent review remains parked.
+
+## Living Screen Lens — accepted currentness foundation
+
+`vexboard/lens.html` shows one screen through two flip sides: Experience (Surface ⇄ Structure,
+middle-click) and Behavior (SCAE Behavior ⇄ Depth, right-click). A selected control's pathway is traced
+across both sides, routes owned by shared chrome are drawn once, and every face is laid out without
+overlap. The accepted currentness/projection-truth trajectory completed through PR #238 and closure
+PR #250, including deployed historical-commit / Differences-from-Stable lived proof. The accepted
+projection remains pinned to VexLife-Android `305a09eac1fabebcf2241bd207386950f41121f2`, and live
+VexLife-Android `main` currently equals that Stable pin.
+
+The current Lens is generated from source, not maintained as a hand architecture diagram. It now
+includes two earned Family paths: ThemeMode through the captured-closure/registration shape and
+VexStream Playback through the typed Behavior-port / Connection / observation-reconciliation shape.
+Direct registrations remain direct when no Family relationship is source-proven.
+
+Search (`/`), impact, per-screen coverage and paste-ready control and screen briefs come from
+`src/shared/vexboard-screen-lens-query.mjs`. The deployed first-draft experience received lived
+acceptance after the complete stack integrated through PR #230. PR #232 then made the existing
+`relatedBoardRefs[]` relationship visible through stable `?board=<boardRef>` VexBoard resolution and
+added one uniquely identifiable `Open Living Screen Lens` entry on the older proving-ground landing.
+PR #238 later completed the source/currentness and historical-projection truth boundary; Victor's
+hosted historical-commit comparison closed the lived edge, and PR #250 currentized the durable Work
+coordinate to COMPLETED. Broader Source Projectors / VexStream screenshot evidence work remains
+separate and RUNNING.
+
+VexBoard's entry is now `vexboard/projects.html`: the subjects it can project or relate, their Stable
+and Main build pointers, any-commit projection and the earlier canvas trials. VexWork remains the owner
+of Project/Work/lifecycle truth. How projects, builds and pointers work lives in
+`PROJECTS-AND-BUILDS.md`.
+
+Design, data contract, decision record, accepted threshold and next edges live in `SCREEN-LENS.md`.
+The lens is generated by `npm run lens:fetch` (or
+`node scripts/build-screen-lens.mjs --source <checkout>`); generation/currentness details live in
+`SCREEN-LENS-ADAPTER.md`. The Lens remains a read-only projection: it does not own product meaning,
+Work lifecycle, source mutation or execution authority.
 
 ## Reusable Semantic Origin IDE foundation
 

@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-24T05:30:04.000Z",
+      "updatedAt": "2026-11-20T06:42:09.003Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.outcome",
@@ -14,7 +14,7 @@
       "label": "VexStream Mobile Library",
       "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while giving listeners coherent browse, sort/filter, and whole-Songs download management, with persistent sync separately governed.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -29,7 +29,13 @@
         "github.pull.vexlife-android.166",
         "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
         "github.pull.vexlife-android.167",
-        "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
+        "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f",
+        "work.vexstream.mobile-library.durable-device-library",
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -222,7 +228,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-22T01:32:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-26T23:43:36.004Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.download-experience",
@@ -230,7 +236,7 @@
       "label": "Contextual Download Experience",
       "purpose": "Make existing one-shot VexStream download intent reachable from the listener's current music context with truthful missing counts and phone-constrained presentation, without creating another download engine.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "VERIFYING",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexstream.mobile-library.massdownload-product"
@@ -241,7 +247,8 @@
       "sourceRefs": [
         "projects/vexstream-mobile-library/README.md",
         "github.pull.vexlife-android.142",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt",
+        "work.vexstream.mobile-library.contextual-download-missing"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -301,7 +308,7 @@
       "label": "Library Browse & Discovery",
       "purpose": "Give listeners one coherent way to order and narrow current VexStream library truth into useful listening sets while catalog, collection, playback, and classification truth keep their rightful owners.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [],
@@ -317,7 +324,8 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
         "repo.vexstream-music:v2/desktop/library/model.go",
-        "repo.vexstream-music:mobile_bridge.go"
+        "repo.vexstream-music:mobile_bridge.go",
+        "work.vexstream.mobile-library.sort-filter-controls"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [
@@ -326,7 +334,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T08:02:00.000Z",
-      "updatedAt": "2026-10-24T02:59:02.000Z"
+      "updatedAt": "2026-10-25T12:12:29.465Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -376,7 +384,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-22T01:32:00.000Z",
-      "updatedAt": "2026-10-22T06:41:27.000Z",
+      "updatedAt": "2026-10-22T08:35:30.001Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.massdownload-maturity",
@@ -384,7 +392,7 @@
       "label": "MassDownload Maturity",
       "purpose": "Keep accepted MassDownload product source and terminal EndToEnd proof as completed truth while the independently owned Queue/Track-menu intermittency remains visible as open causal work.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "PAUSED_AT_CHECKPOINT",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -397,7 +405,10 @@
         "github.pull.vexlife-android.148",
         "github.pull.vexlife-android.151",
         "github.pull.vextreme-sdk.1887",
-        "repo.vexstream-music:README.md"
+        "repo.vexstream-music:README.md",
+        "work.vexstream.mobile-library.massdownload-product",
+        "work.vexstream.mobile-library.massdownload-e2e",
+        "work.vexstream.mobile-library.track-menu-presentation-defect"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -564,9 +575,9 @@
       "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
       "label": "Large offline library cold-start performance",
-      "purpose": "Resolve the 785-song Android cold-launch defect without weakening local-media integrity: the integrity-preserving source correction is merged, and the remaining obligation is Victor's lived current-main startup observation while broader cross-feature scalability/SCAE review remains separate.",
+      "purpose": "Resolve the 785-song Android cold-launch defect without weakening local-media integrity. PR #169 moved restore/integrity work off the first-draw path with receipt-bounded verification; later lived use recorded in Android issue #170 confirmed VexLife can draw while local downloads continue restoring, and PR #171 separately fixed the temporary loading/empty-state presentation ambiguity.",
       "workClass": "DEFECT",
-      "state": "WAITING_HUMAN",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -589,7 +600,9 @@
         "repo.vexlife-android:docs/foundation/test-proof/README.md",
         "github.pull.vexlife-android.169",
         "github.commit.vexlife-android.dbce2fac5eeace83774c71a837904fd7340bb8dc",
-        "github.pull.vexlife-android.171"
+        "github.pull.vexlife-android.171",
+        "github.issue.vexlife-android.170",
+        "github.commit.vexlife-android.fad3a7dcbd9d1fdae84f4c8df0d438d90692d2cc"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -598,7 +611,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T07:16:00.000Z",
-      "updatedAt": "2026-10-25T00:59:26.000Z"
+      "updatedAt": "2026-11-20T06:42:09.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -607,7 +620,7 @@
       "label": "Playback surfaces",
       "purpose": "Evolve VexStream's Android listening surfaces from the accepted mini-player into a full current-player experience that reuses Playback, Queue and Repeat semantic owners while remaining a presentation/navigation outcome rather than a second playback runtime.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -621,7 +634,11 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackBehavior.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueBehavior.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatBehavior.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatBehavior.kt",
+        "work.vexstream.mobile-library.now-playing-artwork-projection",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [
@@ -630,7 +647,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-24T11:20:00.000Z"
+      "updatedAt": "2026-11-20T06:42:09.001Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -739,7 +756,7 @@
       "label": "Offline artwork durability",
       "purpose": "Fix the observed Android experience where downloaded/local-only VexStream songs lose available cover art across restart or render generic placeholders: persist the admitted artwork source, keep a bounded app-private companion image for downloaded media, prefer local artwork in track/full-player presentation, and preserve audio integrity as independent truth.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -787,7 +804,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T03:50:45.000Z",
-      "updatedAt": "2026-10-25T07:10:00.000Z"
+      "updatedAt": "2026-11-20T06:42:09.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1481,6 +1498,334 @@
         "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a"
       ],
       "createdAt": "2026-10-27T02:54:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.large-offline-startup-performance.verifying.lived-first-draw-recovered",
+      "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
+      "priorState": "WAITING_HUMAN",
+      "nextState": "VERIFYING",
+      "reason": "The outstanding human predicate arrived in later lived use: after the merged PR #169 startup correction, VexLife drew before the offline library finished restoring instead of blocking first draw on full-library media hashing. Android issue #170 captured that observed current-main behavior; the resulting temporary loading/empty-state ambiguity was a separate presentation defect.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife-android.168",
+        "github.pull.vexlife-android.169",
+        "github.commit.vexlife-android.dbce2fac5eeace83774c71a837904fd7340bb8dc",
+        "github.issue.vexlife-android.170"
+      ],
+      "createdAt": "2026-11-20T06:42:09.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.large-offline-startup-performance.completed.lived-first-draw-and-loading-truth",
+      "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The large-library startup defect no longer has an unconsumed acceptance edge: lived use proved first draw is no longer held behind offline restoration, and PR #171 terminally source-accepted the follow-up loading-truth projection so background restore cannot masquerade as a terminal empty library.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife-android.170",
+        "github.pull.vexlife-android.171",
+        "github.commit.vexlife-android.fad3a7dcbd9d1fdae84f4c8df0d438d90692d2cc"
+      ],
+      "createdAt": "2026-11-20T06:42:09.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.offline-artwork-durability.verifying.pr177-source-integrated",
+      "workRef": "work.vexstream.mobile-library.offline-artwork-durability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #177 completed the source-owned offline-artwork durability slice: corrected SourceOwner A003 PASS, fresh Independent Assurance CLEAR_ON_EXACT_HEAD, and tree-exact integration all landed on Android main. Its own terminal receipt explicitly leaves lived restart/product verification separate, so the truthful current state is Verify rather than Active or Done.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.177",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a003.return.sha256.2443f793062ff20cab1b8b5a864a6977963814cdc26e72b7923654cecb3f2b6c",
+        "github.comment.vexlife-android.pr177.6393677656.assurance-clear",
+        "github.commit.vexlife-android.c5c2014733572da22cb320ec32801f10bcbedf65",
+        "github.comment.vexlife-android.pr177.6393685461.post-merge-tree-exact"
+      ],
+      "createdAt": "2026-11-20T06:42:09.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.outcome.decomposed.plan-validated.currentness-20261120",
+      "workRef": "work.vexstream.mobile-library.outcome",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "The Project is no longer only decomposed: the durable-device subtree is terminal, MassDownload/product work is accepted, and the Project source records multiple concrete admitted browse/download/playback continuations.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexstream-mobile-library/README.md",
+        "work.vexstream.mobile-library.durable-device-library",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
+      ],
+      "createdAt": "2026-11-20T06:42:09.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.outcome.plan-validated.ready.currentness-20261120",
+      "workRef": "work.vexstream.mobile-library.outcome",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Accepted Android/VexStream source has already realized multiple Project children and released their construction dependencies; the parent outcome therefore advanced beyond planning into executable Project work.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability"
+      ],
+      "createdAt": "2026-11-20T06:42:09.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.outcome.ready.running.currentness-20261120",
+      "workRef": "work.vexstream.mobile-library.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The Mobile Library trajectory is actively carrying unfinished child work: Sort/Filter remains RUNNING, several download/player/artwork fronts are VERIFYING, and the Track-menu defect remains paused at a bounded checkpoint. Preserve those real open edges while making the parent lifecycle current.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability",
+        "work.vexstream.mobile-library.track-menu-presentation-defect"
+      ],
+      "createdAt": "2026-11-20T06:42:09.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.download-experience.decomposed.plan-validated.currentness",
+      "workRef": "work.vexstream.mobile-library.download-experience",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "The contextual download outcome is concretely decomposed into the missing-content update/remove-all behavior with accepted source and an exact child verification path.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-26T23:43:36.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.download-experience.plan-validated.ready.currentness",
+      "workRef": "work.vexstream.mobile-library.download-experience",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The missing-content child implementation and proof path are formed and no longer waiting on outcome decomposition.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-26T23:43:36.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.download-experience.ready.running.currentness",
+      "workRef": "work.vexstream.mobile-library.download-experience",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The missing-content child was implemented and integrated, advancing the contextual download outcome into active execution.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-26T23:43:36.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.download-experience.running.verifying.currentness",
+      "workRef": "work.vexstream.mobile-library.download-experience",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The sole current child is VERIFYING after merge/source proof; lived confirmation remains the bounded acceptance edge, so the parent outcome is VERIFYING rather than complete.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-26T23:43:36.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.library-browse-discovery.decomposed.plan-validated.currentness",
+      "workRef": "work.vexstream.mobile-library.library-browse-discovery",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "Library Browse & Discovery has a concrete source-owned browse surface and a bounded Sort/Filter/Recently-added child rather than an unformed outcome.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-25T12:12:29.463Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.library-browse-discovery.plan-validated.ready.currentness",
+      "workRef": "work.vexstream.mobile-library.library-browse-discovery",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The Sort/Filter child is dependency-ready with accepted source relationships and a defined lived verification edge.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-25T12:12:29.464Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.library-browse-discovery.ready.running.currentness",
+      "workRef": "work.vexstream.mobile-library.library-browse-discovery",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The Sort/Filter/Recently-added child is actively RUNNING from accepted source plus lived feedback, so its parent browse/discovery outcome is RUNNING.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-25T12:12:29.465Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.massdownload-maturity.decomposed.plan-validated.currentness",
+      "workRef": "work.vexstream.mobile-library.massdownload-maturity",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "MassDownload product work established the concrete product behavior and released the maturity outcome from decomposition.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.massdownload-product",
+        "work.vexstream.mobile-library.massdownload-e2e",
+        "work.vexstream.mobile-library.track-menu-presentation-defect",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-22T01:32:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.massdownload-maturity.plan-validated.ready.currentness",
+      "workRef": "work.vexstream.mobile-library.massdownload-maturity",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Product implementation plus the terminal EndToEnd route formed a complete executable maturity path, leaving the presentation defect as a separately visible edge.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.massdownload-product",
+        "work.vexstream.mobile-library.massdownload-e2e",
+        "work.vexstream.mobile-library.track-menu-presentation-defect",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-22T06:41:27.007Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.massdownload-maturity.ready.running.currentness",
+      "workRef": "work.vexstream.mobile-library.massdownload-maturity",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "MassDownload product and EndToEnd work executed to completion while the track-menu presentation issue remained under investigation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.massdownload-product",
+        "work.vexstream.mobile-library.massdownload-e2e",
+        "work.vexstream.mobile-library.track-menu-presentation-defect",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-22T06:41:27.008Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.massdownload-maturity.running.paused.currentness",
+      "workRef": "work.vexstream.mobile-library.massdownload-maturity",
+      "priorState": "RUNNING",
+      "nextState": "PAUSED_AT_CHECKPOINT",
+      "reason": "The product and EndToEnd children are COMPLETED, but the track-menu presentation intermittency remains an OPEN_UNEXPLAINED paused checkpoint. Preserve that real residual instead of marking the maturity outcome complete.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.massdownload-product",
+        "work.vexstream.mobile-library.massdownload-e2e",
+        "work.vexstream.mobile-library.track-menu-presentation-defect",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-22T08:35:30.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.playback-surfaces.decomposed.plan-validated.currentness",
+      "workRef": "work.vexstream.mobile-library.playback-surfaces",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "Playback Surfaces has concrete source-owned player/artwork children and accepted playback/queue relationships, so it is no longer only decomposed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-25T03:21:45.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.playback-surfaces.plan-validated.ready.currentness",
+      "workRef": "work.vexstream.mobile-library.playback-surfaces",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Now Playing artwork and full-player work established executable playback-surface candidates with bounded proof/lived acceptance routes.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-25T03:50:46.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.playback-surfaces.ready.running.currentness",
+      "workRef": "work.vexstream.mobile-library.playback-surfaces",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Playback-surface source work executed across Now Playing, full player and artwork durability/currentness fronts.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-25T03:50:46.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.playback-surfaces.running.verifying.currentness",
+      "workRef": "work.vexstream.mobile-library.playback-surfaces",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Now Playing projection is complete; full player, offline artwork durability and current-track artwork availability are all VERIFYING. The parent therefore waits on those lived/currentness predicates rather than remaining DECOMPOSED.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-11-20T06:42:09.001Z"
     }
   ],
   "sourceRefs": [

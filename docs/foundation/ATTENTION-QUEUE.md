@@ -144,6 +144,45 @@ It does not execute the process, mutate the subject/provider, acknowledge a huma
 
 Explicit promotion remains owned by `process.vexwork.promote-derived-concern` / `src/core/derived-work-promotion.mjs` or a later exact queue-to-promotion adapter that composes that existing contract.
 
+## Relationship-currentness adapter
+
+A3 of VexWork VexArchitecture Alignment adds a deliberately thin adapter over this existing queue.
+
+The rightful relationship owner still decides one current predicate:
+
+~~~text
+SATISFIED
+UNSATISFIED
+UNKNOWN
+~~~
+
+The Attention Queue only projects that fact:
+
+~~~text
+relationshipRef is reused as attentionRef
+
+SATISFIED   -> CLEAR
+UNSATISFIED -> ATTENTION
+UNKNOWN     -> UNKNOWN
+~~~
+
+This avoids minting a second identity for the same relationship condition.
+
+The adapter does **not** know how Project Registry, Workgraph, workspace, provider or repository
+currentness is computed. Those semantics remain with their rightful source/check owners. It only
+turns an already-evaluated relationship predicate into the existing read-only queue contract.
+
+~~~text
+RELATIONSHIP_OBSERVER != ATTENTION_QUEUE
+ATTENTION_QUEUE != RELATIONSHIP_HEALER
+CLEAR != WORK_COMPLETED
+ATTENTION != MUTATION_PERMISSION
+~~~
+
+A later current observation of the same `relationshipRef` may move from ATTENTION to CLEAR when
+accepted evidence shows the relationship converged. The stable identity lets the condition clear
+without a human deleting a TODO or another lifecycle ledger tracking it.
+
 ## Projection
 
 `projectAttentionQueue()` returns one deterministic read-only view:

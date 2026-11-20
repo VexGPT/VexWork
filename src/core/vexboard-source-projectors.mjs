@@ -1,3 +1,4 @@
+import { ATTENTION_QUEUE_SNAPSHOT_SCHEMA } from './attention-queue.mjs';
 import { verifySemanticFingerprint } from './semantic.mjs';
 import { projectWorkRefs } from './workgraph.mjs';
 import { createBoardGraph, createBoardProjection } from './vexboard.mjs';
@@ -174,7 +175,98 @@ function processReferenceNode(process) {
   ];
 }
 
-export function projectVexWorkProjectSource({ project, graph, processMap, boardRef: boardRefInput }) {
+function projectAttentionSnapshot({ snapshot, selectedWorkRefs }) {
+  if (snapshot === null) {
+    return Object.freeze({ nodes: Object.freeze([]), relationships: Object.freeze([]), sourceRefs: Object.freeze([]) });
+  }
+  assert(snapshot?.schemaVersion === ATTENTION_QUEUE_SNAPSHOT_SCHEMA,
+    'VexWork Attention snapshot schema mismatch');
+  assert(verifySemanticFingerprint(snapshot), 'VexWork Attention snapshot semanticFingerprint mismatch');
+  assert(snapshot.effects === false && snapshot.executionAuthority === 'NONE',
+    'VexWork Attention snapshot must remain effect-free and non-executing');
+
+  const selected = new Set(selectedWorkRefs);
+  const nodes = [];
+  const relationships = [];
+  const projectionSourceRefs = new Set();
+
+  for (const entry of snapshot.entries) {
+    const selectedExistingWorkRefs = entry.existingWorkRefs
+      .filter((workRef) => selected.has(workRef))
+      .sort(compareCanonicalText);
+    if (selectedExistingWorkRefs.length === 0) continue;
+
+    const sourceRefs = refs([
+      snapshot.queueRef,
+      snapshot.snapshotRef,
+      ...snapshot.sourceRefs,
+      ...entry.sourceRefs,
+      ...entry.reasonRefs,
+      ...entry.evidenceRefs,
+    ], `${entry.attentionRef}.projection.sourceRefs`);
+    for (const sourceRef of sourceRefs) projectionSourceRefs.add(sourceRef);
+
+    nodes.push({
+      nodeRef: entry.attentionRef,
+      kind: 'REFERENCE',
+      label: entry.label,
+      parentRefOrNull: null,
+      detailBoardRefOrNull: null,
+      sourceRefs,
+    });
+    nodes.push({
+      nodeRef: annotationRef(entry.attentionRef, 'currentness'),
+      kind: 'ANNOTATION',
+      label: `Attention: ${entry.attentionState} · Owner: ${snapshot.ownerRepositoryRef} · Observed: ${entry.observedAt}`,
+      parentRefOrNull: entry.attentionRef,
+      detailBoardRefOrNull: null,
+      sourceRefs,
+    });
+    nodes.push({
+      nodeRef: annotationRef(entry.attentionRef, 'reasons'),
+      kind: 'ANNOTATION',
+      label: `Reasons: ${entry.reasonRefs.join(' · ')}`,
+      parentRefOrNull: entry.attentionRef,
+      detailBoardRefOrNull: null,
+      sourceRefs: refs([...entry.reasonRefs, ...entry.sourceRefs], `${entry.attentionRef}.reasons.sourceRefs`),
+    });
+    if (entry.evidenceRefs.length > 0) {
+      nodes.push({
+        nodeRef: annotationRef(entry.attentionRef, 'evidence'),
+        kind: 'ANNOTATION',
+        label: `Evidence: ${entry.evidenceRefs.join(' · ')}`,
+        parentRefOrNull: entry.attentionRef,
+        detailBoardRefOrNull: null,
+        sourceRefs: refs([...entry.evidenceRefs, ...entry.sourceRefs], `${entry.attentionRef}.evidence.sourceRefs`),
+      });
+    }
+
+    for (const workRef of selectedExistingWorkRefs) {
+      relationships.push({
+        relationshipRef: `rel.vexboard.source.${entry.attentionRef}.currentness-of.${workRef}`,
+        kind: 'REFERENCE',
+        fromRef: entry.attentionRef,
+        toRef: workRef,
+        labelOrNull: 'CURRENTNESS_OF',
+        sourceRefs,
+      });
+    }
+  }
+
+  return Object.freeze({
+    nodes: Object.freeze(nodes),
+    relationships: Object.freeze(relationships),
+    sourceRefs: Object.freeze([...projectionSourceRefs].sort(compareCanonicalText)),
+  });
+}
+
+export function projectVexWorkProjectSource({
+  project,
+  graph,
+  processMap,
+  attentionSnapshotOrNull = null,
+  boardRef: boardRefInput,
+}) {
   assert(processMap?.schemaVersion === 'vexwork.process-map/v1', 'VexWork Process Map schema mismatch');
   assert(verifySemanticFingerprint(processMap), 'VexWork Process Map semanticFingerprint mismatch');
   assert(processMap.effects === false && processMap.executionAuthority === 'NONE',
@@ -285,6 +377,13 @@ export function projectVexWorkProjectSource({ project, graph, processMap, boardR
     }
   }
 
+  const attentionProjection = projectAttentionSnapshot({
+    snapshot: attentionSnapshotOrNull,
+    selectedWorkRefs: workRefs,
+  });
+  nodes.push(...attentionProjection.nodes);
+  relationships.push(...attentionProjection.relationships);
+
   const boardGraph = createBoardGraph({
     schemaVersion: 'vexboard.board-graph/v1',
     graphRef,
@@ -295,6 +394,7 @@ export function projectVexWorkProjectSource({ project, graph, processMap, boardR
       ...project.sourceRefs,
       'workgraphs/public.json',
       'blueprint/process-registry.json',
+      ...attentionProjection.sourceRefs,
     ], 'VexWork source projection graph.sourceRefs'),
   });
   const projection = buildProjection(boardGraph, projectionRef, 'TREE');

@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "vexboard.screen-lens/v1",
+  "lensRef": "lens.vexlife-android.debug-menu",
+  "title": "Debug Menu · Screen Lens",
+  "summary": "One screen seen four ways: what the human touches, where it lives in code, what it means (SCAE), and what it touches underneath.",
+  "entryScreenRef": "screen.debug-menu",
+  "entryElementRef": "element.debug-menu.body.dark-mode",
+  "relatedBoardRefs": ["board.vexlife.debug-menu.theme-mode.origin-walk"],
+  "sourceSnapshot": {
+    "repositoryRef": "repo.vexlife-android",
+    "repositoryUrl": "https://github.com/vgong24/VexLife-Android",
+    "commit": "305a09eac1fabebcf2241bd207386950f41121f2",
+    "observedAt": "2026-11-03",
+    "roots": {
+      "app": "app/src/main/kotlin/com/vextreme/vexlife/android/",
+      "arch": "architecture/"
+    },
+    "notes": [
+      "Hand-projected from current source for the first Screen Lens. A source projector or Kotlin annotations should produce this file later; until then it is a READ-ONLY projection, not source truth.",
+      "toggleRef / buttonRef ids are declared verbatim in source. Container element refs (cards, rows, text) are derived from the layout DSL nesting: element.<screenKey>.<nested ids>.",
+      "Visible text is approximated from string resource names (labelRes). R.string values were not projected."
+    ]
+  },
+  "chrome": [
+    {
+      "chromeRef": "chrome.app-shell",
+      "label": "AppShell",
+      "symbol": "AppShell",
+      "source": "app:shell/AppShell.kt",
+      "appliesTo": "PRIMARY",
+      "summary": "App-wide chrome with one owner. AppFrame shows bottom navigation and the FAB cluster only when runtime.isPrimary(); routes defined here are never copied into each screen.",
+      "elements": [
+        { "ref": "element.shell.toolbar", "kind": "ROW", "label": "Toolbar", "symbol": "AppShell.Elements.Toolbar", "slot": "TOP" },
+        { "ref": "element.shell.brand-mark", "kind": "IMAGE", "label": "VexLife", "parentRef": "element.shell.toolbar", "symbol": "AppShell.Elements.BrandMark", "labelRes": "R.string.brand_content_description" },
+        { "ref": "element.shell.back", "kind": "BUTTON", "label": "Back", "parentRef": "element.shell.toolbar", "symbol": "AppShell.Elements.Back", "labelRes": "R.string.back", "intent": "navigateBack()", "pathwayRef": "pathway.shell.back", "navigatesTo": "BACK", "visibleWhen": "runtime has a back target", "alwaysVisible": true },
+        { "ref": "element.shell.primary-navigation", "kind": "ROW", "label": "Primary navigation", "symbol": "AppShell.Elements.PrimaryNavigation", "slot": "BOTTOM", "visibleWhen": "runtime.isPrimary()" },
+        { "ref": "element.navigation.home", "kind": "BUTTON", "label": "Home", "parentRef": "element.shell.primary-navigation", "symbol": "AppShell.Elements.Home", "labelRes": "R.string.nav_home", "intent": "navigateTo(HomeScreen)", "pathwayRef": "pathway.shell.navigate", "navigatesTo": "screen.home" },
+        { "ref": "element.navigation.events", "kind": "BUTTON", "label": "Events", "parentRef": "element.shell.primary-navigation", "symbol": "AppShell.Elements.Events", "labelRes": "R.string.nav_events", "intent": "navigateTo(EventsScreen)", "pathwayRef": "pathway.shell.navigate", "navigatesTo": "screen.events" },
+        { "ref": "element.navigation.settings", "kind": "BUTTON", "label": "Settings", "parentRef": "element.shell.primary-navigation", "symbol": "AppShell.Elements.Settings", "labelRes": "R.string.nav_settings", "intent": "navigateTo(SettingsScreen)", "pathwayRef": "pathway.shell.navigate", "navigatesTo": "screen.settings" },
+        { "ref": "element.shell.fab-cluster", "kind": "STACK", "label": "FAB cluster", "symbol": "AppShell.Elements.FabCluster", "slot": "FAB", "visibleWhen": "runtime.isPrimary()" },
+        { "ref": "element.shell.fab-options", "kind": "MENU", "label": "FAB options", "parentRef": "element.shell.fab-cluster", "symbol": "AppShell.Elements.FabOptions", "visibleWhen": "toggled open by the + FAB" },
+        { "ref": "element.user-profile", "kind": "MENU_ITEM", "label": "Profile", "parentRef": "element.shell.fab-options", "symbol": "AppShell.Elements.UserProfile", "labelRes": "R.string.fab_profile", "intent": "close(FabOptions) then navigateTo(UserProfileScreen)", "pathwayRef": "pathway.shell.fab-route", "navigatesTo": "screen.user-profile" },
+        { "ref": "element.debug-menu", "kind": "MENU_ITEM", "label": "Debug Menu", "parentRef": "element.shell.fab-options", "symbol": "AppShell.Elements.DebugMenu", "labelRes": "R.string.fab_debug", "intent": "close(FabOptions) then navigateTo(DebugMenuScreen)", "pathwayRef": "pathway.shell.fab-route", "navigatesTo": "screen.debug-menu" },
+        { "ref": "element.gallery", "kind": "MENU_ITEM", "label": "Gallery", "parentRef": "element.shell.fab-options", "symbol": "AppShell.Elements.Gallery", "labelRes": "R.string.fab_gallery", "intent": "close(FabOptions) then navigateTo(GalleryScreen)", "pathwayRef": "pathway.shell.fab-route", "navigatesTo": "screen.gallery" },
+        { "ref": "element.shell.fab.add", "kind": "FAB", "label": "+", "parentRef": "element.shell.fab-cluster", "symbol": "AppShell.Elements.Add", "labelRes": "R.string.fab_more", "intent": "toggle(FabOptions)", "pathwayRef": "pathway.shell.fab-toggle" }
+      ]
+    }
+  ],
+  "screens": [
+    { "screenRef": "screen.home", "label": "Home", "placement": "PRIMARY", "symbol": "HomeScreen", "source": "app:screens/primary/home/HomeScreen.kt", "mapped": "CHROME_ONLY", "summary": "Primary destination. Only the shared AppShell chrome is projected in this lens; Home's own content is held." },
+    { "screenRef": "screen.events", "label": "Events", "placement": "PRIMARY", "symbol": "EventsScreen", "source": "app:screens/primary/events/EventsScreen.kt", "mapped": "CHROME_ONLY", "summary": "Primary destination. Chrome projected; content held." },
+    { "screenRef": "screen.settings", "label": "Settings", "placement": "PRIMARY", "symbol": "SettingsScreen", "source": "app:screens/primary/settings/SettingsScreen.kt", "mapped": "CHROME_ONLY", "summary": "Primary destination. Chrome projected; content held." },
+    {
+      "screenRef": "screen.debug-menu",
+      "label": "Debug Menu",
+      "placement": "SHARED",
+      "symbol": "DebugMenuScreen",
+      "source": "app:screens/shared/debug/DebugMenuScreen.kt",
+      "mapped": "MAPPED",
+      "summary": "Developer composition surface. It composes controls to rightful owners and does not own their semantics.",
+      "elements": [
+        { "ref": "element.debug-menu.body", "kind": "COLUMN", "label": "body", "symbol": "scrollableColumn(\"body\")", "declared": "scrollableColumn(\"body\")" },
+        { "ref": "element.debug-menu.body.dark-mode", "kind": "TOGGLE", "label": "Dark mode", "parentRef": "element.debug-menu.body", "symbol": "DebugMenuScreen.DarkMode", "declared": "toggleRef(id = \"body.dark-mode\")", "labelRes": "R.string.dark_mode", "intent": "invoke(AppActions.ToggleDarkMode)", "actionKey": "action.theme.dark-mode.toggle", "pathwayRef": "pathway.theme-mode.select" },
+        { "ref": "element.debug-menu.body.log-history", "kind": "CARD", "label": "Log history", "parentRef": "element.debug-menu.body", "declared": "card(\"log-history\")" },
+        { "ref": "element.debug-menu.body.log-history.title", "kind": "TEXT", "label": "Log history", "parentRef": "element.debug-menu.body.log-history", "declared": "text(id = \"title\")", "labelRes": "R.string.log_history", "textRole": "TITLE" },
+        { "ref": "element.debug-menu.body.log-history.actions", "kind": "ROW", "label": "actions", "parentRef": "element.debug-menu.body.log-history", "declared": "row(\"actions\")" },
+        { "ref": "element.debug-menu.body.log-history.actions.show", "kind": "BUTTON", "label": "Show log", "parentRef": "element.debug-menu.body.log-history.actions", "symbol": "DebugMenuScreen.ShowLog", "declared": "buttonRef(id = \"body.log-history.actions.show\")", "labelRes": "R.string.log_history_show", "intent": "open(LogSheet)", "pathwayRef": "pathway.log-history.show" },
+        { "ref": "element.debug-menu.body.log-history.actions.reset", "kind": "BUTTON", "label": "Reset log", "parentRef": "element.debug-menu.body.log-history.actions", "symbol": "DebugMenuScreen.ResetLog", "declared": "buttonRef(id = \"body.log-history.actions.reset\")", "labelRes": "R.string.log_history_reset", "intent": "invoke(AppActions.ClearLogHistory)", "actionKey": "action.log-history.clear", "pathwayRef": "pathway.log-history.clear" },
+        { "ref": "element.debug-menu.body.log-history.helper", "kind": "TEXT", "label": "Log history helper text", "parentRef": "element.debug-menu.body.log-history", "declared": "text(id = \"helper\")", "labelRes": "R.string.log_history_helper", "textRole": "SUPPORTING" },
+        { "ref": "element.debug-menu.body.events-simulator", "kind": "CARD", "label": "Events simulator", "parentRef": "element.debug-menu.body", "declared": "card(\"events-simulator\")" },
+        { "ref": "element.debug-menu.body.events-simulator.title", "kind": "TEXT", "label": "Events simulator", "parentRef": "element.debug-menu.body.events-simulator", "declared": "text(id = \"title\")", "labelRes": "R.string.events_simulator_title", "textRole": "TITLE" },
+        { "ref": "element.debug-menu.body.events-simulator.timer-actions", "kind": "ROW", "label": "timer-actions", "parentRef": "element.debug-menu.body.events-simulator", "declared": "row(\"timer-actions\")" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.start", "kind": "BUTTON", "label": "Start", "parentRef": "element.debug-menu.body.events-simulator.timer-actions", "symbol": "DebugMenuScreen.StartSyntheticEvents", "declared": "buttonRef(id = \"body.events-simulator.actions.start\")", "labelRes": "R.string.events_simulator_start", "intent": "invoke(AppActions.StartSyntheticEvents)", "actionKey": "action.events.synthetic.start", "call": "syntheticEvents.start()", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.stop", "kind": "BUTTON", "label": "Stop", "parentRef": "element.debug-menu.body.events-simulator.timer-actions", "symbol": "DebugMenuScreen.StopSyntheticEvents", "declared": "buttonRef(id = \"body.events-simulator.actions.stop\")", "labelRes": "R.string.events_simulator_stop", "intent": "invoke(AppActions.StopSyntheticEvents)", "actionKey": "action.events.synthetic.stop", "call": "syntheticEvents.stop()", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.emit-actions", "kind": "ROW", "label": "emit-actions", "parentRef": "element.debug-menu.body.events-simulator", "declared": "row(\"emit-actions\")" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.emit-next", "kind": "BUTTON", "label": "Emit next", "parentRef": "element.debug-menu.body.events-simulator.emit-actions", "symbol": "DebugMenuScreen.EmitSyntheticEvent", "declared": "buttonRef(id = \"body.events-simulator.actions.emit-next\")", "labelRes": "R.string.events_simulator_emit_next", "intent": "invoke(AppActions.EmitSyntheticEvent)", "actionKey": "action.events.synthetic.emit-next", "call": "syntheticEvents.emitNext()", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.emit-burst", "kind": "BUTTON", "label": "Emit burst", "parentRef": "element.debug-menu.body.events-simulator.emit-actions", "symbol": "DebugMenuScreen.EmitSyntheticEventBurst", "declared": "buttonRef(id = \"body.events-simulator.actions.emit-burst\")", "labelRes": "R.string.events_simulator_emit_burst", "intent": "invoke(AppActions.EmitSyntheticEventBurst)", "actionKey": "action.events.synthetic.emit-burst", "call": "syntheticEvents.emitBurst()", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.mutation-actions", "kind": "ROW", "label": "mutation-actions", "parentRef": "element.debug-menu.body.events-simulator", "declared": "row(\"mutation-actions\")" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.insert-historical", "kind": "BUTTON", "label": "Insert historical", "parentRef": "element.debug-menu.body.events-simulator.mutation-actions", "symbol": "DebugMenuScreen.InsertHistoricalSyntheticEvent", "declared": "buttonRef(id = \"body.events-simulator.actions.insert-historical\")", "labelRes": "R.string.events_simulator_insert_historical", "intent": "invoke(AppActions.InsertHistoricalSyntheticEvent)", "actionKey": "action.events.synthetic.insert-historical", "call": "syntheticEvents.insertHistorical()", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.remove-oldest", "kind": "BUTTON", "label": "Remove oldest", "parentRef": "element.debug-menu.body.events-simulator.mutation-actions", "symbol": "DebugMenuScreen.RemoveOldestSyntheticEvent", "declared": "buttonRef(id = \"body.events-simulator.actions.remove-oldest\")", "labelRes": "R.string.events_simulator_remove_oldest", "intent": "invoke(AppActions.RemoveOldestSyntheticEvent)", "actionKey": "action.events.synthetic.remove-oldest", "call": "syntheticEvents.removeOldest()", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.reset-actions", "kind": "ROW", "label": "reset-actions", "parentRef": "element.debug-menu.body.events-simulator", "declared": "row(\"reset-actions\")" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.reset-lab", "kind": "BUTTON", "label": "Reset lab", "parentRef": "element.debug-menu.body.events-simulator.reset-actions", "symbol": "DebugMenuScreen.ResetSyntheticEventLab", "declared": "buttonRef(id = \"body.events-simulator.actions.reset-lab\")", "labelRes": "R.string.events_simulator_reset_lab", "intent": "invoke(AppActions.ResetSyntheticEventLab)", "actionKey": "action.events.synthetic.reset-lab", "call": "syntheticEvents.stop(); syntheticEvents.resetCurrent(); eventsAttention.resetAll(); eventsAttentionLab.reset()", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.scenario-mode-actions", "kind": "ROW", "label": "scenario-mode-actions", "parentRef": "element.debug-menu.body.events-simulator", "declared": "row(\"scenario-mode-actions\")" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.use-rotation", "kind": "BUTTON", "label": "Use rotation", "parentRef": "element.debug-menu.body.events-simulator.scenario-mode-actions", "symbol": "DebugMenuScreen.UseRotationAttentionLab", "declared": "buttonRef(id = \"body.events-simulator.actions.use-rotation\")", "labelRes": "R.string.events_simulator_use_rotation", "intent": "invoke(AppActions.UseRotationAttentionLab)", "actionKey": "action.events.attention-lab.use-rotation", "call": "eventsAttentionLab.useRotation()", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.use-random", "kind": "BUTTON", "label": "Use random", "parentRef": "element.debug-menu.body.events-simulator.scenario-mode-actions", "symbol": "DebugMenuScreen.UseRandomAttentionLab", "declared": "buttonRef(id = \"body.events-simulator.actions.use-random\")", "labelRes": "R.string.events_simulator_use_random", "intent": "invoke(AppActions.UseRandomAttentionLab)", "actionKey": "action.events.attention-lab.use-random", "call": "eventsAttentionLab.useSeededRandom(System.currentTimeMillis())", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.scenario-actions", "kind": "ROW", "label": "scenario-actions", "parentRef": "element.debug-menu.body.events-simulator", "declared": "row(\"scenario-actions\")" },
+        { "ref": "element.debug-menu.body.events-simulator.actions.next-scenario", "kind": "BUTTON", "label": "Next scenario", "parentRef": "element.debug-menu.body.events-simulator.scenario-actions", "symbol": "DebugMenuScreen.NextAttentionLabScenario", "declared": "buttonRef(id = \"body.events-simulator.actions.next-scenario\")", "labelRes": "R.string.events_simulator_next_scenario", "intent": "invoke(AppActions.NextAttentionLabScenario)", "actionKey": "action.events.attention-lab.next-scenario", "call": "emitBurst to 12 events; eventsAttention.resetAll(); eventsAttentionLab.planNext(events); start() when the scenario freezes projection", "pathwayRef": "pathway.events-lab" },
+        { "ref": "element.debug-menu.body.events-simulator.helper", "kind": "TEXT", "label": "Events simulator helper text", "parentRef": "element.debug-menu.body.events-simulator", "declared": "text(id = \"helper\")", "labelRes": "R.string.events_simulator_helper", "textRole": "SUPPORTING" },
+        { "ref": "element.debug-menu.body.events-simulator-guide", "kind": "CARD", "label": "Events simulator guide", "parentRef": "element.debug-menu.body", "declared": "card(\"events-simulator-guide\")" },
+        { "ref": "element.debug-menu.body.events-simulator-guide.title", "kind": "TEXT", "label": "Events simulator guide", "parentRef": "element.debug-menu.body.events-simulator-guide", "declared": "text(id = \"title\")", "labelRes": "R.string.events_simulator_guide_title", "textRole": "TITLE" },
+        { "ref": "element.debug-menu.body.events-simulator-guide.body", "kind": "TEXT", "label": "Guide body text", "parentRef": "element.debug-menu.body.events-simulator-guide", "declared": "text(id = \"body\")", "labelRes": "R.string.events_simulator_guide_body", "textRole": "SUPPORTING" },
+        { "ref": "element.debug-menu.log-history.sheet", "kind": "SHEET", "label": "Log history sheet", "parentRef": "element.debug-menu.body", "symbol": "DebugMenuScreen.LogSheet", "declared": "modalBottomSheetRef(\"log-history.sheet\")", "visibleWhen": "runtime.presentation.isOpen(LogSheet)" }
+      ]
+    },
+    { "screenRef": "screen.gallery", "label": "Gallery", "placement": "SHARED", "symbol": "GalleryScreen", "source": "app:screens/shared/gallery/GalleryScreen.kt", "mapped": "HELD", "summary": "Shared destination reached from the FAB options. Not projected in this lens yet." },
+    { "screenRef": "screen.user-profile", "label": "User Profile", "placement": "SHARED", "symbol": "UserProfileScreen", "source": "app:screens/shared/profile/UserProfileScreen.kt", "mapped": "HELD", "summary": "Shared destination reached from the FAB options. Not projected in this lens yet." },
+    { "screenRef": "screen.family-conversation", "label": "Family Conversation", "placement": "SHARED", "symbol": "VexFamilyConversationScreen", "source": "app:screens/shared/conversation/VexFamilyConversationScreen.kt", "mapped": "HELD", "summary": "Registered shared destination. Its entry routes are not projected yet." },
+    { "screenRef": "screen.vex-maps", "label": "VexMaps", "placement": "SHARED", "symbol": "VexMapsScreen", "source": "app:screens/shared/maps/VexMapsScreen.kt", "mapped": "HELD", "summary": "Registered shared destination. Its entry routes are not projected yet." },
+    { "screenRef": "screen.vexstream-music", "label": "VexStream Music", "placement": "SHARED", "symbol": "VexStreamMusicScreen", "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt", "mapped": "HELD", "summary": "Registered shared destination. Its entry routes are not projected yet." },
+    { "screenRef": "screen.talk-to-vex", "label": "Talk to Vex", "placement": "SHARED", "symbol": "TalkToVexScreen", "source": "app:screens/shared/vex/TalkToVexScreen.kt", "mapped": "HELD", "summary": "Registered shared destination. Its entry routes are not projected yet." }
+  ],
+  "pathways": [
+    {
+      "pathwayRef": "pathway.theme-mode.select",
+      "label": "Choose Light / Dark",
+      "disposition": "SCAE_FAMILY",
+      "summary": "A UI toggle becomes a Family Control. The Family admits State immediately and requests a Save; the Store result returns through the same Family before presentation changes.",
+      "returns": "The same Dark mode toggle reads darkModeControlChecked from the returned presentation.",
+      "returnRef": "theme.render",
+      "nodes": [
+        { "ref": "theme.intent", "face": "BEHAVIOR", "role": "INTENT", "label": "invoke(AppActions.ToggleDarkMode)", "symbol": "action.theme.dark-mode.toggle", "summary": "The element names an application action. It does not save or mutate State.", "source": "app:runtime/AppActions.kt", "code": "val ToggleDarkMode = ActionKey(\"action.theme.dark-mode.toggle\")" },
+        { "ref": "theme.runtime", "face": "BEHAVIOR", "role": "DISPATCH", "label": "VexRuntime → AppActionRegistrations.dispatch", "symbol": "ElementIntent.Invoke", "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.", "source": "app:runtime/VexRuntime.kt", "code": "is ElementIntent.Invoke ->\n    appActions.dispatch(AppActionRequest(action = intent.action, ...))" },
+        { "ref": "theme.registration", "face": "BEHAVIOR", "role": "DISPATCH", "label": "appAction(ToggleDarkMode) { toggleDarkMode() }", "symbol": "DebugMenuScreen.appActionRegistrations", "summary": "Screen-local registration calls the closure captured when the session was constructed.", "source": "app:screens/shared/debug/DebugMenuScreen.kt", "code": "appAction(action = AppActions.ToggleDarkMode, ownerRef = screenId) {\n    toggleDarkMode()\n}" },
+        { "ref": "theme.toggle", "face": "BEHAVIOR", "role": "DISPATCH", "label": "toggleThemeMode(family, store, root, logger)", "symbol": "VexLifeSession.toggleThemeMode", "summary": "Reads family.currentState and picks the next mode: NotSet or Light becomes Dark; Dark becomes Light.", "source": "app:ui/VexLifeSession.kt" },
+        { "ref": "theme.control", "face": "BEHAVIOR", "role": "CONTROL", "label": "Control.Select(Parameter.Mode)", "symbol": "ThemeModeFamily.Control.Select", "summary": "Family-owned semantic input. The same Parameter instance travels into the Effect and the Method.", "source": "app:ui/ThemeMode.kt", "code": "data class Select(val mode: Parameter.Mode) : Control" },
+        { "ref": "theme.state", "face": "BEHAVIOR", "role": "STATE", "label": "CURRENT State · ThemeMode", "symbol": "ThemeMode.NotSet | Light | Dark", "summary": "Exact current semantic truth that act() reads.", "source": "app:ui/ThemeMode.kt" },
+        { "ref": "theme.act", "face": "BEHAVIOR", "role": "ACT", "label": "ThemeModeFamily.act(State, Control)", "symbol": "VexFamily.activate", "summary": "Pure. Authors the accepted Act and claims nothing about persistence.", "source": "app:ui/ThemeMode.kt", "code": "val resolved = act(currentState, control) ?: return null\naccepted.admittedState?.let(::setCurrentStateLocked)" },
+        { "ref": "theme.admitted", "face": "BEHAVIOR", "role": "STATE", "label": "admitted State · selected mode", "symbol": "accepted.admittedState", "summary": "Semantic State updates now, while the Save is only requested.", "source": "arch:behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt" },
+        { "ref": "theme.effect", "face": "BEHAVIOR", "role": "EFFECT", "label": "Begin(Effect.Save, Latest)", "symbol": "ThemeModeFamily.Effect.Save", "summary": "Inert request for outside work. Latest means a newer Save supersedes an older one.", "source": "app:ui/ThemeMode.kt", "code": "data class Save(val mode: Parameter.Mode) : Effect" },
+        { "ref": "theme.display", "face": "BEHAVIOR", "role": "PROJECTION", "label": "DisplayState → VexThemePresentation", "symbol": "ThemeModeFamily.displayStateFor", "summary": "The Family decides presentation meaning; Compose only manifests it.", "source": "app:ui/ThemeMode.kt", "code": "data object Dark : DisplayState {\n    override val presentation = VexThemePresentation.Dark\n}" },
+        { "ref": "theme.render", "face": "BEHAVIOR", "role": "PROJECTION", "label": "VexLifeTheme + toggle checked", "symbol": "themePresentation.darkModeControlChecked", "summary": "The same Debug Menu toggle reads the presentation that returned through the system.", "source": "app:ui/VexLifeTheme.kt" },
+        { "ref": "theme.method", "face": "DEPTH", "role": "METHOD", "label": "Act.Method.Save(store, same Parameter)", "symbol": "ThemeModeFamily.Act.Method.Save", "summary": "Fully bound: the real Store plus the semantic Parameter. Nothing downstream reconstructs them.", "source": "app:ui/ThemeMode.kt", "code": "override suspend fun invoke() = store.save(parameter.mode)" },
+        { "ref": "theme.launch", "face": "DEPTH", "role": "EXECUTION", "label": "act.launchWith(executionRoot).method(…)", "symbol": "activateThemeMode", "summary": "Transports the owner, Approach and RelationshipId the Act already authored.", "source": "app:ui/ThemeMode.kt" },
+        { "ref": "theme.custody", "face": "DEPTH", "role": "EXECUTION", "label": "VexExecution · Job custody (Latest)", "symbol": "VexExecution", "summary": "Owns which Jobs are alive and how they overlap. It does not decide feature meaning.", "source": "arch:execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt" },
+        { "ref": "theme.store", "face": "DEPTH", "role": "STORE", "label": "ThemeModeStore.save(mode)", "symbol": "ThemeModeStore", "summary": "Boundary to independently owned outside truth.", "source": "app:ui/ThemeModeStore.kt" },
+        { "ref": "theme.prefs", "face": "DEPTH", "role": "STORE", "label": "SharedPreferencesThemeModeStore", "symbol": "SharedPreferences", "summary": "Process-lifetime store created by ThemeModeStoreProvider. Survives app restarts.", "source": "app:ui/ThemeModeStore.kt" },
+        { "ref": "theme.result", "face": "DEPTH", "role": "OBSERVATION", "label": "Result.Success(observedState)", "symbol": "ThemeModeStore.Result", "summary": "Outside truth came back. It is not admitted until the Family interprets it.", "source": "app:ui/ThemeModeStore.kt" },
+        { "ref": "theme.fence", "face": "DEPTH", "role": "STATE", "label": "selectionRealizationFinished · === fence", "symbol": "unsettledSelection", "summary": "Settles only when the finished Parameter is the same instance as the unsettled selection, so a stale observation cannot overwrite a newer choice.", "source": "app:ui/ThemeMode.kt", "code": "if (unsettledSelection === parameter) {\n    unsettledSelection = null\n}" },
+        { "ref": "theme.observe", "face": "DEPTH", "role": "OBSERVATION", "label": "observeThemeModeState → same Family", "symbol": "observeThemeModeStore", "summary": "Store observations, including the ongoing store::states stream, re-enter through the rightful semantic owner.", "source": "app:ui/ThemeMode.kt", "code": "VexExecution.observe(executionRoot, owner = family, source = store::states) { observed -> ... }" },
+        { "ref": "theme.log", "face": "DEPTH", "role": "CHRONOLOGY", "label": "VexLogger facts", "symbol": "recordThemeModeFact", "summary": "ControlAccepted, StateChanged, EffectRequested, EffectSucceeded. Recorded beside the path, never as the next owner.", "source": "arch:logging/src/main/kotlin/com/vextreme/vexlife/android/logging/VexLogger.kt" },
+        { "ref": "theme.provider", "face": "DEPTH", "role": "CONSTRUCTION", "label": "ThemeModeFamilyProvider(store, root, logger)", "symbol": "VexLifeSessionDependencyModule.themeModeFamily", "summary": "Session lifetime. Prerequisites resolve first, then the Family is built and Store observation is wired.", "source": "app:ui/VexLifeSession.kt" }
+      ],
+      "edges": [
+        { "from": "theme.intent", "to": "theme.runtime", "label": "Invoke" },
+        { "from": "theme.runtime", "to": "theme.registration", "label": "dispatch" },
+        { "from": "theme.registration", "to": "theme.toggle", "label": "closure" },
+        { "from": "theme.toggle", "to": "theme.control", "label": "creates" },
+        { "from": "theme.control", "to": "theme.act", "label": "Control" },
+        { "from": "theme.state", "to": "theme.act", "label": "CURRENT", "kind": "DATA" },
+        { "from": "theme.act", "to": "theme.admitted", "label": "admits" },
+        { "from": "theme.act", "to": "theme.effect", "label": "begins" },
+        { "from": "theme.admitted", "to": "theme.display", "label": "projects" },
+        { "from": "theme.display", "to": "theme.render", "label": "manifests" },
+        { "from": "theme.effect", "to": "theme.method", "label": "binds" },
+        { "from": "theme.method", "to": "theme.launch", "label": "launch" },
+        { "from": "theme.launch", "to": "theme.custody", "label": "Job" },
+        { "from": "theme.custody", "to": "theme.store", "label": "runs" },
+        { "from": "theme.store", "to": "theme.prefs", "label": "persists" },
+        { "from": "theme.prefs", "to": "theme.result", "label": "returns" },
+        { "from": "theme.result", "to": "theme.fence", "label": "settle?" },
+        { "from": "theme.fence", "to": "theme.observe", "label": "admit / hold" },
+        { "from": "theme.observe", "to": "theme.state", "label": "interpreted", "kind": "RETURN" },
+        { "from": "theme.launch", "to": "theme.log", "label": "facts", "kind": "SIDE" },
+        { "from": "theme.provider", "to": "theme.store", "label": "constructs", "kind": "SIDE" }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.log-history.show",
+      "label": "Show log",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship. No Family, Act or Effect is earned: the element opens a sheet the screen already owns.",
+      "returns": "The Log history sheet appears over Debug Menu.",
+      "returnRef": "log.sheet",
+      "nodes": [
+        { "ref": "log.open.intent", "face": "BEHAVIOR", "role": "INTENT", "label": "open(LogSheet)", "symbol": "ElementIntent.Open", "summary": "Declared intent on the button. Presentation, not application action.", "source": "app:screens/shared/debug/DebugMenuScreen.kt" },
+        { "ref": "log.open.presentation", "face": "BEHAVIOR", "role": "NAVIGATION", "label": "Open(log-history.sheet)", "symbol": "runtime.presentation", "summary": "Runtime presentation state marks the sheet open.", "source": "app:runtime/VexRuntime.kt" },
+        { "ref": "log.sheet", "face": "BEHAVIOR", "role": "PROJECTION", "label": "LogHistorySheet(runtime, repository)", "symbol": "isOpen(DebugMenuScreen.LogSheet)", "summary": "Debug Menu renders the sheet while presentation says it is open.", "source": "app:screens/shared/debug/loghistory/LogHistorySheet.kt" },
+        { "ref": "log.repository", "face": "DEPTH", "role": "STORE", "label": "LogHistoryRepository", "symbol": "repositories.logHistory", "summary": "The sheet reads recorded history from its repository.", "source": "app:data/loghistory/LogHistoryRepository.kt" }
+      ],
+      "edges": [
+        { "from": "log.open.intent", "to": "log.open.presentation", "label": "Open" },
+        { "from": "log.open.presentation", "to": "log.sheet", "label": "renders" },
+        { "from": "log.sheet", "to": "log.repository", "label": "reads", "kind": "DATA" }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.log-history.clear",
+      "label": "Reset log",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration closure calls the logger and its persistence directly. There is no Family because clearing has no State-dependent meaning yet.",
+      "returns": "Log history becomes empty the next time it is shown.",
+      "nodes": [
+        { "ref": "clear.intent", "face": "BEHAVIOR", "role": "INTENT", "label": "invoke(AppActions.ClearLogHistory)", "symbol": "action.log-history.clear", "summary": "Application action key.", "source": "app:runtime/AppActions.kt" },
+        { "ref": "clear.runtime", "face": "BEHAVIOR", "role": "DISPATCH", "label": "VexRuntime → AppActionRegistrations.dispatch", "symbol": "ElementIntent.Invoke", "summary": "Same dispatch seam every Invoke uses.", "source": "app:runtime/AppActionRegistrations.kt" },
+        { "ref": "clear.registration", "face": "BEHAVIOR", "role": "DISPATCH", "label": "logger.clearHistory() + logPersistence.clear()", "symbol": "DebugMenuScreen.appActionRegistrations", "summary": "Direct calls to the rightful owners. No Act, no Effect.", "source": "app:screens/shared/debug/DebugMenuScreen.kt", "code": "appAction(action = AppActions.ClearLogHistory, ownerRef = screenId) {\n    logger.clearHistory()\n    logPersistence.clear()\n}" },
+        { "ref": "clear.logger", "face": "DEPTH", "role": "CHRONOLOGY", "label": "VexLogger history", "symbol": "VexLogger.clearHistory", "summary": "In-memory chronology for this session.", "source": "arch:logging/src/main/kotlin/com/vextreme/vexlife/android/logging/VexLogger.kt" },
+        { "ref": "clear.persistence", "face": "DEPTH", "role": "STORE", "label": "LogHistoryPersistenceQueue", "symbol": "context.logPersistence", "summary": "Persisted log history on device.", "source": "app:data/loghistory/LogHistoryPersistenceQueue.kt" }
+      ],
+      "edges": [
+        { "from": "clear.intent", "to": "clear.runtime", "label": "Invoke" },
+        { "from": "clear.runtime", "to": "clear.registration", "label": "dispatch" },
+        { "from": "clear.registration", "to": "clear.logger", "label": "clears" },
+        { "from": "clear.registration", "to": "clear.persistence", "label": "clears" }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.events-lab",
+      "label": "Events simulator controls",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "Feature Lab pattern: Debug Menu builds a SyntheticExternalEventController over the normal Events repository. Each button calls one controller or lab method; Events truth stays with its owners.",
+      "returns": "Events UI reacts to the changed repository through ordinary rendering.",
+      "nodes": [
+        { "ref": "lab.intent", "face": "BEHAVIOR", "role": "INTENT", "label": "invoke(AppActions.<events action>)", "symbol": "action.events.*", "summary": "Each button declares its own ActionKey; see the element for the exact one.", "source": "app:runtime/AppActions.kt" },
+        { "ref": "lab.runtime", "face": "BEHAVIOR", "role": "DISPATCH", "label": "VexRuntime → AppActionRegistrations.dispatch", "symbol": "ElementIntent.Invoke", "summary": "Same dispatch seam every Invoke uses.", "source": "app:runtime/AppActionRegistrations.kt" },
+        { "ref": "lab.registration", "face": "BEHAVIOR", "role": "DISPATCH", "label": "Registered closure · element call", "symbol": "DebugMenuScreen.appActionRegistrations", "summary": "The selected button's call is shown in the inspector and on the Structure face.", "source": "app:screens/shared/debug/DebugMenuScreen.kt" },
+        { "ref": "lab.controller", "face": "BEHAVIOR", "role": "DISPATCH", "label": "SyntheticExternalEventController", "symbol": "syntheticEvents", "summary": "Feature-owned simulation controller built inside the registrations, scoped to the session.", "source": "app:data/events/SyntheticExternalEventController.kt", "code": "SyntheticExternalEventController(\n    repository = context.repositories.events,\n    scope = context.scope,\n)" },
+        { "ref": "lab.events", "face": "DEPTH", "role": "STORE", "label": "EventsRepository", "symbol": "repositories.events", "summary": "Normal Events truth. The simulator writes through the same contract the product uses.", "source": "app:data/events/EventsRepository.kt" },
+        { "ref": "lab.attention", "face": "DEPTH", "role": "STORE", "label": "eventsAttention + eventsAttentionLab", "symbol": "repositories.eventsAttention", "summary": "Attention owners that reset and scenario buttons call directly.", "source": "app:screens/shared/debug/DebugMenuScreen.kt" }
+      ],
+      "edges": [
+        { "from": "lab.intent", "to": "lab.runtime", "label": "Invoke" },
+        { "from": "lab.runtime", "to": "lab.registration", "label": "dispatch" },
+        { "from": "lab.registration", "to": "lab.controller", "label": "calls" },
+        { "from": "lab.controller", "to": "lab.events", "label": "writes" },
+        { "from": "lab.registration", "to": "lab.attention", "label": "resets / plans" }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.shell.navigate",
+      "label": "Primary navigation",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "NavigateTo(ScreenId) already says everything this edge means. No Act identity is earned.",
+      "returns": "The destination screen replaces the current one.",
+      "nodes": [
+        { "ref": "nav.intent", "face": "BEHAVIOR", "role": "INTENT", "label": "navigateTo(<Screen>)", "symbol": "ElementIntent.NavigateTo", "summary": "Typed navigation declared on the shell button.", "source": "app:shell/AppShell.kt" },
+        { "ref": "nav.relationship", "face": "BEHAVIOR", "role": "NAVIGATION", "label": "NavigateTo(ScreenId)", "symbol": "VexRuntime", "summary": "Runtime changes currentScreen to the destination.", "source": "app:runtime/VexRuntime.kt" },
+        { "ref": "nav.frame", "face": "BEHAVIOR", "role": "PROJECTION", "label": "AppFrame renders destination", "symbol": "runtime.currentScreen", "summary": "Bottom bar and FAB stay visible because the destination is primary.", "source": "app:shell/AppFrame.kt" }
+      ],
+      "edges": [
+        { "from": "nav.intent", "to": "nav.relationship", "label": "NavigateTo" },
+        { "from": "nav.relationship", "to": "nav.frame", "label": "currentScreen" }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.shell.fab-toggle",
+      "label": "Open FAB options",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "The + FAB toggles the options column. Presentation only.",
+      "returns": "Profile, Debug Menu and Gallery options appear above the FAB.",
+      "nodes": [
+        { "ref": "fab.intent", "face": "BEHAVIOR", "role": "INTENT", "label": "toggle(FabOptions)", "symbol": "ElementIntent.Toggle", "summary": "Declared on AppShell.Elements.Add.", "source": "app:shell/AppShell.kt" },
+        { "ref": "fab.presentation", "face": "BEHAVIOR", "role": "NAVIGATION", "label": "Toggle(element.shell.fab-options)", "symbol": "runtime.presentation", "summary": "Runtime presentation state flips the options column.", "source": "app:runtime/VexRuntime.kt" },
+        { "ref": "fab.menu", "face": "BEHAVIOR", "role": "PROJECTION", "label": "AppFabMenu shows options", "symbol": "AppFabMenu(runtime)", "summary": "Rendered only on primary screens.", "source": "app:shell/AppFrame.kt" }
+      ],
+      "edges": [
+        { "from": "fab.intent", "to": "fab.presentation", "label": "Toggle" },
+        { "from": "fab.presentation", "to": "fab.menu", "label": "renders" }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.shell.fab-route",
+      "label": "FAB option route",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "Close the options, then NavigateTo a shared destination. Two typed relationships in order; no Act identity is earned.",
+      "returns": "The shared destination opens with a Back target.",
+      "nodes": [
+        { "ref": "route.intent", "face": "BEHAVIOR", "role": "INTENT", "label": "close(FabOptions) then navigateTo(<Screen>)", "symbol": "ElementIntent", "summary": "Declared on the FAB option element.", "source": "app:shell/AppShell.kt" },
+        { "ref": "route.close", "face": "BEHAVIOR", "role": "NAVIGATION", "label": "Close(element.shell.fab-options)", "symbol": "runtime.presentation", "summary": "Presentation relationship runs first.", "source": "app:runtime/VexRuntime.kt" },
+        { "ref": "route.navigate", "face": "BEHAVIOR", "role": "NAVIGATION", "label": "NavigateTo(ScreenId)", "symbol": "VexRuntime", "summary": "Then the destination becomes currentScreen.", "source": "app:runtime/VexRuntime.kt" },
+        { "ref": "route.frame", "face": "BEHAVIOR", "role": "PROJECTION", "label": "AppFrame renders destination", "symbol": "runtime.currentScreen", "summary": "Shared destination: no bottom bar or FAB; toolbar Back appears.", "source": "app:shell/AppFrame.kt" }
+      ],
+      "edges": [
+        { "from": "route.intent", "to": "route.close", "label": "Close" },
+        { "from": "route.close", "to": "route.navigate", "label": "then" },
+        { "from": "route.navigate", "to": "route.frame", "label": "currentScreen" }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.shell.back",
+      "label": "Back",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "navigateBack() returns to the runtime's back target.",
+      "returns": "The previous destination is shown again.",
+      "nodes": [
+        { "ref": "back.intent", "face": "BEHAVIOR", "role": "INTENT", "label": "navigateBack()", "symbol": "ElementIntent.NavigateBack", "summary": "Declared on AppShell.Elements.Back.", "source": "app:shell/AppShell.kt" },
+        { "ref": "back.relationship", "face": "BEHAVIOR", "role": "NAVIGATION", "label": "NavigateBack", "symbol": "VexRuntime", "summary": "Runtime pops to the back target.", "source": "app:runtime/VexRuntime.kt" }
+      ],
+      "edges": [
+        { "from": "back.intent", "to": "back.relationship", "label": "Back" }
+      ]
+    }
+  ],
+  "annotations": [
+    { "ref": "note.dark-mode.doorway", "subjectRef": "element.debug-menu.body.dark-mode", "text": "Doorway only", "detail": "The toggle names an application action. It never writes SharedPreferences or ThemeMode State itself." },
+    { "ref": "note.control.select-drift", "subjectRef": "theme.control", "text": "Board drift", "detail": "Current ThemeMode.kt names this Control.Select(Parameter.Mode). The older 'Debug Menu / Theme Mode' Origin-walk board still labels it Control.Toggle." },
+    { "ref": "note.admitted.before-save", "subjectRef": "theme.admitted", "text": "State before Store", "detail": "Semantic State may already be Dark while persistence is still only requested. Accepting intention does not claim Store success." },
+    { "ref": "note.fence.local", "subjectRef": "theme.fence", "text": "ThemeMode-local", "detail": "This === currentness fence is earned by ThemeMode. It is not a universal token pattern for other Families." },
+    { "ref": "note.log.beside", "subjectRef": "theme.log", "text": "Beside the path", "detail": "Chronology observes facts as owners learn them. Removing the logger changes no behavior." },
+    { "ref": "note.shell.one-owner", "subjectRef": "element.shell.fab-cluster", "text": "One owner, many screens", "detail": "AppShell defines these routes once. AppFrame shows them on every PRIMARY screen, so the Screen map draws one route group instead of copying it under Home, Events and Settings." },
+    { "ref": "note.reset.no-family", "subjectRef": "pathway.log-history.clear", "text": "No Behavior earned", "detail": "Clearing has no State-dependent meaning today. A Family would earn its place only if clear needed confirmation, undo, or reuse by another Control." },
+    { "ref": "note.debug.composition", "subjectRef": "screen.debug-menu", "text": "Composition surface", "detail": "Debug Menu composes developer controls to rightful owners. It does not own Events, ThemeMode or log semantics." }
+  ]
+}

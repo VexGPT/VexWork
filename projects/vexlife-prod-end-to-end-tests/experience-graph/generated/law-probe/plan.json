@@ -1,0 +1,1024 @@
+{
+  "schemaVersion": "vexwork.experience-graph.law-probe/v1",
+  "graphFingerprint": "7c4f1615deb1a67192f758d66eccb8e87cb6279e50200737c944b4f35f0566c6",
+  "families": [
+    {
+      "family": "VexLifeContextProfileFamily",
+      "instance": "vexlife.context.VexLifeContextProfileFamily",
+      "runnable": false,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "ProductDefault",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for foundation: VexLifeContextProfile.ProductFoundationIdentity"
+        },
+        {
+          "variant": "Saved",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for profile: VexLifeContextProfile.Effective"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Use",
+          "fixtures": [
+            {
+              "label": "Use#0",
+              "expr": "vexlife.context.VexLifeContextProfileFamily.Use(profileRef = \"fixture-profileRef-a\")"
+            },
+            {
+              "label": "Use#1",
+              "expr": "vexlife.context.VexLifeContextProfileFamily.Use(profileRef = \"fixture-profileRef-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Save",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for definition: VexLifeContextProfile.Definition"
+        },
+        {
+          "variant": "SaveAs",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for definition: VexLifeContextProfile.Definition"
+        },
+        {
+          "variant": "RestoreProductDefault",
+          "fixtures": [
+            {
+              "label": "RestoreProductDefault",
+              "expr": "vexlife.context.VexLifeContextProfileFamily.RestoreProductDefault"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Import",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for profile: VexLifeContextProfile.Portable"
+        }
+      ]
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "instance": "vexlife.continuity.VexLifePrivateModeFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Kept",
+          "fixtures": [
+            {
+              "label": "Kept",
+              "expr": "vexlife.continuity.VexLifePrivateModeFamily.Kept"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Private",
+          "fixtures": [
+            {
+              "label": "Private#0",
+              "expr": "vexlife.continuity.VexLifePrivateModeFamily.Private(exchangeCount = 0, keptNoteCount = 0)"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Begin",
+          "fixtures": [
+            {
+              "label": "Begin",
+              "expr": "vexlife.continuity.VexLifePrivateModeFamily.Begin"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "End",
+          "fixtures": [
+            {
+              "label": "End",
+              "expr": "vexlife.continuity.VexLifePrivateModeFamily.End"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "instance": "vexlife.diagnostics.VexLifeDiagnosticsFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Recording",
+          "fixtures": [
+            {
+              "label": "Recording",
+              "expr": "vexlife.diagnostics.VexLifeDiagnosticsFamily.Recording"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "RecordingEnhanced",
+          "fixtures": [
+            {
+              "label": "RecordingEnhanced#0",
+              "expr": "vexlife.diagnostics.VexLifeDiagnosticsFamily.RecordingEnhanced(until = \"fixture-until-a\")"
+            },
+            {
+              "label": "RecordingEnhanced#1",
+              "expr": "vexlife.diagnostics.VexLifeDiagnosticsFamily.RecordingEnhanced(until = \"fixture-until-b\")"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "StartEnhanced",
+          "fixtures": [
+            {
+              "label": "StartEnhanced",
+              "expr": "vexlife.diagnostics.VexLifeDiagnosticsFamily.StartEnhanced"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "StopEnhanced",
+          "fixtures": [
+            {
+              "label": "StopEnhanced",
+              "expr": "vexlife.diagnostics.VexLifeDiagnosticsFamily.StopEnhanced"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ClearHistory",
+          "fixtures": [
+            {
+              "label": "ClearHistory",
+              "expr": "vexlife.diagnostics.VexLifeDiagnosticsFamily.ClearHistory"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "instance": "vexlife.entry.VexLifeProdEntryFamily.Semantics",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Current",
+          "fixtures": [
+            {
+              "label": "Current#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.Current(desiredSourceSha = \"fixture-desiredSourceSha-a\")"
+            },
+            {
+              "label": "Current#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.Current(desiredSourceSha = \"fixture-desiredSourceSha-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "UpdateAvailable",
+          "fixtures": [
+            {
+              "label": "UpdateAvailable#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.UpdateAvailable(desiredSourceSha = \"fixture-desiredSourceSha-a\")"
+            },
+            {
+              "label": "UpdateAvailable#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.UpdateAvailable(desiredSourceSha = \"fixture-desiredSourceSha-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "RepairRequired",
+          "fixtures": [
+            {
+              "label": "RepairRequired#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.RepairRequired(desiredSourceSha = \"fixture-desiredSourceSha-a\")"
+            },
+            {
+              "label": "RepairRequired#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.RepairRequired(desiredSourceSha = \"fixture-desiredSourceSha-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "UpdateRepairRequired",
+          "fixtures": [
+            {
+              "label": "UpdateRepairRequired#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.UpdateRepairRequired(desiredSourceSha = \"fixture-desiredSourceSha-a\")"
+            },
+            {
+              "label": "UpdateRepairRequired#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.UpdateRepairRequired(desiredSourceSha = \"fixture-desiredSourceSha-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ServiceRecoveryRequired",
+          "fixtures": [
+            {
+              "label": "ServiceRecoveryRequired#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.ServiceRecoveryRequired(desiredSourceSha = \"fixture-desiredSourceSha-a\", priorServiceSourceSha = \"fixture-priorServiceSourceSha-a\", priorServicePid = 0L)"
+            },
+            {
+              "label": "ServiceRecoveryRequired#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.ServiceRecoveryRequired(desiredSourceSha = \"fixture-desiredSourceSha-a\", priorServiceSourceSha = \"fixture-priorServiceSourceSha-b\", priorServicePid = 0L)"
+            },
+            {
+              "label": "ServiceRecoveryRequired#2",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.ServiceRecoveryRequired(desiredSourceSha = \"fixture-desiredSourceSha-b\", priorServiceSourceSha = \"fixture-priorServiceSourceSha-a\", priorServicePid = 0L)"
+            },
+            {
+              "label": "ServiceRecoveryRequired#3",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.ServiceRecoveryRequired(desiredSourceSha = \"fixture-desiredSourceSha-b\", priorServiceSourceSha = \"fixture-priorServiceSourceSha-b\", priorServicePid = 0L)"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "StartRequired",
+          "fixtures": [
+            {
+              "label": "StartRequired#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.StartRequired(desiredSourceSha = \"fixture-desiredSourceSha-a\", priorServiceSourceSha = \"fixture-priorServiceSourceSha-a\")"
+            },
+            {
+              "label": "StartRequired#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.StartRequired(desiredSourceSha = \"fixture-desiredSourceSha-a\", priorServiceSourceSha = \"fixture-priorServiceSourceSha-b\")"
+            },
+            {
+              "label": "StartRequired#2",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.StartRequired(desiredSourceSha = \"fixture-desiredSourceSha-b\", priorServiceSourceSha = \"fixture-priorServiceSourceSha-a\")"
+            },
+            {
+              "label": "StartRequired#3",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.StartRequired(desiredSourceSha = \"fixture-desiredSourceSha-b\", priorServiceSourceSha = \"fixture-priorServiceSourceSha-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "HomeFormationRequired",
+          "fixtures": [
+            {
+              "label": "HomeFormationRequired#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeFormationRequired(desiredSourceSha = \"fixture-desiredSourceSha-a\")"
+            },
+            {
+              "label": "HomeFormationRequired#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeFormationRequired(desiredSourceSha = \"fixture-desiredSourceSha-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "HomeHeld",
+          "fixtures": [
+            {
+              "label": "HomeHeld#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", disposition = vexlife.home.VexLifeProdHome.LocationDisposition.Absent, detail = \"fixture-detail-a\")"
+            },
+            {
+              "label": "HomeHeld#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", disposition = vexlife.home.VexLifeProdHome.LocationDisposition.Absent, detail = \"fixture-detail-b\")"
+            },
+            {
+              "label": "HomeHeld#2",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", disposition = vexlife.home.VexLifeProdHome.LocationDisposition.EmptyDirectory, detail = \"fixture-detail-a\")"
+            },
+            {
+              "label": "HomeHeld#3",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", disposition = vexlife.home.VexLifeProdHome.LocationDisposition.EmptyDirectory, detail = \"fixture-detail-b\")"
+            },
+            {
+              "label": "HomeHeld#4",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", disposition = vexlife.home.VexLifeProdHome.LocationDisposition.Canonical, detail = \"fixture-detail-a\")"
+            },
+            {
+              "label": "HomeHeld#5",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", disposition = vexlife.home.VexLifeProdHome.LocationDisposition.Canonical, detail = \"fixture-detail-b\")"
+            },
+            {
+              "label": "HomeHeld#6",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", disposition = vexlife.home.VexLifeProdHome.LocationDisposition.HeldNoncanonicalContent, detail = \"fixture-detail-a\")"
+            },
+            {
+              "label": "HomeHeld#7",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HomeHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", disposition = vexlife.home.VexLifeProdHome.LocationDisposition.HeldNoncanonicalContent, detail = \"fixture-detail-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "HostHeld",
+          "fixtures": [
+            {
+              "label": "HostHeld#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HostHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", reasonRef = \"fixture-reasonRef-a\", chipModel = \"fixture-chipModel-a\", totalMemoryBytes = 0L, requiredChipModel = \"fixture-requiredChipModel-a\", requiredMemoryBytes = 0L, homePresent = true)"
+            },
+            {
+              "label": "HostHeld#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HostHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", reasonRef = \"fixture-reasonRef-a\", chipModel = \"fixture-chipModel-a\", totalMemoryBytes = 0L, requiredChipModel = \"fixture-requiredChipModel-a\", requiredMemoryBytes = 0L, homePresent = false)"
+            },
+            {
+              "label": "HostHeld#2",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HostHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", reasonRef = \"fixture-reasonRef-a\", chipModel = \"fixture-chipModel-a\", totalMemoryBytes = 0L, requiredChipModel = \"fixture-requiredChipModel-b\", requiredMemoryBytes = 0L, homePresent = true)"
+            },
+            {
+              "label": "HostHeld#3",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HostHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", reasonRef = \"fixture-reasonRef-a\", chipModel = \"fixture-chipModel-a\", totalMemoryBytes = 0L, requiredChipModel = \"fixture-requiredChipModel-b\", requiredMemoryBytes = 0L, homePresent = false)"
+            },
+            {
+              "label": "HostHeld#4",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HostHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", reasonRef = \"fixture-reasonRef-a\", chipModel = \"fixture-chipModel-a\", totalMemoryBytes = null, requiredChipModel = \"fixture-requiredChipModel-a\", requiredMemoryBytes = 0L, homePresent = true)"
+            },
+            {
+              "label": "HostHeld#5",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HostHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", reasonRef = \"fixture-reasonRef-a\", chipModel = \"fixture-chipModel-a\", totalMemoryBytes = null, requiredChipModel = \"fixture-requiredChipModel-a\", requiredMemoryBytes = 0L, homePresent = false)"
+            },
+            {
+              "label": "HostHeld#6",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HostHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", reasonRef = \"fixture-reasonRef-a\", chipModel = \"fixture-chipModel-a\", totalMemoryBytes = null, requiredChipModel = \"fixture-requiredChipModel-b\", requiredMemoryBytes = 0L, homePresent = true)"
+            },
+            {
+              "label": "HostHeld#7",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HostHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", reasonRef = \"fixture-reasonRef-a\", chipModel = \"fixture-chipModel-a\", totalMemoryBytes = null, requiredChipModel = \"fixture-requiredChipModel-b\", requiredMemoryBytes = 0L, homePresent = false)"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "SetupRequired",
+          "fixtures": [
+            {
+              "label": "SetupRequired#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.SetupRequired(desiredSourceSha = \"fixture-desiredSourceSha-a\")"
+            },
+            {
+              "label": "SetupRequired#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.SetupRequired(desiredSourceSha = \"fixture-desiredSourceSha-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "StorageHeld",
+          "fixtures": [
+            {
+              "label": "StorageHeld#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.StorageHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", requiredFreeBytes = 0L, freeBytes = 0L)"
+            },
+            {
+              "label": "StorageHeld#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.StorageHeld(desiredSourceSha = \"fixture-desiredSourceSha-b\", requiredFreeBytes = 0L, freeBytes = 0L)"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ModelFilesHeld",
+          "fixtures": [
+            {
+              "label": "ModelFilesHeld#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.ModelFilesHeld(desiredSourceSha = \"fixture-desiredSourceSha-a\", invalidBytes = 0L)"
+            },
+            {
+              "label": "ModelFilesHeld#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.ModelFilesHeld(desiredSourceSha = \"fixture-desiredSourceSha-b\", invalidBytes = 0L)"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "HeldUnknown",
+          "fixtures": [
+            {
+              "label": "HeldUnknown#0",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HeldUnknown(desiredSourceSha = \"fixture-desiredSourceSha-a\", detail = \"fixture-detail-a\")"
+            },
+            {
+              "label": "HeldUnknown#1",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HeldUnknown(desiredSourceSha = \"fixture-desiredSourceSha-a\", detail = \"fixture-detail-b\")"
+            },
+            {
+              "label": "HeldUnknown#2",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HeldUnknown(desiredSourceSha = \"fixture-desiredSourceSha-b\", detail = \"fixture-detail-a\")"
+            },
+            {
+              "label": "HeldUnknown#3",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.HeldUnknown(desiredSourceSha = \"fixture-desiredSourceSha-b\", detail = \"fixture-detail-b\")"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "OpenCurrent",
+          "fixtures": [
+            {
+              "label": "OpenCurrent",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.OpenCurrent"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ConvergeDesired",
+          "fixtures": [
+            {
+              "label": "ConvergeDesired",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.ConvergeDesired"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "RecoverStaleService",
+          "fixtures": [
+            {
+              "label": "RecoverStaleService",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.RecoverStaleService"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Start",
+          "fixtures": [
+            {
+              "label": "Start",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.Start"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "FormHome",
+          "fixtures": [
+            {
+              "label": "FormHome",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.FormHome"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "SetUp",
+          "fixtures": [
+            {
+              "label": "SetUp",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.SetUp"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Cancel",
+          "fixtures": [
+            {
+              "label": "Cancel",
+              "expr": "vexlife.entry.VexLifeProdEntryFamily.Cancel"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeMemoryFamily",
+      "instance": "vexlife.memory.VexLifeMemoryFamily",
+      "runnable": false,
+      "notRunnable": "Family declares no Control",
+      "states": [
+        {
+          "variant": "Current",
+          "fixtures": [
+            {
+              "label": "Current#0",
+              "expr": "vexlife.memory.VexLifeMemoryFamily.Current(rememberedCount = 0)"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "NotFormed",
+          "fixtures": [
+            {
+              "label": "NotFormed",
+              "expr": "vexlife.memory.VexLifeMemoryFamily.NotFormed"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Behind",
+          "fixtures": [
+            {
+              "label": "Behind",
+              "expr": "vexlife.memory.VexLifeMemoryFamily.Behind"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Unreadable",
+          "fixtures": [
+            {
+              "label": "Unreadable",
+              "expr": "vexlife.memory.VexLifeMemoryFamily.Unreadable"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": []
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "instance": "vexlife.memory.VexLifeMemoryReviewFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Idle",
+          "fixtures": [
+            {
+              "label": "Idle",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Idle"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Pending",
+          "fixtures": [
+            {
+              "label": "Pending#0",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Pending(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"), summary = \"fixture-summary-a\", candidateClass = vexlife.consideration.VexLifeConsiderationContract.MemoryCandidateClass.PREFERENCE)"
+            },
+            {
+              "label": "Pending#1",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Pending(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"), summary = \"fixture-summary-a\", candidateClass = vexlife.consideration.VexLifeConsiderationContract.MemoryCandidateClass.CORRECTION)"
+            },
+            {
+              "label": "Pending#2",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Pending(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"), summary = \"fixture-summary-a\", candidateClass = vexlife.consideration.VexLifeConsiderationContract.MemoryCandidateClass.RELATIONSHIP)"
+            },
+            {
+              "label": "Pending#3",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Pending(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"), summary = \"fixture-summary-a\", candidateClass = vexlife.consideration.VexLifeConsiderationContract.MemoryCandidateClass.COMMITMENT)"
+            },
+            {
+              "label": "Pending#4",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Pending(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"), summary = \"fixture-summary-a\", candidateClass = vexlife.consideration.VexLifeConsiderationContract.MemoryCandidateClass.ONGOING_WORK)"
+            },
+            {
+              "label": "Pending#5",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Pending(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"), summary = \"fixture-summary-a\", candidateClass = vexlife.consideration.VexLifeConsiderationContract.MemoryCandidateClass.OTHER)"
+            },
+            {
+              "label": "Pending#6",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Pending(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"), summary = \"fixture-summary-b\", candidateClass = vexlife.consideration.VexLifeConsiderationContract.MemoryCandidateClass.PREFERENCE)"
+            },
+            {
+              "label": "Pending#7",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Pending(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"), summary = \"fixture-summary-b\", candidateClass = vexlife.consideration.VexLifeConsiderationContract.MemoryCandidateClass.CORRECTION)"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Keep",
+          "fixtures": [
+            {
+              "label": "Keep#0",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Keep(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"))"
+            },
+            {
+              "label": "Keep#1",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Keep(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.cdef0123456789abcdef0123456789ab\"))"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "NotNow",
+          "fixtures": [
+            {
+              "label": "NotNow#0",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.NotNow(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"))"
+            },
+            {
+              "label": "NotNow#1",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.NotNow(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.cdef0123456789abcdef0123456789ab\"))"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Decline",
+          "fixtures": [
+            {
+              "label": "Decline#0",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Decline(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.bcdef0123456789abcdef0123456789a\"))"
+            },
+            {
+              "label": "Decline#1",
+              "expr": "vexlife.memory.VexLifeMemoryReviewFamily.Decline(candidateRef = vexlife.memory.VexLifeMemoryReviewFamily.CandidateRef(\"review.vexlife-prod.memory.cdef0123456789abcdef0123456789ab\"))"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "instance": "vexlife.model.VexLifeModelsFamily",
+      "runnable": false,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "State",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for runtimeConfiguration: HereticRuntimeConfiguration.Effective"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Select",
+          "fixtures": [
+            {
+              "label": "Select",
+              "expr": "vexlife.model.VexLifeModelsFamily.Select"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Use",
+          "fixtures": [
+            {
+              "label": "Use",
+              "expr": "vexlife.model.VexLifeModelsFamily.Use"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "UseRecommendedRuntimeConfiguration",
+          "fixtures": [
+            {
+              "label": "UseRecommendedRuntimeConfiguration",
+              "expr": "vexlife.model.VexLifeModelsFamily.UseRecommendedRuntimeConfiguration"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "SetPromptCacheEntries",
+          "fixtures": [
+            {
+              "label": "SetPromptCacheEntries#0",
+              "expr": "vexlife.model.VexLifeModelsFamily.SetPromptCacheEntries(entries = 0)"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Download",
+          "fixtures": [
+            {
+              "label": "Download",
+              "expr": "vexlife.model.VexLifeModelsFamily.Download"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Redownload",
+          "fixtures": [
+            {
+              "label": "Redownload",
+              "expr": "vexlife.model.VexLifeModelsFamily.Redownload"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Remove",
+          "fixtures": [
+            {
+              "label": "Remove",
+              "expr": "vexlife.model.VexLifeModelsFamily.Remove"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ForgetImportedModel",
+          "fixtures": [
+            {
+              "label": "ForgetImportedModel",
+              "expr": "vexlife.model.VexLifeModelsFamily.ForgetImportedModel"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "HereticRuntimeAvailability",
+      "instance": "vexlife.model.heretic.HereticRuntimeAvailability",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "State.StableBorrowable",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for evidence: HereticModelConfiguration.QualifiedRuntimeEvidence"
+        },
+        {
+          "variant": "State.StablePredecessorUnavailable",
+          "fixtures": [
+            {
+              "label": "State.StablePredecessorUnavailable",
+              "expr": "vexlife.model.heretic.HereticRuntimeAvailability.State.StablePredecessorUnavailable"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "State.Qualified",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for evidence: HereticModelConfiguration.QualifiedRuntimeEvidence"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Control.EnsureAvailable",
+          "fixtures": [
+            {
+              "label": "Control.EnsureAvailable#0",
+              "expr": "vexlife.model.heretic.HereticRuntimeAvailability.Control.EnsureAvailable(productOwnedMode = vexlife.model.heretic.HereticRuntimeAvailability.ProductOwnedMode.ObservationOnly)"
+            },
+            {
+              "label": "Control.EnsureAvailable#1",
+              "expr": "vexlife.model.heretic.HereticRuntimeAvailability.Control.EnsureAvailable(productOwnedMode = vexlife.model.heretic.HereticRuntimeAvailability.ProductOwnedMode.AcquisitionAllowed)"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeReleaseInboxFamily",
+      "instance": "vexlife.release.VexLifeReleaseInboxFamily",
+      "runnable": false,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "State",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for communications: List<Communication>"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Control.View",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for identity: VexLifeReleaseIdentity.Value"
+        },
+        {
+          "variant": "Control.Dismiss",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for identity: VexLifeReleaseIdentity.Value"
+        }
+      ]
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "instance": "vexlife.vision.VexLifeVisionFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Held",
+          "fixtures": [
+            {
+              "label": "Held#0",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Held(reason = vexlife.vision.VexLifeVisionFamily.HoldReason.RouteUnreachable)"
+            },
+            {
+              "label": "Held#1",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Held(reason = vexlife.vision.VexLifeVisionFamily.HoldReason.RuntimeUnreadable)"
+            },
+            {
+              "label": "Held#2",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Held(reason = vexlife.vision.VexLifeVisionFamily.HoldReason.ScreenSafetyNotCurrent)"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Ready",
+          "fixtures": [
+            {
+              "label": "Ready",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Ready"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Selecting",
+          "fixtures": [
+            {
+              "label": "Selecting",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Selecting"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Engaged",
+          "fixtures": [
+            {
+              "label": "Engaged",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Engaged"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Looking",
+          "fixtures": [
+            {
+              "label": "Looking",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Looking"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Engage",
+          "fixtures": [
+            {
+              "label": "Engage",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Engage"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Stop",
+          "fixtures": [
+            {
+              "label": "Stop",
+              "expr": "vexlife.vision.VexLifeVisionFamily.Stop"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "instance": "vexlife.voiceinput.VexLifeVoiceInputFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Ready",
+          "fixtures": [
+            {
+              "label": "Ready",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Ready"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "RequestingMicrophone",
+          "fixtures": [
+            {
+              "label": "RequestingMicrophone",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.RequestingMicrophone"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Listening",
+          "fixtures": [
+            {
+              "label": "Listening",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Listening"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Stopping",
+          "fixtures": [
+            {
+              "label": "Stopping",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Stopping"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Held",
+          "fixtures": [
+            {
+              "label": "Held#0",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Held(reason = vexlife.voiceinput.VexLifeVoiceInputFamily.HoldReason.LocalRecognitionUnavailable)"
+            },
+            {
+              "label": "Held#1",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Held(reason = vexlife.voiceinput.VexLifeVoiceInputFamily.HoldReason.MicrophoneApiUnavailable)"
+            },
+            {
+              "label": "Held#2",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Held(reason = vexlife.voiceinput.VexLifeVoiceInputFamily.HoldReason.AudioFeedbackUnavailable)"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Failed",
+          "fixtures": [
+            {
+              "label": "Failed#0",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Failed(reason = vexlife.voiceinput.VexLifeVoiceInputFamily.FailureReason.MicrophonePermissionRequired)"
+            },
+            {
+              "label": "Failed#1",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Failed(reason = vexlife.voiceinput.VexLifeVoiceInputFamily.FailureReason.MicrophoneUnavailable)"
+            },
+            {
+              "label": "Failed#2",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Failed(reason = vexlife.voiceinput.VexLifeVoiceInputFamily.FailureReason.RecognitionStopped)"
+            },
+            {
+              "label": "Failed#3",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Failed(reason = vexlife.voiceinput.VexLifeVoiceInputFamily.FailureReason.Unknown)"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Start",
+          "fixtures": [
+            {
+              "label": "Start",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Start"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Stop",
+          "fixtures": [
+            {
+              "label": "Stop",
+              "expr": "vexlife.voiceinput.VexLifeVoiceInputFamily.Stop"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    }
+  ]
+}

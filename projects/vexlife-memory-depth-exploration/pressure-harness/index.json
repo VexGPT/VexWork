@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "vexwork.continuity-pressure-index/v1",
+  "harnessRef": "harness.vexlife-prod.conversational-boundaries/v1",
+  "continuity": "[VXG RealForever]",
+  "canonicalLabel": "VexLife-Prod Conversational Boundaries Test",
+  "aliases": [
+    "memory stress test",
+    "stress test memory",
+    "test the memory",
+    "test continuity",
+    "continuity pressure test",
+    "context-window test",
+    "context stress test",
+    "conversation stress test",
+    "rollover test",
+    "revisit test",
+    "depth test",
+    "VexLife conversational boundaries",
+    "VexLife memory boundaries",
+    "stress test README",
+    "memory test README",
+    "pressure harness",
+    "continuity harness",
+    "language swap test",
+    "settings placement test",
+    "configuration cache test",
+    "current state placement test"
+  ],
+  "rootEntry": "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+  "interfaceSource": "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
+  "adapterContract": "projects/vexlife-memory-depth-exploration/pressure-harness/ADAPTER-CONTRACT.md",
+  "stageCatalog": "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
+  "relayReadme": "projects/vexlife-memory-depth-exploration/pressure-harness/relay/README.md",
+  "scenarioSchema": "projects/vexlife-memory-depth-exploration/pressure-harness/scenario.schema.json",
+  "resultSchema": "projects/vexlife-memory-depth-exploration/pressure-harness/result.schema.json",
+  "canonicalScenario": "projects/vexlife-memory-depth-exploration/pressure-harness/scenarios/depth-continuity-v1.json",
+  "defaultModes": [
+    "quick",
+    "full"
+  ],
+  "currentRelayContractRef": "source.vexrelay.current-contract/v1",
+  "currentRelayTaskSchema": "vex.relay.task/v2",
+  "truthOwner": false,
+  "scenarios": {
+    "depthContinuity": "projects/vexlife-memory-depth-exploration/pressure-harness/scenarios/depth-continuity-v1.json",
+    "currentStatePlacement": "projects/vexlife-memory-depth-exploration/pressure-harness/scenarios/current-state-placement-v1.json"
+  },
+  "currentStateEpochConsideration": "projects/vexlife-memory-depth-exploration/pressure-harness/CURRENT-STATE-EPOCH-CONSIDERATION.md"
+}

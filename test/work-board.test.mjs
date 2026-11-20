@@ -39,8 +39,10 @@ test('Project Work Board projects only the Project subgraph without becoming lif
 
 test('Parking Lot projects parked work independently of Project membership', () => {
   const lot = projectParkingLot({ graph, registry });
+  const terminalStates = new Set(registry.terminalStates);
   const canonicalParkedRefs = graph.items
     .filter((item) => item.workDisposition === 'PARKED')
+    .filter((item) => !terminalStates.has(item.state))
     .map((item) => item.workRef)
     .sort();
   assert.deepEqual(lot.items.map((item) => item.workRef).sort(), canonicalParkedRefs);
@@ -52,6 +54,7 @@ test('Parking Lot projects parked work independently of Project membership', () 
   const expectedParkedForRepository = (repositoryRef) => graph.items
     .filter((item) =>
       item.workDisposition === 'PARKED' &&
+      !terminalStates.has(item.state) &&
       item.repositoryRefs.includes(repositoryRef))
     .map((item) => item.workRef)
     .sort();

@@ -31,6 +31,36 @@ This is the current architecture map. Follow the exact foundation whose question
 
 `FOUNDATION` means the initial portable contract exists in this repository. It does not mean every production integration is complete.
 
+## Accepted VexArchitecture alignment provenance
+
+The VexWork VexArchitecture Alignment Project is **COMPLETED and accepted on main**. It remains a
+useful dogfood/provenance surface when a worker needs to understand why the accepted foundations were
+shaped around rightful owners, authored-once relationships, generated consequences, visible held
+closure and projection boundaries:
+
+```text
+projects/vexwork-vexarchitecture-alignment/README.md
+projects/vexwork-vexarchitecture-alignment/architecture.contract.json
+```
+
+Do not treat that completed Project as the current unfinished architecture trajectory.
+
+```text
+COMPLETED ALIGNMENT PROJECT
+= accepted provenance / dogfood / rationale
+
+ACCEPTED FOUNDATION SOURCE
+= current VexWork authority
+
+NEW OBSERVED ARCHITECTURE PRESSURE
+-> admit new bounded Work at its rightful owner
+-> do not reopen A0-A5 by default
+```
+
+A fresh instance may descend to the completed Alignment Project when provenance is useful, but ordinary
+current work should come from current Foundation source plus the current Workgraph rather than a
+formerly-active candidate route.
+
 ## Descent
 
 ```text
@@ -94,6 +124,10 @@ hosted ChatGPT / local Vex / assisted host action / VexRelay-style handoff
 
 fresh human/agent entry / source-grounded assumptions / inverse reflection / successor takeover
 -> VEXWORK-ORIENTATION.md
+
+accepted VexArchitecture alignment provenance / why accepted relationship boundaries exist
+-> ../../projects/vexwork-vexarchitecture-alignment/README.md
+-> ../../projects/vexwork-vexarchitecture-alignment/architecture.contract.json
 
 testing / regression / coverage / stability
 -> ../process/QUALITY-REVIEW.md

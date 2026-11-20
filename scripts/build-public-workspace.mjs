@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { validateProjectRegistry } from '../src/core/project-registry.mjs';
 import { projectPublicWorkspace } from '../src/core/public-workspace.mjs';
 import { createProject, createWorkgraph } from '../src/core/workgraph.mjs';
-import { createBoardView, projectParkingLot, projectWorkBoard } from '../src/core/work-board.mjs';
+import { createBoardView, deriveDefaultBoardView, projectParkingLot, projectWorkBoard } from '../src/core/work-board.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => JSON.parse(fs.readFileSync(path.join(ROOT, relative), 'utf8'));
@@ -27,7 +27,9 @@ for (const entry of projectRegistry.projects) {
   if (graph.graphRef !== entry.workgraphRef) throw new TypeError(`project registry Workgraph identity mismatch for ${entry.projectRef}`);
   const project = createProject(read(entry.definitionPath));
   if (project.projectRef !== entry.projectRef) throw new TypeError(`project registry definition identity mismatch for ${entry.projectRef}`);
-  const view = createBoardView(read(entry.boardViewPath), registry);
+  const view = entry.boardViewPath === null
+    ? deriveDefaultBoardView({ project, registry })
+    : createBoardView(read(entry.boardViewPath), registry);
   const board = projectWorkBoard({ project, graph, view, registry });
   projectEntries.push({ project, board, graph });
 }

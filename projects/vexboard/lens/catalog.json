@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "vexboard.lens-catalog/v1",
+  "catalogRef": "catalog.vexboard.lens",
+  "title": "VexBoard Lens subjects",
+  "defaultSubjectRef": "subject.vexlife-android",
+  "subjects": [
+    {
+      "subjectRef": "subject.vexlife-android",
+      "slug": "vexlife-android",
+      "label": "VexLife Android",
+      "summary": "The Android app. Every registered screen is generated from Kotlin source: what the human touches, where it lives in code, what it means, and what it touches underneath.",
+      "repositoryRef": "repo.vexlife-android",
+      "repository": {
+        "url": "https://github.com/vgong24/VexLife-Android",
+        "defaultBranch": "main"
+      },
+      "vexworkProjectRefs": [
+        "project.vexsync.debugmenu-blueprints",
+        "project.vexlife.blueprint-source-of-truth",
+        "project.vexboard"
+      ],
+      "lens": {
+        "status": "GENERATED",
+        "adapter": "vexlife-android.lens-adapter.json",
+        "overlay": "vexlife-android.lens-overlay.json",
+        "anyCommit": true,
+        "builds": [
+          {
+            "buildRef": "stable",
+            "label": "Stable",
+            "summary": "The accepted projection. Moves only when Main is promoted.",
+            "commit": "305a09eac1fabebcf2241bd207386950f41121f2",
+            "lens": "vexlife-android.screen-lens.json",
+            "since": "2026-11-05",
+            "observedAt": "2026-11-03",
+            "evidence": [
+              "github.pull.vexwork.230",
+              "human.victor.lived-first-draft-acceptance",
+              "github.pull.vexwork.238"
+            ]
+          },
+          {
+            "buildRef": "main",
+            "label": "Main",
+            "summary": "The latest projected commit on the default branch.",
+            "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+            "branch": "main",
+            "lens": "vexlife-android.main.screen-lens.json",
+            "observedAt": "2026-11-10"
+          }
+        ]
+      },
+      "boards": [
+        {
+          "boardRef": "board.vexlife.debug-menu.theme-mode.origin-walk",
+          "label": "Theme Mode Origin Walk",
+          "summary": "The Debug Menu dark-mode path drawn by hand as a Family-language board.",
+          "role": "RELATED"
+        },
+        {
+          "boardRef": "board.vexlife-android.vexstream-playback.vexarchitecture",
+          "label": "VexStream Playback walk",
+          "summary": "The VexArchitecture walk the Behavior-port traversal was earned from.",
+          "role": "RELATED"
+        },
+        {
+          "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
+          "label": "VexStream living Blueprint",
+          "summary": "Current phone ↔ desktop connection patient zero joining source-owned expectation with stable evidence coordinates.",
+          "role": "RELATED"
+        },
+        {
+          "boardRef": "board.vexlife-android.home-vexstream.poc",
+          "label": "Home and VexStream screen POC",
+          "summary": "First attempt at projecting Android screens onto the canvas.",
+          "role": "TRIAL"
+        },
+        {
+          "boardRef": "board.vexlife-android.vexstream-depth.poc",
+          "label": "VexStream depth POC",
+          "summary": "The same POC, one level deeper.",
+          "role": "TRIAL"
+        }
+      ]
+    },
+    {
+      "subjectRef": "subject.vexlife-prod",
+      "slug": "vexlife-prod",
+      "label": "VexLife Prod",
+      "summary": "The VexLife desktop Product exported from its Product-owned VexUiBlueprint into the shared VexBoard Screen Lens schema.",
+      "repositoryRef": "repo.vexlife-prod",
+      "repository": {
+        "url": "https://github.com/VexGPT/VexLife-Prod",
+        "defaultBranch": "main"
+      },
+      "vexworkProjectRefs": [
+        "project.vexlife-prod.end-to-end-tests",
+        "project.vexboard"
+      ],
+      "lens": {
+        "status": "GENERATED",
+        "exportedLens": "docs/lens/vexlife-prod.screen-lens.json",
+        "anyCommit": true,
+        "builds": [
+          {
+            "buildRef": "stable",
+            "label": "Stable",
+            "summary": "Merged Product Screen Lens currentness checkpoint.",
+            "commit": "14206ba97e47e107c4999e89f514c8beaf24224a",
+            "lens": "vexlife-prod.screen-lens.json",
+            "since": "2026-11-20",
+            "observedAt": "2026-11-20",
+            "evidence": [
+              "github.pull.vexlife-prod.437",
+              "github.pull.vexwork.366",
+              "github.pull.vexwork.367",
+              "human.victor.lived-screen-lens-acceptance-2026-11-20"
+            ],
+            "sourceBlobSha1": "3cd26dca14b7380dc480726c2033d426ec347e0d"
+          },
+          {
+            "buildRef": "main",
+            "label": "Main",
+            "summary": "Latest Product-owned exported Screen Lens on main.",
+            "commit": "14206ba97e47e107c4999e89f514c8beaf24224a",
+            "branch": "main",
+            "lens": "vexlife-prod.screen-lens.json",
+            "observedAt": "2026-11-20",
+            "sourceBlobSha1": "3cd26dca14b7380dc480726c2033d426ec347e0d"
+          }
+        ]
+      },
+      "boards": []
+    }
+  ],
+  "trials": []
+}

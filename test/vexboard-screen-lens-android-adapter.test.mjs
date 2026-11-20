@@ -1,0 +1,1050 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+
+import {
+  ADAPTER_VERSION,
+  SCREEN_LENS_ADAPTER_SCHEMA,
+  SCREEN_LENS_OVERLAY_SCHEMA,
+  adapterReadPlan,
+  applyOverlay,
+  applyOverlayWithReport,
+  compact,
+  kdocBefore,
+  matchClose,
+  parseIntent,
+  parseStringResources,
+  projectAndroidScreenLens,
+  splitArgs,
+  stripComments,
+  topLevelCalls,
+  typedPathwayRef,
+} from '../src/core/vexboard-screen-lens-android-adapter.mjs';
+import { faceGraph, normalizeScreenLens, screenMapGraph } from '../src/shared/vexboard-screen-lens.mjs';
+import { layoutCollisions, layoutLensFace } from '../src/shared/vexboard-lens-layout.mjs';
+
+// A minimal synthetic app shaped like VexLife-Android. Small on purpose: it
+// pins each adapter rule without copying another repository's source.
+const APP = 'app/src/main/kotlin/demo/';
+const files = new Map(Object.entries({
+  [`${APP}screens/AppScreens.kt`]: `
+object AppScreens {
+    val primary: List<AppScreenBlueprint> = listOf(
+        HomeScreen,
+    )
+    val shared: List<AppScreenBlueprint> = listOf(
+        SettingsScreen,
+    )
+}`,
+  [`${APP}screens/AppScreenBlueprint.kt`]: `
+internal class ScreenActionContext(
+    val repositories: AppRepositories,
+    val logger: VexLogger,
+    val pickWidget: () -> Unit,
+    val pingOther: () -> Unit,
+)`,
+  [`${APP}runtime/AppActions.kt`]: `
+object AppActions {
+    val Pick = ActionKey("action.widget.pick")
+    val Clear = ActionKey("action.log.clear")
+    val Save = ActionKey("action.settings.save")
+    val Ping = ActionKey("action.other.ping")
+    val Nothing = ActionKey("action.nothing")
+}`,
+  [`${APP}shell/AppShell.kt`]: `
+object AppShell {
+    object Elements {
+        object Root : ColumnElement("element.shell.root")
+        object Toolbar : RowElement("element.shell.toolbar")
+        object Back : ButtonElement(
+            elementId = "element.shell.back",
+            labelRes = R.string.back,
+            intent = navigateBack(),
+        )
+        object Nav : RowElement("element.shell.nav")
+        object Home : ButtonElement(
+            elementId = "element.nav.home",
+            labelRes = R.string.nav_home,
+            intent = navigateTo(HomeScreen),
+        )
+        object Cluster : StackElement("element.shell.cluster")
+        object Options : ColumnElement("element.shell.options")
+        object Add : FabElement(
+            elementId = "element.shell.add",
+            intent = toggle(Options),
+        )
+        object Settings : FabElement(
+            elementId = "element.settings",
+            style = VexElementStyles.FabOption,
+            intent = close(Options) then navigateTo(SettingsScreen),
+        )
+    }
+    val blueprint = column(Elements.Root) {
+        row(Elements.Toolbar) {
+            button(Elements.Back)
+        }
+        row(Elements.Nav) {
+            button(Elements.Home)
+        }
+        stack(Elements.Cluster) {
+            column(Elements.Options) {
+                fab(Elements.Settings)
+            }
+            fab(Elements.Add)
+        }
+    }
+}`,
+  [`${APP}ui/Session.kt`]: `
+internal fun createActions() = ScreenActionContext(
+    pickWidget = {
+        pickWidget(
+            family = widgetFamily,
+            store = widgetStore,
+        )
+    },
+    pingOther = { pingSomething() },
+)
+
+/** Picks the next widget choice from current State. */
+private fun pickWidget(
+    family: WidgetFamily,
+    store: WidgetStore,
+) {
+    activateWidget(
+        family = family,
+        control = WidgetFamily.Control.Pick(
+            WidgetFamily.Parameter.Choice(value = 1),
+        ),
+    )
+}
+
+private fun pingSomething() {
+    println("no family here")
+}
+
+internal class WidgetFamilyProvider(
+    private val store: VexDependencyProvider<WidgetStore>,
+) : VexDependencyProvider<WidgetFamily>(
+    dependencies = listOf(
+        store,
+        executionRoot,
+    ),
+)`,
+  [`${APP}ui/Widget.kt`]: `
+internal enum class Widget :
+    VexFamily.State<WidgetFamily> {
+    A,
+    B,
+}
+
+/**
+ * Smallest widget Family.
+ *
+ * Second paragraph is not part of the summary.
+ */
+@Suppress("unused")
+internal class WidgetFamily(
+    initialState: Widget,
+) {
+    sealed interface Parameter {
+        data class Choice(val value: Int) : Parameter
+    }
+    sealed interface Control {
+        data class Pick(val choice: Parameter.Choice) : Control
+    }
+    sealed interface Effect {
+        data class Persist(val choice: Parameter.Choice) : Effect
+    }
+    object Act {
+        sealed class Method<out S, out F> : VexFamily.Act.Method<WidgetFamily, S, F> {
+            class Persist(
+                private val store: WidgetStore,
+                val parameter: Parameter.Choice,
+            ) : Method<Widget, Unit>() {
+                override suspend operator fun invoke() =
+                    if (store.write(parameter.value)) VexMethod.Result.Success(output = Widget.A) else VexMethod.Result.Failure(Unit)
+            }
+        }
+    }
+    sealed interface DisplayState {
+        data object A : DisplayState {
+            override val presentation = WidgetPresentation.A
+        }
+    }
+    override fun act(state: Widget, control: Control) = beginLatest(Effect.Persist(control.choice))
+}
+
+internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {
+    recordWidgetFact()
+}
+
+internal fun observeWidgetStore(family: WidgetFamily) {}`,
+  [`${APP}ui/WidgetStore.kt`]: `
+internal interface WidgetStore {
+    suspend fun write(value: Int): Boolean
+}
+
+internal class PrefsWidgetStore(
+    context: Context,
+) : WidgetStore {
+    override suspend fun write(value: Int) = true
+}`,
+  [`${APP}screens/primary/home/HomeScreen.kt`]: `
+/** Home is where widgets are picked. */
+object HomeScreen : AppScreenBlueprint(
+    screenKey = "home",
+    titleRes = R.string.home_title,
+) {
+    val Pick = toggleRef(
+        id = "body.pick",
+        labelRes = R.string.pick_label,
+        intent = invoke(AppActions.Pick),
+    )
+    val Clear = buttonRef(id = "body.group.actions.clear", labelRes = R.string.clear, intent = invoke(AppActions.Clear))
+    val Go = buttonRef(id = "body.group.actions.go", intent = navigateTo(SettingsScreen))
+    val Sheet = modalBottomSheetRef("body.sheet")
+    val Open = buttonRef(id = "body.open", intent = open(Sheet))
+    val Panel = dialogRef("body.panel")
+    val Swap = buttonRef(id = "body.swap", intent = close(Sheet).then(open(Panel)))
+    val Ping = buttonRef(id = "body.ping", intent = invoke(AppActions.Ping))
+    val Idle = buttonRef(id = "body.idle", intent = invoke(AppActions.Nothing))
+    val Orphan = buttonRef(id = "body.orphan", intent = invoke(AppActions.Missing))
+    val Name = textFieldRef(id = "body.name", labelRes = R.string.name)
+
+    override val content = layout {
+        scrollableColumn("body") {
+            toggle(Pick)
+            card("group") {
+                text(
+                    id = "title",
+                    textRes = R.string.group_title,
+                    role = TextRole.Title,
+                )
+                row("actions") {
+                    button(Clear)
+                    button(Go)
+                }
+            }
+            // a comment with a brace { that must not confuse the reader
+            button(Open)
+            button(Swap)
+            button(Ping)
+            button(Idle)
+            button(Orphan)
+            textField(Name)
+            customWidget(Thing)
+            column(element = Missing) {}
+            modalBottomSheet(Sheet) {}
+            dialog(Panel) {}
+        }
+    }
+
+    internal override fun appActionRegistrations(
+        context: ScreenActionContext,
+    ): AppActionRegistrations {
+        val pick = context.pickWidget
+        val ping = context.pingOther
+        val logger = context.logger
+        val lab = LabController(
+            repository = context.repositories.things,
+        )
+        return AppActionRegistrations.of(
+            appAction(action = AppActions.Pick, ownerRef = screenId) {
+                pick()
+            },
+            appAction(action = AppActions.Clear, ownerRef = screenId) {
+                logger.clearHistory()
+                lab.reset()
+            },
+            appAction(action = AppActions.Ping, ownerRef = screenId) {
+                ping()
+            },
+            appAction(action = AppActions.Nothing, ownerRef = screenId) {
+                // No product effect yet.
+            },
+        )
+    }
+
+    @Composable
+    override fun renderContent(runtime: VexRuntime, repositories: AppRepositories) {
+        if (runtime.presentation.isOpen(HomeScreen.Sheet)) {
+            SheetView(
+                runtime = runtime,
+                repository = repositories.things,
+            )
+        }
+    }
+}`,
+  [`${APP}screens/shared/settings/SettingsScreen.kt`]: `
+object SettingsScreen : AppScreenBlueprint(
+    screenKey = "settings",
+    titleRes = R.string.settings_title,
+) {
+    val SaveButton = buttonRef(id = "body.save", intent = invoke(AppActions.Save))
+    override val content = layout {
+        scrollableColumn("body") {
+            button(SaveButton)
+        }
+    }
+    internal override fun appActionRegistrations(
+        context: ScreenActionContext,
+    ): AppActionRegistrations =
+        settingsRegistrations(context.repositories.settings)
+}
+
+internal fun settingsRegistrations(
+    repository: SettingsRepository,
+): AppActionRegistrations =
+    AppActionRegistrations.of(
+        appAction(action = AppActions.Save, ownerRef = SettingsScreen.screenId) { request ->
+            repository.save(request)
+        },
+    )`,
+  [`${APP}screens/shared/orphan/OrphanScreen.kt`]: `
+object OrphanScreen : AppScreenBlueprint(screenKey = "orphan", titleRes = R.string.orphan) {}`,
+  'app/src/main/res/values/strings.xml': `<resources>
+    <string name="pick_label">Pick &amp; keep</string>
+    <string name="home_title">Home</string>
+    <string name="settings_title">Settings</string>
+    <string name="group_title"><![CDATA[Group]]></string>
+    <string name="nav_home">Home</string>
+    <string name="back">Back</string>
+    <string name="clear">Clear \\'all\\'</string>
+</resources>`,
+}));
+
+const adapter = {
+  schemaVersion: SCREEN_LENS_ADAPTER_SCHEMA,
+  lensRef: 'lens.demo',
+  title: 'Demo lens',
+  entry: { screenRef: 'screen.home', elementRef: 'element.home.body.pick' },
+  repository: { ref: 'repo.demo', url: 'https://example.test/demo', commit: '0123456789abcdef0123456789abcdef01234567', roots: { app: APP } },
+  read: ['app:screens/', 'app:shell/', 'app:runtime/', 'app:ui/'],
+  stringResources: ['app/src/main/res/values/strings.xml'],
+  sources: {
+    appScreens: 'app:screens/AppScreens.kt',
+    appShell: 'app:shell/AppShell.kt',
+    appActions: 'app:runtime/AppActions.kt',
+    session: 'app:ui/Session.kt',
+    screenActionContext: 'app:screens/AppScreenBlueprint.kt',
+    runtime: 'app:runtime/VexRuntime.kt',
+    frame: 'app:shell/AppFrame.kt',
+  },
+  chrome: {
+    chromeRef: 'chrome.shell',
+    label: 'Shell',
+    symbol: 'AppShell',
+    appliesTo: 'PRIMARY',
+    summary: 'One owner.',
+    slots: { 'element.shell.toolbar': 'TOP', 'element.shell.nav': 'BOTTOM', 'element.shell.cluster': 'FAB' },
+    visibleWhen: { 'element.shell.nav': 'runtime.isPrimary()' },
+    alwaysVisible: ['element.shell.back'],
+    kinds: { 'element.shell.options': 'MENU' },
+    labels: { 'element.shell.add': '+' },
+  },
+};
+
+const project = (overrides = {}) => projectAndroidScreenLens({ adapter, files, observedAt: '2026-11-01', ...overrides });
+
+test('Kotlin helpers respect strings, comments and nesting', () => {
+  const text = 'call("a ) {", f(x), { y })';
+  assert.equal(matchClose(text, 4), text.length - 1);
+  assert.throws(() => matchClose('x', 0), /opening bracket/);
+  assert.throws(() => matchClose('(', 0), /unbalanced/);
+  assert.equal(stripComments('a // b\nc /* d */ e "// kept"'), 'a \nc  e "// kept"');
+  assert.equal(compact('f(\n  a,\n  b,\n)'), 'f(a, b)');
+  assert.deepEqual(splitArgs('id = "x", 3, intent = invoke(AppActions.K), // tail\n'), [
+    { name: 'id', value: '"x"' },
+    { name: null, value: '3' },
+    { name: 'intent', value: 'invoke(AppActions.K)' },
+  ]);
+  assert.deepEqual(splitArgs('a == b').map((arg) => arg.name), [null], 'comparison is not a named argument');
+  const calls = topLevelCalls('row("r") { button(B) } if (x) { y() } text(id = "t") layout { z() } "str(" ');
+  assert.deepEqual(calls.map((call) => call.name), ['row', 'text', 'layout']);
+  assert.equal(calls[0].body.trim(), 'button(B)');
+  assert.equal(calls[2].args, '');
+});
+
+test('KDoc is found above modifiers and annotations, first paragraph only', () => {
+  const text = '/**\n * First line\n * [Linked] text.\n *\n * Later.\n */\n@Suppress("x")\ninternal class X';
+  assert.equal(kdocBefore(text, text.indexOf('class')), 'First line Linked text.');
+  assert.equal(kdocBefore('val x = 1\nclass Y', 10), null);
+  assert.equal(kdocBefore('/* not kdoc */ class Z', 15), null);
+  assert.equal(kdocBefore('x */ class Z', 5), null);
+  assert.equal(kdocBefore('/**\n *\n */\nclass E', 13), null);
+});
+
+test('intents parse both chaining forms', () => {
+  assert.deepEqual(parseIntent('close(A) then navigateTo(B)'), [{ op: 'close', arg: 'A' }, { op: 'navigateTo', arg: 'B' }]);
+  assert.deepEqual(parseIntent('close(A) .then(open(B))'), [{ op: 'close', arg: 'A' }, { op: 'open', arg: 'B' }]);
+  assert.deepEqual(parseIntent('navigateBack()'), [{ op: 'navigateBack', arg: '' }]);
+  assert.deepEqual(parseIntent(''), []);
+  assert.deepEqual(parseIntent('somethingOdd'), [{ op: 'unknown', arg: 'somethingOdd' }]);
+  const elements = typedPathwayRef('gallery', parseIntent('swapTo(container = Content, child = ElementsPanel)'));
+  const appGraph = typedPathwayRef('gallery', parseIntent('swapTo(child = AppGraphPanel, container = Content)'));
+  assert.notEqual(elements, appGraph);
+  assert.equal(appGraph, typedPathwayRef('gallery', parseIntent('swapTo(container = Content, child = AppGraphPanel)')));
+});
+
+test('string resources decode entities, CDATA and escapes', () => {
+  const strings = parseStringResources(files.get('app/src/main/res/values/strings.xml'));
+  assert.equal(strings.get('pick_label'), 'Pick & keep');
+  assert.equal(strings.get('group_title'), 'Group');
+  assert.equal(strings.get('clear'), "Clear 'all'");
+  assert.equal(parseStringResources('<string name="q">"quoted"</string>').get('q'), 'quoted');
+});
+
+test('screens, placement, labels and element ids come from source', () => {
+  const { lens, report } = project();
+  assert.equal(lens.schemaVersion, 'vexboard.screen-lens/v1');
+  assert.deepEqual(lens.screens.map((screen) => [screen.screenRef, screen.placement, screen.label]), [['screen.home', 'PRIMARY', 'Home'], ['screen.settings', 'SHARED', 'Settings']]);
+  const home = lens.screens[0];
+  assert.match(home.summary, /^Home is where widgets are picked\. Renders custom content/);
+  const refs = home.elements.map((element) => element.ref);
+  for (const ref of ['element.home.body', 'element.home.body.pick', 'element.home.body.group', 'element.home.body.group.title', 'element.home.body.group.actions', 'element.home.body.group.actions.clear', 'element.home.body.sheet', 'element.home.body.panel', 'element.home.body.name']) assert.ok(refs.includes(ref), ref);
+  const pick = home.elements.find((element) => element.ref === 'element.home.body.pick');
+  assert.equal(pick.label, 'Pick & keep');
+  assert.equal(pick.kind, 'TOGGLE');
+  assert.equal(pick.declared, 'toggleRef(id = "body.pick")');
+  assert.equal(pick.symbol, 'HomeScreen.Pick');
+  assert.equal(pick.actionKey, 'action.widget.pick');
+  assert.equal(home.elements.find((element) => element.ref === 'element.home.body.group.title').textRole, 'TITLE');
+  assert.equal(home.elements.find((element) => element.ref === 'element.home.body.name').kind, 'FIELD');
+  assert.equal(home.elements.find((element) => element.ref === 'element.home.body.sheet').visibleWhen, 'runtime.presentation.isOpen(Sheet)');
+  assert.deepEqual(report.unknownCalls.map((entry) => entry.call).sort(), ['column without id', 'customWidget']);
+  assert.equal(report.strings, 7);
+  assert.ok(!lens.screens.some((screen) => screen.screenRef === 'screen.orphan'), 'unregistered screens are not projected');
+});
+
+test('a closure that reaches a Family becomes one SCAE + Depth template', () => {
+  const { lens, report } = project();
+  assert.deepEqual(report.bonds, [{ actionKey: 'action.widget.pick', closure: 'pickWidget', fn: 'pickWidget', family: 'WidgetFamily', control: 'Pick' }]);
+  const pathway = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  assert.equal(pathway.disposition, 'SCAE_FAMILY');
+  assert.equal(pathway.summary, 'Smallest widget Family.');
+  const slots = pathway.nodes.map((node) => node.ref.replace('widget.pick.', ''));
+  assert.deepEqual(slots, ['intent', 'runtime', 'registration', 'closure', 'control', 'state', 'act', 'admitted', 'effect', 'display', 'method', 'launch', 'custody', 'store', 'store-impl', 'result', 'observe', 'log', 'provider']);
+  const node = (slot) => pathway.nodes.find((entry) => entry.ref === `widget.pick.${slot}`);
+  assert.equal(node('closure').summary, 'Picks the next widget choice from current State.');
+  assert.equal(node('control').code, 'data class Pick(val choice: Parameter.Choice) : Control');
+  assert.equal(node('state').symbol, 'Widget.A | B');
+  assert.equal(node('effect').label, 'Begin(Effect.Persist, Latest)');
+  assert.equal(node('method').label, 'Act.Method.Persist(store, parameter)');
+  assert.equal(node('store').label, 'WidgetStore.write(…)');
+  assert.equal(node('store-impl').label, 'PrefsWidgetStore');
+  assert.equal(node('result').label, 'VexMethod.Result.Success(…)');
+  assert.equal(node('result').role, 'RESULT');
+  assert.equal(node('observe').role, 'OBSERVATION');
+  assert.equal(node('display').label, 'DisplayState → WidgetPresentation');
+  assert.equal(node('provider').label, 'WidgetFamilyProvider(store, executionRoot)');
+  assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.observe' && edge.to === 'widget.pick.state' && edge.kind === 'RETURN'));
+  assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.store' && edge.to === 'widget.pick.observe' && edge.kind === 'DATA'));
+  assert.equal(pathway.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'), false);
+  assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.effect' && edge.to === 'widget.pick.method'));
+  assert.equal(pathway.returnRef, 'widget.pick.display');
+});
+
+test('Direct Family projection follows the pinned source shape instead of rewriting history', () => {
+  const oldFiles = new Map(files);
+  const oldSource = files.get(`${APP}ui/Widget.kt`)
+    .replace(
+      'internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {\n    recordWidgetFact()\n}',
+      `internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {
+    val act = family.activate(control) ?: return
+    act.launchWith(executionRoot).method(
+        onResult = { result ->
+            family.selectionRealizationFinished(
+                Parameter.Choice(1),
+            )
+            observeWidgetState(result)
+        },
+    )
+}
+
+internal fun selectionRealizationFinished(
+    parameter: Parameter.Choice,
+) {
+    if (unsettledChoice === parameter) {
+        unsettledChoice = null
+    }
+}`,
+    )
+    .replace('internal class WidgetFamily(\n    initialState: Widget,\n) {',
+      'internal class WidgetFamily(\n    initialState: Widget,\n) {\n    private var unsettledChoice: Parameter.Choice? = null');
+  oldFiles.set(`${APP}ui/Widget.kt`, oldSource);
+  const oldLens = project({ files: oldFiles }).lens;
+  const oldPath = oldLens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  const oldNode = (slot) => oldPath.nodes.find((entry) => entry.ref === `widget.pick.${slot}`);
+  assert.equal(oldNode('fence').label, 'selectionRealizationFinished · === fence');
+  assert.equal(oldNode('accepted'), undefined);
+  assert.equal(oldNode('realization'), undefined);
+  assert.equal(oldNode('launch').label, 'act.launchWith(executionRoot).method(…)');
+  assert.ok(oldPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.fence'));
+  assert.equal(oldPath.edges.some((edge) => edge.from === 'widget.pick.custody' && edge.to === 'widget.pick.fence'), false);
+
+  const currentFiles = new Map(files);
+  const currentSource = files.get(`${APP}ui/Widget.kt`)
+    .replace(
+      'internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {\n    recordWidgetFact()\n}',
+      `internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {
+    val act: VexFamily.Act.Accepted<WidgetFamily, Widget, Effect> =
+        family.activate(control) ?: return
+    val begin = act.realizationBegin ?: return
+    val effect = begin.effect
+    val method = Act.Method.Persist(store, effect)
+    val job =
+        try {
+            act.launch(
+                executionRoot = executionRoot,
+                method = method,
+                onResult = { result ->
+                    family.settleWidgetCurrentness(effect.choice)
+                    observeWidgetState(result)
+                },
+            )
+        } catch (failure: Throwable) {
+            family.settleWidgetCurrentness(effect.choice)
+            throw failure
+        }
+    if (job != null) {
+        job.invokeOnCompletion {
+            family.settleWidgetCurrentness(effect.choice)
+        }
+    } else {
+        family.settleWidgetCurrentness(effect.choice)
+    }
+}
+
+/** Settle the feature-owned widget currentness fence for one exact accepted choice. */
+internal fun settleWidgetCurrentness(
+    parameter: Parameter.Choice,
+) {
+    if (unsettledChoice === parameter) {
+        unsettledChoice = null
+    }
+}`,
+    )
+    .replace('internal class WidgetFamily(\n    initialState: Widget,\n) {',
+      'internal class WidgetFamily(\n    initialState: Widget,\n) {\n    private var unsettledChoice: Parameter.Choice? = null')
+    .replace(
+      'private val store: WidgetStore,\n                val parameter: Parameter.Choice,',
+      'private val store: WidgetStore,\n                val effect: Effect.Persist,',
+    );
+  currentFiles.set(`${APP}ui/Widget.kt`, currentSource);
+  const currentLens = project({ files: currentFiles }).lens;
+  const currentPath = currentLens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  const currentNode = (slot) => currentPath.nodes.find((entry) => entry.ref === `widget.pick.${slot}`);
+  assert.equal(currentNode('fence').label, 'settleWidgetCurrentness · === fence');
+  assert.equal(currentNode('accepted').symbol, 'VexFamily.Act.Accepted');
+  assert.equal(currentNode('realization').symbol, 'VexFamily.Act.Accepted.realizationBegin');
+  assert.equal(currentNode('launch').label, 'Act.Accepted.launch(executionRoot, Method)');
+  assert.match(currentNode('fence').summary, /feature-owned widget currentness fence/);
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.fence'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.custody' && edge.to === 'widget.pick.fence' && edge.kind === 'SIDE'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.launch' && edge.to === 'widget.pick.fence' && edge.kind === 'SIDE'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.store' && edge.to === 'widget.pick.observe' && edge.kind === 'DATA'));
+  assert.equal(currentPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'), false);
+});
+
+test('localEffect projects current Direct Family through Partner request and Store return', () => {
+  const variant = new Map(files);
+  variant.set(
+    APP + 'screens/primary/home/HomeScreen.kt',
+    files.get(APP + 'screens/primary/home/HomeScreen.kt')
+      .replace('val Ping = buttonRef(id = "body.ping", intent = invoke(AppActions.Ping))', 'val Ping = buttonRef(id = "body.ping", intent = localEffect())')
+      .concat('\nfun renderPlayback(experience: PlaybackExperience) {\n    when (HomeScreen.Ping) {\n        HomeScreen.Ping -> experience.activate(PlaybackControl.PlayPause)\n    }\n}\n'),
+  );
+  variant.set(APP + 'ui/PlaybackExperience.kt', [
+    'interface PlaybackExperience {',
+    '    fun activate(control: PlaybackControl)',
+    '}',
+    'private class CurrentPlaybackExperience(',
+    '    private val family: PlaybackFamily,',
+    '    private val connection: PlayerPartner.Connection.Request?,',
+    '    private val playerStore: PlayerStore,',
+    '    private val executionRoot: VexExecutionRoot,',
+    ') : PlaybackExperience {',
+    '    override fun activate(control: PlaybackControl) {',
+    '        val requestConnection = connection ?: return',
+    '        activatePlaybackThroughPartner(',
+    '            family = family,',
+    '            control = control,',
+    '            connection = requestConnection,',
+    '            playerStore = playerStore,',
+    '            executionRoot = executionRoot,',
+    '        )',
+    '    }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackState.kt', [
+    'sealed interface PlaybackState : VexFamily.State<PlaybackFamily> {',
+    '    data object Idle : PlaybackState',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackControl.kt', [
+    'enum class PlaybackControl : VexFamily.Control<PlaybackFamily> {',
+    '    PlayPause,',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackEffect.kt', [
+    'sealed interface PlaybackEffect : VexFamily.Effect<PlaybackFamily> {',
+    '    data object RequestPlay : PlaybackEffect',
+    '    data object RequestPause : PlaybackEffect',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackFamily.kt', [
+    'class PlaybackFamily :',
+    '    VexFamily<PlaybackFamily, PlaybackState, PlaybackControl, PlaybackEffect>(',
+    '        initialState = PlaybackState.Idle,',
+    '    ) {',
+    '    fun activatePlayback(control: PlaybackControl) = activate(control)',
+    '    override fun act(currentState: PlaybackState, control: PlaybackControl) =',
+    '        stay(beginLatest(PlaybackEffect.RequestPlay))',
+    '    fun observePlayer(playback: PlayerPartner.Signal.Playback?) = Unit',
+    '    object Act {',
+    '        class Method(',
+    '            private val connection: PlayerPartner.Connection.Request,',
+    '            override val effect: PlaybackEffect,',
+    '        ) : VexFamily.Act.Method<PlaybackFamily, Unit, Unit> {',
+    '            override suspend fun invoke() = VexMethod.Result.Success(Unit)',
+    '        }',
+    '    }',
+    '}',
+    'fun activatePlaybackThroughPartner(',
+    '    family: PlaybackFamily,',
+    '    control: PlaybackControl,',
+    '    connection: PlayerPartner.Connection.Request,',
+    '    playerStore: PlayerStore,',
+    '    executionRoot: VexExecutionRoot,',
+    ') {',
+    '    val accepted = family.activatePlayback(control) ?: return',
+    '    val begin = accepted.realizationBegin ?: return',
+    '    accepted.launch(',
+    '        executionRoot = executionRoot,',
+    '        method = PlaybackFamily.Act.Method(connection, begin.effect),',
+    '    )',
+    '}',
+    'fun observePlaybackPlayerStore(',
+    '    family: PlaybackFamily,',
+    '    store: PlayerStore,',
+    '    executionRoot: VexExecutionRoot,',
+    ') {',
+    '    family.observePlayer(store.currentPlaybackSignal())',
+    '    VexExecution.observe(',
+    '        executionRoot = executionRoot,',
+    '        owner = family,',
+    '        source = store::playbackSignals,',
+    '    ) { playback -> family.observePlayer(playback) }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlayerPartner.kt', [
+    'object PlayerPartner : VexPartner<PlayerPartner> {',
+    '    data object Source : VexPartner.Source<PlayerPartner>',
+    '    sealed interface Signal : VexPartner.Signal<PlayerPartner> {',
+    '        val source: Source get() = Source',
+    '        data class Playback(val playing: Boolean) : Signal',
+    '    }',
+    '    interface Connection : VexPartner.Connection<PlayerPartner, Signal> {',
+    '        interface Request : Connection',
+    '    }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlayerStore.kt', [
+    'class PlayerStore {',
+    '    fun currentPlaybackSignal(): PlayerPartner.Signal.Playback? = null',
+    '    fun playbackSignals() = Unit',
+    '}',
+  ].join('\n'));
+
+  const { lens, report } = project({ files: variant });
+  const ping = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(ping.pathwayRef, 'pathway.ui.play-pause');
+  const pathway = lens.pathways.find((entry) => entry.pathwayRef === ping.pathwayRef);
+  assert.equal(pathway.disposition, 'SCAE_FAMILY');
+  assert.ok(pathway.nodes.some((node) => node.role === 'CONTROL' && node.label === 'PlaybackControl.PlayPause'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'ACT' && node.symbol === 'VexFamily.Act.Accepted'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'REALIZATION' && node.symbol === 'VexFamily.Act.Accepted.realizationBegin'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'METHOD' && node.symbol === 'PlaybackFamily.Act.Method'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'PARTNER' && node.label === 'PlayerPartner'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'STORE' && node.label === 'PlayerStore'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'OBSERVATION' && node.label === 'PlayerPartner.Signal.Playback'));
+  assert.ok(pathway.edges.some((edge) => edge.from.endsWith('.store') && edge.to.endsWith('.observe') && edge.kind === 'DATA'));
+  assert.ok(pathway.edges.some((edge) => edge.from.endsWith('.observe') && edge.to.endsWith('.state') && edge.kind === 'RETURN'));
+  assert.ok(report.bonds.some((bond) =>
+    bond.via === 'DIRECT_FAMILY_LOCAL_EFFECT' &&
+    bond.family === 'PlaybackFamily' &&
+    bond.control === 'PlayPause' &&
+    bond.partner === 'PlayerPartner' &&
+    bond.store === 'PlayerStore'
+  ));
+
+  const broken = new Map(variant);
+  broken.set(
+    APP + 'ui/PlaybackFamily.kt',
+    variant.get(APP + 'ui/PlaybackFamily.kt').replace('source = store::playbackSignals,', 'source = missing::playbackSignals,'),
+  );
+  const brokenProjection = project({ files: broken });
+  const brokenPing = brokenProjection.lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(brokenPing.pathwayRef, undefined);
+  assert.ok(brokenProjection.report.held.some((entry) =>
+    entry.elementRef === brokenPing.ref && /not source-proven/.test(entry.reason)
+  ));
+});
+
+test('a closure that reaches no Family stays a direct registration', () => {
+  const { lens } = project();
+  const ping = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.other.ping');
+  assert.equal(ping.disposition, 'DIRECT_REGISTRATION');
+  const idle = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.nothing');
+  assert.equal(idle.summary, 'Registered, with no product effect yet.');
+  assert.equal(idle.nodes.find((node) => node.ref === 'nothing.registration').summary, 'No product effect yet.');
+});
+
+test('direct registrations resolve receivers to owners, controllers and parameters', () => {
+  const { lens } = project();
+  const clear = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.log.clear');
+  assert.equal(clear.disposition, 'DIRECT_REGISTRATION');
+  const node = (slot) => clear.nodes.find((entry) => entry.ref === `log.clear.${slot}`);
+  assert.equal(node('owner-logger').role, 'CHRONOLOGY');
+  assert.equal(node('owner-logger').label, 'VexLogger');
+  assert.equal(node('calls-lab').label, 'LabController');
+  assert.equal(node('dep-repositories-things').role, 'STORE');
+  const save = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.settings.save');
+  const repo = save.nodes.find((entry) => entry.ref === 'settings.save.owner-repository');
+  assert.equal(repo.label, 'SettingsRepository');
+  assert.equal(repo.role, 'STORE');
+  assert.equal(save.nodes.find((entry) => entry.ref === 'settings.save.registration').symbol, 'settingsRegistrations');
+  assert.equal(lens.pathways.find((entry) => entry.pathwayRef === 'pathway.log.clear').nodes.find((entry) => entry.ref === 'log.clear.registration').symbol, 'HomeScreen.appActionRegistrations');
+});
+
+test('typed intents become shared navigation and presentation templates', () => {
+  const { lens, report } = project();
+  const home = lens.screens[0];
+  const go = home.elements.find((element) => element.ref === 'element.home.body.group.actions.go');
+  assert.equal(go.navigatesTo, 'screen.settings');
+  assert.equal(lens.pathways.find((entry) => entry.pathwayRef === go.pathwayRef).disposition, 'TYPED_NAVIGATION');
+  const open = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.home.open.Sheet');
+  assert.equal(open.disposition, 'TYPED_PRESENTATION');
+  assert.ok(open.nodes.some((node) => node.label === 'SheetView(…)' && node.role === 'PROJECTION'));
+  assert.ok(open.nodes.some((node) => node.face === 'DEPTH' && node.label === 'repositories.things'));
+  assert.equal(open.returnRef, 'home.open.Sheet.renderer');
+  const swap = lens.pathways.find((entry) => entry.pathwayRef === typedPathwayRef('home', parseIntent('close(Sheet).then(open(Panel))')));
+  assert.deepEqual(swap.nodes.filter((node) => node.role === 'NAVIGATION').map((node) => node.label), ['Close(Sheet)', 'Open(Panel)']);
+  assert.deepEqual(report.held, [{ elementRef: 'element.home.body.orphan', reason: 'no registration for AppActions.Missing' }]);
+});
+
+test('an unresolved localEffect stays held instead of becoming false typed presentation', () => {
+  const variant = new Map(files);
+  variant.set(`${APP}screens/primary/home/HomeScreen.kt`, files.get(`${APP}screens/primary/home/HomeScreen.kt`).replace('intent = invoke(AppActions.Ping)', 'intent = localEffect()'));
+  const { lens, report } = project({ files: variant });
+  const ping = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(ping.intent, 'localEffect()');
+  assert.equal(ping.pathwayRef, undefined);
+  assert.ok(report.held.some((entry) => entry.elementRef === ping.ref && /not source-proven/.test(entry.reason)));
+  assert.equal(lens.pathways.some((entry) => entry.disposition === 'TYPED_PRESENTATION' && entry.nodes[0]?.label === 'localEffect()'), false);
+});
+
+test('an ambiguous Family Effect vocabulary is held rather than choosing the first syntactic match', () => {
+  const variant = new Map(files);
+  variant.set(`${APP}ui/Widget.kt`, files.get(`${APP}ui/Widget.kt`).replace('data class Persist(val choice: Parameter.Choice) : Effect', 'data class Persist(val choice: Parameter.Choice) : Effect\n        data class Mirror(val choice: Parameter.Choice) : Effect'));
+  const { lens, report } = project({ files: variant });
+  const pick = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.pick');
+  assert.equal(pick.pathwayRef, undefined);
+  assert.ok(report.held.some((entry) => entry.elementRef === pick.ref && /ambiguous Family traversal/.test(entry.reason)));
+});
+
+test('chrome is one owner with slots, menu kinds and always-visible controls', () => {
+  const { lens } = project();
+  const [chrome] = lens.chrome;
+  assert.equal(chrome.chromeRef, 'chrome.shell');
+  const byRef = Object.fromEntries(chrome.elements.map((element) => [element.ref, element]));
+  assert.equal(byRef['element.shell.toolbar'].slot, 'TOP');
+  assert.equal(byRef['element.shell.nav'].visibleWhen, 'runtime.isPrimary()');
+  assert.equal(byRef['element.shell.options'].kind, 'MENU');
+  assert.equal(byRef['element.settings'].kind, 'MENU_ITEM');
+  assert.equal(byRef['element.settings'].navigatesTo, 'screen.settings');
+  assert.equal(byRef['element.shell.add'].label, '+');
+  assert.equal(byRef['element.shell.back'].alwaysVisible, true);
+  assert.equal(byRef['element.shell.back'].navigatesTo, 'BACK');
+  assert.equal(byRef['element.nav.home'].label, 'Home');
+  assert.equal(byRef['element.shell.back'].parentRef, 'element.shell.toolbar');
+  assert.equal(byRef['element.shell.toolbar'].parentRef, null, 'root is skipped unless includeRoot');
+  const rooted = projectAndroidScreenLens({ adapter: { ...adapter, chrome: { ...adapter.chrome, includeRoot: true } }, files }).lens;
+  assert.equal(rooted.chrome[0].elements.find((element) => element.ref === 'element.shell.toolbar').parentRef, 'element.shell.root');
+  const toggle = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.shell.toggle.Options');
+  assert.equal(toggle.nodes[1].label, 'Toggle(element.shell.options)');
+});
+
+test('the generated lens is valid, laid out without overlap, and deterministic', () => {
+  const { lens } = project();
+  const normalized = normalizeScreenLens(lens);
+  assert.equal(normalized.entryElementRef, 'element.home.body.pick');
+  assert.match(lens.sourceSnapshot.notes[0], new RegExp(`Generated by ${ADAPTER_VERSION}`));
+  assert.equal(lens.sourceSnapshot.observedAt, '2026-11-01');
+  for (const pathway of normalized.pathways) {
+    for (const face of ['BEHAVIOR', 'DEPTH']) {
+      const graph = faceGraph(pathway, face);
+      if (graph.nodes.length) assert.deepEqual(layoutCollisions(layoutLensFace(graph)), [], `${pathway.pathwayRef} ${face}`);
+    }
+  }
+  const map = screenMapGraph(normalized);
+  assert.deepEqual(layoutCollisions(layoutLensFace(map)), []);
+  assert.deepEqual(project().lens, lens);
+  const noStrings = projectAndroidScreenLens({ adapter: { ...adapter, stringResources: undefined }, files }).lens;
+  assert.equal(noStrings.screens[0].elements.find((element) => element.ref === 'element.home.body.pick').label, 'Pick label');
+  assert.match(noStrings.sourceSnapshot.notes[1], /string resource names/);
+});
+
+test('the overlay adds human knowledge and fails loudly on refs that do not exist', () => {
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    summary: 'Overlay summary',
+    screens: { 'screen.home': { summary: 'Human summary' } },
+    elements: { 'element.home.body.pick': { label: 'Pick a widget' } },
+    pathways: {
+      'pathway.widget.pick': {
+        label: 'Pick',
+        returnRef: 'widget.pick.extra',
+        nodes: { 'widget.pick.control': { summary: 'Sharper.' } },
+        addNodes: [{ ref: 'widget.pick.extra', face: 'DEPTH', role: 'STATE', label: 'Extra fence' }],
+        removeEdges: [{ from: 'widget.pick.result', to: 'widget.pick.observe' }],
+        addEdges: [{ from: 'widget.pick.result', to: 'widget.pick.extra', label: 'settle?' }, { from: 'widget.pick.extra', to: 'widget.pick.observe', label: 'admit' }],
+      },
+    },
+    notes: [{ ref: 'note.pick', subjectRef: 'element.home.body.pick', text: 'Note', detail: 'Attached.' }],
+  };
+  const { lens } = project({ overlay });
+  normalizeScreenLens(lens);
+  assert.equal(lens.summary, 'Overlay summary');
+  assert.equal(lens.screens[0].summary, 'Human summary');
+  assert.equal(lens.screens[0].elements.find((element) => element.ref === 'element.home.body.pick').label, 'Pick a widget');
+  const pathway = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  assert.equal(pathway.label, 'Pick');
+  assert.equal(pathway.nodes.find((node) => node.ref === 'widget.pick.control').summary, 'Sharper.');
+  assert.ok(!pathway.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'));
+  assert.equal(pathway.returnRef, 'widget.pick.extra', 'STRICT applies the current accepted return coordinate');
+  assert.equal(lens.annotations.length, 1);
+  for (const broken of [
+    { screens: { 'screen.nope': {} } },
+    { elements: { 'element.nope': {} } },
+    { pathways: { 'pathway.nope': {} } },
+    { pathways: { 'pathway.widget.pick': { nodes: { 'widget.pick.nope': {} } } } },
+  ]) {
+    assert.throws(() => applyOverlay(lens, { schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA, ...broken }), /does not have/);
+  }
+  assert.throws(() => applyOverlay(lens, { schemaVersion: 'x' }), /overlay schemaVersion/);
+});
+
+test('adapter config and inputs fail closed', () => {
+  assert.throws(() => projectAndroidScreenLens({ adapter: { ...adapter, schemaVersion: 'x' }, files }), /adapter schemaVersion/);
+  assert.throws(() => projectAndroidScreenLens({ adapter: { ...adapter, title: '' }, files }), /adapter title/);
+  assert.throws(() => projectAndroidScreenLens({ adapter: { ...adapter, repository: { url: 'x' } }, files }), /repository/);
+  assert.throws(() => projectAndroidScreenLens({ adapter: { ...adapter, sources: { ...adapter.sources, session: undefined } }, files }), /sources\.session/);
+  assert.throws(() => projectAndroidScreenLens({ adapter, files: {} }), /Map/);
+  assert.throws(() => projectAndroidScreenLens({ adapter: { ...adapter, sources: { ...adapter.sources, appActions: 'nope:x.kt' } }, files }), /unknown root nope/);
+  assert.throws(() => projectAndroidScreenLens({ adapter: { ...adapter, sources: { ...adapter.sources, appActions: 'app:missing.kt' } }, files }), /missing source/);
+  const noChrome = projectAndroidScreenLens({ adapter: { ...adapter, chrome: undefined, entry: undefined }, files }).lens;
+  assert.deepEqual(noChrome.chrome, []);
+  assert.equal(noChrome.entryScreenRef, 'screen.home');
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][ANDROID-ADAPTER-TEST]
+
+test('lenient overlay skips entries an older commit lacks, lists them, and still normalizes', () => {
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    screens: { 'screen.home': { summary: 'Kept' }, 'screen.gone': { summary: 'Skipped' } },
+    elements: { 'element.gone': { label: 'Skipped' } },
+    pathways: {
+      'pathway.gone': { label: 'Skipped' },
+      'pathway.widget.pick': {
+        nodes: { 'widget.pick.gone': { summary: 'Skipped' } },
+        addEdges: [{ from: 'widget.pick.control', to: 'widget.pick.nowhere', label: 'dangling' }],
+      },
+    },
+    notes: [
+      { ref: 'note.kept', subjectRef: 'element.home.body.pick', text: 'Kept' },
+      { ref: 'note.orphan', subjectRef: 'element.gone', text: 'Skipped' },
+    ],
+  };
+  const { lens, report } = project({ overlay, overlayMode: 'LENIENT' });
+  normalizeScreenLens(lens);
+  assert.equal(lens.screens[0].summary, 'Kept');
+  assert.deepEqual(lens.annotations.map((note) => note.ref), ['note.kept']);
+  assert.deepEqual(report.overlayMisses, ['screen.gone', 'element.gone', 'pathway.gone', 'widget.pick.gone', 'structural-add:widget.pick.control->widget.pick.nowhere', 'note.orphan']);
+  assert.match(lens.sourceSnapshot.notes.at(-1), /^6 overlay entries do not apply at this commit and were skipped: screen\.gone/);
+  assert.throws(() => project({ overlay, overlayMode: 'STRICT' }), /does not have/);
+  assert.throws(() => project({ overlay, overlayMode: 'MAYBE' }), /overlayMode/);
+  const one = applyOverlayWithReport(lens, { schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA, screens: { 'screen.gone': {} } }, { strict: false });
+  assert.deepEqual(one.misses, ['screen.gone']);
+  assert.match(one.lens.sourceSnapshot.notes.at(-1), /^1 overlay entry does not apply at this commit and was skipped/);
+  assert.deepEqual(project({ overlay: null }).report.overlayMisses, []);
+});
+
+test('lenient historical overlay applies descriptive fields but skips source-sensitive fields on existing refs', () => {
+  const base = project().lens;
+  const home = base.screens.find((screen) => screen.screenRef === 'screen.home');
+  const element = home.elements[0];
+  const pathway = base.pathways.find((entry) => entry.pathwayRef === element.pathwayRef) ?? base.pathways[0];
+  const node = pathway.nodes[0];
+
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    screens: {
+      'screen.home': {
+        summary: 'Current descriptive screen summary.',
+        elements: [],
+      },
+    },
+    elements: {
+      [element.ref]: {
+        label: 'Current descriptive element label.',
+        pathwayRef: 'pathway.future',
+      },
+    },
+    pathways: {
+      [pathway.pathwayRef]: {
+        label: 'Current descriptive pathway label.',
+        disposition: 'DIRECT_REGISTRATION',
+        nodes: {
+          [node.ref]: {
+            summary: 'Current descriptive node summary.',
+            role: 'STATE',
+          },
+        },
+      },
+    },
+  };
+
+  const { lens, misses } = applyOverlayWithReport(base, overlay, { strict: false });
+  normalizeScreenLens(lens);
+
+  const nextHome = lens.screens.find((screen) => screen.screenRef === 'screen.home');
+  const nextElement = nextHome.elements.find((candidate) => candidate.ref === element.ref);
+  const nextPathway = lens.pathways.find((candidate) => candidate.pathwayRef === pathway.pathwayRef);
+  const nextNode = nextPathway.nodes.find((candidate) => candidate.ref === node.ref);
+
+  assert.equal(nextHome.summary, 'Current descriptive screen summary.');
+  assert.equal(nextHome.elements.length, home.elements.length, 'historical screen structure is source-owned');
+  assert.equal(nextElement.label, 'Current descriptive element label.');
+  assert.equal(nextElement.pathwayRef, element.pathwayRef, 'historical element linkage is source-owned');
+  assert.equal(nextPathway.label, 'Current descriptive pathway label.');
+  assert.equal(nextPathway.disposition, pathway.disposition, 'historical pathway disposition is source-owned');
+  assert.equal(nextNode.summary, 'Current descriptive node summary.');
+  assert.equal(nextNode.role, node.role, 'historical node role is source-owned');
+
+  assert.ok(misses.includes('structural-field:screen.home.elements'));
+  assert.ok(misses.includes(`structural-field:${element.ref}.pathwayRef`));
+  assert.ok(misses.includes(`structural-field:${pathway.pathwayRef}.disposition`));
+  assert.ok(misses.includes(`structural-field:${node.ref}.role`));
+});
+
+test('the read plan names exactly the files the adapter reads', () => {
+  const plan = adapterReadPlan(adapter);
+  assert.ok(plan.prefixes.every((prefix) => prefix.endsWith('/')));
+  for (const path of files.keys()) assert.equal(plan.includes(path), true, path);
+  assert.equal(plan.includes(`${APP}screens/README.md`), false, 'only Kotlin under a read prefix');
+  assert.equal(plan.includes('app/src/main/kotlin/elsewhere/Thing.kt'), false);
+  assert.throws(() => adapterReadPlan({ ...adapter, read: ['nope:screens/'] }), /root nope/);
+  assert.deepEqual(adapterReadPlan({ ...adapter, read: ['plain/path'] }).prefixes, ['plain/path/']);
+});
+
+
+test('lenient historical overlay never injects current structural nodes or edge rewrites', () => {
+  const base = project().lens;
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    pathways: {
+      'pathway.widget.pick': {
+        label: 'Current interpretation label',
+        returnRef: 'widget.pick.future',
+        nodes: { 'widget.pick.control': { summary: 'Current descriptive interpretation.' } },
+        addNodes: [{ ref: 'widget.pick.future', face: 'BEHAVIOR', role: 'PROJECTION', label: 'Future source construct' }],
+        removeEdges: [{ from: 'widget.pick.intent', to: 'widget.pick.runtime' }],
+        addEdges: [{ from: 'widget.pick.display', to: 'widget.pick.future', label: 'future' }],
+      },
+    },
+    notes: [{ ref: 'note.future', subjectRef: 'widget.pick.future', text: 'Future note' }],
+  };
+  const { lens, misses } = applyOverlayWithReport(base, overlay, { strict: false });
+  const pathway = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  assert.equal(pathway.label, 'Current interpretation label');
+  assert.equal(pathway.nodes.find((node) => node.ref === 'widget.pick.control').summary, 'Current descriptive interpretation.');
+  assert.equal(pathway.nodes.some((node) => node.ref === 'widget.pick.future'), false);
+  assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.intent' && edge.to === 'widget.pick.runtime'));
+  assert.equal(pathway.edges.some((edge) => edge.to === 'widget.pick.future'), false);
+  assert.notEqual(pathway.returnRef, 'widget.pick.future');
+  assert.ok(misses.includes('structural-node:widget.pick.future'));
+  assert.ok(misses.includes('structural-remove:widget.pick.intent->widget.pick.runtime'));
+  assert.ok(misses.includes('structural-add:widget.pick.display->widget.pick.future'));
+  assert.ok(misses.includes('note.future'));
+  normalizeScreenLens(lens);
+});
+
+test('source-proven Partner circuits project through the existing Behavior / Depth lens', () => {
+  const variant = new Map(files);
+  variant.set(APP + 'screens/AppScreens.kt', files.get(APP + 'screens/AppScreens.kt').replace('SettingsScreen,', 'SettingsScreen,\n        PartnerScreen,'));
+  variant.set('app/src/main/res/values/strings.xml', files.get('app/src/main/res/values/strings.xml').replace('</resources>', [
+    '    <string name="partner_title">Partner Lab</string>',
+    '    <string name="partner_receive">Receive sensor</string>',
+    '    <string name="partner_request">Request pump</string>',
+    '    <string name="partner_auto">Enable rule</string>',
+    '</resources>',
+  ].join('\n')));
+  variant.set(APP + 'screens/shared/partner/PartnerScreen.kt', "object PartnerScreen : AppScreenBlueprint(\n    screenKey = \"partner\",\n    titleRes = R.string.partner_title,\n) {\n    val Receive = buttonRef(id = \"body.receive\", labelRes = R.string.partner_receive, intent = localEffect())\n    val Request = buttonRef(id = \"body.request\", labelRes = R.string.partner_request, intent = localEffect())\n    val Automation = toggleRef(id = \"body.auto\", labelRes = R.string.partner_auto, intent = localEffect())\n\n    override val content = layout {\n        scrollableColumn(\"body\") {\n            button(Receive)\n            button(Request)\n            toggle(Automation)\n        }\n    }\n}\n\n@Composable\nfun PartnerScreenContent(runtime: VexRuntime) {\n    val lab = remember { PartnersLab() }\n    val handler = ElementActionHandler { element ->\n        when (element) {\n            PartnerScreen.Receive -> lab.receivePartnerPacket()\n            PartnerScreen.Request -> lab.requestPartnerPump()\n            PartnerScreen.Automation -> lab.toggleRule()\n        }\n    }\n}\n");
+  variant.set(APP + 'ui/SensorPartner.kt', "object SensorPartner : VexPartner<SensorPartner> {\n    data class Source(val sensorRef: String) : VexPartner.Source<SensorPartner>\n    sealed interface Signal : VexPartner.Signal<SensorPartner> {\n        data class Value(val source: Source, val value: Int) : Signal\n        data class Temperature(val source: Source, val value: Int) : Signal\n    }\n\n    class Connection(\n        override val id: Id,\n        private val conversion: VexPartner.Connection.Conversion<ByteArray, SensorPartner, Signal>,\n        private val receiver: Receiver,\n    ) : VexPartner.Connection<SensorPartner, Signal> {\n        data class Id(val raw: Int) : VexPartner.Connection.Id<SensorPartner>\n        class Decoder : VexPartner.Connection.Conversion<ByteArray, SensorPartner, Signal> {\n            override fun convert(input: ByteArray): List<Signal> = emptyList()\n        }\n        data class Observation(\n            override val connectionId: Id,\n            override val signal: Signal,\n            override val observedAtEpochMillis: Long,\n        ) : VexPartner.Connection.Observation<SensorPartner, Signal>\n        class Receiver(\n            private val store: SensorStore,\n        ) : VexPartner.Connection.Receiver<SensorPartner, Signal, Observation> {\n            override suspend fun receive(observation: Observation) {\n                store.commit(observation)\n            }\n        }\n        suspend fun receive(bytes: ByteArray, observedAtEpochMillis: Long) {}\n    }\n}\n");
+  variant.set(APP + 'ui/SensorStore.kt', "class SensorStore {\n    val snapshots: StateFlow<Snapshot> = MutableStateFlow(Snapshot())\n    data class Snapshot(val value: Int = 0)\n    fun commit(observation: Any) {}\n}\n");
+  variant.set(APP + 'ui/SensorFamily.kt', "class SensorFamily :\n    VexFamily<SensorFamily, SensorFamily.State, SensorFamily.Control, SensorFamily.Effect>(\n        initialState = State.Waiting,\n    ) {\n    sealed interface State : VexFamily.State<SensorFamily> {\n        data object Waiting : State\n        data class Ready(val value: Int) : State\n    }\n    sealed interface Control : VexFamily.Control<SensorFamily>\n    sealed interface Effect : VexFamily.Effect<SensorFamily>\n    sealed interface DisplayState : VexFamily.DisplayState<SensorFamily, State> {\n        data object Waiting : DisplayState\n        data class Ready(val value: Int) : DisplayState\n    }\n    fun observeStore(snapshot: SensorStore.Snapshot): State = observe(State.Ready(snapshot.value))\n}\n");
+  variant.set(APP + 'ui/SensorLab.kt', "@file:OptIn(VexExecution.RelationshipFoundationApi::class)\n\nclass SensorLab(\n    val store: SensorStore = SensorStore(),\n    val family: SensorFamily = SensorFamily(),\n) {\n    private object InboundAdmission : VexExecution.RelationshipId\n\n    private val connection =\n        SensorPartner.Connection(\n            id = SensorPartner.Connection.Id(7),\n            conversion = SensorPartner.Connection.Decoder(),\n            receiver = SensorPartner.Connection.Receiver(store),\n        )\n\n    init {\n        VexExecution.observe(\n            executionRoot = executionRoot,\n            owner = family,\n            source = store::snapshots,\n        ) { snapshot ->\n            family.observeStore(snapshot)\n        }\n    }\n\n    fun receivePacket() =\n        VexExecution.beginQueued(\n            executionRoot = executionRoot,\n            owner = connection,\n            relationshipId = InboundAdmission,\n            operation = ::receivePacketAndAwait,\n            argument = Unit,\n        )\n\n    private suspend fun receivePacketAndAwait(unit: Unit) {\n        connection.receive(byteArrayOf(1), observedAtEpochMillis = 1L)\n    }\n}\n");
+  variant.set(APP + 'ui/PumpPartner.kt', "object PumpPartner : VexPartner<PumpPartner> {\n    data class Source(val pumpRef: String) : VexPartner.Source<PumpPartner>\n    sealed interface Signal : VexPartner.Signal<PumpPartner> {\n        data class Delivery(val source: Source, val units: Int) : Signal\n    }\n    class Connection(\n        override val id: Id,\n        private val conversion: VexPartner.Connection.Conversion<ByteArray, PumpPartner, Signal>,\n        private val receiver: Receiver,\n    ) : VexPartner.Connection<PumpPartner, Signal> {\n        data class Id(val raw: Int) : VexPartner.Connection.Id<PumpPartner>\n        class Decoder : VexPartner.Connection.Conversion<ByteArray, PumpPartner, Signal> {\n            override fun convert(input: ByteArray): List<Signal> = emptyList()\n        }\n        data class Observation(\n            override val connectionId: Id,\n            override val signal: Signal,\n            override val observedAtEpochMillis: Long,\n        ) : VexPartner.Connection.Observation<PumpPartner, Signal>\n        class Receiver(\n            private val store: PumpStore,\n        ) : VexPartner.Connection.Receiver<PumpPartner, Signal, Observation> {\n            override suspend fun receive(observation: Observation) {}\n        }\n        suspend fun request(units: Int): Boolean = true\n    }\n}\nclass PumpStore\n");
+  variant.set(APP + 'ui/PumpFamily.kt', "class PumpFamily :\n    VexFamily<PumpFamily, PumpFamily.State, PumpFamily.Control, PumpFamily.Effect>(\n        initialState = State.Idle,\n    ) {\n    sealed interface Parameter : VexFamily.Parameter<PumpFamily> {\n        data class Amount(val units: Int) : Parameter\n    }\n    sealed interface State : VexFamily.State<PumpFamily> {\n        data object Idle : State\n    }\n    sealed interface Control : VexFamily.Control<PumpFamily> {\n        data class Request(val amount: Parameter.Amount) : Control\n    }\n    sealed interface Effect : VexFamily.Effect<PumpFamily> {\n        data class Request(val amount: Parameter.Amount) : Effect\n    }\n    object Act {\n        sealed class Method<out S, out F> : VexFamily.Act.Method<PumpFamily, S, F> {\n            class Request(\n                private val connection: PumpPartner.Connection,\n                val parameter: Parameter.Amount,\n            ) : Method<Boolean, Unit>() {\n                override suspend fun invoke() =\n                    if (connection.request(parameter.units)) {\n                        VexMethod.Result.Success(output = true)\n                    } else {\n                        VexMethod.Result.Failure(output = Unit)\n                    }\n            }\n        }\n    }\n    override fun act(currentState: State, control: Control) =\n        when (control) {\n            is Control.Request -> stay(beginQueued(Effect.Request(control.amount)))\n        }\n}\n");
+  variant.set(APP + 'ui/PumpLab.kt', "class PumpLab(\n    val family: PumpFamily = PumpFamily(),\n) {\n    private val pumpConnection =\n        PumpPartner.Connection(\n            id = PumpPartner.Connection.Id(9),\n            conversion = PumpPartner.Connection.Decoder(),\n            receiver = PumpPartner.Connection.Receiver(PumpStore()),\n        )\n\n    fun requestPump() {\n        val parameter = PumpFamily.Parameter.Amount(1)\n        val act = checkNotNull(\n            family.activate(\n                PumpFamily.Control.Request(parameter),\n            ),\n        )\n        val effect = checkNotNull(act.effect as? PumpFamily.Effect.Request)\n        val method =\n            PumpFamily.Act.Method.Request(\n                connection = pumpConnection,\n                parameter = effect.amount,\n            )\n        act.launchWith(executionRoot)?.method(method)\n    }\n}\n");
+  variant.set(APP + 'ui/PartnersLab.kt', "class PartnersLab(\n    val sensor: SensorLab = SensorLab(),\n    val insulin: PumpLab = PumpLab(),\n) {\n    init {\n        VexExecution.observe(\n            executionRoot = executionRoot,\n            owner = this,\n            source = sensor.family::states,\n        ) { state ->\n            evaluateSensorState(state)\n        }\n    }\n\n    fun receivePartnerPacket() {\n        sensor.receivePacket()\n    }\n\n    fun requestPartnerPump() {\n        insulin.requestPump()\n    }\n\n    fun toggleRule() {\n        evaluateSensorState(sensor.family.currentState)\n    }\n\n    private fun evaluateSensorState(\n        state: SensorFamily.State,\n    ) {\n        insulin.requestPump()\n    }\n}\n");
+
+  const { lens, report } = project({ files: variant });
+  const screen = lens.screens.find((entry) => entry.screenRef === 'screen.partner');
+  assert.ok(screen);
+  const receive = screen.elements.find((element) => element.symbol === 'PartnerScreen.Receive');
+  const request = screen.elements.find((element) => element.symbol === 'PartnerScreen.Request');
+  const automation = screen.elements.find((element) => element.symbol === 'PartnerScreen.Automation');
+  assert.ok(receive?.pathwayRef);
+  assert.ok(request?.pathwayRef);
+  assert.ok(automation?.pathwayRef);
+
+  const ingress = lens.pathways.find((pathway) => pathway.pathwayRef === receive.pathwayRef);
+  assert.equal(ingress.disposition, 'PARTNER_CIRCUIT');
+  assert.deepEqual(ingress.nodes.filter((node) => node.face === 'DEPTH').map((node) => node.role), ['PARTNER', 'CONNECTION', 'EXECUTION', 'CONVERSION', 'SOURCE', 'SIGNAL', 'OBSERVATION', 'RECEIVER', 'STORE', 'EXECUTION']);
+  assert.ok(ingress.nodes.some((node) => node.role === 'EXECUTION' && /Queued inbound admission/.test(node.label)));
+  assert.ok(ingress.nodes.some((node) => node.role === 'CONVERSION' && /SensorPartner\.Connection\.Decoder/.test(node.label)));
+  assert.ok(ingress.nodes.some((node) => node.role === 'SOURCE' && node.label === 'SensorPartner.Source'));
+  assert.ok(ingress.edges.some((edge) => edge.from.endsWith('.listener') && edge.to.endsWith('.state') && edge.kind === 'RETURN'));
+
+  const outbound = lens.pathways.find((pathway) => pathway.pathwayRef === request.pathwayRef);
+  assert.equal(outbound.disposition, 'PARTNER_CIRCUIT');
+  assert.ok(outbound.nodes.some((node) => node.role === 'CONTROL' && /Control\.Request/.test(node.label)));
+  assert.ok(outbound.nodes.some((node) => node.role === 'EFFECT' && /Begin\(Queued/.test(node.label)));
+  assert.ok(outbound.nodes.some((node) => node.role === 'METHOD'));
+  assert.ok(outbound.nodes.some((node) => node.role === 'CONNECTION'));
+  assert.ok(outbound.nodes.some((node) => node.role === 'PARTNER'));
+  assert.match(outbound.summary, /durable outcome truth must return later/);
+
+  const feedback = lens.pathways.find((pathway) => pathway.pathwayRef === automation.pathwayRef);
+  assert.equal(feedback.disposition, 'PARTNER_CIRCUIT');
+  assert.ok(feedback.nodes.some((node) => node.role === 'EXECUTION' && /observe\(SensorFamily\.states\)/.test(node.label)));
+  assert.ok(feedback.nodes.some((node) => node.role === 'CONTROL' && /PumpFamily\.Control\.Request/.test(node.label)));
+  assert.ok(feedback.nodes.some((node) => node.role === 'EFFECT' && /Begin\(Queued/.test(node.label)));
+  assert.ok(feedback.nodes.some((node) => node.role === 'PARTNER' && node.label === 'PumpPartner'));
+  assert.match(feedback.summary, /never bypasses directly to the Partner/);
+
+  assert.ok(report.bonds.some((bond) => bond.via === 'PARTNER_INGRESS' && bond.partner === 'SensorPartner' && bond.executionApproach === 'Queued' && bond.conversion === 'SensorPartner.Connection.Decoder' && bond.source === 'SensorPartner.Source'));
+  assert.ok(report.bonds.some((bond) => bond.via === 'PARTNER_FAMILY_REQUEST' && bond.partner === 'PumpPartner'));
+  assert.ok(report.bonds.some((bond) => bond.via === 'PARTNER_AUTOMATION' && bond.sourceFamily === 'SensorFamily' && bond.targetFamily === 'PumpFamily'));
+  assert.equal(report.held.some((entry) => entry.elementRef?.startsWith('element.partner.')), false);
+
+  const normalized = normalizeScreenLens(lens);
+  for (const pathway of normalized.pathways.filter((entry) => entry.disposition === 'PARTNER_CIRCUIT')) {
+    for (const face of ['BEHAVIOR', 'DEPTH']) {
+      const graph = faceGraph(pathway, face);
+      if (graph.nodes.length) assert.deepEqual(layoutCollisions(layoutLensFace(graph)), [], pathway.pathwayRef + ' ' + face);
+    }
+  }
+});

@@ -5,7 +5,7 @@ import { validateProjectRegistry, projectProjectRegistry } from '../src/core/pro
 import { validateRepositoryRegistry, assertKnownRepositoryRefs } from '../src/core/repository-graph.mjs';
 import { assertKnownProcessRefs, projectProcessMap, validateProcessRegistry } from '../src/core/process-map.mjs';
 import { createProject, createWorkgraph, projectWorkRefs, validateRegistry } from '../src/core/workgraph.mjs';
-import { createBoardView, projectParkingLot, projectWorkBoard, projectWorkGraph } from '../src/core/work-board.mjs';
+import { createBoardView, projectParkingLot, projectWorkBoard, projectWorkGraph, resolveWorkBoardView } from '../src/core/work-board.mjs';
 import { verifySemanticFingerprint } from '../src/core/semantic.mjs';
 import { createProjectAgencyPolicy } from '../src/core/transition-handshake.mjs';
 import { validateProjectPlanningRegistry } from '../src/core/project-planning.mjs';
@@ -68,7 +68,14 @@ for (const entry of projectRegistry.projects) {
   }
 
   assertKnownRepositoryRefs(project.repositoryRefs, repositoryRegistry);
-  const view = createBoardView(read(entry.boardViewPath), workRegistry);
+  const explicitViewOrNull = entry.boardViewPath === null
+    ? null
+    : createBoardView(read(entry.boardViewPath), workRegistry);
+  const view = resolveWorkBoardView({
+    project,
+    explicitViewOrNull,
+    registry: workRegistry,
+  });
   if (view.projectRef !== project.projectRef) {
     throw new Error(`Board/Project identity mismatch for ${entry.projectRef}`);
   }

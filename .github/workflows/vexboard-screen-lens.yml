@@ -1,0 +1,63 @@
+# Generate or verify the VexBoard Screen Lens from VexLife-Android source.
+#
+# Manual only. A selected arbitrary commit is projected as a DETACHED artifact; it never moves
+# Stable/Main pointers or re-pins the committed adapter. Empty input verifies Stable first.
+# The workflow never pushes or opens a PR.
+
+name: VexBoard Screen Lens
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: VexLife-Android commit to inspect (empty = committed Stable pin)
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  lens:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out VexWork
+        uses: actions/checkout@v4
+      - name: Resolve detached source commit
+        id: pin
+        run: |
+          pinned=$(node -e "console.log(require('./projects/vexboard/lens/vexlife-android.lens-adapter.json').repository.commit)")
+          selected="${{ inputs.commit }}"
+          if [ -z "$selected" ]; then selected="$pinned"; fi
+          echo "commit=$selected" >> "$GITHUB_OUTPUT"
+      - name: Check out VexLife-Android
+        uses: actions/checkout@v4
+        with:
+          repository: vgong24/VexLife-Android
+          ref: ${{ steps.pin.outputs.commit }}
+          path: vexlife-android
+          token: ${{ secrets.VEXLIFE_ANDROID_TOKEN || github.token }}
+          sparse-checkout: |
+            app/src/main/kotlin
+            app/src/main/res/values
+            architecture
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verify committed Stable when no detached commit was requested
+        if: ${{ inputs.commit == '' }}
+        run: npm run lens:verify
+      - name: Generate detached projection
+        run: |
+          mkdir -p .screen-lens-detached
+          cp projects/vexboard/lens/vexlife-android.lens-adapter.json .screen-lens-detached/vexlife-android.lens-adapter.json
+          node scripts/build-screen-lens.mjs             --adapter .screen-lens-detached/vexlife-android.lens-adapter.json             --overlay projects/vexboard/lens/vexlife-android.lens-overlay.json             --out .screen-lens-detached/vexlife-android.screen-lens.json             --source vexlife-android             --commit "${{ steps.pin.outputs.commit }}"             --report
+      - name: Show detached artifact identity
+        run: node -e "const x=require('./.screen-lens-detached/vexlife-android.screen-lens.json'); console.log(JSON.stringify({commit:x.sourceSnapshot.commit,provenance:x.provenance},null,2))"
+      - name: Upload detached projection
+        uses: actions/upload-artifact@v4
+        with:
+          name: vexboard-screen-lens-${{ steps.pin.outputs.commit }}
+          path: |
+            .screen-lens-detached/vexlife-android.screen-lens.json
+            .screen-lens-detached/vexlife-android.lens-adapter.json

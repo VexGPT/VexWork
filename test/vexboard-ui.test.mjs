@@ -19,6 +19,7 @@ const systemAnatomy = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/e
 const intentTopology = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json', import.meta.url), 'utf8'));
 const patientZeroCatalog = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'));
 const themeModeBoard = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json', import.meta.url), 'utf8'));
+const vexLifeProdAlignment = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-prod-perceivability-alignment.board.json', import.meta.url), 'utf8'));
 
 const repositoryRootUrl = new URL('../', import.meta.url);
 
@@ -58,16 +59,27 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /Create new/);
   assert.match(page, /Open VexBoard self-map/);
   assert.match(page, /Open VexBoard architecture/);
+  assert.match(page, /Open Living Screen Lens/);
+  assert.match(page, /data-vexboard-entry="living-screen-lens"|dataset\.vexboardEntry='living-screen-lens'/);
   assert.match(page, /Open prototype demo/);
   assert.match(page, /Source examples/);
   assert.match(page, /Open system anatomy example/);
   assert.match(page, /Open intent topology example/);
+  assert.match(page, /Open current VexStream VexArchitecture walk/);
   assert.match(page, /Open Theme Mode Origin Walk/);
   assert.match(page, /Request edit → draft copy/);
   assert.match(page, /Save draft/);
   assert.match(page, /Browser-local proving copies · not source truth/);
   assert.match(page, /Local draft · browser only/);
   assert.match(page, /href="\.\.\/">← VexWork/);
+});
+
+test('VexBoard accepts one stable boardRef deep link through the existing source resolver', () => {
+  assert.match(page, /async function openBoardRef\(boardRef,\{pushCurrent=false\}=\{\}\)/);
+  assert.match(page, /new URLSearchParams\(location\.search\)\.get\('board'\)/);
+  assert.match(page, /await openBoardRef\(requestedBoardRef\)/);
+  assert.match(page, /SourceResolver\.resolveBoardSource\(boardRef/);
+  assert.match(page, /bootFromUrl\(\)/);
 });
 
 test('read-only fork preserves the actual draft identity as the active board coordinate', () => {
@@ -357,6 +369,8 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexstream.phone-desktop-connection.living-blueprint',
       'board.vexlife-android.home-vexstream.poc',
       'board.vexlife-android.vexstream-depth.poc',
+      'board.vexlife-android.vexstream-playback.vexarchitecture',
+      'board.vexlife-prod.perceivability-alignment',
       'board.vexlife.debug-menu.theme-mode.origin-walk',
       'board.vexwork.process-family-metawalk',
     ]),
@@ -372,10 +386,33 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.equal(intentResolution.location, './vexbusinessfactory-intent-topology.board.json');
   assert.equal(intentResolution.boardRef, intentTopology.draftRef);
 
+  const architectureResolution = resolveBoardSource(
+    'board.vexlife-android.vexstream-playback.vexarchitecture',
+    [catalog],
+  );
+  assert.equal(architectureResolution.catalogRef, catalog.catalogRef);
+  assert.equal(
+    architectureResolution.location,
+    './vexlife-android-vexstream-playback.vexarchitecture.json',
+  );
+
   const themeModeResolution = resolveBoardSource(themeModeBoard.draftRef, [catalog]);
   assert.equal(themeModeResolution.catalogRef, catalog.catalogRef);
   assert.equal(themeModeResolution.location, './vexlife-debug-menu-theme-mode.board.json');
   assert.equal(themeModeResolution.boardRef, themeModeBoard.draftRef);
+
+  const vexLifeProdResolution = resolveBoardSource(vexLifeProdAlignment.draftRef, [catalog]);
+  assert.equal(vexLifeProdResolution.catalogRef, catalog.catalogRef);
+  assert.equal(vexLifeProdResolution.location, './vexlife-prod-perceivability-alignment.board.json');
+  assert.equal(vexLifeProdResolution.boardRef, vexLifeProdAlignment.draftRef);
+
+  const vexLifeProdGraph = normalizeBoardGraph(vexLifeProdAlignment.graph);
+  const vexLifeProdProjection = normalizeBoardProjection(vexLifeProdAlignment.projection, vexLifeProdGraph);
+  assert.equal(vexLifeProdAlignment.mode, 'READ_ONLY_SOURCE');
+  assert.equal(vexLifeProdProjection.graphRef, vexLifeProdGraph.graphRef);
+  assert.ok(vexLifeProdGraph.nodes.some((node) => node.nodeRef === 'node.vlp.screen-lens-proof'));
+  assert.ok(vexLifeProdGraph.nodes.some((node) => node.nodeRef === 'node.vlp.future-projector'));
+  assert.ok(vexLifeProdGraph.relationships.some((relationship) => relationship.relationshipRef === 'rel.vlp.projector-product'));
 
   assert.match(page, /vexboard-source-resolver\.mjs/);
   assert.match(page, /function loadSourceCatalogs\(\)/);
@@ -395,6 +432,8 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /vexboard-android-source-projector\.mjs/);
   assert.match(page, /android-reference-presentation\.mjs/);
   assert.match(page, /VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA/);
+  assert.match(page, /VEXLIFE_ANDROID_VEXARCHITECTURE_SLICE_SCHEMA/);
+  assert.match(page, /projectVexLifeAndroidVexArchitectureSlice\(\s*payload,\s*boardRef,\s*\)/);
   assert.match(page, /AndroidProjector\.androidPocDesignLocation\(payload\)/);
   assert.match(page, /new URL\(designLocation,boardUrl\)/);
   assert.match(page, /ScreenDesign\.normalizeScreenDesign\(await designResponse\.json\(\)\)/);
@@ -747,5 +786,6 @@ test('swimlane journey view prioritizes the product path while preserving full r
   assert.match(page, /createElementNS\('http:\/\/www\.w3\.org\/2000\/svg','polyline'\)/);
   assert.match(page, /nested-control/);
   assert.match(page, /has-contained-children/);
-  assert.match(page, /openCatalogBoard\(detailBoardRef,\{pushCurrent:true\}\)/);
+  // Portals resolve through the one boardRef resolver (local draft, built-in, then catalog) since D24.
+  assert.match(page, /return openBoardRef\(detailBoardRef,\{pushCurrent:true\}\)/);
 });

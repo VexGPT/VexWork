@@ -10,7 +10,7 @@
       "label": "VexArchitecture Public Archive",
       "purpose": "Preserve the first accepted executable VexArchitecture stability point as a public historical witness while keeping current behavior, provenance, public projection, and unfinished visual acceptance in their rightful owners.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -26,14 +26,24 @@
         "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
         "github.pull.vextreme.560",
         "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0",
-        "repo.vextreme:pages/vexarchitecture-first-stable-body.html"
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "github.pull.vextreme.562",
+        "github.commit.vextreme.ff65b623fecf32afcadba88daf9c805c8265e609",
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.pull.vextreme.596",
+        "github.commit.vextreme.3cbc22ab1bd2ba31b5a70f48114852fccd98913e",
+        "github.workflow-run.vextreme.43389054063",
+        "github.workflow-run.vextreme.43389054427",
+        "github.workflow-run.vextreme.43389054473",
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-02T06:59:11.000Z",
-      "updatedAt": "2026-11-02T06:59:11.000Z"
+      "updatedAt": "2026-11-20T12:51:25.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -58,7 +68,17 @@
         "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
         "repo.vextreme:data/arcs-v2.json",
         "github.pull.vextreme.561",
-        "github.commit.vextreme.50cc2cf6f6d66b4bb69c5d5c0a4ab68b61197f9f"
+        "github.commit.vextreme.50cc2cf6f6d66b4bb69c5d5c0a4ab68b61197f9f",
+        "github.pull.vextreme.562",
+        "github.commit.vextreme.ff65b623fecf32afcadba88daf9c805c8265e609",
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.pull.vextreme.596",
+        "github.commit.vextreme.3cbc22ab1bd2ba31b5a70f48114852fccd98913e",
+        "github.workflow-run.vextreme.43389054063",
+        "github.workflow-run.vextreme.43389054427",
+        "github.workflow-run.vextreme.43389054473",
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -74,7 +94,7 @@
       "label": "Complete rendered and lived visual review",
       "purpose": "Review and refine the accepted VexArchitecture public guide as a lived experience: preserve source-owned relationship fidelity while ensuring narrow-screen readers can follow the causal order without horizontal scrolling, unnecessary accordion interaction, or confusion between sequential runtime causality and supporting/cross-cutting/conditional architecture relationships.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -97,7 +117,16 @@
         "https://github.com/vgong24/Vextreme/actions/runs/41439233703",
         "github.pull.vextreme.562",
         "github.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
-        "human.review.vexarchitecture-public-archive.narrow-screen.20261102"
+        "human.review.vexarchitecture-public-archive.narrow-screen.20261102",
+        "github.commit.vextreme.ff65b623fecf32afcadba88daf9c805c8265e609",
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.pull.vextreme.596",
+        "github.commit.vextreme.3cbc22ab1bd2ba31b5a70f48114852fccd98913e",
+        "github.workflow-run.vextreme.43389054063",
+        "github.workflow-run.vextreme.43389054427",
+        "github.workflow-run.vextreme.43389054473",
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -106,7 +135,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-02T06:59:11.000Z",
-      "updatedAt": "2026-11-02T12:22:00.000Z"
+      "updatedAt": "2026-11-13T07:55:10.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -115,7 +144,7 @@
       "label": "Register and expose the Project after shared custody releases",
       "purpose": "Complete normal VexWork Project formation once the currently claimed Project Registry/public Workgraph/public workspace paths are released: register this Project, regenerate canonical public projections, and prove it appears exactly once without racing PR #182.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -129,7 +158,17 @@
         "github.pull.vexwork.182",
         "blueprint/project-registry.json",
         "workgraphs/public.json",
-        "public/workspace.json"
+        "public/workspace.json",
+        "github.pull.vextreme.562",
+        "github.commit.vextreme.ff65b623fecf32afcadba88daf9c805c8265e609",
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.pull.vextreme.596",
+        "github.commit.vextreme.3cbc22ab1bd2ba31b5a70f48114852fccd98913e",
+        "github.workflow-run.vextreme.43389054063",
+        "github.workflow-run.vextreme.43389054427",
+        "github.workflow-run.vextreme.43389054473",
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -138,15 +177,146 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-02T06:59:11.000Z",
-      "updatedAt": "2026-11-02T06:59:11.000Z"
+      "updatedAt": "2026-11-20T12:51:23.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.public-archive.rendered-review.running.verifying.stable-reader-human-approval",
+      "workRef": "work.vexarchitecture.public-archive.rendered-lived-review",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Victor's direct narrow-screen review drove #562's readability/causal-order corrections, and the later #591 stable-reader candidate was explicitly human-approved on its exact proved tree.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vextreme.562",
+        "github.commit.vextreme.ff65b623fecf32afcadba88daf9c805c8265e609",
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.3cbc22ab1bd2ba31b5a70f48114852fccd98913e"
+      ],
+      "createdAt": "2026-11-13T07:53:53.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.public-archive.rendered-review.verifying.completed.pages591",
+      "workRef": "work.vexarchitecture.public-archive.rendered-lived-review",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The approved #591 tree merged exactly and its GitHub Pages build/deployment, index build and tests all completed successfully on that exact merge. The rendered/lived guide-review outcome is satisfied; later architecture evolution is successor work.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.workflow-run.vextreme.43389054063",
+        "github.workflow-run.vextreme.43389054427",
+        "github.workflow-run.vextreme.43389054473"
+      ],
+      "createdAt": "2026-11-13T07:55:10.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.public-archive.discoverability.waiting.ready.registry-released",
+      "workRef": "work.vexarchitecture.public-archive.vexwork-discoverability",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The historical shared Project Registry/public Workgraph custody is no longer held by the formation-era PR #182 stack; current VexWork can register the Project from composed source.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.182",
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
+      ],
+      "createdAt": "2026-11-20T12:51:20.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.public-archive.discoverability.ready.running.current-registration",
+      "workRef": "work.vexarchitecture.public-archive.vexwork-discoverability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Register the historical Public Archive Project on current VexWork without transferring current behavioral authority away from VexLife-Android.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
+      ],
+      "createdAt": "2026-11-20T12:51:21.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.public-archive.discoverability.running.verifying.current-projection",
+      "workRef": "work.vexarchitecture.public-archive.vexwork-discoverability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Project Registry, public Workgraph and public workspace consequences can be deterministically regenerated from the current Project/segment source.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
+      ],
+      "createdAt": "2026-11-20T12:51:22.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.public-archive.discoverability.verifying.completed.current-projection",
+      "workRef": "work.vexarchitecture.public-archive.vexwork-discoverability",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The VexArchitecture Public Archive is canonically discoverable in current VexWork exactly once; source/runtime authority remains with the current owning repositories.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
+      ],
+      "createdAt": "2026-11-20T12:51:23.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.public-archive.outcome.running.verifying.all-children-terminal",
+      "workRef": "work.vexarchitecture.public-archive.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The accepted public record, lived/rendered review and VexWork discoverability predicates are all terminal; verify the recovered Project as one historical-witness outcome before closure.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.workflow-run.vextreme.43389054063",
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
+      ],
+      "createdAt": "2026-11-20T12:51:24.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.public-archive.outcome.verifying.completed.recovered-currentness",
+      "workRef": "work.vexarchitecture.public-archive.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The original VexArchitecture Public Archive outcome is complete: the historical record is accepted, the guide was human-reviewed/refined and deployed, and the Project is discoverable in current VexWork. Current architecture behavior remains owned by current VexLife-Android source.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vextreme.591",
+        "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+        "github.workflow-run.vextreme.43389054063",
+        "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
+      ],
+      "createdAt": "2026-11-20T12:51:25.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.vexarchitecture.public-archive",
     "projects/vexarchitecture-public-archive/README.md",
     "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
-    "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0"
+    "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0",
+    "github.pull.vextreme.562",
+    "github.commit.vextreme.ff65b623fecf32afcadba88daf9c805c8265e609",
+    "github.pull.vextreme.591",
+    "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48",
+    "github.pull.vextreme.596",
+    "github.commit.vextreme.3cbc22ab1bd2ba31b5a70f48114852fccd98913e",
+    "github.workflow-run.vextreme.43389054063",
+    "github.workflow-run.vextreme.43389054427",
+    "github.workflow-run.vextreme.43389054473",
+    "github.commit.vexwork.fa0d2eee876f1aaccd36d17da2b81236a8413fbd"
   ],
   "formedAt": "2026-11-02T06:59:11.000Z"
 }

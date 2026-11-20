@@ -50,7 +50,11 @@ VexWork repository
   -> AGENTS.md
   -> docs/CULTURE.md
   -> docs/foundation/INDEX.md
-  -> implicated VexWork foundations
+  -> implicated current VexWork foundations
+  -> when provenance for the accepted VexArchitecture alignment is materially useful:
+     -> projects/vexwork-vexarchitecture-alignment/README.md
+     -> projects/vexwork-vexarchitecture-alignment/architecture.contract.json
+     -> treat this as completed accepted provenance/dogfood, not current unfinished Work
 
 VexRelay relationship
   -> docs/foundation/OPERATING-PROFILES.md explains the VexWork boundary
@@ -62,6 +66,37 @@ target repository
 ~~~
 
 Do not copy those owners into this document. This orientation surface exists so a fresh reader can compile their current meaning together.
+
+## Accepted architecture provenance is discoverable without becoming current Work
+
+The completed VexArchitecture Alignment Project remains discoverable from the Foundation Index as
+accepted provenance and dogfood:
+
+~~~text
+docs/foundation/INDEX.md
+-> projects/vexwork-vexarchitecture-alignment/README.md
+-> projects/vexwork-vexarchitecture-alignment/architecture.contract.json
+~~~
+
+Use it when the reason for an accepted relationship boundary matters. Do not use its former
+candidate/current-edge language as the source of today's unfinished Work.
+
+~~~text
+COMPLETED ALIGNMENT PROJECT
+  explains accepted intention, pressure, evidence and architecture history
+
+CURRENT FOUNDATION SOURCE
+  owns accepted VexWork architecture
+
+CURRENT WORKGRAPH
+  owns today's unfinished Work
+
+COMPLETED PROJECT != CURRENT UNFINISHED EDGE
+PROVENANCE != WORKSTATE
+~~~
+
+New VexWork architecture pressure is admitted as new bounded Work at the rightful owner rather than
+reopening A0-A5 merely because the completed Project is easy to find.
 
 ## The orientation walk
 

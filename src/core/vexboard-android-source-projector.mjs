@@ -17,6 +17,10 @@ export const VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA = 'vexlife-android.vexboard-sna
 export const VEXBOARD_ANDROID_REFERENCE_PRESENTATION_SCHEMA = 'vexboard.android-reference-presentation/v1';
 export const VEXLIFE_ANDROID_ADOPTION_COVERAGE_SCHEMA =
   'vexlife-android.vexboard-adoption-coverage/poc-v1';
+export const VEXLIFE_ANDROID_VEXARCHITECTURE_SLICE_SCHEMA =
+  'vexlife-android.vexarchitecture-source-slice/v1';
+export const VEXBOARD_ANDROID_VEXARCHITECTURE_PROJECTION_SCHEMA =
+  'vexboard.android-vexarchitecture-projection/v1';
 export const VEXBOARD_ANDROID_POC_BOARD_REFS = Object.freeze({
   EXPERIENCE: 'board.vexlife-android.home-vexstream.poc',
   DEPTH: 'board.vexlife-android.vexstream-depth.poc',
@@ -167,6 +171,63 @@ function normalizeAdoptionCoverage(input) {
     text(finding.summary, `Android adoption findings[${index}].summary`);
     refs(finding.sourceRefs ?? [], `Android adoption findings[${index}].sourceRefs`);
   }
+  return structuredClone(input);
+}
+
+function normalizeVexArchitectureSlice(input) {
+  assert(
+    input?.schemaVersion === VEXLIFE_ANDROID_VEXARCHITECTURE_SLICE_SCHEMA,
+    'VexLife Android VexArchitecture slice schema mismatch',
+  );
+  stableRef(input.sliceRef, 'VexArchitecture sliceRef');
+  stableRef(input.productRef, 'VexArchitecture productRef');
+  text(input.label, 'VexArchitecture label');
+  stableRef(input.sourceRevisionRef, 'VexArchitecture sourceRevisionRef');
+  const sliceSourceRefs = refs(input.sourceRefs, 'VexArchitecture sourceRefs');
+  assert(
+    sliceSourceRefs.includes(input.sourceRevisionRef),
+    'VexArchitecture sourceRefs must include sourceRevisionRef',
+  );
+  assert(Array.isArray(input.nodes) && input.nodes.length > 0,
+    'VexArchitecture nodes required');
+  assert(Array.isArray(input.relationships),
+    'VexArchitecture relationships required');
+
+  const nodeRefs = new Set();
+  for (const [index, entry] of input.nodes.entries()) {
+    const nodeRef = stableRef(entry?.nodeRef, `VexArchitecture nodes[${index}].nodeRef`);
+    assert(!nodeRefs.has(nodeRef), `duplicate VexArchitecture node ${nodeRef}`);
+    nodeRefs.add(nodeRef);
+    text(entry.label, `VexArchitecture nodes[${index}].label`);
+    text(entry.question, `VexArchitecture nodes[${index}].question`);
+    const sourceRefs = refs(entry.sourceRefs, `VexArchitecture nodes[${index}].sourceRefs`);
+    assert(sourceRefs.length > 0, `VexArchitecture node ${nodeRef} requires sourceRefs`);
+  }
+
+  const relationshipRefs = new Set();
+  for (const [index, entry] of input.relationships.entries()) {
+    const relationshipRef = stableRef(
+      entry?.relationshipRef,
+      `VexArchitecture relationships[${index}].relationshipRef`,
+    );
+    assert(!relationshipRefs.has(relationshipRef),
+      `duplicate VexArchitecture relationship ${relationshipRef}`);
+    relationshipRefs.add(relationshipRef);
+    const fromRef = stableRef(entry.fromRef,
+      `VexArchitecture relationships[${index}].fromRef`);
+    const toRef = stableRef(entry.toRef,
+      `VexArchitecture relationships[${index}].toRef`);
+    assert(nodeRefs.has(fromRef) && nodeRefs.has(toRef),
+      `VexArchitecture relationship ${relationshipRef} endpoint missing`);
+    text(entry.label, `VexArchitecture relationships[${index}].label`);
+    const sourceRefs = refs(
+      entry.sourceRefs,
+      `VexArchitecture relationships[${index}].sourceRefs`,
+    );
+    assert(sourceRefs.length > 0,
+      `VexArchitecture relationship ${relationshipRef} requires sourceRefs`);
+  }
+
   return structuredClone(input);
 }
 
@@ -1372,6 +1433,124 @@ function depthBoard(snapshot, design, viewportProfile) {
     adoptionCoverage: snapshot.adoptionCoverage,
     adoptionReadiness,
     sourceRefs,
+  });
+}
+
+export function projectVexLifeAndroidVexArchitectureSlice(
+  sliceInput,
+  boardRef,
+) {
+  const slice = normalizeVexArchitectureSlice(sliceInput);
+  const normalizedBoardRef = stableRef(boardRef, 'VexArchitecture boardRef');
+  assert(normalizedBoardRef.startsWith('board.'),
+    'VexArchitecture boardRef must start with board.');
+
+  const suffix = normalizedBoardRef.slice('board.'.length);
+  const graphRef = `graph.${suffix}`;
+  const projectionRef = `projection.${suffix}`;
+  const sourceRefs = refs([
+    slice.sourceRevisionRef,
+    ...slice.sourceRefs,
+    ...slice.nodes.flatMap((entry) => entry.sourceRefs),
+    ...slice.relationships.flatMap((entry) => entry.sourceRefs),
+  ], 'VexArchitecture projection sourceRefs');
+
+  const graphNodes = [];
+  for (const entry of slice.nodes) {
+    graphNodes.push(
+      node(
+        entry.nodeRef,
+        'REFERENCE',
+        entry.label,
+        null,
+        entry.sourceRefs,
+      ),
+    );
+    graphNodes.push(
+      node(
+        `annotation.${entry.nodeRef}.question`,
+        'ANNOTATION',
+        `Question: ${entry.question}`,
+        entry.nodeRef,
+        entry.sourceRefs,
+      ),
+    );
+  }
+
+  const graphRelationships = slice.relationships.map((entry) =>
+    rel(
+      entry.relationshipRef,
+      'REFERENCE',
+      entry.fromRef,
+      entry.toRef,
+      entry.label,
+      entry.sourceRefs,
+    ));
+
+  const graph = normalizeBoardGraph({
+    schemaVersion: 'vexboard.board-graph/v1',
+    graphRef,
+    nodes: graphNodes,
+    relationships: graphRelationships,
+    sourceRefs,
+  });
+
+  const items = [];
+  slice.nodes.forEach((entry, index) => {
+    const x = 80 + (index * 360);
+    const primaryItemRef = `item.${entry.nodeRef}`;
+    items.push(
+      projectionItem(
+        primaryItemRef,
+        entry.nodeRef,
+        'RECTANGLE',
+        rect(x, 100, 300, 110),
+        0,
+      ),
+    );
+    items.push(
+      projectionItem(
+        `item.annotation.${entry.nodeRef}.question`,
+        `annotation.${entry.nodeRef}.question`,
+        'TEXT',
+        rect(x, 230, 300, 100),
+        1,
+        primaryItemRef,
+      ),
+    );
+  });
+
+  const projection = normalizeBoardProjection({
+    schemaVersion: 'vexboard.board-projection/v1',
+    projectionRef,
+    graphRef,
+    layoutIntent: 'SYSTEM_MAP',
+    items,
+    sourceRefs,
+  }, graph);
+
+  const board = Object.freeze({
+    schemaVersion: 'vexboard.local-draft/v1',
+    draftRef: normalizedBoardRef,
+    title: slice.label,
+    mode: 'READ_ONLY_SOURCE',
+    derivedFromRefOrNull: null,
+    savedAtOrNull: null,
+    graph: stripFingerprint(graph),
+    projection: stripFingerprint(projection),
+    sourceRefs,
+  });
+
+  return Object.freeze({
+    schemaVersion: VEXBOARD_ANDROID_VEXARCHITECTURE_PROJECTION_SCHEMA,
+    sliceRef: slice.sliceRef,
+    sourceRevisionRef: slice.sourceRevisionRef,
+    boardRef: normalizedBoardRef,
+    board,
+    effects: Object.freeze({
+      sourceMutationPerformed: false,
+      externalEffectsPerformed: false,
+    }),
   });
 }
 

@@ -8,7 +8,7 @@
       "workRef": "work.vex-universe.outcome",
       "parentWorkRefOrNull": null,
       "label": "Vex Universe Foundations",
-      "purpose": "Make the Vex Universe completion pathway perceptible in VexWork and progressively navigable and replayable through VexBoard, so current work, parallel waits, source ownership and lived proof can be understood without GitHub archaeology.",
+      "purpose": "Carry Vex Universe foundations as downstream consumers of accepted VexArchitecture: VexWork owns work/process truth, VexBoard provides bounded semantic/process perception, and VexBusinessFactory/Journey evidence pressure the accepted substrate without becoming a parallel universal architecture program.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -20,7 +20,10 @@
       "sourceRefs": [
         "github.pull.vexwork.90",
         "github.pull.vexwork.92",
-        "project.vexboard"
+        "project.vexboard",
+        "github.pull.vexlife-android.209",
+        "project.vexwork.vexarchitecture-alignment",
+        "github.pull.vexwork.210"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
@@ -152,7 +155,7 @@
       "workRef": "work.vex-universe.journey-evidence-patient-zero",
       "parentWorkRefOrNull": "work.vex-universe.outcome",
       "label": "Journey evidence and Vex Universe patient zero",
-      "purpose": "Use the accepted process-addressability and VexBoard contracts to render, walk and explain the Vex Universe and BusinessFactory system from VexWork with why/before/action/after/source/evidence semantics before moving into the later lived business proof.",
+      "purpose": "Use a real Vex Universe / VexBusinessFactory journey-evidence patient zero to pressure the already-accepted VexBoard/VexArchitecture relationships—including the accepted current Android/VexStream source-projection slice from VexWork PR #215—through source backlinks, bounded traversal, intended-versus-observed evidence and currentness, without reopening architecture foundations that are already accepted.",
       "workClass": "OUTCOME",
       "state": "READY",
       "workDisposition": "ACTIVE",
@@ -171,14 +174,19 @@
         "github.pull.vexwork.103",
         "github.pull.vexwork.110",
         "github.pull.vexwork.118",
-        "project.vex-universe"
+        "project.vex-universe",
+        "github.pull.vexlife-android.209",
+        "github.pull.vexwork.210",
+        "github.pull.vexlife-android.211",
+        "github.pull.vexwork.215",
+        "github.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T03:45:00.000Z",
-      "updatedAt": "2026-10-24T08:01:32.000Z"
+      "updatedAt": "2026-11-03T11:14:57.000Z"
     }
   ],
   "transitions": [
@@ -414,7 +422,11 @@
     }
   ],
   "sourceRefs": [
-    "project.vex-universe"
+    "project.vex-universe",
+    "github.pull.vexlife-android.209",
+    "github.pull.vexwork.210",
+    "github.pull.vexwork.215",
+    "github.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b"
   ],
   "formedAt": "2026-10-24T03:45:00.000Z"
 }

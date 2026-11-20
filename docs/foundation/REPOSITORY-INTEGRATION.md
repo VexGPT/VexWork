@@ -270,6 +270,49 @@ OR provider truth cannot be established
 
 Routine queue interpretation should not be handed back to Victor.
 
+## Generated consequence reconciliation
+
+Repository Integration owns one additional question when the target repository has deterministic
+checked-in consequences:
+
+> After the candidate's rightful semantic source is composed with current main, which generated files
+> are consequences of that source and therefore must be re-derived before integration clearance?
+
+For VexWork, the current relationship is:
+
+~~~text
+Project definitions / Board overrides
++ Workgraph segments / composition policy
+        ↓
+Project Registry
+public Workgraph
+public workspace
+~~~
+
+The Integration Steward must distinguish:
+
+~~~text
+semantic source conflict
+  -> route to the rightful source owner
+
+generated consequence conflict / stale snapshot
+  -> preserve the semantic source
+  -> regenerate from the composed current source
+  -> prove currentness
+~~~
+
+An older PR does not retain authority over a generated file merely because it first changed that
+path. Its Project-local/segment source remains meaningful; its old aggregate bytes are disposable
+once a newer composed source set is established.
+
+This is bounded convergence, not automatic merge authority:
+
+~~~text
+REGENERATE_CONSEQUENCE != MERGE
+REGENERATE_CONSEQUENCE != CHANGE_WORKSTATE
+REGENERATE_CONSEQUENCE != TAKE_SEMANTIC_OWNERSHIP
+~~~
+
 ## Proof reuse under moving main
 
 Exact candidate/source proof is bound primarily to:

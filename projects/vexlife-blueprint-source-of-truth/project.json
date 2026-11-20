@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.blueprint-source-of-truth",
   "label": "VexLife Blueprint Source of Truth",
-  "purpose": "Preserve and eventually complete the VexLife Blueprint Source of Truth capability: express portable product/software meaning once, realize it truthfully across languages/frameworks/platforms through source-addressed mappings and matched proof, and carry the trajectory without making any implementation, provider, generated target, or VexWork itself the semantic owner.",
+  "purpose": "Preserve the accepted VexLife Blueprint Source-of-Truth predecessor proof—portable semantic meaning, deterministic cross-language representation, parity and target-boundary lessons—as lineage for current VexArchitecture/VexLife construction. The unfinished MAUI/Mac target leg is parked rather than a current dependency; VexLife New Beginnings / VexLife-Prod is the current forward construction trajectory.",
   "rootWorkRefs": [
     "work.vexlife.blueprint-source-of-truth.outcome"
   ],
@@ -21,7 +21,12 @@
     "github.issue.VexGPT.VexLife-Construction-Reference.11",
     "github.pull.VexGPT.VexLife-Construction-Reference.12",
     "github.pull.vexwork.35",
-    "docs/process/FORM-PROJECT.md"
+    "docs/process/FORM-PROJECT.md",
+    "project.vexlife.new-beginnings",
+    "github.pull.vexlife-android.209",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+    "github.repository.VexGPT.VexLife-Prod",
+    "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
   ],
   "formedAt": "2026-10-23T00:33:00.000Z"
 }

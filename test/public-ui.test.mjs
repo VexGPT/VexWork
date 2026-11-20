@@ -33,6 +33,12 @@ test('orientation is a read-only source-grounded judgment surface rather than a 
   assert.match(orientationSource, /current sources\n-> fresh instance reads them/);
   assert.match(orientationSource, /The plan is continuity, not authority\./);
   assert.match(orientationSource, /the predecessor's orientation answers/i);
+  assert.match(orientationSource, /completed VexArchitecture Alignment Project/i);
+  assert.match(orientationSource, /COMPLETED PROJECT != CURRENT UNFINISHED EDGE/);
+  assert.doesNotMatch(orientationSource, /treat this as active evolution source/i);
+  assert.match(orientationPage, /Architecture provenance/);
+  assert.match(orientationPage, /completed and accepted on main/i);
+  assert.doesNotMatch(orientationPage, /current source-managed alignment Project/i);
   assert.doesNotMatch(orientationPage, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
@@ -41,8 +47,140 @@ test('semantic routes distinguish Projects, Project and work-item levels', () =>
   assert.deepEqual(reader.parseRoute('?project=project.demo'), { projectRef: 'project.demo', workRef: null, view: 'story', level: 'PROJECT' });
   assert.deepEqual(reader.parseRoute('?project=project.demo&work=work.demo.task&view=history'), { projectRef: 'project.demo', workRef: 'work.demo.task', view: 'history', level: 'ITEM' });
   assert.equal(reader.routeSearch({ projectRef: 'project.demo', workRef: 'work.demo.task', view: 'overview' }), '?project=project.demo&work=work.demo.task');
+  assert.deepEqual(reader.parseRoute('?view=roadmap'), { projectRef: null, workRef: null, view: 'roadmap', level: 'PROJECTS' });
+  assert.equal(reader.routeSearch({ projectRef: null, workRef: null, view: 'roadmap' }), '?view=roadmap');
   assert.deepEqual(reader.parseRoute('?view=open'), { projectRef: null, workRef: null, view: 'open', level: 'PROJECTS' });
   assert.equal(reader.routeSearch({ projectRef: null, workRef: null, view: 'open' }), '?view=open');
+});
+
+test('Project current trajectory derives plural open work, held state, and chronology without becoming truth owner', () => {
+  const project = {
+    project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
+    items: [
+      {
+        workRef: 'work.root',
+        label: 'Outcome',
+        state: 'RUNNING',
+        priorityClass: 'IMMEDIATE',
+        parentWorkRefOrNull: null,
+        childWorkRefs: ['work.build', 'work.wait'],
+        dependencyRefs: [],
+        updatedAt: '2026-11-03T09:00:00.000Z',
+        transitionHistory: [{ transitionRef: 'transition.root.running', priorState: 'READY', nextState: 'RUNNING', reason: 'Outcome started.', actorRef: 'actor.test', createdAt: '2026-11-03T09:00:00.000Z' }],
+      },
+      {
+        workRef: 'work.build',
+        label: 'Build',
+        state: 'RUNNING',
+        priorityClass: 'HIGH',
+        parentWorkRefOrNull: 'work.root',
+        childWorkRefs: [],
+        dependencyRefs: [],
+        updatedAt: '2026-11-03T09:05:00.000Z',
+        transitionHistory: [],
+      },
+      {
+        workRef: 'work.wait',
+        label: 'Waiting proof',
+        state: 'WAITING_TOOL',
+        priorityClass: 'HIGH',
+        parentWorkRefOrNull: 'work.root',
+        childWorkRefs: [],
+        dependencyRefs: [],
+        updatedAt: '2026-11-03T09:10:00.000Z',
+        transitionHistory: [{ transitionRef: 'transition.wait.tool', priorState: 'RUNNING', nextState: 'WAITING_TOOL', reason: 'Exact host proof is required.', actorRef: 'actor.test', createdAt: '2026-11-03T09:10:00.000Z' }],
+      },
+      {
+        workRef: 'work.done',
+        label: 'Done',
+        state: 'COMPLETED',
+        priorityClass: 'HIGH',
+        parentWorkRefOrNull: 'work.root',
+        childWorkRefs: [],
+        dependencyRefs: [],
+        updatedAt: '2026-11-03T08:00:00.000Z',
+        transitionHistory: [{ transitionRef: 'transition.done', priorState: 'VERIFYING', nextState: 'COMPLETED', reason: 'Accepted.', actorRef: 'actor.test', createdAt: '2026-11-03T08:00:00.000Z' }],
+      },
+    ],
+    lanes: [
+      { laneRef: 'lane.work.active', workRefs: ['work.root', 'work.build'] },
+      { laneRef: 'lane.work.waiting', workRefs: ['work.wait'] },
+      { laneRef: 'lane.work.done', workRefs: ['work.done'] },
+      { laneRef: 'lane.work.archive', workRefs: [] },
+    ],
+  };
+
+  const trajectory = reader.projectCurrentTrajectory(project);
+  assert.deepEqual(trajectory.rootItems.map((item) => [item.workRef, item.state]), [['work.root', 'RUNNING']]);
+  assert.deepEqual(trajectory.openItems.map((item) => item.workRef), ['work.root', 'work.build', 'work.wait']);
+  assert.deepEqual(trajectory.heldItems.map((item) => item.workRef), ['work.wait']);
+  assert.equal(trajectory.heldItems[0].latestReasonOrNull, 'Exact host proof is required.');
+  assert.equal(trajectory.latestTransitionOrNull.transitionRef, 'transition.wait.tool');
+  assert.equal(trajectory.latestTransitionOrNull.workRef, 'work.wait');
+  assert.equal(trajectory.effects, false);
+  assert.equal(trajectory.executionAuthority, 'NONE');
+});
+
+test('Project current trajectory does not heal omitted Board membership in the Human UI', () => {
+  const project = {
+    project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
+    items: [
+      { workRef: 'work.root', label: 'Outcome', state: 'RUNNING', priorityClass: 'IMMEDIATE', parentWorkRefOrNull: null, childWorkRefs: ['work.omitted'], dependencyRefs: [], updatedAt: '2026-11-03T09:00:00.000Z', transitionHistory: [] },
+      { workRef: 'work.omitted', label: 'Upstream projection gap', state: 'READY', priorityClass: 'HIGH', parentWorkRefOrNull: 'work.root', childWorkRefs: [], dependencyRefs: [], updatedAt: '2026-11-03T09:01:00.000Z', transitionHistory: [] },
+    ],
+    lanes: [
+      { laneRef: 'lane.work.active', workRefs: ['work.root'] },
+      { laneRef: 'lane.work.done', workRefs: [] },
+      { laneRef: 'lane.work.archive', workRefs: [] },
+    ],
+  };
+
+  assert.deepEqual(
+    reader.projectCurrentTrajectory(project).openItems.map((item) => item.workRef),
+    ['work.root'],
+  );
+});
+
+test('Project current trajectory reuses Board ordering rather than duplicating priority semantics', () => {
+  const project = {
+    project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
+    items: [
+      { workRef: 'work.root', label: 'Outcome', state: 'RUNNING', priorityClass: 'LOW', parentWorkRefOrNull: null, childWorkRefs: [], dependencyRefs: [], updatedAt: '2026-11-03T09:00:00.000Z', transitionHistory: [] },
+      { workRef: 'work.ready', label: 'Ready first', state: 'READY', priorityClass: 'NORMAL', parentWorkRefOrNull: 'work.root', childWorkRefs: [], dependencyRefs: [], updatedAt: '2026-11-03T09:01:00.000Z', transitionHistory: [] },
+      { workRef: 'work.active', label: 'Active second', state: 'RUNNING', priorityClass: 'IMMEDIATE', parentWorkRefOrNull: 'work.root', childWorkRefs: [], dependencyRefs: [], updatedAt: '2026-11-03T09:02:00.000Z', transitionHistory: [] },
+    ],
+    lanes: [
+      { laneRef: 'lane.work.ready', workRefs: ['work.ready'] },
+      { laneRef: 'lane.work.active', workRefs: ['work.root', 'work.active'] },
+      { laneRef: 'lane.work.done', workRefs: [] },
+      { laneRef: 'lane.work.archive', workRefs: [] },
+    ],
+  };
+  assert.deepEqual(
+    reader.projectCurrentTrajectory(project).openItems.map((item) => item.workRef),
+    ['work.ready', 'work.root', 'work.active'],
+  );
+});
+
+
+
+test('portfolio groups distinguish unfinished, completed, and archived Projects from existing Work truth', () => {
+  const makeProject = (projectRef, rootState, openWorkItemCount) => ({
+    project: { projectRef, rootWorkRefs: [projectRef + '.outcome'] },
+    items: [{ workRef: projectRef + '.outcome', state: rootState }],
+    summary: { openWorkItemCount },
+  });
+  const groups = reader.projectPortfolioGroups({
+    projects: [
+      makeProject('project.running', 'RUNNING', 3),
+      makeProject('project.completed', 'COMPLETED', 0),
+      makeProject('project.closed', 'CLOSED', 0),
+      makeProject('project.cancelled', 'CANCELLED', 0),
+    ],
+  });
+  assert.deepEqual(groups.toComplete.map((project) => project.project.projectRef), ['project.running']);
+  assert.deepEqual(groups.completed.map((project) => project.project.projectRef), ['project.completed', 'project.closed']);
+  assert.deepEqual(groups.archived.map((project) => project.project.projectRef), ['project.cancelled']);
 });
 
 test('recursive containment and incoming dependencies remain projection helpers', () => {
@@ -72,6 +210,35 @@ test('public schema validator preserves no-effects boundary', () => {
   assert.throws(() => reader.validateWorkspace({ ...data, effects: true }), /no-effects boundary/);
 });
 
+test('Project first read exposes derived current trajectory without pre-orientation task framing', () => {
+  assert.match(page, /Current trajectory/);
+  assert.match(page, /Open now/);
+  assert.match(page, /Held \/ waiting/);
+  assert.match(page, /Latest recorded transition/);
+  assert.match(page, /Chronology only; current WorkState remains owned by the Workgraph\./);
+  assert.match(page, /Reader\.projectCurrentTrajectory\(project\)/);
+  assert.match(orientationSource, /## Only then introduce the foreground work/);
+});
+
+test('portfolio roadmap keeps lifecycle and priority visible without inventing release dates', () => {
+  assert.deepEqual(reader.PROJECTS_VIEWS, ['projects', 'roadmap', 'open']);
+  assert.match(page, /Portfolio roadmap/);
+  assert.match(page, /Priority \+ lifecycle/);
+  assert.match(page, /Current roadmap projection over canonical WorkState and source-owned priority/);
+  assert.match(page, /Waiting is incomplete, not failed/);
+  assert.match(page, /Project root priority/);
+});
+
+test('portfolio first read compares Projects to complete with Completed Projects', () => {
+  assert.match(page, /Projects to complete/);
+  assert.match(page, /Completed Projects/);
+  assert.match(page, /Archived \/ exited Projects/);
+  assert.match(page, /Reader\.projectPortfolioGroups\(workspace\)/);
+  assert.match(page, /unfinished · /);
+  assert.match(page, /completed outcomes with no open Project-selected Work/);
+  assert.doesNotMatch(page, /workspace\.projects\.length,'Projects'/);
+});
+
 test('UI exposes semantic lenses but no work/comment mutation controls', () => {
   assert.match(page, /Story Map/);
   assert.match(page, /Board/);
@@ -92,9 +259,16 @@ test('dynamic VexWork strings enter through textContent, not producer HTML', () 
   assert.doesNotMatch(page, /\.innerHTML\s*=\s*item\.|\.innerHTML\s*=\s*project\./);
 });
 
-test('family navigation keeps Vextreme and VexLife as sibling destinations', () => {
+test('family navigation keeps Vextreme, VexLife and VexWork as stable sibling destinations', () => {
   assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html/);
-  assert.match(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
+  assert.match(page, /https:\/\/vexgpt\.github\.io\/VexLife-Prod\//);
+  assert.match(orientationPage, /https:\/\/vexgpt\.github\.io\/VexLife-Prod\//);
+  assert.match(page, />VexLife<\/a>/);
+  assert.match(orientationPage, />VexLife<\/a>/);
+  assert.doesNotMatch(page, /https:\/\/github\.com\/VexGPT\/VexLife-Prod/);
+  assert.doesNotMatch(orientationPage, /https:\/\/github\.com\/VexGPT\/VexLife-Prod/);
+  assert.doesNotMatch(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
+  assert.doesNotMatch(orientationPage, /https:\/\/vgong24\.github\.io\/VexLife\//);
 });
 
 test('family rail keeps one fixed mark and stable context slots', () => {

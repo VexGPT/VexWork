@@ -21,7 +21,7 @@ The Work Board owns **projection**, not lifecycle truth. A Work Board is Project
 ```text
 CURRENT Workgraph
 + Project rootWorkRefs[]
-+ Board ViewDefinition
++ explicit Board ViewDefinition OR canonical derived default
 + lane mapping
 -> bounded Work Board projection
 ```
@@ -44,6 +44,43 @@ Archive      SUPERSEDED / CANCELLED
 These lanes preserve the VexLife P0B board vocabulary for migration continuity.
 
 `laneRefOrder` is ordering only. A valid Board view must name every registry lane exactly once. It cannot duplicate a lane or omit one to change Project membership visibility. If intentional filtering is later needed, that must be modeled as a separate projection question rather than smuggled through ordering.
+
+
+## Canonical default Board derivation
+
+A Project does not need an independently authored Board file merely to restate VexWork's canonical
+default.
+
+The default Board is derived:
+
+~~~text
+validated Project
+  projectRef = project.<identity>
+  label      = <human label>
+
++ canonical Work Registry boardLanes
+        ↓
+viewRef      = view.<same identity>.board
+label        = <Project label> Work Board
+laneRefOrder = canonical boardLanes order
+~~~
+
+The derivation uses the already-authored Project identity; it does not infer identity from the
+physical Project directory.
+
+An explicit `board.view.json` remains valid when a Project earns independently meaningful
+presentation semantics such as a custom lane order or view identity. That explicit view must still
+bind the same `projectRef` and name every canonical lane exactly once.
+
+Current pressure evidence is observational, not permanent law:
+
+~~~text
+fixed base main: 18 / 18 Project Board files matched the canonical default
+current #210 candidate: 19 / 19 match after the Alignment Project formed
+~~~
+
+This means default Board authoring is currently pure restatement. It does **not** mean custom Board
+views are forbidden forever.
 
 ## Public read projection
 

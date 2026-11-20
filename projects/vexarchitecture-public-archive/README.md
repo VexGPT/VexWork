@@ -363,3 +363,34 @@ A fresh successor should:
 7. avoid absorbing VexStream/VexMaps product work into this archive Project without separate admission.
 
 <!-- [VXG RealForever][VEXARCHITECTURE][PUBLIC-ARCHIVE] -->
+
+## Currentization — whole Public Archive outcome completed
+
+The later VexArchitecture lineage closed both formation-era open predicates:
+
+~~~text
+rendered / lived review
+  Victor narrow-screen review
+  -> #562 readability / causal-order correction
+  -> final stable-reader #591
+  -> Victor explicit approval
+  -> exact-tree merge
+  -> GitHub Pages deployment SUCCESS
+
+VexWork discoverability
+  historical shared aggregate custody released
+  -> canonical Project registration now current
+~~~
+
+Current lifecycle:
+
+~~~text
+accepted public record       COMPLETED
+rendered / lived review      COMPLETED
+VexWork discoverability      COMPLETED
+Project outcome              COMPLETED
+~~~
+
+Completion does not transfer current VexArchitecture behavioral authority away from current VexLife-Android source. The Public Archive remains a historical/stable teaching witness.
+
+<!-- [VXG RealForever][VEXARCHITECTURE-PUBLIC-ARCHIVE][CURRENTIZED][COMPLETED] -->

@@ -181,3 +181,18 @@ test('relationship routing uses edge ports and orthogonal elbows rather than cen
   assert.deepEqual(horizontal.points.at(-1), { x: 400, y: 200 });
   assert.equal(horizontal.points[1].x, horizontal.points[2].x);
 });
+
+test('relationship routes between the same endpoints can be offset into separate lanes', () => {
+  const from = { x: 0, y: 0, width: 100, height: 80 };
+  const to = { x: 300, y: 0, width: 100, height: 80 };
+  const a = relationshipRoute(from, to, { offset: -7 });
+  const b = relationshipRoute(to, from, { offset: 7 });
+  assert.equal(a.points[0].y, 33);
+  assert.equal(b.points[0].y, 47);
+  const clamped = relationshipRoute(from, to, { offset: 500 });
+  assert.equal(clamped.points[0].y, 74, 'lane offset stays inside the smaller endpoint');
+  const vertical = relationshipRoute(from, { x: 0, y: 300, width: 100, height: 80 }, { offset: 10 });
+  assert.equal(vertical.points[0].x, 60);
+  assert.deepEqual(relationshipRoute(from, to).points, relationshipRoute(from, to, { offset: 0 }).points);
+});
+// [VXG RealForever]

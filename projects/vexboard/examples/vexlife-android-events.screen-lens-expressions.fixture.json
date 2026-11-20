@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "vexboard.screen-lens-expression-fixture/v1",
+  "fixtureRef": "fixture.vexlife-android.events.screen-lens-expressions",
+  "lensRef": "lens.vexlife-android",
+  "lensSourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2",
+  "sourceRevisionRef": "git.commit.vexlife-android.ecbb6987d1da338fa0adf7297456d3f652f04155",
+  "screenRef": "screen.events",
+  "relationships": [
+    {
+      "relationshipRef": "relationship.events.screen.registered",
+      "kind": "REGISTERED",
+      "label": "Events Screen registration",
+      "subjectRef": "screen.events",
+      "summary": "The accepted Screen Lens already owns the static Events Screen/body coordinate.",
+      "elementRefs": [
+        "element.events.body"
+      ],
+      "sourceRefs": [
+        "app:screens/primary/events/EventsScreen.kt"
+      ]
+    },
+    {
+      "relationshipRef": "relationship.events.repeated-realization",
+      "kind": "REALIZED_AS",
+      "label": "Events repeated-row realization",
+      "subjectRef": "element.events.body",
+      "summary": "Events renders feature-owned runtime event rows through VexStableLazyColumn without registering those rows as static Screen elements.",
+      "elementRefs": [
+        "element.events.body"
+      ],
+      "sourceRefs": [
+        "app:screens/primary/events/EventsScreen.kt",
+        "arch:elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt"
+      ]
+    },
+    {
+      "relationshipRef": "relationship.events.population",
+      "kind": "POPULATES",
+      "label": "Events population",
+      "subjectRef": "element.events.body",
+      "summary": "Relay list truth distinguishes not-yet-observed, observed-empty, and current content while eventRef remains feature-owned runtime identity.",
+      "sourceRefs": [
+        "app:screens/primary/events/EventsScreen.kt",
+        "app:screens/primary/events/EventsConvergenceRelay.kt"
+      ],
+      "defaultValueRef": "population.unobserved",
+      "values": [
+        {
+          "valueRef": "population.unobserved",
+          "label": "Unobserved"
+        },
+        {
+          "valueRef": "population.empty",
+          "label": "Observed empty"
+        },
+        {
+          "valueRef": "population.preview",
+          "label": "Attention preview",
+          "runtimeItems": [
+            {
+              "itemRef": "event.preview.message.001",
+              "label": "Preview message",
+              "realizationRef": "element.events.body",
+              "sourceRefs": [
+                "app:screens/primary/events/EventsScreen.kt"
+              ]
+            },
+            {
+              "itemRef": "event.preview.call.002",
+              "label": "Preview call",
+              "realizationRef": "element.events.body",
+              "sourceRefs": [
+                "app:screens/primary/events/EventsScreen.kt"
+              ]
+            },
+            {
+              "itemRef": "event.preview.map.003",
+              "label": "Preview map update",
+              "realizationRef": "element.events.body",
+              "sourceRefs": [
+                "app:screens/primary/events/EventsScreen.kt"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "expressions": [
+    {
+      "expressionRef": "expression.events.source-defaults",
+      "label": "Source defaults",
+      "basis": "SOURCE_DEFAULT",
+      "summary": "Before canonical feed truth is observed, Events is explicitly Unobserved rather than observed-empty.",
+      "relationshipRefs": [
+        "relationship.events.screen.registered",
+        "relationship.events.repeated-realization",
+        "relationship.events.population"
+      ],
+      "assignments": {}
+    },
+    {
+      "expressionRef": "expression.events.observed-empty",
+      "label": "Observed empty",
+      "basis": "SOURCE_AXIS",
+      "summary": "Canonical feed truth has been observed and currently contains no events.",
+      "relationshipRefs": [
+        "relationship.events.screen.registered",
+        "relationship.events.repeated-realization",
+        "relationship.events.population"
+      ],
+      "assignments": {
+        "relationship.events.population": "population.empty"
+      }
+    },
+    {
+      "expressionRef": "expression.events.preview-populated",
+      "label": "Preview populated",
+      "basis": "EVIDENCE",
+      "summary": "The source-authored Events attention Preview evidences three stable runtime event identities without promoting them into static Screen elements or claiming that these exact Preview rows are production State.",
+      "relationshipRefs": [
+        "relationship.events.screen.registered",
+        "relationship.events.repeated-realization",
+        "relationship.events.population"
+      ],
+      "assignments": {
+        "relationship.events.population": "population.preview"
+      }
+    }
+  ],
+  "title": "Events · representative Screen Lens expressions",
+  "summary": "Source-backed representative contexts for the Events Screen. These preserve Relay currentness distinctions and feature-owned runtime event identity without importing attention Scenario state or inventing another State owner."
+}

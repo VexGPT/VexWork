@@ -44,7 +44,7 @@
       "visibility": "PRIVATE",
       "purpose": "Private reusable observation, mapping, construction, proof and interoperability machinery consumed by VexLife Blueprint work; public VexWork carries boundary-level navigation only.",
       "entryRefs": [
-        "CLAUDE.md"
+        "AGENTS.md"
       ],
       "cultureRefs": []
     },
