@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife-prod.end-to-end-tests",
+  "label": "VexLife-Prod End-to-End Experience Validation",
+  "purpose": "Preserve VexLife-Prod's human experience pathways while implementation continues to evolve: map stable human intentions through current source-owned State / Control / Act / Effect / Observation / Projection relationships, make cross-Family effects and choice loops visible as a non-authoritative relationship lattice, connect those journeys to VexBoard Screen Lens perception and deterministic/live proof surfaces, expose uncovered branches without duplicating product truth, and converge toward a release-candidate validation view that a human or fresh AI can navigate without reconstructing feature history.",
+  "rootWorkRefs": [
+    "work.vexlife-prod.end-to-end-tests.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod",
+    "repo.vexlife-android",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-prod-end-to-end-tests/README.md",
+    "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md",
+    "projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json",
+    "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md",
+    "docs/process/FORM-PROJECT.md",
+    "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+    "github.pull.vexlife-prod.343",
+    "github.pull.vexwork.298",
+    "github.pull.vexwork.300",
+    "github.pull.vexwork.303",
+    "github.pull.vexwork.310",
+    "github.pull.vexlife-prod.251",
+    "github.pull.vexlife-prod.310",
+    "github.pull.vexlife-prod.331",
+    "https://vgong24.github.io/Vextreme/pages/vexarchitecture-first-stable-body.html",
+    "https://vgong24.github.io/Vextreme/pages/vexarchitecture-live-demonstration.html",
+    "github.commit.vextreme.1a0f161b4175e83c223e57642d08501004cdb9fd",
+    "github.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+    "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourney.kt",
+    "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+    "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+    "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+    "repo.vexlife-android:architecture/execution/README.md",
+    "concept.vexlife-prod.experience-relationship-graph",
+    "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+    "repo.vexlife-android:architecture/relay/README.md",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexRelay.kt",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeRelayGraph.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeSemanticRelayContract.kt",
+    "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+    "github.commit.vexlife-prod.98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0",
+    "github.merge.vexlife-prod.310.3120a7535f5c9095735c6880f6dd0119ec39a7a8",
+    "github.merge.vexlife-prod.331.98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0"
+  ],
+  "formedAt": "2026-11-18T14:27:00.000Z"
+}

@@ -10,7 +10,7 @@
       "label": "VexBoard Semantic Canvas",
       "purpose": "Create a reusable semantic-canvas foundation that can author new experience/process meaning and project existing source-owned truth through interactive, recursive, AI-addressable visual journeys.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
@@ -21,11 +21,20 @@
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexboard/README.md"
+        "projects/vexboard/README.md",
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.usability-refinement",
+        "work.vexboard.source-projectors",
+        "work.vexboard.fractal-semantic-composition-spatial-layout",
+        "work.vexboard.vexstream-screenshot-pilot",
+        "github.pull.vexwork.276",
+        "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-23T00:14:29.000Z"
+      "updatedAt": "2026-11-20T08:14:00.011Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -184,7 +193,7 @@
       "workRef": "work.vexboard.source-projectors",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Source projectors and lived comparison",
-      "purpose": "Use the same semantic/rendering foundation to project source-owned VexWork/Atlas and repository VexArchitecture truth read-only, then compare intended VexBoard journeys with observed lived evidence without copying source ownership. VexWork PR #215 accepted one exact Android/VexStream relationship slice through the existing Android projector. The Living Screen Lens currentness/projection-truth child is now accepted and COMPLETED through PR #238 / closure PR #250, so Screen Lens itself is no longer an unfinished Source Projectors edge. This broader outcome remains RUNNING for the VexStream living-Origin expected-versus-observed evidence comparison, broader evidence/federation consumers, automatic sourceRevision/currentness where repeated use earns it, and materially different consumers that may justify additional source-owned relationship shapes. Draft PR #276 now pressures one materially different source-owned relationship shape—VexPartner circuits—through the existing Screen Lens Behavior/Depth model. The generic Android adapter derives Partner/Connection/queued inbound VexExecution/concrete Conversion/Partner Source/Signal/Observation/suspend Receiver/Store/source-addressed-listener depth plus Family-authored Begin(Queued) Effects from source, including the Room/restart candidate in Android #219. Current #219 produces six PARTNER_CIRCUIT pathways, zero held controls and twelve overlap-free Behavior/Depth layouts; BLE-like and HTTP-like CGM paths differ at concrete Conversion/Connection occurrence while sharing Source/Signal/Store/Family meaning. Acceptance, generated Room proof and Stable/Main repinning remain separate currentness effects.",
+      "purpose": "Use the same semantic/rendering foundation to project source-owned VexWork/Atlas and repository VexArchitecture truth read-only, then compare intended VexBoard journeys with observed lived evidence without copying source ownership. The Living Screen Lens currentness/projection-truth child remains completed. The materially different VexPartner Source/Conversion Behavior+Depth slice is now accepted evidence through merged VexWork #276 and merged VexLife-Android #219: BLE-like and HTTP-like CGM paths preserve distinct concrete Conversion/Connection occurrence while sharing Partner Source/Signal/Store/Family meaning. That accepted slice does not complete this broader RUNNING outcome; VexStream living-Origin expected-versus-observed evidence, broader consumers/federation, sourceRevision/currentness reuse and Stable/Main movement remain separate earned edges.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "NORMAL",
@@ -228,11 +237,15 @@
         "git.commit.vexwork.20fe8285ba78e84c7865750306e4531e4406d418",
         "github.issue.vexwork.238.comment.6677190552",
         "github.pull.vexwork.276",
-        "github.pull.vexlife-android.219"
+        "github.pull.vexlife-android.219",
+        "github.pull.vexwork.276.merge.e24af6945eb8560c63070b2e32bb43913c042fba",
+        "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba",
+        "github.pull.vexlife-android.219.merge.7800c17909fd03d1170ec0211a6632172c87d1af",
+        "github.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-11-07T11:48:00.000Z"
+      "updatedAt": "2026-11-20T08:14:00.008Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -707,13 +720,17 @@
         "response.victor.screen-lens-realization-regression.20261107",
         "github.pull.vexlife-android.218",
         "github.pull.vexwork.276",
-        "github.pull.vexlife-android.219"
+        "github.pull.vexlife-android.219",
+        "github.pull.vexwork.276.merge.e24af6945eb8560c63070b2e32bb43913c042fba",
+        "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba",
+        "github.pull.vexlife-android.219.merge.7800c17909fd03d1170ec0211a6632172c87d1af",
+        "github.commit.vexlife-android.7800c17909fd03d1170ec0211a6632172c87d1af"
       ],
       "nextProcessRefs": [
         "process.vexwork.quality-review"
       ],
       "createdAt": "2026-11-07T06:24:13.000Z",
-      "updatedAt": "2026-11-07T11:15:00.000Z"
+      "updatedAt": "2026-11-20T08:14:00.008Z"
     }
   ],
   "transitions": [
@@ -1259,6 +1276,56 @@
         "github.pull.vexlife-android.218"
       ],
       "createdAt": "2026-11-07T06:24:16.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.outcome.decomposed.plan-validated.currentness-20261120",
+      "workRef": "work.vexboard.outcome",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "The Project is beyond decomposition: BoardGraph, Canvas Projection, BoardJourney/simulation, usability refinement and VexSync architecture convergence are accepted foundations, so the parent outcome has a validated executable structure.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.usability-refinement",
+        "work.vexboard.vexsync-architecture-convergence"
+      ],
+      "createdAt": "2026-11-20T08:14:00.009Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.outcome.plan-validated.ready.currentness-20261120",
+      "workRef": "work.vexboard.outcome",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Accepted foundations released real continuation work: BoardPatch is dependency-ready and the source-projector / living-Origin paths have concrete admitted source relationships rather than remaining conceptual Project decomposition.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexboard.boardpatch-authoring",
+        "work.vexboard.source-projectors",
+        "work.vexboard.vexstream-screenshot-pilot",
+        "projects/vexboard/README.md"
+      ],
+      "createdAt": "2026-11-20T08:14:00.010Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.outcome.ready.running.currentness-20261120",
+      "workRef": "work.vexboard.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexBoard is actively carrying current source-projector/lived-comparison, fractal semantic composition and VexStream living-Origin work. Preserve those unfinished child boundaries while making the parent lifecycle reflect active Project execution.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexboard.source-projectors",
+        "work.vexboard.fractal-semantic-composition-spatial-layout",
+        "work.vexboard.vexstream-screenshot-pilot",
+        "github.pull.vexwork.276",
+        "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+      ],
+      "createdAt": "2026-11-20T08:14:00.011Z"
     }
   ],
   "sourceRefs": [

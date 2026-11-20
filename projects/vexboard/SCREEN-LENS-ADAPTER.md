@@ -126,16 +126,26 @@ not express:
 ```text
 notes            8 attached notes (the drift note, "doorway only", "beside the path", ...)
 summaries        Debug Menu's screen summary, two sharper step summaries
-ThemeMode extra  the === currentness fence and the VexLifeTheme render step
+ThemeMode extra  result-specific reconciliation and the VexLifeTheme render step
 labels           "Choose Light / Dark" for the ThemeMode pathway
+
+The ThemeMode identity-currentness fence is no longer overlay-owned. The adapter derives any exact
+family helper that the realization boundary actually calls and that clears a nullable feature field
+only under an `=== parameter` guard. The function name therefore follows the pinned source:
+historical source may project `selectionRealizationFinished`; current source may project
+`settleSelectionCurrentness`.
 ```
 
 Rules:
 
 - Every overlay ref must exist in the generated lens, or the run fails. A renamed step cannot leave a
   dangling note behind.
-- An overlay entry is a TODO for source. When VexLife-Android admits KDoc conventions or `@VexLens`
-  (see `SCREEN-LENS.md`), move the entry there and delete it here.
+- An overlay entry is a TODO for source. When VexLife-Android source expresses the relationship
+  strongly enough for a bounded generic reader, derive it from that pinned source and delete the
+  structural overlay entry. Historical and current commits must then keep their own source-native
+  names/shape rather than receiving one current overlay spelling.
+- When KDoc conventions or `@VexLens` are actually earned (see `SCREEN-LENS.md`), prefer them over
+  adding another feature-specific parser.
 
 ## What the adapter caught that hand projection missed
 

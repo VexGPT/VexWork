@@ -700,7 +700,7 @@
       "label": "VexWork Terrain Map v2",
       "purpose": "Establish an experimental read-only relational Terrain projection over VexWork truth so humans and AI can traverse Projects, nested Work and typed cross-context relationships with arbitrary semantic depth, preserved structural and traversal context, deterministic continuity and bounded neighborhoods without creating another lifecycle or graph owner.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -713,14 +713,18 @@
         "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
         "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
         "repo.vexlife:src/core/terrain.mjs",
-        "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+        "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
+        "terrain-flow-reader.js",
+        "terrain.html",
+        "test/terrain-flow-reader.test.mjs",
+        "test/terrain-ui.test.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T05:32:34.019Z",
-      "updatedAt": "2026-10-22T05:32:34.019Z"
+      "updatedAt": "2026-11-20T09:19:11.006Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -729,7 +733,7 @@
       "label": "Relational Terrain patient-zero",
       "purpose": "Prove one VexWork-owned Terrain experience with arbitrary-depth semantic traversal, typed containment/dependency/project portals, structural path distinct from traversal path, cycle-safe route planning, serialized idempotent commands, bounded Journey/revisit semantics, nested-scroll arbitration and responsive presentation over the read-only public workspace.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -744,14 +748,16 @@
         "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
         "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
         "repo.vexlife:src/core/terrain.mjs",
-        "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+        "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
+        "test/terrain-reader.test.mjs",
+        "test/terrain-ui.test.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T05:32:34.019Z",
-      "updatedAt": "2026-10-22T06:31:52.000Z"
+      "updatedAt": "2026-11-20T09:19:11.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -760,7 +766,7 @@
       "label": "Currentness and flow Terrain layer",
       "purpose": "Layer current work, recent accepted transitions, recent completions, newly available work and later honest flow measures onto the same relational Terrain without treating provider activity, layout or incomplete transition-history coverage as canonical progress.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -771,14 +777,18 @@
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
-        "terrain-reader.js"
+        "terrain-reader.js",
+        "terrain-flow-reader.js",
+        "terrain.html",
+        "test/terrain-flow-reader.test.mjs",
+        "test/terrain-ui.test.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T05:32:34.019Z",
-      "updatedAt": "2026-10-22T05:32:34.019Z"
+      "updatedAt": "2026-11-20T09:19:11.004Z"
     }
   ],
   "transitions": [
@@ -1736,6 +1746,115 @@
         "work.vexwork.operational-console.commerce-ai-site"
       ],
       "createdAt": "2026-10-23T06:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.completed.lived-threshold-currentization",
+      "workRef": "work.vexwork.operational-console.relational-terrain.patient-zero",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The Project source records Victor's 2026-10-22 lived Terrain/Roadmap/Lifecycle Workflow review as good enough to stop foreground experience iteration. That threshold satisfies the patient-zero's remaining lived browser/trackpad/compact traversal predicate; the prior VERIFYING state was explicitly documented as Workgraph lag.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md",
+        "terrain-reader.js",
+        "terrain-flow-reader.js",
+        "terrain.html"
+      ],
+      "createdAt": "2026-11-20T09:19:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.ready.patient-zero-complete",
+      "workRef": "work.vexwork.operational-console.relational-terrain.temporal-currentness",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The Relational Terrain patient-zero lived threshold is accepted, clearing the currentness/flow layer's only declared Work dependency.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexwork.operational-console.relational-terrain.patient-zero",
+        "projects/vexwork-operational-console/README.md"
+      ],
+      "createdAt": "2026-11-20T09:19:11.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.running.accepted-source",
+      "workRef": "work.vexwork.operational-console.relational-terrain.temporal-currentness",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Accepted VexWork source already implements current workfronts, Prior/Now/Next, transition-backed recent movement, state age/currentness and dependency-grounded flow through terrain-flow-reader.js and the Terrain UI.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md",
+        "terrain-reader.js",
+        "terrain-flow-reader.js",
+        "terrain.html"
+      ],
+      "createdAt": "2026-11-20T09:19:11.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.verifying.lived-threshold",
+      "workRef": "work.vexwork.operational-console.relational-terrain.temporal-currentness",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The implemented currentness/flow source is covered by the same accepted lived threshold that explicitly names the Now / 6H / 24H / 7D recent-movement lens and state tint/state-age evidence.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md",
+        "terrain-reader.js",
+        "terrain-flow-reader.js",
+        "terrain.html"
+      ],
+      "createdAt": "2026-11-20T09:19:11.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.completed.lived-threshold",
+      "workRef": "work.vexwork.operational-console.relational-terrain.temporal-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The bounded currentness/flow Terrain layer is source-present and lived-accepted; the Project source explicitly returned the foreground to the Operational Console trajectory rather than holding further Terrain iteration.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md",
+        "terrain-reader.js",
+        "terrain-flow-reader.js",
+        "terrain.html"
+      ],
+      "createdAt": "2026-11-20T09:19:11.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.relational-terrain.verifying.children-complete",
+      "workRef": "work.vexwork.operational-console.relational-terrain",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Both bounded Terrain children are now currentized to their accepted lived/source thresholds; verify the parent experimental Terrain outcome against the same accepted experience boundary.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexwork.operational-console.relational-terrain.patient-zero",
+        "work.vexwork.operational-console.relational-terrain.temporal-currentness",
+        "projects/vexwork-operational-console/README.md"
+      ],
+      "createdAt": "2026-11-20T09:19:11.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.relational-terrain.completed.experience-threshold",
+      "workRef": "work.vexwork.operational-console.relational-terrain",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The VexWork Terrain Map v2 experimental outcome reached its accepted product threshold: relational traversal plus currentness/flow presentation are source-present, lived-reviewed, and explicitly no longer the foreground. Future Terrain evolution requires a real regression or new consumer pressure rather than keeping this outcome perpetually open.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md",
+        "terrain-reader.js",
+        "terrain-flow-reader.js",
+        "terrain.html"
+      ],
+      "createdAt": "2026-11-20T09:19:11.006Z"
     }
   ],
   "sourceRefs": [

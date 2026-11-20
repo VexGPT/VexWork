@@ -317,17 +317,21 @@ function draftsLine() {
 async function boot() {
   const catalog = Catalog.normalizeLensCatalog(await fetchJson(`${LENS_DIR}catalog.json`));
   const withLens = catalog.subjects.filter((subject) => subject.lens.status === 'GENERATED');
-  const lenses = await Promise.all(withLens.map(async (subject) => Lens.normalizeScreenLens(await fetchJson(LENS_DIR + Catalog.buildFor(subject, 'stable').lens))));
+  const lenses = await Promise.all(withLens.map(async (subject) => {
+    const build = Catalog.buildFor(subject, 'stable');
+    return Lens.normalizeScreenLens(Catalog.bindLensBuildSource(await fetchJson(LENS_DIR + build.lens), build));
+  }));
   const others = catalog.subjects.filter((subject) => subject.lens.status !== 'GENERATED');
   app.replaceChildren(...[
     h('div', { class: 'intro' }, h('h1', {}, 'Projects'),
       h('p', {}, 'Subjects VexBoard can project or relate. Open a Screen Lens at its Stable build, its Main build or any commit, follow related boards, and descend to VexWork for Project and lifecycle truth.')),
     withLens.map((subject, i) => leadProject(subject, lenses[i])),
     others.length ? h('div', { class: 'others' }, others.map(pendingProject)) : null,
-    h('details', { id: 'trials', class: 'trials-section' },
+    catalog.trials.length ? h('details', { id: 'trials', class: 'trials-section' },
       h('summary', {}, 'Earlier canvas trials'),
       h('p', { class: 'lede' }, 'These boards came before the Screen Lens. They stay readable as provenance, but new work starts from a subject above.'),
-      h('div', { class: 'trials' }, boardLinks(catalog.trials), draftsLine())),
+      h('div', { class: 'trials' }, boardLinks(catalog.trials))) : null,
+    h('section', {}, h('h2', {}, 'Local drafts'), draftsLine()),
     h('footer', {}, 'Build pointers live in ', h('code', {}, 'projects/vexboard/lens/catalog.json'), '. Move Main with ', h('code', {}, 'npm run lens:main'), ', promote it to Stable with acceptance evidence using ', h('code', {}, 'npm run lens:promote -- --evidence <ref>'), ', and check both with ', h('code', {}, 'npm run lens:verify'), '.'),
   ].flat(Infinity).filter(Boolean));
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();

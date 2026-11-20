@@ -25,7 +25,12 @@
     "lens:fetch": "node scripts/build-screen-lens.mjs --fetch",
     "lens:verify": "node scripts/build-screen-lens.mjs --verify",
     "lens:main": "node scripts/build-screen-lens.mjs --build main --fetch",
-    "lens:promote": "node scripts/build-screen-lens.mjs --promote"
+    "lens:promote": "node scripts/build-screen-lens.mjs --promote",
+    "experience:build": "node scripts/build-experience-graph.mjs --fetch",
+    "experience:check": "node scripts/build-experience-graph.mjs --fetch --check",
+    "experience:verify": "node scripts/build-experience-graph.mjs --verify",
+    "experience:probe": "node scripts/run-experience-law-probe.mjs",
+    "experience:converge": "node scripts/inspect-experience-convergence.mjs"
   },
   "engines": {
     "node": ">=20.1"

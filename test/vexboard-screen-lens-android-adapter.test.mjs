@@ -437,8 +437,257 @@ test('a closure that reaches a Family becomes one SCAE + Depth template', () => 
   assert.equal(node('display').label, 'DisplayState → WidgetPresentation');
   assert.equal(node('provider').label, 'WidgetFamilyProvider(store, executionRoot)');
   assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.observe' && edge.to === 'widget.pick.state' && edge.kind === 'RETURN'));
+  assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.store' && edge.to === 'widget.pick.observe' && edge.kind === 'DATA'));
+  assert.equal(pathway.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'), false);
   assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.effect' && edge.to === 'widget.pick.method'));
   assert.equal(pathway.returnRef, 'widget.pick.display');
+});
+
+test('Direct Family projection follows the pinned source shape instead of rewriting history', () => {
+  const oldFiles = new Map(files);
+  const oldSource = files.get(`${APP}ui/Widget.kt`)
+    .replace(
+      'internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {\n    recordWidgetFact()\n}',
+      `internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {
+    val act = family.activate(control) ?: return
+    act.launchWith(executionRoot).method(
+        onResult = { result ->
+            family.selectionRealizationFinished(
+                Parameter.Choice(1),
+            )
+            observeWidgetState(result)
+        },
+    )
+}
+
+internal fun selectionRealizationFinished(
+    parameter: Parameter.Choice,
+) {
+    if (unsettledChoice === parameter) {
+        unsettledChoice = null
+    }
+}`,
+    )
+    .replace('internal class WidgetFamily(\n    initialState: Widget,\n) {',
+      'internal class WidgetFamily(\n    initialState: Widget,\n) {\n    private var unsettledChoice: Parameter.Choice? = null');
+  oldFiles.set(`${APP}ui/Widget.kt`, oldSource);
+  const oldLens = project({ files: oldFiles }).lens;
+  const oldPath = oldLens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  const oldNode = (slot) => oldPath.nodes.find((entry) => entry.ref === `widget.pick.${slot}`);
+  assert.equal(oldNode('fence').label, 'selectionRealizationFinished · === fence');
+  assert.equal(oldNode('accepted'), undefined);
+  assert.equal(oldNode('realization'), undefined);
+  assert.equal(oldNode('launch').label, 'act.launchWith(executionRoot).method(…)');
+  assert.ok(oldPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.fence'));
+  assert.equal(oldPath.edges.some((edge) => edge.from === 'widget.pick.custody' && edge.to === 'widget.pick.fence'), false);
+
+  const currentFiles = new Map(files);
+  const currentSource = files.get(`${APP}ui/Widget.kt`)
+    .replace(
+      'internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {\n    recordWidgetFact()\n}',
+      `internal fun activateWidget(family: WidgetFamily, control: WidgetFamily.Control) {
+    val act: VexFamily.Act.Accepted<WidgetFamily, Widget, Effect> =
+        family.activate(control) ?: return
+    val begin = act.realizationBegin ?: return
+    val effect = begin.effect
+    val method = Act.Method.Persist(store, effect)
+    val job =
+        try {
+            act.launch(
+                executionRoot = executionRoot,
+                method = method,
+                onResult = { result ->
+                    family.settleWidgetCurrentness(effect.choice)
+                    observeWidgetState(result)
+                },
+            )
+        } catch (failure: Throwable) {
+            family.settleWidgetCurrentness(effect.choice)
+            throw failure
+        }
+    if (job != null) {
+        job.invokeOnCompletion {
+            family.settleWidgetCurrentness(effect.choice)
+        }
+    } else {
+        family.settleWidgetCurrentness(effect.choice)
+    }
+}
+
+/** Settle the feature-owned widget currentness fence for one exact accepted choice. */
+internal fun settleWidgetCurrentness(
+    parameter: Parameter.Choice,
+) {
+    if (unsettledChoice === parameter) {
+        unsettledChoice = null
+    }
+}`,
+    )
+    .replace('internal class WidgetFamily(\n    initialState: Widget,\n) {',
+      'internal class WidgetFamily(\n    initialState: Widget,\n) {\n    private var unsettledChoice: Parameter.Choice? = null')
+    .replace(
+      'private val store: WidgetStore,\n                val parameter: Parameter.Choice,',
+      'private val store: WidgetStore,\n                val effect: Effect.Persist,',
+    );
+  currentFiles.set(`${APP}ui/Widget.kt`, currentSource);
+  const currentLens = project({ files: currentFiles }).lens;
+  const currentPath = currentLens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  const currentNode = (slot) => currentPath.nodes.find((entry) => entry.ref === `widget.pick.${slot}`);
+  assert.equal(currentNode('fence').label, 'settleWidgetCurrentness · === fence');
+  assert.equal(currentNode('accepted').symbol, 'VexFamily.Act.Accepted');
+  assert.equal(currentNode('realization').symbol, 'VexFamily.Act.Accepted.realizationBegin');
+  assert.equal(currentNode('launch').label, 'Act.Accepted.launch(executionRoot, Method)');
+  assert.match(currentNode('fence').summary, /feature-owned widget currentness fence/);
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.fence'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.custody' && edge.to === 'widget.pick.fence' && edge.kind === 'SIDE'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.launch' && edge.to === 'widget.pick.fence' && edge.kind === 'SIDE'));
+  assert.ok(currentPath.edges.some((edge) => edge.from === 'widget.pick.store' && edge.to === 'widget.pick.observe' && edge.kind === 'DATA'));
+  assert.equal(currentPath.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'), false);
+});
+
+test('localEffect projects current Direct Family through Partner request and Store return', () => {
+  const variant = new Map(files);
+  variant.set(
+    APP + 'screens/primary/home/HomeScreen.kt',
+    files.get(APP + 'screens/primary/home/HomeScreen.kt')
+      .replace('val Ping = buttonRef(id = "body.ping", intent = invoke(AppActions.Ping))', 'val Ping = buttonRef(id = "body.ping", intent = localEffect())')
+      .concat('\nfun renderPlayback(experience: PlaybackExperience) {\n    when (HomeScreen.Ping) {\n        HomeScreen.Ping -> experience.activate(PlaybackControl.PlayPause)\n    }\n}\n'),
+  );
+  variant.set(APP + 'ui/PlaybackExperience.kt', [
+    'interface PlaybackExperience {',
+    '    fun activate(control: PlaybackControl)',
+    '}',
+    'private class CurrentPlaybackExperience(',
+    '    private val family: PlaybackFamily,',
+    '    private val connection: PlayerPartner.Connection.Request?,',
+    '    private val playerStore: PlayerStore,',
+    '    private val executionRoot: VexExecutionRoot,',
+    ') : PlaybackExperience {',
+    '    override fun activate(control: PlaybackControl) {',
+    '        val requestConnection = connection ?: return',
+    '        activatePlaybackThroughPartner(',
+    '            family = family,',
+    '            control = control,',
+    '            connection = requestConnection,',
+    '            playerStore = playerStore,',
+    '            executionRoot = executionRoot,',
+    '        )',
+    '    }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackState.kt', [
+    'sealed interface PlaybackState : VexFamily.State<PlaybackFamily> {',
+    '    data object Idle : PlaybackState',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackControl.kt', [
+    'enum class PlaybackControl : VexFamily.Control<PlaybackFamily> {',
+    '    PlayPause,',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackEffect.kt', [
+    'sealed interface PlaybackEffect : VexFamily.Effect<PlaybackFamily> {',
+    '    data object RequestPlay : PlaybackEffect',
+    '    data object RequestPause : PlaybackEffect',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlaybackFamily.kt', [
+    'class PlaybackFamily :',
+    '    VexFamily<PlaybackFamily, PlaybackState, PlaybackControl, PlaybackEffect>(',
+    '        initialState = PlaybackState.Idle,',
+    '    ) {',
+    '    fun activatePlayback(control: PlaybackControl) = activate(control)',
+    '    override fun act(currentState: PlaybackState, control: PlaybackControl) =',
+    '        stay(beginLatest(PlaybackEffect.RequestPlay))',
+    '    fun observePlayer(playback: PlayerPartner.Signal.Playback?) = Unit',
+    '    object Act {',
+    '        class Method(',
+    '            private val connection: PlayerPartner.Connection.Request,',
+    '            override val effect: PlaybackEffect,',
+    '        ) : VexFamily.Act.Method<PlaybackFamily, Unit, Unit> {',
+    '            override suspend fun invoke() = VexMethod.Result.Success(Unit)',
+    '        }',
+    '    }',
+    '}',
+    'fun activatePlaybackThroughPartner(',
+    '    family: PlaybackFamily,',
+    '    control: PlaybackControl,',
+    '    connection: PlayerPartner.Connection.Request,',
+    '    playerStore: PlayerStore,',
+    '    executionRoot: VexExecutionRoot,',
+    ') {',
+    '    val accepted = family.activatePlayback(control) ?: return',
+    '    val begin = accepted.realizationBegin ?: return',
+    '    accepted.launch(',
+    '        executionRoot = executionRoot,',
+    '        method = PlaybackFamily.Act.Method(connection, begin.effect),',
+    '    )',
+    '}',
+    'fun observePlaybackPlayerStore(',
+    '    family: PlaybackFamily,',
+    '    store: PlayerStore,',
+    '    executionRoot: VexExecutionRoot,',
+    ') {',
+    '    family.observePlayer(store.currentPlaybackSignal())',
+    '    VexExecution.observe(',
+    '        executionRoot = executionRoot,',
+    '        owner = family,',
+    '        source = store::playbackSignals,',
+    '    ) { playback -> family.observePlayer(playback) }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlayerPartner.kt', [
+    'object PlayerPartner : VexPartner<PlayerPartner> {',
+    '    data object Source : VexPartner.Source<PlayerPartner>',
+    '    sealed interface Signal : VexPartner.Signal<PlayerPartner> {',
+    '        val source: Source get() = Source',
+    '        data class Playback(val playing: Boolean) : Signal',
+    '    }',
+    '    interface Connection : VexPartner.Connection<PlayerPartner, Signal> {',
+    '        interface Request : Connection',
+    '    }',
+    '}',
+  ].join('\n'));
+  variant.set(APP + 'ui/PlayerStore.kt', [
+    'class PlayerStore {',
+    '    fun currentPlaybackSignal(): PlayerPartner.Signal.Playback? = null',
+    '    fun playbackSignals() = Unit',
+    '}',
+  ].join('\n'));
+
+  const { lens, report } = project({ files: variant });
+  const ping = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(ping.pathwayRef, 'pathway.ui.play-pause');
+  const pathway = lens.pathways.find((entry) => entry.pathwayRef === ping.pathwayRef);
+  assert.equal(pathway.disposition, 'SCAE_FAMILY');
+  assert.ok(pathway.nodes.some((node) => node.role === 'CONTROL' && node.label === 'PlaybackControl.PlayPause'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'ACT' && node.symbol === 'VexFamily.Act.Accepted'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'REALIZATION' && node.symbol === 'VexFamily.Act.Accepted.realizationBegin'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'METHOD' && node.symbol === 'PlaybackFamily.Act.Method'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'PARTNER' && node.label === 'PlayerPartner'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'STORE' && node.label === 'PlayerStore'));
+  assert.ok(pathway.nodes.some((node) => node.role === 'OBSERVATION' && node.label === 'PlayerPartner.Signal.Playback'));
+  assert.ok(pathway.edges.some((edge) => edge.from.endsWith('.store') && edge.to.endsWith('.observe') && edge.kind === 'DATA'));
+  assert.ok(pathway.edges.some((edge) => edge.from.endsWith('.observe') && edge.to.endsWith('.state') && edge.kind === 'RETURN'));
+  assert.ok(report.bonds.some((bond) =>
+    bond.via === 'DIRECT_FAMILY_LOCAL_EFFECT' &&
+    bond.family === 'PlaybackFamily' &&
+    bond.control === 'PlayPause' &&
+    bond.partner === 'PlayerPartner' &&
+    bond.store === 'PlayerStore'
+  ));
+
+  const broken = new Map(variant);
+  broken.set(
+    APP + 'ui/PlaybackFamily.kt',
+    variant.get(APP + 'ui/PlaybackFamily.kt').replace('source = store::playbackSignals,', 'source = missing::playbackSignals,'),
+  );
+  const brokenProjection = project({ files: broken });
+  const brokenPing = brokenProjection.lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(brokenPing.pathwayRef, undefined);
+  assert.ok(brokenProjection.report.held.some((entry) =>
+    entry.elementRef === brokenPing.ref && /not source-proven/.test(entry.reason)
+  ));
 });
 
 test('a closure that reaches no Family stays a direct registration', () => {

@@ -401,74 +401,6 @@ VexStream 36-second startup defect
   -> ownership remains project.vexstream.mobile-library
 ```
 
-## Compatibility semantic-family convergence — bounded proof trajectory
-
-Current source intentionally has both the accepted compatibility `VexBehaviorBlueprint / VexPort`
-path and Direct `VexFamily`. Presence alone is not debt. Migration is earned only when stable
-behavior becomes smaller or clearer without moving provider, execution, Relay, or product ownership.
-
-```text
-semantic-family-convergence
-    RUNNING
-
-    maps-mode -> Android #220
-        no provider relationship
-        -> Direct Family
-        -> old Connection / Blueprint / VexPort disappear
-
-    repeat -> Android #221
-        local Media3 provider
-        -> Direct Family owns State / Control / Effect
-        -> provider Connection remains
-        -> immediate Effect creates no VexExecution Job
-
-    queue -> Android #222 stacked on #221
-        same local provider split
-        -> one Queue State availability law replaces generic control Projection
-        -> Queue Play / Reorder occurrence requests remain separate
-        -> whole candidate is net source subtraction
-
-    vexstream-hub-partner -> Android #223 stacked on VexPartner #219
-        paired Hub/Desktop is an independently-owned external participant
-        -> existing hubRef / certificate identity / HTTP conversion pressure VexPartner positively
-        -> Partner must reduce repository responsibility rather than mirror Family State
-```
-
-Current distinctions:
-
-```text
-NO INDEPENDENT CONNECTION QUESTION
--> delete the Connection
-
-REAL LOCAL PROVIDER RELATIONSHIP
--> keep the provider boundary
--> remove semantic ownership from it
-
-INDEPENDENT EXTERNAL PARTICIPANT
-+ Source / Connection identity / provider conversion
--> pressure VexPartner positively
-
-SEMANTIC EFFECT
-!= AUTOMATIC ASYNC WORK
-!= AUTOMATIC VEXEXECUTION JOB
-
-FINITE QUEUE CONTROL
-!= QUEUE OCCURRENCE PLAY / REORDER REQUEST
-```
-
-Still held as pressure rather than admitted migration:
-
-```text
-VexStream Playback
-VexMaps Delivery Route
-```
-
-Those consumers move only if their own source becomes smaller while preserving earned
-provider/currentness/session relationships. Direct Family does not authorize a compatibility purge
-or absorption of provider / Session / Relay / Execution ownership. VexPartner is not rejected by
-default either: Hub/Desktop is the positive external-participant pressure, while Media3 remains the
-smaller local provider path unless its own source later earns independent Partner meaning.
-
 ## Permanent boundaries
 
 ```text
@@ -483,3 +415,46 @@ CROSS-FEATURE REVIEW != GENERIC REWRITE
 ```
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-ANDROID][CURRENT-STATE-REFINEMENT] -->
+
+## Current semantic-family convergence work
+
+The Direct Family migration pressure remains real open Work rather than accepted Product truth.
+
+~~~text
+semantic-family-convergence                  RUNNING
+
+Maps Distribution Mode  -> Android #220     RUNNING
+VexStream Repeat        -> Android #221     RUNNING
+VexStream Queue         -> Android #222     RUNNING
+VexStream Hub Partner   -> Android #223     RUNNING
+~~~
+
+Current owner status:
+
+- #219 VexPartner foundation is accepted on Android main.
+- #220 / #221 / #222 / #223 remain open Product candidates.
+- VexWork records their real active semantic pressure; it does not treat candidate source as accepted main.
+
+Dependency currentness correction:
+
+~~~text
+Queue
+  dependencyRefs -> Repeat Work
+  #221 remains provenance in sourceRefs
+
+Hub Partner
+  #219 is already accepted provenance
+  -> no live Work dependency
+~~~
+
+Permanent:
+
+~~~text
+DIRECT FAMILY CANDIDATE != ACCEPTED PRODUCT
+OPEN ANDROID PR != COMPLETED WORK
+SEMANTIC EFFECT != AUTOMATIC VEXEXECUTION JOB
+PROVIDER RELATIONSHIP != SEMANTIC OWNER
+INDEPENDENT EXTERNAL PARTICIPANT -> PRESSURE VEXPARTNER POSITIVELY
+~~~
+
+<!-- [VXG RealForever][CURRENT-STATE-REFINEMENT][SEMANTIC-FAMILY-CONVERGENCE][CURRENTIZED] -->

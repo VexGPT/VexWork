@@ -1,0 +1,983 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.full-security.foundation-starting-map",
+  "title": "Full Security — Foundation Starting Map",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": "board.full-security.overview",
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.full-security.foundation-starting-map",
+    "nodes": [
+      {
+        "nodeRef": "node.fs.fm.root",
+        "kind": "CONTAINER",
+        "label": "Full Security · Foundation Starting Map",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.fm.rule",
+        "kind": "ANNOTATION",
+        "label": "Start from existing owners and missing relationships; do not start from screens, generic security layers, or a second account/device backend.",
+        "parentRefOrNull": "node.fs.fm.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.fm.current",
+        "kind": "CONTAINER",
+        "label": "CURRENT SOURCE OWNERS",
+        "parentRefOrNull": "node.fs.fm.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.fm.vexlife",
+        "kind": "REFERENCE",
+        "label": "VexLife Home · principal/device membership, capability lease, revocation generation, remote session, session authority",
+        "parentRefOrNull": "node.fs.fm.current",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "repo.vexlife:docs/HOME-BRIDGE-REMOTE-AUTHENTICATED-SESSION.md",
+          "repo.vexlife:docs/HOME-BRIDGE-SESSION-AUTHORITY.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.fm.android",
+        "kind": "REFERENCE",
+        "label": "VexLife Android · deviceRef, AndroidKeyStore possession proof, private Home session client",
+        "parentRefOrNull": "node.fs.fm.current",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.fm.prod",
+        "kind": "REFERENCE",
+        "label": "VexLife-Prod · personal local service, canonical Conversation + Vex, browser/context; currently not the remote-device security owner",
+        "parentRefOrNull": "node.fs.fm.current",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "repo.vexlife-prod:README.md"
+        ]
+      },
+      {
+        "nodeRef": "portal.fs.fm.vexstream",
+        "kind": "PORTAL",
+        "label": "VexStream Music · real pairing/revoke/integrity patient zero",
+        "parentRefOrNull": "node.fs.fm.current",
+        "detailBoardRefOrNull": "board.full-security.vexstream-local-pairing",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.fm.foundation",
+        "kind": "CONTAINER",
+        "label": "FOUNDATIONS TO ESTABLISH",
+        "parentRefOrNull": "node.fs.fm.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.f0",
+        "kind": "PROCESS",
+        "label": "F0 · Canonical-owner adoption · reuse Home membership/session/authority before adding state",
+        "parentRefOrNull": "node.fs.fm.foundation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.f1",
+        "kind": "PROCESS",
+        "label": "F1 · Principal/account demonstration boundary · account auth resolves principal; VexLife core need not become account-based",
+        "parentRefOrNull": "node.fs.fm.foundation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.f2",
+        "kind": "PROCESS",
+        "label": "F2 · Device-relationship read projection · safe current device/membership/session/access status",
+        "parentRefOrNull": "node.fs.fm.foundation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.f3",
+        "kind": "PROCESS",
+        "label": "F3 · Typed device admission / revoke / logout controls · three distinct effects",
+        "parentRefOrNull": "node.fs.fm.foundation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.f4",
+        "kind": "PROCESS",
+        "label": "F4 · Synthetic demonstration provider · OFF / SYNTHETIC / LIVE_OBSERVATION authority separation",
+        "parentRefOrNull": "node.fs.fm.foundation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.f5",
+        "kind": "PROCESS",
+        "label": "F5 · Host-local recovery boundary · operational recovery without GitHub/source edits",
+        "parentRefOrNull": "node.fs.fm.foundation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.f6",
+        "kind": "PROCESS",
+        "label": "F6 · Deterministic S01–S20 scenario harness",
+        "parentRefOrNull": "node.fs.fm.foundation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.f7",
+        "kind": "PROCESS",
+        "label": "F7 · Source/evidence projection · CURRENT_SOURCE / SYNTHETIC / DESIRED / HISTORICAL",
+        "parentRefOrNull": "node.fs.fm.foundation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.fm.surfaces",
+        "kind": "CONTAINER",
+        "label": "PRODUCT SURFACES",
+        "parentRefOrNull": "node.fs.fm.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.fm.android-ui",
+        "kind": "REFERENCE",
+        "label": "Android Settings · Connected Devices · membership/session/access status · Sign out · Revoke device",
+        "parentRefOrNull": "node.fs.fm.surfaces",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.fm.prod-ui",
+        "kind": "REFERENCE",
+        "label": "VexLife-Prod · Full Security Console · mode, principal, devices, sessions, capabilities, scenarios, recovery",
+        "parentRefOrNull": "node.fs.fm.surfaces",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "portal.fs.fm.scenarios",
+        "kind": "PORTAL",
+        "label": "Android scenario suite · S01–S20",
+        "parentRefOrNull": "node.fs.fm.surfaces",
+        "detailBoardRefOrNull": "board.full-security.android-account-device-scenarios",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.fm.vexboard",
+        "kind": "REFERENCE",
+        "label": "VexBoard + Vex · explanation and exact source descent only after context is actually admitted",
+        "parentRefOrNull": "node.fs.fm.surfaces",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.fm.proof",
+        "kind": "CONTAINER",
+        "label": "PROOF LADDER",
+        "parentRefOrNull": "node.fs.fm.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.proof-contract",
+        "kind": "PROCESS",
+        "label": "Contract / semantic proof",
+        "parentRefOrNull": "node.fs.fm.proof",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.proof-fixture",
+        "kind": "PROCESS",
+        "label": "Deterministic synthetic fixture proof",
+        "parentRefOrNull": "node.fs.fm.proof",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.proof-integration",
+        "kind": "PROCESS",
+        "label": "Cross-owner / process integration proof",
+        "parentRefOrNull": "node.fs.fm.proof",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.proof-device",
+        "kind": "PROCESS",
+        "label": "Real Android + host proof",
+        "parentRefOrNull": "node.fs.fm.proof",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.fm.proof-human",
+        "kind": "PROCESS",
+        "label": "Lived human acceptance",
+        "parentRefOrNull": "node.fs.fm.proof",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.fm.next",
+        "kind": "ANNOTATION",
+        "label": "Default next edge after source acceptance: F0 canonical-owner adoption → F2 device-relationship projection → F4 synthetic provider. Account UI and real remote-device mutation come later.",
+        "parentRefOrNull": "node.fs.fm.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.fs.fm.vexlife-f0",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.fm.vexlife",
+        "toRef": "process.fs.fm.f0",
+        "labelOrNull": "REUSE CURRENT OWNER",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.android-f0",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.fm.android",
+        "toRef": "process.fs.fm.f0",
+        "labelOrNull": "REUSE CURRENT CONSUMER",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.prod-f0",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.fm.prod",
+        "toRef": "process.fs.fm.f0",
+        "labelOrNull": "DO NOT WIDEN BY ASSUMPTION",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.vexstream-f0",
+        "kind": "REFERENCE",
+        "fromRef": "portal.fs.fm.vexstream",
+        "toRef": "process.fs.fm.f0",
+        "labelOrNull": "PATTERN EVIDENCE",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f0-f2",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.f0",
+        "toRef": "process.fs.fm.f2",
+        "labelOrNull": "FIRST PORTABLE READ SEAM",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f2-f4",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.f2",
+        "toRef": "process.fs.fm.f4",
+        "labelOrNull": "SAME READ CONTRACT",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f4-f6",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.f4",
+        "toRef": "process.fs.fm.f6",
+        "labelOrNull": "DRIVES SCENARIOS",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f2-f3",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.f2",
+        "toRef": "process.fs.fm.f3",
+        "labelOrNull": "READ BEFORE MUTATION",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f0-f5",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.f0",
+        "toRef": "process.fs.fm.f5",
+        "labelOrNull": "GROUND RECOVERY OWNER",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f1-f4",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f1",
+        "toRef": "process.fs.fm.f4",
+        "labelOrNull": "SYNTHETIC ACCOUNT FIRST",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f6-f7",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.f6",
+        "toRef": "process.fs.fm.f7",
+        "labelOrNull": "PROVEN SCENARIOS PROJECT",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f2-android",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f2",
+        "toRef": "reference.fs.fm.android-ui",
+        "labelOrNull": "READ MODEL",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f3-android",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f3",
+        "toRef": "reference.fs.fm.android-ui",
+        "labelOrNull": "CONTROLS",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f2-prod",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f2",
+        "toRef": "reference.fs.fm.prod-ui",
+        "labelOrNull": "READ MODEL",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f4-prod",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f4",
+        "toRef": "reference.fs.fm.prod-ui",
+        "labelOrNull": "DEMO MODE",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f5-prod",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f5",
+        "toRef": "reference.fs.fm.prod-ui",
+        "labelOrNull": "LOCAL RECOVERY",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f6-scenarios",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f6",
+        "toRef": "portal.fs.fm.scenarios",
+        "labelOrNull": "EXECUTES",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f7-board",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f7",
+        "toRef": "reference.fs.fm.vexboard",
+        "labelOrNull": "PROJECTS / EXPLAINS",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.proof1",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.proof-contract",
+        "toRef": "process.fs.fm.proof-fixture",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.proof2",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.proof-fixture",
+        "toRef": "process.fs.fm.proof-integration",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.proof3",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.proof-integration",
+        "toRef": "process.fs.fm.proof-device",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.proof4",
+        "kind": "FLOW",
+        "fromRef": "process.fs.fm.proof-device",
+        "toRef": "process.fs.fm.proof-human",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f3-proof",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f3",
+        "toRef": "process.fs.fm.proof-contract",
+        "labelOrNull": "PROVE BEFORE EFFECT",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.fm.f4-proof",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.fm.f4",
+        "toRef": "process.fs.fm.proof-fixture",
+        "labelOrNull": "PROVE SYNTHETICALLY",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/FOUNDATION-STARTING-MAP.md",
+      "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.full-security.foundation-starting-map",
+    "graphRef": "graph.full-security.foundation-starting-map",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.fs.fm.root",
+        "semanticRef": "node.fs.fm.root",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 4200,
+          "height": 2100
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.rule",
+        "semanticRef": "annotation.fs.fm.rule",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 100,
+          "y": 45,
+          "width": 4000,
+          "height": 100
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.fm.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.current",
+        "semanticRef": "node.fs.fm.current",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 60,
+          "y": 200,
+          "width": 870,
+          "height": 1650
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.fm.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.vexlife",
+        "semanticRef": "reference.fs.fm.vexlife",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 310,
+          "width": 750,
+          "height": 170
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.current",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.android",
+        "semanticRef": "reference.fs.fm.android",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 550,
+          "width": 750,
+          "height": 160
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.current",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.prod",
+        "semanticRef": "reference.fs.fm.prod",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 780,
+          "width": 750,
+          "height": 170
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.current",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.vexstream",
+        "semanticRef": "portal.fs.fm.vexstream",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1020,
+          "width": 750,
+          "height": 150
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.current",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.foundation",
+        "semanticRef": "node.fs.fm.foundation",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 980,
+          "y": 200,
+          "width": 1350,
+          "height": 1650
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.fm.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.f0",
+        "semanticRef": "process.fs.fm.f0",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 280,
+          "width": 1230,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.foundation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.f1",
+        "semanticRef": "process.fs.fm.f1",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 450,
+          "width": 1230,
+          "height": 125
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.foundation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.f2",
+        "semanticRef": "process.fs.fm.f2",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 625,
+          "width": 1230,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.foundation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.f3",
+        "semanticRef": "process.fs.fm.f3",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 795,
+          "width": 1230,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.foundation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.f4",
+        "semanticRef": "process.fs.fm.f4",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 965,
+          "width": 1230,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.foundation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.f5",
+        "semanticRef": "process.fs.fm.f5",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 1135,
+          "width": 1230,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.foundation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.f6",
+        "semanticRef": "process.fs.fm.f6",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 1305,
+          "width": 1230,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.foundation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.f7",
+        "semanticRef": "process.fs.fm.f7",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 1475,
+          "width": 1230,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.foundation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.surfaces",
+        "semanticRef": "node.fs.fm.surfaces",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 2380,
+          "y": 200,
+          "width": 960,
+          "height": 1650
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.fm.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.android-ui",
+        "semanticRef": "reference.fs.fm.android-ui",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 330,
+          "width": 840,
+          "height": 190
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.surfaces",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.prod-ui",
+        "semanticRef": "reference.fs.fm.prod-ui",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 610,
+          "width": 840,
+          "height": 200
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.surfaces",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.scenarios",
+        "semanticRef": "portal.fs.fm.scenarios",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 900,
+          "width": 840,
+          "height": 140
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.surfaces",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.vexboard",
+        "semanticRef": "reference.fs.fm.vexboard",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 1130,
+          "width": 840,
+          "height": 190
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.surfaces",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.proof",
+        "semanticRef": "node.fs.fm.proof",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 3390,
+          "y": 200,
+          "width": 750,
+          "height": 1650
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.fm.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.proof-contract",
+        "semanticRef": "process.fs.fm.proof-contract",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3450,
+          "y": 330,
+          "width": 630,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.proof",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.proof-fixture",
+        "semanticRef": "process.fs.fm.proof-fixture",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3450,
+          "y": 510,
+          "width": 630,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.proof",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.proof-integration",
+        "semanticRef": "process.fs.fm.proof-integration",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3450,
+          "y": 690,
+          "width": 630,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.proof",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.proof-device",
+        "semanticRef": "process.fs.fm.proof-device",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3450,
+          "y": 870,
+          "width": 630,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.proof",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.proof-human",
+        "semanticRef": "process.fs.fm.proof-human",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3450,
+          "y": 1050,
+          "width": 630,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.proof",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.fm.next",
+        "semanticRef": "annotation.fs.fm.next",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 430,
+          "y": 1910,
+          "width": 3300,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.fm.root",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/FOUNDATION-STARTING-MAP.md",
+      "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+    ]
+  }
+}

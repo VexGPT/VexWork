@@ -84,6 +84,29 @@ test('validation fails closed on broken references and vocabulary', () => {
   assert.throws(() => Lens.normalizeScreenLens(null), /schemaVersion/);
 });
 
+test('change is a first-class Product interaction without changing element identity', () => {
+  const input = clone();
+  input.screens[3].elements.push({
+    ref: 'element.debug-menu.body.change-control',
+    kind: 'FIELD',
+    label: 'Change control',
+    parentRef: 'element.debug-menu.body',
+    interactions: ['CHANGE'],
+  });
+  const normalized = Lens.normalizeScreenLens(input);
+  assert.deepEqual(Lens.elementFor(normalized, 'element.debug-menu.body.change-control').interactions, ['CHANGE']);
+
+  const bad = clone();
+  bad.screens[3].elements.push({
+    ref: 'element.debug-menu.body.bad-change',
+    kind: 'FIELD',
+    label: 'Bad change',
+    parentRef: 'element.debug-menu.body',
+    interactions: ['MUTATE'],
+  });
+  assert.throws(() => Lens.normalizeScreenLens(bad), /interaction MUTATE is unknown/);
+});
+
 test('optional fields default cleanly', () => {
   const input = clone();
   delete input.entryScreenRef;
@@ -98,6 +121,178 @@ test('optional fields default cleanly', () => {
   assert.deepEqual(minimal.chrome, []);
   assert.equal(Lens.sourceUrl(minimal, 'app:x.kt'), null);
   assert.equal(Lens.sourcePath(minimal, 'app:x.kt'), 'app:x.kt');
+});
+
+test('a static Product view keeps source HTML/CSS and stable identity anchors without executable Product code', () => {
+  const input = clone();
+  input.screens[3].elements.push({
+    ref: 'element.debug-menu.split-handle',
+    kind: 'HANDLE',
+    label: 'Debug split handle',
+    interactions: ['RESIZE', 'COLLAPSE_BEFORE', 'COLLAPSE_AFTER'],
+  });
+  input.screens[3].realization = {
+    status: 'PROJECTED',
+    rendersRegisteredTree: 'screen.debug-menu',
+    realizers: [],
+    presence: [
+      {
+        ref: 'presence.debug-menu.dialog-open',
+        kind: 'PRESENTATION',
+        subjectRef: 'element.debug-menu.body.dark-mode',
+        condition: 'presentation.dialogOpen',
+      },
+      {
+        ref: 'presence.debug-menu.body-selection',
+        kind: 'SELECTION',
+        subjectRef: 'element.debug-menu.body',
+        defaultRef: 'element.debug-menu.body.dark-mode',
+        exhaustive: true,
+        choices: [
+          { condition: 'state.section === dark', targetRef: 'element.debug-menu.body.dark-mode', realizes: [] },
+          { condition: 'state.section === logs', targetRef: 'element.debug-menu.body.log-history', realizes: [] },
+        ],
+      },
+    ],
+  };
+  input.screens[3].view = {
+    kind: 'STATIC_HTML_CSS',
+    html: '<!doctype html><html><body><button data-vex-ref="element.debug-menu.body.dark-mode">Dark mode</button></body></html>',
+    css: '[data-vex-ref]{display:block}',
+    scriptPolicy: 'NONE',
+    htmlSource: 'app:ui/View.kt',
+    cssSource: 'app:ui/ViewStyle.kt',
+    anchors: {
+      screenAttribute: 'data-vex-screen',
+      elementAttribute: 'data-vex-ref',
+      structuralAttribute: 'data-vex-structural-ref',
+      structuralParentAttribute: 'data-vex-structural-parent',
+    },
+    colorMode: {
+      owner: 'DebugMenuPresentation',
+      source: 'app:ui/View.kt',
+      attribute: 'data-theme',
+      storageKey: 'debug-menu.presentation.theme',
+      defaultRef: 'SYSTEM',
+      options: [
+        { ref: 'SYSTEM', label: 'System', attributeValue: null },
+        { ref: 'LIGHT', label: 'Light', attributeValue: 'light' },
+        { ref: 'DARK', label: 'Dark', attributeValue: 'dark' },
+      ],
+    },
+    stateBindings: [{
+      presenceRef: 'presence.debug-menu.dialog-open',
+      value: 'OPEN',
+      operations: [
+        { op: 'SET_ATTRIBUTE', targetRef: 'element.debug-menu.body.dark-mode', attribute: 'open', value: '' },
+        { op: 'SET_ATTRIBUTE', targetRef: 'screen.debug-menu', attribute: 'data-mode', value: 'dialog' },
+      ],
+    }],
+    interactionBindings: [
+      {
+        kind: 'SPLIT',
+        elementRef: 'element.debug-menu.split-handle',
+        targetRef: 'screen.debug-menu',
+        beforeRef: 'element.debug-menu.body.dark-mode',
+        afterRef: 'element.debug-menu.body.log-history.actions.reset',
+        styleProperty: '--before',
+        collapsedAttribute: 'data-collapsed',
+        collapsedBeforeValue: 'before',
+        collapsedAfterValue: 'after',
+      },
+      {
+        kind: 'SELECT',
+        elementRef: 'element.debug-menu.body.dark-mode',
+        presenceRef: 'presence.debug-menu.body-selection',
+        options: [
+          { value: 'dark', outcome: 'element.debug-menu.body.dark-mode' },
+          { value: 'logs', outcome: 'element.debug-menu.body.log-history' },
+        ],
+      },
+      {
+        kind: 'TOGGLE',
+        elementRef: 'element.debug-menu.body.log-history',
+        targetRef: 'element.debug-menu.body.log-history',
+        presenceRef: 'presence.debug-menu.dialog-open',
+        attribute: 'data-open',
+        closedValue: 'false',
+        openValue: 'true',
+      },
+    ],
+  };
+  const projected = Lens.normalizeScreenLens(input).screens[3].view;
+  assert.equal(projected.kind, 'STATIC_HTML_CSS');
+  assert.equal(projected.scriptPolicy, 'NONE');
+  assert.equal(projected.anchors.elementAttribute, 'data-vex-ref');
+  assert.equal(projected.colorMode.owner, 'DebugMenuPresentation');
+  assert.equal(projected.colorMode.source, 'app:ui/View.kt');
+  assert.equal(projected.colorMode.attribute, 'data-theme');
+  assert.equal(projected.colorMode.storageKey, 'debug-menu.presentation.theme');
+  assert.equal(projected.colorMode.defaultRef, 'SYSTEM');
+  assert.deepEqual(projected.colorMode.options, [
+    { ref: 'SYSTEM', label: 'System', attributeValue: null },
+    { ref: 'LIGHT', label: 'Light', attributeValue: 'light' },
+    { ref: 'DARK', label: 'Dark', attributeValue: 'dark' },
+  ]);
+  assert.equal(projected.stateBindings[0].presenceRef, 'presence.debug-menu.dialog-open');
+  assert.equal(projected.stateBindings[0].operations[0].attribute, 'open');
+  assert.equal(projected.stateBindings[0].operations[1].targetRef, 'screen.debug-menu');
+  assert.equal(projected.interactionBindings[0].kind, 'SPLIT');
+  assert.equal(projected.interactionBindings[0].styleProperty, '--before');
+  assert.equal(projected.interactionBindings[1].kind, 'SELECT');
+  assert.equal(projected.interactionBindings[1].options[1].outcome, 'element.debug-menu.body.log-history');
+  assert.equal(projected.interactionBindings[2].kind, 'TOGGLE');
+  assert.equal(projected.interactionBindings[2].presenceRef, 'presence.debug-menu.dialog-open');
+  assert.match(projected.html, /Dark mode/);
+
+  const executable = clone();
+  executable.screens[3].view = { ...input.screens[3].view, scriptPolicy: 'SOURCE' };
+  assert.throws(() => Lens.normalizeScreenLens(executable), /scriptPolicy must be NONE/);
+
+  const badAnchor = clone();
+  badAnchor.screens[3].view = { ...input.screens[3].view, anchors: { ...input.screens[3].view.anchors, elementAttribute: 'class' } };
+  assert.throws(() => Lens.normalizeScreenLens(badAnchor), /data-\* attribute/);
+
+  const badColorAttribute = JSON.parse(JSON.stringify(input));
+  badColorAttribute.screens[3].view.colorMode.attribute = 'class';
+  assert.throws(() => Lens.normalizeScreenLens(badColorAttribute), /colorMode attribute.*data-\*/);
+
+  const badColorDefault = JSON.parse(JSON.stringify(input));
+  badColorDefault.screens[3].view.colorMode.defaultRef = 'SEPIA';
+  assert.throws(() => Lens.normalizeScreenLens(badColorDefault), /colorMode defaultRef SEPIA is not one of its options/);
+
+  const duplicateColorOption = JSON.parse(JSON.stringify(input));
+  duplicateColorOption.screens[3].view.colorMode.options[2].ref = 'LIGHT';
+  assert.throws(() => Lens.normalizeScreenLens(duplicateColorOption), /colorMode option refs must be unique/);
+
+  const badStateAttribute = clone();
+  badStateAttribute.screens[3].view = {
+    ...input.screens[3].view,
+    stateBindings: [{ presenceRef: 'presence.debug-menu.dialog-open', value: 'OPEN', operations: [{ op: 'SET_ATTRIBUTE', targetRef: 'element.debug-menu.body.dark-mode', attribute: 'onclick', value: 'x' }] }],
+  };
+  assert.throws(() => Lens.normalizeScreenLens(badStateAttribute), /safe presentation attribute/);
+
+  const badSplitProperty = clone();
+  badSplitProperty.screens[3].view = {
+    ...input.screens[3].view,
+    interactionBindings: [{ ...input.screens[3].view.interactionBindings[0], styleProperty: 'width' }],
+  };
+  assert.throws(() => Lens.normalizeScreenLens(badSplitProperty), /CSS custom property/);
+
+  const badSplitTarget = JSON.parse(JSON.stringify(input));
+  badSplitTarget.screens[3].view = {
+    ...input.screens[3].view,
+    interactionBindings: [{ ...input.screens[3].view.interactionBindings[0], targetRef: 'element.nope' }],
+  };
+  assert.throws(() => Lens.normalizeScreenLens(badSplitTarget), /split binding target .* is not a lens ref/);
+
+  const badSelectOutcome = JSON.parse(JSON.stringify(input));
+  badSelectOutcome.screens[3].view.interactionBindings[1].options[0].outcome = 'element.debug-menu.body.events-simulator';
+  assert.throws(() => Lens.normalizeScreenLens(badSelectOutcome), /select option outcome .* is not authored/);
+
+  const badTogglePresence = JSON.parse(JSON.stringify(input));
+  badTogglePresence.screens[3].view.interactionBindings[2].presenceRef = 'presence.debug-menu.body-selection';
+  assert.throws(() => Lens.normalizeScreenLens(badTogglePresence), /toggle binding presence .* is not PRESENTATION/);
 });
 
 test('chrome applies by placement, with always-visible controls kept on other screens', () => {

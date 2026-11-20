@@ -275,9 +275,7 @@
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "HIGH",
-      "dependencyRefs": [
-        "github.pull.vexlife-android.219"
-      ],
+      "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexlife-android"
       ],
@@ -307,7 +305,7 @@
       "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
-        "github.pull.vexlife-android.221"
+        "work.vexlife-android.current-state-refinement.semantic-family-convergence.repeat"
       ],
       "repositoryRefs": [
         "repo.vexlife-android"
@@ -327,7 +325,13 @@
   "transitions": [],
   "sourceRefs": [
     "project.vexlife-android.current-state-refinement",
-    "projects/vexlife-android-current-state-refinement/README.md"
+    "projects/vexlife-android-current-state-refinement/README.md",
+    "github.pull.vexwork.279",
+    "github.pull.vexlife-android.219",
+    "github.pull.vexlife-android.220",
+    "github.pull.vexlife-android.221",
+    "github.pull.vexlife-android.222",
+    "github.pull.vexlife-android.223"
   ],
   "formedAt": "2026-10-24T08:50:00.000Z"
 }
