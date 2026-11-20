@@ -1,0 +1,72 @@
+name: VexStream Projectability Current-Main Proof
+
+on:
+  push:
+    branches:
+      - currentize/vexstream-music-projectability-current-main-20261120
+    paths:
+      - '.github/workflows/vexstream-projectability-current-main-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Deterministic currentness
+        run: |
+          npm run project-registry:check
+          npm run workgraph:check
+          npm run workspace:check
+          npm run dashboard:check
+          npm run check
+      - name: Full VexBoard regression floor
+        run: node --test test/vexboard*.test.mjs
+      - name: Exact VexStream projectability binding
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const registry=JSON.parse(fs.readFileSync('blueprint/project-registry.json','utf8'));
+          const project=JSON.parse(fs.readFileSync('projects/vexstream-music-projectability/project.json','utf8'));
+          const workgraph=JSON.parse(fs.readFileSync('workgraphs/segments/vexstream-music-projectability.json','utf8'));
+          const lens=JSON.parse(fs.readFileSync('projects/vexboard/lens/vexstream-music.candidate.screen-lens.json','utf8'));
+          const screen=lens.screens[0];
+
+          assert.equal(project.projectRef,'project.vexstream-music.projectability');
+          assert.ok(JSON.stringify(registry).includes('project.vexstream-music.projectability'));
+          assert.equal(lens.sourceSnapshot.commit,'03c1fe43ea90ccdc3be7c78193b209c15f3d5102');
+          assert.equal(screen.elements.length,81);
+          assert.equal(lens.pathways.length,13);
+          assert.equal(screen.realization.presence.length,7);
+          assert.equal(screen.realization.templates.length,3);
+
+          const card=screen.realization.templates.find(x=>x.ref==='template.vexstream.playlists.card');
+          const entry=screen.realization.templates.find(x=>x.ref==='template.vexstream.playlists.detail-entry');
+          const trash=screen.realization.templates.find(x=>x.ref==='template.vexstream.trash.item');
+          assert.equal(card.instanceIdentity.continuity,'STABLE_INSTANCE');
+          assert.equal(entry.instanceIdentity.continuity,'CURRENT_OCCURRENCE');
+          assert.equal(trash.instanceIdentity.continuity,'STABLE_INSTANCE');
+          assert.equal(screen.elements.some(x=>x.ref.includes('.dynamic.utf8hex.')),false);
+
+          const states=new Map(workgraph.items.map(x=>[x.workRef,x.state]));
+          assert.equal(states.get('work.vexstream-music.projectability.outcome'),'RUNNING');
+          assert.equal(states.get('work.vexstream-music.projectability.lived-acceptance'),'RUNNING');
+
+          console.log(JSON.stringify({
+            state:'PASS',
+            project:project.projectRef,
+            source:lens.sourceSnapshot.commit,
+            elements:screen.elements.length,
+            pathways:lens.pathways.length,
+            presence:screen.realization.presence.length,
+            templates:screen.realization.templates.length,
+            outcome:states.get('work.vexstream-music.projectability.outcome'),
+            livedAcceptance:states.get('work.vexstream-music.projectability.lived-acceptance')
+          },null,2));
+          NODE
