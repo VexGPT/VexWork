@@ -96,9 +96,19 @@ a{color:var(--focus)}
 .mapped.MAPPED{background:var(--ink)}.mapped.CHROME_ONLY{background:linear-gradient(90deg,var(--ink) 50%,transparent 50%)}.mapped.HELD{background:transparent}
 .screen-chip .visits{font-size:11px;color:var(--muted)}
 
-.main{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding:12px 18px 14px;min-height:0}
-.side{display:grid;grid-template-rows:auto minmax(0,1fr);min-height:0;perspective:1800px}
-.side-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.main{position:relative;display:flex;flex-wrap:wrap;align-content:stretch;gap:28px;padding:12px 18px 14px;min-width:0;min-height:0}
+.side{display:grid;grid-template-rows:auto minmax(0,1fr);flex:1 1 min(100%,420px);min-width:0;min-height:0;perspective:1800px}
+.main > .side[data-side="BEHAVIOR"]{flex-basis:min(100%,440px)}
+.main.wide > .side[data-side="EXPERIENCE"]{flex-grow:1.6;flex-basis:min(100%,620px)}
+.main.wide > .side[data-side="BEHAVIOR"]{flex-grow:1;flex-basis:min(100%,460px)}
+.lens.pair-stacked{height:auto;min-height:100vh;grid-template-rows:auto auto auto auto auto}
+.lens.pair-stacked .main{min-height:0}
+.lens.pair-stacked .side{min-height:640px}
+.lens.pair-stacked .bridge{display:none}
+.lens.pair-stacked .tray{height:auto!important;min-height:0;max-height:none;overflow:visible}
+.lens.pair-stacked .tray-resize{display:none}
+.lens.pair-stacked .tray-body{overflow:visible}
+.side-head{display:flex;align-items:center;gap:10px;min-width:0;margin-bottom:8px}
 .side-head h2{margin:0;font-size:13px;font-weight:600;color:var(--muted)}
 .faces{display:inline-flex;padding:2px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet)}
 .faces button{border:0;background:none;height:26px;padding:0 11px;border-radius:7px;font-size:12.5px;color:var(--muted);font-weight:500}
@@ -113,7 +123,7 @@ a{color:var(--focus)}
 @media (prefers-reduced-motion:reduce){.flipper{transition:none}}
 
 /* Surface face */
-.surface{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:18px 22px;display:flex;justify-content:center;background:radial-gradient(circle at 50% 0,#eef2f8,transparent 70%)}
+.surface{flex:1;min-height:0;overflow:auto;overscroll-behavior:auto;scrollbar-gutter:stable;padding:18px 22px;display:flex;justify-content:center;background:radial-gradient(circle at 50% 0,#eef2f8,transparent 70%)}
 .phone{position:relative;width:min(340px,100%);height:100%;max-height:760px;min-height:420px;display:flex;flex-direction:column;border:1px solid #cfd5df;border-radius:30px;background:#fbfbfd;box-shadow:0 18px 40px -24px #18213a55;overflow:hidden;align-self:flex-start}
 .phone.dimmed [data-ref]:not(.sel):not(.anc){opacity:.46}
 .phone.dimmed [data-ref]:not(.sel):not(.anc) [data-ref],.phone.dimmed .sel [data-ref]{opacity:1}
@@ -400,7 +410,7 @@ a{color:var(--focus)}
 .xkind.PREVIEW{background:color-mix(in srgb,var(--pres-example) 12%,#fff);color:var(--pres-example)}.xkind.GOLDEN{background:#fdf2e3;color:#9a3412}.xkind.JOURNEY{background:#e6f4f1;color:#0f766e}
 
 /* Structure face */
-.structure{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;padding:16px 16px 28px}
+.structure{flex:1;min-height:0;overflow:auto;overscroll-behavior:auto;touch-action:pan-y;padding:16px 16px 28px}
 .struct-section{margin-bottom:18px}
 .struct-section header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:2px 0 8px}
 .struct-section h3{margin:0;font-size:13.5px;font-weight:600}
@@ -592,7 +602,7 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
 @media (max-width:1520px){.bar h1 .kind{display:none}}
 @media (max-width:900px){
   .lens{height:auto;min-height:100vh}
-  .main{grid-template-columns:1fr;gap:18px}
+  .main{gap:18px}
   .side{min-height:640px}
   .bridge{display:none}
   .tray-body{grid-template-columns:1fr;overflow:visible}
@@ -1528,6 +1538,12 @@ function setExpression(ref, { flash = null } = {}) {
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
   state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
   state.flashRef = flash ?? target.focusRef;
+  const motion = state.motion;
+  if (currentScreen()?.view && refreshStaticLensAroundMountedProduct({ updateExpressionRail: true, motion })) {
+    state.motion = null;
+    state.flashRef = null;
+    return;
+  }
   render();
 }
 // Combine: keep what is shown and add another expression's choices on top (a later choice for the
@@ -2082,7 +2098,17 @@ html[data-vex-lens-has-selection] [data-vex-lens-selected] [data-vex-ref]{opacit
 [data-vex-lens-delta]{box-shadow:inset 0 0 0 2px #e11d48!important}
 [data-vex-lens-flash]{animation:vexboard-lens-flash .8s ease-out}
 .vexboard-lens-travel{position:fixed;z-index:2147483647;height:22px;min-width:28px;padding:0 8px;border:0;border-radius:999px;background:var(--vexboard-lens-focus);color:#fff;font:600 11px/22px system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 5px 14px -7px rgba(0,0,0,.72);cursor:pointer}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.28s;animation-timing-function:cubic-bezier(.2,.72,.2,1)}
+html[data-vex-lens-motion="next"]::view-transition-old(root){animation-name:vexboard-lens-view-old-next}
+html[data-vex-lens-motion="next"]::view-transition-new(root){animation-name:vexboard-lens-view-new-next}
+html[data-vex-lens-motion="prev"]::view-transition-old(root){animation-name:vexboard-lens-view-old-prev}
+html[data-vex-lens-motion="prev"]::view-transition-new(root){animation-name:vexboard-lens-view-new-prev}
+@keyframes vexboard-lens-view-old-next{to{opacity:0;transform:translateX(-2.5%)}}
+@keyframes vexboard-lens-view-new-next{from{opacity:0;transform:translateX(2.5%)}}
+@keyframes vexboard-lens-view-old-prev{to{opacity:0;transform:translateX(2.5%)}}
+@keyframes vexboard-lens-view-new-prev{from{opacity:0;transform:translateX(-2.5%)}}
 @keyframes vexboard-lens-flash{0%,35%{outline:4px solid var(--vexboard-lens-focus);outline-offset:0}100%{outline-color:transparent}}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation-duration:0s!important}}
 `;
   const injection = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'"><style data-vex-product-style>${css}</style><style data-vex-lens-style>${lensCss}</style>`;
   return /<head(?:\s[^>]*)?>/i.test(html)
@@ -2937,6 +2963,44 @@ function applyFlipState() {
   else { clearBridge(); setTimeout(drawBridge, 600); }
 }
 
+/* ---------- paired Experience / Behavior container ---------- */
+// Layout, outer-flow ownership and graph camera policy all read the same observed relationship.
+// The flex pair decides whether both sides fit from their intrinsic readable bases; this observer
+// records the actual result instead of guessing from a viewport breakpoint.
+let pairResizeObserver = null;
+function pairLayout(main = refs.main) {
+  return main?.dataset?.pairLayout ?? 'split';
+}
+function syncPairLayout(main = refs.main) {
+  if (!main?.isConnected) return 'split';
+  const experience = main.querySelector(':scope > .side[data-side="EXPERIENCE"]');
+  const behavior = main.querySelector(':scope > .side[data-side="BEHAVIOR"]');
+  if (!experience || !behavior) return 'split';
+  const stacked = Math.abs(behavior.offsetTop - experience.offsetTop) > 4;
+  const next = stacked ? 'stacked' : 'split';
+  const changed = main.dataset.pairLayout !== next;
+  main.dataset.pairLayout = next;
+  main.closest('.lens')?.classList.toggle('pair-stacked', stacked);
+  if (changed) {
+    state.cameras.delete('BEHAVIOR');
+    state.cameras.delete('DEPTH');
+    requestAnimationFrame(() => {
+      applyCamera('BEHAVIOR');
+      applyCamera('DEPTH');
+      placeSurfaceFloaters();
+      drawBridge();
+    });
+  }
+  return next;
+}
+function observePairLayout(main = refs.main) {
+  pairResizeObserver?.disconnect();
+  if (!main) return;
+  pairResizeObserver = new ResizeObserver(() => syncPairLayout(main));
+  pairResizeObserver.observe(main);
+  syncPairLayout(main);
+}
+
 /* ---------- camera ---------- */
 function fitCamera(face) {
   const viewport = document.querySelector(`[data-graph-face="${face}"]`);
@@ -2994,6 +3058,9 @@ function revealNode(face, ref) {
 }
 function wireGraphViewport(viewport, face) {
   viewport.addEventListener('wheel', (event) => {
+    const stackedFlow = pairLayout() === 'stacked';
+    const explicitZoom = event.ctrlKey || event.metaKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) * 1.2;
+    if (stackedFlow && !explicitZoom) return; // vertical wheel belongs to the outer stacked flow
     event.preventDefault();
     const rect = viewport.getBoundingClientRect();
     const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
@@ -3118,7 +3185,7 @@ function drawBridge(relationship = bridgeRelationship()) {
   const svg = refs.bridge;
   if (!svg) return;
   svg.replaceChildren();
-  if (!relationship || window.matchMedia('(max-width:900px)').matches) return;
+  if (!relationship || pairLayout() === 'stacked') return;
   const { pathway, anchorRef, behaviorFace, entryRef } = relationship;
   const main = refs.main.getBoundingClientRect();
   const leftFace = document.querySelector(`.flipper[data-side="EXPERIENCE"] .face[data-face="${state.faces.EXPERIENCE}"]`);
@@ -3778,7 +3845,7 @@ function renderLegend() {
     h('h3', {}, 'Gestures'),
     h('ul', {},
       h('li', {}, 'Right-click either side to flip it: Experience toggles Surface / Structure; Behavior toggles Behavior / Depth. Shift + right-click opens the browser menu. ', h('kbd', {}, '['), ' and ', h('kbd', {}, ']'), ' remain keyboard equivalents.'),
-      h('li', {}, 'Drag to pan. Scroll to zoom at the pointer. Use the − / + / Fit controls for explicit camera changes.'),
+      h('li', {}, 'Drag to pan. In split view, scroll zooms at the pointer. In stacked flow, vertical scroll continues the page; use Ctrl/⌘-scroll or − / + / Fit for graph zoom.'),
       h('li', {}, h('kbd', {}, '/'), ' finds any control, step, screen or note by label, ref, action key, Kotlin symbol or file name.'),
       h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.'),
       h('li', {}, 'Browser or mouse Back / Forward revisits the Lens choices you traversed — selected controls and steps, screens, expressions and presentation — without rewinding the Product or embedded page.')),
@@ -3921,7 +3988,21 @@ function replaceStructureFacePreservingViewport(experience) {
     nextScroller.addEventListener('scroll', scheduleBridge, { passive: true });
   }
 }
-function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } = {}) {
+function applyStaticExpressionProjection(doc, view, expression, motion = null) {
+  const update = () => applyStaticViewProjection(doc, view, expression);
+  const reduced = doc.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches === true;
+  if (!motion || reduced || typeof doc.startViewTransition !== 'function') {
+    update();
+    return null;
+  }
+  doc.documentElement.dataset.vexLensMotion = motion;
+  const transition = doc.startViewTransition(update);
+  transition.finished.finally(() => {
+    if (doc.documentElement.dataset.vexLensMotion === motion) delete doc.documentElement.dataset.vexLensMotion;
+  });
+  return transition;
+}
+function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false, motion = null } = {}) {
   const screen = currentScreen();
   if (!screen?.view || !refs.main || state.overlay) return false;
   const wrapper = refs.main.querySelector('.current-product-view');
@@ -3929,7 +4010,7 @@ function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } 
   const doc = frame?.contentDocument;
   if (!wrapper || !doc) return false;
 
-  applyStaticViewProjection(doc, screen.view, activeExpression());
+  applyStaticExpressionProjection(doc, screen.view, activeExpression(), motion);
   refreshStaticViewActions(wrapper);
 
   const slot = wrapper.closest('.xslot');
@@ -4027,7 +4108,9 @@ function render() {
   refs = { main, bridge };
   applyPalette();
   applyFlipState();
+  observePairLayout(main);
   requestAnimationFrame(() => {
+    syncPairLayout(main);
     const freshBehavior = !state.cameras.has('BEHAVIOR');
     applyCamera('BEHAVIOR'); applyCamera('DEPTH'); if (state.overlay === 'MAP') applyCamera('MAP');
     if (freshBehavior && currentPathway()?.disposition === 'EXPRESSION') keepInView('BEHAVIOR', entryRefForFace('BEHAVIOR'));
@@ -4045,7 +4128,7 @@ function render() {
   syncUrl();
 }
 
-window.addEventListener('resize', () => { state.cameras.clear(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); placeSurfaceFloaters(); scheduleBridge(); });
+window.addEventListener('resize', () => { state.cameras.clear(); syncPairLayout(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); placeSurfaceFloaters(); scheduleBridge(); });
 window.addEventListener('popstate', (event) => {
   const snapshot = event.state?.[LENS_HISTORY_KEY] ?? null;
   if (snapshot) restoreLensHistory(snapshot);

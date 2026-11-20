@@ -2,6 +2,45 @@
 
 `[VXG RealForever]`
 
+## AI entry — projecting an existing project
+
+When the intention is **"make this existing product/repository projectable in VexBoard"**, read:
+
+~~~text
+projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md
+~~~
+
+before descending through the broader VexBoard history below.
+
+That route tells a fresh AI how to distinguish:
+
+~~~text
+PROJECTABLE_AS_IS
+IDENTITY_ALIGNMENT
+BOUNDED_SOURCE_REFACTOR
+HELD_AMBIGUOUS
+~~~
+
+and how to carry an existing source through:
+
+~~~text
+target repository's own architecture
+-> stable source identities / rightful owners
+-> native exporter OR bounded source adapter
+-> vexboard.screen-lens/v1
+-> shared conformance seam
+-> Projects / Main / Stable
+-> lived acceptance
+~~~
+
+Do not refactor a source merely because VexBoard cannot address it yet. Prefer giving already-real
+meaning stable identity at its rightful owner; restructure only when the source itself leaves ownership
+ambiguous.
+
+VexStream Music is the intended next materially different scalability pressure after the accepted
+Android / VexLife-Prod Projection Consolidation foundation. Re-ground its live source before effects.
+
+
 ## Relationship-currentness checkpoint — 2026-11-20
 
 The Partner Source/Conversion projection pressure described later in this document has crossed its draft boundary:

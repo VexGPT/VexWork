@@ -49,7 +49,9 @@ middle-click Experience side      flip Surface <-> Structure        key [
 right-click Behavior side         flip Behavior <-> Depth           key ]
 shift + right-click               native browser menu (escape hatch)
 drag                              pan a graph face
-scroll / ctrl|cmd + scroll        move / zoom a graph face
+split graph: scroll              zoom graph at pointer
+stacked graph: vertical scroll    continue outer page flow
+stacked graph: ctrl|cmd + scroll  explicit graph zoom
 click a control                   select it and trace its pathway
 double-click a navigating control travel (or use its Go button)
 M                                 Screen map
@@ -59,6 +61,81 @@ Esc                               clear selection / close overlay
 Inside the Behavior face, the doorway steps (declared intent, runtime dispatch, screen registration,
 captured closure) are collapsed by default into a one-line strip so the SCAE core fits. They expand into
 full nodes on request. Pathways that are *only* doorway (direct registrations) are never collapsed.
+
+## Container, scroll and engagement ownership
+
+The two Lens sides are one **paired attention container**. The Inspector is a sibling after the complete
+pair; it is never logically between Experience and Behavior.
+
+~~~text
+Lens
+├─ navigation / expression chrome
+├─ Experience–Behavior pair
+│  ├─ Experience side
+│  │  └─ active Surface / Structure viewport
+│  └─ Behavior side
+│     └─ active Behavior / Depth graph viewport
+└─ Inspector tray
+~~~
+
+The pair owns whether its sides are beside each other or stacked. The reader does not choose that from
+Product identity or a medium viewport coordinate. Each side carries a readable intrinsic basis; normal
+layout determines whether both still fit on one row. VexBoard observes the resulting relationship:
+
+~~~text
+same flex row -> SPLIT
+different flex rows -> STACKED
+~~~
+
+That one relationship controls downstream presentation consequences:
+
+~~~text
+SPLIT
+  Lens may remain a fixed attention surface
+  Experience and Behavior coexist side by side
+  cross-side bridge may be drawn
+  graph wheel owns zoom
+
+STACKED
+  outer page owns vertical continuation
+  Experience comes first
+  Behavior comes second
+  Inspector comes after the complete pair
+  cross-side bridge is suppressed across page flow
+  graph ordinary vertical wheel yields to page scroll
+  explicit graph zoom remains Ctrl/⌘-wheel, horizontal-dominant wheel, or − / + / Fit
+~~~
+
+A child viewport owns a gesture only while that gesture belongs to the child's relationship.
+
+~~~text
+LOCAL_SCROLLABLE_CONTENT
+  consumes local scroll while it has scrollable extent
+
+PASSIVE_SPACE / SCROLL_BOUNDARY
+  yields continuation to the nearest enclosing flow owner
+
+INTERACTIVE_GRAPH_IN_SPLIT
+  wheel = graph zoom
+
+INTERACTIVE_GRAPH_IN_STACKED_FLOW
+  ordinary vertical wheel = outer flow
+  explicit zoom gesture = graph
+~~~
+
+Therefore scrollable, interactive and scroll owner are different properties. Do not use
+overscroll containment, fixed heights or breakpoint literals to make a child unconditionally own
+motion merely because it can scroll.
+
+This same paired-container law applies across manifestation substrates:
+
+~~~text
+COMPACT_FLOW + ELEMENT_TREE
+FRAME_WORKSPACE + SOURCE_VIEW
+FRAME_WORKSPACE + ELEMENT_TREE
+~~~
+
+The manifestation changes; the attention/engagement relationship does not.
 
 ## Role typing: color answers "which question does this answer?"
 

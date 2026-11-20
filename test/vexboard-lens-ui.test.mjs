@@ -29,12 +29,15 @@ test('flip gestures: right-click flips either side, Shift preserves the browser 
   assert.match(page, /role: 'tab'/);
 });
 
-test('graph wheel zooms at the pointer while drag remains the pan gesture', () => {
+test('graph engagement yields ordinary vertical scroll to an enclosing stacked flow', () => {
   assert.match(page, /addEventListener\('wheel'/);
+  assert.match(page, /const stackedFlow = pairLayout\(\) === 'stacked'/);
+  assert.match(page, /const explicitZoom = event\.ctrlKey \|\| event\.metaKey \|\| Math\.abs\(event\.deltaX\) > Math\.abs\(event\.deltaY\) \* 1\.2/);
+  assert.match(page, /if \(stackedFlow && !explicitZoom\) return;/, 'ordinary vertical wheel belongs to the enclosing page flow when the pair is stacked');
   assert.match(page, /const delta = Math\.abs\(event\.deltaY\) >= Math\.abs\(event\.deltaX\) \? event\.deltaY : event\.deltaX/);
   assert.match(page, /zoomFace\(face, Math\.exp\(-delta \* 0\.0022\), \{ x: event\.clientX - rect\.left, y: event\.clientY - rect\.top \}\)/);
   assert.doesNotMatch(page, /camera\.x - dx/);
-  assert.match(page, /Drag to pan\. Scroll to zoom at the pointer/);
+  assert.match(page, /In split view, scroll zooms at the pointer\. In stacked flow, vertical scroll continues the page/);
 });
 
 test('graph cards reserve and expose up to three title and summary lines', () => {
@@ -221,7 +224,7 @@ test('expression carousel preserves the lived desktop and phone-width interactio
 });
 
 test('Structure keeps a real scroll boundary and viewport continuity while bridge geometry follows it', () => {
-  assert.match(page, /\.structure\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;/);
+  assert.match(page, /\.structure\{flex:1;min-height:0;overflow:auto;overscroll-behavior:auto;touch-action:pan-y;/, 'Structure owns its local viewport while allowing boundary scroll to continue to an enclosing flow');
   assert.match(page, /const kept = \{ phone: .* structure: document\.querySelector\('\.face\[data-face="STRUCTURE"\] \.structure'\)\?\.scrollTop \?\? 0 \}/);
   assert.match(page, /if \(structure\) structure\.scrollTop = kept\.structure;/);
   assert.match(page, /function replaceStructureFacePreservingViewport\(experience\)/);
@@ -246,6 +249,35 @@ test('expression stepping animates the whole three-card carousel handoff instead
   assert.doesNotMatch(page, /translateX\(64px\)/, 'the old center-only nudge is gone');
 });
 
+test('Experience and Behavior form one intrinsic pair whose wrap owns outer flow and scroll handoff', () => {
+  assert.match(page, /\.main\{[^}]*display:flex;flex-wrap:wrap/, 'the pair wraps from its own available inline space rather than a viewport coordinate');
+  assert.match(page, /\.main\.wide > \.side\[data-side="EXPERIENCE"\]\{[^}]*flex-basis:min\(100%,620px\)/, 'workspace Experience carries a larger readable basis');
+  assert.match(page, /\.main\.wide > \.side\[data-side="BEHAVIOR"\]\{[^}]*flex-basis:min\(100%,460px\)/, 'Behavior carries its own readable basis');
+  assert.match(page, /function syncPairLayout\(main = refs\.main\)/);
+  assert.match(page, /Math\.abs\(behavior\.offsetTop - experience\.offsetTop\) > 4/, 'stacked/split is observed from the actual side relationship');
+  assert.match(page, /main\.closest\('\.lens'\)\?\.classList\.toggle\('pair-stacked', stacked\)/, 'the observed pair result controls outer flow ownership');
+  assert.match(page, /\.lens\.pair-stacked \.tray\{height:auto!important;min-height:0;max-height:none;overflow:visible\}/, 'the tray stays after the whole stacked pair instead of sitting between its sides');
+  assert.match(page, /\.surface\{[^}]*overscroll-behavior:auto/, 'blank/passive Surface space yields vertical scroll to its ancestor');
+  assert.match(page, /\.structure\{[^}]*overscroll-behavior:auto/, 'Structure also yields at its scroll boundary');
+  assert.match(page, /const stackedFlow = pairLayout\(\) === 'stacked'/);
+  assert.match(page, /if \(stackedFlow && !explicitZoom\) return; \/\/ vertical wheel belongs to the outer stacked flow/, 'an interactive graph keeps explicit zoom but yields ordinary vertical scroll when embedded in page flow');
+  assert.match(page, /if \(!relationship \|\| pairLayout\(\) === 'stacked'\) return;/, 'the cross-side bridge does not draw through a vertically stacked flow');
+  assert.doesNotMatch(page, /@media \(max-width:1180px\)/, 'the temporary medium viewport breakpoint is gone');
+  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,160}pair-stacked|pair-stacked[^\n]{0,160}vexlife-prod/i, 'pair layout remains subject-agnostic');
+});
+
+test('source-owned static views keep expression continuity without remounting the Product iframe', () => {
+  assert.match(page, /function applyStaticExpressionProjection\(doc, view, expression, motion = null\)/);
+  assert.match(page, /doc\.defaultView\?\.matchMedia\?\.\('\(prefers-reduced-motion: reduce\)'\)/, 'source-view motion honors the host motion preference');
+  assert.match(page, /typeof doc\.startViewTransition !== 'function'/, 'older/non-supporting browsers keep the same in-place fallback');
+  assert.match(page, /doc\.startViewTransition\(update\)/, 'supporting browsers animate the actual old/new Product manifestation rather than reloading srcdoc');
+  assert.match(page, /data-vex-lens-motion/);
+  assert.match(page, /function refreshStaticLensAroundMountedProduct\(\{ updateExpressionRail = false, motion = null \} = \{\}\)/);
+  assert.match(page, /applyStaticExpressionProjection\(doc, screen\.view, activeExpression\(\), motion\)/);
+  assert.match(page, /function setExpression[\s\S]*refreshStaticLensAroundMountedProduct\(\{ updateExpressionRail: true, motion \}\)/, 'expression stepping reuses the mounted SOURCE_VIEW and updates the surrounding Lens in place');
+  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,120}startViewTransition|startViewTransition[^\n]{0,120}vexlife-prod/i, 'transition continuity is substrate-generic, not Product-specific');
+});
+
 test('screen travel resets presentation context without inventing cross-Screen State', () => {
   assert.match(page, /function travel\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
   assert.match(page, /function jumpTo\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
@@ -261,7 +293,7 @@ test('lived usability gives the inspector a resizable attention boundary and mak
   assert.match(page, /\.lens\{display:grid;grid-template-rows:auto auto auto minmax\(0,1fr\) auto;height:100vh/, 'the inspector is a sibling grid row, not an overlay over the main Lens');
   assert.match(page, /\.tray\{position:relative;/, 'the inspector participates in layout instead of covering the main row');
   assert.doesNotMatch(page, /\.tray\{[^}]*position:absolute/, 'the inspector must not become an absolute overlay');
-  assert.match(page, /\.surface\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;/, 'when the inspector takes height, Surface owns scroll instead of clipping the Product');
+  assert.match(page, /\.surface\{flex:1;min-height:0;overflow:auto;overscroll-behavior:auto;scrollbar-gutter:stable;/, 'Surface keeps its local scroll viewport but yields at the boundary when an enclosing stacked flow owns continuation');
   assert.match(page, /\.product-view\{[^}]*min-height:420px/, 'the Product keeps a readable minimum rather than being compressed to satisfy the inspector');
   assert.match(page, /function wireTrayResize\(handle, tray\)/);
   assert.match(page, /role: 'separator'/);
