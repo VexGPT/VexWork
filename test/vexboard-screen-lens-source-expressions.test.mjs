@@ -59,6 +59,24 @@ test('a selection expression swaps the registered child and both sides read it: 
   for (const edge of graph.edges) assert.ok(graph.nodes.some((node) => node.ref === edge.from) && graph.nodes.some((node) => node.ref === edge.to));
 });
 
+test('selector-shaped source symbols stay literal when expression graphs look for typed selectors', () => {
+  const input = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexlife-android.screen-lens.json', import.meta.url), 'utf8'));
+  const rawScreen = input.screens.find((entry) => entry.screenRef === STREAM);
+  const selection = rawScreen.realization.presence.find((entry) => entry.kind === 'SELECTION' && entry.choices?.length > 1);
+  assert.ok(selection);
+  const child = rawScreen.elements.find((element) => element.ref === selection.choices[1].targetRef);
+  assert.ok(child);
+  child.symbol = '[data-panel="alternate"]';
+
+  const projected = normalizeScreenLens(input);
+  const expressions = X.expressionsFor(projected, STREAM);
+  const alternate = expressions.find((expression) =>
+    expression.context.overrides[selection.ref] === selection.choices[1].targetRef
+  );
+  assert.ok(alternate);
+  assert.doesNotThrow(() => X.expressionGraph(projected, STREAM, alternate));
+});
+
 test('a nested expression carries the enclosing choices it needs, and variations follow their parent', () => {
   const queue = byWhat(stream, 'Full player content', 'Queue panel');
   assert.deepEqual(queue.context.overrides, {
