@@ -199,6 +199,23 @@ function normalizeScreenView(input, screenRef) {
         ? null
         : text(option.attributeValue, `${screenRef} view colorMode options[${optionIndex}] attributeValue`),
     }));
+    let activation = null;
+    if (input.colorMode.activation !== undefined && input.colorMode.activation !== null) {
+      if (!input.colorMode.activation || typeof input.colorMode.activation !== 'object' || Array.isArray(input.colorMode.activation)) {
+        fail(`${screenRef} view colorMode activation must be an object`);
+      }
+      const kind = text(input.colorMode.activation.kind, `${screenRef} view colorMode activation kind`);
+      if (kind !== 'TOGGLE_COLOR_SCHEME') fail(`${screenRef} view colorMode activation kind ${kind} is unknown`);
+      const actionRef = text(input.colorMode.activation.actionRef, `${screenRef} view colorMode activation actionRef`);
+      if (!/^[a-z0-9]+(?:[.-][a-z0-9]+)*$/.test(actionRef)) fail(`${screenRef} view colorMode activation actionRef must be stable lowercase source identity`);
+      activation = {
+        kind,
+        controlRef: text(input.colorMode.activation.controlRef, `${screenRef} view colorMode activation controlRef`),
+        actionRef,
+        lightRef: text(input.colorMode.activation.lightRef, `${screenRef} view colorMode activation lightRef`),
+        darkRef: text(input.colorMode.activation.darkRef, `${screenRef} view colorMode activation darkRef`),
+      };
+    }
     if (!options.length) fail(`${screenRef} view colorMode needs options`);
     if (new Set(options.map((option) => option.ref)).size !== options.length) {
       fail(`${screenRef} view colorMode option refs must be unique`);
@@ -207,12 +224,19 @@ function normalizeScreenView(input, screenRef) {
     if (!options.some((option) => option.ref === defaultRef)) {
       fail(`${screenRef} view colorMode defaultRef ${defaultRef} is not one of its options`);
     }
+    if (activation) {
+      if (activation.lightRef === activation.darkRef) fail(`${screenRef} view colorMode activation lightRef and darkRef must differ`);
+      for (const ref of [activation.lightRef, activation.darkRef]) {
+        if (!options.some((option) => option.ref === ref)) fail(`${screenRef} view colorMode activation ref ${ref} is not one of its options`);
+      }
+    }
     colorMode = {
       owner: text(input.colorMode.owner, `${screenRef} view colorMode owner`),
       source: text(input.colorMode.source, `${screenRef} view colorMode source`),
       attribute: attribute(input.colorMode.attribute, `${screenRef} view colorMode attribute`, { required: true }),
       storageKey: optionalText(input.colorMode.storageKey, `${screenRef} view colorMode storageKey`),
       defaultRef,
+      activation,
       options,
     };
   }
@@ -410,6 +434,12 @@ export function normalizeScreenLens(input) {
           if (!lensRefs.has(operation.targetRef)) fail(`${screen.screenRef} view state binding target ${operation.targetRef} is not a lens ref`);
         }
       }
+    }
+    if (screen.view?.colorMode?.activation) {
+      const activation = screen.view.colorMode.activation;
+      const control = screen.elements.find((element) => element.ref === activation.controlRef);
+      if (!control) fail(`${screen.screenRef} view colorMode activation control ${activation.controlRef} is not a screen element`);
+      if (!control.interactions.includes('ACTIVATE')) fail(`${screen.screenRef} view colorMode activation control ${activation.controlRef} does not declare ACTIVATE`);
     }
     for (const binding of screen.view?.interactionBindings ?? []) {
       if (binding.kind === 'SPLIT') {
