@@ -30,6 +30,109 @@ Do not begin by replaying a prior ZIP or by assuming the latest package mentione
 
 ---
 
+## Current successor checkpoint — 2026-11-20 02:19 Pacific
+
+This section supersedes earlier current-checkpoint text below when they disagree.
+
+### Recursive Speech checkpoint — PASS
+
+Exact proved VexWork:
+
+```text
+#355
+2672f713a3ef788eea18cbd31f2955e796097071
+```
+
+Exact proved/published Product:
+
+```text
+#432
+4c4dcba7d7d1d8e250731d9fb47bb8eec7461c84
+
+Lens blob
+2aa94cb624cc7e6c7288d13c5a84365ec0e1a1a3
+```
+
+Host result:
+
+```text
+VexWork Node proof 76 / 76 PASS
+Product generation PASS
+Product focused proof PASS
+checkVexLifeStrings CURRENT
+runtime mutation none
+```
+
+Published Lens:
+
+```text
+108 elements
+23 pathways
+```
+
+SpeechPanel now recursively owns nine Product child controls:
+
+```text
+Enabled       -> speech.enabled.toggle
+Voice         -> speech.voice.change
+Read thoughts -> speech.read-thoughts.change
+Rate          -> speech.rate.change
+Previous      -> speech.previous
+Play / Pause  -> speech.play-pause
+Stop          -> speech.stop
+Next          -> speech.next
+Start here    -> speech.start-here.toggle
+```
+
+Each child has:
+- stable Blueprint identity;
+- current Product DOM anchor;
+- truthful ACTIVATE or CHANGE interaction;
+- LocalAction(actionRef);
+- DIRECT_REGISTRATION Screen Lens pathway.
+
+Generic VexWork recursion is now:
+
+```text
+selected identity
+-> explicit semantic pathway if authored
+-> else projected realization relationship containing the identity
+-> else structure/content
+```
+
+Do not regress to treating SpeechPanel as relationship-less structure.
+
+### Current human gate
+
+Witness the exact first-class preview:
+
+```text
+VexWork 2672f713...
+VexLife-Prod 4c4dcba7...
+presentation LIGHT
+```
+
+Expected:
+- SpeechPanel itself shows its presentation relationship;
+- clicking inner Speech controls shows their local-action relationship;
+- Back/Forward continues to retrace the Lens journey.
+
+### Next frontier after witness
+
+Do not infer runtime-generated children from arbitrary HTML.
+
+The next Product recursion frontier is dynamic collections/templates:
+- LanguagePanel choices are runtime-populated;
+- ReleaseAlertsList rows and View/Dismiss controls are runtime-populated.
+
+Evolve those through Product-owned collection/template relationships, then let generic Screen Lens recursion consume them.
+
+#424 Theme-click activation remains HELD.
+
+<!-- [VXG RealForever][CURRENT-SUCCESSOR-CHECKPOINT][RECURSIVE-SPEECH-PASS] -->
+
+---
+
 ## Current successor checkpoint — 2026-11-20 01:15 Pacific
 
 This section supersedes the older "Current checkpoint" and "Current next edge" text below when they disagree. Older sections remain historical continuity.
