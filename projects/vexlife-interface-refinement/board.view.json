@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.work-board-view/v1",
   "viewRef": "view.vexlife.interface-refinement.board",
   "projectRef": "project.vexlife.interface-refinement",
-  "label": "VexLife Interface Refinement Work Board",
+  "label": "Interface Compound Relay Work Board",
   "laneRefOrder": [
     "lane.work.intake",
     "lane.work.planned",
