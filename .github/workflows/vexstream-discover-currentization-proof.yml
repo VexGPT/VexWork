@@ -8,6 +8,8 @@ on:
       - 'projects/vexstream-music-projectability/**'
       - 'projects/vexboard/lens/vexstream-music.candidate.screen-lens.json'
       - 'test/vexboard-screen-lens-conformance.test.mjs'
+      - 'src/shared/vexboard-screen-lens-source-expressions.mjs'
+      - 'test/vexboard-screen-lens-source-expressions.test.mjs'
       - 'workgraphs/segments/vexstream-music-projectability.json'
       - '.github/workflows/vexstream-discover-currentization-proof.yml'
   pull_request:
@@ -17,6 +19,8 @@ on:
       - 'projects/vexstream-music-projectability/**'
       - 'projects/vexboard/lens/vexstream-music.candidate.screen-lens.json'
       - 'test/vexboard-screen-lens-conformance.test.mjs'
+      - 'src/shared/vexboard-screen-lens-source-expressions.mjs'
+      - 'test/vexboard-screen-lens-source-expressions.test.mjs'
       - 'workgraphs/segments/vexstream-music-projectability.json'
       - '.github/workflows/vexstream-discover-currentization-proof.yml'
 
