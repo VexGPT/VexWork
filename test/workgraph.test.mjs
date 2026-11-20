@@ -124,7 +124,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const vexboardProjectors = graph.items.find((item) => item.workRef === 'work.vexboard.source-projectors');
   const vexboardRefinement = graph.items.find((item) => item.workRef === 'work.vexboard.usability-refinement');
   const vexboardComposition = graph.items.find((item) => item.workRef === 'work.vexboard.fractal-semantic-composition-spatial-layout');
-  assert.equal(vexboardRoot.state, 'DECOMPOSED');
+  assert.equal(vexboardRoot.state, 'RUNNING');
   assert.equal(vexboardArchitecture.state, 'COMPLETED');
   assert.equal(vexboardContract.state, 'COMPLETED');
   assert.equal(vexboardContract.authorityDisposition, 'AUTHORIZED_BOUNDED');

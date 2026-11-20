@@ -128,15 +128,15 @@ test('durable device library is terminal without closing separate Mobile Library
   const board = projectWorkBoard({ project, graph, view, registry });
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
-  const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
+  const verify = board.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
   const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
   for (const workRef of durableRefs) {
     assert.equal(done.cards.some((card) => card.workRef === workRef), true, workRef);
   }
   assert.equal(active.cards.some((card) => card.workRef === storage.workRef), false);
-  assert.equal(intake.cards.some((card) => card.workRef === root.workRef), true);
-  assert.equal(intake.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.download-experience'), true);
+  assert.equal(active.cards.some((card) => card.workRef === root.workRef), true);
+  assert.equal(verify.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.download-experience'), true);
   assert.equal(waiting.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
 });
 test('Sort / Filter returns to active refinement when lived review cannot find fresh music', () => {
