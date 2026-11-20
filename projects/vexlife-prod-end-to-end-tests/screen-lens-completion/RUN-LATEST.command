@@ -5,8 +5,8 @@ CONTINUITY='[VXG RealForever]'
 PRODUCT_REPO='VexGPT/VexLife-Prod'
 PRODUCT_URL='https://github.com/VexGPT/VexLife-Prod.git'
 PRODUCT_BRANCH='VXG-112026-vexlife-prod-main-static-view-a001'
-EXPECTED_HEAD='31b8a0b005270b06f9a17e0d84510216d3fd057a'
-RETURN_ZIP="$HOME/Downloads/RETURN-VEXLIFE-SCREEN-LENS-MAIN-RICH-PROJECTION.zip"
+EXPECTED_HEAD='c987452024cdf72a182a892b4368f87ac15b4e5c'
+RETURN_ZIP="$HOME/Downloads/RETURN-VEXLIFE-SCREEN-LENS-SPIRAL-PROJECTION.zip"
 
 GH="$(command -v gh || true)"
 GIT='/usr/bin/git'
@@ -16,7 +16,7 @@ ZIP='/usr/bin/zip'
 TEE='/usr/bin/tee'
 CP='/bin/cp'
 
-[ -n "$GH" ] && [ -x "$GH" ] || { echo "Screen Lens rich projection: gh CLI is required." >&2; exit 10; }
+[ -n "$GH" ] && [ -x "$GH" ] || { echo "Screen Lens Spiral projection: gh CLI is required." >&2; exit 10; }
 for executable in "$GIT" "$MKTEMP" "$RM" "$ZIP" "$TEE" "$CP"; do
   [ -x "$executable" ] || { echo "Screen Lens rich projection: missing executable $executable" >&2; exit 10; }
 done
@@ -49,7 +49,7 @@ ACTUAL="$("$GIT" rev-parse HEAD)"
   echo "$CONTINUITY"
   echo "product_sha=$EXPECTED_HEAD"
   echo "tree=$("$GIT" rev-parse HEAD^{tree})"
-  echo "purpose=current Main expression/traversal/color-mode projection"
+  echo "purpose=current Main Spiral/FAB source-addressability projection"
   echo "runtime_mutation=none"
 } > "$OUT/SOURCE.txt"
 
@@ -69,7 +69,15 @@ fi
 
 echo "Screen Lens rich projection: running focused exporter proof..."
 set +e
-./gradlew --no-daemon --max-workers=1 -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=2g" -Pkotlin.compiler.execution.strategy=in-process jvmTest --tests vexlife.lens.VexLifeProdScreenLensTest checkVexLifeStrings 2>&1 | "$TEE" "$OUT/proof.log"
+./gradlew --no-daemon --max-workers=1 -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=2g" -Pkotlin.compiler.execution.strategy=in-process \
+  jvmTest \
+  --tests vexlife.workspace.VexLifeWorkspaceBlueprintTest \
+  --tests vexlife.web.VexLifeWebP1Test \
+  --tests vexlife.web.VexWebAuthoringTest \
+  --tests vexlife.web.VexLifeWebP1RuntimeArtifactsTest \
+  --tests vexlife.web.VexLifeReleaseAlertsCarrierTest \
+  --tests vexlife.lens.VexLifeProdScreenLensTest \
+  checkVexLifeStrings 2>&1 | "$TEE" "$OUT/proof.log"
 PROOF_STATUS=${PIPESTATUS[0]}
 set -e
 
@@ -95,7 +103,7 @@ CHANGED="$("$GIT" status --short)"
 }
 
 "$GIT" add docs/lens/vexlife-prod.screen-lens.json
-"$GIT" -c user.name='VexGPT' -c user.email='noreply@github.com' commit -q   -m '[Screen Lens] Publish current Main traversal projection'   -m 'Generated and focused-proved from exact current Product source; runtime behavior remains unchanged.'   -m '[VXG RealForever]'
+"$GIT" -c user.name='VexGPT' -c user.email='noreply@github.com' commit -q   -m '[Screen Lens] Publish current Main Spiral projection'   -m 'Generated and focused-proved from exact current Product source; Spiral/FAB nodes are source-addressed while runtime behavior remains unchanged.'   -m '[VXG RealForever]'
 NEW_HEAD="$("$GIT" rev-parse HEAD)"
 
 LEASE="$("$GH" api "repos/$PRODUCT_REPO/git/ref/heads/$PRODUCT_BRANCH" --jq '.object.sha')"
