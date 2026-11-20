@@ -29,7 +29,13 @@
     "repo.vexstream-music:v2/projection/vexboard-screen-lens.mjs",
     "repo.vexstream-music:v2/projection/vexboard-screen-lens.json",
     "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
-    "github.pull.vexstream-music.21"
+    "github.pull.vexstream-music.21",
+    "github.pull.vexstream-music.22",
+    "github.pull.vexstream-music.23",
+    "github.pull.vexstream-music.24",
+    "repo.vexstream-music:v2/projection/vexboard-projectability-audit.mjs",
+    "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json",
+    "repo.vexstream-music:v2/tests/vexboard-projectability-identities.test.mjs"
   ],
   "formedAt": "2026-11-20T13:30:00.000Z"
 }

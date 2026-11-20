@@ -165,7 +165,11 @@
         "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
         "github.pull.vexstream-music.20",
         "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20",
-        "src/shared/vexboard-screen-lens.mjs"
+        "src/shared/vexboard-screen-lens.mjs",
+        "github.pull.vexstream-music.22",
+        "github.pull.vexstream-music.23",
+        "github.pull.vexstream-music.24",
+        "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json"
       ],
       "updatedAt": "2026-11-20T14:04:00.003Z"
     },
@@ -198,9 +202,15 @@
         "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
         "github.pull.vexstream-music.21",
         "repo.vexstream-music:v2/projection/vexboard-screen-lens.json",
-        "human.victor.vexstream-shell-coverage-feedback-2026-11-20"
+        "human.victor.vexstream-shell-coverage-feedback-2026-11-20",
+        "github.pull.vexstream-music.22",
+        "github.pull.vexstream-music.23",
+        "github.pull.vexstream-music.24",
+        "repo.vexstream-music:v2/projection/vexboard-projectability-audit.mjs",
+        "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json",
+        "repo.vexstream-music:v2/tests/vexboard-projectability-identities.test.mjs"
       ],
-      "updatedAt": "2026-11-20T14:15:00.000Z"
+      "updatedAt": "2026-11-20T14:46:00.000Z"
     }
   ],
   "transitions": [

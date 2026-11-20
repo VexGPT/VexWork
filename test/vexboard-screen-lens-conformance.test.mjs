@@ -126,6 +126,27 @@ test('a mapped container projects the relationships contained inside it', () => 
   assert.ok(depth.nodes.length > 0, 'aggregate Depth exposes the contained runtime/provider relationships');
 });
 
+test('VexStream current default-visible projection carries the zero-blocker addressability census', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const [screen] = vexstream.screens;
+  assert.equal(screen.elements.length, 42, 'merged target source exports every currently admitted/default-visible relationship coordinate');
+  assert.equal(vexstream.pathways.length, 7, 'coverage completeness does not invent deeper semantic pathways');
+  const refs = new Set(screen.elements.map((element) => element.ref));
+  for (const ref of [
+    'element.vexstream.shell.sidebar.toggle',
+    'element.vexstream.library.rescan',
+    'element.vexstream.library.search.query',
+    'element.vexstream.library.search.execute',
+    'element.vexstream.library.filter.genre',
+    'element.vexstream.player.shuffle-library',
+    'element.vexstream.discover.add.open',
+    'element.vexstream.playback.timeline.seek',
+    'element.vexstream.playback.volume.set',
+    'element.vexstream.queue.drawer.toggle',
+    'element.vexstream.queue.shuffle-upcoming',
+  ]) assert.ok(refs.has(ref), ref + ' remains addressable');
+});
+
 test('VexStream stable source controls remain addressable even when deeper pathways are held', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const refs = new Set(vexstream.screens[0].elements.map((element) => element.ref));

@@ -256,3 +256,76 @@ contained paths    7
 ~~~
 
 This is now a general projectability rule in projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md.
+
+
+## Audit-driven default-visible coverage closure
+
+The projectability audit is now persistent in VexStream source:
+
+~~~text
+v2/projection/vexboard-projectability-audit.mjs
+v2/projection/vexboard-projectability-audit.json
+v2/tests/vexboard-projectability-audit.test.mjs
+~~~
+
+It inventories every static interactive affordance, source relationship identity, direct app.js event
+binding and Screen Lens mapping before lived review.
+
+Progress:
+
+~~~text
+initial census
+131 total interactive affordances
+32 default-visible
+99 latent
+
+after phone/System + source-relationship coverage
+30 blockers -> 12 blockers
+
+after behavior-neutral runtime identity alignment
+12 blockers -> 0 blockers
+~~~
+
+Merged target source:
+
+~~~text
+PR #22  persistent audit
+367f5523221f11bfb443809bb68f40a09d10a691
+
+PR #23  projection-only existing source relationships
+584bb31186d55860146a15eb873372fceeb8d8b3
+
+PR #24  final default-visible runtime identity alignment
+df0ffba4020b7ba7d5dff628ffabce9bf0a9163f
+~~~
+
+PR #24 changed source identity metadata/constants and generated projection artifacts; v2/web/app.js was
+not changed.
+
+Proof:
+
+~~~text
+rightful-owner + identity/export/audit tests
+79 / 79 PASS
+
+strict default-visible audit
+0 blockers
+
+current Lens
+42 addressable elements
+7 admitted pathways
+37 addressable-held elements
+~~~
+
+The 99 latent/hidden interactives remain explicitly inventoried:
+
+~~~text
+56 LATENT_WIRED_UNIDENTIFIED
+29 LATENT_UNIDENTIFIED
+2  VISIBLE_DISABLED_UNIDENTIFIED
+~~~
+
+They are not invisible debt. They are outside the current default-visible lived slice and must be
+classified when their alternate terrain/expression enters admitted projection scope.
+
+Do not interpret zero default blockers as full-product Stable acceptance.

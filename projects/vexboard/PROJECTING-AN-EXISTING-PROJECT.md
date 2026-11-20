@@ -301,6 +301,71 @@ Do not fix this by inventing VexBoard-only IDs in the live Product. Derive gener
 exported copy from the source-owned identity, or align the source identity at its rightful owner when it
 does not yet exist.
 
+### Run a projectability coverage census before lived review
+
+For a Product Surface with many real controls, do not use human screenshots as the omission detector.
+
+Before asking for lived acceptance, inventory the complete interactive source surface and correlate:
+
+~~~text
+interactive affordance
++ visible / latent presentation state
++ source-owned relationship identity
++ runtime event wiring
++ emitted Lens element
++ admitted pathway (when earned)
+~~~
+
+At minimum distinguish:
+
+~~~text
+MAPPED_PATHWAY
+  addressable + deeper relationship projected
+
+ADDRESSABLE_HELD
+  addressable in the Lens
+  deeper relationship deliberately outside current scope
+
+SOURCE_RELATIONSHIP_UNMAPPED
+  source already names the relationship
+  producer failed to carry it
+
+VISIBLE_WIRED_UNIDENTIFIED
+  visible + real runtime behavior
+  source lacks truthful projectability identity
+
+LATENT_*
+  alternate/hidden terrain is inventoried explicitly
+  not silently treated as complete
+~~~
+
+For the currently admitted visible/default expression:
+
+~~~text
+SOURCE_RELATIONSHIP_UNMAPPED
+or VISIBLE_WIRED_UNIDENTIFIED
+or VISIBLE_UNIDENTIFIED
+-> projection coverage FAIL
+~~~
+
+Do not make every missing item a semantic Family. First decide whether the correct effect is:
+
+~~~text
+projection-only export
+identity alignment beside existing owner
+explicit held element
+bounded source refactor
+~~~
+
+VexStream Music's persistent reference implementation is:
+
+~~~text
+repo.vexstream-music:v2/projection/vexboard-projectability-audit.mjs
+~~~
+
+The audit mechanism is product-local because it knows that Product's source forms; the completeness law
+is generic.
+
 ## 6. Prove emitted output through the consumer seam
 
 Producer-specific tests prove source extraction.

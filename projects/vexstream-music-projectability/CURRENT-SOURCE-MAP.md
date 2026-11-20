@@ -12,6 +12,9 @@ repository
   repo.vexstream-music
 
 main
+  df0ffba4020b7ba7d5dff628ffabce9bf0a9163f
+
+formation baseline
   2b745e0a3f5e63e05dfa0cf25b0fac729c00f0c8
 ~~~
 
@@ -393,3 +396,39 @@ Repeat            SCAE_FAMILY / Queue
 
 The next dependent effect is persistent VexWork conformance + lived raw-git acceptance. No broader
 VexStream feature expansion is admitted yet.
+
+
+## Coverage audit result — default-visible closure
+
+The persistent target-source audit now replaces screenshot discovery as the coverage detector.
+
+~~~text
+repo.vexstream-music:v2/projection/vexboard-projectability-audit.mjs
+repo.vexstream-music:v2/projection/vexboard-projectability-audit.json
+~~~
+
+Current merged result at df0ffba4020b7ba7d5dff628ffabce9bf0a9163f:
+
+~~~text
+131 total interactives
+32 default-visible
+99 latent/hidden
+
+default-visible blockers 0
+
+MAPPED_PATHWAY       7
+ADDRESSABLE_HELD    37
+
+LATENT_WIRED_UNIDENTIFIED 56
+LATENT_UNIDENTIFIED       29
+VISIBLE_DISABLED_UNIDENTIFIED 2
+~~~
+
+The path to zero default-visible blockers was intentionally split:
+
+1. Projection-only source relationships already present in the Product were exported directly.
+2. Remaining runtime-wired controls received stable identity beside their rightful source owner.
+3. v2/web/app.js remained unchanged.
+
+No semantic Family was created merely to reduce the audit count. Addressable-held remains a truthful
+state for controls whose deeper relationship is outside the current first-slice scope.
