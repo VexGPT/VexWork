@@ -145,6 +145,18 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
       structuralAttribute: 'data-vex-structural-ref',
       structuralParentAttribute: 'data-vex-structural-parent',
     },
+    colorMode: {
+      owner: 'DebugMenuPresentation',
+      source: 'app:ui/View.kt',
+      attribute: 'data-theme',
+      storageKey: 'debug-menu.presentation.theme',
+      defaultRef: 'SYSTEM',
+      options: [
+        { ref: 'SYSTEM', label: 'System', attributeValue: null },
+        { ref: 'LIGHT', label: 'Light', attributeValue: 'light' },
+        { ref: 'DARK', label: 'Dark', attributeValue: 'dark' },
+      ],
+    },
     stateBindings: [{
       presenceRef: 'presence.debug-menu.dialog-open',
       value: 'OPEN',
@@ -189,6 +201,16 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
   assert.equal(projected.kind, 'STATIC_HTML_CSS');
   assert.equal(projected.scriptPolicy, 'NONE');
   assert.equal(projected.anchors.elementAttribute, 'data-vex-ref');
+  assert.equal(projected.colorMode.owner, 'DebugMenuPresentation');
+  assert.equal(projected.colorMode.source, 'app:ui/View.kt');
+  assert.equal(projected.colorMode.attribute, 'data-theme');
+  assert.equal(projected.colorMode.storageKey, 'debug-menu.presentation.theme');
+  assert.equal(projected.colorMode.defaultRef, 'SYSTEM');
+  assert.deepEqual(projected.colorMode.options, [
+    { ref: 'SYSTEM', label: 'System', attributeValue: null },
+    { ref: 'LIGHT', label: 'Light', attributeValue: 'light' },
+    { ref: 'DARK', label: 'Dark', attributeValue: 'dark' },
+  ]);
   assert.equal(projected.stateBindings[0].presenceRef, 'presence.debug-menu.dialog-open');
   assert.equal(projected.stateBindings[0].operations[0].attribute, 'open');
   assert.equal(projected.stateBindings[0].operations[1].targetRef, 'screen.debug-menu');
@@ -207,6 +229,18 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
   const badAnchor = clone();
   badAnchor.screens[3].view = { ...input.screens[3].view, anchors: { ...input.screens[3].view.anchors, elementAttribute: 'class' } };
   assert.throws(() => Lens.normalizeScreenLens(badAnchor), /data-\* attribute/);
+
+  const badColorAttribute = JSON.parse(JSON.stringify(input));
+  badColorAttribute.screens[3].view.colorMode.attribute = 'class';
+  assert.throws(() => Lens.normalizeScreenLens(badColorAttribute), /colorMode attribute.*data-\*/);
+
+  const badColorDefault = JSON.parse(JSON.stringify(input));
+  badColorDefault.screens[3].view.colorMode.defaultRef = 'SEPIA';
+  assert.throws(() => Lens.normalizeScreenLens(badColorDefault), /colorMode defaultRef SEPIA is not one of its options/);
+
+  const duplicateColorOption = JSON.parse(JSON.stringify(input));
+  duplicateColorOption.screens[3].view.colorMode.options[2].ref = 'LIGHT';
+  assert.throws(() => Lens.normalizeScreenLens(duplicateColorOption), /colorMode option refs must be unique/);
 
   const badStateAttribute = clone();
   badStateAttribute.screens[3].view = {
