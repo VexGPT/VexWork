@@ -243,6 +243,14 @@ export function deriveHumanExperienceConvergence(graph, derivation, seed) {
       structural: 'Can the source topology form the route?',
       experience: 'Can this lane execute and prove the human route end to end without inventing a seam?',
     }),
+    screenLensCompletion: seed.screenLensCompletionPolicy
+      ? Object.freeze({
+          ...seed.screenLensCompletionPolicy,
+          orthogonalAxes: Object.freeze([...(seed.screenLensCompletionPolicy.orthogonalAxes ?? [])]),
+          laws: Object.freeze([...(seed.screenLensCompletionPolicy.laws ?? [])]),
+          promotionOrder: Object.freeze([...(seed.screenLensCompletionPolicy.promotionOrder ?? [])]),
+        })
+      : null,
     routes: Object.freeze(routeRows),
     focusFamilies: Object.freeze(focusFamilies),
     relationships: Object.freeze(relationships),
@@ -261,6 +269,12 @@ export function renderHumanExperienceConvergence(result) {
   lines.push('  structural = source relationships can be drawn truthfully');
   lines.push('  experience = a human can actually run/prove the route in this lane');
   lines.push('');
+  if (result.screenLensCompletion) {
+    lines.push('Screen Lens completion:');
+    lines.push(`  axes: ${result.screenLensCompletion.orthogonalAxes.join(' × ')}`);
+    lines.push(`  criterion: ${result.screenLensCompletion.completionCriterion}`);
+    lines.push('');
+  }
   lines.push('Focus families:');
   for (const row of result.focusFamilies) {
     lines.push(`  ${row.family}: structural CLEARED ${row.structural.CLEARED}/${row.routeCount}; experience CLEARED ${row.experience.CLEARED}/${row.routeCount}; experience debt ${row.experience.FRONTIER_DEBT}`);
