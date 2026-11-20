@@ -2483,11 +2483,11 @@
         {
           "workRef": "work.vexlife.tocompletion.outcome",
           "label": "VexLife ToCompletion",
-          "purpose": "Carry the full VexLife ToCompletion trajectory: preserve the terminal P1-P4 lived core, preserve terminal G02/G03 developmental continuity without fabricating G04, actively complete ordinary fresh-user Heretic productization through the rightful setup-safety owner, and later mature earned developmental and connected/native horizons under the same Home/identity/capability laws.",
+          "purpose": "Preserve the completed ToCompletion core and ordinary Heretic runtime/restart evidence as durable provenance while retaining the genuinely unresolved original-VexLife front-door acceptance and later developmental/whole-product horizons. Current product construction proceeds through Interface Refinement and New Beginnings/VexLife-Prod; this historical root is paused rather than presented as active IMMEDIATE work or falsely declared complete.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "PAUSED_AT_CHECKPOINT",
           "workDisposition": "ACTIVE",
-          "priorityClass": "IMMEDIATE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vexlife.tocompletion.p0.research-closure",
@@ -2522,7 +2522,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T00:13:43.000Z",
-          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": []
         },
         {
@@ -3114,7 +3114,7 @@
           "workClass": "OUTCOME",
           "state": "PAUSED_AT_CHECKPOINT",
           "workDisposition": "ACTIVE",
-          "priorityClass": "IMMEDIATE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
           "childWorkRefs": [
             "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
@@ -3141,7 +3141,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-22T01:08:02.000Z",
-          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.tocompletion.p5.lived-continuity-learning.paused.g03-terminal-no-g04-evidence",
@@ -3164,7 +3164,7 @@
           "workClass": "OUTCOME",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
-          "priorityClass": "HIGH",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
@@ -3185,7 +3185,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-20T00:14:25.000Z",
-          "updatedAt": "2026-10-20T00:14:25.000Z",
+          "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": []
         },
         {
@@ -3220,10 +3220,10 @@
         },
         {
           "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
-          "label": "Normal-start integration — route safe setup into accepted Heretic establishment",
-          "purpose": "Actively connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, carrying the exact runtime receipt/endpoint into the existing Browser/Lived Companion without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
+          "label": "Normal-start integration — accepted Heretic setup source",
+          "purpose": "Terminally accepted source integration for ordinary Mac startup into the Heretic product route. PR920 supplied the normal-start composition, PR921 corrected setup plan-state parsing, and PR923 corrected lifecycle pretty-JSON parsing; A034 later proved the resulting ordinary runtime path in lived use.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
@@ -3248,7 +3248,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T05:30:00.000Z",
-          "updatedAt": "2026-10-23T08:30:00.000Z",
+          "updatedAt": "2026-10-24T08:03:08.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.ready.pr873-terminal",
@@ -3279,12 +3279,12 @@
         },
         {
           "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
-          "label": "Ordinary productization — safe fresh setup enters Heretic",
-          "purpose": "Complete the ordinary fresh-user Mac route so the repository-owned setup path preserves setup-session safety and enters the accepted Heretic establishment/runtime/Conversation composition instead of centering the legacy G0 Qwen3.5/llama.cpp initializer.",
+          "label": "Ordinary productization — Heretic lived path preserved; original front-door acceptance paused",
+          "purpose": "Preserve A034's terminal ordinary Heretic runtime/restart proof and the accepted normal-start source chain, while retaining the later original-VexLife Mac front-door Open -> Conversation -> real Heretic reply -> same-Conversation re-entry witness as genuinely unresolved. Current product construction continues in New Beginnings/VexLife-Prod, so this predecessor outcome is paused instead of advertised as active immediate work.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "PAUSED_AT_CHECKPOINT",
           "workDisposition": "ACTIVE",
-          "priorityClass": "IMMEDIATE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
           "childWorkRefs": [
             "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
@@ -3312,7 +3312,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T05:30:00.000Z",
-          "updatedAt": "2026-10-23T08:30:00.000Z",
+          "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": []
         },
         {
@@ -3394,17 +3394,15 @@
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": [
-            "work.vexlife.tocompletion.outcome",
-            "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
-            "work.vexlife.tocompletion.productization.ordinary-heretic-setup"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.waiting",
           "label": "Waiting",
           "workRefs": [
-            "work.vexlife.tocompletion.p5.lived-continuity-learning"
+            "work.vexlife.tocompletion.outcome",
+            "work.vexlife.tocompletion.p5.lived-continuity-learning",
+            "work.vexlife.tocompletion.productization.ordinary-heretic-setup"
           ]
         },
         {
@@ -3434,6 +3432,7 @@
             "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
             "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
             "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
+            "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
             "work.vexlife.tocompletion.productization.setup-safety-convergence",
             "work.vexlife.tocompletion.p0.research-closure",
             "work.vexlife.tocompletion.p0b.foundation",
@@ -3451,23 +3450,23 @@
       ],
       "summary": {
         "workItemCount": 21,
-        "openWorkItemCount": 6,
+        "openWorkItemCount": 5,
         "outcomeCount": 6,
         "taskCount": 15,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 15
+        "completedCount": 16
       },
       "rootItems": [
         {
           "workRef": "work.vexlife.tocompletion.outcome",
           "label": "VexLife ToCompletion",
-          "purpose": "Carry the full VexLife ToCompletion trajectory: preserve the terminal P1-P4 lived core, preserve terminal G02/G03 developmental continuity without fabricating G04, actively complete ordinary fresh-user Heretic productization through the rightful setup-safety owner, and later mature earned developmental and connected/native horizons under the same Home/identity/capability laws.",
+          "purpose": "Preserve the completed ToCompletion core and ordinary Heretic runtime/restart evidence as durable provenance while retaining the genuinely unresolved original-VexLife front-door acceptance and later developmental/whole-product horizons. Current product construction proceeds through Interface Refinement and New Beginnings/VexLife-Prod; this historical root is paused rather than presented as active IMMEDIATE work or falsely declared complete.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "PAUSED_AT_CHECKPOINT",
           "workDisposition": "ACTIVE",
-          "priorityClass": "IMMEDIATE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vexlife.tocompletion.p0.research-closure",
@@ -3502,7 +3501,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T00:13:43.000Z",
-          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": []
         }
       ]
