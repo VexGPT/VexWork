@@ -58,16 +58,17 @@
       "label": "Map current VexStream projectability",
       "purpose": "Map current V4 semantic owners, lived shell, stable browser identity, Journeys and proof to classify each first-slice relationship as projectable as-is, identity alignment, bounded refactor, or held before choosing a producer or changing target source.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "dependencyRefs": [],
       "sourceRefs": [
         "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
         "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
         "repo.vexstream-music:v2/architecture/README.md",
         "repo.vexstream-music:v2/web/index.html",
-        "repo.vexstream-music:v2/web/app.js"
+        "repo.vexstream-music:v2/web/app.js",
+        "github.pull.vexwork.382"
       ],
-      "updatedAt": "2026-11-20T13:30:00.002Z"
+      "updatedAt": "2026-11-20T13:36:00.002Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -87,16 +88,20 @@
       "label": "Align only source identities projection cannot address truthfully",
       "purpose": "Resolve the current lived-shell Screen coordinate and top-level Previous affordance identity at the VexStream source owner without redesigning V4, minting a projection-only registry, or inventing a semantic Family.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "dependencyRefs": [
         "work.vexstream-music.projectability.current-source-map"
       ],
       "sourceRefs": [
         "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
         "repo.vexstream-music:v2/web/index.html",
-        "repo.vexstream-music:v2/web/features/player/composition.js"
+        "repo.vexstream-music:v2/web/features/player/composition.js",
+        "repo.vexstream-music:v2/web/features/playback/journey.js",
+        "repo.vexstream-music:v2/web/features/player/journey.js",
+        "repo.vexstream-music:v2/tests/playback-browser-regression.py",
+        "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md"
       ],
-      "updatedAt": "2026-11-20T13:30:00.000Z"
+      "updatedAt": "2026-11-20T13:36:00.005Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -214,6 +219,63 @@
         "repo.vexstream-music:v2/web/app.js"
       ],
       "createdAt": "2026-11-20T13:30:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.current-source-map.verifying.identity-seams",
+      "workRef": "work.vexstream-music.projectability.current-source-map",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Current V4 semantic owners, lived shell, browser identity, Journeys and proof were classified. Playback/Queue are mostly projectable as-is while current screen identity and the top-level Previous affordance are bounded identity-alignment seams.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "github.pull.vexwork.382"
+      ],
+      "createdAt": "2026-11-20T13:36:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.current-source-map.completed.identity-first-route",
+      "workRef": "work.vexstream-music.projectability.current-source-map",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The map is durable and sufficient to choose identity-first source alignment without a wholesale V4 refactor or premature producer choice.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "projects/vexstream-music-projectability/README.md"
+      ],
+      "createdAt": "2026-11-20T13:36:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.identity-alignment.ready.map-complete",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The current-source-map dependency completed and bounded the only first-slice source mutations to stable identity alignment.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream-music.projectability.current-source-map",
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md"
+      ],
+      "createdAt": "2026-11-20T13:36:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.identity-alignment.running.target-source",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin target-repository identity alignment for stale practicum Screen coordinates and the top-level Previous composition affordance; no structural refactor or producer implementation is admitted yet.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "repo.vexstream-music:v2/web/index.html",
+        "repo.vexstream-music:v2/web/features/player/composition.js",
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md"
+      ],
+      "createdAt": "2026-11-20T13:36:00.005Z"
     }
   ],
   "sourceRefs": [
