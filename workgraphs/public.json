@@ -6468,7 +6468,7 @@
       "label": "Map current Android / Product projection divergence",
       "purpose": "Re-ground current merged VexWork, VexLife-Android and VexLife-Prod source and produce one evidence matrix that classifies each projection difference as source-earned product/platform meaning, producer implementation detail, generic VexBoard behavior, or accidental duplicated convention. Consume the existing Android VexArchitecture/VexBoard audit instead of redoing it. Do not refactor before this classification exists.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -6496,11 +6496,12 @@
         "github.pull.vexwork.366",
         "github.pull.vexwork.367",
         "github.pull.vexwork.368",
-        "github.pull.vexlife-prod.437"
+        "github.pull.vexlife-prod.437",
+        "projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-20T11:44:00.000Z",
-      "updatedAt": "2026-11-20T11:44:00.000Z"
+      "updatedAt": "2026-11-20T13:24:00.003Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6509,7 +6510,7 @@
       "label": "Lived cross-platform acceptance and Stable/Main closure",
       "purpose": "Prove exact producer output through VexBoard normalization, expressions and browser rendering for Android and VexLife-Prod; verify source-owned content, container visibility, navigation and Behavior/Depth continuity; preserve Stable as explicit human acceptance and Main as current observed source. Complete only after both products remain recognizable and no platform-specific reader fork is required.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexboard.projection-consolidation.multi-platform-conformance"
@@ -6539,11 +6540,13 @@
         "github.pull.vexwork.366",
         "github.pull.vexwork.367",
         "github.pull.vexwork.368",
-        "github.pull.vexlife-prod.437"
+        "github.pull.vexlife-prod.437",
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-20T11:44:00.000Z",
-      "updatedAt": "2026-11-20T11:44:00.000Z"
+      "updatedAt": "2026-11-20T13:24:00.019Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6552,7 +6555,7 @@
       "label": "Prove multi-platform projection conformance",
       "purpose": "Exercise Android and VexLife-Prod as materially different consumers of the same generic reader contract and add a neutral third-subject/shape fixture that proves a future platform can reuse an admitted realization shape without adding a platform-name branch. If a genuinely new shape is required, earn one generic extension and keep both existing products green.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexboard.projection-consolidation.producer-contract",
@@ -6583,11 +6586,15 @@
         "github.pull.vexwork.366",
         "github.pull.vexwork.367",
         "github.pull.vexwork.368",
-        "github.pull.vexlife-prod.437"
+        "github.pull.vexlife-prod.437",
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json",
+        "test/vexboard-screen-lens-frames.test.mjs",
+        "github.pull.vexwork.377"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-20T11:44:00.000Z",
-      "updatedAt": "2026-11-20T11:44:00.000Z"
+      "updatedAt": "2026-11-20T13:24:00.015Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6596,7 +6603,7 @@
       "label": "VexBoard Projection Consolidation",
       "purpose": "Make Screen Lens scale across materially different products by consolidating accidental Android/Product projection divergence behind one source-shaped producer and reader grammar, while preserving source-earned differences and avoiding a universal renderer rewrite.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -6624,11 +6631,14 @@
         "github.pull.vexwork.366",
         "github.pull.vexwork.367",
         "github.pull.vexwork.368",
-        "github.pull.vexlife-prod.437"
+        "github.pull.vexlife-prod.437",
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-20T11:44:00.000Z",
-      "updatedAt": "2026-11-20T11:44:00.000Z"
+      "updatedAt": "2026-11-20T13:24:00.022Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6637,7 +6647,7 @@
       "label": "Converge the Screen Lens producer contract",
       "purpose": "Use the divergence map to make native exporters and source adapters converge on one truthful vexboard.screen-lens/v1 producer boundary: shared semantic coordinates, realization facts, presentation/currentness provenance and bindings where earned. Keep producer implementation location platform-appropriate; do not create a plugin framework or move ownership merely for symmetry.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexboard.projection-consolidation.current-divergence-map"
@@ -6667,11 +6677,13 @@
         "github.pull.vexwork.366",
         "github.pull.vexwork.367",
         "github.pull.vexwork.368",
-        "github.pull.vexlife-prod.437"
+        "github.pull.vexlife-prod.437",
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-20T11:44:00.000Z",
-      "updatedAt": "2026-11-20T11:44:00.000Z"
+      "updatedAt": "2026-11-20T13:24:00.007Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6680,7 +6692,7 @@
       "label": "Consolidate generic realization behavior",
       "purpose": "Make VexBoard select Surface/Structure realization from source-authored facts such as static view, frame/layout, compact hierarchy, presence and interaction/state bindings rather than product/platform identity. Remove duplicated support UI or platform branches only where the divergence map proves the same meaning; preserve alignment != sameness, source-owned words/icons, and generic container/scroll ownership.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexboard.projection-consolidation.producer-contract"
@@ -6710,11 +6722,12 @@
         "github.pull.vexwork.366",
         "github.pull.vexwork.367",
         "github.pull.vexwork.368",
-        "github.pull.vexlife-prod.437"
+        "github.pull.vexlife-prod.437",
+        "github.pull.vexwork.377"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-20T11:44:00.000Z",
-      "updatedAt": "2026-11-20T11:44:00.000Z"
+      "updatedAt": "2026-11-20T13:24:00.011Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -16790,6 +16803,339 @@
         "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
       ],
       "createdAt": "2026-11-20T08:14:00.011Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.divergence.running.live-map",
+      "workRef": "work.vexboard.projection-consolidation.current-divergence-map",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Live Android, Product and VexWork source were re-grounded and the divergence classification was authored before refactoring.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md",
+        "projects/vexboard-projection-consolidation/README.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.divergence.verifying.source-classification",
+      "workRef": "work.vexboard.projection-consolidation.current-divergence-map",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The map distinguished source-earned manifestation differences from generic reader behavior and accidental proof duplication.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md",
+        "projects/vexboard-projection-consolidation/README.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.divergence.completed.accepted-map",
+      "workRef": "work.vexboard.projection-consolidation.current-divergence-map",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The durable divergence map is present and consumed by the successor implementation rather than remaining analysis-only.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md",
+        "projects/vexboard-projection-consolidation/README.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.lived.ready.conformance-complete",
+      "workRef": "work.vexboard.projection-consolidation.lived-acceptance",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The composed conformance dependency completed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20",
+        "projects/vexboard-projection-consolidation/README.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.016Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.lived.running.raw-git-witness",
+      "workRef": "work.vexboard.projection-consolidation.lived-acceptance",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor exercised Android and Product raw-git views across expression transitions, resizing, stacked/split placement and scroll engagement.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20",
+        "projects/vexboard-projection-consolidation/README.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.017Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.lived.verifying.foundation-pass",
+      "workRef": "work.vexboard.projection-consolidation.lived-acceptance",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The final paired-container build resolved the observed dead-scroll and ordering failures without reopening Product-specific reader branches.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20",
+        "projects/vexboard-projection-consolidation/README.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.018Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.lived.completed.human-accepted",
+      "workRef": "work.vexboard.projection-consolidation.lived-acceptance",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Victor explicitly accepted the foundation: \"okay looks great, id say we pass at this foundation\".",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20",
+        "projects/vexboard-projection-consolidation/README.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.019Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.conformance.ready.realization-complete",
+      "workRef": "work.vexboard.projection-consolidation.multi-platform-conformance",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Producer and realization dependencies completed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json",
+        "test/vexboard-screen-lens-frames.test.mjs",
+        "github.pull.vexwork.377"
+      ],
+      "createdAt": "2026-11-20T13:24:00.012Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.conformance.running.neutral-pressure",
+      "workRef": "work.vexboard.projection-consolidation.multi-platform-conformance",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A neutral FRAME_WORKSPACE + ELEMENT_TREE subject broke the historical Product/workspace/source-view correlation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json",
+        "test/vexboard-screen-lens-frames.test.mjs",
+        "github.pull.vexwork.377"
+      ],
+      "createdAt": "2026-11-20T13:24:00.013Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.conformance.verifying.composed-suite",
+      "workRef": "work.vexboard.projection-consolidation.multi-platform-conformance",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The accepted UI/engagement, cross-producer conformance and frame regression floors ran together after stack composition.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json",
+        "test/vexboard-screen-lens-frames.test.mjs",
+        "github.pull.vexwork.377"
+      ],
+      "createdAt": "2026-11-20T13:24:00.014Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.conformance.completed.96-pass",
+      "workRef": "work.vexboard.projection-consolidation.multi-platform-conformance",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "GitHub-hosted composed proof reached 96 tests PASS and 0 FAIL; temporary proof carriage was removed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json",
+        "test/vexboard-screen-lens-frames.test.mjs",
+        "github.pull.vexwork.377"
+      ],
+      "createdAt": "2026-11-20T13:24:00.015Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.outcome.running.accepted-execution",
+      "workRef": "work.vexboard.projection-consolidation.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The formed Project entered bounded execution when the Android/Product divergence map and producer-neutral conformance pressure were carried on PR #376/#377.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard-projection-consolidation/README.md",
+        "projects/vexboard/SCREEN-LENS.md",
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20"
+      ],
+      "createdAt": "2026-11-20T13:24:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.outcome.verifying.children-complete",
+      "workRef": "work.vexboard.projection-consolidation.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "All bounded Projection Consolidation child outcomes are source-present, composed and complete.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard-projection-consolidation/README.md",
+        "projects/vexboard/SCREEN-LENS.md",
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20"
+      ],
+      "createdAt": "2026-11-20T13:24:00.020Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.outcome.completed.foundation-accepted",
+      "workRef": "work.vexboard.projection-consolidation.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The projection foundation is human-accepted and proven across Android, Product and a neutral shape; future scalability pressure should consume it rather than keep this outcome artificially open.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard-projection-consolidation/README.md",
+        "projects/vexboard/SCREEN-LENS.md",
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "github.pull.vexwork.377",
+        "human.victor.projection-foundation-acceptance-2026-11-20"
+      ],
+      "createdAt": "2026-11-20T13:24:00.022Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.producer.ready.divergence-complete",
+      "workRef": "work.vexboard.projection-consolidation.producer-contract",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The divergence-map dependency completed and exposed producer-neutral conformance as the smallest reusable contract pressure.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.producer.running.shared-seam",
+      "workRef": "work.vexboard.projection-consolidation.producer-contract",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Android Main, Product and a neutral subject were placed behind one emitted Screen Lens consumer seam without moving producer ownership.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.producer.verifying.cross-producer-proof",
+      "workRef": "work.vexboard.projection-consolidation.producer-contract",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The shared conformance test exercised normalization, expressions, realization and source-shaped invariants across materially different producers.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.006Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.producer.completed.no-framework-needed",
+      "workRef": "work.vexboard.projection-consolidation.producer-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The existing vexboard.screen-lens/v1 boundary proved sufficient; no plugin framework or Product-name producer contract was earned.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md"
+      ],
+      "createdAt": "2026-11-20T13:24:00.007Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.realization.ready.producer-complete",
+      "workRef": "work.vexboard.projection-consolidation.realization-convergence",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The shared producer boundary completed, releasing generic realization pressure.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexboard/lens.html",
+        "projects/vexboard/SCREEN-LENS.md",
+        "github.pull.vexwork.377"
+      ],
+      "createdAt": "2026-11-20T13:24:00.008Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.realization.running.source-shaped",
+      "workRef": "work.vexboard.projection-consolidation.realization-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Reader behavior was refined around source-authored view/layout facts, SOURCE_VIEW continuity, and one paired Experience/Behavior container.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexboard/lens.html",
+        "projects/vexboard/SCREEN-LENS.md",
+        "github.pull.vexwork.377"
+      ],
+      "createdAt": "2026-11-20T13:24:00.009Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.realization.verifying.engagement-ownership",
+      "workRef": "work.vexboard.projection-consolidation.realization-convergence",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Lived resizing and scrolling pressure verified that split/stacked placement, tray order, bridge visibility, camera refit and scroll/gesture ownership derive from the same container relationship.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexboard/lens.html",
+        "projects/vexboard/SCREEN-LENS.md",
+        "github.pull.vexwork.377"
+      ],
+      "createdAt": "2026-11-20T13:24:00.010Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.projection-consolidation.realization.completed.generic-reader-law",
+      "workRef": "work.vexboard.projection-consolidation.realization-convergence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The reader no longer needs a medium-width Product workaround; manifestation and engagement remain source/relationship shaped.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexboard/lens.html",
+        "projects/vexboard/SCREEN-LENS.md",
+        "github.pull.vexwork.377"
+      ],
+      "createdAt": "2026-11-20T13:24:00.011Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
