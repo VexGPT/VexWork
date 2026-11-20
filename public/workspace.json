@@ -2484,7 +2484,7 @@
           "label": "Android Proof Orchestration",
           "purpose": "Create one reusable Android proof-target foundation so feature lanes can request an API capability, obtain one truthful isolated target, execute repository-owned proof, and release only task-owned emulator effects.",
           "workClass": "OUTCOME",
-          "state": "DECOMPOSED",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": null,
@@ -2506,15 +2506,47 @@
             "github.pull.vextreme-sdk.1895",
             "github.pull.vextreme-sdk.1896",
             "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151",
-            "github.issue.vexlife-android.157.comment.6361100553"
+            "github.issue.vexlife-android.157.comment.6361100553",
+            "work.android-proof-orchestration.api-target-runner",
+            "work.android-proof-orchestration.vexrelay-integration",
+            "work.android-proof-orchestration.device-lease-queue"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T03:15:48.000Z",
-          "updatedAt": "2026-10-23T07:18:25.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T07:18:25.004Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.android-proof-orchestration.outcome.decomposed.plan-validated.runner-complete",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "The first reusable orchestration slice is terminal accepted and was consumed by real Android API36/API28 proof, validating the Project decomposition while preserving Relay integration and lease/queue as separate later work.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.android-proof-orchestration.api-target-runner",
+                "github.pull.vextreme-sdk.1895",
+                "github.pull.vextreme-sdk.1896",
+                "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151"
+              ],
+              "createdAt": "2026-10-23T07:18:25.003Z"
+            },
+            {
+              "transitionRef": "transition.android-proof-orchestration.outcome.plan-validated.ready.runner-releases-successors",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Completion of the reusable API target runner released both remaining Project rows to READY. Neither VexRelay target integration nor the general device lease/wait queue is implemented yet, so the Project is ready for continuation rather than actively running.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.android-proof-orchestration.api-target-runner",
+                "work.android-proof-orchestration.vexrelay-integration",
+                "work.android-proof-orchestration.device-lease-queue",
+                "projects/android-proof-orchestration/README.md"
+              ],
+              "createdAt": "2026-10-23T07:18:25.004Z"
+            }
+          ]
         },
         {
           "workRef": "work.android-proof-orchestration.vexrelay-integration",
@@ -2567,9 +2599,7 @@
         {
           "laneRef": "lane.work.intake",
           "label": "Intake",
-          "workRefs": [
-            "work.android-proof-orchestration.outcome"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.planned",
@@ -2580,6 +2610,7 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
+            "work.android-proof-orchestration.outcome",
             "work.android-proof-orchestration.vexrelay-integration",
             "work.android-proof-orchestration.device-lease-queue"
           ]
@@ -2638,7 +2669,7 @@
           "label": "Android Proof Orchestration",
           "purpose": "Create one reusable Android proof-target foundation so feature lanes can request an API capability, obtain one truthful isolated target, execute repository-owned proof, and release only task-owned emulator effects.",
           "workClass": "OUTCOME",
-          "state": "DECOMPOSED",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": null,
@@ -2660,15 +2691,47 @@
             "github.pull.vextreme-sdk.1895",
             "github.pull.vextreme-sdk.1896",
             "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151",
-            "github.issue.vexlife-android.157.comment.6361100553"
+            "github.issue.vexlife-android.157.comment.6361100553",
+            "work.android-proof-orchestration.api-target-runner",
+            "work.android-proof-orchestration.vexrelay-integration",
+            "work.android-proof-orchestration.device-lease-queue"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T03:15:48.000Z",
-          "updatedAt": "2026-10-23T07:18:25.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T07:18:25.004Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.android-proof-orchestration.outcome.decomposed.plan-validated.runner-complete",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "The first reusable orchestration slice is terminal accepted and was consumed by real Android API36/API28 proof, validating the Project decomposition while preserving Relay integration and lease/queue as separate later work.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.android-proof-orchestration.api-target-runner",
+                "github.pull.vextreme-sdk.1895",
+                "github.pull.vextreme-sdk.1896",
+                "github.commit.vextreme-sdk.ff7b84913f855bbde6a3c5b7cf4f9f3d5e540151"
+              ],
+              "createdAt": "2026-10-23T07:18:25.003Z"
+            },
+            {
+              "transitionRef": "transition.android-proof-orchestration.outcome.plan-validated.ready.runner-releases-successors",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Completion of the reusable API target runner released both remaining Project rows to READY. Neither VexRelay target integration nor the general device lease/wait queue is implemented yet, so the Project is ready for continuation rather than actively running.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.android-proof-orchestration.api-target-runner",
+                "work.android-proof-orchestration.vexrelay-integration",
+                "work.android-proof-orchestration.device-lease-queue",
+                "projects/android-proof-orchestration/README.md"
+              ],
+              "createdAt": "2026-10-23T07:18:25.004Z"
+            }
+          ]
         }
       ]
     },
