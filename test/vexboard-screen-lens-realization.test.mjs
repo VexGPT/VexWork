@@ -36,7 +36,7 @@ const base = () => ({
         { ref: 'presence.s.sheet-open', kind: 'PRESENTATION', subjectRef: 'element.s.body.sheet', owner: 'runtime.presentation', condition: 'runtime.presentation.isOpen(S.Sheet)', realizes: ['element.s.body.sheet.close'] },
         { ref: 'presence.s.content-selection', kind: 'SELECTION', subjectRef: 'element.s.body.content', owner: 'runtime.presentation', defaultRef: 'element.s.body.a', choices: [
           { condition: 'loading', kind: 'GUARD', realizedBy: 'Spinner', realizes: [] },
-          { condition: 'selected == S.B', kind: 'SELECTION', targetRef: 'element.s.body.b', realizedBy: 'BPane', realizes: ['element.s.body.b'] },
+          { condition: 'selected == S.B', kind: 'SELECTION', targetRef: 'element.s.body.b', selectorRefs: ['element.s.body.bucket.act'], realizedBy: 'BPane', realizes: ['element.s.body.b'] },
           { condition: 'else', kind: 'OTHERWISE', realizedBy: 'APane', realizes: [] },
         ] },
         { ref: 'presence.s.flag-branch', kind: 'BRANCH', subjectRef: 'element.s.body.flag', owner: 'feature', choices: [{ condition: 'state.flag', realizes: ['element.s.body.flag'] }] },
@@ -58,6 +58,11 @@ const base = () => ({
 test('normalization carries realization and examples, and fails closed on dangling refs and unknown kinds', () => {
   const lens = normalizeScreenLens(base());
   assert.equal(lens.screens[0].realization.presence.length, 4);
+  assert.deepEqual(
+    lens.screens[0].realization.presence[1].choices[1].selectorRefs,
+    ['element.s.body.bucket.act'],
+    'selection controls remain source-owned relationship data',
+  );
   assert.equal(lens.examples.length, 2);
 
   const unknownKind = base();
@@ -71,6 +76,10 @@ test('normalization carries realization and examples, and fails closed on dangli
   const badTemplate = base();
   badTemplate.screens[0].realization.elements[0].realizedIn = ['template.s.ghost'];
   assert.throws(() => normalizeScreenLens(badTemplate), /template template\.s\.ghost is not declared/);
+
+  const badSelector = base();
+  badSelector.screens[0].realization.presence[1].choices[1].selectorRefs = ['element.s.ghost'];
+  assert.throws(() => normalizeScreenLens(badSelector), /choice selector element\.s\.ghost is not a lens ref/);
 
   const badExample = base();
   badExample.examples[0].related = [{ ref: 'golden:ghost', via: [] }];
