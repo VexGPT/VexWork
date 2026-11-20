@@ -9013,17 +9013,17 @@
           "face": "DEPTH",
           "role": "STORE",
           "label": "repositories.events",
-          "symbol": "repositories.events",
-          "summary": "Normal feature truth the controller writes through.",
+          "symbol": "context.repositories.events",
+          "summary": "Outside truth this registration touches.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
           "ref": "events.synthetic.start.dep-scope",
           "face": "DEPTH",
-          "role": "STORE",
-          "label": "scope",
-          "symbol": "scope",
-          "summary": "Normal feature truth the controller writes through.",
+          "role": "CONSTRUCTION",
+          "label": "CoroutineScope",
+          "symbol": "context.scope",
+          "summary": "Coroutine lifetime host captured by the registration; it is not outside truth.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         }
       ],
@@ -9046,12 +9046,12 @@
         {
           "from": "events.synthetic.start.calls-syntheticEvents",
           "to": "events.synthetic.start.dep-repositories-events",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.synthetic.start.calls-syntheticEvents",
           "to": "events.synthetic.start.dep-scope",
-          "label": "writes"
+          "label": "uses"
         }
       ]
     },
@@ -9104,17 +9104,17 @@
           "face": "DEPTH",
           "role": "STORE",
           "label": "repositories.events",
-          "symbol": "repositories.events",
-          "summary": "Normal feature truth the controller writes through.",
+          "symbol": "context.repositories.events",
+          "summary": "Outside truth this registration touches.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
           "ref": "events.synthetic.stop.dep-scope",
           "face": "DEPTH",
-          "role": "STORE",
-          "label": "scope",
-          "symbol": "scope",
-          "summary": "Normal feature truth the controller writes through.",
+          "role": "CONSTRUCTION",
+          "label": "CoroutineScope",
+          "symbol": "context.scope",
+          "summary": "Coroutine lifetime host captured by the registration; it is not outside truth.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         }
       ],
@@ -9137,12 +9137,12 @@
         {
           "from": "events.synthetic.stop.calls-syntheticEvents",
           "to": "events.synthetic.stop.dep-repositories-events",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.synthetic.stop.calls-syntheticEvents",
           "to": "events.synthetic.stop.dep-scope",
-          "label": "writes"
+          "label": "uses"
         }
       ]
     },
@@ -9195,17 +9195,17 @@
           "face": "DEPTH",
           "role": "STORE",
           "label": "repositories.events",
-          "symbol": "repositories.events",
-          "summary": "Normal feature truth the controller writes through.",
+          "symbol": "context.repositories.events",
+          "summary": "Outside truth this registration touches.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
           "ref": "events.synthetic.emit-next.dep-scope",
           "face": "DEPTH",
-          "role": "STORE",
-          "label": "scope",
-          "symbol": "scope",
-          "summary": "Normal feature truth the controller writes through.",
+          "role": "CONSTRUCTION",
+          "label": "CoroutineScope",
+          "symbol": "context.scope",
+          "summary": "Coroutine lifetime host captured by the registration; it is not outside truth.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         }
       ],
@@ -9228,12 +9228,12 @@
         {
           "from": "events.synthetic.emit-next.calls-syntheticEvents",
           "to": "events.synthetic.emit-next.dep-repositories-events",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.synthetic.emit-next.calls-syntheticEvents",
           "to": "events.synthetic.emit-next.dep-scope",
-          "label": "writes"
+          "label": "uses"
         }
       ]
     },
@@ -9286,17 +9286,17 @@
           "face": "DEPTH",
           "role": "STORE",
           "label": "repositories.events",
-          "symbol": "repositories.events",
-          "summary": "Normal feature truth the controller writes through.",
+          "symbol": "context.repositories.events",
+          "summary": "Outside truth this registration touches.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
           "ref": "events.synthetic.emit-burst.dep-scope",
           "face": "DEPTH",
-          "role": "STORE",
-          "label": "scope",
-          "symbol": "scope",
-          "summary": "Normal feature truth the controller writes through.",
+          "role": "CONSTRUCTION",
+          "label": "CoroutineScope",
+          "symbol": "context.scope",
+          "summary": "Coroutine lifetime host captured by the registration; it is not outside truth.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         }
       ],
@@ -9319,12 +9319,12 @@
         {
           "from": "events.synthetic.emit-burst.calls-syntheticEvents",
           "to": "events.synthetic.emit-burst.dep-repositories-events",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.synthetic.emit-burst.calls-syntheticEvents",
           "to": "events.synthetic.emit-burst.dep-scope",
-          "label": "writes"
+          "label": "uses"
         }
       ]
     },
@@ -9377,17 +9377,17 @@
           "face": "DEPTH",
           "role": "STORE",
           "label": "repositories.events",
-          "symbol": "repositories.events",
-          "summary": "Normal feature truth the controller writes through.",
+          "symbol": "context.repositories.events",
+          "summary": "Outside truth this registration touches.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
           "ref": "events.synthetic.insert-historical.dep-scope",
           "face": "DEPTH",
-          "role": "STORE",
-          "label": "scope",
-          "symbol": "scope",
-          "summary": "Normal feature truth the controller writes through.",
+          "role": "CONSTRUCTION",
+          "label": "CoroutineScope",
+          "symbol": "context.scope",
+          "summary": "Coroutine lifetime host captured by the registration; it is not outside truth.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         }
       ],
@@ -9410,12 +9410,12 @@
         {
           "from": "events.synthetic.insert-historical.calls-syntheticEvents",
           "to": "events.synthetic.insert-historical.dep-repositories-events",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.synthetic.insert-historical.calls-syntheticEvents",
           "to": "events.synthetic.insert-historical.dep-scope",
-          "label": "writes"
+          "label": "uses"
         }
       ]
     },
@@ -9468,17 +9468,17 @@
           "face": "DEPTH",
           "role": "STORE",
           "label": "repositories.events",
-          "symbol": "repositories.events",
-          "summary": "Normal feature truth the controller writes through.",
+          "symbol": "context.repositories.events",
+          "summary": "Outside truth this registration touches.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
           "ref": "events.synthetic.remove-oldest.dep-scope",
           "face": "DEPTH",
-          "role": "STORE",
-          "label": "scope",
-          "symbol": "scope",
-          "summary": "Normal feature truth the controller writes through.",
+          "role": "CONSTRUCTION",
+          "label": "CoroutineScope",
+          "symbol": "context.scope",
+          "summary": "Coroutine lifetime host captured by the registration; it is not outside truth.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         }
       ],
@@ -9501,12 +9501,12 @@
         {
           "from": "events.synthetic.remove-oldest.calls-syntheticEvents",
           "to": "events.synthetic.remove-oldest.dep-repositories-events",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.synthetic.remove-oldest.calls-syntheticEvents",
           "to": "events.synthetic.remove-oldest.dep-scope",
-          "label": "writes"
+          "label": "uses"
         }
       ]
     },
@@ -9559,17 +9559,17 @@
           "face": "DEPTH",
           "role": "STORE",
           "label": "repositories.events",
-          "symbol": "repositories.events",
-          "summary": "Normal feature truth the controller writes through.",
+          "symbol": "context.repositories.events",
+          "summary": "Outside truth this registration touches.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
           "ref": "events.synthetic.reset-lab.dep-scope",
           "face": "DEPTH",
-          "role": "STORE",
-          "label": "scope",
-          "symbol": "scope",
-          "summary": "Normal feature truth the controller writes through.",
+          "role": "CONSTRUCTION",
+          "label": "CoroutineScope",
+          "symbol": "context.scope",
+          "summary": "Coroutine lifetime host captured by the registration; it is not outside truth.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
@@ -9610,12 +9610,12 @@
         {
           "from": "events.synthetic.reset-lab.calls-syntheticEvents",
           "to": "events.synthetic.reset-lab.dep-repositories-events",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.synthetic.reset-lab.calls-syntheticEvents",
           "to": "events.synthetic.reset-lab.dep-scope",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.synthetic.reset-lab.registration",
@@ -9802,17 +9802,17 @@
           "face": "DEPTH",
           "role": "STORE",
           "label": "repositories.events",
-          "symbol": "repositories.events",
-          "summary": "Normal feature truth the controller writes through.",
+          "symbol": "context.repositories.events",
+          "summary": "Outside truth this registration touches.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
           "ref": "events.attention-lab.next-scenario.dep-scope",
           "face": "DEPTH",
-          "role": "STORE",
-          "label": "scope",
-          "symbol": "scope",
-          "summary": "Normal feature truth the controller writes through.",
+          "role": "CONSTRUCTION",
+          "label": "CoroutineScope",
+          "symbol": "context.scope",
+          "summary": "Coroutine lifetime host captured by the registration; it is not outside truth.",
           "source": "app:screens/shared/debug/DebugMenuScreen.kt"
         },
         {
@@ -9853,12 +9853,12 @@
         {
           "from": "events.attention-lab.next-scenario.calls-syntheticEvents",
           "to": "events.attention-lab.next-scenario.dep-repositories-events",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.attention-lab.next-scenario.calls-syntheticEvents",
           "to": "events.attention-lab.next-scenario.dep-scope",
-          "label": "writes"
+          "label": "uses"
         },
         {
           "from": "events.attention-lab.next-scenario.registration",
@@ -13138,7 +13138,7 @@
   ],
   "provenance": {
     "generator": "vexlife-android-adapter/5",
-    "projectorBlobSha1": "1b4c1c85494f6e3ccbd92131d0f80ff6b268441d",
+    "projectorBlobSha1": "0a056364b8a5f143b48105aaf1112ba0b335f736",
     "projectorSupportSha256": "cbbe5e9e3e6100ff63c70281ce36dea82451eb5d5b3d9f74c651b5e9a43ed74e",
     "adapterSha256": "8b35fbc93123d10f806b17acfa3903058e071b72aca63915a6d4cc51b347e447",
     "overlaySha256": "cf4db59794da0369bf0bb208b9d477cf2d0bd061f5aa480d2777c47817d14d9d",

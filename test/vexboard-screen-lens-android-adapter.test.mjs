@@ -38,6 +38,8 @@ object AppScreens {
   [`${APP}screens/AppScreenBlueprint.kt`]: `
 internal class ScreenActionContext(
     val repositories: AppRepositories,
+    val scope: CoroutineScope,
+    val helper: RegistrationHelper,
     val logger: VexLogger,
     val pickWidget: () -> Unit,
     val pingOther: () -> Unit,
@@ -244,8 +246,11 @@ object HomeScreen : AppScreenBlueprint(
         val pick = context.pickWidget
         val ping = context.pingOther
         val logger = context.logger
+        val helper = context.helper
         val lab = LabController(
             repository = context.repositories.things,
+            scope = context.scope,
+            helper = context.helper,
         )
         return AppActionRegistrations.of(
             appAction(action = AppActions.Pick, ownerRef = screenId) {
@@ -254,6 +259,7 @@ object HomeScreen : AppScreenBlueprint(
             appAction(action = AppActions.Clear, ownerRef = screenId) {
                 logger.clearHistory()
                 lab.reset()
+                helper.touch()
             },
             appAction(action = AppActions.Ping, ownerRef = screenId) {
                 ping()
@@ -708,6 +714,14 @@ test('direct registrations resolve receivers to owners, controllers and paramete
   assert.equal(node('owner-logger').label, 'VexLogger');
   assert.equal(node('calls-lab').label, 'LabController');
   assert.equal(node('dep-repositories-things').role, 'STORE');
+  assert.equal(node('dep-scope').label, 'CoroutineScope');
+  assert.equal(node('dep-scope').role, 'CONSTRUCTION');
+  assert.equal(node('dep-scope').face, 'DEPTH');
+  assert.equal(node('dep-helper').label, 'RegistrationHelper');
+  assert.equal(node('dep-helper').role, 'DISPATCH');
+  assert.equal(node('dep-helper').face, 'BEHAVIOR');
+  assert.equal(node('owner-helper').role, 'DISPATCH', 'an unclassified collaborator stays in the doorway instead of becoming outside truth');
+  assert.equal(node('owner-helper').face, 'BEHAVIOR');
   const save = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.settings.save');
   const repo = save.nodes.find((entry) => entry.ref === 'settings.save.owner-repository');
   assert.equal(repo.label, 'SettingsRepository');
