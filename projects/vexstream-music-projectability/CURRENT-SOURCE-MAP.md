@@ -12,7 +12,7 @@ repository
   repo.vexstream-music
 
 main
-  26a565d94a76860c4def02c6227286cd50caa531
+  03c1fe43ea90ccdc3be7c78193b209c15f3d5102
 
 formation baseline
   2b745e0a3f5e63e05dfa0cf25b0fac729c00f0c8
@@ -540,3 +540,105 @@ remaining bounded pressure includes
 
 Do not expand every latent row merely to exercise the new grammar. The next admitted Product state
 should pressure the shared law only where a real lived relationship requires it.
+
+
+## Deleted terrain + Trash runtime identity — current merged result
+
+Current VexStream main now carries a second runtime-identity consumer under a different Product owner:
+
+~~~text
+PR #32
+main 03c1fe43ea90ccdc3be7c78193b209c15f3d5102
+
+ShellNavigation
+  -> Deleted
+
+Trash refresh
+  vexstream.trash.refresh
+  -> ADDRESSABLE_HELD
+
+Trash item
+  source-owned item.id
+  -> RUNTIME_INSTANCE / STABLE_INSTANCE
+
+Trash row child presentation
+  selection
+  restore
+  purge
+  -> DERIVED_CHILD
+~~~
+
+Product identity owner:
+
+~~~text
+v2/web/features/library/trash-presentation.js
+~~~
+
+The exported Lens now contains:
+
+~~~text
+81 static/addressable elements
+13 semantic pathways
+7 presence relationships
+3 runtime population templates
+
+Playlist card
+  STABLE_INSTANCE / playlist.id
+
+Playlist detail entry
+  CURRENT_OCCURRENCE / playlist.id + entry.ref + occurrenceWithinPlaylist
+
+Trash item
+  STABLE_INSTANCE / item.id
+~~~
+
+Current audit remains blocker-free. The immediate Deleted terrain has one source-owned stable control:
+
+~~~text
+shell:deleted
+  ADDRESSABLE_HELD 1
+
+blocking []
+~~~
+
+Nested Trash states remain distinct rather than being silently claimed by top-level Deleted admission:
+
+~~~text
+trashSelectionBar
+trashPurgeConfirm
+purgeRecovery
+~~~
+
+Product proof:
+
+~~~text
+focused Deleted/runtime identity
+  run 44771459261
+  39 / 39 PASS
+  Lens regeneration byte-for-byte
+  audit regeneration byte-for-byte
+
+normal Windows final-head artifact
+  run 44771598394
+  job 136410403078
+  PASS
+~~~
+
+The next cross-consumer proof is VexWork's generic four-subject floor against this exact merged source.
+Until that passes, Product projection is established but the updated shared-consumer predicate remains
+separately open.
+
+### Current remaining trajectory
+
+~~~text
+lived acceptance          RUNNING
+full-product Stable       NOT CLAIMED
+
+top-level Deleted terrain COMPLETED at this bounded slice
+
+remaining bounded pressure includes
+  Trash selection / permanent-delete confirmation / recovery
+  nested Library states
+  YouTube Import review
+  other runtime populations only when their lived relationship enters admitted scope
+~~~
