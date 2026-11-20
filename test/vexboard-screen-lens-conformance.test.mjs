@@ -52,6 +52,40 @@ test('portable identity formation matches Android-style nested and scoped runtim
   assert.notEqual(songs, search, 'the same domain object may have distinct presentation occurrences');
 });
 
+test('runtime templates carry portable instance identity formation without claiming live instances', () => {
+  const input = structuredClone(subjects[3][1]);
+  input.screens[0].realization.templates.push({
+    ref: 'template.neutral.runtime-card',
+    symbol: 'RuntimeCard',
+    source: 'fixture:neutral/RuntimeCard',
+    summary: 'Runtime item template',
+    instanceFormation: 'runtimeRef(scopeRef, domainRef)',
+    instanceIdentity: {
+      kind: 'RUNTIME_INSTANCE',
+      baseRef: 'element.neutral-workspace.runtime-item',
+      partSources: ['scopeRef', 'domainRef'],
+    },
+    realizes: [],
+    usedBy: [],
+    slots: [],
+  });
+
+  const normalized = normalizeScreenLens(input);
+  const template = normalized.screens[0].realization.templates.find(
+    (value) => value.ref === 'template.neutral.runtime-card',
+  );
+  assert.deepEqual(template.instanceIdentity.partSources, ['scopeRef', 'domainRef']);
+  assert.equal(template.instanceIdentity.baseRef, 'element.neutral-workspace.runtime-item');
+
+  const bad = structuredClone(input);
+  bad.screens[0].realization.templates.at(-1).instanceIdentity.partSources = [];
+  assert.throws(
+    () => normalizeScreenLens(bad),
+    /partSources must be non-empty/,
+    'opaque instanceFormation text cannot substitute for a typed stable-instance contract',
+  );
+});
+
 test('Screen Lens validates only identities that a producer explicitly claims are derived', () => {
   const input = structuredClone(subjects[3][1]);
   const parentRef = 'element.neutral-workspace.primary';
