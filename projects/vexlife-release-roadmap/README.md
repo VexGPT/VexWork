@@ -25,6 +25,16 @@ Project/Board  = one bounded human projection
 
 Roadmap presentation should reuse those truths rather than creating a second status/timeline database.
 
+## Relationship currentness companion
+
+Cross-Project audit continuity is preserved in:
+
+```text
+projects/vexlife-release-roadmap/RELATIONSHIP-CURRENTNESS-COMPANION.md
+```
+
+It is a causal/resume projection only. The Workgraph remains lifecycle truth; target repositories remain source/runtime/proof owners. Use the companion to avoid broad portfolio rereading, then descend only into the exact implicated Project.
+
 ## Current roadmap
 
 | Horizon | Work | State | Priority | Meaning |
