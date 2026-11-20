@@ -67,6 +67,10 @@
       {
         "ref": "github.pull.vexwork.339",
         "meaning": "Generic Screen Lens Presentation consumer stacked on accepted recovery #335: source-authored color mode is shareable and applied read-only without Product-specific renderer logic."
+      },
+      {
+        "ref": "github.pull.vexlife-prod.421",
+        "meaning": "Active Product addressability successor on proved #419: Spiral trigger, Theme and Support gain stable Blueprint/VexWeb identities; runtime reuses authored controls; Theme is a presentation action and Support is external navigation rather than fake Family capability."
       }
     ],
     "experienceCandidate": {
@@ -815,9 +819,9 @@
     {
       "from": "VexLifeWorkspaceBlueprint",
       "to": "VexLifeWebP1RuntimeArtifacts",
-      "disposition": "FRONTIER_DEBT",
+      "disposition": "ACTIVE_CANDIDATE_REPAIR",
       "kind": "RUNTIME_CREATED_PRESENTATION_IDENTITY",
-      "humanMeaning": "Theme and Support quick actions are visible runtime presentation but currently have no stable Blueprint/VexWeb identities. Product source must name/project them before Screen Lens may show them as Product controls; VexWork must not invent them."
+      "humanMeaning": "Theme, Support and the Spiral trigger were runtime-created without stable Product coordinates. Product #421 now carries the candidate repair; the debt remains until exact source proof and canonical Product Lens regeneration make those identities projectable without the recovery fixture."
     }
   ],
   "surfaceBindings": [
@@ -1688,6 +1692,10 @@
       "419": {
         "state": "OPEN_DRAFT_PRODUCT_PRESENTATION_PROMOTION_CURRENT",
         "head": "9d07ae93ffa95f6780a2d7756add27efb1f8d228"
+      },
+      "421": {
+        "state": "OPEN_DRAFT_SPIRAL_ADDRESSABILITY_AWAITING_SOURCEOWNER",
+        "head": "0759f83ced61fda24f1561ed92897e1055a7672b"
       },
       "vexwork-331": {
         "state": "OPEN_DRAFT_GENERIC_LENS_CURRENTIZATION",
