@@ -712,6 +712,18 @@ D55 Identity genealogy is portable; naming remains source-owned
               explicitly claims that a ref was mechanically derived
     scale     Kotlin / Compose, HTML/JS, SwiftUI, native desktop, generated surfaces and future renderers may
               implement the same formation law without importing another platform's UI framework
+D56 Viewer faults are visible degradation, not silent full-screen failure
+    why       lived VexStream candidate review exposed that one browser-local null/runtime fault could
+              replace an otherwise useful Lens with a dead boot screen, hiding the valid projection that
+              would have helped diagnose the fault
+    how       browser-local walk state recovers to the exact source entry when that recovery is
+              deterministic; major viewer regions render behind local diagnostic boundaries; an uncaught
+              runtime fault after a Lens is live records a visible NULL_STATE or RUNTIME_ERROR diagnostic
+              while preserving the valid Lens regions already on screen
+    boundary  invalid Lens/source contracts still fail closed before a trustworthy Lens exists. Viewer
+              recovery never invents Product State, source identity, pathways, presence, or evidence;
+              diagnostics reveal missing/unresolved browser state rather than certifying it
+    meaning   NULL / missing / unresolved is inspectable viewer state, not a reason to hide unrelated truth
 ```
 
 ## Data contract
