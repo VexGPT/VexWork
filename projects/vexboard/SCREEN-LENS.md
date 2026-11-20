@@ -137,6 +137,31 @@ FRAME_WORKSPACE + ELEMENT_TREE
 
 The manifestation changes; the attention/engagement relationship does not.
 
+### Containers project their contained relationships
+
+A structural container is not behaviorless merely because it has no single pathway of its own.
+
+When a person selects a mapped container or region, the Behavior / Depth side projects the distinct
+pathways owned by controls inside that container as one aggregate relationship graph:
+
+~~~text
+selected container
+  -> descendant mapped controls
+  -> distinct pathwayRefs
+  -> aggregate Behavior / Depth graph
+~~~
+
+Selecting a node in that aggregate descends into the exact owning control/pathway.
+
+This is a reader projection over already-authored relationships. It creates no container-level semantic
+owner and does not collapse the child Families or compositions into one synthetic Family.
+
+~~~text
+CONTAINER_HAS_NO_SINGLE_PATHWAY
+!=
+CONTAINER_HAS_NO_RELATIONSHIPS
+~~~
+
 ## Role typing: color answers "which question does this answer?"
 
 Every node and element carries one role. Roles are grouped into bands by the VexArchitecture question

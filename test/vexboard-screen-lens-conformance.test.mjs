@@ -7,6 +7,8 @@ import * as Realization from '../src/shared/vexboard-screen-lens-realization.mjs
 import {
   LENS_ROLES,
   SCREEN_LENS_SCHEMA,
+  aggregateContainedFaceGraph,
+  containedPathways,
   normalizeScreenLens,
 } from '../src/shared/vexboard-screen-lens.mjs';
 import { frameGeometry } from '../src/shared/vexboard-screen-lens-frames.mjs';
@@ -106,6 +108,21 @@ test('a neutral FRAME workspace does not imply VexLife-Prod or STATIC_HTML_CSS',
   assert.ok(opened.reveals.includes('element.neutral-workspace.secondary.panel'));
 });
 
+
+test('a mapped container projects the relationships contained inside it', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const shellRef = 'vexstream.desktop.library.region.shell';
+  const pathways = containedPathways(vexstream, shellRef);
+  assert.equal(pathways.length, 5);
+  assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.player.previous'));
+  assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.playback.play-pause'));
+
+  const behavior = aggregateContainedFaceGraph(vexstream, shellRef, 'BEHAVIOR');
+  const depth = aggregateContainedFaceGraph(vexstream, shellRef, 'DEPTH');
+  assert.equal(behavior.pathwayRefs.length, 5);
+  assert.ok(behavior.nodes.length > 5, 'aggregate Behavior contains actual pathway nodes, not a screenshot placeholder');
+  assert.ok(depth.nodes.length > 0, 'aggregate Depth exposes the contained runtime/provider relationships');
+});
 
 test('VexStream proves a third real SOURCE_VIEW producer without a reader fork', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);

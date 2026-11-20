@@ -266,6 +266,14 @@ test('Experience and Behavior form one intrinsic pair whose wrap owns outer flow
   assert.doesNotMatch(page, /vexlife-prod[^\n]{0,160}pair-stacked|pair-stacked[^\n]{0,160}vexlife-prod/i, 'pair layout remains subject-agnostic');
 });
 
+test('container selection renders contained relationships instead of a blank Behavior side', () => {
+  assert.match(page, /Lens\.aggregateContainedFaceGraph\(state\.lens, anchor\.ref, face\)/);
+  assert.match(page, /contains \$\{relationshipCount\} projected relationship/);
+  assert.match(page, /function pathwayContainingNode\(ref\)/);
+  assert.match(page, /Lens\.elementsUsingPathway\(state\.lens, pathway\.pathwayRef\)\.find/);
+  assert.doesNotMatch(page, /Select a control on the left to trace a projected relationship\./);
+});
+
 test('source-owned static views keep expression continuity without remounting the Product iframe', () => {
   assert.match(page, /function applyStaticExpressionProjection\(doc, view, expression, motion = null\)/);
   assert.match(page, /doc\.defaultView\?\.matchMedia\?\.\('\(prefers-reduced-motion: reduce\)'\)/, 'source-view motion honors the host motion preference');
