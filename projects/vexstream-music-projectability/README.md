@@ -431,3 +431,45 @@ Explore     2 / 2
 
 The hidden YouTube Import review form remains explicitly separate nested debt. Playlists and Deleted
 remain later Shell terrains.
+
+
+## Playlists list/create terrain expansion
+
+Merged VexStream source now admits the top-level Playlists terrain:
+
+~~~text
+PR #29
+674e8cabf10fee335518bbc3c08080d21726e96b
+
+Shell -> Playlists
+~~~
+
+Immediate source identity:
+
+~~~text
+vexstream.playlists.create.name
+vexstream.playlists.create
+~~~
+
+The existing createPlaylist handler is unchanged.
+
+Current merged Lens:
+
+~~~text
+70 elements
+7 semantic pathways
+3 realization relationships
+10 static state bindings
+8 expressions via the generic VexWork engine
+audit blockers 0
+~~~
+
+Selected-playlist detail remains a distinct nested state:
+
+~~~text
+shell:playlists/hidden:#playlistDetail
+7 interactive affordances
+~~~
+
+That nested state is the next bounded Playlist pressure rather than being silently collapsed into the
+overview/create expression.

@@ -129,7 +129,7 @@ test('a mapped container projects the relationships contained inside it', () => 
 test('VexStream current default-visible projection carries the zero-blocker addressability census', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const [screen] = vexstream.screens;
-  assert.equal(screen.elements.length, 67, 'merged target source exports zero-blocker default-visible coverage plus admitted Library/Discover presentation structure');
+  assert.equal(screen.elements.length, 70, 'merged target source exports admitted Home/Library/Discover/Playlists terrain structure with zero-blocker immediate coverage');
   assert.equal(vexstream.pathways.length, 7, 'coverage completeness does not invent deeper semantic pathways');
   const refs = new Set(screen.elements.map((element) => element.ref));
   for (const ref of [
@@ -211,13 +211,35 @@ test('VexStream bounded Discover terrain is expressed through the same shared se
   assert.ok(find(PC), 'Discover / This PC alternate expression exists');
   assert.ok(find(YOUTUBE), 'Discover / YouTube alternate expression exists');
   assert.ok(find(EXPLORE), 'Discover / Explore alternate expression exists');
-  assert.equal(expressions.length, 7, 'Source + Library modes + Discover modes derive from the same generic expression engine');
+  assert.equal(expressions.length, 8, 'Source + Library modes + Discover modes + Playlists derive from the same generic expression engine');
   assert.equal(screen.view?.scriptPolicy, 'NONE');
   const discoverBindings = screen.view?.stateBindings?.filter((binding) =>
     binding.presenceRef === discoverRef
   ) ?? [];
   assert.equal(discoverBindings.length, 3);
   assert.equal(vexstream.pathways.length, 7, 'terrain expansion does not manufacture semantic pathways');
+});
+
+test('VexStream bounded Playlists list/create terrain is expressed through the same Shell selection grammar', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const [screen] = vexstream.screens;
+  const expressions = Expressions.expressionsFor(vexstream, screen.screenRef);
+  const shellRef = 'presence.vexstream.shell.primary-terrain';
+  const PLAYLISTS = 'vexstream.desktop.library.panel.playlists';
+  const playlistExpression = expressions.find((expression) => {
+    const resolved = Realization.resolvePresence(vexstream, screen.screenRef, expression.context);
+    return resolved.presence.get(shellRef)?.value === PLAYLISTS;
+  });
+
+  assert.ok(playlistExpression, 'Playlists list/create Shell expression exists');
+  assert.equal(expressions.length, 8);
+  assert.equal(vexstream.pathways.length, 7, 'Playlists terrain admission does not invent semantic pathways');
+  assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.playlists.create.name'));
+  assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.playlists.create'));
+  assert.ok(screen.realization.held.some((value) => /Playlist detail/.test(value)));
+  assert.ok((screen.view?.stateBindings ?? []).some((binding) =>
+    binding.presenceRef === shellRef && binding.value === PLAYLISTS
+  ));
 });
 
 test('VexStream stable source controls remain addressable even when deeper pathways are held', () => {
