@@ -154,7 +154,7 @@
       "label": "Prove VexStream through the shared projection foundation",
       "purpose": "Run exact VexStream producer output through the same normalization, expressions, realization, manifestation and paired-container/engagement laws accepted for Android, Product and the neutral subject; extend generic law only if VexStream exposes a real reusable gap.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "dependencyRefs": [
         "work.vexstream-music.projectability.screen-lens-producer"
       ],
@@ -163,9 +163,11 @@
         "projects/vexboard/SCREEN-LENS.md",
         "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
         "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
-        "github.pull.vexstream-music.20"
+        "github.pull.vexstream-music.20",
+        "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20",
+        "src/shared/vexboard-screen-lens.mjs"
       ],
-      "updatedAt": "2026-11-20T13:50:00.008Z"
+      "updatedAt": "2026-11-20T14:04:00.003Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -185,15 +187,17 @@
       "label": "Lived VexStream projection acceptance",
       "purpose": "Verify that the projected Playback/Queue/lived-shell slice remains recognizable against current VexStream product-oracle relationships and that VexBoard adds no source-authority, platform branch, interaction obstruction or misleading identity.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "dependencyRefs": [
         "work.vexstream-music.projectability.conformance"
       ],
       "sourceRefs": [
         "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
-        "projects/vexstream-music-projectability/README.md"
+        "projects/vexstream-music-projectability/README.md",
+        "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20",
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json"
       ],
-      "updatedAt": "2026-11-20T13:30:00.000Z"
+      "updatedAt": "2026-11-20T14:04:00.005Z"
     }
   ],
   "transitions": [
@@ -392,6 +396,63 @@
         "test/vexboard-screen-lens-conformance.test.mjs"
       ],
       "createdAt": "2026-11-20T13:50:00.008Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.conformance.verifying.relationship-perception-repair",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The first raw-git lived witness exposed that schema-valid SOURCE_VIEW plus sparse mapped controls could read as a screenshot when a container was selected. The generic reader was refined so a mapped container aggregates the distinct child pathways it contains rather than presenting a blank Behavior/Depth side.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20",
+        "src/shared/vexboard-screen-lens.mjs",
+        "projects/vexboard/SCREEN-LENS.md"
+      ],
+      "createdAt": "2026-11-20T14:04:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.conformance.completed.container-relationships-100-pass",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The revised generic container-relationship projection passed the four-subject shared projection/UI regression floor at 100/100 with 0 failures.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "test/vexboard-lens-ui.test.mjs",
+        "projects/vexboard/SCREEN-LENS.md"
+      ],
+      "createdAt": "2026-11-20T14:04:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.lived-acceptance.ready.revised-conformance",
+      "workRef": "work.vexstream-music.projectability.lived-acceptance",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The revised conformance dependency completed after preserving container-level relationship perception.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream-music.projectability.conformance"
+      ],
+      "createdAt": "2026-11-20T14:04:00.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.lived-acceptance.running.relationship-witness",
+      "workRef": "work.vexstream-music.projectability.lived-acceptance",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Present the revised raw-git VexStream candidate for human review of relationship perception, container descent, product recognizability and paired layout behavior.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+        "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20"
+      ],
+      "createdAt": "2026-11-20T14:04:00.005Z"
     }
   ],
   "sourceRefs": [
