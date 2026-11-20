@@ -344,7 +344,7 @@ test('VexStream Deleted terrain and Trash population reuse the generic dynamic i
 test('VexStream current default-visible projection carries the zero-blocker addressability census', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const [screen] = vexstream.screens;
-  assert.equal(screen.elements.length, 79, 'merged target source exports admitted Home/Library/Discover/Playlists structure plus selected-Playlist detail controls');
+  assert.equal(screen.elements.length, 81, 'merged target source exports admitted Home/Library/Discover/Playlists/Deleted structure plus selected-Playlist detail and Trash refresh controls');
   const refs = new Set(screen.elements.map((element) => element.ref));
   for (const ref of [
     'element.vexstream.shell.sidebar.toggle',
@@ -358,6 +358,7 @@ test('VexStream current default-visible projection carries the zero-blocker addr
     'element.vexstream.playback.volume.set',
     'element.vexstream.queue.drawer.toggle',
     'element.vexstream.queue.shuffle-upcoming',
+    'element.vexstream.trash.refresh',
   ]) assert.ok(refs.has(ref), ref + ' remains addressable');
 });
 
