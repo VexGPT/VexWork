@@ -152,7 +152,7 @@ XLSX
 PPTX
 ~~~
 
-Static image attachment is **not yet admitted** by this Local Artifact converter set. VexLife also has a separate Vision Family / selected-window runtime, but its current Product contract deliberately stops before Look/capture-to-model interpretation. Therefore future image work should resume from this distinction rather than collapsing static file input and live screen Vision into one owner.
+Stable Product main still does **not** admit static images as model-usable request material. The current #435 candidate now recognizes exact PNG/JPEG bytes and forms bounded image metadata, but intentionally keeps the attachment HELD until one qualified visual-input realization exists. VexLife also has a separate Vision Family / selected-window runtime, whose current Product contract deliberately stops before Look/capture-to-model interpretation. Therefore image work continues from this distinction rather than collapsing static file input and live screen Vision into one owner.
 
 Current next Product successor:
 
@@ -171,9 +171,123 @@ LIVE WINDOW VISION
 -> separate capture + visual-model-input edge
 ~~~
 
-#435 is formation/design only at this checkpoint. It starts from merged main and must preserve the accepted text/document attachment circuit rather than refactoring it for symmetry.
+#435 has now advanced beyond formation into one concrete static-image adaptation candidate:
 
-Do not reopen the accepted text/document attachment path merely to add images. Extend the projection/adaptation relationship at the smallest rightful owner.
+~~~text
+head b8a12afd5a0f6152d39d924364df84cde9a1bb50
+tree 4a8b61861647eb2dc33c4c1f0922b5f3bc22a6c1
+
+exact candidate membrane
+docs/work/local-artifacts-static-image/README.md
+src/jvmMain/kotlin/vexlife/artifact/VexLifeLocalArtifactReader.kt
+src/jvmMain/kotlin/vexlife/artifact/VexLifeStaticImageAdaptation.kt
+src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt
+src/jvmTest/kotlin/vexlife/artifact/VexLifeStaticImageAdaptationTest.kt
+~~~
+
+The candidate currently proves only the source shape of the first adaptation edge:
+
+~~~text
+exact OriginalArtifact bytes
+-> PNG/JPEG content-signature recognition
+-> bounded media type + dimensions + adapter identity
+-> exact original bytes preserved
+-> ImageAdapted
+-> HELD because no qualified visual-input realization exists yet
+~~~
+
+It does **not** claim image understanding, Companion multimodal carriage, Vision capture, Memory promotion, or a qualified visual runtime.
+
+### Architecture continuation for static image input
+
+Current Product source establishes these owners already:
+
+~~~text
+VexLifeAttachmentDraftFamily
+  owns pre-Send attachment meaning only
+
+VexLifeAttachmentDraftRuntime
+  owns active staging / cancellation / Send lease
+
+VexLifeLocalArtifact
+  owns immutable original bytes, deterministic derived text projections and exact REQUEST binding
+
+DirectCompanionTurn / DirectCompanionConnection
+  compose current request material into the selected Companion without re-owning artifact semantics
+~~~
+
+The next image edge should therefore **not** make the Attachment Family media-specific and should not make the Product service the semantic owner. The pressure is lower in the request-material relationship: current READY / RequestAttachment semantics require a text-shaped `projectionRef`, while an exact image may be lawful request material without being deterministic text.
+
+The current scalable direction is:
+
+~~~text
+Attachment Family
+  STAGING / READY / HELD
+  remains stable
+
+exact Local Artifact
+  -> one typed lawful request material
+       readable text projection
+       OR
+       static image resource
+       OR later another earned representation
+
+exact REQUEST binding
+  -> binds the lawful material without pretending every material is text
+
+model/provider realization
+  -> decides how that material can actually reach the selected Companion
+~~~
+
+Platform/runtime realization should follow the already-earned Local-ASR pattern rather than spreading target branches through semantic consumers:
+
+~~~text
+one provider-realization boundary
+-> exact target resolver
+   -> Mac realization
+   -> Windows realization when qualified
+   -> another platform only when a real implementation is earned
+-> no nearest-platform fallback
+~~~
+
+A VexPartner relationship is **not** added merely for architectural symmetry. Partner is earned only if visual interpretation actually becomes an independently-owned external-participant relationship. Likewise, static attachment and live Vision may later share a visual-resource interpretation seam while remaining distinct source owners.
+
+The offered Heretic 4B model is a concrete visual-runtime candidate because its exact pinned artifact set includes processor/preprocessor configuration, but current Product Companion carriage remains text-shaped and the existing certified mlx-lm runtime does not by itself qualify visual input. A visual model/runtime relationship must therefore be separately qualified before #435 can lawfully turn an image from HELD into model-usable material.
+
+### Current proof checkpoint
+
+The first Mac VexRelay source-owner attempt did **not** reach the Product candidate:
+
+~~~text
+outer RETURN
+sha256 987225e8e6b6bec10122077404cc483e0f27dd5dd0cbae86bdd41c1edb081e81
+disposition PASS
+
+retained inner VexRelay RETURN
+sha256 fb5f1c6ceaa70bc9c6e13e881d9668b8f4cc00cec02daf7cef0d0a442a609f95
+disposition SAFE_FAILURE
+
+first substantive failure
+classification harness
+operation system.ground
+ENOENT expected disposable VexRelay run root
+
+candidateHead NONE
+candidateTree NONE
+testsExecuted false
+review NOT_REACHED
+~~~
+
+Therefore:
+
+~~~text
+RELAY CARRIER PASS != PRODUCT PROOF PASS
+HARNESS FAILURE BEFORE REPOSITORY ACQUISITION != CANDIDATE FAILURE
+~~~
+
+Recover the Relay harness edge before replaying proof; do not mutate #435 merely to make the harness succeed.
+
+Do not reopen the accepted text/document attachment path merely to add images. Extend the request-material / adaptation relationship at the smallest rightful owner, and let one concrete qualified visual realization earn any further abstraction.
 
 ## The model-switching tail is smaller than it first appears
 
