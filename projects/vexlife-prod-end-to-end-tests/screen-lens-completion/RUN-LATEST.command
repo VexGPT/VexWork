@@ -2,92 +2,72 @@
 set -euo pipefail
 
 CONTINUITY='[VXG RealForever]'
-PRODUCT_REPO='https://github.com/VexGPT/VexLife-Prod.git'
-PRODUCT_SHA='83ce4fac4061de73f8bf25f405e2840b1cd09171'
+PRODUCT_REPO='VexGPT/VexLife-Prod'
+PRODUCT_BRANCH='VXG-112026-vexlife-prod-main-static-view-a001'
+EXPECTED_HEAD='83ce4fac4061de73f8bf25f405e2840b1cd09171'
+EXPECTED_SOURCE_SHA='83ce4fac4061de73f8bf25f405e2840b1cd09171'
 RETURN_ZIP="$HOME/Downloads/RETURN-VEXLIFE-SCREEN-LENS-MAIN-STATIC-VIEW-PREVIEW.zip"
 
+GH="$(command -v gh || true)"
 GIT='/usr/bin/git'
+UNZIP='/usr/bin/unzip'
 MKTEMP='/usr/bin/mktemp'
 RM='/bin/rm'
-ZIP='/usr/bin/zip'
-TEE='/usr/bin/tee'
+CP='/bin/cp'
+GREP='/usr/bin/grep'
 
-for executable in "$GIT" "$MKTEMP" "$RM" "$ZIP" "$TEE"; do
-  [ -x "$executable" ] || { echo "Screen Lens preview: missing executable $executable" >&2; exit 10; }
+[ -n "$GH" ] && [ -x "$GH" ] || { echo "Screen Lens publish: gh CLI is required." >&2; exit 10; }
+for executable in "$GIT" "$UNZIP" "$MKTEMP" "$RM" "$CP" "$GREP"; do
+  [ -x "$executable" ] || { echo "Screen Lens publish: missing executable $executable" >&2; exit 10; }
 done
+[ -f "$RETURN_ZIP" ] || { echo "Screen Lens publish: missing $RETURN_ZIP" >&2; exit 11; }
 
-ROOT="$("$MKTEMP" -d "$HOME/Downloads/.vexlife-screen-lens-static-view.XXXXXX")"
+"$GH" auth status >/dev/null
+
+ROOT="$("$MKTEMP" -d "$HOME/Downloads/.vexlife-screen-lens-publish.XXXXXX")"
 cleanup() { "$RM" -rf -- "$ROOT"; }
 trap cleanup EXIT HUP INT TERM
 
+"$UNZIP" -q "$RETURN_ZIP" -d "$ROOT/return"
+RESULT="$ROOT/return/RESULT.txt"
+SOURCE="$ROOT/return/SOURCE.txt"
+LENS="$ROOT/return/vexlife-prod.screen-lens.json"
+
+[ -f "$RESULT" ] && [ -f "$SOURCE" ] && [ -f "$LENS" ] || {
+  echo "Screen Lens publish: RETURN is incomplete." >&2
+  exit 12
+}
+"$GREP" -Fx 'result=PASS' "$RESULT" >/dev/null
+"$GREP" -Fx 'generation=PASS' "$RESULT" >/dev/null
+"$GREP" -Fx 'focused_exporter_proof=PASS' "$RESULT" >/dev/null
+"$GREP" -Fx "product_sha=$EXPECTED_SOURCE_SHA" "$SOURCE" >/dev/null
+
+REMOTE_HEAD="$("$GH" api "repos/$PRODUCT_REPO/git/ref/heads/$PRODUCT_BRANCH" --jq '.object.sha')"
+[ "$REMOTE_HEAD" = "$EXPECTED_HEAD" ] || {
+  echo "Screen Lens publish: branch moved; expected=$EXPECTED_HEAD observed=$REMOTE_HEAD" >&2
+  exit 13
+}
+
 REPO="$ROOT/VexLife-Prod"
-OUT="$ROOT/return"
-mkdir -p "$OUT"
-
-echo "Screen Lens preview: acquiring exact Product source $PRODUCT_SHA..."
-"$GIT" clone -q --filter=blob:none --no-checkout "$PRODUCT_REPO" "$REPO"
+"$GH" repo clone "$PRODUCT_REPO" "$REPO" -- --quiet --branch "$PRODUCT_BRANCH" --single-branch
 cd "$REPO"
-"$GIT" fetch -q origin "$PRODUCT_SHA"
-"$GIT" checkout -q --detach "$PRODUCT_SHA"
+[ "$("$GIT" rev-parse HEAD)" = "$EXPECTED_HEAD" ] || exit 14
 
-ACTUAL="$("$GIT" rev-parse HEAD)"
-[ "$ACTUAL" = "$PRODUCT_SHA" ] || {
-  echo "Screen Lens preview: source mismatch expected=$PRODUCT_SHA actual=$ACTUAL" >&2
-  exit 11
+"$CP" "$LENS" docs/lens/vexlife-prod.screen-lens.json
+
+"$GIT" diff --check
+CHANGED="$("$GIT" status --short)"
+[ "$CHANGED" = ' M docs/lens/vexlife-prod.screen-lens.json' ] || {
+  echo "Screen Lens publish: unexpected changed paths:" >&2
+  echo "$CHANGED" >&2
+  exit 15
 }
 
-{
-  echo "$CONTINUITY"
-  echo "product_sha=$PRODUCT_SHA"
-  echo "tree=$("$GIT" rev-parse HEAD^{tree})"
-  echo "purpose=current Main Product-owned STATIC_HTML_CSS Screen Lens preview"
-  echo "runtime_mutation=none"
-  echo "publication=none"
-} > "$OUT/SOURCE.txt"
+"$GIT" add docs/lens/vexlife-prod.screen-lens.json
+"$GIT" -c user.name='VexGPT' -c user.email='noreply@github.com' commit -q -m '[Screen Lens] Publish current Main static-view projection' -m 'Generated and focused-proved from exact #432 source; Product runtime remains unchanged.' -m '[VXG RealForever]'
+NEW_HEAD="$("$GIT" rev-parse HEAD)"
+"$GIT" push -q origin "HEAD:$PRODUCT_BRANCH"
 
-echo "Screen Lens preview: generating exact Product Lens..."
-set +e
-./gradlew --no-daemon --max-workers=1 -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=2g" -Pkotlin.compiler.execution.strategy=in-process generateVexLifeProdScreenLens 2>&1 | "$TEE" "$OUT/generate.log"
-GEN_STATUS=${PIPESTATUS[0]}
-set -e
-[ "$GEN_STATUS" -eq 0 ] || {
-  echo "generation_status=$GEN_STATUS" > "$OUT/RESULT.txt"
-  cd "$OUT"
-  "$ZIP" -q "$RETURN_ZIP" ./*
-  echo "Screen Lens preview: generation failed; return retained at $RETURN_ZIP" >&2
-  exit "$GEN_STATUS"
-}
-
-echo "Screen Lens preview: running focused exporter proof..."
-set +e
-./gradlew --no-daemon --max-workers=1 -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=2g" -Pkotlin.compiler.execution.strategy=in-process jvmTest --tests vexlife.lens.VexLifeProdScreenLensTest checkVexLifeStrings 2>&1 | "$TEE" "$OUT/proof.log"
-PROOF_STATUS=${PIPESTATUS[0]}
-set -e
-
-cp docs/lens/vexlife-prod.screen-lens.json "$OUT/vexlife-prod.screen-lens.json"
-"$GIT" diff -- docs/lens/vexlife-prod.screen-lens.json > "$OUT/lens.diff"
-"$GIT" status --short > "$OUT/git-status.txt"
-
-if [ "$PROOF_STATUS" -eq 0 ]; then
-  {
-    echo "result=PASS"
-    echo "generation=PASS"
-    echo "focused_exporter_proof=PASS"
-  } > "$OUT/RESULT.txt"
-else
-  {
-    echo "result=SAFE_FAILURE"
-    echo "generation=PASS"
-    echo "focused_exporter_proof=FAIL"
-    echo "proof_exit=$PROOF_STATUS"
-  } > "$OUT/RESULT.txt"
-fi
-
-"$RM" -f -- "$RETURN_ZIP"
-cd "$OUT"
-"$ZIP" -q "$RETURN_ZIP" ./*
-
-echo "Screen Lens preview: RETURN"
-echo "$RETURN_ZIP"
+echo "Screen Lens publish: PASS"
+echo "published_head=$NEW_HEAD"
 echo "$CONTINUITY"
-exit "$PROOF_STATUS"
