@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 20,
+  "projectRegistryVersion": 21,
   "projects": [
     {
       "project": {
@@ -16666,6 +16666,843 @@
           "createdAt": "2026-11-07T03:35:00.000Z",
           "updatedAt": "2026-11-07T12:24:00.000Z",
           "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife-prod.end-to-end-tests",
+        "label": "VexLife-Prod End-to-End Experience Validation",
+        "purpose": "Preserve VexLife-Prod's human experience pathways while implementation continues to evolve: map stable human intentions through current source-owned State / Control / Act / Effect / Observation / Projection relationships, make cross-Family effects and choice loops visible as a non-authoritative relationship lattice, connect those journeys to VexBoard Screen Lens perception and deterministic/live proof surfaces, expose uncovered branches without duplicating product truth, and converge toward a release-candidate validation view that a human or fresh AI can navigate without reconstructing feature history.",
+        "rootWorkRefs": [
+          "work.vexlife-prod.end-to-end-tests.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod",
+          "repo.vexlife-android",
+          "repo.vextreme"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-prod-end-to-end-tests/README.md",
+          "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md",
+          "projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json",
+          "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md",
+          "docs/process/FORM-PROJECT.md",
+          "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+          "github.pull.vexlife-prod.343",
+          "github.pull.vexwork.298",
+          "github.pull.vexwork.300",
+          "github.pull.vexwork.303",
+          "github.pull.vexwork.310",
+          "github.pull.vexlife-prod.251",
+          "github.pull.vexlife-prod.310",
+          "github.pull.vexlife-prod.331",
+          "https://vgong24.github.io/Vextreme/pages/vexarchitecture-first-stable-body.html",
+          "https://vgong24.github.io/Vextreme/pages/vexarchitecture-live-demonstration.html",
+          "github.commit.vextreme.1a0f161b4175e83c223e57642d08501004cdb9fd",
+          "github.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+          "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourney.kt",
+          "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+          "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "concept.vexlife-prod.experience-relationship-graph",
+          "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+          "repo.vexlife-android:architecture/relay/README.md",
+          "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexRelay.kt",
+          "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeRelayGraph.kt",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeSemanticRelayContract.kt",
+          "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+          "github.commit.vexlife-prod.98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0",
+          "github.merge.vexlife-prod.310.3120a7535f5c9095735c6880f6dd0119ec39a7a8",
+          "github.merge.vexlife-prod.331.98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0"
+        ],
+        "formedAt": "2026-11-18T14:27:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife-prod.end-to-end-tests.board",
+      "items": [
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.deterministic-shards",
+          "label": "A3 — deterministic nervous-system shards",
+          "purpose": "Bind current relationship journeys to isolated scripted-provider/test-service executions so VexLife routing, prompt capture, Memory, capability, failure and projection branches are deterministic and parallelizable where resource claims permit.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife-prod.end-to-end-tests.journey-branch-coverage"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.310",
+            "github.pull.vexlife-prod.343"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T14:27:00.000Z",
+          "updatedAt": "2026-11-18T14:27:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.deterministic-shards.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "Deterministic shard execution waits for a stable journey/branch coverage contract rather than inventing another test ontology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+                "github.pull.vexwork.310"
+              ],
+              "createdAt": "2026-11-18T14:27:15.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.deterministic-shards.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Deterministic shard execution waits for a stable journey/branch coverage contract rather than inventing another test ontology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+                "github.pull.vexwork.310"
+              ],
+              "createdAt": "2026-11-18T14:27:16.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.deterministic-shards.plan-validated.waiting-dependencies.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "WAITING_DEPENDENCIES",
+              "reason": "Deterministic shard execution waits for a stable journey/branch coverage contract rather than inventing another test ontology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+                "github.pull.vexwork.310"
+              ],
+              "createdAt": "2026-11-18T14:27:17.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+          "label": "A6 — formalize Experience Relationship Graph foundational context",
+          "purpose": "After release-threshold validation has established an accepted and teachable end-to-end relationship system, distill the durable Experience Relationship Graph concept into the then-current rightful foundational/startup context for VexLife-Prod and VexWork, with current repository culture deciding final path/placement and this Project/PR lineage retained as provenance rather than permanent authority.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife-prod.end-to-end-tests.release-threshold"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-prod-end-to-end-tests/README.md",
+            "project.vexlife-prod.end-to-end-tests"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T15:40:00.000Z",
+          "updatedAt": "2026-11-18T15:40:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "The durable successor is known as Experience Relationship Graph foundational context, but its final repository path/placement is intentionally deferred until the E2E system and current foundation entry routes are mature enough to decide truthfully.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "projects/vexlife-prod-end-to-end-tests/README.md"
+              ],
+              "createdAt": "2026-11-18T15:40:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Foundationalization is correctly sequenced after release-threshold validation so the durable document is distilled from accepted graph behavior/proof rather than prematurely freezing formation-stage assumptions.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.release-threshold",
+                "projects/vexlife-prod-end-to-end-tests/README.md"
+              ],
+              "createdAt": "2026-11-18T15:40:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation.plan-validated.waiting-dependencies.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "WAITING_DEPENDENCIES",
+              "reason": "Wait for the release-threshold predecessor and then re-read current repository culture/foundation entry routes before choosing any final filename, path, split, or startup-context placement.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.release-threshold"
+              ],
+              "createdAt": "2026-11-18T15:40:03.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.experience-topology",
+          "label": "A0 — experience-contract and topology foundation",
+          "purpose": "Form the durable layer model, initial Family/owner census, relationship-lattice seed, journey seeds, loop/permutation rules and Claude discovery handoff without creating Product semantic truth in VexWork.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-prod-end-to-end-tests/README.md",
+            "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md",
+            "projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json",
+            "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-18T14:27:00.000Z",
+          "updatedAt": "2026-11-18T14:27:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-topology.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "The Project can immediately form its VexWork-owned experience/topology source and pinned lattice seed. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "projects/vexlife-prod-end-to-end-tests/README.md"
+              ],
+              "createdAt": "2026-11-18T14:27:05.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-topology.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "The Project can immediately form its VexWork-owned experience/topology source and pinned lattice seed. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "projects/vexlife-prod-end-to-end-tests/README.md"
+              ],
+              "createdAt": "2026-11-18T14:27:06.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-topology.plan-validated.ready.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The Project can immediately form its VexWork-owned experience/topology source and pinned lattice seed. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "projects/vexlife-prod-end-to-end-tests/README.md"
+              ],
+              "createdAt": "2026-11-18T14:27:07.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-topology.ready.running.formation-4",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The Project can immediately form its VexWork-owned experience/topology source and pinned lattice seed. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "projects/vexlife-prod-end-to-end-tests/README.md"
+              ],
+              "createdAt": "2026-11-18T14:27:08.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+          "label": "A2R — derive graph-operations Relay/convergence where earned",
+          "purpose": "After ordinary source-derived routes exist, classify independent-truth joins and form only the Relay/convergence relationships actually earned by current consumers such as route readiness, debt-frontier projection, perturbation currentness, coverage/proof currentness, change impact, execution-plan readiness, VexBoard inspection or release-readiness; keep graph extraction, scheduling, durable evidence and Product semantic ownership outside Relay.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife-prod.end-to-end-tests.journey-branch-coverage"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-prod-end-to-end-tests/README.md",
+            "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md",
+            "repo.vexlife-android:architecture/relay/README.md",
+            "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T16:48:00.000Z",
+          "updatedAt": "2026-11-18T16:48:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "Graph/testing Relay pressure is now concrete, but Relay must remain a post-map convergence consumer rather than a graph-extraction owner or mandatory stage.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "projects/vexlife-prod-end-to-end-tests/README.md",
+                "repo.vexlife-android:architecture/relay/README.md"
+              ],
+              "createdAt": "2026-11-18T16:48:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "The subset sequence begins only after ordinary journey/branch coverage exists and may then form earned current relationship projections without blocking deterministic proof on unearned Relay abstractions.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+                "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md"
+              ],
+              "createdAt": "2026-11-18T16:48:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence.plan-validated.waiting-dependencies.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "WAITING_DEPENDENCIES",
+              "reason": "Wait for ordinary graph/routes; then classify and realize only convergence questions with exact independent inputs, a new relationship truth and a current consumer.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.journey-branch-coverage"
+              ],
+              "createdAt": "2026-11-18T16:48:03.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+          "label": "A2 — project journey / branch / loop coverage",
+          "purpose": "Join stable human journeys with source-derived branch identities so the Project can show States observed, Controls offered/exercised, successor States, cross-Family edges, loops, proof classes and uncovered relationship debt without copying branch definitions.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife-prod.end-to-end-tests.experience-topology",
+            "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json",
+            "github.pull.vexlife-prod.343"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T14:27:00.000Z",
+          "updatedAt": "2026-11-18T14:27:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.journey-branch-coverage.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "Coverage projection waits for both the experience/topology contract and the Screen Lens/source relationship discovery inputs. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.experience-topology",
+                "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery"
+              ],
+              "createdAt": "2026-11-18T14:27:12.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.journey-branch-coverage.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Coverage projection waits for both the experience/topology contract and the Screen Lens/source relationship discovery inputs. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.experience-topology",
+                "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery"
+              ],
+              "createdAt": "2026-11-18T14:27:13.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.journey-branch-coverage.plan-validated.waiting-dependencies.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "WAITING_DEPENDENCIES",
+              "reason": "Coverage projection waits for both the experience/topology contract and the Screen Lens/source relationship discovery inputs. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.experience-topology",
+                "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery"
+              ],
+              "createdAt": "2026-11-18T14:27:14.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.live-validation",
+          "label": "A4 — live-model and lived-lifecycle validation",
+          "purpose": "Run the real selected model and host-global Product lifecycle serially where required, reusing the same semantic journeys to distinguish Product relationship correctness from model behavior, host realization and restart/update evidence.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife-prod.end-to-end-tests.deterministic-shards"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife-prod.343"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T14:27:00.000Z",
+          "updatedAt": "2026-11-18T14:27:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.live-validation.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "Live-model/lifecycle validation waits for deterministic relationship coverage so model behavior cannot hide untested Product branches. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.deterministic-shards"
+              ],
+              "createdAt": "2026-11-18T14:27:18.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.live-validation.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Live-model/lifecycle validation waits for deterministic relationship coverage so model behavior cannot hide untested Product branches. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.deterministic-shards"
+              ],
+              "createdAt": "2026-11-18T14:27:19.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.live-validation.plan-validated.waiting-dependencies.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "WAITING_DEPENDENCIES",
+              "reason": "Live-model/lifecycle validation waits for deterministic relationship coverage so model behavior cannot hide untested Product branches. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.deterministic-shards"
+              ],
+              "createdAt": "2026-11-18T14:27:20.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.outcome",
+          "label": "VexLife-Prod end-to-end experience validation",
+          "purpose": "Preserve human experience contracts and make their current VexArchitecture relationships, cross-Family effects, choice loops, proof coverage and release-readiness navigable while VexLife-Prod implementation continues to evolve.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife-prod.end-to-end-tests.deterministic-shards",
+            "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+            "work.vexlife-prod.end-to-end-tests.experience-topology",
+            "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+            "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+            "work.vexlife-prod.end-to-end-tests.live-validation",
+            "work.vexlife-prod.end-to-end-tests.release-threshold",
+            "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife-prod.end-to-end-tests",
+            "projects/vexlife-prod-end-to-end-tests/README.md",
+            "github.pull.vexlife-prod.343"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T14:27:00.000Z",
+          "updatedAt": "2026-11-18T14:27:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.outcome.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "Victor explicitly requested a dedicated VexWork Project for VexLife-Prod end-to-end experience pathways, relationship choices and topology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+                "github.pull.vexlife-prod.343"
+              ],
+              "createdAt": "2026-11-18T14:27:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.outcome.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Victor explicitly requested a dedicated VexWork Project for VexLife-Prod end-to-end experience pathways, relationship choices and topology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+                "github.pull.vexlife-prod.343"
+              ],
+              "createdAt": "2026-11-18T14:27:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.outcome.plan-validated.ready.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Victor explicitly requested a dedicated VexWork Project for VexLife-Prod end-to-end experience pathways, relationship choices and topology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+                "github.pull.vexlife-prod.343"
+              ],
+              "createdAt": "2026-11-18T14:27:03.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.outcome.ready.running.formation-4",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly requested a dedicated VexWork Project for VexLife-Prod end-to-end experience pathways, relationship choices and topology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+                "github.pull.vexlife-prod.343"
+              ],
+              "createdAt": "2026-11-18T14:27:04.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.release-threshold",
+          "label": "A5 — release-candidate experience threshold",
+          "purpose": "Produce one human-readable release validation view that traces each required experience contract to current source owners, exact proof, held branches and accepted lived evidence without treating coverage percentage or Screen Lens traceability as completion.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife-prod.end-to-end-tests.live-validation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-prod-end-to-end-tests/README.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T14:27:00.000Z",
+          "updatedAt": "2026-11-18T14:27:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.release-threshold.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "Release threshold waits for deterministic and lived validation evidence over the same stable human journeys. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.live-validation"
+              ],
+              "createdAt": "2026-11-18T14:27:21.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.release-threshold.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Release threshold waits for deterministic and lived validation evidence over the same stable human journeys. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.live-validation"
+              ],
+              "createdAt": "2026-11-18T14:27:22.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.release-threshold.plan-validated.waiting-dependencies.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "WAITING_DEPENDENCIES",
+              "reason": "Release threshold waits for deterministic and lived validation evidence over the same stable human journeys. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "work.vexlife-prod.end-to-end-tests.live-validation"
+              ],
+              "createdAt": "2026-11-18T14:27:23.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery",
+          "label": "A1 — consume Screen Lens choice and relationship discovery",
+          "purpose": "Use the existing VexArchitecture↔VexBoard Screen Lens sync trajectory as the rightful perception lane, and consume its source-proven State/Control/pathway discoveries into E2E relationship coverage without duplicating Screen Lens ownership.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife-prod.end-to-end-tests.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.298",
+            "github.pull.vexwork.300",
+            "github.pull.vexwork.303",
+            "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T14:27:00.000Z",
+          "updatedAt": "2026-11-18T14:27:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "The Screen Lens discovery question is already concrete and can proceed through the existing rightful VexBoard sync lane while A0 forms concurrently. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "github.pull.vexwork.298",
+                "github.pull.vexwork.300",
+                "github.pull.vexwork.303"
+              ],
+              "createdAt": "2026-11-18T14:27:09.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "The Screen Lens discovery question is already concrete and can proceed through the existing rightful VexBoard sync lane while A0 forms concurrently. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "github.pull.vexwork.298",
+                "github.pull.vexwork.300",
+                "github.pull.vexwork.303"
+              ],
+              "createdAt": "2026-11-18T14:27:10.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery.plan-validated.ready.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The Screen Lens discovery question is already concrete and can proceed through the existing rightful VexBoard sync lane while A0 forms concurrently. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "github.pull.vexwork.298",
+                "github.pull.vexwork.300",
+                "github.pull.vexwork.303"
+              ],
+              "createdAt": "2026-11-18T14:27:11.000Z"
+            }
+          ]
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexlife-prod.end-to-end-tests.deterministic-shards",
+            "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+            "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+            "work.vexlife-prod.end-to-end-tests.live-validation",
+            "work.vexlife-prod.end-to-end-tests.release-threshold",
+            "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexlife-prod.end-to-end-tests.experience-topology",
+            "work.vexlife-prod.end-to-end-tests.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 9,
+        "openWorkItemCount": 9,
+        "outcomeCount": 1,
+        "taskCount": 8,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife-prod.end-to-end-tests.outcome",
+          "label": "VexLife-Prod end-to-end experience validation",
+          "purpose": "Preserve human experience contracts and make their current VexArchitecture relationships, cross-Family effects, choice loops, proof coverage and release-readiness navigable while VexLife-Prod implementation continues to evolve.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife-prod.end-to-end-tests.deterministic-shards",
+            "work.vexlife-prod.end-to-end-tests.experience-relationship-graph-foundation",
+            "work.vexlife-prod.end-to-end-tests.experience-topology",
+            "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+            "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+            "work.vexlife-prod.end-to-end-tests.live-validation",
+            "work.vexlife-prod.end-to-end-tests.release-threshold",
+            "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife-prod.end-to-end-tests",
+            "projects/vexlife-prod-end-to-end-tests/README.md",
+            "github.pull.vexlife-prod.343"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T14:27:00.000Z",
+          "updatedAt": "2026-11-18T14:27:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.outcome.captured.decomposed.formation-1",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "Victor explicitly requested a dedicated VexWork Project for VexLife-Prod end-to-end experience pathways, relationship choices and topology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+                "github.pull.vexlife-prod.343"
+              ],
+              "createdAt": "2026-11-18T14:27:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.outcome.decomposed.plan-validated.formation-2",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Victor explicitly requested a dedicated VexWork Project for VexLife-Prod end-to-end experience pathways, relationship choices and topology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+                "github.pull.vexlife-prod.343"
+              ],
+              "createdAt": "2026-11-18T14:27:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.outcome.plan-validated.ready.formation-3",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Victor explicitly requested a dedicated VexWork Project for VexLife-Prod end-to-end experience pathways, relationship choices and topology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+                "github.pull.vexlife-prod.343"
+              ],
+              "createdAt": "2026-11-18T14:27:03.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife-prod.end-to-end-tests.outcome.ready.running.formation-4",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly requested a dedicated VexWork Project for VexLife-Prod end-to-end experience pathways, relationship choices and topology. Formation advances only the work-state relationship named by this transition; it grants no target-repository authority beyond the item's explicit disposition.",
+              "actorRef": "actor.chatgpt.vexlife-prod-e2e-project-formation",
+              "sourceRefs": [
+                "human.design.vexlife-prod.end-to-end-experience-validation.20261118",
+                "github.pull.vexlife-prod.343"
+              ],
+              "createdAt": "2026-11-18T14:27:04.000Z"
+            }
+          ]
         }
       ]
     }
