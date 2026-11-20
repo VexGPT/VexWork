@@ -570,3 +570,35 @@ VexLife ToCompletion remains addressable through `project.vexlife.tocompletion` 
 It is **provenance, not the default current-entry reading burden** for Interface Refinement.
 
 <!-- [VXG RealForever][VEXLIFE][INTERFACE-REFINEMENT][V0-PROVEN][V1-CURRENT] -->
+
+## Currentization — long-context Memory pressure completed
+
+The V1.5 source-acceptance row is no longer merely in Verify.
+
+Accepted VexLife #927:
+
+~~~text
+input budget       192,000
+output reserve      16,000
+hard Context Lease 208,000
+Memory cap         100,000 tokens / 100 pages
+
+live Conversation grows
+-> remaining input budget shrinks
+-> Memory allowance yields
+-> zero Memory headroom bounds Memory out
+-> no fabricated zero-cap packet
+~~~
+
+#927 carried SourceOwner PASS, Independent Assurance CLEAR_ON_EXACT_HEAD, FormalReviewer approval and merged accepted source. Current VexLife main still carries the same lease/yielding law.
+
+Therefore:
+
+~~~text
+work.vexlife.interface-refinement.v1-5.long-context-memory-pressure
+VERIFYING -> COMPLETED
+~~~
+
+No other Interface Refinement Work changes state through this currentization.
+
+<!-- [VXG RealForever][INTERFACE-REFINEMENT][LONG-CONTEXT][CURRENTIZED][COMPLETED] -->
