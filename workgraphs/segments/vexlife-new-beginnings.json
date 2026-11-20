@@ -1013,6 +1013,35 @@
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "PARKED",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-18T10:49:09.000Z",
+      "updatedAt": "2026-11-20T13:51:11.243Z",
+      "workRef": "work.vexlife.new-beginnings.fresh-instance",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "Later — start a fresh Conversation with fresh working context",
+      "purpose": "Preserve a cheap reversible Start fresh feature that forms/selects a new canonical Conversation thread with no prior-thread Conversation tail resident by default, while keeping Home, person settings, accepted Memory/semantic continuity and bounded historical reach under their rightful owners. Measure responsiveness rather than attributing latency to thread length by assumption.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-new-beginnings/VEXLIFE-FRESH-INSTANCE-FEATURE.md",
+        "github.pull.vexwork.316",
+        "project.vexlife.memory-depth-exploration",
+        "github.pull.vexwork.310",
+        "github.pull.vexwork.318"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [
@@ -1636,7 +1665,9 @@
     "github.commit.vexlife-prod.649ea1608d6b48cc7ffb7dbd0f807a336714dd21",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeConversationTurnFamily.kt",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionCancellation.kt",
-    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+    "projects/vexlife-new-beginnings/VEXLIFE-FRESH-INSTANCE-FEATURE.md",
+    "github.pull.vexwork.316"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
