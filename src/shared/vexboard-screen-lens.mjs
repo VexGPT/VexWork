@@ -15,6 +15,7 @@ import { normalizeElementIdentity } from './vexboard-screen-lens-identity.mjs';
 export {
   SCREEN_LENS_IDENTITY_KINDS,
   SCREEN_LENS_INSTANCE_ENCODING,
+  SCREEN_LENS_INSTANCE_CONTINUITY,
   appendLensIdentityPath,
   dynamicLensInstanceRef,
   normalizeLensIdentityPath,
