@@ -249,7 +249,7 @@ test('expression stepping animates the whole three-card carousel handoff instead
 test('workspace-shaped Experience yields to graph readability before the whole Lens reaches phone width', () => {
   assert.match(page, /\.side\{[^}]*min-width:0/, 'a grid side may shrink without forcing document-level horizontal overflow');
   assert.match(page, /\.side-head\{[^}]*min-width:0/, 'side chrome does not impose an accidental minimum width on the split');
-  assert.match(page, /@media \(max-width:1180px\) and \(min-width:901px\)\)\{[\s\S]*\.main\.wide\{grid-template-columns:minmax\(0,1fr\);gap:18px\}/, 'a source-authored workspace stacks before its Behavior graph is squeezed below a useful reading width');
+  assert.match(page, /@media \(max-width:1180px\) and \(min-width:901px\)\{[\s\S]*\.main\.wide\{grid-template-columns:minmax\(0,1fr\);gap:18px\}/, 'a source-authored workspace stacks before its Behavior graph is squeezed below a useful reading width');
   assert.match(page, /@media \(max-width:900px\)\{[\s\S]*\.main\{grid-template-columns:minmax\(0,1fr\);gap:18px\}/, 'the existing small-width rule still stacks every manifestation');
   assert.doesNotMatch(page, /vexlife-prod[^\n]{0,120}1180|1180[^\n]{0,120}vexlife-prod/i, 'responsive placement follows manifestation shape, never Product identity');
 });
