@@ -266,6 +266,11 @@ test('Experience and Behavior form one intrinsic pair whose wrap owns outer flow
   assert.doesNotMatch(page, /vexlife-prod[^\n]{0,160}pair-stacked|pair-stacked[^\n]{0,160}vexlife-prod/i, 'pair layout remains subject-agnostic');
 });
 
+test('container aggregate follows the current expression presence instead of hidden descendant pathways', () => {
+  assert.match(page, /presenceOf\(element\.ref\)\?\.state === 'LATENT'/);
+  assert.match(page, /aggregateContainedFaceGraph\(state\.lens, anchor\.ref, face, \{ excludedElementRefs: latentElementRefs \}\)/);
+});
+
 test('container selection renders contained relationships instead of a blank Behavior side', () => {
   assert.match(page, /Lens\.aggregateContainedFaceGraph\(state\.lens, anchor\.ref, face\)/);
   assert.match(page, /contains \$\{relationshipCount\} projected relationship/);
