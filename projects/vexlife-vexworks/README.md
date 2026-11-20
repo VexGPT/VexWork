@@ -595,3 +595,54 @@ PENDING_MAC_RUN
 ~~~
 
 The prior A004 PASS remains provenance for the prior immutable head only. Current A0 stays RUNNING; no Assurance clearance, READY transition or merge is claimed for the corrected head.
+
+
+### A005 SourceOwner PASS + corrected-head Assurance CLEAR
+
+The Assurance-corrected Product candidate is now:
+
+~~~text
+VexGPT/VexLife-Prod#435
+head f05436538b022589472ce1dbe25a55ea9a15743c
+tree ea666cc7162bca197279bbc6dd684ce59d9986ca
+base/main a4dd25e472d153b1cef24f7f35132933f3d725d0
+~~~
+
+Fresh Mac SourceOwner proof:
+
+~~~text
+outer RETURN sha256
+ef667cb3f4cc0f35f6c2a79c652fba09318b150b23f4795263065284928eb1e2
+PASS
+
+inner RETURN sha256
+f6404a127757b41c4f28170d94f17ee7fd4bdf187d153333b800d55c05348260
+PASS
+
+testsExecuted true
+reviewReturnFormed true
+selected source 8
+omitted 0
+findings 0/0/0/0
+~~~
+
+Fresh Independent Assurance over the exact hosted head is:
+
+~~~text
+CLEAR_ON_EXACT_HEAD
+~~~
+
+The prior finding was satisfied by one deterministic service-level regression proving recognized static images remain HELD, cannot become Send resources and cannot invoke Companion before a qualified visual-input realization exists.
+
+Current provider observation:
+
+~~~text
+PR #435 OPEN DRAFT
+main/base exact a4dd25e472d153b1cef24f7f35132933f3d725d0
+branch head exact f05436538b022589472ce1dbe25a55ea9a15743c
+mergeable true / clean
+check runs 0
+statuses 0
+~~~
+
+SourceOwner and Assurance are complete for this exact candidate. Draft/READY/merge remain separate lifecycle/provider effects; A0 remains RUNNING because the human image outcome is not complete until a real qualified visual realization can make one ordinary attached-image turn answer from actual image content.
