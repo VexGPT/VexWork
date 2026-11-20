@@ -367,23 +367,55 @@ Relay therefore continues to hold SourceOwner completion, while the evidence doe
 ./gradlew --no-daemon -Dorg.gradle.jvmargs=-Xmx4g --max-workers=1 jvmTest checkVexLifeStrings
 ~~~
 
-A004 formation is statically qualified:
+A004 completed the exact-head SourceOwner gate successfully:
 
 ~~~text
-formation wrapper sha256
-8d93a26cf3aac324cfe5e80d3a09eaeb875fd72ad05e96777d063eff4d2bddba
+outer RETURN
+sha256 c150c2c3cbd215600c42e8211131518efd03e6c4c4049f594c5c27bbf4937f35
+PASS
+
+retained inner VexRelay RETURN
+sha256 c63bda775b67c8a68b385f219f389291e67d89d72f9fb9711438fd79c42f05ed
+PASS
 
 candidate
 9df62c1851b0d2e8b8774e7228a376e9d02a282d
 2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
 
-business execution
-PENDING_MAC_RUN
+worktree CLEAN
+
+proof
+./gradlew --no-daemon -Dorg.gradle.jvmargs=-Xmx4g --max-workers=1 jvmTest checkVexLifeStrings
+
+BUILD SUCCESSFUL in 54s
+7 actionable tasks: 7 executed
+
+jvmTest PASS
+checkVexLifeStrings PASS
+
+review projection
+selected 7
+omitted 0
+truncated false
+
+findings
+candidate 0
+harness 0
+environment 0
+unknown 0
 ~~~
 
-No Product mutation is required for that proof-environment recovery.
+Canonical VexRelay forward state:
 
-No Product SourceOwner PASS, Independent Assurance, READY transition or merge is claimed yet.
+~~~text
+currentLifecycleState ASSURANCE_PENDING
+nextFunction F13.RUN_FRESH_ASSURANCE
+nextOwner Operations
+~~~
+
+The exact Product candidate is now SourceOwner-proved. Fresh Independent Assurance remains the next separate gate.
+
+No Product mutation, Independent Assurance, READY transition or merge is claimed yet.
 
 ## The model-switching tail is smaller than it first appears
 
