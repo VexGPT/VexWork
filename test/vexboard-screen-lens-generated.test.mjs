@@ -16,8 +16,13 @@ const raw = JSON.parse(fs.readFileSync(generatedFile, 'utf8'));
 const mainRaw = JSON.parse(fs.readFileSync(mainGeneratedFile, 'utf8'));
 const lens = normalizeScreenLens(raw);
 const mainLens = normalizeScreenLens(mainRaw);
-const prodStableFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-prod.screen-lens.json');
-const prodMainFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-prod.main.screen-lens.json');
+const lensCatalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'projects/vexboard/lens/catalog.json'), 'utf8'));
+const prodSubject = lensCatalog.subjects.find((subject) => subject.slug === 'vexlife-prod');
+const prodStableBuild = prodSubject?.lens?.builds?.find((build) => build.buildRef === 'stable');
+const prodMainBuild = prodSubject?.lens?.builds?.find((build) => build.buildRef === 'main');
+assert.ok(prodStableBuild && prodMainBuild, 'VexLife-Prod Stable/Main builds must be catalogued');
+const prodStableFile = path.join(ROOT, 'projects/vexboard/lens', prodStableBuild.lens);
+const prodMainFile = path.join(ROOT, 'projects/vexboard/lens', prodMainBuild.lens);
 const prodStableRaw = JSON.parse(fs.readFileSync(prodStableFile, 'utf8'));
 const prodMainRaw = JSON.parse(fs.readFileSync(prodMainFile, 'utf8'));
 const prodStableLens = normalizeScreenLens(prodStableRaw);
@@ -43,11 +48,13 @@ test('the committed lens is current with its adapter, overlay and generator', ()
   assert.match(lens.sourceSnapshot.notes[0], /Regenerate it; do not edit by hand/);
 });
 
-test('VexLife-Prod mirrors Claude/Product-owned Lens bytes and already speaks the shared four-face grammar', () => {
+test('VexLife-Prod mirrors Product-owned Lens bytes and already speaks the shared four-face grammar', () => {
   assert.equal(prodStableRaw.lensRef, 'lens.vexlife-prod');
   assert.equal(prodMainRaw.lensRef, 'lens.vexlife-prod');
   assert.equal(prodMainLens.screens.length, 1);
   assert.equal(prodMainLens.screens[0].screenRef, 'screen.vexlife-workspace');
+  assert.equal(prodMainBuild.commit, '7f3935aec46b2030ebbc887fa8ccbf6199c93d36', 'Main points at the latest observed Product source');
+  assert.equal(prodStableBuild.sourceBlobSha1, prodMainBuild.sourceBlobSha1, 'unchanged exported bytes may move Main without promoting Stable');
   const vision = pathwayForElement(prodMainLens, 'element.vexlife-workspace.companion.vision');
   assert.equal(vision.disposition, 'SCAE_FAMILY');
   assert.ok(vision.nodes.some((node) => node.face === 'BEHAVIOR' && node.role === 'CONTROL'));
