@@ -61,8 +61,8 @@
         "meaning": "Accepted lived Screen Lens state recovery: exact accepted Product state/CSS projection restored on top of #331; recovery/learning anchor, not Product semantic authority."
       },
       {
-        "ref": "github.pull.vexlife-prod.417",
-        "meaning": "Screen Lens Product presentation promotion stacked on current #414: accepted state/interaction relationships move into canonical exporter and Product-owned System/Light/Dark metadata becomes projectable."
+        "ref": "github.pull.vexlife-prod.419",
+        "meaning": "Current Screen Lens Product presentation promotion stacked on the latest #414 Local Artifacts head: accepted state/interaction relationships move into the canonical exporter and Product-owned System/Light/Dark metadata becomes projectable."
       },
       {
         "ref": "github.pull.vexwork.339",
@@ -1685,9 +1685,9 @@
         "state": "OPEN_DRAFT_FOREGROUND_PRODUCT_SUCCESSOR",
         "head": "2f9c0fdb667585a68f45a5bc834f67cac2af688c"
       },
-      "417": {
-        "state": "OPEN_DRAFT_PRODUCT_PRESENTATION_PROMOTION",
-        "head": "3cdda7248a289061e8dc1531fb162f6096d73fa9"
+      "419": {
+        "state": "OPEN_DRAFT_PRODUCT_PRESENTATION_PROMOTION_CURRENT",
+        "head": "9d07ae93ffa95f6780a2d7756add27efb1f8d228"
       },
       "vexwork-331": {
         "state": "OPEN_DRAFT_GENERIC_LENS_CURRENTIZATION",
