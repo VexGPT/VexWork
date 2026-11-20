@@ -64,6 +64,46 @@ Nested relationships carry a **gate** (the enclosing choice). A relationship ins
 panel does not leak uncertainty outward; one inside an unknown branch becomes dependent. Independent
 realization sites of the same element combine as OR.
 
+## Runtime identity is source-owned formation, not a VexBoard instance registry
+
+A population can be projectable without VexBoard observing or fabricating its current rows. When the
+producer owns a deterministic runtime presentation law, `templates[].instanceIdentity` carries that
+law beside the existing source-readable `instanceFormation` witness.
+
+~~~text
+stable domain/source identity
++ presentation scope when needed
+-> RUNTIME_INSTANCE formation contract
+
+nested runtime presentation
+-> DERIVED_CHILD(parent runtime instance, local path)
+
+STABLE_INSTANCE
+  same source/domain instance keeps the address across reorder/reprojection
+
+CURRENT_OCCURRENCE
+  source lacks a stronger durable occurrence identity
+  address is truthful only for the current occurrence
+  never persist/replay it as a durable source identity
+~~~
+
+The current VexStream Playlist pressure proves both cases without Product-specific reader code:
+Playlist cards derive from durable `playlist.id` and are `STABLE_INSTANCE`; Playlist detail entries
+allow duplicate track refs and reorder but own no durable per-entry ID, so they use
+`CURRENT_OCCURRENCE(playlist.id, entry.ref, occurrenceWithinPlaylist)`. Their nested buttons derive
+from the row instance by local path.
+
+This is the same architectural law already expressed by Android `VexComposeScope`,
+`appendVexElementPath(...)`, and `VexStreamPresentationRefs`, but the Screen Lens contract is
+platform-neutral. Kotlin/Compose, browser JavaScript, Swift/native desktop or a generated UI may author
+the same relationship in its own source.
+
+~~~text
+FORMATION CONTRACT != CURRENT RUNTIME INSTANCE
+DOMAIN IDENTITY != PRESENTATION OCCURRENCE
+PRESENTATION OCCURRENCE != PATHWAY / PRESENCE IDENTITY
+~~~
+
 ## Readers (VexWork, pure, browser-safe)
 
 ```text
@@ -387,7 +427,7 @@ fixture contents, external-cause values          typed Kotlin, carried as source
 current runtime instance                         not observable here; never claimed
 collection index/detail lists, filter chips      raw lists without list identity (next consumers)
 ImageElement static realization                  one static consumer (shell brand mark): not earned
-dynamic ref formats (Events / Conversation)      contract-bearing; migration not earned yet
+existing Events / Conversation dynamic formats   remain source-owned; portable formation does not force migration
 ```
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][PROJECTABILITY] -->
