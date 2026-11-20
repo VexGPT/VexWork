@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "vexboard.screen-lens/v1",
+  "lensRef": "lens.neutral-framed-element-tree",
+  "title": "Neutral framed element-tree subject",
+  "summary": "Conformance fixture: a framed workspace realized from Lens elements, with no Product static view and no platform identity.",
+  "entryScreenRef": "screen.neutral-workspace",
+  "entryElementRef": "element.neutral-workspace.primary.toggle",
+  "relatedBoardRefs": [],
+  "sourceSnapshot": {
+    "repositoryRef": "fixture.neutral-subject",
+    "repositoryUrl": null,
+    "commit": null,
+    "observedAt": "2026-11-20",
+    "roots": {
+      "fixture": "test/fixtures/screen-lens/"
+    },
+    "notes": [
+      "Conformance pressure only; not a fake platform implementation.",
+      "Deliberately combines FRAME layout with element-tree rendering and no static Product view."
+    ]
+  },
+  "chrome": [],
+  "screens": [
+    {
+      "screenRef": "screen.neutral-workspace",
+      "label": "Neutral workspace",
+      "placement": "PRIMARY",
+      "symbol": "NeutralWorkspace",
+      "source": "fixture:neutral/NeutralWorkspace",
+      "mapped": "MAPPED",
+      "summary": "Two persistent regions divided by one authored seam; content is drawn from Lens elements.",
+      "elements": [
+        {
+          "ref": "element.neutral-workspace.frame",
+          "kind": "FRAME",
+          "label": "Workspace frame",
+          "parentRef": null,
+          "symbol": "NeutralWorkspace.Frame",
+          "declared": "frame"
+        },
+        {
+          "ref": "element.neutral-workspace.seam",
+          "kind": "SEAM",
+          "label": "Primary secondary seam",
+          "parentRef": "element.neutral-workspace.frame",
+          "symbol": "NeutralWorkspace.Seam",
+          "declared": "vertical seam"
+        },
+        {
+          "ref": "element.neutral-workspace.primary",
+          "kind": "REGION",
+          "label": "Primary region",
+          "parentRef": "element.neutral-workspace.frame",
+          "symbol": "NeutralWorkspace.Primary",
+          "declared": "primary region"
+        },
+        {
+          "ref": "element.neutral-workspace.secondary",
+          "kind": "REGION",
+          "label": "Secondary region",
+          "parentRef": "element.neutral-workspace.frame",
+          "symbol": "NeutralWorkspace.Secondary",
+          "declared": "secondary region"
+        },
+        {
+          "ref": "element.neutral-workspace.primary.toggle",
+          "kind": "BUTTON",
+          "label": "Toggle secondary panel",
+          "parentRef": "element.neutral-workspace.primary",
+          "symbol": "NeutralWorkspace.ToggleSecondaryPanel",
+          "declared": "button",
+          "intent": "toggle(SecondaryPanel)",
+          "pathwayRef": "pathway.neutral-workspace.toggle-secondary-panel"
+        },
+        {
+          "ref": "element.neutral-workspace.secondary.panel",
+          "kind": "CARD",
+          "label": "Secondary panel",
+          "parentRef": "element.neutral-workspace.secondary",
+          "symbol": "SecondaryPanel",
+          "declared": "card"
+        },
+        {
+          "ref": "element.neutral-workspace.secondary.panel.text",
+          "kind": "TEXT",
+          "label": "Neutral detail",
+          "parentRef": "element.neutral-workspace.secondary.panel",
+          "symbol": "NeutralWorkspace.Detail",
+          "declared": "text"
+        }
+      ],
+      "layout": {
+        "kind": "FRAME",
+        "symbol": "NeutralWorkspace.Layout",
+        "source": "fixture:neutral/NeutralWorkspace",
+        "root": "element.neutral-workspace.frame",
+        "frames": [
+          {
+            "ref": "element.neutral-workspace.frame",
+            "seams": [
+              {
+                "ref": "element.neutral-workspace.seam",
+                "axis": "VERTICAL",
+                "between": [
+                  "FRAME_START",
+                  "FRAME_END"
+                ],
+                "span": [
+                  "FRAME_TOP",
+                  "FRAME_BOTTOM"
+                ],
+                "allocation": {
+                  "before": 1,
+                  "after": 1
+                }
+              }
+            ],
+            "regions": [
+              {
+                "ref": "element.neutral-workspace.primary",
+                "start": "FRAME_START",
+                "end": "element.neutral-workspace.seam",
+                "top": "FRAME_TOP",
+                "bottom": "FRAME_BOTTOM"
+              },
+              {
+                "ref": "element.neutral-workspace.secondary",
+                "start": "element.neutral-workspace.seam",
+                "end": "FRAME_END",
+                "top": "FRAME_TOP",
+                "bottom": "FRAME_BOTTOM"
+              }
+            ],
+            "chrome": []
+          }
+        ],
+        "overlays": []
+      },
+      "realization": {
+        "status": "PROJECTED",
+        "entry": {
+          "symbol": "NeutralWorkspace",
+          "source": "fixture:neutral/NeutralWorkspace"
+        },
+        "rendersRegisteredTree": "screen.neutral-workspace",
+        "realizers": [
+          "NeutralWorkspace"
+        ],
+        "presence": [
+          {
+            "ref": "presence.neutral-workspace.secondary-panel-open",
+            "kind": "PRESENTATION",
+            "subjectRef": "element.neutral-workspace.secondary.panel",
+            "owner": "NeutralWorkspace",
+            "condition": "state.secondaryPanelOpen",
+            "realizedBy": "NeutralWorkspace",
+            "source": "fixture:neutral/NeutralWorkspace",
+            "realizes": [
+              "element.neutral-workspace.secondary.panel"
+            ]
+          }
+        ],
+        "templates": [],
+        "elements": [],
+        "opaque": [],
+        "held": []
+      }
+    }
+  ],
+  "pathways": [
+    {
+      "pathwayRef": "pathway.neutral-workspace.toggle-secondary-panel",
+      "label": "Toggle secondary panel",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A presentation-local relationship over a registered panel; no semantic Family is invented.",
+      "returns": null,
+      "returnRef": null,
+      "nodes": [
+        {
+          "ref": "neutral-workspace.toggle-secondary-panel.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "toggle(SecondaryPanel)",
+          "symbol": "NeutralWorkspace.ToggleSecondaryPanel",
+          "summary": "Declared on the element.",
+          "source": "fixture:neutral/NeutralWorkspace"
+        },
+        {
+          "ref": "neutral-workspace.toggle-secondary-panel.presentation",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Secondary panel",
+          "symbol": "SecondaryPanel",
+          "summary": "The same Screen presents the panel when its source-authored presentation relationship is open.",
+          "source": "fixture:neutral/NeutralWorkspace"
+        }
+      ],
+      "edges": [
+        {
+          "from": "neutral-workspace.toggle-secondary-panel.intent",
+          "to": "neutral-workspace.toggle-secondary-panel.presentation",
+          "label": "toggle",
+          "kind": "FLOW"
+        }
+      ]
+    }
+  ],
+  "annotations": [],
+  "examples": [],
+  "examplesHeld": []
+}

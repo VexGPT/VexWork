@@ -16,8 +16,13 @@ const raw = JSON.parse(fs.readFileSync(generatedFile, 'utf8'));
 const mainRaw = JSON.parse(fs.readFileSync(mainGeneratedFile, 'utf8'));
 const lens = normalizeScreenLens(raw);
 const mainLens = normalizeScreenLens(mainRaw);
-const prodStableFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-prod.screen-lens.json');
-const prodMainFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-prod.main.screen-lens.json');
+const lensCatalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'projects/vexboard/lens/catalog.json'), 'utf8'));
+const prodSubject = lensCatalog.subjects.find((subject) => subject.slug === 'vexlife-prod');
+const prodStableBuild = prodSubject?.lens?.builds?.find((build) => build.buildRef === 'stable');
+const prodMainBuild = prodSubject?.lens?.builds?.find((build) => build.buildRef === 'main');
+assert.ok(prodStableBuild && prodMainBuild, 'VexLife-Prod Stable/Main builds must be catalogued');
+const prodStableFile = path.join(ROOT, 'projects/vexboard/lens', prodStableBuild.lens);
+const prodMainFile = path.join(ROOT, 'projects/vexboard/lens', prodMainBuild.lens);
 const prodStableRaw = JSON.parse(fs.readFileSync(prodStableFile, 'utf8'));
 const prodMainRaw = JSON.parse(fs.readFileSync(prodMainFile, 'utf8'));
 const prodStableLens = normalizeScreenLens(prodStableRaw);
@@ -35,7 +40,7 @@ test('the committed lens is current with its adapter, overlay and generator', ()
     'vexlife-prod:main:PASS',
   ], 'every catalog build is verified at its own pointer');
   assert.match(raw.provenance.generator, /^vexlife-android-adapter\//);
-  assert.equal(raw.provenance.projectorBlobSha1, 'ac29200831b056e37558fa80e427d760f93b91cc');
+  assert.equal(raw.provenance.projectorBlobSha1, '0a056364b8a5f143b48105aaf1112ba0b335f736');
   // D34 extended: the projector's own module imports (Kotlin reading, realization, examples) are bound too.
   assert.match(raw.provenance.projectorSupportSha256, /^[0-9a-f]{64}$/);
   assert.match(raw.provenance.sourceCommit, /^[0-9a-f]{40}$/);
@@ -43,13 +48,13 @@ test('the committed lens is current with its adapter, overlay and generator', ()
   assert.match(lens.sourceSnapshot.notes[0], /Regenerate it; do not edit by hand/);
 });
 
-test('VexLife-Prod mirrors Claude/Product-owned Lens bytes and already speaks the shared four-face grammar', () => {
+test('VexLife-Prod mirrors Product-owned Lens bytes and already speaks the shared four-face grammar', () => {
   assert.equal(prodStableRaw.lensRef, 'lens.vexlife-prod');
   assert.equal(prodMainRaw.lensRef, 'lens.vexlife-prod');
   assert.equal(prodMainLens.screens.length, 1);
   assert.equal(prodMainLens.screens[0].screenRef, 'screen.vexlife-workspace');
-  assert.equal(prodMainLens.screens[0].elements.length, 81);
-  assert.equal(prodMainLens.pathways.length, 11);
+  assert.equal(prodMainBuild.commit, '7f3935aec46b2030ebbc887fa8ccbf6199c93d36', 'Main points at the latest observed Product source');
+  assert.equal(prodStableBuild.sourceBlobSha1, prodMainBuild.sourceBlobSha1, 'unchanged exported bytes may move Main without promoting Stable');
   const vision = pathwayForElement(prodMainLens, 'element.vexlife-workspace.companion.vision');
   assert.equal(vision.disposition, 'SCAE_FAMILY');
   assert.ok(vision.nodes.some((node) => node.face === 'BEHAVIOR' && node.role === 'CONTROL'));
@@ -104,6 +109,14 @@ test('dispositions match what the code earns', () => {
     assert.ok(theme.nodes.some((node) => node.role === role), role);
   }
   assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.fence'), 'source derives the ThemeMode-local fence');
+
+
+  const synthetic = pathwayForElement(lens, 'element.debug-menu.body.events-simulator.actions.start');
+  const syntheticScope = synthetic.nodes.find((node) => node.ref === 'events.synthetic.start.dep-scope');
+  assert.equal(syntheticScope.label, 'CoroutineScope');
+  assert.equal(syntheticScope.role, 'CONSTRUCTION', 'session coroutine lifetime is construction/support, not outside truth');
+  assert.equal(synthetic.nodes.find((node) => node.ref === 'events.synthetic.start.dep-repositories-events').role, 'STORE');
+  assert.equal(synthetic.nodes.some((node) => node.ref === 'events.synthetic.start.dep-scope' && node.role === 'STORE'), false);
 });
 
 test('Stable keeps historical Direct Family source while Main projects accepted-responsibility currentness', () => {
