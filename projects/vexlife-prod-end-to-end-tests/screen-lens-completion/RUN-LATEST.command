@@ -47,7 +47,7 @@ ACTUAL="$("$GIT" rev-parse HEAD)"
 
 echo "Screen Lens preview: generating exact Product Lens..."
 set +e
-./gradlew --no-daemon generateVexLifeProdScreenLens 2>&1 | "$TEE" "$OUT/generate.log"
+./gradlew --no-daemon --max-workers=1 -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=2g" -Pkotlin.compiler.execution.strategy=in-process generateVexLifeProdScreenLens 2>&1 | "$TEE" "$OUT/generate.log"
 GEN_STATUS=${PIPESTATUS[0]}
 set -e
 [ "$GEN_STATUS" -eq 0 ] || {
@@ -60,7 +60,7 @@ set -e
 
 echo "Screen Lens preview: running focused exporter proof..."
 set +e
-./gradlew --no-daemon jvmTest --tests vexlife.lens.VexLifeProdScreenLensTest checkVexLifeStrings 2>&1 | "$TEE" "$OUT/proof.log"
+./gradlew --no-daemon --max-workers=1 -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=2g" -Pkotlin.compiler.execution.strategy=in-process jvmTest --tests vexlife.lens.VexLifeProdScreenLensTest checkVexLifeStrings 2>&1 | "$TEE" "$OUT/proof.log"
 PROOF_STATUS=${PIPESTATUS[0]}
 set -e
 
