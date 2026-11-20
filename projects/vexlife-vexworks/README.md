@@ -329,6 +329,20 @@ A003 rotates attempt/package identity only and preserves the exact #435 head/tre
 /bin/bash ./gradlew --no-daemon jvmTest checkVexLifeStrings
 ~~~
 
+A003 formation is now statically qualified:
+
+~~~text
+formation wrapper sha256
+0654ce5b57437e5a53e4031b50c78392f2b537446ce8c8e5d250fde09442cf12
+
+candidate
+9df62c1851b0d2e8b8774e7228a376e9d02a282d
+2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
+
+business execution
+PENDING_MAC_RUN
+~~~
+
 No Product SourceOwner PASS, Independent Assurance, READY transition or merge is claimed yet.
 
 ## The model-switching tail is smaller than it first appears
