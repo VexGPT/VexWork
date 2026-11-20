@@ -708,3 +708,70 @@ PENDING_MAC_RUN
 The previously proved #435 head remains immutable provenance. #439 owns integration currentness against the newer Product main.
 
 A0 remains RUNNING only until this integration boundary is resolved. Its durable work-item purpose already keeps image/vision outside the original artifact/source gate until separately earned. Once the cleared seam lands, A0 should close on its admitted Local Artifacts + Local Sources outcome and A1 becomes the foreground owner for selected-model capability truth, including whether visual input is actually available for the exact selected model/runtime relationship.
+
+
+### PR #439 integration A001 — stale current-main Vision proof exposed and corrected
+
+Victor returned the first combined-tree proof:
+
+~~~text
+outer RETURN
+sha256 584b62cd8bd65a65eef0ebf9be76bbb5716a02339ef616e2e6c09b6613149dbb
+PASS
+
+retained inner VexRelay RETURN
+sha256 09fc3306fcf15c03cf5842b926ee76068101d459d45fcddc6c2999fbcd9f9217
+SAFE_FAILURE
+~~~
+
+The exact integration candidate grounded correctly at:
+
+~~~text
+base 14206ba97e47e107c4999e89f514c8beaf24224a
+head 9aa3168517adb27b5fe90e195d2b10719abd05c4
+tree b57f4393077ea033aef96d9971871681aeb30826
+~~~
+
+The build compiled and entered the full JVM suite:
+
+~~~text
+938 tests
+937 passed
+1 failed
+
+VexLifeVisionQuickAccessTest
+visionQuickAccessIsReusedInsideProductSpiralWithoutFabricatingLookNow
+~~~
+
+This is current-main proof drift exposed by integration, not a Local Artifacts image defect.
+
+The failing test was byte-identical to the pre-Screen-Lens base while #437 intentionally changed the manifestation relationship:
+
+~~~text
+authored Vision quick-action source remains present
++
+QuickActions data-open=false owns CLOSED manifestation
++
+CSS hides .quick-action-item while closed
+
+!=
+hard-hidden source button
+~~~
+
+The correction changes only the stale regression test. Product behavior is unchanged.
+
+Corrected #439:
+
+~~~text
+head 8b27bf51898cac3e1359c5fc41bd38d1c0667caa
+tree 1d76894a86913aeeaf6b66322129060b0d27a0e8
+changed paths 9
+~~~
+
+The ninth path is:
+
+~~~text
+src/commonTest/kotlin/vexlife/web/VexLifeVisionQuickAccessTest.kt
+~~~
+
+Fresh combined-tree SourceOwner proof is required on this corrected integration head before any merge/lifecycle completion claim.
