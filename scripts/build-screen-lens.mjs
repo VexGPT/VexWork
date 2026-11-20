@@ -5,7 +5,8 @@
 //
 //   node scripts/build-screen-lens.mjs --verify                     offline: every build in the catalog still matches
 //                                                                   its pointer, adapter, overlay and generator
-//   node scripts/build-screen-lens.mjs --fetch                      regenerate Stable at its pointer
+//   node scripts/build-screen-lens.mjs --fetch                      regenerate the subject's default build
+//                                                                   (Stable when accepted, otherwise Main)
 //   node scripts/build-screen-lens.mjs --build main --fetch         move Main to the newest commit on its branch
 //   node scripts/build-screen-lens.mjs --build main --fetch --commit <sha|branch|tag>
 //   node scripts/build-screen-lens.mjs --promote --evidence <ref> Stable takes Main's commit (offline)
@@ -14,8 +15,9 @@
 // Options: --subject <slug> (default: the catalog's default project), --check, --report, --on <YYYY-MM-DD>.
 // Legacy single-lens use, bypassing the catalog: --adapter <file> [--overlay <file>] [--out <file>].
 //
-// Stable moves only by evidence-bearing promote. Generating Main never re-pins the adapter, and Main
-// shares Stable's lens file whenever both point at the same commit.
+// Stable moves only by evidence-bearing promote. A candidate subject has Main / Commit without
+// inventing Stable; its first promotion creates Stable. Generating Main never re-pins the adapter,
+// and Main shares Stable's lens file whenever both point at the same commit.
 
 import crypto from 'node:crypto';
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -171,8 +173,8 @@ function context(args) {
   const catalog = normalizeLensCatalog(rawCatalog);
   const subject = subjectFor(catalog, args.subject ?? catalog.defaultSubjectRef);
   if (!subject) throw new Error(`no project named ${args.subject} in ${CATALOG}`);
-  if (subject.lens.status !== 'GENERATED') throw new Error(`${subject.label} has no generated lens (${subject.lens.reason})`);
-  const buildRef = args.build ?? 'stable';
+  if (subject.lens.status === 'NOT_BUILT') throw new Error(`${subject.label} has no projectable lens (${subject.lens.reason})`);
+  const buildRef = args.build ?? (buildFor(subject, 'stable') ? 'stable' : 'main');
   if (!buildFor(subject, buildRef)) throw new Error(`${subject.label} has no ${buildRef} build`);
   return {
     legacy: false, rawCatalog, catalog, subject, buildRef,
@@ -214,11 +216,11 @@ function verify(args) {
   const builds = [];
   const failures = [];
   for (const subject of catalog.subjects) {
-    if (subject.lens.status !== 'GENERATED' || (args.subject && subject.slug !== args.subject)) continue;
+    if (subject.lens.status === 'NOT_BUILT' || (args.subject && subject.slug !== args.subject)) continue;
     const adapter = subject.lens.adapter ? readJson(lensFile(subject.lens.adapter)) : null;
     const overlay = subject.lens.overlay ? readJson(lensFile(subject.lens.overlay)) : null;
     const stable = buildFor(subject, 'stable');
-    if (adapter && adapter.repository.commit !== stable.commit) failures.push(`${subject.slug}: adapter pin ${adapter.repository.commit.slice(0, 7)} disagrees with Stable ${stable.commit.slice(0, 7)} in ${CATALOG}`);
+    if (adapter && stable && adapter.repository.commit !== stable.commit) failures.push(`${subject.slug}: adapter pin ${adapter.repository.commit.slice(0, 7)} disagrees with Stable ${stable.commit.slice(0, 7)} in ${CATALOG}`);
     for (const build of subject.lens.builds) {
       const result = subject.lens.exportedLens
         ? verifyExportedFile(lensFile(build.lens), build)
@@ -232,13 +234,14 @@ function verify(args) {
     console.error(JSON.stringify({ state: 'STALE', builds, failures, fix: 'node scripts/build-screen-lens.mjs --fetch [--build main]' }, null, 2));
     process.exit(1);
   }
-  const stable = builds.find((entry) => entry.build === 'stable');
-  console.log(JSON.stringify({ state: 'PASS', lens: stable?.lens ?? null, sourceCommit: stable?.commit ?? null, builds }, null, 2));
+  const preferred = builds.find((entry) => entry.build === 'stable') ?? builds.find((entry) => entry.build === 'main');
+  console.log(JSON.stringify({ state: 'PASS', lens: preferred?.lens ?? null, sourceCommit: preferred?.commit ?? null, builds }, null, 2));
 }
 
 function promote(args) {
   const ctx = context(args);
-  const before = buildFor(ctx.subject, 'stable').commit;
+  const beforeStable = buildFor(ctx.subject, 'stable');
+  const before = beforeStable?.commit ?? null;
   const result = promoteBuild(ctx.rawCatalog, ctx.subject.slug, { on: args.on ?? today(), evidence: args.evidence ? [args.evidence] : [] });
   if (!result.changed) {
     console.log(JSON.stringify({ state: 'PASS', promoted: false, reason: `Stable already points at Main (${before.slice(0, 7)})` }, null, 2));
