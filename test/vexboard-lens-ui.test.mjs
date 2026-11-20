@@ -399,3 +399,11 @@ test('static state consequences ignore gated-off inner presentation values', () 
   assert.match(page, /if \(outcome\?\.gate === false \|\| String\(outcome\?\.value \?\? ''\) !== binding\.value\) continue;/);
   assert.match(page, /Gated-off relationships have no manifestation consequences/);
 });
+
+
+test('selected identities recurse into their active projected realization relationship when no semantic pathway exists', () => {
+  assert.match(page, /function projectedRelationshipForAnchor\(\)/);
+  assert.match(page, /graph\?\.nodes\.some\(\(node\) => node\.elementRef === state\.anchorElementRef\)/);
+  assert.match(page, /Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? projectedRelationshipForAnchor\(\)/);
+  assert.match(page, /Reuse that already-derived expression graph only when it actually contains the selected identity/);
+});
