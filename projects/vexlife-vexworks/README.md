@@ -576,3 +576,22 @@ The Project is successful when a normal person can:
 This Project carries navigation and sequence. Current VexLife-Prod source remains the authority for the exact implementation.
 
 <!-- [VXG RealForever][VEXWORK][VEXWORKS][VEXLIFE-PROD] -->
+
+
+### Corrected-head SourceOwner A005 formed
+
+The fresh-Assurance correction is now bound for a new exact-head SourceOwner proof:
+
+~~~text
+head f05436538b022589472ce1dbe25a55ea9a15743c
+tree ea666cc7162bca197279bbc6dd684ce59d9986ca
+changed paths 8
+
+formation wrapper sha256
+c36903b8bbe2ce8e14e710b96c771a895f2c93350e4a8cb4ccbde1d8df6f2c23
+
+business execution
+PENDING_MAC_RUN
+~~~
+
+The prior A004 PASS remains provenance for the prior immutable head only. Current A0 stays RUNNING; no Assurance clearance, READY transition or merge is claimed for the corrected head.
