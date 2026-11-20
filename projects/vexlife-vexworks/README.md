@@ -524,9 +524,10 @@ A model with no provider-native tool channel may still use a **qualified VexLife
 
 ```text
 A0  Local Artifacts + Local Sources convergence
-    current foreground
+    COMPLETED on VexLife-Prod main 8dbbd3f250556fe9cc6664849be65a67e9c1fc76
 
 A1  Effective model-capability projection
+    CURRENT FOREGROUND
     derive one human-readable capability view from the selected model's exact
     Companion representation + current runtime realization/qualification
 
@@ -563,8 +564,9 @@ The Project is successful when a normal person can:
 
 ## Current source coordinates
 
-- `VexGPT/VexLife-Prod#434` — stable Local Artifacts integration now on Product main.
-- `VexGPT/VexLife-Prod#435` — current draft static-image adaptation successor over that stable base.
+- `VexGPT/VexLife-Prod#439` — merged current-main integration of the proved static-image adaptation seam; merge `8dbbd3f250556fe9cc6664849be65a67e9c1fc76`, tree `1d76894a86913aeeaf6b66322129060b0d27a0e8`.
+- `VexGPT/VexLife-Prod#435` — immutable implementation/proof provenance for the eight Local Artifacts image paths.
+- `VexGPT/VexLife-Prod#434` — predecessor stable text/document Local Artifacts integration.
 - `docs/foundation/HERETIC-PRODUCT-MODEL.md`
 - `src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt`
 - `src/commonMain/kotlin/vexlife/model/heretic/HereticModelCatalog.kt`
@@ -799,3 +801,59 @@ PENDING_MAC_RUN
 ~~~
 
 This retry preserves the same integration task and rotates attempt/request/correlation/package identity. It also corrects the inherited inner-task parent/work/admission refs to PR #439 itself. No Product behavior changed after A001; only the stale VisionQuickAccess proof was aligned with the already-merged Screen Lens manifestation law.
+
+
+## A0 terminal checkpoint → A1 foreground
+
+A0 is now complete on actual Product main.
+
+~~~text
+VexLife-Prod #439
+merge 8dbbd3f250556fe9cc6664849be65a67e9c1fc76
+tree  1d76894a86913aeeaf6b66322129060b0d27a0e8
+
+A002 SourceOwner                  PASS
+fresh Independent Assurance       CLEAR_ON_EXACT_HEAD
+lifecycle currentness             PASS
+expected-head merge               PASS
+post-merge main/tree equality     PASS
+~~~
+
+A0 closes on the outcome it actually owned:
+
+~~~text
+text / ZIP / DOCX / XLSX / PPTX
++ exact request-bound artifact custody
++ small readable direct current-turn context
++ large/overflow bounded reach
++ persistent Local Sources + bounded search/read
++ static PNG/JPEG exact-byte adaptation seam safely HELD until visual input is qualified
+~~~
+
+This does **not** claim image understanding. A0's durable purpose explicitly kept PDF/vision and other model/runtime meanings outside its gate until separately earned.
+
+A1 is now the foreground.
+
+~~~text
+exact selected model
++ exact Companion representation
++ exact current platform/runtime realization
++ current runtime qualification
+-> Effective selected-model capability projection
+~~~
+
+The projection should answer what is truthful **now** for the selected model/runtime, for example:
+
+~~~text
+Vex reach             available / compatibility bridge / held
+native tool carriage  available / unavailable
+reasoning controls    exact applicable controls only
+visual input          qualified / held / unsupported
+runtime               ready / needs materialization / needs start / held
+~~~
+
+These are projections of existing owners, not a new capability authority.
+
+The newly integrated StaticImageProjection gives visual input a concrete consumer pressure. The pinned Heretic 4B is the first real visual-runtime candidate, but provider/model evidence alone is not Product qualification. Current ordinary Companion carriage remains text-shaped, and the certified mlx-lm environment remains separate. A real visual realization must qualify before `visual input = available`.
+
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-LOCAL-ARTIFACTS][A0-COMPLETED][A1-RUNNING] -->
