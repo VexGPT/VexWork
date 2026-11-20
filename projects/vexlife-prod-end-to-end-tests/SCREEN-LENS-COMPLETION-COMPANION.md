@@ -30,6 +30,200 @@ Do not begin by replaying a prior ZIP or by assuming the latest package mentione
 
 ---
 
+## Current successor checkpoint — 2026-11-20 01:15 Pacific
+
+This section supersedes the older "Current checkpoint" and "Current next edge" text below when they disagree. Older sections remain historical continuity.
+
+### Human-accepted checkpoints now preserved
+
+```text
+VexLife-Prod rich projection checkpoint
+42b05676b3bb9669a1892b9bbf2e6b830cdb68c2
+= accepted enough to continue
+
+VexLife-Prod Spiral/FAB checkpoint
+99a971a158de3d3358f60fc22bfa721828f372cc
+= Spiral trigger + FAB family source-addressed and lived-good
+
+VexLife-Prod nested FAB-state checkpoint
+b18f02d3f2cb4ff8004a536de4d08b3625f217ba
+= Quick Actions -> Speech/Language/Release Alerts nested state hierarchy source-proved
+
+VexWork Back/Forward lived checkpoint
+#355
+human witness PASS
+```
+
+Do not regress to:
+- one frozen manifestation / 1-of-1 expressions;
+- @unpinned recovery URLs as the acceptance surface;
+- VexBoard Product-specific rendering;
+- copying old candidate presentation literals.
+
+### Current architectural direction
+
+The scalable projection hierarchy is:
+
+```text
+Product control
+-> Product relationship / presentation state
+-> effective nested state
+-> Product-authored manifestation consequences
+-> generic Screen Lens application
+-> visible Product manifestation
+-> deeper Behavior / Depth relationship
+```
+
+Durable rule:
+
+```text
+MAP THE PATTERN
+!= COPY THE CANDIDATE MANIFESTATION
+```
+
+Current examples:
+
+```text
+Spiral trigger
+-> Quick Actions OPEN
+-> FAB family visible
+
+Speech FAB
+-> Speech panel OPEN
+-> Speech panel visible
+-> deeper speech controls
+
+Language FAB
+-> Language panel OPEN
+-> Language panel visible
+-> deeper language choices
+
+Release Alerts FAB
+-> Release Alerts OPEN
+-> release panel visible
+-> deeper release controls
+```
+
+Presentation states are not fake screens. They remain expressions / nested projection coordinates over the same Product Screen.
+
+### Current exact source candidates
+
+VexWork #355:
+
+```text
+head a8b2e49f0f40d03a0595842383fc5240a488ee21
+base 7c9055af1b358d92f12b3a443aface3fc6e35873
+```
+
+Current generic additions:
+- browser/mouse Back + Forward follows Lens viewpoint history;
+- gated nested relationships keep affected refs latent even when DOM registration parentage differs;
+- stateBindings do not apply raw child consequences while the child relationship's gate is false.
+
+VexLife-Prod #432:
+
+```text
+head 70c64d8f0b3381432b7e409da93f150ef957ac85
+base c50760aa57d93f669e7df11f0e3298582d096331
+```
+
+Current Product additions:
+- Product-owned static HTML/CSS projection;
+- source-derived Browser / Companion expression traversal;
+- Product System / Light / Dark presentation coordinate;
+- Product-owned Spiral / Theme / Support source addressability;
+- SpeechPanel + LanguagePanel stable Product identities;
+- Speech / Language / Release Alerts as nested PRESENTATION relationships under Quick Actions;
+- explicit OPEN/CLOSED stateBindings:
+  - OPEN -> remove hidden + data-open=true
+  - CLOSED -> hidden + data-open=false
+
+#424 Theme-click activation remains HELD. Its separate typed activation must not be silently folded into this current projection work.
+
+### Latest execution history
+
+Nested FAB presentation-state retry:
+
+```text
+exact source
+c415cfe9a0fe54ae567b4e9241d151ed1dd3a200
+
+result
+PASS
+
+published Product head
+b18f02d3f2cb4ff8004a536de4d08b3625f217ba
+```
+
+Victor's next lived witness showed:
+- Lens state/Behavior correctly reported `Speech panel OPEN`;
+- visible Speech panel manifestation did not reliably appear.
+
+That exposed the next generic contract pressure:
+
+```text
+state truth
+!= automatically sufficient manifestation consequence
+```
+
+Current source repair therefore separates:
+
+```text
+relationship / effective state
+-> generic consequence bindings
+-> visible DOM manifestation
+```
+
+### Current unconsumed edge
+
+One combined proof is owed for both exact candidates:
+
+```text
+VexWork
+a8b2e49f0f40d03a0595842383fc5240a488ee21
+
+VexLife-Prod
+70c64d8f0b3381432b7e409da93f150ef957ac85
+```
+
+Runner:
+
+```text
+VexWork #344 runner commit
+157dffe43ceb1327a1ac65e7431cf1d7f9b26a10
+```
+
+The previous human attempt did NOT execute because the terminal command began with:
+
+```text
+c/bin/bash
+```
+
+instead of:
+
+```text
+/bin/bash
+```
+
+Therefore:
+
+```text
+dynamic-consequences proof
+= NOT RUN
+= no RETURN consumed
+= no new Product publication yet
+```
+
+The next human-only action is the corrected exact GitHub-hosted runner command. On PASS it publishes only the generated Product Lens JSON and forms:
+
+```text
+~/Downloads/RETURN-VEXLIFE-SCREEN-LENS-DYNAMIC-CONSEQUENCES.zip
+```
+
+<!-- [VXG RealForever][CURRENT-SUCCESSOR-CHECKPOINT][DYNAMIC-CONSEQUENCES] -->
+
+---
+
 ## Current checkpoint — 2026-11-20 Pacific
 
 The forward Screen Lens route has moved materially since this companion was formed.
