@@ -10,6 +10,16 @@
 
 import { normalizeExamples, normalizeScreenRealization } from './vexboard-screen-lens-realization.mjs';
 import { LAYERS, normalizeScreenLayout } from './vexboard-screen-lens-frames.mjs';
+import { normalizeElementIdentity } from './vexboard-screen-lens-identity.mjs';
+
+export {
+  SCREEN_LENS_IDENTITY_KINDS,
+  SCREEN_LENS_INSTANCE_ENCODING,
+  SCREEN_LENS_INSTANCE_CONTINUITY,
+  appendLensIdentityPath,
+  dynamicLensInstanceRef,
+  normalizeLensIdentityPath,
+} from './vexboard-screen-lens-identity.mjs';
 
 export const SCREEN_LENS_SCHEMA = 'vexboard.screen-lens/v1';
 
@@ -248,12 +258,14 @@ function normalizeElement(input, owner, refs) {
   if (refs.has(ref)) fail(`duplicate ref ${ref}`);
   refs.add(ref);
   if (!Object.hasOwn(ELEMENT_KINDS, input.kind)) fail(`${ref} has unknown element kind ${input.kind}`);
+  const parentRef = optionalText(input.parentRef, `${ref} parentRef`);
   return {
     ref,
     kind: input.kind,
     role: ELEMENT_KINDS[input.kind],
     label: text(input.label, `${ref} label`),
-    parentRef: optionalText(input.parentRef, `${ref} parentRef`),
+    parentRef,
+    identity: normalizeElementIdentity(input.identity, { ref, parentRef }),
     symbol: optionalText(input.symbol, `${ref} symbol`),
     declared: optionalText(input.declared, `${ref} declared`),
     labelRes: optionalText(input.labelRes, `${ref} labelRes`),
@@ -563,6 +575,48 @@ export function elementsUsingPathway(lens, pathwayRef) {
   return [...lens.chrome, ...lens.screens]
     .flatMap((owner) => owner.elements)
     .filter((element) => element.pathwayRef === pathwayRef);
+}
+
+export function containedPathways(lens, containerRef, { excludedElementRefs = [] } = {}) {
+  const anchor = elementFor(lens, containerRef);
+  const excluded = excludedElementRefs instanceof Set ? excludedElementRefs : new Set(excludedElementRefs);
+  if (!anchor) return Object.freeze([]);
+  const owner = [...lens.chrome, ...lens.screens].find((entry) => entry.elements.some((element) => element.ref === containerRef));
+  if (!owner) return Object.freeze([]);
+  const byRef = new Map(owner.elements.map((element) => [element.ref, element]));
+  const isDescendant = (element) => {
+    let parentRef = element.parentRef;
+    while (parentRef) {
+      if (parentRef === containerRef) return true;
+      parentRef = byRef.get(parentRef)?.parentRef ?? null;
+    }
+    return false;
+  };
+  const seen = new Set();
+  const pathways = [];
+  for (const element of owner.elements) {
+    if (excluded.has(element.ref) || !element.pathwayRef || !isDescendant(element) || seen.has(element.pathwayRef)) continue;
+    const pathway = pathwayFor(lens, element.pathwayRef);
+    if (!pathway) continue;
+    seen.add(pathway.pathwayRef);
+    pathways.push(pathway);
+  }
+  return Object.freeze(pathways);
+}
+
+export function aggregateContainedFaceGraph(lens, containerRef, face, options = {}) {
+  const { excludedElementRefs = [], ...faceOptions } = options;
+  const pathways = containedPathways(lens, containerRef, { excludedElementRefs });
+  const graphs = pathways.map((pathway) => faceGraph(pathway, face, faceOptions));
+  return freezeDeep({
+    face,
+    pathwayRefs: pathways.map((pathway) => pathway.pathwayRef),
+    nodes: graphs.flatMap((graph) => graph.nodes),
+    edges: graphs.flatMap((graph) => graph.edges),
+    portsIn: graphs.flatMap((graph) => graph.portsIn),
+    portsOut: graphs.flatMap((graph) => graph.portsOut),
+    hidden: graphs.flatMap((graph) => graph.hidden),
+  });
 }
 
 // One face of one pathway: its nodes, the edges inside the face, and ports for

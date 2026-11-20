@@ -1063,7 +1063,12 @@ function projectedRelationshipForAnchor() {
 }
 const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? projectedRelationshipForAnchor();
 const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
-const pathwayNode = (ref) => currentPathway()?.nodes.find((node) => node.ref === ref) ?? null;
+function pathwayContainingNode(ref) {
+  const current = currentPathway();
+  if (current?.nodes.some((node) => node.ref === ref)) return current;
+  return state.lens.pathways.find((pathway) => pathway.nodes.some((node) => node.ref === ref)) ?? null;
+}
+const pathwayNode = (ref) => pathwayContainingNode(ref)?.nodes.find((node) => node.ref === ref) ?? null;
 function doorwayCollapsible(pathway) {
   if (!pathway || pathway.disposition === 'EXPRESSION') return false;
   const behavior = Lens.faceGraph(pathway, 'BEHAVIOR');
@@ -1089,9 +1094,21 @@ function selectElement(elementRef, { keepFaces = true, recordHistory = true } = 
   if (!refreshStaticSelectionInPlace()) render();
 }
 function selectNode(ref, { reveal = false } = {}) {
-  const node = pathwayNode(ref);
-  if (!node) return;
+  const pathway = pathwayContainingNode(ref);
+  const node = pathway?.nodes.find((candidate) => candidate.ref === ref) ?? null;
+  if (!node || !pathway) return;
   markLensHistoryPoint();
+  const priorAnchor = anchorElement();
+  if (pathway.pathwayRef !== state.pathwayRef) {
+    state.pathwayRef = pathway.pathwayRef;
+    state.cameras.delete('BEHAVIOR');
+    state.cameras.delete('DEPTH');
+    if (priorAnchor && !priorAnchor.pathwayRef) {
+      const descendant = Lens.elementsUsingPathway(state.lens, pathway.pathwayRef).find((element) =>
+        Lens.elementPath(state.lens, element.ref).some((step) => step.ref === priorAnchor.ref));
+      if (descendant) state.anchorElementRef = descendant.ref;
+    }
+  }
   state.selected = { kind: 'NODE', ref };
   if (reveal && state.faces.BEHAVIOR !== node.face) { state.faces.BEHAVIOR = node.face; }
   if (!refreshStaticSelectionInPlace()) render();
@@ -2804,51 +2821,8 @@ function renderExperienceSide() {
 }
 
 /* ---------- Behavior side ---------- */
-function renderGraphFace(face) {
-  const pathway = currentPathway();
-  const anchor = anchorElement();
-  const wrap = h('div', { class: 'face', dataset: { face } });
-  if (!pathway) {
-    const message = anchor
-      ? (anchor.role === 'ELEMENT'
-        ? [h('strong', {}, `${anchor.label} has no projected pathway yet`), 'An interaction may exist, but its deeper relationship is not currently projected.']
-        : [h('strong', {}, `${anchor.label} is ${anchor.role === 'CONTENT' ? 'content' : 'structure'}`), 'Select a control on the left to trace a projected relationship.'])
-      : [h('strong', {}, 'Pick a control to trace'), `Click any control on the ${state.faces.EXPERIENCE === 'SURFACE' ? 'Surface' : 'Structure'} face. Controls with a projected pathway show a small blue dot.`];
-    wrap.append(h('div', { class: 'empty' }, message));
-    return wrap;
-  }
-  const graph = Lens.faceGraph(pathway, face, { hideBands: hideBandsFor(face) });
-  const shared = Lens.elementsUsingPathway(state.lens, pathway.pathwayRef).length;
-  if (pathway.disposition === 'EXPRESSION') {
-    // The expression the Surface shows, read from this side: how it is reached, what realizes it.
-    const expression = activeExpression();
-    const info = Expressions.EXPRESSION_KINDS[expression.kind];
-    const line = face === 'BEHAVIOR' ? info.question : 'Underneath: the composables that realize it, the data bindings it repeats, the fixtures an example uses.';
-    wrap.append(h('div', { class: `disposition kind-${expression.kind}` },
-      kindChip(expression), ' ', h('span', { class: 'k' }, `${expression.where} · ${expression.what}`), ' ',
-      h('span', { class: 'hint' }, `${info.label} expression${expression.also.length ? `, also reached ${expression.also.length} other way${expression.also.length === 1 ? '' : 's'}` : ''}`),
-      h('p', { title: line }, line)));
-    if (!graph.nodes.length) {
-      wrap.append(h('div', { class: 'empty' }, face === 'DEPTH'
-        ? [h('strong', {}, 'Nothing underneath'), 'Source names no realizer, data binding or fixture for this expression.']
-        : [h('strong', {}, 'Nothing to reach'), 'This expression is how source renders the screen by default.']));
-      return wrap;
-    }
-  } else
-  wrap.append(h('div', { class: 'disposition' },
-    h('span', { class: 'k' }, pathway.label), ' ',
-    h('span', { class: 'hint', title: Lens.PATHWAY_DISPOSITIONS[pathway.disposition] }, `${DISPOSITION_NAMES[pathway.disposition]}${shared > 1 ? `, shared by ${shared} controls` : ''}`),
-    (() => { const line = face === 'BEHAVIOR' ? (pathway.summary ?? Lens.PATHWAY_DISPOSITIONS[pathway.disposition]) : `Returns to the human: ${pathway.returns ?? 'nothing visible'}`; return h('p', { title: line }, line); })(),
-    anchor && currentScreen().realization && ['LATENT', 'DEPENDS'].includes(presenceOf(anchor.ref)?.state) ? h('p', { class: 'xnote' }, `${anchor.label} is ${presenceOf(anchor.ref).state === 'LATENT' ? 'not presented' : 'only conditionally presented'} in this expression. Double-click it to go where it is.`) : null,
-    face === 'BEHAVIOR' && graph.hidden.length ? h('div', { class: 'doorway', 'aria-label': 'Doorway steps' }, h('span', { class: 'lead' }, pathway.disposition === 'SCAE_FAMILY' ? 'Doorway: how the touch reaches the Family' : 'Doorway: how the touch reaches the runtime'),
-      graph.hidden.flatMap((node, i) => [i ? h('span', { class: 'sep', 'aria-hidden': 'true' }, '›') : null,
-        h('button', { class: `role-${node.role}${state.selected?.ref === node.ref ? ' sel' : ''}`, dataset: { nodeRef: node.ref }, title: `${node.label}\n${node.summary ?? ''}`, onclick: (event) => { event.stopPropagation(); selectNode(node.ref); } }, chip(node.role), h('span', { class: 't' }, node.label))])) : null));
-  if (!graph.nodes.length) {
-    wrap.append(h('div', { class: 'empty' }, face === 'DEPTH'
-      ? [h('strong', {}, 'Nothing underneath'), `${pathway.label} stays in runtime presentation. It touches no store, repository or execution custody.`]
-      : [h('strong', {}, 'Doorway hidden'), 'Show the doorway to see this pathway.']));
-    return wrap;
-  }
+function renderGraphCanvas(wrap, face, graph, { entryRef = null } = {}) {
+  if (!graph.nodes.length) return false;
   const portsOutBy = new Map();
   graph.portsOut.forEach((port) => portsOutBy.set(port.from, [...(portsOutBy.get(port.from) || []), port]));
   const portsInBy = new Map();
@@ -2868,7 +2842,6 @@ function renderGraphFace(face) {
   }
   svg.append(defs);
   const selectedRef = state.selected?.kind === 'NODE' ? state.selected.ref : null;
-  const entryRef = entryRefForFace(face);
   for (const edge of layout.edges) {
     const hot = selectedRef && (edge.from === selectedRef || edge.to === selectedRef);
     const path = s('polyline', { points: edge.points.map((p) => `${p.x},${p.y}`).join(' '), class: `e ${edge.kind}${hot ? ' hot' : ''}`, 'marker-end': `url(#${hot ? 'a-hot' : edge.kind === 'RETURN' ? 'a-return' : 'a-flow'}-${face})` });
@@ -2909,6 +2882,79 @@ function renderGraphFace(face) {
     h('button', { onclick: () => { state.cameras.delete(face); applyCamera(face); } }, 'Fit')));
   wireGraphViewport(viewport, face);
   wrap.append(viewport);
+  return true;
+}
+
+function renderGraphFace(face) {
+  const pathway = currentPathway();
+  const anchor = anchorElement();
+  const wrap = h('div', { class: 'face', dataset: { face } });
+  const latentElementRefs = new Set(
+    currentScreen().elements
+      .filter((element) => presenceOf(element.ref)?.state === 'LATENT')
+      .map((element) => element.ref),
+  );
+  const aggregate = !pathway && anchor?.role === 'CONTAINER'
+    ? Lens.aggregateContainedFaceGraph(state.lens, anchor.ref, face, { excludedElementRefs: latentElementRefs })
+    : null;
+
+  if (!pathway && aggregate?.nodes.length) {
+    const relationshipCount = aggregate.pathwayRefs.length;
+    const line = face === 'BEHAVIOR'
+      ? `${anchor.label} contains ${relationshipCount} projected relationship${relationshipCount === 1 ? '' : 's'}. Select any node to descend into that control's exact pathway.`
+      : `Underneath ${anchor.label}: the runtime/provider depth of the relationships contained by this region.`;
+    wrap.append(h('div', { class: 'disposition' },
+      h('span', { class: 'k' }, anchor.label), ' ',
+      h('span', { class: 'hint' }, `${relationshipCount} contained relationship${relationshipCount === 1 ? '' : 's'}`),
+      h('p', { title: line }, line)));
+    renderGraphCanvas(wrap, face, aggregate);
+    return wrap;
+  }
+
+  if (!pathway) {
+    const message = anchor
+      ? (anchor.role === 'ELEMENT'
+        ? [h('strong', {}, `${anchor.label} has no projected pathway yet`), 'An interaction may exist, but its deeper relationship is not currently projected.']
+        : [h('strong', {}, `${anchor.label} has no contained projected relationships yet`), 'This structural coordinate currently contains no mapped control pathways.'])
+      : [h('strong', {}, 'Pick a control or container to trace'), `Click a control for one pathway, or a container to see all projected relationships inside it.`];
+    wrap.append(h('div', { class: 'empty' }, message));
+    return wrap;
+  }
+
+  const graph = Lens.faceGraph(pathway, face, { hideBands: hideBandsFor(face) });
+  const shared = Lens.elementsUsingPathway(state.lens, pathway.pathwayRef).length;
+  if (pathway.disposition === 'EXPRESSION') {
+    const expression = activeExpression();
+    const info = Expressions.EXPRESSION_KINDS[expression.kind];
+    const line = face === 'BEHAVIOR' ? info.question : 'Underneath: the composables that realize it, the data bindings it repeats, the fixtures an example uses.';
+    wrap.append(h('div', { class: `disposition kind-${expression.kind}` },
+      kindChip(expression), ' ', h('span', { class: 'k' }, `${expression.where} · ${expression.what}`), ' ',
+      h('span', { class: 'hint' }, `${info.label} expression${expression.also.length ? `, also reached ${expression.also.length} other way${expression.also.length === 1 ? '' : 's'}` : ''}`),
+      h('p', { title: line }, line)));
+    if (!graph.nodes.length) {
+      wrap.append(h('div', { class: 'empty' }, face === 'DEPTH'
+        ? [h('strong', {}, 'Nothing underneath'), 'Source names no realizer, data binding or fixture for this expression.']
+        : [h('strong', {}, 'Nothing to reach'), 'This expression is how source renders the screen by default.']));
+      return wrap;
+    }
+  } else {
+    wrap.append(h('div', { class: 'disposition' },
+      h('span', { class: 'k' }, pathway.label), ' ',
+      h('span', { class: 'hint', title: Lens.PATHWAY_DISPOSITIONS[pathway.disposition] }, `${DISPOSITION_NAMES[pathway.disposition]}${shared > 1 ? `, shared by ${shared} controls` : ''}`),
+      (() => { const line = face === 'BEHAVIOR' ? (pathway.summary ?? Lens.PATHWAY_DISPOSITIONS[pathway.disposition]) : `Returns to the human: ${pathway.returns ?? 'nothing visible'}`; return h('p', { title: line }, line); })(),
+      anchor && currentScreen().realization && ['LATENT', 'DEPENDS'].includes(presenceOf(anchor.ref)?.state) ? h('p', { class: 'xnote' }, `${anchor.label} is ${presenceOf(anchor.ref).state === 'LATENT' ? 'not presented' : 'only conditionally presented'} in this expression. Double-click it to go where it is.`) : null,
+      face === 'BEHAVIOR' && graph.hidden.length ? h('div', { class: 'doorway', 'aria-label': 'Doorway steps' }, h('span', { class: 'lead' }, pathway.disposition === 'SCAE_FAMILY' ? 'Doorway: how the touch reaches the Family' : 'Doorway: how the touch reaches the runtime'),
+        graph.hidden.flatMap((node, i) => [i ? h('span', { class: 'sep', 'aria-hidden': 'true' }, '›') : null,
+          h('button', { class: `role-${node.role}${state.selected?.ref === node.ref ? ' sel' : ''}`, dataset: { nodeRef: node.ref }, title: `${node.label}\n${node.summary ?? ''}`, onclick: (event) => { event.stopPropagation(); selectNode(node.ref); } }, chip(node.role), h('span', { class: 't' }, node.label))])) : null));
+  }
+
+  if (!graph.nodes.length) {
+    wrap.append(h('div', { class: 'empty' }, face === 'DEPTH'
+      ? [h('strong', {}, 'Nothing underneath'), `${pathway.label} stays in runtime presentation. It touches no store, repository or execution custody.`]
+      : [h('strong', {}, 'Doorway hidden'), 'Show the doorway to see this pathway.']));
+    return wrap;
+  }
+  renderGraphCanvas(wrap, face, graph, { entryRef: entryRefForFace(face) });
   return wrap;
 }
 function entryRefForFace(face) {

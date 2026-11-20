@@ -137,6 +137,46 @@ FRAME_WORKSPACE + ELEMENT_TREE
 
 The manifestation changes; the attention/engagement relationship does not.
 
+### Containers project their contained relationships
+
+A structural container is not behaviorless merely because it has no single pathway of its own.
+
+When a person selects a mapped container or region, the Behavior / Depth side projects the distinct
+pathways owned by controls inside that container as one aggregate relationship graph:
+
+~~~text
+selected container
+  -> descendant mapped controls
+  -> distinct pathwayRefs
+  -> aggregate Behavior / Depth graph
+~~~
+
+Selecting a node in that aggregate descends into the exact owning control/pathway.
+
+Container aggregate graphs are expression-aware. A mapped descendant whose current presence is
+`LATENT` does not contribute its pathway to the aggregate for that expression. When another
+expression presents that descendant, its pathway enters the aggregate automatically.
+
+~~~text
+container
++ current expression presence
+-> currently presented descendant pathways
+-> aggregate Behavior / Depth graph
+~~~
+
+This keeps a container graph from advertising relationships that belong only to a hidden alternate
+terrain or closed nested presentation.
+
+
+This is a reader projection over already-authored relationships. It creates no container-level semantic
+owner and does not collapse the child Families or compositions into one synthetic Family.
+
+~~~text
+CONTAINER_HAS_NO_SINGLE_PATHWAY
+!=
+CONTAINER_HAS_NO_RELATIONSHIPS
+~~~
+
 ## Role typing: color answers "which question does this answer?"
 
 Every node and element carries one role. Roles are grouped into bands by the VexArchitecture question
@@ -656,6 +696,22 @@ D54 A screen whose source authors frames is drawn as a workspace, not a phone
               without one keeps the phone realization unchanged (Android; Prod commits before the export)
     boundary  geometry is proportional only (no pixels, no CSS from source); unknown kinds, axes, edges,
               allocations, containment and seam cycles fail closed; no Family is invented for a handle
+D55 Identity genealogy is portable; naming remains source-owned
+    why       Android VexComposeScope / appendVexElementPath and VexStreamPresentationRefs proved two
+              recurring mechanics that should scale beyond Compose: nested presentation inherits a stable
+              parent, and runtime instances derive from stable identity rather than text or list position
+    how       src/shared/vexboard-screen-lens-identity.mjs defines two optional derivation laws:
+              DERIVED_CHILD = parentRef + normalized local path;
+              RUNTIME_INSTANCE = stable baseRef + UTF-8 hex(stable instance parts joined by NUL)
+              STABLE_INSTANCE says the source parts survive reorder/reprojection for that instance;
+              CURRENT_OCCURRENCE says source lacks a stronger durable occurrence identity and the ref must
+              not be persisted across arbitrary rebuild/reorder as though it were durable
+    boundary  this is not one universal product namespace. A source-owned stable ref stays source-owned and
+              needs no derivation descriptor. element.*, pathway.*, presence.* and product-native refs keep
+              their different relationship meanings; VexBoard validates genealogy only when a producer
+              explicitly claims that a ref was mechanically derived
+    scale     Kotlin / Compose, HTML/JS, SwiftUI, native desktop, generated surfaces and future renderers may
+              implement the same formation law without importing another platform's UI framework
 ```
 
 ## Data contract
@@ -684,12 +740,16 @@ screens[].layout       kind FRAME, symbol, source, root, frames[] (ref, seams[] 
                        chrome[] with seamRef), overlays[] (D54)
 elements[].layer       CONTENT | CHROME | TRANSIENT | MODAL (optional)
 elements[].interactions ACTIVATE | RESIZE | COLLAPSE_BEFORE | COLLAPSE_AFTER (optional)
+elements[].identity     optional DERIVED_CHILD or RUNTIME_INSTANCE genealogy; source-owned refs need none
+templates[].instanceIdentity
+                       optional typed runtime formation: RUNTIME_INSTANCE baseRef + partSources +
+                       continuity, with DERIVED_CHILD contracts on nested template slots
 examples[]             PREVIEW | GOLDEN | JOURNEY with subject, setup, fixture provenance,
                        configurations, evidence, steps, related
 examplesHeld[]         examples source does not let VexBoard address yet, with the reason
 ```
 
-`normalizeScreenLens` fails closed on unknown roles, faces, kinds, dispositions, broken parent or
+`normalizeScreenLens` also fails closed when a producer claims derived/runtime identity genealogy that does not recreate the emitted ref.\n\n`normalizeScreenLens` fails closed on unknown roles, faces, kinds, dispositions, broken parent or
 pathway references, containment cycles, unknown navigation targets and unknown annotation subjects.
 Unknown presence kinds, dangling subject/template/example refs and undeclared templates also fail closed.
 

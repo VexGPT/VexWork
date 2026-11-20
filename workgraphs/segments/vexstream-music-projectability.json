@@ -1,0 +1,486 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexstream-music-projectability",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-20T13:30:00.000Z",
+      "workRef": "work.vexstream-music.projectability.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexStream Music Projectability",
+      "purpose": "Prove the accepted VexBoard Projection Consolidation foundation against current VexStream Music Desktop V4 by preserving existing semantic/product ownership, aligning only identity that current source cannot address truthfully, and projecting one Playback/Queue/lived-shell slice through the generic Screen Lens without product-specific reader branches or unnecessary V4 restructuring.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "dependencyRefs": [],
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/README.md",
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "project.vexboard.projection-consolidation",
+        "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md",
+        "projects/vexboard/SCREEN-LENS.md",
+        "repo.vexstream-music:v2/README.md",
+        "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
+        "repo.vexstream-music:v2/architecture/README.md",
+        "repo.vexstream-music:v2/web/index.html",
+        "repo.vexstream-music:v2/web/app.js",
+        "repo.vexstream-music:v2/web/features/playback/behavior.js",
+        "repo.vexstream-music:v2/web/features/queue/behavior.js",
+        "repo.vexstream-music:v2/web/features/player/composition.js"
+      ],
+      "updatedAt": "2026-11-20T13:30:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-20T13:30:00.000Z",
+      "workRef": "work.vexstream-music.projectability.current-source-map",
+      "parentWorkRefOrNull": "work.vexstream-music.projectability.outcome",
+      "label": "Map current VexStream projectability",
+      "purpose": "Map current V4 semantic owners, lived shell, stable browser identity, Journeys and proof to classify each first-slice relationship as projectable as-is, identity alignment, bounded refactor, or held before choosing a producer or changing target source.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "dependencyRefs": [],
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
+        "repo.vexstream-music:v2/architecture/README.md",
+        "repo.vexstream-music:v2/web/index.html",
+        "repo.vexstream-music:v2/web/app.js",
+        "github.pull.vexwork.382"
+      ],
+      "updatedAt": "2026-11-20T13:36:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-20T13:30:00.000Z",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "parentWorkRefOrNull": "work.vexstream-music.projectability.outcome",
+      "label": "Align only source identities projection cannot address truthfully",
+      "purpose": "Resolve the current lived-shell Screen coordinate and top-level Previous affordance identity at the VexStream source owner without redesigning V4, minting a projection-only registry, or inventing a semantic Family.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "dependencyRefs": [
+        "work.vexstream-music.projectability.current-source-map"
+      ],
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "repo.vexstream-music:v2/web/index.html",
+        "repo.vexstream-music:v2/web/features/player/composition.js",
+        "repo.vexstream-music:v2/web/features/playback/journey.js",
+        "repo.vexstream-music:v2/web/features/player/journey.js",
+        "repo.vexstream-music:v2/tests/playback-browser-regression.py",
+        "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
+        "github.pull.vexstream-music.19"
+      ],
+      "updatedAt": "2026-11-20T13:50:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-20T13:30:00.000Z",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "parentWorkRefOrNull": "work.vexstream-music.projectability.outcome",
+      "label": "Produce one bounded VexStream Screen Lens",
+      "purpose": "Choose the smallest truthful producer after identity alignment and emit the first Playback/Queue/lived-shell slice into vexboard.screen-lens/v1 without product-name reader branches or a generic plugin framework.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "dependencyRefs": [
+        "work.vexstream-music.projectability.identity-alignment"
+      ],
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/README.md",
+        "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md",
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "github.pull.vexstream-music.20",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.mjs",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.json"
+      ],
+      "updatedAt": "2026-11-20T13:50:00.006Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-20T13:30:00.000Z",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "parentWorkRefOrNull": "work.vexstream-music.projectability.outcome",
+      "label": "Prove VexStream through the shared projection foundation",
+      "purpose": "Run exact VexStream producer output through the same normalization, expressions, realization, manifestation and paired-container/engagement laws accepted for Android, Product and the neutral subject; extend generic law only if VexStream exposes a real reusable gap.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "dependencyRefs": [
+        "work.vexstream-music.projectability.screen-lens-producer"
+      ],
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "projects/vexboard/SCREEN-LENS.md",
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+        "github.pull.vexstream-music.20",
+        "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20",
+        "src/shared/vexboard-screen-lens.mjs",
+        "github.pull.vexstream-music.22",
+        "github.pull.vexstream-music.23",
+        "github.pull.vexstream-music.24",
+        "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json",
+        "github.pull.vexstream-music.26"
+      ],
+      "updatedAt": "2026-11-20T14:04:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-20T13:30:00.000Z",
+      "workRef": "work.vexstream-music.projectability.lived-acceptance",
+      "parentWorkRefOrNull": "work.vexstream-music.projectability.outcome",
+      "label": "Lived VexStream projection acceptance",
+      "purpose": "Verify that the projected Playback/Queue/lived-shell slice remains recognizable against current VexStream product-oracle relationships and that VexBoard adds no source-authority, platform branch, interaction obstruction or misleading identity.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "dependencyRefs": [
+        "work.vexstream-music.projectability.conformance"
+      ],
+      "sourceRefs": [
+        "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
+        "projects/vexstream-music-projectability/README.md",
+        "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20",
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+        "github.pull.vexstream-music.21",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.json",
+        "human.victor.vexstream-shell-coverage-feedback-2026-11-20",
+        "github.pull.vexstream-music.22",
+        "github.pull.vexstream-music.23",
+        "github.pull.vexstream-music.24",
+        "repo.vexstream-music:v2/projection/vexboard-projectability-audit.mjs",
+        "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json",
+        "repo.vexstream-music:v2/tests/vexboard-projectability-identities.test.mjs",
+        "github.pull.vexstream-music.26",
+        "github.pull.vexstream-music.27",
+        "github.pull.vexstream-music.28",
+        "github.pull.vexstream-music.29",
+        "github.pull.vexstream-music.30",
+        "src.shared.vexboard-screen-lens.contained-pathways-expression-aware"
+      ],
+      "updatedAt": "2026-11-20T15:50:00.000Z"
+    }
+  ],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.outcome.running.scalability-pressure",
+      "workRef": "work.vexstream-music.projectability.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The accepted VexBoard Projection Consolidation foundation released a materially different VexStream Music scalability pressure; begin with identity-first source mapping rather than implementation symmetry.",
+      "actorRef": "role.vexwork.project-former",
+      "sourceRefs": [
+        "project.vexboard.projection-consolidation",
+        "projects/vexstream-music-projectability/README.md"
+      ],
+      "createdAt": "2026-11-20T13:30:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.current-source-map.running.live-source",
+      "workRef": "work.vexstream-music.projectability.current-source-map",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Live VexStream main was re-grounded at 2b745e0a3f5e63e05dfa0cf25b0fac729c00f0c8 and current Playback, Queue, Player, shell, browser identity and lived proof sources are under classification.",
+      "actorRef": "role.vexwork.project-former",
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "repo.vexstream-music:v2/web/index.html",
+        "repo.vexstream-music:v2/web/app.js"
+      ],
+      "createdAt": "2026-11-20T13:30:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.current-source-map.verifying.identity-seams",
+      "workRef": "work.vexstream-music.projectability.current-source-map",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Current V4 semantic owners, lived shell, browser identity, Journeys and proof were classified. Playback/Queue are mostly projectable as-is while current screen identity and the top-level Previous affordance are bounded identity-alignment seams.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "github.pull.vexwork.382"
+      ],
+      "createdAt": "2026-11-20T13:36:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.current-source-map.completed.identity-first-route",
+      "workRef": "work.vexstream-music.projectability.current-source-map",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The map is durable and sufficient to choose identity-first source alignment without a wholesale V4 refactor or premature producer choice.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "projects/vexstream-music-projectability/README.md"
+      ],
+      "createdAt": "2026-11-20T13:36:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.identity-alignment.ready.map-complete",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The current-source-map dependency completed and bounded the only first-slice source mutations to stable identity alignment.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream-music.projectability.current-source-map",
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md"
+      ],
+      "createdAt": "2026-11-20T13:36:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.identity-alignment.running.target-source",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin target-repository identity alignment for stale practicum Screen coordinates and the top-level Previous composition affordance; no structural refactor or producer implementation is admitted yet.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "repo.vexstream-music:v2/web/index.html",
+        "repo.vexstream-music:v2/web/features/player/composition.js",
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md"
+      ],
+      "createdAt": "2026-11-20T13:36:00.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.identity-alignment.verifying.target-proof",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "VexStream PR #19 aligned the current desktop Journey coordinate and Previous composition identity without changing behavior; focused semantic/identity proof passed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.19",
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md"
+      ],
+      "createdAt": "2026-11-20T13:50:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.identity-alignment.completed.merged-source",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Identity alignment merged to VexStream main at ab08e326b1338bfc6e14ddf8a87c2accaac7417b; no V4 structural refactor was required.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.19",
+        "repo.vexstream-music:v2/web/index.html"
+      ],
+      "createdAt": "2026-11-20T13:50:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.screen-lens-producer.ready.identity-complete",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The identity-alignment dependency completed with current source owning truthful Screen and Previous coordinates.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream-music.projectability.identity-alignment"
+      ],
+      "createdAt": "2026-11-20T13:50:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.screen-lens-producer.running.native-export",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A VexStream-native JS exporter was chosen because it directly imports existing semantic tokens and avoids both source-text duplication and an unearned multi-adapter VexWork plugin layer.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.20",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.mjs"
+      ],
+      "createdAt": "2026-11-20T13:50:00.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.screen-lens-producer.verifying.shared-seam",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The exact generated Lens passed 28/28 VexStream semantic/exporter tests and normalized through the accepted VexWork Screen Lens, expression, realization and FRAME geometry seam.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.20",
+        "test/vexboard-screen-lens-conformance.test.mjs"
+      ],
+      "createdAt": "2026-11-20T13:50:00.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.screen-lens-producer.completed.merged-export",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The bounded native exporter and generated Lens merged to VexStream main at 08b88a2f7b927015335b19a351280e2865b68a50.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.20",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.json"
+      ],
+      "createdAt": "2026-11-20T13:50:00.006Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.conformance.ready.producer-complete",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The bounded Screen Lens producer dependency completed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream-music.projectability.screen-lens-producer"
+      ],
+      "createdAt": "2026-11-20T13:50:00.007Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.conformance.running.persistent-vexwork-proof",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Carry the merged VexStream Lens into VexWork as a source-pinned candidate and run it permanently through the shared cross-producer conformance suite before lived acceptance.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+        "test/vexboard-screen-lens-conformance.test.mjs"
+      ],
+      "createdAt": "2026-11-20T13:50:00.008Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.conformance.verifying.relationship-perception-repair",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The first raw-git lived witness exposed that schema-valid SOURCE_VIEW plus sparse mapped controls could read as a screenshot when a container was selected. The generic reader was refined so a mapped container aggregates the distinct child pathways it contains rather than presenting a blank Behavior/Depth side.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20",
+        "src/shared/vexboard-screen-lens.mjs",
+        "projects/vexboard/SCREEN-LENS.md"
+      ],
+      "createdAt": "2026-11-20T14:04:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.conformance.completed.container-relationships-100-pass",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The revised generic container-relationship projection passed the four-subject shared projection/UI regression floor at 100/100 with 0 failures.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "test/vexboard-lens-ui.test.mjs",
+        "projects/vexboard/SCREEN-LENS.md"
+      ],
+      "createdAt": "2026-11-20T14:04:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.lived-acceptance.ready.revised-conformance",
+      "workRef": "work.vexstream-music.projectability.lived-acceptance",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The revised conformance dependency completed after preserving container-level relationship perception.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream-music.projectability.conformance"
+      ],
+      "createdAt": "2026-11-20T14:04:00.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.lived-acceptance.running.relationship-witness",
+      "workRef": "work.vexstream-music.projectability.lived-acceptance",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Present the revised raw-git VexStream candidate for human review of relationship perception, container descent, product recognizability and paired layout behavior.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+        "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20"
+      ],
+      "createdAt": "2026-11-20T14:04:00.005Z"
+    }
+  ],
+  "sourceRefs": [
+    "project.vexstream-music.projectability",
+    "projects/vexstream-music-projectability/README.md",
+    "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+    "project.vexboard.projection-consolidation",
+    "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md"
+  ],
+  "formedAt": "2026-11-20T13:30:00.000Z"
+}

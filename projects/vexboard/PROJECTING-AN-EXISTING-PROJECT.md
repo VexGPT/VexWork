@@ -145,6 +145,52 @@ IDENTITY_ALIGNMENT
 != COMPOSITE RESTRUCTURING
 ~~~
 
+### Identity continuity scales by derivation, not by forcing one namespace
+
+When a source already owns a stable identity, preserve it. When presentation must derive a child or a
+runtime occurrence, use one portable formation law rather than inventing platform-local QA IDs.
+
+~~~text
+SOURCE_OWNED_STABLE_REF
+  -> preserve as-is
+
+DERIVED_CHILD
+  stable presentation parent
+  + normalized local path
+  -> deterministic child ref
+
+RUNTIME_INSTANCE
+  stable presentation base
+  + stable instance part(s)
+  -> UTF-8 bytes joined by NUL between parts
+  -> lowercase hex
+  -> deterministic runtime presentation ref
+~~~
+
+This is the cross-platform equivalent of Android's current `VexComposeScope` /
+`appendVexElementPath(...)` and `VexStreamPresentationRefs.dynamicRef(...)` behavior. A browser,
+native desktop app, SwiftUI surface, generated UI or another future substrate does not need Compose or
+DOM semantics to participate.
+
+Keep the coordinates distinct:
+
+~~~text
+domain identity
+!= presentation occurrence
+!= containment parent
+!= semantic pathway
+!= presence/expression relationship
+~~~
+
+A single domain object may therefore appear in several presentation scopes without becoming several
+domain objects. A runtime list may reorder without changing item identity. A projection must not derive
+identity from translated text, current list position, CSS/Compose index or visible geometry.
+
+`src/shared/vexboard-screen-lens-identity.mjs` is the consumer-side reference implementation. Producers
+may implement the same law in their own language. `elements[].identity` is optional and is required only
+when a producer chooses to make a derived/runtime genealogy claim; existing source-owned stable refs do
+not need to be renamed or wrapped.
+
 ### BOUNDED_SOURCE_REFACTOR
 
 Use only when the source itself collapses independently meaningful questions so completely that a
@@ -266,6 +312,105 @@ VexLife-Prod
 ~~~
 
 Producer location is not architectural rank. Both must converge on the same consumer contract.
+
+### SOURCE_VIEW interaction coverage is explicit
+
+A source-owned static Product view may preserve the real visual shell, but visible/stable controls must
+not silently remain image pixels.
+
+For controls/actions that already have source-owned stable identity:
+
+~~~text
+source-stable interactive identity
+  -> exported inert view anchor
+  -> Screen Lens element
+
+admitted deeper relationship
+  -> pathwayRef
+
+relationship outside the bounded projection
+  -> element remains addressable
+  -> pathway stays absent / visibly unprojected
+~~~
+
+This is especially important for SOURCE_VIEW producers because the Product can look complete even when
+the relationship projection is sparse.
+
+~~~text
+VISIBLE_WORKING_CONTROL
++ SOURCE_STABLE_IDENTITY
++ NO LENS ELEMENT
+= PROJECTION COVERAGE DEFECT
+~~~
+
+Do not fix this by inventing VexBoard-only IDs in the live Product. Derive generic view anchors in the
+exported copy from the source-owned identity, or align the source identity at its rightful owner when it
+does not yet exist.
+
+### Run a projectability coverage census before lived review
+
+For a Product Surface with many real controls, do not use human screenshots as the omission detector.
+
+Before asking for lived acceptance, inventory the complete interactive source surface and correlate:
+
+~~~text
+interactive affordance
++ visible / latent presentation state
++ source-owned relationship identity
++ runtime event wiring
++ emitted Lens element
++ admitted pathway (when earned)
+~~~
+
+At minimum distinguish:
+
+~~~text
+MAPPED_PATHWAY
+  addressable + deeper relationship projected
+
+ADDRESSABLE_HELD
+  addressable in the Lens
+  deeper relationship deliberately outside current scope
+
+SOURCE_RELATIONSHIP_UNMAPPED
+  source already names the relationship
+  producer failed to carry it
+
+VISIBLE_WIRED_UNIDENTIFIED
+  visible + real runtime behavior
+  source lacks truthful projectability identity
+
+LATENT_*
+  alternate/hidden terrain is inventoried explicitly
+  not silently treated as complete
+~~~
+
+For the currently admitted visible/default expression:
+
+~~~text
+SOURCE_RELATIONSHIP_UNMAPPED
+or VISIBLE_WIRED_UNIDENTIFIED
+or VISIBLE_UNIDENTIFIED
+-> projection coverage FAIL
+~~~
+
+Do not make every missing item a semantic Family. First decide whether the correct effect is:
+
+~~~text
+projection-only export
+identity alignment beside existing owner
+explicit held element
+bounded source refactor
+~~~
+
+VexStream Music's persistent reference implementation is:
+
+~~~text
+repo.vexstream-music:v2/projection/vexboard-projectability-audit.mjs
+~~~
+
+The audit mechanism is product-local because it knows that Product's source forms; the completeness law
+is generic.
 
 ## 6. Prove emitted output through the consumer seam
 
