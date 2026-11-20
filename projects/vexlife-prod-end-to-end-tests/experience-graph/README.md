@@ -131,5 +131,10 @@ Class G (held by source declaration) has no source form to read yet and is not e
   answers it (route readiness, debt dependents, change impact) the query is the implementation.
 - Traversal is Family-scoped through shared owners, so one service realizing several Families
   does not join their routes.
+- Screen Lens human acceptance is a durable experience coordinate, not permission for a witness
+  file to become semantic authority and not permission to discard its learned truth. Project /
+  Revision / Screen / Expression / Presentation / Face remain orthogonal; static projection absence
+  is never enough to claim Product feature absence. A provisional carrier is retired only after its
+  earned relationships reproduce from rightful source.
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-PROD][E2E][EXPERIENCE-GRAPH][README] -->
