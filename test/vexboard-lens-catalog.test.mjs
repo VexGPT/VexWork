@@ -10,6 +10,7 @@ import {
   bindLensBuildSource,
   boardHref,
   buildFor,
+  defaultBuildFor,
   githubRepository,
   lensHref,
   normalizeLensCatalog,
@@ -26,6 +27,7 @@ const rawCatalog = read('../projects/vexboard/lens/catalog.json');
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const catalog = normalizeLensCatalog(rawCatalog);
 const android = subjectFor(catalog, 'vexlife-android');
+const vexstream = subjectFor(catalog, 'vexstream-music');
 const SHA_A = '305a09eac1fabebcf2241bd207386950f41121f2';
 const SHA_B = '4d357c48eb5a25797513708f800e61a87e0195c0';
 const INITIAL_MAIN_COMMIT = buildFor(android, 'main').commit;
@@ -33,7 +35,7 @@ const STABLE_COMMIT = buildFor(android, 'stable').commit;
 
 test('the committed catalog names every Lens subject VexBoard shows and where its builds point', () => {
   assert.equal(catalog.schemaVersion, LENS_CATALOG_SCHEMA);
-  assert.deepEqual(catalog.subjects.map((subject) => subject.slug), ['vexlife-android', 'vexlife-prod']);
+  assert.deepEqual(catalog.subjects.map((subject) => subject.slug), ['vexlife-android', 'vexlife-prod', 'vexstream-music']);
   assert.deepEqual(STANDING_BUILDS, ['stable', 'main']);
   assert.equal(android.lens.status, 'GENERATED');
   assert.deepEqual(android.lens.builds.map((build) => build.buildRef), ['stable', 'main']);
@@ -43,6 +45,12 @@ test('the committed catalog names every Lens subject VexBoard shows and where it
   assert.equal(prod.lens.adapter, null);
   assert.equal(prod.lens.anyCommit, true);
   assert.match(buildFor(prod, 'stable').sourceBlobSha1, /^[0-9a-f]{40}$/);
+  assert.equal(vexstream.lens.status, 'CANDIDATE');
+  assert.equal(vexstream.lens.exportedLens, 'v2/projection/vexboard-screen-lens.json');
+  assert.equal(vexstream.lens.anyCommit, true);
+  assert.equal(buildFor(vexstream, 'stable'), null, 'candidate truth does not invent Stable');
+  assert.equal(buildFor(vexstream, 'main').commit, 'a70c5292cedfec32356cb9fc34aa637808047e30');
+  assert.equal(defaultBuildFor(vexstream).buildRef, 'main');
   assert.equal(subjectFor(catalog, 'nope'), null);
   assert.equal(subjectFor(catalog, null), null);
   assert.ok(Object.isFrozen(catalog.subjects[0].lens.builds));
@@ -84,6 +92,14 @@ test('a lens URL resolves to a project and build, and bad input falls back to St
   assert.equal(at('subject=vexlife-prod').mode, 'BUILD');
   assert.equal(at('subject=vexlife-prod').build.buildRef, 'stable');
   assert.equal(at('subject=vexlife-prod&commit=main').mode, 'COMMIT');
+  assert.deepEqual(
+    [at('subject=vexstream-music').mode, at('subject=vexstream-music').build.buildRef, at('subject=vexstream-music').notice],
+    ['BUILD', 'main', null],
+    'candidate subjects enter through Main without synthesizing Stable',
+  );
+  assert.equal(at('subject=vexstream-music&commit=main').mode, 'COMMIT');
+  assert.match(at('subject=vexstream-music&build=stable').notice, /no accepted Stable projection yet\. Showing Main\./);
+  assert.equal(at('subject=vexstream-music&build=stable').build.buildRef, 'main');
   assert.equal(at('lens=examples/x.json').mode, 'LEGACY');
   const bad = at('commit=../../etc');
   assert.equal(bad.mode, 'BUILD');
@@ -99,6 +115,8 @@ test('hrefs carry the project, build or commit, and where to open', () => {
   assert.equal(lensHref(android, { build: 'main', screen: 'screen.home', element: 'element.home.x', left: 'STRUCTURE', right: 'DEPTH' }),
     './lens.html?subject=vexlife-android&build=main&screen=screen.home&element=element.home.x&left=STRUCTURE&right=DEPTH');
   assert.equal(lensHref(android, { build: 'main', commit: 'abc1234', base: 'lens.html' }), 'lens.html?subject=vexlife-android&commit=abc1234');
+  assert.equal(lensHref(vexstream), './lens.html?subject=vexstream-music', 'candidate Main is the subject default');
+  assert.equal(lensHref(vexstream, { build: 'main' }), './lens.html?subject=vexstream-music');
   assert.equal(boardHref('board.vexboard.self-map'), './?board=board.vexboard.self-map');
   assert.equal(boardHref('board.a.b', '../vexboard/'), '../vexboard/?board=board.a.b');
 });
@@ -133,6 +151,16 @@ test('advancing Main to Stable\'s commit shares Stable\'s file; to another commi
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'stable', { commit: SHA_B }), /Stable moves only through promoteBuild/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: 'abc' }), /full commit SHA/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: SHA_B }), /separateLens required/);
+
+  const candidateMoved = advanceBuild(rawCatalog, 'vexstream-music', 'main', {
+    commit: 'f'.repeat(40),
+    observedAt: '2026-11-21',
+    separateLens: 'vexstream-music.main.screen-lens.json',
+    sourceBlobSha1: 'e'.repeat(40),
+  });
+  const candidateMain = buildFor(subjectFor(normalizeLensCatalog(candidateMoved.catalog), 'vexstream-music'), 'main');
+  assert.equal(candidateMain.commit, 'f'.repeat(40));
+  assert.equal(candidateMoved.write, true, 'candidate Main always owns a current projection file until Stable exists');
 });
 
 test('promoting Main moves Stable to Main\'s commit and folds the two files back into one', () => {
@@ -151,7 +179,26 @@ test('promoting Main moves Stable to Main\'s commit and folds the two files back
   assert.deepEqual([noop.changed, noop.copy, noop.retire], [false, null, null]);
   assert.throws(() => promoteBuild(ahead, 'vexlife-android', { on: '2026-11-07' }), /acceptance evidence/);
   assert.throws(() => promoteBuild(rawCatalog, 'vexlife-android', { on: 'tomorrow' }), /YYYY-MM-DD/);
-  assert.throws(() => promoteBuild(rawCatalog, 'vexboard', { on: '2026-11-07' }), /no generated lens/);
+  assert.throws(() => promoteBuild(rawCatalog, 'vexboard', { on: '2026-11-07' }), /no projectable lens/);
+
+  assert.throws(
+    () => promoteBuild(rawCatalog, 'vexstream-music', { on: '2026-11-20' }),
+    /acceptance evidence/,
+    'candidate cannot acquire Stable without acceptance evidence',
+  );
+  const firstPromotion = promoteBuild(rawCatalog, 'vexstream-music', {
+    on: '2026-11-20',
+    evidence: ['human.victor.vexstream-screen-lens-acceptance'],
+  });
+  const accepted = subjectFor(normalizeLensCatalog(firstPromotion.catalog), 'vexstream-music');
+  assert.equal(accepted.lens.status, 'GENERATED');
+  assert.equal(buildFor(accepted, 'stable').commit, buildFor(accepted, 'main').commit);
+  assert.equal(buildFor(accepted, 'stable').lens, 'vexstream-music.screen-lens.json');
+  assert.deepEqual(firstPromotion.copy, {
+    from: 'vexstream-music.main.screen-lens.json',
+    to: 'vexstream-music.screen-lens.json',
+  });
+  assert.equal(firstPromotion.retire, 'vexstream-music.main.screen-lens.json');
 });
 
 test('the catalog fails closed on shapes a reader could misread', () => {
@@ -166,7 +213,7 @@ test('the catalog fails closed on shapes a reader could misread', () => {
     [(c) => { c.subjects[0].repository.url = 'https://example.com/a/b'; }, /repository url/],
     [(c) => { c.subjects[0].lens.status = 'MAYBE'; }, /status must be one of/],
     [(c) => { c.subjects[0].lens.builds.pop(); }, /exactly one main build/],
-    [(c) => { c.subjects[0].lens.builds[1].buildRef = 'stable'; }, /exactly one stable build|Stable needs/],
+    [(c) => { c.subjects[0].lens.builds[1].buildRef = 'stable'; }, /generated lens needs exactly one stable build|Stable needs/],
     [(c) => { c.subjects[0].lens.builds[0].buildRef = 'nightly'; }, /buildRef must be one of/],
     [(c) => { c.subjects[0].lens.builds[0].commit = '305a09e'; }, /full 40-character SHA/],
     [(c) => { c.subjects[0].lens.builds[0].lens = '../escape.json'; }, /relative \.json path/],
@@ -186,6 +233,18 @@ test('the catalog fails closed on shapes a reader could misread', () => {
     [(c) => { c.defaultSubjectRef = 'subject.nope'; }, /not a subject/],
     [(c) => { c.defaultSubjectRef = 'subject.vexboard'; }, /not a subject/],
     [(c) => { c.subjects[0].vexworkProjectRefs = ['repo.x']; }, /must start with project\./],
+    [(c) => { c.subjects[2].lens.status = 'GENERATED'; }, /generated lens needs exactly one stable build/],
+    [(c) => {
+      c.subjects[2].lens.builds.unshift({
+        buildRef: 'stable',
+        label: 'Stable',
+        commit: c.subjects[2].lens.builds[0].commit,
+        lens: 'vexstream-music.screen-lens.json',
+        since: '2026-11-20',
+        evidence: ['x'],
+        sourceBlobSha1: c.subjects[2].lens.builds[0].sourceBlobSha1,
+      });
+    }, /candidate lens cannot carry Stable before acceptance/],
   ];
   for (const [mutate, message] of cases) assert.throws(broken(mutate), message, String(message));
   assert.throws(() => normalizeLensCatalog(null), /schemaVersion/);
@@ -221,6 +280,13 @@ test('Product-exported Lens builds bind immutable source blobs and currentness w
   const promoted = promoteBuild(moved.catalog, 'vexlife-prod', { on: '2026-11-19', evidence: ['human.victor.raw-git'] });
   const promotedProd = subjectFor(normalizeLensCatalog(promoted.catalog), 'vexlife-prod');
   assert.equal(buildFor(promotedProd, 'stable').sourceBlobSha1, 'e'.repeat(40));
+
+  const streamMain = buildFor(vexstream, 'main');
+  const rawStream = read('../projects/vexboard/lens/vexstream-music.main.screen-lens.json');
+  const boundStream = bindLensBuildSource(rawStream, streamMain);
+  assert.equal(rawStream.sourceSnapshot.commit, null, 'VexStream Product export remains unpinned');
+  assert.equal(boundStream.sourceSnapshot.commit, streamMain.commit);
+  assert.equal(streamMain.sourceBlobSha1, 'a485bcbaaf290e2e539be58743074b016fede330');
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LENS-CATALOG][TEST]
