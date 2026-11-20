@@ -473,3 +473,54 @@ shell:playlists/hidden:#playlistDetail
 
 That nested state is the next bounded Playlist pressure rather than being silently collapsed into the
 overview/create expression.
+
+
+## Selected Playlist detail relationship expansion
+
+Merged VexStream source now projects the selected Playlist detail as a nested presentation:
+
+~~~text
+PR #30
+6b88dfaa570a04778addd2d85e484d4368881eb8
+
+Playlists overview
+  detail CLOSED
+
+PlaylistNavigation.openPlaylistID != ""
+  detail OPEN
+~~~
+
+The presentation does not enumerate dynamic Playlist IDs.
+
+Fixed detail ownership:
+
+~~~text
+Back          -> PlaylistNavigation
+Name/Rename   -> Playlist client
+Play/Shuffle  -> Player composition
+Add songs     -> Playlist target + Library selection + Shell navigation
+Delete        -> Playlist client
+~~~
+
+Current merged Lens:
+
+~~~text
+79 elements
+13 pathways
+4 realization relationships
+12 static state bindings
+9 expressions
+audit blockers 0
+selected detail 7 / 7 MAPPED_PATHWAY
+~~~
+
+The exporter also now preserves source interaction type:
+
+~~~text
+input/select/textarea -> FIELD
+button/summary        -> BUTTON
+~~~
+
+This nested-state pressure earned one generic VexWork refinement: container aggregate graphs are now
+expression-aware. Hidden/latent detail pathways do not appear in the shell aggregate until the detail
+expression presents them.
