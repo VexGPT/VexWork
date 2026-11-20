@@ -383,3 +383,51 @@ artist nested states                       2
 ~~~
 
 Those nested states remain separately held for later admission.
+
+
+## Discover terrain expression expansion
+
+Merged VexStream source now carries the next coherent alternate terrain:
+
+~~~text
+PR #27
+a9bfca803f8c7962094625ed1244d65e1a991d39
+  immediate Library expression controls identity-complete
+
+PR #28
+aa4213bf276297bef7fec51e3803b42ec4347bd5
+  Shell -> Discover
+  Discover -> This PC / YouTube / Explore
+~~~
+
+The admission rule is now explicit:
+
+~~~text
+expression admitted
+-> controls immediately visible in that terrain are at least addressable
+-> deeper nested sub-states remain separate audit debt
+~~~
+
+Current merged Lens:
+
+~~~text
+67 elements
+7 semantic pathways
+3 realization selections
+9 static state bindings
+7 expressions via the generic VexWork engine
+Product JavaScript NONE
+audit blockers 0
+~~~
+
+Immediate Discover coverage is complete at the terrain boundary:
+
+~~~text
+mode tabs   3 / 3
+This PC     5 / 5
+YouTube     3 / 3
+Explore     2 / 2
+~~~
+
+The hidden YouTube Import review form remains explicitly separate nested debt. Playlists and Deleted
+remain later Shell terrains.
