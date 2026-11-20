@@ -329,3 +329,57 @@ They are not invisible debt. They are outside the current default-visible lived 
 classified when their alternate terrain/expression enters admitted projection scope.
 
 Do not interpret zero default blockers as full-product Stable acceptance.
+
+
+## First alternate terrain — Library expressions
+
+The terrain-aware audit made Library the first coherent alternate slice rather than treating its hidden
+controls as one flat ID backlog.
+
+Merged target source:
+
+~~~text
+VexStream PR #26
+8aeedc132a7984575449dd931c786c4a3597013f
+~~~
+
+Projection shape:
+
+~~~text
+Source
+  Home
+
+Selection
+  Library terrain
+    Songs default
+    Albums
+    Artists
+~~~
+
+This uses the same vexboard.screen-lens/v1 SELECTION + stateBindings grammar already accepted for
+VexLife-Prod.
+
+~~~text
+Product JavaScript  NONE
+VexStream app.js    unchanged
+semantic pathways   still 7
+Lens elements       50
+~~~
+
+The exporter derives structural anchors only inside the inert Product copy. Browser-local expression
+state controls hidden, data-shell-current-view, data-library-terrain, and Library mode aria-pressed.
+
+Dynamic catalog rows/groups are not fabricated.
+
+The refined audit now separates nested Library presentation owners:
+
+~~~text
+shell:library                              7
+shell:library/hidden:#librarySelectionBar  9
+shell:library/hidden:#songLayoutPanel      7
+shell:library/hidden:#bulkDisplayEditor    9
+shell:library/hidden:#libraryGroupDetail   5
+artist nested states                       2
+~~~
+
+Those nested states remain separately held for later admission.

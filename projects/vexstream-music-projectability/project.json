@@ -35,7 +35,8 @@
     "github.pull.vexstream-music.24",
     "repo.vexstream-music:v2/projection/vexboard-projectability-audit.mjs",
     "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json",
-    "repo.vexstream-music:v2/tests/vexboard-projectability-identities.test.mjs"
+    "repo.vexstream-music:v2/tests/vexboard-projectability-identities.test.mjs",
+    "github.pull.vexstream-music.26"
   ],
   "formedAt": "2026-11-20T13:30:00.000Z"
 }

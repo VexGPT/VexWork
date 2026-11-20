@@ -432,3 +432,28 @@ The path to zero default-visible blockers was intentionally split:
 
 No semantic Family was created merely to reduce the audit count. Addressable-held remains a truthful
 state for controls whose deeper relationship is outside the current first-slice scope.
+
+
+## Alternate-terrain proof — Library
+
+Merged VexStream source at 8aeedc132a7984575449dd931c786c4a3597013f demonstrates that the persistent
+Screen can project alternate Product terrain without adding Screens or running Product JavaScript.
+
+~~~text
+ShellNavigation source default
+  Home
+
+bounded alternate shell panel
+  Library
+
+gated Library mode selection
+  Songs
+  Albums
+  Artists
+~~~
+
+The shared VexWork expression engine derives all four lived projection positions:
+Source/Home, Library/Songs, Library/Albums, Library/Artists.
+
+Nested selection/detail/editor states remain distinct audit terrain rather than being implicitly claimed
+by the root Library expression.

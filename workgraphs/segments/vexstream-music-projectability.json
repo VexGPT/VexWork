@@ -169,7 +169,8 @@
         "github.pull.vexstream-music.22",
         "github.pull.vexstream-music.23",
         "github.pull.vexstream-music.24",
-        "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json"
+        "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json",
+        "github.pull.vexstream-music.26"
       ],
       "updatedAt": "2026-11-20T14:04:00.003Z"
     },
@@ -208,9 +209,10 @@
         "github.pull.vexstream-music.24",
         "repo.vexstream-music:v2/projection/vexboard-projectability-audit.mjs",
         "repo.vexstream-music:v2/projection/vexboard-projectability-audit.json",
-        "repo.vexstream-music:v2/tests/vexboard-projectability-identities.test.mjs"
+        "repo.vexstream-music:v2/tests/vexboard-projectability-identities.test.mjs",
+        "github.pull.vexstream-music.26"
       ],
-      "updatedAt": "2026-11-20T14:46:00.000Z"
+      "updatedAt": "2026-11-20T15:03:00.000Z"
     }
   ],
   "transitions": [

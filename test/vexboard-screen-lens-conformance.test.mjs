@@ -129,7 +129,7 @@ test('a mapped container projects the relationships contained inside it', () => 
 test('VexStream current default-visible projection carries the zero-blocker addressability census', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const [screen] = vexstream.screens;
-  assert.equal(screen.elements.length, 42, 'merged target source exports every currently admitted/default-visible relationship coordinate');
+  assert.equal(screen.elements.length, 50, 'merged target source exports default-visible relationship coordinates plus bounded Library presentation structure');
   assert.equal(vexstream.pathways.length, 7, 'coverage completeness does not invent deeper semantic pathways');
   const refs = new Set(screen.elements.map((element) => element.ref));
   for (const ref of [
@@ -145,6 +145,37 @@ test('VexStream current default-visible projection carries the zero-blocker addr
     'element.vexstream.queue.drawer.toggle',
     'element.vexstream.queue.shuffle-upcoming',
   ]) assert.ok(refs.has(ref), ref + ' remains addressable');
+});
+
+test('VexStream bounded Library terrain is expressed through the shared selection grammar', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const [screen] = vexstream.screens;
+  const expressions = Expressions.expressionsFor(vexstream, screen.screenRef);
+  const resolved = expressions.map((expression) => ({
+    expression,
+    presence: Realization.resolvePresence(vexstream, screen.screenRef, expression.context),
+  }));
+  const shellRef = 'presence.vexstream.shell.primary-terrain';
+  const modeRef = 'presence.vexstream.library.mode';
+  const HOME = 'vexstream.desktop.library.panel.home';
+  const LIBRARY = 'vexstream.desktop.library.panel.library';
+  const SONGS = 'vexstream.desktop.library.mode-state.songs';
+  const ALBUMS = 'vexstream.desktop.library.mode-state.albums';
+  const ARTISTS = 'vexstream.desktop.library.mode-state.artists';
+
+  assert.equal(resolved[0].expression.ref, Expressions.SOURCE_EXPRESSION_REF);
+  assert.equal(resolved[0].presence.presence.get(shellRef)?.value, HOME);
+
+  const find = (shell, mode) => resolved.find(({ presence }) =>
+    presence.presence.get(shellRef)?.value === shell &&
+    presence.presence.get(modeRef)?.value === mode
+  );
+  assert.ok(find(LIBRARY, SONGS), 'Library / Songs alternate expression exists');
+  assert.ok(find(LIBRARY, ALBUMS), 'Library / Albums alternate expression exists');
+  assert.ok(find(LIBRARY, ARTISTS), 'Library / Artists alternate expression exists');
+  assert.equal(screen.view?.scriptPolicy, 'NONE');
+  assert.equal(screen.view?.stateBindings?.length, 5);
+  assert.equal(vexstream.pathways.length, 7, 'presentation expansion does not manufacture semantic pathways');
 });
 
 test('VexStream stable source controls remain addressable even when deeper pathways are held', () => {
