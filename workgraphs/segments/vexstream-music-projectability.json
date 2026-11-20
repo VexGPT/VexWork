@@ -195,9 +195,12 @@
         "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
         "projects/vexstream-music-projectability/README.md",
         "human.victor.vexstream-first-lens-relationship-feedback-2026-11-20",
-        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json"
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+        "github.pull.vexstream-music.21",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.json",
+        "human.victor.vexstream-shell-coverage-feedback-2026-11-20"
       ],
-      "updatedAt": "2026-11-20T14:04:00.005Z"
+      "updatedAt": "2026-11-20T14:15:00.000Z"
     }
   ],
   "transitions": [

@@ -218,3 +218,41 @@ Revised shared proof:
 
 This correction belongs to the generic Screen Lens reader and is documented in
 projects/vexboard/SCREEN-LENS.md.
+
+
+## Second lived projection correction — stable control coverage
+
+The relationship-first container view made the shell legible, then lived review exposed a second
+coverage defect:
+
+> phone and System status were visibly working Product controls but were not mapped.
+
+The correction is source-first:
+
+~~~text
+VexStream PR #21
+merge 0c5657c70ef0f886dcb23cf4478d7bf2c89660de
+
+phone
+  vexstream.phone.connection.open
+  -> full Phone Connection pathway
+
+System bell
+  vexstream.system.status.open
+  -> full read-only System status pathway
+~~~
+
+The native exporter now also requires every source-owned data-vex-control/data-vex-action identity in
+the bounded shell to become a Lens element. Stable identities outside the admitted first-slice depth
+remain selectable without a pathwayRef instead of silently disappearing as Product pixels.
+
+Target proof:
+
+~~~text
+41 / 41 PASS
+elements          16
+admitted pathways  7
+contained paths    7
+~~~
+
+This is now a general projectability rule in projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md.

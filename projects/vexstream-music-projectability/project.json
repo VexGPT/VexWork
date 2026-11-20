@@ -28,7 +28,8 @@
     "github.pull.vexstream-music.20",
     "repo.vexstream-music:v2/projection/vexboard-screen-lens.mjs",
     "repo.vexstream-music:v2/projection/vexboard-screen-lens.json",
-    "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json"
+    "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+    "github.pull.vexstream-music.21"
   ],
   "formedAt": "2026-11-20T13:30:00.000Z"
 }

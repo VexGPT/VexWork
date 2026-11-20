@@ -267,6 +267,40 @@ VexLife-Prod
 
 Producer location is not architectural rank. Both must converge on the same consumer contract.
 
+### SOURCE_VIEW interaction coverage is explicit
+
+A source-owned static Product view may preserve the real visual shell, but visible/stable controls must
+not silently remain image pixels.
+
+For controls/actions that already have source-owned stable identity:
+
+~~~text
+source-stable interactive identity
+  -> exported inert view anchor
+  -> Screen Lens element
+
+admitted deeper relationship
+  -> pathwayRef
+
+relationship outside the bounded projection
+  -> element remains addressable
+  -> pathway stays absent / visibly unprojected
+~~~
+
+This is especially important for SOURCE_VIEW producers because the Product can look complete even when
+the relationship projection is sparse.
+
+~~~text
+VISIBLE_WORKING_CONTROL
++ SOURCE_STABLE_IDENTITY
++ NO LENS ELEMENT
+= PROJECTION COVERAGE DEFECT
+~~~
+
+Do not fix this by inventing VexBoard-only IDs in the live Product. Derive generic view anchors in the
+exported copy from the source-owned identity, or align the source identity at its rightful owner when it
+does not yet exist.
+
 ## 6. Prove emitted output through the consumer seam
 
 Producer-specific tests prove source extraction.

@@ -113,15 +113,31 @@ test('a mapped container projects the relationships contained inside it', () => 
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const shellRef = 'vexstream.desktop.library.region.shell';
   const pathways = containedPathways(vexstream, shellRef);
-  assert.equal(pathways.length, 5);
+  assert.equal(pathways.length, 7);
   assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.player.previous'));
   assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.playback.play-pause'));
+  assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.phone.connection.open'));
+  assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.system.status.open'));
 
   const behavior = aggregateContainedFaceGraph(vexstream, shellRef, 'BEHAVIOR');
   const depth = aggregateContainedFaceGraph(vexstream, shellRef, 'DEPTH');
-  assert.equal(behavior.pathwayRefs.length, 5);
+  assert.equal(behavior.pathwayRefs.length, 7);
   assert.ok(behavior.nodes.length > 5, 'aggregate Behavior contains actual pathway nodes, not a screenshot placeholder');
   assert.ok(depth.nodes.length > 0, 'aggregate Depth exposes the contained runtime/provider relationships');
+});
+
+test('VexStream stable source controls remain addressable even when deeper pathways are held', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const refs = new Set(vexstream.screens[0].elements.map((element) => element.ref));
+  assert.ok(refs.has('element.vexstream.phone.connection.open'));
+  assert.ok(refs.has('element.vexstream.system.status.open'));
+  assert.ok(refs.has('element.vexstream.player.play-next'));
+  assert.ok(refs.has('element.vexstream.system.exit'));
+  assert.equal(
+    vexstream.screens[0].elements.find((element) => element.ref === 'element.vexstream.player.play-next')?.pathwayRef,
+    null,
+    'a source-stable element may be addressable while its deeper pathway remains intentionally unprojected',
+  );
 });
 
 test('VexStream proves a third real SOURCE_VIEW producer without a reader fork', () => {
