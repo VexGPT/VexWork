@@ -26666,7 +26666,7 @@
           "label": "Build the deliberately complex VexLife Android security demonstrator",
           "purpose": "Design and later implement a feature-gated VexLife-Prod/VexLife-Android specimen that can express principal/account, multiple devices/installations, credential custody, reachability, authenticated sessions, authorization/capabilities, feature effects, local data, offline/reconnect, revocation/recovery, build/update trust and evidence as distinct relationships.",
           "workClass": "TASK",
-          "state": "DECOMPOSED",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.full-security.outcome",
@@ -26698,8 +26698,48 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-06T10:50:45.000Z",
-          "updatedAt": "2026-11-06T10:50:45.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T13:21:51.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.full-security.vexlife-complex-demonstrator.decomposed.plan-validated.active-children-currentness",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "The complex-demonstrator decomposition is no longer only a plan: canonical-owner adoption and full-scope experience-design children are already admitted and RUNNING, so the parent planning shape is established.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/full-security/FOUNDATION-STARTING-MAP.md",
+                "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+                "github.pull.vexwork.256"
+              ],
+              "createdAt": "2026-11-20T13:21:49.000Z"
+            },
+            {
+              "transitionRef": "transition.full-security.vexlife-complex-demonstrator.plan-validated.ready.active-children-currentness",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Current Full Security source already defines the bounded complex-demonstrator topology and active foundation/design fronts; no unresolved planning predicate prevents the parent from being ready for the work already underway.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/full-security/FOUNDATION-STARTING-MAP.md",
+                "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+                "github.pull.vexwork.256"
+              ],
+              "createdAt": "2026-11-20T13:21:50.000Z"
+            },
+            {
+              "transitionRef": "transition.full-security.vexlife-complex-demonstrator.ready.running.active-children-currentness",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Two immediate child fronts are already executing under the complex demonstrator, so keeping their parent in Intake/DECOMPOSED is stale lifecycle projection rather than truthful current work.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/full-security/FOUNDATION-STARTING-MAP.md",
+                "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+                "github.pull.vexwork.256"
+              ],
+              "createdAt": "2026-11-20T13:21:51.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.full-security.vexlife-prod-security-dashboard",
@@ -26775,7 +26815,6 @@
             "work.full-security.android-connected-devices-feature",
             "work.full-security.device-relationship-projection-foundation",
             "work.full-security.synthetic-demonstration-provider-foundation",
-            "work.full-security.vexlife-complex-demonstrator",
             "work.full-security.vexlife-prod-security-dashboard",
             "work.full-security.host-local-recovery-foundation"
           ]
@@ -26801,6 +26840,7 @@
             "work.full-security.vexstream-local-pairing",
             "work.full-security.outcome",
             "work.full-security.security-boundary-atlas",
+            "work.full-security.vexlife-complex-demonstrator",
             "work.full-security.candidate-security-relationship-patterns"
           ]
         },
