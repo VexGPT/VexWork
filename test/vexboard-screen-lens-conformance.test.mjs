@@ -64,6 +64,7 @@ test('runtime templates carry portable instance identity formation without claim
       kind: 'RUNTIME_INSTANCE',
       baseRef: 'element.neutral-workspace.runtime-item',
       partSources: ['scopeRef', 'domainRef'],
+      continuity: 'STABLE_INSTANCE',
     },
     realizes: [],
     usedBy: [],
@@ -83,6 +84,33 @@ test('runtime templates carry portable instance identity formation without claim
     () => normalizeScreenLens(bad),
     /partSources must be non-empty/,
     'opaque instanceFormation text cannot substitute for a typed stable-instance contract',
+  );
+});
+
+test('CURRENT_OCCURRENCE preserves a truthful weaker continuity claim for duplicate/reorder pressure', () => {
+  const input = structuredClone(subjects[3][1]);
+  input.screens[0].realization.templates.push({
+    ref: 'template.neutral.current-occurrence',
+    symbol: 'CurrentOccurrence',
+    source: 'fixture:neutral/CurrentOccurrence',
+    instanceFormation: 'currentOccurrence(domainRef, occurrence)',
+    instanceIdentity: {
+      kind: 'RUNTIME_INSTANCE',
+      baseRef: 'element.neutral-workspace.current-occurrence',
+      partSources: ['domainRef', 'occurrence'],
+      continuity: 'CURRENT_OCCURRENCE',
+    },
+    realizes: [],
+    usedBy: [],
+    slots: [],
+  });
+
+  const normalized = normalizeScreenLens(input);
+  const template = normalized.screens[0].realization.templates.at(-1);
+  assert.equal(template.instanceIdentity.continuity, 'CURRENT_OCCURRENCE');
+  assert.equal(
+    dynamicLensInstanceRef('element.neutral-workspace.current-occurrence', ['track-7', '2']),
+    'element.neutral-workspace.current-occurrence.dynamic.utf8hex.747261636b2d370032',
   );
 });
 
@@ -115,6 +143,7 @@ test('Screen Lens validates only identities that a producer explicitly claims ar
         kind: 'RUNTIME_INSTANCE',
         baseRef: 'element.neutral-workspace.runtime-item',
         instanceParts: ['primary', 'domain-7'],
+        continuity: 'STABLE_INSTANCE',
       },
     },
   );
