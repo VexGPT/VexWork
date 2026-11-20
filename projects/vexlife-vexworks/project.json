@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.vexworks",
+  "label": "[VexLife Local Artifacts]",
+  "purpose": "Make VexLife Local Artifacts a coherent local AI work environment: let a person add files and persistent Local Sources, let Vex reach only exact admitted material through existing semantic capability owners, then expose a Claude-like model selector whose controls and available features are derived from the exact selected model/provider/runtime relationship, including conservatively admitted user-imported models, without rebinding Conversation, Memory, artifact or source identity.",
+  "rootWorkRefs": [
+    "work.vexlife.vexworks.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-vexworks/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "human.handoff.vexlife.local-artifacts-successor.20261119",
+    "human.design.vexlife.vexworks.model-switching.20261119",
+    "github.pull.vexlife-prod.402",
+    "github.commit.vexlife-prod.2f9c0fdb667585a68f45a5bc834f67cac2af688c",
+    "repo.vexlife-prod:docs/foundation/HERETIC-PRODUCT-MODEL.md",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticModelCatalog.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticModelImport.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/heretic/HuggingFaceModelInspection.kt"
+  ],
+  "formedAt": "2026-11-20T05:39:00.000Z"
+}

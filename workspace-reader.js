@@ -1,4 +1,4 @@
-export const PROJECTS_VIEWS = Object.freeze(['projects', 'open']);
+export const PROJECTS_VIEWS = Object.freeze(['projects', 'roadmap', 'open']);
 export const PROJECT_VIEWS = Object.freeze(['story', 'open', 'board', 'dependencies']);
 export const ITEM_VIEWS = Object.freeze(['overview', 'children', 'dependencies', 'history']);
 

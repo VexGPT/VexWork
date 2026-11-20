@@ -4,6 +4,21 @@
 
 ## Status
 
+Update (projectability work): the *source-backed* half of this idea now exists as a bounded context,
+not a third face. See `SCREEN-LENS-PROJECTABILITY.md`:
+
+~~~text
+RESTORED CANDIDATE   Expressions: one context dimension over all four faces (rail + Surface carousel;
+                      Behavior/Depth draw how each is reached). Each expression is an immutable
+                      browser-local context over source presence relationships (open, select,
+                      rows / no items, choose a source-written branch) or a source-authored example;
+                      never stored
+STILL PARKED          VexBoard-proposed content (Design Draft), substitution, snackbars,
+                      simulated next interactions / transitions
+~~~
+
+Admitting the remaining half still needs its own Work admission and handshake.
+
 ~~~text
 CAPTURED FUTURE FEATURE
 != current Screen Lens review scope

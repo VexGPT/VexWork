@@ -1,0 +1,1787 @@
+{
+  "schemaVersion": "vexwork.experience-graph.convergence/v1",
+  "graphFingerprint": "7c4f1615deb1a67192f758d66eccb8e87cb6279e50200737c944b4f35f0566c6",
+  "joins": [
+    {
+      "joinRef": "join:DirectCompanionTurn",
+      "consumer": "DirectCompanionTurn",
+      "consumerRole": "OWNER",
+      "inputs": [
+        {
+          "edge": "edge:CONSUMED_BY:DirectCompanionTurn.Intent.browserContext:DirectCompanionTurn",
+          "kind": "CONSUMED_BY",
+          "owner": "VexLifeProdServiceContract.SendRequest.browserContext",
+          "gate": null
+        },
+        {
+          "edge": "edge:CONSUMED_BY:DirectCompanionTurn.Intent.contextProfile:DirectCompanionTurn",
+          "kind": "CONSUMED_BY",
+          "owner": "VexLifeContextProfileStore + VexLifeFoundationalField",
+          "gate": null
+        },
+        {
+          "edge": "edge:CONSUMED_BY:DirectCompanionTurn.Intent.idempotencyKey:DirectCompanionTurn",
+          "kind": "CONSUMED_BY",
+          "owner": "DirectCompanionTurn.Intent.idempotencyKey",
+          "gate": null
+        },
+        {
+          "edge": "edge:CONSUMED_BY:DirectCompanionTurn.Intent.personContext:DirectCompanionTurn",
+          "kind": "CONSUMED_BY",
+          "owner": "VexLifePersonSettingsStore",
+          "gate": null
+        },
+        {
+          "edge": "edge:CONSUMED_BY:VexLifeModels.switchHeld:DirectCompanionTurn:MODEL_SWITCH_HELD",
+          "kind": "CONSUMED_BY",
+          "owner": "VexLifeModels.switchHeld",
+          "gate": "MODEL_SWITCH_HELD"
+        },
+        {
+          "edge": "edge:CONSUMED_BY:VexLifeModels.switchInProgress:DirectCompanionTurn:MODEL_SWITCH_IN_PROGRESS",
+          "kind": "CONSUMED_BY",
+          "owner": "VexLifeModels.switchInProgress",
+          "gate": "MODEL_SWITCH_IN_PROGRESS"
+        },
+        {
+          "edge": "edge:CONSUMED_BY:VexLifePrivateModeFamily.Private:DirectCompanionTurn:PRIVATE_MODE_ON",
+          "kind": "CONSUMED_BY",
+          "owner": "VexLifePrivateModeFamily",
+          "gate": "PRIVATE_MODE_ON"
+        }
+      ],
+      "independentOwners": [
+        "DirectCompanionTurn.Intent.idempotencyKey",
+        "VexLifeContextProfileStore + VexLifeFoundationalField",
+        "VexLifeModels.switchHeld",
+        "VexLifeModels.switchInProgress",
+        "VexLifePersonSettingsStore",
+        "VexLifePrivateModeFamily",
+        "VexLifeProdServiceContract.SendRequest.browserContext"
+      ],
+      "classification": "ORDINARY_CONSUMPTION",
+      "reason": "DirectCompanionTurn consumes each input as its own value into one accepted turn; the prompt Receipt records 13 input fields separately; no new relationship truth is owned by a separate convergence owner"
+    },
+    {
+      "joinRef": "join:DirectCompanionTurn.Intent.contextProfile",
+      "consumer": "DirectCompanionTurn.Intent.contextProfile",
+      "consumerRole": "CAPTURE",
+      "inputs": [
+        {
+          "edge": "edge:CAPTURED_AT_SEND:VexLifeContextProfileStore:DirectCompanionTurn.Intent.contextProfile",
+          "kind": "CAPTURED_AT_SEND",
+          "owner": "VexLifeContextProfileStore",
+          "gate": null
+        },
+        {
+          "edge": "edge:CAPTURED_AT_SEND:VexLifeFoundationalField:DirectCompanionTurn.Intent.contextProfile",
+          "kind": "CAPTURED_AT_SEND",
+          "owner": "VexLifeFoundationalField",
+          "gate": null
+        }
+      ],
+      "independentOwners": [
+        "VexLifeContextProfileStore",
+        "VexLifeFoundationalField"
+      ],
+      "classification": "ORDINARY_CONSUMPTION",
+      "reason": "DirectCompanionTurn.Intent.contextProfile is formed by one owner read (contextProfiles.readActive, VexLifeFoundationalField.readCurrent); the reading owner combines its own argument, no separate relationship owner exists"
+    }
+  ],
+  "relaySources": [
+    {
+      "symbol": "VexLifeSemanticRelayContract",
+      "sourcePath": "src/commonMain/kotlin/vexlife/conversation/VexLifeSemanticRelayContract.kt",
+      "blobSha1": "504a9c597143b04aa33ef654d0daf03aac601b67",
+      "consumedByAnyJoin": false,
+      "note": "not an owner of any classified join; its name alone grants no convergence authority"
+    }
+  ],
+  "gate": {
+    "R1": {
+      "joins": 2,
+      "sourceProvenRelays": 0,
+      "ordinaryOnly": true
+    },
+    "questions": [
+      {
+        "stage": "R2",
+        "question": "route readiness",
+        "requiredInputs": [
+          "graph",
+          "frontier",
+          "sourceCommit",
+          "hostLawProbe"
+        ],
+        "missingInputs": [],
+        "currentConsumer": "law-probe case selection",
+        "gate": {
+          "independentInputOwners": [
+            "graph",
+            "frontier",
+            "sourceCommit",
+            "hostLawProbe"
+          ],
+          "newRelationshipQuestion": "route readiness",
+          "whyQueryInsufficient": "insufficiency not shown: every input is a deterministic projection of one pinned source revision plus one host check; routeReadiness() answers it",
+          "activationOwner": null,
+          "durableTruthOutside": "graph, frontier, manifests and probe evidence remain in their own artifacts",
+          "relayContractProof": null
+        },
+        "verdict": "NOT_EARNED:QUERY_SUFFICIENT"
+      },
+      {
+        "stage": "R2",
+        "question": "debt frontier",
+        "requiredInputs": [
+          "graph",
+          "frontier",
+          "repairOwnership"
+        ],
+        "missingInputs": [
+          "repairOwnership"
+        ],
+        "currentConsumer": "fresh workers choosing a frontier",
+        "gate": {
+          "independentInputOwners": [
+            "graph",
+            "frontier"
+          ],
+          "newRelationshipQuestion": "debt frontier",
+          "whyQueryInsufficient": "insufficiency not shown: debtDependents() answers which routes each debt blocks",
+          "activationOwner": null,
+          "durableTruthOutside": "graph, frontier, manifests and probe evidence remain in their own artifacts",
+          "relayContractProof": null
+        },
+        "verdict": "NOT_EARNED:INPUTS_ABSENT"
+      },
+      {
+        "stage": "R2",
+        "question": "perturbation candidate currentness",
+        "requiredInputs": [
+          "graph",
+          "perturbationEvidence"
+        ],
+        "missingInputs": [],
+        "currentConsumer": "perturbation evidence review",
+        "gate": {
+          "independentInputOwners": [
+            "graph",
+            "perturbationEvidence"
+          ],
+          "newRelationshipQuestion": "perturbation candidate currentness",
+          "whyQueryInsufficient": "insufficiency not shown: evidence currentness is a blob comparison against the graph source",
+          "activationOwner": null,
+          "durableTruthOutside": "graph, frontier, manifests and probe evidence remain in their own artifacts",
+          "relayContractProof": null
+        },
+        "verdict": "NOT_EARNED:QUERY_SUFFICIENT"
+      },
+      {
+        "stage": "R3",
+        "question": "coverage / proof currentness",
+        "requiredInputs": [
+          "graph",
+          "lawEvidence",
+          "livedEvidence"
+        ],
+        "missingInputs": [
+          "livedEvidence"
+        ],
+        "currentConsumer": "proof receipt",
+        "gate": {
+          "independentInputOwners": [
+            "graph",
+            "lawEvidence"
+          ],
+          "newRelationshipQuestion": "coverage / proof currentness",
+          "whyQueryInsufficient": "insufficiency not shown: law evidence binds to one graph fingerprint; comparison is a pure query",
+          "activationOwner": null,
+          "durableTruthOutside": "graph, frontier, manifests and probe evidence remain in their own artifacts",
+          "relayContractProof": null
+        },
+        "verdict": "NOT_EARNED:INPUTS_ABSENT"
+      },
+      {
+        "stage": "R3",
+        "question": "execution-plan readiness",
+        "requiredInputs": [
+          "manifests",
+          "resourceClaims",
+          "hostModelAvailability"
+        ],
+        "missingInputs": [
+          "resourceClaims",
+          "hostModelAvailability"
+        ],
+        "currentConsumer": null,
+        "gate": {
+          "independentInputOwners": [
+            "manifests"
+          ],
+          "newRelationshipQuestion": "execution-plan readiness",
+          "whyQueryInsufficient": "not established",
+          "activationOwner": null,
+          "durableTruthOutside": "graph, frontier, manifests and probe evidence remain in their own artifacts",
+          "relayContractProof": null
+        },
+        "verdict": "NOT_EARNED:INPUTS_ABSENT"
+      },
+      {
+        "stage": "R4",
+        "question": "graph change impact",
+        "requiredInputs": [
+          "priorGraph",
+          "graph"
+        ],
+        "missingInputs": [],
+        "currentConsumer": "currentness re-observation of VexLife-Prod main",
+        "gate": {
+          "independentInputOwners": [
+            "priorGraph",
+            "graph"
+          ],
+          "newRelationshipQuestion": "graph change impact",
+          "whyQueryInsufficient": "insufficiency not shown: diffExperienceGraphs() answers it over two fixed revisions",
+          "activationOwner": null,
+          "durableTruthOutside": "graph, frontier, manifests and probe evidence remain in their own artifacts",
+          "relayContractProof": null
+        },
+        "verdict": "NOT_EARNED:QUERY_SUFFICIENT"
+      },
+      {
+        "stage": "R4",
+        "question": "VexBoard inspection",
+        "requiredInputs": [
+          "graph",
+          "lawEvidence",
+          "frontier",
+          "liveRuntimeProjection"
+        ],
+        "missingInputs": [
+          "liveRuntimeProjection"
+        ],
+        "currentConsumer": null,
+        "gate": {
+          "independentInputOwners": [
+            "graph",
+            "lawEvidence",
+            "frontier"
+          ],
+          "newRelationshipQuestion": "VexBoard inspection",
+          "whyQueryInsufficient": "not established",
+          "activationOwner": null,
+          "durableTruthOutside": "graph, frontier, manifests and probe evidence remain in their own artifacts",
+          "relayContractProof": null
+        },
+        "verdict": "NOT_EARNED:INPUTS_ABSENT"
+      },
+      {
+        "stage": "R5",
+        "question": "release readiness",
+        "requiredInputs": [
+          "requiredJourneys",
+          "releaseEvidence",
+          "livedEvidence"
+        ],
+        "missingInputs": [
+          "requiredJourneys",
+          "releaseEvidence",
+          "livedEvidence"
+        ],
+        "currentConsumer": null,
+        "gate": {
+          "independentInputOwners": [],
+          "newRelationshipQuestion": "release readiness",
+          "whyQueryInsufficient": "not established",
+          "activationOwner": null,
+          "durableTruthOutside": "graph, frontier, manifests and probe evidence remain in their own artifacts",
+          "relayContractProof": null
+        },
+        "verdict": "NOT_EARNED:INPUTS_ABSENT"
+      }
+    ]
+  },
+  "queries": {
+    "routeReadiness": {
+      "routes": [
+        {
+          "routeRef": "route:HereticRuntimeAvailability.State.Qualified:Control.EnsureAvailable:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:HereticRuntimeAvailability.State.StableBorrowable:Control.EnsureAvailable:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:1",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeContextProfileFamily.ProductDefault:Import:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeContextProfileFamily.ProductDefault:Use:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeContextProfileFamily.Saved:Import:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeContextProfileFamily.Saved:Save:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeContextProfileFamily.Saved:SaveAs:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeContextProfileFamily.Saved:Use:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeDiagnosticsFamily.Recording:ClearHistory:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeLocalAsrModelsFamily.State:ControlDownload:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeLocalAsrModelsFamily.State:ControlRedownload:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeLocalAsrModelsFamily.State:ControlRemove:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeLocalAsrModelsFamily.State:ControlUse:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeMemoryReviewFamily.Pending:Decline:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeMemoryReviewFamily.Pending:Keep:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeMemoryReviewFamily.Pending:NotNow:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:Download:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:ForgetImportedModel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:ForgetImportedModel:1",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:Redownload:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:Remove:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:Remove:1",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:Select:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:SetPromptCacheEntries:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:Use:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeModelsFamily.State:UseRecommendedRuntimeConfiguration:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifePrivateModeFamily.Kept:Begin:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifePrivateModeFamily.Private:End:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.Current:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.Current:OpenCurrent:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.HeldUnknown:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.HomeFormationRequired:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.HomeFormationRequired:FormHome:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.HomeHeld:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.HostHeld:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.ModelFilesHeld:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.RepairRequired:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.RepairRequired:ConvergeDesired:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.ServiceRecoveryRequired:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.ServiceRecoveryRequired:RecoverStaleService:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.SetupRequired:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.SetupRequired:SetUp:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.StartRequired:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.StartRequired:Start:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.StorageHeld:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.UpdateAvailable:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.UpdateAvailable:ConvergeDesired:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.UpdateAvailable:OpenCurrent:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.UpdateRepairRequired:Cancel:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": []
+        },
+        {
+          "routeRef": "route:VexLifeProdEntryFamily.UpdateRepairRequired:ConvergeDesired:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeReleaseInboxFamily.State:Control.Dismiss:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeReleaseInboxFamily.State:Control.View:0",
+          "status": "FRONTIER_DEBT",
+          "readiness": "DEBT_BLOCKED",
+          "deeperClasses": [
+            "B"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeVisionFamily.Engaged:Stop:0",
+          "status": "CLEARED",
+          "readiness": "READY_SERIAL",
+          "deeperClasses": [
+            "E"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeVisionFamily.Held:Stop:0",
+          "status": "CLEARED",
+          "readiness": "READY_SERIAL",
+          "deeperClasses": [
+            "E"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeVisionFamily.Ready:Engage:0",
+          "status": "CLEARED",
+          "readiness": "READY_SERIAL",
+          "deeperClasses": [
+            "E"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeVoiceInputFamily.Failed:Start:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "C"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeVoiceInputFamily.Listening:Stop:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "C"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeVoiceInputFamily.Ready:Start:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "C"
+          ]
+        },
+        {
+          "routeRef": "route:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0",
+          "status": "CLEARED",
+          "readiness": "HELD",
+          "deeperClasses": [
+            "C"
+          ]
+        }
+      ],
+      "cases": [
+        {
+          "caseRef": "case:HereticRuntimeAvailability.State.Qualified:Control.EnsureAvailable:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:HereticRuntimeAvailability.State.StableBorrowable:Control.EnsureAvailable:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:1",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:Import:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:Use:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeContextProfileFamily.Saved:Import:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeContextProfileFamily.Saved:Save:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeContextProfileFamily.Saved:SaveAs:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeContextProfileFamily.Saved:Use:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeDiagnosticsFamily.Recording:ClearHistory:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlDownload:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlRedownload:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlRemove:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlUse:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeMemoryReviewFamily.Pending:Decline:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeMemoryReviewFamily.Pending:Keep:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeMemoryReviewFamily.Pending:NotNow:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:Download:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:ForgetImportedModel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:ForgetImportedModel:1",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:Redownload:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:Remove:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:Remove:1",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:Select:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:SetPromptCacheEntries:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:Use:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeModelsFamily.State:UseRecommendedRuntimeConfiguration:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifePrivateModeFamily.Kept:Begin:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifePrivateModeFamily.Private:End:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.Current:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.Current:OpenCurrent:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.HeldUnknown:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.HomeFormationRequired:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.HomeFormationRequired:FormHome:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.HomeHeld:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.HostHeld:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.ModelFilesHeld:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.RepairRequired:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.RepairRequired:ConvergeDesired:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.ServiceRecoveryRequired:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.ServiceRecoveryRequired:RecoverStaleService:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.SetupRequired:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.SetupRequired:SetUp:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.StartRequired:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.StartRequired:Start:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.StorageHeld:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:ConvergeDesired:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:OpenCurrent:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.UpdateRepairRequired:Cancel:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeProdEntryFamily.UpdateRepairRequired:ConvergeDesired:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeReleaseInboxFamily.State:Control.Dismiss:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeReleaseInboxFamily.State:Control.View:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeVisionFamily.Engaged:Stop:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeVisionFamily.Held:Stop:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeVisionFamily.Ready:Engage:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeVoiceInputFamily.Failed:Start:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeVoiceInputFamily.Listening:Stop:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeVoiceInputFamily.Ready:Start:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeContextProfileFamily.ProductDefault:RestoreProductDefault",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeContextProfileFamily.ProductDefault:Save",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeDiagnosticsFamily.Recording:StopEnhanced",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeDiagnosticsFamily.RecordingEnhanced:StartEnhanced",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:Decline",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:Keep",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:NotNow",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifePrivateModeFamily.Kept:End",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifePrivateModeFamily.Private:Begin",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.Current:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.Current:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.Current:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.Current:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.Current:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:ConvergeDesired",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:FormHome",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:OpenCurrent",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:RecoverStaleService",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:SetUp",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVisionFamily.Engaged:Engage",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVisionFamily.Held:Engage",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVisionFamily.Looking:Engage",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVisionFamily.Looking:Stop",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVisionFamily.Ready:Stop",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVisionFamily.Selecting:Engage",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVisionFamily.Selecting:Stop",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVoiceInputFamily.Failed:Stop",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVoiceInputFamily.Held:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVoiceInputFamily.Held:Stop",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVoiceInputFamily.Listening:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVoiceInputFamily.Ready:Stop",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVoiceInputFamily.RequestingMicrophone:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVoiceInputFamily.Stopping:Start",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        },
+        {
+          "caseRef": "case:reject:VexLifeVoiceInputFamily.Stopping:Stop",
+          "executionClass": "A",
+          "readiness": "READY_PARALLEL"
+        }
+      ],
+      "routeCounts": {
+        "READY_PARALLEL": 0,
+        "READY_SERIAL": 3,
+        "DEBT_BLOCKED": 53,
+        "HELD": 10,
+        "UNAVAILABLE": 0
+      },
+      "caseCounts": {
+        "READY_PARALLEL": 159,
+        "READY_SERIAL": 0,
+        "DEBT_BLOCKED": 0,
+        "HELD": 0,
+        "UNAVAILABLE": 0
+      }
+    },
+    "debtDependents": [
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.Cancel",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeProdEntryFamily.Current:Cancel:0",
+          "route:VexLifeProdEntryFamily.HeldUnknown:Cancel:0",
+          "route:VexLifeProdEntryFamily.HomeFormationRequired:Cancel:0",
+          "route:VexLifeProdEntryFamily.HomeHeld:Cancel:0",
+          "route:VexLifeProdEntryFamily.HostHeld:Cancel:0",
+          "route:VexLifeProdEntryFamily.ModelFilesHeld:Cancel:0",
+          "route:VexLifeProdEntryFamily.RepairRequired:Cancel:0",
+          "route:VexLifeProdEntryFamily.ServiceRecoveryRequired:Cancel:0",
+          "route:VexLifeProdEntryFamily.SetupRequired:Cancel:0",
+          "route:VexLifeProdEntryFamily.StartRequired:Cancel:0",
+          "route:VexLifeProdEntryFamily.StorageHeld:Cancel:0",
+          "route:VexLifeProdEntryFamily.UpdateAvailable:Cancel:0",
+          "route:VexLifeProdEntryFamily.UpdateRepairRequired:Cancel:0"
+        ]
+      },
+      {
+        "debtRef": "debt:PROJECTION_NOT_SURFACED:VexLifeModelsFamily.DisplayState",
+        "debtClass": "E",
+        "dependentRoutes": [
+          "route:VexLifeModelsFamily.State:Download:0",
+          "route:VexLifeModelsFamily.State:ForgetImportedModel:0",
+          "route:VexLifeModelsFamily.State:ForgetImportedModel:1",
+          "route:VexLifeModelsFamily.State:Redownload:0",
+          "route:VexLifeModelsFamily.State:Remove:0",
+          "route:VexLifeModelsFamily.State:Remove:1",
+          "route:VexLifeModelsFamily.State:Select:0",
+          "route:VexLifeModelsFamily.State:SetPromptCacheEntries:0",
+          "route:VexLifeModelsFamily.State:Use:0",
+          "route:VexLifeModelsFamily.State:UseRecommendedRuntimeConfiguration:0"
+        ]
+      },
+      {
+        "debtRef": "debt:HARDCODED_DISPLAY_TEXT:VexLifeContextProfileFamily.DisplayState",
+        "debtClass": "E",
+        "dependentRoutes": [
+          "route:VexLifeContextProfileFamily.ProductDefault:Import:0",
+          "route:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
+          "route:VexLifeContextProfileFamily.ProductDefault:Use:0",
+          "route:VexLifeContextProfileFamily.Saved:Import:0",
+          "route:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0",
+          "route:VexLifeContextProfileFamily.Saved:Save:0",
+          "route:VexLifeContextProfileFamily.Saved:SaveAs:0",
+          "route:VexLifeContextProfileFamily.Saved:Use:0"
+        ]
+      },
+      {
+        "debtRef": "debt:PROJECTION_NOT_SURFACED:VexLifeContextProfileFamily.DisplayState",
+        "debtClass": "E",
+        "dependentRoutes": [
+          "route:VexLifeContextProfileFamily.ProductDefault:Import:0",
+          "route:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
+          "route:VexLifeContextProfileFamily.ProductDefault:Use:0",
+          "route:VexLifeContextProfileFamily.Saved:Import:0",
+          "route:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0",
+          "route:VexLifeContextProfileFamily.Saved:Save:0",
+          "route:VexLifeContextProfileFamily.Saved:SaveAs:0",
+          "route:VexLifeContextProfileFamily.Saved:Use:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:HereticRuntimeAvailability.Control.EnsureAvailable",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:HereticRuntimeAvailability.State.Qualified:Control.EnsureAvailable:0",
+          "route:HereticRuntimeAvailability.State.StableBorrowable:Control.EnsureAvailable:0",
+          "route:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:0",
+          "route:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:1"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.Import",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeContextProfileFamily.ProductDefault:Import:0",
+          "route:VexLifeContextProfileFamily.Saved:Import:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.SaveAs",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
+          "route:VexLifeContextProfileFamily.Saved:SaveAs:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.Use",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeContextProfileFamily.ProductDefault:Use:0",
+          "route:VexLifeContextProfileFamily.Saved:Use:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.RestoreProductDefault",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.Save",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeContextProfileFamily.Saved:Save:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeLocalAsrModelsFamily.ControlDownload",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeLocalAsrModelsFamily.State:ControlDownload:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeLocalAsrModelsFamily.ControlRedownload",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeLocalAsrModelsFamily.State:ControlRedownload:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeLocalAsrModelsFamily.ControlRemove",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeLocalAsrModelsFamily.State:ControlRemove:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeLocalAsrModelsFamily.ControlUse",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeLocalAsrModelsFamily.State:ControlUse:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeMemoryReviewFamily.Decline",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeMemoryReviewFamily.Pending:Decline:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeMemoryReviewFamily.Keep",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeMemoryReviewFamily.Pending:Keep:0"
+        ]
+      },
+      {
+        "debtRef": "debt:MISSING_MANIFESTATION_BINDING:VexLifeMemoryReviewFamily.NotNow",
+        "debtClass": "B",
+        "dependentRoutes": [
+          "route:VexLifeMemoryReviewFamily.Pending:NotNow:0"
+        ]
+      }
+    ],
+    "changeImpact": {
+      "priorCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
+      "currentCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+      "familiesAdded": [],
+      "familiesRemoved": [],
+      "edgesAdded": [],
+      "edgesRemoved": [],
+      "edgesChanged": [],
+      "impactedRoutes": [],
+      "proof": {
+        "invalidated": "any probe evidence bound to the prior graph fingerprint for an impacted route",
+        "reusable": "law evidence for cells whose OFFERS / REQUESTS_EFFECT / ADMITS_STATE rows are unchanged"
+      },
+      "priorGraphFingerprint": "3c166150fa424e2b04eab1a87f6dff408bfdb3333943a175161aca16ca9ced76"
+    }
+  }
+}

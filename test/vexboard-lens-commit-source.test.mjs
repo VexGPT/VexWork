@@ -8,6 +8,7 @@ import {
   compareCommits,
   listRecentCommits,
   projectCommit,
+  readExportedLensCommit,
   resolveCommit,
 } from '../src/shared/vexboard-lens-commit-source.mjs';
 
@@ -87,6 +88,28 @@ test('a commit is projected from exactly the planned files, pinned, and with a l
   assert.deepEqual(progress.at(-2), { phase: 'FETCH', done: 2, total: 2 });
   const hosts = new Set(calls.map((call) => new URL(call.url).host));
   assert.deepEqual([...hosts].sort(), ['api.github.com', 'raw.githubusercontent.com']);
+});
+
+test('a Product-owned exported Lens is read directly from one exact commit without the Android adapter', async () => {
+  const repo = 'https://github.com/VexGPT/VexLife-Prod';
+  const sourcePath = 'docs/lens/vexlife-prod.screen-lens.json';
+  const commitUrl = `${GITHUB_API}/repos/VexGPT/VexLife-Prod/commits/main`;
+  const rawUrl = `${GITHUB_RAW}/VexGPT/VexLife-Prod/${SHA}/docs/lens/vexlife-prod.screen-lens.json`;
+  const calls = [];
+  const fetch = async (url, init) => {
+    calls.push({ url, init });
+    if (url === commitUrl) return response(200, commitBody);
+    if (url === rawUrl) return response(200, JSON.stringify({ schemaVersion: 'vexboard.screen-lens/v1', lensRef: 'lens.vexlife-prod' }));
+    return response(404, {});
+  };
+  const progress = [];
+  const result = await readExportedLensCommit({ repositoryUrl: repo, sourcePath, ref: 'main', fetch, onProgress: (event) => progress.push(event) });
+  assert.equal(result.commit.sha, SHA);
+  assert.equal(result.fileCount, 1);
+  assert.equal(result.lens.lensRef, 'lens.vexlife-prod');
+  assert.deepEqual(progress.map((event) => event.phase), ['RESOLVE', 'FETCH', 'FETCH', 'PROJECT']);
+  assert.deepEqual(calls.map((call) => new URL(call.url).host), ['api.github.com', 'raw.githubusercontent.com']);
+  await assert.rejects(readExportedLensCommit({ repositoryUrl: repo, sourcePath: '../escape.json', ref: 'main', fetch }), /repository-relative/);
 });
 
 test('a pointer can advance along its branch, while rewound or divergent branches fail closed', async () => {

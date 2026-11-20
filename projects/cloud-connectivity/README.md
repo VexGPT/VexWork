@@ -408,3 +408,21 @@ This Project formation does not itself authorize:
 Target-repository and provider effects remain separately source/authority bound.
 
 <!-- [VXG RealForever][CLOUD-CONNECTIVITY][PROJECT] -->
+
+## Currentization — canonical discoverability restored
+
+The Project remains RUNNING. This currentization only releases the old shared-registry resource hold and makes the existing Cloud Connectivity work visible in current VexWork.
+
+~~~text
+work.cloud-connectivity.discoverability
+WAITING_RESOURCE -> READY -> RUNNING -> VERIFYING -> COMPLETED
+
+all other Cloud Connectivity Work
+-> lifecycle state preserved
+~~~
+
+Formation-era offset timestamps were normalized to canonical UTC because the current VexWork schema requires `...Z` timestamps. That is schema currentness only, not a semantic lifecycle claim.
+
+Full Security is now separately registered/current, so this Project can continue consuming its boundary meaning without duplicating its ontology.
+
+<!-- [VXG RealForever][CLOUD-CONNECTIVITY][CURRENTIZED][DISCOVERABILITY-COMPLETED] -->

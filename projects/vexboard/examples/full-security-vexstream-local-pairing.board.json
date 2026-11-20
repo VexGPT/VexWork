@@ -1,0 +1,785 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.full-security.vexstream-local-pairing",
+  "title": "Full Security — VexStream Music Local Pairing",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": "board.full-security.overview",
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.full-security.vexstream-local-pairing",
+    "nodes": [
+      {
+        "nodeRef": "node.fs.vs.root",
+        "kind": "CONTAINER",
+        "label": "CURRENT REAL SPECIMEN · VexStream Music ↔ VexLife Android",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+          "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.vs.discovery",
+        "kind": "CONTAINER",
+        "label": "Discovery + service identity",
+        "parentRefOrNull": "node.fs.vs.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/desktop/mobile/service.go"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.vs.admin",
+        "kind": "REFERENCE",
+        "label": "Desktop admin surface · loopback-only; not widened to LAN",
+        "parentRefOrNull": "node.fs.vs.discovery",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/desktop/mobile/service.go"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.vs.window",
+        "kind": "PROCESS",
+        "label": "Human opens five-minute phone-pairing window",
+        "parentRefOrNull": "node.fs.vs.discovery",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/service.go",
+          "repo.vexstream-music:v2/web/features/phone/connection.js"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.vs.mobile-service",
+        "kind": "REFERENCE",
+        "label": "Separate TLS mobile producer · _vexstream._tcp",
+        "parentRefOrNull": "node.fs.vs.discovery",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/service.go"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.vs.fingerprint",
+        "kind": "ARTIFACT",
+        "label": "Persistent TLS certificate SHA-256 fingerprint",
+        "parentRefOrNull": "node.fs.vs.discovery",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/desktop/mobile/service.go"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.vs.android-select",
+        "kind": "PROCESS",
+        "label": "Android selects producer + pins exact certificate before pairing data",
+        "parentRefOrNull": "node.fs.vs.discovery",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.vs.pairing",
+        "kind": "CONTAINER",
+        "label": "Human binding + device admission",
+        "parentRefOrNull": "node.fs.vs.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.vs.code",
+        "kind": "ARTIFACT",
+        "label": "Six-digit certificate-derived confirmation code",
+        "parentRefOrNull": "node.fs.vs.pairing",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.vs.request",
+        "kind": "PROCESS",
+        "label": "Android requests access · deviceRef + displayName",
+        "parentRefOrNull": "node.fs.vs.pairing",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+        ]
+      },
+      {
+        "nodeRef": "decision.fs.vs.approval",
+        "kind": "DECISION",
+        "label": "Desktop human · APPROVE / DENY",
+        "parentRefOrNull": "node.fs.vs.pairing",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+          "repo.vexstream-music:v2/web/features/phone/connection.js"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.vs.token",
+        "kind": "ARTIFACT",
+        "label": "Random per-device bearer token",
+        "parentRefOrNull": "node.fs.vs.pairing",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.vs.desktop-memory",
+        "kind": "ARTIFACT",
+        "label": "Desktop remembered device · deviceRef + displayName + tokenHash + approvedAt",
+        "parentRefOrNull": "node.fs.vs.pairing",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.vs.android-memory",
+        "kind": "ARTIFACT",
+        "label": "Android remembered pairing · pinned certificate + Keystore-encrypted bearer",
+        "parentRefOrNull": "node.fs.vs.pairing",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt",
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.vs.capability",
+        "kind": "CONTAINER",
+        "label": "Bounded capability + verified data",
+        "parentRefOrNull": "node.fs.vs.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/desktop/mobile/service.go"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.vs.surface",
+        "kind": "REFERENCE",
+        "label": "Bearer admits only catalog / media / artwork mobile surface",
+        "parentRefOrNull": "node.fs.vs.capability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/service.go",
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.vs.media-identity",
+        "kind": "ARTIFACT",
+        "label": "Expected media identity · SHA-256 + byte length",
+        "parentRefOrNull": "node.fs.vs.capability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.vs.verify",
+        "kind": "PROCESS",
+        "label": "Android independently verifies exact received bytes before Downloaded",
+        "parentRefOrNull": "node.fs.vs.capability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.vs.offline",
+        "kind": "ARTIFACT",
+        "label": "Durable verified local copy remains usable while Desktop is unavailable",
+        "parentRefOrNull": "node.fs.vs.capability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.vs.recovery",
+        "kind": "CONTAINER",
+        "label": "Reconnect + revocation",
+        "parentRefOrNull": "node.fs.vs.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.vs.reconnect",
+        "kind": "PROCESS",
+        "label": "Route recovery may update LAN address only for the exact pinned certificate",
+        "parentRefOrNull": "node.fs.vs.recovery",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.vs.forget",
+        "kind": "PROCESS",
+        "label": "Forget / revoke one remembered deviceRef",
+        "parentRefOrNull": "node.fs.vs.recovery",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+          "repo.vexstream-music:v2/web/features/phone/connection.js"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.vs.law",
+        "kind": "ANNOTATION",
+        "label": "REACHABILITY != PAIRING · PAIRING != HOME AUTHN/AUTHZ · PAIRED != UNBOUNDED DESKTOP AUTHORITY · TRANSPORT SUCCESS != VERIFIED MEDIA",
+        "parentRefOrNull": "node.fs.vs.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.fs.vs.window-service",
+        "kind": "FLOW",
+        "fromRef": "process.fs.vs.window",
+        "toRef": "reference.fs.vs.mobile-service",
+        "labelOrNull": "OPENS BOUNDED PRODUCER",
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/service.go"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.service-fingerprint",
+        "kind": "DATA",
+        "fromRef": "reference.fs.vs.mobile-service",
+        "toRef": "artifact.fs.vs.fingerprint",
+        "labelOrNull": "ADVERTISES IDENTITY",
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/service.go"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.fingerprint-select",
+        "kind": "FLOW",
+        "fromRef": "artifact.fs.vs.fingerprint",
+        "toRef": "process.fs.vs.android-select",
+        "labelOrNull": "PIN BEFORE PAIRING",
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.select-code",
+        "kind": "FLOW",
+        "fromRef": "process.fs.vs.android-select",
+        "toRef": "artifact.fs.vs.code",
+        "labelOrNull": "READ / COMPARE",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.code-request",
+        "kind": "FLOW",
+        "fromRef": "artifact.fs.vs.code",
+        "toRef": "process.fs.vs.request",
+        "labelOrNull": "HUMAN CONFIRMS THEN REQUEST",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.request-approval",
+        "kind": "FLOW",
+        "fromRef": "process.fs.vs.request",
+        "toRef": "decision.fs.vs.approval",
+        "labelOrNull": "PENDING REQUEST",
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.approval-token",
+        "kind": "FLOW",
+        "fromRef": "decision.fs.vs.approval",
+        "toRef": "artifact.fs.vs.token",
+        "labelOrNull": "APPROVE MINTS",
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.token-desktop",
+        "kind": "DATA",
+        "fromRef": "artifact.fs.vs.token",
+        "toRef": "artifact.fs.vs.desktop-memory",
+        "labelOrNull": "STORES HASH ONLY",
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.token-android",
+        "kind": "DATA",
+        "fromRef": "artifact.fs.vs.token",
+        "toRef": "artifact.fs.vs.android-memory",
+        "labelOrNull": "ENCRYPTED AT REST",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.android-surface",
+        "kind": "FLOW",
+        "fromRef": "artifact.fs.vs.android-memory",
+        "toRef": "reference.fs.vs.surface",
+        "labelOrNull": "BEARER AUTHORIZES",
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/service.go"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.surface-media",
+        "kind": "DATA",
+        "fromRef": "reference.fs.vs.surface",
+        "toRef": "artifact.fs.vs.media-identity",
+        "labelOrNull": "CATALOG DECLARES",
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.media-verify",
+        "kind": "FLOW",
+        "fromRef": "artifact.fs.vs.media-identity",
+        "toRef": "process.fs.vs.verify",
+        "labelOrNull": "EXPECTED BINDING",
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.verify-offline",
+        "kind": "FLOW",
+        "fromRef": "process.fs.vs.verify",
+        "toRef": "artifact.fs.vs.offline",
+        "labelOrNull": "PROMOTES ONLY AFTER VERIFY",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.android-reconnect",
+        "kind": "REFERENCE",
+        "fromRef": "artifact.fs.vs.android-memory",
+        "toRef": "process.fs.vs.reconnect",
+        "labelOrNull": "REMEMBERED IDENTITY",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.vs.desktop-forget",
+        "kind": "REFERENCE",
+        "fromRef": "artifact.fs.vs.desktop-memory",
+        "toRef": "process.fs.vs.forget",
+        "labelOrNull": "INDIVIDUAL REVOCATION",
+        "sourceRefs": [
+          "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+      "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+      "repo.vexstream-music:v2/desktop/mobile/service.go",
+      "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt",
+      "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.full-security.vexstream-local-pairing",
+    "graphRef": "graph.full-security.vexstream-local-pairing",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.fs.vs.root",
+        "semanticRef": "node.fs.vs.root",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 3000,
+          "height": 1560
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.discovery",
+        "semanticRef": "node.fs.vs.discovery",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 50,
+          "y": 80,
+          "width": 680,
+          "height": 1310
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.vs.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.admin",
+        "semanticRef": "reference.fs.vs.admin",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 160,
+          "width": 580,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.discovery",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.window",
+        "semanticRef": "process.fs.vs.window",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 310,
+          "width": 580,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.discovery",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.mobile-service",
+        "semanticRef": "reference.fs.vs.mobile-service",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 460,
+          "width": 580,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.discovery",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.fingerprint",
+        "semanticRef": "artifact.fs.vs.fingerprint",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 610,
+          "width": 580,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.discovery",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.android-select",
+        "semanticRef": "process.fs.vs.android-select",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 760,
+          "width": 580,
+          "height": 130
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.discovery",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.pairing",
+        "semanticRef": "node.fs.vs.pairing",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 770,
+          "y": 80,
+          "width": 760,
+          "height": 1310
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.vs.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.code",
+        "semanticRef": "artifact.fs.vs.code",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 820,
+          "y": 160,
+          "width": 660,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.pairing",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.request",
+        "semanticRef": "process.fs.vs.request",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 820,
+          "y": 310,
+          "width": 660,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.pairing",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.approval",
+        "semanticRef": "decision.fs.vs.approval",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 970,
+          "y": 455,
+          "width": 360,
+          "height": 180
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.pairing",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.token",
+        "semanticRef": "artifact.fs.vs.token",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 820,
+          "y": 700,
+          "width": 660,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.pairing",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.desktop-memory",
+        "semanticRef": "artifact.fs.vs.desktop-memory",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 820,
+          "y": 840,
+          "width": 660,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.pairing",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.android-memory",
+        "semanticRef": "artifact.fs.vs.android-memory",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 820,
+          "y": 1010,
+          "width": 660,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.pairing",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.capability",
+        "semanticRef": "node.fs.vs.capability",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1570,
+          "y": 80,
+          "width": 680,
+          "height": 1310
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.vs.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.surface",
+        "semanticRef": "reference.fs.vs.surface",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1620,
+          "y": 180,
+          "width": 580,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.capability",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.media-identity",
+        "semanticRef": "artifact.fs.vs.media-identity",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1620,
+          "y": 360,
+          "width": 580,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.capability",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.verify",
+        "semanticRef": "process.fs.vs.verify",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1620,
+          "y": 530,
+          "width": 580,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.capability",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.offline",
+        "semanticRef": "artifact.fs.vs.offline",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1620,
+          "y": 720,
+          "width": 580,
+          "height": 130
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.capability",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.recovery",
+        "semanticRef": "node.fs.vs.recovery",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 2290,
+          "y": 80,
+          "width": 660,
+          "height": 930
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.vs.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.reconnect",
+        "semanticRef": "process.fs.vs.reconnect",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2340,
+          "y": 230,
+          "width": 560,
+          "height": 140
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.recovery",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.forget",
+        "semanticRef": "process.fs.vs.forget",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2340,
+          "y": 460,
+          "width": 560,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.recovery",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.vs.law",
+        "semanticRef": "annotation.fs.vs.law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 2250,
+          "y": 1090,
+          "width": 650,
+          "height": 250
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.vs.root",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+      "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json"
+    ]
+  }
+}

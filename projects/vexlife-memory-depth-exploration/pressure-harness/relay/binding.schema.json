@@ -1,0 +1,404 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vexwork.continuity-pressure-relay-binding/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "bindingRef",
+    "experimentRef",
+    "lane",
+    "role",
+    "capabilities",
+    "execution",
+    "workspace",
+    "repository",
+    "authority",
+    "source",
+    "adapter",
+    "scenario"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "vexwork.continuity-pressure-relay-binding/v1"
+    },
+    "bindingRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "experimentRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entryClass",
+        "laneRef",
+        "parentRootRef",
+        "workRef",
+        "claimRef",
+        "returnRouteRef",
+        "ownerRef",
+        "rootHubRef"
+      ],
+      "properties": {
+        "entryClass": {
+          "type": "string"
+        },
+        "laneRef": {
+          "type": "string"
+        },
+        "parentRootRef": {
+          "type": "string"
+        },
+        "workRef": {
+          "type": "string"
+        },
+        "claimRef": {
+          "type": "string"
+        },
+        "returnRouteRef": {
+          "type": "string"
+        },
+        "ownerRef": {
+          "type": "string"
+        },
+        "rootHubRef": {
+          "type": "string"
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "activeRole",
+        "roleRef",
+        "instanceRef",
+        "occupancyRef",
+        "providerBindingRef",
+        "threadRef",
+        "authorityEnvelopeRef"
+      ],
+      "properties": {
+        "activeRole": {
+          "type": "string"
+        },
+        "roleRef": {
+          "type": "string"
+        },
+        "instanceRef": {
+          "type": "string"
+        },
+        "occupancyRef": {
+          "type": "string"
+        },
+        "providerBindingRef": {
+          "type": "string"
+        },
+        "threadRef": {
+          "type": "string"
+        },
+        "authorityEnvelopeRef": {
+          "type": "string"
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platformGitHubRead",
+        "platformGitHubWrite"
+      ],
+      "properties": {
+        "platformGitHubRead": {
+          "enum": [
+            "AVAILABLE",
+            "UNAVAILABLE",
+            "UNKNOWN"
+          ]
+        },
+        "platformGitHubWrite": {
+          "enum": [
+            "AVAILABLE",
+            "UNAVAILABLE",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hostProfile",
+        "executionSurface",
+        "ttlMs"
+      ],
+      "properties": {
+        "hostProfile": {
+          "type": "string"
+        },
+        "executionSurface": {
+          "type": "string"
+        },
+        "ttlMs": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 86400000
+        }
+      }
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "mode",
+        "projectRef",
+        "projectPath",
+        "createRoot",
+        "createProjectPath"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "VEX_HOME",
+            "RUN_ROOT",
+            "EXISTING_ENV_PATH"
+          ]
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "projectPath": {
+          "type": "string"
+        },
+        "createRoot": {
+          "type": "boolean"
+        },
+        "createProjectPath": {
+          "type": "boolean"
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "repositoryRef",
+        "mode",
+        "nameWithOwner",
+        "localPath",
+        "remote",
+        "baseBranch",
+        "acceptedBase",
+        "expectedHead",
+        "branch",
+        "allowedPaths"
+      ],
+      "properties": {
+        "repositoryRef": {
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "EXISTING_PATH",
+            "CLONE_IN_WORKSPACE"
+          ]
+        },
+        "nameWithOwner": {
+          "type": "string"
+        },
+        "localPath": {
+          "type": "string"
+        },
+        "remote": {
+          "type": "string"
+        },
+        "baseBranch": {
+          "type": "string"
+        },
+        "acceptedBase": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40,64}$"
+        },
+        "expectedHead": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40,64}$"
+        },
+        "expectedTree": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{40,64}$"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "allowedPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "cloneTransport": {
+          "type": "string"
+        },
+        "githubHostname": {
+          "type": "string"
+        },
+        "expectedRemoteUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityRef",
+        "grantedEffects",
+        "heldEffects",
+        "allowedExecutables",
+        "allowedEnvironment"
+      ],
+      "properties": {
+        "authorityRef": {
+          "type": "string"
+        },
+        "grantedEffects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "heldEffects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowedExecutables": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "allowedEnvironment": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceSetRef",
+        "sourceVersionRef",
+        "overlapEvidenceRef",
+        "activeConflictState",
+        "candidateState"
+      ],
+      "properties": {
+        "sourceSetRef": {
+          "type": "string"
+        },
+        "sourceVersionRef": {
+          "type": "string"
+        },
+        "overlapEvidenceRef": {
+          "type": "string"
+        },
+        "activeConflictState": {
+          "enum": [
+            "NONE",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        },
+        "candidateState": {
+          "enum": [
+            "FORMING",
+            "EXACT"
+          ]
+        },
+        "candidateHead": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "candidateTree": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command",
+        "argsPrefix",
+        "scenarioPath",
+        "resultDir"
+      ],
+      "properties": {
+        "command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "argsPrefix": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scenarioPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resultDir": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioRef",
+        "sharedSourcePath",
+        "sharedSha256"
+      ],
+      "properties": {
+        "scenarioRef": {
+          "type": "string"
+        },
+        "sharedSourcePath": {
+          "type": "string"
+        },
+        "sharedSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

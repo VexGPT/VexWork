@@ -1,0 +1,377 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.full-security.overview",
+  "title": "Full Security — Demonstrable Security Patterns",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.full-security.overview",
+    "nodes": [
+      {
+        "nodeRef": "node.full-security.overview",
+        "kind": "CONTAINER",
+        "label": "Full Security · demonstrable security patterns",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/README.md",
+          "projects/vexboard/examples/full-security-overview.board.json"
+        ]
+      },
+      {
+        "nodeRef": "annotation.full-security.meaning",
+        "kind": "ANNOTATION",
+        "label": "Full Security = full demonstrator coverage across the currently admitted boundary families; it is not a claim of complete security, certification, or blanket authority.",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/README.md",
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/full-security-overview.board.json"
+        ]
+      },
+      {
+        "nodeRef": "portal.full-security.atlas",
+        "kind": "PORTAL",
+        "label": "Security Boundary Atlas · choose the boundary question first",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.vexboard.security-boundary-atlas.template",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "portal.full-security.vexstream",
+        "kind": "PORTAL",
+        "label": "VexStream Music · real local pairing + bounded media patient zero",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.full-security.vexstream-local-pairing",
+        "sourceRefs": [
+          "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+          "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json"
+        ]
+      },
+      {
+        "nodeRef": "portal.full-security.complex",
+        "kind": "PORTAL",
+        "label": "VexLife-Prod + Android · deliberately complex all-layers demonstrator",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.full-security.vexlife-complex-demonstrator",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json"
+        ]
+      },
+      {
+        "nodeRef": "reference.full-security.vex-guide",
+        "kind": "REFERENCE",
+        "label": "Vex-guided learning · resolve the relevant example, open the bounded board neighborhood, explain ownership/restrictions/currentness/evidence",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/README.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.full-security.context-law",
+        "kind": "ANNOTATION",
+        "label": "Visible VexBoard != context supplied to Vex; Vex explanation != security authority; demonstration state != live authority state.",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/README.md",
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "portal.full-security.android-scenarios",
+        "kind": "PORTAL",
+        "label": "Android account/device scenarios · S01–S20 + Connected Devices",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.full-security.android-account-device-scenarios",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+          "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+        ]
+      },
+      {
+        "nodeRef": "portal.full-security.foundation-map",
+        "kind": "PORTAL",
+        "label": "Foundation Starting Map · current owners → missing seams → surfaces → proof",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.full-security.foundation-starting-map",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+        ]
+      },
+      {
+        "nodeRef": "portal.full-security.full-scope-dashboard",
+        "kind": "PORTAL",
+        "label": "Full Scope Dashboard · many principals / devices / platforms / sessions / capabilities",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.full-security.full-scope-dashboard",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+          "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.full-security.atlas-vexstream",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.atlas",
+        "toRef": "portal.full-security.vexstream",
+        "labelOrNull": "REAL CURRENT SPECIMEN",
+        "sourceRefs": [
+          "projects/full-security/README.md",
+          "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.atlas-complex",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.atlas",
+        "toRef": "portal.full-security.complex",
+        "labelOrNull": "DESIRED COMPLEX SPECIMEN",
+        "sourceRefs": [
+          "projects/full-security/README.md",
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.vexstream-guide",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.vexstream",
+        "toRef": "reference.full-security.vex-guide",
+        "labelOrNull": "CAN BE EXPLAINED THROUGH",
+        "sourceRefs": [
+          "projects/full-security/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.complex-guide",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.complex",
+        "toRef": "reference.full-security.vex-guide",
+        "labelOrNull": "CAN BE EXPLAINED THROUGH",
+        "sourceRefs": [
+          "projects/full-security/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.complex-scenarios",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.complex",
+        "toRef": "portal.full-security.android-scenarios",
+        "labelOrNull": "EXPANDS INTO EXECUTABLE SCENARIOS",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.scenarios-guide",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.android-scenarios",
+        "toRef": "reference.full-security.vex-guide",
+        "labelOrNull": "CAN BE EXPLAINED THROUGH",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.complex-foundation",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.complex",
+        "toRef": "portal.full-security.foundation-map",
+        "labelOrNull": "START IMPLEMENTATION HERE",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.foundation-full-scope",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.foundation-map",
+        "toRef": "portal.full-security.full-scope-dashboard",
+        "labelOrNull": "PRESSURE SCOPE BEFORE IMPLEMENTATION",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/README.md",
+      "projects/vex-security-assurance/README.md",
+      "projects/vexboard/examples/full-security-overview.board.json"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.full-security.overview",
+    "graphRef": "graph.full-security.overview",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.full-security.overview",
+        "semanticRef": "node.full-security.overview",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2300,
+          "height": 1180
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.meaning",
+        "semanticRef": "annotation.full-security.meaning",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 100,
+          "y": 55,
+          "width": 2080,
+          "height": 110
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.atlas",
+        "semanticRef": "portal.full-security.atlas",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 130,
+          "y": 280,
+          "width": 560,
+          "height": 150
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.vexstream",
+        "semanticRef": "portal.full-security.vexstream",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 870,
+          "y": 255,
+          "width": 560,
+          "height": 200
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.complex",
+        "semanticRef": "portal.full-security.complex",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1610,
+          "y": 255,
+          "width": 560,
+          "height": 200
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.vex-guide",
+        "semanticRef": "reference.full-security.vex-guide",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 870,
+          "y": 610,
+          "width": 560,
+          "height": 170
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.context-law",
+        "semanticRef": "annotation.full-security.context-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 270,
+          "y": 1020,
+          "width": 1760,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.android-scenarios",
+        "semanticRef": "portal.full-security.android-scenarios",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1610,
+          "y": 560,
+          "width": 560,
+          "height": 190
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.foundation-map",
+        "semanticRef": "portal.full-security.foundation-map",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 130,
+          "y": 560,
+          "width": 560,
+          "height": 190
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.full-scope-dashboard",
+        "semanticRef": "portal.full-security.full-scope-dashboard",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 870,
+          "y": 830,
+          "width": 560,
+          "height": 160
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/README.md",
+      "projects/vexboard/examples/full-security-overview.board.json"
+    ]
+  }
+}

@@ -1,0 +1,1249 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.full-security.full-scope-dashboard",
+  "title": "Full Security — Full Scope Dashboard",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": "board.full-security.foundation-starting-map",
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.full-security.full-scope-dashboard",
+    "nodes": [
+      {
+        "nodeRef": "node.fs.scope.root",
+        "kind": "CONTAINER",
+        "label": "Full Security · Full Scope Dashboard",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+          "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.scope.thesis",
+        "kind": "ANNOTATION",
+        "label": "Security relationship topology first. The dashboard is a set of projections over principals, devices, installations, credentials, sessions, capabilities, services, routes, software, recovery and evidence — not an Accounts table with extra columns.",
+        "parentRefOrNull": "node.fs.scope.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.scope.topology",
+        "kind": "CONTAINER",
+        "label": "Relationship topology",
+        "parentRefOrNull": "node.fs.scope.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.principal",
+        "kind": "REFERENCE",
+        "label": "Principal",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.auth",
+        "kind": "REFERENCE",
+        "label": "Authentication identity / method",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.home",
+        "kind": "REFERENCE",
+        "label": "Home / authority domain",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.device",
+        "kind": "REFERENCE",
+        "label": "Physical device",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.installation",
+        "kind": "REFERENCE",
+        "label": "Application installation",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.credential",
+        "kind": "REFERENCE",
+        "label": "Credential",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.membership",
+        "kind": "REFERENCE",
+        "label": "Membership / admission",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.session",
+        "kind": "REFERENCE",
+        "label": "Session",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.capability",
+        "kind": "REFERENCE",
+        "label": "Capability / lease",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.service",
+        "kind": "REFERENCE",
+        "label": "Service",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.route",
+        "kind": "REFERENCE",
+        "label": "Route / endpoint identity",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.software",
+        "kind": "REFERENCE",
+        "label": "Software artifact / release",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.recovery",
+        "kind": "REFERENCE",
+        "label": "Recovery / revocation",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.evidence",
+        "kind": "REFERENCE",
+        "label": "Evidence / observation",
+        "parentRefOrNull": "node.fs.scope.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.scope.views",
+        "kind": "CONTAINER",
+        "label": "Dashboard projections",
+        "parentRefOrNull": "node.fs.scope.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.1",
+        "kind": "REFERENCE",
+        "label": "Overview",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.2",
+        "kind": "REFERENCE",
+        "label": "People / Principals",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.3",
+        "kind": "REFERENCE",
+        "label": "Devices",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.4",
+        "kind": "REFERENCE",
+        "label": "Device detail",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.5",
+        "kind": "REFERENCE",
+        "label": "Sessions",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.6",
+        "kind": "REFERENCE",
+        "label": "Access / Capabilities",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.7",
+        "kind": "REFERENCE",
+        "label": "Services / Connections",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.8",
+        "kind": "REFERENCE",
+        "label": "Software / Platform trust",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.9",
+        "kind": "REFERENCE",
+        "label": "Recovery",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.10",
+        "kind": "REFERENCE",
+        "label": "History / Evidence",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.11",
+        "kind": "REFERENCE",
+        "label": "Scenarios",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.view.12",
+        "kind": "REFERENCE",
+        "label": "Architecture / VexBoard",
+        "parentRefOrNull": "node.fs.scope.views",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.scope.scale",
+        "kind": "CONTAINER",
+        "label": "Scale specimen",
+        "parentRefOrNull": "node.fs.scope.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.scope.fixture",
+        "kind": "ARTIFACT",
+        "label": "2 principals · 5 devices · 6 installations · Android + synthetic iOS + desktop · 3 auth methods · 4 sessions · mixed capabilities · pending + revoked + replacement cases",
+        "parentRefOrNull": "node.fs.scope.scale",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "portal.fs.scope.scenarios",
+        "kind": "PORTAL",
+        "label": "Open S01–S20 current scenario suite",
+        "parentRefOrNull": "node.fs.scope.scale",
+        "detailBoardRefOrNull": "board.full-security.android-account-device-scenarios",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.scope.more",
+        "kind": "ANNOTATION",
+        "label": "Add S21–S32 scale pressure without changing the dashboard ontology.",
+        "parentRefOrNull": "node.fs.scope.scale",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.scope.teaching",
+        "kind": "CONTAINER",
+        "label": "Teaching without noise",
+        "parentRefOrNull": "node.fs.scope.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.info",
+        "kind": "REFERENCE",
+        "label": "(i) / hover / focus / tap explanations",
+        "parentRefOrNull": "node.fs.scope.teaching",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.why",
+        "kind": "REFERENCE",
+        "label": "Why? drawer / relationship detail",
+        "parentRefOrNull": "node.fs.scope.teaching",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.arch",
+        "kind": "REFERENCE",
+        "label": "Show architecture → bounded VexBoard neighborhood",
+        "parentRefOrNull": "node.fs.scope.teaching",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.scope.vex",
+        "kind": "REFERENCE",
+        "label": "Ask Vex about selected relationship when context is actually admitted",
+        "parentRefOrNull": "node.fs.scope.teaching",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "nodeRef": "portal.fs.scope.foundation",
+        "kind": "PORTAL",
+        "label": "Back to Foundation Starting Map",
+        "parentRefOrNull": "node.fs.scope.root",
+        "detailBoardRefOrNull": "board.full-security.foundation-starting-map",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.scope.accept",
+        "kind": "ANNOTATION",
+        "label": "Design acceptance: 5+ devices, mixed platforms, multiple principals/auth methods/sessions/capabilities, shared/replacement devices and selective revocation must fit without schema redesign.",
+        "parentRefOrNull": "node.fs.scope.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.fs.scope.auth-principal",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.auth",
+        "toRef": "reference.fs.scope.principal",
+        "labelOrNull": "AUTHENTICATES AS",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.device-install",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.device",
+        "toRef": "reference.fs.scope.installation",
+        "labelOrNull": "HOSTS",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.install-cred",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.installation",
+        "toRef": "reference.fs.scope.credential",
+        "labelOrNull": "POSSESSES",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.principal-membership",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.principal",
+        "toRef": "reference.fs.scope.membership",
+        "labelOrNull": "PARTICIPATES",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.install-membership",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.installation",
+        "toRef": "reference.fs.scope.membership",
+        "labelOrNull": "DEVICE SIDE",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.membership-home",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.membership",
+        "toRef": "reference.fs.scope.home",
+        "labelOrNull": "ADMITTED TO",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.session-principal",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.session",
+        "toRef": "reference.fs.scope.principal",
+        "labelOrNull": "AUTHENTICATES",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.session-install",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.session",
+        "toRef": "reference.fs.scope.installation",
+        "labelOrNull": "BINDS",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.capability-session",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.capability",
+        "toRef": "reference.fs.scope.session",
+        "labelOrNull": "BOUNDED TO",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.capability-service",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.capability",
+        "toRef": "reference.fs.scope.service",
+        "labelOrNull": "AUTHORIZES",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.route-service",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.route",
+        "toRef": "reference.fs.scope.service",
+        "labelOrNull": "REACHES",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.software-install",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.software",
+        "toRef": "reference.fs.scope.installation",
+        "labelOrNull": "REALIZES",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.recovery-membership",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.recovery",
+        "toRef": "reference.fs.scope.membership",
+        "labelOrNull": "MAY INVALIDATE",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.evidence-topology",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.evidence",
+        "toRef": "reference.fs.scope.membership",
+        "labelOrNull": "EVIDENCES",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.fixture-scenarios",
+        "kind": "REFERENCE",
+        "fromRef": "artifact.fs.scope.fixture",
+        "toRef": "portal.fs.scope.scenarios",
+        "labelOrNull": "PRESSURES",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.fixture-views",
+        "kind": "REFERENCE",
+        "fromRef": "artifact.fs.scope.fixture",
+        "toRef": "reference.fs.scope.view.3",
+        "labelOrNull": "MUST FIT WITHOUT REDESIGN",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.info-views",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.info",
+        "toRef": "reference.fs.scope.view.3",
+        "labelOrNull": "EXPLAINS CONTEXTUALLY",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.arch-view",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.arch",
+        "toRef": "reference.fs.scope.view.12",
+        "labelOrNull": "DESCENDS",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.scope.vex-arch",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.scope.vex",
+        "toRef": "reference.fs.scope.arch",
+        "labelOrNull": "CAN EXPLAIN WHEN ADMITTED",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+      "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.full-security.full-scope-dashboard",
+    "graphRef": "graph.full-security.full-scope-dashboard",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.fs.scope.root",
+        "semanticRef": "node.fs.scope.root",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 4500,
+          "height": 2250
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.thesis",
+        "semanticRef": "annotation.fs.scope.thesis",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 100,
+          "y": 45,
+          "width": 4300,
+          "height": 110
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.scope.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.topology",
+        "semanticRef": "node.fs.scope.topology",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 60,
+          "y": 200,
+          "width": 1200,
+          "height": 1800
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.scope.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.views",
+        "semanticRef": "node.fs.scope.views",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1310,
+          "y": 200,
+          "width": 1120,
+          "height": 1800
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.scope.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.scale",
+        "semanticRef": "node.fs.scope.scale",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 2480,
+          "y": 200,
+          "width": 980,
+          "height": 1040
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.scope.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.teaching",
+        "semanticRef": "node.fs.scope.teaching",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 3510,
+          "y": 200,
+          "width": 930,
+          "height": 1040
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.scope.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.foundation",
+        "semanticRef": "portal.fs.scope.foundation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2670,
+          "y": 1370,
+          "width": 620,
+          "height": 140
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.accept",
+        "semanticRef": "annotation.fs.scope.accept",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 2540,
+          "y": 1620,
+          "width": 1800,
+          "height": 180
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.principal",
+        "semanticRef": "reference.fs.scope.principal",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 280,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.auth",
+        "semanticRef": "reference.fs.scope.auth",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 392,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.home",
+        "semanticRef": "reference.fs.scope.home",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 504,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.device",
+        "semanticRef": "reference.fs.scope.device",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 616,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.installation",
+        "semanticRef": "reference.fs.scope.installation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 728,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.credential",
+        "semanticRef": "reference.fs.scope.credential",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 840,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.membership",
+        "semanticRef": "reference.fs.scope.membership",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 952,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.session",
+        "semanticRef": "reference.fs.scope.session",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1064,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.capability",
+        "semanticRef": "reference.fs.scope.capability",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1176,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.service",
+        "semanticRef": "reference.fs.scope.service",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1288,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.route",
+        "semanticRef": "reference.fs.scope.route",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1400,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.software",
+        "semanticRef": "reference.fs.scope.software",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1512,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.recovery",
+        "semanticRef": "reference.fs.scope.recovery",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1624,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.evidence",
+        "semanticRef": "reference.fs.scope.evidence",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1736,
+          "width": 1080,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.1",
+        "semanticRef": "reference.fs.scope.view.1",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 280,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.2",
+        "semanticRef": "reference.fs.scope.view.2",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 405,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.3",
+        "semanticRef": "reference.fs.scope.view.3",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 530,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.4",
+        "semanticRef": "reference.fs.scope.view.4",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 655,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.5",
+        "semanticRef": "reference.fs.scope.view.5",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 780,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.6",
+        "semanticRef": "reference.fs.scope.view.6",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 905,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.7",
+        "semanticRef": "reference.fs.scope.view.7",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 1030,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.8",
+        "semanticRef": "reference.fs.scope.view.8",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 1155,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.9",
+        "semanticRef": "reference.fs.scope.view.9",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 1280,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.10",
+        "semanticRef": "reference.fs.scope.view.10",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 1405,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.11",
+        "semanticRef": "reference.fs.scope.view.11",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 1530,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.view.12",
+        "semanticRef": "reference.fs.scope.view.12",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1370,
+          "y": 1655,
+          "width": 1000,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.views",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.fixture",
+        "semanticRef": "artifact.fs.scope.fixture",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2540,
+          "y": 330,
+          "width": 860,
+          "height": 210
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.scale",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.scenarios",
+        "semanticRef": "portal.fs.scope.scenarios",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2540,
+          "y": 650,
+          "width": 860,
+          "height": 130
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.scale",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.more",
+        "semanticRef": "annotation.fs.scope.more",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 2540,
+          "y": 880,
+          "width": 860,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.scale",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.info",
+        "semanticRef": "reference.fs.scope.info",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3570,
+          "y": 330,
+          "width": 810,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.teaching",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.why",
+        "semanticRef": "reference.fs.scope.why",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3570,
+          "y": 500,
+          "width": 810,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.teaching",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.arch",
+        "semanticRef": "reference.fs.scope.arch",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3570,
+          "y": 670,
+          "width": 810,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.teaching",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.scope.vex",
+        "semanticRef": "reference.fs.scope.vex",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3570,
+          "y": 840,
+          "width": 810,
+          "height": 130
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.scope.teaching",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+      "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+    ]
+  }
+}

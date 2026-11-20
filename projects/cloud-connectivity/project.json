@@ -30,7 +30,11 @@
     "projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md",
     "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md",
     "repo.vexlife:scripts/macos-lifecycle.mjs",
-    "repo.vexlife:scripts/serve-browser.mjs"
+    "repo.vexlife:scripts/serve-browser.mjs",
+    "github.pull.vexwork.253",
+    "github.commit.vexwork.b9864ae63572682f7a7d0e0f9c4b9b92ccc31ff1",
+    "github.pull.vexwork.256",
+    "github.commit.vexwork.64585f07c3f5e718f3f99dc1a6beebe003b6532e"
   ],
-  "formedAt": "2026-11-06T17:25:00.000-08:00"
+  "formedAt": "2026-11-07T01:25:00.000Z"
 }

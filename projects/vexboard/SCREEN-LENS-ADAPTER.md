@@ -77,6 +77,19 @@ relationships until their own source earns a truthful traversal.
 | `isOpen(Screen.Sheet)) { View(repository = …) }` | what a sheet renders and reads | renderer step + Depth store |
 | `context.closure` → `closure = { fn(…) }` → `fun fn` → `XFamily.Control.Y(` | the hop through a captured closure | Family bond (no annotation needed) |
 | `XFamily`: State enum, sealed Parameter / Control / Effect / DisplayState, `object Act { class M(store: S) }`, `begin<Approach>`, `observe*Store`, `XFamilyProvider` | the Family vocabulary | one SCAE + Depth template |
+| `if/when/?.let` + `presentation.isOpen` / `selected` | presence relationships with their owners | `realization.presence[]` |
+| `fun Vex*` signatures in the elements module | which primitive carries which relationship | learned, never listed |
+| `VexStableLazyColumn(listRef, items, itemRef, emptyContent) { … }` / `items(…)` | population, provenance chain, row template | `realization.presence[]` + `templates[]` |
+| `VexPreviewHost(...)`, `@PreviewTest` KDoc case, `vexJourney(...)` | source-authored examples | `examples[]` |
+| `app/src/screenshotTestDebug/reference/**` (listing only) | accepted golden reference renders | `examples[].evidence` |
+| `override val toolbarActions get() = listOf(A, B)` | Screen-owned controls the shared toolbar realizes | elements with `slot: TOOLBAR` |
+| `buttonRef(…, style = VexElementStyles.X, icon = ElementIcon.Y)` | how a registered control asks to be drawn | element `style`, `icon` |
+| `Scaffold(bottomBar = { … })`, `DropdownMenu(expanded = x) { … }`, `VexText(role =, style = typography.X)` | named content regions, popup layers, text hierarchy (names only) | presence `region`, template slot `popup` / `role` / `textStyle` |
+
+Realization and examples readers live in `src/core/vexboard-android-realization.mjs` and
+`src/core/vexboard-android-examples.mjs`; both are pure and run in the browser for any-commit
+projection. `listings` in the adapter name paths whose existence is evidence; their bytes are never
+read. See `SCREEN-LENS-PROJECTABILITY.md`.
 
 The SCAE builder is reusable only where source earns an unambiguous Family relationship. Multiple candidate Effects or Methods are held rather than selected by list order. The Lens faces are question-first; ThemeMode is one concrete shape, not the universal definition:
 
@@ -113,16 +126,26 @@ not express:
 ```text
 notes            8 attached notes (the drift note, "doorway only", "beside the path", ...)
 summaries        Debug Menu's screen summary, two sharper step summaries
-ThemeMode extra  the === currentness fence and the VexLifeTheme render step
+ThemeMode extra  result-specific reconciliation and the VexLifeTheme render step
 labels           "Choose Light / Dark" for the ThemeMode pathway
+
+The ThemeMode identity-currentness fence is no longer overlay-owned. The adapter derives any exact
+family helper that the realization boundary actually calls and that clears a nullable feature field
+only under an `=== parameter` guard. The function name therefore follows the pinned source:
+historical source may project `selectionRealizationFinished`; current source may project
+`settleSelectionCurrentness`.
 ```
 
 Rules:
 
 - Every overlay ref must exist in the generated lens, or the run fails. A renamed step cannot leave a
   dangling note behind.
-- An overlay entry is a TODO for source. When VexLife-Android admits KDoc conventions or `@VexLens`
-  (see `SCREEN-LENS.md`), move the entry there and delete it here.
+- An overlay entry is a TODO for source. When VexLife-Android source expresses the relationship
+  strongly enough for a bounded generic reader, derive it from that pinned source and delete the
+  structural overlay entry. Historical and current commits must then keep their own source-native
+  names/shape rather than receiving one current overlay spelling.
+- When KDoc conventions or `@VexLens` are actually earned (see `SCREEN-LENS.md`), prefer them over
+  adding another feature-specific parser.
 
 ## What the adapter caught that hand projection missed
 
