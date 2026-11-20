@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexarchitecture.vexboard-sync.20261113",
+  "label": "VexArchitecture VexBoard Sync Nov 13, 2026",
+  "purpose": "Keep VexBoard Screen Lens perception aligned with the stable VexArchitecture ownership grammar by repeatedly auditing every current human-facing feature coordinate, screen and projected pathway against exact VexLife-Android source: preserve the source-proven causal/lived feature slice from human intention through semantic ownership, concrete realization, independently-owned reality, reconciliation/return and human-facing projection; distinguish truthful terminals and held unknowns from missing Depth/return visibility; and repair only source-proven projection gaps without making VexBoard a semantic owner or forcing optional Partner, Relay, Service, Widget or other relationships where source does not earn them.",
+  "rootWorkRefs": [
+    "work.vexarchitecture.vexboard-sync.20261113.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexarchitecture-vexboard-sync-2026-11-13/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "project.vexboard",
+    "work.vexboard.source-projectors",
+    "projects/vexboard/SCREEN-LENS.md",
+    "projects/vexboard/SCREEN-LENS-ADAPTER.md",
+    "projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md",
+    "repo.vexwork:projects/vexboard/lens/vexlife-android.main.screen-lens.json",
+    "github.pull.vexwork.276",
+    "github.pull.vexwork.281",
+    "github.pull.vexwork.293",
+    "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
+    "github.pull.vexwork.295",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+    "github.pull.vexlife-android.219",
+    "github.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
+    "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+    "github.pull.vextreme.591",
+    "github.commit.vextreme.5a88cf8b20ba5162d84be085c26d48bbc7316d48"
+  ],
+  "formedAt": "2026-11-13T08:00:00.000Z"
+}

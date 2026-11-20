@@ -258,6 +258,11 @@ test('screen travel resets presentation context without inventing cross-Screen S
 
 test('lived usability gives the inspector a resizable attention boundary and makes expressions searchable', () => {
   assert.match(page, /trayHeight: Math\.round\(Math\.min\(280, Math\.max\(180, window\.innerHeight \* 0\.24\)\)\)/);
+  assert.match(page, /\.lens\{display:grid;grid-template-rows:auto auto auto minmax\(0,1fr\) auto;height:100vh/, 'the inspector is a sibling grid row, not an overlay over the main Lens');
+  assert.match(page, /\.tray\{position:relative;/, 'the inspector participates in layout instead of covering the main row');
+  assert.doesNotMatch(page, /\.tray\{[^}]*position:absolute/, 'the inspector must not become an absolute overlay');
+  assert.match(page, /\.surface\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;/, 'when the inspector takes height, Surface owns scroll instead of clipping the Product');
+  assert.match(page, /\.product-view\{[^}]*min-height:420px/, 'the Product keeps a readable minimum rather than being compressed to satisfy the inspector');
   assert.match(page, /function wireTrayResize\(handle, tray\)/);
   assert.match(page, /role: 'separator'/);
   assert.match(page, /'aria-label': 'Resize inspector'/);
