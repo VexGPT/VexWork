@@ -30,6 +30,62 @@ Do not begin by replaying a prior ZIP or by assuming the latest package mentione
 
 ---
 
+## Current checkpoint — 2026-11-20 Pacific
+
+The forward Screen Lens route has moved materially since this companion was formed.
+
+```text
+VexWork #351
+generic Product-state + optional color-mode projection currentization
+MERGED -> 3ab8b5925b031bc8370637a92f054dae55d37de1
+
+VexWork #352
+VexLife-Prod Main revision currentness
+MERGED -> 4f809a928406e7311c37fbc0de61644e0ef5fe44
+
+actual VexLife-Prod main
+146b0d482517201b85990a9d7b0b9ebf04075fd9
+
+Product Main exported Lens blob
+023da0eb0b8d571d487bc363587202a4d7d3c907
+= byte-identical to the VexWork Main projection blob
+```
+
+Human direction:
+
+```text
+Screen Lens refinement / relationship projection
+= accepted for continuation
+
+first-class Project / Revision / Commit flow
+= forward review surface
+
+legacy ?lens= recovery fixture
+= provenance only
+!= forward acceptance surface
+
+#345 / P009 Theme-control activation
+= HELD
+!= current run
+!= merge target
+```
+
+The old P009 package remains historical evidence in Git. `RUN-LATEST.command` now intentionally performs no host work and reports this held checkpoint so a fresh instance cannot accidentally execute the superseded Theme path.
+
+Current bounded outcome:
+
+```text
+VexLife Prod Main
+-> actual main revision 146b0d48...
+-> existing byte-identical Product-owned Lens export
+-> generic Screen Lens on VexWork main
+-> Stable / Main / exact Commit remain available
+```
+
+Do not reopen the `@unpinned` recovery route or candidate Product presentation work merely because older comments mention P009.
+
+---
+
 ## Human-accepted lived anchor
 
 Victor's last explicitly accepted lived Screen Lens before the successor drift was:
@@ -513,7 +569,7 @@ This closed the typed Product Theme -> colorMode activation export.
 
 ---
 
-## Current GitHub-hosted runner — P009
+## Historical GitHub-hosted runner — P009 (HELD / superseded)
 
 Current dependency gate:
 
@@ -705,17 +761,17 @@ Do not let fluency collapse those states.
 
 ## Current next edge
 
-At companion formation, the next edge is:
-
 ```text
-run P009 from the GitHub-hosted #344 runner against exact VexWork #345
--> consume canonical RETURN
--> if PASS:
-     generic Theme-control / Presentation-axis relationship is proved
-     -> wait for active Product semantic line's one-regeneration boundary
-     -> regenerate canonical Product Lens once
-     -> witness through normal Project / Revision / Expression / Presentation / Face
-     -> retire provisional recovery carrier only when it carries no unique truth
+generic Screen Lens projection
+= integrated on VexWork main
+
+VexLife-Prod Main pointer
+= current at 146b0d48...
+
+next
+-> use first-class Main / Stable / exact Commit projections for Product comparison
+-> keep #345 / P009 held
+-> only resume candidate Theme/presentation work after a new explicit Product decision and fresh currentness/proof
 ```
 
 P006 already reached proof execution and exposed a Product compile defect, which was repaired in #421. If P007 stops, classify the exact next source/harness/environment edge, append it to the #344 run ledger, update the GitHub runner if a fresh attempt is required, and continue.
