@@ -1,0 +1,48 @@
+name: VexStream Stable Coverage Candidate Proof
+
+on:
+  pull_request:
+    branches:
+      - currentize/vexboard-realization-topology-on-sync-20261120
+    paths:
+      - 'projects/vexstream-music-projectability/**'
+      - 'projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md'
+      - 'projects/vexboard/lens/vexstream-music.candidate.screen-lens.json'
+      - 'test/vexboard-screen-lens-conformance.test.mjs'
+      - 'workgraphs/segments/vexstream-music-projectability.json'
+      - '.github/workflows/vexstream-stable-coverage-candidate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Shared projection regression floor
+        run: |
+          node --test \
+            test/vexboard-screen-lens-conformance.test.mjs \
+            test/vexboard-lens-ui.test.mjs \
+            test/vexboard-screen-lens.test.mjs \
+            test/vexboard-screen-lens-realization.test.mjs \
+            test/vexboard-screen-lens-source-expressions.test.mjs \
+            test/vexboard-screen-lens-frames.test.mjs
+      - name: Validate current VexStream Project source
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          import { createProject } from './src/core/workgraph.mjs';
+          import { createWorkgraphSegment } from './src/core/workgraph-composition.mjs';
+          const read=path=>JSON.parse(fs.readFileSync(path,'utf8'));
+          const project=createProject(read('projects/vexstream-music-projectability/project.json'));
+          const segment=createWorkgraphSegment(read('workgraphs/segments/vexstream-music-projectability.json'),read('blueprint/work-registry.json'));
+          assert.equal(segment.items.find(x=>x.workRef==='work.vexstream-music.projectability.lived-acceptance')?.state,'RUNNING');
+          assert.equal(project.sourceRefs.includes('github.pull.vexstream-music.21'),true);
+          console.log(JSON.stringify({state:'PASS',items:segment.items.length,transitions:segment.transitions.length},null,2));
+          NODE
