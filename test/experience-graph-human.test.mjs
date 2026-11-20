@@ -144,6 +144,26 @@ test('language routes stay scoped to the human journey they mean', () => {
   assert.ok(languageRoutes.every((ref) => ref.includes(':ChooseReplyLanguage:')));
 });
 
+test('Screen Lens completion contract stays durable across graph convergence', () => {
+  const convergence = result();
+  const policy = convergence.screenLensCompletion;
+  assert.ok(policy);
+  assert.deepEqual(policy.orthogonalAxes, ['Project', 'Revision', 'Screen', 'Expression', 'Presentation', 'Face']);
+  assert.match(policy.completionCriterion, /Deleting every provisional experiment\/sample\/fixture loses no required correctness/);
+  assert.ok(policy.laws.some((law) => law.includes('Static Screen Lens absence does not prove Product feature absence')));
+  assert.ok(policy.laws.some((law) => law.includes('special\/legacy lens URL must not become a second navigation model')));
+
+  const seed = readJson('../projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json');
+  const journey = seed.journeySeeds.find((row) => row.journeyRef === 'journey.screen-lens.accepted-projection-continuity');
+  assert.ok(journey);
+  assert.equal(journey.disposition, 'ACTIVE_CANDIDATE');
+
+  const judgment = seed.judgmentExamples.find((row) => row.example === 'ScreenLensCompletion');
+  assert.ok(judgment);
+  assert.ok(judgment.prevents.includes('experiment_name_means_disposable'));
+  assert.ok(judgment.prevents.includes('static_projection_absence_equals_product_feature_absence'));
+});
+
 test('current human journeys preserve Product truth that the old source pin could not mechanically derive', () => {
   const convergence = result();
   const sourceReturn = convergence.journeys.find((row) => row.journeyRef === 'journey.conversation.source-return-host-truth');
