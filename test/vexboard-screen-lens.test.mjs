@@ -84,6 +84,29 @@ test('validation fails closed on broken references and vocabulary', () => {
   assert.throws(() => Lens.normalizeScreenLens(null), /schemaVersion/);
 });
 
+test('change is a first-class Product interaction without changing element identity', () => {
+  const input = clone();
+  input.screens[3].elements.push({
+    ref: 'element.debug-menu.body.change-control',
+    kind: 'FIELD',
+    label: 'Change control',
+    parentRef: 'element.debug-menu.body',
+    interactions: ['CHANGE'],
+  });
+  const normalized = Lens.normalizeScreenLens(input);
+  assert.deepEqual(Lens.elementFor(normalized, 'element.debug-menu.body.change-control').interactions, ['CHANGE']);
+
+  const bad = clone();
+  bad.screens[3].elements.push({
+    ref: 'element.debug-menu.body.bad-change',
+    kind: 'FIELD',
+    label: 'Bad change',
+    parentRef: 'element.debug-menu.body',
+    interactions: ['MUTATE'],
+  });
+  assert.throws(() => Lens.normalizeScreenLens(bad), /interaction MUTATE is unknown/);
+});
+
 test('optional fields default cleanly', () => {
   const input = clone();
   delete input.entryScreenRef;

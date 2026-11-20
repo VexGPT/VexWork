@@ -1,0 +1,601 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vexlife.continuity-pressure-result/v1",
+  "title": "VexLife continuity pressure result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "experimentRef",
+    "runRef",
+    "scenarioRef",
+    "adapterRef",
+    "executionClass",
+    "status",
+    "source",
+    "pressure",
+    "privacy",
+    "scratch",
+    "turns",
+    "summary",
+    "artifacts"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "vexlife.continuity-pressure-result/v1"
+    },
+    "experimentRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenarioRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adapterRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "executionClass": {
+      "enum": [
+        "DETERMINISTIC_PROJECTION",
+        "LIVE_MODEL"
+      ]
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL",
+        "ERROR"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repositoryRef",
+        "sourceSha"
+      ],
+      "properties": {
+        "repositoryRef": {
+          "type": "string"
+        },
+        "sourceSha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40,64}$"
+        },
+        "modelRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "runtimeRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "pressure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "ordinaryInputTokenBudget",
+        "hardTokenLimit"
+      ],
+      "properties": {
+        "strategy": {
+          "enum": [
+            "EFFECTIVE_SELECTION_BUDGET",
+            "PAYLOAD_PRESSURE",
+            "NATIVE_LIMIT"
+          ]
+        },
+        "ordinaryInputTokenBudget": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "hardTokenLimit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "effectiveInputTokenBudget": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "payloadSeed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "syntheticOnly",
+        "humanPrivateContentIncluded",
+        "rawReasoningIncluded"
+      ],
+      "properties": {
+        "syntheticOnly": {
+          "const": true
+        },
+        "humanPrivateContentIncluded": {
+          "const": false
+        },
+        "rawReasoningIncluded": {
+          "const": false
+        }
+      }
+    },
+    "scratch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "isolationClass",
+        "deletedAfterBundle"
+      ],
+      "properties": {
+        "isolationClass": {
+          "type": "string"
+        },
+        "deletedAfterBundle": {
+          "type": "boolean"
+        },
+        "peakBytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "turns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ordinal",
+          "setRef",
+          "scenarioTurnRef",
+          "turnRef",
+          "requestSha256",
+          "responseSha256",
+          "responseText",
+          "conversationHeadSha256",
+          "prompt",
+          "capabilityUses",
+          "residency",
+          "assertions",
+          "implementationExtensions"
+        ],
+        "properties": {
+          "ordinal": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "setRef": {
+            "type": "string"
+          },
+          "scenarioTurnRef": {
+            "type": "string"
+          },
+          "turnRef": {
+            "type": "string"
+          },
+          "requestSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "responseSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "responseText": {
+            "type": "string"
+          },
+          "conversationHeadSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "prompt": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "contextMode",
+              "selectedConversationEventRefs",
+              "providerMessageSetSha256",
+              "providerMaterializedInputTokenEstimate",
+              "ordinaryInputTokenBudget",
+              "hardTokenLimit",
+              "priorCompletedExchangeCount",
+              "memoryIncluded",
+              "workingContinuityIncluded",
+              "capabilityFrameIncluded"
+            ],
+            "properties": {
+              "contextMode": {
+                "type": "string"
+              },
+              "selectedConversationEventRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "providerMessageSetSha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "providerMaterializedInputTokenEstimate": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "ordinaryInputTokenBudget": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "effectiveInputTokenBudget": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1
+              },
+              "hardTokenLimit": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "priorCompletedExchangeCount": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "memoryIncluded": {
+                "type": "boolean"
+              },
+              "memoryContextRef": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "memoryCurrentness": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "workingContinuityIncluded": {
+                "type": "boolean"
+              },
+              "workingContinuityContextRef": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "workingContinuityCheckpointRef": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "capabilityFrameIncluded": {
+                "type": "boolean"
+              },
+              "availableCapabilityRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "heldCapabilityRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "unknownCapabilityRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "omittedCapabilityRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "contextComponents": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "componentRef",
+                    "stabilityClass",
+                    "placementClass",
+                    "logicalOrder",
+                    "sha256"
+                  ],
+                  "properties": {
+                    "componentRef": {
+                      "type": "string"
+                    },
+                    "stabilityClass": {
+                      "enum": [
+                        "STABLE",
+                        "APPEND_ONLY_HISTORY",
+                        "MUTABLE_CURRENT",
+                        "EPHEMERAL_CURRENT",
+                        "UNKNOWN"
+                      ]
+                    },
+                    "placementClass": {
+                      "enum": [
+                        "SYSTEM_PREFIX",
+                        "HISTORICAL_SEQUENCE",
+                        "HYDRATED_CONTEXT",
+                        "LIVE_TAIL",
+                        "CURRENT_REQUEST",
+                        "OTHER"
+                      ]
+                    },
+                    "logicalOrder": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "providerMessageIndex": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "sourceRefs": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "capabilityUses": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "handle",
+                "action",
+                "state"
+              ],
+              "properties": {
+                "handle": {
+                  "type": "string"
+                },
+                "action": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "state": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "residency": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "ref",
+                "state",
+                "evidenceRefs"
+              ],
+              "properties": {
+                "ref": {
+                  "type": "string"
+                },
+                "state": {
+                  "enum": [
+                    "PROMPT_RESIDENT",
+                    "HYDRATED_THIS_TURN",
+                    "DURABLE_REACHABLE",
+                    "OMITTED_BUDGET",
+                    "HELD_UNAVAILABLE",
+                    "UNKNOWN"
+                  ]
+                },
+                "evidenceRefs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "assertions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "assertionRef",
+                "state",
+                "evidenceRefs"
+              ],
+              "properties": {
+                "assertionRef": {
+                  "type": "string"
+                },
+                "state": {
+                  "enum": [
+                    "PASS",
+                    "FAIL",
+                    "UNKNOWN"
+                  ]
+                },
+                "evidenceRefs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "detail": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "implementationExtensions": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "turnCount",
+        "firstConversationOmissionTurn",
+        "firstWorkingRolloverTurn",
+        "firstHydrationTurn"
+      ],
+      "properties": {
+        "turnCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "firstConversationOmissionTurn": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "firstWorkingRolloverTurn": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "firstHydrationTurn": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "postRolloverReplayOscillation": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "knownLessonReuse": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "honestAbsence": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "mutableCurrentBeforeCacheableHistory": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "stableHistoryPrefixPreservedAcrossConfigurationChange": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "latestConfigurationObserved": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "firstConfigurationChangeTurn": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}
