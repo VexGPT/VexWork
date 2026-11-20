@@ -22,6 +22,10 @@ jobs:
           node-version: 20
       - name: Static Lens UI regression
         run: node --test test/vexboard-lens-ui.test.mjs
+      - name: Deterministic repository check
+        run: npm run check
+      - name: Full VexBoard regression floor
+        run: node --test test/vexboard*.test.mjs
       - name: Serve repository
         shell: bash
         run: |
