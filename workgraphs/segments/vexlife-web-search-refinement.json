@@ -76,7 +76,8 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
       ],
       "createdAt": "2026-11-06T07:16:00.000Z",
-      "updatedAt": "2026-11-20T09:50:49.000Z"
+      "updatedAt": "2026-11-20T09:50:49.000Z",
+      "nextProcessRefs": []
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
