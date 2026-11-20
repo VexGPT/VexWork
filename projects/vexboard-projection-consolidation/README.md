@@ -378,6 +378,35 @@ The neutral third subject is a conformance pressure fixture, not a fake iOS impl
 - Do not redo the Android VexArchitecture/VexBoard completeness audit.
 - Do not perform a broad Product refactor before the divergence map proves what is accidental.
 
+
+## Next scalability consumer after consolidation
+
+Once the Android / VexLife-Prod convergence work has passed shared conformance and lived acceptance,
+the next intended pressure is `vgong24/VexstreamMusic`.
+
+Do not pre-author VexStream changes from this Project. Re-ground its then-current source and begin from:
+
+~~~text
+projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md
+-> VexStream repository entry / v2 architecture
+-> one bounded feature slice
+-> identity alignment before structural refactor
+-> shared Screen Lens conformance
+~~~
+
+The current 2026-11-20 read suggests Playback is a strong first slice because V4 already owns stable
+Playback Family / Control / Act / Effect identities and the browser already exposes partial
+data-vex-control / data-vex-action / data-vex-screen addressability. That is evidence for an
+identity-first projection attempt, not a permanent choice or a refactor authorization.
+
+The scalability question is deliberately falsifiable:
+
+> Can a materially different existing repository become projectable mostly by exposing the identity of
+> relationships it already owns, while the same VexBoard consumer remains unchanged?
+
+If yes, the convergence architecture has demonstrated reuse beyond its two origin products. If no,
+the exact source ambiguity should earn only the smallest bounded source refactor that resolves it.
+
 ## Fresh-instance route
 
 Read this file first, then current source only where implicated:

@@ -113,6 +113,21 @@ identity (D25), with step detail (D30):
 
 ## Adding a project
 
+
+Before using the mechanical steps below, a fresh AI should read
+`projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md`. It owns the projectability
+judgment: whether the target is already projectable, needs only stable identity alignment, genuinely
+earns a bounded source refactor, or must hold an ambiguous relationship instead of guessing.
+
+~~~text
+source adoption judgment
+-> truthful producer boundary
+-> then catalog/build registration
+~~~
+
+Do not use catalog registration as a substitute for understanding the target source.
+
+
 1. **Add a subject.** Add an entry to `catalog.json` with `slug`, `label`, `summary`, `repositoryRef`,
    `repository.url`, `vexworkProjectRefs` and `boards`. Without a lens, set
    `lens: { status: "NOT_BUILT", reason, next }`. It then shows on the projects page and in the project
