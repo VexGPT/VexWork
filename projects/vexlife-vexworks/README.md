@@ -329,19 +329,45 @@ A003 rotates attempt/package identity only and preserves the exact #435 head/tre
 /bin/bash ./gradlew --no-daemon jvmTest checkVexLifeStrings
 ~~~
 
-A003 formation is now statically qualified:
+A003 reached the actual repository build:
 
 ~~~text
-formation wrapper sha256
-0654ce5b57437e5a53e4031b50c78392f2b537446ce8c8e5d250fde09442cf12
+outer RETURN
+sha256 5ec02aa2292d5aaacd4832923369d6dc3f99c74698d3f6838ecedf67bedeb75c
+
+retained inner RETURN
+sha256 e056a7ef93dabea6f39fde7424c7dfc7069b1921dc14ed58d3ff846e6c4fc4c9
 
 candidate
 9df62c1851b0d2e8b8774e7228a376e9d02a282d
 2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
 
-business execution
-PENDING_MAC_RUN
+worktree CLEAN
+testsExecuted true
+compileKotlinJvm started
+review NOT_REACHED
 ~~~
+
+The proof process exited 1 after the Kotlin compiler exhausted heap:
+
+~~~text
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+transforming VexLifeCurrentMemoryReader.readCurrentScoreAcceptance(...)
+~~~
+
+The named Memory reader is unchanged between accepted base and candidate:
+
+~~~text
+blob 99efe0fd2042efc13f4e0f3a46f9c5c8c1f81793
+~~~
+
+Relay therefore continues to hold SourceOwner completion, while the evidence does **not** establish a #435 changed-path defect. A004 preserves the exact Product candidate and retries the same proof with explicit bounded build memory and one worker:
+
+~~~text
+./gradlew --no-daemon -Dorg.gradle.jvmargs=-Xmx4g --max-workers=1 jvmTest checkVexLifeStrings
+~~~
+
+No Product mutation is required for that proof-environment recovery.
 
 No Product SourceOwner PASS, Independent Assurance, READY transition or merge is claimed yet.
 
