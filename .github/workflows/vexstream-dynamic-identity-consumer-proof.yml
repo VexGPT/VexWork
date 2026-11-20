@@ -1,0 +1,36 @@
+name: VexStream Dynamic Identity Consumer Proof
+
+on:
+  push:
+    branches:
+      - VXG-112026-vexstream-music-projectability-a001
+    paths:
+      - 'projects/vexboard/lens/vexstream-music.candidate.screen-lens.json'
+      - 'projects/vexboard/SCREEN-LENS.md'
+      - 'projects/vexboard/SCREEN-LENS-PROJECTABILITY.md'
+      - 'src/shared/vexboard-screen-lens.mjs'
+      - 'src/shared/vexboard-screen-lens-identity.mjs'
+      - 'src/shared/vexboard-screen-lens-realization.mjs'
+      - 'test/vexboard-screen-lens-conformance.test.mjs'
+      - 'test/vexboard-lens-ui.test.mjs'
+      - '.github/workflows/vexstream-dynamic-identity-consumer-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Syntax
+        run: |
+          node --check src/shared/vexboard-screen-lens-identity.mjs
+          node --check src/shared/vexboard-screen-lens.mjs
+          node --check src/shared/vexboard-screen-lens-realization.mjs
+      - name: Four-subject Screen Lens proof
+        run: |
+          node --test             test/vexboard-screen-lens-conformance.test.mjs             test/vexboard-lens-ui.test.mjs             test/vexboard-screen-lens.test.mjs             test/vexboard-screen-lens-realization.test.mjs             test/vexboard-screen-lens-source-expressions.test.mjs             test/vexboard-screen-lens-frames.test.mjs
