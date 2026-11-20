@@ -50,8 +50,10 @@ mkdir -p "$RUN_ROOT"
 
 echo "P007 GitHub runner: verified $EXPECTED_SHA256"
 echo "P007 GitHub runner: entering exact Relay package..."
+set +e
 "$BASH" "$RUN_ROOT/RUN.command"
 STATUS=$?
+set -e
 
 echo "P007 GitHub runner: relay exit $STATUS"
 echo "$CONTINUITY"
