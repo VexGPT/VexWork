@@ -977,8 +977,65 @@ The reusable fractal is turn capture, not one helper that owns every current set
 
 A fresh instance should look for these structural equivalences before adding code while preserving rightful semantic owners on each side.
 
+## Screen Lens completion / accepted-projection continuity
+
+Screen Lens is complete when it is one read-only application over source-owned truth, not a set of
+special witness modes.
+
+~~~text
+Project
+× Revision
+× Screen
+× Expression
+× Presentation
+× Face
+~~~
+
+These axes are orthogonal:
+
+- Project chooses the Product/subject.
+- Revision chooses Stable / Main / exact admitted revision.
+- Screen chooses the human surface.
+- Expression chooses one source-derived Product state/presentation combination.
+- Presentation chooses Product-authored presentation state such as System / Light / Dark.
+- Face chooses Surface / Structure or Behavior / Depth over the same stable identities.
+
+Changing one axis must not silently discard the others.
+
+A Product may export HTML/CSS for read-only geometric fidelity, but Screen Lens does not infer
+feature absence from a static manifestation. Runtime-created presentation that matters to the
+human must become source-projectable rather than requiring arbitrary Product JavaScript to execute
+inside VexBoard.
+
+~~~text
+STATIC PROJECTION ABSENCE
+!= PRODUCT FEATURE ABSENCE
+
+HUMAN ACCEPTED
+!= STABLE / MERGED
+
+PROVISIONAL CARRIER
+!= DISPOSABLE MEANING
+~~~
+
+An artifact named `experiment`, `sample`, `fixture` or `test` may carry earned human evidence.
+Its container can be retired only after the identities, relationships, presentation states and
+accepted outcome it taught are reproducible from rightful Product/exporter source.
+
+Completion test:
+
+~~~text
+delete every provisional carrier
+-> regenerate from rightful source
+-> revisit the same accepted Project / Revision / Screen / Expression / Presentation / Face
+-> no required correctness, continuity, authority, proof or accepted human meaning is lost
+~~~
+
+The machine-readable form of this law lives in
+`relationship-lattice.seed.json.screenLensCompletionPolicy`.
+
 ## Source seed
 
-`relationship-lattice.seed.json` contains the current pinned anchors, journey seeds, loops and active-candidate pressure. It is deliberately disposable/regenerable as Product source changes.
+`relationship-lattice.seed.json` contains the current pinned anchors, journey seeds, loops and active-candidate pressure. Its source coordinates may be re-bound as Product source changes, but earned human laws and accepted outcomes are not disposable; move them to the rightful owner before retiring the carrier that first exposed them.
 
 <!-- [VXG RealForever][VEXLIFE-PROD][E2E][RELATIONSHIP-LATTICE] -->
