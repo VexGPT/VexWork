@@ -367,6 +367,20 @@ Relay therefore continues to hold SourceOwner completion, while the evidence doe
 ./gradlew --no-daemon -Dorg.gradle.jvmargs=-Xmx4g --max-workers=1 jvmTest checkVexLifeStrings
 ~~~
 
+A004 formation is statically qualified:
+
+~~~text
+formation wrapper sha256
+8d93a26cf3aac324cfe5e80d3a09eaeb875fd72ad05e96777d063eff4d2bddba
+
+candidate
+9df62c1851b0d2e8b8774e7228a376e9d02a282d
+2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
+
+business execution
+PENDING_MAC_RUN
+~~~
+
 No Product mutation is required for that proof-environment recovery.
 
 No Product SourceOwner PASS, Independent Assurance, READY transition or merge is claimed yet.
