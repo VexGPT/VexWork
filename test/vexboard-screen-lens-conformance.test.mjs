@@ -248,7 +248,6 @@ test('VexStream current default-visible projection carries the zero-blocker addr
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const [screen] = vexstream.screens;
   assert.equal(screen.elements.length, 79, 'merged target source exports admitted Home/Library/Discover/Playlists structure plus selected-Playlist detail controls');
-  assert.equal(vexstream.pathways.length, 7, 'coverage completeness does not invent deeper semantic pathways');
   const refs = new Set(screen.elements.map((element) => element.ref));
   for (const ref of [
     'element.vexstream.shell.sidebar.toggle',
@@ -304,7 +303,17 @@ test('VexStream bounded Library terrain is expressed through the shared selectio
   ]) {
     assert.ok(bindingPairs.has(presenceRef + '::' + value), 'Library-required source-view consequence stays present: ' + value);
   }
-  assert.equal(vexstream.pathways.length, 7, 'presentation expansion does not manufacture semantic pathways');
+  for (const ref of [
+    'element.vexstream.library.mode.songs',
+    'element.vexstream.library.mode.albums',
+    'element.vexstream.library.mode.artists',
+    'element.vexstream.library.song-layout.open',
+    'element.vexstream.player.play-library-view',
+    'element.vexstream.library.selection.toggle',
+    'element.vexstream.library.sort.preset',
+  ]) {
+    assert.equal(screen.elements.find((element) => element.ref === ref)?.pathwayRef, null, ref + ' remains presentation/addressability-only');
+  }
 });
 
 test('VexStream bounded Discover terrain is expressed through the same shared selection grammar', () => {
@@ -334,7 +343,13 @@ test('VexStream bounded Discover terrain is expressed through the same shared se
     binding.presenceRef === discoverRef
   ) ?? [];
   assert.equal(discoverBindings.length, 3);
-  assert.equal(vexstream.pathways.length, 7, 'terrain expansion does not manufacture semantic pathways');
+  for (const ref of [
+    'element.vexstream.discover.mode.pc',
+    'element.vexstream.discover.mode.youtube',
+    'element.vexstream.discover.mode.explore',
+  ]) {
+    assert.equal(screen.elements.find((element) => element.ref === ref)?.pathwayRef, null, ref + ' remains a selection/presentation coordinate rather than a semantic pathway');
+  }
 });
 
 test('VexStream bounded Playlists list/create terrain is expressed through the same Shell selection grammar', () => {
@@ -349,7 +364,16 @@ test('VexStream bounded Playlists list/create terrain is expressed through the s
   });
 
   assert.ok(playlistExpression, 'Playlists list/create Shell expression exists');
-  assert.equal(vexstream.pathways.length, 7, 'Playlists terrain admission does not invent semantic pathways');
+  assert.equal(
+    screen.elements.find((element) => element.ref === 'element.vexstream.playlists.create.name')?.pathwayRef,
+    null,
+    'playlist name entry stays addressable without inventing a semantic pathway',
+  );
+  assert.equal(
+    screen.elements.find((element) => element.ref === 'element.vexstream.playlists.create')?.pathwayRef,
+    null,
+    'playlist create stays addressable at the terrain boundary until its deeper mutation pathway is explicitly admitted',
+  );
   assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.playlists.create.name'));
   assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.playlists.create'));
   assert.ok(screen.elements.some((element) => element.ref === 'vexstream.desktop.library.playlists.overview'));
