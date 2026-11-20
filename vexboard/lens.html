@@ -974,6 +974,16 @@ function setStaticColorMode(ref) {
   renderBarInPlace();
   syncUrl();
 }
+function activateStaticColorMode(doc, view, controlRef) {
+  const colorMode = view?.colorMode;
+  const activation = colorMode?.activation;
+  if (!activation || activation.controlRef !== controlRef) return false;
+  if (activation.kind !== 'TOGGLE_COLOR_SCHEME') return false;
+  const effective = doc.defaultView.getComputedStyle(doc.documentElement).colorScheme.toLowerCase();
+  const nextRef = effective.includes('dark') ? activation.lightRef : activation.darkRef;
+  setStaticColorMode(nextRef);
+  return true;
+}
 // With no control picked, the Behavior side reads the same expression the Surface shows.
 const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? (state.anchorElementRef ? null : expressionPathway());
 const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
@@ -2383,6 +2393,7 @@ function bindStaticView(frame, expression, { interactive }) {
       return;
     }
     if (ref) {
+      activateStaticColorMode(doc, view, ref);
       rememberStaticViewPresentation(doc, view, ref);
       selectElement(ref);
     } else clearSelection();
