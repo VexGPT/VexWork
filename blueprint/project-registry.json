@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.project-registry/v1",
   "registryRef": "registry.vexwork.projects.001",
-  "registryVersion": 33,
+  "registryVersion": 34,
   "purpose": "Locate source-managed Projects and their Workgraph, Board, and optional agency-policy sources without making the registry another owner of work state.",
   "projects": [
     {
@@ -265,6 +265,14 @@
       "workgraphRef": "workgraph.vexwork.foundation",
       "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/cloud-connectivity/project.json",
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
+    },
+    {
+      "projectRef": "project.vexarchitecture.public-archive",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
+      "definitionPath": "projects/vexarchitecture-public-archive/project.json",
       "boardViewPath": null,
       "agencyPolicyPathOrNull": null
     }
