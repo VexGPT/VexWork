@@ -1528,6 +1528,12 @@ function setExpression(ref, { flash = null } = {}) {
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
   state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
   state.flashRef = flash ?? target.focusRef;
+  const motion = state.motion;
+  if (currentScreen()?.view && refreshStaticLensAroundMountedProduct({ updateExpressionRail: true, motion })) {
+    state.motion = null;
+    state.flashRef = null;
+    return;
+  }
   render();
 }
 // Combine: keep what is shown and add another expression's choices on top (a later choice for the
@@ -2082,7 +2088,17 @@ html[data-vex-lens-has-selection] [data-vex-lens-selected] [data-vex-ref]{opacit
 [data-vex-lens-delta]{box-shadow:inset 0 0 0 2px #e11d48!important}
 [data-vex-lens-flash]{animation:vexboard-lens-flash .8s ease-out}
 .vexboard-lens-travel{position:fixed;z-index:2147483647;height:22px;min-width:28px;padding:0 8px;border:0;border-radius:999px;background:var(--vexboard-lens-focus);color:#fff;font:600 11px/22px system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 5px 14px -7px rgba(0,0,0,.72);cursor:pointer}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.28s;animation-timing-function:cubic-bezier(.2,.72,.2,1)}
+html[data-vex-lens-motion="next"]::view-transition-old(root){animation-name:vexboard-lens-view-old-next}
+html[data-vex-lens-motion="next"]::view-transition-new(root){animation-name:vexboard-lens-view-new-next}
+html[data-vex-lens-motion="prev"]::view-transition-old(root){animation-name:vexboard-lens-view-old-prev}
+html[data-vex-lens-motion="prev"]::view-transition-new(root){animation-name:vexboard-lens-view-new-prev}
+@keyframes vexboard-lens-view-old-next{to{opacity:0;transform:translateX(-2.5%)}}
+@keyframes vexboard-lens-view-new-next{from{opacity:0;transform:translateX(2.5%)}}
+@keyframes vexboard-lens-view-old-prev{to{opacity:0;transform:translateX(2.5%)}}
+@keyframes vexboard-lens-view-new-prev{from{opacity:0;transform:translateX(-2.5%)}}
 @keyframes vexboard-lens-flash{0%,35%{outline:4px solid var(--vexboard-lens-focus);outline-offset:0}100%{outline-color:transparent}}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation-duration:0s!important}}
 `;
   const injection = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'"><style data-vex-product-style>${css}</style><style data-vex-lens-style>${lensCss}</style>`;
   return /<head(?:\s[^>]*)?>/i.test(html)
@@ -3921,7 +3937,21 @@ function replaceStructureFacePreservingViewport(experience) {
     nextScroller.addEventListener('scroll', scheduleBridge, { passive: true });
   }
 }
-function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } = {}) {
+function applyStaticExpressionProjection(doc, view, expression, motion = null) {
+  const update = () => applyStaticViewProjection(doc, view, expression);
+  const reduced = doc.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches === true;
+  if (!motion || reduced || typeof doc.startViewTransition !== 'function') {
+    update();
+    return null;
+  }
+  doc.documentElement.dataset.vexLensMotion = motion;
+  const transition = doc.startViewTransition(update);
+  transition.finished.finally(() => {
+    if (doc.documentElement.dataset.vexLensMotion === motion) delete doc.documentElement.dataset.vexLensMotion;
+  });
+  return transition;
+}
+function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false, motion = null } = {}) {
   const screen = currentScreen();
   if (!screen?.view || !refs.main || state.overlay) return false;
   const wrapper = refs.main.querySelector('.current-product-view');
@@ -3929,7 +3959,7 @@ function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } 
   const doc = frame?.contentDocument;
   if (!wrapper || !doc) return false;
 
-  applyStaticViewProjection(doc, screen.view, activeExpression());
+  applyStaticExpressionProjection(doc, screen.view, activeExpression(), motion);
   refreshStaticViewActions(wrapper);
 
   const slot = wrapper.closest('.xslot');

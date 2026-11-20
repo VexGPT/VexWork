@@ -246,6 +246,18 @@ test('expression stepping animates the whole three-card carousel handoff instead
   assert.doesNotMatch(page, /translateX\(64px\)/, 'the old center-only nudge is gone');
 });
 
+test('source-owned static views keep expression continuity without remounting the Product iframe', () => {
+  assert.match(page, /function applyStaticExpressionProjection\(doc, view, expression, motion = null\)/);
+  assert.match(page, /doc\.defaultView\?\.matchMedia\?\.\('\(prefers-reduced-motion: reduce\)'\)/, 'source-view motion honors the host motion preference');
+  assert.match(page, /typeof doc\.startViewTransition !== 'function'/, 'older/non-supporting browsers keep the same in-place fallback');
+  assert.match(page, /doc\.startViewTransition\(update\)/, 'supporting browsers animate the actual old/new Product manifestation rather than reloading srcdoc');
+  assert.match(page, /data-vex-lens-motion/);
+  assert.match(page, /function refreshStaticLensAroundMountedProduct\(\{ updateExpressionRail = false, motion = null \} = \{\}\)/);
+  assert.match(page, /applyStaticExpressionProjection\(doc, screen\.view, activeExpression\(\), motion\)/);
+  assert.match(page, /function setExpression[\s\S]*refreshStaticLensAroundMountedProduct\(\{ updateExpressionRail: true, motion \}\)/, 'expression stepping reuses the mounted SOURCE_VIEW and updates the surrounding Lens in place');
+  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,120}startViewTransition|startViewTransition[^\n]{0,120}vexlife-prod/i, 'transition continuity is substrate-generic, not Product-specific');
+});
+
 test('screen travel resets presentation context without inventing cross-Screen State', () => {
   assert.match(page, /function travel\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
   assert.match(page, /function jumpTo\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
