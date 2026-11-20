@@ -246,16 +246,18 @@ The offered Heretic 4B model remains the first concrete visual-runtime candidate
 
 ### Current proof checkpoint
 
-The first Mac VexRelay source-owner attempt did **not** reach Product source:
+#### A001 — fresh RUN_ROOT creation was not admitted
+
+The first Mac VexRelay attempt did **not** reach Product source:
 
 ~~~text
 outer RETURN
 sha256 987225e8e6b6bec10122077404cc483e0f27dd5dd0cbae86bdd41c1edb081e81
-disposition PASS
+PASS
 
 retained inner VexRelay RETURN
 sha256 fb5f1c6ceaa70bc9c6e13e881d9668b8f4cc00cec02daf7cef0d0a442a609f95
-disposition SAFE_FAILURE
+SAFE_FAILURE
 
 classification harness
 operation system.ground
@@ -265,16 +267,69 @@ testsExecuted false
 review NOT_REACHED
 ~~~
 
-Current SDK source makes the harness cause explicit: the native carrier begins with a fresh disposable RUN_ROOT, while the A001 seed set `workspace.createRoot=false`. A002 must rotate attempt/package identity and set `createRoot=true`.
+A001 set `workspace.createRoot=false` while the native carrier intentionally begins with a fresh disposable RUN_ROOT.
 
-Therefore:
+#### A002 — exact Product source grounded; proof command did not launch
+
+A002 corrected that formation defect. The exact #435 candidate was cloned and grounded:
 
 ~~~text
-RELAY CARRIER PASS != PRODUCT PROOF PASS
-HARNESS FORMATION DEFECT != PRODUCT CANDIDATE DEFECT
+outer RETURN
+sha256 6b20f41301b5408d93d60b88b7c2dbb91ce7f8eff14f63b963d3e860d85c3125
+PASS
+
+retained inner VexRelay RETURN
+sha256 d3a80c727840cfff85b388862015d282cbf92b85cbcd32c9dbbdf78726979dbb
+SAFE_FAILURE
+
+acceptedBase
+a4dd25e472d153b1cef24f7f35132933f3d725d0
+
+candidateHead
+9df62c1851b0d2e8b8774e7228a376e9d02a282d
+
+candidateTree
+2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
+
+worktree CLEAN
+EXPECTED_HEAD PASS
+EXPECTED_TREE PASS
+changed paths exact seven-path membrane
+
+testsExecuted false
+review NOT_REACHED
 ~~~
 
-Recover the Relay harness with a new attempt bound to the exact current #435 head/tree. Do not mutate Product source merely to make the harness succeed.
+The first substantive failure was:
+
+~~~text
+classification environment
+operation recipe.source-owner.proof.1
+code COMMAND_NOT_FOUND:./gradlew
+~~~
+
+Current Relay executor source checks whether the executable exists before it resolves the operation's repository cwd. Therefore a relative-path executable `./gradlew` cannot pass the pre-check even though the exact cloned repository contains the wrapper.
+
+Permanent classification:
+
+~~~text
+A002 EXACT SOURCE GROUNDING PASS
+!= SOURCE-OWNER PROOF PASS
+
+RELAY COMMAND-RESOLUTION FAILURE
+!= PRODUCT TEST FAILURE
+
+PRODUCT MUTATION FOR THIS RECOVERY
+= NONE
+~~~
+
+A003 rotates attempt/package identity only and preserves the exact #435 head/tree/membrane. The same repository proof is expressed through the addressable Mac executable:
+
+~~~text
+/bin/bash ./gradlew --no-daemon jvmTest checkVexLifeStrings
+~~~
+
+No Product SourceOwner PASS, Independent Assurance, READY transition or merge is claimed yet.
 
 ## The model-switching tail is smaller than it first appears
 
