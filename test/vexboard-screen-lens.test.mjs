@@ -151,6 +151,13 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
       attribute: 'data-theme',
       storageKey: 'debug-menu.presentation.theme',
       defaultRef: 'SYSTEM',
+      activation: {
+        kind: 'TOGGLE_COLOR_SCHEME',
+        controlRef: 'element.debug-menu.body.dark-mode',
+        actionRef: 'color-mode.toggle',
+        lightRef: 'LIGHT',
+        darkRef: 'DARK',
+      },
       options: [
         { ref: 'SYSTEM', label: 'System', attributeValue: null },
         { ref: 'LIGHT', label: 'Light', attributeValue: 'light' },
@@ -206,6 +213,13 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
   assert.equal(projected.colorMode.attribute, 'data-theme');
   assert.equal(projected.colorMode.storageKey, 'debug-menu.presentation.theme');
   assert.equal(projected.colorMode.defaultRef, 'SYSTEM');
+  assert.deepEqual(projected.colorMode.activation, {
+    kind: 'TOGGLE_COLOR_SCHEME',
+    controlRef: 'element.debug-menu.body.dark-mode',
+    actionRef: 'color-mode.toggle',
+    lightRef: 'LIGHT',
+    darkRef: 'DARK',
+  });
   assert.deepEqual(projected.colorMode.options, [
     { ref: 'SYSTEM', label: 'System', attributeValue: null },
     { ref: 'LIGHT', label: 'Light', attributeValue: 'light' },
@@ -237,6 +251,22 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
   const badColorDefault = JSON.parse(JSON.stringify(input));
   badColorDefault.screens[3].view.colorMode.defaultRef = 'SEPIA';
   assert.throws(() => Lens.normalizeScreenLens(badColorDefault), /colorMode defaultRef SEPIA is not one of its options/);
+
+  const badColorActivationKind = JSON.parse(JSON.stringify(input));
+  badColorActivationKind.screens[3].view.colorMode.activation.kind = 'CYCLE';
+  assert.throws(() => Lens.normalizeScreenLens(badColorActivationKind), /colorMode activation kind CYCLE is unknown/);
+
+  const badColorActivationControl = JSON.parse(JSON.stringify(input));
+  badColorActivationControl.screens[3].view.colorMode.activation.controlRef = 'element.nope';
+  assert.throws(() => Lens.normalizeScreenLens(badColorActivationControl), /colorMode activation control .* is not a screen element/);
+
+  const badColorActivationAction = JSON.parse(JSON.stringify(input));
+  badColorActivationAction.screens[3].view.colorMode.activation.actionRef = 'Color Mode';
+  assert.throws(() => Lens.normalizeScreenLens(badColorActivationAction), /colorMode activation actionRef must be stable lowercase source identity/);
+
+  const badColorActivationRefs = JSON.parse(JSON.stringify(input));
+  badColorActivationRefs.screens[3].view.colorMode.activation.lightRef = 'SEPIA';
+  assert.throws(() => Lens.normalizeScreenLens(badColorActivationRefs), /colorMode activation ref SEPIA is not one of its options/);
 
   const duplicateColorOption = JSON.parse(JSON.stringify(input));
   duplicateColorOption.screens[3].view.colorMode.options[2].ref = 'LIGHT';
