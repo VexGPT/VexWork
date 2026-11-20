@@ -2657,9 +2657,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.outcome.paused.current-product-moved",
-              "workRef": "work.vexlife.tocompletion.outcome",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "ToCompletion retained valid completed core/productization evidence, but its latest original-VexLife current entry still owed one lived stable-front-door Open/Send/re-entry acceptance while current product construction moved into Interface Refinement and New Beginnings. Preserve the trajectory as a paused provenance checkpoint instead of active IMMEDIATE work or false completion.",
@@ -3295,9 +3293,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.p5.lived-continuity-learning.paused.g03-terminal-no-g04-evidence",
-              "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "G02 and G03 are terminal lived passes, but one memory-only Daily Stratum does not establish recurrent developmental evidence. Pause developmental effects until an ordinary source-bound episode/correction/recurrence earns Continuity Evolution and possible G04 evaluation.",
@@ -3412,9 +3408,7 @@
           "updatedAt": "2026-10-24T08:03:08.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.ready.pr873-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "WAITING_DEPENDENCIES",
               "nextState": "READY",
               "reason": "The only named setup-safety dependency became TERMINAL_ACCEPTED_CURRENT at PR873, so normal-start Heretic integration is no longer dependency-held.",
@@ -3427,9 +3421,7 @@
               "createdAt": "2026-10-23T08:30:00.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.running.pr873-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "READY",
               "nextState": "RUNNING",
               "reason": "The ToCompletion foreground immediately descends into the already-defined normal-start Heretic integration slice under bounded VexLife/Vextreme-SDK source authority.",
@@ -3441,9 +3433,7 @@
               "createdAt": "2026-10-23T08:30:00.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.verifying.accepted-source",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "RUNNING",
               "nextState": "VERIFYING",
               "reason": "PR920/PR921/PR923 accepted the ordinary Heretic normal-start and parser source chain; the source slice entered lived verification rather than remaining implementation work.",
@@ -3456,9 +3446,7 @@
               "createdAt": "2026-10-24T08:03:08.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.completed.a034-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "VERIFYING",
               "nextState": "COMPLETED",
               "reason": "A034 proved the accepted ordinary startup source reaches the real Heretic Browser Companion path and same-Home no-acquisition restart, closing normal-start integration as current work.",
@@ -3518,9 +3506,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.ordinary-heretic-setup.paused.original-front-door-checkpoint",
-              "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "A034 terminally proved the ordinary Heretic runtime/restart path and later source repaired normal-start currentness, but the final original-VexLife stable-front-door Open/Send/re-entry witness remained explicitly owed before the current product trajectory moved to New Beginnings/VexLife-Prod.",
@@ -3732,9 +3718,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.outcome.paused.current-product-moved",
-              "workRef": "work.vexlife.tocompletion.outcome",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "ToCompletion retained valid completed core/productization evidence, but its latest original-VexLife current entry still owed one lived stable-front-door Open/Send/re-entry acceptance while current product construction moved into Interface Refinement and New Beginnings. Preserve the trajectory as a paused provenance checkpoint instead of active IMMEDIATE work or false completion.",
@@ -20443,6 +20427,184 @@
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexlife.application-level-settings.home-management",
+        "label": "Home management affordances",
+        "purpose": "Identify which Home-level choices belong in application settings—such as selecting another Home, changing supported Home presentation/name/location concerns, or intentionally revisiting setup—while preserving Home as its rightful owner and avoiding implicit recreation, deletion or migration.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.outcome",
+        "label": "VexLife Application level settings",
+        "purpose": "Preserve the application-experience debt discovered during the first lived desktop-container run: reopening VexLife should not blindly replay first-run onboarding when required state is already established, while a human still needs a clear application-level place to intentionally revisit setup, Home choices and application lifecycle settings without conflating those concerns with feature settings.",
+        "workClass": "OUTCOME",
+        "state": "DECOMPOSED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [
+          "work.vexlife.application-level-settings.home-management",
+          "work.vexlife.application-level-settings.reentry-contract",
+          "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+          "work.vexlife.application-level-settings.reset-uninstall",
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "project.vexlife.application-level-settings",
+          "projects/vexlife-application-level-settings/README.md",
+          "github.pull.vexlife-prod.396",
+          "github.pull.vexlife-prod.400",
+          "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.form-project",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reentry-contract",
+        "label": "Earn a truthful first-run versus re-entry contract",
+        "purpose": "Determine which application predicates are genuinely one-time onboarding, which must be re-observed on every launch, which may require repair, and how a person intentionally re-enters setup without making ordinary reopen equivalent to first run or skipping required truth checks blindly.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+        "label": "Reopen repeats first-run onboarding",
+        "purpose": "Investigate the lived defect where closing VexLife and opening it again walks the person through the onboarding flow again instead of recognizing already-satisfied setup/Home predicates and entering the established application experience.",
+        "workClass": "DEFECT",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding",
+          "github.pull.vexlife-prod.396"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reset-uninstall",
+        "label": "Reset, remove and uninstall semantics",
+        "purpose": "Define human-safe application lifecycle controls for reset/restart/removal/uninstall questions without silently deleting Home, Conversation, Memory, settings or model files, and make destructive scope explicit before any implementation is admitted.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.surface",
+        "label": "Application-level settings surface",
+        "purpose": "Explore one discoverable app-level settings entry that can host application configuration and lifecycle choices without turning the current feature Settings surface into a catch-all owner. A native/top-left application affordance is a lived design candidate, not a fixed implementation commitment.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.reentry-contract"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
       {
         "workRef": "work.vexboard.later.screen-lens-scenario-playground",
         "label": "Later — Screen Lens Scenario Playground",
