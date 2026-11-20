@@ -47,6 +47,8 @@ test('semantic routes distinguish Projects, Project and work-item levels', () =>
   assert.deepEqual(reader.parseRoute('?project=project.demo'), { projectRef: 'project.demo', workRef: null, view: 'story', level: 'PROJECT' });
   assert.deepEqual(reader.parseRoute('?project=project.demo&work=work.demo.task&view=history'), { projectRef: 'project.demo', workRef: 'work.demo.task', view: 'history', level: 'ITEM' });
   assert.equal(reader.routeSearch({ projectRef: 'project.demo', workRef: 'work.demo.task', view: 'overview' }), '?project=project.demo&work=work.demo.task');
+  assert.deepEqual(reader.parseRoute('?view=roadmap'), { projectRef: null, workRef: null, view: 'roadmap', level: 'PROJECTS' });
+  assert.equal(reader.routeSearch({ projectRef: null, workRef: null, view: 'roadmap' }), '?view=roadmap');
   assert.deepEqual(reader.parseRoute('?view=open'), { projectRef: null, workRef: null, view: 'open', level: 'PROJECTS' });
   assert.equal(reader.routeSearch({ projectRef: null, workRef: null, view: 'open' }), '?view=open');
 });
@@ -216,6 +218,15 @@ test('Project first read exposes derived current trajectory without pre-orientat
   assert.match(page, /Chronology only; current WorkState remains owned by the Workgraph\./);
   assert.match(page, /Reader\.projectCurrentTrajectory\(project\)/);
   assert.match(orientationSource, /## Only then introduce the foreground work/);
+});
+
+test('portfolio roadmap keeps lifecycle and priority visible without inventing release dates', () => {
+  assert.deepEqual(reader.PROJECTS_VIEWS, ['projects', 'roadmap', 'open']);
+  assert.match(page, /Portfolio roadmap/);
+  assert.match(page, /Priority \+ lifecycle/);
+  assert.match(page, /Current roadmap projection over canonical WorkState and source-owned priority/);
+  assert.match(page, /Waiting is incomplete, not failed/);
+  assert.match(page, /Project root priority/);
 });
 
 test('portfolio first read compares Projects to complete with Completed Projects', () => {
