@@ -152,7 +152,7 @@ XLSX
 PPTX
 ~~~
 
-Stable Product main still does **not** admit static images as model-usable request material. The current #435 candidate now recognizes exact PNG/JPEG bytes and forms bounded image metadata, but intentionally keeps the attachment HELD until one qualified visual-input realization exists. VexLife also has a separate Vision Family / selected-window runtime, whose current Product contract deliberately stops before Look/capture-to-model interpretation. Therefore image work continues from this distinction rather than collapsing static file input and live screen Vision into one owner.
+Stable Product main still does **not** admit static images as model-usable request material. The current #435 candidate now recognizes exact PNG/JPEG bytes, keeps their exact OriginalArtifact bytes, and durably retains a typed StaticImageProjection while intentionally keeping the attachment HELD until one qualified visual-input realization exists. VexLife also has a separate Vision Family / selected-window runtime, whose current Product contract deliberately stops before Look/capture-to-model interpretation. Therefore image work continues from this distinction rather than collapsing static file input and live screen Vision into one owner.
 
 Current next Product successor:
 
@@ -160,43 +160,54 @@ Current next Product successor:
 VexGPT/VexLife-Prod#435
 [VexLife Local Artifacts][DRAFT] Static image adaptation over stable artifact input
 
+head 9df62c1851b0d2e8b8774e7228a376e9d02a282d
+tree 2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
+
 static image Local Artifact
 -> exact bytes
--> media/visual adaptation seam
--> qualified model-compatible representation
--> current REQUEST / Vex
-
-LIVE WINDOW VISION
--> remains VexLifeVisionFamily / selected-scope relationship
--> separate capture + visual-model-input edge
+-> typed StaticImageProjection
+-> qualified visual provider/runtime
+-> exact REQUEST / Vex
 ~~~
 
-#435 has now advanced beyond formation into one concrete static-image adaptation candidate:
+Current seven-path candidate membrane:
 
 ~~~text
-head b8a12afd5a0f6152d39d924364df84cde9a1bb50
-tree 4a8b61861647eb2dc33c4c1f0922b5f3bc22a6c1
-
-exact candidate membrane
 docs/work/local-artifacts-static-image/README.md
+src/commonMain/kotlin/vexlife/artifact/VexLifeLocalArtifact.kt
 src/jvmMain/kotlin/vexlife/artifact/VexLifeLocalArtifactReader.kt
+src/jvmMain/kotlin/vexlife/artifact/VexLifeLocalArtifactStore.kt
 src/jvmMain/kotlin/vexlife/artifact/VexLifeStaticImageAdaptation.kt
 src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt
 src/jvmTest/kotlin/vexlife/artifact/VexLifeStaticImageAdaptationTest.kt
 ~~~
 
-The candidate currently proves only the source shape of the first adaptation edge:
+The candidate now carries the first reusable representation seam:
 
 ~~~text
+RequestProjection
+├─ DerivedProjection
+│    readable text
+└─ StaticImageProjection
+     media type
+     dimensions
+     adapter identity
+
 exact OriginalArtifact bytes
--> PNG/JPEG content-signature recognition
--> bounded media type + dimensions + adapter identity
--> exact original bytes preserved
--> ImageAdapted
--> HELD because no qualified visual-input realization exists yet
+-> content-derived projection
+-> existing projection custody
 ~~~
 
-It does **not** claim image understanding, Companion multimodal carriage, Vision capture, Memory promotion, or a qualified visual runtime.
+The durable RequestAttachment / request-artifacts/v1 shape remains unchanged. Existing Home sidecars therefore do not need a migration. Static images are still not allowed to become READY merely because they now have a projection.
+
+Permanent:
+
+~~~text
+STATIC IMAGE PROJECTION != VISUAL INTERPRETATION
+STATIC IMAGE ATTACHMENT != VEXLIFE VISION
+DERIVED REPRESENTATION != MODEL INTERPRETATION
+ATTACHMENT != MEMORY
+~~~
 
 ### Architecture continuation for static image input
 
@@ -210,39 +221,18 @@ VexLifeAttachmentDraftRuntime
   owns active staging / cancellation / Send lease
 
 VexLifeLocalArtifact
-  owns immutable original bytes, deterministic derived text projections and exact REQUEST binding
+  owns immutable original bytes + exact derived representation identity
 
 DirectCompanionTurn / DirectCompanionConnection
   compose current request material into the selected Companion without re-owning artifact semantics
 ~~~
 
-The next image edge should therefore **not** make the Attachment Family media-specific and should not make the Product service the semantic owner. The pressure is lower in the request-material relationship: current READY / RequestAttachment semantics require a text-shaped `projectionRef`, while an exact image may be lawful request material without being deterministic text.
-
-The current scalable direction is:
-
-~~~text
-Attachment Family
-  STAGING / READY / HELD
-  remains stable
-
-exact Local Artifact
-  -> one typed lawful request material
-       readable text projection
-       OR
-       static image resource
-       OR later another earned representation
-
-exact REQUEST binding
-  -> binds the lawful material without pretending every material is text
-
-model/provider realization
-  -> decides how that material can actually reach the selected Companion
-~~~
+The next image edge should therefore **not** make the Attachment Family media-specific and should not make the Product service the semantic owner. One concrete visual provider/runtime must qualify how a StaticImageProjection becomes model-usable.
 
 Platform/runtime realization should follow the already-earned Local-ASR pattern rather than spreading target branches through semantic consumers:
 
 ~~~text
-one provider-realization boundary
+one visual provider-realization boundary
 -> exact target resolver
    -> Mac realization
    -> Windows realization when qualified
@@ -250,13 +240,13 @@ one provider-realization boundary
 -> no nearest-platform fallback
 ~~~
 
-A VexPartner relationship is **not** added merely for architectural symmetry. Partner is earned only if visual interpretation actually becomes an independently-owned external-participant relationship. Likewise, static attachment and live Vision may later share a visual-resource interpretation seam while remaining distinct source owners.
+A VexPartner relationship is **not** added merely for architectural symmetry. Partner is earned only if visual interpretation actually becomes an independently-owned external-participant relationship. Static attachment and live Vision may later share a visual-resource interpretation seam while remaining distinct source owners.
 
-The offered Heretic 4B model is a concrete visual-runtime candidate because its exact pinned artifact set includes processor/preprocessor configuration, but current Product Companion carriage remains text-shaped and the existing certified mlx-lm runtime does not by itself qualify visual input. A visual model/runtime relationship must therefore be separately qualified before #435 can lawfully turn an image from HELD into model-usable material.
+The offered Heretic 4B model remains the first concrete visual-runtime candidate because its exact pinned artifact set includes processor/preprocessor configuration, while current Product Companion carriage remains text-shaped and the existing certified mlx-lm runtime does not by itself qualify visual input. A separate visual runtime/environment relationship must be qualified before #435 may turn an image from HELD into model-usable material.
 
 ### Current proof checkpoint
 
-The first Mac VexRelay source-owner attempt did **not** reach the Product candidate:
+The first Mac VexRelay source-owner attempt did **not** reach Product source:
 
 ~~~text
 outer RETURN
@@ -267,27 +257,24 @@ retained inner VexRelay RETURN
 sha256 fb5f1c6ceaa70bc9c6e13e881d9668b8f4cc00cec02daf7cef0d0a442a609f95
 disposition SAFE_FAILURE
 
-first substantive failure
 classification harness
 operation system.ground
-ENOENT expected disposable VexRelay run root
-
 candidateHead NONE
 candidateTree NONE
 testsExecuted false
 review NOT_REACHED
 ~~~
 
+Current SDK source makes the harness cause explicit: the native carrier begins with a fresh disposable RUN_ROOT, while the A001 seed set `workspace.createRoot=false`. A002 must rotate attempt/package identity and set `createRoot=true`.
+
 Therefore:
 
 ~~~text
 RELAY CARRIER PASS != PRODUCT PROOF PASS
-HARNESS FAILURE BEFORE REPOSITORY ACQUISITION != CANDIDATE FAILURE
+HARNESS FORMATION DEFECT != PRODUCT CANDIDATE DEFECT
 ~~~
 
-Recover the Relay harness edge before replaying proof; do not mutate #435 merely to make the harness succeed.
-
-Do not reopen the accepted text/document attachment path merely to add images. Extend the request-material / adaptation relationship at the smallest rightful owner, and let one concrete qualified visual realization earn any further abstraction.
+Recover the Relay harness with a new attempt bound to the exact current #435 head/tree. Do not mutate Product source merely to make the harness succeed.
 
 ## The model-switching tail is smaller than it first appears
 
