@@ -1,4 +1,4 @@
-# VexWorks
+# [VexLife Local Artifacts]
 
 `[VXG RealForever]`
 
@@ -15,7 +15,7 @@ person
   -> Vex projects only the features that the selected model/provider/runtime relationship can actually carry
 ```
 
-This Project is named **VexWorks** because the human outcome is broader than “attachments” or “model settings”: it is the bounded place where a person gives Vex material to work with, Vex reaches it, and the person chooses which local model does that work.
+This Project is titled **[VexLife Local Artifacts]** because the human outcome is broader than “attachments” or “model settings”: it is the bounded place where a person gives Vex material to work with, Vex reaches it, and the person chooses which local model does that work.
 
 ## Ownership boundary
 
@@ -34,7 +34,7 @@ Capability Atlas / owning Families
 model/provider representation
   owns how already-owned meanings are represented to one selected model
 
-VexWorks Project
+[VexLife Local Artifacts] Project
   groups the outcome and sequence only
 ```
 
@@ -102,7 +102,7 @@ HereticCompanionRepresentation
   generation / reasoning controls
 ```
 
-So VexWorks does **not** need another model registry or switch semantic. The tail should make the existing relationship perceivable and capability-aware.
+So [VexLife Local Artifacts] does **not** need another model registry or switch semantic. The tail should make the existing relationship perceivable and capability-aware.
 
 ## Dynamic hookup for models a person adds
 
@@ -181,7 +181,7 @@ A3  Imported-model relationship recognizers
     retain today's exact Qwen3 recognizer; add new architecture/provider
     recognizers only when a qualified runtime relationship actually exists
 
-A4  Lived VexWorks proof
+A4  Lived Local Artifacts proof
     same Conversation + same admitted files/sources
     -> switch model
     -> capability surface changes truthfully
