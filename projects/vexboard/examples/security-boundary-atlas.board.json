@@ -1,0 +1,663 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexboard.security-boundary-atlas.template",
+  "title": "Security Boundary Atlas — Cross-Platform Template",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexboard.security-boundary-atlas.template",
+    "nodes": [
+      {
+        "nodeRef": "node.security.atlas",
+        "kind": "CONTAINER",
+        "label": "Security Boundary Atlas",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "annotation.security.purpose",
+        "kind": "ANNOTATION",
+        "label": "Choose boundaries by the truth, authority, secret, effect, or evidence that must not be silently collapsed. This is a discovery template, not a claim that every system needs every boundary.",
+        "parentRefOrNull": "node.security.atlas",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "node.security.boundary-families",
+        "kind": "CONTAINER",
+        "label": "Boundary families · what could matter?",
+        "parentRefOrNull": "node.security.atlas",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.security.identity-trust",
+        "kind": "REFERENCE",
+        "label": "Identity / trust · Who or what is this, and how is the claim proved?",
+        "parentRefOrNull": "node.security.boundary-families",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.security.authority-effect",
+        "kind": "REFERENCE",
+        "label": "Authority / effect · What may this actor do, to what, right now?",
+        "parentRefOrNull": "node.security.boundary-families",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.security.secret-data",
+        "kind": "REFERENCE",
+        "label": "Secrets / sensitive data · Who may hold, read, use, or transmit it?",
+        "parentRefOrNull": "node.security.boundary-families",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.security.network-provider",
+        "kind": "REFERENCE",
+        "label": "Network / provider · What crosses a process, network, connector, or provider boundary?",
+        "parentRefOrNull": "node.security.boundary-families",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.security.model-context-tool",
+        "kind": "REFERENCE",
+        "label": "Model / context / memory / tool · What may untrusted context influence or cause?",
+        "parentRefOrNull": "node.security.boundary-families",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.security.build-release-update",
+        "kind": "REFERENCE",
+        "label": "Build / release / update · What source or artifact is trusted to become executable?",
+        "parentRefOrNull": "node.security.boundary-families",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.security.recovery-replay",
+        "kind": "REFERENCE",
+        "label": "Recovery / replay · What may retry, restore, or survive without duplication or authority widening?",
+        "parentRefOrNull": "node.security.boundary-families",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.security.evidence-observability",
+        "kind": "REFERENCE",
+        "label": "Evidence / observability · What proves the control held, failed, expired, or was bypassed?",
+        "parentRefOrNull": "node.security.boundary-families",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "node.security.boundary-template",
+        "kind": "CONTAINER",
+        "label": "Apply this question set to any selected boundary",
+        "parentRefOrNull": "node.security.atlas",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "process.security.template.truth",
+        "kind": "PROCESS",
+        "label": "1 · What exact truth / secret / authority / effect crosses?",
+        "parentRefOrNull": "node.security.boundary-template",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "process.security.template.owner",
+        "kind": "PROCESS",
+        "label": "2 · Who rightfully owns or holds it before the crossing?",
+        "parentRefOrNull": "node.security.boundary-template",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "process.security.template.receiver",
+        "kind": "PROCESS",
+        "label": "3 · Who may receive or use it, and for what purpose?",
+        "parentRefOrNull": "node.security.boundary-template",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "process.security.template.denied",
+        "kind": "PROCESS",
+        "label": "4 · What must NOT cross, persist, widen, or become authority?",
+        "parentRefOrNull": "node.security.boundary-template",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "process.security.template.currentness",
+        "kind": "PROCESS",
+        "label": "5 · What expires, rotates, revokes, reconnects, or becomes stale?",
+        "parentRefOrNull": "node.security.boundary-template",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "process.security.template.proof",
+        "kind": "PROCESS",
+        "label": "6 · What evidence would actually prove or falsify the boundary?",
+        "parentRefOrNull": "node.security.boundary-template",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "node.security.realizations",
+        "kind": "CONTAINER",
+        "label": "Implementation realizations · same question, different platform",
+        "parentRefOrNull": "node.security.atlas",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      },
+      {
+        "nodeRef": "portal.security.credential-custody",
+        "kind": "PORTAL",
+        "label": "Credential custody · platform realization example",
+        "parentRefOrNull": "node.security.realizations",
+        "detailBoardRefOrNull": "board.vexboard.security-boundary-atlas.credential-custody",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/security-boundary-credential-custody.board.json"
+        ]
+      },
+      {
+        "nodeRef": "annotation.security.realization-law",
+        "kind": "ANNOTATION",
+        "label": "Platform APIs are realizations, not the semantic owner. Pick the boundary first; then select the smallest platform mechanism that preserves it.",
+        "parentRefOrNull": "node.security.realizations",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vexboard/examples/security-boundary-atlas.board.json"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.security.template.truth-owner",
+        "kind": "FLOW",
+        "fromRef": "process.security.template.truth",
+        "toRef": "process.security.template.owner",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.security.template.owner-receiver",
+        "kind": "FLOW",
+        "fromRef": "process.security.template.owner",
+        "toRef": "process.security.template.receiver",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.security.template.receiver-denied",
+        "kind": "FLOW",
+        "fromRef": "process.security.template.receiver",
+        "toRef": "process.security.template.denied",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.security.template.denied-currentness",
+        "kind": "FLOW",
+        "fromRef": "process.security.template.denied",
+        "toRef": "process.security.template.currentness",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.security.template.currentness-proof",
+        "kind": "FLOW",
+        "fromRef": "process.security.template.currentness",
+        "toRef": "process.security.template.proof",
+        "labelOrNull": "THEN",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.security.identity-credential",
+        "kind": "REFERENCE",
+        "fromRef": "reference.security.identity-trust",
+        "toRef": "portal.security.credential-custody",
+        "labelOrNull": "COMMON CONSUMER",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.security.secret-credential",
+        "kind": "REFERENCE",
+        "fromRef": "reference.security.secret-data",
+        "toRef": "portal.security.credential-custody",
+        "labelOrNull": "CUSTODY EXAMPLE",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.security.authority-credential",
+        "kind": "REFERENCE",
+        "fromRef": "reference.security.authority-effect",
+        "toRef": "portal.security.credential-custody",
+        "labelOrNull": "POSSESSION != AUTHORIZATION",
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/vex-security-assurance/README.md",
+      "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+      "projects/vexboard/examples/security-boundary-atlas.board.json"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexboard.security-boundary-atlas.template",
+    "graphRef": "graph.vexboard.security-boundary-atlas.template",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.security.atlas",
+        "semanticRef": "node.security.atlas",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2520,
+          "height": 1420
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.purpose",
+        "semanticRef": "annotation.security.purpose",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 80,
+          "y": 45,
+          "width": 2260,
+          "height": 90
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.security.atlas",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.boundary-families",
+        "semanticRef": "node.security.boundary-families",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 50,
+          "y": 175,
+          "width": 790,
+          "height": 1170
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.security.atlas",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.identity-trust",
+        "semanticRef": "reference.security.identity-trust",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 250,
+          "width": 690,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-families",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.authority-effect",
+        "semanticRef": "reference.security.authority-effect",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 365,
+          "width": 690,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-families",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.secret-data",
+        "semanticRef": "reference.security.secret-data",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 480,
+          "width": 690,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-families",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.network-provider",
+        "semanticRef": "reference.security.network-provider",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 595,
+          "width": 690,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-families",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.model-context-tool",
+        "semanticRef": "reference.security.model-context-tool",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 710,
+          "width": 690,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-families",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.build-release-update",
+        "semanticRef": "reference.security.build-release-update",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 825,
+          "width": 690,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-families",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.recovery-replay",
+        "semanticRef": "reference.security.recovery-replay",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 940,
+          "width": 690,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-families",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.evidence-observability",
+        "semanticRef": "reference.security.evidence-observability",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 100,
+          "y": 1055,
+          "width": 690,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-families",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.boundary-template",
+        "semanticRef": "node.security.boundary-template",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 875,
+          "y": 175,
+          "width": 720,
+          "height": 1170
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.security.atlas",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.template.truth",
+        "semanticRef": "process.security.template.truth",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 925,
+          "y": 250,
+          "width": 620,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-template",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.template.owner",
+        "semanticRef": "process.security.template.owner",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 925,
+          "y": 390,
+          "width": 620,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-template",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.template.receiver",
+        "semanticRef": "process.security.template.receiver",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 925,
+          "y": 530,
+          "width": 620,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-template",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.template.denied",
+        "semanticRef": "process.security.template.denied",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 925,
+          "y": 670,
+          "width": 620,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-template",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.template.currentness",
+        "semanticRef": "process.security.template.currentness",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 925,
+          "y": 810,
+          "width": 620,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-template",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.template.proof",
+        "semanticRef": "process.security.template.proof",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 925,
+          "y": 950,
+          "width": 620,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.boundary-template",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.realizations",
+        "semanticRef": "node.security.realizations",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1630,
+          "y": 175,
+          "width": 830,
+          "height": 1170
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.security.atlas",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.credential-custody",
+        "semanticRef": "portal.security.credential-custody",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1690,
+          "y": 330,
+          "width": 710,
+          "height": 150
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.realizations",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.security.realization-law",
+        "semanticRef": "annotation.security.realization-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1690,
+          "y": 535,
+          "width": 710,
+          "height": 190
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.security.realizations",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/vex-security-assurance/README.md",
+      "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+      "projects/vexboard/examples/security-boundary-atlas.board.json"
+    ]
+  }
+}

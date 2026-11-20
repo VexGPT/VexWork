@@ -1,0 +1,1401 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.full-security.android-account-device-scenarios",
+  "title": "Full Security — Android Account + Device Scenarios",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": "board.full-security.vexlife-complex-demonstrator",
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.full-security.android-account-device-scenarios",
+    "nodes": [
+      {
+        "nodeRef": "node.fs.sc.root",
+        "kind": "CONTAINER",
+        "label": "Full Security · Android Account + Device Scenario Suite",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.sc.purpose",
+        "kind": "ANNOTATION",
+        "label": "Executable/security-learning scenarios: separate account identity, installation identity, credential possession, device admission, session currentness, capability and feature effect.",
+        "parentRefOrNull": "node.fs.sc.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.sc.first",
+        "kind": "CONTAINER",
+        "label": "First complete circuit · S01–S09",
+        "parentRefOrNull": "node.fs.sc.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.sc.next",
+        "kind": "CONTAINER",
+        "label": "Adversarial + lifecycle circuit · S10–S20",
+        "parentRefOrNull": "node.fs.sc.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.sc.patterns",
+        "kind": "CONTAINER",
+        "label": "Candidate reusable relationship patterns",
+        "parentRefOrNull": "node.fs.sc.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "portal.fs.sc.complex",
+        "kind": "PORTAL",
+        "label": "Open the full VexLife complex demonstrator",
+        "parentRefOrNull": "node.fs.sc.root",
+        "detailBoardRefOrNull": "board.full-security.vexlife-complex-demonstrator",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.connected-devices",
+        "kind": "REFERENCE",
+        "label": "Android feature pressure · Settings → Connected Devices → inspect / disconnect / revoke",
+        "parentRefOrNull": "node.fs.sc.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s01",
+        "kind": "PROCESS",
+        "label": "S01 · First device registration",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s02",
+        "kind": "PROCESS",
+        "label": "S02 · Logout ends session, not device trust",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s03",
+        "kind": "PROCESS",
+        "label": "S03 · Return login on same admitted installation",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s04",
+        "kind": "PROCESS",
+        "label": "S04 · Correct account on unknown Device B",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s05",
+        "kind": "PROCESS",
+        "label": "S05 · Explicitly register Device B",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s06",
+        "kind": "PROCESS",
+        "label": "S06 · Two admitted devices operate independently",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s07",
+        "kind": "PROCESS",
+        "label": "S07 · Revoke Device B without affecting Device A",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s08",
+        "kind": "PROCESS",
+        "label": "S08 · Revoked device still knows correct account credential",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s09",
+        "kind": "PROCESS",
+        "label": "S09 · Reinstall produces new installation credential",
+        "parentRefOrNull": "node.fs.sc.first",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s10",
+        "kind": "PROCESS",
+        "label": "S10 · Lost device selective revoke",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s11",
+        "kind": "PROCESS",
+        "label": "S11 · Stolen/changed account credential",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s12",
+        "kind": "PROCESS",
+        "label": "S12 · Expired session on admitted device",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s13",
+        "kind": "PROCESS",
+        "label": "S13 · Stale offline authority",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s14",
+        "kind": "PROCESS",
+        "label": "S14 · Credential rotation",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s15",
+        "kind": "PROCESS",
+        "label": "S15 · Backup / restore does not restore trust",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s16",
+        "kind": "PROCESS",
+        "label": "S16 · Replay / duplicate protected request",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s17",
+        "kind": "PROCESS",
+        "label": "S17 · Service identity survives route change",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s18",
+        "kind": "PROCESS",
+        "label": "S18 · Process restart rebuilds ephemeral session",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s19",
+        "kind": "PROCESS",
+        "label": "S19 · Application update trust",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "process.fs.sc.s20",
+        "kind": "PROCESS",
+        "label": "S20 · OS permission / storage truth changes",
+        "parentRefOrNull": "node.fs.sc.next",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p1",
+        "kind": "REFERENCE",
+        "label": "Possession · prove control of the credential",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p2",
+        "kind": "REFERENCE",
+        "label": "Admission · is this identity/device allowed to join?",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p3",
+        "kind": "REFERENCE",
+        "label": "Session · bounded current interaction lifetime",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p4",
+        "kind": "REFERENCE",
+        "label": "Capability · what may this current relationship do?",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p5",
+        "kind": "REFERENCE",
+        "label": "Revocation · withdraw one relationship selectively",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p6",
+        "kind": "REFERENCE",
+        "label": "Rebinding / replacement · route/credential/install changes",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p7",
+        "kind": "REFERENCE",
+        "label": "Currentness reconciliation · remembered truth vs current authority",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p8",
+        "kind": "REFERENCE",
+        "label": "Integrity binding · independently verify received truth",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p9",
+        "kind": "REFERENCE",
+        "label": "Recovery without authority widening",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.sc.p10",
+        "kind": "REFERENCE",
+        "label": "Explanation / evidence · why is this accepted/held/denied?",
+        "parentRefOrNull": "node.fs.sc.patterns",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.fs.sc.s01.p1",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s01",
+        "toRef": "reference.fs.sc.p1",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s01.p2",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s01",
+        "toRef": "reference.fs.sc.p2",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s01.p3",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s01",
+        "toRef": "reference.fs.sc.p3",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s01.p4",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s01",
+        "toRef": "reference.fs.sc.p4",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s02.p3",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s02",
+        "toRef": "reference.fs.sc.p3",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s02.p5",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s02",
+        "toRef": "reference.fs.sc.p5",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s03.p1",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s03",
+        "toRef": "reference.fs.sc.p1",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s03.p3",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s03",
+        "toRef": "reference.fs.sc.p3",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s04.p2",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s04",
+        "toRef": "reference.fs.sc.p2",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s04.p4",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s04",
+        "toRef": "reference.fs.sc.p4",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s05.p2",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s05",
+        "toRef": "reference.fs.sc.p2",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s06.p2",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s06",
+        "toRef": "reference.fs.sc.p2",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s06.p3",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s06",
+        "toRef": "reference.fs.sc.p3",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s07.p5",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s07",
+        "toRef": "reference.fs.sc.p5",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s08.p4",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s08",
+        "toRef": "reference.fs.sc.p4",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s08.p5",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s08",
+        "toRef": "reference.fs.sc.p5",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s09.p6",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s09",
+        "toRef": "reference.fs.sc.p6",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s09.p9",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s09",
+        "toRef": "reference.fs.sc.p9",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s10.p5",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s10",
+        "toRef": "reference.fs.sc.p5",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s10.p9",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s10",
+        "toRef": "reference.fs.sc.p9",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s11.p9",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s11",
+        "toRef": "reference.fs.sc.p9",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s12.p3",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s12",
+        "toRef": "reference.fs.sc.p3",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s12.p7",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s12",
+        "toRef": "reference.fs.sc.p7",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s13.p7",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s13",
+        "toRef": "reference.fs.sc.p7",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s13.p9",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s13",
+        "toRef": "reference.fs.sc.p9",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s14.p6",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s14",
+        "toRef": "reference.fs.sc.p6",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s14.p7",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s14",
+        "toRef": "reference.fs.sc.p7",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s15.p9",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s15",
+        "toRef": "reference.fs.sc.p9",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s16.p7",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s16",
+        "toRef": "reference.fs.sc.p7",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s16.p4",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s16",
+        "toRef": "reference.fs.sc.p4",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s17.p6",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s17",
+        "toRef": "reference.fs.sc.p6",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s17.p7",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s17",
+        "toRef": "reference.fs.sc.p7",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s18.p3",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s18",
+        "toRef": "reference.fs.sc.p3",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s18.p9",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s18",
+        "toRef": "reference.fs.sc.p9",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s19.p4",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s19",
+        "toRef": "reference.fs.sc.p4",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s19.p9",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s19",
+        "toRef": "reference.fs.sc.p9",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s20.p4",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s20",
+        "toRef": "reference.fs.sc.p4",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.s20.p7",
+        "kind": "REFERENCE",
+        "fromRef": "process.fs.sc.s20",
+        "toRef": "reference.fs.sc.p7",
+        "labelOrNull": "EXERCISES",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.devices-revoke",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.sc.connected-devices",
+        "toRef": "reference.fs.sc.p5",
+        "labelOrNull": "UI REQUESTS SELECTIVE REVOCATION",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.sc.devices-explain",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.sc.connected-devices",
+        "toRef": "reference.fs.sc.p10",
+        "labelOrNull": "PROJECTS CURRENT RELATIONSHIP",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+      "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+      "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.full-security.android-account-device-scenarios",
+    "graphRef": "graph.full-security.android-account-device-scenarios",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.fs.sc.root",
+        "semanticRef": "node.fs.sc.root",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 3900,
+          "height": 2350
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.purpose",
+        "semanticRef": "annotation.fs.sc.purpose",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 100,
+          "y": 45,
+          "width": 3700,
+          "height": 95
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.sc.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.first",
+        "semanticRef": "node.fs.sc.first",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 70,
+          "y": 190,
+          "width": 1120,
+          "height": 1940
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.sc.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.next",
+        "semanticRef": "node.fs.sc.next",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1230,
+          "y": 190,
+          "width": 1120,
+          "height": 1940
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.sc.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.patterns",
+        "semanticRef": "node.fs.sc.patterns",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 2390,
+          "y": 190,
+          "width": 1010,
+          "height": 1940
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.sc.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.complex",
+        "semanticRef": "portal.fs.sc.complex",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3440,
+          "y": 300,
+          "width": 390,
+          "height": 150
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.connected-devices",
+        "semanticRef": "reference.fs.sc.connected-devices",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 3440,
+          "y": 600,
+          "width": 390,
+          "height": 200
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s01",
+        "semanticRef": "process.fs.sc.s01",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 260,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s02",
+        "semanticRef": "process.fs.sc.s02",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 450,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s03",
+        "semanticRef": "process.fs.sc.s03",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 640,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s04",
+        "semanticRef": "process.fs.sc.s04",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 830,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s05",
+        "semanticRef": "process.fs.sc.s05",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1020,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s06",
+        "semanticRef": "process.fs.sc.s06",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1210,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s07",
+        "semanticRef": "process.fs.sc.s07",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1400,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s08",
+        "semanticRef": "process.fs.sc.s08",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1590,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s09",
+        "semanticRef": "process.fs.sc.s09",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 120,
+          "y": 1780,
+          "width": 1020,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.first",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s10",
+        "semanticRef": "process.fs.sc.s10",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 250,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s11",
+        "semanticRef": "process.fs.sc.s11",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 415,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s12",
+        "semanticRef": "process.fs.sc.s12",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 580,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s13",
+        "semanticRef": "process.fs.sc.s13",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 745,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s14",
+        "semanticRef": "process.fs.sc.s14",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 910,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s15",
+        "semanticRef": "process.fs.sc.s15",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 1075,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s16",
+        "semanticRef": "process.fs.sc.s16",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 1240,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s17",
+        "semanticRef": "process.fs.sc.s17",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 1405,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s18",
+        "semanticRef": "process.fs.sc.s18",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 1570,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s19",
+        "semanticRef": "process.fs.sc.s19",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 1735,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.s20",
+        "semanticRef": "process.fs.sc.s20",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1280,
+          "y": 1900,
+          "width": 1020,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.next",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p1",
+        "semanticRef": "reference.fs.sc.p1",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 260,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p2",
+        "semanticRef": "reference.fs.sc.p2",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 435,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p3",
+        "semanticRef": "reference.fs.sc.p3",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 610,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p4",
+        "semanticRef": "reference.fs.sc.p4",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 785,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p5",
+        "semanticRef": "reference.fs.sc.p5",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 960,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p6",
+        "semanticRef": "reference.fs.sc.p6",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 1135,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p7",
+        "semanticRef": "reference.fs.sc.p7",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 1310,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p8",
+        "semanticRef": "reference.fs.sc.p8",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 1485,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p9",
+        "semanticRef": "reference.fs.sc.p9",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 1660,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.sc.p10",
+        "semanticRef": "reference.fs.sc.p10",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2440,
+          "y": 1835,
+          "width": 910,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.sc.patterns",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+      "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+      "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+    ]
+  }
+}
