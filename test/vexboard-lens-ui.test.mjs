@@ -189,7 +189,7 @@ test('the Lens derives expressions from source realization for every Screen', ()
 
 test('source-derived expressions are an unconditional top-level Lens dimension', () => {
   assert.match(page, /grid-template-rows:auto auto auto minmax\(0,1fr\) auto/, 'the expression rail owns one top-level row');
-  assert.match(page, /root\.append\(renderBar\(\), renderAtlas\(\), renderExpressionRail\(\), main, renderTray\(\)\)/, 'every Screen receives a source expression rail, so main never falls into an auto row');
+  assert.match(page, /root\.append\([\s\S]*guardedRender\('Header',renderBar\)[\s\S]*guardedRender\('Screen walk \/ Atlas',renderAtlas\)[\s\S]*guardedRender\('Expressions',renderExpressionRail\)[\s\S]*main[\s\S]*guardedRender\('Inspector',renderTray\)/, 'every Screen receives a source expression rail even when local regions degrade behind diagnostic boundaries');
   assert.doesNotMatch(page, /const expressionRail = renderExpressionRail\(\);\s*if \(expressionRail\)/, 'the rail is not conditional on a two-Screen fixture registry');
   assert.match(page, /function renderPhone\(expression, \{ interactive \}\)/);
   assert.match(page, /function renderStructure\(\)[\s\S]*const expression = activeExpression\(\)/);
@@ -462,7 +462,7 @@ test('selected identities recurse into their active projected realization relati
 
 
 test('legacy Lens shorthand resolves in the canonical Lens directory', () => {
-  assert.match(page, /return \/\^\[\^\/\]\+\\\.json\$\/i\.test\(requested\)\?LENS_DIR\+requested:requested;/);
+  assert.ok(page.includes("return /^[^/]+\\.json$/i.test(requested)?LENS_DIR+requested:requested;"));
   assert.match(page, /lens must be a relative \\.json path on this site/);
 });
 
