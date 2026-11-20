@@ -12,7 +12,7 @@ repository
   repo.vexstream-music
 
 main
-  df0ffba4020b7ba7d5dff628ffabce9bf0a9163f
+  26a565d94a76860c4def02c6227286cd50caa531
 
 formation baseline
   2b745e0a3f5e63e05dfa0cf25b0fac729c00f0c8
@@ -457,3 +457,86 @@ Source/Home, Library/Songs, Library/Albums, Library/Artists.
 
 Nested selection/detail/editor states remain distinct audit terrain rather than being implicitly claimed
 by the root Library expression.
+
+
+## Dynamic presentation identity — current merged result
+
+Current VexStream main now carries the first browser-native proof of the same presentation-continuity
+law already exercised by Android Vex Compose, without importing Compose or creating a VexBoard-owned
+runtime registry.
+
+~~~text
+PR #31
+main 26a565d94a76860c4def02c6227286cd50caa531
+
+portable mechanics
+  v2/web/foundation/identity.js
+
+Playlist identity owner
+  v2/web/features/playlists/presentation.js
+~~~
+
+Identity classification:
+
+~~~text
+Playlist card
+  durable playlist.id
+  -> STABLE_INSTANCE
+
+Playlist detail entry
+  playlist.id + track ref + occurrence-within-playlist
+  -> CURRENT_OCCURRENCE
+
+nested presentation controls
+  -> DERIVED_CHILD(parent runtime ref, local path)
+~~~
+
+`CURRENT_OCCURRENCE` is deliberate. Current Product source permits duplicate track refs and reorder but
+does not own a durable Playlist-entry ID. The projection therefore does not turn current position into
+durable domain truth.
+
+The exported Lens now contains:
+
+~~~text
+79 static/addressable elements
+13 semantic pathways
+6 presence relationships
+2 runtime population templates
+
+template.vexstream.playlists.card
+  RUNTIME_INSTANCE / STABLE_INSTANCE
+
+template.vexstream.playlists.detail-entry
+  RUNTIME_INSTANCE / CURRENT_OCCURRENCE
+~~~
+
+No live runtime Playlist IDs are present in the committed Lens. VexBoard receives formation contracts,
+not a fabricated runtime snapshot.
+
+Cross-consumer proof at the current architecture boundary:
+
+~~~text
+VexStream Product/exporter   42 / 42 PASS
+VexWork shared consumer     113 / 113 PASS
+Windows final-head artifact PASS
+~~~
+
+The generic Screen Lens contract now carries optional identity genealogy rather than Product-specific
+reader behavior. Existing source-owned IDs remain valid as-is; the shared law is the derivation
+relationship, not one required string namespace.
+
+### Remaining trajectory
+
+~~~text
+lived acceptance          RUNNING
+full-product Stable       NOT CLAIMED
+
+remaining bounded pressure includes
+  Deleted terrain
+  nested Library states
+  YouTube Import review
+  other runtime populations when their identity/relationship enters admitted scope
+~~~
+
+Do not expand every latent row merely to exercise the new grammar. The next admitted Product state
+should pressure the shared law only where a real lived relationship requires it.
