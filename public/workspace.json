@@ -16012,7 +16012,9 @@
           "github.commit.vexlife-android.ecbb6987d1da338fa0adf7297456d3f652f04155",
           "artifact.vexlife-prod.a022.host-lifetime.return.sha256.ac1a135a780aa737b5c06267af38bf5e707713545c3ecfd181a78bda741a21fa",
           "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5",
-          "human.witness.vexlife-prod.manifestation-parity-gap.20261106"
+          "human.witness.vexlife-prod.manifestation-parity-gap.20261106",
+          "projects/vexlife-new-beginnings/VEXLIFE-FRESH-INSTANCE-FEATURE.md",
+          "github.pull.vexwork.316"
         ],
         "formedAt": "2026-11-02T02:28:00.000Z"
       },
@@ -16273,6 +16275,36 @@
           ]
         },
         {
+          "workRef": "work.vexlife.new-beginnings.fresh-instance",
+          "label": "Later — start a fresh Conversation with fresh working context",
+          "purpose": "Preserve a cheap reversible Start fresh feature that forms/selects a new canonical Conversation thread with no prior-thread Conversation tail resident by default, while keeping Home, person settings, accepted Memory/semantic continuity and bounded historical reach under their rightful owners. Measure responsiveness rather than attributing latency to thread length by assumption.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-new-beginnings/VEXLIFE-FRESH-INSTANCE-FEATURE.md",
+            "github.pull.vexwork.316",
+            "project.vexlife.memory-depth-exploration",
+            "github.pull.vexwork.310",
+            "github.pull.vexwork.318"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T10:49:09.000Z",
+          "updatedAt": "2026-11-20T13:51:11.243Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
           "label": "Later — source-map Settings capabilities",
           "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
@@ -16465,6 +16497,7 @@
           "childWorkRefs": [
             "work.vexlife.new-beginnings.evolution-live-bridge",
             "work.vexlife.new-beginnings.experience-manifestation-parity",
+            "work.vexlife.new-beginnings.fresh-instance",
             "work.vexlife.new-beginnings.later.settings-capability-mapping",
             "work.vexlife.new-beginnings.local-runtime-foundation",
             "work.vexlife.new-beginnings.normal-browser-provider",
@@ -17616,6 +17649,7 @@
           "laneRef": "lane.work.intake",
           "label": "Intake",
           "workRefs": [
+            "work.vexlife.new-beginnings.fresh-instance",
             "work.vexlife.new-beginnings.later.settings-capability-mapping"
           ]
         },
@@ -17690,12 +17724,12 @@
         }
       ],
       "summary": {
-        "workItemCount": 21,
-        "openWorkItemCount": 7,
+        "workItemCount": 22,
+        "openWorkItemCount": 8,
         "outcomeCount": 1,
         "taskCount": 19,
         "defectCount": 0,
-        "potentialCount": 1,
+        "potentialCount": 2,
         "needsHumanCount": 0,
         "completedCount": 14
       },
@@ -17712,6 +17746,7 @@
           "childWorkRefs": [
             "work.vexlife.new-beginnings.evolution-live-bridge",
             "work.vexlife.new-beginnings.experience-manifestation-parity",
+            "work.vexlife.new-beginnings.fresh-instance",
             "work.vexlife.new-beginnings.later.settings-capability-mapping",
             "work.vexlife.new-beginnings.local-runtime-foundation",
             "work.vexlife.new-beginnings.normal-browser-provider",
@@ -28266,6 +28301,37 @@
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexlife.new-beginnings.fresh-instance",
+        "label": "Later — start a fresh Conversation with fresh working context",
+        "purpose": "Preserve a cheap reversible Start fresh feature that forms/selects a new canonical Conversation thread with no prior-thread Conversation tail resident by default, while keeping Home, person settings, accepted Memory/semantic continuity and bounded historical reach under their rightful owners. Measure responsiveness rather than attributing latency to thread length by assumption.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXLIFE-FRESH-INSTANCE-FEATURE.md",
+          "github.pull.vexwork.316",
+          "project.vexlife.memory-depth-exploration",
+          "github.pull.vexwork.310",
+          "github.pull.vexwork.318"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-18T10:49:09.000Z",
+        "updatedAt": "2026-11-20T13:51:11.243Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
       {
         "workRef": "work.vexlife.application-level-settings.home-management",
         "label": "Home management affordances",

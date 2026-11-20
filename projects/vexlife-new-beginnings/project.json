@@ -108,7 +108,9 @@
     "github.commit.vexlife-android.ecbb6987d1da338fa0adf7297456d3f652f04155",
     "artifact.vexlife-prod.a022.host-lifetime.return.sha256.ac1a135a780aa737b5c06267af38bf5e707713545c3ecfd181a78bda741a21fa",
     "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5",
-    "human.witness.vexlife-prod.manifestation-parity-gap.20261106"
+    "human.witness.vexlife-prod.manifestation-parity-gap.20261106",
+    "projects/vexlife-new-beginnings/VEXLIFE-FRESH-INSTANCE-FEATURE.md",
+    "github.pull.vexwork.316"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
