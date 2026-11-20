@@ -131,6 +131,39 @@
         ]
       },
       "boards": []
+    },
+    {
+      "subjectRef": "subject.vexstream-music",
+      "slug": "vexstream-music",
+      "label": "VexStream Music",
+      "summary": "The VexStream desktop Product projected from its Product-owned Screen Lens exporter into the shared VexBoard renderer. Main is projectable now; Stable remains unaccepted until lived review earns promotion.",
+      "repositoryRef": "repo.vexstream-music",
+      "repository": {
+        "url": "https://github.com/vgong24/VexstreamMusic",
+        "defaultBranch": "main"
+      },
+      "vexworkProjectRefs": [
+        "project.vexstream-music.projectability",
+        "project.vexboard"
+      ],
+      "lens": {
+        "status": "CANDIDATE",
+        "exportedLens": "v2/projection/vexboard-screen-lens.json",
+        "anyCommit": true,
+        "builds": [
+          {
+            "buildRef": "main",
+            "label": "Main",
+            "summary": "Current Product-owned VexStream Screen Lens on main; not yet promoted to accepted Stable.",
+            "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+            "branch": "main",
+            "lens": "vexstream-music.main.screen-lens.json",
+            "observedAt": "2026-11-20",
+            "sourceBlobSha1": "a485bcbaaf290e2e539be58743074b016fede330"
+          }
+        ]
+      },
+      "boards": []
     }
   ],
   "trials": []
