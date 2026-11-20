@@ -1,0 +1,29 @@
+name: VexBoard Current-Main R2 Foundation Proof
+
+on:
+  push:
+    branches:
+      - currentize/vexboard-realization-topology-current-main-r2-20261120
+    paths:
+      - '.github/workflows/vexboard-current-main-r2-foundation-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Currentness checks
+        run: |
+          npm run project-registry:check
+          npm run workgraph:check
+          npm run workspace:check
+          npm run dashboard:check
+          npm run check
+      - name: VexBoard regression floor
+        run: node --test test/vexboard*.test.mjs
