@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 28,
+  "projectRegistryVersion": 29,
   "projects": [
     {
       "project": {
@@ -23275,6 +23275,428 @@
               "createdAt": "2026-11-13T09:09:08.000Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexboard.projection-consolidation",
+        "label": "VexBoard Projection Consolidation",
+        "purpose": "Consolidate VexBoard Screen Lens projection across Android, VexLife-Prod and future platforms so one generic source-shaped projection grammar serves materially different products, while source-owned meaning, presentation content, currentness and legitimately different platform manifestations remain with their rightful owners instead of becoming duplicated VexBoard interfaces.",
+        "rootWorkRefs": [
+          "work.vexboard.projection-consolidation.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android",
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexboard-projection-consolidation/README.md",
+          "project.vexboard",
+          "work.vexboard.source-projectors",
+          "project.vexarchitecture.vexboard-sync.20261113",
+          "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+          "projects/vexboard/SCREEN-LENS.md",
+          "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+          "github.pull.vexwork.366",
+          "github.pull.vexwork.367",
+          "github.pull.vexwork.368",
+          "github.pull.vexlife-prod.437",
+          "repo.vexlife-android:architecture/vexarchitecture/README.md",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt"
+        ],
+        "formedAt": "2026-11-20T11:44:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexboard.projection-consolidation.board",
+      "items": [
+        {
+          "workRef": "work.vexboard.projection-consolidation.current-divergence-map",
+          "label": "Map current Android / Product projection divergence",
+          "purpose": "Re-ground current merged VexWork, VexLife-Android and VexLife-Prod source and produce one evidence matrix that classifies each projection difference as source-earned product/platform meaning, producer implementation detail, generic VexBoard behavior, or accidental duplicated convention. Consume the existing Android VexArchitecture/VexBoard audit instead of redoing it. Do not refactor before this classification exists.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.projection-consolidation.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexboard-projection-consolidation/README.md",
+            "project.vexboard",
+            "work.vexboard.source-projectors",
+            "project.vexarchitecture.vexboard-sync.20261113",
+            "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+            "projects/vexboard/SCREEN-LENS.md",
+            "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+            "src/shared/vexboard-screen-lens.mjs",
+            "src/shared/vexboard-screen-lens-realization.mjs",
+            "src/shared/vexboard-screen-lens-source-expressions.mjs",
+            "src/core/vexboard-screen-lens-android-adapter.mjs",
+            "vexboard/lens.html",
+            "github.pull.vexwork.366",
+            "github.pull.vexwork.367",
+            "github.pull.vexwork.368",
+            "github.pull.vexlife-prod.437"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-20T11:44:00.000Z",
+          "updatedAt": "2026-11-20T11:44:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.projection-consolidation.lived-acceptance",
+          "label": "Lived cross-platform acceptance and Stable/Main closure",
+          "purpose": "Prove exact producer output through VexBoard normalization, expressions and browser rendering for Android and VexLife-Prod; verify source-owned content, container visibility, navigation and Behavior/Depth continuity; preserve Stable as explicit human acceptance and Main as current observed source. Complete only after both products remain recognizable and no platform-specific reader fork is required.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.projection-consolidation.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.projection-consolidation.multi-platform-conformance"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexboard-projection-consolidation/README.md",
+            "project.vexboard",
+            "work.vexboard.source-projectors",
+            "project.vexarchitecture.vexboard-sync.20261113",
+            "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+            "projects/vexboard/SCREEN-LENS.md",
+            "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+            "src/shared/vexboard-screen-lens.mjs",
+            "src/shared/vexboard-screen-lens-realization.mjs",
+            "src/shared/vexboard-screen-lens-source-expressions.mjs",
+            "src/core/vexboard-screen-lens-android-adapter.mjs",
+            "vexboard/lens.html",
+            "github.pull.vexwork.366",
+            "github.pull.vexwork.367",
+            "github.pull.vexwork.368",
+            "github.pull.vexlife-prod.437"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-20T11:44:00.000Z",
+          "updatedAt": "2026-11-20T11:44:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.projection-consolidation.multi-platform-conformance",
+          "label": "Prove multi-platform projection conformance",
+          "purpose": "Exercise Android and VexLife-Prod as materially different consumers of the same generic reader contract and add a neutral third-subject/shape fixture that proves a future platform can reuse an admitted realization shape without adding a platform-name branch. If a genuinely new shape is required, earn one generic extension and keep both existing products green.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.projection-consolidation.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.projection-consolidation.producer-contract",
+            "work.vexboard.projection-consolidation.realization-convergence"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexboard-projection-consolidation/README.md",
+            "project.vexboard",
+            "work.vexboard.source-projectors",
+            "project.vexarchitecture.vexboard-sync.20261113",
+            "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+            "projects/vexboard/SCREEN-LENS.md",
+            "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+            "src/shared/vexboard-screen-lens.mjs",
+            "src/shared/vexboard-screen-lens-realization.mjs",
+            "src/shared/vexboard-screen-lens-source-expressions.mjs",
+            "src/core/vexboard-screen-lens-android-adapter.mjs",
+            "vexboard/lens.html",
+            "github.pull.vexwork.366",
+            "github.pull.vexwork.367",
+            "github.pull.vexwork.368",
+            "github.pull.vexlife-prod.437"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-20T11:44:00.000Z",
+          "updatedAt": "2026-11-20T11:44:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.projection-consolidation.outcome",
+          "label": "VexBoard Projection Consolidation",
+          "purpose": "Make Screen Lens scale across materially different products by consolidating accidental Android/Product projection divergence behind one source-shaped producer and reader grammar, while preserving source-earned differences and avoiding a universal renderer rewrite.",
+          "workClass": "OUTCOME",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexboard.projection-consolidation.current-divergence-map",
+            "work.vexboard.projection-consolidation.lived-acceptance",
+            "work.vexboard.projection-consolidation.multi-platform-conformance",
+            "work.vexboard.projection-consolidation.producer-contract",
+            "work.vexboard.projection-consolidation.realization-convergence"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexboard-projection-consolidation/README.md",
+            "project.vexboard",
+            "work.vexboard.source-projectors",
+            "project.vexarchitecture.vexboard-sync.20261113",
+            "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+            "projects/vexboard/SCREEN-LENS.md",
+            "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+            "src/shared/vexboard-screen-lens.mjs",
+            "src/shared/vexboard-screen-lens-realization.mjs",
+            "src/shared/vexboard-screen-lens-source-expressions.mjs",
+            "src/core/vexboard-screen-lens-android-adapter.mjs",
+            "vexboard/lens.html",
+            "github.pull.vexwork.366",
+            "github.pull.vexwork.367",
+            "github.pull.vexwork.368",
+            "github.pull.vexlife-prod.437"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-20T11:44:00.000Z",
+          "updatedAt": "2026-11-20T11:44:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.projection-consolidation.producer-contract",
+          "label": "Converge the Screen Lens producer contract",
+          "purpose": "Use the divergence map to make native exporters and source adapters converge on one truthful vexboard.screen-lens/v1 producer boundary: shared semantic coordinates, realization facts, presentation/currentness provenance and bindings where earned. Keep producer implementation location platform-appropriate; do not create a plugin framework or move ownership merely for symmetry.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.projection-consolidation.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.projection-consolidation.current-divergence-map"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexboard-projection-consolidation/README.md",
+            "project.vexboard",
+            "work.vexboard.source-projectors",
+            "project.vexarchitecture.vexboard-sync.20261113",
+            "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+            "projects/vexboard/SCREEN-LENS.md",
+            "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+            "src/shared/vexboard-screen-lens.mjs",
+            "src/shared/vexboard-screen-lens-realization.mjs",
+            "src/shared/vexboard-screen-lens-source-expressions.mjs",
+            "src/core/vexboard-screen-lens-android-adapter.mjs",
+            "vexboard/lens.html",
+            "github.pull.vexwork.366",
+            "github.pull.vexwork.367",
+            "github.pull.vexwork.368",
+            "github.pull.vexlife-prod.437"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-20T11:44:00.000Z",
+          "updatedAt": "2026-11-20T11:44:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.projection-consolidation.realization-convergence",
+          "label": "Consolidate generic realization behavior",
+          "purpose": "Make VexBoard select Surface/Structure realization from source-authored facts such as static view, frame/layout, compact hierarchy, presence and interaction/state bindings rather than product/platform identity. Remove duplicated support UI or platform branches only where the divergence map proves the same meaning; preserve alignment != sameness, source-owned words/icons, and generic container/scroll ownership.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.projection-consolidation.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.projection-consolidation.producer-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexboard-projection-consolidation/README.md",
+            "project.vexboard",
+            "work.vexboard.source-projectors",
+            "project.vexarchitecture.vexboard-sync.20261113",
+            "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+            "projects/vexboard/SCREEN-LENS.md",
+            "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+            "src/shared/vexboard-screen-lens.mjs",
+            "src/shared/vexboard-screen-lens-realization.mjs",
+            "src/shared/vexboard-screen-lens-source-expressions.mjs",
+            "src/core/vexboard-screen-lens-android-adapter.mjs",
+            "vexboard/lens.html",
+            "github.pull.vexwork.366",
+            "github.pull.vexwork.367",
+            "github.pull.vexwork.368",
+            "github.pull.vexlife-prod.437"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-20T11:44:00.000Z",
+          "updatedAt": "2026-11-20T11:44:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexboard.projection-consolidation.lived-acceptance",
+            "work.vexboard.projection-consolidation.multi-platform-conformance",
+            "work.vexboard.projection-consolidation.producer-contract",
+            "work.vexboard.projection-consolidation.realization-convergence"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vexboard.projection-consolidation.current-divergence-map",
+            "work.vexboard.projection-consolidation.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 6,
+        "openWorkItemCount": 6,
+        "outcomeCount": 1,
+        "taskCount": 5,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexboard.projection-consolidation.outcome",
+          "label": "VexBoard Projection Consolidation",
+          "purpose": "Make Screen Lens scale across materially different products by consolidating accidental Android/Product projection divergence behind one source-shaped producer and reader grammar, while preserving source-earned differences and avoiding a universal renderer rewrite.",
+          "workClass": "OUTCOME",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexboard.projection-consolidation.current-divergence-map",
+            "work.vexboard.projection-consolidation.lived-acceptance",
+            "work.vexboard.projection-consolidation.multi-platform-conformance",
+            "work.vexboard.projection-consolidation.producer-contract",
+            "work.vexboard.projection-consolidation.realization-convergence"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexboard-projection-consolidation/README.md",
+            "project.vexboard",
+            "work.vexboard.source-projectors",
+            "project.vexarchitecture.vexboard-sync.20261113",
+            "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+            "projects/vexboard/SCREEN-LENS.md",
+            "projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md",
+            "src/shared/vexboard-screen-lens.mjs",
+            "src/shared/vexboard-screen-lens-realization.mjs",
+            "src/shared/vexboard-screen-lens-source-expressions.mjs",
+            "src/core/vexboard-screen-lens-android-adapter.mjs",
+            "vexboard/lens.html",
+            "github.pull.vexwork.366",
+            "github.pull.vexwork.367",
+            "github.pull.vexwork.368",
+            "github.pull.vexlife-prod.437"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-20T11:44:00.000Z",
+          "updatedAt": "2026-11-20T11:44:00.000Z",
+          "transitionHistory": []
         }
       ]
     }
