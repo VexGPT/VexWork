@@ -52,7 +52,7 @@ const humanize = (symbol) => {
   return words.map((word, i) => (i ? word.toLowerCase() : word)).join(' ');
 };
 const localOf = (symbol) => String(symbol ?? '').split('.').pop();
-const regexLiteral = (value) => String(value ?? '').replace(/[.*+?^${}()|[\]\\]/g, '\\const localOf = (symbol) => String(symbol ?? '').split('.').pop();');
+const regexLiteral = (value) => String(value ?? '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 // The name a person would use: the registered label, unless it is a bare kind word ("Sheet"),
 // then the source symbol that declares it ("FullPlayerSheet" → "Full player sheet").
