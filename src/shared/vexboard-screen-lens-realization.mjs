@@ -23,6 +23,7 @@
 // Pure and effect-free: no storage, no network, no clock. Scenario state is a value the caller owns.
 
 import { BOARD_CONDITION_STATES } from './vexboard-simulation.mjs';
+import { normalizeInstanceIdentityContract } from './vexboard-screen-lens-identity.mjs';
 
 export const PRESENCE_KINDS = Object.freeze(['PRESENTATION', 'SELECTION', 'POPULATION', 'BRANCH', 'CASES', 'ALTERNATIVE']);
 export const PRESENCE_STATES = Object.freeze({
@@ -104,6 +105,7 @@ export function normalizeScreenRealization(input, { screenRef, knownRefs }) {
     source: optional(template.source),
     summary: optional(template.summary),
     instanceFormation: optional(template.instanceFormation),
+    instanceIdentity: normalizeInstanceIdentityContract(template.instanceIdentity, `${template.ref} instance identity`),
     realizes: Object.freeze(list(template.realizes).map((ref) => known(ref, `${template.ref} realizes`))),
     usedBy: Object.freeze(list(template.usedBy).map((ref) => (presenceRefs.has(ref) ? ref : fail(`${template.ref} usedBy ${ref} is not a presence`)))),
     slots: Object.freeze(list(template.slots).map((slot) => Object.freeze({
@@ -113,6 +115,7 @@ export function normalizeScreenRealization(input, { screenRef, knownRefs }) {
       realizes: known(slot.realizes, `${template.ref} slot`),
       oneOf: slot.oneOf ? Object.freeze(slot.oneOf.map((ref) => known(ref, `${template.ref} slot oneOf`))) : null,
       instanceFormation: optional(slot.instanceFormation),
+      instanceIdentity: normalizeInstanceIdentityContract(slot.instanceIdentity, `${template.ref} slot instance identity`),
       depth: Number.isInteger(slot.depth) ? slot.depth : 0,
       condition: optional(slot.condition),
       alternative: optional(slot.alternative),
