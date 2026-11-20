@@ -7751,7 +7751,7 @@
           "label": "VexBoard Semantic Canvas",
           "purpose": "Create a reusable semantic-canvas foundation that can author new experience/process meaning and project existing source-owned truth through interactive, recursive, AI-addressable visual journeys.",
           "workClass": "OUTCOME",
-          "state": "DECOMPOSED",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": null,
@@ -7775,15 +7775,69 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.canvas-projection",
+            "work.vexboard.boardjourney-simulation",
+            "work.vexboard.usability-refinement",
+            "work.vexboard.source-projectors",
+            "work.vexboard.fractal-semantic-composition-spatial-layout",
+            "work.vexboard.vexstream-screenshot-pilot",
+            "github.pull.vexwork.276",
+            "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T08:14:00.011Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.outcome.decomposed.plan-validated.currentness-20261120",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "The Project is beyond decomposition: BoardGraph, Canvas Projection, BoardJourney/simulation, usability refinement and VexSync architecture convergence are accepted foundations, so the parent outcome has a validated executable structure.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "work.vexboard.canvas-projection",
+                "work.vexboard.boardjourney-simulation",
+                "work.vexboard.usability-refinement",
+                "work.vexboard.vexsync-architecture-convergence"
+              ],
+              "createdAt": "2026-11-20T08:14:00.009Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.outcome.plan-validated.ready.currentness-20261120",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Accepted foundations released real continuation work: BoardPatch is dependency-ready and the source-projector / living-Origin paths have concrete admitted source relationships rather than remaining conceptual Project decomposition.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexboard.boardpatch-authoring",
+                "work.vexboard.source-projectors",
+                "work.vexboard.vexstream-screenshot-pilot",
+                "projects/vexboard/README.md"
+              ],
+              "createdAt": "2026-11-20T08:14:00.010Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.outcome.ready.running.currentness-20261120",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "VexBoard is actively carrying current source-projector/lived-comparison, fractal semantic composition and VexStream living-Origin work. Preserve those unfinished child boundaries while making the parent lifecycle reflect active Project execution.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexboard.source-projectors",
+                "work.vexboard.fractal-semantic-composition-spatial-layout",
+                "work.vexboard.vexstream-screenshot-pilot",
+                "github.pull.vexwork.276",
+                "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+              ],
+              "createdAt": "2026-11-20T08:14:00.011Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.project-architecture",
@@ -8572,7 +8626,6 @@
           "laneRef": "lane.work.intake",
           "label": "Intake",
           "workRefs": [
-            "work.vexboard.outcome",
             "work.vexboard.later.businessfactory-guided-company-formation",
             "work.vexboard.later.screen-lens-scenario-playground",
             "work.vexboard.tech-debt.origin-rename-propagation",
@@ -8598,6 +8651,7 @@
             "work.vexboard.screen-lens-realization-recovery",
             "work.vexboard.vexstream-screenshot-pilot",
             "work.vexboard.fractal-semantic-composition-spatial-layout",
+            "work.vexboard.outcome",
             "work.vexboard.source-projectors"
           ]
         },
@@ -8658,7 +8712,7 @@
           "label": "VexBoard Semantic Canvas",
           "purpose": "Create a reusable semantic-canvas foundation that can author new experience/process meaning and project existing source-owned truth through interactive, recursive, AI-addressable visual journeys.",
           "workClass": "OUTCOME",
-          "state": "DECOMPOSED",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": null,
@@ -8682,15 +8736,69 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.canvas-projection",
+            "work.vexboard.boardjourney-simulation",
+            "work.vexboard.usability-refinement",
+            "work.vexboard.source-projectors",
+            "work.vexboard.fractal-semantic-composition-spatial-layout",
+            "work.vexboard.vexstream-screenshot-pilot",
+            "github.pull.vexwork.276",
+            "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T08:14:00.011Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.outcome.decomposed.plan-validated.currentness-20261120",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "The Project is beyond decomposition: BoardGraph, Canvas Projection, BoardJourney/simulation, usability refinement and VexSync architecture convergence are accepted foundations, so the parent outcome has a validated executable structure.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "work.vexboard.canvas-projection",
+                "work.vexboard.boardjourney-simulation",
+                "work.vexboard.usability-refinement",
+                "work.vexboard.vexsync-architecture-convergence"
+              ],
+              "createdAt": "2026-11-20T08:14:00.009Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.outcome.plan-validated.ready.currentness-20261120",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Accepted foundations released real continuation work: BoardPatch is dependency-ready and the source-projector / living-Origin paths have concrete admitted source relationships rather than remaining conceptual Project decomposition.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexboard.boardpatch-authoring",
+                "work.vexboard.source-projectors",
+                "work.vexboard.vexstream-screenshot-pilot",
+                "projects/vexboard/README.md"
+              ],
+              "createdAt": "2026-11-20T08:14:00.010Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.outcome.ready.running.currentness-20261120",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "VexBoard is actively carrying current source-projector/lived-comparison, fractal semantic composition and VexStream living-Origin work. Preserve those unfinished child boundaries while making the parent lifecycle reflect active Project execution.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexboard.source-projectors",
+                "work.vexboard.fractal-semantic-composition-spatial-layout",
+                "work.vexboard.vexstream-screenshot-pilot",
+                "github.pull.vexwork.276",
+                "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+              ],
+              "createdAt": "2026-11-20T08:14:00.011Z"
+            }
+          ]
         }
       ]
     },
