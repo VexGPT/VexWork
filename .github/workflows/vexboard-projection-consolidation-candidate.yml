@@ -1,0 +1,37 @@
+name: Projection Consolidation Candidate Proof
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'projects/vexboard-projection-consolidation/**'
+      - 'projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md'
+      - 'projects/vexboard/README.md'
+      - 'projects/vexboard/PROJECTS-AND-BUILDS.md'
+      - 'test/vexboard-screen-lens-conformance.test.mjs'
+      - 'test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json'
+      - '.github/workflows/vexboard-projection-consolidation-candidate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Cross-project conformance and regression floor
+        run: |
+          node --test \
+            test/vexboard-screen-lens-conformance.test.mjs \
+            test/vexboard-screen-lens.test.mjs \
+            test/vexboard-screen-lens-realization.test.mjs \
+            test/vexboard-screen-lens-source-expressions.test.mjs \
+            test/vexboard-screen-lens-frames.test.mjs \
+            test/vexboard-lens-ui.test.mjs
+      - name: Offline Lens build verification
+        run: npm run lens:verify
