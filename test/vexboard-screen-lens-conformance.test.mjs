@@ -236,7 +236,7 @@ test('VexStream bounded Playlists list/create terrain is expressed through the s
   assert.equal(vexstream.pathways.length, 7, 'Playlists terrain admission does not invent semantic pathways');
   assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.playlists.create.name'));
   assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.playlists.create'));
-  assert.ok(screen.realization.held.some((value) => /Playlist detail/.test(value)));
+  assert.ok(screen.realization.held.some((value) => /playlist detail/i.test(value)), 'selected-playlist detail remains explicitly held');
   assert.ok((screen.view?.stateBindings ?? []).some((binding) =>
     binding.presenceRef === shellRef && binding.value === PLAYLISTS
   ));
