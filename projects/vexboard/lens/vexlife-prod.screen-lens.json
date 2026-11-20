@@ -18,9 +18,7 @@
     "notes": [
       "Exported by vexlife.lens.VexLifeProdScreenLens; VexWork pins the commit.",
       "Element labels are Blueprint ids made readable. Visible copy is dynamic and owned by each Family's DisplayState."
-    ],
-    "commit": "14206ba97e47e107c4999e89f514c8beaf24224a",
-    "observedAt": "2026-11-20"
+    ]
   },
   "chrome": [],
   "screens": [
