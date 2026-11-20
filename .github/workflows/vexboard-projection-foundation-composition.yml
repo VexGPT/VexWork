@@ -1,0 +1,34 @@
+name: Projection Foundation Composition Proof
+
+on:
+  pull_request:
+    branches:
+      - currentize/vexboard-realization-topology-on-sync-20261120
+    paths:
+      - 'projects/vexboard/**'
+      - 'projects/vexboard-projection-consolidation/**'
+      - 'test/vexboard-lens-ui.test.mjs'
+      - 'test/vexboard-screen-lens*.test.mjs'
+      - 'test/fixtures/screen-lens/**'
+      - '.github/workflows/vexboard-projection-foundation-composition.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  composed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Composed projection foundation
+        run: |
+          node --test \
+            test/vexboard-lens-ui.test.mjs \
+            test/vexboard-screen-lens.test.mjs \
+            test/vexboard-screen-lens-realization.test.mjs \
+            test/vexboard-screen-lens-source-expressions.test.mjs \
+            test/vexboard-screen-lens-frames.test.mjs \
+            test/vexboard-screen-lens-conformance.test.mjs
