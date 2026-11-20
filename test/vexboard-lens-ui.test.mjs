@@ -29,12 +29,15 @@ test('flip gestures: right-click flips either side, Shift preserves the browser 
   assert.match(page, /role: 'tab'/);
 });
 
-test('graph wheel zooms at the pointer while drag remains the pan gesture', () => {
+test('graph engagement yields ordinary vertical scroll to an enclosing stacked flow', () => {
   assert.match(page, /addEventListener\('wheel'/);
+  assert.match(page, /const stackedFlow = pairLayout\(\) === 'stacked'/);
+  assert.match(page, /const explicitZoom = event\.ctrlKey \|\| event\.metaKey \|\| Math\.abs\(event\.deltaX\) > Math\.abs\(event\.deltaY\) \* 1\.2/);
+  assert.match(page, /if \(stackedFlow && !explicitZoom\) return;/, 'ordinary vertical wheel belongs to the enclosing page flow when the pair is stacked');
   assert.match(page, /const delta = Math\.abs\(event\.deltaY\) >= Math\.abs\(event\.deltaX\) \? event\.deltaY : event\.deltaX/);
   assert.match(page, /zoomFace\(face, Math\.exp\(-delta \* 0\.0022\), \{ x: event\.clientX - rect\.left, y: event\.clientY - rect\.top \}\)/);
   assert.doesNotMatch(page, /camera\.x - dx/);
-  assert.match(page, /Drag to pan\. Scroll to zoom at the pointer/);
+  assert.match(page, /In split view, scroll zooms at the pointer\. In stacked flow, vertical scroll continues the page/);
 });
 
 test('graph cards reserve and expose up to three title and summary lines', () => {
@@ -221,7 +224,7 @@ test('expression carousel preserves the lived desktop and phone-width interactio
 });
 
 test('Structure keeps a real scroll boundary and viewport continuity while bridge geometry follows it', () => {
-  assert.match(page, /\.structure\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;/);
+  assert.match(page, /\.structure\{flex:1;min-height:0;overflow:auto;overscroll-behavior:auto;touch-action:pan-y;/, 'Structure owns its local viewport while allowing boundary scroll to continue to an enclosing flow');
   assert.match(page, /const kept = \{ phone: .* structure: document\.querySelector\('\.face\[data-face="STRUCTURE"\] \.structure'\)\?\.scrollTop \?\? 0 \}/);
   assert.match(page, /if \(structure\) structure\.scrollTop = kept\.structure;/);
   assert.match(page, /function replaceStructureFacePreservingViewport\(experience\)/);
@@ -290,7 +293,7 @@ test('lived usability gives the inspector a resizable attention boundary and mak
   assert.match(page, /\.lens\{display:grid;grid-template-rows:auto auto auto minmax\(0,1fr\) auto;height:100vh/, 'the inspector is a sibling grid row, not an overlay over the main Lens');
   assert.match(page, /\.tray\{position:relative;/, 'the inspector participates in layout instead of covering the main row');
   assert.doesNotMatch(page, /\.tray\{[^}]*position:absolute/, 'the inspector must not become an absolute overlay');
-  assert.match(page, /\.surface\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;/, 'when the inspector takes height, Surface owns scroll instead of clipping the Product');
+  assert.match(page, /\.surface\{flex:1;min-height:0;overflow:auto;overscroll-behavior:auto;scrollbar-gutter:stable;/, 'Surface keeps its local scroll viewport but yields at the boundary when an enclosing stacked flow owns continuation');
   assert.match(page, /\.product-view\{[^}]*min-height:420px/, 'the Product keeps a readable minimum rather than being compressed to satisfy the inspector');
   assert.match(page, /function wireTrayResize\(handle, tray\)/);
   assert.match(page, /role: 'separator'/);
