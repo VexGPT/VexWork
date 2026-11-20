@@ -24,7 +24,7 @@ import {
   sourceUrl,
 } from './vexboard-screen-lens.mjs';
 
-export const SEARCH_KINDS = Object.freeze(['ELEMENT', 'STEP', 'SCREEN', 'PATHWAY', 'NOTE']);
+export const SEARCH_KINDS = Object.freeze(['ELEMENT', 'STEP', 'SCREEN', 'PATHWAY', 'PRESENCE', 'EXAMPLE', 'NOTE']);
 export const DISPOSITION_LABELS = Object.freeze({
   SCAE_FAMILY: 'SCAE semantic owner',
   TYPED_PRESENTATION: 'Typed presentation',
@@ -85,6 +85,20 @@ export function targetFor(lens, kind, ref, currentScreenRef = null) {
       nodeRef: kind === 'STEP' ? ref : null,
     });
   }
+  if (kind === 'PRESENCE') {
+    const screen = lens.screens.find((entry) => entry.realization?.presence.some((presence) => presence.ref === ref));
+    if (!screen) fail(`unknown presence ${ref}`);
+    const presence = screen.realization.presence.find((entry) => entry.ref === ref);
+    const elementRef = presence.subjectRef && elementFor(lens, presence.subjectRef) ? presence.subjectRef : null;
+    return Object.freeze({ screenRef: screen.screenRef, elementRef, pathwayRef: null, nodeRef: null, presenceRef: ref });
+  }
+  if (kind === 'EXAMPLE') {
+    const example = (lens.examples ?? []).find((entry) => entry.ref === ref);
+    if (!example) fail(`unknown example ${ref}`);
+    const subjectScreen = example.subjectRef?.startsWith('screen.') ? example.subjectRef : example.subjectRef ? screensForElement(lens, example.subjectRef)[0] ?? null : null;
+    const screenRef = subjectScreen ?? example.screens[0] ?? lens.screens.find((screen) => example.rendered.some((symbol) => screen.realization?.realizers.includes(symbol)))?.screenRef ?? null;
+    return Object.freeze({ screenRef, elementRef: null, pathwayRef: null, nodeRef: null, exampleRef: ref });
+  }
   if (kind === 'NOTE') {
     const note = lens.annotations.find((annotation) => annotation.ref === ref);
     if (!note) fail(`unknown note ${ref}`);
@@ -113,6 +127,16 @@ function searchEntries(lens) {
     for (const node of pathway.nodes) {
       entries.push({ kind: 'STEP', ref: node.ref, role: node.role, label: node.label, detail: node.symbol ?? node.ref, ids: [node.ref, node.symbol], text: [node.label, sourcePath(lens, node.source), node.summary, node.code] });
     }
+  }
+  // Realization: one presence relationship and one source-authored example are each findable once.
+  for (const screen of lens.screens) {
+    for (const presence of screen.realization?.presence ?? []) {
+      const subject = presence.subjectRef ? (elementFor(lens, presence.subjectRef)?.label ?? presence.subjectRef) : presence.realizedBy ?? presence.ref;
+      entries.push({ kind: 'PRESENCE', ref: presence.ref, role: 'REALIZATION', label: `${subject} · ${presence.kind.toLowerCase()}`, detail: presence.condition ?? presence.items ?? presence.ref, ids: [presence.ref, presence.realizedBy, presence.owner, presence.templateRef, presence.list?.ref], text: [presence.condition, presence.items, presence.subject, ...presence.provenance.map((step) => step.expression), ...presence.choices.map((choice) => choice.condition)] });
+    }
+  }
+  for (const example of lens.examples ?? []) {
+    entries.push({ kind: 'EXAMPLE', ref: example.ref, role: null, label: example.label, detail: `${example.kind.toLowerCase()} · ${example.ref}`, ids: [example.ref, example.id, example.symbol, ...(example.fixture?.functions ?? [])], text: [example.label, example.summary, example.subjectHeld, ...example.steps.map((step) => step.target)] });
   }
   for (const note of lens.annotations) {
     entries.push({ kind: 'NOTE', ref: note.ref, role: null, label: note.text, detail: note.subjectRef, ids: [note.ref, note.subjectRef], text: [note.text, note.detail] });

@@ -159,13 +159,13 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T10:50:45.000Z",
-      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-20T13:10:00.000Z",
       "workRef": "work.full-security.discoverability",
       "parentWorkRefOrNull": "work.full-security.outcome",
       "label": "Register Full Security and expose its source boards",
       "purpose": "Complete canonical Project Registry, composed Workgraph/public projections and VexBoard discoverability after the currently occupied shared registry/generated surfaces are available, without racing or hand-editing another lane's generated custody.",
       "workClass": "TASK",
-      "state": "WAITING_RESOURCE",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -176,7 +176,9 @@
         "blueprint/project-registry.json",
         "workgraphs/public.json",
         "github.pull.vexwork.253",
-        "github.pull.vexwork.256"
+        "github.pull.vexwork.256",
+        "github.commit.vexwork.b9864ae63572682f7a7d0e0f9c4b9b92ccc31ff1",
+        "projects/vexboard/examples/board-source-catalog.json"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -452,7 +454,68 @@
       "nextProcessRefs": []
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.full-security.discoverability.waiting-resource.ready.registry-released",
+      "workRef": "work.full-security.discoverability",
+      "priorState": "WAITING_RESOURCE",
+      "nextState": "READY",
+      "reason": "The shared Project Registry/public Workgraph hold is released by merged Web Search currentization #253; Full Security source can now be registered without racing that earlier owner.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.253",
+        "github.commit.vexwork.b9864ae63572682f7a7d0e0f9c4b9b92ccc31ff1",
+        "projects/vexboard/examples/board-source-catalog.json"
+      ],
+      "createdAt": "2026-11-20T13:09:57.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.full-security.discoverability.ready.running.current-source-compose",
+      "workRef": "work.full-security.discoverability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Compose the existing Full Security Project/boards into current VexWork while preserving today's board catalog and appending only the eight still-unique security board registrations.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.253",
+        "github.commit.vexwork.b9864ae63572682f7a7d0e0f9c4b9b92ccc31ff1",
+        "projects/vexboard/examples/board-source-catalog.json"
+      ],
+      "createdAt": "2026-11-20T13:09:58.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.full-security.discoverability.running.verifying.source-addressable",
+      "workRef": "work.full-security.discoverability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The current candidate makes the Project source, synthetic/read-only boards and catalog identities addressable without taking target-repository security authority or claiming the demonstrator itself complete.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.253",
+        "github.commit.vexwork.b9864ae63572682f7a7d0e0f9c4b9b92ccc31ff1",
+        "projects/vexboard/examples/board-source-catalog.json"
+      ],
+      "createdAt": "2026-11-20T13:09:59.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.full-security.discoverability.verifying.completed.current-registration",
+      "workRef": "work.full-security.discoverability",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Full Security is registered/projectable on the current VexWork field; remaining security atlas, real VexStream specimen and synthetic Android/VexLife demonstration Work retain their existing nonterminal states.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.253",
+        "github.commit.vexwork.b9864ae63572682f7a7d0e0f9c4b9b92ccc31ff1",
+        "projects/vexboard/examples/board-source-catalog.json"
+      ],
+      "createdAt": "2026-11-20T13:10:00.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.full-security",
     "projects/full-security/README.md",
@@ -466,7 +529,10 @@
     "projects/full-security/FOUNDATION-STARTING-MAP.md",
     "projects/vexboard/examples/full-security-foundation-starting-map.board.json",
     "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
-    "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+    "projects/vexboard/examples/full-security-full-scope-dashboard.board.json",
+    "github.pull.vexwork.253",
+    "github.commit.vexwork.b9864ae63572682f7a7d0e0f9c4b9b92ccc31ff1",
+    "projects/vexboard/examples/board-source-catalog.json"
   ],
   "formedAt": "2026-11-06T10:50:45.000Z"
 }

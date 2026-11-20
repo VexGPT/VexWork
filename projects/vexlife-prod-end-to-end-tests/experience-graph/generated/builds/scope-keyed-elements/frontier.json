@@ -1,0 +1,1926 @@
+{
+  "schemaVersion": "vexwork.experience-graph.derivation/v1",
+  "graphFingerprint": "22cc8b774d9a9905995f92e9dc89ba5366e9cdebf58e3adc895ee389dfd204bf",
+  "debt": [
+    {
+      "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeCapabilityBridge",
+      "kind": "DATAKEY_ANCHOR_NOT_IN_MAIN",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "dataKey:VexLifeCapabilityBridge",
+      "family": null,
+      "detail": "7 dataKey(s) under capability:atlas (CATALOG_DECLARED), capability:github (CATALOG_DECLARED), capability:home (CATALOG_DECLARED), capability:memory (CATALOG_DECLARED), capability:trace (CATALOG_DECLARED), capability:web (CATALOG_DECLARED) map to VexLifeCapabilityBridge without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
+      "sourceRef": null,
+      "hints": [
+        "capability:atlas",
+        "capability:github",
+        "capability:home",
+        "capability:memory",
+        "capability:trace",
+        "capability:web"
+      ]
+    },
+    {
+      "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeDiagnosticsFamily",
+      "kind": "DATAKEY_ANCHOR_NOT_IN_MAIN",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "dataKey:VexLifeDiagnosticsFamily",
+      "family": "VexLifeDiagnosticsFamily",
+      "detail": "1 dataKey(s) under diagnostics:export (CATALOG_DECLARED) map to VexLifeDiagnosticsFamily without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
+      "sourceRef": null,
+      "hints": [
+        "diagnostics:export"
+      ]
+    },
+    {
+      "ref": "debt:DATAKEY_ANCHOR_NOT_IN_MAIN:dataKey:VexLifeProdMacSetupCard",
+      "kind": "DATAKEY_ANCHOR_NOT_IN_MAIN",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "dataKey:VexLifeProdMacSetupCard",
+      "family": null,
+      "detail": "1 dataKey(s) under setup:progress (CATALOG_DECLARED) map to VexLifeProdMacSetupCard without any main-source owner enumerating them; setup's equivalent is VexLifeProdSetupElements.DataKeys",
+      "sourceRef": null,
+      "hints": [
+        "setup:progress"
+      ]
+    },
+    {
+      "ref": "debt:DATAKEY_UNRESOLVED:key:workspace.status.local-asr-selected",
+      "kind": "DATAKEY_UNRESOLVED",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:workspace.status.local-asr-selected",
+      "family": null,
+      "detail": "dataKey local-asr:selection:SAVED names prefix local-asr:selection, which no source expression or catalog owner declaration anchors",
+      "sourceRef": null,
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.browser.vex-context.profile.portability",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.browser.vex-context.profile.portability",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.browser.vex-context.profile.restore-default",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.browser.vex-context.profile.restore-default",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.browser.vex-context.profile.save",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.browser.vex-context.profile.save",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.browser.vex-context.profile.view-in-home",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.browser.vex-context.profile.view-in-home",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.conversation.composer",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.conversation.composer",
+      "family": null,
+      "detail": "human-visible FIELD has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.conversation.stop",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.conversation.stop",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.continuity.continuity-mode",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.continuity.continuity-mode",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.continuity.dream-sync",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.continuity.dream-sync",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.diagnostics.export",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.diagnostics.export",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.home.add-directory",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.home.add-directory",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.home.directories",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.home.directories",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.local-asr.composer-output",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.local-asr.composer-output",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.local-asr.selection",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.local-asr.selection",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.local-asr.spoken-language",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.local-asr.spoken-language",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.models.choice",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.models.choice",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.resources.low-memory-alert",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.resources.low-memory-alert",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.companion.settings.thought-visibility",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.companion.settings.thought-visibility",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.header.app-selector",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.header.app-selector",
+      "family": null,
+      "detail": "human-visible BUTTON has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:element.vexlife-workspace.header.browser-query",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "element.vexlife-workspace.header.browser-query",
+      "family": null,
+      "detail": "human-visible FIELD has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.current",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.current",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L478",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.held-unknown",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.held-unknown",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L1500",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.home-formation-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.home-formation-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L706",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.home-held",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.home-held",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L744",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.host-held",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.host-held",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L1010",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.model-files-held",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.model-files-held",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L1462",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.ready",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.ready",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L4661",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.repair-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.repair-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L554",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.service-recovery-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.service-recovery-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L6381",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.setup-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.setup-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L1386",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.start-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.start-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L630",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.start-required-newer-version",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.start-required-newer-version",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L668",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.storage-held",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.storage-held",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L1424",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.update-available",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.update-available",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L516",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.description.update-repair-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.description.update-repair-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L592",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.current",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.current",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L22",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.held-unknown",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.held-unknown",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L440",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.home-formation-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.home-formation-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L212",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.home-held",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.home-held",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L250",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.host-held",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.host-held",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L288",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.model-files-held",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.model-files-held",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L402",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.ready",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.ready",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L4622",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.repair-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.repair-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L98",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.service-recovery-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.service-recovery-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L6343",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.setup-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.setup-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L326",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.start-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.start-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L174",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.storage-held",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.storage-held",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L364",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.update-available",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.update-available",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L60",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.heading.update-repair-required",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.heading.update-repair-required",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L136",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.status.service-current",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.status.service-current",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L3083",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.status.service-earlier",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.status.service-earlier",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L3121",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.status.service-not-responding",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.status.service-not-responding",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L3159",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.status.service-not-running",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.status.service-not-running",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L3197",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.status.service-recovery-available",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.status.service-recovery-available",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L6457",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:setup.status.service-unverified",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:setup.status.service-unverified",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/setup.json:L3235",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:workspace.status.diagnostics-enhanced-off",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:workspace.status.diagnostics-enhanced-off",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L48",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:workspace.status.diagnostics-enhanced-on",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:workspace.status.diagnostics-enhanced-on",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L59",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:workspace.status.diagnostics-recording",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:workspace.status.diagnostics-recording",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L37",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:workspace.status.voice-input-listening",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:workspace.status.voice-input-listening",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2556",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:workspace.status.voice-input-ready",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:workspace.status.voice-input-ready",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2567",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:workspace.status.voice-input-requesting-microphone",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:workspace.status.voice-input-requesting-microphone",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2578",
+      "hints": []
+    },
+    {
+      "ref": "debt:ELEMENT_WITHOUT_BINDING:key:workspace.status.voice-input-stopping",
+      "kind": "ELEMENT_WITHOUT_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "key:workspace.status.voice-input-stopping",
+      "family": null,
+      "detail": "human-visible undefined has a stable elementRef but no typed binding to the relationship it manifests",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json:L2589",
+      "hints": []
+    },
+    {
+      "ref": "debt:FAMILY_READS_WIRE_STRING:VexLifeProdEntryFamily",
+      "kind": "FAMILY_READS_WIRE_STRING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeProdEntryFamily",
+      "family": "VexLifeProdEntryFamily",
+      "detail": "VexLifeProdEntryFamily law branches on wire strings (\"PLATFORM_UNSUPPORTED\" L643, \"ARCHITECTURE_UNSUPPORTED\" L644, \"SYSTEM_MEMORY_UNKNOWN\" L646, \"INSUFFICIENT_SYSTEM_MEMORY\" L648); the culture keeps wire strings at the serialization boundary and hands the Family a typed value",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/entry/VexLifeProdEntryFamily.kt:L643",
+      "hints": []
+    },
+    {
+      "ref": "debt:FAMILY_READS_WIRE_STRING:VexLifeVisionFamily",
+      "kind": "FAMILY_READS_WIRE_STRING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeVisionFamily",
+      "family": "VexLifeVisionFamily",
+      "detail": "VexLifeVisionFamily law branches on wire strings (\"ENDED\" L130, \"HELD\" L131, \"SELECTING\" L132, \"ENGAGED\" L133, \"LOOKING\" L134); the culture keeps wire strings at the serialization boundary and hands the Family a typed value",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L130",
+      "hints": []
+    },
+    {
+      "ref": "debt:HARDCODED_DISPLAY_TEXT:VexLifeContextProfileFamily.DisplayState",
+      "kind": "HARDCODED_DISPLAY_TEXT",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeContextProfileFamily.DisplayState",
+      "family": "VexLifeContextProfileFamily",
+      "detail": "VexLifeContextProfileFamily.DisplayState carries human text as String (label, detail) instead of VexLifeText keys: it cannot be translated, and its words are not element identity",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt:L93",
+      "hints": []
+    },
+    {
+      "ref": "debt:HARDCODED_DISPLAY_TEXT:VexLifeMemoryFamily.DisplayState",
+      "kind": "HARDCODED_DISPLAY_TEXT",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeMemoryFamily.DisplayState",
+      "family": "VexLifeMemoryFamily",
+      "detail": "VexLifeMemoryFamily.DisplayState carries human text as String (label, detail) instead of VexLifeText keys: it cannot be translated, and its words are not element identity",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/memory/VexLifeMemoryFamily.kt:L63",
+      "hints": []
+    },
+    {
+      "ref": "debt:HARDCODED_DISPLAY_TEXT:VexLifePrivateModeFamily.DisplayState",
+      "kind": "HARDCODED_DISPLAY_TEXT",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifePrivateModeFamily.DisplayState",
+      "family": "VexLifePrivateModeFamily",
+      "detail": "VexLifePrivateModeFamily.DisplayState carries human text as String (label, detail, primaryLabel) instead of VexLifeText keys: it cannot be translated, and its words are not element identity",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/continuity/VexLifePrivateModeFamily.kt:L63",
+      "hints": []
+    },
+    {
+      "ref": "debt:HARDCODED_DISPLAY_TEXT:VexLifeVisionFamily.DisplayState",
+      "kind": "HARDCODED_DISPLAY_TEXT",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeVisionFamily.DisplayState",
+      "family": "VexLifeVisionFamily",
+      "detail": "VexLifeVisionFamily.DisplayState carries human text as String (label, detail, primaryLabel) instead of VexLifeText keys: it cannot be translated, and its words are not element identity",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/vision/VexLifeVisionFamily.kt:L100",
+      "hints": []
+    },
+    {
+      "ref": "debt:LANGUAGE_INCOMPLETE:localization:release-alerts",
+      "kind": "LANGUAGE_INCOMPLETE",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "localization:release-alerts",
+      "family": null,
+      "detail": "release-alerts: English only while other scopes are complete in ar de es fr hi ja ko pt zh; every non-English person sees this scope in English",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/release-alerts.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:LANGUAGE_INCOMPLETE:localization:workspace",
+      "kind": "LANGUAGE_INCOMPLETE",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "localization:workspace",
+      "family": null,
+      "detail": "workspace: 9 of 9 product languages hold some translations but none is complete (ar missing 82/129, de missing 82/129, es missing 82/129, fr missing 82/129, hi missing 82/129, ja missing 82/129, ko missing 82/129, pt missing 82/129, zh missing 82/129); a person in those languages is not offered this scope",
+      "sourceRef": "repo.vexlife-prod:localization/strings/source/workspace.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:LENS_KEY_UNLINKED:lens:screen.vexlife-workspace",
+      "kind": "LENS_KEY_UNLINKED",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "lens:screen.vexlife-workspace",
+      "family": null,
+      "detail": "30 of 36 Screen Lens buttons/fields carry no catalog key in either identity system (markup co-location or the reserved `lens` namespace, used by 10 keys): the Lens and the catalog cannot be joined for them",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": [
+        "element.vexlife-workspace.browser.vex-context.profile.portability",
+        "element.vexlife-workspace.browser.vex-context.profile.restore-default",
+        "element.vexlife-workspace.browser.vex-context.profile.save",
+        "element.vexlife-workspace.browser.vex-context.profile.view-in-home",
+        "element.vexlife-workspace.companion.conversation.composer",
+        "element.vexlife-workspace.companion.conversation.context-share",
+        "element.vexlife-workspace.companion.conversation.jump-latest",
+        "element.vexlife-workspace.companion.conversation.send",
+        "element.vexlife-workspace.companion.conversation.stop",
+        "element.vexlife-workspace.companion.private-mode",
+        "element.vexlife-workspace.companion.settings.continuity.continuity-mode",
+        "element.vexlife-workspace.companion.settings.continuity.dream-sync",
+        "element.vexlife-workspace.companion.settings.diagnostics.export",
+        "element.vexlife-workspace.companion.settings.home.add-directory",
+        "element.vexlife-workspace.companion.settings.home.directories",
+        "element.vexlife-workspace.companion.settings.local-asr.composer-output",
+        "element.vexlife-workspace.companion.settings.local-asr.selection",
+        "element.vexlife-workspace.companion.settings.local-asr.spoken-language",
+        "element.vexlife-workspace.companion.settings.models.choice",
+        "element.vexlife-workspace.companion.settings.resources.low-memory-alert",
+        "element.vexlife-workspace.companion.settings.thought-visibility",
+        "element.vexlife-workspace.companion.view-switch",
+        "element.vexlife-workspace.companion.vision",
+        "element.vexlife-workspace.header.app-selector",
+        "element.vexlife-workspace.header.browser-query",
+        "element.vexlife-workspace.header.utilities.quick-actions.language",
+        "element.vexlife-workspace.header.utilities.quick-actions.release-alerts",
+        "element.vexlife-workspace.header.utilities.quick-actions.speech",
+        "element.vexlife-workspace.header.utilities.quick-actions.vex-summon",
+        "element.vexlife-workspace.header.utilities.quick-actions.vision"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeProdLocalService.kt:CURRENT#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeProdLocalService.kt:CURRENT#1",
+      "family": null,
+      "detail": "Kotlin compares the literal \"CURRENT\" although VexLifeMemoryFamily.Current, VexLifeMemoryFamily.StateCurrent already owns that value in a file this one references",
+      "sourceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L3138",
+      "hints": [
+        "VexLifeMemoryFamily.Current",
+        "VexLifeMemoryFamily.StateCurrent"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CANDIDATE#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CANDIDATE#1",
+      "family": null,
+      "detail": "generated browser runtime compares selected.standing to the literal 'CANDIDATE' although source already owns that value (MemoryCandidateDisposition.CANDIDATE, Standing.CANDIDATE); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5098",
+      "hints": [
+        "MemoryCandidateDisposition.CANDIDATE",
+        "Standing.CANDIDATE"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CARRIED#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CARRIED#1",
+      "family": null,
+      "detail": "generated browser runtime compares .state to the literal 'CARRIED' although source already owns that value (State.CARRIED); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4179",
+      "hints": [
+        "State.CARRIED"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CARRIED#2",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CARRIED#2",
+      "family": null,
+      "detail": "generated browser runtime compares prompt.profileFoundationState to the literal 'CARRIED' although source already owns that value (State.CARRIED); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4216",
+      "hints": [
+        "State.CARRIED"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CARRIED#3",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CARRIED#3",
+      "family": null,
+      "detail": "generated browser runtime compares prompt.profileFoundationState to the literal 'CARRIED' although source already owns that value (State.CARRIED); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4226",
+      "hints": [
+        "State.CARRIED"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CARRIED_PARTIAL#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CARRIED_PARTIAL#1",
+      "family": null,
+      "detail": "generated browser runtime compares .state to the literal 'CARRIED_PARTIAL' although source already owns that value (State.CARRIED_PARTIAL); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4179",
+      "hints": [
+        "State.CARRIED_PARTIAL"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:CLEAR_HISTORY#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CLEAR_HISTORY#1",
+      "family": null,
+      "detail": "generated browser runtime compares control.controlRef to the literal 'CLEAR_HISTORY' although source already owns that value (VexLifeDiagnosticsFamily.ClearHistory, VexLifeDiagnosticsFamily.ControlClearHistory); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4946",
+      "hints": [
+        "VexLifeDiagnosticsFamily.ClearHistory",
+        "VexLifeDiagnosticsFamily.ControlClearHistory"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:COMPLETED#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:COMPLETED#1",
+      "family": null,
+      "detail": "generated browser runtime compares .type to the literal 'COMPLETED' although source already owns that value (Stage.COMPLETED, StageStop.COMPLETED); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6052",
+      "hints": [
+        "Stage.COMPLETED",
+        "StageStop.COMPLETED"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#1",
+      "family": null,
+      "detail": "generated browser runtime compares mode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3930",
+      "hints": [
+        "FoundationMode.EXTEND_PRODUCT_DEFAULT"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#2",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#2",
+      "family": null,
+      "detail": "generated browser runtime compares ui.contextProfileFoundationMode.value to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3975",
+      "hints": [
+        "FoundationMode.EXTEND_PRODUCT_DEFAULT"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#3",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#3",
+      "family": null,
+      "detail": "generated browser runtime compares active.definition.foundationMode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3982",
+      "hints": [
+        "FoundationMode.EXTEND_PRODUCT_DEFAULT"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#4",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#4",
+      "family": null,
+      "detail": "generated browser runtime compares profileMode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4209",
+      "hints": [
+        "FoundationMode.EXTEND_PRODUCT_DEFAULT"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#5",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#5",
+      "family": null,
+      "detail": "generated browser runtime compares definition.foundationMode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4571",
+      "hints": [
+        "FoundationMode.EXTEND_PRODUCT_DEFAULT"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#6",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#6",
+      "family": null,
+      "detail": "generated browser runtime compares definition.foundationMode to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4595",
+      "hints": [
+        "FoundationMode.EXTEND_PRODUCT_DEFAULT"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#7",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:EXTEND_PRODUCT_DEFAULT#7",
+      "family": null,
+      "detail": "generated browser runtime compares ui.contextProfileFoundationMode.value to the literal 'EXTEND_PRODUCT_DEFAULT' although source already owns that value (FoundationMode.EXTEND_PRODUCT_DEFAULT); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6274",
+      "hints": [
+        "FoundationMode.EXTEND_PRODUCT_DEFAULT"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:FAILED#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:FAILED#1",
+      "family": null,
+      "detail": "generated browser runtime compares .state to the literal 'FAILED' although source already owns that value (ResultState.FAILED, VexLifeVoiceInputFamily.Failed, VexLifeVoiceInputFamily.StateFailed); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4649",
+      "hints": [
+        "ResultState.FAILED",
+        "VexLifeVoiceInputFamily.Failed",
+        "VexLifeVoiceInputFamily.StateFailed"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:FAILED#2",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:FAILED#2",
+      "family": null,
+      "detail": "generated browser runtime compares .type to the literal 'FAILED' although source already owns that value (ResultState.FAILED, VexLifeVoiceInputFamily.Failed, VexLifeVoiceInputFamily.StateFailed); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6045",
+      "hints": [
+        "ResultState.FAILED",
+        "VexLifeVoiceInputFamily.Failed",
+        "VexLifeVoiceInputFamily.StateFailed"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:HELD#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:HELD#1",
+      "family": null,
+      "detail": "generated browser runtime compares field.state to the literal 'HELD' although source already owns that value (FrameState.HELD, State.HELD, VexLifeProdEntryFamily.JourneyHeld, VexLifeVisionFamily.Held, VexLifeVisionFamily.StateHeld, VexLifeVoiceInputFamily.Held, VexLifeVoiceInputFamily.StateHeld); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4739",
+      "hints": [
+        "FrameState.HELD",
+        "State.HELD",
+        "VexLifeProdEntryFamily.JourneyHeld",
+        "VexLifeVisionFamily.Held",
+        "VexLifeVisionFamily.StateHeld",
+        "VexLifeVoiceInputFamily.Held",
+        "VexLifeVoiceInputFamily.StateHeld"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:HELD#2",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:HELD#2",
+      "family": null,
+      "detail": "generated browser runtime compares modelImport.state to the literal 'HELD' although source already owns that value (FrameState.HELD, State.HELD, VexLifeProdEntryFamily.JourneyHeld, VexLifeVisionFamily.Held, VexLifeVisionFamily.StateHeld, VexLifeVoiceInputFamily.Held, VexLifeVoiceInputFamily.StateHeld); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5025",
+      "hints": [
+        "FrameState.HELD",
+        "State.HELD",
+        "VexLifeProdEntryFamily.JourneyHeld",
+        "VexLifeVisionFamily.Held",
+        "VexLifeVisionFamily.StateHeld",
+        "VexLifeVoiceInputFamily.Held",
+        "VexLifeVoiceInputFamily.StateHeld"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:MODEL_DIGEST_NOT_CURRENT#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:MODEL_DIGEST_NOT_CURRENT#1",
+      "family": null,
+      "detail": "generated browser runtime compares selected.currentDetailRef to the literal 'MODEL_DIGEST_NOT_CURRENT' although source already owns that value (VexLifeLocalAsrProvider.Result.DetailModelDigestNotCurrent); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5518",
+      "hints": [
+        "VexLifeLocalAsrProvider.Result.DetailModelDigestNotCurrent"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:MODEL_UNAVAILABLE#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:MODEL_UNAVAILABLE#1",
+      "family": null,
+      "detail": "generated browser runtime compares selected.currentDetailRef to the literal 'MODEL_UNAVAILABLE' although source already owns that value (VexLifeLocalAsrProvider.Result.DetailModelUnavailable); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5516",
+      "hints": [
+        "VexLifeLocalAsrProvider.Result.DetailModelUnavailable"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:NOT_LAWFUL_NOW#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:NOT_LAWFUL_NOW#1",
+      "family": null,
+      "detail": "generated browser runtime compares result.outcome to the literal 'NOT_LAWFUL_NOW' although source already owns that value (VexLifeProdServiceContract.PrivateNotLawfulNow, VexLifeProdServiceContract.VisionControlNotLawfulNow); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5765",
+      "hints": [
+        "VexLifeProdServiceContract.PrivateNotLawfulNow",
+        "VexLifeProdServiceContract.VisionControlNotLawfulNow"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:PRIVATE#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PRIVATE#1",
+      "family": null,
+      "detail": "generated browser runtime compares .state to the literal 'PRIVATE' although source already owns that value (VexLifePrivateModeFamily.Private, VexLifePrivateModeFamily.StatePrivate); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L3677",
+      "hints": [
+        "VexLifePrivateModeFamily.Private",
+        "VexLifePrivateModeFamily.StatePrivate"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:PROVIDER_EXECUTABLE_UNAVAILABLE#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PROVIDER_EXECUTABLE_UNAVAILABLE#1",
+      "family": null,
+      "detail": "generated browser runtime compares selected.currentDetailRef to the literal 'PROVIDER_EXECUTABLE_UNAVAILABLE' although source already owns that value (VexLifeLocalAsrProvider.Result.DetailProviderExecutableUnavailable); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5514",
+      "hints": [
+        "VexLifeLocalAsrProvider.Result.DetailProviderExecutableUnavailable"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:PROVIDER_SOURCE_NOT_CURRENT#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PROVIDER_SOURCE_NOT_CURRENT#1",
+      "family": null,
+      "detail": "generated browser runtime compares selected.currentDetailRef to the literal 'PROVIDER_SOURCE_NOT_CURRENT' although source already owns that value (VexLifeLocalAsrProvider.Result.DetailProviderSourceNotCurrent); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5512",
+      "hints": [
+        "VexLifeLocalAsrProvider.Result.DetailProviderSourceNotCurrent"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:READY#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:READY#1",
+      "family": null,
+      "detail": "generated browser runtime compares option.currentState to the literal 'READY' although source already owns that value (VexLifeLocalAsrProvider.Result.StateReady, VexLifeProdEntryFamily.JourneyStepReady, VexLifeVisionFamily.Ready, VexLifeVisionFamily.StateReady, VexLifeVoiceInputFamily.Ready, VexLifeVoiceInputFamily.StateReady); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L717",
+      "hints": [
+        "VexLifeLocalAsrProvider.Result.StateReady",
+        "VexLifeProdEntryFamily.JourneyStepReady",
+        "VexLifeVisionFamily.Ready",
+        "VexLifeVisionFamily.StateReady",
+        "VexLifeVoiceInputFamily.Ready",
+        "VexLifeVoiceInputFamily.StateReady"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:READY#2",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:READY#2",
+      "family": null,
+      "detail": "generated browser runtime compares .state to the literal 'READY' although source already owns that value (VexLifeLocalAsrProvider.Result.StateReady, VexLifeProdEntryFamily.JourneyStepReady, VexLifeVisionFamily.Ready, VexLifeVisionFamily.StateReady, VexLifeVoiceInputFamily.Ready, VexLifeVoiceInputFamily.StateReady); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5033",
+      "hints": [
+        "VexLifeLocalAsrProvider.Result.StateReady",
+        "VexLifeProdEntryFamily.JourneyStepReady",
+        "VexLifeVisionFamily.Ready",
+        "VexLifeVisionFamily.StateReady",
+        "VexLifeVoiceInputFamily.Ready",
+        "VexLifeVoiceInputFamily.StateReady"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:READY#3",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:READY#3",
+      "family": null,
+      "detail": "generated browser runtime compares .state to the literal 'READY' although source already owns that value (VexLifeLocalAsrProvider.Result.StateReady, VexLifeProdEntryFamily.JourneyStepReady, VexLifeVisionFamily.Ready, VexLifeVisionFamily.StateReady, VexLifeVoiceInputFamily.Ready, VexLifeVoiceInputFamily.StateReady); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5034",
+      "hints": [
+        "VexLifeLocalAsrProvider.Result.StateReady",
+        "VexLifeProdEntryFamily.JourneyStepReady",
+        "VexLifeVisionFamily.Ready",
+        "VexLifeVisionFamily.StateReady",
+        "VexLifeVoiceInputFamily.Ready",
+        "VexLifeVoiceInputFamily.StateReady"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:READY#4",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:READY#4",
+      "family": null,
+      "detail": "generated browser runtime compares selected.currentState to the literal 'READY' although source already owns that value (VexLifeLocalAsrProvider.Result.StateReady, VexLifeProdEntryFamily.JourneyStepReady, VexLifeVisionFamily.Ready, VexLifeVisionFamily.StateReady, VexLifeVoiceInputFamily.Ready, VexLifeVoiceInputFamily.StateReady); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5504",
+      "hints": [
+        "VexLifeLocalAsrProvider.Result.StateReady",
+        "VexLifeProdEntryFamily.JourneyStepReady",
+        "VexLifeVisionFamily.Ready",
+        "VexLifeVisionFamily.StateReady",
+        "VexLifeVoiceInputFamily.Ready",
+        "VexLifeVoiceInputFamily.StateReady"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:REALIZED#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:REALIZED#1",
+      "family": null,
+      "detail": "generated browser runtime compares .outcome to the literal 'REALIZED' although source already owns that value (VexLifeProdServiceContract.PrivateRealized, VexLifeProdServiceContract.VisionControlRealized); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6294",
+      "hints": [
+        "VexLifeProdServiceContract.PrivateRealized",
+        "VexLifeProdServiceContract.VisionControlRealized"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:RETURNED#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RETURNED#1",
+      "family": null,
+      "detail": "generated browser runtime compares use.state to the literal 'RETURNED' although source already owns that value (ResultState.RETURNED, State.RETURNED); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2721",
+      "hints": [
+        "ResultState.RETURNED",
+        "State.RETURNED"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:RETURNED#2",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RETURNED#2",
+      "family": null,
+      "detail": "generated browser runtime compares use.state to the literal 'RETURNED' although source already owns that value (ResultState.RETURNED, State.RETURNED); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2830",
+      "hints": [
+        "ResultState.RETURNED",
+        "State.RETURNED"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:RETURNED#3",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RETURNED#3",
+      "family": null,
+      "detail": "generated browser runtime compares use.state to the literal 'RETURNED' although source already owns that value (ResultState.RETURNED, State.RETURNED); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2880",
+      "hints": [
+        "ResultState.RETURNED",
+        "State.RETURNED"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:RUNTIME_REFUSED#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RUNTIME_REFUSED#1",
+      "family": null,
+      "detail": "generated browser runtime compares result.outcome to the literal 'RUNTIME_REFUSED' although source already owns that value (VexLifeProdServiceContract.VisionControlRuntimeRefused); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5767",
+      "hints": [
+        "VexLifeProdServiceContract.VisionControlRuntimeRefused"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:START_ENHANCED#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:START_ENHANCED#1",
+      "family": null,
+      "detail": "generated browser runtime compares control.controlRef to the literal 'START_ENHANCED' although source already owns that value (VexLifeDiagnosticsFamily.ControlStartEnhanced, VexLifeDiagnosticsFamily.StartEnhanced); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4945",
+      "hints": [
+        "VexLifeDiagnosticsFamily.ControlStartEnhanced",
+        "VexLifeDiagnosticsFamily.StartEnhanced"
+      ]
+    },
+    {
+      "ref": "debt:LITERAL_SHADOWS_CONSTANT:VexLifeWebP1RuntimeArtifacts.kt:STOP_ENHANCED#1",
+      "kind": "LITERAL_SHADOWS_CONSTANT",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:STOP_ENHANCED#1",
+      "family": null,
+      "detail": "generated browser runtime compares control.controlRef to the literal 'STOP_ENHANCED' although source already owns that value (VexLifeDiagnosticsFamily.ControlStopEnhanced, VexLifeDiagnosticsFamily.StopEnhanced); renaming the owner would not fail the build",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L4945",
+      "hints": [
+        "VexLifeDiagnosticsFamily.ControlStopEnhanced",
+        "VexLifeDiagnosticsFamily.StopEnhanced"
+      ]
+    },
+    {
+      "ref": "debt:MISSING_ACT_LAW:VexLifeLocalAsrModelsFamily",
+      "kind": "MISSING_ACT_LAW",
+      "debtClass": "A",
+      "debtClassMeaning": "SEMANTIC_LAW_MISSING",
+      "coordinate": "VexLifeLocalAsrModelsFamily",
+      "family": "VexLifeLocalAsrModelsFamily",
+      "detail": "VexLifeLocalAsrModelsFamily offers Controls through lawfulControls() but declares no State + Control -> Act law or Effect vocabulary",
+      "sourceRef": null,
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_CONTROL_LAW:element.vexlife-workspace.header.utilities.quick-actions.language",
+      "kind": "MISSING_CONTROL_LAW",
+      "debtClass": "A",
+      "debtClassMeaning": "SEMANTIC_LAW_MISSING",
+      "coordinate": "element.vexlife-workspace.header.utilities.quick-actions.language",
+      "family": null,
+      "detail": "capability person.reply-language is bound to this element but no Family or registered owner pathway carries its meaning",
+      "sourceRef": "repo.vexlife-prod:docs/lens/vexlife-prod.screen-lens.json",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:HereticRuntimeAvailability.Control.EnsureAvailable",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "HereticRuntimeAvailability.Control.EnsureAvailable",
+      "family": "HereticRuntimeAvailability",
+      "detail": "EnsureAvailable is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeAvailability.kt:L88",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.Import",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeContextProfileFamily.Import",
+      "family": "VexLifeContextProfileFamily",
+      "detail": "IMPORT is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt:L63",
+      "hints": [
+        "element.vexlife-workspace.browser.vex-context.profile.portability",
+        "element.vexlife-workspace.browser.vex-context.profile.restore-default",
+        "element.vexlife-workspace.browser.vex-context.profile.save",
+        "element.vexlife-workspace.browser.vex-context.profile.view-in-home"
+      ]
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.RestoreProductDefault",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeContextProfileFamily.RestoreProductDefault",
+      "family": "VexLifeContextProfileFamily",
+      "detail": "RESTORE_PRODUCT_DEFAULT is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt:L59",
+      "hints": [
+        "element.vexlife-workspace.browser.vex-context.profile.portability",
+        "element.vexlife-workspace.browser.vex-context.profile.restore-default",
+        "element.vexlife-workspace.browser.vex-context.profile.save",
+        "element.vexlife-workspace.browser.vex-context.profile.view-in-home"
+      ]
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.Save",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeContextProfileFamily.Save",
+      "family": "VexLifeContextProfileFamily",
+      "detail": "SAVE is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt:L46",
+      "hints": [
+        "element.vexlife-workspace.browser.vex-context.profile.portability",
+        "element.vexlife-workspace.browser.vex-context.profile.restore-default",
+        "element.vexlife-workspace.browser.vex-context.profile.save",
+        "element.vexlife-workspace.browser.vex-context.profile.view-in-home"
+      ]
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.SaveAs",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeContextProfileFamily.SaveAs",
+      "family": "VexLifeContextProfileFamily",
+      "detail": "SAVE_AS is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt:L53",
+      "hints": [
+        "element.vexlife-workspace.browser.vex-context.profile.portability",
+        "element.vexlife-workspace.browser.vex-context.profile.restore-default",
+        "element.vexlife-workspace.browser.vex-context.profile.save",
+        "element.vexlife-workspace.browser.vex-context.profile.view-in-home"
+      ]
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeContextProfileFamily.Use",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeContextProfileFamily.Use",
+      "family": "VexLifeContextProfileFamily",
+      "detail": "USE is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt:L40",
+      "hints": [
+        "element.vexlife-workspace.browser.vex-context.profile.portability",
+        "element.vexlife-workspace.browser.vex-context.profile.restore-default",
+        "element.vexlife-workspace.browser.vex-context.profile.save",
+        "element.vexlife-workspace.browser.vex-context.profile.view-in-home"
+      ]
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeLocalAsrModelsFamily.ControlDownload",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeLocalAsrModelsFamily.ControlDownload",
+      "family": "VexLifeLocalAsrModelsFamily",
+      "detail": "DOWNLOAD_SPEECH_MODEL is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/localasr/VexLifeLocalAsrModelsFamily.kt:L44",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeLocalAsrModelsFamily.ControlRedownload",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeLocalAsrModelsFamily.ControlRedownload",
+      "family": "VexLifeLocalAsrModelsFamily",
+      "detail": "REDOWNLOAD_SPEECH_MODEL is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/localasr/VexLifeLocalAsrModelsFamily.kt:L57",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeLocalAsrModelsFamily.ControlRemove",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeLocalAsrModelsFamily.ControlRemove",
+      "family": "VexLifeLocalAsrModelsFamily",
+      "detail": "REMOVE_SPEECH_MODEL is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/localasr/VexLifeLocalAsrModelsFamily.kt:L66",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeLocalAsrModelsFamily.ControlUse",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeLocalAsrModelsFamily.ControlUse",
+      "family": "VexLifeLocalAsrModelsFamily",
+      "detail": "USE_SPEECH_MODEL is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/localasr/VexLifeLocalAsrModelsFamily.kt:L34",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeMemoryReviewFamily.Decline",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeMemoryReviewFamily.Decline",
+      "family": "VexLifeMemoryReviewFamily",
+      "detail": "DECLINE is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewFamily.kt:L77",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeMemoryReviewFamily.Keep",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeMemoryReviewFamily.Keep",
+      "family": "VexLifeMemoryReviewFamily",
+      "detail": "KEEP is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewFamily.kt:L65",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeMemoryReviewFamily.NotNow",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeMemoryReviewFamily.NotNow",
+      "family": "VexLifeMemoryReviewFamily",
+      "detail": "NOT_NOW is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewFamily.kt:L71",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_MANIFESTATION_BINDING:VexLifeProdEntryFamily.Cancel",
+      "kind": "MISSING_MANIFESTATION_BINDING",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeProdEntryFamily.Cancel",
+      "family": "VexLifeProdEntryFamily",
+      "detail": "CANCEL is lawful in some State but no stable element manifests it (if this Control is system-driven rather than human-facing, source should say so; otherwise bind its element)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/entry/VexLifeProdEntryFamily.kt:L207",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_OBSERVATION:HereticRuntimeAvailability",
+      "kind": "MISSING_OBSERVATION",
+      "debtClass": "D",
+      "debtClassMeaning": "OBSERVATION_MISSING",
+      "coordinate": "HereticRuntimeAvailability",
+      "family": "HereticRuntimeAvailability",
+      "detail": "HereticRuntimeAvailability Effects are realized but the graph sees no observation/reconciliation back into Family State",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeAvailability.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_OBSERVATION:VexLifeModelsFamily",
+      "kind": "MISSING_OBSERVATION",
+      "debtClass": "D",
+      "debtClassMeaning": "OBSERVATION_MISSING",
+      "coordinate": "VexLifeModelsFamily",
+      "family": "VexLifeModelsFamily",
+      "detail": "VexLifeModelsFamily has observation law but no realization owner visibly returns outside truth to it",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_OBSERVATION:VexLifeProdEntryFamily",
+      "kind": "MISSING_OBSERVATION",
+      "debtClass": "D",
+      "debtClassMeaning": "OBSERVATION_MISSING",
+      "coordinate": "VexLifeProdEntryFamily",
+      "family": "VexLifeProdEntryFamily",
+      "detail": "VexLifeProdEntryFamily Effects are realized but the graph sees no observation/reconciliation back into Family State",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/entry/VexLifeProdEntryFamily.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_PROJECTION:HereticRuntimeAvailability",
+      "kind": "MISSING_PROJECTION",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "HereticRuntimeAvailability",
+      "family": "HereticRuntimeAvailability",
+      "detail": "HereticRuntimeAvailability has Controls but no displayStateFor() projection the graph can read",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeAvailability.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_PROJECTION:VexLifeLocalAsrModelsFamily",
+      "kind": "MISSING_PROJECTION",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeLocalAsrModelsFamily",
+      "family": "VexLifeLocalAsrModelsFamily",
+      "detail": "VexLifeLocalAsrModelsFamily has Controls but no displayStateFor() projection the graph can read",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/localasr/VexLifeLocalAsrModelsFamily.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:MISSING_PROJECTION:VexLifeMemoryReviewFamily",
+      "kind": "MISSING_PROJECTION",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeMemoryReviewFamily",
+      "family": "VexLifeMemoryReviewFamily",
+      "detail": "VexLifeMemoryReviewFamily has Controls but no displayStateFor() projection the graph can read",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewFamily.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:PARTIAL_LANGUAGE_SERVED:VexLifeProdLocalService.handleStrings",
+      "kind": "PARTIAL_LANGUAGE_SERVED",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeProdLocalService.handleStrings",
+      "family": null,
+      "detail": "handleStrings() derives the person's language and resolves keys one by one, English where untranslated, without consulting completeness; a partially translated scope (workspace) is shown mixed, which the catalog law says is never presented as finished",
+      "sourceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt:L2055",
+      "hints": []
+    },
+    {
+      "ref": "debt:PROJECTION_NOT_SURFACED:VexLifeContextProfileFamily.DisplayState",
+      "kind": "PROJECTION_NOT_SURFACED",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeContextProfileFamily.DisplayState",
+      "family": "VexLifeContextProfileFamily",
+      "detail": "VexLifeContextProfileFamily projects a DisplayState but no stable element is bound to show it",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/context/VexLifeContextProfileFamily.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:PROJECTION_NOT_SURFACED:VexLifeMemoryFamily.DisplayState",
+      "kind": "PROJECTION_NOT_SURFACED",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeMemoryFamily.DisplayState",
+      "family": "VexLifeMemoryFamily",
+      "detail": "VexLifeMemoryFamily projects a DisplayState but no stable element is bound to show it",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/memory/VexLifeMemoryFamily.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:PROJECTION_NOT_SURFACED:VexLifeModelsFamily.DisplayState",
+      "kind": "PROJECTION_NOT_SURFACED",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeModelsFamily.DisplayState",
+      "family": "VexLifeModelsFamily",
+      "detail": "VexLifeModelsFamily projects a DisplayState but no stable element is bound to show it",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:PROJECTION_NOT_SURFACED:VexLifeReleaseInboxFamily.DisplayState",
+      "kind": "PROJECTION_NOT_SURFACED",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "VexLifeReleaseInboxFamily.DisplayState",
+      "family": "VexLifeReleaseInboxFamily",
+      "detail": "VexLifeReleaseInboxFamily projects a DisplayState but no stable element is bound to show it",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/release/VexLifeReleaseInboxFamily.kt",
+      "hints": []
+    },
+    {
+      "ref": "debt:SCRIPT_COLLAPSE:localization:reply:zh-Hant",
+      "kind": "SCRIPT_COLLAPSE",
+      "debtClass": "E",
+      "debtClassMeaning": "PROJECTION_MISSING",
+      "coordinate": "localization:reply:zh-Hant",
+      "family": null,
+      "detail": "reply language zh-Hant resolves to localization language \"zh\", whose catalog text is Hans script (332 Simplified-only / 0 Traditional-only characters sampled): a zh-Hant reader is shown the other script; legacy Homes that saved \"zh\" canonicalize to zh-Hant and are affected too; normalizedLanguage() also drops the script subtag of a system language (zh-Hant-TW -> zh)",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/person/VexLifePersonSettings.kt:L78",
+      "hints": []
+    },
+    {
+      "ref": "debt:TYPED_REF_BYPASSED:runtime:VexLifeWebP1RuntimeArtifacts.kt",
+      "kind": "TYPED_REF_BYPASSED",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "runtime:VexLifeWebP1RuntimeArtifacts.kt",
+      "family": null,
+      "detail": "the browser runtime binds 46 elements by DOM id string although each carries a typed data-vex-ref (0 runtime lookups use data-vex-ref); behavior and identity can drift apart silently",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+      "hints": [
+        "app-selector=AppSelector",
+        "archives=Archives",
+        "archives-timeline=ArchivesTimeline",
+        "companion-status=CompanionStatus",
+        "context-profile-export=VexContextProfilePortability",
+        "context-profile-home=VexContextProfileHome",
+        "context-profile-restore=VexContextProfileRestore",
+        "context-share=ContextShare",
+        "context-window=ContextWindow",
+        "diagnostics-clear=DiagnosticsClearHistory",
+        "diagnostics-enhanced=DiagnosticsEnhancedCapture",
+        "frame-status=BrowserFrameStatus",
+        "inspector=ContextInspector",
+        "jump-latest=ConversationJumpLatest",
+        "local-asr-composer-output=LocalAsrComposerOutput",
+        "local-asr-models-list=LocalAsrModelsList",
+        "local-asr-selection=LocalAsrSelection",
+        "local-asr-spoken-language=LocalAsrSpokenLanguage",
+        "local-asr-status=LocalAsrStatus",
+        "local-asr-storage-note=LocalAsrStorageNote",
+        "low-memory-alert=LowMemoryAlert",
+        "memory=MemoryResource",
+        "model-configuration=ModelConfiguration",
+        "model-start=ModelStart",
+        "model-use-recommended=ModelUseRecommended",
+        "models-list=ModelsList",
+        "models-state=ModelsState",
+        "private-banner=PrivateBanner",
+        "private-mode=PrivateMode",
+        "query=BrowserQuery",
+        "quick-actions=QuickActions",
+        "release-alerts-list=ReleaseAlertsList",
+        "release-alerts-panel=ReleaseAlertsPanel",
+        "response-progress=ResponseProgress",
+        "send=Send",
+        "source-template-family=SourceTemplateFamily",
+        "stop=Stop",
+        "thought-visibility=ThoughtVisibility",
+        "ticket=ContextReceipt",
+        "timeline=ConversationTimeline",
+        "vex-context=VexContext",
+        "view-conversation=Conversation",
+        "view-settings=Settings",
+        "view-switch=CompanionViewSwitch",
+        "vision-control=Vision",
+        "voice-input=VoiceInput"
+      ]
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:CONTENT_DELTA#1",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:CONTENT_DELTA#1",
+      "family": null,
+      "detail": "generated browser runtime compares .type to 'CONTENT_DELTA', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6034",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:FORM_NEW_SEND_ATTEMPT_AND_RETRY#1",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:FORM_NEW_SEND_ATTEMPT_AND_RETRY#1",
+      "family": null,
+      "detail": "generated browser runtime compares route to 'FORM_NEW_SEND_ATTEMPT_AND_RETRY', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2803",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:PHASE#1",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PHASE#1",
+      "family": null,
+      "detail": "generated browser runtime compares .type to 'PHASE', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5991",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:PRESENT_EPHEMERAL#1",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PRESENT_EPHEMERAL#1",
+      "family": null,
+      "detail": "generated browser runtime compares .state to 'PRESENT_EPHEMERAL', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5856",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:PREVIOUS_TURN#1",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PREVIOUS_TURN#1",
+      "family": null,
+      "detail": "generated browser runtime compares state.contextProcessRetention to 'PREVIOUS_TURN', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L5870",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:PREVIOUS_TURN#2",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:PREVIOUS_TURN#2",
+      "family": null,
+      "detail": "generated browser runtime compares ui.contextProcessRetentionSelect.value to 'PREVIOUS_TURN', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6266",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:REACH#1",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:REACH#1",
+      "family": null,
+      "detail": "generated browser runtime compares .type to 'REACH', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6013",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:REASONING_DELTA#1",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:REASONING_DELTA#1",
+      "family": null,
+      "detail": "generated browser runtime compares .type to 'REASONING_DELTA', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L6003",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNOWNED_WIRE_LITERAL:VexLifeWebP1RuntimeArtifacts.kt:RESUME_LAST_VALID_HEAD_THEN_FORM_NEW_SEND_ATTEMPT#1",
+      "kind": "UNOWNED_WIRE_LITERAL",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "VexLifeWebP1RuntimeArtifacts.kt:RESUME_LAST_VALID_HEAD_THEN_FORM_NEW_SEND_ATTEMPT#1",
+      "family": null,
+      "detail": "generated browser runtime compares route to 'RESUME_LAST_VALID_HEAD_THEN_FORM_NEW_SEND_ATTEMPT', a wire value no Kotlin constant, enum or Family ref owns: both sides of the boundary repeat the string",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L2801",
+      "hints": []
+    },
+    {
+      "ref": "debt:UNTYPED_INTERACTIVE:markup:VexLifeWebP1ExperienceMarkup.kt",
+      "kind": "UNTYPED_INTERACTIVE",
+      "debtClass": "B",
+      "debtClassMeaning": "EXTRACTION_OR_PROJECTABILITY",
+      "coordinate": "markup:VexLifeWebP1ExperienceMarkup.kt",
+      "family": null,
+      "detail": "37 interactive elements the runtime binds have only a DOM id: no typed element identity names them",
+      "sourceRef": "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1ExperienceMarkup.kt",
+      "hints": [
+        "form#address-form",
+        "button#collapse-after",
+        "button#collapse-before",
+        "form#compose-form",
+        "select#context-process-retention",
+        "select#context-profile-choice",
+        "select#context-profile-foundation-mode",
+        "textarea#context-profile-foundation-text",
+        "input#context-profile-import",
+        "input#context-profile-name",
+        "button#context-profile-save",
+        "button#context-profile-save-as",
+        "textarea#draft",
+        "button#inspector-close",
+        "button#language-source",
+        "select#model-choice",
+        "button#model-import-add",
+        "button#model-import-check",
+        "input#model-import-url",
+        "select#model-prompt-cache-entries",
+        "button#private-decline",
+        "button#private-keep",
+        "button#private-propose",
+        "button#release-alerts-source",
+        "button#reload",
+        "button#speech-choose",
+        "button#speech-next",
+        "button#speech-play",
+        "button#speech-previous",
+        "input#speech-rate",
+        "button#speech-source",
+        "button#speech-stop",
+        "button#speech-switch",
+        "input#speech-thoughts",
+        "select#speech-voice",
+        "button#ticket-view",
+        "button#vision-quick-access-source"
+      ]
+    }
+  ],
+  "byClass": {
+    "A": 2,
+    "B": 129,
+    "C": 0,
+    "D": 3,
+    "E": 15,
+    "F": 0,
+    "G": 0
+  }
+}

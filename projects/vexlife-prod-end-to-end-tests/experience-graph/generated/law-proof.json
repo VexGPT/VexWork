@@ -1,0 +1,2187 @@
+{
+  "current": true,
+  "evidenceLawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
+  "lawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
+  "cellCounts": {
+    "PASS": 109,
+    "PASS_PARTIAL": 0,
+    "FAIL": 0,
+    "FIXTURE_REJECTED": 21,
+    "NOT_RUN": 22
+  },
+  "caseCounts": {
+    "PASS": 110,
+    "PASS_PARTIAL": 0,
+    "FAIL": 0,
+    "FIXTURE_REJECTED": 21,
+    "NOT_RUN": 28
+  },
+  "cells": [
+    {
+      "family": "HereticRuntimeAvailability",
+      "state": "HereticRuntimeAvailability.State.Qualified",
+      "control": "HereticRuntimeAvailability.Control.EnsureAvailable",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no deterministic fixture for evidence: HereticModelConfiguration.QualifiedRuntimeEvidence"
+    },
+    {
+      "family": "HereticRuntimeAvailability",
+      "state": "HereticRuntimeAvailability.State.StableBorrowable",
+      "control": "HereticRuntimeAvailability.Control.EnsureAvailable",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no deterministic fixture for evidence: HereticModelConfiguration.QualifiedRuntimeEvidence"
+    },
+    {
+      "family": "HereticRuntimeAvailability",
+      "state": "HereticRuntimeAvailability.State.StablePredecessorUnavailable",
+      "control": "HereticRuntimeAvailability.Control.EnsureAvailable",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.ProductDefault",
+      "control": "VexLifeContextProfileFamily.Import",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.ProductDefault",
+      "control": "VexLifeContextProfileFamily.RestoreProductDefault",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.ProductDefault",
+      "control": "VexLifeContextProfileFamily.Save",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.ProductDefault",
+      "control": "VexLifeContextProfileFamily.SaveAs",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.ProductDefault",
+      "control": "VexLifeContextProfileFamily.Use",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.Saved",
+      "control": "VexLifeContextProfileFamily.Import",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.Saved",
+      "control": "VexLifeContextProfileFamily.RestoreProductDefault",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.Saved",
+      "control": "VexLifeContextProfileFamily.Save",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.Saved",
+      "control": "VexLifeContextProfileFamily.SaveAs",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeContextProfileFamily",
+      "state": "VexLifeContextProfileFamily.Saved",
+      "control": "VexLifeContextProfileFamily.Use",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "VexLifeDiagnosticsFamily.Recording",
+      "control": "VexLifeDiagnosticsFamily.ClearHistory",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "VexLifeDiagnosticsFamily.Recording",
+      "control": "VexLifeDiagnosticsFamily.StartEnhanced",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "VexLifeDiagnosticsFamily.Recording",
+      "control": "VexLifeDiagnosticsFamily.StopEnhanced",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+      "control": "VexLifeDiagnosticsFamily.ClearHistory",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+      "control": "VexLifeDiagnosticsFamily.StartEnhanced",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeDiagnosticsFamily",
+      "state": "VexLifeDiagnosticsFamily.RecordingEnhanced",
+      "control": "VexLifeDiagnosticsFamily.StopEnhanced",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "VexLifeMemoryReviewFamily.Idle",
+      "control": "VexLifeMemoryReviewFamily.Decline",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "VexLifeMemoryReviewFamily.Idle",
+      "control": "VexLifeMemoryReviewFamily.Keep",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "VexLifeMemoryReviewFamily.Idle",
+      "control": "VexLifeMemoryReviewFamily.NotNow",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "VexLifeMemoryReviewFamily.Pending",
+      "control": "VexLifeMemoryReviewFamily.Decline",
+      "status": "PASS",
+      "rows": 16,
+      "executed": 16,
+      "detail": null
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "VexLifeMemoryReviewFamily.Pending",
+      "control": "VexLifeMemoryReviewFamily.Keep",
+      "status": "PASS",
+      "rows": 16,
+      "executed": 16,
+      "detail": null
+    },
+    {
+      "family": "VexLifeMemoryReviewFamily",
+      "state": "VexLifeMemoryReviewFamily.Pending",
+      "control": "VexLifeMemoryReviewFamily.NotNow",
+      "status": "PASS",
+      "rows": 16,
+      "executed": 16,
+      "detail": null
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "state": "VexLifeModelsFamily.State",
+      "control": "VexLifeModelsFamily.Download",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "state": "VexLifeModelsFamily.State",
+      "control": "VexLifeModelsFamily.ForgetImportedModel",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "state": "VexLifeModelsFamily.State",
+      "control": "VexLifeModelsFamily.Redownload",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "state": "VexLifeModelsFamily.State",
+      "control": "VexLifeModelsFamily.Remove",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "state": "VexLifeModelsFamily.State",
+      "control": "VexLifeModelsFamily.Select",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "state": "VexLifeModelsFamily.State",
+      "control": "VexLifeModelsFamily.SetPromptCacheEntries",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "state": "VexLifeModelsFamily.State",
+      "control": "VexLifeModelsFamily.Use",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeModelsFamily",
+      "state": "VexLifeModelsFamily.State",
+      "control": "VexLifeModelsFamily.UseRecommendedRuntimeConfiguration",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "state": "VexLifePrivateModeFamily.Kept",
+      "control": "VexLifePrivateModeFamily.Begin",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "state": "VexLifePrivateModeFamily.Kept",
+      "control": "VexLifePrivateModeFamily.End",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "state": "VexLifePrivateModeFamily.Private",
+      "control": "VexLifePrivateModeFamily.Begin",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifePrivateModeFamily",
+      "state": "VexLifePrivateModeFamily.Private",
+      "control": "VexLifePrivateModeFamily.End",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.Current",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.Current",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.Current",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.Current",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.Current",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.Current",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.Current",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HeldUnknown",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HeldUnknown",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HeldUnknown",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HeldUnknown",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HeldUnknown",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HeldUnknown",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HeldUnknown",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeFormationRequired",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeFormationRequired",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeFormationRequired",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeFormationRequired",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeFormationRequired",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeFormationRequired",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeFormationRequired",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeHeld",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 8,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeHeld",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 8,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeHeld",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 8,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeHeld",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 8,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeHeld",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 8,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeHeld",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 8,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HomeHeld",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 8,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HostHeld",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "FIXTURE_REJECTED",
+      "rows": 8,
+      "executed": 0,
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HostHeld",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "FIXTURE_REJECTED",
+      "rows": 8,
+      "executed": 0,
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HostHeld",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "FIXTURE_REJECTED",
+      "rows": 8,
+      "executed": 0,
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HostHeld",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "FIXTURE_REJECTED",
+      "rows": 8,
+      "executed": 0,
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HostHeld",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "FIXTURE_REJECTED",
+      "rows": 8,
+      "executed": 0,
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HostHeld",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "FIXTURE_REJECTED",
+      "rows": 8,
+      "executed": 0,
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.HostHeld",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "FIXTURE_REJECTED",
+      "rows": 8,
+      "executed": 0,
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ModelFilesHeld",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ModelFilesHeld",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ModelFilesHeld",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ModelFilesHeld",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ModelFilesHeld",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ModelFilesHeld",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ModelFilesHeld",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.RepairRequired",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.RepairRequired",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.RepairRequired",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.RepairRequired",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.RepairRequired",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.RepairRequired",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.RepairRequired",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ServiceRecoveryRequired",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "FIXTURE_REJECTED",
+      "rows": 4,
+      "executed": 0,
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ServiceRecoveryRequired",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "FIXTURE_REJECTED",
+      "rows": 4,
+      "executed": 0,
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ServiceRecoveryRequired",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "FIXTURE_REJECTED",
+      "rows": 4,
+      "executed": 0,
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ServiceRecoveryRequired",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "FIXTURE_REJECTED",
+      "rows": 4,
+      "executed": 0,
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ServiceRecoveryRequired",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "FIXTURE_REJECTED",
+      "rows": 4,
+      "executed": 0,
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ServiceRecoveryRequired",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "FIXTURE_REJECTED",
+      "rows": 4,
+      "executed": 0,
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.ServiceRecoveryRequired",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "FIXTURE_REJECTED",
+      "rows": 4,
+      "executed": 0,
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.SetupRequired",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.SetupRequired",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.SetupRequired",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.SetupRequired",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.SetupRequired",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.SetupRequired",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.SetupRequired",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StartRequired",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StartRequired",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StartRequired",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StartRequired",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StartRequired",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StartRequired",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StartRequired",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StorageHeld",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "FIXTURE_REJECTED",
+      "rows": 2,
+      "executed": 0,
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StorageHeld",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "FIXTURE_REJECTED",
+      "rows": 2,
+      "executed": 0,
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StorageHeld",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "FIXTURE_REJECTED",
+      "rows": 2,
+      "executed": 0,
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StorageHeld",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "FIXTURE_REJECTED",
+      "rows": 2,
+      "executed": 0,
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StorageHeld",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "FIXTURE_REJECTED",
+      "rows": 2,
+      "executed": 0,
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StorageHeld",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "FIXTURE_REJECTED",
+      "rows": 2,
+      "executed": 0,
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.StorageHeld",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "FIXTURE_REJECTED",
+      "rows": 2,
+      "executed": 0,
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateAvailable",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateAvailable",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateAvailable",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateAvailable",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateAvailable",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateAvailable",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateAvailable",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateRepairRequired",
+      "control": "VexLifeProdEntryFamily.Cancel",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateRepairRequired",
+      "control": "VexLifeProdEntryFamily.ConvergeDesired",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateRepairRequired",
+      "control": "VexLifeProdEntryFamily.FormHome",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateRepairRequired",
+      "control": "VexLifeProdEntryFamily.OpenCurrent",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateRepairRequired",
+      "control": "VexLifeProdEntryFamily.RecoverStaleService",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateRepairRequired",
+      "control": "VexLifeProdEntryFamily.SetUp",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeProdEntryFamily",
+      "state": "VexLifeProdEntryFamily.UpdateRepairRequired",
+      "control": "VexLifeProdEntryFamily.Start",
+      "status": "PASS",
+      "rows": 2,
+      "executed": 2,
+      "detail": null
+    },
+    {
+      "family": "VexLifeReleaseInboxFamily",
+      "state": "VexLifeReleaseInboxFamily.State",
+      "control": "VexLifeReleaseInboxFamily.Control.Dismiss",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeReleaseInboxFamily",
+      "state": "VexLifeReleaseInboxFamily.State",
+      "control": "VexLifeReleaseInboxFamily.Control.View",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "no runnable fixtures"
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Engaged",
+      "control": "VexLifeVisionFamily.Engage",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Engaged",
+      "control": "VexLifeVisionFamily.Stop",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Held",
+      "control": "VexLifeVisionFamily.Engage",
+      "status": "PASS",
+      "rows": 3,
+      "executed": 3,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Held",
+      "control": "VexLifeVisionFamily.Stop",
+      "status": "PASS",
+      "rows": 3,
+      "executed": 3,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Looking",
+      "control": "VexLifeVisionFamily.Engage",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Looking",
+      "control": "VexLifeVisionFamily.Stop",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Ready",
+      "control": "VexLifeVisionFamily.Engage",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Ready",
+      "control": "VexLifeVisionFamily.Stop",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Selecting",
+      "control": "VexLifeVisionFamily.Engage",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVisionFamily",
+      "state": "VexLifeVisionFamily.Selecting",
+      "control": "VexLifeVisionFamily.Stop",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Failed",
+      "control": "VexLifeVoiceInputFamily.Start",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Failed",
+      "control": "VexLifeVoiceInputFamily.Stop",
+      "status": "PASS",
+      "rows": 4,
+      "executed": 4,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Held",
+      "control": "VexLifeVoiceInputFamily.Start",
+      "status": "PASS",
+      "rows": 3,
+      "executed": 3,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Held",
+      "control": "VexLifeVoiceInputFamily.Stop",
+      "status": "PASS",
+      "rows": 3,
+      "executed": 3,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Listening",
+      "control": "VexLifeVoiceInputFamily.Start",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Listening",
+      "control": "VexLifeVoiceInputFamily.Stop",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Ready",
+      "control": "VexLifeVoiceInputFamily.Start",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Ready",
+      "control": "VexLifeVoiceInputFamily.Stop",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.RequestingMicrophone",
+      "control": "VexLifeVoiceInputFamily.Start",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.RequestingMicrophone",
+      "control": "VexLifeVoiceInputFamily.Stop",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Stopping",
+      "control": "VexLifeVoiceInputFamily.Start",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    },
+    {
+      "family": "VexLifeVoiceInputFamily",
+      "state": "VexLifeVoiceInputFamily.Stopping",
+      "control": "VexLifeVoiceInputFamily.Stop",
+      "status": "PASS",
+      "rows": 1,
+      "executed": 1,
+      "detail": null
+    }
+  ],
+  "cases": [
+    {
+      "caseRef": "case:HereticRuntimeAvailability.State.Qualified:Control.EnsureAvailable:0",
+      "status": "NOT_RUN",
+      "detail": "no deterministic fixture for evidence: HereticModelConfiguration.QualifiedRuntimeEvidence"
+    },
+    {
+      "caseRef": "case:HereticRuntimeAvailability.State.StableBorrowable:Control.EnsureAvailable:0",
+      "status": "NOT_RUN",
+      "detail": "no deterministic fixture for evidence: HereticModelConfiguration.QualifiedRuntimeEvidence"
+    },
+    {
+      "caseRef": "case:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:HereticRuntimeAvailability.State.StablePredecessorUnavailable:Control.EnsureAvailable:1",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:Import:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:SaveAs:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:Use:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeContextProfileFamily.Saved:Import:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeContextProfileFamily.Saved:RestoreProductDefault:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeContextProfileFamily.Saved:Save:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeContextProfileFamily.Saved:SaveAs:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeContextProfileFamily.Saved:Use:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeDiagnosticsFamily.Recording:ClearHistory:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeDiagnosticsFamily.Recording:StartEnhanced:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeDiagnosticsFamily.RecordingEnhanced:ClearHistory:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeDiagnosticsFamily.RecordingEnhanced:StopEnhanced:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlDownload:0",
+      "status": "NOT_RUN",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlRedownload:0",
+      "status": "NOT_RUN",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlRemove:0",
+      "status": "NOT_RUN",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlUse:0",
+      "status": "NOT_RUN",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeMemoryReviewFamily.Pending:Decline:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeMemoryReviewFamily.Pending:Keep:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeMemoryReviewFamily.Pending:NotNow:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:Download:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:ForgetImportedModel:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:ForgetImportedModel:1",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:Redownload:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:Remove:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:Remove:1",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:Select:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:SetPromptCacheEntries:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:Use:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeModelsFamily.State:UseRecommendedRuntimeConfiguration:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifePrivateModeFamily.Kept:Begin:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifePrivateModeFamily.Private:End:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.Current:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.Current:OpenCurrent:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.HeldUnknown:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.HomeFormationRequired:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.HomeFormationRequired:FormHome:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.HomeHeld:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.HostHeld:Cancel:0",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.ModelFilesHeld:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.RepairRequired:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.RepairRequired:ConvergeDesired:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.ServiceRecoveryRequired:Cancel:0",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.ServiceRecoveryRequired:RecoverStaleService:0",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.SetupRequired:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.SetupRequired:SetUp:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.StartRequired:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.StartRequired:Start:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.StorageHeld:Cancel:0",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:ConvergeDesired:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.UpdateAvailable:OpenCurrent:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.UpdateRepairRequired:Cancel:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeProdEntryFamily.UpdateRepairRequired:ConvergeDesired:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeReleaseInboxFamily.State:Control.Dismiss:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeReleaseInboxFamily.State:Control.View:0",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:VexLifeVisionFamily.Engaged:Stop:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeVisionFamily.Held:Stop:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeVisionFamily.Ready:Engage:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeVoiceInputFamily.Failed:Start:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeVoiceInputFamily.Listening:Stop:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeVoiceInputFamily.Ready:Start:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:VexLifeVoiceInputFamily.RequestingMicrophone:Stop:0",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeContextProfileFamily.ProductDefault:RestoreProductDefault",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:reject:VexLifeContextProfileFamily.ProductDefault:Save",
+      "status": "NOT_RUN",
+      "detail": "no runnable fixtures"
+    },
+    {
+      "caseRef": "case:reject:VexLifeDiagnosticsFamily.Recording:StopEnhanced",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeDiagnosticsFamily.RecordingEnhanced:StartEnhanced",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:Decline",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:Keep",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:NotNow",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifePrivateModeFamily.Kept:End",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifePrivateModeFamily.Private:Begin",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.Current:ConvergeDesired",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.Current:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.Current:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.Current:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.Current:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:ConvergeDesired",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:OpenCurrent",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HeldUnknown:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:ConvergeDesired",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:OpenCurrent",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeFormationRequired:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:ConvergeDesired",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:OpenCurrent",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HomeHeld:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:ConvergeDesired",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:FormHome",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:OpenCurrent",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:RecoverStaleService",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:SetUp",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.HostHeld:Start",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: held host entry state requires one reason and the certified requirement it failed"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:ConvergeDesired",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:OpenCurrent",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ModelFilesHeld:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:OpenCurrent",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.RepairRequired:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:ConvergeDesired",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:FormHome",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:OpenCurrent",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:SetUp",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.ServiceRecoveryRequired:Start",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: service recovery requires one exact witnessed VexLife source/PID"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:ConvergeDesired",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:OpenCurrent",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.SetupRequired:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:ConvergeDesired",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:OpenCurrent",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StartRequired:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:ConvergeDesired",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:FormHome",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:OpenCurrent",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:RecoverStaleService",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:SetUp",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.StorageHeld:Start",
+      "status": "FIXTURE_REJECTED",
+      "detail": "IllegalArgumentException: storage hold requires observed free space below the requirement"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateAvailable:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:FormHome",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:OpenCurrent",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:RecoverStaleService",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:SetUp",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeProdEntryFamily.UpdateRepairRequired:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVisionFamily.Engaged:Engage",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVisionFamily.Held:Engage",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVisionFamily.Looking:Engage",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVisionFamily.Looking:Stop",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVisionFamily.Ready:Stop",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVisionFamily.Selecting:Engage",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVisionFamily.Selecting:Stop",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVoiceInputFamily.Failed:Stop",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVoiceInputFamily.Held:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVoiceInputFamily.Held:Stop",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVoiceInputFamily.Listening:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVoiceInputFamily.Ready:Stop",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVoiceInputFamily.RequestingMicrophone:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVoiceInputFamily.Stopping:Start",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeVoiceInputFamily.Stopping:Stop",
+      "status": "PASS",
+      "detail": "no Family law cell (availability-only Family)"
+    }
+  ],
+  "failures": []
+}

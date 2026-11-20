@@ -408,3 +408,21 @@ Each later implementation effect must descend to the target repository's current
 and receive the exact authority required there.
 
 <!-- [VXG RealForever][FULL-SECURITY][PROJECT] -->
+
+## Currentization — discoverability hold released
+
+Full Security remains a RUNNING demonstrator Project. This currentization does not claim security completion or certification.
+
+The old shared-registration hold is resolved:
+
+~~~text
+Web Search currentization #253 merged
+-> shared Project Registry / public Workgraph occupancy released
+-> current VexBoard catalog preserved
+-> eight unique Full Security / Security Boundary boards composed forward
+-> work.full-security.discoverability COMPLETED
+~~~
+
+All substantive security/demonstrator Work keeps its existing lifecycle state.
+
+<!-- [VXG RealForever][FULL-SECURITY][CURRENTIZED][DISCOVERABILITY-COMPLETE] -->

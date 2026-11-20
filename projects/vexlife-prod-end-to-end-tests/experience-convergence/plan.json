@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "vexwork.vexlife-prod-experience-convergence-plan/v1",
+  "productCandidate": {
+    "repository": "VexGPT/VexLife-Prod",
+    "branch": "VXG-111926-vexlife-prod-experience-convergence-r1",
+    "commit": "af21cccce50262c4f0b4980b993e496b4449ab67",
+    "currentMain": "152c323ee6c3d4a43243d0a9c9b6de2ce11f605b",
+    "claudeConsolidated": "37ae931d402eb29bad2601bb0cc8479f55750928",
+    "meaning": "Exact runnable merge of current VexLife-Prod main with Claude's seven-scope consolidated Product candidate."
+  },
+  "graphCandidate": {
+    "repository": "VexGPT/VexWork",
+    "branch": "VXG-111926-vexlife-prod-e2e-experience-convergence-r1",
+    "mechanicalParent": "62bf49ac1fd7c30a4ea03847d5946e6ffb8cd9d4",
+    "humanParent": "9ddc81c72ce36398c2eb849cf1c39110ed33c88a"
+  },
+  "question": "Can one source-derived Experience Graph explain the current Product plus Claude's UI/language/voice/identity changes while preserving human journeys and refusing to call a route end-to-end complete before its execution proof exists?",
+  "screenLensBoundary": "Screen Lens may project the result; it does not own or repair Experience Graph semantic truth in this experiment.",
+  "mechanicalProjectionReuse": {
+    "projectionCommit": "37ae931d402eb29bad2601bb0cc8479f55750928",
+    "targetProductCommit": "af21cccce50262c4f0b4980b993e496b4449ab67",
+    "projectionArtifact": "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/consolidated-claude/experience-relationship-graph.json",
+    "routeArtifact": "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/consolidated-claude/routes.json",
+    "lateDeltaGraphContributingPaths": [
+      "src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+    ],
+    "observation": "The only late-main path consumed by the mechanical graph changed Context Profile input-budget calculation only; it did not change the extractor-read Intent fields, Send captures, admission gates, or Receipt-field flow.",
+    "reusableFor": "NODE_EDGE_ROUTE_SEMANTIC_TOPOLOGY",
+    "notReusableFor": [
+      "EXACT_SOURCE_COMMIT_BINDING",
+      "EXACT_SOURCE_FILE_BLOB_SET",
+      "GRAPH_FINGERPRINT",
+      "HOST_OR_LIVED_PROOF"
+    ]
+  },
+  "productSuccessorCandidate": {
+    "repository": "VexGPT/VexLife-Prod",
+    "branch": "VXG-111926-vexlife-prod-experience-convergence-r2",
+    "head": "479544c5c319ad796a0853125ae131d85afc9671",
+    "parentRunnableCandidate": "af21cccce50262c4f0b4980b993e496b4449ab67",
+    "composes": [
+      {
+        "ref": "github.pull.vexlife-prod.380",
+        "meaning": "semantic identity / Language Family / typed runtime / localization / design consolidation"
+      },
+      {
+        "ref": "github.pull.vexlife-prod.385",
+        "meaning": "VexWeb-derived workspace spatial Screen Lens export"
+      }
+    ],
+    "sourceConvergence": "FORMED",
+    "generatedLensProjection": "REGENERATED_AND_PUBLISHED",
+    "humanWitness": "NOT_EARNED",
+    "mergeAuthorization": "NOT_EARNED",
+    "meaning": "Runnable composed Product R2 with Product-owned Screen Lens regenerated from the exact source tree."
+  },
+  "screenLensProjectionCandidate": {
+    "productExport": {
+      "pr": 387,
+      "head": "479544c5c319ad796a0853125ae131d85afc9671",
+      "state": "COMPOSED_R2_AWAITING_COMBINED_HUMAN_WITNESS"
+    },
+    "vexWorkRenderer": {
+      "pr": 328,
+      "branch": "VXG-111926-vexlife-prod-e2e-experience-convergence-r1",
+      "state": "FOREGROUND_COMPOSED_BRANCH; exact head is provider-bound at witness"
+    },
+    "boundary": "Projection/rendering only. Experience Graph remains semantic/proof consumer and does not absorb VexBoard renderer ownership."
+  },
+  "screenLensConvergenceFinding": {
+    "productSourceTruth": "Blueprint owns control identity/meaning; VexWeb owns spatial placement; Product exporter joins them by ref.",
+    "experienceGraphImpact": "FRAME/SEAM/REGION/HANDLE additions are spatial/presentation facts. Existing semantic BUTTON/FIELD pathways remain the graph's Family/control inputs.",
+    "knownExtractorDebt": "Experience Graph currently expands SCAE_FAMILY elements across every Family Control instead of using the Product Lens control label to preserve exact control subset.",
+    "currentMitigation": "R1 human convergence fails closed with AMBIGUOUS_MANIFESTATION_BINDING. R2 source correction is formed but ungenerated.",
+    "rightfulFutureCorrection": "Regenerate Product R2 Lens JSON, then regenerate Experience Graph R2 with the control-subset reader; verify Language MANIFESTS edges become reply->CHOOSE_REPLY_LANGUAGE and screen->CHOOSE_SCREEN_LANGUAGE/FOLLOW_REPLY_LANGUAGE."
+  },
+  "experienceGraphSuccessorCandidate": {
+    "repository": "VexGPT/VexWork",
+    "branch": "VXG-111926-vexlife-prod-e2e-experience-convergence-r1",
+    "parentConvergenceHead": "5972a6e9ef56012642f081c885e896e1a8c28b1e",
+    "sourceCorrection": "FORMED",
+    "generatedGraphArtifacts": "REGENERATED_FROM_EXACT_PRODUCT_R2",
+    "correction": "Preserve Product Lens pathway Control subsets. MANIFESTS edges now select only Family Controls explicitly named by the Lens CONTROL node; unknown declared refs fail closed.",
+    "proofSource": [
+      "test/experience-graph-product-wiring.test.mjs preserves controlRefs",
+      "test/experience-graph.test.mjs holds subset manifestation and unknown-ref fail-closed behavior"
+    ],
+    "meaning": "Source-only successor. It must regenerate Experience Graph artifacts from the exact regenerated Product R2 Lens before any new graph fingerprint or clearance is claimed.",
+    "sourceCorrectionHead": "a418759be2a8e717aeddec0bb75b6cf75410c23f"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.release-roadmap",
+  "label": "VexLife Release Roadmap",
+  "purpose": "Make VexLife's product timeline readable without inventing dates: keep the usable web/local experience as the immediate v1 path, preserve the native Mac container work that is already proven, and show trusted native desktop distribution as a later v2 outcome held on legitimate platform-signing/notarization capability rather than hiding that boundary in release notes.",
+  "rootWorkRefs": [
+    "work.vexlife.release-roadmap.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-release-roadmap/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "github.pull.vexlife-prod.396",
+    "github.pull.vexlife-prod.400",
+    "github.pull.vexwork.332",
+    "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+    "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2",
+    "projects/vexlife-release-roadmap/RELATIONSHIP-CURRENTNESS-COMPANION.md"
+  ],
+  "formedAt": "2026-11-20T05:32:00.000Z"
+}

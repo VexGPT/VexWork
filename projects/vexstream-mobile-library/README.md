@@ -46,22 +46,22 @@ VexStream Mobile Library                         OUTCOME
 |   +-- Existing private-download migration      TASK / completed
 |   +-- Clear-data durability lived proof        TASK / completed
 |
-+-- Contextual Download Experience               OUTCOME / decomposed
++-- Contextual Download Experience               OUTCOME / verifying
 |   +-- Songs missing-content update / remove all TASK / verifying / merged / lived proof pending
 |
-+-- Library Browse & Discovery                   OUTCOME / decomposed
++-- Library Browse & Discovery                   OUTCOME / running
 |   +-- Sort / Filter / Recently added controls  TASK / running / lived feedback
 |
 +-- Large offline-library cold-start performance DEFECT / source fix merged / lived observation pending
 |
-+-- Playback Surfaces                            OUTCOME / decomposed
++-- Playback Surfaces                            OUTCOME / verifying
 |   +-- Now Playing artwork projection           TASK / completed / online metadata projection accepted
-|   +-- Offline artwork durability               DEFECT / running
+|   +-- Offline artwork durability               DEFECT / verifying
 |   +-- Current-track artwork availability       DEFECT / verifying / PR16 merged tree-exact / lived proof pending
 |   +-- Reconcile / sync missing artwork          TASK / cancelled as separate owner; absorbed above
 |   +-- VexStream full player                    TASK / verifying / lived artwork feedback remains
 |
-+-- MassDownload Maturity                        OUTCOME
++-- MassDownload Maturity                        OUTCOME / paused at checkpoint
     +-- MassDownload product implementation      TASK / completed
     +-- MassDownload terminal EndToEnd           TASK / completed
     +-- Track-menu presentation intermittency    DEFECT / paused at checkpoint / OPEN_UNEXPLAINED

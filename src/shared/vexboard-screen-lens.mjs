@@ -8,6 +8,9 @@
 // lifecycle, identity or execution; it only makes existing relationships
 // traversable without duplicate pages or copied subtrees.
 
+import { normalizeExamples, normalizeScreenRealization } from './vexboard-screen-lens-realization.mjs';
+import { LAYERS, normalizeScreenLayout } from './vexboard-screen-lens-frames.mjs';
+
 export const SCREEN_LENS_SCHEMA = 'vexboard.screen-lens/v1';
 
 export const LENS_SIDES = Object.freeze({ EXPERIENCE: 'EXPERIENCE', BEHAVIOR: 'BEHAVIOR' });
@@ -47,23 +50,35 @@ export const LENS_ROLES = Object.freeze({
   RESULT: Object.freeze({ role: 'RESULT', band: 'RUNTIME', chip: 'RES', label: 'Method result' }),
   EXECUTION: Object.freeze({ role: 'EXECUTION', band: 'RUNTIME', chip: 'EXE', label: 'Execution custody' }),
   REALIZATION: Object.freeze({ role: 'REALIZATION', band: 'RUNTIME', chip: 'RZN', label: 'Realization / reconciliation' }),
+  CONNECTION: Object.freeze({ role: 'CONNECTION', band: 'RUNTIME', chip: 'CON', label: 'Partner Connection' }),
+  CONVERSION: Object.freeze({ role: 'CONVERSION', band: 'RUNTIME', chip: 'CVT', label: 'Provider → Partner conversion' }),
+  DECODER: Object.freeze({ role: 'DECODER', band: 'RUNTIME', chip: 'DEC', label: 'Concrete decoder' }),
+  RECEIVER: Object.freeze({ role: 'RECEIVER', band: 'RUNTIME', chip: 'RCV', label: 'Partner Receiver' }),
+  PARTNER: Object.freeze({ role: 'PARTNER', band: 'OUTSIDE', chip: 'PAR', label: 'Partner' }),
+  SOURCE: Object.freeze({ role: 'SOURCE', band: 'OUTSIDE', chip: 'SRC', label: 'Partner Source' }),
+  SIGNAL: Object.freeze({ role: 'SIGNAL', band: 'OUTSIDE', chip: 'SIG', label: 'Partner Signal' }),
   STORE: Object.freeze({ role: 'STORE', band: 'OUTSIDE', chip: 'STO', label: 'Store / provider · outside truth' }),
   OBSERVATION: Object.freeze({ role: 'OBSERVATION', band: 'OUTSIDE', chip: 'OBS', label: 'Observation' }),
   CHRONOLOGY: Object.freeze({ role: 'CHRONOLOGY', band: 'SUPPORT', chip: 'LOG', label: 'Chronology' }),
   CONSTRUCTION: Object.freeze({ role: 'CONSTRUCTION', band: 'SUPPORT', chip: 'DI', label: 'Construction' }),
 });
 
+// FRAME, SEAM and HANDLE belong to a screen realized as frames of regions divided by seams
+// (vexboard-screen-lens-frames.mjs): a frame and a seam are structure, a seam handle is touched.
 export const ELEMENT_KINDS = Object.freeze({
   COLUMN: 'CONTAINER', ROW: 'CONTAINER', STACK: 'CONTAINER', CARD: 'CONTAINER', MENU: 'CONTAINER', SHEET: 'CONTAINER', DIALOG: 'CONTAINER', REGION: 'CONTAINER',
+  FRAME: 'CONTAINER', SEAM: 'CONTAINER',
   TEXT: 'CONTENT', IMAGE: 'CONTENT',
-  TOGGLE: 'ELEMENT', BUTTON: 'ELEMENT', FAB: 'ELEMENT', MENU_ITEM: 'ELEMENT', FIELD: 'ELEMENT',
+  TOGGLE: 'ELEMENT', BUTTON: 'ELEMENT', FAB: 'ELEMENT', MENU_ITEM: 'ELEMENT', FIELD: 'ELEMENT', HANDLE: 'ELEMENT',
 });
+export const ELEMENT_INTERACTIONS = Object.freeze(['ACTIVATE', 'CHANGE', 'RESIZE', 'COLLAPSE_BEFORE', 'COLLAPSE_AFTER']);
 
 export const PATHWAY_DISPOSITIONS = Object.freeze({
   SCAE_FAMILY: 'Source earns a semantic owner: Control, State, Act, Effect and Projection relationships are explicit.',
   TYPED_PRESENTATION: 'Open / Close / Toggle already says everything; no Behavior is earned.',
   TYPED_NAVIGATION: 'NavigateTo(ScreenId) already says everything; no Act identity is earned.',
   DIRECT_REGISTRATION: 'The registration calls owners directly; no Family has earned this meaning yet.',
+  PARTNER_CIRCUIT: 'Source proves an external Partner / Connection / Conversion / Signal / Observation / Receiver path and its return through Store / Family truth without pretending ingress is a Family Control.',
 });
 
 export const SCREEN_PLACEMENTS = Object.freeze(['PRIMARY', 'SHARED']);
@@ -83,6 +98,141 @@ function text(value, label) {
 function optionalText(value, label) {
   if (value === undefined || value === null) return null;
   return text(value, label);
+}
+
+function normalizeScreenView(input, screenRef) {
+  if (input === undefined || input === null) return null;
+  if (!input || typeof input !== 'object') fail(`${screenRef} view must be an object`);
+  if (input.kind !== 'STATIC_HTML_CSS') fail(`${screenRef} view kind ${input.kind} is unknown`);
+  if (input.scriptPolicy !== 'NONE') fail(`${screenRef} static view scriptPolicy must be NONE`);
+  const attribute = (value, label, { required = false } = {}) => {
+    if (value === undefined || value === null) {
+      if (required) fail(`${label} is required`);
+      return null;
+    }
+    const name = text(value, label);
+    if (!/^data-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name)) fail(`${label} must be a data-* attribute`);
+    return name;
+  };
+  const anchors = input.anchors && typeof input.anchors === 'object' ? input.anchors : {};
+  const stateAttribute = (value, label) => {
+    const name = text(value, label);
+    if (!/^(?:data-[a-z0-9]+(?:-[a-z0-9]+)*|aria-[a-z0-9]+(?:-[a-z0-9]+)*|hidden|open|inert)$/.test(name)) {
+      fail(`${label} must be a safe presentation attribute`);
+    }
+    return name;
+  };
+  const stateBindings = (input.stateBindings || []).map((binding, bindingIndex) => {
+    const presenceRef = text(binding?.presenceRef, `${screenRef} view stateBindings[${bindingIndex}] presenceRef`);
+    const value = String(binding?.value ?? '');
+    if (!value) fail(`${screenRef} view stateBindings[${bindingIndex}] value is required`);
+    const operations = (binding.operations || []).map((operation, operationIndex) => {
+      if (operation?.op !== 'SET_ATTRIBUTE' && operation?.op !== 'REMOVE_ATTRIBUTE') {
+        fail(`${screenRef} view stateBindings[${bindingIndex}] operation[${operationIndex}] op is unknown`);
+      }
+      const out = {
+        op: operation.op,
+        targetRef: text(operation.targetRef, `${screenRef} view stateBindings[${bindingIndex}] operation[${operationIndex}] targetRef`),
+        attribute: stateAttribute(operation.attribute, `${screenRef} view stateBindings[${bindingIndex}] operation[${operationIndex}] attribute`),
+      };
+      if (operation.op === 'SET_ATTRIBUTE') out.value = String(operation.value ?? '');
+      return out;
+    });
+    if (!operations.length) fail(`${screenRef} view stateBindings[${bindingIndex}] needs an operation`);
+    return { presenceRef, value, operations };
+  });
+  const interactionBindings = (input.interactionBindings || []).map((binding, bindingIndex) => {
+    const kind = text(binding?.kind, `${screenRef} view interactionBindings[${bindingIndex}] kind`);
+    if (kind === 'SPLIT') {
+      const styleProperty = text(binding.styleProperty, `${screenRef} view interactionBindings[${bindingIndex}] styleProperty`);
+      if (!/^--[a-z0-9]+(?:-[a-z0-9]+)*$/.test(styleProperty)) {
+        fail(`${screenRef} view interactionBindings[${bindingIndex}] styleProperty must be a CSS custom property`);
+      }
+      return {
+        kind,
+        elementRef: text(binding.elementRef, `${screenRef} view interactionBindings[${bindingIndex}] elementRef`),
+        targetRef: text(binding.targetRef, `${screenRef} view interactionBindings[${bindingIndex}] targetRef`),
+        beforeRef: text(binding.beforeRef, `${screenRef} view interactionBindings[${bindingIndex}] beforeRef`),
+        afterRef: text(binding.afterRef, `${screenRef} view interactionBindings[${bindingIndex}] afterRef`),
+        styleProperty,
+        collapsedAttribute: stateAttribute(binding.collapsedAttribute, `${screenRef} view interactionBindings[${bindingIndex}] collapsedAttribute`),
+        collapsedBeforeValue: text(binding.collapsedBeforeValue, `${screenRef} view interactionBindings[${bindingIndex}] collapsedBeforeValue`),
+        collapsedAfterValue: text(binding.collapsedAfterValue, `${screenRef} view interactionBindings[${bindingIndex}] collapsedAfterValue`),
+      };
+    }
+    if (kind === 'SELECT') {
+      const options = (binding.options || []).map((entry, optionIndex) => ({
+        value: text(entry?.value, `${screenRef} view interactionBindings[${bindingIndex}] options[${optionIndex}] value`),
+        outcome: text(entry?.outcome, `${screenRef} view interactionBindings[${bindingIndex}] options[${optionIndex}] outcome`),
+      }));
+      if (!options.length) fail(`${screenRef} view interactionBindings[${bindingIndex}] SELECT needs options`);
+      if (new Set(options.map((entry) => entry.value)).size !== options.length) fail(`${screenRef} view interactionBindings[${bindingIndex}] SELECT option values must be unique`);
+      return {
+        kind,
+        elementRef: text(binding.elementRef, `${screenRef} view interactionBindings[${bindingIndex}] elementRef`),
+        presenceRef: text(binding.presenceRef, `${screenRef} view interactionBindings[${bindingIndex}] presenceRef`),
+        options,
+      };
+    }
+    if (kind === 'TOGGLE') {
+      return {
+        kind,
+        elementRef: text(binding.elementRef, `${screenRef} view interactionBindings[${bindingIndex}] elementRef`),
+        targetRef: text(binding.targetRef, `${screenRef} view interactionBindings[${bindingIndex}] targetRef`),
+        presenceRef: text(binding.presenceRef, `${screenRef} view interactionBindings[${bindingIndex}] presenceRef`),
+        attribute: stateAttribute(binding.attribute, `${screenRef} view interactionBindings[${bindingIndex}] attribute`),
+        closedValue: String(binding.closedValue ?? ''),
+        openValue: String(binding.openValue ?? ''),
+      };
+    }
+    fail(`${screenRef} view interactionBindings[${bindingIndex}] kind ${kind} is unknown`);
+  });
+  let colorMode = null;
+  if (input.colorMode !== undefined && input.colorMode !== null) {
+    if (!input.colorMode || typeof input.colorMode !== 'object' || Array.isArray(input.colorMode)) {
+      fail(`${screenRef} view colorMode must be an object`);
+    }
+    const options = (input.colorMode.options || []).map((option, optionIndex) => ({
+      ref: text(option?.ref, `${screenRef} view colorMode options[${optionIndex}] ref`),
+      label: text(option?.label, `${screenRef} view colorMode options[${optionIndex}] label`),
+      attributeValue: option?.attributeValue === undefined || option?.attributeValue === null
+        ? null
+        : text(option.attributeValue, `${screenRef} view colorMode options[${optionIndex}] attributeValue`),
+    }));
+    if (!options.length) fail(`${screenRef} view colorMode needs options`);
+    if (new Set(options.map((option) => option.ref)).size !== options.length) {
+      fail(`${screenRef} view colorMode option refs must be unique`);
+    }
+    const defaultRef = text(input.colorMode.defaultRef, `${screenRef} view colorMode defaultRef`);
+    if (!options.some((option) => option.ref === defaultRef)) {
+      fail(`${screenRef} view colorMode defaultRef ${defaultRef} is not one of its options`);
+    }
+    colorMode = {
+      owner: text(input.colorMode.owner, `${screenRef} view colorMode owner`),
+      source: text(input.colorMode.source, `${screenRef} view colorMode source`),
+      attribute: attribute(input.colorMode.attribute, `${screenRef} view colorMode attribute`, { required: true }),
+      storageKey: optionalText(input.colorMode.storageKey, `${screenRef} view colorMode storageKey`),
+      defaultRef,
+      options,
+    };
+  }
+  return {
+    kind: 'STATIC_HTML_CSS',
+    html: text(input.html, `${screenRef} view html`),
+    css: text(input.css, `${screenRef} view css`),
+    scriptPolicy: 'NONE',
+    htmlSource: optionalText(input.htmlSource, `${screenRef} view htmlSource`),
+    cssSource: optionalText(input.cssSource, `${screenRef} view cssSource`),
+    anchors: {
+      screenAttribute: attribute(anchors.screenAttribute, `${screenRef} view screenAttribute`),
+      elementAttribute: attribute(anchors.elementAttribute, `${screenRef} view elementAttribute`, { required: true }),
+      structuralAttribute: attribute(anchors.structuralAttribute, `${screenRef} view structuralAttribute`, { required: true }),
+      structuralParentAttribute: attribute(anchors.structuralParentAttribute, `${screenRef} view structuralParentAttribute`),
+    },
+    colorMode,
+    stateBindings,
+    interactionBindings,
+  };
 }
 
 function freezeDeep(value) {
@@ -116,6 +266,12 @@ function normalizeElement(input, owner, refs) {
     alwaysVisible: input.alwaysVisible === true,
     slot: optionalText(input.slot, `${ref} slot`),
     textRole: optionalText(input.textRole, `${ref} textRole`),
+    icon: optionalText(input.icon, `${ref} icon`),
+    style: optionalText(input.style, `${ref} style`),
+    // Which plane it is drawn on (content, chrome, transient feedback, modal) and how it is touched,
+    // when source says so. Both are optional: a lens generated before them stays valid.
+    layer: input.layer === undefined || input.layer === null ? null : (LAYERS.includes(input.layer) ? input.layer : fail(`${ref} layer ${input.layer} is unknown`)),
+    interactions: (input.interactions || []).map((value) => (ELEMENT_INTERACTIONS.includes(value) ? value : fail(`${ref} interaction ${value} is unknown`))),
     ownerRef: owner,
   };
 }
@@ -174,6 +330,7 @@ export function normalizeScreenLens(input) {
       source: optionalText(entry.source, `${screenRef} source`),
       mapped: entry.mapped,
       summary: optionalText(entry.summary, `${screenRef} summary`),
+      view: normalizeScreenView(entry.view, screenRef),
       elements,
     };
   });
@@ -239,6 +396,53 @@ export function normalizeScreenLens(input) {
     return { ref, subjectRef, text: text(entry.text, `${ref} text`), detail: optionalText(entry.detail, `${ref} detail`) };
   });
 
+  // Realization and source-authored examples are optional, additive sections: a lens generated
+  // before they existed stays valid, and every ref they name must already be a lens ref.
+  const lensRefs = new Set([...refs, ...screenRefs]);
+  for (const screen of screens) {
+    const raw = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.realization;
+    screen.realization = normalizeScreenRealization(raw, { screenRef: screen.screenRef, knownRefs: lensRefs });
+    if (screen.view?.stateBindings.length) {
+      const presenceRefs = new Set(screen.realization?.presence.map((entry) => entry.ref) ?? []);
+      for (const binding of screen.view.stateBindings) {
+        if (!presenceRefs.has(binding.presenceRef)) fail(`${screen.screenRef} view state binding presence ${binding.presenceRef} is not declared`);
+        for (const operation of binding.operations) {
+          if (!lensRefs.has(operation.targetRef)) fail(`${screen.screenRef} view state binding target ${operation.targetRef} is not a lens ref`);
+        }
+      }
+    }
+    for (const binding of screen.view?.interactionBindings ?? []) {
+      if (binding.kind === 'SPLIT') {
+        for (const [label, ref] of [['element', binding.elementRef], ['target', binding.targetRef], ['before', binding.beforeRef], ['after', binding.afterRef]]) {
+          if (!lensRefs.has(ref)) fail(`${screen.screenRef} view split binding ${label} ${ref} is not a lens ref`);
+        }
+        const handle = screen.elements.find((element) => element.ref === binding.elementRef);
+        if (!handle || handle.kind !== 'HANDLE') fail(`${screen.screenRef} view split binding ${binding.elementRef} is not a HANDLE`);
+        if (!handle.interactions.includes('RESIZE')) fail(`${screen.screenRef} view split binding ${binding.elementRef} does not declare RESIZE`);
+        continue;
+      }
+      if (!lensRefs.has(binding.elementRef)) fail(`${screen.screenRef} view ${binding.kind.toLowerCase()} binding element ${binding.elementRef} is not a lens ref`);
+      if (binding.kind === 'SELECT') {
+        const presence = screen.realization?.presence.find((entry) => entry.ref === binding.presenceRef);
+        if (!presence) fail(`${screen.screenRef} view select binding presence ${binding.presenceRef} is not declared`);
+        if (presence.kind !== 'SELECTION') fail(`${screen.screenRef} view select binding presence ${binding.presenceRef} is not a SELECTION`);
+        const outcomes = new Set([presence.defaultRef, ...(presence.choices ?? []).map((choice) => choice.targetRef)].filter(Boolean));
+        for (const option of binding.options) if (!outcomes.has(option.outcome)) fail(`${screen.screenRef} view select option outcome ${option.outcome} is not authored by ${binding.presenceRef}`);
+        continue;
+      }
+      if (binding.kind === 'TOGGLE') {
+        if (!lensRefs.has(binding.targetRef)) fail(`${screen.screenRef} view toggle binding target ${binding.targetRef} is not a lens ref`);
+        const presence = screen.realization?.presence.find((entry) => entry.ref === binding.presenceRef);
+        if (!presence) fail(`${screen.screenRef} view toggle binding presence ${binding.presenceRef} is not declared`);
+        if (presence.kind !== 'PRESENTATION') fail(`${screen.screenRef} view toggle binding presence ${binding.presenceRef} is not PRESENTATION`);
+      }
+    }
+    const layout = (input.screens || []).find((entry) => entry.screenRef === screen.screenRef)?.layout;
+    screen.layout = normalizeScreenLayout(layout, { screenRef: screen.screenRef, elements: screen.elements });
+  }
+  const examples = normalizeExamples(input.examples, { knownRefs: lensRefs });
+  const examplesHeld = (input.examplesHeld || []).map((entry) => ({ ref: optionalText(entry.ref, 'examplesHeld ref'), source: optionalText(entry.source, 'examplesHeld source'), reason: text(entry.reason, 'examplesHeld reason') }));
+
   const entryScreenRef = text(input.entryScreenRef ?? screens[0].screenRef, 'entryScreenRef');
   if (!screenRefs.has(entryScreenRef)) fail(`entryScreenRef ${entryScreenRef} is not a screen`);
   const entryElementRef = optionalText(input.entryElementRef, 'entryElementRef');
@@ -264,6 +468,8 @@ export function normalizeScreenLens(input) {
     screens,
     pathways,
     annotations,
+    examples,
+    examplesHeld,
   });
 }
 

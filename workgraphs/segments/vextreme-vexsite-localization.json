@@ -8,11 +8,11 @@
       "workRef": "work.vextreme.vexsite.localization.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexSite Localization",
-      "purpose": "Keep VexSite localization legible from preserved source lineage through the canonical Global Core source queue and separate generated/runtime convergence, while Vextreme remains the owner of page, source, runtime, and lived-browser truth and VexWork owns only durable work organization.",
+      "purpose": "Keep VexSite localization legible across completed source/runtime phases and the next actually admitted Vextreme localization domain, while Vextreme remains the scheduler/source owner and VexWork projects current work state without copying the page/locale queue.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "PAUSED_AT_CHECKPOINT",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -29,25 +29,31 @@
         "github.pull.vextreme.397",
         "github.pull.vextreme.398",
         "github.pull.vextreme.399",
-        "repo.vextreme:docs/architecture/06-i18n.md"
+        "repo.vextreme:docs/architecture/06-i18n.md",
+        "github.pull.vextreme.401",
+        "github.pull.vextreme.431",
+        "github.pull.vextreme.504",
+        "github.pull.vextreme.606",
+        "github.pull.vextreme.607",
+        "git.commit.vextreme.1a0f161b4175e83c223e57642d08501004cdb9fd"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-24T06:17:51.000Z"
+      "updatedAt": "2026-11-17T11:08:38.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
-      "label": "Advance the canonical Conversations-with-God Global Core source queue",
-      "purpose": "Advance exactly the Vextreme-owned canonical scheduler foreground without creating one VexWork item per page; Closed Circuit, Divine Emergence, The Firmament Conversation, and Ascension & Embodiment are terminal/current, and The Testimony of the Handler is the next exact source row at 134 canonical keys / 1,206 Global Core target cells.",
+      "label": "Completed — Conversations-with-God Global Core source phase",
+      "purpose": "Preserve the completed Conversations-with-God Global Core source phase as terminal history. The original queue closed through Handler and later Witness-grade return continuation PR #431; do not revive its historical next-page checkpoints as the current localization foreground.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "IMMEDIATE",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vextreme.vexsite.localization.presentation-source-lineage"
       ],
@@ -65,25 +71,28 @@
         "github.pull.vextreme.398",
         "github.pull.vextreme.399",
         "repo.vextreme:data/strings/source/pages/the-testimony-of-the-handler.json",
-        "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json",
+        "github.pull.vextreme.401",
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T05:28:32.000Z",
-      "updatedAt": "2026-10-24T06:17:51.000Z"
+      "updatedAt": "2026-10-27T03:46:51.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
-      "label": "Converge VexSite generated/runtime currentness",
-      "purpose": "Keep generated/runtime realization distinct from canonical localization source acceptance and converge those consequences through the existing broad Vextreme generated/runtime owner rather than admitting duplicate generated writers.",
+      "label": "Completed — prior generated/runtime localization convergence",
+      "purpose": "Preserve terminal generated/runtime convergence for the earlier admitted localization phases, including PR #379 and the later Witness-grade return consequence set through PR #431. Later localization domains must earn their own current generated/runtime evidence.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vextreme"
@@ -91,14 +100,17 @@
       "sourceRefs": [
         "github.pull.vextreme.379",
         "github.issue.vextreme.273",
-        "github.issue-comment.vextreme.273.6380410929"
+        "github.issue-comment.vextreme.273.6380410929",
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T05:28:32.000Z",
-      "updatedAt": "2026-10-24T05:28:32.000Z"
+      "updatedAt": "2026-10-27T03:46:51.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -164,9 +176,109 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T02:20:00.000Z",
       "updatedAt": "2026-10-24T05:28:32.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.current-scheduler-frontier",
+      "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+      "label": "Current localization scheduler frontier",
+      "purpose": "Represent the present Vextreme-owned localization frontier without copying a page queue into VexWork. Fresh provider evidence shows later institutional/support localization continued after the old Conversations-with-God phase; Support Global Core completed through PR #607 on 2026-11-17, and no newer dedicated open localization PR was found in the current provider census. Resume only when Vextreme admits the next real localization domain, re-grounding current provider truth first.",
+      "workClass": "TASK",
+      "state": "PAUSED_AT_CHECKPOINT",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme.273",
+        "github.pull.vextreme.504",
+        "github.pull.vextreme.604",
+        "github.pull.vextreme.606",
+        "github.pull.vextreme.607",
+        "git.commit.vextreme.1a0f161b4175e83c223e57642d08501004cdb9fd"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-17T11:08:38.000Z",
+      "updatedAt": "2026-11-17T11:08:38.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.canonical-global-core-source.verifying.currentization-20261119",
+      "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Currentize accepted Vextreme evidence that the historical Conversations-with-God source phase closed before later localization domains were admitted.",
+      "actorRef": "actor.chatgpt.vexwork-currentness",
+      "sourceRefs": [
+        "github.pull.vextreme.401",
+        "github.pull.vextreme.431"
+      ],
+      "createdAt": "2026-11-19T21:40:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.canonical-global-core-source.completed.currentization-20261119",
+      "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #431 terminally preserves the later Witness-grade return continuation; the old page-queue foreground is historical and must not remain RUNNING in VexWork.",
+      "actorRef": "actor.chatgpt.vexwork-currentness",
+      "sourceRefs": [
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f"
+      ],
+      "createdAt": "2026-11-19T21:40:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.generated-runtime-currentness.verifying.currentization-20261119",
+      "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Currentize the already-accepted prior generated/runtime localization convergence before marking that historical phase complete.",
+      "actorRef": "actor.chatgpt.vexwork-currentness",
+      "sourceRefs": [
+        "github.pull.vextreme.379",
+        "github.pull.vextreme.431"
+      ],
+      "createdAt": "2026-11-19T21:40:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.generated-runtime-currentness.completed.currentization-20261119",
+      "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The prior admitted generated/runtime localization phases are terminal through the exact accepted merge evidence; later domains remain separately currentized.",
+      "actorRef": "actor.chatgpt.vexwork-currentness",
+      "sourceRefs": [
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f"
+      ],
+      "createdAt": "2026-11-19T21:40:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.outcome.paused.currentization-20261119",
+      "workRef": "work.vextreme.vexsite.localization.outcome",
+      "priorState": "RUNNING",
+      "nextState": "PAUSED_AT_CHECKPOINT",
+      "reason": "Fresh provider census shows the most recent dedicated Support Global Core localization phase merged through PR #607 and no newer dedicated open localization PR is currently admitted; preserve the Project at a truthful checkpoint rather than pretending old work is active or the whole capability is permanently complete.",
+      "actorRef": "actor.chatgpt.vexwork-currentness",
+      "sourceRefs": [
+        "github.pull.vextreme.607",
+        "git.commit.vextreme.1a0f161b4175e83c223e57642d08501004cdb9fd"
+      ],
+      "createdAt": "2026-11-19T21:40:04.000Z"
+    }
+  ],
   "sourceRefs": [
     "projects/vexsite-localization/README.md",
     "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
@@ -177,7 +289,13 @@
     "github.pull.vextreme.395",
     "github.pull.vextreme.397",
     "github.pull.vextreme.398",
-    "github.pull.vextreme.399"
+    "github.pull.vextreme.399",
+    "github.pull.vextreme.401",
+    "github.pull.vextreme.431",
+    "github.pull.vextreme.504",
+    "github.pull.vextreme.606",
+    "github.pull.vextreme.607",
+    "git.commit.vextreme.1a0f161b4175e83c223e57642d08501004cdb9fd"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }

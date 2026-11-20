@@ -8,7 +8,7 @@
 // the catalog; the typed ref is validated before it is placed in a URL; fetched Kotlin is parsed as
 // text and never executed; nothing is written back anywhere; no token is used or stored.
 
-import { githubRepository, validateSourceRef } from './vexboard-lens-catalog.mjs';
+import { githubRepository, repositoryJsonPath, validateSourceRef } from './vexboard-lens-catalog.mjs';
 
 export const GITHUB_API = 'https://api.github.com';
 export const GITHUB_RAW = 'https://raw.githubusercontent.com';
@@ -104,6 +104,38 @@ async function inBatches(items, size, task) {
   return results;
 }
 
+export async function readExportedLensCommit({
+  repositoryUrl,
+  sourcePath,
+  ref,
+  resolved = null,
+  fetch: fetchImpl,
+  onProgress = () => {},
+}) {
+  const { owner, repo } = githubRepository(repositoryUrl);
+  const path = repositoryJsonPath(sourcePath, 'exported Lens sourcePath');
+  onProgress({ phase: 'RESOLVE', done: 0, total: 0 });
+  const commit = resolved && /^[0-9a-f]{40}$/.test(String(resolved.sha))
+    ? resolved
+    : await resolveCommit({ repositoryUrl, ref, fetch: fetchImpl });
+  onProgress({ phase: 'FETCH', done: 0, total: 1 });
+  let response;
+  try {
+    response = await fetchImpl(`${GITHUB_RAW}/${owner}/${repo}/${commit.sha}/${path.split('/').map(encodeURIComponent).join('/')}`);
+  } catch (error) {
+    throw new CommitSourceError(`Could not download ${path} (${error?.message ?? error}).`, 'NETWORK');
+  }
+  if (response.status === 404) throw new CommitSourceError(`${repo} has no ${path} at ${commit.sha.slice(0, 7)}.`, 'SHAPE');
+  if (!response.ok) throw new CommitSourceError(`Could not download ${path} (HTTP ${response.status}).`, 'HTTP');
+  const text = await response.text();
+  let lens;
+  try { lens = JSON.parse(text); }
+  catch (error) { throw new CommitSourceError(`${path} at ${commit.sha.slice(0, 7)} is not valid JSON: ${error.message}`, 'SHAPE'); }
+  onProgress({ phase: 'FETCH', done: 1, total: 1 });
+  onProgress({ phase: 'PROJECT', done: 1, total: 1 });
+  return { lens, text, commit, fileCount: 1 };
+}
+
 // `resolved` (from resolveCommit) skips the lookup when the caller already resolved the ref.
 export async function projectCommit({ adapter, overlay = null, ref, resolved = null, fetch: fetchImpl, project, readPlan, onProgress = () => {}, concurrency = 8 }) {
   if (typeof project !== 'function' || typeof readPlan !== 'function') throw new TypeError('projectCommit needs the adapter project and readPlan functions');
@@ -132,11 +164,13 @@ export async function projectCommit({ adapter, overlay = null, ref, resolved = n
     return body;
   });
   const files = new Map(paths.map((path, index) => [path, texts[index]]));
+  // Listed evidence paths (for example golden reference renders): existence only, never downloaded.
+  const listing = typeof plan.lists === 'function' ? (tree.tree ?? []).filter((entry) => entry.type === 'blob' && plan.lists(entry.path)).map((entry) => entry.path).sort() : [];
   onProgress({ phase: 'PROJECT', done: paths.length, total: paths.length });
   const pinned = { ...adapter, repository: { ...adapter.repository, commit: commit.sha } };
   let projected;
   try {
-    projected = project({ adapter: pinned, files, overlay, observedAt: commit.date ? commit.date.slice(0, 10) : null, overlayMode: 'LENIENT' });
+    projected = project({ adapter: pinned, files, listing, overlay, observedAt: commit.date ? commit.date.slice(0, 10) : null, overlayMode: 'LENIENT' });
   } catch (error) {
     throw new CommitSourceError(`The adapter could not read ${commit.sha.slice(0, 7)}: ${error?.message ?? error}. This commit's source shape is probably older or newer than the adapter understands.`, 'SHAPE');
   }

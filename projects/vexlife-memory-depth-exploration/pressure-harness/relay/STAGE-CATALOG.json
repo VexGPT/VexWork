@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "vexwork.continuity-pressure-stage-catalog/v1",
+  "continuity": "[VXG RealForever]",
+  "harnessRef": "harness.vexlife-prod.conversational-boundaries/v1",
+  "currentRelayContractRef": "source.vexrelay.current-contract/v1",
+  "stages": {
+    "projection": {
+      "label": "Deterministic continuity projection pressure",
+      "executionClass": "DETERMINISTIC_PROJECTION",
+      "effectClass": "REPOSITORY_OPERATIONS",
+      "route": "adapter.vexrelay.repository/v2",
+      "productAdapterStage": "projection",
+      "modelCallRequired": false,
+      "resultRequired": true
+    },
+    "pressure": {
+      "label": "Live-model accelerated continuity pressure",
+      "executionClass": "LIVE_MODEL",
+      "effectClass": "HOST_SEMANTIC_MODEL_RUNTIME",
+      "route": "adapter.vexlocalbridge.direct-host-effect",
+      "productAdapterStage": "pressure",
+      "modelCallRequired": true,
+      "scratchHomeRequired": true,
+      "resultRequired": true
+    },
+    "probe": {
+      "label": "Live-model continuity and lesson probes",
+      "executionClass": "LIVE_MODEL",
+      "effectClass": "HOST_SEMANTIC_MODEL_RUNTIME",
+      "route": "adapter.vexlocalbridge.direct-host-effect",
+      "productAdapterStage": "probe",
+      "modelCallRequired": true,
+      "scratchHomeRequired": true,
+      "resultRequired": true
+    },
+    "analyze": {
+      "label": "Deterministic result analysis",
+      "executionClass": "DETERMINISTIC_PROJECTION",
+      "effectClass": "REPOSITORY_OPERATIONS",
+      "route": "adapter.vexrelay.repository/v2",
+      "productAdapterStage": "analyze",
+      "modelCallRequired": false,
+      "resultRequired": true
+    }
+  },
+  "modes": {
+    "quick": {
+      "label": "Quick live smoke",
+      "routeClass": "HOST_SEMANTIC_MODEL_RUNTIME",
+      "sequence": [
+        "pressure",
+        "probe",
+        "analyze"
+      ],
+      "recommendedSets": 2,
+      "recommendedTurnsPerSet": 10
+    },
+    "full": {
+      "label": "Full conversational-boundaries experiment",
+      "routeClass": "HOST_SEMANTIC_MODEL_RUNTIME",
+      "sequence": [
+        "projection",
+        "pressure",
+        "probe",
+        "analyze"
+      ],
+      "recommendedSets": 3,
+      "recommendedTurnsPerSet": 10
+    },
+    "projection": {
+      "routeClass": "REPOSITORY_OPERATIONS",
+      "sequence": [
+        "projection"
+      ]
+    },
+    "pressure": {
+      "routeClass": "HOST_SEMANTIC_MODEL_RUNTIME",
+      "sequence": [
+        "pressure"
+      ]
+    },
+    "probe": {
+      "routeClass": "HOST_SEMANTIC_MODEL_RUNTIME",
+      "sequence": [
+        "probe"
+      ]
+    },
+    "analyze": {
+      "routeClass": "REPOSITORY_OPERATIONS",
+      "sequence": [
+        "analyze"
+      ]
+    }
+  },
+  "permanent": [
+    "FULL_CLASSIFIED_BY_STRONGEST_EFFECT",
+    "REPOSITORY_STAGE_NEVER_IMPERSONATES_MODEL_RUNTIME_EFFECT",
+    "LIVE_STAGE_NEVER_MUTATES_CANONICAL_VICTOR_HOME",
+    "STAGE_CATALOG_NEVER_GRANTS_AUTHORITY"
+  ]
+}
