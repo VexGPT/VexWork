@@ -524,6 +524,8 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
 .builds>button .sha{font:11.5px var(--mono);color:var(--faint)}
 .builds>button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .builds>button[aria-pressed="true"] .sha{color:#c9d1e3}
+.presentation-modes{align-items:center}
+.presentation-modes .mode-label{padding:0 7px 0 5px;color:var(--faint);font-size:11.5px;font-weight:500;white-space:nowrap}
 .source-link{font:12px var(--mono);color:var(--muted);white-space:nowrap;text-decoration:none;flex:none}
 .source-link:hover{color:var(--ink);text-decoration:underline}
 .delta-chip{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border:1.5px dashed var(--delta);border-radius:999px;background:color-mix(in srgb,var(--delta) 6%,#fff);color:var(--delta-ink);font-size:12.5px;font-weight:600;white-space:nowrap;flex:none}
@@ -928,6 +930,8 @@ const state = {
   // Browser-local spatial projection only. A split override changes how the static Product view is
   // presented here; it never writes Product State or persists beyond this Lens session.
   splitProjection: new Map(),
+  // Read-only Product-authored presentation choices, keyed by Project + Screen. Never written to Product storage.
+  colorModes: new Map(),
 };
 let refs = {};
 
@@ -936,6 +940,40 @@ function writePalette(mode) { try { localStorage.setItem(Presentation.VEXBOARD_P
 
 const screenRef = () => Lens.currentWalkScreen(state.walk);
 const currentScreen = () => Lens.screenFor(state.lens, screenRef());
+function colorModeScopeKey() {
+  const subject = currentSubject() ?? catalogSubjectForCurrentLens();
+  return `${subject?.subjectRef ?? state.lens?.lensRef ?? 'lens'}|${screenRef()}`;
+}
+function staticColorMode(view = currentScreen()?.view) {
+  const colorMode = view?.colorMode;
+  if (!colorMode) return null;
+  const requested = state.colorModes.get(colorModeScopeKey()) ?? colorMode.defaultRef;
+  return colorMode.options.find((option) => option.ref === requested)
+    ?? colorMode.options.find((option) => option.ref === colorMode.defaultRef)
+    ?? null;
+}
+function applyStaticColorMode(doc, view) {
+  const colorMode = view?.colorMode;
+  const option = staticColorMode(view);
+  if (!colorMode || !option) return;
+  if (option.attributeValue === null) doc.documentElement.removeAttribute(colorMode.attribute);
+  else doc.documentElement.setAttribute(colorMode.attribute, option.attributeValue);
+}
+function setStaticColorMode(ref) {
+  const view = currentScreen()?.view;
+  const colorMode = view?.colorMode;
+  if (!colorMode || !colorMode.options.some((option) => option.ref === ref)) return;
+  state.colorModes.set(colorModeScopeKey(), ref);
+  const frame = document.querySelector('.current-product-view .product-view-frame');
+  const doc = frame?.contentDocument;
+  if (doc) {
+    applyStaticColorMode(doc, view);
+    refreshStaticViewInspectionMarks(doc, view);
+    scheduleBridge();
+  }
+  renderBarInPlace();
+  syncUrl();
+}
 // With no control picked, the Behavior side reads the same expression the Surface shows.
 const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? (state.anchorElementRef ? null : expressionPathway());
 const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
@@ -1148,6 +1186,25 @@ function renderProjectMenu(subject) {
     h('a', { href: './projects.html' }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, 'All projects'), h('span', { class: 'md' }, 'Builds and source projections'))));
   return wrap;
 }
+function renderColorModeSwitch() {
+  const view = currentScreen()?.view;
+  const colorMode = view?.colorMode;
+  if (!colorMode) return null;
+  const selected = staticColorMode(view);
+  return h('div', {
+    class: 'builds presentation-modes',
+    role: 'group',
+    'aria-label': 'Product color mode',
+    title: `Product-authored presentation from ${colorMode.owner}. Screen Lens changes only this read-only projection.`,
+  },
+    h('span', { class: 'mode-label' }, 'Appearance'),
+    colorMode.options.map((option) => h('button', {
+      type: 'button',
+      'aria-pressed': option.ref === selected?.ref ? 'true' : 'false',
+      title: `${option.label} · Product presentation only; Product state is unchanged.`,
+      onclick: () => setStaticColorMode(option.ref),
+    }, option.label)));
+}
 function renderBuildSwitch(subject) {
   const stable = Catalog.buildFor(subject, 'stable');
   const main = Catalog.buildFor(subject, 'main');
@@ -1225,6 +1282,7 @@ function renderBar() {
     h('a', { class: 'crumb', href: './projects.html', title: 'All projects' }, 'VexBoard'),
     subject ? h('h1', {}, renderProjectMenu(subject), h('span', { class: 'kind' }, '· Screen Lens'), legacySuffix ? h('span', { class: 'kind' }, `· ${legacySuffix}`) : null) : h('h1', {}, state.lens.title),
     requestSubject ? renderBuildSwitch(requestSubject) : null,
+    renderColorModeSwitch(),
     commitLink,
     renderDeltaChip(),
     renderSearch(),
@@ -1915,9 +1973,20 @@ function renderPhone(expression, { interactive }) {
 // runs Product JavaScript here: the browser lays out Product-owned markup/CSS, then stable
 // data-vex identities bind that geometry back to the Lens relationships.
 function staticViewDocument(view) {
-  const html = view.html
+  let html = view.html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, '')
     .replace(/<link\b[^>]*>/gi, '');
+  const colorMode = view.colorMode;
+  const option = staticColorMode(view);
+  if (colorMode && option) {
+    const rootAttribute = new RegExp(`\\s${colorMode.attribute}(?:=(?:"[^"]*"|'[^']*'|[^\\s>]+))?`, 'i');
+    html = html.replace(/<html(?:\s[^>]*)?>/i, (match) => {
+      const clean = match.replace(rootAttribute, '');
+      if (option.attributeValue === null) return clean;
+      const value = String(option.attributeValue).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+      return clean.replace(/>$/, ` ${colorMode.attribute}="${value}">`);
+    });
+  }
   const css = view.css.replace(/<\/style/gi, '<\\/style');
   const lensCss = `
 :root{--vexboard-lens-focus:#0783c7;--vexboard-lens-focus-soft:rgba(7,131,199,.18)}
@@ -2262,6 +2331,7 @@ function bindStaticView(frame, expression, { interactive }) {
   if (!doc) return;
   const screen = currentScreen();
   const view = screen.view;
+  applyStaticColorMode(doc, view);
   applyStaticViewProjection(doc, view, expression);
 
   // Structure explains presentation by observing the Product stylesheet that the browser actually
@@ -3829,6 +3899,9 @@ function syncUrl() {
   next.set('left', state.faces.EXPERIENCE); next.set('right', state.faces.BEHAVIOR);
   const expression = activeExpression();
   if (expression.kind !== 'SOURCE' && expression.kind !== 'CUSTOM') next.set('expression', expression.ref); else next.delete('expression');
+  const colorMode = staticColorMode();
+  if (currentScreen()?.view?.colorMode && colorMode && colorMode.ref !== currentScreen().view.colorMode.defaultRef) next.set('presentation', colorMode.ref);
+  else next.delete('presentation');
   next.delete('example');
   history.replaceState(null, '', `${location.pathname}?${next}`);
 }
@@ -3923,6 +3996,11 @@ async function boot() {
   else if (state.request.mode === 'COMMIT' && state.commit.misses.length) showToast(`${state.commit.misses.length} overlay ${state.commit.misses.length === 1 ? 'note does' : 'notes do'} not apply at ${short(state.commit.sha)}.`);
   const startScreen = params.get('screen');
   state.walk = Lens.createScreenWalk(state.lens, startScreen && state.lens.screens.some((screen) => screen.screenRef === startScreen) ? startScreen : state.lens.entryScreenRef);
+  const requestedPresentation = params.get('presentation');
+  const openingColorMode = currentScreen()?.view?.colorMode;
+  if (requestedPresentation && openingColorMode?.options.some((option) => option.ref === requestedPresentation)) {
+    state.colorModes.set(colorModeScopeKey(), requestedPresentation);
+  }
   if (params.get('left') && Lens.LENS_FACES[params.get('left')]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = params.get('left');
   if (params.get('right') && Lens.LENS_FACES[params.get('right')]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = params.get('right');
   // An expression link (or an older example link) opens the screen in that expression.
