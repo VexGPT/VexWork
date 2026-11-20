@@ -2657,9 +2657,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.outcome.paused.current-product-moved",
-              "workRef": "work.vexlife.tocompletion.outcome",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "ToCompletion retained valid completed core/productization evidence, but its latest original-VexLife current entry still owed one lived stable-front-door Open/Send/re-entry acceptance while current product construction moved into Interface Refinement and New Beginnings. Preserve the trajectory as a paused provenance checkpoint instead of active IMMEDIATE work or false completion.",
@@ -3295,9 +3293,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.p5.lived-continuity-learning.paused.g03-terminal-no-g04-evidence",
-              "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "G02 and G03 are terminal lived passes, but one memory-only Daily Stratum does not establish recurrent developmental evidence. Pause developmental effects until an ordinary source-bound episode/correction/recurrence earns Continuity Evolution and possible G04 evaluation.",
@@ -3412,9 +3408,7 @@
           "updatedAt": "2026-10-24T08:03:08.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.ready.pr873-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "WAITING_DEPENDENCIES",
               "nextState": "READY",
               "reason": "The only named setup-safety dependency became TERMINAL_ACCEPTED_CURRENT at PR873, so normal-start Heretic integration is no longer dependency-held.",
@@ -3427,9 +3421,7 @@
               "createdAt": "2026-10-23T08:30:00.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.running.pr873-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "READY",
               "nextState": "RUNNING",
               "reason": "The ToCompletion foreground immediately descends into the already-defined normal-start Heretic integration slice under bounded VexLife/Vextreme-SDK source authority.",
@@ -3441,9 +3433,7 @@
               "createdAt": "2026-10-23T08:30:00.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.verifying.accepted-source",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "RUNNING",
               "nextState": "VERIFYING",
               "reason": "PR920/PR921/PR923 accepted the ordinary Heretic normal-start and parser source chain; the source slice entered lived verification rather than remaining implementation work.",
@@ -3456,9 +3446,7 @@
               "createdAt": "2026-10-24T08:03:08.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.completed.a034-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "VERIFYING",
               "nextState": "COMPLETED",
               "reason": "A034 proved the accepted ordinary startup source reaches the real Heretic Browser Companion path and same-Home no-acquisition restart, closing normal-start integration as current work.",
@@ -3518,9 +3506,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.ordinary-heretic-setup.paused.original-front-door-checkpoint",
-              "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "A034 terminally proved the ordinary Heretic runtime/restart path and later source repaired normal-start currentness, but the final original-VexLife stable-front-door Open/Send/re-entry witness remained explicitly owed before the current product trajectory moved to New Beginnings/VexLife-Prod.",
@@ -3732,9 +3718,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.outcome.paused.current-product-moved",
-              "workRef": "work.vexlife.tocompletion.outcome",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "ToCompletion retained valid completed core/productization evidence, but its latest original-VexLife current entry still owed one lived stable-front-door Open/Send/re-entry acceptance while current product construction moved into Interface Refinement and New Beginnings. Preserve the trajectory as a paused provenance checkpoint instead of active IMMEDIATE work or false completion.",
@@ -6484,7 +6468,7 @@
           "label": "VexWork Terrain Map v2",
           "purpose": "Establish an experimental read-only relational Terrain projection over VexWork truth so humans and AI can traverse Projects, nested Work and typed cross-context relationships with arbitrary semantic depth, preserved structural and traversal context, deterministic continuity and bounded neighborhoods without creating another lifecycle or graph owner.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
@@ -6502,22 +6486,54 @@
             "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
             "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
             "repo.vexlife:src/core/terrain.mjs",
-            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
+            "terrain-flow-reader.js",
+            "terrain.html",
+            "test/terrain-flow-reader.test.mjs",
+            "test/terrain-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T05:32:34.019Z",
-          "updatedAt": "2026-10-22T05:32:34.019Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T09:19:11.006Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.verifying.children-complete",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Both bounded Terrain children are now currentized to their accepted lived/source thresholds; verify the parent experimental Terrain outcome against the same accepted experience boundary.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexwork.operational-console.relational-terrain.patient-zero",
+                "work.vexwork.operational-console.relational-terrain.temporal-currentness",
+                "projects/vexwork-operational-console/README.md"
+              ],
+              "createdAt": "2026-11-20T09:19:11.005Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.completed.experience-threshold",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The VexWork Terrain Map v2 experimental outcome reached its accepted product threshold: relational traversal plus currentness/flow presentation are source-present, lived-reviewed, and explicitly no longer the foreground. Future Terrain evolution requires a real regression or new consumer pressure rather than keeping this outcome perpetually open.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.006Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.operational-console.relational-terrain.patient-zero",
           "label": "Relational Terrain patient-zero",
           "purpose": "Prove one VexWork-owned Terrain experience with arbitrary-depth semantic traversal, typed containment/dependency/project portals, structural path distinct from traversal path, cycle-safe route planning, serialized idempotent commands, bounded Journey/revisit semantics, nested-scroll arbitration and responsive presentation over the read-only public workspace.",
           "workClass": "TASK",
-          "state": "VERIFYING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.relational-terrain",
@@ -6534,14 +6550,16 @@
             "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
             "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
             "repo.vexlife:src/core/terrain.mjs",
-            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
+            "test/terrain-reader.test.mjs",
+            "test/terrain-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T05:32:34.019Z",
-          "updatedAt": "2026-10-22T06:31:52.000Z",
+          "updatedAt": "2026-11-20T09:19:11.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.verifying.pr33-accepted",
@@ -6554,6 +6572,20 @@
                 "github.commit.vexwork.2427b52996134510eaabfc5e208b0853d688845f"
               ],
               "createdAt": "2026-10-22T06:31:52.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.completed.lived-threshold-currentization",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The Project source records Victor's 2026-10-22 lived Terrain/Roadmap/Lifecycle Workflow review as good enough to stop foreground experience iteration. That threshold satisfies the patient-zero's remaining lived browser/trackpad/compact traversal predicate; the prior VERIFYING state was explicitly documented as Workgraph lag.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.000Z"
             }
           ]
         },
@@ -6562,7 +6594,7 @@
           "label": "Currentness and flow Terrain layer",
           "purpose": "Layer current work, recent accepted transitions, recent completions, newly available work and later honest flow measures onto the same relational Terrain without treating provider activity, layout or incomplete transition-history coverage as canonical progress.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.relational-terrain",
@@ -6575,15 +6607,74 @@
           ],
           "sourceRefs": [
             "projects/vexwork-operational-console/README.md",
-            "terrain-reader.js"
+            "terrain-reader.js",
+            "terrain-flow-reader.js",
+            "terrain.html",
+            "test/terrain-flow-reader.test.mjs",
+            "test/terrain-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T05:32:34.019Z",
-          "updatedAt": "2026-10-22T05:32:34.019Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T09:19:11.004Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.ready.patient-zero-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The Relational Terrain patient-zero lived threshold is accepted, clearing the currentness/flow layer's only declared Work dependency.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexwork.operational-console.relational-terrain.patient-zero",
+                "projects/vexwork-operational-console/README.md"
+              ],
+              "createdAt": "2026-11-20T09:19:11.001Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.running.accepted-source",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Accepted VexWork source already implements current workfronts, Prior/Now/Next, transition-backed recent movement, state age/currentness and dependency-grounded flow through terrain-flow-reader.js and the Terrain UI.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.002Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.verifying.lived-threshold",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The implemented currentness/flow source is covered by the same accepted lived threshold that explicitly names the Now / 6H / 24H / 7D recent-movement lens and state tint/state-age evidence.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.003Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.completed.lived-threshold",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The bounded currentness/flow Terrain layer is source-present and lived-accepted; the Project source explicitly returned the foreground to the Operational Console trajectory rather than holding further Terrain iteration.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.004Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.operational-console.vexsite-dogfood",
@@ -6928,8 +7019,7 @@
           "label": "Planned",
           "workRefs": [
             "work.vexwork.operational-console.antique-first-sale-fulfillment",
-            "work.vexwork.operational-console.cross-domain-completion",
-            "work.vexwork.operational-console.relational-terrain.temporal-currentness"
+            "work.vexwork.operational-console.cross-domain-completion"
           ]
         },
         {
@@ -6944,8 +7034,7 @@
           "label": "Active",
           "workRefs": [
             "work.vexwork.operational-console.antique-pilot",
-            "work.vexwork.operational-console.outcome",
-            "work.vexwork.operational-console.relational-terrain"
+            "work.vexwork.operational-console.outcome"
           ]
         },
         {
@@ -6961,9 +7050,7 @@
         {
           "laneRef": "lane.work.verify",
           "label": "Verify",
-          "workRefs": [
-            "work.vexwork.operational-console.relational-terrain.patient-zero"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.attention",
@@ -6985,6 +7072,9 @@
             "work.vexwork.operational-console.derived-work-promotion",
             "work.vexwork.operational-console.operating-domain-contract",
             "work.vexwork.operational-console.operating-domain-template",
+            "work.vexwork.operational-console.relational-terrain",
+            "work.vexwork.operational-console.relational-terrain.patient-zero",
+            "work.vexwork.operational-console.relational-terrain.temporal-currentness",
             "work.vexwork.operational-console.vexsite-dogfood",
             "work.vexwork.operational-console.vexsite-localization-lens",
             "work.vexwork.operational-console.vexsite-patient-zero-proof",
@@ -7000,13 +7090,13 @@
       ],
       "summary": {
         "workItemCount": 24,
-        "openWorkItemCount": 8,
+        "openWorkItemCount": 5,
         "outcomeCount": 8,
         "taskCount": 16,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 16
+        "completedCount": 19
       },
       "rootItems": [
         {
@@ -14772,7 +14862,7 @@
         {
           "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
           "label": "VexArchitecture Post Partner",
-          "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded current-source checkpoint. Current Android main d857a92371555472e0303b18eadf353da2a868d6 keeps Direct Family/Method accepted current, VexStream Playback/Queue/Repeat on current Direct VexFamily source, Partner accepted through #219, and the Widget foundation accepted. The Service-fractal child has now re-derived the current Service witnesses: the recurring relationship that survives subtraction is a sustained realization host, while a universal VexService<Service, Current> root is not earned by current Playback + Navigation source. The broader Post-Partner parent remains RUNNING to inventory Broadcast/Receiver, permission/admission and other materially different platform boundaries; formalize another reusable root only when current source preserves one independent question after Family, Partner, Store, Relay, Execution, Dependency, Widget and platform ownership are subtracted.",
+          "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded current-source checkpoint. Current Android main d857a92371555472e0303b18eadf353da2a868d6 keeps Direct Family/Method accepted current, VexStream Playback/Queue/Repeat on current Direct VexFamily source, Partner accepted through #219, and the Widget foundation accepted. The Service-fractal child is now COMPLETED through VexWork #356: current Playback + Navigation source earns sustained realization-host composition guidance while a universal VexService<Service, Current> root remains unearned. The broader Post-Partner parent remains RUNNING to inventory Broadcast/Receiver, permission/admission and other materially different platform boundaries; formalize another reusable root only when current source preserves one independent question after Family, Partner, Store, Relay, Execution, Dependency, Widget and platform ownership are subtracted.",
           "workClass": "TASK",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -14809,22 +14899,24 @@
             "git.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
             "github.pull.vexwork.293",
             "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
-            "github.issue-comment.vexlife-android.243.6818068229"
+            "github.issue-comment.vexlife-android.243.6818068229",
+            "github.pull.vexwork.356",
+            "github.commit.vexwork.e07ecc392e50419207249f7abafd1fceacad4be8"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-07T14:00:00.000Z",
-          "updatedAt": "2026-11-12T07:55:44.000Z",
+          "updatedAt": "2026-11-20T09:19:10.001Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
           "label": "Formalize Service lifecycle and fractal cross-Service convergence",
-          "purpose": "Close the Service-fractal architecture question from current Android source rather than historical candidates. At Android d857a92371555472e0303b18eadf353da2a868d6, VexStreamPlaybackService hosts MediaSession/ExoPlayer, attaches Media3PlayerConnection to the process VexStreamPlayerStore and owns Service-lifetime Widget publication custody without requiring Playback semantic current awareness; VexMapsNavigationService hosts foreground/location/speech/notification realization and borrows VexNavigationSession.current because those concrete decisions require it. Accepted Widget source keeps remote SurfaceState and bounded callbacks separate from product State and long-running work. After subtracting Family, Partner, Store, Relay, Execution, Dependency, Widget and Android platform ownership, the repeated relationship is sustained realization hosting: a longer-lived platform host attaches, maintains and tears down concrete realization resources after shorter caller/UI lifetimes end without becoming semantic truth owner. Current source therefore earns smaller composition guidance, not VexService<Service, Current>, universal Service.current, mandatory VexExecution/ServiceScope, or BackgroundServiceRelay. Keep this child RUNNING only through exact VexWork quality review/integration of that source decision; if clear, it may close without Android runtime mutation while the parent continues with other Post-Partner platform boundaries.",
+          "purpose": "Close the Service-fractal architecture question from current Android source rather than historical candidates. At Android d857a92371555472e0303b18eadf353da2a868d6, VexStreamPlaybackService hosts MediaSession/ExoPlayer, attaches Media3PlayerConnection to the process VexStreamPlayerStore and owns Service-lifetime Widget publication custody without requiring Playback semantic current awareness; VexMapsNavigationService hosts foreground/location/speech/notification realization and borrows VexNavigationSession.current because those concrete decisions require it. Accepted Widget source keeps remote SurfaceState and bounded callbacks separate from product State and long-running work. After subtracting Family, Partner, Store, Relay, Execution, Dependency, Widget and Android platform ownership, the repeated relationship is sustained realization hosting: a longer-lived platform host attaches, maintains and tears down concrete realization resources after shorter caller/UI lifetimes end without becoming semantic truth owner. Current source therefore earns smaller composition guidance, not VexService<Service, Current>, universal Service.current, mandatory VexExecution/ServiceScope, or BackgroundServiceRelay. The reviewed source decision is now accepted on VexWork main through PR #356 with fresh exact-head SourceOwner proof, semantic QA/Assurance CLEAR, and a tree-exact merge. This bounded Service-fractal question is therefore complete without Android runtime mutation; the broader Post-Partner parent continues with other materially different platform boundaries.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
@@ -14864,17 +14956,46 @@
             "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
             "github.issue-comment.vexlife-android.243.6818068229",
             "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexGlanceAppWidget.kt",
-            "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexWidgetSurfaceState.kt"
+            "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexWidgetSurfaceState.kt",
+            "github.pull.vexwork.356",
+            "github.commit.vexwork.e07ecc392e50419207249f7abafd1fceacad4be8",
+            "artifact.vexrelay.outer-return.sha256.90d6d569a9e8ecdc780dfd354f3453887b5a48333a0aebda3b96ac476c551a56",
+            "artifact.vexrelay.inner-return.sha256.838d37a0a349660253d51726e2659565a43118256aaf0594c852a3d2b57253a4"
           ],
           "formationProcessRefOrNull": null,
-          "nextProcessRefs": [
-            "process.vexwork.quality-review"
-          ],
+          "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-07T18:00:00.000Z",
-          "updatedAt": "2026-11-12T07:55:44.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T09:19:10.001Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.architecture-convergence.service-fractal.verifying.pr356-sourceowner-assurance",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "VexWork PR #356 exact head/tree passed the current VexRelay SourceOwner gate with Workgraph composition/currentness and foundation checks PASS, zero candidate/harness/environment/unknown findings, and fresh semantic QA/Independent Assurance CLEAR. VexLife-Android main remained exactly the same revision reviewed for the Service decision.",
+              "actorRef": "actor.chatgpt.vexwork-currentness",
+              "sourceRefs": [
+                "github.pull.vexwork.356",
+                "artifact.vexrelay.outer-return.sha256.90d6d569a9e8ecdc780dfd354f3453887b5a48333a0aebda3b96ac476c551a56",
+                "artifact.vexrelay.inner-return.sha256.838d37a0a349660253d51726e2659565a43118256aaf0594c852a3d2b57253a4",
+                "git.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6"
+              ],
+              "createdAt": "2026-11-20T09:19:10.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.architecture-convergence.service-fractal.completed.pr356-tree-exact",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #356 merged as e07ecc392e50419207249f7abafd1fceacad4be8 and the accepted merge tree exactly equals the SourceOwner-proven candidate tree 1cfcf58b6deb7aa5512dd8d925bd555aca15645c. The bounded question is closed as sustained realization-host guidance; no VexService root or Android runtime mutation is claimed.",
+              "actorRef": "actor.chatgpt.vexwork-currentness",
+              "sourceRefs": [
+                "github.pull.vexwork.356",
+                "github.commit.vexwork.e07ecc392e50419207249f7abafd1fceacad4be8"
+              ],
+              "createdAt": "2026-11-20T09:19:10.001Z"
+            }
+          ]
         },
         {
           "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
@@ -15014,8 +15135,7 @@
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
             "work.vextreme.architecture-convergence.semantic-owner-map",
-            "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
-            "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence"
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner"
           ]
         },
         {
@@ -15048,6 +15168,7 @@
             "work.vextreme.architecture-convergence.terrain-active-surface-context",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
             "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
             "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
           ]
         },
@@ -15059,13 +15180,13 @@
       ],
       "summary": {
         "workItemCount": 10,
-        "openWorkItemCount": 6,
+        "openWorkItemCount": 5,
         "outcomeCount": 1,
         "taskCount": 8,
         "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 4
+        "completedCount": 5
       },
       "rootItems": [
         {
@@ -20306,6 +20427,184 @@
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexlife.application-level-settings.home-management",
+        "label": "Home management affordances",
+        "purpose": "Identify which Home-level choices belong in application settings—such as selecting another Home, changing supported Home presentation/name/location concerns, or intentionally revisiting setup—while preserving Home as its rightful owner and avoiding implicit recreation, deletion or migration.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.outcome",
+        "label": "VexLife Application level settings",
+        "purpose": "Preserve the application-experience debt discovered during the first lived desktop-container run: reopening VexLife should not blindly replay first-run onboarding when required state is already established, while a human still needs a clear application-level place to intentionally revisit setup, Home choices and application lifecycle settings without conflating those concerns with feature settings.",
+        "workClass": "OUTCOME",
+        "state": "DECOMPOSED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [
+          "work.vexlife.application-level-settings.home-management",
+          "work.vexlife.application-level-settings.reentry-contract",
+          "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+          "work.vexlife.application-level-settings.reset-uninstall",
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "project.vexlife.application-level-settings",
+          "projects/vexlife-application-level-settings/README.md",
+          "github.pull.vexlife-prod.396",
+          "github.pull.vexlife-prod.400",
+          "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.form-project",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reentry-contract",
+        "label": "Earn a truthful first-run versus re-entry contract",
+        "purpose": "Determine which application predicates are genuinely one-time onboarding, which must be re-observed on every launch, which may require repair, and how a person intentionally re-enters setup without making ordinary reopen equivalent to first run or skipping required truth checks blindly.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+        "label": "Reopen repeats first-run onboarding",
+        "purpose": "Investigate the lived defect where closing VexLife and opening it again walks the person through the onboarding flow again instead of recognizing already-satisfied setup/Home predicates and entering the established application experience.",
+        "workClass": "DEFECT",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding",
+          "github.pull.vexlife-prod.396"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reset-uninstall",
+        "label": "Reset, remove and uninstall semantics",
+        "purpose": "Define human-safe application lifecycle controls for reset/restart/removal/uninstall questions without silently deleting Home, Conversation, Memory, settings or model files, and make destructive scope explicit before any implementation is admitted.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.surface",
+        "label": "Application-level settings surface",
+        "purpose": "Explore one discoverable app-level settings entry that can host application configuration and lifecycle choices without turning the current feature Settings surface into a catch-all owner. A native/top-left application affordance is a lived design candidate, not a fixed implementation commitment.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.reentry-contract"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
       {
         "workRef": "work.vexboard.later.screen-lens-scenario-playground",
         "label": "Later — Screen Lens Scenario Playground",
