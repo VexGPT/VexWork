@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.application-level-settings",
+  "label": "VexLife Application level settings",
+  "purpose": "Make VexLife behave like a durable desktop application after first run: respect already-established application/Home state on reopen, provide one discoverable application-level settings surface for intentionally revisiting app configuration and lifecycle choices, and keep those concerns distinct from feature-owned settings and destructive data/lifecycle effects.",
+  "rootWorkRefs": [
+    "work.vexlife.application-level-settings.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-application-level-settings/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "github.pull.vexlife-prod.396",
+    "github.pull.vexlife-prod.400",
+    "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+    "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding",
+    "human.design.vexlife.application-level-settings.20261119"
+  ],
+  "formedAt": "2026-11-19T18:40:00.000Z"
+}

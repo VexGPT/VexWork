@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 22,
+  "projectRegistryVersion": 24,
   "projects": [
     {
       "project": {
@@ -17503,6 +17503,566 @@
               "createdAt": "2026-11-18T14:27:04.000Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.release-roadmap",
+        "label": "VexLife Release Roadmap",
+        "purpose": "Make VexLife's product timeline readable without inventing dates: keep the usable web/local experience as the immediate v1 path, preserve the native Mac container work that is already proven, and show trusted native desktop distribution as a later v2 outcome held on legitimate platform-signing/notarization capability rather than hiding that boundary in release notes.",
+        "rootWorkRefs": [
+          "work.vexlife.release-roadmap.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-release-roadmap/README.md",
+          "docs/process/FORM-PROJECT.md",
+          "github.pull.vexlife-prod.396",
+          "github.pull.vexlife-prod.400",
+          "github.pull.vexwork.332",
+          "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+          "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+        ],
+        "formedAt": "2026-11-20T05:32:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.release-roadmap.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.release-roadmap.native-mac-container-proof",
+          "label": "Native Mac container technical proof",
+          "purpose": "Preserve as completed the application/container engineering already earned: native Setup/Entry, embedded Product presentation, close-versus-quit semantics, verified DMG formation, nested-code sealing experiments and lived discovery of the real macOS distribution-trust boundary.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.release-roadmap.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife-prod.396",
+            "github.pull.vexlife-prod.400",
+            "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+            "human.lived-feedback.vexlife.mac-distribution-trust.20261119.java-libjli-gatekeeper"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-20T05:32:00.000Z",
+          "updatedAt": "2026-11-20T05:32:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.release-roadmap.outcome",
+          "label": "VexLife release roadmap",
+          "purpose": "Keep VexLife's current release direction legible as one roadmap: immediate usable web/local v1, completed native-container proof, and a later trusted native v2 path. Lifecycle state and priority remain separate so future humans can distinguish what is current, complete, waiting and merely later without reading old chats.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.release-roadmap.native-mac-container-proof",
+            "work.vexlife.release-roadmap.trusted-native-v2",
+            "work.vexlife.release-roadmap.web-local-v1"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.release-roadmap",
+            "projects/vexlife-release-roadmap/README.md",
+            "github.pull.vexlife-prod.396",
+            "github.pull.vexlife-prod.400",
+            "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-20T05:32:00.000Z",
+          "updatedAt": "2026-11-20T05:32:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.release-roadmap.trusted-native-v2",
+          "label": "Trusted native VexLife v2",
+          "purpose": "Resume the convenient downloaded desktop-app experience only when legitimate distribution trust is available: rightful nested-code placement, Developer ID signing, Hardened Runtime and exact entitlements, secure timestamps, notarization/stapling, then fresh-download lived proof. Funding/support may enable that capability, but revenue itself is not a technical predicate.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_RESOURCE",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.release-roadmap.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.release-roadmap.native-mac-container-proof"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-release-roadmap/README.md",
+            "github.pull.vexlife-prod.396",
+            "github.pull.vexlife-prod.400",
+            "human.lived-feedback.vexlife.mac-distribution-trust.20261119.java-libjli-gatekeeper",
+            "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-20T05:32:00.000Z",
+          "updatedAt": "2026-11-20T05:32:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.release-roadmap.web-local-v1",
+          "label": "Web/local VexLife v1",
+          "purpose": "Treat the existing browser/local Product experience as the immediate ordinary-human release path while preserving Vex Home, local model/runtime and Product ownership. This is a product/release priority, not permission to erase the already-proven native application architecture.",
+          "workClass": "OUTCOME",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.release-roadmap.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-release-roadmap/README.md",
+            "repo.vexlife-prod:README.md",
+            "repo.vexlife-prod:site/index.html",
+            "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-20T05:32:00.000Z",
+          "updatedAt": "2026-11-20T05:32:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexlife.release-roadmap.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vexlife.release-roadmap.web-local-v1"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": [
+            "work.vexlife.release-roadmap.trusted-native-v2"
+          ]
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vexlife.release-roadmap.native-mac-container-proof"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 4,
+        "openWorkItemCount": 3,
+        "outcomeCount": 3,
+        "taskCount": 1,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 1
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.release-roadmap.outcome",
+          "label": "VexLife release roadmap",
+          "purpose": "Keep VexLife's current release direction legible as one roadmap: immediate usable web/local v1, completed native-container proof, and a later trusted native v2 path. Lifecycle state and priority remain separate so future humans can distinguish what is current, complete, waiting and merely later without reading old chats.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.release-roadmap.native-mac-container-proof",
+            "work.vexlife.release-roadmap.trusted-native-v2",
+            "work.vexlife.release-roadmap.web-local-v1"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.release-roadmap",
+            "projects/vexlife-release-roadmap/README.md",
+            "github.pull.vexlife-prod.396",
+            "github.pull.vexlife-prod.400",
+            "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-20T05:32:00.000Z",
+          "updatedAt": "2026-11-20T05:32:00.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.application-level-settings",
+        "label": "VexLife Application level settings",
+        "purpose": "Make VexLife behave like a durable desktop application after first run: respect already-established application/Home state on reopen, provide one discoverable application-level settings surface for intentionally revisiting app configuration and lifecycle choices, and keep those concerns distinct from feature-owned settings and destructive data/lifecycle effects.",
+        "rootWorkRefs": [
+          "work.vexlife.application-level-settings.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "docs/process/FORM-PROJECT.md",
+          "github.pull.vexlife-prod.396",
+          "github.pull.vexlife-prod.400",
+          "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formedAt": "2026-11-19T18:40:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.application-level-settings.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.application-level-settings.home-management",
+          "label": "Home management affordances",
+          "purpose": "Identify which Home-level choices belong in application settings—such as selecting another Home, changing supported Home presentation/name/location concerns, or intentionally revisiting setup—while preserving Home as its rightful owner and avoiding implicit recreation, deletion or migration.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "LOW",
+          "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.application-level-settings.surface"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-application-level-settings/README.md",
+            "human.design.vexlife.application-level-settings.20261119"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-19T18:40:00.000Z",
+          "updatedAt": "2026-11-19T18:40:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.application-level-settings.outcome",
+          "label": "VexLife Application level settings",
+          "purpose": "Preserve the application-experience debt discovered during the first lived desktop-container run: reopening VexLife should not blindly replay first-run onboarding when required state is already established, while a human still needs a clear application-level place to intentionally revisit setup, Home choices and application lifecycle settings without conflating those concerns with feature settings.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.application-level-settings.home-management",
+            "work.vexlife.application-level-settings.reentry-contract",
+            "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+            "work.vexlife.application-level-settings.reset-uninstall",
+            "work.vexlife.application-level-settings.surface"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.application-level-settings",
+            "projects/vexlife-application-level-settings/README.md",
+            "github.pull.vexlife-prod.396",
+            "github.pull.vexlife-prod.400",
+            "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+            "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-19T18:40:00.000Z",
+          "updatedAt": "2026-11-19T18:40:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.application-level-settings.reentry-contract",
+          "label": "Earn a truthful first-run versus re-entry contract",
+          "purpose": "Determine which application predicates are genuinely one-time onboarding, which must be re-observed on every launch, which may require repair, and how a person intentionally re-enters setup without making ordinary reopen equivalent to first run or skipping required truth checks blindly.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-application-level-settings/README.md",
+            "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-19T18:40:00.000Z",
+          "updatedAt": "2026-11-19T18:40:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+          "label": "Reopen repeats first-run onboarding",
+          "purpose": "Investigate the lived defect where closing VexLife and opening it again walks the person through the onboarding flow again instead of recognizing already-satisfied setup/Home predicates and entering the established application experience.",
+          "workClass": "DEFECT",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding",
+            "github.pull.vexlife-prod.396"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-19T18:40:00.000Z",
+          "updatedAt": "2026-11-19T18:40:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.application-level-settings.reset-uninstall",
+          "label": "Reset, remove and uninstall semantics",
+          "purpose": "Define human-safe application lifecycle controls for reset/restart/removal/uninstall questions without silently deleting Home, Conversation, Memory, settings or model files, and make destructive scope explicit before any implementation is admitted.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "LOW",
+          "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.application-level-settings.surface"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-application-level-settings/README.md",
+            "human.design.vexlife.application-level-settings.20261119"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-19T18:40:00.000Z",
+          "updatedAt": "2026-11-19T18:40:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.application-level-settings.surface",
+          "label": "Application-level settings surface",
+          "purpose": "Explore one discoverable app-level settings entry that can host application configuration and lifecycle choices without turning the current feature Settings surface into a catch-all owner. A native/top-left application affordance is a lived design candidate, not a fixed implementation commitment.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.application-level-settings.reentry-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-application-level-settings/README.md",
+            "human.design.vexlife.application-level-settings.20261119"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-19T18:40:00.000Z",
+          "updatedAt": "2026-11-19T18:40:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexlife.application-level-settings.outcome",
+            "work.vexlife.application-level-settings.reentry-contract",
+            "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+            "work.vexlife.application-level-settings.surface",
+            "work.vexlife.application-level-settings.home-management",
+            "work.vexlife.application-level-settings.reset-uninstall"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 6,
+        "openWorkItemCount": 6,
+        "outcomeCount": 1,
+        "taskCount": 0,
+        "defectCount": 1,
+        "potentialCount": 4,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.application-level-settings.outcome",
+          "label": "VexLife Application level settings",
+          "purpose": "Preserve the application-experience debt discovered during the first lived desktop-container run: reopening VexLife should not blindly replay first-run onboarding when required state is already established, while a human still needs a clear application-level place to intentionally revisit setup, Home choices and application lifecycle settings without conflating those concerns with feature settings.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.application-level-settings.home-management",
+            "work.vexlife.application-level-settings.reentry-contract",
+            "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+            "work.vexlife.application-level-settings.reset-uninstall",
+            "work.vexlife.application-level-settings.surface"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.application-level-settings",
+            "projects/vexlife-application-level-settings/README.md",
+            "github.pull.vexlife-prod.396",
+            "github.pull.vexlife-prod.400",
+            "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+            "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-19T18:40:00.000Z",
+          "updatedAt": "2026-11-19T18:40:00.000Z",
+          "transitionHistory": []
         }
       ]
     },
