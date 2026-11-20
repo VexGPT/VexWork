@@ -7,6 +7,7 @@ on:
     paths:
       - 'vexboard/lens.html'
       - 'test/vexboard-lens-ui.test.mjs'
+      - 'projects/vexboard/SCREEN-LENS.md'
       - '.github/workflows/vexboard-legacy-candidate-repro.yml'
 
 permissions:
@@ -85,3 +86,5 @@ jobs:
           grep -q 'dock=true' /tmp/harness.html
           grep -q 'nullVisible=true' /tmp/harness.html
           grep -q 'messageVisible=true' /tmp/harness.html
+
+# final-contract-proof
