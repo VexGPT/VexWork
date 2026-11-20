@@ -170,7 +170,7 @@ static image Local Artifact
 -> exact REQUEST / Vex
 ~~~
 
-Current seven-path candidate membrane:
+Current eight-path candidate membrane:
 
 ~~~text
 docs/work/local-artifacts-static-image/README.md
@@ -646,3 +646,65 @@ statuses 0
 ~~~
 
 SourceOwner and Assurance are complete for this exact candidate. Draft/READY/merge remain separate lifecycle/provider effects; A0 remains RUNNING because the human image outcome is not complete until a real qualified visual realization can make one ordinary attached-image turn answer from actual image content.
+
+
+### Current-main integration reconciliation — PR #439
+
+After A005 SourceOwner PASS + fresh Assurance CLEAR on #435, Product main advanced through the disjoint Screen Lens trajectory:
+
+~~~text
+prior Local Artifacts base
+a4dd25e472d153b1cef24f7f35132933f3d725d0
+
+current main
+14206ba97e47e107c4999e89f514c8beaf24224a
+tree
+fd39fbddf1a35ae6b0cd599629340451e9f375d1
+
+advance
+30 commits
+changed paths
+Screen Lens / VexWeb / workspace only
+overlap with the eight Local Artifacts paths
+NONE
+~~~
+
+A fresh integration commit was therefore formed directly on current main with the exact cleared #435 Local Artifacts blobs:
+
+~~~text
+VexLife-Prod#439
+[VexLife Local Artifacts] Integrate proved static-image adaptation seam
+
+head
+9aa3168517adb27b5fe90e195d2b10719abd05c4
+
+tree
+b57f4393077ea033aef96d9971871681aeb30826
+
+state
+OPEN DRAFT
+~~~
+
+Fresh combined-tree SourceOwner proof formation consumes the current Relay SDK:
+
+~~~text
+Vextreme-SDK head
+6f8f6f50467f5df5a542713f7dc25b82db4ac8fa
+
+tree
+96795640b01f1969da980f52d5a8ec136a8c44aa
+
+contractRef
+source.vexrelay.current-contract/v1
+
+PR #439 proof package A001
+sha256
+258f02ba064628b8d23370fa6fbc4aa7db1294af97c2f9a09ec6036246c8d1cf
+
+business execution
+PENDING_MAC_RUN
+~~~
+
+The previously proved #435 head remains immutable provenance. #439 owns integration currentness against the newer Product main.
+
+A0 remains RUNNING only until this integration boundary is resolved. Its durable work-item purpose already keeps image/vision outside the original artifact/source gate until separately earned. Once the cleared seam lands, A0 should close on its admitted Local Artifacts + Local Sources outcome and A1 becomes the foreground owner for selected-model capability truth, including whether visual input is actually available for the exact selected model/runtime relationship.
