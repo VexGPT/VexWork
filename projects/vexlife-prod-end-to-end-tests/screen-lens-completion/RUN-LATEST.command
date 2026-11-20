@@ -10,7 +10,7 @@ VEXWORK_HEAD='08bcfa9baa2eaa6b738f0f53c97017b50d13cbc4'
 PRODUCT_REPO='VexGPT/VexLife-Prod'
 PRODUCT_URL='https://github.com/VexGPT/VexLife-Prod.git'
 PRODUCT_BRANCH='VXG-112026-screen-lens-current-main-recursive-projection-a001'
-PRODUCT_HEAD='9dad6564088711b928a286f019e1a13c21a696eb'
+PRODUCT_HEAD='7955efe543b13d4d363f8e4f32bbc267927e2574'
 
 RETURN_ZIP="$HOME/Downloads/RETURN-VEXLIFE-SCREEN-LENS-CURRENT-MAIN-RECONCILIATION.zip"
 
@@ -122,6 +122,13 @@ const normalized = Lens.normalizeScreenLens(raw);
 const screenRef = normalized.entryScreenRef;
 const expressions = Expressions.expressionsFor(normalized, screenRef);
 if (expressions.length <= 1) throw new Error(`expected rich currentized expressions, observed ${expressions.length}`);
+const html = normalized.screens[0]?.view?.html ?? '';
+const localized = [...html.matchAll(/<([A-Za-z][A-Za-z0-9-]*)([^>]*\bdata-vex-text="([^"]+)"[^>]*)>([^<]*)<\/\1>/g)];
+const unresolved = localized.filter((match) => !match[4].trim() || match[4].trim() === match[3]);
+if (unresolved.length) throw new Error(`static Product text unresolved: ${unresolved.map((match) => match[3]).join(', ')}`);
+if (!/id="send"[^>]*data-vex-text="workspace\.button\.conversation-send"[^>]*>Send<\/button>/.test(html)) throw new Error('static Product Send text is missing');
+if (!/<button[^>]*id="attach"[^>]*>\s*<svg\b/.test(html)) throw new Error('static Product attachment icon is missing');
+if (!/<button[^>]*id="voice-input"[^>]*>\s*<svg\b/.test(html)) throw new Error('static Product voice-input icon is missing');
 console.log(`normalized_screen=${screenRef}`);
 console.log(`elements=${normalized.screens[0].elements.length}`);
 console.log(`pathways=${normalized.pathways.length}`);
