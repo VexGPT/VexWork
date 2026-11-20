@@ -24,11 +24,18 @@
       "sourceRefs": [
         "project.vexlife-prod.end-to-end-tests",
         "projects/vexlife-prod-end-to-end-tests/README.md",
-        "github.pull.vexlife-prod.343"
+        "github.pull.vexlife-prod.343",
+        "git.commit.vexwork.8cc32ab8670c0faca141cec3c11eda1653447ee3",
+        "git.commit.vexwork.4aad5e0055cdc2a9fada2f1e63200c7772850a81",
+        "git.commit.vexwork.22585f86341e51cedd1be411540b2f294894970e",
+        "git.commit.vexwork.62bf49ac1fd7c30a4ea03847d5946e6ffb8cd9d4",
+        "git.commit.vexwork.0a11cccf30e8d8016b83b4987ff1f65dfeafa396",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/README.md",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/EXPERIENCE-GRAPH.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-18T14:27:00.000Z",
-      "updatedAt": "2026-11-18T14:27:00.000Z"
+      "updatedAt": "2026-11-20T08:14:00.007Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -37,7 +44,7 @@
       "label": "A0 — experience-contract and topology foundation",
       "purpose": "Form the durable layer model, initial Family/owner census, relationship-lattice seed, journey seeds, loop/permutation rules and Claude discovery handoff without creating Product semantic truth in VexWork.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -52,11 +59,18 @@
         "projects/vexlife-prod-end-to-end-tests/README.md",
         "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md",
         "projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json",
-        "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md"
+        "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md",
+        "git.commit.vexwork.8cc32ab8670c0faca141cec3c11eda1653447ee3",
+        "git.commit.vexwork.4aad5e0055cdc2a9fada2f1e63200c7772850a81",
+        "git.commit.vexwork.22585f86341e51cedd1be411540b2f294894970e",
+        "git.commit.vexwork.62bf49ac1fd7c30a4ea03847d5946e6ffb8cd9d4",
+        "git.commit.vexwork.0a11cccf30e8d8016b83b4987ff1f65dfeafa396",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/README.md",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/EXPERIENCE-GRAPH.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-18T14:27:00.000Z",
-      "updatedAt": "2026-11-18T14:27:00.000Z"
+      "updatedAt": "2026-11-20T08:14:00.002Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -65,7 +79,7 @@
       "label": "A1 — consume Screen Lens choice and relationship discovery",
       "purpose": "Use the existing VexArchitecture↔VexBoard Screen Lens sync trajectory as the rightful perception lane, and consume its source-proven State/Control/pathway discoveries into E2E relationship coverage without duplicating Screen Lens ownership.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
@@ -80,11 +94,14 @@
         "github.pull.vexwork.298",
         "github.pull.vexwork.300",
         "github.pull.vexwork.303",
-        "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md"
+        "projects/vexlife-prod-end-to-end-tests/CLAUDE-SCREEN-LENS-HANDOFF.md",
+        "git.commit.vexwork.4aad5e0055cdc2a9fada2f1e63200c7772850a81",
+        "git.commit.vexwork.0a11cccf30e8d8016b83b4987ff1f65dfeafa396",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/EXPERIENCE-GRAPH.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-18T14:27:00.000Z",
-      "updatedAt": "2026-11-18T14:27:00.000Z"
+      "updatedAt": "2026-11-20T08:14:00.003Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -93,7 +110,7 @@
       "label": "A2 — project journey / branch / loop coverage",
       "purpose": "Join stable human journeys with source-derived branch identities so the Project can show States observed, Controls offered/exercised, successor States, cross-Family edges, loops, proof classes and uncovered relationship debt without copying branch definitions.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife-prod.end-to-end-tests.experience-topology",
@@ -109,11 +126,15 @@
       ],
       "sourceRefs": [
         "projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json",
-        "github.pull.vexlife-prod.343"
+        "github.pull.vexlife-prod.343",
+        "git.commit.vexwork.8cc32ab8670c0faca141cec3c11eda1653447ee3",
+        "git.commit.vexwork.22585f86341e51cedd1be411540b2f294894970e",
+        "git.commit.vexwork.0a11cccf30e8d8016b83b4987ff1f65dfeafa396",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/README.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-18T14:27:00.000Z",
-      "updatedAt": "2026-11-18T14:27:00.000Z"
+      "updatedAt": "2026-11-20T08:14:00.005Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -232,7 +253,7 @@
       "label": "A2R — derive graph-operations Relay/convergence where earned",
       "purpose": "After ordinary source-derived routes exist, classify independent-truth joins and form only the Relay/convergence relationships actually earned by current consumers such as route readiness, debt-frontier projection, perturbation currentness, coverage/proof currentness, change impact, execution-plan readiness, VexBoard inspection or release-readiness; keep graph extraction, scheduling, durable evidence and Product semantic ownership outside Relay.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife-prod.end-to-end-tests.journey-branch-coverage"
@@ -249,11 +270,14 @@
         "projects/vexlife-prod-end-to-end-tests/README.md",
         "projects/vexlife-prod-end-to-end-tests/RELATIONSHIP-LATTICE.md",
         "repo.vexlife-android:architecture/relay/README.md",
-        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt"
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+        "git.commit.vexwork.4f6ff142915f6b5f0add6fe972161cad79474c9f",
+        "git.commit.vexwork.fa7caa35cd6d6f7d541e9721234f071a2eef8fd9",
+        "projects/vexlife-prod-end-to-end-tests/experience-convergence/README.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-18T16:48:00.000Z",
-      "updatedAt": "2026-11-18T16:48:00.000Z"
+      "updatedAt": "2026-11-20T08:14:00.007Z"
     }
   ],
   "transitions": [
@@ -652,6 +676,114 @@
         "work.vexlife-prod.end-to-end-tests.journey-branch-coverage"
       ],
       "createdAt": "2026-11-18T16:48:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-topology.running.verifying.relationship-currentness-20261120",
+      "workRef": "work.vexlife-prod.end-to-end-tests.experience-topology",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Accepted current-main Experience Relationship Graph infrastructure, derivation, generated reports and executed Family-law proof establish the A0 foundation; move through Verify before completion rather than leaving formed infrastructure in perpetual active state.",
+      "actorRef": "actor.chatgpt.relationship-currentness-audit",
+      "sourceRefs": [
+        "git.commit.vexwork.8cc32ab8670c0faca141cec3c11eda1653447ee3",
+        "git.commit.vexwork.4aad5e0055cdc2a9fada2f1e63200c7772850a81",
+        "git.commit.vexwork.22585f86341e51cedd1be411540b2f294894970e",
+        "git.commit.vexwork.62bf49ac1fd7c30a4ea03847d5946e6ffb8cd9d4",
+        "git.commit.vexwork.0a11cccf30e8d8016b83b4987ff1f65dfeafa396",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/README.md",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/EXPERIENCE-GRAPH.md"
+      ],
+      "createdAt": "2026-11-20T08:14:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.experience-topology.verifying.completed.relationship-currentness-20261120",
+      "workRef": "work.vexlife-prod.end-to-end-tests.experience-topology",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The first working graph, source readers, route/debt derivation, perturbation model, build/check/verify path and executed law proof are accepted on current VexWork main. Later source re-pins extend the completed foundation rather than keeping A0 unfinished.",
+      "actorRef": "actor.chatgpt.relationship-currentness-audit",
+      "sourceRefs": [
+        "git.commit.vexwork.8cc32ab8670c0faca141cec3c11eda1653447ee3",
+        "git.commit.vexwork.4aad5e0055cdc2a9fada2f1e63200c7772850a81",
+        "git.commit.vexwork.22585f86341e51cedd1be411540b2f294894970e",
+        "git.commit.vexwork.62bf49ac1fd7c30a4ea03847d5946e6ffb8cd9d4",
+        "git.commit.vexwork.0a11cccf30e8d8016b83b4987ff1f65dfeafa396",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/README.md",
+        "projects/vexlife-prod-end-to-end-tests/experience-graph/generated/EXPERIENCE-GRAPH.md"
+      ],
+      "createdAt": "2026-11-20T08:14:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery.ready.running.relationship-currentness-20261120",
+      "workRef": "work.vexlife-prod.end-to-end-tests.screen-lens-choice-discovery",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Current graph source already consumes Screen Lens and keyed Product identity while explicit projectability/frontier gaps remain, so the choice-discovery bridge is active rather than merely ready or complete.",
+      "actorRef": "actor.chatgpt.relationship-currentness-audit",
+      "sourceRefs": [
+        "git.commit.vexwork.4aad5e0055cdc2a9fada2f1e63200c7772850a81",
+        "git.commit.vexwork.0a11cccf30e8d8016b83b4987ff1f65dfeafa396"
+      ],
+      "createdAt": "2026-11-20T08:14:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.journey-branch-coverage.waiting.ready.relationship-currentness-20261120",
+      "workRef": "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Accepted graph/topology and Screen Lens inputs now exist strongly enough that route, journey, branch and frontier coverage work no longer waits to begin.",
+      "actorRef": "actor.chatgpt.relationship-currentness-audit",
+      "sourceRefs": [
+        "git.commit.vexwork.8cc32ab8670c0faca141cec3c11eda1653447ee3",
+        "git.commit.vexwork.4aad5e0055cdc2a9fada2f1e63200c7772850a81"
+      ],
+      "createdAt": "2026-11-20T08:14:00.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.journey-branch-coverage.ready.running.relationship-currentness-20261120",
+      "workRef": "work.vexlife-prod.end-to-end-tests.journey-branch-coverage",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Current main already contains derived routes, journeys, frontier debt, generated cases and branch/consolidation comparison, while meaningful uncovered branches remain; represent that as active coverage work.",
+      "actorRef": "actor.chatgpt.relationship-currentness-audit",
+      "sourceRefs": [
+        "git.commit.vexwork.22585f86341e51cedd1be411540b2f294894970e",
+        "git.commit.vexwork.0a11cccf30e8d8016b83b4987ff1f65dfeafa396"
+      ],
+      "createdAt": "2026-11-20T08:14:00.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence.waiting.ready.relationship-currentness-20261120",
+      "workRef": "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Ordinary graph/routes now exist and current source has enough independent-truth joins to exercise the Relay/convergence admission question rather than leaving the subset waiting on formation.",
+      "actorRef": "actor.chatgpt.relationship-currentness-audit",
+      "sourceRefs": [
+        "git.commit.vexwork.8cc32ab8670c0faca141cec3c11eda1653447ee3",
+        "projects/vexlife-prod-end-to-end-tests/experience-convergence/README.md"
+      ],
+      "createdAt": "2026-11-20T08:14:00.006Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence.ready.running.relationship-currentness-20261120",
+      "workRef": "work.vexlife-prod.end-to-end-tests.graph-operations-relay-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The graph-operations Relay gate and convergence inspection are implemented and have already classified current questions as query-sufficient or missing exact inputs. Keep the subset active for later earned convergence rather than pretending a universal Relay has completed.",
+      "actorRef": "actor.chatgpt.relationship-currentness-audit",
+      "sourceRefs": [
+        "git.commit.vexwork.4f6ff142915f6b5f0add6fe972161cad79474c9f",
+        "git.commit.vexwork.fa7caa35cd6d6f7d541e9721234f071a2eef8fd9"
+      ],
+      "createdAt": "2026-11-20T08:14:00.007Z"
     }
   ],
   "sourceRefs": [
