@@ -251,33 +251,25 @@ Clean current-main currentization is being carried separately.
 
 ## Exact resume coordinate — Interface currentization
 
-Current branch already exists and contains the six intended currentization writes:
+The interrupted A001 branch was preserved, then cleanly re-formed after the relationship companion itself moved `public/workspace.json`.
+
+Current candidate:
 
 ```text
-branch
-VXG-112026-interface-compound-currentness-a001
+VexWork PR
+#348
 
-head
-99720a79e8154b52311cd5f86a5dbbc22060b354
+branch
+VXG-112026-interface-compound-currentness-a002
 
 base
-f53eb49177b79ca72dd64998115818b642d80f17
+7e2bcc014de73c83577c51b24770e7677d6ed7d8
+
+candidate head before this companion update
+a92609e5641afce8d3524466283d1c9b7566f6cc
 ```
 
-The interruption happened **after the six file writes** and before PR creation.
-
-Files on the branch:
-
-```text
-projects/vexlife-interface-refinement/project.json
-projects/vexlife-interface-refinement/board.view.json
-projects/vexlife-interface-refinement/README.md
-workgraphs/segments/vexlife-interface-refinement.json
-workgraphs/public.json
-public/workspace.json
-```
-
-Intended truthful projection on that branch:
+Current truthful Project projection:
 
 ```text
 20 items
@@ -311,12 +303,10 @@ captured:
 ### Next unconsumed edge
 
 ```text
-1. validate the existing Interface branch against current main
-2. open the clean successor PR
-3. verify only intended Project/public projection changed
-4. integrate if current
-5. return here and record the merged threshold
-6. continue the next not-yet-audited Project one Project at a time
+1. validate PR #348 exact file/project delta against current main
+2. integrate if current
+3. update this checkpoint with the merged threshold
+4. continue the next not-yet-audited Project one Project at a time
 ```
 
 Do not recreate #183, replay VexLife product proof, or restart the portfolio scan.
