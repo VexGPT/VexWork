@@ -1,0 +1,57 @@
+name: Recompose VexBoard Realization Topology Generated Truth
+
+on:
+  push:
+    branches:
+      - currentize/vexboard-realization-topology-current-main-r2-20261120
+    paths:
+      - '.github/workflows/recompose-vexboard-realization-topology-generated.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: currentize/vexboard-realization-topology-current-main-r2-20261120
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Regenerate canonical project/workgraph/workspace consequences
+        run: npm run workspace:build
+      - name: Enforce generated-only membrane
+        shell: bash
+        run: |
+          changed="$(git diff --name-only)"
+          printf '%s
+' "$changed"
+          unexpected="$(printf '%s
+' "$changed" | grep -v -E '^(public/workspace\.json|workgraphs/public\.json)$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected generated delta:"
+            printf '%s
+' "$unexpected"
+            exit 1
+          fi
+      - name: Verify generated truth and deterministic checks
+        run: |
+          npm run project-registry:check
+          npm run workgraph:check
+          npm run workspace:check
+          npm run check
+      - name: Commit regenerated consequences
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No generated delta to commit."
+            exit 0
+          fi
+          git config user.name "VexGPT"
+          git config user.email "victor.gong@vextreme24.com"
+          git add public/workspace.json workgraphs/public.json
+          git commit -m "[VexBoard][CURRENTNESS] Regenerate composed Workgraph and Workspace truth" -m "[VXG RealForever]"
+          git push origin HEAD:currentize/vexboard-realization-topology-current-main-r2-20261120
