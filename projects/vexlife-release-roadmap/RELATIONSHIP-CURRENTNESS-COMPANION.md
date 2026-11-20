@@ -304,19 +304,10 @@ This audit intentionally followed the current Product relationship cluster rathe
 Audit result:
 
 ```text
-CURRENTIZE_CANDIDATE
-!= CURRENT_MAIN_YET
+CURRENTIZED
 ```
 
-Current VexWork main still carries the older New Beginnings projection. Clean current-main reconciliation is formed as:
-
-```text
-VexWork PR #350
-base e22936f23db36c3b925bcf033bfd3641fda0cc4b
-head 7795310c93acb5c663e4696c226ac9c252f90185
-tree 96f23bee1dd23d0ce4bad2900824f40574a7ad17
-draft / mergeable
-```
+VexWork PR #350 is merged with tree-exact post-merge verification. New Beginnings now carries the currentized relationship projection on accepted main; do not replay the audit or its host-proof attempts.
 
 Material relationship result:
 
@@ -327,7 +318,7 @@ Material relationship result:
 - Score -> reference-only WorkingSet reconnection and permission-aware Setup Journey mapping are already completed Product/source outcomes and must not be replayed;
 - the old Windows-absence note is provenance after later lived Windows/Mac runtime convergence.
 
-PR #350 carries the bounded Workgraph/README/generated-projection currentization. Exact semantic/provider review found no candidate correction; its only held predicate is VexWork's deterministic exact-head `npm run review` / `ExactHeadSourceOwnerProof` floor. No qualified package was available in the audit session, so merge remains correctly held and Victor has no loose/manual proof action.
+PR #350 completed exact-head SourceOwner proof, semantic QA, zero-overlap current-main composition and tree-exact integration. The two malformed imported provenance refs and one non-canonical timestamp found during proof were corrected before acceptance.
 
 ### [VexLife Local Artifacts]
 
@@ -366,10 +357,10 @@ No VexWork mutation is warranted.
 Audit result:
 
 ```text
-CURRENTIZE_PENDING
+CURRENTIZED
 ```
 
-The canonical Workgraph still says A0 RUNNING, A1 READY, and A2/A2R waiting. Accepted current VexWork main has moved materially beyond that projection.
+The canonical Workgraph is currentized to the accepted work already present on main: A0 is completed; A1, A2 and A2R are active; later deterministic/live/release/foundational stages remain waiting.
 
 Current Project-owned evidence on main now includes:
 
@@ -409,14 +400,7 @@ A6 foundationalization                     WAITING_DEPENDENCIES
 
 A0 is earned by accepted on-main graph infrastructure + executed proof. A1 remains open because real projectability/frontier gaps remain. A2 has actual route/journey/branch/debt/test-case implementation and is no longer waiting to begin. A2R has exercised the Relay gate and correctly classified current questions, but remains an active post-map convergence surface rather than a terminal universal Relay.
 
-The Workgraph writeback is intentionally **not** being formed while VexWork #350 owns the shared generated projection surfaces:
-
-```text
-workgraphs/public.json
-public/workspace.json
-```
-
-That is a coordination hold on writeback, not uncertainty about the audit result. After #350 leaves those paths, currentize the E2E segment/README and regenerate through ordinary repository-owned generation; do not repeat this audit.
+The E2E Workgraph writeback is now source-placed without editing the still-active #321 E2E README. Shared public projections are regenerated from the composed source; do not repeat this audit merely because #321 continues its separate implementation/proof trajectory.
 
 ---
 
@@ -425,25 +409,32 @@ That is a coordination hold on writeback, not uncertainty about the audit result
 ```text
 do not reopen audited Projects merely to reconstruct context
 
-already audited:
+audited/currentized:
   Welcome Wagon
   VexLife ToCompletion
   Connected Services
   Android Proof Orchestration
   VexStream Mobile Library
-  VexLife Android Current-State Refinement = CURRENT_AS_IS
   Interface Compound Relay
+  VexLife New Beginnings
 
-newly audited in foreground cluster:
-  VexLife New Beginnings = CURRENTIZE_CANDIDATE / PR #350 proof-held
-  [VexLife Local Artifacts] = CURRENT_AS_IS
-  VexLife-Prod End-to-End Experience Validation = CURRENTIZE_PENDING / generated-path coordination hold
+audited CURRENT_AS_IS:
+  VexLife Android Current-State Refinement
+  [VexLife Local Artifacts]
+  VexLife Application level settings
+
+audited/currentized in this threshold:
+  VexLife-Prod End-to-End Experience Validation
+    A0 COMPLETED
+    A1/A2/A2R RUNNING
+  VexBoard
+    Partner Source/Conversion accepted evidence currentized
+    existing RUNNING/COMPLETED/SUPERSEDED lifecycle states preserved
 
 next:
-  audit project.vexlife.application-level-settings
-  read only that Project's current entry + exact Product evidence it names
-  classify CURRENT_AS_IS vs CURRENTIZE
-  do not reopen the foreground cluster unless #350/proof or E2E writeback state materially changes
+  no automatic portfolio scan
+  resume the foreground Product/consumer trajectory from its own current Work
+  reopen relationship audit only after material Product/E2E/VexBoard movement creates a new causal question
 ```
 
 Do not restart the portfolio scan or replay product proof from this companion.
