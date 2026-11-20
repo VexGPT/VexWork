@@ -9292,7 +9292,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-20T05:39:00.000Z",
-      "updatedAt": "2026-11-20T11:59:02Z",
+      "updatedAt": "2026-11-20T12:05:52.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -9303,7 +9303,7 @@
       "label": "A0 — Local Artifacts + Local Sources convergence",
       "purpose": "Converge the successor Local Artifacts work onto current VexLife-Prod: Conversation Stop, exact text/ZIP/DOCX/XLSX/PPTX custody, turn-bound attachment reach, persistent Local Sources, bounded search/read and manifest-first context use, while keeping PDF/vision, automatic research synthesis, Memory promotion and filesystem writes outside this gate until separately earned.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -9319,13 +9319,14 @@
         "github.pull.vexlife-prod.435",
         "github.commit.vexlife-prod.f05436538b022589472ce1dbe25a55ea9a15743c",
         "github.pull.vexlife-prod.439",
-        "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa"
+        "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-20T05:39:00.000Z",
-      "updatedAt": "2026-11-20T05:39:00.000Z",
+      "updatedAt": "2026-11-20T12:05:56.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -9336,8 +9337,8 @@
       "label": "A1 — Effective selected-model capability projection",
       "purpose": "Derive one truthful human-readable capability view from the selected model's existing Companion representation plus exact current runtime realization and qualification, so model-dependent controls are visible only when supported without making the model UI a capability authority.",
       "workClass": "TASK",
-      "state": "CAPTURED",
-      "priorityClass": "HIGH",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.vexworks.local-artifacts-and-sources"
       ],
@@ -9348,7 +9349,9 @@
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
-        "human.design.vexlife.vexworks.model-switching.20261119"
+        "human.design.vexlife.vexworks.model-switching.20261119",
+        "github.pull.vexlife-prod.439",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76"
       ]
     },
     {
@@ -9383,7 +9386,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-20T05:39:00.000Z",
-      "updatedAt": "2026-11-20T11:59:02Z",
+      "updatedAt": "2026-11-20T12:05:56.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -9411,7 +9414,8 @@
         "github.pull.vexlife-prod.435",
         "github.commit.vexlife-prod.f05436538b022589472ce1dbe25a55ea9a15743c",
         "github.pull.vexlife-prod.439",
-        "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa"
+        "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76"
       ]
     },
     {
@@ -17093,6 +17097,90 @@
         "github.commit.vexlife-prod.dbd34951d83842955c9f2c6d7a5219ce79f142df"
       ],
       "createdAt": "2026-11-20T06:01:24.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.local-artifacts-and-sources.running.verifying.pr439-a002",
+      "workRef": "work.vexlife.vexworks.local-artifacts-and-sources",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #439 A002 proved the exact current-main integration candidate with jvmTest + strings PASS, 9/9 review projection and zero findings; fresh Independent Assurance cleared the exact head.",
+      "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.439",
+        "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa"
+      ],
+      "createdAt": "2026-11-20T12:05:51.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.local-artifacts-and-sources.verifying.completed.pr439-merge",
+      "workRef": "work.vexlife.vexworks.local-artifacts-and-sources",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #439 merged with an exact-head guard and Product main now equals the A002-proved tree 1d76894a86913aeeaf6b66322129060b0d27a0e8. A0's admitted Local Artifacts + Local Sources gate is complete; visual interpretation remains separate model/runtime work.",
+      "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.439",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76"
+      ],
+      "createdAt": "2026-11-20T12:05:52.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.model-capability-projection.captured.decomposed.a0-complete",
+      "workRef": "work.vexlife.vexworks.model-capability-projection",
+      "priorState": "CAPTURED",
+      "nextState": "DECOMPOSED",
+      "reason": "A0 is complete and the next Product question is bounded: derive selected-model capability truth from existing Companion representation plus exact runtime realization/qualification without creating another model owner.",
+      "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+      "sourceRefs": [
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+        "projects/vexlife-vexworks/README.md"
+      ],
+      "createdAt": "2026-11-20T12:05:53.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.model-capability-projection.decomposed.plan-validated.existing-owners",
+      "workRef": "work.vexlife.vexworks.model-capability-projection",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "Current Product already owns model selection, Companion representation and runtime realization/qualification separately; A1 only needs one bounded effective capability projection over those owners.",
+      "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt"
+      ],
+      "createdAt": "2026-11-20T12:05:54.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.model-capability-projection.plan-validated.ready.a0-dependency-complete",
+      "workRef": "work.vexlife.vexworks.model-capability-projection",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "A1's only declared dependency, A0 Local Artifacts + Local Sources convergence, is completed on Product main at 8dbbd3f250556fe9cc6664849be65a67e9c1fc76.",
+      "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+      "sourceRefs": [
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76"
+      ],
+      "createdAt": "2026-11-20T12:05:55.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.model-capability-projection.ready.running.current-foreground",
+      "workRef": "work.vexlife.vexworks.model-capability-projection",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A1 is now the active foreground: make exact selected-model/runtime capabilities perceivable before building the Claude-like selector or widening imported-model recognition.",
+      "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+      "sourceRefs": [
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+        "projects/vexlife-vexworks/README.md"
+      ],
+      "createdAt": "2026-11-20T12:05:56.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
