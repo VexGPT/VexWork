@@ -471,11 +471,56 @@ GENERIC_THEME_CONTROL_PRESENTATION_BINDING
 
 This closed the Product Spiral / Theme / Support source-addressability leg.
 
+### P008 — terminal PASS
+
+Victor returned:
+
+```text
+outer RETURN sha256
+2754ac9b1df276134ecd73afc5c32cee0c9d40ee2c8fd73fd297ba21c504ae3d
+
+retained inner RETURN sha256
+ee9759158b9299e95f76301abf8efbcaa5f75092329d6c7f2a731f8e5f39d2f7
+```
+
+Exact Product candidate:
+
+```text
+PR #424
+base cd2560024cced859d89aff0e9815ab72cdaf44d9
+head 2b84499cf16ce066b4160f01bd80c07f85b6972d
+tree 702a719fc27974a8ef552e696ab23ff25fc7762c
+```
+
+Result:
+
+```text
+PASS
+BUILD SUCCESSFUL
+selected source 2 / 2
+omitted 0
+candidate/harness/environment/unknown findings 0
+mutation 0
+```
+
+Canonical next function:
+
+```text
+VEXWORK_PR345_THEME_ACTIVATION_SOURCE_OWNER
+```
+
+This closed the typed Product Theme -> colorMode activation export.
+
 ---
 
-## Current GitHub-hosted runner — P008
+## Current GitHub-hosted runner — P009
 
-The companion PR remains the executable handoff surface; no ChatGPT sandbox download is required.
+Current dependency gate:
+
+```text
+VexWork #345
+generic Theme-control -> Presentation-axis consumer
+```
 
 Current runner:
 
@@ -486,48 +531,45 @@ projects/vexlife-prod-end-to-end-tests/screen-lens-completion/RUN-LATEST.command
 Current package asset:
 
 ```text
-projects/vexlife-prod-end-to-end-tests/screen-lens-completion/packages/P008.zip.b64
+projects/vexlife-prod-end-to-end-tests/screen-lens-completion/packages/P009.zip.b64
 ```
 
 Package asset commit:
 
 ```text
-d8aa0314cdd97b1f93e5ced4bb9f2c8ede697086
+12af61a9b676d30ee839abcd68846a4f331e5b97
 ```
 
 Expected reconstructed package SHA-256:
 
 ```text
-e5295444e55bd419c31a046d296307d9f772d0750669cff47738d831fa9ca91d
+cb8bab7a9f24fcb7395887a1d0a872d88826c515463009a6cc2c75bbb1503301
 ```
 
 Runner commit:
 
 ```text
-4c2884df5de88e87173061e7e5121f15657fe694
+ac4621a1fac8831a37325dd36e62ca082cec8411
 ```
 
-Exact Product candidate:
+Exact VexWork candidate:
 
 ```text
-PR #424
-base cd2560024cced859d89aff0e9815ab72cdaf44d9
-head 2b84499cf16ce066b4160f01bd80c07f85b6972d
-tree 702a719fc27974a8ef552e696ab23ff25fc7762c
+base 6231d141ac268edf070ea9c9e7a25f892dbe5fad
+head e1983914e5e8839fb966c96cbb5223297c1f924c
+tree f71488557d5c0d2c22eac978ba79d264505fd176
 branch VXG-112026-screen-lens-theme-activation-a001
+PR #345
 ```
 
-P008 proves only the typed Product Theme -> colorMode activation export. On PASS, the companion advances to the already-authored generic VexWork #345 proof.
+P009 proves:
+- shared Lens model syntax;
+- generic typed colorMode.activation validation;
+- authored Theme click updates the existing read-only Presentation coordinate;
+- no Product slug/storage special case;
+- 4 / 4 changed paths in bounded review.
 
-Human execution remains:
-
-```text
-one GitHub-hosted command
--> exact companion-owned bytes
--> local digest verification
--> accepted Relay carrier
--> canonical RETURN
-```
+On PASS, the next dependency is the active Product semantic line's one-regeneration boundary before canonical Product Lens generation and lived witness.
 
 
 ---
@@ -666,11 +708,10 @@ Do not let fluency collapse those states.
 At companion formation, the next edge is:
 
 ```text
-run P008 from the GitHub-hosted #344 runner against exact #424
+run P009 from the GitHub-hosted #344 runner against exact VexWork #345
 -> consume canonical RETURN
 -> if PASS:
-     typed Product Theme -> colorMode activation is proved
-     -> prove already-authored generic VexWork #345 consumer
+     generic Theme-control / Presentation-axis relationship is proved
      -> wait for active Product semantic line's one-regeneration boundary
      -> regenerate canonical Product Lens once
      -> witness through normal Project / Revision / Expression / Presentation / Face
