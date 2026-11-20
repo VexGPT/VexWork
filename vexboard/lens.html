@@ -562,6 +562,21 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
 .commit-pop .recent .pin{font-size:10.5px;font-weight:600;color:var(--muted);border:1px solid var(--rule);border-radius:5px;padding:1px 5px}
 .toast{position:fixed;left:18px;bottom:18px;z-index:90;max-width:min(560px,calc(100vw - 36px));padding:10px 14px;border-radius:10px;background:var(--ink);color:#fff;font-size:13px;box-shadow:0 18px 40px -20px #18213aaa}
 .toast button{margin-left:10px;border:0;background:none;color:#c9d1e3;text-decoration:underline;font-size:12.5px}
+.diagnostic-dock{position:fixed;right:18px;bottom:18px;z-index:96;width:min(430px,calc(100vw - 36px));font-size:12.5px}
+.diagnostic-dock details{border:1px solid #e6b65c;border-radius:11px;background:#fffaf0;box-shadow:0 18px 40px -22px #18213aaa;overflow:hidden}
+.diagnostic-dock summary{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;font-weight:650;color:#7a4c00;list-style:none}
+.diagnostic-dock summary::-webkit-details-marker{display:none}
+.diagnostic-dock .diag-count{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#a35d00;color:#fff;font:700 10px/19px var(--sans)}
+.diagnostic-dock .diag-list{max-height:min(42vh,360px);overflow:auto;border-top:1px solid #efd59b;background:#fff}
+.diagnostic-dock .diag-item{padding:10px 12px;border-top:1px solid #f3e4c2}
+.diagnostic-dock .diag-item:first-child{border-top:0}
+.diagnostic-dock .diag-top{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+.diagnostic-dock .diag-kind{padding:2px 5px;border-radius:5px;background:#fff0cc;color:#7a4c00;font:700 10px/1.3 var(--mono)}
+.diagnostic-dock .diag-origin{font-weight:650;color:var(--ink)}
+.diagnostic-dock code{display:block;margin-top:4px;white-space:pre-wrap;overflow-wrap:anywhere;color:#8a3f00;font:11.5px/1.45 var(--mono)}
+.diagnostic-inline{margin:12px;padding:12px 14px;border:1px solid #e6b65c;border-radius:10px;background:#fffaf0;color:#7a4c00}
+.diagnostic-inline strong{display:block;color:#5f3a00;margin-bottom:4px}
+.diagnostic-inline code{display:block;margin:5px 0;white-space:pre-wrap;overflow-wrap:anywhere;font:11.5px/1.45 var(--mono)}
 
 /* Differences from Stable: a dashed ring that never covers a neighbour */
 .delta-added,.delta-changed{outline:2px dashed var(--delta);outline-offset:2px}
@@ -627,8 +642,20 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
 <body>
 <div id="app"><section class="boot"><h1>Loading Screen Lens…</h1></section></div>
 <script>
-window.addEventListener('error',(event)=>{const app=document.getElementById('app');if(!app)return;app.innerHTML='<section class="boot"><h1>Screen Lens could not start.</h1><p></p></section>';app.querySelector('p').textContent=event?.message||'A module failed to load.'});
-window.addEventListener('unhandledrejection',(event)=>{const app=document.getElementById('app');if(!app)return;app.innerHTML='<section class="boot"><h1>Screen Lens could not start.</h1><p></p></section>';app.querySelector('p').textContent=String(event?.reason?.message||event?.reason||'Loading failed.')});
+function vexboardBootstrapFault(origin,event){
+  const error=event?.error??event?.reason??event;
+  const message=String(error?.message??event?.message??error??'Loading failed.');
+  try{
+    const reporter=window.__VEXBOARD_REPORT_DIAGNOSTIC__;
+    if(typeof reporter==='function'&&reporter({origin,message,error}))return;
+  }catch{}
+  const app=document.getElementById('app');
+  if(!app)return;
+  app.innerHTML='<section class="boot"><h1>Screen Lens could not start.</h1><p></p></section>';
+  app.querySelector('p').textContent=message;
+}
+window.addEventListener('error',(event)=>vexboardBootstrapFault('Uncaught viewer error',event));
+window.addEventListener('unhandledrejection',(event)=>vexboardBootstrapFault('Unhandled viewer rejection',event));
 </script>
 <script type="module">
 import * as Lens from '../src/shared/vexboard-screen-lens.mjs';
@@ -839,7 +866,7 @@ function lensUrlFromParams() {
   const requested = params.get('lens');
   if (!requested) return DEFAULT_LENS_URL;
   if (/^[a-z]+:|^\/\//i.test(requested) || !/\.json$/i.test(requested)) throw new Error('lens must be a relative .json path on this site');
-  return requested;
+  return /^[^/]+\.json$/i.test(requested)?LENS_DIR+requested:requested;
 }
 
 function h(tag, attrs = {}, ...children) {
@@ -928,6 +955,7 @@ const state = {
   menu: null, // 'PROJECT' | 'COMMIT'
   commitForm: { value: '', busy: false, progress: null, error: null, recent: null, recentError: null },
   toast: null,
+  diagnostics: [],
   // Which realization context the faces show: source defaults, one source-authored example, plus
   // browser-local scenario overrides. A plain value; never persisted, never sent anywhere. The
   // expression on screen is whichever one this context equals (or a custom one).
@@ -949,11 +977,77 @@ const state = {
 };
 let refs = {};
 
+function diagnosticMessage(value){
+  return String(value?.message??value??'Unknown viewer failure.');
+}
+function diagnosticKind(message){
+  return /Cannot read properties of (?:null|undefined)|\bnull\b|\bundefined\b/i.test(message)
+    ? 'NULL_STATE'
+    : 'RUNTIME_ERROR';
+}
+function renderDiagnosticDock(){
+  document.getElementById('vexboard-diagnostics')?.remove();
+  if(!state.diagnostics.length)return;
+  const items=state.diagnostics.map((entry)=>h('div',{class:'diag-item'},
+    h('div',{class:'diag-top'},
+      h('span',{class:'diag-kind'},entry.kind),
+      h('span',{class:'diag-origin'},entry.origin)),
+    h('div',{},entry.message),
+    entry.detail?h('code',{},entry.detail):null));
+  const dock=h('aside',{id:'vexboard-diagnostics',class:'diagnostic-dock','aria-label':'Screen Lens diagnostics'},
+    h('details',{},
+      h('summary',{},h('span',{class:'diag-count'},String(state.diagnostics.length)),'Diagnostics · Lens kept running'),
+      h('div',{class:'diag-list'},items)));
+  document.body.append(dock);
+}
+function reportDiagnostic({origin='Viewer',message=null,error=null,detail=null,kind=null}={}){
+  const resolvedMessage=String(message??diagnosticMessage(error));
+  const resolvedKind=kind??diagnosticKind(resolvedMessage);
+  const resolvedDetail=detail??(error?.stack?String(error.stack).split('\n').slice(0,3).join('\n'):null);
+  const key=origin+'|'+resolvedKind+'|'+resolvedMessage;
+  if(!state.diagnostics.some((entry)=>entry.key===key)){
+    state.diagnostics.push(Object.freeze({key,origin,kind:resolvedKind,message:resolvedMessage,detail:resolvedDetail}));
+  }
+  renderDiagnosticDock();
+  return Boolean(state.lens&&document.querySelector('.lens'));
+}
+window.__VEXBOARD_REPORT_DIAGNOSTIC__=reportDiagnostic;
+
+function diagnosticInline(scope,error){
+  const message=diagnosticMessage(error);
+  reportDiagnostic({origin:scope,message,error});
+  return h('section',{class:'diagnostic-inline','data-diagnostic-scope':scope},
+    h('strong',{},scope+' unavailable'),
+    h('code',{},message),
+    h('span',{},'Other Screen Lens regions remain available; inspect Diagnostics for the held fault.'));
+}
+function guardedRender(scope,renderFn){
+  try{return renderFn();}
+  catch(error){return diagnosticInline(scope,error);}
+}
+function ensureWalk(){
+  if(state.walk?.steps?.length)return state.walk;
+  if(!state.lens?.entryScreenRef)return null;
+  state.walk=Lens.createScreenWalk(state.lens,state.lens.entryScreenRef);
+  reportDiagnostic({
+    origin:'Screen walk',
+    kind:'NULL_STATE',
+    message:'Browser-local screen walk was null or empty; recovered to the Lens entry screen.',
+  });
+  return state.walk;
+}
+
 function readPalette() { try { return Presentation.normalizePaletteMode(localStorage.getItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY)); } catch { return 'STANDARD'; } }
 function writePalette(mode) { try { localStorage.setItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY, mode); } catch { /* presentation preference only */ } }
 
-const screenRef = () => Lens.currentWalkScreen(state.walk);
-const currentScreen = () => Lens.screenFor(state.lens, screenRef());
+const screenRef = () => {
+  const walk=ensureWalk();
+  return walk?Lens.currentWalkScreen(walk):(state.lens?.entryScreenRef??null);
+};
+const currentScreen = () => {
+  const ref=screenRef();
+  return ref&&state.lens?Lens.screenFor(state.lens,ref):null;
+};
 function colorModeScopeKey() {
   const subject = currentSubject() ?? catalogSubjectForCurrentLens();
   return `${subject?.subjectRef ?? state.lens?.lensRef ?? 'lens'}|${screenRef()}`;
@@ -1421,7 +1515,9 @@ function applyPalette() {
 }
 
 function renderAtlas() {
-  const steps = state.walk.steps;
+  const walkState=ensureWalk();
+  if(!walkState)return diagnosticInline('Screen walk',new Error('No Lens screen walk or entryScreenRef is available.'));
+  const steps = walkState.steps;
   const label = (ref) => Lens.screenFor(state.lens, ref).label;
   const walk = h('nav', { class: 'walk', 'aria-label': 'Walk' },
     h('button', { class: 'back', disabled: steps.length <= 1, onclick: () => { state.walk = Lens.backScreenWalk(state.walk); state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); } }, 'Back'),
@@ -1436,7 +1532,7 @@ function renderAtlas() {
       return i ? [h('span', { class: 'sep', 'aria-hidden': 'true' }, '›'), button] : [button];
     }),
   );
-  const counts = Lens.walkVisitCounts(state.walk);
+  const counts = Lens.walkVisitCounts(walkState);
   const chipFor = (screen) => h('button', {
     class: `screen-chip${screen.screenRef === screenRef() ? ' current' : ''}`,
     title: (() => { const coverage = Query.screenCoverage(state.lens, screen.screenRef); return `${screen.summary ?? ''}\n${screen.mapped.replace('_', ' ').toLowerCase()} · ${coverage.traced} of ${coverage.interactive} controls traced`; })(),
@@ -4133,7 +4229,10 @@ function render() {
   const focusedRef = document.activeElement?.dataset?.ref ?? document.activeElement?.dataset?.nodeRef ?? null;
   const kept = { phone: document.querySelector('.current-phone .phone-body')?.scrollTop ?? 0, structure: document.querySelector('.face[data-face="STRUCTURE"] .structure')?.scrollTop ?? 0 };
   const root = h('div', { class: 'lens' });
-  const main = h('main', { class: `main${currentScreen().layout ? ' wide' : ''}` }, renderExperienceSide(), renderBehaviorSide());
+  const current=currentScreen();
+  const experience=guardedRender('Experience',renderExperienceSide);
+  const behavior=guardedRender('Behavior / Depth',renderBehaviorSide);
+  const main = h('main', { class: `main${current?.layout ? ' wide' : ''}` }, experience, behavior);
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
@@ -4141,9 +4240,18 @@ function render() {
   if (state.overlay === 'CHANGES' && state.compare?.count) main.append(renderChanges());
   if (state.overlay === 'LEGEND') main.append(renderLegend());
   if (state.overlay === 'EXAMPLES') main.append(renderExamples());
-  root.append(renderBar(), renderAtlas(), renderExpressionRail(), main, renderTray());
+  root.append(
+    guardedRender('Header',renderBar),
+    guardedRender('Screen walk / Atlas',renderAtlas),
+    guardedRender('Expressions',renderExpressionRail),
+    main,
+    guardedRender('Inspector',renderTray),
+  );
   app.replaceChildren(root);
-  const expressionKey = `${screenRef()}|${activeExpression().ref}`;
+  renderDiagnosticDock();
+  let expressionKey=`${screenRef()}|unresolved`;
+  try{expressionKey=`${screenRef()}|${activeExpression()?.ref??'unresolved'}`;}
+  catch(error){reportDiagnostic({origin:'Expression state',error});}
   if (expressionKey === renderedExpressionKey) {
     const phoneBody = root.querySelector('.current-phone .phone-body');
     const structure = root.querySelector('.face[data-face="STRUCTURE"] .structure');
