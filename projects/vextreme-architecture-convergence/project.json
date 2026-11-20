@@ -70,7 +70,25 @@
     "github.pull.vextreme.570",
     "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906",
     "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
-    "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+    "github.pull.vexwork.267",
+    "github.pull.vexlife-android.219",
+    "github.pull.vextreme.591",
+    "repo.vexlife-android:architecture/widget/README.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
+    "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+    "github.pull.vexwork.280",
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
+    "repo.vexlife-android:architecture/dependency/README.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/VexApplication.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "repo.vexlife-android:architecture/execution/README.md",
+    "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+    "github.pull.vexlife-android.224",
+    "github.pull.vexlife-android.225"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }

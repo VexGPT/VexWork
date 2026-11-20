@@ -15,160 +15,27 @@
 // through one implementation template. Captured Family closures and typed Behavior
 // ports answer the same ownership questions through materially different source paths.
 //
-// Human knowledge that code cannot say (notes, sharper summaries, ThemeMode's
-// === fence) lives in a separate overlay file, merged last. The generated lens
+// Human knowledge that code cannot say (notes and sharper presentation summaries) lives in a
+// separate overlay file, merged last. Source-expressed relationship details stay source-derived. The generated lens
 // is never edited by hand; regenerate it.
 //
 // Pure: inputs are an adapter config, a Map of repo-relative path -> source
 // text, and an optional overlay. No file system, network or clock access.
 
+import { compact, kdocBefore, matchClose, skipLiteralOrComment, splitArgs, stripComments, topLevelCalls } from './vexboard-kotlin-source.mjs';
+import { REALIZATION_READER_VERSION, composableIndex, primitiveCatalog, realizeScreen, stringConstants } from './vexboard-android-realization.mjs';
+import { readSourceExamples } from './vexboard-android-examples.mjs';
+
 export const SCREEN_LENS_ADAPTER_SCHEMA = 'vexboard.screen-lens-adapter/v1';
 export const SCREEN_LENS_OVERLAY_SCHEMA = 'vexboard.screen-lens-overlay/v1';
-export const ADAPTER_VERSION = 'vexlife-android-adapter/3';
+export const ADAPTER_VERSION = 'vexlife-android-adapter/5';
+export { REALIZATION_READER_VERSION, compact, kdocBefore, matchClose, splitArgs, stripComments, topLevelCalls };
 
 function fail(message) {
   throw new TypeError(`screen lens adapter: ${message}`);
 }
 
-/* ---------- Kotlin reading helpers (just enough for the VexLife DSL) ---------- */
-
-function skipLiteralOrComment(text, i) {
-  if (text.startsWith('"""', i)) {
-    const end = text.indexOf('"""', i + 3);
-    return end < 0 ? text.length : end + 3;
-  }
-  const c = text[i];
-  if (c === '"' || c === "'") {
-    let j = i + 1;
-    while (j < text.length && text[j] !== c) j += text[j] === '\\' ? 2 : 1;
-    return j + 1;
-  }
-  if (text.startsWith('//', i)) {
-    const end = text.indexOf('\n', i);
-    return end < 0 ? text.length : end;
-  }
-  if (text.startsWith('/*', i)) {
-    const end = text.indexOf('*/', i + 2);
-    return end < 0 ? text.length : end + 2;
-  }
-  return -1;
-}
-
-// Index of the bracket that closes the one at `open`.
-export function matchClose(text, open) {
-  const pairs = { '(': ')', '{': '}', '[': ']', '<': '>' };
-  const opener = text[open];
-  const closer = pairs[opener];
-  if (!closer) fail(`matchClose needs an opening bracket at ${open}`);
-  let depth = 0;
-  for (let i = open; i < text.length; i += 1) {
-    const skipped = skipLiteralOrComment(text, i);
-    if (skipped >= 0) { i = skipped - 1; continue; }
-    if (text[i] === opener) depth += 1;
-    else if (text[i] === closer) {
-      depth -= 1;
-      if (depth === 0) return i;
-    }
-  }
-  return fail(`unbalanced ${opener} at ${open}`);
-}
-
-export function stripComments(text) {
-  let out = '';
-  for (let i = 0; i < text.length; i += 1) {
-    if (text.startsWith('//', i) || text.startsWith('/*', i)) { i = skipLiteralOrComment(text, i) - 1; continue; }
-    const skipped = skipLiteralOrComment(text, i);
-    if (skipped >= 0) { out += text.slice(i, skipped); i = skipped - 1; continue; }
-    out += text[i];
-  }
-  return out;
-}
-
-export const compact = (value) => String(value ?? '').replace(/\s+/g, ' ').replace(/\(\s+/g, '(').replace(/\s+\)/g, ')').replace(/,\s*\)/g, ')').trim();
-
-// Top-level comma split that respects brackets, strings and comments.
-export function splitArgs(text) {
-  const parts = [];
-  let depth = 0;
-  let start = 0;
-  for (let i = 0; i < text.length; i += 1) {
-    const skipped = skipLiteralOrComment(text, i);
-    if (skipped >= 0) { i = skipped - 1; continue; }
-    const c = text[i];
-    if ('({['.includes(c)) depth += 1;
-    else if (')}]'.includes(c)) depth -= 1;
-    else if (c === ',' && depth === 0) { parts.push(text.slice(start, i)); start = i + 1; }
-  }
-  parts.push(text.slice(start));
-  return parts.map((part) => stripComments(part).trim()).filter(Boolean).map((part) => {
-    const named = /^([A-Za-z_]\w*)\s*=(?!=)\s*([\s\S]*)$/.exec(part);
-    return named ? { name: named[1], value: compact(named[2]) } : { name: null, value: compact(part) };
-  });
-}
-
-const KEYWORDS = new Set(['if', 'else', 'when', 'for', 'while', 'return', 'val', 'var', 'fun', 'try', 'catch', 'object', 'class', 'override', 'private', 'internal']);
-
-// Call expressions at the top level of `body`: name(args) { lambda }.
-export function topLevelCalls(body) {
-  const calls = [];
-  const ident = /[A-Za-z_][\w.]*/y;
-  for (let i = 0; i < body.length;) {
-    const skipped = skipLiteralOrComment(body, i);
-    if (skipped >= 0) { i = skipped; continue; }
-    ident.lastIndex = i;
-    const match = /[A-Za-z_]/.test(body[i]) && (i === 0 || !/[\w.]/.test(body[i - 1])) ? ident.exec(body) : null;
-    if (match) {
-      let j = i + match[0].length;
-      while (/\s/.test(body[j] ?? '')) j += 1;
-      if (!KEYWORDS.has(match[0]) && (body[j] === '(' || body[j] === '{')) {
-        let args = '';
-        if (body[j] === '(') {
-          const close = matchClose(body, j);
-          args = body.slice(j + 1, close);
-          j = close + 1;
-          let k = j;
-          while (/\s/.test(body[k] ?? '')) k += 1;
-          if (body[k] === '{') j = k;
-        }
-        let lambda = null;
-        if (body[j] === '{') {
-          const close = matchClose(body, j);
-          lambda = body.slice(j + 1, close);
-          j = close + 1;
-        }
-        calls.push({ name: match[0], args, body: lambda, start: i });
-        i = j;
-        continue;
-      }
-      i += match[0].length;
-      continue;
-    }
-    if ('({['.includes(body[i])) { i = matchClose(body, i) + 1; continue; }
-    i += 1;
-  }
-  return calls;
-}
-
-// First paragraph of the KDoc directly above `index`, if any.
-export function kdocBefore(text, index) {
-  let end = index;
-  for (;;) {
-    const before = text.slice(0, end).replace(/\s+$/, '');
-    const annotation = /(@\w+(\([^)]*\))?|\b(internal|private|public|protected|data|sealed|abstract|open|enum|inline|value))$/.exec(before);
-    if (annotation) { end = annotation.index; continue; }
-    if (!before.endsWith('*/')) return null;
-    const start = before.lastIndexOf('/**');
-    if (start < 0) return null;
-    const lines = before.slice(start + 3, before.length - 2).split('\n').map((line) => line.replace(/^\s*\*\s?/, '').trim());
-    const paragraph = [];
-    for (const line of lines) {
-      if (!line && paragraph.length) break;
-      if (line) paragraph.push(line);
-    }
-    const summary = paragraph.join(' ').replace(/\[([^\]]+)\]/g, '$1').trim();
-    return summary || null;
-  }
-}
+/* ---------- Kotlin reading helpers live in vexboard-kotlin-source.mjs (re-exported for existing callers) ---------- */
 
 function blockAfter(text, pattern) {
   const match = pattern.exec(text);
@@ -266,6 +133,8 @@ function parseRefs(text) {
       labelRes: named(args, 'labelRes') ?? named(args, 'textRes'),
       intent: named(args, 'intent'),
       style: named(args, 'style'),
+      icon: named(args, 'icon'),
+      defaultChild: named(args, 'defaultChild') ?? (match[2] === 'swappableRef' ? args.filter((arg) => !arg.name)[1]?.value ?? null : null),
     });
   }
   return refs;
@@ -296,8 +165,21 @@ function parseScreen(path, text) {
     refs: parseRefs(text),
     layout: layout ? layout.body : null,
     customRender: /override\s+fun\s+renderContent\(/.test(text),
+    toolbarActions: toolbarActionsOf(text),
   };
 }
+
+// `override val toolbarActions get() = listOf(A, B)`: registered controls the shared app toolbar
+// realizes while this Screen is current. They are Screen-owned semantic elements placed outside the
+// registered tree (AppScreenBlueprint.appRegistration additionalPlacements).
+function toolbarActionsOf(text) {
+  const match = /override\s+val\s+toolbarActions\b\s*(?::[^=\n]+)?\s*(?:get\(\)\s*)?=\s*listOf\(/.exec(text);
+  if (!match) return [];
+  const open = match.index + match[0].length - 1;
+  return splitArgs(text.slice(open + 1, matchClose(text, open))).map((arg) => arg.value.trim()).filter((value) => /^\w+$/.test(value));
+}
+
+const lastSegment = (value, prefix) => (value ? String(value).replace(new RegExp(`^${prefix}\\.`), '') : undefined);
 
 // Every `appAction(action = AppActions.X) { ... }` in every file, with the locals
 // and parameters of the function that encloses it. Registrations may live in a
@@ -428,6 +310,72 @@ const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /* ---------- Family vocabulary (one template for every VexFamily) ---------- */
 
+function functionBlocks(text) {
+  const out = [];
+  const pattern = /(?:^|\n)\s*(?:internal\s+|private\s+|public\s+|protected\s+)?(?:suspend\s+)?fun\s+(\w+)\s*\(/g;
+  for (const match of text.matchAll(pattern)) {
+    const open = text.indexOf('(', match.index + match[0].length - 1);
+    if (open < 0) continue;
+    let close;
+    try { close = matchClose(text, open); }
+    catch { continue; }
+    const bodyOpen = text.indexOf('{', close);
+    if (bodyOpen < 0) continue;
+    let bodyClose;
+    try { bodyClose = matchClose(text, bodyOpen); }
+    catch { continue; }
+    out.push({
+      name: match[1],
+      index: match.index,
+      body: text.slice(bodyOpen + 1, bodyClose),
+      text: text.slice(match.index, bodyClose + 1),
+      doc: kdocBefore(text, match.index),
+    });
+  }
+  return out;
+}
+
+function directFamilyRealization(text) {
+  return functionBlocks(text).find((fn) =>
+    /\bact\s*\.\s*launch\s*\(/.test(fn.body) ||
+    /\blaunchWith\s*\(/.test(fn.body)) ?? null;
+}
+
+function identityCurrentnessSettlement(text, realization) {
+  if (!realization) return null;
+  const called = [...new Set(
+    [...realization.body.matchAll(/\bfamily\s*\.\s*(\w+)\s*\(/g)].map((match) => match[1]),
+  )];
+  const candidates = [];
+  for (const fn of functionBlocks(text)) {
+    if (!called.includes(fn.name)) continue;
+    const guard = /\b([A-Za-z_]\w*)\s*===\s*parameter\b/.exec(fn.body);
+    if (!guard) continue;
+    const field = guard[1];
+    if (!new RegExp('\\b' + escapeRegex(field) + '\\s*=\\s*null\\b').test(fn.body)) continue;
+    candidates.push({ fn, field });
+  }
+  if (candidates.length !== 1) return null;
+  const { fn, field } = candidates[0];
+  const callPattern = new RegExp('\\bfamily\\s*\\.\\s*' + escapeRegex(fn.name) + '\\s*\\(', 'g');
+  const countCalls = (value) => [...String(value ?? '').matchAll(callPattern)].length;
+  const onResult = blockAfter(realization.body, /onResult\s*=\s*\{/);
+  const onCompletion = blockAfter(realization.body, /invokeOnCompletion\s*\{/);
+  const total = countCalls(realization.body);
+  const fromResult = countCalls(onResult?.body) > 0;
+  const fromCompletion = countCalls(onCompletion?.body) > 0;
+  const known = countCalls(onResult?.body) + countCalls(onCompletion?.body);
+  return {
+    name: fn.name,
+    field,
+    summary: fn.doc ?? 'Clears one feature-owned currentness fence only for the exact Parameter identity that still owns it.',
+    code: 'if (' + field + ' === parameter) { ' + field + ' = null }',
+    fromResult,
+    fromCompletion,
+    fromBoundary: total > known,
+  };
+}
+
 function sealedMembers(text, interfaceName) {
   const block = blockAfter(text, new RegExp(`sealed\\s+(?:interface|class)\\s+${interfaceName}\\b[^{]*\\{`));
   if (!block) return [];
@@ -435,10 +383,11 @@ function sealedMembers(text, interfaceName) {
 }
 
 function parseFamily(cat, adapter, familyName) {
-  const [path] = cat.find(new RegExp(`class\\s+${familyName}\\s*\\(`));
+  const classPattern = new RegExp(`class\\s+${familyName}\\s*(?:\\(|:)`);
+  const [path] = cat.find(classPattern);
   if (!path) return null;
   const text = cat.files.get(path);
-  const classMatch = new RegExp(`class\\s+${familyName}\\s*\\(`).exec(text);
+  const classMatch = classPattern.exec(text);
   const stateEnum = new RegExp(`enum\\s+class\\s+(\\w+)\\s*:\\s*VexFamily\\.State<${familyName}>\\s*\\{([^}]*)\\}`).exec(text);
   const act = blockAfter(text, /object\s+Act\s*\{/);
   const methods = [];
@@ -458,6 +407,14 @@ function parseFamily(cat, adapter, familyName) {
   }
   const approach = /\bbegin(Latest|Earliest|Queued)\(/.exec(text)?.[1] ?? (/\bbegin\(/.test(text) ? 'Independent' : null);
   const presentation = /override\s+val\s+presentation\s*=\s*(\w+)\./.exec(text)?.[1] ?? null;
+  const realization = directFamilyRealization(text);
+  const acceptedRealization = Boolean(
+    realization &&
+    /\bVexFamily\.Act\.Accepted\b/.test(text) &&
+    /\brealizationBegin\b/.test(realization.body) &&
+    /\bact\s*\.\s*launch\s*\(/.test(realization.body)
+  );
+  const currentnessSettlement = identityCurrentnessSettlement(text, realization);
   return {
     name: familyName,
     path,
@@ -471,6 +428,9 @@ function parseFamily(cat, adapter, familyName) {
     presentation,
     methods,
     approach,
+    realization,
+    acceptedRealization,
+    currentnessSettlement,
     observe: /fun\s+(observe\w*Store)\s*\(/.exec(text)?.[1] ?? null,
     activate: /fun\s+(activate\w+)\s*\(/.exec(text)?.[1] ?? null,
     records: /record\w*Fact\s*\(/.test(text),
@@ -763,6 +723,524 @@ function followBehaviorPort(cat, adapter, screen, element) {
   };
 }
 
+
+// One source-proven Direct VexFamily local-effect shape. Unknown or ambiguous hops stay held.
+function directFamilyTypeSource(cat, adapter, typeName, relationship, familyType) {
+  return uniqueSource(
+    cat,
+    adapter,
+    new RegExp(
+      '(?:sealed\\s+interface|sealed\\s+class|enum\\s+class|interface|class)\\s+' +
+        escapeRegex(typeName) +
+        '[\\s\\S]{0,520}?VexFamily\\.' + relationship +
+        '\\s*<\\s*' + escapeRegex(familyType) + '\\s*>',
+    ),
+  );
+}
+
+function directFamilyCoordinates(familyText, familyType) {
+  const match = new RegExp(
+    'VexFamily\\s*<\\s*' + escapeRegex(familyType) +
+      '\\s*,\\s*([A-Z]\\w*)\\s*,\\s*([A-Z]\\w*)\\s*,\\s*([A-Z]\\w*)\\s*>',
+  ).exec(familyText);
+  return match ? { stateType: match[1], controlType: match[2], effectType: match[3] } : null;
+}
+
+function directFamilyExperience(cat, adapter, interfaceType, controlType) {
+  const candidates = [];
+  for (const [path, text] of cat.files) {
+    for (const match of text.matchAll(/\bclass\s+(\w+)\s*\(/g)) {
+      const paramsOpen = match.index + match[0].length - 1;
+      let paramsClose;
+      try { paramsClose = matchClose(text, paramsOpen); } catch { continue; }
+      const bodyOpen = text.indexOf('{', paramsClose);
+      if (bodyOpen < 0 || !new RegExp(':\\s*' + escapeRegex(interfaceType) + '\\b').test(text.slice(paramsClose + 1, bodyOpen))) continue;
+      let bodyClose;
+      try { bodyClose = matchClose(text, bodyOpen); } catch { continue; }
+      const body = text.slice(bodyOpen + 1, bodyClose);
+      const activate = functionSpans(body).find((fn) => fn.name === 'activate' && [...fn.params.values()].includes(controlType));
+      if (!activate) continue;
+      const controlName = [...activate.params.entries()].find(([, type]) => type === controlType)?.[0] ?? null;
+      if (!controlName) continue;
+      const activateBody = body.slice(activate.bodyStart, activate.end);
+      const helperMatch = /\b(activate[A-Z]\w*)\s*\(/.exec(activateBody);
+      if (!helperMatch) continue;
+      const helperOpen = helperMatch.index + helperMatch[0].length - 1;
+      let helperClose;
+      try { helperClose = matchClose(activateBody, helperOpen); } catch { continue; }
+      const helperArgs = splitArgs(activateBody.slice(helperOpen + 1, helperClose));
+      const familyLocal = named(helperArgs, 'family');
+      if (!familyLocal || named(helperArgs, 'control') !== controlName) continue;
+      const fields = new Map();
+      for (const arg of splitArgs(text.slice(paramsOpen + 1, paramsClose))) {
+        const typed = /(?:private\s+)?val\s+(\w+)\s*:\s*([\w.<>?]+)/.exec(arg.value);
+        if (typed) fields.set(typed[1], typed[2].replace(/\?$/, ''));
+      }
+      const familyType = fields.get(familyLocal) ?? null;
+      if (!familyType || !/Family$/.test(familyType)) continue;
+      candidates.push({
+        name: match[1],
+        source: toRootRef(adapter, path),
+        interfaceType,
+        controlType,
+        controlName,
+        familyType,
+        helperName: helperMatch[1],
+      });
+    }
+  }
+  const unique = new Map(candidates.map((entry) => [[entry.name, entry.familyType, entry.helperName].join('|'), entry]));
+  return unique.size === 1 ? [...unique.values()][0] : null;
+}
+
+function directFamilyStoreReturn(familyText, familyType, storeType) {
+  const candidates = [];
+  for (const span of functionSpans(familyText)) {
+    const familyParam = [...span.params.entries()].find(([, type]) => type.replace(/\?$/, '') === familyType);
+    const storeParam = [...span.params.entries()].find(([, type]) => type.replace(/\?$/, '') === storeType);
+    if (!familyParam || !storeParam) continue;
+    const body = familyText.slice(span.bodyStart, span.end);
+    if (!/VexExecution\.observe\s*\(/.test(body)) continue;
+    const source = new RegExp('source\\s*=\\s*' + escapeRegex(storeParam[0]) + '\\s*::\\s*(\\w+)').exec(body);
+    const observe = new RegExp(escapeRegex(familyParam[0]) + '\\s*\\.\\s*(observe\\w+)\\s*\\(').exec(body);
+    if (source && observe) candidates.push({ name: span.name, sourceFlow: source[1], observeMethod: observe[1] });
+  }
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function directFamilyNamespace(source, familyType) {
+  const logical = /^[^:]+:(.+)\/[^/]+$/.exec(source ?? '')?.[1] ?? null;
+  return logical ? logical.split('/').filter(Boolean).join('.') : slug(familyType.replace(/Family$/, ''));
+}
+
+function followDirectFamilyLocalEffect(cat, adapter, screen, element) {
+  const declaration = element.symbol?.split('.').at(-1) ?? null;
+  if (!screen || !declaration) return null;
+  const elementPattern = escapeRegex(screen.object) + '\\s*\\.\\s*' + escapeRegex(declaration);
+  const doorways = [];
+  for (const [path, text] of cat.files) {
+    const pattern = new RegExp(
+      elementPattern +
+        '\\s*->[\\s\\S]{0,300}?([a-z]\\w*)\\s*(?:\\?\\.)?\\.\\s*activate\\s*\\(\\s*([A-Z]\\w*Control)\\s*\\.\\s*(\\w+)',
+      'g',
+    );
+    for (const match of text.matchAll(pattern)) {
+      const span = functionSpans(text)
+        .filter((fn) => fn.start < match.index && fn.end > match.index)
+        .sort((a, b) => b.start - a.start)[0] ?? null;
+      const receiverType = span?.params.get(match[1])?.replace(/\?$/, '') ?? receiverTypeInSource(text, match[1]);
+      if (!receiverType) continue;
+      doorways.push({
+        receiver: match[1],
+        receiverType,
+        controlType: match[2],
+        control: match[3],
+        source: toRootRef(adapter, path),
+      });
+    }
+  }
+  const keys = new Set(doorways.map((entry) => [entry.receiverType, entry.controlType, entry.control].join('|')));
+  const sources = new Set(doorways.map((entry) => entry.source));
+  if (keys.size !== 1 || sources.size !== 1) return null;
+  const doorway = doorways[0];
+
+  const experienceSource = uniqueSource(cat, adapter, new RegExp('interface\\s+' + escapeRegex(doorway.receiverType) + '\\b'));
+  const experience = experienceSource ? directFamilyExperience(cat, adapter, doorway.receiverType, doorway.controlType) : null;
+  if (!experienceSource || !experience) return null;
+  const helper = sourceFunction(cat, adapter, experience.helperName);
+  if (!helper) return null;
+
+  const familyParam = [...helper.params.entries()].find(([, type]) => type.replace(/\?$/, '') === experience.familyType);
+  const controlParam = [...helper.params.entries()].find(([, type]) => type.replace(/\?$/, '') === doorway.controlType);
+  const partnerParam = [...helper.params.entries()].map(([name, type]) => {
+    const match = /^([A-Z]\w*Partner)\.Connection(?:\.(\w+))?\??$/.exec(type);
+    return match ? { name, type: type.replace(/\?$/, ''), partnerType: match[1] } : null;
+  }).find(Boolean);
+  const storeParam = [...helper.params.entries()].find(([, type]) => /Store\??$/.test(type));
+  if (!familyParam || !controlParam || !partnerParam || !storeParam ||
+      ![...helper.params.values()].some((type) => type.replace(/\?$/, '') === 'VexExecutionRoot')) return null;
+
+  const activation = new RegExp(
+    'val\\s+(\\w+)\\s*=\\s*' + escapeRegex(familyParam[0]) +
+      '\\s*\\.\\s*(activate\\w*)\\s*\\(\\s*' + escapeRegex(controlParam[0]) + '\\s*[,)]',
+  ).exec(helper.body);
+  if (!activation) return null;
+  const accepted = activation[1];
+  if (!new RegExp('\\b' + escapeRegex(accepted) + '\\s*\\.\\s*realizationBegin\\b').test(helper.body) ||
+      !new RegExp('\\b' + escapeRegex(accepted) + '\\s*\\.\\s*launch\\s*\\(').test(helper.body)) return null;
+
+  const family = familyRoot(cat, adapter, experience.familyType);
+  const coordinates = family ? directFamilyCoordinates(family.text, experience.familyType) : null;
+  if (!family || !coordinates || coordinates.controlType !== doorway.controlType) return null;
+  const stateSource = directFamilyTypeSource(cat, adapter, coordinates.stateType, 'State', experience.familyType);
+  const controlSource = directFamilyTypeSource(cat, adapter, coordinates.controlType, 'Control', experience.familyType);
+  const effectSource = directFamilyTypeSource(cat, adapter, coordinates.effectType, 'Effect', experience.familyType);
+  if (!stateSource || !controlSource || !effectSource || !new RegExp('\\b' + escapeRegex(doorway.control) + '\\b').test(controlSource.text)) return null;
+
+  const method = /\bclass\s+Method\s*\([\s\S]{0,900}?connection\s*:\s*([A-Z]\w*Partner)\.Connection(?:\.(\w+))?[\s\S]{0,900}?override\s+val\s+effect\s*:\s*([A-Z]\w*)/.exec(family.text);
+  if (!method || method[1] !== partnerParam.partnerType || method[3] !== coordinates.effectType) return null;
+  const partner = partnerRoot(cat, adapter, partnerParam.partnerType);
+  const storeType = storeParam[1].replace(/\?$/, '');
+  const store = storeRoot(cat, adapter, storeType);
+  const observation = directFamilyStoreReturn(family.text, experience.familyType, storeType);
+  if (!partner || !store || !observation) return null;
+
+  const observeMethod = sourceFunction(cat, adapter, observation.observeMethod, experience.familyType);
+  const signalType = observeMethod
+    ? [...observeMethod.params.values()]
+        .map((type) => new RegExp('^' + escapeRegex(partnerParam.partnerType) + '\\.Signal\\.(\\w+)\\??$').exec(type)?.[1] ?? null)
+        .find(Boolean) ?? null
+    : null;
+  if (!observeMethod || !signalType) return null;
+
+  const approaches = new Set([...family.text.matchAll(/\bbegin(Earliest|Latest|Queued)?\s*\(/g)].map((match) => match[1] ?? 'Independent'));
+  if (approaches.size !== 1) return null;
+
+  return {
+    ...doorway,
+    experienceSource,
+    experience,
+    helper,
+    familyType: experience.familyType,
+    family,
+    ...coordinates,
+    stateSource,
+    controlSource,
+    effectSource,
+    approach: [...approaches][0],
+    partnerType: partnerParam.partnerType,
+    partner,
+    connectionType: partnerParam.type,
+    storeType,
+    store,
+    observation,
+    signalType,
+  };
+}
+
+// One source-proven VexPartner shape. Unknown or ambiguous hops stay held.
+function sourceFunction(cat, adapter, functionName, ownerType = null) {
+  const candidates = [];
+  for (const [path, text] of cat.files) {
+    if (ownerType && !new RegExp('(?:class|object)\\s+' + escapeRegex(ownerType) + '\\b').test(text)) continue;
+    const spans = functionSpans(text).filter((span) => span.name === functionName);
+    for (const span of spans) {
+      candidates.push({
+        path,
+        text,
+        source: toRootRef(adapter, path),
+        name: functionName,
+        body: text.slice(span.bodyStart, span.end),
+        params: span.params,
+        ownerType,
+      });
+    }
+  }
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function receiverTypeInSource(sourceText, receiver) {
+  const typed = new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*:\\s*([A-Z]\\w*)\\b').exec(sourceText)?.[1] ?? null;
+  if (typed) return typed;
+
+  /*
+   * Compose construction may be:
+   *   remember { Type() }
+   *   remember(key) { Type() }
+   *   remember(keys...) { if (...) Type.production(...) else Type() }
+   *
+   * The receiver type is still source-readable; do not fall back to global function-name matching.
+   */
+  const remembered = new RegExp(
+    '\\bval\\s+' + escapeRegex(receiver) +
+      '\\s*=\\s*remember(?:\\s*\\([^)]*\\))?\\s*\\{[\\s\\S]{0,900}?([A-Z]\\w*)(?:\\.production)?\\s*\\(',
+  ).exec(sourceText)?.[1] ?? null;
+  if (remembered) return remembered;
+
+  return new RegExp('\\bval\\s+' + escapeRegex(receiver) + '\\s*=\\s*([A-Z]\\w*)\\s*\\(').exec(sourceText)?.[1] ?? null;
+}
+
+function partnerRoot(cat, adapter, partnerType) {
+  return uniqueSource(
+    cat,
+    adapter,
+    new RegExp('object\\s+' + escapeRegex(partnerType) + '\\s*:\\s*VexPartner\\s*<\\s*' + escapeRegex(partnerType) + '\\s*>'),
+  );
+}
+
+function familyRoot(cat, adapter, familyType) {
+  return uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(familyType) + '\\s*:'))
+    ?? uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(familyType) + '\\s*\\('));
+}
+
+function storeRoot(cat, adapter, storeType) {
+  return uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(storeType) + '\\b'))
+    ?? uniqueSource(cat, adapter, new RegExp('interface\\s+' + escapeRegex(storeType) + '\\b'));
+}
+
+function localEffectDoorway(screen, element) {
+  const declaration = element.symbol?.split('.').at(-1) ?? null;
+  if (!screen || !declaration) return null;
+  const pattern = new RegExp(
+    escapeRegex(screen.object) + '\\s*\\.\\s*' + escapeRegex(declaration) +
+      '\\s*->[\\s\\S]{0,420}?([a-z]\\w*)\\s*\\.\\s*(\\w+)\\s*\\(',
+  );
+  const match = pattern.exec(screen.text);
+  if (!match) return null;
+  return {
+    receiver: match[1],
+    receiverType: receiverTypeInSource(screen.text, match[1]),
+    functionName: match[2],
+    source: screen.source,
+  };
+}
+
+function directMemberCalls(body) {
+  const calls = [];
+  for (const match of String(body).matchAll(/\b([a-z]\w*)\s*(?:\?\.)?\.\s*(\w+)\s*\(/g)) {
+    calls.push({ receiver: match[1], functionName: match[2], index: match.index });
+  }
+  return calls;
+}
+
+function executionOperationReferences(body) {
+  const refs = [];
+  const pattern =
+    /VexExecution\.(begin|beginEarliest|beginLatest|beginQueued)\s*\(([\s\S]{0,1800}?)operation\s*=\s*::(\w+)/g;
+  for (const match of String(body).matchAll(pattern)) {
+    const api = match[1];
+    const args = match[2];
+    refs.push({
+      api,
+      approach:
+        api === 'beginQueued' ? 'Queued'
+          : api === 'beginLatest' ? 'Latest'
+            : api === 'beginEarliest' ? 'Earliest'
+              : 'Independent',
+      owner: /\bowner\s*=\s*([a-z]\w*)/.exec(args)?.[1] ?? null,
+      relationshipId: /\brelationshipId\s*=\s*([A-Z]\w*)/.exec(args)?.[1] ?? null,
+      functionName: match[3],
+      index: match.index,
+    });
+  }
+  return refs;
+}
+
+
+function connectionPartnerForLocal(sourceText, localName) {
+  const pattern = new RegExp(
+    '(?:private\\s+|internal\\s+|public\\s+)?val\\s+' + escapeRegex(localName) +
+      '\\s*=\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection\\s*\\(',
+  );
+  return pattern.exec(sourceText)?.[1] ?? null;
+}
+
+function connectionConversionForLocal(sourceText, localName) {
+  const startPattern = new RegExp(
+    '(?:private\\s+|internal\\s+|public\\s+)?val\\s+' + escapeRegex(localName) +
+      '\\s*=\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection\\s*\\(',
+  );
+  const start = startPattern.exec(sourceText);
+  if (!start) return null;
+  const localSlice = sourceText.slice(start.index, start.index + 1800);
+  const conversion =
+    /\bconversion\s*=\s*([A-Z]\w*Partner)\s*\.\s*Connection\s*\.\s*(\w+)\s*\(/.exec(localSlice);
+  return conversion
+    ? {
+        partnerType: conversion[1],
+        concreteName: conversion[2],
+        symbol: conversion[1] + '.Connection.' + conversion[2],
+      }
+    : null;
+}
+
+function partnerHasSource(partnerText, partnerType) {
+  return new RegExp(
+    'data\\s+class\\s+Source\\s*\\([\\s\\S]{0,700}?VexPartner\\.Source\\s*<\\s*' +
+      escapeRegex(partnerType) +
+      '\\s*>',
+  ).test(partnerText);
+}
+
+function signalsCarryPartnerSource(partnerText) {
+  const signalBlock = blockAfter(partnerText, /sealed\s+interface\s+Signal\b/);
+  return Boolean(signalBlock && /\bval\s+source\s*:\s*Source\b/.test(signalBlock.body));
+}
+
+
+function familyTypeForLab(sourceText) {
+  return /\bval\s+family\s*:\s*([A-Z]\w*Family)\b/.exec(sourceText)?.[1] ?? null;
+}
+
+function partnerStoreType(partnerText) {
+  return /class\s+Receiver\s*\([\s\S]{0,700}?\bstore\s*:\s*([A-Z]\w*Store)\b/.exec(partnerText)?.[1] ?? null;
+}
+
+function storeObservationIsMaintained(labText) {
+  return /VexExecution\.observe\s*\([\s\S]{0,1200}?source\s*=\s*store\s*::\s*snapshots[\s\S]{0,1200}?family\s*\.\s*observeStore\s*\(/.test(labText);
+}
+
+function resolvePartnerIngress(cat, adapter, functionName, ownerType = null, visited = new Set()) {
+  const visitKey = (ownerType ?? '?') + ':' + functionName;
+  if (visited.has(visitKey) || visited.size > 5) return null;
+  const nextVisited = new Set(visited);
+  nextVisited.add(visitKey);
+  const fn = sourceFunction(cat, adapter, functionName, ownerType);
+  if (!fn) return null;
+
+  for (const call of directMemberCalls(fn.body)) {
+    if (call.functionName !== 'receive') continue;
+    const partnerType = connectionPartnerForLocal(fn.text, call.receiver);
+    if (!partnerType) continue;
+    const partner = partnerRoot(cat, adapter, partnerType);
+    if (!partner) continue;
+    const storeType = partnerStoreType(partner.text);
+    const store = storeType ? storeRoot(cat, adapter, storeType) : null;
+    const familyType = familyTypeForLab(fn.text);
+    const family = familyType ? familyRoot(cat, adapter, familyType) : null;
+    if (!storeType || !store || !familyType || !family) continue;
+    const signals = sealedMembers(partner.text, 'Signal');
+    const conversion = connectionConversionForLocal(fn.text, call.receiver);
+    const hasConversion = /\bclass\s+\w+\b[\s\S]{0,900}?VexPartner\.Connection\.Conversion\s*</.test(partner.text);
+    const source = partnerHasSource(partner.text, partnerType) && signalsCarryPartnerSource(partner.text)
+      ? partnerType + '.Source'
+      : null;
+    const hasObservation = /\bdata\s+class\s+Observation\b[\s\S]{0,700}?VexPartner\.Connection\.Observation\s*</.test(partner.text);
+    const hasReceiver = /\bclass\s+Receiver\b[\s\S]{0,900}?VexPartner\.Connection\.Receiver\s*</.test(partner.text);
+    if (!conversion || !hasConversion || !hasObservation || !hasReceiver || !storeObservationIsMaintained(fn.text)) continue;
+    return {
+      kind: 'INGRESS',
+      functionName,
+      functionSource: fn.source,
+      labSource: fn,
+      partnerType,
+      partner,
+      connectionLocal: call.receiver,
+      conversion,
+      source,
+      signals,
+      storeType,
+      store,
+      familyType,
+      family,
+      observeStore: /fun\s+observeStore\s*\(/.test(family.text) ? 'observeStore' : null,
+    };
+  }
+
+  for (const execution of executionOperationReferences(fn.body)) {
+    if (!sourceFunction(cat, adapter, execution.functionName, ownerType)) continue;
+    const resolved = resolvePartnerIngress(cat, adapter, execution.functionName, ownerType, nextVisited);
+    if (resolved) {
+      return {
+        ...resolved,
+        ingressExecution: execution,
+        doorwayChain: [functionName, execution.functionName, ...(resolved.doorwayChain ?? [resolved.functionName])],
+      };
+    }
+  }
+
+  for (const call of directMemberCalls(fn.body)) {
+    if (['toString', 'copy', 'also', 'let', 'map', 'filter'].includes(call.functionName)) continue;
+    const nestedOwner = receiverTypeInSource(fn.text, call.receiver);
+    if (!sourceFunction(cat, adapter, call.functionName, nestedOwner)) continue;
+    const resolved = resolvePartnerIngress(cat, adapter, call.functionName, nestedOwner, nextVisited);
+    if (resolved) return { ...resolved, doorwayChain: [functionName, ...(resolved.doorwayChain ?? [resolved.functionName])] };
+  }
+  return null;
+}
+
+function resolvePartnerFamilyRequest(cat, adapter, functionName, ownerType = null, visited = new Set()) {
+  const visitKey = (ownerType ?? '?') + ':' + functionName;
+  if (visited.has(visitKey) || visited.size > 5) return null;
+  const nextVisited = new Set(visited);
+  nextVisited.add(visitKey);
+  const fn = sourceFunction(cat, adapter, functionName, ownerType);
+  if (!fn) return null;
+
+  const activation = /\b([a-z]\w*)\s*\.\s*activate\s*\(\s*([A-Z]\w*Family)\s*\.\s*Control\s*\.\s*(\w+)\s*\(/.exec(fn.body);
+  if (activation) {
+    const familyType = activation[2];
+    const control = activation[3];
+    const family = familyRoot(cat, adapter, familyType);
+    const parsed = family ? parseFamily(cat, adapter, familyType) : null;
+    if (!family || !parsed) return null;
+    const effect = parsed.effects.includes(control) ? control : parsed.effects.length === 1 ? parsed.effects[0] : null;
+    const method = parsed.methods.find((entry) => entry.name === control) ?? (parsed.methods.length === 1 ? parsed.methods[0] : null);
+    if (!effect || !method) return null;
+    const partnerPattern = new RegExp(
+      'class\\s+' + escapeRegex(method.name) +
+        '\\s*\\([\\s\\S]{0,1000}?connection\\s*:\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection',
+    );
+    const partnerType = partnerPattern.exec(family.text)?.[1] ?? null;
+    const partner = partnerType ? partnerRoot(cat, adapter, partnerType) : null;
+    if (!partnerType || !partner) return null;
+    const authoredApproach =
+      new RegExp(
+        'begin(Earliest|Latest|Queued)?\\s*\\([\\s\\S]{0,800}?Effect\\s*\\.\\s*' + escapeRegex(effect) + '\\s*\\(',
+      ).exec(family.text)?.[1] ?? 'Independent';
+
+    return {
+      kind: 'FAMILY_REQUEST',
+      functionName,
+      functionSource: fn.source,
+      labSource: fn,
+      familyType,
+      family,
+      parsedFamily: parsed,
+      control,
+      effect,
+      method,
+      approach: authoredApproach,
+      partnerType,
+      partner,
+      signals: sealedMembers(partner.text, 'Signal'),
+    };
+  }
+
+  for (const call of directMemberCalls(fn.body)) {
+    const nestedOwner = receiverTypeInSource(fn.text, call.receiver);
+    if (!sourceFunction(cat, adapter, call.functionName, nestedOwner)) continue;
+    const resolved = resolvePartnerFamilyRequest(cat, adapter, call.functionName, nestedOwner, nextVisited);
+    if (resolved) return { ...resolved, doorwayChain: [functionName, ...(resolved.doorwayChain ?? [resolved.functionName])] };
+  }
+  return null;
+}
+
+function resolvePartnerAutomation(cat, adapter, doorway) {
+  if (!/toggle|enable|automation|rule/i.test(doorway.functionName)) return null;
+  const fn = sourceFunction(cat, adapter, doorway.functionName, doorway.receiverType);
+  if (!fn || !/VexExecution\.observe\s*\(/.test(fn.text)) return null;
+  const sourceFamilyType = /evaluate\w*State\s*\(\s*state\s*:\s*([A-Z]\w*Family)\.State/.exec(fn.text)?.[1] ?? null;
+  const requestMatch = /\b([a-z]\w*)\s*\.\s*(request\w+)\s*\(/.exec(fn.text);
+  const requestReceiver = requestMatch?.[1] ?? null;
+  const requestFunction = requestMatch?.[2] ?? null;
+  const requestOwner = requestReceiver ? receiverTypeInSource(fn.text, requestReceiver) : null;
+  const sourceFamily = sourceFamilyType ? familyRoot(cat, adapter, sourceFamilyType) : null;
+  const request = requestFunction ? resolvePartnerFamilyRequest(cat, adapter, requestFunction, requestOwner) : null;
+  if (!sourceFamilyType || !sourceFamily || !request) return null;
+  return {
+    kind: 'AUTOMATION',
+    functionName: doorway.functionName,
+    functionSource: fn.source,
+    labSource: fn,
+    sourceFamilyType,
+    sourceFamily,
+    request,
+  };
+}
+
+function followPartnerCircuit(cat, adapter, screen, element) {
+  const doorway = localEffectDoorway(screen, element);
+  if (!doorway) return null;
+  const automation = resolvePartnerAutomation(cat, adapter, doorway);
+  if (automation) return { ...doorway, ...automation };
+  const request = resolvePartnerFamilyRequest(cat, adapter, doorway.functionName, doorway.receiverType);
+  if (request) return { ...doorway, ...request };
+  const ingress = resolvePartnerIngress(cat, adapter, doorway.functionName, doorway.receiverType);
+  if (ingress) return { ...doorway, ...ingress };
+  return null;
+}
+
 /* ---------- pathway templates ---------- */
 
 const SUMMARY = Object.freeze({
@@ -811,11 +1289,15 @@ export function adapterReadPlan(adapterInput) {
   const prefixes = (adapter.read ?? []).map((entry) => resolve(entry).replace(/\/?$/, '/'));
   const resources = [...(adapter.stringResources ?? [])];
   const includes = (path) => resources.includes(path) || (path.endsWith('.kt') && prefixes.some((prefix) => path.startsWith(prefix)));
-  return { prefixes, resources, includes };
+  // Listings name files whose existence is evidence (golden reference renders). Their bytes are never read.
+  const listingPrefixes = (adapter.listings ?? []).map((entry) => resolve(entry).replace(/\/?$/, '/'));
+  const lists = (path) => listingPrefixes.some((prefix) => path.startsWith(prefix));
+  return { prefixes, resources, includes, listingPrefixes, lists };
 }
 
-export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay = null, observedAt = null, overlayMode = 'STRICT' }) {
+export function projectAndroidScreenLens({ adapter: adapterInput, files, listing = [], overlay = null, observedAt = null, overlayMode = 'STRICT' }) {
   const adapter = normalizeAdapter(adapterInput);
+  if (!Array.isArray(listing)) fail('listing must be an array of repo-relative paths');
   if (!['STRICT', 'LENIENT'].includes(overlayMode)) fail('overlayMode must be STRICT or LENIENT');
   if (!(files instanceof Map)) fail('files must be a Map of repo-relative path -> text');
   const cat = catalog(adapter, files);
@@ -898,6 +1380,13 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     const state = builder.node('state', 'BEHAVIOR', 'STATE', `CURRENT State · ${family.stateType}`, { symbol: family.stateValues.length ? `${family.stateType}.${family.stateValues.join(' | ')}` : family.stateType, summary: 'Exact current semantic truth that act() reads.', source: family.source });
     const act = builder.node('act', 'BEHAVIOR', 'ACT', `${family.name}.act(State, Control)`, { symbol: 'VexFamily.activate', summary: SUMMARY.act, source: family.source });
     const admitted = builder.node('admitted', 'BEHAVIOR', 'STATE', 'admitted State', { symbol: 'accepted.admittedState', summary: SUMMARY.admitted, source: adapter.sources.vexFamily });
+    const accepted = family.acceptedRealization
+      ? builder.node('accepted', 'BEHAVIOR', 'ACT', 'Act.Accepted · accepted responsibility', {
+          symbol: 'VexFamily.Act.Accepted',
+          summary: 'The authored Act is accepted into this live Family before any new realization enters execution custody.',
+          source: family.source,
+        })
+      : null;
     builder.edge(intent, runtime, 'Invoke');
     builder.edge(runtime, reg, 'dispatch');
     builder.edge(reg, closure, 'closure');
@@ -905,6 +1394,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     builder.edge(control, act, 'Control');
     builder.edge(state, act, 'CURRENT', 'DATA');
     builder.edge(act, admitted, 'admits');
+    if (accepted) builder.edge(act, accepted, 'accepts');
     let effectRef = null;
     if (effect) {
       effectRef = builder.node('effect', 'BEHAVIOR', 'EFFECT', `Begin(Effect.${effect}${family.approach ? `, ${family.approach}` : ''})`, { symbol: `${family.name}.Effect.${effect}`, summary: `Inert request for outside work${family.approach ? ` with the ${family.approach} overlap Approach` : ''}.`, source: family.source, code: family.excerpt('Effect', effect) });
@@ -917,32 +1407,80 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     }
     if (method) {
       const store = method.storeType ? parseStore(cat, adapter, method.storeType) : null;
-      const m = builder.node('method', 'DEPTH', 'METHOD', `Act.Method.${method.name}(${method.params.join(', ')})`, { symbol: `${family.name}.Act.Method.${method.name}`, summary: 'Fully bound: the real Store plus the semantic Parameter. Nothing downstream reconstructs them.', source: family.source });
-      const launch = builder.node('launch', 'DEPTH', 'EXECUTION', 'act.launchWith(executionRoot).method(…)', { symbol: family.activate, summary: SUMMARY.launch, source: family.source });
+      const realization = family.acceptedRealization
+        ? builder.node('realization', 'DEPTH', 'REALIZATION', 'realizationBegin? · occurrence still owed', {
+            symbol: 'VexFamily.Act.Accepted.realizationBegin',
+            summary: 'Live view of the authored Begin only while this accepted consequence still requires a new runtime occurrence.',
+            source: family.source,
+          })
+        : null;
+      const m = builder.node('method', 'DEPTH', 'METHOD', `Act.Method.${method.name}(${method.params.join(', ')})`, {
+        symbol: `${family.name}.Act.Method.${method.name}`,
+        summary: family.acceptedRealization
+          ? 'Fully bound Method carrying the exact authored Effect; Accepted.launch verifies provenance before execution custody.'
+          : 'Fully bound: the real Store plus the semantic Parameter. Nothing downstream reconstructs them.',
+        source: family.source,
+      });
+      const launch = builder.node('launch', 'DEPTH', 'EXECUTION',
+        family.acceptedRealization ? 'Act.Accepted.launch(executionRoot, Method)' : 'act.launchWith(executionRoot).method(…)', {
+          symbol: family.acceptedRealization ? 'VexFamily.Act.Accepted.launch' : family.activate,
+          summary: family.acceptedRealization
+            ? 'Re-checks live realization admission and hands the exact Effect-bound Method into VexExecution custody.'
+            : SUMMARY.launch,
+          source: family.source,
+        });
       const custody = builder.node('custody', 'DEPTH', 'EXECUTION', `VexExecution · Job custody${family.approach ? ` (${family.approach})` : ''}`, { symbol: 'VexExecution', summary: SUMMARY.custody, source: adapter.sources.vexExecution });
-      builder.edge(effectRef, m, 'binds');
-      builder.edge(m, launch, 'launch');
+      if (realization) {
+        builder.edge(accepted, realization, 'still owed');
+        builder.edge(effectRef, realization, 'authored Begin');
+        builder.edge(realization, m, 'exact Effect');
+        builder.edge(accepted, launch, 'live admission');
+        builder.edge(m, launch, 'exact Effect');
+      } else {
+        builder.edge(effectRef, m, 'binds');
+        builder.edge(m, launch, 'launch');
+      }
       builder.edge(launch, custody, 'Job');
       if (store) {
         const storeRef = builder.node('store', 'DEPTH', 'STORE', `${store.type}.${method.op ?? 'call'}(…)`, { symbol: store.type, summary: 'Boundary to independently owned outside truth.', source: store.source });
         builder.edge(custody, storeRef, 'runs');
         let last = storeRef;
+        let resultRef = null;
         if (store.impls.length) {
           const impl = builder.node('store-impl', 'DEPTH', 'STORE', store.impls[0], { symbol: store.impls.join(' | '), summary: store.impls.length > 1 ? `Implementations: ${store.impls.join(', ')}.` : 'Concrete store implementation.', source: store.source });
           builder.edge(storeRef, impl, 'persists');
           last = impl;
         }
         if (method.result || store.results.length) {
-          const result = method.result
-            ? builder.node('result', 'DEPTH', 'RESULT', `VexMethod.Result.${method.result}(…)`, { symbol: 'VexMethod.Result', summary: 'The bound Method reports what outside truth did. It is not admitted until the Family interprets it.', source: family.source })
+          resultRef = method.result
+            ? builder.node('result', 'DEPTH', 'RESULT', `VexMethod.Result.${method.result}(…)`, {
+                symbol: 'VexMethod.Result',
+                summary: family.acceptedRealization
+                  ? 'Reports one Method attempt outcome. Result is distinct from Job terminality, realization-obligation terminality and durable Store truth.'
+                  : 'The bound Method reports what outside truth did. It is not admitted until the Family interprets it.',
+                source: family.source,
+              })
             : builder.node('result', 'DEPTH', 'RESULT', `Result.${store.results[0]}(…)`, { symbol: `${store.type}.Result`, summary: 'Outside truth came back. It is not admitted until the Family interprets it.', source: store.source });
-          builder.edge(last, result, 'returns');
-          last = result;
+          builder.edge(last, resultRef, 'returns');
         }
+        let observeRef = null;
         if (family.observe) {
-          const observe = builder.node('observe', 'DEPTH', 'OBSERVATION', `${family.observe} → same Family`, { symbol: family.observe, summary: SUMMARY.observe, source: family.source });
-          builder.edge(last, observe, 'observes');
-          builder.edge(observe, state, 'interpreted', 'RETURN');
+          observeRef = builder.node('observe', 'DEPTH', 'OBSERVATION', `${family.observe} → same Family`, { symbol: family.observe, summary: SUMMARY.observe, source: family.source });
+          builder.edge(storeRef, observeRef, 'states', 'DATA');
+          builder.edge(observeRef, state, 'interpreted', 'RETURN');
+        }
+        if (family.currentnessSettlement) {
+          const settlement = family.currentnessSettlement;
+          const fence = builder.node('fence', 'DEPTH', 'STATE', `${settlement.name} · === fence`, {
+            symbol: settlement.field,
+            summary: settlement.summary,
+            source: family.source,
+            code: settlement.code,
+          });
+          if (settlement.fromResult && resultRef) builder.edge(resultRef, fence, 'settles currentness');
+          if (settlement.fromCompletion) builder.edge(custody, fence, 'Job terminal', 'SIDE');
+          if (settlement.fromBoundary) builder.edge(launch, fence, 'no occurrence / custody failure', 'SIDE');
+          if (observeRef) builder.edge(fence, observeRef, 'allows later observation', 'SIDE');
         }
       }
       if (family.records) {
@@ -1095,6 +1633,570 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     return ref;
   };
 
+
+  const directFamilyLocalEffectPathway = (screen, element, bond) => {
+    const controlSlug = bond.control.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    const ref = 'pathway.' + directFamilyNamespace(bond.family.source, bond.familyType) + '.' + controlSlug;
+    if (pathways.has(ref)) return ref;
+    const controlLabel = element.label || humanize(bond.control);
+    const builder = new PathwayBuilder(ref, bond.familyType.replace(/Family$/, '') + ' · ' + controlLabel, 'SCAE_FAMILY');
+
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'The registered element delegates feature-local meaning to its source-owned presentation handler.',
+      source: screen.source,
+    });
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', bond.receiverType + '.activate(' + bond.control + ')', {
+      symbol: bond.receiverType + '.activate',
+      summary: 'The UI-facing Experience carries the same Family-bound Control into the live semantic owner.',
+      source: bond.source,
+    });
+    const control = builder.node('control', 'BEHAVIOR', 'CONTROL', bond.controlType + '.' + bond.control, {
+      symbol: bond.controlType + '.' + bond.control,
+      summary: 'Family-bound semantic input.',
+      source: bond.controlSource.source,
+    });
+    const state = builder.node('state', 'BEHAVIOR', 'STATE', 'CURRENT ' + bond.stateType, {
+      symbol: bond.stateType,
+      summary: 'Exact current semantic truth read by the Direct Family.',
+      source: bond.stateSource.source,
+    });
+    const act = builder.node('act', 'BEHAVIOR', 'ACT', bond.familyType + '.act(State, Control)', {
+      symbol: bond.familyType + '.act',
+      summary: 'The live Direct Family decides the lawful consequence from current State plus Control.',
+      source: bond.family.source,
+    });
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + bond.approach + ' · ' + bond.effectType + ')', {
+      symbol: bond.effectType,
+      summary: 'The authored Begin carries the exact Effect selected by current State.',
+      source: bond.effectSource.source,
+    });
+    const accepted = builder.node('accepted', 'BEHAVIOR', 'ACT', 'Act.Accepted · accepted responsibility', {
+      symbol: 'VexFamily.Act.Accepted',
+      summary: 'Semantic consequence is accepted into the live Family before newly owed outside realization enters execution custody.',
+      source: bond.family.source,
+    });
+    const presentation = builder.node('presentation', 'BEHAVIOR', 'PROJECTION', bond.familyType + '.Projection → ' + controlLabel + ' presentation', {
+      symbol: bond.familyType + '.projectionFor',
+      summary: 'The Experience reads Family-owned projection meaning and manifests the same human-facing control.',
+      source: bond.experience.source,
+    });
+
+    const realization = builder.node('realization', 'DEPTH', 'REALIZATION', 'realizationBegin? · occurrence still owed', {
+      symbol: 'VexFamily.Act.Accepted.realizationBegin',
+      summary: 'Live view of the authored Begin only while this accepted consequence still requires a new runtime occurrence.',
+      source: bond.family.source,
+    });
+    const method = builder.node('method', 'DEPTH', 'METHOD', bond.familyType + '.Act.Method(connection, effect)', {
+      symbol: bond.familyType + '.Act.Method',
+      summary: 'Fully bound Method carrying the exact authored Effect and the existing outside request connection.',
+      source: bond.family.source,
+    });
+    const launch = builder.node('launch', 'DEPTH', 'EXECUTION', 'Act.Accepted.launch(executionRoot, Method)', {
+      symbol: 'VexFamily.Act.Accepted.launch',
+      summary: 'Re-checks live realization admission and hands the exact Effect-bound Method into execution custody.',
+      source: bond.family.source,
+    });
+    const custody = builder.node('custody', 'DEPTH', 'EXECUTION', 'VexExecution · Job custody (' + bond.approach + ')', {
+      symbol: 'VexExecution',
+      summary: SUMMARY.custody,
+      source: adapter.sources.vexExecution,
+    });
+    const connection = builder.node('connection', 'DEPTH', 'CONNECTION', bond.connectionType, {
+      symbol: bond.connectionType,
+      summary: 'Finite request side of the already-owned outside Partner Connection.',
+      source: bond.partner.source,
+    });
+    const partner = builder.node('partner', 'DEPTH', 'PARTNER', bond.partnerType, {
+      symbol: bond.partnerType,
+      summary: 'Independently owned outside participant. Request acknowledgement is not durable semantic outcome truth.',
+      source: bond.partner.source,
+    });
+    const result = builder.node('result', 'DEPTH', 'RESULT', 'VexMethod.Result · request acknowledgement', {
+      symbol: 'VexMethod.Result',
+      summary: 'Acknowledges one request attempt; durable outside truth returns later through Partner Signal and Store observation.',
+      source: bond.family.source,
+    });
+    const signal = builder.node('signal', 'DEPTH', 'OBSERVATION', bond.partnerType + '.Signal.' + bond.signalType, {
+      symbol: bond.partnerType + '.Signal.' + bond.signalType,
+      summary: 'Later outside observation, separate from the request acknowledgement.',
+      source: bond.partner.source,
+    });
+    const store = builder.node('store', 'DEPTH', 'STORE', bond.storeType, {
+      symbol: bond.storeType,
+      summary: 'Retains complete outside truth assembled from exact Partner Signals.',
+      source: bond.store.source,
+    });
+    const observe = builder.node('observe', 'DEPTH', 'OBSERVATION', bond.observation.name + ' → ' + bond.familyType + '.' + bond.observation.observeMethod, {
+      symbol: bond.observation.name,
+      summary: 'Store currentness re-enters through the same live Family.',
+      source: bond.family.source,
+    });
+
+    builder.edge(intent, doorway, 'custom handler');
+    builder.edge(doorway, control, 'same Control');
+    builder.edge(state, act, 'CURRENT', 'DATA');
+    builder.edge(control, act, 'resolve');
+    builder.edge(act, effect, 'begins');
+    builder.edge(act, accepted, 'accepts');
+    builder.edge(accepted, presentation, 'projects');
+    builder.edge(accepted, realization, 'still owed');
+    builder.edge(effect, realization, 'authored Begin');
+    builder.edge(realization, method, 'exact Effect');
+    builder.edge(accepted, launch, 'live admission');
+    builder.edge(method, launch, 'exact Effect');
+    builder.edge(launch, custody, 'custody');
+    builder.edge(custody, connection, 'runs');
+    builder.edge(connection, partner, 'request');
+    builder.edge(partner, result, 'acknowledges');
+    builder.edge(partner, signal, 'later observation', 'RETURN');
+    builder.edge(signal, store, 'retains', 'DATA');
+    builder.edge(store, observe, bond.observation.sourceFlow, 'DATA');
+    builder.edge(observe, state, 'observed', 'RETURN');
+    builder.edge(state, presentation, 'projects', 'RETURN');
+
+    builder.pathway.summary =
+      'Source-earned ' + bond.familyType + ' owns ' + bond.control +
+      ' meaning; accepted realization uses the existing ' + bond.partnerType +
+      ' request connection while durable outside truth returns later through ' + bond.storeType + '.';
+    builder.pathway.returnRef = presentation;
+    builder.pathway.returns = 'Family-owned projection meaning returns to the same human-facing ' + controlLabel + ' control.';
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({
+      elementRef: element.ref,
+      via: 'DIRECT_FAMILY_LOCAL_EFFECT',
+      family: bond.familyType,
+      control: bond.control,
+      partner: bond.partnerType,
+      store: bond.storeType,
+    });
+    return ref;
+  };
+
+
+  const partnerRef = (screen, element) => {
+    const local = element.symbol?.split('.').at(-1) ?? element.ref.split('.').at(-1);
+    return 'pathway.' + screen.screenKey + '.partner.' + typedRefToken(local);
+  };
+
+  const partnerIngressPathway = (screen, element, bond) => {
+    const ref = partnerRef(screen, element);
+    if (pathways.has(ref)) return ref;
+    const builder = new PathwayBuilder(
+      ref,
+      bond.partnerType.replace(/Partner$/, '') + ' · ' + (element.label ?? humanize(bond.functionName)),
+      'PARTNER_CIRCUIT',
+    );
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'The registered Lab control injects source activity; it is not a fake Family Control.',
+      source: screen.source,
+    });
+    const doorwayLabel = (bond.doorwayChain ?? [bond.functionName]).join(' → ') + '()';
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', doorwayLabel, {
+      symbol: bond.functionName,
+      summary: 'Screen-local lab doorway into the source-proven Partner relationship.',
+      source: bond.functionSource,
+    });
+    const state = builder.node('state', 'BEHAVIOR', 'STATE', bond.familyType + '.State', {
+      symbol: bond.familyType + '.State',
+      summary: 'Family semantic truth is interpreted only after Partner evidence has crossed Store.',
+      source: bond.family.source,
+    });
+    const projection = builder.node('projection', 'BEHAVIOR', 'PROJECTION', bond.familyType + '.DisplayState', {
+      symbol: bond.familyType + '.displayStateFor',
+      summary: 'The Family projects the admitted semantic result back toward the human-facing Surface.',
+      source: bond.family.source,
+    });
+
+    const partner = builder.node('partner', 'DEPTH', 'PARTNER', bond.partnerType, {
+      symbol: bond.partnerType,
+      summary: 'Independently owned external participant. Source/Target are directional roles, not its permanent identity.',
+      source: bond.partner.source,
+    });
+    const connection = builder.node('connection', 'DEPTH', 'CONNECTION', bond.partnerType + '.Connection', {
+      symbol: bond.partnerType + '.Connection',
+      summary: 'Live typed relationship for this Partner and its Signal vocabulary.',
+      source: bond.partner.source,
+    });
+    const admissionExecution = bond.ingressExecution
+      ? builder.node('admission-execution', 'DEPTH', 'EXECUTION', 'VexExecution · ' + bond.ingressExecution.approach + ' inbound admission', {
+          symbol: 'VexExecution.' + bond.ingressExecution.api,
+          summary:
+            'The live Connection owns an active runtime relationship lane (' +
+            (bond.ingressExecution.relationshipId ?? 'private relationship') +
+            '). It sequences receipt/admission work but is not the persisted Connection.Id.',
+          source: adapter.sources.vexExecution ?? bond.labSource.source,
+        })
+      : null;
+
+    const conversion = builder.node('conversion', 'DEPTH', 'CONVERSION', bond.conversion.symbol, {
+      symbol: bond.conversion.symbol,
+      summary: 'Concrete provider representation becomes zero or more Signals in the same Partner vocabulary.',
+      source: bond.partner.source,
+    });
+    const source = bond.source
+      ? builder.node('source', 'DEPTH', 'SOURCE', bond.source, {
+          symbol: bond.source,
+          summary: 'Partner-owned origin coordinate carried by the external statement; transport does not own it.',
+          source: bond.partner.source,
+        })
+      : null;
+    const signalLabel = bond.signals.length
+      ? bond.partnerType + '.Signal · ' + bond.signals.join(' | ')
+      : bond.partnerType + '.Signal';
+    const signal = builder.node('signal', 'DEPTH', 'SIGNAL', signalLabel, {
+      symbol: bond.partnerType + '.Signal',
+      summary: 'What the Partner communicated in its domain vocabulary; not Family State.',
+      source: bond.partner.source,
+    });
+    const observation = builder.node('observation', 'DEPTH', 'OBSERVATION', bond.partnerType + '.Connection.Observation', {
+      symbol: bond.partnerType + '.Connection.Observation',
+      summary: 'One encounter of one Signal through one exact typed Connection identity.',
+      source: bond.partner.source,
+    });
+    const receiver = builder.node('receiver', 'DEPTH', 'RECEIVER', bond.partnerType + '.Connection.Receiver', {
+      symbol: bond.partnerType + '.Connection.Receiver',
+      summary: 'Partner-side inbound handoff before domain Store admission.',
+      source: bond.partner.source,
+    });
+    const store = builder.node('store', 'DEPTH', 'STORE', bond.storeType, {
+      symbol: bond.storeType,
+      summary: 'Admitted domain truth persists independently of both Partner and Family semantics.',
+      source: bond.store.source,
+    });
+    const listener = builder.node('listener', 'DEPTH', 'EXECUTION', 'VexExecution.observe(store::snapshots)', {
+      symbol: 'VexExecution.observe',
+      summary: 'Sustained listener custody is source-addressed by the exact Flow + live owner; it does not mint a Family ResourceId.',
+      source: adapter.sources.vexExecution ?? bond.labSource.source,
+    });
+
+    builder.edge(intent, doorway, 'lab control');
+    builder.edge(doorway, partner, 'synthetic source');
+    builder.edge(partner, connection, 'representation');
+    builder.edge(connection, admissionExecution ?? conversion, admissionExecution ? bond.ingressExecution.approach : 'convert');
+    if (admissionExecution) builder.edge(admissionExecution, conversion, 'invoke receipt');
+
+    builder.edge(conversion, signal, '0..N Signals');
+    if (source) {
+      builder.edge(partner, source, 'owns', 'SIDE');
+      builder.edge(source, signal, 'origin', 'DATA');
+    }
+    builder.edge(signal, observation, 'encounter');
+    builder.edge(observation, receiver, 'receive');
+    builder.edge(receiver, store, 'commit');
+    builder.edge(store, listener, 'Flow');
+    builder.edge(listener, state, bond.observeStore ?? 'interpret', 'RETURN');
+    builder.edge(state, projection, 'projects');
+
+    builder.pathway.summary =
+      'Partner ingress stays outside Family semantics until Observation / Receiver / Store make truthful domain evidence available.';
+    builder.pathway.returnRef = projection;
+    builder.pathway.returns = 'Family DisplayState projects the admitted Store truth back toward the same Lab Surface.';
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({
+      elementRef: element.ref,
+      via: 'PARTNER_INGRESS',
+      partner: bond.partnerType,
+      family: bond.familyType,
+      store: bond.storeType,
+      conversion: bond.conversion.symbol,
+      source: bond.source,
+      ...(bond.ingressExecution
+        ? {
+            executionApproach: bond.ingressExecution.approach,
+            executionRelationship: bond.ingressExecution.relationshipId,
+          }
+        : {}),
+    });
+    return ref;
+  };
+
+  const partnerFamilyRequestPathway = (screen, element, bond) => {
+    const ref = partnerRef(screen, element);
+    if (pathways.has(ref)) return ref;
+    const family = bond.parsedFamily;
+    const builder = new PathwayBuilder(
+      ref,
+      bond.familyType.replace(/Family$/, '') + ' · ' + bond.control,
+      'PARTNER_CIRCUIT',
+    );
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'The custom Lab Surface forwards a real Family request rather than writing Partner truth directly.',
+      source: screen.source,
+    });
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', (bond.doorwayChain ?? [bond.functionName]).join(' → ') + '()', {
+      symbol: bond.functionName,
+      summary: 'Lab doorway into the existing Family semantic circuit.',
+      source: bond.functionSource,
+    });
+    const parameter = family.parameters[0]
+      ? builder.node('parameter', 'BEHAVIOR', 'CONTROL', 'Parameter.' + family.parameters[0], {
+          symbol: bond.familyType + '.Parameter.' + family.parameters[0],
+          summary: 'Family-owned semantic value carried through Control, Effect and bound Method.',
+          source: bond.family.source,
+        })
+      : null;
+    const control = builder.node('control', 'BEHAVIOR', 'CONTROL', 'Control.' + bond.control, {
+      symbol: bond.familyType + '.Control.' + bond.control,
+      summary: 'Family-owned semantic request.',
+      source: bond.family.source,
+    });
+    const state = builder.node('state', 'BEHAVIOR', 'STATE', 'CURRENT ' + bond.familyType + '.State', {
+      symbol: bond.familyType + '.State',
+      summary: 'Exact current semantic truth against which the Control is resolved.',
+      source: bond.family.source,
+    });
+    const act = builder.node('act', 'BEHAVIOR', 'ACT', bond.familyType + '.act(State, Control)', {
+      symbol: 'VexFamily.activate',
+      summary: SUMMARY.act,
+      source: bond.family.source,
+    });
+    const accepted = family.acceptedRealization
+      ? builder.node('accepted', 'BEHAVIOR', 'ACT', 'Act.Accepted · accepted responsibility', {
+          symbol: 'VexFamily.Act.Accepted',
+          summary: 'The target Family accepts the authored Act before its Partner realization enters execution custody.',
+          source: bond.family.source,
+        })
+      : null;
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + bond.approach + ' · Effect.' + bond.effect + ')', {
+      symbol: bond.familyType + '.Effect.' + bond.effect,
+      summary: 'The accepted Act already authored this Effect and its ' + bond.approach + ' overlap/order law before VexExecution runs.',
+      source: bond.family.source,
+    });
+    const diagnostic = builder.node('diagnostic', 'BEHAVIOR', 'PROJECTION', 'Partner acknowledgement · lab diagnostic', {
+      symbol: 'PumpRequestStatus',
+      summary: 'Method success is shown as provider acknowledgement only; Family delivery State remains unchanged.',
+      source: bond.labSource.source,
+    });
+
+    const realization = family.acceptedRealization
+      ? builder.node('realization', 'DEPTH', 'REALIZATION', 'realizationBegin? · occurrence still owed', {
+          symbol: 'VexFamily.Act.Accepted.realizationBegin',
+          summary: 'The accepted consequence still requires a new Partner realization occurrence.',
+          source: bond.family.source,
+        })
+      : null;
+    const method = builder.node('method', 'DEPTH', 'METHOD', 'Act.Method.' + bond.method.name + '(connection, parameter)', {
+      symbol: bond.familyType + '.Act.Method.' + bond.method.name,
+      summary: family.acceptedRealization
+        ? 'Fully bound Family Method carrying the exact authored Effect into the Partner relationship.'
+        : 'Fully bound Family Method carrying the same semantic Parameter into the Partner relationship.',
+      source: bond.family.source,
+    });
+    const execution = builder.node('execution', 'DEPTH', 'EXECUTION',
+      family.acceptedRealization ? 'Act.Accepted.launch(executionRoot, Method)' : 'act.launchWith(executionRoot).method(…)', {
+        symbol: family.acceptedRealization ? 'VexFamily.Act.Accepted.launch' : 'VexExecution',
+        summary: family.acceptedRealization
+          ? 'Accepted responsibility re-checks live admission and hands the exact Effect-bound Method into Job custody.'
+          : 'Job custody for the accepted Family Act. Relationship identity comes from Family Control semantics.',
+        source: family.acceptedRealization ? bond.family.source : (adapter.sources.vexExecution ?? bond.labSource.source),
+      });
+    const connection = builder.node('connection', 'DEPTH', 'CONNECTION', bond.partnerType + '.Connection', {
+      symbol: bond.partnerType + '.Connection',
+      summary: 'Concrete Partner relationship used by the bound Method.',
+      source: bond.partner.source,
+    });
+    const partner = builder.node('partner', 'DEPTH', 'PARTNER', bond.partnerType, {
+      symbol: bond.partnerType,
+      summary: 'Partner acts as target of the attempted Effect in this direction.',
+      source: bond.partner.source,
+    });
+    const result = builder.node('result', 'DEPTH', 'RESULT', 'VexMethod.Result · Partner acknowledgement', {
+      symbol: 'VexMethod.Result',
+      summary: 'Acknowledgement reports the Method attempt only. It does not manufacture a later Partner Signal.',
+      source: bond.family.source,
+    });
+
+    builder.edge(intent, doorway, 'custom handler');
+    if (parameter) builder.edge(doorway, parameter, 'forms');
+    builder.edge(parameter ?? doorway, control, 'Control');
+    builder.edge(state, act, 'CURRENT', 'DATA');
+    builder.edge(control, act, 'resolve');
+    builder.edge(act, effect, 'begins');
+    if (accepted) builder.edge(act, accepted, 'accepts');
+    if (realization) {
+      builder.edge(accepted, realization, 'still owed');
+      builder.edge(effect, realization, 'authored Begin');
+      builder.edge(realization, method, 'exact Effect');
+      builder.edge(accepted, execution, 'live admission');
+      builder.edge(method, execution, 'exact Effect');
+    } else {
+      builder.edge(effect, method, 'binds');
+      builder.edge(method, execution, 'launch');
+    }
+    builder.edge(execution, connection, 'runs');
+    builder.edge(connection, partner, 'request');
+    builder.edge(partner, result, 'acknowledges');
+    builder.edge(result, diagnostic, 'status', 'RETURN');
+
+    builder.pathway.summary =
+      'Family semantics author the request; the Partner may acknowledge it, but durable outcome truth must return later through a Partner Signal pathway.';
+    builder.pathway.returnRef = diagnostic;
+    builder.pathway.returns = 'The Lab may show acknowledgement while Store and delivered-outcome Family State remain unchanged.';
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({
+      elementRef: element.ref,
+      via: 'PARTNER_FAMILY_REQUEST',
+      family: bond.familyType,
+      control: bond.control,
+      partner: bond.partnerType,
+    });
+    return ref;
+  };
+
+  const partnerAutomationPathway = (screen, element, bond) => {
+    const ref = partnerRef(screen, element);
+    if (pathways.has(ref)) return ref;
+    const request = bond.request;
+    const family = request.parsedFamily;
+    const builder = new PathwayBuilder(
+      ref,
+      'Partner feedback · ' + bond.sourceFamilyType.replace(/Family$/, '') + ' → ' + request.familyType.replace(/Family$/, ''),
+      'PARTNER_CIRCUIT',
+    );
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'This Lab toggle enables a synthetic cross-Family rule; it is not itself a product Family Control.',
+      source: screen.source,
+    });
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', bond.functionName + '()', {
+      symbol: bond.functionName,
+      summary: 'Enables or disables the lab-owned feedback rule.',
+      source: bond.functionSource,
+    });
+    const sourceState = builder.node('source-state', 'BEHAVIOR', 'STATE', bond.sourceFamilyType + '.State', {
+      symbol: bond.sourceFamilyType + '.State',
+      summary: 'Semantic source truth observed by the feedback rule.',
+      source: bond.sourceFamily.source,
+    });
+    const rule = builder.node('rule', 'BEHAVIOR', 'DISPATCH', 'synthetic threshold rule · lab only', {
+      symbol: 'SyntheticRule',
+      summary: 'Fixture-only convergence rule. It does not own either Family and is not clinical policy.',
+      source: bond.labSource.source,
+    });
+    const targetControl = builder.node('control', 'BEHAVIOR', 'CONTROL', request.familyType + '.Control.' + request.control, {
+      symbol: request.familyType + '.Control.' + request.control,
+      summary: 'Cross-Family reaction enters the target semantic owner through its lawful Control.',
+      source: request.family.source,
+    });
+    const targetState = builder.node('target-state', 'BEHAVIOR', 'STATE', 'CURRENT ' + request.familyType + '.State', {
+      symbol: request.familyType + '.State',
+      summary: 'Target Family resolves the Control against its own exact current State.',
+      source: request.family.source,
+    });
+    const act = builder.node('act', 'BEHAVIOR', 'ACT', request.familyType + '.act(State, Control)', {
+      symbol: 'VexFamily.activate',
+      summary: SUMMARY.act,
+      source: request.family.source,
+    });
+    const accepted = family.acceptedRealization
+      ? builder.node('accepted', 'BEHAVIOR', 'ACT', 'Act.Accepted · accepted responsibility', {
+          symbol: 'VexFamily.Act.Accepted',
+          summary: 'The target Family accepts the authored Act before the cross-Family consequence enters execution custody.',
+          source: request.family.source,
+        })
+      : null;
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', 'Begin(' + request.approach + ' · Effect.' + request.effect + ')', {
+      symbol: request.familyType + '.Effect.' + request.effect,
+      summary: 'The target Family authors the Effect and its ' + request.approach + ' overlap/order law before realization.',
+      source: request.family.source,
+    });
+    const diagnostic = builder.node('diagnostic', 'BEHAVIOR', 'PROJECTION', 'AutomationStatus · acknowledgement only', {
+      symbol: 'AutomationStatus',
+      summary: 'Visible lab status distinguishes requested/acknowledged from later observed outcome.',
+      source: bond.labSource.source,
+    });
+
+    const listener = builder.node('listener', 'DEPTH', 'EXECUTION', 'VexExecution.observe(' + bond.sourceFamilyType + '.states)', {
+      symbol: 'VexExecution.observe',
+      summary: 'Long-lived listener uses exact Flow source + live owner. No Family ResourceId is minted for listener custody.',
+      source: adapter.sources.vexExecution ?? bond.labSource.source,
+    });
+    const realization = family.acceptedRealization
+      ? builder.node('realization', 'DEPTH', 'REALIZATION', 'realizationBegin? · occurrence still owed', {
+          symbol: 'VexFamily.Act.Accepted.realizationBegin',
+          summary: 'The target accepted consequence still requires a new Partner realization occurrence.',
+          source: request.family.source,
+        })
+      : null;
+    const method = builder.node('method', 'DEPTH', 'METHOD', 'Act.Method.' + request.method.name + '(connection, parameter)', {
+      symbol: request.familyType + '.Act.Method.' + request.method.name,
+      summary: 'Target Family Method realizes the authored Effect through the Partner Connection.',
+      source: request.family.source,
+    });
+    const execution = builder.node('execution', 'DEPTH', 'EXECUTION',
+      family.acceptedRealization ? 'Act.Accepted.launch(executionRoot, Method)' : 'act.launchWith(executionRoot).method(…)', {
+        symbol: family.acceptedRealization ? 'VexFamily.Act.Accepted.launch' : 'VexExecution',
+        summary: family.acceptedRealization
+          ? 'Target accepted responsibility re-checks live admission and hands the exact Effect-bound Method into Job custody.'
+          : 'Family-authored active-work identity controls the Method Job; this is distinct from listener source addressing.',
+        source: family.acceptedRealization ? request.family.source : (adapter.sources.vexExecution ?? request.labSource.source),
+      });
+    const connection = builder.node('connection', 'DEPTH', 'CONNECTION', request.partnerType + '.Connection', {
+      symbol: request.partnerType + '.Connection',
+      summary: 'Concrete relationship to the target Partner.',
+      source: request.partner.source,
+    });
+    const partner = builder.node('partner', 'DEPTH', 'PARTNER', request.partnerType, {
+      symbol: request.partnerType,
+      summary: 'Partner is the target of this attempted Effect; physical outcome remains independently observed later.',
+      source: request.partner.source,
+    });
+    const result = builder.node('result', 'DEPTH', 'RESULT', 'Partner acknowledgement', {
+      symbol: 'VexMethod.Result',
+      summary: 'Acknowledgement is not physical outcome and does not update durable delivery truth.',
+      source: request.family.source,
+    });
+
+    builder.edge(intent, doorway, 'enable');
+    builder.edge(doorway, rule, 'rule state');
+    builder.edge(sourceState, listener, 'Flow', 'DATA');
+    builder.edge(listener, rule, 'State change', 'RETURN');
+    builder.edge(rule, targetControl, 'threshold met');
+    builder.edge(targetState, act, 'CURRENT', 'DATA');
+    builder.edge(targetControl, act, 'resolve');
+    builder.edge(act, effect, 'begins');
+    if (accepted) builder.edge(act, accepted, 'accepts');
+    if (realization) {
+      builder.edge(accepted, realization, 'still owed');
+      builder.edge(effect, realization, 'authored Begin');
+      builder.edge(realization, method, 'exact Effect');
+      builder.edge(accepted, execution, 'live admission');
+      builder.edge(method, execution, 'exact Effect');
+    } else {
+      builder.edge(effect, method, 'binds');
+      builder.edge(method, execution, 'launch');
+    }
+    builder.edge(execution, connection, 'runs');
+    builder.edge(connection, partner, 'request');
+    builder.edge(partner, result, 'acknowledges');
+    builder.edge(result, diagnostic, 'status', 'RETURN');
+
+    builder.pathway.summary =
+      'A source-addressed listener reacts to one Family State but may influence another domain only by entering that Family through Control; it never bypasses directly to the Partner.';
+    builder.pathway.returnRef = diagnostic;
+    builder.pathway.returns =
+      'The Screen can show requested/acknowledged status; physical outcome still requires the separate Partner Signal return pathway.';
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({
+      elementRef: element.ref,
+      via: 'PARTNER_AUTOMATION',
+      sourceFamily: bond.sourceFamilyType,
+      targetFamily: request.familyType,
+      partner: request.partnerType,
+    });
+    return ref;
+  };
+
+  const partnerCircuitPathway = (screen, element, bond) => {
+    if (bond.kind === 'INGRESS') return partnerIngressPathway(screen, element, bond);
+    if (bond.kind === 'FAMILY_REQUEST') return partnerFamilyRequestPathway(screen, element, bond);
+    if (bond.kind === 'AUTOMATION') return partnerAutomationPathway(screen, element, bond);
+    return null;
+  };
+
   const directPathway = (actionKey, registration) => {
     const ref = `pathway.${actionKey.replace(/^action\./, '')}`;
     const builder = new PathwayBuilder(ref, humanize(registration.actionName), 'DIRECT_REGISTRATION');
@@ -1164,9 +2266,19 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       return element;
     }
     if (steps.length === 1 && steps[0].op === 'localEffect') {
-      const bond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
-      if (bond) {
-        element.pathwayRef = behaviorPortPathway(screen, element, bond);
+      const behaviorBond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
+      if (behaviorBond) {
+        element.pathwayRef = behaviorPortPathway(screen, element, behaviorBond);
+        return element;
+      }
+      const directFamilyBond = screen ? followDirectFamilyLocalEffect(cat, adapter, screen, element) : null;
+      if (directFamilyBond) {
+        element.pathwayRef = directFamilyLocalEffectPathway(screen, element, directFamilyBond);
+        return element;
+      }
+      const partnerBond = screen ? followPartnerCircuit(cat, adapter, screen, element) : null;
+      if (partnerBond) {
+        element.pathwayRef = partnerCircuitPathway(screen, element, partnerBond);
         return element;
       }
       report.held.push({ elementRef: element.ref, reason: 'localEffect relationship is declared but its deeper semantic relationship is not source-proven' });
@@ -1195,6 +2307,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
   };
 
   /* chrome */
+  const chromeIds = new Map();
   const chromeConfig = adapter.chrome;
   const chromeElements = [];
   if (chromeConfig) {
@@ -1206,6 +2319,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       objects.set(match[1], { name: match[1], cls: match[2], id: stringArg(args), labelRes: named(args, 'labelRes'), intent: named(args, 'intent'), style: named(args, 'style') });
     }
     const localRefs = new Map([...objects.values()].map((object) => [object.name, object.id]));
+    for (const object of objects.values()) if (object.id) chromeIds.set(object.name, object.id);
     const blueprint = blockAfter(shell, /val\s+blueprint\s*=\s*column\(\s*Elements\.(\w+)\s*\)\s*\{/);
     const rootName = /val\s+blueprint\s*=\s*column\(\s*Elements\.(\w+)/.exec(shell)?.[1];
     const kindOf = (object) => chromeConfig.kinds?.[object.id] ?? ({ Column: 'COLUMN', Row: 'ROW', Stack: 'STACK', Image: 'IMAGE', Text: 'TEXT', Button: 'BUTTON', Fab: /FabOption/.test(object.style ?? '') ? 'MENU_ITEM' : 'FAB' })[object.cls] ?? 'REGION';
@@ -1266,6 +2380,8 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
           declared: decl ? `${decl.fn}(id = "${decl.id}")` : `${call.name}("${localId}")`,
           labelRes: labelRes ?? undefined,
           textRole: kind === 'TEXT' ? named(args, 'role')?.replace(/^TextRole\./, '').toUpperCase() : undefined,
+          icon: lastSegment(decl?.icon, 'ElementIcon'),
+          style: lastSegment(named(args, 'style') ?? decl?.style, 'VexElementStyles'),
         };
         if (kind === 'SHEET' || kind === 'DIALOG') element.visibleWhen = `runtime.presentation.isOpen(${refName ?? localId})`;
         elementFromIntent(element, decl?.intent, screen.screenKey, screen, localRefs);
@@ -1274,6 +2390,24 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       }
     };
     if (screen.layout) build(screen.layout, '', null);
+    for (const name of screen.toolbarActions ?? []) {
+      const decl = screen.refs.get(name);
+      if (!decl?.id || elements.some((element) => element.ref === `${prefix}.${decl.id}`)) continue;
+      const element = {
+        ref: `${prefix}.${decl.id}`,
+        kind: REF_KINDS[decl.fn] ?? 'BUTTON',
+        label: textOf(decl.labelRes, decl.id.split('.').at(-1)),
+        parentRef: null,
+        symbol: `${screen.object}.${decl.name}`,
+        declared: `${decl.fn}(id = "${decl.id}")`,
+        labelRes: decl.labelRes ?? undefined,
+        slot: 'TOOLBAR',
+        icon: lastSegment(decl.icon, 'ElementIcon'),
+        style: lastSegment(decl.style, 'VexElementStyles'),
+      };
+      elementFromIntent(element, decl.intent, screen.screenKey, screen, localRefs);
+      elements.push(element);
+    }
     const pathwayCount = elements.filter((element) => element.pathwayRef).length;
     screens.push({
       screenRef: `screen.${screen.screenKey}`,
@@ -1288,6 +2422,145 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     report.elements += elements.length;
   }
   report.screens = screens.length;
+
+  /* realization: how registered and runtime coordinates become presentation, and why */
+  const knownRefs = new Set([...chromeElements.map((element) => element.ref), ...screens.flatMap((screen) => [screen.screenRef, ...screen.elements.map((element) => element.ref)])]);
+  const rootElementOf = (object) => screens.find((screen) => screen.symbol === object)?.elements.find((element) => !element.parentRef)?.ref ?? null;
+  const resolveRef = (expression) => {
+    const expr = compact(stripComments(String(expression ?? ''))).replace(/\s*\.\s*/g, '.').replace(/^\w+\s*=\s*/, '').replace(/\.elementId$/, '').trim();
+    if (!expr) return null;
+    let match = /^(\w+)\.screenId$/.exec(expr);
+    if (match) return screenRefOf(match[1]);
+    match = /^(\w+)\.content(?:\.element)?$/.exec(expr);
+    if (match) return rootElementOf(match[1]);
+    match = /^(?:AppShell\.)?Elements\.(\w+)$/.exec(expr);
+    if (match) return chromeIds.get(match[1]) ?? null;
+    match = /^(\w+)\.(\w+)$/.exec(expr);
+    if (match) {
+      const owner = screenObjects.get(match[1]);
+      const decl = owner?.refs.get(match[2]);
+      if (owner && decl?.id) return `element.${owner.screenKey}.${decl.id}`;
+    }
+    match = /^(\w+Screen)$/.exec(expr);
+    if (match) return screenRefOf(match[1]);
+    return null;
+  };
+  // Presence the static Blueprint already declares: modal presentation and swappable selection.
+  // Custom realization may add the renderer; the relationship itself is source-declared here.
+  const realizeBlueprintPresence = (screen) => {
+    const parsed = screenObjects.get(screen.symbol);
+    const key = screen.screenRef.replace(/^screen\./, '');
+    const localOf = (ref) => ref.replace(`element.${key}.`, '').replace(/[^A-Za-z0-9]+/g, '-');
+    const presence = [];
+    const byRef = new Map(screen.elements.map((element) => [element.ref, element]));
+    for (const element of screen.elements) {
+      const declName = element.symbol?.split('.').pop();
+      const decl = declName ? parsed?.refs.get(declName) : null;
+      if (element.kind === 'SHEET' || element.kind === 'DIALOG') {
+        presence.push({
+          ref: `presence.${key}.${localOf(element.ref)}-open`,
+          kind: 'PRESENTATION',
+          subjectRef: element.ref,
+          owner: 'runtime.presentation',
+          condition: element.visibleWhen ?? `runtime.presentation.isOpen(${declName ?? element.ref})`,
+          realizedBy: null,
+          realizes: screen.elements.filter((child) => child.parentRef === element.ref).map((child) => child.ref),
+          source: screen.source,
+          declaredBy: 'BLUEPRINT',
+        });
+      }
+      if (decl?.fn === 'swappableRef') {
+        const children = screen.elements.filter((child) => child.parentRef === element.ref);
+        const named = decl.defaultChild ? resolveRef(decl.defaultChild.includes('.') ? decl.defaultChild : `${screen.symbol}.${decl.defaultChild}`) : null;
+        presence.push({
+          ref: `presence.${key}.${localOf(element.ref)}-selection`,
+          kind: 'SELECTION',
+          subjectRef: element.ref,
+          owner: 'runtime.presentation',
+          defaultRef: named && byRef.has(named) ? named : children[0]?.ref ?? null,
+          choices: children.map((child) => ({ condition: `selected(${declName}) == ${child.symbol?.split('.').pop() ?? child.ref}`, kind: 'SELECTION', targetRef: child.ref, realizedBy: null, realizes: [child.ref], source: null })),
+          realizedBy: null,
+          source: screen.source,
+          declaredBy: 'BLUEPRINT',
+        });
+      }
+    }
+    return presence;
+  };
+  const rootPrefix = (logical) => {
+    if (!logical) return null;
+    const match = /^([a-z][a-z0-9-]*):(.*)$/.exec(logical);
+    if (!match) return logical.replace(/\/?$/, '/');
+    if (adapter.repository.roots[match[1]] === undefined) fail(`unknown root ${match[1]} in ${logical}`);
+    return `${adapter.repository.roots[match[1]]}${match[2]}`.replace(/\/?$/, '/');
+  };
+  const realizationConfig = adapter.realization ?? null;
+  const examplesConfig = adapter.examples ?? null;
+  let composables = null;
+  let primitives = null;
+  let constants = null;
+  if (realizationConfig || examplesConfig) {
+    const primitivePrefix = rootPrefix(realizationConfig?.primitives ?? examplesConfig?.primitives);
+    composables = composableIndex(files);
+    constants = stringConstants(files);
+    primitives = primitiveCatalog(files, (path) => Boolean(primitivePrefix) && path.startsWith(primitivePrefix));
+    report.primitives = primitives.size;
+  }
+  const toSource = (path) => toRootRef(adapter, path);
+  if (realizationConfig) {
+    report.realization = { projected: 0, partial: 0, opaque: 0, presence: 0, templates: 0, held: 0 };
+    for (const screen of screens) {
+      const parsed = screenObjects.get(screen.symbol);
+      if (!parsed) continue;
+      const realization = realizeScreen({ screen: { ...parsed, source: screen.source }, files, composables, primitives, resolveRef, toSource, knownRefs, constants });
+      if (realization.status === 'BLUEPRINT') {
+        screen.realization = { status: 'BLUEPRINT', entry: null, rendersRegisteredTree: screen.elements.find((element) => !element.parentRef)?.ref ?? null, presence: realizeBlueprintPresence(screen), templates: [], elements: [], opaque: [], held: [] };
+        continue;
+      }
+      screen.realization = { status: realization.status, entry: realization.entry, rendersRegisteredTree: realization.rendersRegisteredTree, realizers: realization.calls, presence: realization.presence, templates: realization.templates, elements: realization.elements, opaque: realization.opaque, held: realization.held };
+      for (const entry of realizeBlueprintPresence(screen)) {
+        const existing = screen.realization.presence.find((candidate) => candidate.kind === entry.kind && candidate.subjectRef === entry.subjectRef);
+        if (!existing) { screen.realization.presence.push(entry); continue; }
+        existing.declaredBy = 'BLUEPRINT';
+        if (entry.defaultRef && !existing.defaultRef) existing.defaultRef = entry.defaultRef;
+        if (entry.realizes) existing.realizes = [...new Set([...(existing.realizes ?? []), ...entry.realizes])];
+      }
+      report.realization[realization.status === 'PROJECTED' ? 'projected' : realization.status === 'PARTIAL' ? 'partial' : 'opaque'] += 1;
+      report.realization.presence += screen.realization.presence.length;
+      report.realization.templates += realization.templates.length;
+      report.realization.held += realization.held.length;
+    }
+  }
+  let examples = [];
+  let examplesHeld = [];
+  if (examplesConfig) {
+    const previewPrefix = rootPrefix(examplesConfig.previews);
+    const goldenPrefix = rootPrefix(examplesConfig.goldens);
+    const journeyPrefix = rootPrefix(examplesConfig.journeys);
+    const read = readSourceExamples({
+      files,
+      listing,
+      resolveRef,
+      screenRefFor: (expression) => screenRefOf(String(expression).trim()),
+      toSource,
+      composables,
+      primitives,
+      knownRefs,
+      isPreviewSource: (path) => Boolean(previewPrefix) && path.startsWith(previewPrefix),
+      isGoldenSource: (path) => Boolean(goldenPrefix) && path.startsWith(goldenPrefix),
+      isJourneySource: (path) => Boolean(journeyPrefix) && path.startsWith(journeyPrefix),
+      referencePrefix: rootPrefix(examplesConfig.goldenReferences) ?? '',
+    });
+    examples = read.examples.filter((example) => !example.subjectRef || knownRefs.has(example.subjectRef));
+    for (const example of examples) {
+      example.screens = example.screens.filter((ref) => knownRefs.has(ref));
+      for (const step of [...example.setup, ...example.steps]) {
+        for (const key of ['targetRef', 'containerRef', 'behavesLikeRef']) if (step[key] && !knownRefs.has(step[key])) step[key] = null;
+      }
+    }
+    examplesHeld = read.held;
+    report.examples = { total: examples.length, held: examplesHeld.length };
+  }
   report.elements += chromeElements.length;
 
   const clean = (value) => JSON.parse(JSON.stringify(value));
@@ -1315,6 +2588,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     screens,
     pathways: [...pathways.values()],
     annotations: [],
+    ...(examplesConfig ? { examples, examplesHeld } : {}),
   };
   lens = clean(lens);
   report.overlayMisses = [];

@@ -23,6 +23,27 @@ without rewriting ADB discovery, emulator boot, target selection, cleanup, or co
 This Project groups that cross-lane outcome. Android product/proof semantics remain owned by
 VexLife-Android; reusable host/device coordination remains owned by Vextreme-SDK / VexLocalBridge.
 
+## Current checkpoint
+
+The first reusable slice is terminal accepted and has been consumed by real Android proof:
+
+```text
+API target runner           = COMPLETED
+VexRelay target integration = READY
+device lease / wait queue   = READY
+Project root                = READY · HIGH
+```
+
+Accepted runner lineage:
+
+- SDK PR #1895 merged the reusable API-compatible target runner;
+- SDK PR #1896 currentized emulator renderer selection and passed real API28 configured-AVD boot / exact target identity / task-owned cleanup;
+- VexStream subsequently consumed the runner for API36 and API28 native proof.
+
+The remaining two rows are genuine work, not stale board debt. Current SDK runner source still states that **VexRelay schema/adapter integration** and a **general cross-lane lease/wait queue** are not supported by this slice; the current Relay contract also exposes no Android proof-target integration. The runner remains `waitPolicy = NONE`.
+
+Therefore completion of the runner releases both downstream dependencies to READY; it does not imply their implementation.
+
 ## Why this Project exists now
 
 VexStream durable-device storage exposed repeated pressure while proving one exact source candidate:
@@ -57,7 +78,7 @@ in chat or another one-off Relay shell.
 ```text
 Android Proof Orchestration                     OUTCOME
 |
-+-- Reusable API target runner                  TASK / READY / HIGH
++-- Reusable API target runner                  TASK / COMPLETED / HIGH
 |
 +-- VexRelay Android target integration         TASK / waits on runner / HIGH
 |
@@ -133,25 +154,32 @@ pre-existing physical device / emulator
 This is the layer that can eventually let Connected Services, VexStream, ToCompletion and future
 Android work coexist without racing one Compose/device surface.
 
-## Current VexStream relationship
+## VexStream relationship — dependency consumed
 
-`work.vexstream.mobile-library.device-storage` has already implemented its product source and
-retains repository-local proof. Its remaining native API-matrix proof now depends on:
+The reusable target-runner dependency is historical for VexStream rather than a current blocker.
 
-```text
-work.android-proof-orchestration.api-target-runner
-```
-
-VexStream therefore waits on the reusable tool rather than accumulating more one-off emulator scripts.
+VexStream consumed the accepted runner for the required native API coverage:
 
 ```text
-WAITING_TOOL != PRODUCT_SOURCE_FAILURE
-WAITING_TOOL != ANDROID_MAIN_DRIFT
-FOUNDATION_DEPENDENCY != CONNECTED_SERVICES_COLLISION
+API36 physical/native proof = PASS
+API28 native proof          = PASS
 ```
 
-Once the API target runner can realize the legacy API target, VexStream should consume it immediately,
-finish exact-head device proof, and return to Assurance -> PR/merge -> post-merge -> rediscovery.
+That consumption helped close the durable-device proof subtree. The reusable runner remains available
+to other Android callers, while the two unfinished Android Proof Orchestration rows stay separately READY:
+
+```text
+work.android-proof-orchestration.vexrelay-integration
+work.android-proof-orchestration.device-lease-queue
+```
+
+```text
+RUNNER_CONSUMED_BY_VEXSTREAM
+!= ANDROID_PROOF_ORCHESTRATION_PROJECT_COMPLETE
+
+HISTORICAL_TOOL_DEPENDENCY
+!= CURRENT_VEXSTREAM_BLOCKER
+```
 
 ## Ownership boundaries
 

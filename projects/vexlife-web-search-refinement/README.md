@@ -309,3 +309,44 @@ work.vexlife.web-search-refinement.research-working-set
 Project formation records the outcome and dependency map. It does not authorize VexLife or VexLife-Prod source mutation, select a provider, perform network effects, or claim prompt-injection resistance has been implemented.
 
 <!-- [VXG RealForever][VEXLIFE][WEB-SEARCH-REFINEMENT] -->
+
+## Currentization — accepted web-read infrastructure, lived proof next
+
+Accepted VexLife-Prod source now carries the infrastructure this Project originally held behind dependencies:
+
+~~~text
+DirectPromptContext
+  -> one bounded provider input budget across current Product context
+
+VexLifeCapabilityBridge
+  -> bounded request/result token allowance
+  -> one turn-scoped WebSnapshot per observed URL
+  -> sourceRef + observedAt
+  -> find / offset reads reuse the same observed bytes
+  -> rawResultContentPersisted = false
+
+VexLifeWebReach
+  -> public HTTP/HTTPS only
+  -> unauthenticated GET only
+  -> redirect revalidation
+  -> loopback/private/special-network refusal
+  -> bounded bytes / redirects / attempts
+  -> returned content marked untrusted
+~~~
+
+Accepted convergence: VexLife-Prod #393 (including #383 native-tool/source-return source).
+
+Current VexWork truth:
+
+~~~text
+architecture preparation                 COMPLETED
+context budget / observation lifecycle   COMPLETED
+safe bounded public-web read             COMPLETED
+lived natural web-research proof         READY
+multi-source research working set        PARKED / CAPTURED
+Project outcome                          RUNNING
+~~~
+
+No whole-Project completion is claimed. The true next edge is a human-lived same-Conversation question that actually uses web search/fetch and returns a grounded current-information answer.
+
+<!-- [VXG RealForever][VEXLIFE-WEB-SEARCH-REFINEMENT][CURRENTIZED] -->

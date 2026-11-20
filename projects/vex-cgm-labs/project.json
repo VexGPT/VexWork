@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vex-cgm-labs",
+  "label": "VexCgmLabs",
+  "purpose": "Build a transport-neutral synthetic CGM practicum that proves the Partner Source / Signal / Connection / Conversion / Observation / Receiver -> Store -> Family circuit across multiple provider representations, durable restart reconstruction, connected-pen and insulin-pump pressure, later real Local HTTP/BLE realization, and source-backed Design Trace without freezing a generic mapper/entity framework or claiming clinical/regulatory compliance.",
+  "rootWorkRefs": [
+    "work.vex-cgm-labs.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android",
+    "repo.vexlife"
+  ],
+  "sourceRefs": [
+    "projects/vex-cgm-labs/README.md",
+    "projects/vex-cgm-labs/DATA-MODEL-PRESSURE.md",
+    "projects/vex-cgm-labs/LAB-SIMULATION-PLAN.md",
+    "projects/vex-cgm-labs/DESIGN-TRACE-PRACTICUM.md",
+    "projects/vex-cgm-labs/POC-ARCHITECTURE-CHARTER.md",
+    "github.pull.vexwork.256",
+    "github.pull.vexwork.257",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt",
+    "projects/vex-cgm-labs/SUCCESSOR-HANDOFF-20261107.md",
+    "git.commit.vexwork.e24af6945eb8560c63070b2e32bb43913c042fba"
+  ],
+  "formedAt": "2026-11-07T03:35:00.000Z"
+}

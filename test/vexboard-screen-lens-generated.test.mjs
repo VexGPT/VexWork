@@ -11,20 +11,51 @@ import { requireForwardMainRelation } from '../scripts/build-screen-lens.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const generatedFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-android.screen-lens.json');
+const mainGeneratedFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-android.main.screen-lens.json');
 const raw = JSON.parse(fs.readFileSync(generatedFile, 'utf8'));
+const mainRaw = JSON.parse(fs.readFileSync(mainGeneratedFile, 'utf8'));
 const lens = normalizeScreenLens(raw);
+const mainLens = normalizeScreenLens(mainRaw);
+const prodStableFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-prod.screen-lens.json');
+const prodMainFile = path.join(ROOT, 'projects/vexboard/lens/vexlife-prod.main.screen-lens.json');
+const prodStableRaw = JSON.parse(fs.readFileSync(prodStableFile, 'utf8'));
+const prodMainRaw = JSON.parse(fs.readFileSync(prodMainFile, 'utf8'));
+const prodStableLens = normalizeScreenLens(prodStableRaw);
+const prodMainLens = normalizeScreenLens(prodMainRaw);
 const hand = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('./fixtures/screen-lens/debug-menu.hand.screen-lens.json', import.meta.url), 'utf8')));
 
 test('the committed lens is current with its adapter, overlay and generator', () => {
   const output = execFileSync(process.execPath, [path.join(ROOT, 'scripts/build-screen-lens.mjs'), '--verify'], { cwd: ROOT, encoding: 'utf8' });
   const verified = JSON.parse(output);
   assert.equal(verified.state, 'PASS');
-  assert.deepEqual(verified.builds.map((entry) => `${entry.subject}:${entry.build}:${entry.state}`), ['vexlife-android:stable:PASS', 'vexlife-android:main:PASS'], 'every catalog build is verified at its own pointer');
+  assert.deepEqual(verified.builds.map((entry) => `${entry.subject}:${entry.build}:${entry.state}`), [
+    'vexlife-android:stable:PASS',
+    'vexlife-android:main:PASS',
+    'vexlife-prod:stable:PASS',
+    'vexlife-prod:main:PASS',
+  ], 'every catalog build is verified at its own pointer');
   assert.match(raw.provenance.generator, /^vexlife-android-adapter\//);
-  assert.equal(raw.provenance.projectorBlobSha1, '07b0b34a5ae269212fd10a02f20fc58d94c1093d');
+  assert.equal(raw.provenance.projectorBlobSha1, 'ac29200831b056e37558fa80e427d760f93b91cc');
+  // D34 extended: the projector's own module imports (Kotlin reading, realization, examples) are bound too.
+  assert.match(raw.provenance.projectorSupportSha256, /^[0-9a-f]{64}$/);
   assert.match(raw.provenance.sourceCommit, /^[0-9a-f]{40}$/);
   assert.equal(raw.provenance.sourceCommit, lens.sourceSnapshot.commit);
   assert.match(lens.sourceSnapshot.notes[0], /Regenerate it; do not edit by hand/);
+});
+
+test('VexLife-Prod mirrors Claude/Product-owned Lens bytes and already speaks the shared four-face grammar', () => {
+  assert.equal(prodStableRaw.lensRef, 'lens.vexlife-prod');
+  assert.equal(prodMainRaw.lensRef, 'lens.vexlife-prod');
+  assert.equal(prodMainLens.screens.length, 1);
+  assert.equal(prodMainLens.screens[0].screenRef, 'screen.vexlife-workspace');
+  assert.equal(prodMainLens.screens[0].elements.length, 81);
+  assert.equal(prodMainLens.pathways.length, 11);
+  const vision = pathwayForElement(prodMainLens, 'element.vexlife-workspace.companion.vision');
+  assert.equal(vision.disposition, 'SCAE_FAMILY');
+  assert.ok(vision.nodes.some((node) => node.face === 'BEHAVIOR' && node.role === 'CONTROL'));
+  assert.ok(vision.nodes.some((node) => node.face === 'DEPTH' && node.role === 'PARTNER'));
+  const privateMode = pathwayForElement(prodMainLens, 'element.vexlife-workspace.companion.private-mode');
+  assert.ok(privateMode.nodes.some((node) => node.face === 'DEPTH' && node.role === 'EXECUTION'));
 });
 
 test('ordinary Main movement admits only identical or forward branch history', () => {
@@ -72,7 +103,28 @@ test('dispositions match what the code earns', () => {
   for (const role of ['CONTROL', 'STATE', 'ACT', 'EFFECT', 'PROJECTION', 'METHOD', 'RESULT', 'EXECUTION', 'REALIZATION', 'STORE', 'OBSERVATION']) {
     assert.ok(theme.nodes.some((node) => node.role === role), role);
   }
-  assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.fence'), 'overlay adds the ThemeMode-local fence');
+  assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.fence'), 'source derives the ThemeMode-local fence');
+});
+
+test('Stable keeps historical Direct Family source while Main projects accepted-responsibility currentness', () => {
+  const stableTheme = pathwayForElement(lens, 'element.debug-menu.body.dark-mode');
+  const mainTheme = pathwayForElement(mainLens, 'element.debug-menu.body.dark-mode');
+  const stableNode = (slot) => stableTheme.nodes.find((node) => node.ref === `theme.dark-mode.toggle.${slot}`);
+  const mainNode = (slot) => mainTheme.nodes.find((node) => node.ref === `theme.dark-mode.toggle.${slot}`);
+
+  assert.equal(stableNode('fence').label, 'selectionRealizationFinished · === fence');
+  assert.equal(stableNode('accepted'), undefined);
+  assert.equal(stableNode('realization'), undefined);
+  assert.equal(stableNode('launch').label, 'act.launchWith(executionRoot).method(…)');
+
+  assert.equal(mainNode('fence').label, 'settleSelectionCurrentness · === fence');
+  assert.equal(mainNode('accepted').symbol, 'VexFamily.Act.Accepted');
+  assert.equal(mainNode('realization').symbol, 'VexFamily.Act.Accepted.realizationBegin');
+  assert.equal(mainNode('launch').label, 'Act.Accepted.launch(executionRoot, Method)');
+  assert.ok(mainTheme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.custody' && edge.to === 'theme.dark-mode.toggle.fence' && edge.kind === 'SIDE'));
+  assert.ok(mainTheme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.launch' && edge.to === 'theme.dark-mode.toggle.fence' && edge.kind === 'SIDE'));
+  assert.ok(mainTheme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.store' && edge.to === 'theme.dark-mode.toggle.observe' && edge.kind === 'DATA'));
+  assert.equal(mainTheme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.result' && edge.to === 'theme.dark-mode.toggle.observe'), false);
 });
 
 test('typed pathway instances carry semantic operands instead of reusing one shape instance', () => {

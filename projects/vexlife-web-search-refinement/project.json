@@ -30,7 +30,14 @@
     "repo.vexlife:src/core/resource-context-pressure.mjs",
     "repo.vexlife:src/core/tool-result-relay.mjs",
     "repo.vexlife-prod:exploration/web-workspace/lib/upstream.mjs",
-    "repo.vexlife-prod:exploration/web-workspace/README.md"
+    "repo.vexlife-prod:exploration/web-workspace/README.md",
+    "github.pull.vexlife-prod.383",
+    "github.pull.vexlife-prod.393",
+    "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+    "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeWebReach.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
   ],
   "formedAt": "2026-11-06T06:30:00.000Z"
 }

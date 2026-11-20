@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.release-roadmap",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:32:00.000Z",
+      "updatedAt": "2026-11-20T05:32:00.002Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.release-roadmap.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife release roadmap",
+      "purpose": "Keep VexLife's current release direction legible as one roadmap: immediate usable web/local v1, completed native-container proof, and a later trusted native v2 path. Lifecycle state and priority remain separate so future humans can distinguish what is current, complete, waiting and merely later without reading old chats.",
+      "workClass": "OUTCOME",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.release-roadmap",
+        "projects/vexlife-release-roadmap/README.md",
+        "github.pull.vexlife-prod.396",
+        "github.pull.vexlife-prod.400",
+        "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2",
+        "work.vexlife.release-roadmap.web-local-v1",
+        "work.vexlife.release-roadmap.native-mac-container-proof",
+        "work.vexlife.release-roadmap.trusted-native-v2"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:32:00.000Z",
+      "updatedAt": "2026-11-20T05:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.release-roadmap.web-local-v1",
+      "parentWorkRefOrNull": "work.vexlife.release-roadmap.outcome",
+      "label": "Web/local VexLife v1",
+      "purpose": "Treat the existing browser/local Product experience as the immediate ordinary-human release path while preserving Vex Home, local model/runtime and Product ownership. This is a product/release priority, not permission to erase the already-proven native application architecture.",
+      "workClass": "OUTCOME",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-release-roadmap/README.md",
+        "repo.vexlife-prod:README.md",
+        "repo.vexlife-prod:site/index.html",
+        "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:32:00.000Z",
+      "updatedAt": "2026-11-20T05:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.release-roadmap.native-mac-container-proof",
+      "parentWorkRefOrNull": "work.vexlife.release-roadmap.outcome",
+      "label": "Native Mac container technical proof",
+      "purpose": "Preserve as completed the application/container engineering already earned: native Setup/Entry, embedded Product presentation, close-versus-quit semantics, verified DMG formation, nested-code sealing experiments and lived discovery of the real macOS distribution-trust boundary.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-prod.396",
+        "github.pull.vexlife-prod.400",
+        "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+        "human.lived-feedback.vexlife.mac-distribution-trust.20261119.java-libjli-gatekeeper"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:32:00.000Z",
+      "updatedAt": "2026-11-20T05:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.release-roadmap.trusted-native-v2",
+      "parentWorkRefOrNull": "work.vexlife.release-roadmap.outcome",
+      "label": "Trusted native VexLife v2",
+      "purpose": "Resume the convenient downloaded desktop-app experience only when legitimate distribution trust is available: rightful nested-code placement, Developer ID signing, Hardened Runtime and exact entitlements, secure timestamps, notarization/stapling, then fresh-download lived proof. Funding/support may enable that capability, but revenue itself is not a technical predicate.",
+      "workClass": "OUTCOME",
+      "state": "WAITING_RESOURCE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.release-roadmap.native-mac-container-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-release-roadmap/README.md",
+        "github.pull.vexlife-prod.396",
+        "github.pull.vexlife-prod.400",
+        "human.lived-feedback.vexlife.mac-distribution-trust.20261119.java-libjli-gatekeeper",
+        "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.release-roadmap.outcome.decomposed.plan-validated.current-roadmap",
+      "workRef": "work.vexlife.release-roadmap.outcome",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "The release roadmap is no longer only decomposition: the immediate web/local v1 direction is explicit, native Mac container proof is completed, and trusted native v2 is truthfully held on distribution-trust capability.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexlife-release-roadmap/README.md",
+        "work.vexlife.release-roadmap.web-local-v1",
+        "work.vexlife.release-roadmap.native-mac-container-proof",
+        "work.vexlife.release-roadmap.trusted-native-v2"
+      ],
+      "createdAt": "2026-11-20T05:32:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.release-roadmap.outcome.plan-validated.ready.web-v1-current",
+      "workRef": "work.vexlife.release-roadmap.outcome",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The immediate web/local v1 child is READY and has no dependency hold. The later native v2 child remains WAITING_RESOURCE, so the Project is ready for its current release direction rather than actively running or terminal.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexlife.release-roadmap.web-local-v1",
+        "work.vexlife.release-roadmap.native-mac-container-proof",
+        "work.vexlife.release-roadmap.trusted-native-v2",
+        "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+      ],
+      "createdAt": "2026-11-20T05:32:00.002Z"
+    }
+  ],
+  "sourceRefs": [
+    "project.vexlife.release-roadmap",
+    "projects/vexlife-release-roadmap/README.md",
+    "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+  ],
+  "formedAt": "2026-11-20T05:32:00.000Z"
+}
