@@ -160,8 +160,8 @@ Current next Product successor:
 VexGPT/VexLife-Prod#435
 [VexLife Local Artifacts][DRAFT] Static image adaptation over stable artifact input
 
-head 9df62c1851b0d2e8b8774e7228a376e9d02a282d
-tree 2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
+head f05436538b022589472ce1dbe25a55ea9a15743c
+tree ea666cc7162bca197279bbc6dd684ce59d9986ca
 
 static image Local Artifact
 -> exact bytes
@@ -286,10 +286,10 @@ acceptedBase
 a4dd25e472d153b1cef24f7f35132933f3d725d0
 
 candidateHead
-9df62c1851b0d2e8b8774e7228a376e9d02a282d
+f05436538b022589472ce1dbe25a55ea9a15743c
 
 candidateTree
-2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
+ea666cc7162bca197279bbc6dd684ce59d9986ca
 
 worktree CLEAN
 EXPECTED_HEAD PASS
@@ -339,8 +339,8 @@ retained inner RETURN
 sha256 e056a7ef93dabea6f39fde7424c7dfc7069b1921dc14ed58d3ff846e6c4fc4c9
 
 candidate
-9df62c1851b0d2e8b8774e7228a376e9d02a282d
-2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
+f05436538b022589472ce1dbe25a55ea9a15743c
+ea666cc7162bca197279bbc6dd684ce59d9986ca
 
 worktree CLEAN
 testsExecuted true
@@ -379,8 +379,8 @@ sha256 c63bda775b67c8a68b385f219f389291e67d89d72f9fb9711438fd79c42f05ed
 PASS
 
 candidate
-9df62c1851b0d2e8b8774e7228a376e9d02a282d
-2f36eb3efd8c5d639cae795a2eb3cd9a14da0960
+f05436538b022589472ce1dbe25a55ea9a15743c
+ea666cc7162bca197279bbc6dd684ce59d9986ca
 
 worktree CLEAN
 
@@ -413,7 +413,24 @@ nextFunction F13.RUN_FRESH_ASSURANCE
 nextOwner Operations
 ~~~
 
-The exact Product candidate is now SourceOwner-proved. Fresh Independent Assurance remains the next separate gate.
+The prior exact Product candidate reached SourceOwner PASS, then fresh Independent Assurance returned CHANGES_REQUIRED for one missing deterministic service-boundary regression.
+
+The single correction is now formed on the current Product candidate:
+
+~~~text
+head f05436538b022589472ce1dbe25a55ea9a15743c
+tree ea666cc7162bca197279bbc6dd684ce59d9986ca
+~~~
+
+Only one new path was added beyond the previously proved seven-path membrane:
+
+~~~text
+src/jvmTest/kotlin/vexlife/service/VexLifeLocalArtifactsServiceTest.kt
+~~~
+
+It proves recognized static-image staging stays HELD through the Product service, cannot become a Send resource, and cannot invoke Companion.
+
+The current exact Product candidate therefore requires fresh SourceOwner proof before Assurance may clear it.
 
 No Product mutation, Independent Assurance, READY transition or merge is claimed yet.
 
