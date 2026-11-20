@@ -59,10 +59,11 @@ test('compact and framed realization stay source-shaped across current real subj
     assert.ok(lens.screens.every((screen) => screen.layout === null), `${file} remains compact when source authors no frame layout`);
   }
 
-  for (const file of ['vexlife-prod.screen-lens.json', 'vexlife-prod.main.screen-lens.json']) {
-    const lens = normalizeScreenLens(read(`../projects/vexboard/lens/${file}`));
-    assert.ok(lens.screens.every((screen) => screen.layout?.kind === 'FRAME'), `${file} keeps its current source-authored workspace topology`);
-  }
+  const product = normalizeScreenLens(read('../projects/vexboard/lens/vexlife-prod.screen-lens.json'));
+  assert.ok(
+    product.screens.every((screen) => screen.layout?.kind === 'FRAME'),
+    'current Product Stable/Main share one accepted Lens file and keep the source-authored workspace topology',
+  );
 });
 
 const element = (ref, kind, parentRef = null) => ({ ref, kind, label: ref, parentRef });
