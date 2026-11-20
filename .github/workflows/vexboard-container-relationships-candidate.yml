@@ -1,0 +1,34 @@
+name: Container Relationship Candidate Proof
+
+on:
+  pull_request:
+    branches:
+      - currentize/vexboard-realization-topology-on-sync-20261120
+    paths:
+      - 'src/shared/vexboard-screen-lens.mjs'
+      - 'vexboard/lens.html'
+      - 'projects/vexboard/SCREEN-LENS.md'
+      - 'test/vexboard-screen-lens-conformance.test.mjs'
+      - 'test/vexboard-lens-ui.test.mjs'
+      - '.github/workflows/vexboard-container-relationships-candidate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Shared projection + UI regression floor
+        run: |
+          node --test \
+            test/vexboard-screen-lens-conformance.test.mjs \
+            test/vexboard-lens-ui.test.mjs \
+            test/vexboard-screen-lens.test.mjs \
+            test/vexboard-screen-lens-realization.test.mjs \
+            test/vexboard-screen-lens-source-expressions.test.mjs \
+            test/vexboard-screen-lens-frames.test.mjs
