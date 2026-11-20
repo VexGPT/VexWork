@@ -119,11 +119,11 @@
             "buildRef": "main",
             "label": "Main",
             "summary": "Latest Product-owned exported Screen Lens on main.",
-            "commit": "c50760aa57d93f669e7df11f0e3298582d096331",
+            "commit": "14206ba97e47e107c4999e89f514c8beaf24224a",
             "branch": "main",
             "lens": "vexlife-prod.main.screen-lens.json",
             "observedAt": "2026-11-20",
-            "sourceBlobSha1": "e25633aa1b2e9b370599de45d4cdcf5d197060cc"
+            "sourceBlobSha1": "3cd26dca14b7380dc480726c2033d426ec347e0d"
           }
         ]
       },

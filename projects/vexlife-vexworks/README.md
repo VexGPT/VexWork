@@ -73,9 +73,107 @@ The current integration target remains the exact current VexLife-Prod trajectory
 - exact turn-bound attachment reach;
 - persistent Local Sources;
 - bounded source search/read;
-- manifest-first context use so large files are not dumped into every prompt.
+- direct bounded current-turn context for small readable attachments, while large/overflow files stay behind exact request-local bounded reach.
 
 PDF, image/vision input, automatic research synthesis, semantic Memory promotion and filesystem writes remain separate until their own owners/contracts are earned.
+
+## Stable checkpoint — 2026-11-20 01:42 Pacific
+
+A0 remains **RUNNING**, but this is the current stable Local Artifacts checkpoint future instances should resume from rather than reconstructing the attachment design from predecessor chat.
+
+Stable Product integration:
+
+~~~text
+VexGPT/VexLife-Prod#434
+main a4dd25e472d153b1cef24f7f35132933f3d725d0
+tree c86ad042177af0451fa0c35a0fdfec8bf0b745e6
+
+proved/lived predecessor bytes
+#433 head 3165b2009acc84b8da38b45f9ec5bdc261387c2b
+same tree c86ad042177af0451fa0c35a0fdfec8bf0b745e6
+~~~
+
+The merge changed ancestry, not Product bytes. The A007-proved/lived tree is now the exact main tree.
+
+Exact Mac build proof:
+
+~~~text
+TEMP RELAY #429 A007
+RETURN sha256 5b3c13201a1e69042fd8fd01fb1f5bcc493c84f735c412d0c61409c02d2e8613
+DMG sha256    4dfbdb6d822613a536a288b3dc0119fa3a7dcc061fe8705608bb66244a219fe3
+disposition   PASS
+~~~
+
+Lived human checkpoint:
+
+~~~text
+Victor_Gong_Resume_2026.docx
+-> exact file staged/bound
+-> DOCX readable projection formed
+-> small-file parsed content supplied directly in current-turn context
+-> Vex answered from the actual resume content rather than filename/metadata inference
+-> human witness: looks good
+~~~
+
+Stable input circuit:
+
+~~~text
+person provides material
+-> exact immutable OriginalArtifact bytes
+-> converter/adaptor forms a bounded DerivedProjection
+-> exact canonical REQUEST binds artifact + projection
+-> small whole readable projection fits admitted direct-context bound
+   -> VEXLIFE_CURRENT_REQUEST_ARTIFACT_CONTENT/v1
+   -> user-role current-state context
+   -> Vex receives parsed material before answering
+-> large/overflow projection
+   -> metadata + exact request-local resourceRef
+   -> bounded attachment reach only when more content is needed
+~~~
+
+Permanent distinctions preserved:
+
+~~~text
+EXACT HUMAN WORDS != PRODUCT ATTACHMENT CONTEXT
+ORIGINAL BYTES != DERIVED PROJECTION
+DERIVED PROJECTION != MODEL INTERPRETATION
+SMALL ATTACHMENT != OPTIONAL TOOL HUNT
+LARGE/OVERFLOW ATTACHMENT != PRELOAD EVERYTHING
+ATTACHMENT != MEMORY
+~~~
+
+Current admitted converters remain:
+
+~~~text
+TEXT
+ZIP
+DOCX
+XLSX
+PPTX
+~~~
+
+Static image attachment is **not yet admitted** by this Local Artifact converter set. VexLife also has a separate Vision Family / selected-window runtime, but its current Product contract deliberately stops before Look/capture-to-model interpretation. Therefore future image work should resume from this distinction rather than collapsing static file input and live screen Vision into one owner.
+
+Current next Product successor:
+
+~~~text
+VexGPT/VexLife-Prod#435
+[VexLife Local Artifacts][DRAFT] Static image adaptation over stable artifact input
+
+static image Local Artifact
+-> exact bytes
+-> media/visual adaptation seam
+-> qualified model-compatible representation
+-> current REQUEST / Vex
+
+LIVE WINDOW VISION
+-> remains VexLifeVisionFamily / selected-scope relationship
+-> separate capture + visual-model-input edge
+~~~
+
+#435 is formation/design only at this checkpoint. It starts from merged main and must preserve the accepted text/document attachment circuit rather than refactoring it for symmetry.
+
+Do not reopen the accepted text/document attachment path merely to add images. Extend the projection/adaptation relationship at the smallest rightful owner.
 
 ## The model-switching tail is smaller than it first appears
 
@@ -197,7 +295,7 @@ The Project is successful when a normal person can:
 
 1. add a supported file or Local Source;
 2. see that it is available without the whole file being stuffed into prompt context;
-3. ask Vex to reach the bounded material;
+3. have small readable attachments supplied directly in current-turn context, with bounded reach used only when more/large material is needed;
 4. open a model selector and choose another offered/imported model;
 5. see only controls/features that are truthful for that exact model/provider/runtime relationship;
 6. send the next turn through the newly serving model;
@@ -206,7 +304,8 @@ The Project is successful when a normal person can:
 
 ## Current source coordinates
 
-- `VexGPT/VexLife-Prod#402` — current Product successor trajectory used for present-source grounding.
+- `VexGPT/VexLife-Prod#434` — stable Local Artifacts integration now on Product main.
+- `VexGPT/VexLife-Prod#435` — current draft static-image adaptation successor over that stable base.
 - `docs/foundation/HERETIC-PRODUCT-MODEL.md`
 - `src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt`
 - `src/commonMain/kotlin/vexlife/model/heretic/HereticModelCatalog.kt`

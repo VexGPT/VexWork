@@ -71,7 +71,7 @@ export const ELEMENT_KINDS = Object.freeze({
   TEXT: 'CONTENT', IMAGE: 'CONTENT',
   TOGGLE: 'ELEMENT', BUTTON: 'ELEMENT', FAB: 'ELEMENT', MENU_ITEM: 'ELEMENT', FIELD: 'ELEMENT', HANDLE: 'ELEMENT',
 });
-export const ELEMENT_INTERACTIONS = Object.freeze(['ACTIVATE', 'RESIZE', 'COLLAPSE_BEFORE', 'COLLAPSE_AFTER']);
+export const ELEMENT_INTERACTIONS = Object.freeze(['ACTIVATE', 'CHANGE', 'RESIZE', 'COLLAPSE_BEFORE', 'COLLAPSE_AFTER']);
 
 export const PATHWAY_DISPOSITIONS = Object.freeze({
   SCAE_FAMILY: 'Source earns a semantic owner: Control, State, Act, Effect and Projection relationships are explicit.',

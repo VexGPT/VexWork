@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vexlife.continuity-pressure-scenario/v1",
+  "title": "VexLife continuity pressure scenario",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scenarioRef",
+    "label",
+    "purpose",
+    "syntheticOnly",
+    "sets"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "vexlife.continuity-pressure-scenario/v1"
+    },
+    "scenarioRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "syntheticOnly": {
+      "const": true
+    },
+    "payloadSeed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "setRef",
+          "kind",
+          "turns"
+        ],
+        "properties": {
+          "setRef": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "FORMATION",
+              "PRESSURE",
+              "PROBE",
+              "LESSON_TRANSFER",
+              "CONFIGURATION_SWAP"
+            ]
+          },
+          "turns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "turnRef",
+                "input",
+                "tags"
+              ],
+              "properties": {
+                "turnRef": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "input": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "uniqueItems": true
+                },
+                "payloadTargetTokens": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "expectedSignals": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "uniqueItems": true
+                },
+                "assertionRefs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "uniqueItems": true
+                },
+                "beforeTurnControls": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "controlClass",
+                      "key",
+                      "value"
+                    ],
+                    "properties": {
+                      "controlClass": {
+                        "enum": [
+                          "PERSON_SETTING_UPDATE"
+                        ]
+                      },
+                      "key": {
+                        "enum": [
+                          "replyLanguage"
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
