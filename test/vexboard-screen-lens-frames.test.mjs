@@ -53,11 +53,17 @@ test('geometry comes from the authored allocations: a 1:11 header band over a 1:
   assert.equal(layoutRole(screen.layout, 'element.vexlife-workspace.companion.conversation.send'), null);
 });
 
-test('a lens without a layout keeps the phone realization (Android, and Product commits before the export)', () => {
-  for (const file of ['vexlife-android.screen-lens.json', 'vexlife-prod.screen-lens.json', 'vexlife-prod.main.screen-lens.json']) {
+test('compact and framed realization stay source-shaped across current real subjects', () => {
+  for (const file of ['vexlife-android.screen-lens.json', 'vexlife-android.main.screen-lens.json']) {
     const lens = normalizeScreenLens(read(`../projects/vexboard/lens/${file}`));
-    assert.ok(lens.screens.every((screen) => screen.layout === null), file);
+    assert.ok(lens.screens.every((screen) => screen.layout === null), `${file} remains compact when source authors no frame layout`);
   }
+
+  const product = normalizeScreenLens(read('../projects/vexboard/lens/vexlife-prod.screen-lens.json'));
+  assert.ok(
+    product.screens.every((screen) => screen.layout?.kind === 'FRAME'),
+    'current Product Stable/Main share one accepted Lens file and keep the source-authored workspace topology',
+  );
 });
 
 const element = (ref, kind, parentRef = null) => ({ ref, kind, label: ref, parentRef });
@@ -131,7 +137,11 @@ test('element layer and interactions are optional and validated', () => {
   const withInteraction = structuredClone(base);
   withInteraction.screens[0].elements[0].interactions = ['TELEPORT'];
   assert.throws(() => normalizeScreenLens(withInteraction), /interaction TELEPORT is unknown/);
-  const plain = normalizeScreenLens(base).screens[0].elements[0];
-  assert.equal(plain.layer, null);
+  const authored = normalizeScreenLens(base).screens[0].elements[0];
+  assert.equal(authored.layer, 'CONTENT', 'current Product source explicitly authors the content layer');
+
+  const compact = read('../projects/vexboard/lens/vexlife-android.screen-lens.json');
+  const plain = normalizeScreenLens(compact).screens[0].elements[0];
+  assert.equal(plain.layer, null, 'layer remains optional when source does not author one');
   assert.deepEqual(plain.interactions, []);
 });
