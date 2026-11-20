@@ -379,6 +379,79 @@ The neutral third subject is a conformance pressure fixture, not a fake iOS impl
 - Do not perform a broad Product refactor before the divergence map proves what is accidental.
 
 
+## Current implementation / proof checkpoint — 2026-11-20
+
+The first executable consolidation slice is source-real.
+
+~~~text
+neutral conformance subject
+  FRAME layout
+  + ELEMENT_TREE
+  + no STATIC_HTML_CSS
+  + no product/platform identity
+
+shared conformance proof
+  Android Main
+  + accepted/current VexLife-Prod Lens
+  + neutral subject
+  -> same normalize / expressions / realization / layout seam
+~~~
+
+The initial exact candidate proof exposed two stale generic frame assertions that still described
+pre-currentization Product truth. They were corrected without changing the reader or either Product.
+
+Fresh GitHub-hosted proof then reached:
+
+~~~text
+87 / 87 focused Screen Lens + UI + realization + expression + frame tests PASS
+0 FAIL
+~~~
+
+Offline Lens verification also established:
+
+~~~text
+VexLife-Android Stable  PASS
+VexLife-Android Main    PASS
+
+VexLife-Prod Stable
+VexLife-Prod Main
+  projection/problems = none
+  held currentness debt = sourceBlobSha1 only
+~~~
+
+The Product sourceBlobSha1 mismatch predates this consolidation candidate and is routed to VexWork
+#361, which already owns the catalog/Lens currentness membrane. Projection Consolidation must not
+author a competing pin merely to make its own proof receipt green.
+
+The proof carriage workflow was temporary and was deleted after the evidence was consumed.
+
+### Human witness gate
+
+Automated conformance does not prove perceived continuity.
+
+Before this slice is considered accepted, witness one exact candidate head through the same Lens shell:
+
+~~~text
+VexLife-Android Stable or Main
+  compact element-tree manifestation
+
+VexLife-Prod Main
+  Product source view + framed workspace manifestation
+
+neutral framed element-tree fixture
+  framed workspace manifestation
+  no Product source view
+~~~
+
+Acceptance question:
+
+> Do all three read as the same VexBoard perception system while preserving their materially different
+> source-authored manifestations, with no regression in the Android or Product experiences?
+
+A changed implementation/Lens head after human acceptance requires a fresh witness. Documentation-only
+changes that do not alter the witnessed reader/Lens/fixture bytes should preserve the recorded
+coordinate explicitly rather than silently rebinding it.
+
 ## Next scalability consumer after consolidation
 
 Once the Android / VexLife-Prod convergence work has passed shared conformance and lived acceptance,
