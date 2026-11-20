@@ -59,6 +59,14 @@
       {
         "ref": "github.pull.vexwork.335",
         "meaning": "Accepted lived Screen Lens state recovery: exact accepted Product state/CSS projection restored on top of #331; recovery/learning anchor, not Product semantic authority."
+      },
+      {
+        "ref": "github.pull.vexlife-prod.417",
+        "meaning": "Screen Lens Product presentation promotion stacked on current #414: accepted state/interaction relationships move into canonical exporter and Product-owned System/Light/Dark metadata becomes projectable."
+      },
+      {
+        "ref": "github.pull.vexwork.339",
+        "meaning": "Generic Screen Lens Presentation consumer stacked on accepted recovery #335: source-authored color mode is shareable and applied read-only without Product-specific renderer logic."
       }
     ],
     "experienceCandidate": {
@@ -803,6 +811,13 @@
       "disposition": "ACTIVE_RECOVERY",
       "kind": "PRESERVES_ACCEPTED_PROJECTION",
       "humanMeaning": "A human-accepted projection remains evidence until every learned identity, relationship and presentation state it carries has moved to its rightful Product/exporter source. Provisional names such as experiment, sample or fixture do not make accepted meaning disposable."
+    },
+    {
+      "from": "VexLifeWorkspaceBlueprint",
+      "to": "VexLifeWebP1RuntimeArtifacts",
+      "disposition": "FRONTIER_DEBT",
+      "kind": "RUNTIME_CREATED_PRESENTATION_IDENTITY",
+      "humanMeaning": "Theme and Support quick actions are visible runtime presentation but currently have no stable Blueprint/VexWeb identities. Product source must name/project them before Screen Lens may show them as Product controls; VexWork must not invent them."
     }
   ],
   "surfaceBindings": [
@@ -1670,6 +1685,10 @@
         "state": "OPEN_DRAFT_FOREGROUND_PRODUCT_SUCCESSOR",
         "head": "2f9c0fdb667585a68f45a5bc834f67cac2af688c"
       },
+      "417": {
+        "state": "OPEN_DRAFT_PRODUCT_PRESENTATION_PROMOTION",
+        "head": "3cdda7248a289061e8dc1531fb162f6096d73fa9"
+      },
       "vexwork-331": {
         "state": "OPEN_DRAFT_GENERIC_LENS_CURRENTIZATION",
         "head": "ba58826af1704a58782bfa36b8acef375e19b0f3"
@@ -1677,6 +1696,10 @@
       "vexwork-335": {
         "state": "OPEN_DRAFT_ACCEPTED_STATE_RECOVERY",
         "head": "20519f95951d7d36c2be55a4fd25f86ed89efa5a"
+      },
+      "vexwork-339": {
+        "state": "OPEN_DRAFT_GENERIC_COLOR_MODE_CONSUMER",
+        "head": "6231d141ac268edf070ea9c9e7a25f892dbe5fad"
       }
     }
   },
@@ -1699,7 +1722,8 @@
       "System/Light/Dark is explicit Product-authored presentation state; it must not silently depend on the witness browser's preference when a comparison or accepted witness needs an exact mode.",
       "Surface/Structure/Behavior/Depth share stable identities and do not own duplicate maps.",
       "Human acceptance and source authority are separate coordinates: accepted candidate != Stable, and provisional carrier != disposable meaning.",
-      "A fixture/sample/experiment may be retired only after its learned identities, relationships, presentation states and accepted outcome are represented by rightful source/generated projection."
+      "A fixture/sample/experiment may be retired only after its learned identities, relationships, presentation states and accepted outcome are represented by rightful source/generated projection.",
+      "Visible runtime-created controls that matter to the human need stable Product-owned identities before Screen Lens may project them; Lens support UI may not impersonate missing Product identity."
     ],
     "promotionOrder": [
       "recover accepted lived truth",
