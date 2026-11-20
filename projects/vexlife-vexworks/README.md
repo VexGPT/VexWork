@@ -81,13 +81,19 @@ PDF, image/vision input, automatic research synthesis, semantic Memory promotion
 
 A0 remains **RUNNING**, but this is the current stable Local Artifacts checkpoint future instances should resume from rather than reconstructing the attachment design from predecessor chat.
 
-Exact Product source:
+Stable Product integration:
 
 ~~~text
-VexGPT/VexLife-Prod#433
-head 3165b2009acc84b8da38b45f9ec5bdc261387c2b
+VexGPT/VexLife-Prod#434
+main a4dd25e472d153b1cef24f7f35132933f3d725d0
 tree c86ad042177af0451fa0c35a0fdfec8bf0b745e6
+
+proved/lived predecessor bytes
+#433 head 3165b2009acc84b8da38b45f9ec5bdc261387c2b
+same tree c86ad042177af0451fa0c35a0fdfec8bf0b745e6
 ~~~
+
+The merge changed ancestry, not Product bytes. The A007-proved/lived tree is now the exact main tree.
 
 Exact Mac build proof:
 
@@ -148,18 +154,24 @@ PPTX
 
 Static image attachment is **not yet admitted** by this Local Artifact converter set. VexLife also has a separate Vision Family / selected-window runtime, but its current Product contract deliberately stops before Look/capture-to-model interpretation. Therefore future image work should resume from this distinction rather than collapsing static file input and live screen Vision into one owner.
 
-Current next exploration:
+Current next Product successor:
 
 ~~~text
+VexGPT/VexLife-Prod#435
+[VexLife Local Artifacts][DRAFT] Static image adaptation over stable artifact input
+
 static image Local Artifact
 -> exact bytes
--> image/media projection or visual interpretation adapter
--> model-compatible current-turn representation
+-> media/visual adaptation seam
+-> qualified model-compatible representation
+-> current REQUEST / Vex
 
 LIVE WINDOW VISION
 -> remains VexLifeVisionFamily / selected-scope relationship
 -> separate capture + visual-model-input edge
 ~~~
+
+#435 is formation/design only at this checkpoint. It starts from merged main and must preserve the accepted text/document attachment circuit rather than refactoring it for symmetry.
 
 Do not reopen the accepted text/document attachment path merely to add images. Extend the projection/adaptation relationship at the smallest rightful owner.
 
@@ -292,7 +304,8 @@ The Project is successful when a normal person can:
 
 ## Current source coordinates
 
-- `VexGPT/VexLife-Prod#402` — current Product successor trajectory used for present-source grounding.
+- `VexGPT/VexLife-Prod#434` — stable Local Artifacts integration now on Product main.
+- `VexGPT/VexLife-Prod#435` — current draft static-image adaptation successor over that stable base.
 - `docs/foundation/HERETIC-PRODUCT-MODEL.md`
 - `src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt`
 - `src/commonMain/kotlin/vexlife/model/heretic/HereticModelCatalog.kt`
