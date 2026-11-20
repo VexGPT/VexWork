@@ -1,0 +1,106 @@
+{
+  // Example only. Replace every <...> with current exact values.
+  "schemaVersion": "vexwork.continuity-pressure-relay-binding/v1",
+  "bindingRef": "binding.continuity-pressure.<fresh>",
+  "experimentRef": "experiment.continuity-pressure.<fresh>",
+  "lane": {
+    "entryClass": "SAME_LANE_SUCCESSOR",
+    "laneRef": "<current lane ref>",
+    "parentRootRef": "<current root ref>",
+    "workRef": "work.vexlife.memory-depth-exploration.measurement",
+    "claimRef": "<current exact claim>",
+    "returnRouteRef": "<current return route>",
+    "ownerRef": "<current owner>",
+    "rootHubRef": "<current Root Hub ref>"
+  },
+  "role": {
+    "activeRole": "OPERATIONS",
+    "roleRef": "<fresh role ref>",
+    "instanceRef": "<fresh instance ref>",
+    "occupancyRef": "<fresh occupancy ref>",
+    "providerBindingRef": "<fresh provider binding>",
+    "threadRef": "<current thread ref>",
+    "authorityEnvelopeRef": "<current exact authority envelope ref>"
+  },
+  "capabilities": {
+    "platformGitHubRead": "AVAILABLE",
+    "platformGitHubWrite": "AVAILABLE"
+  },
+  "execution": {
+    "hostProfile": "macos-victor",
+    "executionSurface": "MACOS_ZIP_BASH",
+    "ttlMs": 3600000
+  },
+  "workspace": {
+    "mode": "VEX_HOME",
+    "rootEnv": "VEX_HOME",
+    "projectRef": "project.vexlife.continuity-pressure",
+    "projectPath": "projects/victor/vexlife-continuity-pressure",
+    "createRoot": false,
+    "createProjectPath": true
+  },
+  "repository": {
+    "repositoryRef": "primary",
+    "mode": "CLONE_IN_WORKSPACE",
+    "cloneTransport": "GITHUB_GH",
+    "githubHostname": "github.com",
+    "nameWithOwner": "VexGPT/VexLife-Prod",
+    "localPath": "repositories/vexlife-prod",
+    "remote": "origin",
+    "baseBranch": "main",
+    "acceptedBase": "<exact base>",
+    "expectedHead": "<exact branch head>",
+    "expectedTree": "<exact tree>",
+    "branch": "<exact implementation branch>",
+    "allowedPaths": [
+      "tools/continuity-pressure",
+      "build/continuity-pressure"
+    ]
+  },
+  "authority": {
+    "authorityRef": "<current exact authority>",
+    "grantedEffects": [
+      "CHECK_AUTH",
+      "READ_REPOSITORY",
+      "CHECK_STATE",
+      "RUN_LOCAL_COMMAND",
+      "FORM_RESULT"
+    ],
+    "heldEffects": [
+      "WRITE_SOURCE",
+      "CREATE_COMMIT",
+      "PUSH_BRANCH",
+      "CREATE_PULL_REQUEST",
+      "APPROVE_EXACT_HEAD",
+      "MARK_READY",
+      "ORDINARY_MERGE"
+    ],
+    "allowedExecutables": [
+      "node",
+      "./gradlew",
+      "git",
+      "gh"
+    ],
+    "allowedEnvironment": []
+  },
+  "source": {
+    "sourceSetRef": "source-set.vexlife.continuity-pressure",
+    "sourceVersionRef": "<implementation source version>",
+    "overlapEvidenceRef": "<current overlap evidence>",
+    "activeConflictState": "NONE",
+    "candidateState": "EXACT",
+    "candidateHead": "<exact head>",
+    "candidateTree": "<exact tree>"
+  },
+  "adapter": {
+    "command": "node",
+    "argsPrefix": ["tools/continuity-pressure/run.mjs"],
+    "scenarioPath": "tools/continuity-pressure/scenarios/depth-continuity-v1.json",
+    "resultDir": "build/continuity-pressure"
+  },
+  "scenario": {
+    "scenarioRef": "scenario.vexlife.continuity-pressure.depth-continuity.v1",
+    "sharedSourcePath": "projects/vexlife-memory-depth-exploration/pressure-harness/scenarios/depth-continuity-v1.json",
+    "sharedSha256": "<copy the exact shared scenario SHA-256>"
+  }
+}

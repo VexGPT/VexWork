@@ -392,7 +392,17 @@ export function resolvePresence(lens, screenRef, context = emptyRealizationConte
     const outcome = outcomes.get(presence.ref);
     outcome.gate = gated;
     if (gated === true) outcome.by = strongerBy(outcome.by, chainBy(presence));
-    if (gated === false) { outcome.realizedRefs.clear(); outcome.latentRefs.clear(); outcome.unknownRefs.clear(); outcome.why = `${outcome.why} (not reached: its enclosing choice is not realized)`; }
+    if (gated === false) {
+      // A nested relationship is unreachable when its enclosing relationship is not realized.
+      // Its own declared refs are therefore latent even when they are registered elsewhere in
+      // the Product tree. Do not rely on physical parentage to hide them.
+      const unreachable = new Set([...outcome.realizedRefs, ...outcome.latentRefs, ...outcome.unknownRefs]);
+      outcome.realizedRefs.clear();
+      outcome.latentRefs.clear();
+      outcome.unknownRefs.clear();
+      for (const ref of unreachable) outcome.latentRefs.add(ref);
+      outcome.why = `${outcome.why} (not reached: its enclosing choice is not realized)`;
+    }
     else if (gated === null && outcome.by === 'SOURCE') { for (const ref of [...outcome.realizedRefs, ...outcome.latentRefs]) outcome.unknownRefs.add(ref); outcome.realizedRefs.clear(); outcome.latentRefs.clear(); }
   }
 

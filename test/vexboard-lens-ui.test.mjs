@@ -178,7 +178,9 @@ test('the Lens derives expressions from source realization for every Screen', ()
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-source-expressions\.mjs'/);
   assert.match(page, /Expressions\.expressionsFor\(state\.lens, screenRef\(\)\)/);
   assert.match(page, /Realization\.emptyRealizationContext\(\)/);
-  assert.match(page, /const currentPathway = \(\) => Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? \(state\.anchorElementRef \? null : expressionPathway\(\)\)/);
+  assert.match(page, /function projectedRelationshipForAnchor\(\)/);
+  assert.match(page, /graph\?\.nodes\.some\(\(node\) => node\.elementRef === state\.anchorElementRef\)/);
+  assert.match(page, /const currentPathway = \(\) => Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? projectedRelationshipForAnchor\(\)/);
   assert.doesNotMatch(page, /EXPRESSION_FIXTURE_URLS|expressionFixtureSources|normalizeScreenLensExpressionFixture|bindExpressionsForCurrentScreen/);
 });
 
@@ -256,6 +258,11 @@ test('screen travel resets presentation context without inventing cross-Screen S
 
 test('lived usability gives the inspector a resizable attention boundary and makes expressions searchable', () => {
   assert.match(page, /trayHeight: Math\.round\(Math\.min\(280, Math\.max\(180, window\.innerHeight \* 0\.24\)\)\)/);
+  assert.match(page, /\.lens\{display:grid;grid-template-rows:auto auto auto minmax\(0,1fr\) auto;height:100vh/, 'the inspector is a sibling grid row, not an overlay over the main Lens');
+  assert.match(page, /\.tray\{position:relative;/, 'the inspector participates in layout instead of covering the main row');
+  assert.doesNotMatch(page, /\.tray\{[^}]*position:absolute/, 'the inspector must not become an absolute overlay');
+  assert.match(page, /\.surface\{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;/, 'when the inspector takes height, Surface owns scroll instead of clipping the Product');
+  assert.match(page, /\.product-view\{[^}]*min-height:420px/, 'the Product keeps a readable minimum rather than being compressed to satisfy the inspector');
   assert.match(page, /function wireTrayResize\(handle, tray\)/);
   assert.match(page, /role: 'separator'/);
   assert.match(page, /'aria-label': 'Resize inspector'/);
@@ -369,4 +376,41 @@ test('a screen whose source authors a frame layout is drawn as a workspace, chos
   assert.match(page, /element\.slot === 'Overlay'[\s\S]*!layoutChromeRefs\.has\(element\.ref\)[\s\S]*!withinOverlayRoot\(element\.ref\)/, 'floating content overlays remain distinct from seam chrome and surface overlay roots');
   assert.match(page, /element\.kind === 'DIALOG' \|\| element\.layer === 'MODAL'/, 'modal source presentation receives a workspace-modal realization');
   assert.doesNotMatch(page, /vexlife-prod[^\n]{0,80}ws-float|ws-float[^\n]{0,80}vexlife-prod/, 'floating presentation stays generic rather than Product-special-cased');
+});
+
+
+test('browser and mouse Back/Forward revisit meaningful Lens viewpoints', () => {
+  assert.match(page, /LENS_HISTORY_SCHEMA = 'vexboard\.screen-lens-history\/v1'/);
+  assert.match(page, /function lensHistorySnapshot\(\)/);
+  assert.match(page, /walk: state\.walk/);
+  assert.match(page, /selected: state\.selected/);
+  assert.match(page, /realization: state\.realization/);
+  assert.match(page, /colorModeRef: staticColorMode\(\)\?\.ref/);
+  assert.match(page, /function markLensHistoryPoint\(\)/);
+  assert.match(page, /history\.pushState\(\{ \[LENS_HISTORY_KEY\]: snapshot \}/);
+  assert.match(page, /history\.replaceState\(\{ \[LENS_HISTORY_KEY\]: snapshot \}/);
+  assert.match(page, /window\.addEventListener\('popstate'/);
+  assert.match(page, /restoreLensHistory\(snapshot\)/);
+  assert.match(page, /function selectElement\([\s\S]*markLensHistoryPoint\(\)/, 'control selection is navigable history');
+  assert.match(page, /function selectNode\([\s\S]*markLensHistoryPoint\(\)/, 'pathway-step selection is navigable history');
+  assert.match(page, /function setExpression\([\s\S]*markLensHistoryPoint\(\)/, 'expression traversal is navigable history');
+  assert.match(page, /function setStaticPresenceOutcome\([\s\S]*markLensHistoryPoint\(\)/, 'Product selection/presentation traversal is navigable history');
+  assert.match(page, /function setStaticColorMode\([\s\S]*markLensHistoryPoint\(\)/, 'presentation changes are navigable history');
+  assert.match(page, /selectElement\(requested, \{ recordHistory: false \}\)/, 'opening a shared link seeds rather than duplicates history');
+  assert.doesNotMatch(page, /event\.button\s*===\s*[34]/, 'mouse side buttons use normal browser History semantics rather than vendor-specific interception');
+  assert.match(page, /Browser or mouse Back \/ Forward revisits the Lens choices you traversed/);
+});
+
+
+test('static state consequences ignore gated-off inner presentation values', () => {
+  assert.match(page, /if \(outcome\?\.gate === false \|\| String\(outcome\?\.value \?\? ''\) !== binding\.value\) continue;/);
+  assert.match(page, /Gated-off relationships have no manifestation consequences/);
+});
+
+
+test('selected identities recurse into their active projected realization relationship when no semantic pathway exists', () => {
+  assert.match(page, /function projectedRelationshipForAnchor\(\)/);
+  assert.match(page, /graph\?\.nodes\.some\(\(node\) => node\.elementRef === state\.anchorElementRef\)/);
+  assert.match(page, /Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? projectedRelationshipForAnchor\(\)/);
+  assert.match(page, /Reuse that already-derived expression graph only when it actually contains the selected identity/);
 });
