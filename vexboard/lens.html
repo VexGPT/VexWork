@@ -2105,7 +2105,9 @@ function staticViewTargetNodes(doc, view, ref) {
 function applyStaticViewStateBindings(doc, view, resolved) {
   for (const binding of view.stateBindings ?? []) {
     const outcome = resolved?.presence?.get(binding.presenceRef);
-    if (String(outcome?.value ?? '') !== binding.value) continue;
+    // A raw inner value may still be OPEN while its enclosing presentation is closed.
+    // Gated-off relationships have no manifestation consequences.
+    if (outcome?.gate === false || String(outcome?.value ?? '') !== binding.value) continue;
     for (const operation of binding.operations) {
       for (const node of staticViewTargetNodes(doc, view, operation.targetRef)) {
         if (operation.op === 'SET_ATTRIBUTE') node.setAttribute(operation.attribute, operation.value);
