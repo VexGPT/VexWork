@@ -1,6 +1,15 @@
 name: VexStream Discover Currentization Proof
 
 on:
+  push:
+    branches:
+      - VXG-112026-vexstream-music-projectability-a001
+    paths:
+      - 'projects/vexstream-music-projectability/**'
+      - 'projects/vexboard/lens/vexstream-music.candidate.screen-lens.json'
+      - 'test/vexboard-screen-lens-conformance.test.mjs'
+      - 'workgraphs/segments/vexstream-music-projectability.json'
+      - '.github/workflows/vexstream-discover-currentization-proof.yml'
   pull_request:
     branches:
       - currentize/vexboard-realization-topology-on-sync-20261120
