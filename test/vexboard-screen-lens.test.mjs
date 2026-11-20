@@ -132,6 +132,7 @@ test('a static Product view keeps source HTML/CSS and stable identity anchors wi
       },
     ],
   };
+  input.screens[3].elements.find((element) => element.ref === 'element.debug-menu.body.dark-mode').interactions = ['ACTIVATE'];
   input.screens[3].view = {
     kind: 'STATIC_HTML_CSS',
     html: '<!doctype html><html><body><button data-vex-ref="element.debug-menu.body.dark-mode">Dark mode</button></body></html>',
