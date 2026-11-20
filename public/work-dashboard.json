@@ -190,6 +190,159 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexlife.new-beginnings.fresh-instance",
+        "label": "Later — start a fresh Conversation with fresh working context",
+        "purpose": "Preserve a cheap reversible Start fresh feature that forms/selects a new canonical Conversation thread with no prior-thread Conversation tail resident by default, while keeping Home, person settings, accepted Memory/semantic continuity and bounded historical reach under their rightful owners. Measure responsiveness rather than attributing latency to thread length by assumption.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-20T13:51:11.243Z"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.home-management",
+        "label": "Home management affordances",
+        "purpose": "Identify which Home-level choices belong in application settings—such as selecting another Home, changing supported Home presentation/name/location concerns, or intentionally revisiting setup—while preserving Home as its rightful owner and avoiding implicit recreation, deletion or migration.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-19T18:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.outcome",
+        "label": "VexLife Application level settings",
+        "purpose": "Preserve the application-experience debt discovered during the first lived desktop-container run: reopening VexLife should not blindly replay first-run onboarding when required state is already established, while a human still needs a clear application-level place to intentionally revisit setup, Home choices and application lifecycle settings without conflating those concerns with feature settings.",
+        "workClass": "OUTCOME",
+        "state": "DECOMPOSED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-19T18:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reentry-contract",
+        "label": "Earn a truthful first-run versus re-entry contract",
+        "purpose": "Determine which application predicates are genuinely one-time onboarding, which must be re-observed on every launch, which may require repair, and how a person intentionally re-enters setup without making ordinary reopen equivalent to first run or skipping required truth checks blindly.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-19T18:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+        "label": "Reopen repeats first-run onboarding",
+        "purpose": "Investigate the lived defect where closing VexLife and opening it again walks the person through the onboarding flow again instead of recognizing already-satisfied setup/Home predicates and entering the established application experience.",
+        "workClass": "DEFECT",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-19T18:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reset-uninstall",
+        "label": "Reset, remove and uninstall semantics",
+        "purpose": "Define human-safe application lifecycle controls for reset/restart/removal/uninstall questions without silently deleting Home, Conversation, Memory, settings or model files, and make destructive scope explicit before any implementation is admitted.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-19T18:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.surface",
+        "label": "Application-level settings surface",
+        "purpose": "Explore one discoverable app-level settings entry that can host application configuration and lifecycle choices without turning the current feature Settings surface into a catch-all owner. A native/top-left application affordance is a lived design candidate, not a fixed implementation commitment.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-19T18:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.memory-depth-exploration.extended-owner-depth",
+        "label": "Potential — extend traversal to additional historical evidence owners",
+        "purpose": "After the core Conversation/Memory/Working Continuity path is proven, evaluate whether incomplete/stopped-turn evidence, broader capability traces, VexLogger chronology or other source-addressable Vex Home records need typed resolver adapters. Add only owners that solve observed continuity questions; do not make universal historical indexing a prerequisite for the first feature.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-17T04:28:55.000Z"
+      },
+      {
+        "workRef": "work.vexlife.memory-depth-exploration.pre-inference-auto-hydration",
+        "label": "Potential — pre-inference automatic continuity hydration",
+        "purpose": "After one explicit Vex-requested bulk hydration call is proven, evaluate whether the host can safely derive a useful historical neighborhood directly from the incoming human request before the first model inference. This may remove even the single tool round, but it must not silently give the host semantic-answer authority or over-hydrate private history.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-17T04:28:55.000Z"
+      },
+      {
+        "workRef": "work.vexlife.web-search-refinement.research-working-set",
+        "label": "Potential — transient multi-source research working set",
+        "purpose": "If real multi-source web use proves direct bounded observations insufficient, earn the smallest reusable mechanism that lets raw source observations remain externally addressable while active model context retains compact claim/evidence/currentness/contradiction packets and can rehydrate exact evidence on demand. Do not create this as a second Memory, semantic-truth or research-authority system before repeated pressure demonstrates the need.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexlife"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-06T06:30:00.000Z"
+      },
+      {
         "workRef": "work.vexboard.later.screen-lens-scenario-playground",
         "label": "Later — Screen Lens Scenario Playground",
         "purpose": "Preserve the future Screen Lens Scenario Playground: an effect-free third-face experience where a person can run bounded simulations from a source-projected Screen/control, vary source-backed or explicitly proposed scenario state, add/remove/substitute VexBoard-proposed content inside addressable source-backed bounds, preview transient presentation such as snackbars, traverse the next simulated consequence, and reset without mutating VexLife-Android or confusing Scenario/Design Draft truth with current source. Reuse the accepted BoardScenario/BoardPrototype and ScreenDesign/projector seams; admit only the smallest patient-zero extensions when this future work is deliberately activated.",
@@ -473,7 +626,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 17
+    "parkingLotItemCount": 27
   },
   "effects": false,
   "executionAuthority": "NONE"

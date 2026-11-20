@@ -9,11 +9,13 @@ const orientationPage = fs.readFileSync(new URL('../orientation.html', import.me
 const orientationSource = fs.readFileSync(new URL('../docs/foundation/VEXWORK-ORIENTATION.md', import.meta.url), 'utf8');
 
 test('VexWork Pages owns the semantic navigator and reads same-origin public workspace', () => {
-  assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
-  assert.match(page, /class="terrain-home" href="\.\/vexboard\/">VexBoard<\/a>/);
-  assert.match(page, /class="pink-entry" href="\.\/orientation\.html" aria-label="Pink VexWork onboarding entry">🩷 Pink entry<\/a>/);
-  assert.match(page, /\.pink-entry\{[^}]*border:1px solid #f9a8d4;[^}]*background:#fdf2f8;[^}]*color:#be185d/);
-  assert.doesNotMatch(page, /class="terrain-home" href="\.\/orientation\.html">Orientation<\/a>/);
+  assert.match(page, /window\.VEX_SPIRAL_FEATURES = \[/);
+  assert.match(page, /id: 'vexboard',[\s\S]*?href: '\.\/vexboard\/'/);
+  assert.match(page, /id: 'pink-entry',[\s\S]*?href: '\.\/orientation\.html'/);
+  assert.match(page, /id: 'terrain',[\s\S]*?href: '\.\/terrain\.html'/);
+  assert.match(page, /id="vex-nav-actions"/);
+  assert.doesNotMatch(page, /class="terrain-home"/);
+  assert.doesNotMatch(page, /class="pink-entry"/);
   assert.match(page, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
   assert.doesNotMatch(page, /raw\.githubusercontent\.com/);
   assert.match(page, /VEXWORK VIEW · VEXWORK TRUTH OWNER/);
@@ -293,10 +295,11 @@ test('state presentation uses stable semantic color families and keeps priority 
   assert.equal(reader.priorityTone('NORMAL'), 'normal');
 });
 
-test('semantic level rail and selected VexWork family slot expose navigation home/back controls', () => {
+test('semantic level rail and selected VexWork family slot coexist with shared Spiral navigation', () => {
   assert.match(page, /class="family-current" href="\.\/" aria-current="page">VexWork<\/a>/);
   assert.doesNotMatch(page, /class="brand-home"/);
-  assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
+  assert.match(page, /id: 'terrain',[\s\S]*?href: '\.\/terrain\.html'/);
+  assert.match(page, /id: 'vexboard',[\s\S]*?href: '\.\/vexboard\/'/);
   assert.match(page, /data-level="PROJECTS"/);
   assert.match(page, /data-level="PROJECT"/);
 });

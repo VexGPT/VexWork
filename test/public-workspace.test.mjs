@@ -72,12 +72,12 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   const productization = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
   const setupConvergence = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence');
   const hereticIntegration = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration');
-  assert.equal(productization.state, 'RUNNING');
+  assert.equal(productization.state, 'PAUSED_AT_CHECKPOINT');
   assert.equal(setupConvergence.state, 'COMPLETED');
-  assert.equal(hereticIntegration.state, 'RUNNING');
+  assert.equal(hereticIntegration.state, 'COMPLETED');
   assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(setupConvergence.workRef), true);
-  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(hereticIntegration.workRef), true);
-  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes(hereticIntegration.workRef), false);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(hereticIntegration.workRef), true);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(productization.workRef), true);
   const p6 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   const p7 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion');
   assert.equal(p6.state, 'WAITING_DEPENDENCIES');
@@ -126,11 +126,11 @@ test('checked-in public workspace is generated-current', () => {
 // [VXG RealForever]
 
 
-test('Connected Services completes VCS-05 and releases VCS-06 architecture extraction', () => {
+test('Connected Services completes VCS-07 and releases the human acceptance walk', () => {
   const workspace = buildWorkspace();
   const connected = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.connected-services');
   assert.ok(connected);
-  assert.equal(connected.summary.workItemCount, 21);
+  assert.equal(connected.summary.workItemCount, 22);
   const vcs04 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04-conversation-adoption');
   const phase1 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase1-prechallenge');
   const phase2 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5');
@@ -144,6 +144,8 @@ test('Connected Services completes VCS-05 and releases VCS-06 architecture extra
   const phase6 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase6-terminal-currentness');
   const vcs05 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs05-stream-stress');
   const vcs06 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs06-architecture-extraction');
+  const vcs07 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs07-deployment-choices');
+  const acceptance = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.human-acceptance-walk');
   assert.deepEqual([phase1.state, phase2.state, phase3.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(defect.state, 'COMPLETED');
   assert.equal(lived.state, 'COMPLETED');
@@ -151,13 +153,17 @@ test('Connected Services completes VCS-05 and releases VCS-06 architecture extra
   assert.deepEqual([phase4.state, sendFailure.state, companion.state, phase5.state], ['COMPLETED', 'COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.deepEqual([vcs04.state, phase6.state], ['COMPLETED', 'COMPLETED']);
   assert.equal(vcs05.state, 'COMPLETED');
-  assert.equal(vcs06.state, 'READY');
+  assert.equal(vcs06.state, 'COMPLETED');
+  assert.equal(vcs07.state, 'COMPLETED');
+  assert.equal(acceptance.state, 'READY');
   const done = connected.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs;
   const ready = connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs;
   assert.equal(done.includes(vcs04.workRef), true);
   assert.equal(done.includes(phase6.workRef), true);
   assert.equal(done.includes(vcs05.workRef), true);
-  assert.equal(ready.includes(vcs06.workRef), true);
+  assert.equal(done.includes(vcs06.workRef), true);
+  assert.equal(done.includes(vcs07.workRef), true);
+  assert.deepEqual(ready, [acceptance.workRef]);
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });

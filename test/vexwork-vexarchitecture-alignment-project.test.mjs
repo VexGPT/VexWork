@@ -369,10 +369,9 @@ test('alignment contract dogfoods orientation-to-evolution discoverability', () 
 
 
 test('New Beginnings patient zero satisfies the Workgraph Segment provenance contract', () => {
-  assert.deepEqual(newBeginningsSegment.sourceRefs, [
-    'project.vexlife.new-beginnings',
-    'projects/vexlife-new-beginnings/README.md',
-  ]);
+  assert.equal(newBeginningsSegment.sourceRefs.includes('project.vexlife.new-beginnings'), true);
+  assert.equal(newBeginningsSegment.sourceRefs.includes('projects/vexlife-new-beginnings/README.md'), true);
+  assert.equal(new Set(newBeginningsSegment.sourceRefs).size, newBeginningsSegment.sourceRefs.length);
   assert.equal(newBeginningsSegment.formedAt, newBeginningsProject.formedAt);
 });
 
