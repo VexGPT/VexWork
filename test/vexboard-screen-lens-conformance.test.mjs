@@ -273,6 +273,41 @@ test('a mapped container projects the relationships contained inside it', () => 
   assert.ok(depth.nodes.length > 0, 'aggregate Depth exposes the contained runtime/provider relationships');
 });
 
+test('VexStream Playlist populations carry portable dynamic identity without inventing live rows', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const [screen] = vexstream.screens;
+  const card = screen.realization.templates.find((template) => template.ref === 'template.vexstream.playlists.card');
+  const entry = screen.realization.templates.find((template) => template.ref === 'template.vexstream.playlists.detail-entry');
+
+  assert.equal(card.instanceIdentity.kind, 'RUNTIME_INSTANCE');
+  assert.equal(card.instanceIdentity.continuity, 'STABLE_INSTANCE');
+  assert.deepEqual(card.instanceIdentity.partSources, ['playlist.id']);
+  assert.equal(entry.instanceIdentity.kind, 'RUNTIME_INSTANCE');
+  assert.equal(entry.instanceIdentity.continuity, 'CURRENT_OCCURRENCE');
+  assert.deepEqual(entry.instanceIdentity.partSources, ['playlist.id', 'entry.ref', 'occurrenceWithinPlaylist']);
+  assert.ok(entry.slots.filter((slot) => slot.depth > 0).every((slot) => slot.instanceIdentity?.kind === 'DERIVED_CHILD'));
+
+  assert.equal(
+    screen.elements.some((element) => element.ref.includes('.dynamic.utf8hex.')),
+    false,
+    'a formation contract does not fabricate current runtime instances',
+  );
+
+  const cardPopulation = screen.realization.presence.find((presence) => presence.ref === 'presence.vexstream.playlists.cards');
+  const detailPopulation = screen.realization.presence.find((presence) => presence.ref === 'presence.vexstream.playlists.detail.entries');
+  assert.equal(cardPopulation.kind, 'POPULATION');
+  assert.equal(detailPopulation.kind, 'POPULATION');
+
+  const cardContext = Realization.withOverride(
+    Realization.emptyRealizationContext(),
+    cardPopulation.ref,
+    'ITEMS',
+  );
+  const cardResolved = Realization.resolvePresence(vexstream, screen.screenRef, cardContext);
+  assert.equal(cardResolved.presence.get(cardPopulation.ref).value, 'ITEMS');
+  assert.equal(cardResolved.presence.get(cardPopulation.ref).by, 'SCENARIO');
+});
+
 test('VexStream current default-visible projection carries the zero-blocker addressability census', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const [screen] = vexstream.screens;
