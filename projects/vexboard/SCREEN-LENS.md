@@ -153,6 +153,21 @@ selected container
 
 Selecting a node in that aggregate descends into the exact owning control/pathway.
 
+Container aggregate graphs are expression-aware. A mapped descendant whose current presence is
+`LATENT` does not contribute its pathway to the aggregate for that expression. When another
+expression presents that descendant, its pathway enters the aggregate automatically.
+
+~~~text
+container
++ current expression presence
+-> currently presented descendant pathways
+-> aggregate Behavior / Depth graph
+~~~
+
+This keeps a container graph from advertising relationships that belong only to a hidden alternate
+terrain or closed nested presentation.
+
+
 This is a reader projection over already-authored relationships. It creates no container-level semantic
 owner and does not collapse the child Families or compositions into one synthetic Family.
 
