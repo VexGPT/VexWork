@@ -178,7 +178,9 @@ test('the Lens derives expressions from source realization for every Screen', ()
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-source-expressions\.mjs'/);
   assert.match(page, /Expressions\.expressionsFor\(state\.lens, screenRef\(\)\)/);
   assert.match(page, /Realization\.emptyRealizationContext\(\)/);
-  assert.match(page, /const currentPathway = \(\) => Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? \(state\.anchorElementRef \? null : expressionPathway\(\)\)/);
+  assert.match(page, /function projectedRelationshipForAnchor\(\)/);
+  assert.match(page, /graph\?\.nodes\.some\(\(node\) => node\.elementRef === state\.anchorElementRef\)/);
+  assert.match(page, /const currentPathway = \(\) => Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? projectedRelationshipForAnchor\(\)/);
   assert.doesNotMatch(page, /EXPRESSION_FIXTURE_URLS|expressionFixtureSources|normalizeScreenLensExpressionFixture|bindExpressionsForCurrentScreen/);
 });
 
