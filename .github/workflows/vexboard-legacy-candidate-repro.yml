@@ -1,0 +1,47 @@
+name: VexBoard Legacy Candidate Boot Repro
+
+on:
+  push:
+    branches:
+      - VXG-112026-vexboard-null-visibility-resilience-a001
+    paths:
+      - '.github/workflows/vexboard-legacy-candidate-repro.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  repro:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Serve repository
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/server.log 2>&1 &
+          sleep 2
+      - name: Reproduce malformed legacy URL
+        shell: bash
+        run: |
+          set +e
+          google-chrome --headless=new --no-sandbox --disable-gpu --enable-logging=stderr --v=0 --virtual-time-budget=5000             --dump-dom 'http://127.0.0.1:8000/vexboard/lens.html?lens=vexstream-music.candidate.screen-lens.json'             >/tmp/malformed.html 2>/tmp/malformed.log
+          echo '--- MALFORMED DOM ---'
+          grep -A4 -B2 'Screen Lens could not start\|Loading Screen Lens' /tmp/malformed.html || true
+          echo '--- MALFORMED CONSOLE ---'
+          tail -120 /tmp/malformed.log || true
+      - name: Reproduce correctly pathed legacy URL
+        shell: bash
+        run: |
+          set +e
+          google-chrome --headless=new --no-sandbox --disable-gpu --enable-logging=stderr --v=0 --virtual-time-budget=5000             --dump-dom 'http://127.0.0.1:8000/vexboard/lens.html?lens=../projects/vexboard/lens/vexstream-music.candidate.screen-lens.json'             >/tmp/correct.html 2>/tmp/correct.log
+          echo '--- CORRECT DOM ---'
+          grep -A4 -B2 'Screen Lens could not start\|Loading Screen Lens\|VexStream Music' /tmp/correct.html || true
+          echo '--- CORRECT CONSOLE ---'
+          tail -160 /tmp/correct.log || true
+      - name: Capture current behavior as evidence
+        shell: bash
+        run: |
+          malformed="$(grep -o 'Screen Lens could not start' /tmp/malformed.html | wc -l)"
+          correct="$(grep -o 'Screen Lens could not start' /tmp/correct.html | wc -l)"
+          echo "malformed_crash=$malformed"
+          echo "correct_crash=$correct"
