@@ -60,6 +60,29 @@ export function dynamicLensInstanceRef(baseRef, parts) {
   return root + '.dynamic.utf8hex.' + utf8Hex(values.join('\u0000'));
 }
 
+export function normalizeInstanceIdentityContract(input, label = 'instance identity') {
+  if (input === undefined || input === null) return null;
+  if (!input || typeof input !== 'object') fail(`${label} must be an object`);
+  if (input.kind !== SCREEN_LENS_IDENTITY_KINDS.RUNTIME_INSTANCE) {
+    fail(`${label} kind ${input.kind} must be RUNTIME_INSTANCE`);
+  }
+  const baseRef = text(input.baseRef, `${label} baseRef`);
+  const partSources = (input.partSources || []).map((part, index) =>
+    text(part, `${label} partSources[${index}]`),
+  );
+  if (!partSources.length) fail(`${label} partSources must be non-empty`);
+  const encoding = optionalText(input.encoding, `${label} encoding`) ?? SCREEN_LENS_INSTANCE_ENCODING;
+  if (encoding !== SCREEN_LENS_INSTANCE_ENCODING) {
+    fail(`${label} encoding ${encoding} is unknown`);
+  }
+  return Object.freeze({
+    kind: input.kind,
+    baseRef,
+    partSources: Object.freeze(partSources),
+    encoding,
+  });
+}
+
 export function normalizeElementIdentity(input, { ref, parentRef }) {
   if (input === undefined || input === null) return null;
   if (!input || typeof input !== 'object') fail(`${ref} identity must be an object`);
