@@ -272,7 +272,7 @@ test('container aggregate follows the current expression presence instead of hid
 });
 
 test('container selection renders contained relationships instead of a blank Behavior side', () => {
-  assert.match(page, /Lens\.aggregateContainedFaceGraph\(state\.lens, anchor\.ref, face\)/);
+  assert.match(page, /Lens\.aggregateContainedFaceGraph\(state\.lens, anchor\.ref, face, \{ excludedElementRefs: latentElementRefs \}\)/);
   assert.match(page, /contains \$\{relationshipCount\} projected relationship/);
   assert.match(page, /function pathwayContainingNode\(ref\)/);
   assert.match(page, /Lens\.elementsUsingPathway\(state\.lens, pathway\.pathwayRef\)\.find/);
