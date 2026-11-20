@@ -162,6 +162,12 @@ test('Screen Lens completion contract stays durable across graph convergence', (
   assert.ok(judgment);
   assert.ok(judgment.prevents.includes('experiment_name_means_disposable'));
   assert.ok(judgment.prevents.includes('static_projection_absence_equals_product_feature_absence'));
+
+  const runtimeIdentityDebt = seed.crossOwnerRows.find((row) => row.kind === 'RUNTIME_CREATED_PRESENTATION_IDENTITY');
+  assert.ok(runtimeIdentityDebt);
+  assert.equal(runtimeIdentityDebt.disposition, 'FRONTIER_DEBT');
+  assert.match(runtimeIdentityDebt.humanMeaning, /Theme and Support quick actions/);
+  assert.match(runtimeIdentityDebt.humanMeaning, /VexWork must not invent them/);
 });
 
 test('current human journeys preserve Product truth that the old source pin could not mechanically derive', () => {
