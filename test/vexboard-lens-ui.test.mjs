@@ -463,7 +463,7 @@ test('selected identities recurse into their active projected realization relati
 
 test('legacy Lens shorthand resolves in the canonical Lens directory', () => {
   assert.ok(page.includes("return /^[^/]+\\.json$/i.test(requested)?LENS_DIR+requested:requested;"));
-  assert.match(page, /lens must be a relative \\.json path on this site/);
+  assert.match(page, /lens must be a relative \.json path on this site/);
 });
 
 test('runtime viewer faults stay visible as diagnostics without replacing an already rendered Lens', () => {
