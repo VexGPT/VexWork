@@ -415,3 +415,46 @@ CROSS-FEATURE REVIEW != GENERIC REWRITE
 ```
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-ANDROID][CURRENT-STATE-REFINEMENT] -->
+
+## Current semantic-family convergence work
+
+The Direct Family migration pressure remains real open Work rather than accepted Product truth.
+
+~~~text
+semantic-family-convergence                  RUNNING
+
+Maps Distribution Mode  -> Android #220     RUNNING
+VexStream Repeat        -> Android #221     RUNNING
+VexStream Queue         -> Android #222     RUNNING
+VexStream Hub Partner   -> Android #223     RUNNING
+~~~
+
+Current owner status:
+
+- #219 VexPartner foundation is accepted on Android main.
+- #220 / #221 / #222 / #223 remain open Product candidates.
+- VexWork records their real active semantic pressure; it does not treat candidate source as accepted main.
+
+Dependency currentness correction:
+
+~~~text
+Queue
+  dependencyRefs -> Repeat Work
+  #221 remains provenance in sourceRefs
+
+Hub Partner
+  #219 is already accepted provenance
+  -> no live Work dependency
+~~~
+
+Permanent:
+
+~~~text
+DIRECT FAMILY CANDIDATE != ACCEPTED PRODUCT
+OPEN ANDROID PR != COMPLETED WORK
+SEMANTIC EFFECT != AUTOMATIC VEXEXECUTION JOB
+PROVIDER RELATIONSHIP != SEMANTIC OWNER
+INDEPENDENT EXTERNAL PARTICIPANT -> PRESSURE VEXPARTNER POSITIVELY
+~~~
+
+<!-- [VXG RealForever][CURRENT-STATE-REFINEMENT][SEMANTIC-FAMILY-CONVERGENCE][CURRENTIZED] -->

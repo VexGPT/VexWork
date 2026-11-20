@@ -30,7 +30,13 @@
     "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
     "github.pull.vexlife-android.211",
     "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
-    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt"
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt",
+    "github.pull.vexwork.279",
+    "github.pull.vexlife-android.219",
+    "github.pull.vexlife-android.220",
+    "github.pull.vexlife-android.221",
+    "github.pull.vexlife-android.222",
+    "github.pull.vexlife-android.223"
   ],
   "formedAt": "2026-10-24T08:50:00.000Z"
 }
