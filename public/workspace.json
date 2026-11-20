@@ -20197,14 +20197,20 @@
             "human.handoff.vexlife.local-artifacts-successor.20261119",
             "github.pull.vexlife-prod.402",
             "github.pull.vexlife-prod.414",
-            "github.commit.vexlife-prod.dbd34951d83842955c9f2c6d7a5219ce79f142df"
+            "github.commit.vexlife-prod.dbd34951d83842955c9f2c6d7a5219ce79f142df",
+            "github.pull.vexlife-prod.434",
+            "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+            "github.pull.vexlife-prod.435",
+            "github.commit.vexlife-prod.f05436538b022589472ce1dbe25a55ea9a15743c",
+            "github.pull.vexlife-prod.439",
+            "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-20T05:39:00.000Z",
-          "updatedAt": "2026-11-20T06:01:24.000Z",
+          "updatedAt": "2026-11-20T11:59:02Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.vexworks.local-artifacts-and-sources.ready.running.product-successor-1",
@@ -20285,7 +20291,7 @@
           "label": "[VexLife Local Artifacts]",
           "purpose": "Give a person one coherent local AI work experience in VexLife: files and persistent Local Sources are exact bounded material Vex can reach, and once that work surface is established the person can explicitly choose the local model doing the work while Vex projects only features that are truthful for the exact selected model/provider/runtime relationship.",
           "workClass": "OUTCOME",
-          "state": "DECOMPOSED",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": null,
@@ -20305,15 +20311,60 @@
             "project.vexlife.vexworks",
             "projects/vexlife-vexworks/README.md",
             "human.design.vexlife.vexworks.model-switching.20261119",
-            "github.pull.vexlife-prod.402"
+            "github.pull.vexlife-prod.402",
+            "github.pull.vexlife-prod.434",
+            "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+            "github.pull.vexlife-prod.435",
+            "github.commit.vexlife-prod.f05436538b022589472ce1dbe25a55ea9a15743c",
+            "github.pull.vexlife-prod.439",
+            "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-20T05:39:00.000Z",
-          "updatedAt": "2026-11-20T05:39:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T11:59:02Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.vexworks.outcome.decomposed.plan-validated.stable-local-artifacts-434",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Stable Local Artifacts integration #434 established the accepted text/document artifact circuit on Product main and the Project's A0→A4 sequence is no longer only decomposition.",
+              "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.434",
+                "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+                "projects/vexlife-vexworks/README.md"
+              ],
+              "createdAt": "2026-11-20T09:50:47Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.vexworks.outcome.plan-validated.ready.static-image-successor-435",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Product successor #435 formed the admitted static-image adaptation edge directly on the accepted Local Artifacts base, making the next Project work concrete while preserving visual interpretation as a separate held relationship.",
+              "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.435",
+                "github.commit.vexlife-prod.f05436538b022589472ce1dbe25a55ea9a15743c"
+              ],
+              "createdAt": "2026-11-20T09:52:50Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.vexworks.outcome.ready.running.static-image-integration-439",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The Project is actively executing A0 through proved static-image source #435 and current-main integration/proof carrier #439. A0 remains RUNNING until #439 resolves and the required visual-input realization/lived attached-image threshold is earned.",
+              "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.435",
+                "github.pull.vexlife-prod.439",
+                "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa"
+              ],
+              "createdAt": "2026-11-20T11:51:18Z"
+            }
+          ]
         }
       ],
       "lanes": [
@@ -20324,8 +20375,7 @@
             "work.vexlife.vexworks.imported-model-hookup",
             "work.vexlife.vexworks.lived-cross-model-proof",
             "work.vexlife.vexworks.model-capability-projection",
-            "work.vexlife.vexworks.model-selector",
-            "work.vexlife.vexworks.outcome"
+            "work.vexlife.vexworks.model-selector"
           ]
         },
         {
@@ -20342,7 +20392,8 @@
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
-            "work.vexlife.vexworks.local-artifacts-and-sources"
+            "work.vexlife.vexworks.local-artifacts-and-sources",
+            "work.vexlife.vexworks.outcome"
           ]
         },
         {
@@ -20392,7 +20443,7 @@
           "label": "[VexLife Local Artifacts]",
           "purpose": "Give a person one coherent local AI work experience in VexLife: files and persistent Local Sources are exact bounded material Vex can reach, and once that work surface is established the person can explicitly choose the local model doing the work while Vex projects only features that are truthful for the exact selected model/provider/runtime relationship.",
           "workClass": "OUTCOME",
-          "state": "DECOMPOSED",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": null,
@@ -20412,15 +20463,60 @@
             "project.vexlife.vexworks",
             "projects/vexlife-vexworks/README.md",
             "human.design.vexlife.vexworks.model-switching.20261119",
-            "github.pull.vexlife-prod.402"
+            "github.pull.vexlife-prod.402",
+            "github.pull.vexlife-prod.434",
+            "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+            "github.pull.vexlife-prod.435",
+            "github.commit.vexlife-prod.f05436538b022589472ce1dbe25a55ea9a15743c",
+            "github.pull.vexlife-prod.439",
+            "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-20T05:39:00.000Z",
-          "updatedAt": "2026-11-20T05:39:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T11:59:02Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.vexworks.outcome.decomposed.plan-validated.stable-local-artifacts-434",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Stable Local Artifacts integration #434 established the accepted text/document artifact circuit on Product main and the Project's A0→A4 sequence is no longer only decomposition.",
+              "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.434",
+                "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+                "projects/vexlife-vexworks/README.md"
+              ],
+              "createdAt": "2026-11-20T09:50:47Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.vexworks.outcome.plan-validated.ready.static-image-successor-435",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Product successor #435 formed the admitted static-image adaptation edge directly on the accepted Local Artifacts base, making the next Project work concrete while preserving visual interpretation as a separate held relationship.",
+              "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.435",
+                "github.commit.vexlife-prod.f05436538b022589472ce1dbe25a55ea9a15743c"
+              ],
+              "createdAt": "2026-11-20T09:52:50Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.vexworks.outcome.ready.running.static-image-integration-439",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The Project is actively executing A0 through proved static-image source #435 and current-main integration/proof carrier #439. A0 remains RUNNING until #439 resolves and the required visual-input realization/lived attached-image threshold is earned.",
+              "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.435",
+                "github.pull.vexlife-prod.439",
+                "github.commit.vexlife-prod.8b27bf51898cac3e1359c5fc41bd38d1c0667caa"
+              ],
+              "createdAt": "2026-11-20T11:51:18Z"
+            }
+          ]
         }
       ]
     },
