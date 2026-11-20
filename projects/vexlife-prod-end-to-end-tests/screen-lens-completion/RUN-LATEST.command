@@ -5,7 +5,7 @@ CONTINUITY='[VXG RealForever]'
 
 VEXWORK_REPO='VexGPT/VexWork'
 VEXWORK_URL='https://github.com/VexGPT/VexWork.git'
-VEXWORK_HEAD='d2e6defc572e2b181e7f4ac4de44dce47a3d302c'
+VEXWORK_HEAD='2672f713a3ef788eea18cbd31f2955e796097071'
 
 PRODUCT_REPO='VexGPT/VexLife-Prod'
 PRODUCT_URL='https://github.com/VexGPT/VexLife-Prod.git'
