@@ -10,6 +10,9 @@ const committed = () => normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('
 const lens = committed();
 const STREAM = 'screen.vexstream-music';
 const stream = X.expressionsFor(lens, STREAM);
+const vexstreamDesktop = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexstream-music.main.screen-lens.json', import.meta.url), 'utf8')));
+const VEXSTREAM_DESKTOP = 'vexstream.desktop.library';
+const vexstreamDesktopExpressions = X.expressionsFor(vexstreamDesktop, VEXSTREAM_DESKTOP);
 const byWhat = (list, where, what) => list.find((expression) => expression.where === where && expression.what === what);
 
 test('every screen has Source first, then its source-authored examples, then distinct relationship expressions', () => {
@@ -134,6 +137,54 @@ test('the typed intent of a control finds the expression it brings about; a sour
   // A per-item action is exposed where its population has rows, closest to Source.
   const exposing = X.expressionExposing(stream, 'element.vexstream-music.body.track-actions.menu');
   assert.equal(exposing.where, 'Songs');
+});
+
+test('source-owned selector refs connect non-Compose controls to selection Behavior without synthetic pathways', () => {
+  const discoverRef = 'element.vexstream.shell.view.discover';
+  const discover = X.expressionForControl(
+    vexstreamDesktop,
+    VEXSTREAM_DESKTOP,
+    vexstreamDesktopExpressions,
+    discoverRef,
+  );
+  assert.ok(discover, 'Discover control resolves to a source-authored selection expression');
+  assert.equal(discover.kind, 'SELECTION');
+  assert.equal(
+    discover.context.overrides['presence.vexstream.shell.primary-terrain'],
+    'vexstream.desktop.library.panel.discover',
+  );
+
+  const discoverGraph = X.expressionGraph(vexstreamDesktop, VEXSTREAM_DESKTOP, discover);
+  assert.ok(
+    discoverGraph.nodes.some((node) => node.role === 'ELEMENT' && node.elementRef === discoverRef),
+    'the selected Product control appears in the generic selection graph',
+  );
+  assert.ok(
+    discoverGraph.nodes.some((node) => node.role === 'STATE' && /selected\(/.test(node.label)),
+    'selection state remains presentation meaning rather than an invented semantic Family',
+  );
+  assert.ok(
+    discoverGraph.nodes.some((node) => node.face === 'DEPTH' && node.role === 'REALIZATION' && node.label === 'ShellNavigation.project'),
+    'Depth keeps the Product-owned realizer',
+  );
+
+  const youtubeRef = 'element.vexstream.discover.mode.youtube';
+  const youtube = X.expressionForControl(
+    vexstreamDesktop,
+    VEXSTREAM_DESKTOP,
+    vexstreamDesktopExpressions,
+    youtubeRef,
+  );
+  assert.ok(youtube);
+  assert.equal(
+    youtube.context.overrides['presence.vexstream.discover.mode'],
+    'vexstream.desktop.library.discover-panel.youtube',
+  );
+  assert.equal(
+    youtube.context.overrides['presence.vexstream.shell.primary-terrain'],
+    'vexstream.desktop.library.panel.discover',
+    'nested selector carries the enclosing terrain it requires',
+  );
 });
 
 test('a hand-set context is a custom expression, read the same way by both sides', () => {
