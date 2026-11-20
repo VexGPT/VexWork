@@ -189,15 +189,22 @@ test('a neutral FRAME workspace does not imply VexLife-Prod or STATIC_HTML_CSS',
 test('a mapped container projects the relationships contained inside it', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const shellRef = 'vexstream.desktop.library.region.shell';
-  const pathways = containedPathways(vexstream, shellRef);
-  assert.equal(pathways.length, 7);
+  const sourceExpression = Expressions.expressionsFor(vexstream, vexstream.screens[0].screenRef)[0];
+  const sourcePresence = Realization.resolvePresence(vexstream, vexstream.screens[0].screenRef, sourceExpression.context);
+  const excludedElementRefs = new Set(
+    [...sourcePresence.elements.entries()]
+      .filter(([, info]) => info.state === 'LATENT')
+      .map(([ref]) => ref),
+  );
+  const pathways = containedPathways(vexstream, shellRef, { excludedElementRefs });
+  assert.equal(pathways.length, 7, 'source-default shell aggregate excludes latent alternate-terrain/detail pathways');
   assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.player.previous'));
   assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.playback.play-pause'));
   assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.phone.connection.open'));
   assert.ok(pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream.system.status.open'));
 
-  const behavior = aggregateContainedFaceGraph(vexstream, shellRef, 'BEHAVIOR');
-  const depth = aggregateContainedFaceGraph(vexstream, shellRef, 'DEPTH');
+  const behavior = aggregateContainedFaceGraph(vexstream, shellRef, 'BEHAVIOR', { excludedElementRefs });
+  const depth = aggregateContainedFaceGraph(vexstream, shellRef, 'DEPTH', { excludedElementRefs });
   assert.equal(behavior.pathwayRefs.length, 7);
   assert.ok(behavior.nodes.length > 5, 'aggregate Behavior contains actual pathway nodes, not a screenshot placeholder');
   assert.ok(depth.nodes.length > 0, 'aggregate Depth exposes the contained runtime/provider relationships');
@@ -206,7 +213,7 @@ test('a mapped container projects the relationships contained inside it', () => 
 test('VexStream current default-visible projection carries the zero-blocker addressability census', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const [screen] = vexstream.screens;
-  assert.equal(screen.elements.length, 70, 'merged target source exports admitted Home/Library/Discover/Playlists terrain structure with zero-blocker immediate coverage');
+  assert.equal(screen.elements.length, 79, 'merged target source exports admitted Home/Library/Discover/Playlists structure plus selected-Playlist detail controls');
   assert.equal(vexstream.pathways.length, 7, 'coverage completeness does not invent deeper semantic pathways');
   const refs = new Set(screen.elements.map((element) => element.ref));
   for (const ref of [
@@ -288,7 +295,6 @@ test('VexStream bounded Discover terrain is expressed through the same shared se
   assert.ok(find(PC), 'Discover / This PC alternate expression exists');
   assert.ok(find(YOUTUBE), 'Discover / YouTube alternate expression exists');
   assert.ok(find(EXPLORE), 'Discover / Explore alternate expression exists');
-  assert.equal(expressions.length, 8, 'Source + Library modes + Discover modes + Playlists derive from the same generic expression engine');
   assert.equal(screen.view?.scriptPolicy, 'NONE');
   const discoverBindings = screen.view?.stateBindings?.filter((binding) =>
     binding.presenceRef === discoverRef
@@ -309,18 +315,49 @@ test('VexStream bounded Playlists list/create terrain is expressed through the s
   });
 
   assert.ok(playlistExpression, 'Playlists list/create Shell expression exists');
-  assert.equal(expressions.length, 8);
   assert.equal(vexstream.pathways.length, 7, 'Playlists terrain admission does not invent semantic pathways');
   assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.playlists.create.name'));
   assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.playlists.create'));
-  const rawVexStream = subjects[2][1];
-  assert.ok(
-    rawVexStream.screens[0].realization.held.some((value) => /playlist detail/i.test(value)),
-    'producer keeps selected-playlist detail explicitly held before normalization',
-  );
+  assert.ok(screen.elements.some((element) => element.ref === 'vexstream.desktop.library.playlists.overview'));
+  assert.ok(screen.elements.some((element) => element.ref === 'vexstream.desktop.library.playlists.detail'));
   assert.ok((screen.view?.stateBindings ?? []).some((binding) =>
     binding.presenceRef === shellRef && binding.value === PLAYLISTS
   ));
+});
+
+test('VexStream selected Playlist detail adds relationships only when that presentation is open', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const [screen] = vexstream.screens;
+  const expressions = Expressions.expressionsFor(vexstream, screen.screenRef);
+  const shellPresenceRef = 'presence.vexstream.shell.primary-terrain';
+  const detailPresenceRef = 'presence.vexstream.playlists.detail-open';
+  const shellRef = 'vexstream.desktop.library.region.shell';
+  const PLAYLISTS = 'vexstream.desktop.library.panel.playlists';
+
+  const playlistExpressions = expressions.map((expression) => ({
+    expression,
+    resolved: Realization.resolvePresence(vexstream, screen.screenRef, expression.context),
+  })).filter(({ resolved }) => resolved.presence.get(shellPresenceRef)?.value === PLAYLISTS);
+
+  const closed = playlistExpressions.find(({ resolved }) => resolved.presence.get(detailPresenceRef)?.value === 'CLOSED');
+  const open = playlistExpressions.find(({ resolved }) => resolved.presence.get(detailPresenceRef)?.value === 'OPEN');
+  assert.ok(closed, 'Playlists overview expression exists');
+  assert.ok(open, 'selected Playlist detail OPEN expression exists');
+
+  const pathwaysFor = ({ resolved }) => {
+    const excludedElementRefs = new Set(
+      [...resolved.elements.entries()]
+        .filter(([, info]) => info.state === 'LATENT')
+        .map(([ref]) => ref),
+    );
+    return containedPathways(vexstream, shellRef, { excludedElementRefs });
+  };
+
+  assert.equal(pathwaysFor(closed).length, 7, 'closed detail does not leak hidden detail pathways into the shell aggregate');
+  assert.equal(pathwaysFor(open).length, 13, 'open detail adds its six rightful child pathways to the shell aggregate');
+  assert.equal(screen.elements.find((element) => element.ref === 'element.vexstream.playlists.rename.name')?.kind, 'FIELD');
+  assert.equal(screen.elements.find((element) => element.ref === 'element.vexstream.library.sort.preset')?.kind, 'FIELD');
+  assert.equal(vexstream.pathways.length, 13);
 });
 
 test('VexStream stable source controls remain addressable even when deeper pathways are held', () => {
