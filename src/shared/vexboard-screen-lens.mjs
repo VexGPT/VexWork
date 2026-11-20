@@ -10,6 +10,15 @@
 
 import { normalizeExamples, normalizeScreenRealization } from './vexboard-screen-lens-realization.mjs';
 import { LAYERS, normalizeScreenLayout } from './vexboard-screen-lens-frames.mjs';
+import { normalizeElementIdentity } from './vexboard-screen-lens-identity.mjs';
+
+export {
+  SCREEN_LENS_IDENTITY_KINDS,
+  SCREEN_LENS_INSTANCE_ENCODING,
+  appendLensIdentityPath,
+  dynamicLensInstanceRef,
+  normalizeLensIdentityPath,
+} from './vexboard-screen-lens-identity.mjs';
 
 export const SCREEN_LENS_SCHEMA = 'vexboard.screen-lens/v1';
 
@@ -248,12 +257,14 @@ function normalizeElement(input, owner, refs) {
   if (refs.has(ref)) fail(`duplicate ref ${ref}`);
   refs.add(ref);
   if (!Object.hasOwn(ELEMENT_KINDS, input.kind)) fail(`${ref} has unknown element kind ${input.kind}`);
+  const parentRef = optionalText(input.parentRef, `${ref} parentRef`);
   return {
     ref,
     kind: input.kind,
     role: ELEMENT_KINDS[input.kind],
     label: text(input.label, `${ref} label`),
-    parentRef: optionalText(input.parentRef, `${ref} parentRef`),
+    parentRef,
+    identity: normalizeElementIdentity(input.identity, { ref, parentRef }),
     symbol: optionalText(input.symbol, `${ref} symbol`),
     declared: optionalText(input.declared, `${ref} declared`),
     labelRes: optionalText(input.labelRes, `${ref} labelRes`),
