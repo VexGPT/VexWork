@@ -692,7 +692,7 @@ This is lifecycle currentization of already-accepted source/lived meaning, not n
 
 The historical aggregate-path contention remains useful provenance, but it no longer holds any Terrain Work open.
 
-The next fresh instance should re-ground current VexWork main and current Vextreme/VexSite evidence, then lead the smallest P2 edge. Vextreme remains the owner of page identity, localization evidence, generated/runtime currentness, modernization facts and browser proof.
+P2 is already complete and should not be reopened merely because this currentization revisits its surrounding Project source. The next fresh instance should re-ground current VexWork main and follow the current READY / RUNNING child from the trajectory below; at this checkpoint that foreground is P5 Antique Plate lived commerce pilot, beginning with the READY first real picture-backed antique item. Vextreme remains the owner of VexSite page identity, localization evidence, generated/runtime currentness, modernization facts and browser proof if a future regression or new pressure reopens that domain.
 
 ## Current trajectory
 
