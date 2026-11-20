@@ -1,4 +1,5 @@
 name: VexBoard Current-Main Successor Proof
+# proof child trigger: a001
 
 on:
   pull_request:
