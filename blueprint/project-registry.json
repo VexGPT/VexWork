@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.project-registry/v1",
   "registryRef": "registry.vexwork.projects.001",
-  "registryVersion": 29,
+  "registryVersion": 30,
   "purpose": "Locate source-managed Projects and their Workgraph, Board, and optional agency-policy sources without making the registry another owner of work state.",
   "projects": [
     {
@@ -233,6 +233,14 @@
       "workgraphRef": "workgraph.vexwork.foundation",
       "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexboard-projection-consolidation/project.json",
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
+    },
+    {
+      "projectRef": "project.vexlife.local-voice-input",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
+      "definitionPath": "projects/vexlife-local-voice-input/project.json",
       "boardViewPath": null,
       "agencyPolicyPathOrNull": null
     }
