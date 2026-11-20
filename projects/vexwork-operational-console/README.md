@@ -380,7 +380,7 @@ This does not yet choose a source-segmentation schema, distributed runtime, or n
 
 The perceptual-depth Terrain correction deliberately follows this rule: it changes Terrain presentation and its focused UI proof without rewriting the shared Workgraph merely because a UI review produced feedback. Accepted Workgraph currentness may temporarily lag that branch and be reconciled as a separate VexWork Flows effect.
 
-PR #33 has now merged the patient-zero source into accepted VexWork main. T1 therefore sits in `VERIFYING`: the remaining predicate is lived browser/trackpad/compact traversal behavior, not additional source formation.
+PR #33 merged the patient-zero source into accepted VexWork main. At that checkpoint T1 correctly sat in `VERIFYING` because lived browser/trackpad/compact traversal behavior remained. The later 2026-10-22 lived threshold below supersedes that checkpoint and now closes the bounded Terrain experience.
 
 ## Phase 2 — Patient Zero: VexSite Localization
 
@@ -677,19 +677,20 @@ P5 Antique Plate lived commerce pilot
 P6 cross-domain completion
 ```
 
-### Bounded Workgraph currentness lag
+### Workgraph currentness reconciliation — 2026-11-20
 
-The accepted aggregate Workgraph may still project:
+The bounded lag recorded at the 2026-10-22 threshold has now been reconciled after the shared aggregate edge cleared:
 
 ```text
-T1 Relational Terrain patient-zero     VERIFYING
-T2 Currentness and flow Terrain layer  WAITING_DEPENDENCIES
-P2 VexSite patient-zero                READY
+VexWork Terrain Map v2                 COMPLETED
+T1 Relational Terrain patient-zero     COMPLETED
+T2 Currentness and flow Terrain layer  COMPLETED
+P2 VexSite patient-zero                COMPLETED
 ```
 
-That lag is known. It exists because independent drafts #27 and #35 still write the shared aggregate Workgraph/workspace paths, and VexWork Flows deliberately avoids making UI/product progress a coordination blocker.
+This is lifecycle currentization of already-accepted source/lived meaning, not new Terrain product work. T1 closes from its accepted lived browser/trackpad threshold. T2 advances through its lawful dependency/active/verify states because the accepted source already contains the currentness/flow layer and the same lived threshold explicitly names its recent-movement and state-age behavior. The Terrain parent closes at the bounded product threshold; future Terrain evolution requires a real regression or new consumer pressure.
 
-Do not interpret the stale T1/T2 aggregate states as rejection of the lived threshold above. A future VexWork Flows reconciliation may ordinary-forward the accepted experience checkpoint when the shared aggregate edge is safe. **Do not hold P2 foreground work merely to perform that bookkeeping first.**
+The historical aggregate-path contention remains useful provenance, but it no longer holds any Terrain Work open.
 
 The next fresh instance should re-ground current VexWork main and current Vextreme/VexSite evidence, then lead the smallest P2 edge. Vextreme remains the owner of page identity, localization evidence, generated/runtime currentness, modernization facts and browser proof.
 
@@ -717,8 +718,9 @@ P5  Antique Plate lived commerce pilot                    RUNNING
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
 
 PARALLEL EXPERIENCE
-T1  Relational Terrain patient-zero                       VERIFYING
-T2  Currentness and flow Terrain layer                    WAITING_DEPENDENCIES
+Terrain v2                                                COMPLETED
+T1  Relational Terrain patient-zero                       COMPLETED
+T2  Currentness and flow Terrain layer                    COMPLETED
 
 PARKED
   multi-person / nearby-route fulfillment optimization
