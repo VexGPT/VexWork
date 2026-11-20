@@ -149,6 +149,11 @@ test('Product-authored color mode is one shareable read-only Presentation axis',
   assert.match(page, /doc\.documentElement\.removeAttribute\(colorMode\.attribute\)/, 'System removes the authored override');
   assert.match(page, /doc\.documentElement\.setAttribute\(colorMode\.attribute, option\.attributeValue\)/, 'Light\/Dark use only the Product-declared root attribute');
   assert.match(page, /function setStaticColorMode\(ref\)[\s\S]*\.current-product-view \.product-view-frame[\s\S]*applyStaticColorMode\(doc, view\)/, 'mode changes update the mounted inert Product instead of remounting it');
+  assert.match(page, /function activateStaticColorMode\(doc, view, controlRef\)/);
+  assert.match(page, /activation\.controlRef !== controlRef/);
+  assert.match(page, /getComputedStyle\(doc\.documentElement\)\.colorScheme\.toLowerCase\(\)/, 'System resolves through Product CSS before Theme chooses the opposite mode');
+  assert.match(page, /effective\.includes\('dark'\) \? activation\.lightRef : activation\.darkRef/);
+  assert.match(page, /activateStaticColorMode\(doc, view, ref\);[\s\S]*rememberStaticViewPresentation\(doc, view, ref\);[\s\S]*selectElement\(ref\);/, 'the authored Product control both acts on Presentation and remains inspectable');
   assert.match(page, /next\.set\('presentation', colorMode\.ref\)/, 'an exact lived presentation is shareable');
   assert.match(page, /params\.get\('presentation'\)/, 'a shared presentation coordinate is restored on boot');
   assert.match(page, /staticViewDocument\(view\)[\s\S]*rootAttribute[\s\S]*option\.attributeValue/, 'the exact mode is present on first paint, before Product JavaScript could exist');
