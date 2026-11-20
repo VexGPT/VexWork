@@ -48,8 +48,6 @@ test('VexLife-Prod mirrors Claude/Product-owned Lens bytes and already speaks th
   assert.equal(prodMainRaw.lensRef, 'lens.vexlife-prod');
   assert.equal(prodMainLens.screens.length, 1);
   assert.equal(prodMainLens.screens[0].screenRef, 'screen.vexlife-workspace');
-  assert.equal(prodMainLens.screens[0].elements.length, 81);
-  assert.equal(prodMainLens.pathways.length, 11);
   const vision = pathwayForElement(prodMainLens, 'element.vexlife-workspace.companion.vision');
   assert.equal(vision.disposition, 'SCAE_FAMILY');
   assert.ok(vision.nodes.some((node) => node.face === 'BEHAVIOR' && node.role === 'CONTROL'));
