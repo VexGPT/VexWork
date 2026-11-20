@@ -246,12 +246,21 @@ test('expression stepping animates the whole three-card carousel handoff instead
   assert.doesNotMatch(page, /translateX\(64px\)/, 'the old center-only nudge is gone');
 });
 
-test('workspace-shaped Experience yields to graph readability before the whole Lens reaches phone width', () => {
-  assert.match(page, /\.side\{[^}]*min-width:0/, 'a grid side may shrink without forcing document-level horizontal overflow');
-  assert.match(page, /\.side-head\{[^}]*min-width:0/, 'side chrome does not impose an accidental minimum width on the split');
-  assert.match(page, /@media \(max-width:1180px\) and \(min-width:901px\)\{[\s\S]*\.main\.wide\{grid-template-columns:minmax\(0,1fr\);gap:18px\}/, 'a source-authored workspace stacks before its Behavior graph is squeezed below a useful reading width');
-  assert.match(page, /@media \(max-width:900px\)\{[\s\S]*\.main\{grid-template-columns:minmax\(0,1fr\);gap:18px\}/, 'the existing small-width rule still stacks every manifestation');
-  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,120}1180|1180[^\n]{0,120}vexlife-prod/i, 'responsive placement follows manifestation shape, never Product identity');
+test('Experience and Behavior form one intrinsic pair whose wrap owns outer flow and scroll handoff', () => {
+  assert.match(page, /\.main\{[^}]*display:flex;flex-wrap:wrap/, 'the pair wraps from its own available inline space rather than a viewport coordinate');
+  assert.match(page, /\.main\.wide > \.side\[data-side="EXPERIENCE"\]\{[^}]*flex-basis:min\(100%,620px\)/, 'workspace Experience carries a larger readable basis');
+  assert.match(page, /\.main\.wide > \.side\[data-side="BEHAVIOR"\]\{[^}]*flex-basis:min\(100%,460px\)/, 'Behavior carries its own readable basis');
+  assert.match(page, /function syncPairLayout\(main = refs\.main\)/);
+  assert.match(page, /Math\.abs\(behavior\.offsetTop - experience\.offsetTop\) > 4/, 'stacked/split is observed from the actual side relationship');
+  assert.match(page, /main\.closest\('\.lens'\)\?\.classList\.toggle\('pair-stacked', stacked\)/, 'the observed pair result controls outer flow ownership');
+  assert.match(page, /\.lens\.pair-stacked \.tray\{height:auto!important;min-height:0;max-height:none;overflow:visible\}/, 'the tray stays after the whole stacked pair instead of sitting between its sides');
+  assert.match(page, /\.surface\{[^}]*overscroll-behavior:auto/, 'blank/passive Surface space yields vertical scroll to its ancestor');
+  assert.match(page, /\.structure\{[^}]*overscroll-behavior:auto/, 'Structure also yields at its scroll boundary');
+  assert.match(page, /const stackedFlow = pairLayout\(\) === 'stacked'/);
+  assert.match(page, /if \(stackedFlow && !explicitZoom\) return; \/\/ vertical wheel belongs to the outer stacked flow/, 'an interactive graph keeps explicit zoom but yields ordinary vertical scroll when embedded in page flow');
+  assert.match(page, /if \(!relationship \|\| pairLayout\(\) === 'stacked'\) return;/, 'the cross-side bridge does not draw through a vertically stacked flow');
+  assert.doesNotMatch(page, /@media \(max-width:1180px\)/, 'the temporary medium viewport breakpoint is gone');
+  assert.doesNotMatch(page, /vexlife-prod[^\n]{0,160}pair-stacked|pair-stacked[^\n]{0,160}vexlife-prod/i, 'pair layout remains subject-agnostic');
 });
 
 test('source-owned static views keep expression continuity without remounting the Product iframe', () => {
