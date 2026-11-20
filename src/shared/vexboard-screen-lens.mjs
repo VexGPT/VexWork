@@ -187,6 +187,35 @@ function normalizeScreenView(input, screenRef) {
     }
     fail(`${screenRef} view interactionBindings[${bindingIndex}] kind ${kind} is unknown`);
   });
+  let colorMode = null;
+  if (input.colorMode !== undefined && input.colorMode !== null) {
+    if (!input.colorMode || typeof input.colorMode !== 'object' || Array.isArray(input.colorMode)) {
+      fail(`${screenRef} view colorMode must be an object`);
+    }
+    const options = (input.colorMode.options || []).map((option, optionIndex) => ({
+      ref: text(option?.ref, `${screenRef} view colorMode options[${optionIndex}] ref`),
+      label: text(option?.label, `${screenRef} view colorMode options[${optionIndex}] label`),
+      attributeValue: option?.attributeValue === undefined || option?.attributeValue === null
+        ? null
+        : text(option.attributeValue, `${screenRef} view colorMode options[${optionIndex}] attributeValue`),
+    }));
+    if (!options.length) fail(`${screenRef} view colorMode needs options`);
+    if (new Set(options.map((option) => option.ref)).size !== options.length) {
+      fail(`${screenRef} view colorMode option refs must be unique`);
+    }
+    const defaultRef = text(input.colorMode.defaultRef, `${screenRef} view colorMode defaultRef`);
+    if (!options.some((option) => option.ref === defaultRef)) {
+      fail(`${screenRef} view colorMode defaultRef ${defaultRef} is not one of its options`);
+    }
+    colorMode = {
+      owner: text(input.colorMode.owner, `${screenRef} view colorMode owner`),
+      source: text(input.colorMode.source, `${screenRef} view colorMode source`),
+      attribute: attribute(input.colorMode.attribute, `${screenRef} view colorMode attribute`, { required: true }),
+      storageKey: optionalText(input.colorMode.storageKey, `${screenRef} view colorMode storageKey`),
+      defaultRef,
+      options,
+    };
+  }
   return {
     kind: 'STATIC_HTML_CSS',
     html: text(input.html, `${screenRef} view html`),
@@ -200,6 +229,7 @@ function normalizeScreenView(input, screenRef) {
       structuralAttribute: attribute(anchors.structuralAttribute, `${screenRef} view structuralAttribute`, { required: true }),
       structuralParentAttribute: attribute(anchors.structuralParentAttribute, `${screenRef} view structuralParentAttribute`),
     },
+    colorMode,
     stateBindings,
     interactionBindings,
   };
