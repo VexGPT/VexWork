@@ -684,3 +684,25 @@ no Product-specific VexBoard reader branch
 
 Full-product Stable acceptance remains held. Deleted top-level terrain is now admitted; its nested
 selection/permanent-delete/recovery presentations remain separate future lived pressure.
+
+Shared VexWork acceptance against the merged Deleted/Trash candidate:
+
+~~~text
+initial run 44772309891
+  113 PASS / 1 FAIL
+  only red = stale prior-source census expected 79 elements while merged source truth is 81
+  Trash generic-consumer test PASS
+
+currentized run 44772457009
+  114 / 114 PASS
+  0 FAIL
+
+exact source 03c1fe43ea90ccdc3be7c78193b209c15f3d5102
+elements 81
+pathways 13
+presence 7
+runtime templates 3
+~~~
+
+No Trash/VexStream-specific Screen Lens consumer branch was added. The only correction between the two
+runs was currentizing the old literal source census from 79 to the merged 81-element Product projection.
