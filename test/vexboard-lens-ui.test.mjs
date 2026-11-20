@@ -370,3 +370,26 @@ test('a screen whose source authors a frame layout is drawn as a workspace, chos
   assert.match(page, /element\.kind === 'DIALOG' \|\| element\.layer === 'MODAL'/, 'modal source presentation receives a workspace-modal realization');
   assert.doesNotMatch(page, /vexlife-prod[^\n]{0,80}ws-float|ws-float[^\n]{0,80}vexlife-prod/, 'floating presentation stays generic rather than Product-special-cased');
 });
+
+
+test('browser and mouse Back/Forward revisit meaningful Lens viewpoints', () => {
+  assert.match(page, /LENS_HISTORY_SCHEMA = 'vexboard\.screen-lens-history\/v1'/);
+  assert.match(page, /function lensHistorySnapshot\(\)/);
+  assert.match(page, /walk: state\.walk/);
+  assert.match(page, /selected: state\.selected/);
+  assert.match(page, /realization: state\.realization/);
+  assert.match(page, /colorModeRef: staticColorMode\(\)\?\.ref/);
+  assert.match(page, /function markLensHistoryPoint\(\)/);
+  assert.match(page, /history\.pushState\(\{ \[LENS_HISTORY_KEY\]: snapshot \}/);
+  assert.match(page, /history\.replaceState\(\{ \[LENS_HISTORY_KEY\]: snapshot \}/);
+  assert.match(page, /window\.addEventListener\('popstate'/);
+  assert.match(page, /restoreLensHistory\(snapshot\)/);
+  assert.match(page, /function selectElement\([\s\S]*markLensHistoryPoint\(\)/, 'control selection is navigable history');
+  assert.match(page, /function selectNode\([\s\S]*markLensHistoryPoint\(\)/, 'pathway-step selection is navigable history');
+  assert.match(page, /function setExpression\([\s\S]*markLensHistoryPoint\(\)/, 'expression traversal is navigable history');
+  assert.match(page, /function setStaticPresenceOutcome\([\s\S]*markLensHistoryPoint\(\)/, 'Product selection/presentation traversal is navigable history');
+  assert.match(page, /function setStaticColorMode\([\s\S]*markLensHistoryPoint\(\)/, 'presentation changes are navigable history');
+  assert.match(page, /selectElement\(requested, \{ recordHistory: false \}\)/, 'opening a shared link seeds rather than duplicates history');
+  assert.doesNotMatch(page, /event\.button\s*===\s*[34]/, 'mouse side buttons use normal browser History semantics rather than vendor-specific interception');
+  assert.match(page, /Browser or mouse Back \/ Forward revisits the Lens choices you traversed/);
+});
