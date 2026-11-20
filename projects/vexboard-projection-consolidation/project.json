@@ -24,7 +24,13 @@
     "github.pull.vexwork.368",
     "github.pull.vexlife-prod.437",
     "repo.vexlife-android:architecture/vexarchitecture/README.md",
-    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt"
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/lens/VexLifeProdScreenLens.kt",
+    "projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md",
+    "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md",
+    "test/vexboard-screen-lens-conformance.test.mjs",
+    "test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json",
+    "github.pull.vexwork.377",
+    "human.victor.projection-foundation-acceptance-2026-11-20"
   ],
   "formedAt": "2026-11-20T11:44:00.000Z"
 }

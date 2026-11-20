@@ -172,40 +172,176 @@ Consolidation must not turn generated/current output into automatic Stable.
 
 Two real products are enough to map repeated pressure; they are not enough to justify every imagined extension point. Add a reusable realization abstraction only when the divergence map or a materially different third shape proves the recurring need.
 
-## First successor edge — map before refactor
+## Current divergence-map result — 2026-11-20
 
-Start with `work.vexboard.projection-consolidation.current-divergence-map`.
+The first successor edge is complete enough to move from mapping into producer-contract proof.
 
-Build one evidence matrix:
+Canonical evidence:
 
 ~~~text
-concern
-Android producer/source
-Prod producer/source
-shared Lens contract
-generic VexBoard reader behavior
-classification:
-  SOURCE_EARNED_DIFFERENCE
-  PRODUCER_IMPLEMENTATION_DETAIL
-  GENERIC_SHARED_BEHAVIOR
-  ACCIDENTAL_DUPLICATION
-next smallest action
+projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md
 ~~~
 
-At minimum inspect:
+The map found that the architecture is already substantially converged. Most Android/Product
+differences are source-earned; the strongest accidental duplication is at the conformance/proof
+boundary and in repeated generic guidance.
 
-- producer location and generation;
-- Screen / Element identity and hierarchy;
-- Surface / Structure manifestation;
-- Behavior / Depth pathway roles;
-- presence and expressions;
-- text, icons and localization;
-- interactions / state bindings;
-- overlay and container relationships;
-- Stable/Main/currentness;
-- proof paths and duplicated tests/docs.
+Do not turn the map into a reason to homogenize the two products.
 
-Do not refactor a difference merely because the two implementations look different.
+### Four projection coordinates that must stay distinct
+
+The history repeatedly exposed one category error: several different questions were being answered by
+the words "Android", "desktop", "browser", "phone" or "workspace". Keep these coordinates separate.
+
+~~~text
+platform / host provenance
+  where the Product is implemented or hosted
+  Android / Windows / macOS / browser are evidence here
+  != generic renderer selection
+
+manifestation topology
+  how Product space is arranged for the human
+
+  COMPACT_FLOW
+    one dominant viewport
+    hierarchical / sequential content
+    screen-navigation oriented
+
+  FRAME_WORKSPACE
+    multiple persistent regions coexist
+    seams divide allocation
+    handles may resize/collapse
+    overlays coexist above the frame
+
+rendering substrate
+  how the manifestation reaches VexBoard
+
+  ELEMENT_TREE
+    VexBoard draws the source-described element hierarchy
+
+  SOURCE_VIEW
+    Product supplies its own bounded inert manifestation
+    current admitted example: STATIC_HTML_CSS
+
+presentation-state realization
+  which source-authored relationship is active
+  -> which source-authored manifestation consequence follows
+  presence / expressions
+  + interaction bindings
+  + state bindings
+~~~
+
+These names are Project-level recognition vocabulary, not new vexboard.screen-lens/v1 fields.
+
+Current correlation:
+
+~~~text
+VexLife-Android
+  native/mobile provenance
+  -> COMPACT_FLOW
+  -> ELEMENT_TREE
+
+VexLife-Prod
+  desktop/browser Product provenance
+  -> FRAME_WORKSPACE
+  -> SOURCE_VIEW
+~~~
+
+Correlation is not identity.
+
+A future tablet may author a FRAME_WORKSPACE. A future desktop Product may use ELEMENT_TREE. A
+source-owned compact Product may eventually provide a SOURCE_VIEW. VexBoard must not branch on the
+platform name merely because the first two products correlate that way today.
+
+### Host viewport is outside Product identity
+
+The outer host constrains a manifestation without defining it.
+
+~~~text
+HostViewport
+  width / height
+  safe area
+  pointer / touch / hover
+  keyboard
+  resize
+  pixel density
+
+HostViewport
+!= Product manifestation topology
+!= rendering substrate
+!= semantic owner
+~~~
+
+This also keeps three currently easy-to-confuse "browser" meanings separate:
+
+~~~text
+browser running VexBoard
+  = host
+
+VexLife-Prod Browser region
+  = Product FRAME_WORKSPACE region
+
+Product HTML/CSS carried by Screen Lens
+  = SOURCE_VIEW substrate
+~~~
+
+### Existing contract remains the first producer contract
+
+Do not create a producer framework before a real contract gap appears.
+
+The current producer boundary is already:
+
+~~~text
+platform-appropriate producer
+-> exact emitted vexboard.screen-lens/v1
+-> normalizeScreenLens
+-> shared realization / expressions / layout / view validation
+-> generic reader
+~~~
+
+The first implementation pressure is therefore producer-neutral conformance, not a new schema.
+
+### Neutral pressure shape
+
+The first neutral fixture should deliberately break one historical correlation:
+
+~~~text
+neutral subject
+  manifestation topology = FRAME_WORKSPACE
+  rendering substrate     = ELEMENT_TREE
+  source view              = absent
+~~~
+
+That proves:
+
+~~~text
+FRAME_WORKSPACE != VexLife-Prod
+FRAME_WORKSPACE != STATIC_HTML_CSS
+~~~
+
+Only add an explicit topology/substrate field when a real subject cannot be expressed truthfully
+through current source facts or the reader becomes ambiguous without it. Naming a useful distinction
+does not automatically earn a permanent schema coordinate.
+
+### Current implementation boundary
+
+Open VexWork PR #361 currently owns the existing Screen Lens normalizer, realization/expression
+modules and their established tests. Projection Consolidation must not author over that active
+membrane.
+
+The first implementation slice is therefore additive:
+
+~~~text
+new neutral fixture
++ new producer-neutral conformance test
+-> consume current normalizer / expressions / frame geometry
+-> exercise Android Main
+-> exercise accepted/current Product Lens
+-> exercise neutral FRAME_WORKSPACE + ELEMENT_TREE
+~~~
+
+After #361 converges or releases its paths, this Project may use the conformance evidence to decide
+whether any core contract change is actually earned.
 
 ## Work sequence
 
@@ -242,12 +378,151 @@ The neutral third subject is a conformance pressure fixture, not a fake iOS impl
 - Do not redo the Android VexArchitecture/VexBoard completeness audit.
 - Do not perform a broad Product refactor before the divergence map proves what is accidental.
 
+
+## Current implementation / proof checkpoint — 2026-11-20
+
+The first executable consolidation slice is source-real.
+
+~~~text
+neutral conformance subject
+  FRAME layout
+  + ELEMENT_TREE
+  + no STATIC_HTML_CSS
+  + no product/platform identity
+
+shared conformance proof
+  Android Main
+  + accepted/current VexLife-Prod Lens
+  + neutral subject
+  -> same normalize / expressions / realization / layout seam
+~~~
+
+The initial exact candidate proof exposed two stale generic frame assertions that still described
+pre-currentization Product truth. They were corrected without changing the reader or either Product.
+
+Fresh GitHub-hosted proof then reached:
+
+~~~text
+87 / 87 focused Screen Lens + UI + realization + expression + frame tests PASS
+0 FAIL
+~~~
+
+Offline Lens verification also established:
+
+~~~text
+VexLife-Android Stable  PASS
+VexLife-Android Main    PASS
+
+VexLife-Prod Stable
+VexLife-Prod Main
+  projection/problems = none
+  held currentness debt = sourceBlobSha1 only
+~~~
+
+The Product sourceBlobSha1 mismatch predates this consolidation candidate and is routed to VexWork
+#361, which already owns the catalog/Lens currentness membrane. Projection Consolidation must not
+author a competing pin merely to make its own proof receipt green.
+
+The proof carriage workflow was temporary and was deleted after the evidence was consumed.
+
+### Human witness gate
+
+Automated conformance does not prove perceived continuity.
+
+Before this slice is considered accepted, witness one exact candidate head through the same Lens shell:
+
+~~~text
+VexLife-Android Stable or Main
+  compact element-tree manifestation
+
+VexLife-Prod Main
+  Product source view + framed workspace manifestation
+
+neutral framed element-tree fixture
+  framed workspace manifestation
+  no Product source view
+~~~
+
+Acceptance question:
+
+> Do all three read as the same VexBoard perception system while preserving their materially different
+> source-authored manifestations, with no regression in the Android or Product experiences?
+
+A changed implementation/Lens head after human acceptance requires a fresh witness. Documentation-only
+changes that do not alter the witnessed reader/Lens/fixture bytes should preserve the recorded
+coordinate explicitly rather than silently rebinding it.
+
+## Lived foundation acceptance — 2026-11-20
+
+Victor accepted the current projection foundation after lived raw-git review across Android and
+VexLife-Prod, including the paired-container / scroll-ownership refinement.
+
+Accepted reusable manifestation pressure:
+
+~~~text
+COMPACT_FLOW + ELEMENT_TREE
+  current VexLife-Android
+
+FRAME_WORKSPACE + SOURCE_VIEW
+  current VexLife-Prod
+
+FRAME_WORKSPACE + ELEMENT_TREE
+  neutral conformance subject
+~~~
+
+Accepted reader relationship:
+
+~~~text
+Experience + Behavior = one paired attention container
+Inspector = sibling after the complete pair
+pair split/stacked = observed from actual container layout
+local viewport = owns local engagement while applicable, not unconditional outer scroll
+~~~
+
+The final lived refinement was proven on stacked PR #377 with 85/85 focused shared Lens/UI tests
+passing and no failures. The implementation remains stacked above #361 until that active
+realization/currentness base integrates; acceptance does not erase that repository-ordering boundary.
+
+The earlier #376 branch is predecessor architecture/conformance provenance and is superseded by
+the composed #377 stack once these sources are carried there.
+
+## Next scalability consumer after consolidation
+
+Once the Android / VexLife-Prod convergence work has passed shared conformance and lived acceptance,
+the next intended pressure is `vgong24/VexstreamMusic`.
+
+Do not pre-author VexStream changes from this Project. Re-ground its then-current source and begin from:
+
+~~~text
+projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md
+-> VexStream repository entry / v2 architecture
+-> one bounded feature slice
+-> identity alignment before structural refactor
+-> shared Screen Lens conformance
+~~~
+
+The current 2026-11-20 read suggests Playback is a strong first slice because V4 already owns stable
+Playback Family / Control / Act / Effect identities and the browser already exposes partial
+data-vex-control / data-vex-action / data-vex-screen addressability. That is evidence for an
+identity-first projection attempt, not a permanent choice or a refactor authorization.
+
+The scalability question is deliberately falsifiable:
+
+> Can a materially different existing repository become projectable mostly by exposing the identity of
+> relationships it already owns, while the same VexBoard consumer remains unchanged?
+
+If yes, the convergence architecture has demonstrated reuse beyond its two origin products. If no,
+the exact source ambiguity should earn only the smallest bounded source refactor that resolves it.
+
 ## Fresh-instance route
 
 Read this file first, then current source only where implicated:
 
 ~~~text
 VexWork
+  projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md
+  test/vexboard-screen-lens-conformance.test.mjs
+  test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json
   projects/vexboard/SCREEN-LENS.md
   projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md
   projects/vexboard/lens/catalog.json

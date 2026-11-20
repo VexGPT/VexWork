@@ -130,11 +130,27 @@ export function normalizeScreenRealization(input, { screenRef, knownRefs }) {
     realizedBy: Object.freeze(list(fact.realizedBy).map(String)),
     realizedIn: Object.freeze(list(fact.realizedIn).map((ref) => (templateRefs.has(ref) ? ref : fail(`${fact.ref} template ${ref} is not declared`)))),
   }));
+  const realizers = Object.freeze(list(input.realizers).map(String));
+  const realizerSet = new Set(realizers);
+  const callEdgeKeys = new Set();
+  const callEdges = Object.freeze(list(input.callEdges).map((edge) => {
+    const caller = optional(edge?.caller) ?? fail(`${screenRef} realization call edge needs caller`);
+    const callee = optional(edge?.callee) ?? fail(`${screenRef} realization call edge needs callee`);
+    if (!realizerSet.has(caller)) fail(`${screenRef} realization call edge caller ${caller} is not a realizer`);
+    if (!realizerSet.has(callee)) fail(`${screenRef} realization call edge callee ${callee} is not a realizer`);
+    const callerSource = optional(edge?.callerSource);
+    const calleeSource = optional(edge?.calleeSource);
+    const key = [caller, callee, callerSource ?? '', calleeSource ?? ''].join('|');
+    if (callEdgeKeys.has(key)) fail(`${screenRef} duplicate realization call edge ${caller} -> ${callee}`);
+    callEdgeKeys.add(key);
+    return Object.freeze({ caller, callee, callerSource, calleeSource });
+  }));
   return Object.freeze({
     status: input.status,
     entry: input.entry ? Object.freeze({ symbol: optional(input.entry.symbol), source: optional(input.entry.source) }) : null,
     rendersRegisteredTree: known(input.rendersRegisteredTree, 'rendersRegisteredTree'),
-    realizers: Object.freeze(list(input.realizers).map(String)),
+    realizers,
+    callEdges,
     presence: Object.freeze(presence),
     templates: Object.freeze(templates),
     elements: Object.freeze(elements),
