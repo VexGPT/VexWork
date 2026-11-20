@@ -1,0 +1,464 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife-web-search-refinement",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Web Search Refinement",
+      "purpose": "Give the canonical Vex Companion a truthful bounded public-web research path that reuses the existing capability runtime, scheduler and ToolResultRelay; keep external content untrusted, make all actual provider input share one context budget, preserve source-addressed evidence while temporary raw observations can leave active context, and prove one natural same-Conversation research turn without making web evidence a second Memory or authority owner.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.web-search-refinement",
+        "projects/vexlife-web-search-refinement/README.md",
+        "human.intent.vexlife.web-search-refinement.20261105",
+        "work.vexlife.interface-refinement.home-tool-capability",
+        "work.vexlife.interface-refinement.lived-context-capability-integration",
+        "work.vexlife.new-beginnings.p2.browser-context-dom-projection",
+        "projects/vex-security-assurance/README.md",
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeWebReach.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-20T09:50:51.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.vexarchitecture-preparation",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Preparation — map web research through current VexArchitecture",
+      "purpose": "Before provider implementation, map the bounded public-web research intention through the current New Beginnings/Interface Refinement semantic owners: capability need/admission, one final provider-boundary Context Lease budget, source admission, untrusted external observation, ToolResultRelay return, transient observation lifetime, working-context rollover, same-Conversation synthesis and VexBoard projectability. Preserve search vs fetch and public GitHub read vs authenticated/write authority as distinct questions where meaning would otherwise be lost. This work creates no network effect or provider authority.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/VEXARCHITECTURE-PREPARATION.md",
+        "project.vexlife.new-beginnings",
+        "project.vexlife.interface-refinement",
+        "github.pull.vexwork.248",
+        "work.vexlife.web-search-refinement.context-budget-observation-lifecycle",
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeWebReach.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+      ],
+      "createdAt": "2026-11-06T07:16:00.000Z",
+      "updatedAt": "2026-11-20T09:50:49.000Z",
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.context-budget-observation-lifecycle",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Unify provider-boundary context budget and transient observation lifecycle",
+      "purpose": "Make the real model input budget account for canonical Conversation/Memory materialization plus Foundation/Atlas/currentContext, capability request/synthesis instructions and active tool observations as one provider-boundary token budget. Add a system-owned transient-observation lifecycle so large raw web evidence can leave active model context after bounded reduction while exact source/observation refs remain available for rehydration; do not make the model responsible for manual cleanup.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.web-search-refinement.vexarchitecture-preparation",
+        "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "work.vexlife.interface-refinement.atlas-self-capability-awareness"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/README.md",
+        "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+        "repo.vexlife:src/core/context-lease.mjs",
+        "repo.vexlife:src/core/resource-context-pressure.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs",
+        "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeWebReach.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-20T09:50:49.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.safe-public-web-read",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Bind safe bounded public-web search and fetch reads",
+      "purpose": "Add the smallest provider-neutral public-web read surface needed for Vex to search for current information and fetch selected public sources through the existing capability runtime. Treat every returned webpage/snippet as untrusted external content rather than instruction or authority; require public HTTP/HTTPS destination admission, redirect revalidation, bounded time/bytes/content types, no implicit credentials or local-network reachability, source/currentness provenance and exact ToolResultRelay-compatible observations.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.web-search-refinement.context-budget-observation-lifecycle"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/README.md",
+        "repo.vexlife:docs/VEX-ASSEMBLY-CAPABILITY-DOMAINS.md",
+        "repo.vexlife:docs/CAPABILITY-ASSIMILATION-RUNTIME.md",
+        "repo.vexlife:blueprint/capability-registry.json",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs",
+        "repo.vexlife-prod:exploration/web-workspace/lib/upstream.mjs",
+        "projects/vex-security-assurance/README.md",
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeWebReach.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-20T09:50:49.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.lived-web-research-proof",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Prove one lived natural web-research turn",
+      "purpose": "Prove the user-facing threshold in the canonical durable Conversation: Victor asks a natural question requiring current public information; Vex recognizes the admitted web-read capability, obtains bounded source-addressed search/fetch observations, keeps external prompt-injection text non-authoritative, receives results through ToolResultRelay, synthesizes a grounded answer, and the same Conversation remains current across completion/re-entry.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.web-search-refinement.safe-public-web-read",
+        "work.vexlife.interface-refinement.lived-context-capability-integration"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/README.md",
+        "work.vexlife.interface-refinement.lived-context-capability-integration",
+        "work.vexlife.interface-refinement.home-tool-capability",
+        "repo.vexlife:src/core/browser-companion-bridge.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs",
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeWebReach.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-20T09:50:50.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.research-working-set",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Potential — transient multi-source research working set",
+      "purpose": "If real multi-source web use proves direct bounded observations insufficient, earn the smallest reusable mechanism that lets raw source observations remain externally addressable while active model context retains compact claim/evidence/currentness/contradiction packets and can rehydrate exact evidence on demand. Do not create this as a second Memory, semantic-truth or research-authority system before repeated pressure demonstrates the need.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "PARKED",
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/README.md",
+        "repo.vexlife:src/core/context-lease.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs",
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeWebReach.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-06T06:30:00.000Z"
+    }
+  ],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.preparation.plan-validated.ready.current-product",
+      "workRef": "work.vexlife.web-search-refinement.vexarchitecture-preparation",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Interface Refinement prior-context, Atlas and lived context-capability dependencies are accepted; current Product source now provides the concrete owner map the preparation work was formed to establish.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393"
+      ],
+      "createdAt": "2026-11-20T09:50:43.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.preparation.ready.running.native-tools",
+      "workRef": "work.vexlife.web-search-refinement.vexarchitecture-preparation",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The accepted native-tools/source-return implementation realizes the preparation map through the Capability Atlas, provider representation, Bridge, turn-scoped source custody and rightful source owners.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393"
+      ],
+      "createdAt": "2026-11-20T09:50:44.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.preparation.running.verifying.sourceowner",
+      "workRef": "work.vexlife.web-search-refinement.vexarchitecture-preparation",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #393 SourceOwner and Assurance confirm the mapped ownership distinctions survive integrated Product source.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b"
+      ],
+      "createdAt": "2026-11-20T09:50:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.preparation.verifying.completed.merge393",
+      "workRef": "work.vexlife.web-search-refinement.vexarchitecture-preparation",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Merged #393 accepts the provider/tool/source-return architecture the preparation work existed to ground; later web research uses this accepted ownership rather than reopening formation design.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b"
+      ],
+      "createdAt": "2026-11-20T09:50:49.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.context.waiting.ready.interface-dependencies",
+      "workRef": "work.vexlife.web-search-refinement.context-budget-observation-lifecycle",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Interface Refinement prior-context/Memory, Atlas awareness and lived capability integration are all completed, releasing the provider-boundary context/observation lifecycle work.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+        "work.vexlife.interface-refinement.lived-context-capability-integration"
+      ],
+      "createdAt": "2026-11-20T09:50:43.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.context.ready.running.turn-source-custody",
+      "workRef": "work.vexlife.web-search-refinement.context-budget-observation-lifecycle",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Current Product owns prompt token budgets plus bounded capability-exchange allowance and turn-scoped Web/Repository/Memory source custody with source refs instead of durable raw-result persistence.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393"
+      ],
+      "createdAt": "2026-11-20T09:50:44.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.context.running.verifying.current-source",
+      "workRef": "work.vexlife.web-search-refinement.context-budget-observation-lifecycle",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Current source reuses one observed web snapshot for find/offset reads, retains sourceRef/observedAt, bounds requests/results and records rawResultContentPersisted=false.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76"
+      ],
+      "createdAt": "2026-11-20T09:50:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.context.verifying.completed.merge393",
+      "workRef": "work.vexlife.web-search-refinement.context-budget-observation-lifecycle",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The bounded provider/context and transient source-observation relationship is accepted through #393; a larger multi-source reduction/rehydration working set remains separately parked until pressure earns it.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b"
+      ],
+      "createdAt": "2026-11-20T09:50:49.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.safe-web.waiting.ready.context-current",
+      "workRef": "work.vexlife.web-search-refinement.safe-public-web-read",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The shared context/observation lifecycle is current, releasing the bounded public-web read implementation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393"
+      ],
+      "createdAt": "2026-11-20T09:50:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.safe-web.ready.running.webreach",
+      "workRef": "work.vexlife.web-search-refinement.safe-public-web-read",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexLifeWebReach and the Capability Bridge implement search/fetch/find as read-only public-web reach with source-addressed bounded observations.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.383",
+        "github.pull.vexlife-prod.393"
+      ],
+      "createdAt": "2026-11-20T09:50:46.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.safe-web.running.verifying.current-source",
+      "workRef": "work.vexlife.web-search-refinement.safe-public-web-read",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Current Product source admits only public HTTP/HTTPS, unauthenticated GET, revalidates redirect targets, bounds bytes/redirects, refuses loopback/private/special ranges and marks returned text untrusted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76"
+      ],
+      "createdAt": "2026-11-20T09:50:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.safe-web.verifying.completed.merge393",
+      "workRef": "work.vexlife.web-search-refinement.safe-public-web-read",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Merged #393 carries the provider-native web read schemas and rightful Bridge/WebReach implementation; safe bounded web-read infrastructure is accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b"
+      ],
+      "createdAt": "2026-11-20T09:50:49.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.lived-proof.waiting.ready.infrastructure-current",
+      "workRef": "work.vexlife.web-search-refinement.lived-web-research-proof",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Safe public-web reads and the prior lived context/capability dependencies are complete. The remaining Project threshold is now a human-lived natural same-Conversation web-research turn.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+        "work.vexlife.interface-refinement.lived-context-capability-integration"
+      ],
+      "createdAt": "2026-11-20T09:50:50.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.outcome.plan-validated.ready.accepted-infrastructure",
+      "workRef": "work.vexlife.web-search-refinement.outcome",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The Project is no longer only a validated plan: current Product source has accepted context/source custody and safe bounded public-web read infrastructure.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b"
+      ],
+      "createdAt": "2026-11-20T09:50:50.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.web-search-refinement.outcome.ready.running.lived-proof-next",
+      "workRef": "work.vexlife.web-search-refinement.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Continue the Project through its one remaining admitted user threshold: a natural current-information question answered from bounded source-addressed web observations in the same durable Conversation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.393",
+        "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b"
+      ],
+      "createdAt": "2026-11-20T09:50:51.000Z"
+    }
+  ],
+  "sourceRefs": [
+    "project.vexlife.web-search-refinement",
+    "projects/vexlife-web-search-refinement/README.md",
+    "human.intent.vexlife.web-search-refinement.20261105",
+    "projects/vexlife-web-search-refinement/VEXARCHITECTURE-PREPARATION.md",
+    "github.pull.vexlife-prod.383",
+    "github.pull.vexlife-prod.393",
+    "github.commit.vexlife-prod.4a325b928668bca17d43f5f38eb2099334066a4b",
+    "github.commit.vexlife-prod.8dbbd3f250556fe9cc6664849be65a67e9c1fc76",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeWebReach.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt"
+  ],
+  "formedAt": "2026-11-06T06:30:00.000Z"
+}
