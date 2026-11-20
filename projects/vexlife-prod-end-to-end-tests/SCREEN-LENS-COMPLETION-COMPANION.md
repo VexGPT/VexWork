@@ -201,9 +201,15 @@ base 9d07ae93ffa95f6780a2d7756add27efb1f8d228
 head cd2560024cced859d89aff0e9815ab72cdaf44d9
 tree 3f296f3cc899ad84c6838d92c2ae5d1fb22ddf37
 14 changed paths
-P006 reached compilation and exposed candidate source defect
-defect corrected at cd2560024...
-SourceOwner current attempt P007 via GitHub runner
+SourceOwner P007 PASS
+
+#424
+typed Product Theme -> colorMode activation
+base cd2560024cced859d89aff0e9815ab72cdaf44d9
+head 2b84499cf16ce066b4160f01bd80c07f85b6972d
+tree 702a719fc27974a8ef552e696ab23ff25fc7762c
+2 changed paths
+SourceOwner current attempt P008 via GitHub runner
 ```
 
 #421 makes the following visible runtime affordances first-class Product coordinates:
@@ -420,13 +426,56 @@ Capability
 as non-targeted valid binding meanings while retaining target-existence checks for LocalSpatial / LocalInteraction.
 ```
 
+### P007 — terminal PASS
+
+Victor returned:
+
+```text
+outer RETURN sha256
+af8e8e9b60212ff24841493fce024be7c4e8adc69451e066e6dc908c451ad365
+
+retained inner RETURN sha256
+caab8138e937751c5cd58f942a9a0f29485750b560690dd85409529859e82afb
+```
+
+Exact candidate:
+
+```text
+head cd2560024cced859d89aff0e9815ab72cdaf44d9
+tree 3f296f3cc899ad84c6838d92c2ae5d1fb22ddf37
+```
+
+Result:
+
+```text
+PASS
+BUILD SUCCESSFUL
+candidate/harness/environment/unknown findings 0
+mutation 0
+```
+
+Bounded review behaved as designed:
+
+```text
+allChangedPaths 14
+selected source 10
+omitted source 4
+full candidate diff retained
+```
+
+Canonical next function:
+
+```text
+GENERIC_THEME_CONTROL_PRESENTATION_BINDING
+```
+
+This closed the Product Spiral / Theme / Support source-addressability leg.
+
 ---
 
-## Current GitHub-hosted runner — P007
+## Current GitHub-hosted runner — P008
 
-The companion PR is now the executable handoff surface.
-
-Victor should **not** manually download a ChatGPT ZIP for this lane.
+The companion PR remains the executable handoff surface; no ChatGPT sandbox download is required.
 
 Current runner:
 
@@ -434,63 +483,51 @@ Current runner:
 projects/vexlife-prod-end-to-end-tests/screen-lens-completion/RUN-LATEST.command
 ```
 
-The runner reconstructs the exact Relay ZIP from companion-owned package bytes:
+Current package asset:
 
 ```text
-projects/vexlife-prod-end-to-end-tests/screen-lens-completion/packages/P007.zip.b64
+projects/vexlife-prod-end-to-end-tests/screen-lens-completion/packages/P008.zip.b64
 ```
 
 Package asset commit:
 
 ```text
-7a1229d4075e4b9a1f6590dea42594077565b7cc
+d8aa0314cdd97b1f93e5ced4bb9f2c8ede697086
 ```
 
 Expected reconstructed package SHA-256:
 
 ```text
-50f94dafd4e602535bf62b55c81673c9348b81715359875edbe056e487a20c3e
+e5295444e55bd419c31a046d296307d9f772d0750669cff47738d831fa9ca91d
 ```
 
-Runner commit carrying the current execution surface:
+Runner commit:
 
 ```text
-6120fb2e8cb9b8897ffc6ba400edb068a98243ee
+4c2884df5de88e87173061e7e5121f15657fe694
 ```
 
 Exact Product candidate:
 
 ```text
-base
-9d07ae93ffa95f6780a2d7756add27efb1f8d228
-
-head
-cd2560024cced859d89aff0e9815ab72cdaf44d9
-
-tree
-3f296f3cc899ad84c6838d92c2ae5d1fb22ddf37
-
-base branch
-VXG-112026-screen-lens-presentation-promotion-a002
-
-candidate branch
-VXG-112026-screen-lens-spiral-addressability-a001
+PR #424
+base cd2560024cced859d89aff0e9815ab72cdaf44d9
+head 2b84499cf16ce066b4160f01bd80c07f85b6972d
+tree 702a719fc27974a8ef552e696ab23ff25fc7762c
+branch VXG-112026-screen-lens-theme-activation-a001
 ```
 
-Human run model:
+P008 proves only the typed Product Theme -> colorMode activation export. On PASS, the companion advances to the already-authored generic VexWork #345 proof.
+
+Human execution remains:
 
 ```text
 one GitHub-hosted command
--> fetch exact companion-owned package bytes
--> reconstruct exact Relay ZIP locally
--> verify SHA-256
--> execute the ZIP through current accepted VexLocalBridge/VexRelay
--> produce canonical RETURN
+-> exact companion-owned bytes
+-> local digest verification
+-> accepted Relay carrier
+-> canonical RETURN
 ```
-
-The package remains the accepted carrier contract; GitHub now owns delivery of those exact bytes so ChatGPT does not need to hand Victor a sandbox download.
-
-Future instances update **both** the package asset and `RUN-LATEST.command` when a new attempt is formed, then append the result to the companion PR comment ledger.
 
 
 ---
@@ -629,12 +666,11 @@ Do not let fluency collapse those states.
 At companion formation, the next edge is:
 
 ```text
-run P007 from the GitHub-hosted #344 runner against corrected exact #421
+run P008 from the GitHub-hosted #344 runner against exact #424
 -> consume canonical RETURN
 -> if PASS:
-     Product Spiral/Theme/Support identity source is proved
-     -> bind generic Screen Lens interaction with Product-authored Theme identity
-        without Product-specific rendering
+     typed Product Theme -> colorMode activation is proved
+     -> prove already-authored generic VexWork #345 consumer
      -> wait for active Product semantic line's one-regeneration boundary
      -> regenerate canonical Product Lens once
      -> witness through normal Project / Revision / Expression / Presentation / Face
