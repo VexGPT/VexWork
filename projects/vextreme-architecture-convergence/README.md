@@ -139,10 +139,7 @@ future third Service pressure
       only if current source demonstrates a stronger repeated invariant
 ~~~
 
-The Service-fractal Work remains RUNNING only long enough to pass VexWork quality review and integrate
-this current-source decision. A clear accepted review may close that child without creating Android
-runtime source. The broader Post-Partner parent remains RUNNING for Broadcast/Receiver,
-permission/admission and other materially different platform boundaries.
+The Service-fractal Work is now **COMPLETED** through VexWork PR #356 / merge `e07ecc392e50419207249f7abafd1fceacad4be8`. The exact currentization passed VexRelay SourceOwner, fresh semantic QA/Independent Assurance returned CLEAR, current VexLife-Android main remained exactly `d857a92371555472e0303b18eadf353da2a868d6`, and the merge tree was byte-identical to the proven candidate tree. This closes only the bounded Service-fractal question without creating Android runtime source. The broader Post-Partner parent remains RUNNING for Broadcast/Receiver, permission/admission and other materially different platform boundaries.
 
 Permanent:
 

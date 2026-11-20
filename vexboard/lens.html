@@ -113,7 +113,7 @@ a{color:var(--focus)}
 @media (prefers-reduced-motion:reduce){.flipper{transition:none}}
 
 /* Surface face */
-.surface{flex:1;min-height:0;overflow:hidden;padding:18px 22px;display:flex;justify-content:center;background:radial-gradient(circle at 50% 0,#eef2f8,transparent 70%)}
+.surface{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:18px 22px;display:flex;justify-content:center;background:radial-gradient(circle at 50% 0,#eef2f8,transparent 70%)}
 .phone{position:relative;width:min(340px,100%);height:100%;max-height:760px;min-height:420px;display:flex;flex-direction:column;border:1px solid #cfd5df;border-radius:30px;background:#fbfbfd;box-shadow:0 18px 40px -24px #18213a55;overflow:hidden;align-self:flex-start}
 .phone.dimmed [data-ref]:not(.sel):not(.anc){opacity:.46}
 .phone.dimmed [data-ref]:not(.sel):not(.anc) [data-ref],.phone.dimmed .sel [data-ref]{opacity:1}
@@ -932,6 +932,10 @@ const state = {
   splitProjection: new Map(),
   // Read-only Product-authored presentation choices, keyed by Project + Screen. Never written to Product storage.
   colorModes: new Map(),
+  // Browser Back/Forward is a history of human Lens viewpoints, not Product/page history.
+  // A meaningful Lens choice requests one push; incidental redraw/zoom/pan continue replacing.
+  historyPushPending: false,
+  historyRestoring: false,
 };
 let refs = {};
 
@@ -952,6 +956,70 @@ function staticColorMode(view = currentScreen()?.view) {
     ?? colorMode.options.find((option) => option.ref === colorMode.defaultRef)
     ?? null;
 }
+const LENS_HISTORY_SCHEMA = 'vexboard.screen-lens-history/v1';
+const LENS_HISTORY_KEY = 'vexboardScreenLens';
+
+function lensHistoryScopeKey() {
+  const subject = currentSubject() ?? catalogSubjectForCurrentLens();
+  const subjectRef = subject?.subjectRef ?? state.lens?.lensRef ?? 'lens';
+  if (state.request?.mode === 'COMMIT') return `${subjectRef}|commit:${state.commit?.sha ?? state.request.commitRef ?? ''}`;
+  if (state.request?.mode === 'BUILD') return `${subjectRef}|build:${currentBuildRef() ?? ''}|${state.lens?.sourceSnapshot?.commit ?? ''}`;
+  return `${subjectRef}|legacy:${state.lens?.sourceSnapshot?.commit ?? ''}`;
+}
+
+function lensHistorySnapshot() {
+  return {
+    schemaVersion: LENS_HISTORY_SCHEMA,
+    scope: lensHistoryScopeKey(),
+    walk: state.walk,
+    selected: state.selected,
+    anchorElementRef: state.anchorElementRef,
+    pathwayRef: state.pathwayRef,
+    faces: { ...state.faces },
+    realization: state.realization,
+    colorModeRef: staticColorMode()?.ref ?? null,
+  };
+}
+
+function markLensHistoryPoint() {
+  if (!state.historyRestoring) state.historyPushPending = true;
+}
+
+function sameLensHistorySnapshot(a, b) {
+  return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+}
+
+function restoreLensHistory(snapshot) {
+  if (!snapshot || snapshot.schemaVersion !== LENS_HISTORY_SCHEMA || snapshot.scope !== lensHistoryScopeKey()) {
+    location.reload();
+    return;
+  }
+  state.historyRestoring = true;
+  try {
+    if (snapshot.walk?.steps?.length) state.walk = snapshot.walk;
+    state.selected = snapshot.selected ?? null;
+    state.anchorElementRef = snapshot.anchorElementRef ?? null;
+    state.pathwayRef = snapshot.pathwayRef ?? null;
+    if (snapshot.faces?.EXPERIENCE && Lens.LENS_FACES[snapshot.faces.EXPERIENCE]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = snapshot.faces.EXPERIENCE;
+    if (snapshot.faces?.BEHAVIOR && Lens.LENS_FACES[snapshot.faces.BEHAVIOR]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = snapshot.faces.BEHAVIOR;
+    state.realization = snapshot.realization ?? Realization.emptyRealizationContext();
+    const colorMode = currentScreen()?.view?.colorMode;
+    if (colorMode) {
+      if (snapshot.colorModeRef && colorMode.options.some((option) => option.ref === snapshot.colorModeRef)) state.colorModes.set(colorModeScopeKey(), snapshot.colorModeRef);
+      else state.colorModes.delete(colorModeScopeKey());
+    }
+    state.overlay = null;
+    state.menu = null;
+    state.presentationRules = null;
+    state.cameras.clear();
+    state.flashRef = null;
+    state.motion = null;
+    render();
+  } finally {
+    state.historyRestoring = false;
+  }
+}
+
 function applyStaticColorMode(doc, view) {
   const colorMode = view?.colorMode;
   const option = staticColorMode(view);
@@ -963,6 +1031,7 @@ function setStaticColorMode(ref) {
   const view = currentScreen()?.view;
   const colorMode = view?.colorMode;
   if (!colorMode || !colorMode.options.some((option) => option.ref === ref)) return;
+  markLensHistoryPoint();
   state.colorModes.set(colorModeScopeKey(), ref);
   const frame = document.querySelector('.current-product-view .product-view-frame');
   const doc = frame?.contentDocument;
@@ -974,8 +1043,15 @@ function setStaticColorMode(ref) {
   renderBarInPlace();
   syncUrl();
 }
-// With no control picked, the Behavior side reads the same expression the Surface shows.
-const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? (state.anchorElementRef ? null : expressionPathway());
+// Behavior prefers an element's explicit semantic pathway. If none exists, a selected element may
+// still participate in the current expression's realization relationship (presentation/selection/etc).
+// Reuse that already-derived expression graph only when it actually contains the selected identity.
+function projectedRelationshipForAnchor() {
+  const graph = expressionPathway();
+  if (!state.anchorElementRef) return graph;
+  return graph?.nodes.some((node) => node.elementRef === state.anchorElementRef) ? graph : null;
+}
+const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? projectedRelationshipForAnchor();
 const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
 const pathwayNode = (ref) => currentPathway()?.nodes.find((node) => node.ref === ref) ?? null;
 function doorwayCollapsible(pathway) {
@@ -987,9 +1063,10 @@ function doorwayCollapsible(pathway) {
 const doorwayCollapsed = () => state.hideDoorway && doorwayCollapsible(currentPathway());
 const hideBandsFor = (face) => (face === 'BEHAVIOR' && doorwayCollapsed() ? ['DOORWAY'] : []);
 
-function selectElement(elementRef, { keepFaces = true } = {}) {
+function selectElement(elementRef, { keepFaces = true, recordHistory = true } = {}) {
   const element = Lens.elementFor(state.lens, elementRef);
   if (!element) return;
+  if (recordHistory) markLensHistoryPoint();
   state.selected = { kind: 'ELEMENT', ref: elementRef };
   state.anchorElementRef = elementRef;
   const nextPathway = element.pathwayRef ?? null;
@@ -1004,6 +1081,7 @@ function selectElement(elementRef, { keepFaces = true } = {}) {
 function selectNode(ref, { reveal = false } = {}) {
   const node = pathwayNode(ref);
   if (!node) return;
+  markLensHistoryPoint();
   state.selected = { kind: 'NODE', ref };
   if (reveal && state.faces.BEHAVIOR !== node.face) { state.faces.BEHAVIOR = node.face; }
   if (!refreshStaticSelectionInPlace()) render();
@@ -1016,6 +1094,7 @@ function clearSelection() {
 
 function travel(element) {
   if (!element?.navigatesTo) return;
+  markLensHistoryPoint();
   if (element.navigatesTo === Lens.BACK) { state.walk = Lens.backScreenWalk(state.walk); }
   else state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: element.navigatesTo, viaElementRef: element.ref });
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
@@ -1024,6 +1103,7 @@ function travel(element) {
 }
 function jumpTo(target, how = 'JUMP') {
   if (target === screenRef() && how !== 'REVISIT') { state.overlay = null; render(); return; }
+  markLensHistoryPoint();
   state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target, how });
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; state.overlay = null;
   state.realization = Realization.emptyRealizationContext();
@@ -1049,6 +1129,7 @@ function whereText(target) {
   return `on ${Lens.screenFor(state.lens, target.screenRef).label}`;
 }
 function goToResult(result) {
+  markLensHistoryPoint();
   const target = result.target;
   if (target.screenRef && target.screenRef !== screenRef()) state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target.screenRef, how: 'JUMP' });
   state.overlay = null;
@@ -1438,6 +1519,7 @@ function setExpression(ref, { flash = null } = {}) {
   const list = expressionsNow();
   const target = Expressions.expressionFor(list, ref);
   if (!target) return;
+  markLensHistoryPoint();
   const from = expressionIndex();
   const to = list.indexOf(target);
   state.motion = from < 0 || to === from ? null : to > from ? 'next' : 'prev';
@@ -1453,6 +1535,7 @@ function setExpression(ref, { flash = null } = {}) {
 function combineExpression(ref) {
   const target = Expressions.expressionFor(expressionsNow(), ref);
   if (!target) return;
+  markLensHistoryPoint();
   state.realization = Object.freeze({ exampleRef: target.exampleRef ?? state.realization.exampleRef, overrides: Object.freeze({ ...state.realization.overrides, ...target.context.overrides }) });
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
   state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
@@ -2029,7 +2112,9 @@ function staticViewTargetNodes(doc, view, ref) {
 function applyStaticViewStateBindings(doc, view, resolved) {
   for (const binding of view.stateBindings ?? []) {
     const outcome = resolved?.presence?.get(binding.presenceRef);
-    if (String(outcome?.value ?? '') !== binding.value) continue;
+    // A raw inner value may still be OPEN while its enclosing presentation is closed.
+    // Gated-off relationships have no manifestation consequences.
+    if (outcome?.gate === false || String(outcome?.value ?? '') !== binding.value) continue;
     for (const operation of binding.operations) {
       for (const node of staticViewTargetNodes(doc, view, operation.targetRef)) {
         if (operation.op === 'SET_ATTRIBUTE') node.setAttribute(operation.attribute, operation.value);
@@ -3695,7 +3780,8 @@ function renderLegend() {
       h('li', {}, 'Right-click either side to flip it: Experience toggles Surface / Structure; Behavior toggles Behavior / Depth. Shift + right-click opens the browser menu. ', h('kbd', {}, '['), ' and ', h('kbd', {}, ']'), ' remain keyboard equivalents.'),
       h('li', {}, 'Drag to pan. Scroll to zoom at the pointer. Use the − / + / Fit controls for explicit camera changes.'),
       h('li', {}, h('kbd', {}, '/'), ' finds any control, step, screen or note by label, ref, action key, Kotlin symbol or file name.'),
-      h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.')),
+      h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.'),
+      h('li', {}, 'Browser or mouse Back / Forward revisits the Lens choices you traversed — selected controls and steps, screens, expressions and presentation — without rewinding the Product or embedded page.')),
     h('h3', {}, 'Presence: why something is, or is not, presented'),
     h('ul', {}, Object.values(Realization.PRESENCE_STATES).map((entry) => h('li', {}, presChip(entry.state), ` ${entry.question}`))),
     h('p', { style: 'font-size:12px;margin:4px 0 0;color:var(--muted)' }, 'Presence kinds keep their owners: presentation and selection (runtime presentation state), population (source-owned items), branch / cases / alternative (feature conditions, never evaluated here).'),
@@ -3877,6 +3963,7 @@ function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } 
   return true;
 }
 function setStaticPresenceOutcome(presenceRef, outcome) {
+  markLensHistoryPoint();
   state.realization = contextWithPresenceOutcome(presenceRef, outcome);
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
   state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
@@ -3886,6 +3973,7 @@ function refreshStaticSelectionInPlace() {
   return refreshStaticLensAroundMountedProduct();
 }
 function syncUrl() {
+  if (state.historyRestoring) return;
   const next = new URLSearchParams(location.search);
   const subject = currentSubject();
   if (subject && state.request.mode !== 'LEGACY') {
@@ -3903,7 +3991,13 @@ function syncUrl() {
   if (currentScreen()?.view?.colorMode && colorMode && colorMode.ref !== currentScreen().view.colorMode.defaultRef) next.set('presentation', colorMode.ref);
   else next.delete('presentation');
   next.delete('example');
-  history.replaceState(null, '', `${location.pathname}?${next}`);
+  const url = `${location.pathname}?${next}`;
+  const snapshot = lensHistorySnapshot();
+  const current = history.state?.[LENS_HISTORY_KEY] ?? null;
+  const shouldPush = state.historyPushPending && !sameLensHistorySnapshot(current, snapshot);
+  state.historyPushPending = false;
+  if (shouldPush) history.pushState({ [LENS_HISTORY_KEY]: snapshot }, '', url);
+  else history.replaceState({ [LENS_HISTORY_KEY]: snapshot }, '', url);
 }
 // The phone and Structure keep their scroll while the expression stays: a click that re-renders must
 // not move what sits under the pointer (a double-click's second click lands on the same thing).
@@ -3952,6 +4046,10 @@ function render() {
 }
 
 window.addEventListener('resize', () => { state.cameras.clear(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); placeSurfaceFloaters(); scheduleBridge(); });
+window.addEventListener('popstate', (event) => {
+  const snapshot = event.state?.[LENS_HISTORY_KEY] ?? null;
+  if (snapshot) restoreLensHistory(snapshot);
+});
 window.addEventListener('keydown', (event) => {
   if (event.target.closest?.('input,textarea')) return;
   if (event.key === '[') { flip('EXPERIENCE'); }
@@ -4008,7 +4106,7 @@ async function boot() {
   const opening = requestedExpression ? Expressions.expressionFor(Expressions.expressionsFor(state.lens, screenRef()), requestedExpression) : null;
   if (opening) { state.realization = opening.context; state.flashRef = opening.focusRef; }
   const requested = params.get('element') ?? (startScreen ? null : state.lens.entryElementRef);
-  if (requested && Lens.elementsForScreen(state.lens, screenRef()).some((element) => element.ref === requested)) selectElement(requested);
+  if (requested && Lens.elementsForScreen(state.lens, screenRef()).some((element) => element.ref === requested)) selectElement(requested, { recordHistory: false });
   else render();
 }
 boot();

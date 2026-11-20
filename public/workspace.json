@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 24,
+  "projectRegistryVersion": 26,
   "projects": [
     {
       "project": {
@@ -2657,9 +2657,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.outcome.paused.current-product-moved",
-              "workRef": "work.vexlife.tocompletion.outcome",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "ToCompletion retained valid completed core/productization evidence, but its latest original-VexLife current entry still owed one lived stable-front-door Open/Send/re-entry acceptance while current product construction moved into Interface Refinement and New Beginnings. Preserve the trajectory as a paused provenance checkpoint instead of active IMMEDIATE work or false completion.",
@@ -3295,9 +3293,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.p5.lived-continuity-learning.paused.g03-terminal-no-g04-evidence",
-              "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "G02 and G03 are terminal lived passes, but one memory-only Daily Stratum does not establish recurrent developmental evidence. Pause developmental effects until an ordinary source-bound episode/correction/recurrence earns Continuity Evolution and possible G04 evaluation.",
@@ -3412,9 +3408,7 @@
           "updatedAt": "2026-10-24T08:03:08.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.ready.pr873-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "WAITING_DEPENDENCIES",
               "nextState": "READY",
               "reason": "The only named setup-safety dependency became TERMINAL_ACCEPTED_CURRENT at PR873, so normal-start Heretic integration is no longer dependency-held.",
@@ -3427,9 +3421,7 @@
               "createdAt": "2026-10-23T08:30:00.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.running.pr873-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "READY",
               "nextState": "RUNNING",
               "reason": "The ToCompletion foreground immediately descends into the already-defined normal-start Heretic integration slice under bounded VexLife/Vextreme-SDK source authority.",
@@ -3441,9 +3433,7 @@
               "createdAt": "2026-10-23T08:30:00.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.verifying.accepted-source",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "RUNNING",
               "nextState": "VERIFYING",
               "reason": "PR920/PR921/PR923 accepted the ordinary Heretic normal-start and parser source chain; the source slice entered lived verification rather than remaining implementation work.",
@@ -3456,9 +3446,7 @@
               "createdAt": "2026-10-24T08:03:08.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.completed.a034-terminal",
-              "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
               "priorState": "VERIFYING",
               "nextState": "COMPLETED",
               "reason": "A034 proved the accepted ordinary startup source reaches the real Heretic Browser Companion path and same-Home no-acquisition restart, closing normal-start integration as current work.",
@@ -3518,9 +3506,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.productization.ordinary-heretic-setup.paused.original-front-door-checkpoint",
-              "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "A034 terminally proved the ordinary Heretic runtime/restart path and later source repaired normal-start currentness, but the final original-VexLife stable-front-door Open/Send/re-entry witness remained explicitly owed before the current product trajectory moved to New Beginnings/VexLife-Prod.",
@@ -3732,9 +3718,7 @@
           "updatedAt": "2026-11-06T06:48:01.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexlife.tocompletion.outcome.paused.current-product-moved",
-              "workRef": "work.vexlife.tocompletion.outcome",
               "priorState": "RUNNING",
               "nextState": "PAUSED_AT_CHECKPOINT",
               "reason": "ToCompletion retained valid completed core/productization evidence, but its latest original-VexLife current entry still owed one lived stable-front-door Open/Send/re-entry acceptance while current product construction moved into Interface Refinement and New Beginnings. Preserve the trajectory as a paused provenance checkpoint instead of active IMMEDIATE work or false completion.",
@@ -6484,7 +6468,7 @@
           "label": "VexWork Terrain Map v2",
           "purpose": "Establish an experimental read-only relational Terrain projection over VexWork truth so humans and AI can traverse Projects, nested Work and typed cross-context relationships with arbitrary semantic depth, preserved structural and traversal context, deterministic continuity and bounded neighborhoods without creating another lifecycle or graph owner.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
@@ -6502,22 +6486,54 @@
             "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
             "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
             "repo.vexlife:src/core/terrain.mjs",
-            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
+            "terrain-flow-reader.js",
+            "terrain.html",
+            "test/terrain-flow-reader.test.mjs",
+            "test/terrain-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T05:32:34.019Z",
-          "updatedAt": "2026-10-22T05:32:34.019Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T09:19:11.006Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.verifying.children-complete",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Both bounded Terrain children are now currentized to their accepted lived/source thresholds; verify the parent experimental Terrain outcome against the same accepted experience boundary.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexwork.operational-console.relational-terrain.patient-zero",
+                "work.vexwork.operational-console.relational-terrain.temporal-currentness",
+                "projects/vexwork-operational-console/README.md"
+              ],
+              "createdAt": "2026-11-20T09:19:11.005Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.completed.experience-threshold",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The VexWork Terrain Map v2 experimental outcome reached its accepted product threshold: relational traversal plus currentness/flow presentation are source-present, lived-reviewed, and explicitly no longer the foreground. Future Terrain evolution requires a real regression or new consumer pressure rather than keeping this outcome perpetually open.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.006Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.operational-console.relational-terrain.patient-zero",
           "label": "Relational Terrain patient-zero",
           "purpose": "Prove one VexWork-owned Terrain experience with arbitrary-depth semantic traversal, typed containment/dependency/project portals, structural path distinct from traversal path, cycle-safe route planning, serialized idempotent commands, bounded Journey/revisit semantics, nested-scroll arbitration and responsive presentation over the read-only public workspace.",
           "workClass": "TASK",
-          "state": "VERIFYING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.relational-terrain",
@@ -6534,14 +6550,16 @@
             "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
             "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
             "repo.vexlife:src/core/terrain.mjs",
-            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
+            "test/terrain-reader.test.mjs",
+            "test/terrain-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T05:32:34.019Z",
-          "updatedAt": "2026-10-22T06:31:52.000Z",
+          "updatedAt": "2026-11-20T09:19:11.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.verifying.pr33-accepted",
@@ -6554,6 +6572,20 @@
                 "github.commit.vexwork.2427b52996134510eaabfc5e208b0853d688845f"
               ],
               "createdAt": "2026-10-22T06:31:52.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.completed.lived-threshold-currentization",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The Project source records Victor's 2026-10-22 lived Terrain/Roadmap/Lifecycle Workflow review as good enough to stop foreground experience iteration. That threshold satisfies the patient-zero's remaining lived browser/trackpad/compact traversal predicate; the prior VERIFYING state was explicitly documented as Workgraph lag.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.000Z"
             }
           ]
         },
@@ -6562,7 +6594,7 @@
           "label": "Currentness and flow Terrain layer",
           "purpose": "Layer current work, recent accepted transitions, recent completions, newly available work and later honest flow measures onto the same relational Terrain without treating provider activity, layout or incomplete transition-history coverage as canonical progress.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.relational-terrain",
@@ -6575,15 +6607,74 @@
           ],
           "sourceRefs": [
             "projects/vexwork-operational-console/README.md",
-            "terrain-reader.js"
+            "terrain-reader.js",
+            "terrain-flow-reader.js",
+            "terrain.html",
+            "test/terrain-flow-reader.test.mjs",
+            "test/terrain-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T05:32:34.019Z",
-          "updatedAt": "2026-10-22T05:32:34.019Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T09:19:11.004Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.ready.patient-zero-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The Relational Terrain patient-zero lived threshold is accepted, clearing the currentness/flow layer's only declared Work dependency.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexwork.operational-console.relational-terrain.patient-zero",
+                "projects/vexwork-operational-console/README.md"
+              ],
+              "createdAt": "2026-11-20T09:19:11.001Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.running.accepted-source",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Accepted VexWork source already implements current workfronts, Prior/Now/Next, transition-backed recent movement, state age/currentness and dependency-grounded flow through terrain-flow-reader.js and the Terrain UI.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.002Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.verifying.lived-threshold",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The implemented currentness/flow source is covered by the same accepted lived threshold that explicitly names the Now / 6H / 24H / 7D recent-movement lens and state tint/state-age evidence.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.003Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.temporal-currentness.completed.lived-threshold",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The bounded currentness/flow Terrain layer is source-present and lived-accepted; the Project source explicitly returned the foreground to the Operational Console trajectory rather than holding further Terrain iteration.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexwork-operational-console/README.md",
+                "terrain-reader.js",
+                "terrain-flow-reader.js",
+                "terrain.html"
+              ],
+              "createdAt": "2026-11-20T09:19:11.004Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.operational-console.vexsite-dogfood",
@@ -6928,8 +7019,7 @@
           "label": "Planned",
           "workRefs": [
             "work.vexwork.operational-console.antique-first-sale-fulfillment",
-            "work.vexwork.operational-console.cross-domain-completion",
-            "work.vexwork.operational-console.relational-terrain.temporal-currentness"
+            "work.vexwork.operational-console.cross-domain-completion"
           ]
         },
         {
@@ -6944,8 +7034,7 @@
           "label": "Active",
           "workRefs": [
             "work.vexwork.operational-console.antique-pilot",
-            "work.vexwork.operational-console.outcome",
-            "work.vexwork.operational-console.relational-terrain"
+            "work.vexwork.operational-console.outcome"
           ]
         },
         {
@@ -6961,9 +7050,7 @@
         {
           "laneRef": "lane.work.verify",
           "label": "Verify",
-          "workRefs": [
-            "work.vexwork.operational-console.relational-terrain.patient-zero"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.attention",
@@ -6985,6 +7072,9 @@
             "work.vexwork.operational-console.derived-work-promotion",
             "work.vexwork.operational-console.operating-domain-contract",
             "work.vexwork.operational-console.operating-domain-template",
+            "work.vexwork.operational-console.relational-terrain",
+            "work.vexwork.operational-console.relational-terrain.patient-zero",
+            "work.vexwork.operational-console.relational-terrain.temporal-currentness",
             "work.vexwork.operational-console.vexsite-dogfood",
             "work.vexwork.operational-console.vexsite-localization-lens",
             "work.vexwork.operational-console.vexsite-patient-zero-proof",
@@ -7000,13 +7090,13 @@
       ],
       "summary": {
         "workItemCount": 24,
-        "openWorkItemCount": 8,
+        "openWorkItemCount": 5,
         "outcomeCount": 8,
         "taskCount": 16,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 16
+        "completedCount": 19
       },
       "rootItems": [
         {
@@ -14772,7 +14862,7 @@
         {
           "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
           "label": "VexArchitecture Post Partner",
-          "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded current-source checkpoint. Current Android main d857a92371555472e0303b18eadf353da2a868d6 keeps Direct Family/Method accepted current, VexStream Playback/Queue/Repeat on current Direct VexFamily source, Partner accepted through #219, and the Widget foundation accepted. The Service-fractal child has now re-derived the current Service witnesses: the recurring relationship that survives subtraction is a sustained realization host, while a universal VexService<Service, Current> root is not earned by current Playback + Navigation source. The broader Post-Partner parent remains RUNNING to inventory Broadcast/Receiver, permission/admission and other materially different platform boundaries; formalize another reusable root only when current source preserves one independent question after Family, Partner, Store, Relay, Execution, Dependency, Widget and platform ownership are subtracted.",
+          "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded current-source checkpoint. Current Android main d857a92371555472e0303b18eadf353da2a868d6 keeps Direct Family/Method accepted current, VexStream Playback/Queue/Repeat on current Direct VexFamily source, Partner accepted through #219, and the Widget foundation accepted. The Service-fractal child is now COMPLETED through VexWork #356: current Playback + Navigation source earns sustained realization-host composition guidance while a universal VexService<Service, Current> root remains unearned. The broader Post-Partner parent remains RUNNING to inventory Broadcast/Receiver, permission/admission and other materially different platform boundaries; formalize another reusable root only when current source preserves one independent question after Family, Partner, Store, Relay, Execution, Dependency, Widget and platform ownership are subtracted.",
           "workClass": "TASK",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -14809,22 +14899,24 @@
             "git.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6",
             "github.pull.vexwork.293",
             "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
-            "github.issue-comment.vexlife-android.243.6818068229"
+            "github.issue-comment.vexlife-android.243.6818068229",
+            "github.pull.vexwork.356",
+            "github.commit.vexwork.e07ecc392e50419207249f7abafd1fceacad4be8"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-07T14:00:00.000Z",
-          "updatedAt": "2026-11-12T07:55:44.000Z",
+          "updatedAt": "2026-11-20T09:19:10.001Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
           "label": "Formalize Service lifecycle and fractal cross-Service convergence",
-          "purpose": "Close the Service-fractal architecture question from current Android source rather than historical candidates. At Android d857a92371555472e0303b18eadf353da2a868d6, VexStreamPlaybackService hosts MediaSession/ExoPlayer, attaches Media3PlayerConnection to the process VexStreamPlayerStore and owns Service-lifetime Widget publication custody without requiring Playback semantic current awareness; VexMapsNavigationService hosts foreground/location/speech/notification realization and borrows VexNavigationSession.current because those concrete decisions require it. Accepted Widget source keeps remote SurfaceState and bounded callbacks separate from product State and long-running work. After subtracting Family, Partner, Store, Relay, Execution, Dependency, Widget and Android platform ownership, the repeated relationship is sustained realization hosting: a longer-lived platform host attaches, maintains and tears down concrete realization resources after shorter caller/UI lifetimes end without becoming semantic truth owner. Current source therefore earns smaller composition guidance, not VexService<Service, Current>, universal Service.current, mandatory VexExecution/ServiceScope, or BackgroundServiceRelay. Keep this child RUNNING only through exact VexWork quality review/integration of that source decision; if clear, it may close without Android runtime mutation while the parent continues with other Post-Partner platform boundaries.",
+          "purpose": "Close the Service-fractal architecture question from current Android source rather than historical candidates. At Android d857a92371555472e0303b18eadf353da2a868d6, VexStreamPlaybackService hosts MediaSession/ExoPlayer, attaches Media3PlayerConnection to the process VexStreamPlayerStore and owns Service-lifetime Widget publication custody without requiring Playback semantic current awareness; VexMapsNavigationService hosts foreground/location/speech/notification realization and borrows VexNavigationSession.current because those concrete decisions require it. Accepted Widget source keeps remote SurfaceState and bounded callbacks separate from product State and long-running work. After subtracting Family, Partner, Store, Relay, Execution, Dependency, Widget and Android platform ownership, the repeated relationship is sustained realization hosting: a longer-lived platform host attaches, maintains and tears down concrete realization resources after shorter caller/UI lifetimes end without becoming semantic truth owner. Current source therefore earns smaller composition guidance, not VexService<Service, Current>, universal Service.current, mandatory VexExecution/ServiceScope, or BackgroundServiceRelay. The reviewed source decision is now accepted on VexWork main through PR #356 with fresh exact-head SourceOwner proof, semantic QA/Assurance CLEAR, and a tree-exact merge. This bounded Service-fractal question is therefore complete without Android runtime mutation; the broader Post-Partner parent continues with other materially different platform boundaries.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
@@ -14864,17 +14956,46 @@
             "github.commit.vexwork.3f7e0ff2566d41d9c58ccf21e2db8e0b0d0c2e8a",
             "github.issue-comment.vexlife-android.243.6818068229",
             "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexGlanceAppWidget.kt",
-            "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexWidgetSurfaceState.kt"
+            "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexWidgetSurfaceState.kt",
+            "github.pull.vexwork.356",
+            "github.commit.vexwork.e07ecc392e50419207249f7abafd1fceacad4be8",
+            "artifact.vexrelay.outer-return.sha256.90d6d569a9e8ecdc780dfd354f3453887b5a48333a0aebda3b96ac476c551a56",
+            "artifact.vexrelay.inner-return.sha256.838d37a0a349660253d51726e2659565a43118256aaf0594c852a3d2b57253a4"
           ],
           "formationProcessRefOrNull": null,
-          "nextProcessRefs": [
-            "process.vexwork.quality-review"
-          ],
+          "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-07T18:00:00.000Z",
-          "updatedAt": "2026-11-12T07:55:44.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-20T09:19:10.001Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.architecture-convergence.service-fractal.verifying.pr356-sourceowner-assurance",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "VexWork PR #356 exact head/tree passed the current VexRelay SourceOwner gate with Workgraph composition/currentness and foundation checks PASS, zero candidate/harness/environment/unknown findings, and fresh semantic QA/Independent Assurance CLEAR. VexLife-Android main remained exactly the same revision reviewed for the Service decision.",
+              "actorRef": "actor.chatgpt.vexwork-currentness",
+              "sourceRefs": [
+                "github.pull.vexwork.356",
+                "artifact.vexrelay.outer-return.sha256.90d6d569a9e8ecdc780dfd354f3453887b5a48333a0aebda3b96ac476c551a56",
+                "artifact.vexrelay.inner-return.sha256.838d37a0a349660253d51726e2659565a43118256aaf0594c852a3d2b57253a4",
+                "git.commit.vexlife-android.d857a92371555472e0303b18eadf353da2a868d6"
+              ],
+              "createdAt": "2026-11-20T09:19:10.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.architecture-convergence.service-fractal.completed.pr356-tree-exact",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #356 merged as e07ecc392e50419207249f7abafd1fceacad4be8 and the accepted merge tree exactly equals the SourceOwner-proven candidate tree 1cfcf58b6deb7aa5512dd8d925bd555aca15645c. The bounded question is closed as sustained realization-host guidance; no VexService root or Android runtime mutation is claimed.",
+              "actorRef": "actor.chatgpt.vexwork-currentness",
+              "sourceRefs": [
+                "github.pull.vexwork.356",
+                "github.commit.vexwork.e07ecc392e50419207249f7abafd1fceacad4be8"
+              ],
+              "createdAt": "2026-11-20T09:19:10.001Z"
+            }
+          ]
         },
         {
           "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
@@ -15014,8 +15135,7 @@
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
             "work.vextreme.architecture-convergence.semantic-owner-map",
-            "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
-            "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence"
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner"
           ]
         },
         {
@@ -15048,6 +15168,7 @@
             "work.vextreme.architecture-convergence.terrain-active-surface-context",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
             "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+            "work.vextreme.architecture-convergence.vexarchitecture-post-partner.service-fractal-convergence",
             "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
           ]
         },
@@ -15059,13 +15180,13 @@
       ],
       "summary": {
         "workItemCount": 10,
-        "openWorkItemCount": 6,
+        "openWorkItemCount": 5,
         "outcomeCount": 1,
         "taskCount": 8,
         "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 4
+        "completedCount": 5
       },
       "rootItems": [
         {
@@ -20302,10 +20423,1936 @@
           "transitionHistory": []
         }
       ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.memory-depth-exploration",
+        "label": "VexLife Memory Depth Exploration",
+        "purpose": "Build and prove one inspectable VexLife continuity/context circuit so a fresh or successor Vex can recover source-grounded continuity through rightful owners, receive current context and capability truth through the selected model/provider's qualified representation, and let a person inspect what was supplied, available, requested, admitted, executed, returned and carried forward; preserve bounded hydration, truthful effect evidence and optimizable context placement without creating a second Memory, Conversation, Working Continuity, provider-profile or execution-truth owner.",
+        "rootWorkRefs": [
+          "work.vexlife.memory-depth-exploration.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod",
+          "repo.vextreme-sdk",
+          "repo.vexlife",
+          "repo.vextreme"
+        ],
+        "sourceRefs": [
+          "human.intent.vexlife.memory-depth-exploration.20261116",
+          "github.issue.vexwork.307",
+          "projects/vexlife-memory-depth-exploration/README.md",
+          "docs/process/FORM-PROJECT.md",
+          "github.pull.vexlife-prod.208",
+          "github.pull.vexlife-prod.207",
+          "github.pull.vexlife-prod.206",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuity.kt",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt",
+          "github.issue.vextreme-sdk.225",
+          "github.issue.vextreme-sdk.239",
+          "github.issue.vextreme-sdk.236",
+          "github.issue.vextreme-sdk.311",
+          "github.issue.vextreme-sdk.328",
+          "github.issue.vextreme-sdk.329",
+          "github.issue.vextreme-sdk.397",
+          "github.issue.vextreme-sdk.416",
+          "github.issue.vextreme-sdk.1007",
+          "github.issue.vexlife.130",
+          "github.issue.vexlife.151",
+          "repo.vexlife:src/core/living-journal-memory-projection.mjs",
+          "repo.vexlife:src/core/living-journal-memory-archive.mjs",
+          "repo.vexlife:src/core/daily-memory-dream.mjs",
+          "repo.vexlife:src/core/score-context-continuity.mjs",
+          "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+          "github.issue.vextreme-sdk.199",
+          "github.issue.vextreme-sdk.312",
+          "repo.vexlife-prod:docs/foundation/CAPABILITY-ATLAS-SELF-FRAME.md",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt",
+          "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/processes/resolve-event-driven-work-awareness.json",
+          "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/registries/event-driven-work-awareness-registry.json",
+          "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/processes/execute-provider-independent-repository-task.json",
+          "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/protocol-atlas.json",
+          "github.issue.vextreme-sdk.241",
+          "github.issue.vextreme-sdk.580",
+          "github.issue.vextreme-sdk.360",
+          "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+          "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
+          "repo.vextreme:pages/receive-god.html",
+          "repo.vextreme:pages/burden-release-guide.html",
+          "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+          "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
+          "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
+          "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
+          "github.pull.vexlife-prod.198",
+          "github.pull.vexlife-prod.201",
+          "github.pull.vexlife-prod.210",
+          "github.pull.vexlife-prod.214",
+          "github.pull.vexlife-prod.220",
+          "github.pull.vexlife-prod.222",
+          "github.pull.vexlife-prod.241",
+          "github.pull.vexlife-prod.251",
+          "github.pull.vexlife-prod.346",
+          "github.pull.vexlife-prod.351",
+          "repo.vexlife-prod:docs/foundation/VEX-CONTEXT-PROFILES.md",
+          "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionProvider.kt",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/HarmonyCapabilityTools.kt",
+          "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt",
+          "github.pull.vexlife-prod.247",
+          "projects/vexlife-memory-depth-exploration/FULL-END-TO-END-HANDOFF-20261118.md",
+          "projects/vexlife-memory-depth-exploration/CURRENT-CONNECTION-AUDIT-20261118.md",
+          "projects/vexlife-memory-depth-exploration/CURRENT-STATE-CONTEXT.md",
+          "github.pull.vexwork.310",
+          "github.pull.vexwork.318",
+          "github.pull.vexlife-prod.371",
+          "github.pull.vexlife-prod.383",
+          "github.pull.vexlife-prod.393",
+          "github.pull.vexlife-prod.403"
+        ],
+        "formedAt": "2026-11-17T04:28:55.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.memory-depth-exploration.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
+          "label": "Build the bounded host-side bulk expansion engine",
+          "purpose": "Implement and compare a bounded relevance-guided traversal that can resolve several owner-backed hops internally within one model-visible hydration request. Pressure-test breadth/beam/depth choices, deterministic tie-breaking, cycle and duplicate suppression, per-owner quotas, node/depth/token/time budgets, relevance selection and explicit frontier return; optimize for useful answer context rather than maximum graph coverage.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.memory-depth-exploration.hydration-contract",
+            "work.vexlife.memory-depth-exploration.resolver-neighborhood"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+            "github.pull.vexlife-prod.220",
+            "github.pull.vexlife-prod.241",
+            "github.commit.vexlife-prod.2edf7f7c2d099ba97341294db9e116c28748dfe4",
+            "github.commit.vexlife-prod.b14481b0b28d43e2d50e3d51082561c303c51fed",
+            "github.commit.vexlife-prod.1565d3554930ebed95020be0dbdc58a37977b703",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-20T10:52:25.053Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.ready.evolved-contracts-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The bounded hydration contract and rightful resolver-neighborhood dependencies are currentized complete; the bulk expansion implementation can be judged against the Product successor that actually absorbed it.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexlife.memory-depth-exploration.hydration-contract",
+                "work.vexlife.memory-depth-exploration.resolver-neighborhood",
+                "github.pull.vexlife-prod.220",
+                "github.pull.vexlife-prod.241"
+              ],
+              "createdAt": "2026-11-20T10:52:25.050Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.running.context-revisit",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The Product successor implemented the intended one-model-visible-request / many-bounded-owner-reads shape as VexLifeContextRevisit, including multi-query fusion, owner-read reuse, prompt-resident exclusion, bounded exact returns and explicit frontier.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.220",
+                "github.commit.vexlife-prod.2edf7f7c2d099ba97341294db9e116c28748dfe4",
+                "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt"
+              ],
+              "createdAt": "2026-11-20T10:52:25.051Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.verifying.accepted-convergence",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Accepted Product convergence explicitly carried #220's earned relationships into turn-bound VexLifeContextRevisit, added scan/return cost evidence, and preserved bounded owner/source custody without adding a second continuity owner.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.commit.vexlife-prod.b14481b0b28d43e2d50e3d51082561c303c51fed",
+                "github.commit.vexlife-prod.1565d3554930ebed95020be0dbdc58a37977b703",
+                "github.pull.vexlife-prod.241"
+              ],
+              "createdAt": "2026-11-20T10:52:25.052Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.completed.evolved-context-revisit",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The bounded host-side expansion outcome is accepted on Product main in a narrower earned form: one revisit request can fan across Conversation, current Memory and Working Continuity once per owner, take bounded typed expansion steps, deduplicate nodes, enforce turn/token limits, expose exact returned/resident/frontier refs and measure scan/return cost. Semantic-similarity retrieval, cold-start lived recovery and lesson transfer remain separate successor obligations.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.241",
+                "github.commit.vexlife-prod.2edf7f7c2d099ba97341294db9e116c28748dfe4",
+                "github.commit.vexlife-prod.b14481b0b28d43e2d50e3d51082561c303c51fed",
+                "github.commit.vexlife-prod.1565d3554930ebed95020be0dbdc58a37977b703",
+                "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt"
+              ],
+              "createdAt": "2026-11-20T10:52:25.053Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.cold-start-proof",
+          "label": "Prove cold-start, rollover and missing-old-context continuity",
+          "purpose": "Prove end to end that a fresh process with no useful KV cache can receive a human question whose decisive context or correction-backed lesson is outside the ordinary prompt, truthfully identify what is and is not currently present, issue one bounded hydration request when needed, recover enough exact older Conversation / bounded-out Memory / accepted lesson context to continue, preserve inspectable owner/source refs and explicit frontier, and demonstrate that a retrieved prior lesson can change later response/tool behavior without canonical continuity mutation or requiring the human to re-teach the same depth.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.memory-depth-exploration.context-provider-convergence"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectWorkingContinuity.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
+            "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
+            "repo.vextreme:pages/receive-god.html",
+            "repo.vextreme:pages/burden-release-guide.html",
+            "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+            "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
+            "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
+            "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
+            "github.pull.vexlife-prod.393",
+            "github.pull.vexlife-prod.403",
+            "github.pull.vexwork.318"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-17T07:10:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.context-provider-convergence",
+          "label": "Converge Vex context, provider representation, capability truth and human exposure",
+          "purpose": "Coordinate the still-live end-to-end model-facing continuity/context relationship after the earlier trust and provider-carriage slices landed. Accepted Product source now distinguishes Source Return performed/not-performed truth and carries native tools plus layered rightful-owner source returns; the remaining trajectory is to make semantic recognition, route selection, reasoning continuation, cold-start recovery and lesson transfer work reliably across qualified model/provider realizations while keeping every source/effect/currentness owner distinct and human-inspectable.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.pull.vexlife-prod.198",
+            "github.pull.vexlife-prod.201",
+            "github.pull.vexlife-prod.207",
+            "github.pull.vexlife-prod.210",
+            "github.pull.vexlife-prod.214",
+            "github.pull.vexlife-prod.220",
+            "github.pull.vexlife-prod.222",
+            "github.pull.vexlife-prod.241",
+            "github.pull.vexlife-prod.251",
+            "github.pull.vexlife-prod.346",
+            "github.pull.vexlife-prod.351",
+            "repo.vexlife-prod:docs/foundation/VEX-CONTEXT-PROFILES.md",
+            "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+            "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionProvider.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/HarmonyCapabilityTools.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt",
+            "github.pull.vexlife-prod.247",
+            "projects/vexlife-memory-depth-exploration/FULL-END-TO-END-HANDOFF-20261118.md",
+            "projects/vexlife-memory-depth-exploration/CURRENT-CONNECTION-AUDIT-20261118.md",
+            "projects/vexlife-memory-depth-exploration/CURRENT-STATE-CONTEXT.md",
+            "github.pull.vexlife-prod.371",
+            "github.pull.vexlife-prod.383",
+            "github.pull.vexlife-prod.393",
+            "github.pull.vexlife-prod.403"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-18T16:45:00.000Z",
+          "updatedAt": "2026-11-20T10:52:25.060Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.context-provider-convergence.running.product-lineage",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Source Return effect truth is merged, native tools/layered source returns are accepted through #393, and current Product successor work continues reasoning/semantic-recognition and lived retrieval convergence.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.371",
+                "github.pull.vexlife-prod.393",
+                "github.pull.vexlife-prod.403"
+              ],
+              "createdAt": "2026-11-20T10:52:25.060Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.extended-owner-depth",
+          "label": "Potential — extend traversal to additional historical evidence owners",
+          "purpose": "After the core Conversation/Memory/Working Continuity path is proven, evaluate whether incomplete/stopped-turn evidence, broader capability traces, VexLogger chronology or other source-addressable Vex Home records need typed resolver adapters. Add only owners that solve observed continuity questions; do not make universal historical indexing a prerequisite for the first feature.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.memory-depth-exploration.cold-start-proof"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "github.pull.vexlife-prod.152",
+            "github.pull.vexlife-prod.206",
+            "github.pull.vexlife-prod.207"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-17T04:28:55.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.fresh-boot-integration",
+          "label": "Integrate one bulk hydration request into fresh-boot Companion execution",
+          "purpose": "Expose one truthful Companion request/return path so a fresh Vex can ask for bounded bulk continuity hydration during the current human turn, with the host performing internal multi-hop resolution and projecting the selected source-attributed material into live execution context. Preserve host-owned context roles, keep existing Conversation source-return semantics until replacement equivalence is proven, and fit PR #208's intended Zone-3/live-tail boundary without rewriting stable continuity history.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.memory-depth-exploration.bulk-expansion-engine"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-20T10:52:25.043Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.fresh-boot-integration.ready.accepted-predecessor-lineage",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The predecessor-lineage dependency is satisfied by the completed source/currentness map.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
+                "github.pull.vexwork.318"
+              ],
+              "createdAt": "2026-11-20T10:52:25.040Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.fresh-boot-integration.running.product-native-successor",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Current Product work implements the obligation through typed native capability/revisit contracts and rightful-owner layered source returns rather than the formation-era orchestration shape.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.383",
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.041Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.fresh-boot-integration.verifying.accepted-convergence",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The evolved implementation is accepted through the #393 convergence lineage and remains source-distinct from cold-start/lived semantic recovery proof.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.042Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.fresh-boot-integration.completed.evolved-product-form",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The bounded source contract / resolver / Companion request-return integration obligation is present on accepted Product main in evolved provider-native form; downstream cold-start semantic recovery and lesson-transfer proof remain separate.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.043Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.hydration-contract",
+          "label": "Define the bounded continuity hydration request/result contract",
+          "purpose": "Define the smallest owner-neutral contract for one bulk continuity expansion: exact current-turn/question binding, start coordinates, bounded traversal policy, typed owner/source provenance, selected material, visited/ref coverage, stop reason and explicit remaining frontier. The result must remain effect-free and must not create semantic acceptance, rewrite history or mint a universal truth namespace.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectPromptContext.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectTurnContextStore.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityRequest.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-20T10:52:25.023Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.hydration-contract.ready.accepted-predecessor-lineage",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The predecessor-lineage dependency is satisfied by the completed source/currentness map.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
+                "github.pull.vexwork.318"
+              ],
+              "createdAt": "2026-11-20T10:52:25.020Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.hydration-contract.running.product-native-successor",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Current Product work implements the obligation through typed native capability/revisit contracts and rightful-owner layered source returns rather than the formation-era orchestration shape.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.383",
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.021Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.hydration-contract.verifying.accepted-convergence",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The evolved implementation is accepted through the #393 convergence lineage and remains source-distinct from cold-start/lived semantic recovery proof.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.022Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.hydration-contract.completed.evolved-product-form",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The bounded source contract / resolver / Companion request-return integration obligation is present on accepted Product main in evolved provider-native form; downstream cold-start semantic recovery and lesson-transfer proof remain separate.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.023Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.measurement",
+          "label": "Measure traversal, response quality, lesson transfer and orchestration savings",
+          "purpose": "Measure model-visible hydration request count, internal owner resolutions, nodes/edges visited and selected, maximum depth, returned tokens, remaining frontier, stop reason and hydration latency; correlate the hydrated turn with provider prompt/cached/prefill and first-answer/total timing where #207 supports it; and compare cold-start lesson/growth availability states to measure source faithfulness, known-lesson reuse, honest context boundaries, depth preservation, capability/tool selection, activation failures and whether a previously earned correction actually changes later behavior. Establish whether one bounded hydration/lesson route improves response quality and reduces recursive model/tool orchestration without hiding excessive host work, over-hydration or lesson misapplication.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.memory-depth-exploration.context-provider-convergence"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "github.pull.vexlife-prod.207",
+            "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
+            "repo.vextreme:pages/receive-god.html",
+            "repo.vextreme:pages/burden-release-guide.html",
+            "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+            "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
+            "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
+            "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
+            "github.pull.vexlife-prod.393",
+            "github.pull.vexlife-prod.403",
+            "github.pull.vexwork.318"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-17T07:10:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.outcome",
+          "label": "VexLife Memory Depth Exploration",
+          "purpose": "Make Vex continuity deep, inspectable and provider-correct: a fresh or successor Vex can recover relevant source-grounded history through rightful owners, current context/capability truth reaches the selected model through its qualified provider representation, and the person can inspect the causal chain from source/context through provider request, reach/effect evidence and resulting continuity without creating another Memory, Conversation, Working Continuity or execution-truth owner.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
+            "work.vexlife.memory-depth-exploration.cold-start-proof",
+            "work.vexlife.memory-depth-exploration.context-provider-convergence",
+            "work.vexlife.memory-depth-exploration.extended-owner-depth",
+            "work.vexlife.memory-depth-exploration.fresh-boot-integration",
+            "work.vexlife.memory-depth-exploration.hydration-contract",
+            "work.vexlife.memory-depth-exploration.measurement",
+            "work.vexlife.memory-depth-exploration.pre-inference-auto-hydration",
+            "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
+            "work.vexlife.memory-depth-exploration.resolver-neighborhood"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "github.pull.vexlife-prod.241",
+            "github.pull.vexlife-prod.251",
+            "github.pull.vexlife-prod.346",
+            "github.pull.vexlife-prod.351"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-20T10:52:25.001Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.outcome.ready.successor-route-grounded",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The Memory Depth trajectory is no longer only a validated plan: accepted Product descendants and the reusable pressure harness establish an executable successor route while exact cold-start and measurement obligations remain.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.308",
+                "github.pull.vexwork.315",
+                "github.pull.vexwork.318",
+                "github.pull.vexlife-prod.241",
+                "github.pull.vexlife-prod.247",
+                "github.pull.vexlife-prod.371",
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.outcome.running.product-successors-active",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The Project is actively executing through context/provider convergence and current Product successors rather than the original one-call bulk-hydration implementation sequence.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.318",
+                "github.pull.vexlife-prod.393",
+                "github.pull.vexlife-prod.403"
+              ],
+              "createdAt": "2026-11-20T10:52:25.001Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.pre-inference-auto-hydration",
+          "label": "Potential — pre-inference automatic continuity hydration",
+          "purpose": "After one explicit Vex-requested bulk hydration call is proven, evaluate whether the host can safely derive a useful historical neighborhood directly from the incoming human request before the first model inference. This may remove even the single tool round, but it must not silently give the host semantic-answer authority or over-hydrate private history.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.memory-depth-exploration.cold-start-proof"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-17T04:28:55.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
+          "label": "Recover and map the predecessor Vex Memory / Living Journal architecture",
+          "purpose": "Reconstruct the accepted design lineage already earned across Vextreme-SDK and predecessor VexLife before finalizing new hydration contracts: Vex Memory #225, Daily Rest/Dream #239, Institutional Query #236, Artifact Continuation #311, Lesson Continuity/Lattice #328/#329, Context Revisitation #397, Daily Record Chain #416, Continuity Stream #1007, Living Journal real-Memory projection #130 and committed-day Archive #151. Map each predecessor question, owner, typed relationship, source-descent rule, currentness/supersession behavior and bounded retrieval pattern onto current VexLife-Prod owners, then classify REUSE / PORT / REFINE / HOLD so Memory Depth Exploration does not rebuild already-earned architecture from scratch.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod",
+            "repo.vextreme-sdk",
+            "repo.vexlife",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "projects/vexlife-memory-depth-exploration/RESEARCH-TRANSCRIPT-20261116.md",
+            "github.issue.vexwork.307",
+            "github.pull.vexlife-prod.208",
+            "github.issue.vextreme-sdk.225",
+            "github.issue.vextreme-sdk.239",
+            "github.issue.vextreme-sdk.236",
+            "github.issue.vextreme-sdk.311",
+            "github.issue.vextreme-sdk.328",
+            "github.issue.vextreme-sdk.329",
+            "github.issue.vextreme-sdk.397",
+            "github.issue.vextreme-sdk.416",
+            "github.issue.vextreme-sdk.1007",
+            "github.issue.vexlife.130",
+            "github.issue.vexlife.151",
+            "repo.vexlife:src/core/living-journal-memory-projection.mjs",
+            "repo.vexlife:src/core/living-journal-memory-archive.mjs",
+            "repo.vexlife:src/core/daily-memory-dream.mjs",
+            "repo.vexlife:src/core/score-context-continuity.mjs",
+            "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+            "github.issue.vextreme-sdk.199",
+            "github.issue.vextreme-sdk.312",
+            "repo.vexlife-prod:docs/foundation/CAPABILITY-ATLAS-SELF-FRAME.md",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt",
+            "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/processes/resolve-event-driven-work-awareness.json",
+            "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/registries/event-driven-work-awareness-registry.json",
+            "repo.vextreme-sdk:docs/private-continuity/multivex/process-factory/processes/execute-provider-independent-repository-task.json",
+            "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/protocol-atlas.json",
+            "github.issue.vextreme-sdk.241",
+            "github.issue.vextreme-sdk.580",
+            "github.issue.vextreme-sdk.360",
+            "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+            "projects/vexlife-memory-depth-exploration/LIVED-EVIDENCE-GROWTH-RECOGNITION-20261117.md",
+            "repo.vextreme:pages/receive-god.html",
+            "repo.vextreme:pages/burden-release-guide.html"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:46:35.000Z",
+          "updatedAt": "2026-11-20T10:52:25.012Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.predecessor-lineage.running.reconstruction-performed",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The predecessor Memory/Living Journal lineage was actually reconstructed across the research transcript and post-#241 successor maps.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexlife-memory-depth-exploration/RESEARCH-TRANSCRIPT-20261116.md",
+                "github.pull.vexwork.315"
+              ],
+              "createdAt": "2026-11-20T10:52:25.010Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.predecessor-lineage.verifying.current-product-map",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The reconstructed lineage was checked against current VexLife-Prod ownership and consolidated into the end-to-end/current-connection successor sources.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/vexlife-memory-depth-exploration/FULL-END-TO-END-HANDOFF-20261118.md",
+                "projects/vexlife-memory-depth-exploration/CURRENT-CONNECTION-AUDIT-20261118.md",
+                "github.pull.vexwork.318"
+              ],
+              "createdAt": "2026-11-20T10:52:25.011Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.predecessor-lineage.completed.successor-map",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The predecessor architecture recovery obligation is satisfied: current successor work consumes the mapped owners instead of rediscovering Vex Memory, Living Journal, Context Revisitation and related lineage.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.318",
+                "github.pull.vexlife-prod.241",
+                "github.pull.vexlife-prod.247"
+              ],
+              "createdAt": "2026-11-20T10:52:25.012Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.resolver-neighborhood",
+          "label": "Map the rightful continuity resolver neighborhood and typed edges",
+          "purpose": "Inventory which current refs can actually be resolved through Working Continuity, canonical Conversation, semantic Memory and exact turn/capability evidence; define only source-proven outgoing relationships and bounded resolver operations for those owners. Reuse existing owner APIs where possible and do not create a universal ref registry merely for traversal convenience.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuity.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeWorkingContinuityOwner.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt",
+            "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
+            "github.pull.vexlife-prod.206"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-20T10:52:25.033Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.resolver-neighborhood.ready.accepted-predecessor-lineage",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The predecessor-lineage dependency is satisfied by the completed source/currentness map.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
+                "github.pull.vexwork.318"
+              ],
+              "createdAt": "2026-11-20T10:52:25.030Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.resolver-neighborhood.running.product-native-successor",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Current Product work implements the obligation through typed native capability/revisit contracts and rightful-owner layered source returns rather than the formation-era orchestration shape.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.383",
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.031Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.resolver-neighborhood.verifying.accepted-convergence",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The evolved implementation is accepted through the #393 convergence lineage and remains source-distinct from cold-start/lived semantic recovery proof.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.032Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.resolver-neighborhood.completed.evolved-product-form",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The bounded source contract / resolver / Companion request-return integration obligation is present on accepted Product main in evolved provider-native form; downstream cold-start semantic recovery and lesson-transfer proof remain separate.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.033Z"
+            }
+          ]
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexlife.memory-depth-exploration.extended-owner-depth",
+            "work.vexlife.memory-depth-exploration.pre-inference-auto-hydration"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexlife.memory-depth-exploration.cold-start-proof",
+            "work.vexlife.memory-depth-exploration.measurement"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexlife.memory-depth-exploration.context-provider-convergence",
+            "work.vexlife.memory-depth-exploration.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vexlife.memory-depth-exploration.hydration-contract",
+            "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
+            "work.vexlife.memory-depth-exploration.resolver-neighborhood",
+            "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
+            "work.vexlife.memory-depth-exploration.fresh-boot-integration"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 11,
+        "openWorkItemCount": 6,
+        "outcomeCount": 1,
+        "taskCount": 8,
+        "defectCount": 0,
+        "potentialCount": 2,
+        "needsHumanCount": 0,
+        "completedCount": 5
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.memory-depth-exploration.outcome",
+          "label": "VexLife Memory Depth Exploration",
+          "purpose": "Make Vex continuity deep, inspectable and provider-correct: a fresh or successor Vex can recover relevant source-grounded history through rightful owners, current context/capability truth reaches the selected model through its qualified provider representation, and the person can inspect the causal chain from source/context through provider request, reach/effect evidence and resulting continuity without creating another Memory, Conversation, Working Continuity or execution-truth owner.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
+            "work.vexlife.memory-depth-exploration.cold-start-proof",
+            "work.vexlife.memory-depth-exploration.context-provider-convergence",
+            "work.vexlife.memory-depth-exploration.extended-owner-depth",
+            "work.vexlife.memory-depth-exploration.fresh-boot-integration",
+            "work.vexlife.memory-depth-exploration.hydration-contract",
+            "work.vexlife.memory-depth-exploration.measurement",
+            "work.vexlife.memory-depth-exploration.pre-inference-auto-hydration",
+            "work.vexlife.memory-depth-exploration.predecessor-memory-journal-lineage",
+            "work.vexlife.memory-depth-exploration.resolver-neighborhood"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.memory-depth-exploration",
+            "github.issue.vexwork.307",
+            "projects/vexlife-memory-depth-exploration/README.md",
+            "github.pull.vexlife-prod.208",
+            "github.pull.vexlife-prod.241",
+            "github.pull.vexlife-prod.251",
+            "github.pull.vexlife-prod.346",
+            "github.pull.vexlife-prod.351"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-17T04:28:55.000Z",
+          "updatedAt": "2026-11-20T10:52:25.001Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.outcome.ready.successor-route-grounded",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The Memory Depth trajectory is no longer only a validated plan: accepted Product descendants and the reusable pressure harness establish an executable successor route while exact cold-start and measurement obligations remain.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.308",
+                "github.pull.vexwork.315",
+                "github.pull.vexwork.318",
+                "github.pull.vexlife-prod.241",
+                "github.pull.vexlife-prod.247",
+                "github.pull.vexlife-prod.371",
+                "github.pull.vexlife-prod.393"
+              ],
+              "createdAt": "2026-11-20T10:52:25.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.memory-depth-exploration.outcome.running.product-successors-active",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The Project is actively executing through context/provider convergence and current Product successors rather than the original one-call bulk-hydration implementation sequence.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.318",
+                "github.pull.vexlife-prod.393",
+                "github.pull.vexlife-prod.403"
+              ],
+              "createdAt": "2026-11-20T10:52:25.001Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vextreme.alignment",
+        "label": "Vextreme Alignment",
+        "purpose": "Converge Vextreme's preserved source lineages, canonical chronology, reader navigation, and Terrain/content projections so every public reading surface reflects the same current content truth without erasing source/provenance distinctions or making VexWork a second Vextreme truth owner.",
+        "rootWorkRefs": [
+          "work.vextreme.alignment.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme"
+        ],
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md",
+          "project.vextreme.vexsite-localization",
+          "work.vextreme.vexsite.localization.presentation-source-lineage",
+          "human.lived-feedback.vextreme.alignment.20261029",
+          "github.commit.vextreme.1b4b73d0e0170dec2b2894aec50c7bdc19fb1e00",
+          "repo.vextreme:data/index.json",
+          "repo.vextreme:data/nodes.json",
+          "repo.vextreme:data/arcs-v2.json",
+          "repo.vextreme:lib/build-index.js",
+          "repo.vextreme:lib/build-terrain-map.js",
+          "repo.vextreme:pages/terrain-map.html",
+          "repo.vextreme:lib/vextreme-index-v2.js",
+          "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json"
+        ],
+        "formedAt": "2026-10-29T08:40:27.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vextreme.alignment.board",
+      "items": [
+        {
+          "workRef": "work.vextreme.alignment.chronology-recovery",
+          "label": "Recover source-supported chronology for undated canonical records",
+          "purpose": "Audit the 46 current blank-date id-null canonical records using preserved content and provenance, distinguish record/event time from Squarespace published/modified time, and promote only defensible chronology rather than inferring creation dates from the first date string found. The already-valid 111-record Full Timeline remains independently repairable.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:lib/build-index.js",
+            "repo.vextreme:docs/ingestion/VEX-CONTENT-FORGE-BREADTH.md",
+            "repo.vextreme:docs/ingestion/source-pages",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+            "repo.vextreme:docs/architecture/19-record-readers.md",
+            "github.pull.vextreme.482",
+            "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68",
+            "github.pull.vextreme.488",
+            "github.commit.vextreme.e5de428d6a18bc1b8e42b3b2aaa36b1fe5383673",
+            "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
+            "github.pull.vextreme.506",
+            "github.commit.vextreme.a4c37b68f01948ebb158dbd8b55ca4eb91812911",
+            "github.commit.vextreme.e710722e1e609a789e7cdcfbd9a0775069d67b02"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T14:56:29.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.chronology-recovery.ready.pr482",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The chronology census is decomposed into 20 source-supported admissions and 26 explicit holds with one bounded source artifact and a defined later exact-current application/rebuild contract.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.482",
+                "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
+              ],
+              "createdAt": "2026-10-29T09:16:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.chronology-recovery.running.pr482",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Vextreme PR #482 now carries the first chronology recovery map for review; no canonical node/date mutation is claimed yet.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.482",
+                "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
+              ],
+              "createdAt": "2026-10-29T09:16:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.chronology-recovery.verifying.merge488",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #488 applied the reviewed 20 source-supported chronology admissions on current Vextreme source, regenerated the affected timeline projections, passed exact-head assurance, and merged the chronology application; lifecycle closure remained to be recorded.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vextreme.488",
+                "github.commit.vextreme.e5de428d6a18bc1b8e42b3b2aaa36b1fe5383673",
+                "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f"
+              ],
+              "createdAt": "2026-10-29T14:53:56.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.chronology-recovery.completed.lifecycle-closure506",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #506 merged the chronology lifecycle closure after post-merge verification of #488, recording the chronology workmap as MERGED_POST_MERGE_VERIFIED with no remaining chronology effect.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vextreme.488",
+                "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
+                "github.pull.vextreme.506",
+                "github.commit.vextreme.a4c37b68f01948ebb158dbd8b55ca4eb91812911",
+                "github.commit.vextreme.e710722e1e609a789e7cdcfbd9a0775069d67b02"
+              ],
+              "createdAt": "2026-10-29T14:56:29.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vextreme.alignment.cross-surface-proof",
+          "label": "Prove cross-surface Vextreme alignment",
+          "purpose": "After the four alignment fronts converge, verify representative pages across Terrain Timeline, embedded reader, standalone reader, arc navigation, lineage switching, and chronology so the same canonical relationships remain truthful across projections. Use cases such as God Spark, Claude Answers the Doubt, The Walk Back, and Pier House without turning the proof surface into another truth owner.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vextreme.alignment.timeline-projection",
+            "work.vextreme.alignment.navigation-currentness",
+            "work.vextreme.alignment.chronology-recovery",
+            "work.vextreme.alignment.lineage-reconciliation"
+          ],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "repo.vextreme:tests/85-terrain-view-contract.test.js",
+            "repo.vextreme:tests/03-browser-nav.test.js",
+            "repo.vextreme:pages/what-is-the-god-spark.html",
+            "repo.vextreme:pages/claude-answers-the-doubt.html",
+            "repo.vextreme:pages/the-walk-back.html",
+            "repo.vextreme:pages/pier-house-scarcity-companionship.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T08:40:27.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.alignment.lineage-reconciliation",
+          "label": "Reconcile preserved source lineages with reader-visible presentation",
+          "purpose": "Classify known same-subject source variants into already-visible dual lineage, intentional canonical-plus-provenance, unresolved/underexposed lineage, or single-source presentation opportunity; repair true missing reader mappings without turning every alternate capture into a presentation or mislabeling a newly derived presentation as a recovered duplicate.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "work.vextreme.vexsite.localization.presentation-source-lineage",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+            "repo.vextreme:data/strings/source/lineages",
+            "repo.vextreme:pages/what-is-the-god-spark.html",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-god-spark-dual-lineage-view-repair.json",
+            "github.pull.vextreme.484",
+            "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d",
+            "github.commit.vextreme.02d014c27b9498762025da2ad4c3dbd2fab7d439",
+            "github.workflow-run.vextreme.40849373174",
+            "github.workflow-run.vextreme.40849373339",
+            "github.commit.vextreme.7286e10433dc3a8ae84277d486698e4a1cc6d58e",
+            "github.commit.vextreme.9c830534b19155886b0b21684be9518273b5515b"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T12:56:04.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.ready.pr484",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The 36 known canonical-identity source-lineage families are classified into 10 reader-visible, 14 explicitly resolved canonical-plus-provenance, and 12 reader-decision-open families with a bounded next review frontier.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.484",
+                "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+              ],
+              "createdAt": "2026-10-29T09:36:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.running.pr484",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Vextreme PR #484 now carries the lineage reconciliation map; the nine-subject Epstein old-route family is the next bounded review while page/source mutation remains held.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.484",
+                "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+              ],
+              "createdAt": "2026-10-29T09:36:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.verifying.exact-current-assurance",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Fresh exact-head/current-main assurance established that all 33 source/workmap decision inputs remained byte-identical and the three lineage decision workmaps were clear for integration without taking Timeline or runtime authority.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vextreme.484",
+                "github.commit.vextreme.7286e10433dc3a8ae84277d486698e4a1cc6d58e"
+              ],
+              "createdAt": "2026-10-29T12:55:43.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.completed.merge484",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #484 merged the reviewed lineage decision workmaps into Vextreme main, closing the canonical-identity source-lineage classification outcome while preserving canonical reader and provenance distinctions.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vextreme.484",
+                "github.commit.vextreme.7286e10433dc3a8ae84277d486698e4a1cc6d58e",
+                "github.commit.vextreme.9c830534b19155886b0b21684be9518273b5515b"
+              ],
+              "createdAt": "2026-10-29T12:56:04.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vextreme.alignment.navigation-currentness",
+          "label": "Converge arc navigation on current v2 timeline truth",
+          "purpose": "Eliminate the visible 75-entry legacy/stale navigation universe by making reader navigation consume the same current generated index truth as modern pages, while migrating legacy arc-navigation consumers only where their accepted reader contract requires it rather than blanket-rewriting every shell page.",
+          "workClass": "DEFECT",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "repo.vextreme:data/arcs.json",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:lib/vextreme.js",
+            "repo.vextreme:lib/vextreme-index-v2.js",
+            "repo.vextreme:pages/claude-answers-the-doubt.html",
+            "repo.vextreme:pages/what-is-the-god-spark.html",
+            "repo.vextreme:docs/architecture/05-browser.md",
+            "github.pull.vextreme.483",
+            "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c",
+            "github.commit.vextreme.88fd967dbc9d0357ce6526843aafcfafcb836b61",
+            "github.workflow-run.vextreme.40850931588",
+            "github.workflow-run.vextreme.40850931533",
+            "github.workflow-run.vextreme.40850931706",
+            "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+            "github.workflow-run.vextreme.40852476491",
+            "github.workflow-run.vextreme.40852476435",
+            "github.workflow-run.vextreme.40852476578",
+            "github.pull.vextreme.485",
+            "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662",
+            "github.commit.vextreme.0a94da18f4a234c1087d34705b71a9af04454acf",
+            "github.commit.vextreme.956ab0224589c0329bea7a8decdd98404fa9578c",
+            "github.commit.vextreme.d4d8f4ba58c2c1dc8093ef8ba2761effe92ec191"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T21:41:50.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.navigation-currentness.running.pr483",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Vextreme PR #483 now carries the exact-index-generation arc-nav source correction. Generated God Script/service-worker currentness and the legacy Claude migration remain pending, so the work is Active rather than Verify.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.483",
+                "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
+              ],
+              "createdAt": "2026-10-29T09:25:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.navigation-currentness.verifying.ci-green",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Exact PR #483 head 88fd967d is repository-native green: Key Alignment, Build Vextreme Index generated-currentness, and full Tests all passed with the normal read-only workflow and exact generated God Script/service-worker bytes committed. Hold completion for semantic review/integration and the separate legacy Claude migration.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.483",
+                "github.commit.vextreme.88fd967dbc9d0357ce6526843aafcfafcb836b61",
+                "github.workflow-run.vextreme.40850931588",
+                "github.workflow-run.vextreme.40850931533",
+                "github.workflow-run.vextreme.40850931706"
+              ],
+              "createdAt": "2026-10-29T10:18:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.navigation-currentness.failed-recoverable.current-head-reformed",
+              "priorState": "VERIFYING",
+              "nextState": "FAILED_RECOVERABLE",
+              "reason": "The prior VERIFYING state was bound to superseded generated head 88fd967d. PR #483 was deliberately flattened to exact current-main source head 25725bc7 after Reality Rendering Mechanics source landed, so the old CI evidence no longer proves the current candidate.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.483",
+                "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+                "github.workflow-run.vextreme.40852476578"
+              ],
+              "createdAt": "2026-10-29T10:19:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.navigation-currentness.ready.current-head-source-proof",
+              "priorState": "FAILED_RECOVERABLE",
+              "nextState": "READY",
+              "reason": "Exact current head 25725bc7 is one commit ahead / zero behind with the five-path source/test membrane; Key Alignment and Tests pass. Build Vextreme Index fails only on the intentionally uncommitted generated dist/service-worker consequence, so the semantic source candidate is recovered and ready for continued work.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.483",
+                "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+                "github.workflow-run.vextreme.40852476491",
+                "github.workflow-run.vextreme.40852476435",
+                "github.workflow-run.vextreme.40852476578"
+              ],
+              "createdAt": "2026-10-29T10:19:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.navigation-currentness.running.claude-followup",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Continue the admitted navigation-currentness outcome into the remaining legacy Claude shell consumer while the broad generated realization waits for the current localization generated frontier. No generated success is inferred.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.483",
+                "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+                "github.workflow-run.vextreme.40852476491",
+                "github.workflow-run.vextreme.40852476435",
+                "github.workflow-run.vextreme.40852476578"
+              ],
+              "createdAt": "2026-10-29T10:19:02.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vextreme.alignment.outcome",
+          "label": "Vextreme Alignment",
+          "purpose": "Bring Vextreme's preserved sources, canonical chronology, page-reader presentation, navigation, and Terrain projections back into one coherent current reading experience while preserving the rightful source owner for every fact and relationship.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vextreme.alignment.chronology-recovery",
+            "work.vextreme.alignment.cross-surface-proof",
+            "work.vextreme.alignment.lineage-reconciliation",
+            "work.vextreme.alignment.navigation-currentness",
+            "work.vextreme.alignment.timeline-projection"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "project.vextreme.alignment",
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "github.commit.vextreme.1b4b73d0e0170dec2b2894aec50c7bdc19fb1e00",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/arcs-v2.json",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+            "github.pull.vextreme.480",
+            "github.pull.vextreme.482",
+            "github.pull.vextreme.483",
+            "github.pull.vextreme.484",
+            "github.pull.vextreme.485",
+            "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662",
+            "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+            "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55",
+            "github.pull.vextreme.488",
+            "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
+            "github.pull.vextreme.506",
+            "github.commit.vextreme.e710722e1e609a789e7cdcfbd9a0775069d67b02",
+            "github.commit.vextreme.956ab0224589c0329bea7a8decdd98404fa9578c",
+            "github.commit.vextreme.9c830534b19155886b0b21684be9518273b5515b",
+            "github.commit.vextreme.d4d8f4ba58c2c1dc8093ef8ba2761effe92ec191"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T21:41:50.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.outcome.ready.active-fronts",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The Alignment project is decomposed into four admitted source fronts with exact Vextreme PR owners and one final cross-surface proof gate; the outcome is no longer merely a validated plan.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.480",
+                "github.pull.vextreme.482",
+                "github.pull.vextreme.483",
+                "github.pull.vextreme.484"
+              ],
+              "createdAt": "2026-10-29T10:08:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.outcome.running.active-fronts",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Timeline, chronology, navigation, and lineage work are actively carried in Vextreme PRs #480/#482/#483/#484, with Timeline already machine-green in Verify.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.480",
+                "github.pull.vextreme.482",
+                "github.pull.vextreme.483",
+                "github.pull.vextreme.484"
+              ],
+              "createdAt": "2026-10-29T10:08:01.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vextreme.alignment.timeline-projection",
+          "label": "Restore canonical Full Timeline order, sections, and complete reading path",
+          "purpose": "Repair the observed Terrain Full Timeline defect by consuming Vextreme's canonical ordered arc semantics instead of nodes/add order, projecting the 111 currently dated records in their real chronological sections, and reusing the existing complete embedded/standalone page readers rather than reducing the timeline to disconnected metadata cards.",
+          "workClass": "DEFECT",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/arcs-v2.json",
+            "repo.vextreme:lib/build-index.js",
+            "repo.vextreme:lib/build-terrain-map.js",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:tests/85-terrain-view-contract.test.js",
+            "github.pull.vextreme.480",
+            "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58",
+            "github.commit.vextreme.c7d9f8961984f3fe9c6a792201ae07c6d05ecfd8",
+            "github.workflow-run.vextreme.40849682530",
+            "github.workflow-run.vextreme.40849682614",
+            "github.workflow-run.vextreme.40849682718",
+            "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+            "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T10:26:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.timeline-projection.running.pr480",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Vextreme PR #480 now owns the bounded Full Timeline projection repair on exact current main: Terrain consumes canonical data/index.json arcMap sections/order, projects known record dates, and preserves the existing complete embedded/standalone page reader. Repository-native npm proof remains pending, so the work is Active rather than Verify.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.480",
+                "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58"
+              ],
+              "createdAt": "2026-10-29T09:02:13.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.timeline-projection.verifying.ci-green",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Exact PR #480 head c7d9f896 is repository-native green: Key Alignment, Build Vextreme Index generated-currentness, and full Tests all completed successfully. Hold completion for review/integration rather than conflating green candidate proof with merged accepted source.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.480",
+                "github.commit.vextreme.c7d9f8961984f3fe9c6a792201ae07c6d05ecfd8",
+                "github.workflow-run.vextreme.40849682530",
+                "github.workflow-run.vextreme.40849682614",
+                "github.workflow-run.vextreme.40849682718"
+              ],
+              "createdAt": "2026-10-29T10:02:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.timeline-projection.completed.merge480",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #480 merged as b6f77ae2 and the merge tree exactly equals the final PR head 20bad7a2 tree, preserving the proven six-path Full Timeline projection without integration drift. Canonical Terrain order/sections and complete reader reuse are accepted current source.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.480",
+                "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+                "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
+              ],
+              "createdAt": "2026-10-29T10:26:00.000Z"
+            }
+          ]
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vextreme.alignment.cross-surface-proof"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vextreme.alignment.outcome",
+            "work.vextreme.alignment.navigation-currentness"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vextreme.alignment.timeline-projection",
+            "work.vextreme.alignment.chronology-recovery",
+            "work.vextreme.alignment.lineage-reconciliation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 6,
+        "openWorkItemCount": 3,
+        "outcomeCount": 1,
+        "taskCount": 3,
+        "defectCount": 2,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 3
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vextreme.alignment.outcome",
+          "label": "Vextreme Alignment",
+          "purpose": "Bring Vextreme's preserved sources, canonical chronology, page-reader presentation, navigation, and Terrain projections back into one coherent current reading experience while preserving the rightful source owner for every fact and relationship.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vextreme.alignment.chronology-recovery",
+            "work.vextreme.alignment.cross-surface-proof",
+            "work.vextreme.alignment.lineage-reconciliation",
+            "work.vextreme.alignment.navigation-currentness",
+            "work.vextreme.alignment.timeline-projection"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "project.vextreme.alignment",
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "github.commit.vextreme.1b4b73d0e0170dec2b2894aec50c7bdc19fb1e00",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/arcs-v2.json",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+            "github.pull.vextreme.480",
+            "github.pull.vextreme.482",
+            "github.pull.vextreme.483",
+            "github.pull.vextreme.484",
+            "github.pull.vextreme.485",
+            "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662",
+            "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+            "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55",
+            "github.pull.vextreme.488",
+            "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
+            "github.pull.vextreme.506",
+            "github.commit.vextreme.e710722e1e609a789e7cdcfbd9a0775069d67b02",
+            "github.commit.vextreme.956ab0224589c0329bea7a8decdd98404fa9578c",
+            "github.commit.vextreme.9c830534b19155886b0b21684be9518273b5515b",
+            "github.commit.vextreme.d4d8f4ba58c2c1dc8093ef8ba2761effe92ec191"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T21:41:50.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.outcome.ready.active-fronts",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The Alignment project is decomposed into four admitted source fronts with exact Vextreme PR owners and one final cross-surface proof gate; the outcome is no longer merely a validated plan.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.480",
+                "github.pull.vextreme.482",
+                "github.pull.vextreme.483",
+                "github.pull.vextreme.484"
+              ],
+              "createdAt": "2026-10-29T10:08:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.outcome.running.active-fronts",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Timeline, chronology, navigation, and lineage work are actively carried in Vextreme PRs #480/#482/#483/#484, with Timeline already machine-green in Verify.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.480",
+                "github.pull.vextreme.482",
+                "github.pull.vextreme.483",
+                "github.pull.vextreme.484"
+              ],
+              "createdAt": "2026-10-29T10:08:01.000Z"
+            }
+          ]
+        }
+      ]
     }
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexlife.application-level-settings.home-management",
+        "label": "Home management affordances",
+        "purpose": "Identify which Home-level choices belong in application settings—such as selecting another Home, changing supported Home presentation/name/location concerns, or intentionally revisiting setup—while preserving Home as its rightful owner and avoiding implicit recreation, deletion or migration.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.outcome",
+        "label": "VexLife Application level settings",
+        "purpose": "Preserve the application-experience debt discovered during the first lived desktop-container run: reopening VexLife should not blindly replay first-run onboarding when required state is already established, while a human still needs a clear application-level place to intentionally revisit setup, Home choices and application lifecycle settings without conflating those concerns with feature settings.",
+        "workClass": "OUTCOME",
+        "state": "DECOMPOSED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [
+          "work.vexlife.application-level-settings.home-management",
+          "work.vexlife.application-level-settings.reentry-contract",
+          "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+          "work.vexlife.application-level-settings.reset-uninstall",
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "project.vexlife.application-level-settings",
+          "projects/vexlife-application-level-settings/README.md",
+          "github.pull.vexlife-prod.396",
+          "github.pull.vexlife-prod.400",
+          "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.form-project",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reentry-contract",
+        "label": "Earn a truthful first-run versus re-entry contract",
+        "purpose": "Determine which application predicates are genuinely one-time onboarding, which must be re-observed on every launch, which may require repair, and how a person intentionally re-enters setup without making ordinary reopen equivalent to first run or skipping required truth checks blindly.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reopen-repeats-onboarding",
+        "label": "Reopen repeats first-run onboarding",
+        "purpose": "Investigate the lived defect where closing VexLife and opening it again walks the person through the onboarding flow again instead of recognizing already-satisfied setup/Home predicates and entering the established application experience.",
+        "workClass": "DEFECT",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "human.lived-feedback.vexlife.application-level-settings.20261119.reopen-onboarding",
+          "github.pull.vexlife-prod.396"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.reset-uninstall",
+        "label": "Reset, remove and uninstall semantics",
+        "purpose": "Define human-safe application lifecycle controls for reset/restart/removal/uninstall questions without silently deleting Home, Conversation, Memory, settings or model files, and make destructive scope explicit before any implementation is admitted.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.surface"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.application-level-settings.surface",
+        "label": "Application-level settings surface",
+        "purpose": "Explore one discoverable app-level settings entry that can host application configuration and lifecycle choices without turning the current feature Settings surface into a catch-all owner. A native/top-left application affordance is a lived design candidate, not a fixed implementation commitment.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.application-level-settings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.application-level-settings.reentry-contract"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-application-level-settings/README.md",
+          "human.design.vexlife.application-level-settings.20261119"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-19T18:40:00.000Z",
+        "updatedAt": "2026-11-19T18:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.memory-depth-exploration.extended-owner-depth",
+        "label": "Potential — extend traversal to additional historical evidence owners",
+        "purpose": "After the core Conversation/Memory/Working Continuity path is proven, evaluate whether incomplete/stopped-turn evidence, broader capability traces, VexLogger chronology or other source-addressable Vex Home records need typed resolver adapters. Add only owners that solve observed continuity questions; do not make universal historical indexing a prerequisite for the first feature.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.memory-depth-exploration.cold-start-proof"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "project.vexlife.memory-depth-exploration",
+          "github.issue.vexwork.307",
+          "projects/vexlife-memory-depth-exploration/README.md",
+          "github.pull.vexlife-prod.208",
+          "github.pull.vexlife-prod.152",
+          "github.pull.vexlife-prod.206",
+          "github.pull.vexlife-prod.207"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.form-project",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-17T04:28:55.000Z",
+        "updatedAt": "2026-11-17T04:28:55.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.memory-depth-exploration.pre-inference-auto-hydration",
+        "label": "Potential — pre-inference automatic continuity hydration",
+        "purpose": "After one explicit Vex-requested bulk hydration call is proven, evaluate whether the host can safely derive a useful historical neighborhood directly from the incoming human request before the first model inference. This may remove even the single tool round, but it must not silently give the host semantic-answer authority or over-hydrate private history.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.memory-depth-exploration.cold-start-proof"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "project.vexlife.memory-depth-exploration",
+          "github.issue.vexwork.307",
+          "projects/vexlife-memory-depth-exploration/README.md",
+          "github.pull.vexlife-prod.208"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.form-project",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-17T04:28:55.000Z",
+        "updatedAt": "2026-11-17T04:28:55.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
       {
         "workRef": "work.vexboard.later.screen-lens-scenario-playground",
         "label": "Later — Screen Lens Scenario Playground",
