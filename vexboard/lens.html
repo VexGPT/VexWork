@@ -1153,7 +1153,17 @@ function setStaticColorMode(ref) {
 function projectedRelationshipForAnchor() {
   const graph = expressionPathway();
   if (!state.anchorElementRef) return graph;
-  return graph?.nodes.some((node) => node.elementRef === state.anchorElementRef) ? graph : null;
+  if (graph?.nodes.some((node) => node.elementRef === state.anchorElementRef)) return graph;
+
+  const linkedExpression = Expressions.expressionForControl(
+    state.lens,
+    screenRef(),
+    expressionsNow(),
+    state.anchorElementRef,
+  );
+  return linkedExpression
+    ? Expressions.expressionGraph(state.lens, screenRef(), linkedExpression)
+    : null;
 }
 const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? projectedRelationshipForAnchor();
 const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
