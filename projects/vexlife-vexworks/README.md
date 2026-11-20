@@ -775,3 +775,27 @@ src/commonTest/kotlin/vexlife/web/VexLifeVisionQuickAccessTest.kt
 ~~~
 
 Fresh combined-tree SourceOwner proof is required on this corrected integration head before any merge/lifecycle completion claim.
+
+
+### PR #439 integration A002 formed
+
+The current integration candidate after the one stale Screen Lens proof correction is:
+
+~~~text
+head 8b27bf51898cac3e1359c5fc41bd38d1c0667caa
+tree 1d76894a86913aeeaf6b66322129060b0d27a0e8
+base 14206ba97e47e107c4999e89f514c8beaf24224a
+changed paths 9
+~~~
+
+A002 proof package:
+
+~~~text
+sha256
+0c47f8977af08b669ba3fd708fcbe760b706a811572eb61cd6f3591220c99b8c
+
+business execution
+PENDING_MAC_RUN
+~~~
+
+This retry preserves the same integration task and rotates attempt/request/correlation/package identity. It also corrects the inherited inner-task parent/work/admission refs to PR #439 itself. No Product behavior changed after A001; only the stale VisionQuickAccess proof was aligned with the already-merged Screen Lens manifestation law.
