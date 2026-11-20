@@ -171,6 +171,36 @@ test('a nested relationship decides over its enclosing one; choices that all rea
   assert.equal(albums.elements.get('element.vexstream-music.body.library-tabs.albums').state, 'DEPENDS');
 });
 
+test('a gated nested presentation stays latent outside its parent even when its raw override says OPEN', () => {
+  const input = base();
+  input.screens[0].elements.push(
+    { ref: 'element.s.body.quick', kind: 'REGION', label: 'Quick actions', parentRef: 'element.s.body', symbol: 'S.QuickActions' },
+    { ref: 'element.s.body.panel', kind: 'REGION', label: 'Speech panel', parentRef: 'element.s.body', symbol: 'S.SpeechPanel' },
+  );
+  input.screens[0].realization.presence.push(
+    { ref: 'presence.s.quick-open', kind: 'PRESENTATION', subjectRef: 'element.s.body.quick', owner: 'runtime.presentation', condition: 'state.quickOpen' },
+    { ref: 'presence.s.panel-open', kind: 'PRESENTATION', subjectRef: 'element.s.body.panel', owner: 'runtime.presentation', condition: 'state.panelOpen', gate: { presenceRef: 'presence.s.quick-open', choice: 0 } },
+  );
+  const lens = normalizeScreenLens(input);
+
+  const source = R.resolvePresence(lens, 'screen.s');
+  assert.equal(source.elements.get('element.s.body.panel').state, 'LATENT', 'an unreachable nested panel is not source-visible merely because its DOM parent is visible');
+
+  const innerOnly = R.resolvePresence(
+    lens,
+    'screen.s',
+    R.withOverride(R.emptyRealizationContext(), 'presence.s.panel-open', 'OPEN'),
+  );
+  assert.equal(innerOnly.presence.get('presence.s.panel-open').value, 'OPEN', 'scenario retains the raw child choice');
+  assert.equal(innerOnly.presence.get('presence.s.panel-open').gate, false, 'the enclosing presentation still gates it off');
+  assert.equal(innerOnly.elements.get('element.s.body.panel').state, 'LATENT', 'raw OPEN cannot escape a closed parent presentation');
+
+  let open = R.withOverride(R.emptyRealizationContext(), 'presence.s.quick-open', 'OPEN');
+  open = R.withOverride(open, 'presence.s.panel-open', 'OPEN');
+  const reached = R.resolvePresence(lens, 'screen.s', open);
+  assert.equal(reached.elements.get('element.s.body.panel').state, 'SCENARIO', 'the nested panel presents once its parent is reached');
+});
+
 test('every choice of an exhaustive relationship realizing the same ref is presence, not dependence', () => {
   const input = base();
   input.screens[0].realization.presence[2] = { ref: 'presence.s.flag-branch', kind: 'CASES', subjectRef: 'element.s.body.flag', owner: 'feature', exhaustive: true, choices: [{ condition: 'is On', realizes: ['element.s.body.flag', 'element.s.body.nowhere'] }, { condition: 'is Off', realizes: ['element.s.body.flag'] }] };
