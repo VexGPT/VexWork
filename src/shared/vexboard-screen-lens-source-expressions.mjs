@@ -52,6 +52,7 @@ const humanize = (symbol) => {
   return words.map((word, i) => (i ? word.toLowerCase() : word)).join(' ');
 };
 const localOf = (symbol) => String(symbol ?? '').split('.').pop();
+const regexLiteral = (value) => String(value ?? '').replace(/[.*+?^${}()|[\]\\]/g, '\\const localOf = (symbol) => String(symbol ?? '').split('.').pop();');
 
 // The name a person would use: the registered label, unless it is a bare kind word ("Sheet"),
 // then the source symbol that declares it ("FullPlayerSheet" → "Full player sheet").
@@ -423,7 +424,7 @@ function selectorsOf(lens, screenRef, parts, containerRef, childRef) {
   const container = parts.elements.get(containerRef);
   const child = parts.elements.get(childRef);
   if (!container?.symbol || !child?.symbol) return [];
-  const pattern = new RegExp(`\\bswapTo\\(\\s*container\\s*=\\s*(?:\\w+\\.)?${localOf(container.symbol)}\\s*,\\s*child\\s*=\\s*(?:\\w+\\.)?${localOf(child.symbol)}\\s*\\)`);
+  const pattern = new RegExp(`\\bswapTo\\(\\s*container\\s*=\\s*(?:\\w+\\.)?${regexLiteral(localOf(container.symbol))}\\s*,\\s*child\\s*=\\s*(?:\\w+\\.)?${regexLiteral(localOf(child.symbol))}\\s*\\)`);
   const candidates = [...lens.chrome.flatMap((entry) => entry.elements), ...parts.screen.elements];
   return candidates.filter((element) => element.intent && pattern.test(element.intent));
 }
