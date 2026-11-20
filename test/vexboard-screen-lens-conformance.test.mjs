@@ -308,6 +308,39 @@ test('VexStream Playlist populations carry portable dynamic identity without inv
   assert.equal(cardResolved.presence.get(cardPopulation.ref).by, 'SCENARIO');
 });
 
+test('VexStream Deleted terrain and Trash population reuse the generic dynamic identity consumer', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const [screen] = vexstream.screens;
+  const shell = screen.realization.presence.find((presence) => presence.ref === 'presence.vexstream.shell.primary-terrain');
+  const trashPopulation = screen.realization.presence.find((presence) => presence.ref === 'presence.vexstream.trash.items');
+  const trashTemplate = screen.realization.templates.find((template) => template.ref === 'template.vexstream.trash.item');
+
+  assert.ok(shell.choices.some((choice) => choice.targetRef === 'vexstream.desktop.library.panel.deleted'));
+  assert.equal(trashPopulation.kind, 'POPULATION');
+  assert.equal(trashPopulation.gate.presenceRef, shell.ref);
+  assert.equal(trashPopulation.gate.choice, 4);
+  assert.equal(trashTemplate.instanceIdentity.kind, 'RUNTIME_INSTANCE');
+  assert.equal(trashTemplate.instanceIdentity.continuity, 'STABLE_INSTANCE');
+  assert.deepEqual(trashTemplate.instanceIdentity.partSources, ['item.id']);
+  assert.ok(
+    trashTemplate.slots.filter((slot) => slot.depth > 0)
+      .every((slot) => slot.instanceIdentity?.kind === 'DERIVED_CHILD'),
+  );
+
+  const trashContext = Realization.withOverride(
+    Realization.emptyRealizationContext(),
+    trashPopulation.ref,
+    'ITEMS',
+  );
+  const resolved = Realization.resolvePresence(vexstream, screen.screenRef, trashContext);
+  assert.equal(resolved.presence.get(trashPopulation.ref).value, 'ITEMS');
+  assert.equal(
+    screen.elements.some((element) => element.ref.startsWith('element.vexstream.trash.item.dynamic.utf8hex.')),
+    false,
+    'Trash formation is projected without fabricating current runtime rows',
+  );
+});
+
 test('VexStream current default-visible projection carries the zero-blocker addressability census', () => {
   const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
   const [screen] = vexstream.screens;
