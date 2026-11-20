@@ -17,7 +17,8 @@
     "github.pull.vexlife-prod.400",
     "github.pull.vexwork.332",
     "artifact.vexlife-prod.webtoapp.mac-build-delivery.a008.return.sha256.adcb59bd489d10cb6721e044723c85114c5e6984700230242896d026fea0927d",
-    "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+    "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2",
+    "projects/vexlife-release-roadmap/RELATIONSHIP-CURRENTNESS-COMPANION.md"
   ],
   "formedAt": "2026-11-20T05:32:00.000Z"
 }
