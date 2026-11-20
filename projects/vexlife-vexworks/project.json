@@ -1,8 +1,8 @@
 {
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.vexworks",
-  "label": "VexWorks",
-  "purpose": "Make VexLife a coherent local AI work environment: let a person add files and persistent Local Sources, let Vex reach only exact admitted material through existing semantic capability owners, then expose a Claude-like model selector whose controls and available features are derived from the exact selected model/provider/runtime relationship, including conservatively admitted user-imported models, without rebinding Conversation, Memory, artifact or source identity.",
+  "label": "[VexLife Local Artifacts]",
+  "purpose": "Make VexLife Local Artifacts a coherent local AI work environment: let a person add files and persistent Local Sources, let Vex reach only exact admitted material through existing semantic capability owners, then expose a Claude-like model selector whose controls and available features are derived from the exact selected model/provider/runtime relationship, including conservatively admitted user-imported models, without rebinding Conversation, Memory, artifact or source identity.",
   "rootWorkRefs": [
     "work.vexlife.vexworks.outcome"
   ],
