@@ -624,9 +624,33 @@ normal Windows final-head artifact
   PASS
 ~~~
 
-The next cross-consumer proof is VexWork's generic four-subject floor against this exact merged source.
-Until that passes, Product projection is established but the updated shared-consumer predicate remains
-separately open.
+The updated shared-consumer predicate is now complete:
+
+~~~text
+initial generic consumer run
+  44772309891
+  113 PASS / 1 FAIL
+  sole failure = stale VexStream element census expected 79, actual merged source 81
+  new Trash generic-consumer test itself PASS
+
+currentized generic consumer run
+  44772457009
+  114 / 114 PASS
+  0 FAIL
+
+exact merged-source binding
+  source    03c1fe43ea90ccdc3be7c78193b209c15f3d5102
+  elements  81
+  pathways  13
+  presence  7
+  templates 3
+~~~
+
+No Product-specific Trash reader branch was added. The stale census was currentized from the prior
+79-element source to the merged 81-element source and the same shared consumer passed unchanged in its
+runtime identity logic.
+
+The temporary proof workflow was removed after evidence consumption.
 
 ### Current remaining trajectory
 
