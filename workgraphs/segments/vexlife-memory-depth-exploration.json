@@ -172,16 +172,16 @@
       "schemaVersion": "vexwork.work-item/v1",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
-      "workDisposition": "PARKED",
+      "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-20T10:52:25.050Z",
+      "updatedAt": "2026-11-20T10:52:25.053Z",
       "workRef": "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Build the bounded host-side bulk expansion engine",
       "purpose": "Implement and compare a bounded relevance-guided traversal that can resolve several owner-backed hops internally within one model-visible hydration request. Pressure-test breadth/beam/depth choices, deterministic tie-breaking, cycle and duplicate suppression, per-owner quotas, node/depth/token/time budgets, relevance selection and explicit frontier return; optimize for useful answer context rather than maximum graph coverage.",
       "workClass": "TASK",
-      "state": "CANCELLED",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.memory-depth-exploration.hydration-contract",
@@ -199,7 +199,13 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityAtlas.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeReachDefinitions.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/reach/VexLifeMemoryRecall.kt",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectConversationSourceReturn.kt",
+        "github.pull.vexlife-prod.220",
+        "github.pull.vexlife-prod.241",
+        "github.commit.vexlife-prod.2edf7f7c2d099ba97341294db9e116c28748dfe4",
+        "github.commit.vexlife-prod.b14481b0b28d43e2d50e3d51082561c303c51fed",
+        "github.commit.vexlife-prod.1565d3554930ebed95020be0dbdc58a37977b703",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -680,18 +686,66 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.cancelled.provider-native-route",
+      "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.ready.evolved-contracts-complete",
       "workRef": "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
       "priorState": "WAITING_DEPENDENCIES",
-      "nextState": "CANCELLED",
-      "reason": "The proposed host-side relevance-guided beam/graph expansion engine was not adopted. Product evolved toward bounded provider-native capability/revisit calls with rightful-owner source returns; preserving this old algorithm as pending Work would create a false second implementation route.",
+      "nextState": "READY",
+      "reason": "The bounded hydration contract and rightful resolver-neighborhood dependencies are currentized complete; the bulk expansion implementation can be judged against the Product successor that actually absorbed it.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexlife-prod.383",
-        "github.pull.vexlife-prod.393",
-        "github.pull.vexlife-prod.403"
+        "work.vexlife.memory-depth-exploration.hydration-contract",
+        "work.vexlife.memory-depth-exploration.resolver-neighborhood",
+        "github.pull.vexlife-prod.220",
+        "github.pull.vexlife-prod.241"
       ],
       "createdAt": "2026-11-20T10:52:25.050Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.running.context-revisit",
+      "workRef": "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The Product successor implemented the intended one-model-visible-request / many-bounded-owner-reads shape as VexLifeContextRevisit, including multi-query fusion, owner-read reuse, prompt-resident exclusion, bounded exact returns and explicit frontier.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.220",
+        "github.commit.vexlife-prod.2edf7f7c2d099ba97341294db9e116c28748dfe4",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt"
+      ],
+      "createdAt": "2026-11-20T10:52:25.051Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.verifying.accepted-convergence",
+      "workRef": "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Accepted Product convergence explicitly carried #220's earned relationships into turn-bound VexLifeContextRevisit, added scan/return cost evidence, and preserved bounded owner/source custody without adding a second continuity owner.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vexlife-prod.b14481b0b28d43e2d50e3d51082561c303c51fed",
+        "github.commit.vexlife-prod.1565d3554930ebed95020be0dbdc58a37977b703",
+        "github.pull.vexlife-prod.241"
+      ],
+      "createdAt": "2026-11-20T10:52:25.052Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.memory-depth-exploration.bulk-expansion-engine.completed.evolved-context-revisit",
+      "workRef": "work.vexlife.memory-depth-exploration.bulk-expansion-engine",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The bounded host-side expansion outcome is accepted on Product main in a narrower earned form: one revisit request can fan across Conversation, current Memory and Working Continuity once per owner, take bounded typed expansion steps, deduplicate nodes, enforce turn/token limits, expose exact returned/resident/frontier refs and measure scan/return cost. Semantic-similarity retrieval, cold-start lived recovery and lesson transfer remain separate successor obligations.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.241",
+        "github.commit.vexlife-prod.2edf7f7c2d099ba97341294db9e116c28748dfe4",
+        "github.commit.vexlife-prod.b14481b0b28d43e2d50e3d51082561c303c51fed",
+        "github.commit.vexlife-prod.1565d3554930ebed95020be0dbdc58a37977b703",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt"
+      ],
+      "createdAt": "2026-11-20T10:52:25.053Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

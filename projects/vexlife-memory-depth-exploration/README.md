@@ -32,14 +32,14 @@ Therefore:
 PREDECESSOR MEMORY/JOURNAL LINEAGE       COMPLETED
 BOUNDED HYDRATION CONTRACT               COMPLETED IN EVOLVED PRODUCT FORM
 RIGHTFUL RESOLVER NEIGHBORHOOD           COMPLETED IN EVOLVED PRODUCT FORM
-HOST-SIDE BULK BEAM/GRAPH ENGINE ROUTE   CANCELLED — Product chose provider-native bounded reach instead
+HOST-SIDE BOUNDED EXPANSION ENGINE       COMPLETED IN EVOLVED PRODUCT FORM
 FRESH COMPANION REQUEST/RETURN WIRING     COMPLETED IN EVOLVED PRODUCT FORM
 CONTEXT / PROVIDER CONVERGENCE            RUNNING
 COLD-START SEMANTIC RECOVERY              STILL OWED
 MEASUREMENT / LESSON-TRANSFER PROOF        STILL OWED
 ~~~
 
-Cancellation above means the proposed implementation route was not adopted; it is not a claim that its work was completed. The surviving human intention continues through the current Product reach/context trajectory and this Project's cold-start/measurement obligations.
+Fresh Assurance corrected the earlier cancellation classification. The Product did not preserve the formation-era breadth/beam wording literally, but it did implement the bounded host-side expansion outcome as VexLifeContextRevisit: one model-visible revisit request may fan across rightful continuity owners, deduplicate and relate bounded results, enforce turn/token limits, return exact source plus explicit frontier, and expose scan/return cost. That completed engine does not claim semantic-similarity retrieval, cold-start lived recovery or lesson transfer; those remain explicit successor obligations.
 
 The shared #310 harness remains a live consumer-facing asset and is preserved here. Historical #308/#309/#315 carriers remain provenance; do not restart their old implementation sequence merely because those PRs remain addressable.
 
