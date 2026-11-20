@@ -602,3 +602,41 @@ VERIFYING -> COMPLETED
 No other Interface Refinement Work changes state through this currentization.
 
 <!-- [VXG RealForever][INTERFACE-REFINEMENT][LONG-CONTEXT][CURRENTIZED][COMPLETED] -->
+
+## Currentization — Conversation debug surface is active, not complete
+
+The old Debug Menu row is no longer only READY.
+
+Current VexLife-Prod already exposes a real human-facing context/debug field:
+
+~~~text
+Vex Context / Vex Labs
+  token/context budget
+  Memory + continuity + Conversation + browser/request components
+  exact live provider request JSON / SHA evidence
+  current Context Profile state
+  process / output / after evidence
+  model prompt-cache configuration
+  diagnostics
+  session-only live process / reach evidence
+~~~
+
+That is substantial accepted implementation, so:
+
+~~~text
+work.vexlife.interface-refinement.conversation-debug-surface
+READY -> RUNNING
+~~~
+
+It is not completed yet. The current field still does not close the full original contract in one human surface:
+
+~~~text
+complete selected provider/representation profile
+complete capability AVAILABLE / HELD / UNKNOWN catalog + reason/unlock field
+provider-stage prompt/cache/prefill/latency causal field
+complete session/cache reset + fresh-session/fresh-Conversation + session-only override controls
+~~~
+
+Current VexLife-Prod owns the implementation; this Project continues to own the older human-outcome trajectory.
+
+<!-- [VXG RealForever][INTERFACE-REFINEMENT][DEBUG-SURFACE][CURRENTIZED][RUNNING] -->
