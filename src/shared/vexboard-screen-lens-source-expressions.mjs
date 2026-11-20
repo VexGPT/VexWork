@@ -393,9 +393,25 @@ export function customExpression(lens, screenRef, context) {
 export function expressionForControl(lens, screenRef, expressions, elementRef) {
   const parts = screenParts(lens, screenRef);
   const element = [...lens.chrome.flatMap((entry) => entry.elements), ...parts.screen.elements].find((candidate) => candidate.ref === elementRef);
-  if (!element?.intent) return null;
+  if (!element) return null;
   const bySymbol = (local) => parts.screen.elements.find((candidate) => localOf(candidate.symbol) === local) ?? null;
   const targets = [];
+
+  for (const entry of parts.presence.filter((candidate) => candidate.kind === 'SELECTION')) {
+    const choices = parts.choicesOf(entry);
+    const index = choices.findIndex((choice) => (choice.selectorRefs ?? []).includes(elementRef));
+    if (index >= 0) {
+      const choice = choices[index];
+      if (choice.resolvedTargetRef) targets.push({
+        kind: 'SELECTION',
+        presenceRef: entry.ref,
+        value: choice.resolvedTargetRef,
+        isDefault: entry.defaultRef === choice.resolvedTargetRef,
+      });
+    }
+  }
+
+  if (!element.intent && !targets.length) return null;
   for (const match of element.intent.matchAll(/\bswapTo\(\s*container\s*=\s*(?:\w+\.)?(\w+)\s*,\s*child\s*=\s*(?:\w+\.)?(\w+)\s*\)/g)) {
     const container = bySymbol(match[1]);
     const child = bySymbol(match[2]);
@@ -420,12 +436,15 @@ export function expressionForControl(lens, screenRef, expressions, elementRef) {
 
 const nodeRef = (expression, suffix) => `${expression.ref}:${suffix}`;
 
-function selectorsOf(lens, screenRef, parts, containerRef, childRef) {
+function selectorsOf(lens, screenRef, parts, containerRef, childRef, choice = null) {
+  const candidates = [...lens.chrome.flatMap((entry) => entry.elements), ...parts.screen.elements];
+  const byRef = new Map(candidates.map((element) => [element.ref, element]));
+  const explicit = (choice?.selectorRefs ?? []).map((ref) => byRef.get(ref)).filter(Boolean);
+  if (explicit.length) return explicit;
   const container = parts.elements.get(containerRef);
   const child = parts.elements.get(childRef);
   if (!container?.symbol || !child?.symbol) return [];
   const pattern = new RegExp(`\\bswapTo\\(\\s*container\\s*=\\s*(?:\\w+\\.)?${regexLiteral(localOf(container.symbol))}\\s*,\\s*child\\s*=\\s*(?:\\w+\\.)?${regexLiteral(localOf(child.symbol))}\\s*\\)`);
-  const candidates = [...lens.chrome.flatMap((entry) => entry.elements), ...parts.screen.elements];
   return candidates.filter((element) => element.intent && pattern.test(element.intent));
 }
 
@@ -574,7 +593,7 @@ function stepsGraph(lens, screenRef, parts, expression, steps, { add, link, prev
       const container = parts.elements.get(entry.subjectRef);
       const child = parts.elements.get(step.value);
       const choice = parts.choicesOf(entry)[step.choice] ?? null;
-      const selectors = selectorsOf(lens, screenRef, parts, entry.subjectRef, step.value).slice(0, 2);
+      const selectors = selectorsOf(lens, screenRef, parts, entry.subjectRef, step.value, choice).slice(0, 3);
       const stateRef = add({ ref: nodeRef(expression, key), face: 'BEHAVIOR', role: 'STATE', label: `selected(${localOf(container?.symbol)}) == ${localOf(child?.symbol)}`, symbol: 'runtime.presentation', summary: step.implicit ? `Source default of ${expressionName(container)}.` : `VexRuntime presentation state. Default: ${expressionName(parts.elements.get(entry.defaultRef)) ?? 'none'}.`, source: entry.source, presenceRef: entry.ref });
       if (selectors.length && !step.implicit) for (const [index, selector] of selectors.entries()) {
         const control = add({ ref: nodeRef(expression, `${key}:selector-${index}`), face: 'BEHAVIOR', role: 'ELEMENT', label: selector.label, symbol: selector.symbol ?? null, summary: selector.intent, elementRef: selector.ref });

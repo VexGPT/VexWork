@@ -453,13 +453,24 @@ test('static state consequences ignore gated-off inner presentation values', () 
 });
 
 
-test('selected identities recurse into their active projected realization relationship when no semantic pathway exists', () => {
+test('selected identities recurse into source-authored realization behavior when no semantic pathway exists', () => {
   assert.match(page, /function projectedRelationshipForAnchor\(\)/);
   assert.match(page, /graph\?\.nodes\.some\(\(node\) => node\.elementRef === state\.anchorElementRef\)/);
+  assert.match(page, /Expressions\.expressionForControl\([\s\S]*state\.anchorElementRef/);
+  assert.match(page, /Expressions\.expressionGraph\(state\.lens, screenRef\(\), linkedExpression\)/);
   assert.match(page, /Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? projectedRelationshipForAnchor\(\)/);
-  assert.match(page, /Reuse that already-derived expression graph only when it actually contains the selected identity/);
+  assert.doesNotMatch(page, /vexstream[^\n]{0,100}projectedRelationshipForAnchor|projectedRelationshipForAnchor[^\n]{0,100}vexstream/i, 'the behavior fallback stays Product-agnostic');
 });
 
+
+test('candidate subjects use the same Project/Main/Commit frame without inventing Stable', () => {
+  assert.match(page, /if \(!stable\) return null;/, 'Stable comparison is absent rather than fabricated');
+  assert.match(page, /Stable not accepted/);
+  assert.match(page, /Stable has not been accepted yet\. Main remains projectable without claiming acceptance\./);
+  assert.match(page, /disabled: true[\s\S]*'Stable'[\s\S]*'not accepted'/);
+  assert.match(page, /entry\.lens\.status !== 'NOT_BUILT' \? Catalog\.lensHref\(entry\)/, 'candidate subjects stay in the normal project menu');
+  assert.doesNotMatch(page, /subject\.slug === ['"]vexstream-music['"]/, 'candidate frame has no VexStream-specific UI branch');
+});
 
 test('legacy Lens shorthand resolves in the canonical Lens directory', () => {
   assert.ok(page.includes("return /^[^/]+\\.json$/i.test(requested)?LENS_DIR+requested:requested;"));

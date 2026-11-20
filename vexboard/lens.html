@@ -744,6 +744,7 @@ async function loadBuildLens(subject, build) {
 const stableLenses = new Map();
 async function stableLensFor(subject) {
   const stable = Catalog.buildFor(subject, 'stable');
+  if (!stable) return null;
   if (!stableLenses.has(subject.slug)) stableLenses.set(subject.slug, loadBuildLens(subject, stable));
   return stableLenses.get(subject.slug);
 }
@@ -1153,7 +1154,17 @@ function setStaticColorMode(ref) {
 function projectedRelationshipForAnchor() {
   const graph = expressionPathway();
   if (!state.anchorElementRef) return graph;
-  return graph?.nodes.some((node) => node.elementRef === state.anchorElementRef) ? graph : null;
+  if (graph?.nodes.some((node) => node.elementRef === state.anchorElementRef)) return graph;
+
+  const linkedExpression = Expressions.expressionForControl(
+    state.lens,
+    screenRef(),
+    expressionsNow(),
+    state.anchorElementRef,
+  );
+  return linkedExpression
+    ? Expressions.expressionGraph(state.lens, screenRef(), linkedExpression)
+    : null;
 }
 const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? projectedRelationshipForAnchor();
 const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
@@ -1375,13 +1386,15 @@ function renderProjectMenu(subject) {
       subject.label, h('span', { class: 'caret', 'aria-hidden': 'true' })));
   if (!open || !state.catalog) return wrap;
   const line = (entry) => {
-    if (entry.lens.status !== 'GENERATED') return `No Screen Lens yet · ${entry.boards.length} board${entry.boards.length === 1 ? '' : 's'}`;
+    if (entry.lens.status === 'NOT_BUILT') return `No Screen Lens yet · ${entry.boards.length} board${entry.boards.length === 1 ? '' : 's'}`;
     const stable = Catalog.buildFor(entry, 'stable');
-    return `Screen Lens · Stable ${short(stable.commit)}${Catalog.sameCommit(entry) ? ' · Main = Stable' : ` · Main ${short(Catalog.buildFor(entry, 'main').commit)}`}`;
+    const main = Catalog.buildFor(entry, 'main');
+    if (!stable) return `Screen Lens · Stable not accepted · Main ${short(main.commit)}`;
+    return `Screen Lens · Stable ${short(stable.commit)}${Catalog.sameCommit(entry) ? ' · Main = Stable' : ` · Main ${short(main.commit)}`}`;
   };
   wrap.append(h('nav', { class: 'menu', 'aria-label': 'Projects' },
     state.catalog.subjects.map((entry) => h('a', {
-      href: entry.lens.status === 'GENERATED' ? Catalog.lensHref(entry) : `./projects.html#${entry.slug}`,
+      href: entry.lens.status !== 'NOT_BUILT' ? Catalog.lensHref(entry) : `./projects.html#${entry.slug}`,
       'aria-current': entry.subjectRef === subject.subjectRef ? 'page' : null,
     }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, entry.label), h('span', { class: 'md' }, line(entry)))),
     h('hr'),
@@ -1412,11 +1425,15 @@ function renderBuildSwitch(subject) {
   const main = Catalog.buildFor(subject, 'main');
   const pressed = (ref) => (currentBuildRef() === ref ? 'true' : 'false');
   const inCommit = state.request?.mode === 'COMMIT';
+  const stableButton = stable
+    ? h('button', { 'aria-pressed': pressed('stable'), title: `Stable: ${stable.summary ?? 'the accepted projection'}${stable.since ? `\nSince ${stable.since}` : ''}\n${stable.commit}`, onclick: () => switchBuild('stable') },
+      'Stable', h('span', { class: 'sha' }, short(stable.commit)))
+    : h('button', { disabled: true, 'aria-pressed': 'false', title: 'Stable has not been accepted yet. Main remains projectable without claiming acceptance.' },
+      'Stable', h('span', { class: 'sha' }, 'not accepted'));
   const wrap = h('div', { class: 'builds', role: 'group', 'aria-label': 'Build' },
-    h('button', { 'aria-pressed': pressed('stable'), title: `Stable: ${stable.summary ?? 'the accepted projection'}${stable.since ? `\nSince ${stable.since}` : ''}\n${stable.commit}`, onclick: () => switchBuild('stable') },
-      'Stable', h('span', { class: 'sha' }, short(stable.commit))),
-    h('button', { 'aria-pressed': pressed('main'), title: Catalog.sameCommit(subject) ? `Main points at the same commit as Stable.\n${main.commit}` : `Main: ${main.summary ?? 'the latest projected commit'}\n${main.commit}`, onclick: () => switchBuild('main') },
-      'Main', h('span', { class: 'sha' }, Catalog.sameCommit(subject) ? '= Stable' : short(main.commit))),
+    stableButton,
+    h('button', { 'aria-pressed': pressed('main'), title: stable && Catalog.sameCommit(subject) ? `Main points at the same commit as Stable.\n${main.commit}` : `Main: ${main.summary ?? 'the latest projected commit'}\n${main.commit}`, onclick: () => switchBuild('main') },
+      'Main', h('span', { class: 'sha' }, stable && Catalog.sameCommit(subject) ? '= Stable' : short(main.commit))),
     subject.lens.anyCommit ? h('button', {
       'aria-pressed': inCommit ? 'true' : 'false', 'aria-expanded': state.menu === 'COMMIT' ? 'true' : 'false',
       title: inCommit ? `Projected in your browser from public source at ${state.commit.sha}${state.commit.date ? ` (${state.commit.date.slice(0, 10)})` : ''}.\nNot an accepted build.` : 'Open any commit, branch or tag',
@@ -1429,7 +1446,7 @@ function renderCommitPopover(subject) {
   const form = state.commitForm;
   const stable = Catalog.buildFor(subject, 'stable');
   const main = Catalog.buildFor(subject, 'main');
-  const pins = (sha) => [sha === stable.commit ? 'Stable' : null, sha === main.commit ? 'Main' : null].filter(Boolean).join(' · ');
+  const pins = (sha) => [stable && sha === stable.commit ? 'Stable' : null, sha === main.commit ? 'Main' : null].filter(Boolean).join(' · ');
   const input = h('input', { id: 'commit-ref', name: 'commit', autocomplete: 'off', spellcheck: 'false', placeholder: 'SHA, branch, tag or GitHub link', value: form.value, disabled: form.busy, 'aria-describedby': 'commit-help' });
   input.addEventListener('input', () => { form.value = input.value; });
   const pop = h('div', { class: 'commit-pop', role: 'dialog', 'aria-label': 'Open a commit', onclick: (event) => event.stopPropagation() },
@@ -1442,7 +1459,7 @@ function renderCommitPopover(subject) {
     pop.append(h('h4', {}, `Recent on ${main.branch ?? subject.repository.defaultBranch}`));
     if (form.recentError) pop.append(h('p', { class: 'help' }, form.recentError));
     else if (!form.recent) pop.append(h('p', { class: 'help' }, 'Loading…'));
-    else pop.append(h('div', { class: 'recent' }, form.recent.map((commit) => h('button', { type: 'button', title: commit.message, onclick: () => (pins(commit.sha) ? switchBuild(commit.sha === stable.commit ? 'stable' : 'main') : openCommit(commit.sha)) },
+    else pop.append(h('div', { class: 'recent' }, form.recent.map((commit) => h('button', { type: 'button', title: commit.message, onclick: () => (pins(commit.sha) ? switchBuild(stable && commit.sha === stable.commit ? 'stable' : 'main') : openCommit(commit.sha)) },
       h('code', {}, short(commit.sha)), h('span', { class: 'd' }, commit.date ? commit.date.slice(0, 10) : ''), h('span', { class: 'm' }, commit.message), pins(commit.sha) ? h('span', { class: 'pin' }, pins(commit.sha)) : h('span')))));
   }
   return pop;

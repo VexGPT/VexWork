@@ -83,6 +83,7 @@ export function normalizeScreenRealization(input, { screenRef, knownRefs }) {
         condition: optional(choice.condition) ?? '',
         kind: optional(choice.kind),
         targetRef: known(choice.targetRef, `${ref} choice target`),
+        selectorRefs: Object.freeze(list(choice.selectorRefs).map((selectorRef) => known(selectorRef, `${ref} choice selector`))),
         realizedBy: optional(choice.realizedBy),
         realizes: Object.freeze(list(choice.realizes).map((child) => known(child, `${ref} choice realizes`))),
       }))),
