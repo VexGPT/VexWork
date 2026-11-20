@@ -239,7 +239,7 @@ BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
 Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND · #215 slice accepted
 VexStream screenshot pilot            RUNNING / IMMEDIATE / AUTHORIZED_BOUNDED
 BusinessFactory company formation     CAPTURED / LATER / NO_AUTHORITY
-VexBoard root                         DECOMPOSED
+VexBoard root                         RUNNING
 ```
 
 This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. PR #108 then landed the first bounded read-only Source Projectors implementation, and PR #109 currentized that broader Work item to RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND while keeping lived comparison, evidence presentation, federation, and broader source families unfinished. BoardPatch remains dependency-ready with NO_AUTHORITY / NO_EFFECTS. This architecture source explains that state; it does not own or advance lifecycle truth.
