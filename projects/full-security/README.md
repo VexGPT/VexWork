@@ -426,3 +426,28 @@ Web Search currentization #253 merged
 All substantive security/demonstrator Work keeps its existing lifecycle state.
 
 <!-- [VXG RealForever][FULL-SECURITY][CURRENTIZED][DISCOVERABILITY-COMPLETE] -->
+
+## Currentization — complex demonstrator parent active
+
+The complex VexLife Android/Prod demonstrator parent is now current with the work already happening beneath it:
+
+```text
+DECOMPOSED
+-> PLAN_VALIDATED
+-> READY
+-> RUNNING
+```
+
+Reason:
+
+```text
+canonical-owner adoption foundation   RUNNING
+full-scope experience design           RUNNING
+-> parent complex demonstrator cannot truthfully remain in Intake
+```
+
+This is lifecycle bookkeeping only. It does **not** claim that the device projection, synthetic provider,
+Android Connected Devices feature, VexLife-Prod dashboard, or whole Full Security demonstrator is complete.
+
+<!-- [VXG RealForever][FULL-SECURITY][CURRENTIZED][COMPLEX-DEMONSTRATOR-RUNNING] -->
+
