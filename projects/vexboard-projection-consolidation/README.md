@@ -384,6 +384,9 @@ Read this file first, then current source only where implicated:
 
 ~~~text
 VexWork
+  projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md
+  test/vexboard-screen-lens-conformance.test.mjs
+  test/fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json
   projects/vexboard/SCREEN-LENS.md
   projects/vexboard/VEXLIFE-PROD-SCREEN-LENS.md
   projects/vexboard/lens/catalog.json
