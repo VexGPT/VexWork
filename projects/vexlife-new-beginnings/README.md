@@ -714,3 +714,41 @@ Settings capability mapping
 A concrete VexLife-Prod refactor or later capability/evolution effect requires its own current admission, exact source/effect ownership and proof. A Project link, architecture note, WorkState or provider record does not create that authority.
 
 <!-- [VXG RealForever][VEXLIFE][NEW-BEGINNINGS][CURRENT-ENTRY] -->
+
+## Currentization — Companion turn interaction integrity completed
+
+Later accepted Product work closed the bounded turn-interaction row that remained READY in this Project:
+
+~~~text
+#149
+  durable Send reconciliation
+  failed-attempt preservation
+  fresh-Send Try Again
+
+#251
+  accepted-turn context/profile capture
+  last-turn received != current Home/settings != next Send
+
+#345
+  terminal-failure Try Again re-reads current browser inclusion/context
+  rather than replaying failed-turn page bytes
+
+#434 exact integrated Local Artifacts tree
+  typed ConversationTurn Send / Stop
+  exact active-attempt Stop target
+  request-local DirectCompanionCancellation
+  Stop != kill persistent model runtime
+~~~
+
+Current source still carries these relationships on Product main.
+
+Therefore:
+
+~~~text
+work.vexlife.new-beginnings.companion-turn-interaction-integrity
+READY -> RUNNING -> VERIFYING -> COMPLETED
+~~~
+
+No other New Beginnings Work changes state through this currentization.
+
+<!-- [VXG RealForever][NEW-BEGINNINGS][TURN-INTEGRITY][CURRENTIZED][COMPLETED] -->

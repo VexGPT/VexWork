@@ -9353,13 +9353,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-13T10:14:09.000Z",
-      "updatedAt": "2026-11-20T07:16:00.000Z",
+      "updatedAt": "2026-11-20T09:50:50.000Z",
       "workRef": "work.vexlife.new-beginnings.companion-turn-interaction-integrity",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.experience-manifestation-parity",
       "label": "Immediate — keep active Companion turn context and human controls truthful",
       "purpose": "Make the human-visible Companion surface agree with the exact in-flight turn: distinguish rightful owner current state from the bounded context snapshot actually bound to the active Send, preserve newer next-turn composer context without retroactively mutating the active turn, and provide a real Stop/cancel/replacement-Send relationship only when exact provider execution can be interrupted and canonical Conversation truth reconciled. Reuse existing Conversation abandoned/off-head meaning where truthful; do not create a second cancellation ledger or treat provider state as durable Memory.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.local-runtime-foundation"
@@ -9380,7 +9380,15 @@
         "github.pull.vexlife-prod.251",
         "github.pull.vexlife-prod.345",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
-        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+        "github.commit.vexlife-prod.0aa1de1341cfd5e0c6135cbd30bfa8d19613d6d5",
+        "github.commit.vexlife-prod.8e2e2999ed6c3d832af1f28b4f916a01a0f95c10",
+        "github.commit.vexlife-prod.29b1dc141ec155d0b624c8e1280de0e358bd09ba",
+        "github.pull.vexlife-prod.434",
+        "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+        "github.commit.vexlife-prod.649ea1608d6b48cc7ffb7dbd0f807a336714dd21",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeConversationTurnFamily.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionCancellation.kt"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -19074,6 +19082,78 @@
         "github.pull.vexlife-prod.393"
       ],
       "createdAt": "2026-11-20T10:52:25.033Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.companion-turn-integrity.ready.running.current-product",
+      "workRef": "work.vexlife.new-beginnings.companion-turn-interaction-integrity",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Accepted Product work now owns the turn-integrity relationships this row was waiting for: durable Send reconciliation and fresh Try Again, accepted-turn context separated from current next-Send state, fresh retry rebound to current browser context, and typed request-local Stop/cancellation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.149",
+        "github.commit.vexlife-prod.0aa1de1341cfd5e0c6135cbd30bfa8d19613d6d5",
+        "github.pull.vexlife-prod.251",
+        "github.commit.vexlife-prod.8e2e2999ed6c3d832af1f28b4f916a01a0f95c10",
+        "github.pull.vexlife-prod.345",
+        "github.commit.vexlife-prod.29b1dc141ec155d0b624c8e1280de0e358bd09ba",
+        "github.pull.vexlife-prod.434",
+        "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+        "github.commit.vexlife-prod.649ea1608d6b48cc7ffb7dbd0f807a336714dd21",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeConversationTurnFamily.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionCancellation.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
+      ],
+      "createdAt": "2026-11-20T09:50:47.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.companion-turn-integrity.running.verifying.current-main",
+      "workRef": "work.vexlife.new-beginnings.companion-turn-interaction-integrity",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Current VexLife-Prod source still exposes typed Send/Stop State-Control-Effect semantics, exact active-attempt targeting, request-local cooperative cancellation, durable abandoned-attempt reconciliation and session/current browser truth separate from durable Conversation state.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.149",
+        "github.commit.vexlife-prod.0aa1de1341cfd5e0c6135cbd30bfa8d19613d6d5",
+        "github.pull.vexlife-prod.251",
+        "github.commit.vexlife-prod.8e2e2999ed6c3d832af1f28b4f916a01a0f95c10",
+        "github.pull.vexlife-prod.345",
+        "github.commit.vexlife-prod.29b1dc141ec155d0b624c8e1280de0e358bd09ba",
+        "github.pull.vexlife-prod.434",
+        "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+        "github.commit.vexlife-prod.649ea1608d6b48cc7ffb7dbd0f807a336714dd21",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeConversationTurnFamily.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionCancellation.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
+      ],
+      "createdAt": "2026-11-20T09:50:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.companion-turn-integrity.verifying.completed.accepted-lineage",
+      "workRef": "work.vexlife.new-beginnings.companion-turn-interaction-integrity",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The original interaction-integrity outcome is accepted across merged #149, #251, #345 and the exact Local Artifacts tree integrated by #434. Later fresh-thread, capability or interface work may evolve the experience without keeping this bounded turn-integrity row open.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.149",
+        "github.commit.vexlife-prod.0aa1de1341cfd5e0c6135cbd30bfa8d19613d6d5",
+        "github.pull.vexlife-prod.251",
+        "github.commit.vexlife-prod.8e2e2999ed6c3d832af1f28b4f916a01a0f95c10",
+        "github.pull.vexlife-prod.345",
+        "github.commit.vexlife-prod.29b1dc141ec155d0b624c8e1280de0e358bd09ba",
+        "github.pull.vexlife-prod.434",
+        "github.commit.vexlife-prod.a4dd25e472d153b1cef24f7f35132933f3d725d0",
+        "github.commit.vexlife-prod.649ea1608d6b48cc7ffb7dbd0f807a336714dd21",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeConversationTurnFamily.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionCancellation.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
+      ],
+      "createdAt": "2026-11-20T09:50:50.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
