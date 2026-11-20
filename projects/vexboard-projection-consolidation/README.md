@@ -172,40 +172,176 @@ Consolidation must not turn generated/current output into automatic Stable.
 
 Two real products are enough to map repeated pressure; they are not enough to justify every imagined extension point. Add a reusable realization abstraction only when the divergence map or a materially different third shape proves the recurring need.
 
-## First successor edge — map before refactor
+## Current divergence-map result — 2026-11-20
 
-Start with `work.vexboard.projection-consolidation.current-divergence-map`.
+The first successor edge is complete enough to move from mapping into producer-contract proof.
 
-Build one evidence matrix:
+Canonical evidence:
 
 ~~~text
-concern
-Android producer/source
-Prod producer/source
-shared Lens contract
-generic VexBoard reader behavior
-classification:
-  SOURCE_EARNED_DIFFERENCE
-  PRODUCER_IMPLEMENTATION_DETAIL
-  GENERIC_SHARED_BEHAVIOR
-  ACCIDENTAL_DUPLICATION
-next smallest action
+projects/vexboard-projection-consolidation/CURRENT-DIVERGENCE-MAP.md
 ~~~
 
-At minimum inspect:
+The map found that the architecture is already substantially converged. Most Android/Product
+differences are source-earned; the strongest accidental duplication is at the conformance/proof
+boundary and in repeated generic guidance.
 
-- producer location and generation;
-- Screen / Element identity and hierarchy;
-- Surface / Structure manifestation;
-- Behavior / Depth pathway roles;
-- presence and expressions;
-- text, icons and localization;
-- interactions / state bindings;
-- overlay and container relationships;
-- Stable/Main/currentness;
-- proof paths and duplicated tests/docs.
+Do not turn the map into a reason to homogenize the two products.
 
-Do not refactor a difference merely because the two implementations look different.
+### Four projection coordinates that must stay distinct
+
+The history repeatedly exposed one category error: several different questions were being answered by
+the words "Android", "desktop", "browser", "phone" or "workspace". Keep these coordinates separate.
+
+~~~text
+platform / host provenance
+  where the Product is implemented or hosted
+  Android / Windows / macOS / browser are evidence here
+  != generic renderer selection
+
+manifestation topology
+  how Product space is arranged for the human
+
+  COMPACT_FLOW
+    one dominant viewport
+    hierarchical / sequential content
+    screen-navigation oriented
+
+  FRAME_WORKSPACE
+    multiple persistent regions coexist
+    seams divide allocation
+    handles may resize/collapse
+    overlays coexist above the frame
+
+rendering substrate
+  how the manifestation reaches VexBoard
+
+  ELEMENT_TREE
+    VexBoard draws the source-described element hierarchy
+
+  SOURCE_VIEW
+    Product supplies its own bounded inert manifestation
+    current admitted example: STATIC_HTML_CSS
+
+presentation-state realization
+  which source-authored relationship is active
+  -> which source-authored manifestation consequence follows
+  presence / expressions
+  + interaction bindings
+  + state bindings
+~~~
+
+These names are Project-level recognition vocabulary, not new vexboard.screen-lens/v1 fields.
+
+Current correlation:
+
+~~~text
+VexLife-Android
+  native/mobile provenance
+  -> COMPACT_FLOW
+  -> ELEMENT_TREE
+
+VexLife-Prod
+  desktop/browser Product provenance
+  -> FRAME_WORKSPACE
+  -> SOURCE_VIEW
+~~~
+
+Correlation is not identity.
+
+A future tablet may author a FRAME_WORKSPACE. A future desktop Product may use ELEMENT_TREE. A
+source-owned compact Product may eventually provide a SOURCE_VIEW. VexBoard must not branch on the
+platform name merely because the first two products correlate that way today.
+
+### Host viewport is outside Product identity
+
+The outer host constrains a manifestation without defining it.
+
+~~~text
+HostViewport
+  width / height
+  safe area
+  pointer / touch / hover
+  keyboard
+  resize
+  pixel density
+
+HostViewport
+!= Product manifestation topology
+!= rendering substrate
+!= semantic owner
+~~~
+
+This also keeps three currently easy-to-confuse "browser" meanings separate:
+
+~~~text
+browser running VexBoard
+  = host
+
+VexLife-Prod Browser region
+  = Product FRAME_WORKSPACE region
+
+Product HTML/CSS carried by Screen Lens
+  = SOURCE_VIEW substrate
+~~~
+
+### Existing contract remains the first producer contract
+
+Do not create a producer framework before a real contract gap appears.
+
+The current producer boundary is already:
+
+~~~text
+platform-appropriate producer
+-> exact emitted vexboard.screen-lens/v1
+-> normalizeScreenLens
+-> shared realization / expressions / layout / view validation
+-> generic reader
+~~~
+
+The first implementation pressure is therefore producer-neutral conformance, not a new schema.
+
+### Neutral pressure shape
+
+The first neutral fixture should deliberately break one historical correlation:
+
+~~~text
+neutral subject
+  manifestation topology = FRAME_WORKSPACE
+  rendering substrate     = ELEMENT_TREE
+  source view              = absent
+~~~
+
+That proves:
+
+~~~text
+FRAME_WORKSPACE != VexLife-Prod
+FRAME_WORKSPACE != STATIC_HTML_CSS
+~~~
+
+Only add an explicit topology/substrate field when a real subject cannot be expressed truthfully
+through current source facts or the reader becomes ambiguous without it. Naming a useful distinction
+does not automatically earn a permanent schema coordinate.
+
+### Current implementation boundary
+
+Open VexWork PR #361 currently owns the existing Screen Lens normalizer, realization/expression
+modules and their established tests. Projection Consolidation must not author over that active
+membrane.
+
+The first implementation slice is therefore additive:
+
+~~~text
+new neutral fixture
++ new producer-neutral conformance test
+-> consume current normalizer / expressions / frame geometry
+-> exercise Android Main
+-> exercise accepted/current Product Lens
+-> exercise neutral FRAME_WORKSPACE + ELEMENT_TREE
+~~~
+
+After #361 converges or releases its paths, this Project may use the conformance evidence to decide
+whether any core contract change is actually earned.
 
 ## Work sequence
 
