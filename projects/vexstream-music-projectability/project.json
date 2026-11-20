@@ -43,7 +43,10 @@
     "github.pull.vexstream-music.30",
     "repo.vexstream-music:v2/web/foundation/identity.js",
     "repo.vexstream-music:v2/web/features/playlists/presentation.js",
-    "github.pull.vexstream-music.31"
+    "github.pull.vexstream-music.31",
+    "repo.vexstream-music:v2/web/features/library/trash.js",
+    "repo.vexstream-music:v2/web/features/library/trash-presentation.js",
+    "github.pull.vexstream-music.32"
   ],
   "formedAt": "2026-11-20T13:30:00.000Z"
 }
