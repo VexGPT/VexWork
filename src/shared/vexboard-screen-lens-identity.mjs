@@ -73,12 +73,21 @@ export function dynamicLensInstanceRef(baseRef, parts) {
   return root + '.dynamic.utf8hex.' + utf8Hex(values.join('\u0000'));
 }
 
-export function normalizeInstanceIdentityContract(input, label = 'instance identity') {
+export function normalizeIdentityFormationContract(input, label = 'identity formation') {
   if (input === undefined || input === null) return null;
   if (!input || typeof input !== 'object') fail(`${label} must be an object`);
-  if (input.kind !== SCREEN_LENS_IDENTITY_KINDS.RUNTIME_INSTANCE) {
-    fail(`${label} kind ${input.kind} must be RUNTIME_INSTANCE`);
+  if (!Object.values(SCREEN_LENS_IDENTITY_KINDS).includes(input.kind)) {
+    fail(`${label} kind ${input.kind} is unknown`);
   }
+
+  if (input.kind === SCREEN_LENS_IDENTITY_KINDS.DERIVED_CHILD) {
+    return Object.freeze({
+      kind: input.kind,
+      parentSource: text(input.parentSource, `${label} parentSource`),
+      localPath: normalizeLensIdentityPath(input.localPath),
+    });
+  }
+
   const baseRef = text(input.baseRef, `${label} baseRef`);
   const partSources = (input.partSources || []).map((part, index) =>
     text(part, `${label} partSources[${index}]`),
@@ -97,6 +106,8 @@ export function normalizeInstanceIdentityContract(input, label = 'instance ident
     continuity,
   });
 }
+
+export const normalizeInstanceIdentityContract = normalizeIdentityFormationContract;
 
 export function normalizeElementIdentity(input, { ref, parentRef }) {
   if (input === undefined || input === null) return null;
