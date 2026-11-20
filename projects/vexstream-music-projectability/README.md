@@ -181,3 +181,40 @@ exact exported Lens -> accepted VexWork normalizer/expression/realization/frame 
 ~~~
 
 VexWork carries the merged output as a candidate only until lived acceptance.
+
+
+## First lived projection correction — relationship perception
+
+The first VexStream raw-git candidate was technically conformant but failed the human perception
+threshold.
+
+Victor's observation:
+
+> "it looks like a screenshot than a relatinoship graph"
+
+The concrete failure was not SOURCE_VIEW itself. Selecting the V3-shaped V4 shell container left the
+Behavior/Depth side blank because that region has no single pathwayRef, even though it contains five
+mapped child relationships.
+
+The reader now preserves the container relationship:
+
+~~~text
+selected mapped container
+-> descendant mapped controls
+-> distinct child pathwayRefs
+-> aggregate Behavior / Depth graph
+-> node selection descends to the exact child control/pathway
+~~~
+
+No synthetic Shell Family was introduced.
+
+Revised shared proof:
+
+~~~text
+100 tests
+100 PASS
+0 FAIL
+~~~
+
+This correction belongs to the generic Screen Lens reader and is documented in
+projects/vexboard/SCREEN-LENS.md.
