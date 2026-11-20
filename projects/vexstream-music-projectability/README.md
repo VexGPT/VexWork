@@ -151,3 +151,33 @@ then current target source:
 Re-ground VexStream main before source effects.
 
 <!-- [VXG RealForever][VEXBOARD][VEXSTREAM-MUSIC][PROJECTABILITY] -->
+
+
+## Execution update — native producer proven
+
+Identity alignment landed in VexStream Music PR #19 and the bounded native exporter landed in PR #20.
+
+~~~text
+VexStream main
+08b88a2f7b927015335b19a351280e2865b68a50
+
+identity
+  current shell = vexstream.desktop.library
+  Previous = vexstream.player.previous composition action
+
+native export
+  v2/projection/vexboard-screen-lens.mjs
+  v2/projection/vexboard-screen-lens.json
+~~~
+
+The producer decision is now settled: VexStream-native export is smaller than teaching the Android-
+specific VexWork source parser to understand VexStream JS semantics.
+
+Target proof:
+
+~~~text
+28 / 28 VexStream semantic + exporter tests PASS
+exact exported Lens -> accepted VexWork normalizer/expression/realization/frame seam PASS
+~~~
+
+VexWork carries the merged output as a candidate only until lived acceptance.

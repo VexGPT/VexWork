@@ -16,6 +16,7 @@ const read = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)
 const subjects = [
   ['VexLife Android Main', read('../projects/vexboard/lens/vexlife-android.main.screen-lens.json')],
   ['VexLife Prod accepted/current projection', read('../projects/vexboard/lens/vexlife-prod.screen-lens.json')],
+  ['VexStream Music candidate', read('../projects/vexboard/lens/vexstream-music.candidate.screen-lens.json')],
   ['neutral framed element-tree subject', read('./fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json')],
 ];
 
@@ -85,7 +86,7 @@ test('the two real products may differ in manifestation while sharing the same c
 });
 
 test('a neutral FRAME workspace does not imply VexLife-Prod or STATIC_HTML_CSS', () => {
-  const neutral = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const neutral = assertEmittedLensConformance(subjects[3][0], subjects[3][1]);
   const [screen] = neutral.screens;
 
   assert.equal(neutral.lensRef, 'lens.neutral-framed-element-tree');
@@ -103,6 +104,27 @@ test('a neutral FRAME workspace does not imply VexLife-Prod or STATIC_HTML_CSS',
   const opened = expressions.find((expression) => expression.kind === 'PRESENTATION');
   assert.ok(opened, 'the same generic presence/expression grammar can open content inside the neutral workspace');
   assert.ok(opened.reveals.includes('element.neutral-workspace.secondary.panel'));
+});
+
+
+test('VexStream proves a third real SOURCE_VIEW producer without a reader fork', () => {
+  const vexstream = assertEmittedLensConformance(subjects[2][0], subjects[2][1]);
+  const [screen] = vexstream.screens;
+
+  assert.equal(vexstream.lensRef, 'lens.vexstream-music.desktop');
+  assert.equal(screen.screenRef, 'vexstream.desktop.library');
+  assert.equal(screen.view?.kind, 'STATIC_HTML_CSS');
+  assert.equal(screen.layout?.kind, 'FRAME');
+  assert.ok(screen.elements.some((element) => element.ref === 'element.vexstream.player.previous'));
+  assert.equal(
+    vexstream.pathways.find((pathway) => pathway.pathwayRef === 'pathway.vexstream.player.previous')?.disposition,
+    'DIRECT_REGISTRATION',
+    'Player composition remains distinct from Queue Family ownership',
+  );
+  assert.equal(
+    vexstream.pathways.find((pathway) => pathway.pathwayRef === 'pathway.vexstream.playback.play-pause')?.disposition,
+    'SCAE_FAMILY',
+  );
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][PROJECTION-CONSOLIDATION][CONFORMANCE]

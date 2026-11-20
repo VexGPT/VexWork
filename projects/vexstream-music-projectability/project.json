@@ -23,7 +23,12 @@
     "repo.vexstream-music:v2/web/app.js",
     "repo.vexstream-music:v2/web/features/playback/behavior.js",
     "repo.vexstream-music:v2/web/features/queue/behavior.js",
-    "repo.vexstream-music:v2/web/features/player/composition.js"
+    "repo.vexstream-music:v2/web/features/player/composition.js",
+    "github.pull.vexstream-music.19",
+    "github.pull.vexstream-music.20",
+    "repo.vexstream-music:v2/projection/vexboard-screen-lens.mjs",
+    "repo.vexstream-music:v2/projection/vexboard-screen-lens.json",
+    "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json"
   ],
   "formedAt": "2026-11-20T13:30:00.000Z"
 }

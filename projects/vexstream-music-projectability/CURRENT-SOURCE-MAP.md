@@ -336,3 +336,60 @@ FIRST NEEDED CHANGE
 ~~~
 
 <!-- [VXG RealForever][VEXSTREAM-MUSIC][PROJECTABILITY][CURRENT-SOURCE-MAP] -->
+
+
+## Current execution result — 2026-11-20
+
+The two identity seams are resolved in merged VexStream source:
+
+~~~text
+PR #19
+merge ab08e326b1338bfc6e14ddf8a87c2accaac7417b
+
+Playback Journey screenRef
+Player Journey screenRef
+  -> vexstream.desktop.library
+
+fixed Previous
+  -> data-vex-action="vexstream.player.previous"
+  -> no unconditional QueueControl.Previous claim
+~~~
+
+Producer decision is also resolved:
+
+~~~text
+VexStream-native exporter
+  v2/projection/vexboard-screen-lens.mjs
+  -> v2/projection/vexboard-screen-lens.json
+
+reason
+  current JS semantic modules already own exact typed meaning
+  external parsing would duplicate that meaning
+  a multi-adapter plugin framework is not earned
+~~~
+
+Exporter PR #20 merged at:
+
+~~~text
+08b88a2f7b927015335b19a351280e2865b68a50
+~~~
+
+First exported Lens:
+
+~~~text
+Screen      1
+elements    7
+pathways    5
+view        STATIC_HTML_CSS / scriptPolicy NONE
+layout      FRAME
+expression  Source defaults
+
+Previous          DIRECT_REGISTRATION / Player composition
+Play / Pause      SCAE_FAMILY / Playback
+Next              SCAE_FAMILY / Queue
+Shuffle           SCAE_FAMILY / Queue
+Repeat            SCAE_FAMILY / Queue
+~~~
+
+The next dependent effect is persistent VexWork conformance + lived raw-git acceptance. No broader
+VexStream feature expansion is admitted yet.

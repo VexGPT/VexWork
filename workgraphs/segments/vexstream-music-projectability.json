@@ -88,7 +88,7 @@
       "label": "Align only source identities projection cannot address truthfully",
       "purpose": "Resolve the current lived-shell Screen coordinate and top-level Previous affordance identity at the VexStream source owner without redesigning V4, minting a projection-only registry, or inventing a semantic Family.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "dependencyRefs": [
         "work.vexstream-music.projectability.current-source-map"
       ],
@@ -99,9 +99,10 @@
         "repo.vexstream-music:v2/web/features/playback/journey.js",
         "repo.vexstream-music:v2/web/features/player/journey.js",
         "repo.vexstream-music:v2/tests/playback-browser-regression.py",
-        "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md"
+        "repo.vexstream-music:v2/LIVED-PRODUCT-ORACLE.md",
+        "github.pull.vexstream-music.19"
       ],
-      "updatedAt": "2026-11-20T13:36:00.005Z"
+      "updatedAt": "2026-11-20T13:50:00.002Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -121,16 +122,19 @@
       "label": "Produce one bounded VexStream Screen Lens",
       "purpose": "Choose the smallest truthful producer after identity alignment and emit the first Playback/Queue/lived-shell slice into vexboard.screen-lens/v1 without product-name reader branches or a generic plugin framework.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "dependencyRefs": [
         "work.vexstream-music.projectability.identity-alignment"
       ],
       "sourceRefs": [
         "projects/vexstream-music-projectability/README.md",
         "projects/vexboard/PROJECTING-AN-EXISTING-PROJECT.md",
-        "test/vexboard-screen-lens-conformance.test.mjs"
+        "test/vexboard-screen-lens-conformance.test.mjs",
+        "github.pull.vexstream-music.20",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.mjs",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.json"
       ],
-      "updatedAt": "2026-11-20T13:30:00.000Z"
+      "updatedAt": "2026-11-20T13:50:00.006Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -150,16 +154,18 @@
       "label": "Prove VexStream through the shared projection foundation",
       "purpose": "Run exact VexStream producer output through the same normalization, expressions, realization, manifestation and paired-container/engagement laws accepted for Android, Product and the neutral subject; extend generic law only if VexStream exposes a real reusable gap.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "dependencyRefs": [
         "work.vexstream-music.projectability.screen-lens-producer"
       ],
       "sourceRefs": [
         "test/vexboard-screen-lens-conformance.test.mjs",
         "projects/vexboard/SCREEN-LENS.md",
-        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md"
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md",
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+        "github.pull.vexstream-music.20"
       ],
-      "updatedAt": "2026-11-20T13:30:00.000Z"
+      "updatedAt": "2026-11-20T13:50:00.008Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -276,6 +282,116 @@
         "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md"
       ],
       "createdAt": "2026-11-20T13:36:00.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.identity-alignment.verifying.target-proof",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "VexStream PR #19 aligned the current desktop Journey coordinate and Previous composition identity without changing behavior; focused semantic/identity proof passed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.19",
+        "projects/vexstream-music-projectability/CURRENT-SOURCE-MAP.md"
+      ],
+      "createdAt": "2026-11-20T13:50:00.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.identity-alignment.completed.merged-source",
+      "workRef": "work.vexstream-music.projectability.identity-alignment",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Identity alignment merged to VexStream main at ab08e326b1338bfc6e14ddf8a87c2accaac7417b; no V4 structural refactor was required.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.19",
+        "repo.vexstream-music:v2/web/index.html"
+      ],
+      "createdAt": "2026-11-20T13:50:00.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.screen-lens-producer.ready.identity-complete",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The identity-alignment dependency completed with current source owning truthful Screen and Previous coordinates.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream-music.projectability.identity-alignment"
+      ],
+      "createdAt": "2026-11-20T13:50:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.screen-lens-producer.running.native-export",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A VexStream-native JS exporter was chosen because it directly imports existing semantic tokens and avoids both source-text duplication and an unearned multi-adapter VexWork plugin layer.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.20",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.mjs"
+      ],
+      "createdAt": "2026-11-20T13:50:00.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.screen-lens-producer.verifying.shared-seam",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The exact generated Lens passed 28/28 VexStream semantic/exporter tests and normalized through the accepted VexWork Screen Lens, expression, realization and FRAME geometry seam.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.20",
+        "test/vexboard-screen-lens-conformance.test.mjs"
+      ],
+      "createdAt": "2026-11-20T13:50:00.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.screen-lens-producer.completed.merged-export",
+      "workRef": "work.vexstream-music.projectability.screen-lens-producer",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The bounded native exporter and generated Lens merged to VexStream main at 08b88a2f7b927015335b19a351280e2865b68a50.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.20",
+        "repo.vexstream-music:v2/projection/vexboard-screen-lens.json"
+      ],
+      "createdAt": "2026-11-20T13:50:00.006Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.conformance.ready.producer-complete",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The bounded Screen Lens producer dependency completed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream-music.projectability.screen-lens-producer"
+      ],
+      "createdAt": "2026-11-20T13:50:00.007Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream-music.projectability.conformance.running.persistent-vexwork-proof",
+      "workRef": "work.vexstream-music.projectability.conformance",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Carry the merged VexStream Lens into VexWork as a source-pinned candidate and run it permanently through the shared cross-producer conformance suite before lived acceptance.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexboard/lens/vexstream-music.candidate.screen-lens.json",
+        "test/vexboard-screen-lens-conformance.test.mjs"
+      ],
+      "createdAt": "2026-11-20T13:50:00.008Z"
     }
   ],
   "sourceRefs": [
