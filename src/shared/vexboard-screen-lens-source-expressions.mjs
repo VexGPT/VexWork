@@ -387,8 +387,9 @@ export function customExpression(lens, screenRef, context) {
 }
 
 // The expression a control's declared typed intent would bring about: swapTo(container, child)
-// selects, open / toggle(X) opens; a chain needs every step. A target that is the source default
-// is already satisfied. Null when the intent is not typed presentation (an Act, a navigation).
+// selects, open / toggle(X) opens, and a source-authored local <stable-element-ref> may travel only
+// when that exact target is already an authored SELECTION/PRESENTATION outcome. A target that is the
+// source default is already satisfied. Null when the intent names no presentation consequence.
 export function expressionForControl(lens, screenRef, expressions, elementRef) {
   const parts = screenParts(lens, screenRef);
   const element = [...lens.chrome.flatMap((entry) => entry.elements), ...parts.screen.elements].find((candidate) => candidate.ref === elementRef);
@@ -404,6 +405,16 @@ export function expressionForControl(lens, screenRef, expressions, elementRef) {
   for (const match of element.intent.matchAll(/\b(?:open|toggle)\(\s*(?:\w+\.)?(\w+)\s*\)/g)) {
     const subject = bySymbol(match[1]);
     const presentation = subject ? parts.presence.find((entry) => entry.kind === 'PRESENTATION' && entry.subjectRef === subject.ref) : null;
+    if (presentation) targets.push({ kind: 'PRESENTATION', presenceRef: presentation.ref, value: 'OPEN', isDefault: false });
+  }
+  const localTarget = element.intent.match(/^\s*local\s+(?!spatial\b)(\S+)\s*$/)?.[1] ?? null;
+  if (localTarget && parts.elements.has(localTarget)) {
+    const selection = parts.presence.find((entry) =>
+      entry.kind === 'SELECTION' &&
+      parts.choicesOf(entry).some((choice) => choice.resolvedTargetRef === localTarget)
+    );
+    if (selection) targets.push({ kind: 'SELECTION', presenceRef: selection.ref, value: localTarget, isDefault: selection.defaultRef === localTarget });
+    const presentation = parts.presence.find((entry) => entry.kind === 'PRESENTATION' && entry.subjectRef === localTarget);
     if (presentation) targets.push({ kind: 'PRESENTATION', presenceRef: presentation.ref, value: 'OPEN', isDefault: false });
   }
   if (!targets.length) return null;

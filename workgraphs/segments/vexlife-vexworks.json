@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.vexworks",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:39:00.000Z",
+      "updatedAt": "2026-11-20T05:39:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.vexworks.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "[VexLife Local Artifacts]",
+      "purpose": "Give a person one coherent local AI work experience in VexLife: files and persistent Local Sources are exact bounded material Vex can reach, and once that work surface is established the person can explicitly choose the local model doing the work while Vex projects only features that are truthful for the exact selected model/provider/runtime relationship.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.vexworks",
+        "projects/vexlife-vexworks/README.md",
+        "human.design.vexlife.vexworks.model-switching.20261119",
+        "github.pull.vexlife-prod.402"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:39:00.000Z",
+      "updatedAt": "2026-11-20T06:01:24.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.vexworks.local-artifacts-and-sources",
+      "parentWorkRefOrNull": "work.vexlife.vexworks.outcome",
+      "label": "A0 — Local Artifacts + Local Sources convergence",
+      "purpose": "Converge the successor Local Artifacts work onto current VexLife-Prod: Conversation Stop, exact text/ZIP/DOCX/XLSX/PPTX custody, turn-bound attachment reach, persistent Local Sources, bounded search/read and manifest-first context use, while keeping PDF/vision, automatic research synthesis, Memory promotion and filesystem writes outside this gate until separately earned.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "human.handoff.vexlife.local-artifacts-successor.20261119",
+        "github.pull.vexlife-prod.402",
+        "github.pull.vexlife-prod.414",
+        "github.commit.vexlife-prod.dbd34951d83842955c9f2c6d7a5219ce79f142df"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:39:00.000Z",
+      "updatedAt": "2026-11-20T05:39:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.vexworks.model-capability-projection",
+      "parentWorkRefOrNull": "work.vexlife.vexworks.outcome",
+      "label": "A1 — Effective selected-model capability projection",
+      "purpose": "Derive one truthful human-readable capability view from the selected model's existing Companion representation plus exact current runtime realization and qualification, so model-dependent controls are visible only when supported without making the model UI a capability authority.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.vexworks.local-artifacts-and-sources"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+        "human.design.vexlife.vexworks.model-switching.20261119"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:39:00.000Z",
+      "updatedAt": "2026-11-20T05:39:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.vexworks.model-selector",
+      "parentWorkRefOrNull": "work.vexlife.vexworks.outcome",
+      "label": "A2 — Claude-like model selector",
+      "purpose": "Project Product-catalog and Home-imported models through the existing Models Family into one compact selector with selected/serving/switching truth and only exact applicable model controls, reusing Select and Use/SwitchModel rather than inventing another model-selection lifecycle.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.vexworks.model-capability-projection"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticModelCatalog.kt",
+        "github.commit.vexlife-prod.2f9c0fdb667585a68f45a5bc834f67cac2af688c",
+        "human.design.vexlife.vexworks.model-switching.20261119"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:39:00.000Z",
+      "updatedAt": "2026-11-20T05:39:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.vexworks.imported-model-hookup",
+      "parentWorkRefOrNull": "work.vexlife.vexworks.outcome",
+      "label": "A3 — Dynamic imported-model hookup detection",
+      "purpose": "Make the existing imported-model path perceivable end to end: exact provider inspection forms a pinned Home-owned model relationship, capability carriage is detected from source where justified, the exact current platform resolves supported versus unsupported runtime realization, and unsupported relationships remain visible/held rather than guessed. Generalize beyond today's Qwen3 recognizer only when an actual qualified runtime relationship earns another recognizer.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.vexworks.model-capability-projection"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticModelImport.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/heretic/HuggingFaceModelInspection.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-20T05:39:00.000Z",
+      "updatedAt": "2026-11-20T05:39:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.vexworks.lived-cross-model-proof",
+      "parentWorkRefOrNull": "work.vexlife.vexworks.outcome",
+      "label": "A4 — Lived Local Artifacts cross-model proof",
+      "purpose": "Prove the lived human sequence over the same Conversation and admitted local material: add/reach a file or Local Source, switch to another exact qualified model, observe capability presentation change truthfully, send the next turn through the newly serving model, and verify that Conversation, Memory, artifact and source identities were not silently rebound by the model switch.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.vexworks.model-selector",
+        "work.vexlife.vexworks.imported-model-hookup"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-vexworks/README.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+        "human.design.vexlife.vexworks.model-switching.20261119"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.local-artifacts-and-sources.ready.running.product-successor-1",
+      "workRef": "work.vexlife.vexworks.local-artifacts-and-sources",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexLife-Prod successor PR #414 is formed from current #402; Conversation Stop and the immutable raw-artifact / derived-projection / exact-request-binding foundation are now source-placed on its current head.",
+      "actorRef": "actor.chatgpt.vexlife-local-artifacts",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.414",
+        "github.commit.vexlife-prod.dbd34951d83842955c9f2c6d7a5219ce79f142df"
+      ],
+      "createdAt": "2026-11-20T06:01:24.000Z"
+    }
+  ],
+  "sourceRefs": [
+    "project.vexlife.vexworks",
+    "projects/vexlife-vexworks/README.md",
+    "human.handoff.vexlife.local-artifacts-successor.20261119",
+    "human.design.vexlife.vexworks.model-switching.20261119",
+    "github.pull.vexlife-prod.402"
+  ],
+  "formedAt": "2026-11-20T05:39:00.000Z"
+}

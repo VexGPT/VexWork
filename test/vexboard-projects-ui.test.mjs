@@ -25,7 +25,7 @@ test('Projects is the VexBoard front door, and every canvas deep link still open
 test('the projects page reads the Lens-subject catalog and Stable lenses, and writes nothing', () => {
   assert.match(projects, /<title>VexBoard Projects<\/title>/);
   assert.match(projects, /Catalog\.normalizeLensCatalog\(await fetchJson\(`\$\{LENS_DIR\}catalog\.json`\)\)/);
-  assert.match(projects, /Lens\.normalizeScreenLens\(await fetchJson\(LENS_DIR \+ Catalog\.buildFor\(subject, 'stable'\)\.lens\)\)/);
+  assert.match(projects, /Catalog\.bindLensBuildSource\(await fetchJson\(LENS_DIR \+ build\.lens\), build\)/);
   assert.doesNotMatch(projects, /localStorage\.setItem/);
   assert.equal((projects.match(/sessionStorage\.setItem\(/g) || []).length, 1, 'only the ten-minute cache of branch heads');
   assert.doesNotMatch(projects, /method:\s*'(POST|PUT|PATCH|DELETE)'/);
@@ -46,7 +46,8 @@ test('each project shows its pointers, its currency against GitHub, and how to o
   assert.match(projects, /Run npm run lens:main to move Main\./);
   assert.match(projects, /Catalog\.sourceRefFromInput\(input\.value, subject\.repository\.url\)/);
   assert.match(projects, /h\('summary', \{\}, 'Earlier canvas trials'\)/);
-  assert.match(projects, /'No Screen Lens yet'/);
+  assert.match(projects, /'No Screen Lens yet'/, 'the generic NOT_BUILT renderer remains available even though current Android and Prod subjects are GENERATED');
+  assert.match(projects, /catalog\.trials\.length \? h\('details'/);
   assert.match(projects, /href: `\.\.\/\?project=\$\{encodeURIComponent\(ref\)\}`/);
 });
 

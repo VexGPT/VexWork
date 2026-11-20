@@ -922,6 +922,130 @@ revision 1.1
 This lets a designer perceive what existed, what is changing and what the expected next state is
 without confusing revision with identity.
 
+### Temporal and semantically reversible projection horizon
+
+Revision/currentness can eventually compare relationship projections around the **same stable semantic
+identities** without turning Git history, a desired design or VexBoard itself into another source owner.
+
+This is a future horizon earned from the Screen Lens/source-projector pressure, not an implementation
+admission:
+
+~~~text
+HISTORICAL
+  exact prior source / Origin revision
+  -> what relationships that revision expressed
+
+CURRENT
+  exact current source / Origin revision
+  -> what relationships are established now
+
+DESIRED
+  human-authored intended experience / Origin relationships
+  -> what should become true
+  -> may contain explicit UNBOUND relationships
+
+CANDIDATE
+  proposed source revision
+  -> what the candidate actually establishes
+~~~
+
+For source-backed architecture, each exact revision is independently projectable:
+
+~~~text
+exact revision / commit
+        |
+        v
+source facts
+        |
+        v
+accepted architecture relationship semantics
+        |
+        v
+normalized source-derived relationship graph
+        |
+        +-> Screen / Journey projection
+        +-> Architecture / Depth projection
+        +-> impact / search projection
+        +-> evidence / currentness projection
+~~~
+
+The graph is rebuilt from relationships that make the implementation lawful; it is not a second
+handwritten architecture database. Where source establishes bounded semantic coordinates, Family /
+State / Control / Act / Effect / Projection and typed Port / Connection boundaries may provide joins.
+Construction/lifetime, provider/store, observation/reconciliation, convergence/Relay, chronology and
+proof remain separate ownership questions.
+
+~~~text
+RELATIONSHIP PRESENT IN SOURCE
+  -> project it
+
+RELATIONSHIP AMBIGUOUS OR ABSENT
+  -> UNBOUND / UNKNOWN
+  -> do not infer a connective edge from naming resemblance
+~~~
+
+Historical source expression and evidence remain distinct:
+
+~~~text
+SOURCE EXPRESSION
+  what the revision declares
+
+TEST EVIDENCE
+  what deterministic proof established
+
+RUNTIME EVIDENCE
+  what a running system traversed / observed
+
+HUMAN EVIDENCE
+  what a person accepted as the lived outcome
+~~~
+
+Therefore an older renderable revision is not automatically “known working.” “What used to work?”
+requires the exact historical projection **plus** evidence that supports the word *worked*.
+
+The reverse direction is semantic, not authority-reversible:
+
+~~~text
+CURRENT SOURCE
+  -> source-derived relationship graph
+  -> factual VexBoard projection
+
+DESIRED ORIGIN / UX
+  -> intended semantic constraints + relationships
+  -> compare with CURRENT
+  -> identify satisfied / missing / incompatible / UNBOUND connective truth
+  -> form a candidate implementation plan
+  -> construct candidate source under rightful source authority
+  -> regenerate the relationship graph from candidate source
+  -> compare ACTUAL candidate projection with DESIRED
+~~~
+
+Forward regeneration is the proof loop. An AI does not establish that it connected a design merely by
+writing plausible glue code; the independently reconstructed candidate projection must show the intended
+relationship now exists.
+
+This permits useful asymmetry: an engineering refactor may improve architecture while the human
+projection stays unchanged, while a UX change may expose missing State, observation or convergence
+semantics before implementation begins.
+
+Permanent:
+
+~~~text
+HISTORICAL_PROJECTION != KNOWN_WORKING
+DESIRED_PROJECTION != CURRENT_SOURCE_TRUTH
+VEXBOARD_EDIT != SOURCE_MUTATION_AUTHORITY
+SEMANTIC_REVERSIBILITY != SILENT_CODE_GENERATION
+COMMIT_DIFF != SEMANTIC_RELATIONSHIP_DIFF
+AI_INFERENCE != EARNED_RELATIONSHIP
+UNBOUND != FAILURE_TO_PRETEND
+FORWARD_REGENERATION -> CANDIDATE_COMPLETION_PROOF
+~~~
+
+No temporal-history database, universal relationship wire schema, automatic source mutation authority
+or generalized inference engine is admitted here. Current Screen Lens/source-projector work should keep
+earning trustworthy relationship traversal; broader temporal/reversible behavior is adopted only when
+real consumers pressure the smallest reusable contracts.
+
 ### Unresolved interactive consequence is an explicit authoring junction
 
 When a new interactive element exists but its consequence has not yet been bound, VexBoard should be

@@ -122,6 +122,54 @@ a{color:var(--focus)}
 .phone-body{flex:1;min-height:0;overflow:auto;padding:14px 14px 84px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin}
 .phone-bottom{display:flex;justify-content:space-around;height:58px;border-top:1px solid #eceff4;background:#fff}
 .phone-held{border:1.5px dashed #cfd5df;border-radius:12px;padding:16px;color:var(--muted);font-size:13px}
+/* A source-owned static view keeps Product geometry in Product source. VexBoard mounts it in an
+   inert sandbox and binds inspection through stable data-* identities; no Product JavaScript runs. */
+.product-view{position:relative;width:100%;flex:1;min-height:420px;border:1px solid #cfd5df;border-radius:10px;background:#fbfbfd;box-shadow:0 18px 40px -26px #18213a55;overflow:hidden}
+.product-view-frame{display:block;width:100%;height:100%;min-height:420px;border:0;background:#fff}
+.product-view-note{position:absolute;left:8px;bottom:8px;z-index:4;margin:0;padding:3px 7px;border:1px solid #cfd5df;border-radius:999px;background:#ffffffdd;color:var(--faint);font:500 10px/16px var(--mono);pointer-events:none}
+.product-view-actions{position:absolute;right:10px;top:10px;z-index:5;display:flex;align-items:center;gap:6px;max-width:min(82%,560px)}
+.product-view-support-action{position:static;max-width:280px;box-shadow:0 5px 18px -10px #18213aaa}
+.product-view-phase{display:flex;align-items:center;gap:6px;height:30px;padding:0 6px 0 9px;border:1px solid #cfd5df;border-radius:8px;background:#fffffff2;box-shadow:0 5px 18px -10px #18213aaa;color:var(--muted);font-size:11.5px}
+.product-view-phase select{height:24px;max-width:220px;border:0;background:transparent;color:var(--ink);font:500 11.5px var(--sans);outline:none}
+
+/* A screen the product realizes as frames of regions divided by seams (a browser workspace). Its
+   geometry comes from the screen's source-derived layout; nothing here is product-specific. */
+.main.wide{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.xslot.wide{width:100%}
+.xstage.wide .xpeek{display:none}
+.workspace{position:relative;width:100%;flex:1;min-height:420px;display:flex;flex-direction:column;border:1px solid #cfd5df;border-radius:10px;background:#fbfbfd;box-shadow:0 18px 40px -26px #18213a55;overflow:hidden}
+.workspace.dimmed [data-ref]:not(.sel):not(.anc){opacity:.46}
+.workspace.dimmed [data-ref]:not(.sel):not(.anc) [data-ref],.workspace.dimmed .sel [data-ref]{opacity:1}
+.workspace.dimmed .ws-region,.workspace.dimmed .ws-frame{opacity:1 !important}
+.workspace .ws-frame{position:relative;flex:1;min-height:0;width:100%;height:100%}
+.workspace .ws-region{position:absolute;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;background:#fbfbfd}
+.ws-region.chrome{background:#fff}
+.workspace .ws-tag{position:absolute;top:3px;right:8px;z-index:3;padding:0 6px;border:0;border-radius:999px;background:#eef1f5cc;color:var(--faint);font:500 10px/16px var(--mono);cursor:pointer}
+.workspace .ws-tag:hover,.workspace .ws-tag.sel{background:var(--ink);color:#fff}
+.ws-scroll{flex:1;min-height:0;overflow:auto;padding:10px 12px 14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin}
+.ws-scroll.inline{flex-direction:row;align-items:center;overflow-x:auto;overflow-y:hidden;padding:4px 64px 4px 12px}
+.ws-scroll.inline .el-column{flex-direction:row;flex-wrap:nowrap;align-items:center;gap:8px}
+.ws-scroll.inline .el-field{min-width:140px;height:30px}
+.ws-scroll.inline .el-button{height:28px;padding:0 10px;font-size:12px;white-space:nowrap}
+.ws-scroll.inline .el-row{flex-wrap:nowrap}
+.ws-scroll .el-toolbar{flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid #eceff4;background:#fff;border-radius:8px}
+.workspace .ws-seam{position:absolute;z-index:3;background:#d3d9e3;cursor:pointer}
+.workspace .ws-seam.v{width:3px;transform:translateX(-1.5px)}
+.workspace .ws-seam.h{height:3px;transform:translateY(-1.5px)}
+.workspace .ws-seam:hover,.workspace .ws-seam.sel{background:var(--r-CONTAINER,#7a8597)}
+.workspace .ws-handle{position:absolute;z-index:4;width:20px;height:40px;transform:translate(-50%,-50%);display:grid;place-items:center;border:1px solid #c3cad6;border-radius:10px;background:#fff;color:var(--muted);font-size:12px;cursor:pointer;box-shadow:0 2px 6px -3px #18213a55}
+.ws-handle.has-path::before{content:'';position:absolute;top:-3px;right:-3px;width:7px;height:7px;border-radius:50%;background:var(--r-ELEMENT);border:1.5px solid #fff}
+.workspace .ws-overlay{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:6;max-width:46%;display:flex;flex-direction:column;gap:4px;padding:12px 8px 6px;border:1.5px dashed #b6bfcd;border-radius:10px;background:#ffffffd9}
+.el-place{display:flex;align-items:flex-start;min-height:30px;padding:6px 10px;border:1px dashed #cfd5df;border-radius:8px;background:repeating-linear-gradient(135deg,transparent 0 9px,#f4f6f9 9px 10px);color:var(--faint);font:500 11px/16px var(--mono)}
+.el-place.fill{min-height:110px}
+.workspace .ws-overlay > .ws-tag{top:-9px;left:10px;right:auto;background:#fff;border:1px dashed #b6bfcd}
+.workspace .ws-float{position:absolute;z-index:7;right:14px;top:54px;max-width:min(42%,420px);max-height:calc(100% - 74px);overflow:auto;padding:10px;border:1px solid #cfd5df;border-radius:12px;background:#fff;box-shadow:0 18px 38px -20px #18213a99}
+.workspace .ws-float.modal{left:50%;right:auto;top:50%;transform:translate(-50%,-50%);width:min(68%,620px);max-width:620px;z-index:8;box-shadow:0 22px 56px -20px #18213acc}
+.workspace .ws-float.transient{left:50%;right:auto;top:auto;bottom:12px;transform:translateX(-50%);width:auto;max-width:60%;background:#1d2433;color:#fff;border-color:#1d2433}
+.workspace .ws-float > .ws-float-label{margin:0 0 7px;color:var(--faint);font:600 10px/14px var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.workspace .ws-float.transient > .ws-float-label{color:#c9d1de}
+.ws-transient{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:#1d2433;color:#fff;font-size:12px}
+.ws-transient small{color:#c9d1de;font-size:10.5px}
 [data-ref]{position:relative;border-radius:10px;transition:opacity .15s,box-shadow .15s}
 [data-ref].sel{z-index:3;box-shadow:0 0 0 2px var(--r-ELEMENT),0 8px 22px -10px #2563eb88}
 [data-ref].anc{box-shadow:0 0 0 1.5px color-mix(in srgb,var(--r-CONTAINER) 55%,transparent)}
@@ -130,6 +178,7 @@ a{color:var(--focus)}
 .el-row{display:flex;flex-wrap:wrap;gap:8px;border-radius:8px}
 .el-text{margin:0;font-size:13px;color:var(--muted)}.el-text.TITLE{color:var(--ink);font-weight:600;font-size:14px}
 .el-image{font-weight:600;letter-spacing:-.01em}
+.el-field-row{flex-wrap:nowrap;align-items:center}.el-field-row > .el-field{flex:1;min-width:120px}
 .el-field{display:flex;align-items:center;height:40px;padding:0 12px;border:1px solid #cfd5df;border-radius:10px;background:#fff;color:var(--faint);font-size:13px}
 .el-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;border:1px solid #e3e7ee;border-radius:14px;background:#fff;text-align:left;font-weight:500}
 .el-toggle .switch{width:38px;height:22px;border-radius:999px;background:#d7dce5;position:relative;flex:none}
@@ -351,7 +400,7 @@ a{color:var(--focus)}
 .xkind.PREVIEW{background:color-mix(in srgb,var(--pres-example) 12%,#fff);color:var(--pres-example)}.xkind.GOLDEN{background:#fdf2e3;color:#9a3412}.xkind.JOURNEY{background:#e6f4f1;color:#0f766e}
 
 /* Structure face */
-.structure{flex:1;overflow:auto;padding:16px 16px 28px}
+.structure{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;padding:16px 16px 28px}
 .struct-section{margin-bottom:18px}
 .struct-section header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:2px 0 8px}
 .struct-section h3{margin:0;font-size:13.5px;font-weight:600}
@@ -475,6 +524,8 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
 .builds>button .sha{font:11.5px var(--mono);color:var(--faint)}
 .builds>button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .builds>button[aria-pressed="true"] .sha{color:#c9d1e3}
+.presentation-modes{align-items:center}
+.presentation-modes .mode-label{padding:0 7px 0 5px;color:var(--faint);font-size:11.5px;font-weight:500;white-space:nowrap}
 .source-link{font:12px var(--mono);color:var(--muted);white-space:nowrap;text-decoration:none;flex:none}
 .source-link:hover{color:var(--ink);text-decoration:underline}
 .delta-chip{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border:1.5px dashed var(--delta);border-radius:999px;background:color-mix(in srgb,var(--delta) 6%,#fff);color:var(--delta-ink);font-size:12.5px;font-weight:600;white-space:nowrap;flex:none}
@@ -579,6 +630,7 @@ import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
 import * as Revision from '../src/shared/vexboard-screen-lens-revision.mjs';
 import * as Realization from '../src/shared/vexboard-screen-lens-realization.mjs';
 import * as Expressions from '../src/shared/vexboard-screen-lens-source-expressions.mjs';
+import * as Frames from '../src/shared/vexboard-screen-lens-frames.mjs';
 
 const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const LENS_DIR = '../projects/vexboard/lens/';
@@ -594,6 +646,14 @@ async function fetchJson(url) {
 }
 const short = (sha) => (sha ? sha.slice(0, 7) : 'unpinned');
 const currentSubject = () => state.request?.subject ?? null;
+function catalogSubjectForCurrentLens() {
+  if (!state.catalog || currentSubject()) return currentSubject();
+  const snapshot = state.lens?.sourceSnapshot;
+  return state.catalog.subjects.find((subject) =>
+    (snapshot?.repositoryRef && subject.repositoryRef === snapshot.repositoryRef) ||
+    (snapshot?.repositoryUrl && subject.repository?.url === snapshot.repositoryUrl)
+  ) ?? null;
+}
 const currentBuildRef = () => (state.request?.mode === 'BUILD' ? state.request.build.buildRef : null);
 function currentBuildLabel() {
   if (state.request?.mode === 'COMMIT') return `Commit ${short(state.commit?.sha)}`;
@@ -613,23 +673,46 @@ async function projectCommitLens(subject, ref, onProgress) {
   const { Adapter, Source } = await commitTools();
   const githubFetch = (url, init) => fetch(url, init);
   const resolved = await Source.resolveCommit({ repositoryUrl: subject.repository.url, ref, fetch: githubFetch });
-  const key = `${subject.slug}.${resolved.sha}.${Adapter.ADAPTER_VERSION}`;
+  const strategy = subject.lens.exportedLens ? `export:${subject.lens.exportedLens}` : Adapter.ADAPTER_VERSION;
+  const key = `${subject.slug}.${resolved.sha}.${strategy}`;
   const cached = commitLenses.get(key);
   if (cached) return cached;
+  if (subject.lens.exportedLens) {
+    const result = await Source.readExportedLensCommit({
+      repositoryUrl: subject.repository.url,
+      sourcePath: subject.lens.exportedLens,
+      ref,
+      resolved,
+      fetch: githubFetch,
+      onProgress,
+    });
+    const build = { commit: result.commit.sha, observedAt: result.commit.date?.slice(0, 10) ?? null };
+    const value = {
+      lens: Catalog.bindLensBuildSource(result.lens, build),
+      commit: { ...result.commit, fileCount: 1, misses: [] },
+    };
+    commitLenses.set(key, value);
+    return value;
+  }
   const [adapter, overlay] = await Promise.all([fetchJson(LENS_DIR + subject.lens.adapter), subject.lens.overlay ? fetchJson(LENS_DIR + subject.lens.overlay) : null]);
   const result = await Source.projectCommit({ adapter, overlay, ref, resolved, fetch: githubFetch, project: Adapter.projectAndroidScreenLens, readPlan: Adapter.adapterReadPlan, onProgress });
   const value = { lens: result.lens, commit: { ...result.commit, fileCount: result.fileCount, misses: result.report.overlayMisses ?? [] } };
   commitLenses.set(key, value);
   return value;
 }
+async function loadBuildLens(subject, build) {
+  const raw = await fetchJson(LENS_DIR + build.lens);
+  return Lens.normalizeScreenLens(Catalog.bindLensBuildSource(raw, build));
+}
 const stableLenses = new Map();
 async function stableLensFor(subject) {
-  if (!stableLenses.has(subject.slug)) stableLenses.set(subject.slug, fetchJson(LENS_DIR + Catalog.buildFor(subject, 'stable').lens).then((raw) => Lens.normalizeScreenLens(raw)));
+  const stable = Catalog.buildFor(subject, 'stable');
+  if (!stableLenses.has(subject.slug)) stableLenses.set(subject.slug, loadBuildLens(subject, stable));
   return stableLenses.get(subject.slug);
 }
 async function lensForRequest(request, onProgress) {
   if (request.mode === 'LEGACY') return { lens: Lens.normalizeScreenLens(await fetchJson(lensUrlFromParams())), commit: null };
-  if (request.mode === 'BUILD') return { lens: Lens.normalizeScreenLens(await fetchJson(LENS_DIR + request.build.lens)), commit: null };
+  if (request.mode === 'BUILD') return { lens: await loadBuildLens(request.subject, request.build), commit: null };
   const projected = await projectCommitLens(request.subject, request.commitRef, onProgress);
   return { lens: Lens.normalizeScreenLens(projected.lens), commit: projected.commit };
 }
@@ -841,6 +924,18 @@ const state = {
   realization: Realization.emptyRealizationContext(),
   motion: null, // 'next' | 'prev' for one render after the expression changes
   flashRef: null, // the element to bring into view after the expression changes
+  // Read-only browser observation of which Product CSS blocks shape the currently selected
+  // stable Product identity. Never persisted and never used as rendering authority.
+  presentationRules: null,
+  // Browser-local spatial projection only. A split override changes how the static Product view is
+  // presented here; it never writes Product State or persists beyond this Lens session.
+  splitProjection: new Map(),
+  // Read-only Product-authored presentation choices, keyed by Project + Screen. Never written to Product storage.
+  colorModes: new Map(),
+  // Browser Back/Forward is a history of human Lens viewpoints, not Product/page history.
+  // A meaningful Lens choice requests one push; incidental redraw/zoom/pan continue replacing.
+  historyPushPending: false,
+  historyRestoring: false,
 };
 let refs = {};
 
@@ -849,8 +944,114 @@ function writePalette(mode) { try { localStorage.setItem(Presentation.VEXBOARD_P
 
 const screenRef = () => Lens.currentWalkScreen(state.walk);
 const currentScreen = () => Lens.screenFor(state.lens, screenRef());
-// With no control picked, the Behavior side reads the same expression the Surface shows.
-const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? (state.anchorElementRef ? null : expressionPathway());
+function colorModeScopeKey() {
+  const subject = currentSubject() ?? catalogSubjectForCurrentLens();
+  return `${subject?.subjectRef ?? state.lens?.lensRef ?? 'lens'}|${screenRef()}`;
+}
+function staticColorMode(view = currentScreen()?.view) {
+  const colorMode = view?.colorMode;
+  if (!colorMode) return null;
+  const requested = state.colorModes.get(colorModeScopeKey()) ?? colorMode.defaultRef;
+  return colorMode.options.find((option) => option.ref === requested)
+    ?? colorMode.options.find((option) => option.ref === colorMode.defaultRef)
+    ?? null;
+}
+const LENS_HISTORY_SCHEMA = 'vexboard.screen-lens-history/v1';
+const LENS_HISTORY_KEY = 'vexboardScreenLens';
+
+function lensHistoryScopeKey() {
+  const subject = currentSubject() ?? catalogSubjectForCurrentLens();
+  const subjectRef = subject?.subjectRef ?? state.lens?.lensRef ?? 'lens';
+  if (state.request?.mode === 'COMMIT') return `${subjectRef}|commit:${state.commit?.sha ?? state.request.commitRef ?? ''}`;
+  if (state.request?.mode === 'BUILD') return `${subjectRef}|build:${currentBuildRef() ?? ''}|${state.lens?.sourceSnapshot?.commit ?? ''}`;
+  return `${subjectRef}|legacy:${state.lens?.sourceSnapshot?.commit ?? ''}`;
+}
+
+function lensHistorySnapshot() {
+  return {
+    schemaVersion: LENS_HISTORY_SCHEMA,
+    scope: lensHistoryScopeKey(),
+    walk: state.walk,
+    selected: state.selected,
+    anchorElementRef: state.anchorElementRef,
+    pathwayRef: state.pathwayRef,
+    faces: { ...state.faces },
+    realization: state.realization,
+    colorModeRef: staticColorMode()?.ref ?? null,
+  };
+}
+
+function markLensHistoryPoint() {
+  if (!state.historyRestoring) state.historyPushPending = true;
+}
+
+function sameLensHistorySnapshot(a, b) {
+  return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+}
+
+function restoreLensHistory(snapshot) {
+  if (!snapshot || snapshot.schemaVersion !== LENS_HISTORY_SCHEMA || snapshot.scope !== lensHistoryScopeKey()) {
+    location.reload();
+    return;
+  }
+  state.historyRestoring = true;
+  try {
+    if (snapshot.walk?.steps?.length) state.walk = snapshot.walk;
+    state.selected = snapshot.selected ?? null;
+    state.anchorElementRef = snapshot.anchorElementRef ?? null;
+    state.pathwayRef = snapshot.pathwayRef ?? null;
+    if (snapshot.faces?.EXPERIENCE && Lens.LENS_FACES[snapshot.faces.EXPERIENCE]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = snapshot.faces.EXPERIENCE;
+    if (snapshot.faces?.BEHAVIOR && Lens.LENS_FACES[snapshot.faces.BEHAVIOR]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = snapshot.faces.BEHAVIOR;
+    state.realization = snapshot.realization ?? Realization.emptyRealizationContext();
+    const colorMode = currentScreen()?.view?.colorMode;
+    if (colorMode) {
+      if (snapshot.colorModeRef && colorMode.options.some((option) => option.ref === snapshot.colorModeRef)) state.colorModes.set(colorModeScopeKey(), snapshot.colorModeRef);
+      else state.colorModes.delete(colorModeScopeKey());
+    }
+    state.overlay = null;
+    state.menu = null;
+    state.presentationRules = null;
+    state.cameras.clear();
+    state.flashRef = null;
+    state.motion = null;
+    render();
+  } finally {
+    state.historyRestoring = false;
+  }
+}
+
+function applyStaticColorMode(doc, view) {
+  const colorMode = view?.colorMode;
+  const option = staticColorMode(view);
+  if (!colorMode || !option) return;
+  if (option.attributeValue === null) doc.documentElement.removeAttribute(colorMode.attribute);
+  else doc.documentElement.setAttribute(colorMode.attribute, option.attributeValue);
+}
+function setStaticColorMode(ref) {
+  const view = currentScreen()?.view;
+  const colorMode = view?.colorMode;
+  if (!colorMode || !colorMode.options.some((option) => option.ref === ref)) return;
+  markLensHistoryPoint();
+  state.colorModes.set(colorModeScopeKey(), ref);
+  const frame = document.querySelector('.current-product-view .product-view-frame');
+  const doc = frame?.contentDocument;
+  if (doc) {
+    applyStaticColorMode(doc, view);
+    refreshStaticViewInspectionMarks(doc, view);
+    scheduleBridge();
+  }
+  renderBarInPlace();
+  syncUrl();
+}
+// Behavior prefers an element's explicit semantic pathway. If none exists, a selected element may
+// still participate in the current expression's realization relationship (presentation/selection/etc).
+// Reuse that already-derived expression graph only when it actually contains the selected identity.
+function projectedRelationshipForAnchor() {
+  const graph = expressionPathway();
+  if (!state.anchorElementRef) return graph;
+  return graph?.nodes.some((node) => node.elementRef === state.anchorElementRef) ? graph : null;
+}
+const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef) ?? projectedRelationshipForAnchor();
 const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
 const pathwayNode = (ref) => currentPathway()?.nodes.find((node) => node.ref === ref) ?? null;
 function doorwayCollapsible(pathway) {
@@ -862,9 +1063,10 @@ function doorwayCollapsible(pathway) {
 const doorwayCollapsed = () => state.hideDoorway && doorwayCollapsible(currentPathway());
 const hideBandsFor = (face) => (face === 'BEHAVIOR' && doorwayCollapsed() ? ['DOORWAY'] : []);
 
-function selectElement(elementRef, { keepFaces = true } = {}) {
+function selectElement(elementRef, { keepFaces = true, recordHistory = true } = {}) {
   const element = Lens.elementFor(state.lens, elementRef);
   if (!element) return;
+  if (recordHistory) markLensHistoryPoint();
   state.selected = { kind: 'ELEMENT', ref: elementRef };
   state.anchorElementRef = elementRef;
   const nextPathway = element.pathwayRef ?? null;
@@ -874,20 +1076,25 @@ function selectElement(elementRef, { keepFaces = true } = {}) {
     state.cameras.delete('DEPTH');
   }
   if (!keepFaces) state.faces.BEHAVIOR = 'BEHAVIOR';
-  render();
+  if (!refreshStaticSelectionInPlace()) render();
 }
 function selectNode(ref, { reveal = false } = {}) {
   const node = pathwayNode(ref);
   if (!node) return;
+  markLensHistoryPoint();
   state.selected = { kind: 'NODE', ref };
   if (reveal && state.faces.BEHAVIOR !== node.face) { state.faces.BEHAVIOR = node.face; }
-  render();
+  if (!refreshStaticSelectionInPlace()) render();
   if (reveal) requestAnimationFrame(() => revealNode(node.face, ref));
 }
-function clearSelection() { state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); }
+function clearSelection() {
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  if (!refreshStaticSelectionInPlace()) render();
+}
 
 function travel(element) {
   if (!element?.navigatesTo) return;
+  markLensHistoryPoint();
   if (element.navigatesTo === Lens.BACK) { state.walk = Lens.backScreenWalk(state.walk); }
   else state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: element.navigatesTo, viaElementRef: element.ref });
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
@@ -896,6 +1103,7 @@ function travel(element) {
 }
 function jumpTo(target, how = 'JUMP') {
   if (target === screenRef() && how !== 'REVISIT') { state.overlay = null; render(); return; }
+  markLensHistoryPoint();
   state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target, how });
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; state.overlay = null;
   state.realization = Realization.emptyRealizationContext();
@@ -921,6 +1129,7 @@ function whereText(target) {
   return `on ${Lens.screenFor(state.lens, target.screenRef).label}`;
 }
 function goToResult(result) {
+  markLensHistoryPoint();
   const target = result.target;
   if (target.screenRef && target.screenRef !== screenRef()) state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target.screenRef, how: 'JUMP' });
   state.overlay = null;
@@ -1055,8 +1264,27 @@ function renderProjectMenu(subject) {
       'aria-current': entry.subjectRef === subject.subjectRef ? 'page' : null,
     }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, entry.label), h('span', { class: 'md' }, line(entry)))),
     h('hr'),
-    h('a', { href: './projects.html' }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, 'All projects'), h('span', { class: 'md' }, 'Builds, boards and earlier canvas trials'))));
+    h('a', { href: './projects.html' }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, 'All projects'), h('span', { class: 'md' }, 'Builds and source projections'))));
   return wrap;
+}
+function renderColorModeSwitch() {
+  const view = currentScreen()?.view;
+  const colorMode = view?.colorMode;
+  if (!colorMode) return null;
+  const selected = staticColorMode(view);
+  return h('div', {
+    class: 'builds presentation-modes',
+    role: 'group',
+    'aria-label': 'Product color mode',
+    title: `Product-authored presentation from ${colorMode.owner}. Screen Lens changes only this read-only projection.`,
+  },
+    h('span', { class: 'mode-label' }, 'Appearance'),
+    colorMode.options.map((option) => h('button', {
+      type: 'button',
+      'aria-pressed': option.ref === selected?.ref ? 'true' : 'false',
+      title: `${option.label} · Product presentation only; Product state is unchanged.`,
+      onclick: () => setStaticColorMode(option.ref),
+    }, option.label)));
 }
 function renderBuildSwitch(subject) {
   const stable = Catalog.buildFor(subject, 'stable');
@@ -1126,11 +1354,16 @@ function renderBar() {
   const commitLink = snapshot.repositoryUrl && snapshot.commit
     ? h('a', { class: 'source-link', href: `${snapshot.repositoryUrl}/tree/${snapshot.commit}`, target: '_blank', rel: 'noopener', title: `${where}\n${snapshot.notes.join('\n')}`, 'aria-label': where }, 'Source')
     : h('span', { class: 'source-link', title: where }, `${repoName}@${commit}`);
-  const subject = currentSubject();
+  const requestSubject = currentSubject();
+  const subject = requestSubject ?? catalogSubjectForCurrentLens();
+  const legacySuffix = !requestSubject && subject
+    ? state.lens.title.replace(`${subject.label} · Screen Lens`, '').replace(/^\s*·\s*/, '').trim()
+    : '';
   return h('header', { class: 'bar' },
     h('a', { class: 'crumb', href: './projects.html', title: 'All projects' }, 'VexBoard'),
-    subject ? h('h1', {}, renderProjectMenu(subject), h('span', { class: 'kind' }, '· Screen Lens')) : h('h1', {}, state.lens.title),
-    subject ? renderBuildSwitch(subject) : null,
+    subject ? h('h1', {}, renderProjectMenu(subject), h('span', { class: 'kind' }, '· Screen Lens'), legacySuffix ? h('span', { class: 'kind' }, `· ${legacySuffix}`) : null) : h('h1', {}, state.lens.title),
+    requestSubject ? renderBuildSwitch(requestSubject) : null,
+    renderColorModeSwitch(),
     commitLink,
     renderDeltaChip(),
     renderSearch(),
@@ -1286,6 +1519,7 @@ function setExpression(ref, { flash = null } = {}) {
   const list = expressionsNow();
   const target = Expressions.expressionFor(list, ref);
   if (!target) return;
+  markLensHistoryPoint();
   const from = expressionIndex();
   const to = list.indexOf(target);
   state.motion = from < 0 || to === from ? null : to > from ? 'next' : 'prev';
@@ -1301,6 +1535,7 @@ function setExpression(ref, { flash = null } = {}) {
 function combineExpression(ref) {
   const target = Expressions.expressionFor(expressionsNow(), ref);
   if (!target) return;
+  markLensHistoryPoint();
   state.realization = Object.freeze({ exampleRef: target.exampleRef ?? state.realization.exampleRef, overrides: Object.freeze({ ...state.realization.overrides, ...target.context.overrides }) });
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
   state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
@@ -1326,7 +1561,7 @@ function flashElement(ref) {
   const phone = document.querySelector('.face[data-face="SURFACE"] .current-phone');
   const node = (state.faces.EXPERIENCE === 'SURFACE' ? phone : document.querySelector('.face[data-face="STRUCTURE"]'))?.querySelector(`[data-ref="${CSS.escape(ref ?? '')}"]`);
   if (!node) return;
-  const body = node.closest('.phone-body') ?? node.closest('.structure');
+  const body = node.closest('.phone-body') ?? node.closest('.ws-scroll') ?? node.closest('.structure');
   if (body) {
     const box = node.getBoundingClientRect(); const view = body.getBoundingClientRect();
     if (box.top < view.top + 8 || box.bottom > view.bottom - 8) body.scrollTop += box.top - view.top - Math.max(16, (view.height - box.height) / 3);
@@ -1665,7 +1900,8 @@ function renderSurfaceElement(tree, marks, context) {
   }).filter(Boolean);
   let node;
   switch (element.kind) {
-    case 'COLUMN': case 'REGION': node = h('div', { class: 'el-column' }, kids()); break;
+    // A chrome-layer group of plain controls is a toolbar: its controls sit side by side.
+    case 'COLUMN': case 'REGION': node = h('div', { class: `el-column${element.layer === 'CHROME' && shown.length && shown.every((child) => !child.children.length) ? ' el-toolbar' : ''}` }, kids()); break;
     case 'CARD': node = h('div', { class: 'el-card' }, kids()); break;
     case 'ROW': case 'STACK': node = h('div', { class: `el-row${shown.length && shown.every((child) => child.element.style === 'Navigation') ? ' chips' : ''}${iconRow ? ' icons' : ''}` }, kids()); break;
     case 'TEXT': node = h('p', { class: `el-text ${element.textRole ?? ''}` }, element.label); break;
@@ -1675,7 +1911,8 @@ function renderSurfaceElement(tree, marks, context) {
     case 'FAB': node = element.label.length <= 2 ? h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.label) : h('button', { class: 'el-button', type: 'button' }, element.label); break;
     case 'MENU': node = h('div', { class: `el-menu${context.fabOpen ? '' : ' closed'}` }, kids()); break;
     case 'MENU_ITEM': node = h('button', { class: 'el-menuitem', type: 'button' }, element.label); break;
-    case 'FIELD': node = h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
+    // A field that holds controls (a composer with its send button) draws them beside it.
+    case 'FIELD': node = shown.length ? h('div', { class: 'el-row el-field-row' }, h('div', { class: 'el-field' }, h('span', {}, element.label)), kids()) : h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
     default: node = h('div', {}, element.label);
   }
   for (const ref of placements.byTarget.get(element.ref) ?? []) {
@@ -1694,6 +1931,9 @@ function renderSurfaceElement(tree, marks, context) {
     const group = h('div', { class: 'reg-group', title: 'Registered grouping. Source realizes its children elsewhere (or not yet traced); it is not a visible container.' }, h('span', { class: 'reg-label' }, `${element.label} · registered group`), ...node.childNodes);
     node = group;
   }
+  // Inside a workspace region an empty container is still a place (a browser viewport, a timeline
+  // whose items arrive at runtime): drawn as an outlined placeholder so its depth stays visible.
+  if (context.showEmpty && CONTAINER_KINDS.has(element.kind) && !node.childNodes.length) node = h('div', { class: `el-place${element.slot === 'FillAvailable' ? ' fill' : ''}` }, h('span', {}, element.label));
   markElement(node, element, marks);
   if (info && info.state !== 'SOURCE' && !(info.state === 'UNTRACED' && context.placedRef === element.ref)) node.classList.add(`pres-${info.state}`);
   const go = travelButton(element);
@@ -1812,20 +2052,619 @@ function renderPhone(expression, { interactive }) {
   }
   return phone;
 }
+// A Product may export a static HTML/CSS manifestation of the same source tree. VexBoard never
+// runs Product JavaScript here: the browser lays out Product-owned markup/CSS, then stable
+// data-vex identities bind that geometry back to the Lens relationships.
+function staticViewDocument(view) {
+  let html = view.html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, '')
+    .replace(/<link\b[^>]*>/gi, '');
+  const colorMode = view.colorMode;
+  const option = staticColorMode(view);
+  if (colorMode && option) {
+    const rootAttribute = new RegExp(`\\s${colorMode.attribute}(?:=(?:"[^"]*"|'[^']*'|[^\\s>]+))?`, 'i');
+    html = html.replace(/<html(?:\s[^>]*)?>/i, (match) => {
+      const clean = match.replace(rootAttribute, '');
+      if (option.attributeValue === null) return clean;
+      const value = String(option.attributeValue).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+      return clean.replace(/>$/, ` ${colorMode.attribute}="${value}">`);
+    });
+  }
+  const css = view.css.replace(/<\/style/gi, '<\\/style');
+  const lensCss = `
+:root{--vexboard-lens-focus:#0783c7;--vexboard-lens-focus-soft:rgba(7,131,199,.18)}
+html[data-vex-lens-has-selection] [data-vex-ref]:not([data-vex-lens-selected]):not([data-vex-lens-ancestor]){opacity:.48!important;transition:opacity .12s ease}
+html[data-vex-lens-has-selection] [data-vex-lens-selected],
+html[data-vex-lens-has-selection] [data-vex-lens-ancestor],
+html[data-vex-lens-has-selection] [data-vex-lens-selected] [data-vex-ref]{opacity:1!important}
+[data-vex-lens-selected]{outline:2px solid var(--vexboard-lens-focus)!important;outline-offset:1px!important;box-shadow:0 0 0 3px var(--vexboard-lens-focus-soft)!important}
+[data-vex-lens-ancestor]{outline:1px dashed rgba(7,131,199,.46)!important;outline-offset:-1px!important}
+[data-vex-lens-delta]{box-shadow:inset 0 0 0 2px #e11d48!important}
+[data-vex-lens-flash]{animation:vexboard-lens-flash .8s ease-out}
+.vexboard-lens-travel{position:fixed;z-index:2147483647;height:22px;min-width:28px;padding:0 8px;border:0;border-radius:999px;background:var(--vexboard-lens-focus);color:#fff;font:600 11px/22px system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 5px 14px -7px rgba(0,0,0,.72);cursor:pointer}
+@keyframes vexboard-lens-flash{0%,35%{outline:4px solid var(--vexboard-lens-focus);outline-offset:0}100%{outline-color:transparent}}
+`;
+  const injection = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'"><style data-vex-product-style>${css}</style><style data-vex-lens-style>${lensCss}</style>`;
+  return /<head(?:\s[^>]*)?>/i.test(html)
+    ? html.replace(/<head(\s[^>]*)?>/i, (match) => match + injection)
+    : `<!doctype html><html><head>${injection}</head><body>${html}</body></html>`;
+}
+function staticViewSelector(attribute, ref) {
+  return attribute ? `[${CSS.escape(attribute)}="${CSS.escape(ref)}"]` : null;
+}
+function staticViewNodes(doc, view, ref, { includeStructuralParents = false } = {}) {
+  const attrs = [view.anchors.elementAttribute, view.anchors.structuralAttribute];
+  if (includeStructuralParents) attrs.push(view.anchors.structuralParentAttribute);
+  const nodes = [];
+  for (const attribute of attrs.filter(Boolean)) {
+    for (const node of doc.querySelectorAll(staticViewSelector(attribute, ref))) if (!nodes.includes(node)) nodes.push(node);
+  }
+  return nodes;
+}
+
+function staticViewTargetNodes(doc, view, ref) {
+  const nodes = staticViewNodes(doc, view, ref, { includeStructuralParents: true });
+  const screenSelector = staticViewSelector(view.anchors.screenAttribute, ref);
+  if (screenSelector) for (const node of doc.querySelectorAll(screenSelector)) if (!nodes.includes(node)) nodes.push(node);
+  return nodes;
+}
+
+function applyStaticViewStateBindings(doc, view, resolved) {
+  for (const binding of view.stateBindings ?? []) {
+    const outcome = resolved?.presence?.get(binding.presenceRef);
+    // A raw inner value may still be OPEN while its enclosing presentation is closed.
+    // Gated-off relationships have no manifestation consequences.
+    if (outcome?.gate === false || String(outcome?.value ?? '') !== binding.value) continue;
+    for (const operation of binding.operations) {
+      for (const node of staticViewTargetNodes(doc, view, operation.targetRef)) {
+        if (operation.op === 'SET_ATTRIBUTE') node.setAttribute(operation.attribute, operation.value);
+        else if (operation.op === 'REMOVE_ATTRIBUTE') node.removeAttribute(operation.attribute);
+      }
+    }
+  }
+}
+
+function expressionForPresenceOutcome(presenceRef, outcome) {
+  return expressionsNow().find((expression) =>
+    String(presenceFor(expression.context).presence.get(presenceRef)?.value ?? '') === String(outcome)
+  ) ?? null;
+}
+function contextWithPresenceOutcome(presenceRef, outcome) {
+  const canonical = expressionForPresenceOutcome(presenceRef, outcome);
+  const overrides = { ...state.realization.overrides };
+  delete overrides[presenceRef];
+  const canonicalOverride = canonical?.context?.overrides?.[presenceRef];
+  if (canonicalOverride !== undefined) overrides[presenceRef] = canonicalOverride;
+  else if (!canonical) overrides[presenceRef] = outcome;
+  return Object.freeze({
+    exampleRef: state.realization.exampleRef,
+    overrides: Object.freeze(overrides),
+  });
+}
+function staticSelectNode(doc, view, binding) {
+  const owner = staticViewTargetNodes(doc, view, binding.elementRef)[0] ?? null;
+  if (!owner) return null;
+  return owner.matches?.('select') ? owner : owner.querySelector?.('select') ?? null;
+}
+function applyStaticSelectBindings(doc, view, resolved) {
+  for (const binding of view.interactionBindings ?? []) {
+    if (binding.kind !== 'SELECT') continue;
+    const select = staticSelectNode(doc, view, binding);
+    if (!select) continue;
+    const outcome = String(resolved?.presence?.get(binding.presenceRef)?.value ?? '');
+    const option = binding.options.find((entry) => entry.outcome === outcome);
+    if (option && select.value !== option.value) select.value = option.value;
+  }
+}
+function applyStaticToggleBindings(doc, view, resolved) {
+  for (const binding of view.interactionBindings ?? []) {
+    if (binding.kind !== 'TOGGLE') continue;
+    const target = staticViewTargetNodes(doc, view, binding.targetRef)[0] ?? null;
+    if (!target) continue;
+    const open = String(resolved?.presence?.get(binding.presenceRef)?.value ?? '') === 'OPEN';
+    target.setAttribute(binding.attribute, open ? binding.openValue : binding.closedValue);
+  }
+}
+
+const staticSplitKey = (binding) => `${screenRef()}|${binding.elementRef}`;
+const staticSplitProjection = (binding) => state.splitProjection.get(staticSplitKey(binding)) ?? null;
+function staticSplitLabels(binding) {
+  const label = (ref) => (Lens.elementFor(state.lens, ref)?.label ?? ref).replace(/\s+region$/i, '');
+  return { before: label(binding.beforeRef), after: label(binding.afterRef) };
+}
+function applyStaticSplitProjection(doc, view, binding) {
+  const target = staticViewTargetNodes(doc, view, binding.targetRef)[0] ?? null;
+  const handle = staticViewTargetNodes(doc, view, binding.elementRef)[0] ?? null;
+  if (!target || !handle) return;
+  const projected = staticSplitProjection(binding);
+  target.removeAttribute(binding.collapsedAttribute);
+  target.style.removeProperty(binding.styleProperty);
+  if (projected?.phase === 'BEFORE_ONLY') target.setAttribute(binding.collapsedAttribute, binding.collapsedAfterValue);
+  else if (projected?.phase === 'AFTER_ONLY') target.setAttribute(binding.collapsedAttribute, binding.collapsedBeforeValue);
+  else if (projected?.phase === 'CUSTOM') target.style.setProperty(binding.styleProperty, `${projected.ratio.toFixed(2)}%`);
+  const min = Number(handle.getAttribute('aria-valuemin')) || 15;
+  const max = Number(handle.getAttribute('aria-valuemax')) || 85;
+  const labels = staticSplitLabels(binding);
+  let ratio = 50;
+  if (projected?.phase === 'BEFORE_ONLY') ratio = 100;
+  else if (projected?.phase === 'AFTER_ONLY') ratio = 0;
+  else if (projected?.phase === 'CUSTOM') ratio = projected.ratio;
+  else {
+    const authored = doc.defaultView.getComputedStyle(target).getPropertyValue(binding.styleProperty).trim();
+    if (authored.endsWith('%') && Number.isFinite(Number.parseFloat(authored))) ratio = Number.parseFloat(authored);
+  }
+  handle.setAttribute('aria-valuemin', String(min));
+  handle.setAttribute('aria-valuemax', String(max));
+  handle.setAttribute('aria-valuenow', String(Math.round(ratio)));
+  handle.setAttribute('aria-valuetext',
+    projected?.phase === 'BEFORE_ONLY' ? `${labels.before} only`
+      : projected?.phase === 'AFTER_ONLY' ? `${labels.after} only`
+      : `${labels.before} ${Math.round(ratio)} percent · ${labels.after} ${Math.round(100 - ratio)} percent`);
+}
+function applyStaticSplitProjections(doc, view) {
+  for (const binding of view.interactionBindings ?? []) if (binding.kind === 'SPLIT') applyStaticSplitProjection(doc, view, binding);
+}
+function applyStaticViewProjection(doc, view, expression) {
+  const screen = currentScreen();
+  const resolved = screen.realization ? presenceFor(expression.context) : null;
+  for (const element of screen.elements) {
+    const info = resolved?.elements.get(element.ref);
+    if (info) {
+      for (const node of staticViewNodes(doc, view, element.ref)) {
+        if (PRESENTED.has(info.state)) node.removeAttribute('hidden');
+        else node.setAttribute('hidden', '');
+      }
+    }
+    const delta = deltaClass(element).trim();
+    if (delta) for (const node of staticViewNodes(doc, view, element.ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-delta', delta);
+  }
+  applyStaticViewStateBindings(doc, view, resolved);
+  applyStaticSelectBindings(doc, view, resolved);
+  applyStaticToggleBindings(doc, view, resolved);
+  applyStaticSplitProjections(doc, view);
+  refreshStaticViewInspectionMarks(doc, view);
+  return resolved;
+}
+function setStaticSplitPhase(binding, phase) {
+  const key = staticSplitKey(binding);
+  if (phase === 'BALANCED') state.splitProjection.delete(key);
+  else state.splitProjection.set(key, Object.freeze({ phase }));
+  const wrapper = document.querySelector('.current-product-view');
+  const frame = wrapper?.querySelector('.product-view-frame');
+  const doc = frame?.contentDocument;
+  if (doc) {
+    applyStaticSplitProjection(doc, currentScreen().view, binding);
+    refreshStaticViewActions(wrapper);
+    scheduleBridge();
+  } else render();
+}
+function renderStaticToggleControl(binding) {
+  const element = Lens.elementFor(state.lens, binding.elementRef);
+  const outcome = presenceNow().presence.get(binding.presenceRef)?.value;
+  const open = outcome === 'OPEN';
+  const label = `${open ? 'Close' : 'Open'} ${(element?.label ?? 'presentation').toLowerCase()}`;
+  return h('button', {
+    class: 'tool product-view-support-action',
+    type: 'button',
+    title: label,
+    onclick: (event) => {
+      event.stopPropagation();
+      setStaticPresenceOutcome(binding.presenceRef, open ? 'CLOSED' : 'OPEN');
+    },
+  }, label);
+}
+function renderStaticSplitControl(binding) {
+  const element = Lens.elementFor(state.lens, binding.elementRef);
+  if (!element) return null;
+  const allowed = new Set(element.interactions);
+  const labels = staticSplitLabels(binding);
+  const projected = staticSplitProjection(binding);
+  const phase = projected?.phase ?? 'BALANCED';
+  const options = [];
+  if (allowed.has('COLLAPSE_AFTER')) options.push(h('option', { value: 'BEFORE_ONLY' }, `${labels.before} only`));
+  options.push(h('option', { value: 'BALANCED' }, 'Balanced'));
+  if (allowed.has('COLLAPSE_BEFORE')) options.push(h('option', { value: 'AFTER_ONLY' }, `${labels.after} only`));
+  if (phase === 'CUSTOM') {
+    const ratio = Math.round(projected.ratio);
+    options.push(h('option', { value: 'CUSTOM', disabled: true }, `Custom · ${labels.before} ${ratio} / ${labels.after} ${100 - ratio}`));
+  }
+  const select = h('select', {
+    'aria-label': `Spatial phase for ${element.label}`,
+    onchange: (event) => {
+      event.stopPropagation();
+      if (event.target.value !== 'CUSTOM') setStaticSplitPhase(binding, event.target.value);
+    },
+    onclick: (event) => event.stopPropagation(),
+  }, options);
+  select.value = phase;
+  return h('label', { class: 'product-view-phase', title: 'Browser-local spatial projection; Product state is unchanged.' },
+    h('span', {}, 'View'), select);
+}
+function bindStaticSelectInteractions(doc, view) {
+  for (const binding of view.interactionBindings ?? []) {
+    if (binding.kind !== 'SELECT') continue;
+    const select = staticSelectNode(doc, view, binding);
+    if (!select) continue;
+    select.addEventListener('change', (event) => {
+      event.stopPropagation();
+      const option = binding.options.find((entry) => entry.value === select.value);
+      if (option) setStaticPresenceOutcome(binding.presenceRef, option.outcome);
+    });
+  }
+}
+function bindStaticSplitInteractions(doc, view) {
+  for (const binding of view.interactionBindings ?? []) {
+    if (binding.kind !== 'SPLIT') continue;
+    const element = Lens.elementFor(state.lens, binding.elementRef);
+    if (!element?.interactions.includes('RESIZE')) continue;
+    const handle = staticViewTargetNodes(doc, view, binding.elementRef)[0] ?? null;
+    const target = staticViewTargetNodes(doc, view, binding.targetRef)[0] ?? null;
+    if (!handle || !target) continue;
+    let start = null;
+    let moved = false;
+    handle.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || event.target.closest('button')) return;
+      start = { x: event.clientX, y: event.clientY };
+      moved = false;
+      handle.setPointerCapture(event.pointerId);
+    });
+    handle.addEventListener('pointermove', (event) => {
+      if (!start || !handle.hasPointerCapture(event.pointerId)) return;
+      const dx = event.clientX - start.x;
+      const dy = event.clientY - start.y;
+      if (!moved && Math.hypot(dx, dy) < 3) return;
+      moved = true;
+      event.preventDefault();
+      const box = target.getBoundingClientRect();
+      const grip = handle.getBoundingClientRect();
+      const vertical = grip.height >= grip.width;
+      const span = vertical ? box.width : box.height;
+      if (span <= 0) return;
+      const position = vertical ? event.clientX - box.left : event.clientY - box.top;
+      const min = Number(handle.getAttribute('aria-valuemin')) || 15;
+      const max = Number(handle.getAttribute('aria-valuemax')) || 85;
+      const ratio = Math.min(max, Math.max(min, (position / span) * 100));
+      state.splitProjection.set(staticSplitKey(binding), Object.freeze({ phase: 'CUSTOM', ratio }));
+      applyStaticSplitProjection(doc, view, binding);
+    });
+    const finish = (event) => {
+      if (!start) return;
+      const dragged = moved;
+      start = null;
+      moved = false;
+      if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId);
+      if (!dragged) return;
+      handle.setAttribute('data-vex-lens-dragged', '');
+      rememberStaticViewPresentation(doc, view, binding.elementRef);
+      selectElement(binding.elementRef);
+    };
+    handle.addEventListener('pointerup', finish);
+    handle.addEventListener('pointercancel', (event) => { start = null; moved = false; if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId); });
+  }
+}
+
+function staticViewStyleRules(doc) {
+  const style = doc.querySelector('style[data-vex-product-style]');
+  const sheet = style?.sheet;
+  if (!sheet) return [];
+  const out = [];
+  const walk = (rules, conditions = []) => {
+    for (const rule of Array.from(rules ?? [])) {
+      if (typeof rule.selectorText === 'string' && rule.style) {
+        out.push(Object.freeze({
+          selector: rule.selectorText,
+          declarations: rule.style.cssText,
+          conditions: Object.freeze([...conditions]),
+        }));
+        continue;
+      }
+      if (!rule.cssRules) continue;
+      const condition =
+        rule.conditionText ??
+        rule.media?.mediaText ??
+        rule.name ??
+        null;
+      walk(rule.cssRules, condition ? [...conditions, String(condition)] : conditions);
+    }
+  };
+  walk(sheet.cssRules);
+  return out;
+}
+
+function staticViewPresentationRules(doc, view, ref) {
+  const targets = staticViewNodes(doc, view, ref, { includeStructuralParents: true });
+  if (!targets.length) return [];
+  const candidates = [];
+  const seen = new Set();
+  for (const target of targets) {
+    for (let node = target; node instanceof doc.defaultView.Element; node = node.parentElement) {
+      if (seen.has(node)) continue;
+      seen.add(node);
+      candidates.push({ node, relation: targets.includes(node) ? 'direct' : 'ancestor' });
+    }
+  }
+  const matched = [];
+  const duplicate = new Set();
+  for (const rule of staticViewStyleRules(doc)) {
+    for (const candidate of candidates) {
+      let applies = false;
+      try { applies = candidate.node.matches(rule.selector); } catch { /* unsupported/pseudo selector stays unclaimed */ }
+      if (!applies) continue;
+      const key = `${candidate.relation}|${rule.conditions.join(' > ')}|${rule.selector}|${rule.declarations}`;
+      if (duplicate.has(key)) continue;
+      duplicate.add(key);
+      matched.push(Object.freeze({ ...rule, relation: candidate.relation }));
+    }
+  }
+  return Object.freeze(matched);
+}
+
+function rememberStaticViewPresentation(doc, view, ref) {
+  const next = {
+    screenRef: screenRef(),
+    expressionRef: activeExpression().ref,
+    ref,
+    rules: staticViewPresentationRules(doc, view, ref),
+  };
+  const key = JSON.stringify(next);
+  if (state.presentationRules?.key === key) return false;
+  state.presentationRules = Object.freeze({ ...next, key });
+  return true;
+}
+function bindStaticView(frame, expression, { interactive }) {
+  const doc = frame.contentDocument;
+  if (!doc) return;
+  const screen = currentScreen();
+  const view = screen.view;
+  applyStaticColorMode(doc, view);
+  applyStaticViewProjection(doc, view, expression);
+
+  // Structure explains presentation by observing the Product stylesheet that the browser actually
+  // applies. A changed observation refreshes the outer Lens once; the stylesheet remains the renderer.
+  const marks = selectionPathRefs();
+  if (interactive && marks.selected && rememberStaticViewPresentation(doc, view, marks.selected)) {
+    queueMicrotask(() => {
+      if (state.anchorElementRef === marks.selected && activeExpression().ref === expression.ref) refreshStaticSelectionInPlace();
+    });
+  }
+
+  if (!interactive) return;
+  doc.addEventListener('scroll', scheduleBridge, { capture: true, passive: true });
+  const directAttributes = [view.anchors.elementAttribute, view.anchors.structuralAttribute].filter(Boolean);
+  const closestSelector = directAttributes.map((attribute) => `[${CSS.escape(attribute)}]`).join(',');
+  const refFor = (node) => {
+    if (!node) return null;
+    for (const attribute of directAttributes) {
+      const value = node.getAttribute(attribute);
+      if (value && Lens.elementFor(state.lens, value)) return value;
+    }
+    return null;
+  };
+  doc.addEventListener('submit', (event) => event.preventDefault(), true);
+  bindStaticSelectInteractions(doc, view);
+  bindStaticSplitInteractions(doc, view);
+  // An iframe is a separate event world, so the outer Experience-side contextmenu handler cannot
+  // see a Product-view right-click. Forward the same Screen Lens gesture law explicitly.
+  doc.addEventListener('contextmenu', (event) => {
+    if (event.shiftKey) return;
+    event.preventDefault();
+    event.stopPropagation();
+    flip('EXPERIENCE');
+  }, true);
+  doc.addEventListener('click', (event) => {
+    const targetElement = event.target instanceof doc.defaultView.Element ? event.target : null;
+    if (targetElement?.closest('.vexboard-lens-travel')) return;
+    const nativeSelect = targetElement?.closest('select') ?? null;
+    if (nativeSelect && (view.interactionBindings ?? []).some((binding) => binding.kind === 'SELECT' && staticSelectNode(doc, view, binding) === nativeSelect)) {
+      // Keep browser-native and Lens support controls intact; their own handlers drive the source-derived destination.
+      return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    const node = closestSelector && event.target instanceof doc.defaultView.Element ? event.target.closest(closestSelector) : null;
+    const ref = refFor(node);
+    if (node?.hasAttribute('data-vex-lens-dragged')) {
+      node.removeAttribute('data-vex-lens-dragged');
+      return;
+    }
+    if (ref) {
+      rememberStaticViewPresentation(doc, view, ref);
+      selectElement(ref);
+    } else clearSelection();
+  }, true);
+  doc.addEventListener('dblclick', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const node = closestSelector && event.target instanceof doc.defaultView.Element ? event.target.closest(closestSelector) : null;
+    const ref = refFor(node);
+    const element = ref ? Lens.elementFor(state.lens, ref) : null;
+    const toggle = ref ? (view.interactionBindings ?? []).find((binding) => binding.kind === 'TOGGLE' && binding.elementRef === ref) ?? null : null;
+    if (toggle) {
+      const open = presenceNow().presence.get(toggle.presenceRef)?.value === 'OPEN';
+      setStaticPresenceOutcome(toggle.presenceRef, open ? 'CLOSED' : 'OPEN');
+    } else if (element?.navigatesTo) travel(element);
+    else if (ref) exposeElement(ref);
+  }, true);
+}
+function renderStaticViewActions() {
+  const screen = currentScreen();
+  const selected = state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
+  const splitBinding = selected ? (screen.view?.interactionBindings ?? []).find((binding) => binding.kind === 'SPLIT' && binding.elementRef === selected.ref) ?? null : null;
+  const toggleBinding = selected ? (screen.view?.interactionBindings ?? []).find((binding) => binding.kind === 'TOGGLE' && binding.elementRef === selected.ref) ?? null : null;
+  return splitBinding || toggleBinding
+    ? h('div', { class: 'product-view-actions' },
+        splitBinding ? renderStaticSplitControl(splitBinding) : null,
+        toggleBinding ? renderStaticToggleControl(toggleBinding) : null)
+    : null;
+}
+function refreshStaticViewActions(wrapper) {
+  if (!wrapper) return;
+  wrapper.querySelector('.product-view-actions')?.remove();
+  const actions = renderStaticViewActions();
+  if (actions) wrapper.append(actions);
+}
+function renderStaticView(expression, { interactive }) {
+  const screen = currentScreen();
+  const frame = h('iframe', {
+    class: 'product-view-frame',
+    title: `${screen.label} · Product-owned static view`,
+    sandbox: 'allow-same-origin',
+    referrerpolicy: 'no-referrer',
+    tabindex: interactive ? '0' : '-1',
+  });
+  frame.srcdoc = staticViewDocument(screen.view);
+  frame.addEventListener('load', () => bindStaticView(frame, expression, { interactive }), { once: true });
+  if (!interactive) frame.style.pointerEvents = 'none';
+  const actions = interactive ? renderStaticViewActions() : null;
+  return h('div', { class: `product-view${interactive ? ' current-product-view' : ''}`, 'aria-label': `${screen.label} Product view · ${expression.where} · ${expression.what}` },
+    frame,
+    actions,
+    interactive ? h('p', { class: 'product-view-note' }, 'Product view · static HTML/CSS · no Product JavaScript') : null);
+}
+
+// One workspace: a screen whose source realizes it as frames of regions divided by seams. Each
+// region is drawn where the layout puts it and scrolls on its own; seams and their handles sit on
+// the frame's own lines; overlays float above. Everything drawn is a Lens element, so it selects,
+// inspects and bridges to Behavior exactly like a control on a phone.
+const NOMINAL_WORKSPACE = Object.freeze({ width: 16, height: 10 });
+function renderWorkspace(expression, { interactive }) {
+  const screen = currentScreen();
+  const layout = screen.layout;
+  const marks = interactive ? selectionPathRefs() : { selected: null, ancestors: new Set() };
+  const presence = screen.realization ? presenceFor(expression.context) : null;
+  const own = Lens.elementTree(screen.elements);
+  const context = { presence, trees: own, showEmpty: true };
+  const frames = new Map(layout.frames.map((frame) => [frame.ref, frame]));
+  const elementOf = (ref) => screen.elements.find((element) => element.ref === ref);
+  const tag = (element) => markElement(h('button', { class: 'ws-tag', type: 'button' }, element.label), element, marks);
+  function renderFrame(frame, size) {
+    const geometry = Frames.frameGeometry(frame);
+    const node = h('div', { class: 'ws-frame' });
+    markElement(node, elementOf(frame.ref), marks);
+    for (const box of geometry.regions) {
+      const element = elementOf(box.ref);
+      const width = (box.right - box.left) * size.width;
+      const height = (box.bottom - box.top) * size.height;
+      const region = h('div', { class: `ws-region${element.layer === 'CHROME' ? ' chrome' : ''}`, style: `left:${box.left * 100}%;top:${box.top * 100}%;width:${(box.right - box.left) * 100}%;height:${(box.bottom - box.top) * 100}%` });
+      const tree = findTree(own, box.ref);
+      const nested = (tree?.children ?? []).filter((child) => frames.has(child.element.ref));
+      if (nested.length) {
+        region.append(...nested.map((child) => renderFrame(frames.get(child.element.ref), { width, height })));
+        markElement(region, element, marks);
+      } else {
+        // A region far wider than tall (a header band) lays its content along its length.
+        const inline = width / Math.max(height, 0.001) >= 4;
+        const scroll = h('div', { class: `ws-scroll${inline ? ' inline' : ''}` });
+        // A band shows its controls; closed panels inside it (an empty dropdown list) stay out of the way.
+        for (const child of tree?.children ?? []) {
+          if (child.element.slot === 'Overlay') continue;
+          const drawn = renderSurfaceElement(child, marks, { ...context, showEmpty: !inline });
+          if (drawn) scroll.append(drawn);
+        }
+        region.append(scroll, tag(element));
+      }
+      node.append(region);
+    }
+    for (const seam of geometry.seams) {
+      const vertical = seam.axis === 'VERTICAL';
+      const line = h('div', { class: `ws-seam ${vertical ? 'v' : 'h'}`, style: vertical ? `left:${seam.at * 100}%;top:${seam.from * 100}%;height:${(seam.to - seam.from) * 100}%` : `top:${seam.at * 100}%;left:${seam.from * 100}%;width:${(seam.to - seam.from) * 100}%` });
+      markElement(line, elementOf(seam.ref), marks);
+      line.title += `\nAllocation ${seam.allocation.before} : ${seam.allocation.after}`;
+      node.append(line);
+    }
+    for (const chrome of geometry.chrome) {
+      const element = elementOf(chrome.ref);
+      const seam = geometry.seams.find((entry) => entry.ref === chrome.seamRef);
+      const vertical = seam?.axis !== 'HORIZONTAL';
+      const handle = h('button', { class: 'ws-handle', type: 'button', 'aria-label': element.label, style: chrome.at === null ? 'left:50%;top:50%' : vertical ? `left:${chrome.at * 100}%;top:50%` : `top:${chrome.at * 100}%;left:50%` }, vertical ? '⟷' : '↕');
+      markElement(handle, element, marks);
+      if (element.interactions.length) handle.title += `\n${element.interactions.map((value) => value.replace('_', ' ').toLowerCase()).join(' · ')}`;
+      node.append(handle);
+    }
+    return node;
+  }
+  const root = frames.get(layout.root);
+  const workspace = h('div', { class: `workspace${interactive ? ' current-phone current-workspace' : ''}${marks.selected ? ' dimmed' : ''}`, 'aria-label': `${screen.label} surface · ${expression.where} · ${expression.what}` }, renderFrame(root, NOMINAL_WORKSPACE));
+  // Surface overlay roots are structural. Presence decides whether any child is actually
+  // projected in this expression; an empty overlay root is not itself visible experience.
+  const overlayRootRefs = new Set(layout.overlays);
+  const parentByRef = new Map(screen.elements.map((element) => [element.ref, element.parentRef]));
+  const withinOverlayRoot = (ref) => {
+    for (let at = ref; at; at = parentByRef.get(at)) if (overlayRootRefs.has(at)) return true;
+    return false;
+  };
+  const layoutChromeRefs = new Set(layout.frames.flatMap((frame) => frame.chrome.map((entry) => entry.ref)));
+  const isPresented = (ref) => {
+    if (!presence) return true;
+    const info = presence.elements.get(ref);
+    return !info || PRESENTED.has(info.state);
+  };
+
+  for (const ref of layout.overlays) {
+    const element = elementOf(ref);
+    const tree = findTree(own, ref);
+    const drawnChildren = [];
+    for (const child of tree?.children ?? []) {
+      if (!isPresented(child.element.ref)) continue;
+      const drawn = child.children.length
+        ? renderSurfaceElement(child, marks, context)
+        : markElement(
+            h('div', { class: 'ws-transient' },
+              h('span', {}, child.element.label),
+              h('small', {}, [child.element.layer, child.element.style?.replace(/(?<=[a-z])(?=[A-Z])/g, ' ')].filter(Boolean).join(' · ').toLowerCase())),
+            child.element,
+            marks,
+          );
+      if (drawn) drawnChildren.push(drawn);
+    }
+    if (!drawnChildren.length && presence) continue;
+    const layer = h('div', { class: 'ws-overlay' }, tag(element), ...drawnChildren);
+    markElement(layer, element, marks);
+    workspace.append(layer);
+  }
+
+  // Content-tree elements whose Product placement is Overlay float above the frame instead of
+  // being flattened into its region flow. The rule is source-shaped and subject-agnostic.
+  const floating = screen.elements.filter((element) =>
+    element.slot === 'Overlay'
+    && !layoutChromeRefs.has(element.ref)
+    && !withinOverlayRoot(element.ref)
+    && !(element.parentRef && screen.elements.find((candidate) => candidate.ref === element.parentRef)?.slot === 'Overlay')
+  );
+  for (const element of floating) {
+    if (!isPresented(element.ref)) continue;
+    const tree = findTree(own, element.ref);
+    const drawn = tree ? renderSurfaceElement(tree, marks, context) : null;
+    if (!drawn) continue;
+    const modal = element.kind === 'DIALOG' || element.layer === 'MODAL';
+    const transient = element.layer === 'TRANSIENT' && !modal;
+    const layer = h('div', { class: `ws-float${modal ? ' modal' : transient ? ' transient' : ''}` },
+      h('p', { class: 'ws-float-label' }, element.label),
+      drawn);
+    workspace.append(layer);
+  }
+  if (!interactive) {
+    for (const node of workspace.querySelectorAll('[data-ref]')) { node.dataset.peekRef = node.dataset.ref; delete node.dataset.ref; }
+    workspace.inert = true;
+  }
+  return workspace;
+}
+const renderScreenSurface = (expression, options) => (currentScreen().view ? renderStaticView(expression, options) : currentScreen().layout ? renderWorkspace(expression, options) : renderPhone(expression, options));
 function renderSurface() {
   const list = expressionsNow();
   const active = activeExpression();
   const index = list.indexOf(active);
-  const current = h('div', { class: 'xslot' }, expressionCaption(active), renderPhone(active, { interactive: true }));
+  const wide = Boolean(currentScreen().layout);
+  const current = h('div', { class: `xslot${wide ? ' wide' : ''}` }, expressionCaption(active), renderScreenSurface(active, { interactive: true }));
   const peek = (expression, side) => {
     if (!expression) return null;
     const wrap = h('div', { class: `xpeek ${side} kind-${expression.kind}`, role: 'button', title: expressionTitle(expression), 'aria-label': `${side === 'prev' ? 'Previous' : 'Next'} expression: ${expression.where} · ${expression.what}` },
       h('span', { class: 'xpeek-label' }, kindChip(expression), h('b', {}, expression.where), h('span', {}, truncate(expression.what, 30))),
-      renderPhone(expression, { interactive: false }));
+      renderScreenSurface(expression, { interactive: false }));
     wrap.addEventListener('click', (event) => { event.stopPropagation(); setExpression(expression.ref); });
     return wrap;
   };
-  const stage = h('div', { class: `xstage${state.motion ? ` enter-${state.motion}` : ''}` },
+  const stage = h('div', { class: `xstage${wide ? ' wide' : ''}${state.motion ? ` enter-${state.motion}` : ''}` },
     current, peek(index < 0 ? null : list[index - 1], 'prev'), peek(index < 0 ? list[0] : list[index + 1], 'next'));
   const surface = h('div', { class: 'surface', onclick: () => clearSelection() }, stage);
   wireSwipe(surface);
@@ -1876,8 +2715,28 @@ function renderStructure() {
     if (!rows.length) rows.push(h('p', { class: 'hint', style: 'white-space:normal' }, owner.summary ?? 'Nothing projected yet.'));
     sections.push(h('section', { class: 'struct-section', role: 'tree', 'aria-label': header.textContent }, header, rows));
   }
+  const presentation = presentationRulesSection(screen);
+  if (presentation) sections.push(presentation);
   if (screen.realization) sections.push(realizationSection(screen));
   return h('div', { class: 'structure' }, sections);
+}
+function presentationRulesSection(screen) {
+  const observed = state.presentationRules;
+  if (!screen.view || !state.anchorElementRef || !observed) return null;
+  if (observed.screenRef !== screen.screenRef || observed.expressionRef !== activeExpression().ref || observed.ref !== state.anchorElementRef) return null;
+  const header = h('header', {},
+    chip('REALIZATION'),
+    h('h3', {}, 'Presentation rules'),
+    screen.view.cssSource ? h('code', { class: 'mono', style: 'font-size:11.5px;color:var(--faint)' }, screen.view.cssSource) : null,
+    h('p', {}, 'Product CSS blocks the browser currently matches to this stable Product identity. Direct rules match the selected boundary; ancestor rules may supply inherited/cascaded presentation. The browser, not VexBoard, applies them.'));
+  const rows = observed.rules.length ? observed.rules.map((rule) =>
+    h('div', { class: 'srow', style: '--d:0;--guide:none' },
+      h('span', { class: 'pres-chip SOURCE' }, rule.relation),
+      h('span', { class: 'slabel' }, rule.selector),
+      rule.conditions.length ? h('span', { class: 'sintent' }, rule.conditions.join(' > ')) : null,
+      h('span', { class: 'sdecl' }, rule.declarations || '(no declarations)'))) :
+    [h('p', { class: 'hint', style: 'white-space:normal' }, 'No directly matched Product CSS rule was observable for this stable boundary in the current expression.')];
+  return h('section', { class: 'struct-section', 'aria-label': 'Presentation rules' }, header, rows);
 }
 function structurePresence(element) {
   const info = currentScreen().realization ? presenceOf(element.ref) : null;
@@ -1910,10 +2769,12 @@ function realizationSection(screen) {
   return h('section', { class: 'struct-section', role: 'tree', 'aria-label': 'Realization' }, header, rows);
 }
 
+function renderStructureFace() {
+  return h('div', { class: 'face back', dataset: { face: 'STRUCTURE' } }, renderStructure(), h('span', { class: 'spine' }, 'Back: Surface'));
+}
 function renderExperienceSide() {
   const front = h('div', { class: 'face front', dataset: { face: 'SURFACE' } }, renderSurface(), h('span', { class: 'spine' }, 'Back: Structure'));
-  const back = h('div', { class: 'face back', dataset: { face: 'STRUCTURE' } }, renderStructure(), h('span', { class: 'spine' }, 'Back: Surface'));
-  return renderSide('EXPERIENCE', 'Experience', ['SURFACE', 'STRUCTURE'], front, back, 'Swipe for expressions · right-click to flip');
+  return renderSide('EXPERIENCE', 'Experience', ['SURFACE', 'STRUCTURE'], front, renderStructureFace(), 'Swipe for expressions · right-click to flip');
 }
 
 /* ---------- Behavior side ---------- */
@@ -2178,6 +3039,42 @@ function visibleRect(node, clip) {
   const c = clip.getBoundingClientRect();
   return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, midY: Math.min(Math.max(r.top + r.height / 2, c.top + 12), c.bottom - 12), offscreen: r.bottom < c.top || r.top > c.bottom, clip: c };
 }
+function staticProductVisibleRect(leftFace, ref) {
+  const view = currentScreen().view;
+  const frame = leftFace.querySelector('.current-product-view .product-view-frame');
+  const doc = frame?.contentDocument;
+  if (!view || !frame || !doc) return null;
+  const node = staticViewNodes(doc, view, ref, { includeStructuralParents: true }).find((candidate) => {
+    const box = candidate.getBoundingClientRect();
+    return box.width > 0 && box.height > 0;
+  }) ?? null;
+  if (!node) return null;
+  const nodeBox = node.getBoundingClientRect();
+  const frameBox = frame.getBoundingClientRect();
+  const faceBox = leftFace.getBoundingClientRect();
+  const clip = {
+    left: Math.max(frameBox.left, faceBox.left),
+    right: Math.min(frameBox.right, faceBox.right),
+    top: Math.max(frameBox.top, faceBox.top),
+    bottom: Math.min(frameBox.bottom, faceBox.bottom),
+  };
+  const box = {
+    left: frameBox.left + nodeBox.left,
+    right: frameBox.left + nodeBox.right,
+    top: frameBox.top + nodeBox.top,
+    bottom: frameBox.top + nodeBox.bottom,
+  };
+  return {
+    ...box,
+    midY: Math.min(Math.max((box.top + box.bottom) / 2, clip.top + 12), clip.bottom - 12),
+    offscreen: box.bottom < clip.top || box.top > clip.bottom,
+    clip,
+  };
+}
+function surfaceVisibleRect(leftFace, ref) {
+  return visibleRect(leftFace.querySelector(`[data-ref="${CSS.escape(ref)}"]`), leftFace)
+    ?? staticProductVisibleRect(leftFace, ref);
+}
 // The bridge leaves the anchor sideways unless that would cross a sibling control;
 // then it drops into the free gap below (or above) the anchor's row first.
 function bridgeExit(leftFace, anchorRef, from, preferAbove) {
@@ -2188,7 +3085,7 @@ function bridgeExit(leftFace, anchorRef, from, preferAbove) {
   if (!phone || !anchorNode) return direct;
   const a = anchorNode.getBoundingClientRect();
   const right = phone.getBoundingClientRect().right;
-  const body = phone.querySelector('.phone-body').getBoundingClientRect();
+  const body = (phone.querySelector('.phone-body') ?? phone).getBoundingClientRect();
   const leaves = [...phone.querySelectorAll('[data-ref], .travel')]
     .filter((node) => node.classList.contains('travel') || (node !== anchorNode && !anchorNode.contains(node) && !node.contains(anchorNode) && !node.querySelector('[data-ref]')))
     .map((node) => node.getBoundingClientRect())
@@ -2204,31 +3101,43 @@ function bridgeExit(leftFace, anchorRef, from, preferAbove) {
   }
   return direct;
 }
-function drawBridge() {
+// Relationship truth is stable across viewport motion. Resolve that identity first; geometry below
+// only manifests where the already-known relationship sits right now.
+function bridgeRelationship() {
+  const pathway = currentPathway();
+  const anchorRef = state.anchorElementRef ?? (pathway?.disposition === 'EXPRESSION' ? activeExpression().focusRef : null);
+  if (!anchorRef || !pathway) return null;
+  return Object.freeze({
+    pathway,
+    anchorRef,
+    behaviorFace: state.faces.BEHAVIOR,
+    entryRef: entryRefForFace(state.faces.BEHAVIOR),
+  });
+}
+function drawBridge(relationship = bridgeRelationship()) {
   const svg = refs.bridge;
   if (!svg) return;
   svg.replaceChildren();
-  const pathway = currentPathway();
-  // The bridge leaves the picked control, or, with none picked, where the Surface shows the expression.
-  const anchorRef = state.anchorElementRef ?? (pathway?.disposition === 'EXPRESSION' ? activeExpression().focusRef : null);
-  if (!anchorRef || !pathway || window.matchMedia('(max-width:900px)').matches) return;
+  if (!relationship || window.matchMedia('(max-width:900px)').matches) return;
+  const { pathway, anchorRef, behaviorFace, entryRef } = relationship;
   const main = refs.main.getBoundingClientRect();
   const leftFace = document.querySelector(`.flipper[data-side="EXPERIENCE"] .face[data-face="${state.faces.EXPERIENCE}"]`);
-  const rightFace = document.querySelector(`.flipper[data-side="BEHAVIOR"] .face[data-face="${state.faces.BEHAVIOR}"]`);
+  const rightFace = document.querySelector(`.flipper[data-side="BEHAVIOR"] .face[data-face="${behaviorFace}"]`);
   if (!leftFace || !rightFace) return;
-  const from = visibleRect(leftFace.querySelector(`[data-ref="${CSS.escape(anchorRef)}"]`), leftFace);
-  const entry = entryRefForFace(state.faces.BEHAVIOR);
+  const from = surfaceVisibleRect(leftFace, anchorRef);
+  const entry = entryRef;
   const viewport = rightFace.querySelector('.graph');
-  const stripTarget = state.faces.BEHAVIOR === 'BEHAVIOR' ? rightFace.querySelector('.doorway button') : null;
+  const stripTarget = behaviorFace === 'BEHAVIOR' ? rightFace.querySelector('.doorway button') : null;
   const to = stripTarget ? visibleRect(stripTarget, rightFace) : (entry && viewport ? visibleRect(rightFace.querySelector(`[data-node-ref="${CSS.escape(entry)}"]`), viewport) : null);
   if (!from || !to) return;
-  const entryNode = pathwayNode(stripTarget ? stripTarget.dataset.nodeRef : entry);
+  const entryNode = pathway.nodes.find((node) => node.ref === (stripTarget ? stripTarget.dataset.nodeRef : entry));
+  if (!entryNode) return;
   const defs = s('defs');
   const gradient = s('linearGradient', { id: 'bridge-gradient', x1: '0', x2: '1', y1: '0', y2: '0' });
   const stopA = s('stop', { offset: '0' }); stopA.style.stopColor = 'var(--r-ELEMENT)';
   const stopB = s('stop', { offset: '1' }); stopB.style.stopColor = `var(--r-${entryNode.role})`;
   gradient.append(stopA, stopB); defs.append(gradient); svg.append(defs);
-  const exit = bridgeExit(leftFace, anchorRef, from, state.faces.BEHAVIOR === 'BEHAVIOR' && Boolean(pathway.returnRef));
+  const exit = bridgeExit(leftFace, anchorRef, from, behaviorFace === 'BEHAVIOR' && Boolean(pathway.returnRef));
   const sideX = Math.min(from.right, from.clip.right) - main.left;
   let x1 = sideX;
   let y1 = from.midY - main.top;
@@ -2265,7 +3174,7 @@ function drawBridge() {
   gradient.setAttribute('gradientUnits', 'userSpaceOnUse'); gradient.setAttribute('x1', capA.x); gradient.setAttribute('x2', capB.x); gradient.setAttribute('y1', y1); gradient.setAttribute('y2', y1);
   const out = s('path', { d, class: 'out', stroke: 'url(#bridge-gradient)', 'stroke-dasharray': to.offscreen ? '7 5' : null });
   svg.append(out, s('circle', { cx: capA.x, cy: capA.y, r: 4.5, class: 'cap', fill: 'var(--r-ELEMENT)' }), s('circle', { cx: capB.x, cy: capB.y, r: 4.5, class: 'cap', fill: `var(--r-${entryNode.role})` }));
-  if (state.faces.BEHAVIOR === 'BEHAVIOR' && pathway.returnRef) {
+  if (behaviorFace === 'BEHAVIOR' && pathway.returnRef) {
     const back = visibleRect(rightFace.querySelector(`[data-node-ref="${CSS.escape(pathway.returnRef)}"]`), viewport);
     if (back && !back.offscreen) {
       const rx = back.left - main.left;
@@ -2278,7 +3187,15 @@ function drawBridge() {
   }
 }
 let bridgeFrame = 0;
-const scheduleBridge = () => { cancelAnimationFrame(bridgeFrame); bridgeFrame = requestAnimationFrame(drawBridge); };
+// Viewport motion owns the gesture. The bridge observes the latest geometry once per animation
+// frame without clearing itself or restarting the pending observation on every scroll event.
+const scheduleBridge = () => {
+  if (bridgeFrame) return;
+  bridgeFrame = requestAnimationFrame(() => {
+    bridgeFrame = 0;
+    drawBridge();
+  });
+};
 
 /* ---------- inspector tray ---------- */
 function sourceLink(source, label = 'Open source') {
@@ -2375,6 +3292,33 @@ function wireTrayResize(handle, tray) {
     if (next !== null) { event.preventDefault(); apply(next); }
   });
 }
+// Where a frame, seam, region or handle sits, in the screen's own layout words.
+function spatialBlock(element) {
+  const layout = currentScreen().layout;
+  const role = Frames.layoutRole(layout, element.ref);
+  if (!role && !element.layer && !element.interactions.length) return null;
+  const name = (ref) => (ref.startsWith('FRAME_') ? `frame ${ref.slice(6).toLowerCase()}` : labelOf(ref));
+  const rows = [];
+  if (role?.role === 'FRAME') {
+    rows.push(['Divided by', role.frame.seams.map((seam) => `${labelOf(seam.ref)} (${seam.axis.toLowerCase()}, ${seam.allocation.before} : ${seam.allocation.after})`).join('; ') || 'no seam']);
+    rows.push(['Regions', role.frame.regions.map((region) => labelOf(region.ref)).join(', ')]);
+  }
+  if (role?.role === 'SEAM') {
+    const before = role.frame.regions.filter((region) => region.end === element.ref || region.bottom === element.ref).map((region) => labelOf(region.ref));
+    const after = role.frame.regions.filter((region) => region.start === element.ref || region.top === element.ref).map((region) => labelOf(region.ref));
+    rows.push(['Axis', role.seam.axis.toLowerCase()]);
+    rows.push(['Allocation', `${role.seam.allocation.before} : ${role.seam.allocation.after} of ${name(role.seam.between[0])} → ${name(role.seam.between[1])}`]);
+    rows.push(['Between', `${before.join(', ') || '—'} | ${after.join(', ') || '—'}`]);
+    const handles = role.frame.chrome.filter((entry) => entry.seamRef === element.ref).map((entry) => labelOf(entry.ref));
+    if (handles.length) rows.push(['Handle', handles.join(', ')]);
+  }
+  if (role?.role === 'REGION') rows.push(['Bounds', `${name(role.region.start)} → ${name(role.region.end)}, ${name(role.region.top)} → ${name(role.region.bottom)}`], ['Frame', labelOf(role.frame.ref)]);
+  if (role?.role === 'CHROME') rows.push(['On seam', role.chrome.seamRef ? labelOf(role.chrome.seamRef) : 'the frame'], ['Frame', labelOf(role.frame.ref)]);
+  if (role?.role === 'OVERLAY') rows.push(['Drawn', 'above the frame, as an overlay layer']);
+  if (element.layer) rows.push(['Layer', element.layer.toLowerCase()]);
+  if (element.interactions.length) rows.push(['Touched by', element.interactions.map((value) => value.replace('_', ' ').toLowerCase()).join(' · ')]);
+  return h('div', {}, h('h3', {}, 'Where it sits'), dl(rows), layout?.source ? h('div', { class: 'links', style: 'margin-top:8px' }, sourceLink(layout.source)) : null);
+}
 function renderTray() {
   const bounds = trayHeightBounds();
   state.trayHeight = clampTrayHeight(state.trayHeight);
@@ -2427,6 +3371,7 @@ function renderTray() {
           pathway ? [h('h3', { style: 'margin-top:10px' }, 'Result for the human'), h('p', {}, pathway.returns ?? '')] : null,
           element.navigatesTo ? h('button', { class: 'go', onclick: () => travel(element) }, element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`) : null),
         elementPresenceBlock(element),
+        spatialBlock(element),
         elementImpact(element),
         notesBlock(element.ref)));
     return tray;
@@ -2835,7 +3780,8 @@ function renderLegend() {
       h('li', {}, 'Right-click either side to flip it: Experience toggles Surface / Structure; Behavior toggles Behavior / Depth. Shift + right-click opens the browser menu. ', h('kbd', {}, '['), ' and ', h('kbd', {}, ']'), ' remain keyboard equivalents.'),
       h('li', {}, 'Drag to pan. Scroll to zoom at the pointer. Use the − / + / Fit controls for explicit camera changes.'),
       h('li', {}, h('kbd', {}, '/'), ' finds any control, step, screen or note by label, ref, action key, Kotlin symbol or file name.'),
-      h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.')),
+      h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.'),
+      h('li', {}, 'Browser or mouse Back / Forward revisits the Lens choices you traversed — selected controls and steps, screens, expressions and presentation — without rewinding the Product or embedded page.')),
     h('h3', {}, 'Presence: why something is, or is not, presented'),
     h('ul', {}, Object.values(Realization.PRESENCE_STATES).map((entry) => h('li', {}, presChip(entry.state), ` ${entry.question}`))),
     h('p', { style: 'font-size:12px;margin:4px 0 0;color:var(--muted)' }, 'Presence kinds keep their owners: presentation and selection (runtime presentation state), population (source-owned items), branch / cases / alternative (feature conditions, never evaluated here).'),
@@ -2856,7 +3802,7 @@ function placeSurfaceFloaters() {
     const below = [each.querySelector('.region-bottom'), each.querySelector('.phone-bottom')].reduce((sum, part) => sum + (part?.offsetHeight ?? 0), 0);
     floating.style.bottom = `${below + 14}px`;
   }
-  const body = phone.querySelector('.phone-body');
+  const body = phone.querySelector('.phone-body') ?? phone;
   const anchorNode = state.anchorElementRef ? phone.querySelector(`[data-ref="${CSS.escape(state.anchorElementRef)}"]`) : null;
   // An opened sheet keeps the control that opened it in view, above the sheet.
   const sheet = phone.querySelector('.sheet-zone');
@@ -2896,7 +3842,138 @@ function placeSurfaceFloaters() {
 }
 
 /* ---------- render ---------- */
+function clearStaticViewTravelBadge(doc) {
+  doc.__vexboardLensTravelCleanup?.();
+  doc.__vexboardLensTravelCleanup = null;
+  doc.querySelector('.vexboard-lens-travel')?.remove();
+}
+function refreshStaticViewTravelBadge(doc, view) {
+  clearStaticViewTravelBadge(doc);
+  const selected = state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null;
+  const destination = selected ? destinationForElement(selected) : null;
+  if (!selected || !destination) return;
+  const target = staticViewNodes(doc, view, selected.ref).find((node) => {
+    const box = node.getBoundingClientRect();
+    return box.width > 0 && box.height > 0;
+  }) ?? null;
+  if (!target) return;
+
+  const badge = doc.createElement('button');
+  badge.className = 'vexboard-lens-travel';
+  badge.type = 'button';
+  badge.textContent = 'Go';
+  badge.title = destination.title;
+  badge.setAttribute('aria-label', destination.label);
+  badge.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    destination.go();
+  });
+  doc.body.append(badge);
+
+  let frame = 0;
+  const place = () => {
+    frame = 0;
+    const box = target.getBoundingClientRect();
+    if (!box.width || !box.height) { badge.hidden = true; return; }
+    badge.hidden = false;
+    const width = doc.defaultView.innerWidth;
+    const height = doc.defaultView.innerHeight;
+    badge.style.left = `${Math.max(4, Math.min(width - 32, box.right - 18))}px`;
+    badge.style.top = `${Math.max(4, Math.min(height - 24, box.top - 9))}px`;
+  };
+  const schedule = () => {
+    if (frame) return;
+    frame = doc.defaultView.requestAnimationFrame(place);
+  };
+  doc.addEventListener('scroll', schedule, true);
+  doc.defaultView.addEventListener('resize', schedule);
+  doc.__vexboardLensTravelCleanup = () => {
+    if (frame) doc.defaultView.cancelAnimationFrame(frame);
+    doc.removeEventListener('scroll', schedule, true);
+    doc.defaultView.removeEventListener('resize', schedule);
+  };
+  place();
+}
+function refreshStaticViewInspectionMarks(doc, view) {
+  for (const node of doc.querySelectorAll('[data-vex-lens-selected]')) node.removeAttribute('data-vex-lens-selected');
+  for (const node of doc.querySelectorAll('[data-vex-lens-ancestor]')) node.removeAttribute('data-vex-lens-ancestor');
+  const marks = selectionPathRefs();
+  doc.documentElement.toggleAttribute('data-vex-lens-has-selection', Boolean(marks.selected));
+  for (const ref of marks.ancestors) for (const node of staticViewNodes(doc, view, ref, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-ancestor', '');
+  if (marks.selected) {
+    for (const node of staticViewNodes(doc, view, marks.selected, { includeStructuralParents: true })) node.setAttribute('data-vex-lens-selected', '');
+    rememberStaticViewPresentation(doc, view, marks.selected);
+  } else {
+    state.presentationRules = null;
+  }
+  refreshStaticViewTravelBadge(doc, view);
+}
+function replaceStructureFacePreservingViewport(experience) {
+  const oldStructure = experience?.querySelector('.face[data-face="STRUCTURE"]');
+  if (!oldStructure) return;
+  const scrollTop = oldStructure.querySelector('.structure')?.scrollTop ?? 0;
+  const nextStructure = renderStructureFace();
+  oldStructure.replaceWith(nextStructure);
+  const nextScroller = nextStructure.querySelector('.structure');
+  if (nextScroller) {
+    nextScroller.scrollTop = scrollTop;
+    nextScroller.addEventListener('scroll', scheduleBridge, { passive: true });
+  }
+}
+function refreshStaticLensAroundMountedProduct({ updateExpressionRail = false } = {}) {
+  const screen = currentScreen();
+  if (!screen?.view || !refs.main || state.overlay) return false;
+  const wrapper = refs.main.querySelector('.current-product-view');
+  const frame = wrapper?.querySelector('.product-view-frame');
+  const doc = frame?.contentDocument;
+  if (!wrapper || !doc) return false;
+
+  applyStaticViewProjection(doc, screen.view, activeExpression());
+  refreshStaticViewActions(wrapper);
+
+  const slot = wrapper.closest('.xslot');
+  const oldCaption = slot?.querySelector('.xcap');
+  if (oldCaption) oldCaption.replaceWith(expressionCaption(activeExpression()));
+  if (updateExpressionRail) {
+    const oldRail = document.querySelector('.lens > .xrail');
+    if (oldRail) oldRail.replaceWith(renderExpressionRail());
+  }
+
+  const experience = refs.main.querySelector('.side[data-side="EXPERIENCE"]');
+  replaceStructureFacePreservingViewport(experience);
+
+  const oldBehavior = refs.main.querySelector('.side[data-side="BEHAVIOR"]');
+  if (oldBehavior) oldBehavior.replaceWith(renderBehaviorSide());
+
+  const oldTray = document.querySelector('.lens > .tray');
+  if (oldTray) oldTray.replaceWith(renderTray());
+
+  applyFlipState();
+  syncUrl();
+  requestAnimationFrame(() => {
+    applyCamera('BEHAVIOR');
+    applyCamera('DEPTH');
+    if (state.selected?.kind === 'ELEMENT' && state.faces.EXPERIENCE === 'STRUCTURE') {
+      document.querySelector(`.face[data-face="STRUCTURE"] [data-ref="${CSS.escape(state.selected.ref)}"]`)?.scrollIntoView({ block: 'nearest' });
+    }
+    placeSurfaceFloaters();
+    drawBridge();
+  });
+  return true;
+}
+function setStaticPresenceOutcome(presenceRef, outcome) {
+  markLensHistoryPoint();
+  state.realization = contextWithPresenceOutcome(presenceRef, outcome);
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH');
+  if (!refreshStaticLensAroundMountedProduct({ updateExpressionRail: true })) render();
+}
+function refreshStaticSelectionInPlace() {
+  return refreshStaticLensAroundMountedProduct();
+}
 function syncUrl() {
+  if (state.historyRestoring) return;
   const next = new URLSearchParams(location.search);
   const subject = currentSubject();
   if (subject && state.request.mode !== 'LEGACY') {
@@ -2910,8 +3987,17 @@ function syncUrl() {
   next.set('left', state.faces.EXPERIENCE); next.set('right', state.faces.BEHAVIOR);
   const expression = activeExpression();
   if (expression.kind !== 'SOURCE' && expression.kind !== 'CUSTOM') next.set('expression', expression.ref); else next.delete('expression');
+  const colorMode = staticColorMode();
+  if (currentScreen()?.view?.colorMode && colorMode && colorMode.ref !== currentScreen().view.colorMode.defaultRef) next.set('presentation', colorMode.ref);
+  else next.delete('presentation');
   next.delete('example');
-  history.replaceState(null, '', `${location.pathname}?${next}`);
+  const url = `${location.pathname}?${next}`;
+  const snapshot = lensHistorySnapshot();
+  const current = history.state?.[LENS_HISTORY_KEY] ?? null;
+  const shouldPush = state.historyPushPending && !sameLensHistorySnapshot(current, snapshot);
+  state.historyPushPending = false;
+  if (shouldPush) history.pushState({ [LENS_HISTORY_KEY]: snapshot }, '', url);
+  else history.replaceState({ [LENS_HISTORY_KEY]: snapshot }, '', url);
 }
 // The phone and Structure keep their scroll while the expression stays: a click that re-renders must
 // not move what sits under the pointer (a double-click's second click lands on the same thing).
@@ -2920,7 +4006,7 @@ function render() {
   const focusedRef = document.activeElement?.dataset?.ref ?? document.activeElement?.dataset?.nodeRef ?? null;
   const kept = { phone: document.querySelector('.current-phone .phone-body')?.scrollTop ?? 0, structure: document.querySelector('.face[data-face="STRUCTURE"] .structure')?.scrollTop ?? 0 };
   const root = h('div', { class: 'lens' });
-  const main = h('main', { class: 'main' }, renderExperienceSide(), renderBehaviorSide());
+  const main = h('main', { class: `main${currentScreen().layout ? ' wide' : ''}` }, renderExperienceSide(), renderBehaviorSide());
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
@@ -2960,6 +4046,10 @@ function render() {
 }
 
 window.addEventListener('resize', () => { state.cameras.clear(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); placeSurfaceFloaters(); scheduleBridge(); });
+window.addEventListener('popstate', (event) => {
+  const snapshot = event.state?.[LENS_HISTORY_KEY] ?? null;
+  if (snapshot) restoreLensHistory(snapshot);
+});
 window.addEventListener('keydown', (event) => {
   if (event.target.closest?.('input,textarea')) return;
   if (event.key === '[') { flip('EXPERIENCE'); }
@@ -3004,6 +4094,11 @@ async function boot() {
   else if (state.request.mode === 'COMMIT' && state.commit.misses.length) showToast(`${state.commit.misses.length} overlay ${state.commit.misses.length === 1 ? 'note does' : 'notes do'} not apply at ${short(state.commit.sha)}.`);
   const startScreen = params.get('screen');
   state.walk = Lens.createScreenWalk(state.lens, startScreen && state.lens.screens.some((screen) => screen.screenRef === startScreen) ? startScreen : state.lens.entryScreenRef);
+  const requestedPresentation = params.get('presentation');
+  const openingColorMode = currentScreen()?.view?.colorMode;
+  if (requestedPresentation && openingColorMode?.options.some((option) => option.ref === requestedPresentation)) {
+    state.colorModes.set(colorModeScopeKey(), requestedPresentation);
+  }
   if (params.get('left') && Lens.LENS_FACES[params.get('left')]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = params.get('left');
   if (params.get('right') && Lens.LENS_FACES[params.get('right')]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = params.get('right');
   // An expression link (or an older example link) opens the screen in that expression.
@@ -3011,7 +4106,7 @@ async function boot() {
   const opening = requestedExpression ? Expressions.expressionFor(Expressions.expressionsFor(state.lens, screenRef()), requestedExpression) : null;
   if (opening) { state.realization = opening.context; state.flashRef = opening.focusRef; }
   const requested = params.get('element') ?? (startScreen ? null : state.lens.entryElementRef);
-  if (requested && Lens.elementsForScreen(state.lens, screenRef()).some((element) => element.ref === requested)) selectElement(requested);
+  if (requested && Lens.elementsForScreen(state.lens, screenRef()).some((element) => element.ref === requested)) selectElement(requested, { recordHistory: false });
   else render();
 }
 boot();

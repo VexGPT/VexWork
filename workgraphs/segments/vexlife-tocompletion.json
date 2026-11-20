@@ -11,14 +11,14 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-23T05:30:00.000Z",
+      "updatedAt": "2026-11-06T06:48:01.000Z",
       "workRef": "work.vexlife.tocompletion.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife ToCompletion",
-      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve the terminal P1-P4 lived core, preserve terminal G02/G03 developmental continuity without fabricating G04, actively complete ordinary fresh-user Heretic productization through the rightful setup-safety owner, and later mature earned developmental and connected/native horizons under the same Home/identity/capability laws.",
+      "purpose": "Preserve the completed ToCompletion core and ordinary Heretic runtime/restart evidence as durable provenance while retaining the genuinely unresolved original-VexLife front-door acceptance and later developmental/whole-product horizons. Current product construction proceeds through Interface Refinement and New Beginnings/VexLife-Prod; this historical root is paused rather than presented as active IMMEDIATE work or falsely declared complete.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
-      "priorityClass": "IMMEDIATE",
+      "state": "PAUSED_AT_CHECKPOINT",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -33,7 +33,14 @@
         "map.vexlife.tocompletion.nested-pathway.20261019a",
         "github.issue.vexlife.866.comment.6357923021",
         "github.pull.vexlife.919",
-        "github.pull.vexlife.873"
+        "github.pull.vexlife.873",
+        "github.pull.vexwork.120.comment.6391938149",
+        "github.pull.vexwork.141",
+        "project.vexlife.interface-refinement",
+        "github.issue.vexlife.866.comment.6520145273",
+        "project.vexlife.new-beginnings",
+        "github.pull.vexlife-prod.37",
+        "github.pull.vexlife-prod.38"
       ]
     },
     {
@@ -310,14 +317,14 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-22T01:08:02.000Z",
-      "updatedAt": "2026-10-23T05:30:00.000Z",
+      "updatedAt": "2026-11-06T06:48:01.000Z",
       "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
       "label": "P5 — lived continuity and learning",
       "purpose": "Preserve the lived developmental frontier after terminal G02 Score continuity and terminal G03 memory-only Daily Dream. Resume only when another ordinary source-bound episode/correction/recurrence creates real Continuity Evolution evidence; do not manufacture G04 Rhythm, training or weight work from the absence of evidence.",
       "workClass": "OUTCOME",
       "state": "PAUSED_AT_CHECKPOINT",
-      "priorityClass": "IMMEDIATE",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexlife.tocompletion.p4.typed-local-effect"
       ],
@@ -332,7 +339,9 @@
         "source.vexlife.continuity-evolution",
         "source.vexlife.score-context-continuity",
         "github.issue.vexlife.866.comment.6356366903",
-        "github.issue.vexlife.866.comment.6356465627"
+        "github.issue.vexlife.866.comment.6356465627",
+        "project.vexlife.new-beginnings",
+        "work.vexlife.new-beginnings.evolution-live-bridge"
       ]
     },
     {
@@ -474,7 +483,7 @@
       "workClass": "OUTCOME",
       "state": "WAITING_DEPENDENCIES",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexlife.tocompletion.p5.lived-continuity-learning"
       ],
@@ -486,14 +495,16 @@
         "github.issue.vexlife.866",
         "github.issue.vexlife.866.comment.6280226452",
         "github.issue.vextreme-sdk.1399",
-        "github.issue.vextreme-sdk.354"
+        "github.issue.vextreme-sdk.354",
+        "project.vexlife.new-beginnings",
+        "work.vexlife.new-beginnings.evolution-live-bridge"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-20T00:14:25.000Z",
-      "updatedAt": "2026-10-20T00:14:25.000Z"
+      "updatedAt": "2026-11-06T06:48:01.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -560,14 +571,14 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T08:30:00.000Z",
+      "updatedAt": "2026-11-06T06:48:01.000Z",
       "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
-      "label": "Ordinary productization — safe fresh setup enters Heretic",
-      "purpose": "Complete the ordinary fresh-user Mac route so the repository-owned setup path preserves setup-session safety and enters the accepted Heretic establishment/runtime/Conversation composition instead of centering the legacy G0 Qwen3.5/llama.cpp initializer.",
+      "label": "Ordinary productization — Heretic lived path preserved; original front-door acceptance paused",
+      "purpose": "Preserve A034's terminal ordinary Heretic runtime/restart proof and the accepted normal-start source chain, while retaining the later original-VexLife Mac front-door Open -> Conversation -> real Heretic reply -> same-Conversation re-entry witness as genuinely unresolved. Current product construction continues in New Beginnings/VexLife-Prod, so this predecessor outcome is paused instead of advertised as active immediate work.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
-      "priorityClass": "IMMEDIATE",
+      "state": "PAUSED_AT_CHECKPOINT",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexlife.tocompletion.p4.typed-local-effect"
       ],
@@ -583,7 +594,16 @@
         "github.pull.vexlife.873",
         "projects/vexlife-tocompletion/README.md",
         "github.issue.vexlife.866.comment.6360434385",
-        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+        "github.issue.vexlife.866.comment.6381763768",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "github.pull.vexlife.923",
+        "github.pull.vexlife.947",
+        "github.pull.vexlife.967",
+        "github.issue.vexlife.866.comment.6520145273",
+        "project.vexlife.new-beginnings"
       ]
     },
     {
@@ -623,13 +643,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T08:30:00.000Z",
+      "updatedAt": "2026-10-24T08:03:08.000Z",
       "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
-      "label": "Normal-start integration — route safe setup into accepted Heretic establishment",
-      "purpose": "Actively connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, carrying the exact runtime receipt/endpoint into the existing Browser/Lived Companion without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
+      "label": "Normal-start integration — accepted Heretic setup source",
+      "purpose": "Terminally accepted source integration for ordinary Mac startup into the Heretic product route. PR920 supplied the normal-start composition, PR921 corrected setup plan-state parsing, and PR923 corrected lifecycle pretty-JSON parsing; A034 later proved the resulting ordinary runtime path in lived use.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.tocompletion.productization.setup-safety-convergence"
@@ -644,7 +664,13 @@
         "github.issue.vexlife.857",
         "github.issue.vexlife.866",
         "github.issue.vexlife.866.comment.6360434385",
-        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "github.pull.vexlife.923",
+        "git.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
+        "github.issue.vexlife.866.comment.6381763768",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b"
       ]
     }
   ],
@@ -874,6 +900,68 @@
         "github.issue.vexlife.866.comment.6360434385"
       ],
       "createdAt": "2026-10-23T08:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.outcome.paused.current-product-moved",
+      "workRef": "work.vexlife.tocompletion.outcome",
+      "priorState": "RUNNING",
+      "nextState": "PAUSED_AT_CHECKPOINT",
+      "reason": "ToCompletion retained valid completed core/productization evidence, but its latest original-VexLife current entry still owed one lived stable-front-door Open/Send/re-entry acceptance while current product construction moved into Interface Refinement and New Beginnings. Preserve the trajectory as a paused provenance checkpoint instead of active IMMEDIATE work or false completion.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.120.comment.6391938149",
+        "github.pull.vexwork.141",
+        "github.issue.vexlife.866.comment.6520145273",
+        "project.vexlife.new-beginnings"
+      ],
+      "createdAt": "2026-11-06T06:48:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.ordinary-heretic-setup.paused.original-front-door-checkpoint",
+      "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+      "priorState": "RUNNING",
+      "nextState": "PAUSED_AT_CHECKPOINT",
+      "reason": "A034 terminally proved the ordinary Heretic runtime/restart path and later source repaired normal-start currentness, but the final original-VexLife stable-front-door Open/Send/re-entry witness remained explicitly owed before the current product trajectory moved to New Beginnings/VexLife-Prod.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6381763768",
+        "github.pull.vexlife.947",
+        "github.pull.vexlife.967",
+        "github.issue.vexlife.866.comment.6520145273",
+        "project.vexlife.new-beginnings"
+      ],
+      "createdAt": "2026-11-06T06:48:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.verifying.accepted-source",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR920/PR921/PR923 accepted the ordinary Heretic normal-start and parser source chain; the source slice entered lived verification rather than remaining implementation work.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "github.pull.vexlife.923"
+      ],
+      "createdAt": "2026-10-24T08:03:08.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.completed.a034-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A034 proved the accepted ordinary startup source reaches the real Heretic Browser Companion path and same-Home no-acquisition restart, closing normal-start integration as current work.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6381763768",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b"
+      ],
+      "createdAt": "2026-10-24T08:03:08.000Z"
     }
   ],
   "sourceRefs": [

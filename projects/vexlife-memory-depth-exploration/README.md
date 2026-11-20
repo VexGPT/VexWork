@@ -2,6 +2,47 @@
 
 `[VXG RealForever]`
 
+## Currentness checkpoint — 2026-11-20
+
+The original Memory Depth formation has moved through successor routes and must not be read as one untouched bulk-hydration implementation plan.
+
+Current lineage:
+
+~~~text
+#308  original research / Project formation
+#309  historical independent implementation record
+#310  reusable Conversational Boundaries pressure harness
+#315  post-#241 successor orientation / Memory-writer + salience recommendations
+#318  living VexWork context/provider convergence owner
+
+accepted Product descendants
+  #241  Working Continuity rollover integration
+  #247  Consideration + semantic-acceptance writer foundation
+  #371  Source Return performed/not-performed truth
+  #383  native tools + layered source returns (cleared source)
+  #393  accepted convergence carrying #383 source onto Product main
+
+current Product successor
+  #403  reasoning continuation / misunderstanding recovery / semantic-recognition pressure
+~~~
+
+Therefore:
+
+~~~text
+PREDECESSOR MEMORY/JOURNAL LINEAGE       COMPLETED
+BOUNDED HYDRATION CONTRACT               COMPLETED IN EVOLVED PRODUCT FORM
+RIGHTFUL RESOLVER NEIGHBORHOOD           COMPLETED IN EVOLVED PRODUCT FORM
+HOST-SIDE BULK BEAM/GRAPH ENGINE ROUTE   CANCELLED — Product chose provider-native bounded reach instead
+FRESH COMPANION REQUEST/RETURN WIRING     COMPLETED IN EVOLVED PRODUCT FORM
+CONTEXT / PROVIDER CONVERGENCE            RUNNING
+COLD-START SEMANTIC RECOVERY              STILL OWED
+MEASUREMENT / LESSON-TRANSFER PROOF        STILL OWED
+~~~
+
+Cancellation above means the proposed implementation route was not adopted; it is not a claim that its work was completed. The surviving human intention continues through the current Product reach/context trajectory and this Project's cold-start/measurement obligations.
+
+The shared #310 harness remains a live consumer-facing asset and is preserved here. Historical #308/#309/#315 carriers remain provenance; do not restart their old implementation sequence merely because those PRs remain addressable.
+
 ## Full end-to-end successor handoff
 
 Fresh implementation instances should start here for the current unified outcome:
