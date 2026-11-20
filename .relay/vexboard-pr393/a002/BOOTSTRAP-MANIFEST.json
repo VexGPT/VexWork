@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "vexboard.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.issue.vexwork.394",
+  "pullRequest": "github.pull.vexwork.393",
+  "candidateBase": "de717e8fcf280b1c1253eef3ca4bdbcf48c30427",
+  "candidateHead": "c54c02a4e9ee81e8b8bca4ccc7347c64207bcde7",
+  "candidateTree": "c309ed8ae6c89e6d985a69d3e8ee516c2354d19c",
+  "candidateBranch": "VXG-112026-vexboard-candidate-subjects-and-selection-behavior-a001",
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexboard-pr393-source-owner-a002",
+  "carrierPrefix": ".relay/vexboard-pr393/a002",
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "597ffed05f673592e7896fa3b346f725304b4533762d27af98c8f8a143660b37",
+      "bytes": 1795
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "90e8a099762870bcb9c7cbe5e928acadf88eeef603fc12c9a92f79ffea053e06",
+      "bytes": 15054
+    }
+  }
+}
