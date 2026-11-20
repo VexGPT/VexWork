@@ -11,7 +11,7 @@ const graph = createWorkgraph(read('workgraphs/public.json'), registry);
 const project = createProject(read('projects/android-proof-orchestration/project.json'));
 const view = createBoardView(read('projects/android-proof-orchestration/board.view.json'), registry);
 
-test('Android Proof Orchestration keeps the reusable API runner ahead of broader lease coordination', () => {
+test('Android Proof Orchestration keeps the completed API runner ahead of broader lease coordination', () => {
   const refs = projectWorkRefs(project, graph);
   assert.deepEqual(refs, [
     'work.android-proof-orchestration.api-target-runner',
@@ -23,7 +23,7 @@ test('Android Proof Orchestration keeps the reusable API runner ahead of broader
   const runner = graph.items.find((item) => item.workRef === 'work.android-proof-orchestration.api-target-runner');
   const relay = graph.items.find((item) => item.workRef === 'work.android-proof-orchestration.vexrelay-integration');
   const lease = graph.items.find((item) => item.workRef === 'work.android-proof-orchestration.device-lease-queue');
-  assert.equal(runner.state, 'READY');
+  assert.equal(runner.state, 'COMPLETED');
   assert.equal(runner.priorityClass, 'HIGH');
   assert.deepEqual(runner.dependencyRefs, []);
   assert.deepEqual(relay.dependencyRefs, [runner.workRef]);
@@ -31,15 +31,18 @@ test('Android Proof Orchestration keeps the reusable API runner ahead of broader
   assert.equal(lease.priorityClass, 'NORMAL');
 });
 
-test('Android Proof Orchestration board exposes runner as the immediate ready edge', () => {
+test('Android Proof Orchestration board keeps the completed runner in Done and releases the remaining rows to Ready', () => {
   const board = projectWorkBoard({ project, graph, view, registry });
   const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');
-  const planned = board.lanes.find((lane) => lane.laneRef === 'lane.work.planned');
+  const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   assert.deepEqual(ready.cards.map((card) => card.workRef), [
+    'work.android-proof-orchestration.outcome',
+    'work.android-proof-orchestration.vexrelay-integration',
+    'work.android-proof-orchestration.device-lease-queue',
+  ]);
+  assert.deepEqual(done.cards.map((card) => card.workRef), [
     'work.android-proof-orchestration.api-target-runner',
   ]);
-  assert.equal(planned.cards.some((card) => card.workRef === 'work.android-proof-orchestration.vexrelay-integration'), true);
-  assert.equal(planned.cards.some((card) => card.workRef === 'work.android-proof-orchestration.device-lease-queue'), true);
 });
 
 test('VexStream durable device storage is terminal and no longer depends on the reusable API target runner', () => {

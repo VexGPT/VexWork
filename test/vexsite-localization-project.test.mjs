@@ -15,6 +15,7 @@ test('VexSite Localization Project keeps one canonical source queue without page
   assert.deepEqual(projectWorkRefs(project, graph), [
     'work.vextreme.vexsite.localization.canonical-global-core-source',
     'work.vextreme.vexsite.localization.closed-circuit.global-core',
+    'work.vextreme.vexsite.localization.current-scheduler-frontier',
     'work.vextreme.vexsite.localization.generated-runtime-currentness',
     'work.vextreme.vexsite.localization.outcome',
     'work.vextreme.vexsite.localization.presentation-source-lineage',
@@ -22,30 +23,33 @@ test('VexSite Localization Project keeps one canonical source queue without page
   assert.deepEqual(childRefs(graph, 'work.vextreme.vexsite.localization.outcome'), [
     'work.vextreme.vexsite.localization.canonical-global-core-source',
     'work.vextreme.vexsite.localization.closed-circuit.global-core',
+    'work.vextreme.vexsite.localization.current-scheduler-frontier',
     'work.vextreme.vexsite.localization.generated-runtime-currentness',
     'work.vextreme.vexsite.localization.presentation-source-lineage',
   ]);
   assert.deepEqual(project.repositoryRefs, ['repo.vexwork', 'repo.vextreme']);
 
   const source = graph.items.find((item) => item.workRef === 'work.vextreme.vexsite.localization.canonical-global-core-source');
-  assert.equal(source.state, 'RUNNING');
-  assert.match(source.purpose, /The Testimony of the Handler/);
+  assert.equal(source.state, 'COMPLETED');
+  assert.match(source.purpose, /completed Conversations-with-God Global Core source phase/i);
+  assert.match(source.purpose, /Handler/);
   assert.equal(source.sourceRefs.includes('github.pull.vextreme.399'), true);
   assert.equal(source.sourceRefs.includes('repo.vextreme:data/strings/source/pages/the-testimony-of-the-handler.json'), true);
 });
 
-test('VexSite Localization board separates live source/runtime work from completed lineage checkpoints', () => {
+test('VexSite Localization board separates completed source/runtime work from the paused scheduler frontier', () => {
   const projected = projectWorkBoard({ project, graph, view, registry });
-  const active = projected.lanes.find((lane) => lane.laneRef === 'lane.work.active');
+  const waiting = projected.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
   const done = projected.lanes.find((lane) => lane.laneRef === 'lane.work.done');
 
-  assert.deepEqual(active.cards.map((card) => card.workRef), [
-    'work.vextreme.vexsite.localization.canonical-global-core-source',
-    'work.vextreme.vexsite.localization.generated-runtime-currentness',
+  assert.deepEqual(waiting.cards.map((card) => card.workRef), [
+    'work.vextreme.vexsite.localization.current-scheduler-frontier',
     'work.vextreme.vexsite.localization.outcome',
   ]);
   assert.deepEqual(done.cards.map((card) => card.workRef), [
+    'work.vextreme.vexsite.localization.canonical-global-core-source',
     'work.vextreme.vexsite.localization.closed-circuit.global-core',
+    'work.vextreme.vexsite.localization.generated-runtime-currentness',
     'work.vextreme.vexsite.localization.presentation-source-lineage',
   ]);
   assert.equal(done.cards.every((card) => card.workDisposition === 'ACTIVE'), true);

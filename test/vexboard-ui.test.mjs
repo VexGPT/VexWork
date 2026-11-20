@@ -373,6 +373,14 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexlife-prod.perceivability-alignment',
       'board.vexlife.debug-menu.theme-mode.origin-walk',
       'board.vexwork.process-family-metawalk',
+      'board.vexboard.security-boundary-atlas.template',
+      'board.vexboard.security-boundary-atlas.credential-custody',
+      'board.full-security.overview',
+      'board.full-security.vexstream-local-pairing',
+      'board.full-security.vexlife-complex-demonstrator',
+      'board.full-security.android-account-device-scenarios',
+      'board.full-security.foundation-starting-map',
+      'board.full-security.full-scope-dashboard',
     ]),
   );
 

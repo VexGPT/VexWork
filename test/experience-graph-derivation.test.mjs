@@ -33,10 +33,8 @@ test('a Control reached only through a raw literal is UNTYPED_MANIFESTATION; unr
   const laws = fixtureLaws();
   const graph = fixtureGraph();
   const quietClear = graph.edges.find((row) => row.kind === 'MANIFESTS' && row.to === 'VexLifeQuietFamily.Clear');
-  assert.ok(quietClear, 'Quiet Clear is typed-bound through the Quiet pathway');
-  // Remove the typed binding so only the literal remains.
-  const unbound = normalizeExperienceGraph({ ...graph, edges: graph.edges.filter((row) => row !== quietClear) });
-  const frontier = deriveFrontier(unbound);
+  assert.equal(quietClear, undefined, 'Quiet Clear is not Lens-declared by the Quiet pathway');
+  const frontier = deriveFrontier(graph);
   const row = frontier.debt.find((entry) => entry.coordinate === 'VexLifeQuietFamily.Clear');
   assert.equal(row.kind, 'UNTYPED_MANIFESTATION');
   assert.match(row.sourceRef, /VexLifeWebRuntimeArtifacts\.kt:L\d+$/);
@@ -55,8 +53,6 @@ test('routes are CLEARED only when every coordinate is addressable; others carry
   const cleared = derived.routes.filter((route) => route.status === 'CLEARED').map((route) => route.routeRef);
   assert.deepEqual(cleared, [
     'route:VexLifeQuietFamily.Kept:Begin:0',
-    'route:VexLifeQuietFamily.Kept:Clear:0',
-    'route:VexLifeQuietFamily.Quiet:Clear:0',
     'route:VexLifeQuietFamily.Quiet:End:0',
     'route:VexLifeSightFamily.Engaged:Stop:0',
     'route:VexLifeSightFamily.Held:Stop:0',
@@ -112,8 +108,12 @@ test('journeys are joined only where the graph joins them: Send capture and Send
   const byRef = Object.fromEntries(derived.journeys.map((journey) => [journey.journeyRef, journey]));
   const gate = byRef['journey:gate:QUIET_MODE_ON'];
   assert.equal(gate.shape, 'CURRENT_STATE_GATES_SEND_ADMISSION');
-  assert.equal(gate.status, 'CLEARED');
+  assert.equal(gate.status, 'FRONTIER_DEBT');
   assert.ok(gate.feedingRoutes.includes('route:VexLifeQuietFamily.Kept:Begin:0'));
+  assert.ok(gate.missing.some((row) =>
+    row.predicate === 'MISSING_STABLE_ELEMENT_BINDING' &&
+    row.coordinate === 'VexLifeQuietFamily.Clear'
+  ));
   assert.equal(byRef['journey:gate:MODEL_SWITCH_HELD'].status, 'UNKNOWN');
   const profile = byRef['journey:capture:contextProfile:VexLifeProfileStore'];
   assert.equal(profile.shape, 'MUTABLE_CURRENT_TRUTH_CAPTURED_AT_SEND');
@@ -135,6 +135,9 @@ test('a Family route that realizes into captured current truth feeds the Send jo
   const derived = deriveRoutes(joined, deriveFrontier(joined));
   const profile = derived.journeys.find((journey) => journey.journeyRef === 'journey:capture:contextProfile:VexLifeProfileStore');
   assert.ok(profile.feedingRoutes.includes('route:VexLifeQuietFamily.Kept:Begin:0'));
-  assert.equal(profile.status, 'CLEARED');
-  assert.deepEqual(profile.missing, []);
+  assert.equal(profile.status, 'FRONTIER_DEBT');
+  assert.ok(profile.missing.some((row) =>
+    row.predicate === 'MISSING_STABLE_ELEMENT_BINDING' &&
+    row.coordinate === 'VexLifeQuietFamily.Clear'
+  ));
 });
