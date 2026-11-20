@@ -145,6 +145,52 @@ IDENTITY_ALIGNMENT
 != COMPOSITE RESTRUCTURING
 ~~~
 
+### Identity continuity scales by derivation, not by forcing one namespace
+
+When a source already owns a stable identity, preserve it. When presentation must derive a child or a
+runtime occurrence, use one portable formation law rather than inventing platform-local QA IDs.
+
+~~~text
+SOURCE_OWNED_STABLE_REF
+  -> preserve as-is
+
+DERIVED_CHILD
+  stable presentation parent
+  + normalized local path
+  -> deterministic child ref
+
+RUNTIME_INSTANCE
+  stable presentation base
+  + stable instance part(s)
+  -> UTF-8 bytes joined by NUL between parts
+  -> lowercase hex
+  -> deterministic runtime presentation ref
+~~~
+
+This is the cross-platform equivalent of Android's current `VexComposeScope` /
+`appendVexElementPath(...)` and `VexStreamPresentationRefs.dynamicRef(...)` behavior. A browser,
+native desktop app, SwiftUI surface, generated UI or another future substrate does not need Compose or
+DOM semantics to participate.
+
+Keep the coordinates distinct:
+
+~~~text
+domain identity
+!= presentation occurrence
+!= containment parent
+!= semantic pathway
+!= presence/expression relationship
+~~~
+
+A single domain object may therefore appear in several presentation scopes without becoming several
+domain objects. A runtime list may reorder without changing item identity. A projection must not derive
+identity from translated text, current list position, CSS/Compose index or visible geometry.
+
+`src/shared/vexboard-screen-lens-identity.mjs` is the consumer-side reference implementation. Producers
+may implement the same law in their own language. `elements[].identity` is optional and is required only
+when a producer chooses to make a derived/runtime genealogy claim; existing source-owned stable refs do
+not need to be renamed or wrapped.
+
 ### BOUNDED_SOURCE_REFACTOR
 
 Use only when the source itself collapses independently meaningful questions so completely that a
