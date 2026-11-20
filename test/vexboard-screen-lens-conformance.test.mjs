@@ -8,7 +8,9 @@ import {
   LENS_ROLES,
   SCREEN_LENS_SCHEMA,
   aggregateContainedFaceGraph,
+  appendLensIdentityPath,
   containedPathways,
+  dynamicLensInstanceRef,
   normalizeScreenLens,
 } from '../src/shared/vexboard-screen-lens.mjs';
 import { frameGeometry } from '../src/shared/vexboard-screen-lens-frames.mjs';
@@ -21,6 +23,81 @@ const subjects = [
   ['VexStream Music candidate', read('../projects/vexboard/lens/vexstream-music.candidate.screen-lens.json')],
   ['neutral framed element-tree subject', read('./fixtures/screen-lens/neutral-framed-element-tree.screen-lens.json')],
 ];
+
+
+test('portable identity formation matches Android-style nested and scoped runtime continuity', () => {
+  assert.equal(
+    appendLensIdentityPath('element.gallery.page.content.elements.sample', 'title'),
+    'element.gallery.page.content.elements.sample.title',
+  );
+  assert.equal(
+    appendLensIdentityPath('element.gallery.body', ' preview/title '),
+    'element.gallery.body.preview.title',
+  );
+
+  const songs = dynamicLensInstanceRef(
+    'element.vexstream-music.track',
+    ['songs', 'track-42'],
+  );
+  const search = dynamicLensInstanceRef(
+    'element.vexstream-music.track',
+    ['search', 'track-42'],
+  );
+
+  assert.equal(
+    songs,
+    'element.vexstream-music.track.dynamic.utf8hex.736f6e677300747261636b2d3432',
+    'scope + NUL + stable domain ref uses one deterministic portable byte encoding',
+  );
+  assert.notEqual(songs, search, 'the same domain object may have distinct presentation occurrences');
+});
+
+test('Screen Lens validates only identities that a producer explicitly claims are derived', () => {
+  const input = structuredClone(subjects[3][1]);
+  const parentRef = 'element.neutral-workspace.primary';
+  const childRef = appendLensIdentityPath(parentRef, 'runtime/child');
+  const runtimeRef = dynamicLensInstanceRef(
+    'element.neutral-workspace.runtime-item',
+    ['primary', 'domain-7'],
+  );
+
+  input.screens[0].elements.push(
+    {
+      ref: childRef,
+      kind: 'TEXT',
+      label: 'Derived child',
+      parentRef,
+      identity: {
+        kind: 'DERIVED_CHILD',
+        localPath: 'runtime/child',
+      },
+    },
+    {
+      ref: runtimeRef,
+      kind: 'BUTTON',
+      label: 'Runtime item',
+      parentRef,
+      identity: {
+        kind: 'RUNTIME_INSTANCE',
+        baseRef: 'element.neutral-workspace.runtime-item',
+        instanceParts: ['primary', 'domain-7'],
+      },
+    },
+  );
+
+  const normalized = normalizeScreenLens(input);
+  const byRef = new Map(normalized.screens[0].elements.map((element) => [element.ref, element]));
+  assert.equal(byRef.get(childRef).identity.kind, 'DERIVED_CHILD');
+  assert.equal(byRef.get(runtimeRef).identity.kind, 'RUNTIME_INSTANCE');
+
+  const bad = structuredClone(input);
+  bad.screens[0].elements.at(-1).identity.instanceParts = ['primary', 'domain-8'];
+  assert.throws(
+    () => normalizeScreenLens(bad),
+    /does not match runtime instance identity/,
+    'a producer cannot claim one dynamic genealogy while emitting another ref',
+  );
+});
 
 function assertEmittedLensConformance(label, raw) {
   const lens = normalizeScreenLens(raw);
