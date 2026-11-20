@@ -5,7 +5,7 @@
   "purpose": "Read-only experience-validation map over existing Product coordinates and exact source symbols. It does not mint parallel feature/relationship identities. VexLife-Prod and VexArchitecture sources remain the owners of Family, State, Control, Act, Effect, observation, realization and projection meaning.",
   "sourceBindings": {
     "vexlifeProdMain": "146b0d482517201b85990a9d7b0b9ebf04075fd9",
-    "vexWorkMain": "32a8eeda0cd464ffc06f150fe25a806bb0949afd",
+    "vexWorkMain": "b94a874f3bedf616fa8a19d62fdc930eabf5be1d",
     "vexLifeAndroidMain": "d857a92371555472e0303b18eadf353da2a868d6",
     "activeCandidates": [
       {
