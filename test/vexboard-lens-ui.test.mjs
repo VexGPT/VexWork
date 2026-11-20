@@ -459,3 +459,32 @@ test('selected identities recurse into their active projected realization relati
   assert.match(page, /Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? projectedRelationshipForAnchor\(\)/);
   assert.match(page, /Reuse that already-derived expression graph only when it actually contains the selected identity/);
 });
+
+
+test('legacy Lens shorthand resolves in the canonical Lens directory', () => {
+  assert.match(page, /return \/\^\[\^\/\]\+\\\.json\$\/i\.test\(requested\)\?LENS_DIR\+requested:requested;/);
+  assert.match(page, /lens must be a relative \\.json path on this site/);
+});
+
+test('runtime viewer faults stay visible as diagnostics without replacing an already rendered Lens', () => {
+  assert.match(page, /window\.__VEXBOARD_REPORT_DIAGNOSTIC__=reportDiagnostic/);
+  assert.match(page, /Boolean\(state\.lens&&document\.querySelector\('\.lens'\)\)/);
+  assert.match(page, /diagnostic-dock/);
+  assert.match(page, /Diagnostics · Lens kept running/);
+  assert.match(page, /function diagnosticInline\(scope,error\)/);
+  assert.match(page, /function guardedRender\(scope,renderFn\)/);
+  assert.match(page, /guardedRender\('Experience',renderExperienceSide\)/);
+  assert.match(page, /guardedRender\('Behavior \/ Depth',renderBehaviorSide\)/);
+  assert.match(page, /guardedRender\('Screen walk \/ Atlas',renderAtlas\)/);
+  assert.match(page, /guardedRender\('Expressions',renderExpressionRail\)/);
+  assert.match(page, /guardedRender\('Inspector',renderTray\)/);
+});
+
+test('missing browser-local walk state recovers visibly to source entry instead of null-crashing the viewer', () => {
+  assert.match(page, /function ensureWalk\(\)/);
+  assert.match(page, /if\(state\.walk\?\.steps\?\.length\)return state\.walk/);
+  assert.match(page, /state\.walk=Lens\.createScreenWalk\(state\.lens,state\.lens\.entryScreenRef\)/);
+  assert.match(page, /Browser-local screen walk was null or empty; recovered to the Lens entry screen/);
+  assert.match(page, /kind:'NULL_STATE'/);
+  assert.match(page, /const walk=ensureWalk\(\)/);
+});
