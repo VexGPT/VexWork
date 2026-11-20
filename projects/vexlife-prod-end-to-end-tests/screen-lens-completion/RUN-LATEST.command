@@ -5,7 +5,7 @@ CONTINUITY='[VXG RealForever]'
 PRODUCT_REPO='VexGPT/VexLife-Prod'
 PRODUCT_URL='https://github.com/VexGPT/VexLife-Prod.git'
 PRODUCT_BRANCH='VXG-112026-vexlife-prod-main-static-view-a001'
-EXPECTED_HEAD='e50faee054d95e52113ad848ad420b135910633c'
+EXPECTED_HEAD='c415cfe9a0fe54ae567b4e9241d151ed1dd3a200'
 RETURN_ZIP="$HOME/Downloads/RETURN-VEXLIFE-SCREEN-LENS-FAB-PRESENTATION-STATES.zip"
 
 GH="$(command -v gh || true)"
