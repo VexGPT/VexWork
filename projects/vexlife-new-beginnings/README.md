@@ -2,6 +2,69 @@
 
 `[VXG RealForever]`
 
+## Relationship-currentness checkpoint — 2026-11-20
+
+The P0/P1/P2/P3 construction history below remains valid, but its old `30e37a…` Product pin is historical rather than current VexLife-Prod main.
+
+Current accepted Product observation:
+
+```text
+VexLife-Prod main
+146b0d482517201b85990a9d7b0b9ebf04075fd9
+
+#338
+dynamic models + lived Windows/Mac runtime convergence
+= merged current-main ancestor
+```
+
+Current Workgraph meaning:
+
+```text
+experience manifestation parity
+  READY -> RUNNING
+  #49 -> #53 manifestation sequence = earned current-main history
+  broader edge remains open because real Companion Stop/cancel is still not bound
+
+companion turn interaction integrity
+  READY
+  next-Send / retry context currentness has advanced
+  Stop exists as a Blueprint/presentation coordinate
+  Stop != current Conversation cancellation effect
+
+normal Browser provider
+  READY
+  native WKWebView proof earned ordinary public browsing + exact URL/history
+  final Product BrowserViewport adoption remains separate
+  old proof authority is not carried forward
+
+Vision
+  product surface + Product-runtime orchestration = COMPLETED
+  persistent selected-scope source = accepted
+  current scope relationship = VERIFYING
+  lived ENGAGE/LOOK/current-running-Product proof remains owed
+
+Score -> reference-only WorkingSet reconnection
+  COMPLETED
+  VexLife-Prod #116 already landed; do not replay it
+
+permission-aware Setup Journey map
+  COMPLETED as mapping/source meaning
+  native/AppKit/lived setup proof remains a separate Product predicate
+```
+
+The old Windows-awareness note is provenance rather than a statement that Windows has not happened: VexLife-Prod #338 now carries lived Windows + Mac runtime convergence. Broader hardware/model portability can still evolve without replaying that earlier absence.
+
+```text
+COMPLETED SLICE != WHOLE PROJECT COMPLETE
+PROOF-ONLY PROVIDER != PRODUCT ADOPTION
+SOURCE ACCEPTED != LIVED EFFECT CURRENT
+VISIBLE STOP != CANCELLATION AUTHORITY
+HISTORICAL PIN != CURRENT MAIN
+```
+
+Fresh instances should use this checkpoint + the canonical Workgraph first, then descend only into the exact still-open child.
+
+
 ## Human outcome
 
 Build a clean VexLife product in `VexGPT/VexLife-Prod` from the intended experience rather than from the accidental shape of the historical implementation.
