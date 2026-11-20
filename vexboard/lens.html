@@ -2889,8 +2889,13 @@ function renderGraphFace(face) {
   const pathway = currentPathway();
   const anchor = anchorElement();
   const wrap = h('div', { class: 'face', dataset: { face } });
+  const latentElementRefs = new Set(
+    currentScreen().elements
+      .filter((element) => presenceOf(element.ref)?.state === 'LATENT')
+      .map((element) => element.ref),
+  );
   const aggregate = !pathway && anchor?.role === 'CONTAINER'
-    ? Lens.aggregateContainedFaceGraph(state.lens, anchor.ref, face)
+    ? Lens.aggregateContainedFaceGraph(state.lens, anchor.ref, face, { excludedElementRefs: latentElementRefs })
     : null;
 
   if (!pathway && aggregate?.nodes.length) {
