@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+      - currentize/vexboard-realization-topology-current-main-20261120
     paths:
       - 'projects/vexboard/**'
       - 'projects/vexboard-projection-consolidation/**'
