@@ -2,6 +2,36 @@
 
 `[VXG RealForever]`
 
+## Relationship-currentness checkpoint — 2026-11-20
+
+The Partner Source/Conversion projection pressure described later in this document has crossed its draft boundary:
+
+```text
+VexWork #276
+-> MERGED / accepted VexBoard Behavior + Depth projection slice
+
+VexLife-Android #219
+-> MERGED / accepted Partner Source + Conversion + Room/restart source lineage
+```
+
+This updates evidence/currentness only. The owning VexBoard Work states remain intentionally unchanged:
+
+```text
+Source Projectors + lived comparison          RUNNING
+Screen Lens realization recovery              RUNNING
+VexStream living Origin screenshot pilot      RUNNING
+Screen Lens projectability + expressions      SUPERSEDED
+Living Screen Lens currentness                 COMPLETED
+```
+
+The accepted Partner slice can now be consumed by E2E/VexBoard readers as current evidence. It does **not** imply that broader source projection, Stable/Main repinning, realization recovery, or expected-versus-observed lived comparison are complete.
+
+```text
+ACCEPTED SOURCE SLICE != BROADER PROJECT COMPLETION
+E2E CONSUMES VEXBOARD PROJECTION != VEXBOARD OWNS PRODUCT MEANING
+```
+
+
 ## Current VexArchitecture re-entry — 2026-11-03
 
 VexBoard's foundational substrate is no longer waiting for the architecture chain that originally fed it.
