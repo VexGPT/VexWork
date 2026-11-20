@@ -325,7 +325,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-24T05:30:04.000Z",
+      "updatedAt": "2026-11-20T06:42:09.003Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.outcome",
@@ -333,7 +333,7 @@
       "label": "VexStream Mobile Library",
       "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while giving listeners coherent browse, sort/filter, and whole-Songs download management, with persistent sync separately governed.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -348,7 +348,13 @@
         "github.pull.vexlife-android.166",
         "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
         "github.pull.vexlife-android.167",
-        "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
+        "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f",
+        "work.vexstream.mobile-library.durable-device-library",
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -17281,6 +17287,56 @@
         "github.comment.vexlife-android.pr177.6393685461.post-merge-tree-exact"
       ],
       "createdAt": "2026-11-20T06:42:09.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.outcome.decomposed.plan-validated.currentness-20261120",
+      "workRef": "work.vexstream.mobile-library.outcome",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "The Project is no longer only decomposed: the durable-device subtree is terminal, MassDownload/product work is accepted, and the Project source records multiple concrete admitted browse/download/playback continuations.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexstream-mobile-library/README.md",
+        "work.vexstream.mobile-library.durable-device-library",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
+      ],
+      "createdAt": "2026-11-20T06:42:09.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.outcome.plan-validated.ready.currentness-20261120",
+      "workRef": "work.vexstream.mobile-library.outcome",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Accepted Android/VexStream source has already realized multiple Project children and released their construction dependencies; the parent outcome therefore advanced beyond planning into executable Project work.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability"
+      ],
+      "createdAt": "2026-11-20T06:42:09.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.outcome.ready.running.currentness-20261120",
+      "workRef": "work.vexstream.mobile-library.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The Mobile Library trajectory is actively carrying unfinished child work: Sort/Filter remains RUNNING, several download/player/artwork fronts are VERIFYING, and the Track-menu defect remains paused at a bounded checkpoint. Preserve those real open edges while making the parent lifecycle current.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.sort-filter-controls",
+        "work.vexstream.mobile-library.contextual-download-missing",
+        "work.vexstream.mobile-library.full-player",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "work.vexstream.mobile-library.current-artwork-availability",
+        "work.vexstream.mobile-library.track-menu-presentation-defect"
+      ],
+      "createdAt": "2026-11-20T06:42:09.003Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
