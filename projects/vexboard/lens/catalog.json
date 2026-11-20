@@ -106,14 +106,17 @@
             "buildRef": "stable",
             "label": "Stable",
             "summary": "Merged Product Screen Lens currentness checkpoint.",
-            "commit": "5b93204f42e926ee70e939159916aebcd3851276",
+            "commit": "14206ba97e47e107c4999e89f514c8beaf24224a",
             "lens": "vexlife-prod.screen-lens.json",
-            "since": "2026-11-18",
-            "observedAt": "2026-11-18",
+            "since": "2026-11-20",
+            "observedAt": "2026-11-20",
             "evidence": [
-              "github.pull.vexlife-prod.268"
+              "github.pull.vexlife-prod.437",
+              "github.pull.vexwork.366",
+              "github.pull.vexwork.367",
+              "human.victor.lived-screen-lens-acceptance-2026-11-20"
             ],
-            "sourceBlobSha1": "1b3cd917d2c0463af032fb3580654ee9222bdd5b"
+            "sourceBlobSha1": "3cd26dca14b7380dc480726c2033d426ec347e0d"
           },
           {
             "buildRef": "main",
@@ -121,7 +124,7 @@
             "summary": "Latest Product-owned exported Screen Lens on main.",
             "commit": "14206ba97e47e107c4999e89f514c8beaf24224a",
             "branch": "main",
-            "lens": "vexlife-prod.main.screen-lens.json",
+            "lens": "vexlife-prod.screen-lens.json",
             "observedAt": "2026-11-20",
             "sourceBlobSha1": "3cd26dca14b7380dc480726c2033d426ec347e0d"
           }
