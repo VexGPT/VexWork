@@ -562,6 +562,15 @@ test('Localization preview locale is browser projection state and preserves expl
   assert.match(page, /function applyStaticLocalizationPreview\(doc\)/);
   assert.match(page, /applyStaticLocalizationPreview\(doc\);/);
   assert.match(page, /data-vex-lens-localization-state/);
+  assert.match(page, /new Intl\.DisplayNames\(\['en'\], \{ type: 'language' \}\)/);
+  assert.match(page, /function localizationLocaleStatus\(localeRef/);
+  assert.match(page, /function localizationLocaleOptionLabel\(localeRef/);
+  assert.match(page, /function addLocalizationPreviewLocale\(value\)/);
+  assert.match(page, /value: '__ADD__'/);
+  assert.match(page, /localization\.addLanguage/);
+  assert.match(page, /localization\.localeCompleteStatus/);
+  assert.match(page, /localization\.localeMissingStatus/);
+  assert.match(page, /addedLocales: Object\.freeze/);
   assert.match(page, /localization\.localeMissingDetail/);
   assert.match(page, /next\.set\('locale', state\.localization\.previewLocale\)/);
   assert.match(page, /next\.set\('string', state\.localization\.selectedStringRef\)/);
@@ -572,6 +581,10 @@ test('Localization preview locale is browser projection state and preserves expl
   assert.match(page, /element\.localization\.locale-status/);
   assert.doesNotMatch(page, /setApplicationLocales|LocaleManager|ProductRuntime.*locale/i, 'preview locale never mutates Product language');
   assert.match(localizationCopy.strings['localization.previewLocaleHelp'], /does not change Product language/);
+  assert.match(localizationCopy.strings['localization.addLanguage'], /Add language/);
+  assert.match(localizationCopy.strings['localization.addLanguageHelp'], /browser-local translation target/);
+  assert.equal(localizationCopy.strings['localization.localeCompleteStatus'], 'Complete');
+  assert.equal(localizationCopy.strings['localization.localeMissingStatus'], 'Not in source');
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A2-LOCALE-OBSERVATION]
