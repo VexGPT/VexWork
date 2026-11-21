@@ -595,6 +595,30 @@ GALLERY != SOURCE_AUTHORITY
 VEXWORK_PROJECT != IMPLEMENTATION_AUTHORITY
 ```
 
+### Stable Repeater Android mutation closure
+
+VexLife-Android PR #261 now carries the one missing source-side Android mutation case:
+
+```text
+initial  event.a / event.b
+insert   event.a / event.c / event.b
+remove   event.c / event.b
+```
+
+It changes **test source only** and preserves existing item refs across insertion/removal. A bounded
+local execution of the exact current helper semantics passes insert/remove/reorder/duplicate pressure.
+
+Permanent distinction:
+
+```text
+PR #261 SOURCE-FORMED
++ compatibility PASS
+!= repository Gradle/JVM PASS
+```
+
+The target-pressure record therefore keeps `proof.android-insert-remove-identity = OWED` until the
+repository-owned execution runs.
+
 ## Current next edge
 
 `work.vex.component-library-architecture.android-inventory`
