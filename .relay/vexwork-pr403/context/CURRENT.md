@@ -77,13 +77,59 @@ Fresh proof package:
 VEXWORK-PR403-LOCALIZATION-A1-RELAY-BOOTSTRAP-A002--sha256-b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c.zip
 sha256=b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c
 bytes=7306
+gitBlob=d79fac7dfd8b388034da8133e38bbdca144c2dda
+carrierMode=DIRECT_GIT_BINARY_BLOB
 ```
 
-Companion path:
+Active companion path:
 
 ```text
-.relay/vexwork-pr403/context/a002/
+.relay/vexwork-pr403/context/a002/VEXWORK-PR403-LOCALIZATION-A1-RELAY-BOOTSTRAP-A002--sha256-b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c.zip
 ```
+
+The runner verifies the checked-out ZIP's exact 7306-byte length and SHA-256 directly before extraction.
+
+## A002 carrier incident — resolved
+
+The first A002 companion attempt stopped at its pre-execution digest gate:
+
+```text
+expected=b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c
+observed=e02cf917b231cc20d3b3b21a1afc53c42bd1162fd6696be5604de118112617a2
+```
+
+Root cause was the companion representation, not the trusted ZIP:
+
+```text
+correct base64 characters = 9744
+GitHub-held base64 chars  = 9743
+one character missing
+```
+
+That fragile text carriage has been removed from the active path. The exact ZIP is now one Git binary blob whose Git object identity was independently recomputed from the trusted local bytes:
+
+```text
+git hash-object trusted ZIP
+= d79fac7dfd8b388034da8133e38bbdca144c2dda
+
+GitHub binary blob
+= d79fac7dfd8b388034da8133e38bbdca144c2dda
+```
+
+Because the failed invocation never passed the companion digest gate:
+
+```text
+ZIP extraction          NOT_REACHED
+Relay task formation    NOT_REACHED
+attempt reservation     NOT_REACHED
+candidate proof         NOT_REACHED
+repository mutation     NOT_REACHED
+```
+
+The same A002 semantic proof remains current; this was a transport-only repair.
+
+Detailed evidence:
+`.relay/vexwork-pr403/a002/CARRIER-INCIDENT.md`
 
 On execution, canonical RETURN custody is published under:
 
