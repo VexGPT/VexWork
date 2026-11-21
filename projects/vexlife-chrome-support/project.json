@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.chrome-support",
+  "label": "VexLife Chrome support",
+  "purpose": "Make VexLife usable on supported Chromebooks as a truthful local-first Product body by adding exact ChromeOS platform/runtime/service realizations beneath existing portable VexLife semantics, beginning with ChromeOS x86_64/Crostini + Heretic 4B + llama.cpp CPU and withholding the support claim until real-Chromebook lived proof.",
+  "rootWorkRefs": [
+    "work.vexlife.chrome-support.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-chrome-support/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "github.commit.vexlife-prod.7f3935aec46b2030ebbc887fa8ccbf6199c93d36",
+    "vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+    "vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt",
+    "vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
+    "vexlife-prod:docs/foundation/HERETIC-WINDOWS-RUNTIME-REALIZATION.md",
+    "vexlife-prod:src/jvmMain/kotlin/vexlife/localasr/VexLifeLocalAsrProviderRealization.kt",
+    "vexlife-prod:docs/foundation/PRIVATE-SERVICE-IMAGE.md",
+    "https://github.com/ggml-org/llama.cpp/releases/tag/b10107",
+    "https://support.google.com/chromebook/answer/9145439",
+    "https://www.chromium.org/chromium-os/developer-library/reference/security/port-forwarding/"
+  ],
+  "formedAt": "2026-11-21T06:52:00.000Z"
+}
