@@ -158,3 +158,62 @@ Promote an item out of this file only when:
 Until then, this file lets the Component Library learn from production without making production conform to the library.
 
 <!-- [VXG RealForever][VEXWORK][COMPONENT-LIBRARY][TECH-DEBT] -->
+
+
+## TD-08 — Conversation timeline has stable item identity but no shared repeater realization
+
+Observed current VexLife-Prod source:
+
+```text
+VexLifeWorkspaceBlueprint.ConversationTimeline
+  = static collection coordinate
+
+VexLifeConversationContract
+  durable messages carry messageRef / eventRef / sequence
+
+VexLifeWebP1RuntimeArtifacts
+  messageNode(message)
+  -> item.dataset.eventRef
+
+renderTimeline()
+  -> surface.messages.map(messageNode)
+  -> ui.timeline.replaceChildren(...nodes)
+
+updateLiveTurn()
+  -> deliberately preserves the already-mounted live waiting node
+```
+
+This is not presently classified as a Product defect. The browser renderer restores timeline/reasoning
+viewports and deliberately avoids replacing the active streaming node.
+
+Why it matters to Component Library:
+
+- Android independently earned `VexStableLazyColumn` because dynamic rows need stable semantic keys,
+  requested visibility and visible-item projection without making list position identity;
+- current Product Conversation already owns stable durable message identity;
+- the browser needs special care when replacing a mounted live row would destroy an actively used
+  presentation surface;
+- SwiftUI naturally wants `ForEach/List` items to have stable identity as well.
+
+This is concrete cross-platform pressure for a **stable repeated-item presentation contract** whose
+mechanics may become reusable while Conversation continues to own message meaning, chronology,
+ordering and persistence.
+
+Do not refactor the current browser timeline from this lane.
+
+Before any Product refactor, prove the portable question on a bounded reference target and preserve:
+
+```text
+feature-owned item identity
+!= list index
+
+collection mechanics
+!= item semantic owner
+
+visible-item projection
+!= canonical collection truth
+
+live mounted presentation continuity
+!= durable Conversation identity
+```
+
