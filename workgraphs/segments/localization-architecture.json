@@ -193,7 +193,7 @@
       "label": "Add a contextual Localization Inspector to Screen Lens",
       "purpose": "Use the proven localization inventory to replace the low-frequency Related toolbar slot with a contextual Localization inspector that previews locale text, searches/filters strings, reverse-resolves occurrences, and reuses existing Lens navigation/selection to jump to and highlight the exact owning element; preserve Related boards in a secondary Project/overflow surface.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "PAUSED_AT_CHECKPOINT",
       "dependencyRefs": [
         "work.vex.localization-architecture.android-inventory"
       ],
@@ -208,9 +208,14 @@
         "src/shared/vexboard-localization-inventory.mjs",
         "vexboard/localization-copy.json",
         "test/vexboard-localization-inventory.test.mjs",
-        "test/vexboard-lens-ui.test.mjs"
+        "test/vexboard-lens-ui.test.mjs",
+        "github.pull.vexwork.408",
+        "github.commit.vexwork.22b85024af33d55963f50f7083540cbc2a0a7897",
+        "github.pull.vexwork.409",
+        "github.commit.vexwork.c4f4f699596192e407e99358b714a8e579608413",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
       ],
-      "updatedAt": "2026-11-21T09:43:37.000Z"
+      "updatedAt": "2026-11-21T10:34:45.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -226,7 +231,7 @@
       "label": "Define exportable Localization Change Sets and source reconciliation",
       "purpose": "Represent requested string/translation changes as a mutable working overlay over exact observed source, support truthful browser-local persistence plus deterministic export/import for team sharing, and derive SATISFIED/OPEN/DIVERGED/REMOVED state by reconciling expected values against fresh Product source rather than maintaining a second manual completion ledger.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "dependencyRefs": [
         "work.vex.localization-architecture.android-inventory"
       ],
@@ -236,9 +241,11 @@
       "sourceRefs": [
         "projects/localization-architecture/ARCHITECTURE.md",
         "work.vex.localization-architecture.android-inventory",
-        "vexboard-reader.js"
+        "vexboard-reader.js",
+        "src/shared/vexboard-localization-change-set.mjs",
+        "test/vexboard-localization-change-set.test.mjs"
       ],
-      "updatedAt": "2026-11-21T09:39:25.003Z"
+      "updatedAt": "2026-11-21T10:34:45.001Z"
     }
   ],
   "transitions": [
@@ -350,6 +357,38 @@
         "test/vexboard-lens-ui.test.mjs"
       ],
       "createdAt": "2026-11-21T09:43:37.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.localization-inspector.paused.locale-source-boundary",
+      "workRef": "work.vex.localization-architecture.localization-inspector",
+      "priorState": "RUNNING",
+      "nextState": "PAUSED_AT_CHECKPOINT",
+      "reason": "A2 landed exact string-to-occurrence navigation and truthful SOURCE/VARIANT/MISSING locale observation through PR #408 and PR #409; current Android source exposes no translated values-* strings, so real in-place translated preview is held at a Product-source boundary rather than simulated.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.408",
+        "github.commit.vexwork.22b85024af33d55963f50f7083540cbc2a0a7897",
+        "github.pull.vexwork.409",
+        "github.commit.vexwork.c4f4f699596192e407e99358b714a8e579608413",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ],
+      "createdAt": "2026-11-21T10:34:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.change-set-reconciliation.running.a3-contract",
+      "workRef": "work.vex.localization-architecture.change-set-reconciliation",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A3 enters the pure Current-versus-Expected relationship contract first: form revision-bound localization change intent and derive SATISFIED/OPEN/OPEN_TRANSLATION/DIVERGED/SOURCE_REMOVED from fresh inventory before persistence, export/import, UI, or source writeback.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/localization-architecture/ARCHITECTURE.md",
+        "src/shared/vexboard-localization-change-set.mjs",
+        "test/vexboard-localization-change-set.test.mjs"
+      ],
+      "createdAt": "2026-11-21T10:34:45.001Z"
     }
   ],
   "sourceRefs": [
