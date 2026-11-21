@@ -149,16 +149,40 @@ export function buildLocalizationArtifacts({
   subjectSlug,
   buildRef = 'main',
   lens,
-  source,
+  source = null,
+  sourceStrings = null,
+  sourceFiles = null,
 }) {
   const subject = subjectFor(catalog, subjectSlug);
   const producer = PRODUCERS[subject.slug];
   if (!producer) throw new Error(`${subject.slug} has no Localization source adapter yet`);
   const build = buildFor(subject, buildRef);
-  if (lens.sourceSnapshot?.commit !== build.commit) {
-    throw new Error(`${subject.slug} ${buildRef} Lens source ${lens.sourceSnapshot?.commit ?? 'missing'} disagrees with catalog ${build.commit}`);
+  const boundLens = bindLensBuildSource(lens, build);
+  if (boundLens.sourceSnapshot?.commit !== build.commit) {
+    throw new Error(`${subject.slug} ${buildRef} Lens source ${boundLens.sourceSnapshot?.commit ?? 'missing'} disagrees with catalog ${build.commit}`);
   }
-  const inventory = producer.project({ subject, buildRef, lens, source });
+
+  let inventory;
+  if (subject.slug === 'vexlife-android' && Array.isArray(sourceStrings)) {
+    inventory = projectAndroidLocalizationInventoryFromSourceStrings({
+      subjectRef: subject.subjectRef,
+      lens: boundLens,
+      sourceStrings,
+      sourceLocale: 'en',
+      buildRef,
+    });
+  } else if (subject.slug === 'vexlife-prod' && sourceFiles) {
+    inventory = projectVexLifeProdLocalizationInventory({
+      subjectRef: subject.subjectRef,
+      lens: boundLens,
+      sourceFiles,
+      sourceLocale: 'en',
+      buildRef,
+    });
+  } else {
+    if (!source) throw new Error(`${subject.slug} localization build needs exact Product source`);
+    inventory = producer.project({ subject, buildRef, lens: boundLens, source });
+  }
   return artifactsForInventory(subject, buildRef, inventory);
 }
 
@@ -185,7 +209,7 @@ function buildOne({ args, catalog, subjectSlug }) {
   const producer = PRODUCERS[subject.slug];
   if (!producer) throw new Error(`${subject.slug} has no Localization source adapter yet`);
   const build = buildFor(subject, args.build);
-  const lens = bindLensBuildSource(readJson(path.posix.join(LENS_DIR, build.lens)), build);
+  const lens = readJson(path.posix.join(LENS_DIR, build.lens));
   const { source, temporary } = sourceCheckoutFor({ args, subject, build, producer });
 
   try {
