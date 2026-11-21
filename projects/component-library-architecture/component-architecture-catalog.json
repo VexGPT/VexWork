@@ -730,6 +730,15 @@
             "VexConversationTimelineItem"
           ],
           "why": "VexLife-Prod PR #506 maps the current ConversationTimeline collection + durable messageRef/eventRef/sequence coordinates into SwiftUI stable item identity while explicitly holding unproved viewport mechanics."
+        },
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "04a24d6d08c0afe5d6263db4652eb1e409162fe4",
+          "path": "architecture/elements/src/test/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyListTest.kt",
+          "symbols": [
+            "stableItemRefsPreserveExistingIdentityAcrossInsertAndRemove"
+          ],
+          "why": "Draft PR #261 adds the exact Android insert/remove identity pressure A3 previously held, without changing production component source."
         }
       ],
       "note": "Cross-platform pressure is now real: Android has VexStableLazyColumn; current VexLife-Prod has stable Conversation message identity but ordinary browser renders rebuild the timeline while live streaming requires mounted-node preservation. A portable contract should own stable repeated-item mechanics only, leaving message meaning/order/store with Conversation.",
@@ -769,7 +778,7 @@
           "caller-owned order remains unchanged by the adapter",
           "optional visibility/scroll relationships have explicit target dispositions"
         ],
-        "note": "Cross-target core is now executable on both sides: Android current unit tests prove reorder-stable semantic refs + duplicate failure; exact generated Swift runtime proof covers insert/remove/reorder + duplicate failure. Android still owes an explicit insert/remove target test before this formation can satisfy its full two-target mutation proof. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions."
+        "note": "Cross-target core is executable on Swift and source-formed on Android: current Android tests prove reorder + duplicate failure; PR #261 adds focused insert/remove identity pressure without production changes; exact Gradle execution of #261 remains owed. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions."
       }
     },
     {
@@ -1571,12 +1580,17 @@
           "note": "Current VexStableLazyListTest proves duplicate stable refs fail closed."
         },
         {
+          "proofRef": "proof.android-insert-remove-source-formed",
+          "state": "PASS",
+          "note": "VexLife-Android PR #261 changes only VexStableLazyListTest.kt and adds explicit insert/remove identity pressure; production source is unchanged."
+        },
+        {
           "proofRef": "proof.android-insert-remove-identity",
           "state": "OWED",
-          "note": "The observed Android unit test explicitly covers reorder, not a separate executable insert/remove case; source key=itemRef makes the intended law clear but A3 acceptance keeps this exact target proof owed."
+          "note": "VexLife-Android PR #261 now forms the focused insert/remove identity unit case on exact main-derived source. Local exact-helper compatibility PASS exists; repository-owned Gradle/JVM execution of that PR remains owed before this proof may become PASS."
         }
       ],
-      "note": "Android source-native evidence now includes an exact unit test for reorder-stable semantic refs and duplicate-ref failure. A separate executable Android insert/remove identity case remains owed; requested visibility, visible-item projection, contentType and scroll-lock remain richer target capabilities rather than portable-core requirements."
+      "note": "Android source-native evidence includes reorder-stable refs, duplicate-ref failure, and PR #261's focused insert/remove identity test source. Exact repository Gradle execution for #261 remains owed; requested visibility, visible-item projection, contentType and scroll-lock remain richer target capabilities rather than portable-core requirements."
     },
     {
       "pressureRef": "pressure.component.local-selection.android-compose",
