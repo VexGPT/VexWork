@@ -29361,6 +29361,35 @@
           "transitionHistory": []
         },
         {
+          "workRef": "work.vex.localization-architecture.change-set-reconciliation",
+          "label": "Define exportable Localization Change Sets and source reconciliation",
+          "purpose": "Represent requested string/translation changes as a mutable working overlay over exact observed source, support truthful browser-local persistence plus deterministic export/import for team sharing, and derive SATISFIED/OPEN/DIVERGED/REMOVED state by reconciling expected values against fresh Product source rather than maintaining a second manual completion ledger.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.localization-architecture.android-inventory"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/localization-architecture/ARCHITECTURE.md",
+            "work.vex.localization-architecture.android-inventory",
+            "vexboard-reader.js"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T07:56:00.000Z",
+          "updatedAt": "2026-11-21T07:56:03.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vex.localization-architecture.duplicate-convergence",
           "label": "Analyze duplicate strings without collapsing semantic identity",
           "purpose": "Derive value-first candidate groups and cross-Product where-used evidence from the proven inventory, preserving separate source string identities while classifying likely sharing, required separation, format/locale divergence, and human/source-reviewed semantic convergence.",
@@ -29389,7 +29418,37 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T07:20:00.000Z",
-          "updatedAt": "2026-11-21T07:20:03.000Z",
+          "updatedAt": "2026-11-21T07:56:04.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.localization-architecture.localization-inspector",
+          "label": "Add a contextual Localization Inspector to Screen Lens",
+          "purpose": "Use the proven localization inventory to replace the low-frequency Related toolbar slot with a contextual Localization inspector that previews locale text, searches/filters strings, reverse-resolves occurrences, and reuses existing Lens navigation/selection to jump to and highlight the exact owning element; preserve Related boards in a secondary Project/overflow surface.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.localization-architecture.android-inventory"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/localization-architecture/ARCHITECTURE.md",
+            "work.vex.localization-architecture.android-inventory",
+            "projects/vexboard/SCREEN-LENS.md",
+            "vexboard/lens.html"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T07:56:00.000Z",
+          "updatedAt": "2026-11-21T07:56:02.000Z",
           "transitionHistory": []
         },
         {
@@ -29403,7 +29462,9 @@
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vex.localization-architecture.android-inventory",
+            "work.vex.localization-architecture.change-set-reconciliation",
             "work.vex.localization-architecture.duplicate-convergence",
+            "work.vex.localization-architecture.localization-inspector",
             "work.vex.localization-architecture.relational-model",
             "work.vex.localization-architecture.vexboard-workspace"
           ],
@@ -29434,13 +29495,13 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T07:20:00.000Z",
-          "updatedAt": "2026-11-21T07:20:04.000Z",
+          "updatedAt": "2026-11-21T07:56:05.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vex.localization-architecture.relational-model",
           "label": "Define the source-faithful relational localization model",
-          "purpose": "Preserve stable element, text-binding, source-string and locale-variant identities; derived candidate/semantic grouping; reverse where-used queries; locale projection; CSV/materialized-view meaning; and source/writeback authority boundaries before implementation hardens around a CMS shape.",
+          "purpose": "Preserve stable element, text-binding, source-string and locale-variant identities; derived candidate/semantic grouping; reverse where-used queries; contextual Localization Inspector placement; Change Set reconciliation semantics; locale projection; CSV/materialized-view meaning; and source/writeback authority boundaries before implementation hardens around a CMS shape.",
           "workClass": "TASK",
           "state": "COMPLETED",
           "workDisposition": "ACTIVE",
@@ -29470,13 +29531,13 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T07:20:00.000Z",
-          "updatedAt": "2026-11-21T07:20:01.000Z",
+          "updatedAt": "2026-11-21T07:56:01.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vex.localization-architecture.vexboard-workspace",
-          "label": "Project localization through one VexBoard relational workspace",
-          "purpose": "After the inventory/grouping model is earned, expose Element, String, Value, Group, Locale and Coverage pivots plus a locale projection axis through VexBoard without creating per-language Screen Lens pages or taking Product localization source ownership.",
+          "label": "Project localization through the global VexBoard Localization Workspace",
+          "purpose": "After contextual inspection, Change Set reconciliation and grouping behavior are earned, expose a dedicated cross-Product VexBoard Localization Workspace with Element, String, Value, Group, Locale, Coverage and Change Set pivots without creating per-language Screen Lens pages or taking Product localization source ownership.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -29484,6 +29545,8 @@
           "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
+            "work.vex.localization-architecture.localization-inspector",
+            "work.vex.localization-architecture.change-set-reconciliation",
             "work.vex.localization-architecture.duplicate-convergence"
           ],
           "repositoryRefs": [
@@ -29499,7 +29562,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T07:20:00.000Z",
-          "updatedAt": "2026-11-21T07:20:04.000Z",
+          "updatedAt": "2026-11-21T07:56:05.000Z",
           "transitionHistory": []
         }
       ],
@@ -29513,7 +29576,9 @@
           "laneRef": "lane.work.planned",
           "label": "Planned",
           "workRefs": [
+            "work.vex.localization-architecture.change-set-reconciliation",
             "work.vex.localization-architecture.duplicate-convergence",
+            "work.vex.localization-architecture.localization-inspector",
             "work.vex.localization-architecture.vexboard-workspace"
           ]
         },
@@ -29565,10 +29630,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 5,
-        "openWorkItemCount": 4,
+        "workItemCount": 7,
+        "openWorkItemCount": 6,
         "outcomeCount": 1,
-        "taskCount": 4,
+        "taskCount": 6,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
@@ -29586,7 +29651,9 @@
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vex.localization-architecture.android-inventory",
+            "work.vex.localization-architecture.change-set-reconciliation",
             "work.vex.localization-architecture.duplicate-convergence",
+            "work.vex.localization-architecture.localization-inspector",
             "work.vex.localization-architecture.relational-model",
             "work.vex.localization-architecture.vexboard-workspace"
           ],
@@ -29617,7 +29684,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T07:20:00.000Z",
-          "updatedAt": "2026-11-21T07:20:04.000Z",
+          "updatedAt": "2026-11-21T07:56:05.000Z",
           "transitionHistory": []
         }
       ]
