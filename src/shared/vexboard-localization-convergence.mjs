@@ -390,13 +390,6 @@ export function applyLocalizationConvergenceReviews(analysisInput, reviewInputs 
   if (new Set(bindingKeys).size !== bindingKeys.length) {
     fail('one review decision per exact candidate binding is allowed');
   }
-  const semanticGroupRefs = reviews
-    .filter((review) => review.decision === 'ACCEPT_SHARED')
-    .map((review) => review.semanticGroupRefOrNull);
-  if (new Set(semanticGroupRefs).size !== semanticGroupRefs.length) {
-    fail('semanticGroupRefOrNull must be unique across accepted current review decisions');
-  }
-
   const reviewByBinding = new Map(reviews.map((review) => [candidateBindingKey(review.candidateBinding), review]));
   const matchedReviewRefs = new Set();
   const candidateGroups = analysisInput.candidateGroups.map((candidate) => {
@@ -417,6 +410,14 @@ export function applyLocalizationConvergenceReviews(analysisInput, reviewInputs 
       }) : null,
     });
   });
+
+  const currentAcceptedReviews = candidateGroups
+    .map((candidate) => candidate.review)
+    .filter((review) => review?.decision === 'ACCEPT_SHARED');
+  const currentSemanticGroupRefs = currentAcceptedReviews.map((review) => review.semanticGroupRefOrNull);
+  if (new Set(currentSemanticGroupRefs).size !== currentSemanticGroupRefs.length) {
+    fail('semanticGroupRefOrNull must be unique across current accepted candidate bindings');
+  }
 
   const staleReviews = reviews
     .filter((review) => !matchedReviewRefs.has(review.reviewRef))
