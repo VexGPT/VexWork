@@ -44,14 +44,15 @@ const CATALOG_URL='../projects/vexboard/lens/catalog.json';
 const INVENTORY_DIR='../projects/component-library-architecture/inventory/';
 const ARCHITECTURE_URL='../projects/component-library-architecture/component-architecture-catalog.json';
 const params=new URLSearchParams(location.search);
-const state={catalog:null,subject:null,inventory:null,inventories:new Map(),sourceSubject:params.get('source')??'vexlife-android',architecture:null,view:params.get('view')==='architecture'?'ARCHITECTURE':'SOURCE',query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null,architectureClass:params.get('class')??'',selectedArchitecture:params.get('architecture')??null};
+const requestedView=params.get('view');
+const state={catalog:null,subject:null,inventory:null,inventories:new Map(),sourceSubject:params.get('source')??'vexlife-android',architecture:null,view:requestedView==='architecture'?'ARCHITECTURE':requestedView==='realizations'?'REALIZATIONS':'SOURCE',query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null,architectureClass:params.get('class')??'',selectedArchitecture:params.get('architecture')??null,realizationPlatform:params.get('platform')??'',selectedRealization:params.get('realization')??null};
 
 function h(tag,attrs={},...children){const node=document.createElement(tag);for(const [key,value] of Object.entries(attrs||{})){if(value===null||value===undefined||value===false)continue;if(key==='class')node.className=value;else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);else if(key==='style')node.style.cssText=value;else node.setAttribute(key,value===true?'':String(value));}for(const child of children.flat(Infinity)){if(child===null||child===undefined||child===false)continue;node.append(child instanceof Node?child:document.createTextNode(String(child)));}return node;}
 async function fetchJson(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(url+' HTTP '+response.status);return response.json();}
 const short=(sha)=>String(sha??'').slice(0,7);
 const count=(value)=>Number(value??0).toLocaleString();
 const human=(value)=>String(value??'').toLowerCase().split(/[_-]/u).map((word)=>word?word[0].toUpperCase()+word.slice(1):word).join(' ');
-function syncUrl(){const next=new URL(location.href);next.search='';if(state.view==='ARCHITECTURE')next.searchParams.set('view','architecture');if(state.query)next.searchParams.set('q',state.query);if(state.view==='SOURCE'){if(state.sourceSubject!=='vexlife-android')next.searchParams.set('source',state.sourceSubject);if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);}else{if(state.architectureClass)next.searchParams.set('class',state.architectureClass);if(state.selectedArchitecture)next.searchParams.set('architecture',state.selectedArchitecture);}history.replaceState(null,'',next);}
+function syncUrl(){const next=new URL(location.href);next.search='';if(state.view==='ARCHITECTURE')next.searchParams.set('view','architecture');if(state.view==='REALIZATIONS')next.searchParams.set('view','realizations');if(state.query)next.searchParams.set('q',state.query);if(state.view==='SOURCE'){if(state.sourceSubject!=='vexlife-android')next.searchParams.set('source',state.sourceSubject);if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);}else if(state.view==='ARCHITECTURE'){if(state.architectureClass)next.searchParams.set('class',state.architectureClass);if(state.selectedArchitecture)next.searchParams.set('architecture',state.selectedArchitecture);}else{if(state.realizationPlatform)next.searchParams.set('platform',state.realizationPlatform);if(state.selectedRealization)next.searchParams.set('realization',state.selectedRealization);}history.replaceState(null,'',next);}
 function occurrenceRows(component){return Components.occurrencesForComponent(state.inventory,component.componentRef).filter((row)=>!state.surface||row.surfaceRef===state.surface);}
 function visibleFamilies(){
  let rows=state.query?Components.searchComponentInventory(state.inventory,state.query,{limit:500}):state.inventory.components;
@@ -100,10 +101,12 @@ function detail(component){
 }
 function viewTabs(){
  const source=h('button',{type:'button',class:'view-tab'+(state.view==='SOURCE'?' on':'')},'Source families');
- const architecture=h('button',{type:'button',class:'view-tab'+(state.view==='ARCHITECTURE'?' on':'')},'Architecture candidates');
+ const architecture=h('button',{type:'button',class:'view-tab'+(state.view==='ARCHITECTURE'?' on':'')},'Architecture');
+ const realizations=h('button',{type:'button',class:'view-tab'+(state.view==='REALIZATIONS'?' on':'')},'Realizations');
  source.onclick=()=>{state.view='SOURCE';state.query='';syncUrl();render();};
  architecture.onclick=()=>{state.view='ARCHITECTURE';state.query='';syncUrl();render();};
- return h('div',{class:'view-tabs','aria-label':'Component Library view'},source,architecture);
+ realizations.onclick=()=>{state.view='REALIZATIONS';state.query='';syncUrl();render();};
+ return h('div',{class:'view-tabs','aria-label':'Component Library view'},source,architecture,realizations);
 }
 function visibleArchitecture(){
  let rows=state.query?Architecture.searchComponentArchitecture(state.architecture,state.query,{limit:500}):state.architecture.candidates;
@@ -186,6 +189,92 @@ function architectureDetail(candidate){
   candidate.note?h('div',{class:'boundary',style:'margin:18px 22px'},h('b',{},'Working note: '),candidate.note):null
  );
 }
+function candidateLabel(candidateRef){
+ return state.architecture.candidates.find((row)=>row.candidateRef===candidateRef)?.label??candidateRef;
+}
+function visibleRealizations(){
+ let rows=Architecture.targetRealizations(state.architecture);
+ if(state.query){
+  const needle=state.query.toLowerCase();
+  rows=rows.filter((row)=>[
+   row.realizationRef,row.candidateRef,candidateLabel(row.candidateRef),row.platformRef,row.framework,row.pressureState,
+   row.repositoryRef,row.commit,row.path,
+   ...row.relationships.flatMap((relation)=>[relation.relationRef,relation.disposition,relation.source,relation.target]),
+   ...row.proofs.flatMap((proof)=>[proof.proofRef,proof.state,proof.note]),
+   row.note
+  ].filter(Boolean).join('\n').toLowerCase().includes(needle));
+ }
+ if(state.realizationPlatform)rows=rows.filter((row)=>row.platformRef===state.realizationPlatform);
+ return rows;
+}
+function realizationCard(realization){
+ const mapped=realization.relationCounts.MAPPED??0;
+ const held=(realization.relationCounts.HELD??0)+(realization.relationCounts.UNSUPPORTED??0);
+ const passed=realization.proofCounts.PASS??0;
+ const owed=(realization.proofCounts.OWED??0)+(realization.proofCounts.HELD??0);
+ const button=h('button',{type:'button',class:'family'+(state.selectedRealization===realization.realizationRef?' on':'')},
+  h('div',{class:'top'},h('h2',{},candidateLabel(realization.candidateRef)),h('span',{class:'pill'},realization.pressureState.replaceAll('_',' '))),
+  h('div',{class:'counts'},h('span',{},h('b',{},realization.platformRef),' target'),h('span',{},h('b',{},mapped),' mapped'),h('span',{},h('b',{},held),' held/unsupported'),h('span',{},h('b',{},passed),' proof pass'),owed?h('span',{},h('b',{},owed),' proof debt'):null),
+  h('div',{class:'sub'},realization.framework+' · '+realization.realizationRef));
+ button.onclick=()=>{state.selectedRealization=realization.realizationRef;syncUrl();render();requestAnimationFrame(()=>document.querySelector('.detail')?.scrollIntoView({block:'nearest'}));};
+ return button;
+}
+function realizationDetail(realization){
+ return h('section',{class:'detail'},
+  h('div',{class:'detail-head'},
+   h('div',{},h('h2',{},candidateLabel(realization.candidateRef)),h('p',{},'Derived A4 realization evidence for one accepted portable relationship. This preserves the exact target-pressure state; it does not promote reference compatibility or source formation into native acceptance.'),
+    h('div',{class:'facts'},h('span',{class:'fact'},realization.platformRef),h('span',{class:'fact'},realization.framework),h('span',{class:'fact'},human(realization.pressureState)),h('span',{class:'fact'},'source '+short(realization.commit)))),
+   h('code',{class:'mono'},realization.realizationRef)),
+  h('div',{style:'padding:16px 22px'},h('b',{},'Exact target source'),h('div',{class:'source',style:'margin-top:8px'},h('span',{class:'source-chip'},realization.repositoryRef),h('span',{class:'source-chip'},h('code',{},realization.path)),h('span',{class:'source-chip'},h('code',{},realization.commit)))),
+  h('div',{class:'table-wrap'},h('table',{},
+   h('thead',{},h('tr',{},['Relationship','Disposition','Source meaning','Target realization'].map((label)=>h('th',{},label)))),
+   h('tbody',{},realization.relationships.map((relation)=>h('tr',{},
+    h('td',{class:'value'},h('code',{},relation.relationRef)),
+    h('td',{},h('span',{class:'pill'},relation.disposition.replaceAll('_',' '))),
+    h('td',{class:'value'},relation.source),
+    h('td',{class:'value'},relation.target)
+   )))
+  )),
+  h('div',{class:'table-wrap'},h('table',{},
+   h('thead',{},h('tr',{},['Proof','State','What this proves / still owes'].map((label)=>h('th',{},label)))),
+   h('tbody',{},realization.proofs.map((proof)=>h('tr',{},
+    h('td',{class:'value'},h('code',{},proof.proofRef)),
+    h('td',{},h('span',{class:'pill'},proof.state.replaceAll('_',' '))),
+    h('td',{class:'value'},proof.note)
+   )))
+  )),
+  realization.note?h('div',{class:'boundary',style:'margin:18px 22px'},h('b',{},'Target note: '),realization.note):null
+ );
+}
+function renderRealizations({focusSearch=false}={}){
+ const all=Architecture.targetRealizations(state.architecture);
+ const rows=visibleRealizations();
+ const byRef=new Map(all.map((row)=>[row.realizationRef,row]));
+ if(state.selectedRealization&&!byRef.has(state.selectedRealization))state.selectedRealization=null;
+ const selected=byRef.get(state.selectedRealization)??rows[0]??null;
+ if(selected&&state.selectedRealization!==selected.realizationRef)state.selectedRealization=selected.realizationRef;
+ const platforms=[...new Set(all.map((row)=>row.platformRef))].sort();
+ const search=h('input',{type:'search',value:state.query,placeholder:'Find target, framework, relationship, source coordinate, or proof','aria-label':'Search target realizations'});
+ search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
+ const platform=h('select',{'aria-label':'Target platform'},h('option',{value:'',selected:!state.realizationPlatform},'All target platforms'),platforms.map((value)=>h('option',{value,selected:state.realizationPlatform===value},value)));
+ platform.onchange=()=>{state.realizationPlatform=platform.value;state.selectedRealization=null;syncUrl();render();};
+ const status=h('select',{'aria-label':'Realization authority'},h('option',{value:''},'Derived evidence · not native acceptance'));
+ status.disabled=true;
+ const acceptedCount=state.architecture.candidates.filter((row)=>row.state==='ACCEPTED_PORTABLE').length;
+ const mapped=all.reduce((sum,row)=>sum+(row.relationCounts.MAPPED??0),0);
+ const held=all.reduce((sum,row)=>sum+(row.relationCounts.HELD??0)+(row.relationCounts.UNSUPPORTED??0),0);
+ const passed=all.reduce((sum,row)=>sum+(row.proofCounts.PASS??0),0);
+ const owed=all.reduce((sum,row)=>sum+(row.proofCounts.OWED??0)+(row.proofCounts.HELD??0),0);
+ app.replaceChildren(
+  h('section',{},
+   h('div',{class:'intro'},h('div',{},h('h1',{},'Target Realizations'),h('p',{},'How accepted portable relationships currently map into concrete target frameworks. This view is derived from the existing target-pressure evidence; it does not create another registry or turn reference/source proof into native acceptance.')),h('div',{class:'truth'},'derived realization evidence · ',h('strong',{},count(all.length)))),
+   h('div',{class:'boundary'},h('b',{},'A4 boundary: '),'Portable relationship ≠ target acceptance. Each record keeps mapped, held, unsupported and platform-specific relationships plus exact proof debt. Native compile/lived proof remains owned by the target claim.'),
+   h('div',{class:'summary'},metric(acceptedCount,'accepted portable'),metric(all.length,'realization evidence'),metric(platforms.length,'target platforms'),metric(mapped,'mapped relations'),metric(held,'held / unsupported'),metric(owed,'owed / held proofs')),
+   viewTabs()),
+  h('section',{class:'workspace'},h('div',{class:'controls'},search,platform,status),h('p',{class:'match'},count(rows.length)+' of '+count(all.length)+' realization evidence records in this view · '+count(passed)+' current PASS proofs overall.'),h('div',{class:'grid'},rows.map(realizationCard)),selected?realizationDetail(selected):h('div',{class:'empty'},'No target realizations match this view.')),
+  h('footer',{},'Realizations are derived from accepted A3 relationships plus their existing target-pressure records. They remain evidence/proof maps, not target semantic authority and not a claim that every native implementation is accepted.'));
+ if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
+}
 function renderSource({focusSearch=false}={}){
  const inventory=state.inventory;
  const families=visibleFamilies();
@@ -258,7 +347,7 @@ function renderArchitecture({focusSearch=false}={}){
   h('footer',{},acceptedPortable.length+' portable relationship'+(acceptedPortable.length===1?' is':'s are')+' accepted at A3. Target-pressure results remain separate evidence: native/framework proof and held target mechanics do not become portable acceptance merely because a relationship is accepted.'));
  if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
 }
-function render(options={}){return state.view==='ARCHITECTURE'?renderArchitecture(options):renderSource(options);}
+function render(options={}){if(state.view==='REALIZATIONS')return renderRealizations(options);return state.view==='ARCHITECTURE'?renderArchitecture(options):renderSource(options);}
 function metric(value,label){return h('div',{class:'metric'},h('b',{},count(value)),h('span',{},label));}
 async function boot(){
  state.catalog=Catalog.normalizeLensCatalog(await fetchJson(CATALOG_URL));
