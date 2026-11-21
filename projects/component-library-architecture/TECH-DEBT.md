@@ -342,3 +342,43 @@ ANDROID DIALOG / BOTTOM SHEET DISTINCTION
 
 No current browser or Android modal implementation is changed by this note.
 
+
+
+## TD-11 — VexStream Screen Lens is source-owned but not self-pinned to its repository commit
+
+Observed current VexStream Music main:
+
+```text
+repository head
+  a70c5292cedfec32356cb9fc34aa637808047e30
+
+v2/projection/vexboard-screen-lens.json
+  sourceSnapshot.repositoryRef = repo.vexstream-music
+  sourceSnapshot.roots.v2      = v2/
+  sourceSnapshot.commit        = null
+  sourceSnapshot.observedAt    = null
+```
+
+The Lens is still useful source-owned projection evidence, but it does not independently prove which
+repository revision produced its checked-in bytes.
+
+For the current Component Library census, VexWork binds the observation to the exact GitHub
+repository head used during inspection. That external binding is evidence, not a repair of VexStream.
+
+Why it matters later:
+
+- a cross-Product inventory should be able to reject stale source projections automatically;
+- target realization parity needs exact source/target revision coordinates;
+- a future VexStream regeneration can make the Lens self-current without changing UI/Product
+  semantics.
+
+Do not mutate VexStream from this Component Library lane merely to make the census prettier.
+
+```text
+SOURCE-OWNED LENS
+!= SELF-PINNED CURRENTNESS
+
+EXTERNAL EXACT-HEAD BINDING
+!= LENS REPAIR
+```
+
