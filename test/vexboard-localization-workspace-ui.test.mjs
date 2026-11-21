@@ -22,6 +22,9 @@ test('global workspace consumes the same normalized inventory, convergence and C
   assert.match(workspace, /inventory\.sourceSnapshot\.commit !== build\.commit/);
   assert.match(workspace, /Changes\.loadLocalizationChangeSetCollection\(localStorage\)/);
   assert.match(workspace, /Workspace\.projectLocalizationWorkspace/);
+  assert.match(workspace, /workLocaleRefs: state\.localeRef \? \[state\.localeRef\] : \[\]/);
+  assert.match(workspace, /Work target · not observed in Product source/);
+  assert.match(workspace, /row\.requestedChangeCount/);
   assert.doesNotMatch(workspace, /api\.github\.com|raw\.githubusercontent\.com/);
 });
 
