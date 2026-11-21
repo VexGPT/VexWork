@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.issue.vexwork.419",
+  "pullRequest": "github.pull.vexwork.418",
+  "candidateBase": "5adc12ac7983773a82955c4ef6d59fc386add75f",
+  "candidateHead": "c2d7edcc8b54baf2f41e3e90b6bc369937b83824",
+  "candidateTree": "fc4e733086caa40219b3b84b6985d9731503a75d",
+  "candidateBranch": "VXG-112126-localization-shared-frame-prod-preview-a001",
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexwork-pr418-a2-source-owner-a001",
+  "carrierPrefix": ".relay/vexwork-pr418/a003",
+  "predecessor": {
+    "attempt": "A002",
+    "disposition": "SAFE_FAILURE_PRE_FORMATION",
+    "error": "ANONYMOUS_PRIVATE_REPOSITORY_BRANCH_PROBE",
+    "taskFormationReached": false,
+    "candidateProofReached": false
+  },
+  "corrections": [
+    "bootstrap candidate-head preflight uses authenticated gh api",
+    "inner repository acquisition uses cloneTransport=GITHUB_GH",
+    "CHECK_AUTH granted for compiler-inserted AUTH GITHUB_GH"
+  ],
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "ca3590466f51047d059e359bf7d622bbb58ead06648838e765f9956863a53589",
+      "bytes": 2166
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "2ec78b6a4dcda3fa9de0dbbb41f0e2f485b420917574d8bc4b554a2648927c37",
+      "bytes": 16848
+    }
+  }
+}

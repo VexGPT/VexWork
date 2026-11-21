@@ -2,7 +2,7 @@
 
 [VXG RealForever]
 
-Current executable attempt: **A002**.
+Current executable attempt: **A003**.
 
 ```text
 candidate head c2d7edcc8b54baf2f41e3e90b6bc369937b83824
@@ -12,28 +12,26 @@ product PR      #418
 companion PR    #420
 ```
 
-A001 is preserved as a pre-formation safe failure: `MANIFEST_CURRENT_LIFECYCLE_STATE`.
+Historical pre-formation attempts:
+- A001: invalid lifecycle enum; task formation not reached.
+- A002: anonymous private-repository branch probe; task formation not reached.
 
-A002 correction:
-
+A003 corrections:
 ```text
-continuationPlan.currentLifecycleState
-SOURCE_OWNER_PROOF_PENDING -> SOURCE_READY
+candidate preflight  gh api (authenticated)
+repository clone     GITHUB_GH
+authority            + CHECK_AUTH
+lifecycle            SOURCE_READY
 ```
 
-A002 bootstrap:
-
+A003 bootstrap:
 ```text
-VEXWORK-PR418-A2-SOURCE-OWNER-BOOTSTRAP-A002--sha256-25c05dd8ef9c9bcdd3c468e862d960378111a95f71b98b72162ea7f3f3be31b9.zip
-sha256 25c05dd8ef9c9bcdd3c468e862d960378111a95f71b98b72162ea7f3f3be31b9
-bytes 20925
-gitBlob 2f68c712059fb38bcd691979ef95964e8001346b
+VEXWORK-PR418-A2-SOURCE-OWNER-BOOTSTRAP-A003--sha256-e3ead12883b14a7bb6a4a5c860971ed2472f71dc3a86647a608033dfddd3ec12.zip
+sha256 e3ead12883b14a7bb6a4a5c860971ed2472f71dc3a86647a608033dfddd3ec12
+bytes 21032
 ```
 
-Canonical RETURN custody on execution:
-
+Canonical RETURN custody:
 ```text
-.relay/vexwork-pr418/a002/return/
+.relay/vexwork-pr418/a003/return/
 ```
-
-On PASS: consume exact RETURN -> fresh Independent Assurance.
