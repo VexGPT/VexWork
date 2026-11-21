@@ -138,6 +138,39 @@ It suggests convergence; it does not create it.
 
 ## 5. Portable Component Blueprint
 
+### Ownership correction — portable does not mean globally semantic
+
+A3 pressure sharpens the term **portable**.
+
+A recurring component relationship may be portable across Products/targets without becoming a new
+global semantic owner for those Products.
+
+```text
+Product meaning
+-> remains Product-owned
+
+portable relationship contract
+-> preserves the minimum relationship that must survive representation change
+
+reusable construction/proof machinery
+-> may be shared when the same executable invariant is genuinely repeated
+```
+
+This follows the existing cross-repository architecture law:
+
+```text
+SAME FIRST-PRINCIPLE RELATIONSHIP
+!= SAME DOMAIN
+!= SAME OWNER
+!= SAME IMPLEMENTATION
+```
+
+So a future `LocalSelection` or `StableRepeatedItems` contract must carry source-owned refs and
+boundaries; it must not absorb the feature/domain state merely because several Products can use the
+same construction relationship.
+
+
+
 An accepted portable component Blueprint should answer only what must survive a target change.
 
 Conceptual shape:
