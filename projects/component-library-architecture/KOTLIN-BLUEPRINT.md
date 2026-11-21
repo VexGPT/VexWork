@@ -315,7 +315,7 @@ source nesting
 -> target Screen Lens containment
 ```
 
-The target adapter is not allowed to infer a different ownership tree merely because its UI toolkit prefers a different API shape.
+The **source ownership/containment relationship** must remain stable, but the target manifestation tree may legitimately differ when the platform has a stronger native composition. The adapter must make that transformation explicit: every source node keeps its identity, and the target manifest records the target role / realization rather than making a future reader reverse-engineer native syntax.
 
 ## Portable IR
 
@@ -572,33 +572,125 @@ component(
 
 The compiler can then emit the normalized contract used by platform adapters.
 
-## The first useful proof
+## The first useful proof — current VexLife-Prod Quick Actions
 
-Do not start by generating all of VexLife for iOS.
+The first target pressure is now formed in **VexLife-Prod PR #506** rather than importing the predecessor
+Action Vessel directly into current Product source.
 
-Use one component whose relationships are richer than a plain button.
-
-Good first candidates:
-
-1. **Action Vessel** — already canonical in VexLife and explicitly platform-adaptive.
-2. **Stable Repeater** — tests identity and dynamic runtime rows.
-3. **Swappable Region** — tests local selection without navigation depth.
-4. **Context Dock** — tests multi-axis presentation while preserving feature ownership.
-
-A successful first proof should establish:
+Why:
 
 ```text
-canonical component identity
--> Kotlin typed Blueprint
--> deterministic portable IR
--> Android adapter mapping
--> iOS SwiftUI source generation
--> Swift source parses/compiles on qualified target
--> generated target exports Screen Lens
--> Screen Lens preserves required relationships
+current Product authority
+> attractive predecessor component
 ```
 
-It does not need a complete iOS application.
+Current source already owns:
+
+```text
+VexLifeWorkspaceBlueprint.QuickActions
+├── VexSummon
+├── VisionQuickAccess
+├── Speech
+├── Language
+├── Theme
+├── ReleaseAlerts
+├── Support
+└── QuickActionsTrigger
+```
+
+and `VexLifeWebP1` already binds those exact identities to typed current relationships.
+
+PR #506 pressures those relationships through a bounded `reference:swiftui` adapter:
+
+```text
+current Kotlin Blueprint handles
++ current typed bindings
+        ↓
+SwiftUI reference generator
+        ↓
+VexQuickActionsReferenceView
++ vexlife.swiftui-reference-manifest/v1
+```
+
+The first useful discovery is that **portable relationship continuity does not require literal target
+tree copying**:
+
+```text
+SOURCE
+QuickActions collection
+├── action children
+└── trigger
+
+SWIFTUI
+Menu
+├── Menu actions
+└── Menu label = trigger
+```
+
+The manifest therefore records both sides:
+
+```text
+source ref / parent / binding
++
+target framework / component / role / binding realization
+```
+
+Current experimental target roles:
+
+```text
+QuickActions root
+-> SwiftUI Menu
+
+QuickActionsTrigger
+-> MENU_LABEL
+-> NATIVE_MENU_PRESENTATION
+
+action children
+-> MENU_ACTION
+-> HOST_DISPATCH
+```
+
+Bounded compatibility proof on the exact candidate generator source currently shows:
+
+```text
+Kotlin generator compilation              PASS (local 1.9 compatibility harness)
+deterministic generation                  PASS
+generated JSON parse                      PASS
+Swift 6.2.1 parse                         PASS
+minimal SwiftUI API-shape typecheck       PASS
+Apple SwiftUI/Xcode typecheck             OWED
+repository Kotlin 2.4.20 proof            OWED
+```
+
+This does **not** make Quick Actions an accepted portable component. The catalog carries a distinct
+`candidate.component.adaptive-action-group` in `SOURCE_INFLUENCED` state.
+
+The predecessor **Action Vessel** remains a valuable later convergence target because it already owns
+explicit trigger/menu/status/resize slots and platform bindings. Do not collapse it into current
+Quick Actions merely because both can manifest as an action group.
+
+After the Quick Actions adapter proves the construction loop, the next stronger pressures remain:
+
+1. **Stable Repeater** — dynamic identity + visibility;
+2. **Swappable Region** — local selection without navigation depth;
+3. **Context Dock** — multi-axis native presentation while feature meaning remains external;
+4. **Action Vessel convergence** — determine whether current Quick Actions and the predecessor
+   platform-adaptive vessel share portable meaning or merely family resemblance.
+
+A successful portable threshold eventually needs:
+
+```text
+current/canonical component meaning
+-> Kotlin typed relationship source
+-> deterministic portable projection
+-> more than one target adapter
+-> target-native source
+-> target compile/proof
+-> target Screen Lens
+-> relationship parity / explicit divergence
+```
+
+It does not require a complete iOS application.
 
 ## Non-collapse rules
 
