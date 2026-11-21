@@ -17,6 +17,13 @@
     "localization.noMatches": "No source strings match this search.",
     "localization.noSelection": "Search a source string, or select a Product element to see its text binding.",
     "localization.appShell": "App shell",
-    "localization.openLocation": "Open location"
+    "localization.openLocation": "Open location",
+    "localization.previewLocale": "Preview locale",
+    "localization.previewLocaleHelp": "Inspection only. This does not change Product language or claim the Product supports this locale.",
+    "localization.observedLocales": "Observed in source",
+    "localization.localeSource": "Source value",
+    "localization.localeVariant": "Observed locale value",
+    "localization.localeMissing": "Missing locale value",
+    "localization.localeMissingDetail": "No value for this locale is observed in Product source. VexBoard leaves the Product projection unchanged rather than inventing fallback behavior."
   }
 }

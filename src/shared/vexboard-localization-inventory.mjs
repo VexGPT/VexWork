@@ -13,6 +13,7 @@
 export const LOCALIZATION_INVENTORY_SCHEMA = 'vexboard.localization-inventory/v1';
 
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
+const LOCALE_REF = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/u;
 
 function fail(message) {
   throw new TypeError(`localization inventory: ${message}`);
@@ -36,6 +37,20 @@ function nullableRef(value, label) {
 
 function uniqueSorted(values) {
   return [...new Set(values.filter((value) => value !== null && value !== undefined))].sort();
+}
+
+export function normalizeLocalizationLocaleRef(value) {
+  const raw = text(value, 'localeRef');
+  if (!LOCALE_REF.test(raw)) fail('localeRef must be a compact BCP-47 language tag');
+  const [language, ...rest] = raw.split('-');
+  return [
+    language.toLowerCase(),
+    ...rest.map((part) => {
+      if (/^[A-Za-z]{4}$/.test(part)) return part[0].toUpperCase() + part.slice(1).toLowerCase();
+      if (/^(?:[A-Za-z]{2}|\d{3})$/.test(part)) return part.toUpperCase();
+      return part.toLowerCase();
+    }),
+  ].join('-');
 }
 
 function placeholderType(type) {
@@ -71,17 +86,27 @@ export function localizationFormatSignature(value) {
   });
 }
 
-function normalizeSourceString(input) {
+function normalizeSourceString(input, sourceLocale) {
   const sourceStringRef = ref(input.sourceStringRef, 'sourceString.sourceStringRef');
   const sourceKey = text(input.sourceKey, 'sourceString.sourceKey');
   const sourceValue = typeof input.sourceValue === 'string'
     ? input.sourceValue
     : fail('sourceString.sourceValue must be a string');
+  const variants = Object.entries(input.localeVariants ?? {})
+    .map(([localeRef, value]) => {
+      const locale = normalizeLocalizationLocaleRef(localeRef);
+      if (locale === sourceLocale) fail(`${sourceStringRef} localeVariants must not duplicate sourceLocale ${sourceLocale}`);
+      if (typeof value !== 'string') fail(`${sourceStringRef} locale variant ${locale} must be a string`);
+      return [locale, value];
+    })
+    .sort(([left], [right]) => left.localeCompare(right));
+  if (new Set(variants.map(([locale]) => locale)).size !== variants.length) fail(`${sourceStringRef} localeVariants must be unique after normalization`);
   return {
     sourceStringRef,
     sourceKey,
     sourceValue,
     sourcePath: input.sourcePath ? text(input.sourcePath, 'sourceString.sourcePath') : null,
+    ...(variants.length ? { localeVariants: Object.freeze(Object.fromEntries(variants)) } : {}),
   };
 }
 
@@ -119,7 +144,7 @@ export function createLocalizationInventory({
 }) {
   ref(inventoryRef, 'inventoryRef');
   ref(subjectRef, 'subjectRef');
-  text(sourceLocale, 'sourceLocale');
+  const normalizedSourceLocale = normalizeLocalizationLocaleRef(sourceLocale);
   if (!sourceSnapshot || typeof sourceSnapshot !== 'object') fail('sourceSnapshot required');
   ref(sourceSnapshot.repositoryRef, 'sourceSnapshot.repositoryRef');
   text(sourceSnapshot.commit, 'sourceSnapshot.commit');
@@ -129,7 +154,7 @@ export function createLocalizationInventory({
   ref(producer.ref, 'producer.ref');
   text(producer.version, 'producer.version');
 
-  const sourceRows = sourceStrings.map(normalizeSourceString)
+  const sourceRows = sourceStrings.map((row) => normalizeSourceString(row, normalizedSourceLocale))
     .sort((a, b) => a.sourceStringRef.localeCompare(b.sourceStringRef));
   if (new Set(sourceRows.map((row) => row.sourceStringRef)).size !== sourceRows.length) {
     fail('sourceStringRef must be unique');
@@ -180,18 +205,37 @@ export function createLocalizationInventory({
         screenRefs: Object.freeze(uniqueSorted(row.screenRefs)),
         surfaceRefs: Object.freeze(uniqueSorted(row.surfaceRefs)),
         bindingRoles: Object.freeze(uniqueSorted(row.bindingRoles)),
+        ...(row.localeVariants ? { localeVariants: row.localeVariants } : {}),
       });
     })
     .sort((a, b) => a.sourceStringRef.localeCompare(b.sourceStringRef));
 
   const mapped = strings.filter((row) => row.mapped);
+  const variantLocales = uniqueSorted(sourceRows.flatMap((row) => Object.keys(row.localeVariants ?? {})));
+  const locales = [
+    Object.freeze({
+      localeRef: normalizedSourceLocale,
+      role: 'SOURCE',
+      completeness: 'OBSERVED_SOURCE',
+    }),
+    ...variantLocales.map((localeRef) => {
+      const observedStringCount = strings.filter((row) => Object.hasOwn(row.localeVariants ?? {}, localeRef)).length;
+      return Object.freeze({
+        localeRef,
+        role: 'VARIANT',
+        completeness: observedStringCount === strings.length ? 'OBSERVED_COMPLETE' : 'OBSERVED_PARTIAL',
+        observedStringCount,
+        missingStringCount: strings.length - observedStringCount,
+      });
+    }),
+  ];
 
   return Object.freeze({
     schemaVersion: LOCALIZATION_INVENTORY_SCHEMA,
     inventoryRef,
     subjectRef,
     buildRef,
-    sourceLocale,
+    sourceLocale: normalizedSourceLocale,
     sourceSnapshot: Object.freeze({
       repositoryRef: sourceSnapshot.repositoryRef,
       repositoryUrl: sourceSnapshot.repositoryUrl ?? null,
@@ -199,13 +243,7 @@ export function createLocalizationInventory({
       observedAt: sourceSnapshot.observedAt ?? null,
     }),
     producer: Object.freeze({ ref: producer.ref, version: producer.version }),
-    locales: Object.freeze([
-      Object.freeze({
-        localeRef: sourceLocale,
-        role: 'SOURCE',
-        completeness: 'OBSERVED_SOURCE',
-      }),
-    ]),
+    locales: Object.freeze(locales),
     occurrences: Object.freeze(normalized),
     strings: Object.freeze(strings),
     summary: Object.freeze({
@@ -256,6 +294,7 @@ export function normalizeLocalizationInventory(input) {
       sourceKey: row.sourceKey,
       sourceValue: row.sourceValue,
       sourcePath: row.sourcePath,
+      localeVariants: row.localeVariants ?? {},
     })),
     occurrences: input.occurrences ?? [],
   });
@@ -295,6 +334,43 @@ export function localizationOccurrenceTarget(inventory, occurrenceRef) {
   return Object.freeze({
     screenRef: occurrence.screenRef,
     elementRef: occurrence.elementRef,
+  });
+}
+
+export function observedLocalizationLocales(inventory) {
+  if (!inventory || inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) fail('locale query requires a Localization Inventory');
+  return inventory.locales.map((row) => row.localeRef);
+}
+
+export function localizationValueForLocale(inventory, sourceStringRef, localeRef) {
+  if (!inventory || inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) fail('locale value requires a Localization Inventory');
+  const row = inventory.strings.find((candidate) => candidate.sourceStringRef === sourceStringRef);
+  if (!row) fail(`unknown source string ${sourceStringRef}`);
+  const locale = normalizeLocalizationLocaleRef(localeRef);
+  if (locale === inventory.sourceLocale) {
+    return Object.freeze({
+      sourceStringRef,
+      localeRef: locale,
+      state: 'SOURCE',
+      value: row.sourceValue,
+      sourceValue: row.sourceValue,
+    });
+  }
+  if (Object.hasOwn(row.localeVariants ?? {}, locale)) {
+    return Object.freeze({
+      sourceStringRef,
+      localeRef: locale,
+      state: 'VARIANT',
+      value: row.localeVariants[locale],
+      sourceValue: row.sourceValue,
+    });
+  }
+  return Object.freeze({
+    sourceStringRef,
+    localeRef: locale,
+    state: 'MISSING',
+    value: null,
+    sourceValue: row.sourceValue,
   });
 }
 
