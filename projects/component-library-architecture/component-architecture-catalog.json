@@ -737,7 +737,7 @@
       "candidateRef": "candidate.component.stable-repeater",
       "label": "Stable repeated-item collection",
       "class": "COLLECTION",
-      "state": "PORTABLE_CANDIDATE",
+      "state": "ACCEPTED_PORTABLE",
       "question": "How can runtime-data rows retain stable semantic identity through insert/reorder/visibility changes without making visual index canonical?",
       "sourceFamilyRefs": [],
       "portableRelationships": [
@@ -834,7 +834,7 @@
       "note": "Cross-platform pressure is now real: Android has VexStableLazyColumn; current VexLife-Prod has stable Conversation message identity but ordinary browser renders rebuild the timeline while live streaming requires mounted-node preservation. A portable contract should own stable repeated-item mechanics only, leaving message meaning/order/store with Conversation.",
       "formation": {
         "formationRef": "formation.component.stable-repeater.a3",
-        "state": "FORMATION",
+        "state": "ACCEPTED",
         "kind": "NEW_TYPED_RELATIONSHIP_CANDIDATE",
         "sourceOwnerRefs": [
           "repo.vexlife-android",
@@ -869,7 +869,7 @@
           "caller-owned order remains unchanged by the adapter",
           "optional visibility/scroll relationships have explicit target dispositions"
         ],
-        "note": "Cross-target core is executable on Swift, source-formed on Android, and independently source-visible in VexStream POPULATION/template relationships. Android PR #261 adds focused insert/remove identity pressure but exact Gradle execution remains owed. VexStream playlist cards/trash prove stable runtime item identity; playlist-detail entries intentionally remain CURRENT_OCCURRENCE when durable duplicate/reorder identity is not owned. Requested visibility, visible-item projection, scroll locking and reuse hints remain target-capability dispositions."
+        "note": "A3 Stable Repeated Items accepted from the cross-target intersection: SwiftUI reference runtime proves insert/remove/reorder identity and duplicate-ID failure; exact current VexStream browser identity source proves surviving playlist/trash identity across insert/remove/reorder while preserving caller order and failing blank identity; VexStream Screen Lens projects collection/item identity without list-index reconstruction; optional requested visibility/visible-item/scroll-lock/reuse mechanics remain explicit target dispositions. Android Compose remains a valuable third realization with PR #261 source-formed insert/remove pressure and repository Gradle execution still owed. Acceptance owns collection identity + feature-owned item identity + uniqueness + caller-owned order only; item meaning/store/ordering policy remain with the Product."
       }
     },
     {
@@ -1940,8 +1940,8 @@
         },
         {
           "proofRef": "proof.vexstream-durable-item-mutation",
-          "state": "OWED",
-          "note": "This source projection does not independently execute insert/remove/reorder behavior for playlist/trash populations."
+          "state": "PASS",
+          "note": "Exact VexStream source functions from main a70c5292 were evaluated directly from GitHub blob content (identity blob 136a3c8863e19f8c0c4d4b4c878cf61d774d9255; playlists a4f0221c2d87f58ecfb726c334f830c69bfc5941; trash d4d4708609674cf5d8e3a8adc7a59d1861be8086). Insert/remove/reorder preserved surviving playlist/trash refs and caller order; blank IDs failed. The executor supplied only a standards-compatible TextEncoder because its V8 host lacks that browser global."
         },
         {
           "proofRef": "proof.vexstream-lens-self-currentness",
@@ -1949,7 +1949,7 @@
           "note": "The checked-in Lens omits its own commit/observedAt; VexBoard binds exact currentness externally through the Lens catalog."
         }
       ],
-      "note": "VexStream is a third materially different Product witness: stable playlist-card/trash identity is source-owned and projected, while duplicate playlist-entry identity is explicitly weaker rather than guessed."
+      "note": "VexStream is the second executable target witness for the portable Stable Repeated Items core: current source-owned playlist-card/trash identity survives insert/remove/reorder without position identity. Playlist-detail entries remain explicitly CURRENT_OCCURRENCE under duplicate/reorder pressure. Viewport visibility/scroll mechanics remain unsupported in this bounded Product pressure."
     },
     {
       "pressureRef": "pressure.component.frame-region-layout.vexstream-browser",
