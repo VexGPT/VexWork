@@ -4,19 +4,32 @@
 
 ## Purpose
 
-A1 turns the existing Screen Lens source projection into the first durable localization relationship inventory.
+A1 establishes the first durable localization relationship inventory from two existing rightful observations:
 
-The first human questions are intentionally small:
+```text
+Android Product source
+  strings.xml
+  -> exact source string identity + source/default value
+
+VexBoard Screen Lens
+  -> exact Product / surface / Screen / Element identity
+  -> explicit R.string binding where source already exposes one
+
+join
+  -> Localization Inventory
+```
+
+This answers the first human questions without making VexBoard another localization source owner:
 
 ```text
 Given an Element:
   which source string supplies its text?
 
 Given a source string:
-  where is it used?
+  where is it currently projected?
 
 Given one occurrence:
-  which Product Screen/surface and Element own that appearance?
+  which Product surface / Screen / Element owns that appearance?
 ```
 
 This is foundational data for later Locale Preview, Current-vs-Recommended display, Change Sets, duplicate analysis and the Localization Workspace.
@@ -24,25 +37,69 @@ This is foundational data for later Locale Preview, Current-vs-Recommended displ
 ## Ownership
 
 ```text
-Product source
-  -> Screen Lens producer
-     owns Product / Screen / Element identity and source reading
+Product string source
+  owns source string IDs and exact source/default values
+
+Screen Lens producer
+  owns Product / Screen / Element identity and source-shaped presentation relationships
 
 Android localization adapter
-  -> maps explicit Screen Lens R.string bindings into generic occurrences
+  joins explicit R.string bindings to the exact source catalog
 
 Localization Inventory
-  -> normalizes relationships, where-used indexes and CSV projections
+  normalizes source strings, occurrences, where-used indexes and materialized views
 ```
 
 Permanent:
 
 ```text
 LOCALIZATION_INVENTORY != PRODUCT_SOURCE
-SCREEN_LENS_LABEL != SHARED_STRING_ID
+SCREEN_LENS_LABEL != SOURCE_STRING_VALUE
+PRESENTATION_OVERRIDE != LOCALIZATION_SOURCE
 EXACT_VALUE_EQUALITY != SEMANTIC_EQUIVALENCE
+UNMAPPED != UNUSED
 CSV != CANONICAL_TRUTH
 ```
+
+## Why source value cannot come from the Screen Lens label
+
+The current AppShell gives a concrete counterexample:
+
+```text
+element.shell.fab.add
+  labelRes = R.string.fab_more
+  source/default value = "More"
+  Screen Lens presentation label = "+"
+```
+
+Both facts are useful and both are true, but they answer different questions.
+
+Localization therefore resolves the string through the exact Android source catalog. The Screen Lens supplies where that source identity appears.
+
+## Generic source string
+
+Every source catalog entry is retained whether or not the current Screen Lens maps an occurrence:
+
+```text
+sourceStringRef
+sourceKey
+sourceValue
+sourcePath
+formatSignature
+placeholders[]
+mapped
+occurrenceRefs[]
+elementRefs[]
+screenRefs[]
+surfaceRefs[]
+bindingRoles[]
+```
+
+`mapped=false` means only:
+
+> this current localization projection has no Screen Lens occurrence for the source string.
+
+It does **not** mean unused. A source string may belong to a notification, runtime message, Screen title, accessibility surface, or another Product relationship that the current Screen Lens does not expose yet.
 
 ## Generic occurrence
 
@@ -61,30 +118,11 @@ sourceValue
 sourcePath | null
 ```
 
-The first Android producer emits `LABEL` and `TEXT` bindings. A11Y labels, placeholders and other text slots are added only when current Product source/projectors expose them truthfully.
+The Android v1 producer currently earns `LABEL` and `TEXT` occurrences from explicit Screen Lens `labelRes/textRes` bindings.
 
-## Source-string aggregate
+Accessibility labels, placeholders, Screen-title bindings and other text slots should be added only when the current Product source/projector exposes their exact relationship truthfully. They are held gaps, not guessed from matching English text.
 
-The generic inventory aggregates only exact `sourceStringRef` identity:
-
-```text
-sourceStringRef
-sourceKey
-sourceValue
-formatSignature
-placeholders[]
-occurrenceRefs[]
-elementRefs[]
-screenRefs[]
-surfaceRefs[]
-bindingRoles[]
-```
-
-A source string used by seven Elements remains one source string with seven occurrences.
-
-Two different source string IDs with the same English value remain two strings.
-
-## Format signature
+## Format signatures
 
 Parameterized source copy retains a target-neutral argument signature.
 
@@ -93,28 +131,35 @@ Example:
 ```text
 "%1$d of %2$d songs on this phone"
 
--> 1:INT | 2:INT
+-> arg1:INT | arg2:INT
 ```
 
-This does not decide translation semantics. It preserves a constraint future translators/realizations must respect.
+The inventory preserves explicit argument positions and types. An unnumbered formatter token remains sequential rather than pretending its final runtime argument identity is known.
 
-## Android patient zero
+This is a translation constraint, not semantic equivalence.
 
-Current source coordinate:
+## Android Main patient zero
+
+Exact current source:
 
 ```text
-VexLife-Android main
-d857a92371555472e0303b18eadf353da2a868d6
+repo: vgong24/VexLife-Android
+commit: d857a92371555472e0303b18eadf353da2a868d6
 ```
 
-The matching VexBoard Main Screen Lens already contains:
+The matching VexBoard Main Screen Lens and exact `strings.xml` produce:
 
 ```text
-261 projected Elements
-190 explicit R.string-bound occurrences
-179 unique bound source string IDs
-0 missing current R.string resources at the observed source
-6 source string IDs reused across multiple Elements
+405 source/default-locale strings
+41 source strings with formatter placeholders
+
+190 concrete Screen Lens text occurrences
+179 source string IDs mapped to one or more occurrences
+226 source string IDs not yet mapped by this projection
+6 mapped source string IDs reused across multiple Elements
+
+13 Screens
+14 surfaces total including AppShell chrome
 ```
 
 Examples:
@@ -123,53 +168,100 @@ Examples:
 android:R.string.close
   -> 7 Element occurrences
 
-android:R.string.vexstream_music_shuffle
-  -> player.shuffle
-  -> queue.sheet.shuffle
+android:R.string.back
+  -> chrome.app-shell / element.shell.back
+  -> screen.vexstream-music / collection Back
+
+android:R.string.vexstream_music_search
+  -> a LABEL occurrence
+  -> a TEXT occurrence
+
+android:R.string.fab_more
+  -> source value "More"
+  -> projected occurrence element.shell.fab.add
+  -> Screen Lens presentation label "+"
 ```
 
-Current source also contains distinct string IDs with equal English values. That evidence is deliberately left for later duplicate/convergence analysis rather than collapsed in A1.
+The source catalog also already contains different source string IDs with equal English values. A1 preserves those identities separately; later duplicate/convergence analysis may inspect the evidence but cannot merge them automatically.
 
 ## Materialized views
 
-A1 emits three generated files for Android Main:
+A1 emits:
 
 ```text
-vexlife-android.main.localization.json
-vexlife-android.main.localization.occurrences.csv
-vexlife-android.main.localization.strings.csv
+projects/localization-architecture/inventory/
+  vexlife-android.main.localization.json
+  vexlife-android.main.localization.occurrences.csv
+  vexlife-android.main.localization.strings.csv
 ```
 
-The JSON is the machine inventory.
+The JSON is the machine relationship inventory.
 
-The CSV files are human/tool views and are always regenerable.
+The CSV files are deterministic human/tool views and remain regenerable from the same source observations.
 
 ## Currentness
+
+The source-backed commands are:
+
+```text
+npm run localization:build
+npm run localization:check
+```
+
+Both fetch the exact Android commit bound by the Lens Catalog and read the adapter-declared string resources.
+
+The currentness law is:
 
 ```text
 Lens Catalog Main commit
   ==
 Screen Lens sourceSnapshot.commit
   ==
+Android checkout used for strings.xml
+  ==
 Localization Inventory sourceSnapshot.commit
 ```
 
-The localization builder fails if those coordinates disagree.
+An explicit `--source <android-checkout>` route is also available for controlled proof, but it must be a git checkout at the exact bound commit.
 
-A1 reuses Screen Lens source currentness rather than fetching/parsing a second copy of Android source.
+## Offline deterministic regression
+
+The generated regression test verifies that the committed inventory and CSV views remain byte-deterministic against the current Main Screen Lens and the source catalog recorded in the committed inventory.
+
+That offline test is not a substitute for Product-source currentness.
+
+SourceOwner proof also runs `npm run localization:check`, which re-reads the exact Android `strings.xml` from the bound Product commit.
+
+## Held relationships after A1
+
+A1 intentionally does not claim:
+
+```text
+translated locale variants
+accessibility/string slots not yet source-addressed by the projector
+Screen-title occurrence mappings not yet retained by Screen Lens
+runtime/notification text occurrence mappings not currently projected
+semantic duplicate convergence
+Current-vs-Recommended Change Sets
+Localization Inspector UI
+toolbar replacement
+Product source mutation
+```
+
+The full source catalog means those gaps are visible without pretending a missing occurrence means a missing source string.
 
 ## Next earned relationship
 
-Once this inventory is proven, the next human-facing slice may use:
+After A1 proof, the smallest human-facing successor can reuse the existing Screen Lens interaction grammar:
 
 ```text
 sourceStringRef
--> occurrences
+-> occurrence list
 -> select occurrence
--> Screen Lens screen jump
--> select/highlight element
+-> jump to owning Screen
+-> select/highlight exact Element
 ```
 
-Locale variants and recommendation preview remain later work.
+Locale projection and recommendation preview layer on top only after the source/occurrence relationship is trusted.
 
 <!-- [VXG RealForever][LOCALIZATION-ARCHITECTURE][INVENTORY-V1] -->
