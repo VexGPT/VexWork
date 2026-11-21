@@ -1,0 +1,615 @@
+{
+  "schemaVersion": "vexboard.component-architecture-catalog/v1",
+  "catalogRef": "catalog.vex.component-architecture.001",
+  "title": "Component Architecture Candidates",
+  "purpose": "Organize source-influenced reusable presentation relationships that may become typed Kotlin Blueprint contracts after cross-platform pressure, without promoting Android source or Screen Lens projections into portable semantic authority.",
+  "principleRefs": [
+    "principle.vexarchitecture.presentation-manifests-truth",
+    "principle.vexarchitecture.reuse-questions-not-class-diagram",
+    "principle.component.source-influence-not-authority",
+    "principle.component.target-source-projects-back"
+  ],
+  "sourceSnapshots": [
+    {
+      "repositoryRef": "repo.vexlife",
+      "commit": "6946f935221dc8b44a599d2fd5601aed14a1d8fb",
+      "role": "Canonical VexLife component / experience Blueprint meaning"
+    },
+    {
+      "repositoryRef": "repo.vexlife-android",
+      "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+      "role": "Android/Kotlin/Compose realization and architectural pressure evidence"
+    },
+    {
+      "repositoryRef": "repo.vextreme",
+      "commit": "1a0f161b4175e83c223e57642d08501004cdb9fd",
+      "role": "VexArchitecture stable presentation/ownership teaching projection"
+    },
+    {
+      "repositoryRef": "repo.vexwork",
+      "commit": "b9b9f70906eb680c721be26389d4ee27f935018b",
+      "role": "Component Library architecture and Screen Lens projection machinery"
+    }
+  ],
+  "candidates": [
+    {
+      "candidateRef": "candidate.component.identity-addressed-tree",
+      "label": "Identity-addressed presentation tree",
+      "class": "IDENTITY",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can every nested presentation node remain stably addressable across source nesting, runtime realization, tests and Screen Lens without making visual position its identity?",
+      "sourceFamilyRefs": [],
+      "portableRelationships": [
+        "stable semantic ref survives renderer/framework changes",
+        "child identity derives beneath an explicit semantic parent",
+        "containment remains inspectable independently of rendered object identity",
+        "target source can project the same identity tree back to Screen Lens"
+      ],
+      "obligations": [
+        "identity must not depend on list index or transient render position",
+        "nested custom presentation must not silently lose parent continuity",
+        "duplicate identities fail closed"
+      ],
+      "mustNotOwn": [
+        "feature semantic state",
+        "platform view object lifetime",
+        "visual label as identity"
+      ],
+      "targetPressure": [
+        "Compose modifier/testTag",
+        "SwiftUI accessibilityIdentifier or equivalent projection hook",
+        "DOM data/semantic attributes",
+        "native test/projection identifiers"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+          "symbols": [
+            "ScreenBlueprint",
+            "ScreenLayoutScope"
+          ],
+          "why": "Nested source topology forms stable element paths and parent relationships."
+        },
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeScope.kt",
+          "symbols": [
+            "VexComposeScope",
+            "vexComposeChildRef"
+          ],
+          "why": "Custom Compose presentation inherits semantic parent identity and fails closed outside a parent scope."
+        },
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexModifier.kt",
+          "symbols": [
+            "VexModifier",
+            "vex"
+          ],
+          "why": "Platform modifier chains attach already-owned semantic identity without becoming another identity system."
+        },
+        {
+          "repositoryRef": "repo.vexlife",
+          "commit": "6946f935221dc8b44a599d2fd5601aed14a1d8fb",
+          "path": "blueprint/fragments/components.json",
+          "symbols": [
+            "componentRef",
+            "instanceRefPattern",
+            "slotRef"
+          ],
+          "why": "Canonical VexLife components already distinguish stable component/instance/slot identities."
+        }
+      ],
+      "note": "Strong first Kotlin Blueprint root law: identity before renderer."
+    },
+    {
+      "candidateRef": "candidate.component.semantic-control-binding",
+      "label": "Semantic control binding",
+      "class": "CONTROL",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can a visible control bind to stable action meaning while each platform remains free to choose the appropriate native interaction form?",
+      "sourceFamilyRefs": [
+        "component.source-family.vexlife-android.button",
+        "component.source-family.vexlife-android.toggle",
+        "component.source-family.vexlife-android.fab",
+        "component.source-family.vexlife-android.menu-item",
+        "component.source-family.vexlife-android.field"
+      ],
+      "portableRelationships": [
+        "control identity is separate from semantic action identity",
+        "interaction form may vary without redefining the action",
+        "availability/exposure can be projected separately from action meaning"
+      ],
+      "obligations": [
+        "one stable semantic action/ref is addressable independently of native callback syntax",
+        "platform adapter must preserve capability/permission obligations when present",
+        "native event wiring cannot become canonical meaning"
+      ],
+      "mustNotOwn": [
+        "feature effect implementation",
+        "provider success",
+        "native callback identity"
+      ],
+      "targetPressure": [
+        "Android Button/Toggle/Menu",
+        "SwiftUI Button/Toggle/Menu",
+        "browser button/menu/input",
+        "voice or model-tool expression of the same action"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt",
+          "symbols": [
+            "ElementIntent",
+            "ActionKey",
+            "ActionElement"
+          ],
+          "why": "Typed intent/action identity is separate from native Compose cells."
+        },
+        {
+          "repositoryRef": "repo.vexlife",
+          "commit": "6946f935221dc8b44a599d2fd5601aed14a1d8fb",
+          "path": "blueprint/experience-foundation.json",
+          "symbols": [
+            "interactionForms",
+            "experiencePatterns"
+          ],
+          "why": "VexLife already allows button, native control, menu, vessel, voice and model-tool forms to express stable semantic meaning."
+        },
+        {
+          "repositoryRef": "repo.vextreme",
+          "commit": "1a0f161b4175e83c223e57642d08501004cdb9fd",
+          "path": "pages/vexarchitecture-first-stable-body.html",
+          "symbols": [
+            "presentation.rule",
+            "apply.9"
+          ],
+          "why": "Presentation may change form without becoming semantic truth owner."
+        }
+      ],
+      "note": "The portable contract should say what action/control relationship exists, not which widget class handles it."
+    },
+    {
+      "candidateRef": "candidate.component.typed-containment",
+      "label": "Typed containment and slots",
+      "class": "CONTAINER",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can source visually communicate what fits inside what while preserving explicit parent/child/slot relationships for target generation and Screen Lens?",
+      "sourceFamilyRefs": [
+        "component.source-family.vexlife-android.column",
+        "component.source-family.vexlife-android.row",
+        "component.source-family.vexlife-android.stack",
+        "component.source-family.vexlife-android.card",
+        "component.source-family.vexlife-android.region"
+      ],
+      "portableRelationships": [
+        "parent owns admitted child/slot topology",
+        "source nesting and normalized containment graph agree",
+        "layout form and semantic ownership remain distinct"
+      ],
+      "obligations": [
+        "target adapter preserves child ownership/topology",
+        "invalid child placement fails before generation where contract can know it"
+      ],
+      "mustNotOwn": [
+        "feature state merely because it contains feature presentation",
+        "platform-specific spacing primitives"
+      ],
+      "targetPressure": [
+        "Compose Column/Row/Box/Card",
+        "SwiftUI VStack/HStack/ZStack/Group",
+        "DOM flex/grid/section",
+        "desktop native panels"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+          "symbols": [
+            "ScreenLayoutScope",
+            "ElementPlacement"
+          ],
+          "why": "Nested DSL mirrors the intended containment tree and registry can recover parent/children."
+        },
+        {
+          "repositoryRef": "repo.vexlife",
+          "commit": "6946f935221dc8b44a599d2fd5601aed14a1d8fb",
+          "path": "blueprint/fragments/components.json",
+          "symbols": [
+            "slots"
+          ],
+          "why": "Canonical components already expose stable slot relationships independent of rendering technology."
+        }
+      ],
+      "note": "This is the composable readability Victor is pointing at: code nesting should carry relationship meaning, not just syntax."
+    },
+    {
+      "candidateRef": "candidate.component.swappable-region",
+      "label": "Swappable region",
+      "class": "PRESENTATION",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can one stable region switch among direct child expressions without creating app-navigation depth or duplicating ownership?",
+      "sourceFamilyRefs": [
+        "component.source-family.vexlife-android.region"
+      ],
+      "portableRelationships": [
+        "one stable container owns a selected direct child",
+        "selection is local presentation, not app navigation",
+        "default child is explicit"
+      ],
+      "obligations": [
+        "selected child must belong directly to the region",
+        "switching does not fabricate screen navigation history"
+      ],
+      "mustNotOwn": [
+        "cross-screen navigation",
+        "child feature semantics"
+      ],
+      "targetPressure": [
+        "Compose selected-child rendering",
+        "SwiftUI enum/conditional child region",
+        "web tab/region swap",
+        "desktop panel selection"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/GalleryScreen.kt",
+          "symbols": [
+            "Content",
+            "ElementsPanel",
+            "AppGraphPanel"
+          ],
+          "why": "Gallery proves peer expressions under one stable region via swapTo rather than screen navigation."
+        },
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistry.kt",
+          "symbols": [
+            "UIBlueprintRegistry"
+          ],
+          "why": "Registry validates direct-child and same-scope SwapTo relationships."
+        }
+      ],
+      "note": "Good early cross-platform proof because it tests topology and interaction depth without needing provider/runtime effects."
+    },
+    {
+      "candidateRef": "candidate.component.modal-presentation",
+      "label": "Modal presentation contract",
+      "class": "PRESENTATION",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can modal meaning remain stable while a target chooses alert, sheet, popover or another native modality?",
+      "sourceFamilyRefs": [
+        "component.source-family.vexlife-android.dialog",
+        "component.source-family.vexlife-android.sheet"
+      ],
+      "portableRelationships": [
+        "modal identity is separate from native modality",
+        "open/close/dismiss remain typed presentation relationships",
+        "modal children remain owned by the modal scope"
+      ],
+      "obligations": [
+        "target must report how modality was realized",
+        "platform-native dismissal maps to modal dismissal rather than fabricating another control activation"
+      ],
+      "mustNotOwn": [
+        "feature semantic state unless explicitly bound",
+        "platform animation mechanics"
+      ],
+      "targetPressure": [
+        "Android AlertDialog/ModalBottomSheet",
+        "SwiftUI alert/sheet/fullScreenCover/popover",
+        "web dialog/popover"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeMaterial.kt",
+          "symbols": [
+            "VexAlertDialog",
+            "VexModalBottomSheet"
+          ],
+          "why": "One semantic/presentation identity is wrapped by distinct Android-native modal realizations."
+        },
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/GalleryScreen.kt",
+          "symbols": [
+            "DialogModalSample",
+            "BottomSheetModalSample"
+          ],
+          "why": "Gallery carries both modal realization patterns under the same local presentation ownership rules."
+        }
+      ],
+      "note": null
+    },
+    {
+      "candidateRef": "candidate.component.stable-repeater",
+      "label": "Stable repeated-item collection",
+      "class": "COLLECTION",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can runtime-data rows retain stable semantic identity through insert/reorder/visibility changes without making visual index canonical?",
+      "sourceFamilyRefs": [],
+      "portableRelationships": [
+        "collection has one stable ref",
+        "each runtime item supplies stable identity",
+        "visual position is not item identity",
+        "visible-item set may be projected without owning item meaning"
+      ],
+      "obligations": [
+        "duplicate/blank item refs fail closed",
+        "target adapter preserves stable-key semantics",
+        "optional header/empty content cannot collide with item identity"
+      ],
+      "mustNotOwn": [
+        "feature ordering policy",
+        "row domain meaning",
+        "feature actions",
+        "data store"
+      ],
+      "targetPressure": [
+        "Compose LazyColumn keys",
+        "SwiftUI ForEach identifiable IDs",
+        "web keyed list/virtualization",
+        "desktop virtualized collections"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt",
+          "symbols": [
+            "VexStableLazyColumn",
+            "stableItemRefs",
+            "stableListHeaderKey"
+          ],
+          "why": "Several materially different Android consumers earned stable repeated-item mechanics independent of feature meaning."
+        }
+      ],
+      "note": "This is a stronger architectural component than a static ROW kind because it preserves identity across dynamic population."
+    },
+    {
+      "candidateRef": "candidate.component.anchored-overlay",
+      "label": "Anchored transient overlay",
+      "class": "PRESENTATION",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can transient context remain aimed at one semantic target while placement adapts to available window geometry?",
+      "sourceFamilyRefs": [],
+      "portableRelationships": [
+        "overlay names one semantic anchor",
+        "preferred placement order is explicit",
+        "safe-boundary fallback is target realization mechanics",
+        "overlay meaning remains caller-owned"
+      ],
+      "obligations": [
+        "target must keep target-relative relationship inspectable",
+        "placement adaptation must not change the semantic anchor"
+      ],
+      "mustNotOwn": [
+        "why the overlay exists",
+        "feature actions",
+        "blocking semantics unless declared by caller"
+      ],
+      "targetPressure": [
+        "Compose Popup",
+        "SwiftUI popover/overlay/GeometryReader",
+        "web Popover/positioning",
+        "desktop flyout"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexAnchoredOverlay.kt",
+          "symbols": [
+            "VexAnchoredOverlay",
+            "resolveVexAnchoredOverlay",
+            "VexOverlayPlacement"
+          ],
+          "why": "Android separates target-relative overlay relationship from platform geometry resolution and caller-owned meaning."
+        }
+      ],
+      "note": null
+    },
+    {
+      "candidateRef": "candidate.component.local-navigation-trail",
+      "label": "Local navigation trail",
+      "class": "NAVIGATION",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can layered exploration inside one Screen own local depth/back without contaminating app-level navigation history?",
+      "sourceFamilyRefs": [],
+      "portableRelationships": [
+        "local trail root/current/path are scoped beneath one Screen",
+        "push/back mutate local depth",
+        "Back at local root yields to the outer navigation owner",
+        "direction follows the same path mutation"
+      ],
+      "obligations": [
+        "must remain distinct from app Screen navigation",
+        "duplicate current destination does not create depth",
+        "target adapter must preserve outer-back fallthrough"
+      ],
+      "mustNotOwn": [
+        "primary app navigation",
+        "cross-screen route history",
+        "durable process restoration unless separately earned"
+      ],
+      "targetPressure": [
+        "Compose AnimatedContent/local trail",
+        "SwiftUI NavigationStack scoped inside a surface",
+        "web nested route/state stack",
+        "desktop inspector drilldown"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/navigation/NavigationTrail.kt",
+          "symbols": [
+            "NavigationTrail",
+            "BackLayer",
+            "NavigationTrailContent"
+          ],
+          "why": "Android makes local depth/back a separate owner from AppNavigationState."
+        }
+      ],
+      "note": null
+    },
+    {
+      "candidateRef": "candidate.component.context-dock",
+      "label": "Context Dock",
+      "class": "PRESENTATION",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can a host expose multiple feature-owned contextual projections with selection and reveal depth without absorbing their semantic ownership?",
+      "sourceFamilyRefs": [],
+      "portableRelationships": [
+        "each page has stable identity independent of visual pager index",
+        "horizontal axis selects context",
+        "vertical axis changes reveal depth",
+        "feature keeps page state/actions/meaning",
+        "host owns only presentation mechanics"
+      ],
+      "obligations": [
+        "page reordering/presence change preserves selected identity where possible",
+        "empty page set renders no fabricated context",
+        "target adapter keeps selection identity separate from index"
+      ],
+      "mustNotOwn": [
+        "feature semantic state",
+        "feature actions",
+        "page content truth"
+      ],
+      "targetPressure": [
+        "Compose HorizontalPager + drag reveal",
+        "SwiftUI TabView/PageTabViewStyle + presentation detent/drag",
+        "web carousel/dock",
+        "desktop context panel"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/contextdock/VexContextDock.kt",
+          "symbols": [
+            "VexContextDock",
+            "VexContextDockPage",
+            "VexContextDockPageRef"
+          ],
+          "why": "Two independent presentation axes are reusable while page semantics stay with contributing features."
+        }
+      ],
+      "note": "Excellent candidate for testing whether the Kotlin Blueprint can describe richer composable structure without carrying Compose implementation details."
+    },
+    {
+      "candidateRef": "candidate.component.frame-region-layout",
+      "label": "Frame / seam / region layout",
+      "class": "LAYOUT",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can desktop/web-scale regions, dividers and overlays be authored as relationships rather than pixel positions or target-specific layout code?",
+      "sourceFamilyRefs": [
+        "component.source-family.vexlife-android.region"
+      ],
+      "portableRelationships": [
+        "frame owns bounded regions",
+        "seam divides one axis with authored allocation",
+        "region edges bind to frame edges or seams",
+        "overlay layer is separate from frame geometry"
+      ],
+      "obligations": [
+        "layout graph fails closed on invalid seam/region references",
+        "target geometry may vary while relational bounds stay stable"
+      ],
+      "mustNotOwn": [
+        "subject-specific product meaning",
+        "absolute target pixels"
+      ],
+      "targetPressure": [
+        "VexLife Prod browser split panes",
+        "SwiftUI HSplitView/VSplitView or custom layout",
+        "Compose desktop/window layouts",
+        "Linux desktop native panes"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexwork",
+          "commit": "b9b9f70906eb680c721be26389d4ee27f935018b",
+          "path": "src/shared/vexboard-screen-lens-frames.mjs",
+          "symbols": [
+            "normalizeScreenLayout",
+            "frameGeometry",
+            "layoutRole"
+          ],
+          "why": "Screen Lens already carries a subject-neutral relational frame/seam/region grammar for source-authored spatial composition."
+        }
+      ],
+      "note": "This likely becomes more important for Chromebook/Linux/desktop than for phone-first UI."
+    },
+    {
+      "candidateRef": "candidate.component.action-vessel",
+      "label": "Adaptive Action Vessel",
+      "class": "PRESENTATION",
+      "state": "PORTABLE_CANDIDATE",
+      "question": "How can one stable action/status vessel adapt between floating and docked native forms while preserving the same slots, actions and identity?",
+      "sourceFamilyRefs": [
+        "component.source-family.vexlife-android.fab",
+        "component.source-family.vexlife-android.menu"
+      ],
+      "portableRelationships": [
+        "stable component identity",
+        "trigger/menu/status slots remain addressable",
+        "resize affordances are explicit slots",
+        "platform chooses floating/docked/native manifestation"
+      ],
+      "obligations": [
+        "slot/action identities remain stable across platform form",
+        "platform adaptation does not invent new semantic action identities"
+      ],
+      "mustNotOwn": [
+        "underlying action effects",
+        "platform window-manager policy beyond declared constraints"
+      ],
+      "targetPressure": [
+        "Android FAB cluster",
+        "browser floating/docked vessel",
+        "iOS toolbar/floating/dock-appropriate surface",
+        "desktop dockable action surface"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife",
+          "commit": "6946f935221dc8b44a599d2fd5601aed14a1d8fb",
+          "path": "blueprint/fragments/components.json",
+          "symbols": [
+            "component.vexlife.action-vessel"
+          ],
+          "why": "VexLife already owns this as a platform-adaptive component with stable trigger/menu/status/resize slots."
+        },
+        {
+          "repositoryRef": "repo.vexlife",
+          "commit": "6946f935221dc8b44a599d2fd5601aed14a1d8fb",
+          "path": "blueprint/fragments/platform-bindings.json",
+          "symbols": [
+            "platform.android",
+            "platform.ios",
+            "platform.windows",
+            "platform.macos",
+            "platform.browser"
+          ],
+          "why": "Canonical VexLife Blueprint already distinguishes target bindings without collapsing them into one implementation."
+        }
+      ],
+      "note": "Best canonical first practicum because portable VexLife meaning already exists before this Component Library lane."
+    }
+  ]
+}
