@@ -95,7 +95,7 @@ function detail(component){
    h('code',{class:'mono'},component.componentRef)),
   tableFor(component));
 }
-function render(){
+function render({focusSearch=false}={}){
  const inventory=state.inventory;
  const families=visibleFamilies();
  if(state.selected&&!inventory.components.some((row)=>row.componentRef===state.selected))state.selected=null;
@@ -104,7 +104,7 @@ function render(){
  const kinds=[...inventory.components.map((row)=>row.kind)].sort();
  const surfaces=[...new Map(inventory.occurrences.map((row)=>[row.surfaceRef,row.surfaceLabel])).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
  const search=h('input',{type:'search',value:state.query,placeholder:'Find component kind, Screen, element, style, source, or realizer','aria-label':'Search Component Gallery'});
- search.oninput=()=>{state.query=search.value;syncUrl();render();};
+ search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
  const kind=h('select',{'aria-label':'Component kind'},h('option',{value:'',selected:!state.kind},'All component families'),kinds.map((value)=>h('option',{value,selected:state.kind===value},human(value))));
  kind.onchange=()=>{state.kind=kind.value;syncUrl();render();};
  const surface=h('select',{'aria-label':'Where-used surface'},h('option',{value:'',selected:!state.surface},'All Screens / surfaces'),surfaces.map(([ref,label])=>h('option',{value:ref,selected:state.surface===ref},label)));
@@ -118,6 +118,7 @@ function render(){
    h('div',{class:'source'},h('span',{class:'source-chip'},h('span',{class:'dot'}),state.subject.label,h('code',{},short(inventory.sourceSnapshot.commit))),h('span',{class:'source-chip'},'Screen Lens · ',h('code',{},inventory.sourceSnapshot.lensRef)),h('span',{class:'source-chip'},'Localization · ',h('code',{},inventory.sourceSnapshot.localizationInventoryRef)))),
   h('section',{class:'workspace'},h('div',{class:'controls'},search,kind,surface),h('p',{class:'match'},count(families.length)+' of '+count(inventory.components.length)+' source families in this view.'),h('div',{class:'grid'},families.map(familyCard)),selected?detail(selected):h('div',{class:'empty'},'No component families match this view.')),
   h('footer',{},'This page deliberately exposes gaps instead of filling them with assumptions. Accessibility remains “not projected” until its rightful Product source/proof is connected; portability remains “unclassified” until A2/A3 cross-Product evidence earns a portable Blueprint.'));
+ if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const end=next.value.length;next.setSelectionRange?.(end,end);}});
 }
 function metric(value,label){return h('div',{class:'metric'},h('b',{},count(value)),h('span',{},label));}
 async function boot(){
