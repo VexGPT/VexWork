@@ -158,7 +158,7 @@ Useful evidence includes:
 
 The analyzer may suggest `LIKELY_SHARED`, `NEEDS_REVIEW`, `KEEP_SEPARATE`, or `ALREADY_SHARED`; it does not create shared semantic identity by itself.
 
-### A5 — VexBoard Localization Workspace / CMS — READY; first global projection candidate in progress
+### A5 — VexBoard Localization Workspace / CMS — COMPLETED
 
 Project the earned relational model through its own VexBoard container/dashboard with pivots such as:
 
@@ -170,7 +170,7 @@ This is the global string/localization management surface. The contextual Screen
 
 Locale remains an orthogonal Screen Lens projection dimension rather than duplicated per-language pages.
 
-This workflow gets its own VexArchitecture/process projection inside this Project. It does **not** become a second VexWork Project yet. A separate operational Project is earned only if recurring translation campaigns later develop their own human ownership, assignment, approval or release lifecycle.
+The global workspace remains the inspection/comparison/Change Set surface for this Project. Recurring translator packet export/import, returned-work preflight, Product-specific source writeback and Relay/GitHub integration have now earned a separate successor Project named **Localization Transition** (`github.issue.vexwork.423`) rather than expanding A5 into a repository-mutation authority.
 
 Current A5 implementation source:
 - `src/shared/vexboard-localization-workspace.mjs` — pure cross-Product projection over normalized inventories, A4 convergence analysis and A3 Change Sets;
@@ -207,8 +207,8 @@ VexBoard may inspect, group, compare, export and later propose source-owner chan
 
 ## Current next edge
 
-`work.vex.localization-architecture.vexboard-workspace`
+Localization Architecture A0–A5 is completed on main at `c91766e715c447bb467346ee313724dba8f54650`.
 
-Project the already-earned A2/A3/A4 relationships globally without creating a second localization truth store. The first slice reuses current Main inventories, convergence analysis and browser-local Change Sets across the seven earned pivots, with Product writeback still held.
+The next recurring operational trajectory is the separate **Localization Transition** Project formation (`github.issue.vexwork.423`): translator packet selection/export, returned CSV preflight, reviewed Change Sets and Product-specific source writeback through the rightful GitHub/Relay lifecycle. That work is downstream of this completed architecture rather than another A5 phase.
 
 <!-- [VXG RealForever][VEXWORK][LOCALIZATION-ARCHITECTURE] -->

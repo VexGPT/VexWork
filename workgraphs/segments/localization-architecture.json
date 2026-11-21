@@ -17,7 +17,7 @@
       "label": "Localization Architecture",
       "purpose": "Build one source-faithful relational localization architecture across VexBoard and participating Products so stable element/string/locale identities can be reverse-searched and regrouped without making source-language values, generated CSVs, semantic candidate groups, or VexBoard itself a second localization authority; preserve and consume the existing VexSite localization trajectory rather than replacing its scheduler/source ownership.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -38,9 +38,13 @@
         "repo.vexlife-android:app/src/main/res/values/strings.xml",
         "github.issue.vexwork.138",
         "github.pull.vexwork.393",
-        "github.pull.vexwork.395"
+        "github.pull.vexwork.395",
+        "github.pull.vexwork.422",
+        "github.commit.vexwork.c91766e715c447bb467346ee313724dba8f54650",
+        "github.review.vexwork.6006799412",
+        "github.issue.vexwork.423"
       ],
-      "updatedAt": "2026-11-21T07:56:05.000Z"
+      "updatedAt": "2026-11-21T17:05:49.003Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -170,7 +174,7 @@
       "label": "Project localization through the global VexBoard Localization Workspace",
       "purpose": "After contextual inspection, Change Set reconciliation and grouping behavior are earned, expose a dedicated cross-Product VexBoard Localization Workspace with Element, String, Value, Group, Locale, Coverage and Change Set pivots without creating per-language Screen Lens pages or taking Product localization source ownership.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "dependencyRefs": [
         "work.vex.localization-architecture.localization-inspector",
         "work.vex.localization-architecture.change-set-reconciliation",
@@ -185,9 +189,16 @@
         "projects/vexboard/SCREEN-LENS.md",
         "work.vex.localization-architecture.localization-inspector",
         "work.vex.localization-architecture.change-set-reconciliation",
-        "github.commit.vexwork.b5d9779771ad144be9d09edf143f65ff2dc41060"
+        "github.commit.vexwork.b5d9779771ad144be9d09edf143f65ff2dc41060",
+        "src/shared/vexboard-localization-workspace.mjs",
+        "vexboard/localization.html",
+        "test/vexboard-localization-workspace.test.mjs",
+        "test/vexboard-localization-workspace-ui.test.mjs",
+        "github.pull.vexwork.422",
+        "github.commit.vexwork.c91766e715c447bb467346ee313724dba8f54650",
+        "github.review.vexwork.6006799412"
       ],
-      "updatedAt": "2026-11-21T15:26:56.004Z"
+      "updatedAt": "2026-11-21T17:05:49.001Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -579,6 +590,82 @@
         "github.commit.vexwork.b5d9779771ad144be9d09edf143f65ff2dc41060"
       ],
       "createdAt": "2026-11-21T15:26:56.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.vexboard-workspace.running.a5-lived-preview",
+      "workRef": "work.vex.localization-architecture.vexboard-workspace",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A5 entered preview-first implementation on PR #422: the global VexBoard Localization Workspace projected the already-earned inventories, Change Sets and convergence analysis across seven pivots while lived review refined search locality, one-locale translation comparison and reclaimable workspace height without taking Product source ownership.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.422",
+        "src/shared/vexboard-localization-workspace.mjs",
+        "vexboard/localization.html"
+      ],
+      "createdAt": "2026-11-21T15:49:55.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.vexboard-workspace.verifying.a5-postmerge",
+      "workRef": "work.vex.localization-architecture.vexboard-workspace",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #422 merged the exact A003-proved A5 candidate to main at c91766e715c447bb467346ee313724dba8f54650 after SourceOwner PASS, fresh Independent Assurance CLEAR_ON_EXACT_HEAD and a provider synthetic merge that preserved both the current-main New Beginnings changes and all eight A5 paths without overlap.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.422",
+        "github.commit.vexwork.c91766e715c447bb467346ee313724dba8f54650",
+        "github.review.vexwork.6006799412"
+      ],
+      "createdAt": "2026-11-21T17:05:49.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.vexboard-workspace.completed.a5-postmerge",
+      "workRef": "work.vex.localization-architecture.vexboard-workspace",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A5 is landed end to end: the global workspace consumes current Product-owned localization inventories, preserves separate source identities, exposes Elements/Strings/Values/Groups/Locales/Coverage/Change Sets, supports visible-locale comparison and pivot-local search, keeps missing translations explicit, and round-trips to Screen Lens. SourceOwner A003 passed localization currentness, Lens verification, 20/20 focused A5 tests and the full repository review with zero findings; Product writeback remains outside A5 in the separate Localization Transition trajectory.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.422",
+        "github.commit.vexwork.c91766e715c447bb467346ee313724dba8f54650",
+        "github.review.vexwork.6006799412",
+        "github.issue.vexwork.423"
+      ],
+      "createdAt": "2026-11-21T17:05:49.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.outcome.verifying.a5-terminal",
+      "workRef": "work.vex.localization-architecture.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A0 through A5 are now completed on main. The recurring translator packet/import/source-write lifecycle has been deliberately separated into Localization Transition rather than extending this architecture outcome into repository mutation operations.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vexwork.c91766e715c447bb467346ee313724dba8f54650",
+        "github.issue.vexwork.423"
+      ],
+      "createdAt": "2026-11-21T17:05:49.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.outcome.completed.a5-terminal",
+      "workRef": "work.vex.localization-architecture.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Localization Architecture is complete: the source-faithful relational model, Android inventory, contextual inspector, Change Set reconciliation, duplicate/convergence analysis and global VexBoard workspace are all landed and current. Translation campaign/export/import/source-write operations continue separately as Localization Transition.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.422",
+        "github.commit.vexwork.c91766e715c447bb467346ee313724dba8f54650",
+        "github.review.vexwork.6006799412",
+        "github.issue.vexwork.423"
+      ],
+      "createdAt": "2026-11-21T17:05:49.003Z"
     }
   ],
   "sourceRefs": [
