@@ -78,14 +78,14 @@ test('VexLife Prod Main sidecar carries Product-owned translated strings through
 
   assert.equal(inventory.subjectRef, 'subject.vexlife-prod');
   assert.equal(inventory.buildRef, 'main');
-  assert.equal(inventory.sourceSnapshot.commit, '7f3935aec46b2030ebbc887fa8ccbf6199c93d36');
+  assert.equal(inventory.sourceSnapshot.commit, 'a0edba10c93a95dae1a16d0f915f07788c5112ba');
   assert.deepEqual(inventory.summary, {
-    occurrenceCount: 10,
-    sourceStringCount: 372,
-    mappedSourceStringCount: 10,
-    unmappedSourceStringCount: 362,
+    occurrenceCount: 687,
+    sourceStringCount: 1029,
+    mappedSourceStringCount: 687,
+    unmappedSourceStringCount: 342,
     reusedSourceStringCount: 0,
-    formatStringCount: 72,
+    formatStringCount: 158,
     screenCount: 1,
     surfaceCount: 1,
   });
