@@ -942,7 +942,7 @@
       "candidateRef": "candidate.component.frame-region-layout",
       "label": "Frame / seam / region layout",
       "class": "LAYOUT",
-      "state": "PORTABLE_CANDIDATE",
+      "state": "ACCEPTED_PORTABLE",
       "question": "How can desktop/web-scale regions, dividers and overlays be authored as relationships rather than pixel positions or target-specific layout code?",
       "sourceFamilyRefs": [
         "component.source-family.vexlife-android.region"
@@ -1030,12 +1030,32 @@
             "vexstream.desktop.library.region.shell"
           ],
           "why": "VexStream projects the same Frame/Region grammar in its degenerate zero-Seam form: one Frame, one full-bounds Region, showing the grammar does not require a split special case."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonTest/kotlin/vexlife/web/VexWebSpatialScalabilityTest.kt",
+          "symbols": [
+            "sameAxisSeamAllocationCyclesAreRejected",
+            "partialSeamCannotBoundARegionOutsideItsSpan"
+          ],
+          "why": "Accepted current Product tests fail closed on invalid/cyclic and out-of-span Frame/Seam/Region relationships before target generation."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonTest/kotlin/vexlife/web/VexWebArtifactsTest.kt",
+          "symbols": [
+            "generatedGeometryConsumesTheRelationalFrameWithoutReplacingIt",
+            "irregularThreeRegionGeometryUsesTheSameGenerator"
+          ],
+          "why": "Accepted current artifact tests preserve frame/seam/region source boundaries and allocations in the semantic manifest while deriving target geometry."
         }
       ],
       "note": "Current SwiftUI pressure maps only the exact full-span single-Seam workspace shape. Partial/multi-Seam geometry, overlay depth and seam resize/collapse remain held; do not reduce the accepted Frame/Seam/Region grammar to a two-pane abstraction.",
       "formation": {
         "formationRef": "formation.component.frame-region-layout.a3",
-        "state": "FORMATION",
+        "state": "ACCEPTED",
         "kind": "REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP",
         "sourceOwnerRefs": [
           "repo.vexlife-prod",
@@ -1068,7 +1088,7 @@
           "invalid/cyclic/reversed spatial relationships fail closed before target generation",
           "target manifest or Screen Lens reconstructs the relational geometry source"
         ],
-        "note": "Current SwiftUI pressure proves only the full-span 1:11 and 1:1 cases; generic irregular and interactive spatial realization remains held."
+        "note": "A3 portable relationship accepted from bounded evidence: VexStream proves the zero-Seam one-Region case through the same grammar; VexLife-Prod #506 maps current full-span ratio Seams into a second target without authored pixels while explicitly holding partial/multi-Seam and interaction mechanics; accepted VexLife-Prod spatial tests reject invalid/cyclic/out-of-span geometry; accepted VexWeb artifact tests preserve authored Frame/Seam/Region relationships in target semantic manifests. This acceptance is the portable relational grammar only. Apple SwiftUI SDK/native proof and richer SwiftUI geometry remain A4 target obligations."
       }
     },
     {
