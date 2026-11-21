@@ -409,6 +409,11 @@ function localizationWorkspaceSearchScore(row, pivot, query, valueLocaleRef = nu
   }));
   if (fields.some((field) => field.normalized === normalizedQuery)) return 0;
 
+  const structuredQuery = /[._:/-]/u.test(normalizedQuery);
+  if (structuredQuery) {
+    return fields.some((field) => field.normalized.includes(normalizedQuery)) ? 1 : null;
+  }
+
   let score = 0;
   for (const term of terms) {
     let termScore = Number.POSITIVE_INFINITY;
@@ -427,7 +432,7 @@ export function filterLocalizationWorkspaceRows(projection, pivot, {
   subjectRef = null,
   localeRef = null,
   valueLocaleRef = null,
-  limit = 500,
+  limit = 5000,
 } = {}) {
   if (!Number.isInteger(limit) || limit < 1 || limit > 5000) fail('limit must be an integer from 1 to 5000');
   const rows = localizationWorkspaceRows(projection, pivot);

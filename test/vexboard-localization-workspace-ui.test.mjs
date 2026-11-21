@@ -22,7 +22,7 @@ test('global workspace consumes the same normalized inventory, convergence and C
   assert.match(workspace, /inventory\.sourceSnapshot\.commit !== build\.commit/);
   assert.match(workspace, /Changes\.loadLocalizationChangeSetCollection\(localStorage\)/);
   assert.match(workspace, /Workspace\.projectLocalizationWorkspace/);
-  assert.match(workspace, /workLocaleRefs: state\.localeRef \? \[state\.localeRef\] : \[\]/);
+  assert.match(workspace, /workLocaleRefs: \[\.\.\.new Set\(\[state\.localeRef, state\.valueLocaleRef\]\.filter\(Boolean\)\)\]/);
   assert.match(workspace, /Work target · not observed in Product source/);
   assert.match(workspace, /row\.requestedChangeCount/);
   assert.doesNotMatch(workspace, /api\.github\.com|raw\.githubusercontent\.com/);
@@ -49,7 +49,7 @@ test('Screen Lens Localization Inspector can carry current subject, string and l
 
 test('workspace search copy follows the active pivot and distinguishes totals from filtered matches', () => {
   assert.match(workspace, /const searchPlaceholders = Object\.freeze/);
-  assert.match(workspace, /Find source string ID, visible value, source path, or format signature/);
+  assert.match(workspace, /Find source string ID, source value, visible translation, source path, or format signature/);
   assert.match(workspace, /Find element, screen, role, source string, or visible value/);
   assert.match(workspace, /Find locale code, e\.g\. es, ja, or zh-Hant/);
   assert.match(workspace, /Total rows before filters/);
