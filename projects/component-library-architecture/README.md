@@ -201,6 +201,28 @@ Do not assume same-looking controls share one portable component. Group by evide
 
 ### A3 — portable component Blueprint contract — WAITING on A1+A2
 
+The portable contract now has a stronger implementation direction from accepted VexLife-Prod evidence:
+
+```text
+canonical Product/component meaning
+-> compiler-constrained Kotlin Blueprint / sealed relationship authoring
+-> deterministic normalized portable IR
+-> target adapters
+```
+
+Kotlin is allowed to be the strong typed authoring language. Kotlin/Compose is not thereby the
+portable semantic owner.
+
+Accepted predecessor pressure already exists in VexLife-Prod:
+
+- `VexScreenBlueprint` + compiler-visible element handles;
+- sealed `VexWeb.Identity / Binding / Node / Seam / Boundary` relationships;
+- `VexWebAuthoring` as a renderer-free Kotlin DSL;
+- `VexWebArtifacts` as deterministic browser-native generation + semantic manifest.
+
+See [KOTLIN-BLUEPRINT.md](./KOTLIN-BLUEPRINT.md) and
+[component-architecture-catalog.json](./component-architecture-catalog.json).
+
 Accept the smallest language-neutral contract that survives materially different implementations.
 
 Possible dispositions:
@@ -215,7 +237,22 @@ UNSUPPORTED
 
 Do not generalize a component merely because two source files look similar.
 
-### A4 — target realization map — WAITING on A3
+### A4 — target realization / adapter map — WAITING on A3
+
+Each target should consume accepted portable relationship objects/IR through an explicit adapter:
+
+```text
+portable relationship graph
+-> Android / Compose adapter
+-> Browser / VexWebArtifacts adapter
+-> iOS / SwiftUI adapter
+-> .NET / MAUI adapter
+-> ...
+```
+
+The adapter emits target-native source plus enough semantic manifest/projection data for that target
+to project itself back into Screen Lens. Native compile/proof remains separate from generated-source
+parity.
 
 For each accepted portable component, map realization variants:
 
@@ -317,6 +354,24 @@ Component axis:
 ```text
 portableComponentRef -> targetRealizationRef
 ```
+
+### Architecture candidates — source influence before acceptance
+
+The Component Gallery now has two explicit layers:
+
+```text
+Source families
+  exact current Product realization / where-used
+
+Architecture candidates
+  recurring relationships that may deserve typed portable contracts
+```
+
+Current candidates include identity-addressed trees, semantic control binding, typed containment,
+swappable regions, modal presentation, stable repeaters, anchored overlays, local navigation trails,
+Context Dock, Frame/Seam/Region layout and the canonical VexLife Action Vessel.
+
+No candidate is marked accepted portable yet.
 
 ## Permanent boundaries
 
