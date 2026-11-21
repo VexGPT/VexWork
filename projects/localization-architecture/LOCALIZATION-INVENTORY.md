@@ -111,10 +111,10 @@ The matching VexBoard Main Screen Lens already contains:
 
 ```text
 261 projected Elements
-182 explicit R.string-bound occurrences
-172 unique bound source string IDs
+190 explicit R.string-bound occurrences
+179 unique bound source string IDs
 0 missing current R.string resources at the observed source
-5 source string IDs reused across multiple Elements
+6 source string IDs reused across multiple Elements
 ```
 
 Examples:
