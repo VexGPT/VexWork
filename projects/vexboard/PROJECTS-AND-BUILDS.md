@@ -11,8 +11,8 @@
 The answer has three parts.
 
 - **One entry.** `vexboard/projects.html` lists every project, and `vexboard/` opens it.
-- **One catalog.** `projects/vexboard/lens/catalog.json` records which subjects VexBoard can project or relate and where each one's
-  **Stable** and **Main** builds point. It does not replace the VexWork Project Registry.
+- **One catalog.** `projects/vexboard/lens/catalog.json` records which subjects VexBoard can project or relate, where **Main** points,
+  and **Stable** when human acceptance has earned one. It does not replace the VexWork Project Registry.
 - **One header.** In the Screen Lens, a project menu and a `Stable · Main · Commit…` switch change what you
   are looking at in place.
 
@@ -28,8 +28,8 @@ vexboard/                 -> projects.html       the front door (D26)
 ```text
 projects/vexboard/lens/catalog.json        which projects, which builds, which commit each build points at
 projects/vexboard/lens/<slug>.lens-adapter.json   how a project's source is read (repository.commit mirrors Stable)
-projects/vexboard/lens/<slug>.screen-lens.json    Stable's generated lens (Main shares it while both point at one commit)
-projects/vexboard/lens/<slug>.main.screen-lens.json   Main's own lens, only once Main has moved past Stable
+projects/vexboard/lens/<slug>.screen-lens.json    Stable's generated lens once acceptance exists (Main may share it at the same commit)
+projects/vexboard/lens/<slug>.main.screen-lens.json   Main's own lens when Main is distinct, including a CANDIDATE before first Stable acceptance
 ```
 
 To answer "what is Stable for VexLife Android?", read
@@ -37,9 +37,10 @@ To answer "what is Stable for VexLife Android?", read
 pointer against its file, run `npm run lens:verify`. Both are offline.
 
 ```text
-STABLE  != NEWEST     Stable is accepted; its source pointer moves only when Main is promoted
-MAIN    != ACCEPTED   Main is the newest projected commit on the default branch
-COMMIT  != BUILD      any other commit is projected in your browser and never saved
+STABLE     != NEWEST     Stable is accepted; its source pointer moves only when Main is promoted
+MAIN       != ACCEPTED   Main is the newest projected commit on the default branch
+CANDIDATE  != UNBUILT    Main/Commit are projectable; Stable is intentionally absent until acceptance
+COMMIT     != BUILD      any other commit is projected in your browser and never saved
 ```
 
 An accepted VexBoard projector or relationship correction can refine Stable's projection while its
@@ -92,12 +93,14 @@ There are limits:
 - **Rate limit.** Without signing in, GitHub allows about 60 API calls an hour from one browser, and
   each new commit costs 2. Stable and Main cost nothing.
 - **Older commits.** A commit older than the app structure the adapter understands fails with a plain
-  explanation, and the lens falls back to Stable.
+  explanation, and the lens falls back to the subject's default build (Stable when accepted, otherwise Main).
 - **Public repositories only.** A private repository would need a token, which the page never asks for.
 
 ## Differences from Stable
 
-On Main or on a commit, the header shows how the view differs from Stable. The comparison is by stable
+A CANDIDATE with no accepted Stable keeps the Stable control visibly unavailable rather than fabricating a comparison.
+Main and Commit remain projectable. Once Stable exists, Main or a commit shows how the view differs from Stable.
+The comparison is by stable
 identity (D25), with step detail (D30):
 
 - **No projected change.** The header says "Same meaning as Stable". The commit moved, but nothing the
@@ -133,8 +136,10 @@ Do not use catalog registration as a substitute for understanding the target sou
    menu, with its live branch head and its boards.
 2. **Give it a lens.** Write an adapter that produces the same `vexboard.screen-lens/v1` schema. For
    VexLife Prod, an export from its `VexUiBlueprint` is preferred over parsing text.
-3. **Register its builds.** Add `lens: { status: "GENERATED", adapter, overlay, anyCommit, builds: [stable, main] }`.
-4. **Verify.** `npm run lens:verify` covers the new project automatically.
+3. **Register its projectable build.** Before first human acceptance, use `status: "CANDIDATE"` with exactly one
+   `main` build. The Projects page and Lens then expose Main/Commit while showing Stable as not accepted. After
+   evidence-bearing promotion, the catalog becomes `status: "GENERATED"` with Stable + Main.
+4. **Verify.** `npm run lens:verify` covers every projectable subject automatically.
 
 `anyCommit` is true only for a project whose adapter is pure and whose source is public.
 
