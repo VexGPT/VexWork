@@ -507,7 +507,7 @@
       "candidateRef": "candidate.component.swappable-region",
       "label": "Swappable region",
       "class": "PRESENTATION",
-      "state": "PORTABLE_CANDIDATE",
+      "state": "HELD",
       "question": "How can one stable region switch among direct child expressions without creating app-navigation depth or duplicating ownership?",
       "sourceFamilyRefs": [
         "component.source-family.vexlife-android.region"
@@ -614,7 +614,7 @@
       "note": "Android Gallery and VexStream Discover now independently prove the local-selection law. Current VexLife-Prod has equivalent lived Conversation/Settings behavior but lacks one compiler-visible selected/default-child contract, so SwiftUI generation for that Product remains held rather than inferred from browser state.view.",
       "formation": {
         "formationRef": "formation.component.local-selection.a3",
-        "state": "FORMATION",
+        "state": "HELD",
         "kind": "NEW_TYPED_RELATIONSHIP_CANDIDATE",
         "sourceOwnerRefs": [
           "repo.vexlife-android",
@@ -652,7 +652,7 @@
           "many-to-one selector mapping and bounded/non-exhaustive choice sets survive round-trip projection",
           "invalid default/target/selector relationships fail closed"
         ],
-        "note": "Local Selection now has executable source evidence on Android and VexStream: Android enforces Screen-local mutation boundaries; VexStream proves default/transition/reselect/unknown-negative behavior plus byte-regenerable coverage/gate/selector projection. Android still owes a dedicated positive runtime selection unit test, and current VexLife-Prod SwiftUI remains HELD until Product source owns its default/current selection contract."
+        "note": "A3 formation decision is HELD, not unresolved: Android and VexStream establish the portable Local Selection shape and its coverage/gate/selector pressures, but current VexLife-Prod keeps default/current Conversation-vs-Settings selection split between typed VexWeb structure and browser-local state.view. Accepting or generating SwiftUI from that split would infer canonical meaning from runtime visibility. Victor explicitly deferred production component refactors, so the portable candidate remains held until Product source owns or binds one compiler-visible default/current selection contract. The hold is local to this candidate and does not invalidate the five accepted A3 relationships."
       }
     },
     {
