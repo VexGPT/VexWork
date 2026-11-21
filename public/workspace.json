@@ -29519,7 +29519,7 @@
           "label": "Analyze duplicate strings without collapsing semantic identity",
           "purpose": "Derive value-first candidate groups and cross-Product where-used evidence from the proven inventory, preserving separate source string identities while classifying likely sharing, required separation, format/locale divergence, and human/source-reviewed semantic convergence.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
@@ -29536,14 +29536,17 @@
           ],
           "sourceRefs": [
             "projects/localization-architecture/ARCHITECTURE.md",
-            "work.vex.localization-architecture.android-inventory"
+            "work.vex.localization-architecture.android-inventory",
+            "src/shared/vexboard-localization-convergence.mjs",
+            "test/vexboard-localization-convergence.test.mjs",
+            "projects/localization-architecture/inventory/vexlife-android.main.localization.json"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T07:20:00.000Z",
-          "updatedAt": "2026-11-21T09:39:25.004Z",
+          "updatedAt": "2026-11-21T11:25:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vex.localization-architecture.duplicate-convergence.ready.a1-complete",
@@ -29557,6 +29560,21 @@
                 "github.commit.vexwork.9a826467c2412719ef9b36d20dc865e94d7684d2"
               ],
               "createdAt": "2026-11-21T09:39:25.004Z"
+            },
+            {
+              "transitionRef": "transition.vex.localization-architecture.duplicate-convergence.running.a4-derived-analysis",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "A4 enters bounded implementation from the proven relational inventory: derive value-equal candidate groups, retain each sourceStringRef independently, expose role/domain/format/locale evidence and separate already-shared source reuse before any accepted semantic-group identity or global Localization Workspace is introduced.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "projects/localization-architecture/ARCHITECTURE.md",
+                "work.vex.localization-architecture.android-inventory",
+                "src/shared/vexboard-localization-convergence.mjs",
+                "test/vexboard-localization-convergence.test.mjs",
+                "projects/localization-architecture/inventory/vexlife-android.main.localization.json"
+              ],
+              "createdAt": "2026-11-21T11:25:00.000Z"
             }
           ]
         },
@@ -29774,14 +29792,13 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.vex.localization-architecture.duplicate-convergence"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
+            "work.vex.localization-architecture.duplicate-convergence",
             "work.vex.localization-architecture.outcome"
           ]
         },
