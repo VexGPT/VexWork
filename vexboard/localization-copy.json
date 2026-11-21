@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "vexboard.localization-copy/v1",
+  "sourceLocale": "en",
+  "strings": {
+    "localization.open": "Localization",
+    "localization.title": "Localization",
+    "localization.summary": "Source strings and their projected locations for this exact build.",
+    "localization.close": "Close",
+    "localization.currentElement": "Selected element",
+    "localization.searchLabel": "Find source strings",
+    "localization.searchPlaceholder": "Find a source string, value, screen or element",
+    "localization.source": "Source",
+    "localization.locations": "Locations",
+    "localization.location": "location",
+    "localization.locationsPlural": "locations",
+    "localization.unmapped": "Not mapped by this Screen Lens.",
+    "localization.noMatches": "No source strings match this search.",
+    "localization.noSelection": "Search a source string, or select a Product element to see its text binding.",
+    "localization.appShell": "App shell",
+    "localization.openLocation": "Open location"
+  }
+}

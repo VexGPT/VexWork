@@ -240,6 +240,64 @@ export function sourceStringsForExactValue(inventory, sourceValue) {
   return inventory.strings.filter((row) => row.sourceValue === sourceValue);
 }
 
+export function normalizeLocalizationInventory(input) {
+  if (!input || input.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) {
+    fail(`schemaVersion must be ${LOCALIZATION_INVENTORY_SCHEMA}`);
+  }
+  const normalized = createLocalizationInventory({
+    inventoryRef: input.inventoryRef,
+    subjectRef: input.subjectRef,
+    buildRef: input.buildRef ?? null,
+    sourceLocale: input.sourceLocale,
+    sourceSnapshot: input.sourceSnapshot,
+    producer: input.producer,
+    sourceStrings: (input.strings ?? []).map((row) => ({
+      sourceStringRef: row.sourceStringRef,
+      sourceKey: row.sourceKey,
+      sourceValue: row.sourceValue,
+      sourcePath: row.sourcePath,
+    })),
+    occurrences: input.occurrences ?? [],
+  });
+  if (JSON.stringify(normalized) !== JSON.stringify(input)) {
+    fail('materialized inventory disagrees with normalized source/occurrence relationships');
+  }
+  return normalized;
+}
+
+function localizationSearchScore(row, query) {
+  const exact = [row.sourceStringRef, row.sourceKey, row.sourceValue].map((value) => String(value).toLowerCase());
+  if (exact.includes(query)) return 0;
+  if (exact.some((value) => value.startsWith(query))) return 1;
+  if (exact.some((value) => value.includes(query))) return 2;
+  const locations = [...row.elementRefs, ...row.screenRefs, ...row.surfaceRefs].map((value) => String(value).toLowerCase());
+  if (locations.some((value) => value.includes(query))) return 3;
+  return null;
+}
+
+export function searchLocalizationStrings(inventory, query, { limit = 50 } = {}) {
+  if (!inventory || inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) fail('search requires a Localization Inventory');
+  if (!Number.isInteger(limit) || limit < 1 || limit > 200) fail('search limit must be an integer from 1 to 200');
+  const needle = String(query ?? '').trim().toLowerCase();
+  if (!needle) return [];
+  return inventory.strings
+    .map((row) => ({ row, score: localizationSearchScore(row, needle) }))
+    .filter((entry) => entry.score !== null)
+    .sort((left, right) => left.score - right.score || left.row.sourceStringRef.localeCompare(right.row.sourceStringRef))
+    .slice(0, limit)
+    .map((entry) => entry.row);
+}
+
+export function localizationOccurrenceTarget(inventory, occurrenceRef) {
+  if (!inventory || inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) fail('occurrence target requires a Localization Inventory');
+  const occurrence = inventory.occurrences.find((row) => row.occurrenceRef === occurrenceRef);
+  if (!occurrence) fail(`unknown occurrence ${occurrenceRef}`);
+  return Object.freeze({
+    screenRef: occurrence.screenRef,
+    elementRef: occurrence.elementRef,
+  });
+}
+
 function csvCell(value) {
   const textValue = value === null || value === undefined ? '' : String(value);
   return /[",\n\r]/.test(textValue) ? `"${textValue.replaceAll('"', '""')}"` : textValue;

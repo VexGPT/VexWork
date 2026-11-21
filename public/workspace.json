@@ -29509,7 +29509,7 @@
           "label": "Add a contextual Localization Inspector to Screen Lens",
           "purpose": "Use the proven localization inventory to replace the low-frequency Related toolbar slot with a contextual Localization inspector that previews locale text, searches/filters strings, reverse-resolves occurrences, and reuses existing Lens navigation/selection to jump to and highlight the exact owning element; preserve Related boards in a secondary Project/overflow surface.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
@@ -29524,14 +29524,18 @@
             "projects/localization-architecture/ARCHITECTURE.md",
             "work.vex.localization-architecture.android-inventory",
             "projects/vexboard/SCREEN-LENS.md",
-            "vexboard/lens.html"
+            "vexboard/lens.html",
+            "src/shared/vexboard-localization-inventory.mjs",
+            "vexboard/localization-copy.json",
+            "test/vexboard-localization-inventory.test.mjs",
+            "test/vexboard-lens-ui.test.mjs"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T07:56:00.000Z",
-          "updatedAt": "2026-11-21T09:39:25.002Z",
+          "updatedAt": "2026-11-21T09:43:37.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vex.localization-architecture.localization-inspector.ready.a1-complete",
@@ -29545,6 +29549,21 @@
                 "github.commit.vexwork.9a826467c2412719ef9b36d20dc865e94d7684d2"
               ],
               "createdAt": "2026-11-21T09:39:25.002Z"
+            },
+            {
+              "transitionRef": "transition.vex.localization-architecture.localization-inspector.running.a2-string-location-navigation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "A2 entered its first lived implementation slice: the exact-build Localization Inventory is consumed generically by Screen Lens so a human can find a source string, inspect where-used occurrences, and reuse existing Lens jump/select/highlight behavior without freezing locale preview or final toolbar placement.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "src/shared/vexboard-localization-inventory.mjs",
+                "vexboard/lens.html",
+                "vexboard/localization-copy.json",
+                "test/vexboard-localization-inventory.test.mjs",
+                "test/vexboard-lens-ui.test.mjs"
+              ],
+              "createdAt": "2026-11-21T09:43:37.000Z"
             }
           ]
         },
@@ -29681,14 +29700,14 @@
           "label": "Ready",
           "workRefs": [
             "work.vex.localization-architecture.change-set-reconciliation",
-            "work.vex.localization-architecture.duplicate-convergence",
-            "work.vex.localization-architecture.localization-inspector"
+            "work.vex.localization-architecture.duplicate-convergence"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
+            "work.vex.localization-architecture.localization-inspector",
             "work.vex.localization-architecture.outcome"
           ]
         },

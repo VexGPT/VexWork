@@ -4,6 +4,7 @@ import test from 'node:test';
 
 const page = fs.readFileSync(new URL('../vexboard/lens.html', import.meta.url), 'utf8');
 const board = fs.readFileSync(new URL('../vexboard/index.html', import.meta.url), 'utf8');
+const localizationCopy = JSON.parse(fs.readFileSync(new URL('../vexboard/localization-copy.json', import.meta.url), 'utf8'));
 
 test('Screen Lens page consumes the shared model, layout and interaction modules', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens\.mjs'/);
@@ -499,3 +500,50 @@ test('missing browser-local walk state recovers visibly to source entry instead 
   assert.match(page, /kind:'NULL_STATE'/);
   assert.match(page, /const walk=ensureWalk\(\)/);
 });
+
+
+test('Localization Inspector consumes the A1 inventory through generic exact-build discovery and existing Lens navigation', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-localization-inventory\.mjs'/);
+  assert.match(page, /LOCALIZATION_INVENTORY_DIR/);
+  assert.match(page, /\$\{subject\.slug\}\.\$\{buildRef\}\.localization\.json/);
+  assert.match(page, /inventory\.subjectRef !== subject\.subjectRef/);
+  assert.match(page, /inventory\.sourceSnapshot\.commit !== state\.lens\.sourceSnapshot\.commit/);
+  assert.match(page, /Localization\.normalizeLocalizationInventory\(raw\)/);
+  assert.match(page, /Localization\.searchLocalizationStrings\(inventory, state\.localization\.query/);
+  assert.match(page, /Localization\.stringsForElement\(inventory, state\.anchorElementRef\)/);
+  assert.match(page, /Localization\.occurrencesForString\(state\.localization\.inventory, row\.sourceStringRef\)/);
+  assert.match(page, /goToResult\(\{ target: Localization\.localizationOccurrenceTarget/);
+  assert.match(page, /state\.flashRef = occurrence\.elementRef/);
+  assert.match(page, /state\.overlay === 'LOCALIZATION'/);
+  assert.doesNotMatch(page, /subject\.slug\s*===\s*['"]vexlife-android['"][\s\S]{0,180}localization/i, 'Localization availability is never selected by Product-name branching');
+});
+
+test('the first Localization Inspector slice owns stable UI refs and keyed source copy', () => {
+  assert.equal(localizationCopy.schemaVersion, 'vexboard.localization-copy/v1');
+  assert.equal(localizationCopy.sourceLocale, 'en');
+  for (const key of [
+    'localization.open',
+    'localization.title',
+    'localization.summary',
+    'localization.close',
+    'localization.currentElement',
+    'localization.searchLabel',
+    'localization.searchPlaceholder',
+    'localization.locations',
+    'localization.unmapped',
+    'localization.noMatches',
+    'localization.noSelection',
+    'localization.appShell',
+    'localization.openLocation',
+  ]) assert.equal(typeof localizationCopy.strings[key], 'string', key);
+  assert.match(page, /screen\.localization\.inspector/);
+  assert.match(page, /element\.localization\.open/);
+  assert.match(page, /element\.localization\.search/);
+  assert.match(page, /element\.localization\.current-element/);
+  assert.match(page, /element\.localization\.string-results/);
+  assert.match(page, /element\.localization\.occurrence-list/);
+  assert.match(page, /LOCALIZATION_COPY_URL = '\.\/localization-copy\.json'/);
+  assert.match(page, /localizationText\('localization\.open'\)/);
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A2-SLICE1]
