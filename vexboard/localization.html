@@ -103,8 +103,8 @@ const pivotNotes = Object.freeze({
   STRINGS: 'Source-string view across Products. Source IDs remain independent even when values match.',
   VALUES: 'Value-first regrouping. Equal source-language values are evidence for review, never semantic identity by themselves.',
   GROUPS: 'A4 convergence candidates plus source identities already reused in more than one occurrence.',
-  LOCALES: 'Observed locale identities aggregated across connected Product inventories.',
-  COVERAGE: 'Product × locale observation. NOT OBSERVED is explicit; this page does not invent fallback or Product support.',
+  LOCALES: 'Observed locale identities plus explicit work targets. A work target is not Product support until source observes it.',
+  COVERAGE: 'Product × locale observation. NOT OBSERVED is explicit; requested work stays visible without inventing fallback or Product support.',
   CHANGE_SETS: 'Existing browser-local A3 intent reconciled against current connected Product inventories. This page creates no second Change Set store.',
 });
 
@@ -201,21 +201,27 @@ function renderGroups(rows) {
   )));
 }
 function renderLocales(rows) {
-  return table(['Locale','Observed Products','Complete Products','Observed strings','Missing'], rows.map((row) => tr(
-    [h('b', {}, localeName(row.localeRef)), h('span', { class: 'sub mono' }, row.localeRef)],
+  return table(['Locale','Observed Products','Complete Products','Observed strings','Missing','Requests'], rows.map((row) => tr(
+    [
+      h('b', {}, localeName(row.localeRef)),
+      h('span', { class: 'sub mono' }, row.localeRef),
+      row.observedSubjectCount === 0 ? h('span', { class: 'sub' }, 'Work target · not observed in Product source') : null,
+    ],
     `${row.observedSubjectCount} / ${row.subjectCount}`,
     `${row.completeSubjectCount} / ${row.subjectCount}`,
     `${count(row.observedStringCount)} / ${count(row.sourceStringCount)}`,
     count(row.missingStringCount),
+    count(row.requestedChangeCount),
   )));
 }
 function renderCoverage(rows) {
-  return table(['Product','Locale','Status','Observed','Missing','Revision'], rows.map((row) => tr(
+  return table(['Product','Locale','Status','Observed','Missing','Requests','Revision'], rows.map((row) => tr(
     h('b', {}, subjectLabel(row.subjectRef)),
     [h('b', {}, localeName(row.localeRef)), h('span', { class: 'sub mono' }, row.localeRef)],
     pill(row.completeness),
     `${count(row.observedStringCount)} / ${count(row.sourceStringCount)}`,
     count(row.missingStringCount),
+    count(row.requestedChangeCount),
     codeValue(short(row.revision)),
   )));
 }
@@ -251,8 +257,15 @@ function render() {
     state.connected.map(({ subject }) => h('option', { value: subject.subjectRef, selected: state.subjectRef === subject.subjectRef }, subject.label)));
   subjectSelect.addEventListener('change', () => { state.subjectRef = subjectSelect.value || null; syncUrl(); render(); });
   const localeSelect = h('select', { 'aria-label': 'Locale filter' },
-    h('option', { value: '', selected: !state.localeRef }, 'All observed locales'),
-    state.projection.locales.map((row) => h('option', { value: row.localeRef, selected: state.localeRef === row.localeRef }, `${localeName(row.localeRef)} (${row.localeRef})`)));
+    h('option', { value: '', selected: !state.localeRef }, 'All locale views'),
+    state.projection.locales.map((row) => {
+      const status = row.observedSubjectCount === 0
+        ? ' · work target'
+        : row.completeSubjectCount === row.subjectCount
+          ? ' · complete'
+          : '';
+      return h('option', { value: row.localeRef, selected: state.localeRef === row.localeRef }, `${localeName(row.localeRef)} (${row.localeRef})${status}`);
+    }));
   localeSelect.addEventListener('change', () => { state.localeRef = localeSelect.value || null; syncUrl(); render(); });
   const search = h('input', { type: 'search', value: state.query, placeholder: 'Find string, value, element, locale, group or Change Set', 'aria-label': 'Search Localization Workspace' });
   search.addEventListener('input', () => { state.query = search.value; syncUrl(); renderRows(); });
@@ -265,7 +278,7 @@ function render() {
       metric(summary.subjectCount, 'connected Products'),
       metric(summary.sourceStringCount, 'source strings'),
       metric(summary.occurrenceCount, 'element occurrences'),
-      metric(summary.localeCount, 'observed locales'),
+      metric(summary.localeCount, 'locale views'),
       metric(summary.activeChangeCount, 'active requested changes')),
     h('div', { class: 'sources' },
       state.connected.map(({ subject, inventory }) => h('span', { class: 'source-chip' }, h('span', { class: 'dot' }), subject.label, h('code', {}, short(inventory.sourceSnapshot.commit)))),
@@ -305,6 +318,7 @@ async function boot() {
   state.projection = Workspace.projectLocalizationWorkspace({
     inventories: state.connected.map((row) => row.inventory),
     changeSetCollection,
+    workLocaleRefs: state.localeRef ? [state.localeRef] : [],
   });
   if (state.localeRef && !state.projection.locales.some((row) => row.localeRef === state.localeRef)) state.localeRef = null;
   if (state.subjectRef && !state.connected.some((row) => row.subject.subjectRef === state.subjectRef)) state.subjectRef = null;
