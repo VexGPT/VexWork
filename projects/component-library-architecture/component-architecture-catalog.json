@@ -314,14 +314,21 @@
         "component.source-family.vexlife-android.region"
       ],
       "portableRelationships": [
-        "one stable container owns a finite set of admitted direct child expressions",
-        "default/initial child is explicit",
-        "selected child is local presentation/location state rather than feature-domain truth",
-        "selecting a peer child does not automatically create app navigation depth",
-        "projection exposes the selected child/mode identity"
+        "one stable subject/container owns an admitted child-selection relationship",
+        "default/initial child identity is explicit",
+        "selection owner and current selected child are source-visible",
+        "choices bind admitted target child refs to one or more selector refs",
+        "selection may declare exhaustive=true or truthfully remain bounded/non-exhaustive",
+        "a choice may realize additional nested relationships while active",
+        "an outer gate may condition the whole local selection without becoming the selected child",
+        "selecting a peer child does not automatically create app navigation depth"
       ],
       "obligations": [
-        "selected child must belong directly to the region",
+        "selected target must belong to the source-owned admitted choice set",
+        "selector identity must remain distinct from selected child identity",
+        "multiple selectors for one target must be preserved when source owns them",
+        "defaultRef must name an admitted target",
+        "exhaustive selection must not silently omit admitted choices",
         "switching does not fabricate screen navigation history"
       ],
       "mustNotOwn": [
@@ -1177,6 +1184,61 @@
         }
       ],
       "note": "The first compile caught and corrected an invalid VexLifeWeb import before PASS. Generic irregular geometry remains held rather than duplicating VexWeb's private browser geometry machinery."
+    },
+    {
+      "pressureRef": "pressure.component.swappable-region.swiftui-vexlife-prod",
+      "candidateRef": "candidate.component.swappable-region",
+      "platformRef": "platform.ios",
+      "framework": "SwiftUI",
+      "state": "HELD_SOURCE_CONTRACT",
+      "sourceRef": "source.vexlife-prod.main.27617e4b",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+      "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.local-selection.subject-and-children",
+          "disposition": "HELD",
+          "source": "CompanionContent with Conversation and Settings children is typed",
+          "target": "SwiftUI local selection container not generated until the complete source selection contract is owned"
+        },
+        {
+          "relationRef": "relation.local-selection.default-child",
+          "disposition": "HELD",
+          "source": "browser runtime currently defaults state.view to conversation",
+          "target": "adapter must not promote browser runtime string into portable defaultRef"
+        },
+        {
+          "relationRef": "relation.local-selection.selected-child",
+          "disposition": "HELD",
+          "source": "browser runtime owns state.view + mutually exclusive visibility",
+          "target": "compiler-visible selected-child projection is missing"
+        },
+        {
+          "relationRef": "relation.local-selection.selector-binding",
+          "disposition": "HELD",
+          "source": "CompanionViewSwitch has a local interaction toward Settings but the full two-way selection relation is not typed",
+          "target": "SwiftUI selector/switch binding generation held"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.cross-product-selection-law",
+          "state": "PASS",
+          "note": "Android Swappable/SwapTo and VexStream source-owned SELECTION independently establish the relationship shape."
+        },
+        {
+          "proofRef": "proof.vexlife-prod-selection-contract",
+          "state": "HELD",
+          "note": "Current Product default/current selection remains split across typed VexWeb and browser runtime state.view."
+        },
+        {
+          "proofRef": "proof.apple-swiftui-sdk",
+          "state": "NOT_APPLICABLE",
+          "note": "No SwiftUI source is generated while the Product source contract is held."
+        }
+      ],
+      "note": "Do not generate SwiftUI from browser state.view. Form or bind the current Product selection contract first."
     }
   ]
 }
