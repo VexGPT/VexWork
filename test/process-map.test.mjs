@@ -14,13 +14,21 @@ test('Process Map is source-addressable, non-executing navigation', () => {
   const map = projectProcessMap(processRegistry);
   assert.equal(map.effects, false);
   assert.equal(map.executionAuthority, 'NONE');
-  assert.equal(map.processes.length, 8);
+  assert.equal(map.processes.length, processRegistry.processes.length);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.capture-discovered-work'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.form-project'), true);
+  assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.close-and-succeed-project'), true);
   const formProject = map.processes.find((process) => process.processRef === 'process.vexwork.form-project');
   assert.equal(formProject.boardRefOrNull, 'board.vexwork.form-project');
   assert.equal(map.processes.filter((process) => process.processRef !== formProject.processRef)
     .every((process) => process.boardRefOrNull === null), true);
+  const closeProject = map.processes.find((process) => process.processRef === 'process.vexwork.close-and-succeed-project');
+  assert.deepEqual(closeProject.entryRefs, [
+    'docs/process/CLOSE-AND-SUCCEED-PROJECT.md',
+    'docs/foundation/PROJECTS.md',
+  ]);
+  assert.equal(closeProject.effects, false);
+  assert.equal(closeProject.executionAuthority, 'NONE');
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.promote-derived-concern'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexlife-android.feature-authoring'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.quality-review'), true);

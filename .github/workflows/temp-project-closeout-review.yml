@@ -39,15 +39,15 @@ jobs:
       - name: Pack generated projection
         if: always()
         run: |
-          mkdir -p .candidate-review
-          cp blueprint/project-registry.json .candidate-review/project-registry.json
-          cp workgraphs/public.json .candidate-review/workgraph-public.json
-          cp public/workspace.json .candidate-review/workspace.json
-          printf '%s\n' "$GITHUB_SHA" > .candidate-review/source-head.txt
+          mkdir -p candidate-review
+          cp blueprint/project-registry.json candidate-review/project-registry.json
+          cp workgraphs/public.json candidate-review/workgraph-public.json
+          cp public/workspace.json candidate-review/workspace.json
+          printf '%s\n' "$GITHUB_SHA" > candidate-review/source-head.txt
 
       - name: Upload generated projection
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: vexwork-project-closeout-generated
-          path: .candidate-review/
+          path: candidate-review/
