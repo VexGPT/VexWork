@@ -748,7 +748,8 @@
         "kind": "NEW_TYPED_RELATIONSHIP_CANDIDATE",
         "sourceOwnerRefs": [
           "repo.vexlife-android",
-          "repo.vexlife-prod"
+          "repo.vexlife-prod",
+          "repo.vexstream-music"
         ],
         "ownerRule": "The feature/domain owner supplies item identity, item meaning and ordering. The reusable repeated-item relationship owns only stable presentation identity mechanics and target capability dispositions.",
         "portableFields": [
@@ -778,7 +779,7 @@
           "caller-owned order remains unchanged by the adapter",
           "optional visibility/scroll relationships have explicit target dispositions"
         ],
-        "note": "Cross-target core is executable on Swift and source-formed on Android: current Android tests prove reorder + duplicate failure; PR #261 adds focused insert/remove identity pressure without production changes; exact Gradle execution of #261 remains owed. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions."
+        "note": "Cross-target core is executable on Swift, source-formed on Android, and independently source-visible in VexStream POPULATION/template relationships. Android PR #261 adds focused insert/remove identity pressure but exact Gradle execution remains owed. VexStream playlist cards/trash prove stable runtime item identity; playlist-detail entries intentionally remain CURRENT_OCCURRENCE when durable duplicate/reorder identity is not owned. Requested visibility, visible-item projection, scroll locking and reuse hints remain target-capability dispositions."
       }
     },
     {
@@ -1755,6 +1756,151 @@
         }
       ],
       "note": "VexStream is the second materially different Product witness for local selection and adds exhaustive/bounded choice sets, many-to-one selectors and outer-gate separation."
+    },
+    {
+      "pressureRef": "pressure.component.stable-repeater.vexstream-browser",
+      "candidateRef": "candidate.component.stable-repeater",
+      "platformRef": "platform.browser",
+      "framework": "Browser DOM/JavaScript + Screen Lens POPULATION",
+      "state": "SOURCE_FORMED",
+      "sourceRef": "source.vexstream-music.main.a70c5292",
+      "repositoryRef": "repo.vexstream-music",
+      "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+      "path": "v2/projection/vexboard-screen-lens.json",
+      "relationships": [
+        {
+          "relationRef": "relation.stable-repeater.collection-identity",
+          "disposition": "MAPPED",
+          "source": "POPULATION list.ref for playlist cards / detail entries / trash items",
+          "target": "source-owned runtime collection identity in browser projection"
+        },
+        {
+          "relationRef": "relation.stable-repeater.item-identity",
+          "disposition": "MAPPED",
+          "source": "playlist.id or item.id for stable playlist-card/trash instances",
+          "target": "runtime instance ref formed from source-owned item identity rather than row position"
+        },
+        {
+          "relationRef": "relation.stable-repeater.caller-order",
+          "disposition": "MAPPED",
+          "source": "resolvedPlaylists / trashSnapshot.trash / resolved.entries supplied order",
+          "target": "browser renderer consumes the supplied population order"
+        },
+        {
+          "relationRef": "relation.stable-repeater.content-type-hint",
+          "disposition": "MAPPED",
+          "source": "POPULATION contentType",
+          "target": "playlist-card / playlist-detail-entry / trash-row template selection"
+        },
+        {
+          "relationRef": "relation.stable-repeater.duplicate-failure",
+          "disposition": "HELD",
+          "source": "playlist detail entry identity includes occurrenceWithinPlaylist because duplicate track refs can exist",
+          "target": "Lens explicitly downgrades continuity to CURRENT_OCCURRENCE rather than claiming durable identity across arbitrary duplicate-ref reorder"
+        },
+        {
+          "relationRef": "relation.stable-repeater.requested-visible-item",
+          "disposition": "UNSUPPORTED",
+          "source": "no source-owned requested-visible relationship in the bounded VexStream population projection",
+          "target": "no portable claim"
+        },
+        {
+          "relationRef": "relation.stable-repeater.visible-item-projection",
+          "disposition": "UNSUPPORTED",
+          "source": "current VexStream projection identifies populations/templates, not viewport-visible item refs",
+          "target": "no portable claim"
+        },
+        {
+          "relationRef": "relation.stable-repeater.scroll-lock",
+          "disposition": "UNSUPPORTED",
+          "source": "current VexStream population source owns no scroll-lock relationship",
+          "target": "no portable claim"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.vexstream-current-source",
+          "state": "PASS",
+          "note": "VexStream main remains a70c5292cedfec32356cb9fc34aa637808047e30 and the checked-in Lens was inspected at that exact repository head."
+        },
+        {
+          "proofRef": "proof.vexstream-population-projectability",
+          "state": "PASS",
+          "note": "Screen Lens projects POPULATION list refs, itemKey/contentType and template instance-identity formation without enumerating live runtime IDs."
+        },
+        {
+          "proofRef": "proof.vexstream-durable-item-mutation",
+          "state": "OWED",
+          "note": "This source projection does not independently execute insert/remove/reorder behavior for playlist/trash populations."
+        },
+        {
+          "proofRef": "proof.vexstream-lens-self-currentness",
+          "state": "HELD",
+          "note": "The checked-in Lens omits its own commit/observedAt; VexBoard binds exact currentness externally through the Lens catalog."
+        }
+      ],
+      "note": "VexStream is a third materially different Product witness: stable playlist-card/trash identity is source-owned and projected, while duplicate playlist-entry identity is explicitly weaker rather than guessed."
+    },
+    {
+      "pressureRef": "pressure.component.frame-region-layout.vexstream-browser",
+      "candidateRef": "candidate.component.frame-region-layout",
+      "platformRef": "platform.browser",
+      "framework": "Browser source + Screen Lens FRAME",
+      "state": "SOURCE_FORMED",
+      "sourceRef": "source.vexstream-music.main.a70c5292",
+      "repositoryRef": "repo.vexstream-music",
+      "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+      "path": "v2/projection/vexboard-screen-lens.json",
+      "relationships": [
+        {
+          "relationRef": "relation.frame-layout.zero-seam-frame",
+          "disposition": "MAPPED",
+          "source": "one Frame with seams=[] and one Region bound to FRAME_START/END/TOP/BOTTOM",
+          "target": "VexStream desktop shell uses the same FRAME grammar without a special single-region layout type"
+        },
+        {
+          "relationRef": "relation.frame-layout.region-identity",
+          "disposition": "MAPPED",
+          "source": "vexstream.desktop.library.region.shell",
+          "target": "source-addressable full-frame shell Region"
+        },
+        {
+          "relationRef": "relation.frame-layout.partial-multi-seam",
+          "disposition": "NOT_APPLICABLE",
+          "source": "this Product specimen has no Seams",
+          "target": "absence of seam pressure does not weaken the generic grammar"
+        },
+        {
+          "relationRef": "relation.frame-layout.seam-resize-collapse",
+          "disposition": "NOT_APPLICABLE",
+          "source": "this zero-Seam Product specimen has no seam interaction",
+          "target": "no target seam interaction exists to map"
+        },
+        {
+          "relationRef": "relation.frame-layout.overlay-depth",
+          "disposition": "MAPPED",
+          "source": "layout.overlays=[] and frame chrome=[] are explicitly projected",
+          "target": "absence of overlays/chrome is preserved rather than synthesized"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.vexstream-current-source",
+          "state": "PASS",
+          "note": "Exact VexStream main head a70c5292 was re-observed before binding this pressure."
+        },
+        {
+          "proofRef": "proof.vexstream-zero-seam-frame",
+          "state": "PASS",
+          "note": "Checked-in Screen Lens projects FRAME root with seams=[] and one Region using the same frame-edge vocabulary."
+        },
+        {
+          "proofRef": "proof.vexstream-lens-self-currentness",
+          "state": "HELD",
+          "note": "The Lens omits internal commit/observedAt and remains externally current-bound by VexBoard."
+        }
+      ],
+      "note": "This is the materially different zero-Seam case required by the Frame/Seam/Region formation. It proves the grammar scales down without inventing a one-pane special case."
     }
   ]
 }
