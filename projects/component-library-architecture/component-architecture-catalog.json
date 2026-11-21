@@ -21,6 +21,11 @@
       "role": "Android/Kotlin/Compose realization and architectural pressure evidence"
     },
     {
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+      "role": "Accepted Kotlin semantic/Blueprint authoring, VexWeb relational grammar and deterministic browser artifact generation"
+    },
+    {
       "repositoryRef": "repo.vextreme",
       "commit": "1a0f161b4175e83c223e57642d08501004cdb9fd",
       "role": "VexArchitecture stable presentation/ownership teaching projection"
@@ -62,6 +67,16 @@
         "native test/projection identifiers"
       ],
       "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/blueprint/VexUiBlueprint.kt",
+          "symbols": [
+            "VexScreenBlueprint",
+            "VexUiElementRef"
+          ],
+          "why": "Accepted commonMain Kotlin Blueprint already exposes compiler-visible stable element handles and parent relationships independently of renderer/runtime state."
+        },
         {
           "repositoryRef": "repo.vexlife-android",
           "commit": "d857a92371555472e0303b18eadf353da2a868d6",
@@ -208,6 +223,15 @@
         "desktop native panels"
       ],
       "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+          "symbols": [
+            "VexLifeWorkspaceBlueprint"
+          ],
+          "why": "Current Product composition is readable as nested Kotlin handles whose stable parent/child structure is independent of renderer implementation."
+        },
         {
           "repositoryRef": "repo.vexlife-android",
           "commit": "d857a92371555472e0303b18eadf353da2a868d6",
@@ -542,6 +566,37 @@
       ],
       "sourceEvidence": [
         {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexWeb.kt",
+          "symbols": [
+            "VexWeb.Frame",
+            "VexWeb.Seam",
+            "VexWeb.Region",
+            "VexWeb.XBoundary",
+            "VexWeb.YBoundary"
+          ],
+          "why": "Accepted sealed Kotlin relationship source owns Frame/Seam/Region spatial meaning and validation without encoding HTML/CSS."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexWebAuthoring.kt",
+          "symbols": [
+            "VexWebAuthoring"
+          ],
+          "why": "Accepted Kotlin DSL forms the existing relationship objects and remains explicitly separate from renderer/generator meaning."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexWebArtifacts.kt",
+          "symbols": [
+            "VexWebArtifacts"
+          ],
+          "why": "Accepted deterministic target adapter maps validated relationship objects to browser-native artifacts and a semantic manifest that preserves source relationships."
+        },
+        {
           "repositoryRef": "repo.vexwork",
           "commit": "b9b9f70906eb680c721be26389d4ee27f935018b",
           "path": "src/shared/vexboard-screen-lens-frames.mjs",
@@ -550,7 +605,7 @@
             "frameGeometry",
             "layoutRole"
           ],
-          "why": "Screen Lens already carries a subject-neutral relational frame/seam/region grammar for source-authored spatial composition."
+          "why": "Screen Lens consumes/project this source-authored spatial grammar without becoming its authority."
         }
       ],
       "note": "This likely becomes more important for Chromebook/Linux/desktop than for phone-first UI."
@@ -580,6 +635,7 @@
         "platform window-manager policy beyond declared constraints"
       ],
       "targetPressure": [
+        "Kotlin Blueprint -> target adapter -> native source -> target semantic manifest / Screen Lens",
         "Android FAB cluster",
         "browser floating/docked vessel",
         "iOS toolbar/floating/dock-appropriate surface",
