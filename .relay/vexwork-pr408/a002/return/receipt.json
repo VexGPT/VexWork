@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-custody-receipt/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.pull.vexwork.408",
+  "pullRequest": "github.pull.vexwork.408",
+  "candidateBase": "4b1040ab4dde983eb66dadc6c81d1dba1f93fd43",
+  "candidateHead": "90a02ba3630f35485f817194d9ba26b3e57a5d26",
+  "candidateTree": "68b93bccc30a67cee7aa7b3270825a6a22a7b090",
+  "outerReturnFilename": "RETURN-vexwork-pr408-a2-source-owner-a002--sha256-f32919ba218a1020e4ef07e61b7f6591cbdbf9fb437ca0857798acf1d205e792.zip",
+  "outerReturnSha256": "f32919ba218a1020e4ef07e61b7f6591cbdbf9fb437ca0857798acf1d205e792",
+  "canonicalReturnBytesChanged": false,
+  "transportMeaning": "GitHub custody only; VexRelay remains canonical result owner.",
+  "publishedAt": "2026-11-21T10:16:11.095Z"
+}
