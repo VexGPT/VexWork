@@ -289,7 +289,62 @@ Target realization
 
 This avoids treating a sample file as the only way to learn reuse.
 
-## 10. Code-language conversion
+## 10. Typed Blueprint compiler and target adapters
+
+The accepted VexLife-Prod lineage sharpens the earlier language-neutral contract idea.
+
+The portable relationship **meaning** remains framework-neutral, but its strongest authoring form may
+be Kotlin because sealed types, value classes, nested DSLs and exhaustive `when` branches can bind
+relationships more safely than loose configuration.
+
+Current accepted precedent:
+
+```text
+VexScreenBlueprint
++ VexUiElementRef
++ VexWeb sealed relationship grammar
++ VexWebAuthoring Kotlin DSL
+        ↓
+VexWebArtifacts
+        ↓
+HTML / CSS / JS
++ semantic manifest
+```
+
+This proves the architecture pattern:
+
+```text
+TYPED KOTLIN AUTHORING
+!= COMPOSE
+
+RELATIONSHIP SOURCE
+!= TARGET GENERATOR
+
+GENERATED TARGET SOURCE
+!= AUTHORING SOURCE
+
+TARGET SEMANTIC MANIFEST
+!= CANONICAL WRITEBACK
+```
+
+The Component Library should generalize that pattern rather than invent a second generic Kotlin UI
+hierarchy.
+
+A future iOS leg should look like:
+
+```text
+accepted portable component relationships
+-> Kotlin Blueprint / normalized IR
+-> SwiftUI adapter
+-> Swift-native source + semantic manifest
+-> Swift compile / native proof
+-> iOS Screen Lens
+-> Component Library parity observation
+```
+
+See [KOTLIN-BLUEPRINT.md](./KOTLIN-BLUEPRINT.md).
+
+## 11. Code-language conversion
 
 The useful long-term mechanism is not arbitrary translation of source syntax.
 
@@ -314,7 +369,7 @@ KOTLIN_SOURCE
 
 Android source may be evidence used to **extract** the portable Blueprint initially, but once accepted, target construction should descend from portable meaning rather than repeatedly reinterpret Android.
 
-## 11. Reuse of Blueprint Source-of-Truth lineage
+## 12. Reuse of Blueprint Source-of-Truth lineage
 
 The predecessor VexLife Blueprint Source-of-Truth practicum already established:
 
@@ -329,7 +384,7 @@ This Project operationalizes those laws at component-library scale.
 
 It does not reopen the old Play/Pause practicum or require its parked MAUI/Mac edge to resume.
 
-## 12. Relationship to Screen Lens
+## 13. Relationship to Screen Lens
 
 Screen Lens already gives us:
 
@@ -355,7 +410,7 @@ Component Library
            and how is the accepted reusable meaning realized per target?
 ```
 
-## 13. Component Library itself is projectable
+## 14. Component Library itself is projectable
 
 The Gallery/Library is a Vextreme Product.
 
@@ -372,7 +427,7 @@ stable Screens / Elements
 
 No privileged admin exception.
 
-## 14. Paired implementation slices
+## 15. Paired implementation slices
 
 Avoid building a library UI disconnected from the reusable contract.
 
@@ -401,7 +456,7 @@ Slice 6
 self-use / self-projection / localization proof
 ```
 
-## 15. A1 observed inventory implementation
+## 16. A1 observed inventory implementation
 
 The first implementation deliberately stops **before** portable-component acceptance.
 
@@ -460,7 +515,7 @@ portability as unclassified until later cross-Product evidence changes that trut
 
 Production refactor findings are isolated in `TECH-DEBT.md`; A1 does not mutate Android source.
 
-## 16. First completion test
+## 17. First completion test
 
 Before a big Gallery UI exists, machine data should answer:
 
