@@ -240,7 +240,13 @@ function reviewText(value, label) {
 
 function reviewTimestampOrNull(value) {
   if (value === null || value === undefined) return null;
-  if (typeof value !== 'string' || Number.isNaN(Date.parse(value))) fail('reviewedAtOrNull must be an ISO-compatible timestamp or null');
+  if (
+    typeof value !== 'string'
+    || Number.isNaN(Date.parse(value))
+    || new Date(value).toISOString() !== value
+  ) {
+    fail('reviewedAtOrNull must be canonical UTC ISO or null');
+  }
   return value;
 }
 
@@ -270,7 +276,7 @@ export function localizationConvergenceCandidateBinding(candidate) {
   }
   return Object.freeze({
     normalizedSourceValue: normalizeCandidateValue(candidate.normalizedSourceValue),
-    evidence: Object.freeze([...(candidate.evidence ?? [])]),
+    evidence: Object.freeze(uniqueSorted(candidate.evidence ?? [])),
     members: Object.freeze(members),
   });
 }
@@ -376,6 +382,9 @@ export function applyLocalizationConvergenceReviews(analysisInput, reviewInputs 
   const candidateGroups = analysisInput.candidateGroups.map((candidate) => {
     const key = candidateBindingKey(localizationConvergenceCandidateBinding(candidate));
     const review = reviewByBinding.get(key) ?? null;
+    if (review?.decision === 'ACCEPT_SHARED' && candidate.suggestedDisposition === 'KEEP_SEPARATE') {
+      fail(`review ${review.reviewRef} cannot ACCEPT_SHARED current strong separation evidence`);
+    }
     if (review) matchedReviewRefs.add(review.reviewRef);
     return Object.freeze({
       ...candidate,
