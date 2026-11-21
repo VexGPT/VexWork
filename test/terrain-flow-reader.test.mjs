@@ -64,7 +64,9 @@ test('completed ToCompletion keeps retired horizon topology discoverable without
   const p7 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p7.whole-product-expansion');
   assert.equal(p7.distance, 5);
   assert.equal(p7.basis, 'DEPENDENCY');
-  assert.equal(projectSequenceDistance(p, 'work.vexlife.tocompletion.productization.ordinary-heretic-setup'), null);
+  const productization = projectSequenceDistance(p, 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
+  assert.equal(productization.distance, 5);
+  assert.equal(productization.basis, 'DEPENDENCY');
 });
 
 test('time lens preserves the current Antique workfront while project activity counts accepted movement', () => {
