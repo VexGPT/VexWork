@@ -32,7 +32,7 @@
     },
     {
       "repositoryRef": "repo.vexwork",
-      "commit": "b9b9f70906eb680c721be26389d4ee27f935018b",
+      "commit": "c4d9c70853e07c100379712ed870bf83c6d5b9a6",
       "role": "Component Library architecture and Screen Lens projection machinery"
     }
   ],
@@ -598,7 +598,7 @@
         },
         {
           "repositoryRef": "repo.vexwork",
-          "commit": "b9b9f70906eb680c721be26389d4ee27f935018b",
+          "commit": "c4d9c70853e07c100379712ed870bf83c6d5b9a6",
           "path": "src/shared/vexboard-screen-lens-frames.mjs",
           "symbols": [
             "normalizeScreenLayout",
