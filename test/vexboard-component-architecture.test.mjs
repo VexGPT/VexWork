@@ -55,6 +55,11 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.equal(frame[0].commit, 'befe31789834a74f5a2738cb6d6028c01aa7553c');
   assert.ok(frame[0].relationships.some((row) => row.relationRef.endsWith('partial-multi-seam') && row.disposition === 'HELD'));
 
+  const swappable = targetPressuresForCandidate(catalog, 'candidate.component.swappable-region');
+  assert.equal(swappable[0].state, 'HELD_SOURCE_CONTRACT');
+  assert.ok(swappable[0].relationships.every((row) => row.disposition === 'HELD'));
+  assert.ok(swappable[0].proofs.some((row) => row.proofRef === 'proof.vexlife-prod-selection-contract' && row.state === 'HELD'));
+
   assert.deepEqual(targetPressuresForCandidate(catalog, 'candidate.component.context-dock'), []);
   assert.throws(() => targetPressuresForCandidate(catalog, 'candidate.component.missing'), /unknown candidate/);
 });
