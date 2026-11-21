@@ -5785,6 +5785,34 @@
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-21T07:56:00.000Z",
+      "workRef": "work.vex.localization-architecture.change-set-reconciliation",
+      "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
+      "label": "Define exportable Localization Change Sets and source reconciliation",
+      "purpose": "Represent requested string/translation changes as a mutable working overlay over exact observed source, support truthful browser-local persistence plus deterministic export/import for team sharing, and derive SATISFIED/OPEN/DIVERGED/REMOVED state by reconciling expected values against fresh Product source rather than maintaining a second manual completion ledger.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "dependencyRefs": [
+        "work.vex.localization-architecture.android-inventory"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/localization-architecture/ARCHITECTURE.md",
+        "work.vex.localization-architecture.android-inventory",
+        "vexboard-reader.js"
+      ],
+      "updatedAt": "2026-11-21T07:56:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-21T07:20:00.000Z",
       "workRef": "work.vex.localization-architecture.duplicate-convergence",
       "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
@@ -5807,6 +5835,35 @@
         "work.vex.localization-architecture.android-inventory"
       ],
       "updatedAt": "2026-11-21T07:56:04.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-21T07:56:00.000Z",
+      "workRef": "work.vex.localization-architecture.localization-inspector",
+      "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
+      "label": "Add a contextual Localization Inspector to Screen Lens",
+      "purpose": "Use the proven localization inventory to replace the low-frequency Related toolbar slot with a contextual Localization inspector that previews locale text, searches/filters strings, reverse-resolves occurrences, and reuses existing Lens navigation/selection to jump to and highlight the exact owning element; preserve Related boards in a secondary Project/overflow surface.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "dependencyRefs": [
+        "work.vex.localization-architecture.android-inventory"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/localization-architecture/ARCHITECTURE.md",
+        "work.vex.localization-architecture.android-inventory",
+        "projects/vexboard/SCREEN-LENS.md",
+        "vexboard/lens.html"
+      ],
+      "updatedAt": "2026-11-21T07:56:02.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -13941,63 +13998,6 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
       "updatedAt": "2026-11-03T08:28:27.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND",
-      "createdAt": "2026-11-21T07:56:00.000Z",
-      "workRef": "work.vex.localization-architecture.change-set-reconciliation",
-      "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
-      "label": "Define exportable Localization Change Sets and source reconciliation",
-      "purpose": "Represent requested string/translation changes as a mutable working overlay over exact observed source, support truthful browser-local persistence plus deterministic export/import for team sharing, and derive SATISFIED/OPEN/DIVERGED/REMOVED state by reconciling expected values against fresh Product source rather than maintaining a second manual completion ledger.",
-      "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
-      "dependencyRefs": [
-        "work.vex.localization-architecture.android-inventory"
-      ],
-      "repositoryRefs": [
-        "repo.vexwork"
-      ],
-      "sourceRefs": [
-        "projects/localization-architecture/ARCHITECTURE.md",
-        "work.vex.localization-architecture.android-inventory",
-        "vexboard-reader.js"
-      ],
-      "updatedAt": "2026-11-21T07:56:03.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND",
-      "createdAt": "2026-11-21T07:56:00.000Z",
-      "workRef": "work.vex.localization-architecture.localization-inspector",
-      "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
-      "label": "Add a contextual Localization Inspector to Screen Lens",
-      "purpose": "Use the proven localization inventory to replace the low-frequency Related toolbar slot with a contextual Localization inspector that previews locale text, searches/filters strings, reverse-resolves occurrences, and reuses existing Lens navigation/selection to jump to and highlight the exact owning element; preserve Related boards in a secondary Project/overflow surface.",
-      "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
-      "dependencyRefs": [
-        "work.vex.localization-architecture.android-inventory"
-      ],
-      "repositoryRefs": [
-        "repo.vexwork"
-      ],
-      "sourceRefs": [
-        "projects/localization-architecture/ARCHITECTURE.md",
-        "work.vex.localization-architecture.android-inventory",
-        "projects/vexboard/SCREEN-LENS.md",
-        "vexboard/lens.html"
-      ],
-      "updatedAt": "2026-11-21T07:56:02.000Z"
     }
   ],
   "transitions": [
