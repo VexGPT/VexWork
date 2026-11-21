@@ -20,7 +20,8 @@ a{color:var(--focus)}button,input,select{font:inherit;color:inherit}:focus-visib
 .boundary{margin-top:18px;padding:12px 14px;border:1px solid #c7d2fe;background:var(--soft);border-radius:12px;font-size:13px;color:#373f70}.boundary b{color:var(--ink)}
 .summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:18px}.metric{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}.metric b{display:block;font:600 20px/1.1 var(--mono)}.metric span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
 .source{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.source-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);font-size:12px}.source-chip .dot{width:7px;height:7px;border-radius:50%;background:#15803d}.source-chip code{font-size:11px;color:var(--muted)}
-.workspace{margin-top:24px}.controls{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:8px}.controls input,.controls select{height:38px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet);padding:0 11px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.view-tabs{display:flex;gap:6px;margin-top:22px;padding:4px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);width:max-content}.view-tab{border:0;border-radius:7px;background:transparent;padding:7px 11px;color:var(--muted);font-weight:600;font-size:12.5px;cursor:pointer}.view-tab.on{background:var(--ink);color:#fff}.view-tab:hover:not(.on){background:#f5f6f8;color:var(--ink)}
+.workspace{margin-top:18px}.controls{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:8px}.controls input,.controls select{height:38px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet);padding:0 11px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
 .match{margin:9px 0 0;color:var(--faint);font-size:12.5px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.family{width:100%;text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:15px;cursor:pointer}.family:hover{border-color:var(--rule-strong)}.family.on{border-color:var(--focus);box-shadow:0 0 0 2px color-mix(in srgb,var(--focus) 12%,transparent)}.family .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.family h2{margin:0;font-size:17px}.pill{display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;background:#fafbfc;font:10.5px var(--mono);color:var(--muted);white-space:nowrap}.family .counts{display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:11px;font-size:12px;color:var(--muted)}.family .counts b{color:var(--ink)}.family .sub{margin-top:10px;font-size:12px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .detail{margin-top:18px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px;overflow:hidden}.detail-head{padding:20px 22px;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.detail-head h2{margin:0;font-size:21px}.detail-head p{margin:5px 0 0;color:var(--muted);max-width:76ch}.facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.fact{padding:4px 8px;background:#f7f8fb;border-radius:7px;font-size:12px;color:var(--muted)}
 .table-wrap{overflow:auto}.table-wrap table{width:100%;border-collapse:collapse;min-width:980px}.table-wrap th{text-align:left;padding:9px 12px;background:#fafbfc;border-bottom:1px solid var(--rule);color:var(--faint);font-size:11.5px;font-weight:600;position:sticky;top:0}.table-wrap td{padding:10px 12px;border-bottom:1px solid #edf0f4;vertical-align:top;font-size:12.5px}.table-wrap tr:last-child td{border-bottom:0}.sub{display:block;margin-top:2px;color:var(--faint);font-size:11.5px}.value{max-width:34ch;overflow-wrap:anywhere}.open{display:inline-flex;align-items:center;justify-content:center;height:28px;padding:0 10px;border-radius:7px;background:var(--ink);color:#fff;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap}.open:hover{background:#0f1730}.empty{padding:28px;color:var(--muted)}
@@ -36,19 +37,21 @@ footer{margin-top:28px;color:var(--faint);font-size:12.5px;max-width:90ch}
 <script type="module">
 import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
 import * as Components from '../src/shared/vexboard-component-inventory.mjs';
+import * as Architecture from '../src/shared/vexboard-component-architecture.mjs';
 
 const app=document.getElementById('app');
 const CATALOG_URL='../projects/vexboard/lens/catalog.json';
 const INVENTORY_URL='../projects/component-library-architecture/inventory/vexlife-android.main.components.json';
+const ARCHITECTURE_URL='../projects/component-library-architecture/component-architecture-catalog.json';
 const params=new URLSearchParams(location.search);
-const state={catalog:null,subject:null,inventory:null,query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null};
+const state={catalog:null,subject:null,inventory:null,architecture:null,view:params.get('view')==='architecture'?'ARCHITECTURE':'SOURCE',query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null,architectureClass:params.get('class')??'',selectedArchitecture:params.get('architecture')??null};
 
 function h(tag,attrs={},...children){const node=document.createElement(tag);for(const [key,value] of Object.entries(attrs||{})){if(value===null||value===undefined||value===false)continue;if(key==='class')node.className=value;else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);else if(key==='style')node.style.cssText=value;else node.setAttribute(key,value===true?'':String(value));}for(const child of children.flat(Infinity)){if(child===null||child===undefined||child===false)continue;node.append(child instanceof Node?child:document.createTextNode(String(child)));}return node;}
 async function fetchJson(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(url+' HTTP '+response.status);return response.json();}
 const short=(sha)=>String(sha??'').slice(0,7);
 const count=(value)=>Number(value??0).toLocaleString();
 const human=(value)=>String(value??'').toLowerCase().split(/[_-]/u).map((word)=>word?word[0].toUpperCase()+word.slice(1):word).join(' ');
-function syncUrl(){const next=new URL(location.href);next.search='';if(state.query)next.searchParams.set('q',state.query);if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);history.replaceState(null,'',next);}
+function syncUrl(){const next=new URL(location.href);next.search='';if(state.view==='ARCHITECTURE')next.searchParams.set('view','architecture');if(state.query)next.searchParams.set('q',state.query);if(state.view==='SOURCE'){if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);}else{if(state.architectureClass)next.searchParams.set('class',state.architectureClass);if(state.selectedArchitecture)next.searchParams.set('architecture',state.selectedArchitecture);}history.replaceState(null,'',next);}
 function occurrenceRows(component){return Components.occurrencesForComponent(state.inventory,component.componentRef).filter((row)=>!state.surface||row.surfaceRef===state.surface);}
 function visibleFamilies(){
  let rows=state.query?Components.searchComponentInventory(state.inventory,state.query,{limit:500}):state.inventory.components;
@@ -95,7 +98,52 @@ function detail(component){
    h('code',{class:'mono'},component.componentRef)),
   tableFor(component));
 }
-function render({focusSearch=false}={}){
+function viewTabs(){
+ const source=h('button',{type:'button',class:'view-tab'+(state.view==='SOURCE'?' on':'')},'Source families');
+ const architecture=h('button',{type:'button',class:'view-tab'+(state.view==='ARCHITECTURE'?' on':'')},'Architecture candidates');
+ source.onclick=()=>{state.view='SOURCE';state.query='';syncUrl();render();};
+ architecture.onclick=()=>{state.view='ARCHITECTURE';state.query='';syncUrl();render();};
+ return h('div',{class:'view-tabs','aria-label':'Component Library view'},source,architecture);
+}
+function visibleArchitecture(){
+ let rows=state.query?Architecture.searchComponentArchitecture(state.architecture,state.query,{limit:500}):state.architecture.candidates;
+ if(state.architectureClass)rows=rows.filter((row)=>row.class===state.architectureClass);
+ return rows;
+}
+function architectureCard(candidate){
+ const button=h('button',{type:'button',class:'family'+(state.selectedArchitecture===candidate.candidateRef?' on':'')},
+  h('div',{class:'top'},h('h2',{},candidate.label),h('span',{class:'pill'},candidate.state.replaceAll('_',' '))),
+  h('div',{class:'counts'},h('span',{},h('b',{},candidate.class),' class'),h('span',{},h('b',{},count(candidate.sourceEvidence.length)),' source witnesses'),h('span',{},h('b',{},count(candidate.sourceFamilyRefs.length)),' source families'),h('span',{},h('b',{},count(candidate.targetPressure.length)),' target pressures')),
+  h('div',{class:'sub'},candidate.candidateRef));
+ button.onclick=()=>{state.selectedArchitecture=candidate.candidateRef;syncUrl();render();requestAnimationFrame(()=>document.querySelector('.detail')?.scrollIntoView({block:'nearest'}));};
+ return button;
+}
+function listBlock(title,rows){
+ return h('div',{style:'padding:0 22px 18px'},h('b',{},title),rows.length?h('ul',{style:'margin:8px 0 0;padding-left:20px;color:var(--muted)'},rows.map((row)=>h('li',{},row))):h('span',{class:'sub'},'None declared.'));
+}
+function architectureDetail(candidate){
+ return h('section',{class:'detail'},
+  h('div',{class:'detail-head'},
+   h('div',{},h('h2',{},candidate.label),h('p',{},candidate.question),
+    h('div',{class:'facts'},h('span',{class:'fact'},candidate.class.toLowerCase()),h('span',{class:'fact'},candidate.state.toLowerCase().replaceAll('_',' ')),h('span',{class:'fact'},count(candidate.sourceEvidence.length)+' witnesses'),h('span',{class:'fact'},count(candidate.targetPressure.length)+' target pressures'))),
+   h('code',{class:'mono'},candidate.candidateRef)),
+  listBlock('Portable relationships',candidate.portableRelationships),
+  listBlock('Obligations',candidate.obligations),
+  listBlock('Must not own',candidate.mustNotOwn),
+  listBlock('Target pressure',candidate.targetPressure),
+  h('div',{class:'table-wrap'},h('table',{},
+   h('thead',{},h('tr',{},['Repository','Source','Symbols','Why it matters'].map((label)=>h('th',{},label)))),
+   h('tbody',{},candidate.sourceEvidence.map((row)=>h('tr',{},
+    h('td',{},h('code',{},row.repositoryRef),h('span',{class:'sub mono'},short(row.commit))),
+    h('td',{class:'value'},h('code',{},row.path)),
+    h('td',{},row.symbols.map((symbol)=>h('span',{class:'sub mono'},symbol))),
+    h('td',{class:'value'},row.why)
+   )))
+  )),
+  candidate.note?h('div',{class:'boundary',style:'margin:18px 22px'},h('b',{},'Working note: '),candidate.note):null
+ );
+}
+function renderSource({focusSearch=false}={}){
  const inventory=state.inventory;
  const families=visibleFamilies();
  if(state.selected&&!inventory.components.some((row)=>row.componentRef===state.selected))state.selected=null;
@@ -103,7 +151,7 @@ function render({focusSearch=false}={}){
  if(selected&&state.selected!==selected.componentRef)state.selected=selected.componentRef;
  const kinds=[...inventory.components.map((row)=>row.kind)].sort();
  const surfaces=[...new Map(inventory.occurrences.map((row)=>[row.surfaceRef,row.surfaceLabel])).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
- const search=h('input',{type:'search',value:state.query,placeholder:'Find component kind, Screen, element, style, source, or realizer','aria-label':'Search Component Gallery'});
+ const search=h('input',{type:'search',value:state.query,placeholder:'Find component kind, Screen, element, style, source, or realizer','aria-label':'Search source families'});
  search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
  const kind=h('select',{'aria-label':'Component kind'},h('option',{value:'',selected:!state.kind},'All component families'),kinds.map((value)=>h('option',{value,selected:state.kind===value},human(value))));
  kind.onchange=()=>{state.kind=kind.value;syncUrl();render();};
@@ -111,21 +159,48 @@ function render({focusSearch=false}={}){
  surface.onchange=()=>{state.surface=surface.value;syncUrl();render();};
  app.replaceChildren(
   h('section',{},
-   h('div',{class:'intro'},h('div',{},h('h1',{},'Component Gallery'),h('p',{},'What Vex already knows how to build, starting with the exact current Android component/Element relationships. Browse source families and where-used now; portable component meaning and additional target realizations converge here only after cross-Product evidence earns them.')),h('div',{class:'truth'},'current Android source · ',h('strong',{},short(inventory.sourceSnapshot.commit)))),
-   h('div',{class:'boundary'},h('b',{},'A1 boundary: '),'Observed source family ≠ portable component. Android production code stays unchanged; this Gallery is a read/projection surface over existing Screen Lens + Localization truth.'),
-   h('div',{class:'summary'},
-    metric(inventory.summary.componentFamilyCount,'source families'),metric(inventory.summary.occurrenceCount,'UI occurrences'),metric(inventory.summary.screenCount,'Screens'),metric(inventory.summary.localizedOccurrenceCount,'localized occurrences'),metric(inventory.summary.realizedOccurrenceCount,'realization-linked'),metric(inventory.summary.accessibilityProjectedOccurrenceCount,'accessibility projected')),
-   h('div',{class:'source'},h('span',{class:'source-chip'},h('span',{class:'dot'}),state.subject.label,h('code',{},short(inventory.sourceSnapshot.commit))),h('span',{class:'source-chip'},'Screen Lens · ',h('code',{},inventory.sourceSnapshot.lensRef)),h('span',{class:'source-chip'},'Localization · ',h('code',{},inventory.sourceSnapshot.localizationInventoryRef)))),
+   h('div',{class:'intro'},h('div',{},h('h1',{},'Component Gallery'),h('p',{},'What Vex already knows how to build, starting with exact current Android component/Element relationships. Source families remain evidence; they do not become portable architecture merely because Android implements them cleanly.')),h('div',{class:'truth'},'current Android source · ',h('strong',{},short(inventory.sourceSnapshot.commit)))),
+   h('div',{class:'boundary'},h('b',{},'Source boundary: '),'Observed source family ≠ portable component. Android production code stays unchanged; this view is a read/projection surface over existing Screen Lens + Localization truth.'),
+   h('div',{class:'summary'},metric(inventory.summary.componentFamilyCount,'source families'),metric(inventory.summary.occurrenceCount,'UI occurrences'),metric(inventory.summary.screenCount,'Screens'),metric(inventory.summary.localizedOccurrenceCount,'localized occurrences'),metric(inventory.summary.realizedOccurrenceCount,'realization-linked'),metric(inventory.summary.accessibilityProjectedOccurrenceCount,'accessibility projected')),
+   h('div',{class:'source'},h('span',{class:'source-chip'},h('span',{class:'dot'}),state.subject.label,h('code',{},short(inventory.sourceSnapshot.commit))),h('span',{class:'source-chip'},'Screen Lens · ',h('code',{},inventory.sourceSnapshot.lensRef)),h('span',{class:'source-chip'},'Localization · ',h('code',{},inventory.sourceSnapshot.localizationInventoryRef))),
+   viewTabs()),
   h('section',{class:'workspace'},h('div',{class:'controls'},search,kind,surface),h('p',{class:'match'},count(families.length)+' of '+count(inventory.components.length)+' source families in this view.'),h('div',{class:'grid'},families.map(familyCard)),selected?detail(selected):h('div',{class:'empty'},'No component families match this view.')),
-  h('footer',{},'This page deliberately exposes gaps instead of filling them with assumptions. Accessibility remains “not projected” until its rightful Product source/proof is connected; portability remains “unclassified” until A2/A3 cross-Product evidence earns a portable Blueprint.'));
- if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const end=next.value.length;next.setSelectionRange?.(end,end);}});
+  h('footer',{},'Source families answer “what exists and where is it used?” The Architecture candidates view asks the separate question: “which recurring relationships deserve a typed portable Kotlin Blueprint contract?”'));
+ if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
 }
+function renderArchitecture({focusSearch=false}={}){
+ const rows=visibleArchitecture();
+ if(state.selectedArchitecture&&!state.architecture.candidates.some((row)=>row.candidateRef===state.selectedArchitecture))state.selectedArchitecture=null;
+ const selected=state.architecture.candidates.find((row)=>row.candidateRef===state.selectedArchitecture)??rows[0]??null;
+ if(selected&&state.selectedArchitecture!==selected.candidateRef)state.selectedArchitecture=selected.candidateRef;
+ const classes=[...new Set(state.architecture.candidates.map((row)=>row.class))].sort();
+ const search=h('input',{type:'search',value:state.query,placeholder:'Find architecture relationship, source witness, target pressure, or Kotlin/SwiftUI mapping','aria-label':'Search architecture candidates'});
+ search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
+ const classSelect=h('select',{'aria-label':'Architecture class'},h('option',{value:'',selected:!state.architectureClass},'All architecture classes'),classes.map((value)=>h('option',{value,selected:state.architectureClass===value},human(value))));
+ classSelect.onchange=()=>{state.architectureClass=classSelect.value;syncUrl();render();};
+ const stateSelect=h('select',{'aria-label':'Architecture state'},h('option',{value:''},'Portable acceptance: none yet'));
+ stateSelect.disabled=true;
+ const evidenceCount=state.architecture.candidates.reduce((sum,row)=>sum+row.sourceEvidence.length,0);
+ const familyLinks=new Set(state.architecture.candidates.flatMap((row)=>row.sourceFamilyRefs)).size;
+ app.replaceChildren(
+  h('section',{},
+   h('div',{class:'intro'},h('div',{},h('h1',{},'Component Architecture'),h('p',{},'Recurring presentation relationships influenced by real Product source, organized for a typed Kotlin Blueprint + platform-adapter compiler. Android teaches the questions; the portable contract must survive SwiftUI, web and desktop pressure before acceptance.')),h('div',{class:'truth'},'architecture candidates · ',h('strong',{},count(state.architecture.candidates.length)))),
+   h('div',{class:'boundary'},h('b',{},'Compiler boundary: '),'Kotlin Blueprint can be the strongly typed authoring form; Compose is one target adapter. Portable IR, generated native source, target Screen Lens and native proof remain separate witnesses.'),
+   h('div',{class:'summary'},metric(state.architecture.candidates.length,'architecture candidates'),metric(classes.length,'relationship classes'),metric(evidenceCount,'source witnesses'),metric(familyLinks,'linked Android families'),metric(state.architecture.sourceSnapshots.length,'source snapshots'),metric(0,'accepted portable yet')),
+   h('div',{class:'source'},state.architecture.sourceSnapshots.map((row)=>h('span',{class:'source-chip'},h('span',{class:'dot'}),row.repositoryRef,h('code',{},short(row.commit))))),
+   viewTabs()),
+  h('section',{class:'workspace'},h('div',{class:'controls'},search,classSelect,stateSelect),h('p',{class:'match'},count(rows.length)+' of '+count(state.architecture.candidates.length)+' architecture candidates in this view.'),h('div',{class:'grid'},rows.map(architectureCard)),selected?architectureDetail(selected):h('div',{class:'empty'},'No architecture candidates match this view.')),
+  h('footer',{},'Nothing in this view is accepted portable architecture yet. The next useful proof is to take one canonical VexLife component—Action Vessel is the strongest candidate—bind it through a typed Kotlin Blueprint, emit portable IR, generate a native target realization, compile it, then project that target source back into Screen Lens.'));
+ if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
+}
+function render(options={}){return state.view==='ARCHITECTURE'?renderArchitecture(options):renderSource(options);}
 function metric(value,label){return h('div',{class:'metric'},h('b',{},count(value)),h('span',{},label));}
 async function boot(){
  state.catalog=Catalog.normalizeLensCatalog(await fetchJson(CATALOG_URL));
  state.subject=Catalog.subjectFor(state.catalog,'vexlife-android');
  if(!state.subject)throw new Error('VexLife Android is not in the current Lens catalog.');
  state.inventory=Components.normalizeComponentInventory(await fetchJson(INVENTORY_URL));
+ state.architecture=Architecture.normalizeComponentArchitectureCatalog(await fetchJson(ARCHITECTURE_URL));
  if(state.inventory.subjectRef!==state.subject.subjectRef)throw new Error('Component Inventory subject does not match Lens catalog.');
  const main=Catalog.buildFor(state.subject,'main');
  if(!main||main.commit!==state.inventory.sourceSnapshot.commit)throw new Error('Component Inventory is not current with Android Main Lens.');
