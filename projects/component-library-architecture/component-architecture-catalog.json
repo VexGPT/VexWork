@@ -34,6 +34,11 @@
       "repositoryRef": "repo.vexwork",
       "commit": "c4d9c70853e07c100379712ed870bf83c6d5b9a6",
       "role": "Component Library architecture and Screen Lens projection machinery"
+    },
+    {
+      "repositoryRef": "repo.vexstream-music",
+      "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+      "role": "Materially different desktop music Product with source-owned navigation/selection, stable controls and VexBoard Screen Lens projection"
     }
   ],
   "candidates": [
@@ -117,6 +122,17 @@
             "slotRef"
           ],
           "why": "Canonical VexLife components already distinguish stable component/instance/slot identities."
+        },
+        {
+          "repositoryRef": "repo.vexstream-music",
+          "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+          "path": "v2/projection/vexboard-screen-lens.json",
+          "symbols": [
+            "vexstream.desktop.library.terrain",
+            "vexstream.desktop.library.mode-selection",
+            "element.vexstream.library.mode.songs"
+          ],
+          "why": "VexStream uses stable region/control refs and parent relationships to project one browser product without a test-only identity registry."
         }
       ],
       "note": "Strong first Kotlin Blueprint root law: identity before renderer."
@@ -153,7 +169,8 @@
         "Android Button/Toggle/Menu",
         "SwiftUI Button/Toggle/Menu",
         "browser button/menu/input",
-        "voice or model-tool expression of the same action"
+        "voice or model-tool expression of the same action",
+        "VexStream browser-native source-owned control intent/pathway projection"
       ],
       "sourceEvidence": [
         {
@@ -197,6 +214,17 @@
             "VexQuickActionsReferenceView"
           ],
           "why": "VexLife-Prod PR #506 pressure maps current typed Quick Actions relationships to native SwiftUI source while preserving exact source refs and binding meaning in a reverse-projection manifest."
+        },
+        {
+          "repositoryRef": "repo.vexstream-music",
+          "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+          "path": "v2/projection/vexboard-screen-lens.json",
+          "symbols": [
+            "element.vexstream.playback.play-pause",
+            "element.vexstream.queue.next",
+            "pathway.vexstream.playback.play-pause"
+          ],
+          "why": "VexStream projects dozens of stable control identities with source-owned intent refs and bounded pathways independently of VexLife/Android widget classes."
         }
       ],
       "note": "The portable contract should say what action/control relationship exists, not which widget class handles it."
@@ -261,6 +289,17 @@
             "slots"
           ],
           "why": "Canonical components already expose stable slot relationships independent of rendering technology."
+        },
+        {
+          "repositoryRef": "repo.vexstream-music",
+          "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+          "path": "v2/projection/vexboard-screen-lens.json",
+          "symbols": [
+            "vexstream.desktop.library.region.shell",
+            "vexstream.desktop.library.panel.library",
+            "vexstream.desktop.library.discover-mode-selection"
+          ],
+          "why": "The VexStream Lens recovers source-authored parent/child containment across shell terrain, nested modes and controls in a materially different Product."
         }
       ],
       "note": "This is the composable readability Victor is pointing at: code nesting should carry relationship meaning, not just syntax."
@@ -275,9 +314,11 @@
         "component.source-family.vexlife-android.region"
       ],
       "portableRelationships": [
-        "one stable container owns a selected direct child",
-        "selection is local presentation, not app navigation",
-        "default child is explicit"
+        "one stable container owns a finite set of admitted direct child expressions",
+        "default/initial child is explicit",
+        "selected child is local presentation/location state rather than feature-domain truth",
+        "selecting a peer child does not automatically create app navigation depth",
+        "projection exposes the selected child/mode identity"
       ],
       "obligations": [
         "selected child must belong directly to the region",
@@ -338,9 +379,33 @@
             "ui.viewSwitch"
           ],
           "why": "Current browser runtime owns the missing local selection facts: default conversation, settings/conversation toggle, mutually exclusive visibility, and no app-navigation depth."
+        },
+        {
+          "repositoryRef": "repo.vexstream-music",
+          "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+          "path": "v2/web/features/discover/navigation.js",
+          "symbols": [
+            "DiscoverMode",
+            "createDiscoverNavigation",
+            "select",
+            "currentProjection"
+          ],
+          "why": "A materially different music Product independently owns one finite local mode set, an explicit default, selected-mode projection and local select(next) without importing Android SwappableContainer source."
+        },
+        {
+          "repositoryRef": "repo.vexstream-music",
+          "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+          "path": "v2/projection/vexboard-screen-lens.json",
+          "symbols": [
+            "vexstream.desktop.library.discover-mode-selection",
+            "discover-panel.pc",
+            "discover-panel.youtube",
+            "discover-panel.explore"
+          ],
+          "why": "VexStream Screen Lens projects the source-owned selection region, its admitted child panels and stable selector controls as one inspectable relationship tree."
         }
       ],
-      "note": "Cross-Product pressure now exposes a source-contract gap: Android has typed Swappable/SwapTo; current VexLife-Prod has equivalent lived local presentation behavior, but default/selected-child truth is split between VexWeb structure and browser JS. Do not let a SwiftUI adapter reconstruct that architecture from runtime strings. Form or bind the rightful typed Product contract first."
+      "note": "Android Gallery and VexStream Discover now independently prove the local-selection law. Current VexLife-Prod has equivalent lived Conversation/Settings behavior but lacks one compiler-visible selected/default-child contract, so SwiftUI generation for that Product remains held rather than inferred from browser state.view."
     },
     {
       "candidateRef": "candidate.component.modal-presentation",
@@ -580,7 +645,8 @@
         "Compose AnimatedContent/local trail",
         "SwiftUI NavigationStack scoped inside a surface",
         "web nested route/state stack",
-        "desktop inspector drilldown"
+        "desktop inspector drilldown",
+        "VexStream PlaylistNavigation overview/detail open-close-reconcile pressure"
       ],
       "sourceEvidence": [
         {
@@ -593,6 +659,19 @@
             "NavigationTrailContent"
           ],
           "why": "Android makes local depth/back a separate owner from AppNavigationState."
+        },
+        {
+          "repositoryRef": "repo.vexstream-music",
+          "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+          "path": "v2/web/features/playlists/navigation.js",
+          "symbols": [
+            "createPlaylistNavigation",
+            "open",
+            "close",
+            "reconcile",
+            "currentProjection"
+          ],
+          "why": "VexStream Playlists independently owns a bounded local overview/detail route with open/close and reconciliation when the selected durable playlist disappears."
         }
       ],
       "note": null
@@ -669,7 +748,8 @@
         "VexLife Prod browser split panes",
         "SwiftUI HSplitView/VSplitView or custom layout",
         "Compose desktop/window layouts",
-        "Linux desktop native panes"
+        "Linux desktop native panes",
+        "VexStream V4 Screen Lens: one Frame / one Region / zero Seams"
       ],
       "sourceEvidence": [
         {
@@ -723,6 +803,16 @@
             "VexWorkspaceFrameReference"
           ],
           "why": "VexLife-Prod PR #506 maps the exact current full-span Frame/Seam/Region ratios to target-native SwiftUI proportional layout while holding generic irregular and interactive spatial mechanics."
+        },
+        {
+          "repositoryRef": "repo.vexstream-music",
+          "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+          "path": "v2/projection/vexboard-screen-lens.json",
+          "symbols": [
+            "vexstream.desktop.library.frame",
+            "vexstream.desktop.library.region.shell"
+          ],
+          "why": "VexStream projects the same Frame/Region grammar in its degenerate zero-Seam form: one Frame, one full-bounds Region, showing the grammar does not require a split special case."
         }
       ],
       "note": "Current SwiftUI pressure maps only the exact full-span single-Seam workspace shape. Partial/multi-Seam geometry, overlay depth and seam resize/collapse remain held; do not reduce the accepted Frame/Seam/Region grammar to a two-pane abstraction."
