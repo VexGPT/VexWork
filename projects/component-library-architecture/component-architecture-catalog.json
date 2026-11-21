@@ -2223,7 +2223,7 @@
       "state": "REFERENCE_COMPATIBILITY_PASS",
       "sourceRef": "github.pr.vexlife-prod.506",
       "repositoryRef": "repo.vexlife-prod",
-      "commit": "623fc93c3ed52f8fcdcacdc27d0edb0eb8627dd3",
+      "commit": "f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f",
       "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
       "relationships": [
         {
@@ -2271,7 +2271,7 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "Repository-owned Gradle execution of currentized VexLife-Prod #506 head 623fc93c3ed52f8fcdcacdc27d0edb0eb8627dd3 remains owed."
+          "note": "Repository-owned Gradle execution of repaired/currentized VexLife-Prod #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f remains owed."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
@@ -2279,7 +2279,7 @@
           "note": "Apple SwiftUI/Xcode native proof remains A4 target evidence."
         }
       ],
-      "note": "SwiftUI reference maps the same Product binding meaning into a native Menu form, refuses unadmitted binding kinds, and keeps host callback/effect execution outside generated presentation. The Product branch was ordinary-forward currentized to head 623fc93c3ed52f8fcdcacdc27d0edb0eb8627dd3; its consumed Blueprint/VexWeb/Conversation source blobs remain unchanged from the source-forming candidate."
+      "note": "SwiftUI reference maps the same Product binding meaning into a native Menu form, refuses unadmitted binding kinds, and keeps host callback/effect execution outside generated presentation. Product #506 is ordinary-forward current and its source-owner sweep repaired one candidate-local Gradle settings formation defect (literal backslash-n between module includes); the SwiftUI generator/test blobs and consumed Blueprint/VexWeb/Conversation inputs remain unchanged."
     }
   ]
 }
