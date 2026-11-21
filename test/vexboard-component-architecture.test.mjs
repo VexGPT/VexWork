@@ -19,13 +19,13 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.schemaVersion, 'vexboard.component-architecture-catalog/v1');
   assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
-  assert.equal(catalog.candidates.some((row) => row.state === 'ACCEPTED_PORTABLE'), false);
+  assert.equal(catalog.candidates.filter((row) => row.state === 'ACCEPTED_PORTABLE').length, 1);
   assert.equal(catalog.targetPressures.length, 9);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 3);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 5);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'HELD_SOURCE_CONTRACT').length, 1);
   assert.equal(catalog.candidates.filter((row) => row.formation).length, 6);
-  assert.equal(catalog.candidates.some((row) => row.formation?.state === 'ACCEPTED'), false);
+  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'ACCEPTED').length, 1);
 });
 
 test('architecture candidates preserve the richer relationship layer above source widget kinds', () => {
@@ -71,7 +71,8 @@ test('A3 formation distinguishes reused typed laws from genuinely new relationsh
   ]);
 
   for (const candidate of formed) {
-    assert.equal(candidate.formation.state, 'FORMATION');
+    assert.ok(['FORMATION', 'ACCEPTED'].includes(candidate.formation.state));
+    assert.equal(candidate.formation.state === 'ACCEPTED', candidate.state === 'ACCEPTED_PORTABLE');
     assert.ok(candidate.formation.sourceOwnerRefs.length > 0);
     assert.ok(candidate.formation.portableFields.length > 0);
     assert.ok(candidate.formation.nonOwnership.length > 0);
@@ -91,6 +92,12 @@ assert.equal(
     catalog.candidates.find((row) => row.candidateRef === 'candidate.component.context-dock').formation,
     null,
   );
+
+  const acceptedFrame = catalog.candidates.find((row) => row.candidateRef === 'candidate.component.frame-region-layout');
+  assert.equal(acceptedFrame.state, 'ACCEPTED_PORTABLE');
+  assert.equal(acceptedFrame.formation.state, 'ACCEPTED');
+  assert.ok(acceptedFrame.sourceEvidence.some((row) => row.path.endsWith('VexWebSpatialScalabilityTest.kt')));
+  assert.ok(acceptedFrame.sourceEvidence.some((row) => row.path.endsWith('VexWebArtifactsTest.kt')));
 });
 
 test('target pressure results preserve mapped, held and platform-specific truth separately from portable acceptance', () => {
@@ -143,6 +150,24 @@ test('target pressure results preserve mapped, held and platform-specific truth 
 
   assert.deepEqual(targetPressuresForCandidate(catalog, 'candidate.component.context-dock'), []);
   assert.throws(() => targetPressuresForCandidate(catalog, 'candidate.component.missing'), /unknown candidate/);
+});
+
+test('portable candidate and formation acceptance fail closed when they disagree', () => {
+  const splitCandidate = structuredClone(catalog);
+  const frame = splitCandidate.candidates.find((row) => row.candidateRef === 'candidate.component.frame-region-layout');
+  frame.state = 'PORTABLE_CANDIDATE';
+  assert.throws(
+    () => normalizeComponentArchitectureCatalog(splitCandidate),
+    /portable acceptance must agree with formation acceptance/,
+  );
+
+  const splitFormation = structuredClone(catalog);
+  const frameFormation = splitFormation.candidates.find((row) => row.candidateRef === 'candidate.component.frame-region-layout');
+  frameFormation.formation.state = 'FORMATION';
+  assert.throws(
+    () => normalizeComponentArchitectureCatalog(splitFormation),
+    /portable acceptance must agree with formation acceptance/,
+  );
 });
 
 test('architecture search finds source evidence and cross-platform pressure', () => {
