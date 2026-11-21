@@ -273,6 +273,55 @@ export function targetPressuresForCandidate(catalog, candidateRef) {
   return catalog.targetPressures.filter((row) => row.candidateRef === candidateRef);
 }
 
+export function targetRealizations(catalog) {
+  catalog = normalizeComponentArchitectureCatalog(catalog);
+  const accepted = new Set(
+    catalog.candidates
+      .filter((row) => row.state === 'ACCEPTED_PORTABLE')
+      .map((row) => row.candidateRef),
+  );
+
+  return freezeDeep(
+    catalog.targetPressures
+      .filter((pressure) => accepted.has(pressure.candidateRef))
+      .map((pressure) => {
+        const relationCounts = Object.fromEntries(
+          COMPONENT_TARGET_RELATION_DISPOSITIONS.map((state) => [
+            state,
+            pressure.relationships.filter((row) => row.disposition === state).length,
+          ]),
+        );
+        const proofCounts = Object.fromEntries(
+          COMPONENT_TARGET_PROOF_STATES.map((state) => [
+            state,
+            pressure.proofs.filter((row) => row.state === state).length,
+          ]),
+        );
+
+        return {
+          realizationRef: 'realization.' + pressure.pressureRef.replace(/^pressure\./u, ''),
+          candidateRef: pressure.candidateRef,
+          platformRef: pressure.platformRef,
+          framework: pressure.framework,
+          pressureState: pressure.state,
+          sourceRef: pressure.sourceRef,
+          repositoryRef: pressure.repositoryRef,
+          commit: pressure.commit,
+          path: pressure.path,
+          relationCounts,
+          proofCounts,
+          relationships: pressure.relationships,
+          proofs: pressure.proofs,
+          note: pressure.note,
+        };
+      })
+      .sort((left, right) =>
+        left.candidateRef.localeCompare(right.candidateRef) ||
+        left.platformRef.localeCompare(right.platformRef) ||
+        left.realizationRef.localeCompare(right.realizationRef)),
+  );
+}
+
 export function searchComponentArchitecture(catalog, query, { limit = 100 } = {}) {
   catalog = normalizeComponentArchitectureCatalog(catalog);
   if (!Number.isInteger(limit) || limit < 1 || limit > 500) fail('search limit must be an integer from 1 to 500');
