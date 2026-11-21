@@ -567,3 +567,54 @@ test('Localization preview locale is browser projection state and preserves expl
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A2-LOCALE-OBSERVATION]
+
+test('Localization Change Set authoring stays browser-local and projects the proven A3 contract', () => {
+  for (const key of [
+    'localization.changeSetTitle',
+    'localization.changeSetHelp',
+    'localization.expectedValue',
+    'localization.expectedValuePlaceholder',
+    'localization.saveExpected',
+    'localization.removeExpected',
+    'localization.savedLocally',
+    'localization.noDraft',
+    'localization.exportChangeSet',
+    'localization.importChangeSet',
+    'localization.importedChangeSet',
+    'localization.workingSetEmpty',
+    'localization.reconciliation',
+    'localization.stateSatisfied',
+    'localization.stateOpen',
+    'localization.stateOpenTranslation',
+    'localization.stateDiverged',
+    'localization.stateSourceRemoved',
+    'localization.storageUnavailable',
+  ]) assert.equal(typeof localizationCopy.strings[key], 'string', key);
+
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-localization-change-set\.mjs'/);
+  assert.match(page, /LocalizationChanges\.loadLocalizationChangeSetCollection\(localStorage\)/);
+  assert.match(page, /LocalizationChanges\.createLocalizationChangeSet\(/);
+  assert.match(page, /LocalizationChanges\.upsertLocalizationChangeSet/);
+  assert.match(page, /LocalizationChanges\.saveLocalizationChangeSetCollection\(localStorage, collection\)/);
+  assert.match(page, /LocalizationChanges\.reconcileLocalizationChangeSet\(current, state\.localization\.inventory\)/);
+  assert.match(page, /LocalizationChanges\.createLocalizationChangeSetExport/);
+  assert.match(page, /LocalizationChanges\.serializeLocalizationChangeSetExport/);
+  assert.match(page, /LocalizationChanges\.importLocalizationChangeSetExport\([\s\S]{0,180}await file\.text\(\),[\s\S]{0,180}state\.localization\.inventory/);
+  assert.match(page, /change-set\.browser\.\$\{subject\.slug\}\.\$\{inventory\.sourceSnapshot\.commit\}/);
+  assert.match(page, /new Blob\(\[serialized\], \{ type: 'application\/json' \}\)/);
+  assert.match(page, /URL\.createObjectURL\(blob\)/);
+  assert.match(page, /element\.localization\.change-set/);
+  assert.match(page, /element\.localization\.expected-value/);
+  assert.match(page, /element\.localization\.save-expected/);
+  assert.match(page, /element\.localization\.remove-expected/);
+  assert.match(page, /element\.localization\.reconciliation/);
+  assert.match(page, /element\.localization\.export-change-set/);
+  assert.match(page, /element\.localization\.import-change-set/);
+
+  assert.doesNotMatch(page, /setApplicationLocales|LocaleManager|ProductRuntime.*locale/i);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i, 'Change Set authoring does not write Product or provider state');
+  assert.match(localizationCopy.strings['localization.changeSetHelp'], /does not change Product source/);
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A3-AUTHORING-UI]
+
