@@ -30227,7 +30227,10 @@
           "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
           "src/shared/vexboard-component-inventory.mjs",
           "scripts/build-component-inventory.mjs",
-          "vexboard/components.html"
+          "vexboard/components.html",
+          "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+          "projects/component-library-architecture/component-architecture-catalog.json",
+          "src/shared/vexboard-component-architecture.mjs"
         ],
         "formedAt": "2026-11-21T08:20:00.000Z"
       },
@@ -30358,14 +30361,16 @@
             "work.vex.component-library-architecture.portable-contract",
             "projects/vexboard/SCREEN-LENS.md",
             "vexboard/components.html",
-            "projects/component-library-architecture/inventory/vexlife-android.main.components.json"
+            "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+            "projects/component-library-architecture/component-architecture-catalog.json",
+            "projects/component-library-architecture/KOTLIN-BLUEPRINT.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T08:20:00.000Z",
-          "updatedAt": "2026-11-21T17:31:46.448Z",
+          "updatedAt": "2026-11-21T17:50:58.893Z",
           "transitionHistory": []
         },
         {
@@ -30447,20 +30452,22 @@
             "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
             "src/shared/vexboard-component-inventory.mjs",
             "vexboard/components.html",
-            "projects/component-library-architecture/TECH-DEBT.md"
+            "projects/component-library-architecture/TECH-DEBT.md",
+            "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+            "projects/component-library-architecture/component-architecture-catalog.json"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T08:20:00.000Z",
-          "updatedAt": "2026-11-21T17:31:46.448Z",
+          "updatedAt": "2026-11-21T17:50:58.889Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vex.component-library-architecture.portable-contract",
           "label": "Earn the portable component Blueprint contract",
-          "purpose": "From materially different source occurrences, accept only the smallest language/framework-neutral component relationships that survive target changes, preserving PORTABLE / PLATFORM_SPECIFIC / CANDIDATE / HELD / UNSUPPORTED dispositions and refusing universal components where source evidence does not support them.",
+          "purpose": "From materially different source occurrences and accepted VexLife-Prod compiler pressure, accept the smallest portable component relationships that survive target changes; use Kotlin sealed/typed authoring where it strengthens relationship contracts, compile to a normalized portable IR, and preserve PORTABLE / PLATFORM_SPECIFIC / CANDIDATE / HELD / UNSUPPORTED dispositions without making Kotlin/Compose the semantic owner.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -30481,14 +30488,16 @@
           "sourceRefs": [
             "projects/component-library-architecture/ARCHITECTURE.md",
             "project.vexlife.blueprint-source-of-truth",
-            "work.vex.component-library-architecture.cross-product-census"
+            "work.vex.component-library-architecture.cross-product-census",
+            "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+            "projects/component-library-architecture/component-architecture-catalog.json"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T08:20:00.000Z",
-          "updatedAt": "2026-11-21T08:20:04.000Z",
+          "updatedAt": "2026-11-21T17:50:58.893Z",
           "transitionHistory": []
         },
         {
@@ -30523,7 +30532,7 @@
         {
           "workRef": "work.vex.component-library-architecture.target-realizations",
           "label": "Map target-language and framework realizations",
-          "purpose": "Bind accepted portable component Blueprints to target-native realization mappings and proof for Android/Compose, Web/HTML+CSS+JS, SwiftUI, C#/.NET or other earned targets without treating source-to-source translation or compiler success as semantic parity.",
+          "purpose": "Bind accepted portable component relationships to exhaustive target adapters that generate target-native source plus target semantic manifests, then require native compile/proof and Screen Lens projection; Android/Compose, browser/VexWeb, SwiftUI, C#/.NET or other targets remain sibling realizations rather than source-to-source translations.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -30544,14 +30553,16 @@
           "sourceRefs": [
             "projects/component-library-architecture/ARCHITECTURE.md",
             "project.vexlife.blueprint-source-of-truth",
-            "work.vex.component-library-architecture.portable-contract"
+            "work.vex.component-library-architecture.portable-contract",
+            "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+            "projects/component-library-architecture/component-architecture-catalog.json"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T08:20:00.000Z",
-          "updatedAt": "2026-11-21T08:20:05.000Z",
+          "updatedAt": "2026-11-21T17:50:58.893Z",
           "transitionHistory": []
         }
       ],
@@ -30675,14 +30686,16 @@
             "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
             "src/shared/vexboard-component-inventory.mjs",
             "vexboard/components.html",
-            "projects/component-library-architecture/TECH-DEBT.md"
+            "projects/component-library-architecture/TECH-DEBT.md",
+            "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+            "projects/component-library-architecture/component-architecture-catalog.json"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T08:20:00.000Z",
-          "updatedAt": "2026-11-21T17:31:46.448Z",
+          "updatedAt": "2026-11-21T17:50:58.889Z",
           "transitionHistory": []
         }
       ]
