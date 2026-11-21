@@ -4,6 +4,7 @@ import test from 'node:test';
 
 const page = fs.readFileSync(new URL('../vexboard/lens.html', import.meta.url), 'utf8');
 const board = fs.readFileSync(new URL('../vexboard/index.html', import.meta.url), 'utf8');
+const localizationCopy = JSON.parse(fs.readFileSync(new URL('../vexboard/localization-copy.json', import.meta.url), 'utf8'));
 
 test('Screen Lens page consumes the shared model, layout and interaction modules', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens\.mjs'/);
@@ -499,3 +500,170 @@ test('missing browser-local walk state recovers visibly to source entry instead 
   assert.match(page, /kind:'NULL_STATE'/);
   assert.match(page, /const walk=ensureWalk\(\)/);
 });
+
+
+test('Localization Inspector consumes the A1 inventory through generic exact-build discovery and existing Lens navigation', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-localization-inventory\.mjs'/);
+  assert.match(page, /LOCALIZATION_INVENTORY_DIR/);
+  assert.match(page, /\$\{subject\.slug\}\.\$\{buildRef\}\.localization\.json/);
+  assert.match(page, /inventory\.subjectRef !== subject\.subjectRef/);
+  assert.match(page, /inventory\.sourceSnapshot\.commit !== state\.lens\.sourceSnapshot\.commit/);
+  assert.match(page, /Localization\.normalizeLocalizationInventory\(raw\)/);
+  assert.match(page, /Localization\.searchLocalizationStrings\(inventory, state\.localization\.query/);
+  assert.match(page, /Localization\.stringsForElement\(inventory, state\.anchorElementRef\)/);
+  assert.match(page, /Localization\.occurrencesForString\(state\.localization\.inventory, row\.sourceStringRef\)/);
+  assert.match(page, /goToResult\(\{ target: Localization\.localizationOccurrenceTarget/);
+  assert.match(page, /state\.flashRef = occurrence\.elementRef/);
+  assert.match(page, /state\.overlay === 'LOCALIZATION'/);
+  assert.doesNotMatch(page, /subject\.slug\s*===\s*['"]vexlife-android['"][\s\S]{0,180}localization/i, 'Localization availability is never selected by Product-name branching');
+});
+
+test('the first Localization Inspector slice owns stable UI refs and keyed source copy', () => {
+  assert.equal(localizationCopy.schemaVersion, 'vexboard.localization-copy/v1');
+  assert.equal(localizationCopy.sourceLocale, 'en');
+  for (const key of [
+    'localization.open',
+    'localization.title',
+    'localization.summary',
+    'localization.close',
+    'localization.currentElement',
+    'localization.searchLabel',
+    'localization.searchPlaceholder',
+    'localization.locations',
+    'localization.unmapped',
+    'localization.noMatches',
+    'localization.noSelection',
+    'localization.appShell',
+    'localization.openLocation',
+  ]) assert.equal(typeof localizationCopy.strings[key], 'string', key);
+  assert.match(page, /screen\.localization\.inspector/);
+  assert.match(page, /element\.localization\.open/);
+  assert.match(page, /element\.localization\.search/);
+  assert.match(page, /element\.localization\.current-element/);
+  assert.match(page, /element\.localization\.string-results/);
+  assert.match(page, /element\.localization\.occurrence-list/);
+  assert.match(page, /LOCALIZATION_COPY_URL = '\.\/localization-copy\.json'/);
+  assert.match(page, /localizationText\('localization\.open'\)/);
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A2-SLICE1]
+
+
+test('Localization preview locale is browser projection state and preserves explicit missing truth', () => {
+  assert.match(page, /previewLocale: null/);
+  assert.match(page, /Localization\.normalizeLocalizationLocaleRef/);
+  assert.match(page, /Localization\.observedLocalizationLocales\(inventory\)/);
+  assert.match(page, /Localization\.localizationValueForLocale/);
+  assert.match(page, /const STATIC_LOCALIZATION_BINDINGS = Object\.freeze/);
+  assert.match(page, /\['data-vex-text', null\]/);
+  assert.match(page, /\['data-vex-placeholder', 'placeholder'\]/);
+  assert.match(page, /\['data-vex-aria-label', 'aria-label'\]/);
+  assert.match(page, /\['data-vex-title', 'title'\]/);
+  assert.match(page, /function applyStaticLocalizationPreview\(doc\)/);
+  assert.match(page, /applyStaticLocalizationPreview\(doc\);/);
+  assert.match(page, /data-vex-lens-localization-state/);
+  assert.match(page, /new Intl\.DisplayNames\(\['en'\], \{ type: 'language' \}\)/);
+  assert.match(page, /function localizationLocaleStatus\(localeRef/);
+  assert.match(page, /function localizationLocaleOptionLabel\(localeRef/);
+  assert.match(page, /function addLocalizationPreviewLocale\(value\)/);
+  assert.match(page, /value: '__ADD__'/);
+  assert.match(page, /localization\.addLanguage/);
+  assert.match(page, /localization\.localeCompleteStatus/);
+  assert.match(page, /localization\.localeMissingStatus/);
+  assert.match(page, /addedLocales: Object\.freeze/);
+  assert.match(page, /localization\.localeMissingDetail/);
+  assert.match(page, /next\.set\('locale', state\.localization\.previewLocale\)/);
+  assert.match(page, /next\.set\('string', state\.localization\.selectedStringRef\)/);
+  assert.match(page, /next\.set\('localization', '1'\)/);
+  assert.match(page, /snapshot\.localization\.previewLocale/);
+  assert.match(page, /snapshot\.localization\.inspectorOpen/);
+  assert.match(page, /element\.localization\.preview-locale/);
+  assert.match(page, /element\.localization\.locale-status/);
+  assert.doesNotMatch(page, /setApplicationLocales|LocaleManager|ProductRuntime.*locale/i, 'preview locale never mutates Product language');
+  assert.match(localizationCopy.strings['localization.previewLocaleHelp'], /does not change Product language/);
+  assert.match(localizationCopy.strings['localization.addLanguage'], /Add language/);
+  assert.match(localizationCopy.strings['localization.addLanguageHelp'], /browser-local translation target/);
+  assert.equal(localizationCopy.strings['localization.localeCompleteStatus'], 'Complete');
+  assert.equal(localizationCopy.strings['localization.localeMissingStatus'], 'Not in source');
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A2-LOCALE-OBSERVATION]
+
+test('Localization Change Set authoring stays browser-local and projects the proven A3 contract', () => {
+  for (const key of [
+    'localization.changeSetTitle',
+    'localization.changeSetHelp',
+    'localization.expectedValue',
+    'localization.expectedValuePlaceholder',
+    'localization.saveExpected',
+    'localization.removeExpected',
+    'localization.savedLocally',
+    'localization.noDraft',
+    'localization.exportChangeSet',
+    'localization.importChangeSet',
+    'localization.importedChangeSet',
+    'localization.workingSetEmpty',
+    'localization.reconciliation',
+    'localization.stateSatisfied',
+    'localization.stateOpen',
+    'localization.stateOpenTranslation',
+    'localization.stateDiverged',
+    'localization.stateSourceRemoved',
+    'localization.storageUnavailable',
+  ]) assert.equal(typeof localizationCopy.strings[key], 'string', key);
+
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-localization-change-set\.mjs'/);
+  assert.match(page, /LocalizationChanges\.loadLocalizationChangeSetCollection\(localStorage\)/);
+  assert.match(page, /LocalizationChanges\.createLocalizationChangeSet\(/);
+  assert.match(page, /LocalizationChanges\.upsertLocalizationChangeSet/);
+  assert.match(page, /LocalizationChanges\.saveLocalizationChangeSetCollection\(localStorage, collection\)/);
+  assert.match(page, /LocalizationChanges\.reconcileLocalizationChangeSet\(current, state\.localization\.inventory\)/);
+  assert.match(page, /LocalizationChanges\.createLocalizationChangeSetExport/);
+  assert.match(page, /LocalizationChanges\.serializeLocalizationChangeSetExport/);
+  assert.match(page, /LocalizationChanges\.importLocalizationChangeSetExport\([\s\S]{0,180}await file\.text\(\),[\s\S]{0,180}state\.localization\.inventory/);
+  assert.match(page, /change-set\.browser\.\$\{subject\.slug\}\.\$\{inventory\.sourceSnapshot\.commit\}/);
+  assert.match(page, /new Blob\(\[serialized\], \{ type: 'application\/json' \}\)/);
+  assert.match(page, /URL\.createObjectURL\(blob\)/);
+  assert.match(page, /element\.localization\.change-set/);
+  assert.match(page, /element\.localization\.expected-value/);
+  assert.match(page, /element\.localization\.save-expected/);
+  assert.match(page, /element\.localization\.remove-expected/);
+  assert.match(page, /element\.localization\.reconciliation/);
+  assert.match(page, /element\.localization\.export-change-set/);
+  assert.match(page, /element\.localization\.import-change-set/);
+
+  assert.doesNotMatch(page, /setApplicationLocales|LocaleManager|ProductRuntime.*locale/i);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i, 'Change Set authoring does not write Product or provider state');
+  assert.match(localizationCopy.strings['localization.changeSetHelp'], /does not change Product source/);
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A3-AUTHORING-UI]
+
+test('Localization remains a shared-frame capability when a Product has no normalized sidecar yet', () => {
+  for (const key of [
+    'localization.notConnectedTitle',
+    'localization.notConnectedDetail',
+    'localization.loadErrorTitle',
+    'localization.loadErrorDetail',
+  ]) assert.equal(typeof localizationCopy.strings[key], 'string', key);
+
+  assert.match(page, /response\.status === 404\) \{ reset\('NOT_INDEXED'\); return; \}/);
+  assert.match(page, /subject \? h\('button', \{[\s\S]{0,500}LOCALIZATION_UI_REFS\.open/);
+  assert.match(page, /if \(state\.overlay === 'LOCALIZATION'\) main\.append\(renderLocalizationInspector\(\)\)/);
+  assert.match(page, /state\.localization\.status !== 'READY'/);
+  assert.match(page, /localization\.notConnectedTitle/);
+  assert.match(page, /localization\.notConnectedDetail/);
+  assert.match(page, /params\.get\('localization'\) === '1' && state\.request\?\.subject/);
+  assert.doesNotMatch(
+    page,
+    /state\.localization\.status === 'READY' \? h\('button',[\s\S]{0,500}LOCALIZATION_UI_REFS\.open/,
+    'READY controls data tools, never whether the shared Localization capability exists',
+  );
+  assert.match(
+    localizationCopy.strings['localization.notConnectedDetail'],
+    /shared VexBoard frame for every project/,
+  );
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][SHARED-FRAME]
+

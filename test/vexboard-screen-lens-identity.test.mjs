@@ -33,7 +33,7 @@ test('identity formation contracts preserve derived-child and runtime-instance m
     normalizeIdentityFormationContract({
       kind: SCREEN_LENS_IDENTITY_KINDS.DERIVED_CHILD,
       parentSource: 'screen.content',
-      localPath: 'row / title',
+      localPath: 'row/title',
     }),
     {
       kind: SCREEN_LENS_IDENTITY_KINDS.DERIVED_CHILD,

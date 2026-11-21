@@ -1,0 +1,447 @@
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][INVENTORY]
+//
+// Platform-neutral localization inventory.
+//
+// Product/source adapters emit exact source strings plus exact text occurrences. This module owns only:
+// - stable inventory normalization;
+// - exact source-string aggregation;
+// - reverse where-used queries;
+// - deterministic CSV materializations.
+//
+// It does not infer semantic equivalence from equal values and it does not mutate Product source.
+
+export const LOCALIZATION_INVENTORY_SCHEMA = 'vexboard.localization-inventory/v1';
+
+const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
+const LOCALE_REF = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/u;
+
+function fail(message) {
+  throw new TypeError(`localization inventory: ${message}`);
+}
+
+function text(value, label) {
+  if (typeof value !== 'string' || !value.trim()) fail(`${label} must be a non-empty string`);
+  return value;
+}
+
+function ref(value, label) {
+  const accepted = text(value, label);
+  if (!REF.test(accepted)) fail(`${label} must be one stable ref`);
+  return accepted;
+}
+
+function nullableRef(value, label) {
+  if (value === null || value === undefined) return null;
+  return ref(value, label);
+}
+
+function uniqueSorted(values) {
+  return [...new Set(values.filter((value) => value !== null && value !== undefined))].sort();
+}
+
+export function normalizeLocalizationLocaleRef(value) {
+  const raw = text(value, 'localeRef');
+  if (!LOCALE_REF.test(raw)) fail('localeRef must be a compact BCP-47 language tag');
+  const [language, ...rest] = raw.split('-');
+  return [
+    language.toLowerCase(),
+    ...rest.map((part) => {
+      if (/^[A-Za-z]{4}$/.test(part)) return part[0].toUpperCase() + part.slice(1).toLowerCase();
+      if (/^(?:[A-Za-z]{2}|\d{3})$/.test(part)) return part.toUpperCase();
+      return part.toLowerCase();
+    }),
+  ].join('-');
+}
+
+function placeholderType(type) {
+  if ('diouxX'.includes(type)) return 'INT';
+  if ('eEfgGaA'.includes(type)) return 'FLOAT';
+  if (type === 's' || type === 'S') return 'STRING';
+  if (type === 'c' || type === 'C') return 'CHAR';
+  if (type === 'b' || type === 'B') return 'BOOLEAN';
+  if (type === 't' || type === 'T') return 'DATE_TIME';
+  return type.toUpperCase();
+}
+
+export function localizationFormatSignature(value) {
+  const source = String(value ?? '');
+  const found = [];
+
+  for (const match of source.matchAll(/%(?:(\d+)\$)?[-#+ 0,(<]*\d*(?:\.\d+)?([A-Za-z%])/g)) {
+    if (match[2] === '%') continue;
+    found.push({
+      index: match.index ?? 0,
+      kind: 'PRINTF',
+      argumentIndex: match[1] ? Number(match[1]) : null,
+      type: placeholderType(match[2]),
+      token: match[0],
+    });
+  }
+  for (const match of source.matchAll(/\{([A-Za-z][A-Za-z0-9_-]*)\}/g)) {
+    found.push({
+      index: match.index ?? 0,
+      kind: 'NAMED',
+      name: match[1],
+      type: 'NAMED',
+      token: match[0],
+    });
+  }
+
+  found.sort((left, right) => left.index - right.index);
+  const placeholders = found.map((placeholder, index) => {
+    const ordinal = index + 1;
+    return placeholder.kind === 'NAMED'
+      ? { ordinal, name: placeholder.name, type: placeholder.type, token: placeholder.token }
+      : {
+          ordinal,
+          argumentIndex: placeholder.argumentIndex,
+          type: placeholder.type,
+          token: placeholder.token,
+        };
+  });
+  const signature = placeholders
+    .map((placeholder) => Object.hasOwn(placeholder, 'name')
+      ? `name:${placeholder.name}`
+      : `${placeholder.argumentIndex === null ? `seq${placeholder.ordinal}` : `arg${placeholder.argumentIndex}`}:${placeholder.type}`)
+    .join('|');
+  return Object.freeze({
+    signature,
+    placeholders: Object.freeze(placeholders.map((placeholder) => Object.freeze(placeholder))),
+  });
+}
+
+function normalizeSourceString(input, sourceLocale) {
+  const sourceStringRef = ref(input.sourceStringRef, 'sourceString.sourceStringRef');
+  const sourceKey = text(input.sourceKey, 'sourceString.sourceKey');
+  const sourceValue = typeof input.sourceValue === 'string'
+    ? input.sourceValue
+    : fail('sourceString.sourceValue must be a string');
+  const variants = Object.entries(input.localeVariants ?? {})
+    .map(([localeRef, value]) => {
+      const locale = normalizeLocalizationLocaleRef(localeRef);
+      if (locale === sourceLocale) fail(`${sourceStringRef} localeVariants must not duplicate sourceLocale ${sourceLocale}`);
+      if (typeof value !== 'string') fail(`${sourceStringRef} locale variant ${locale} must be a string`);
+      return [locale, value];
+    })
+    .sort(([left], [right]) => left.localeCompare(right));
+  if (new Set(variants.map(([locale]) => locale)).size !== variants.length) fail(`${sourceStringRef} localeVariants must be unique after normalization`);
+  return {
+    sourceStringRef,
+    sourceKey,
+    sourceValue,
+    sourcePath: input.sourcePath ? text(input.sourcePath, 'sourceString.sourcePath') : null,
+    ...(variants.length ? { localeVariants: Object.freeze(Object.fromEntries(variants)) } : {}),
+  };
+}
+
+function normalizeOccurrence(input) {
+  const sourceStringRef = ref(input.sourceStringRef, 'occurrence.sourceStringRef');
+  const sourceKey = text(input.sourceKey, 'occurrence.sourceKey');
+  const sourceValue = typeof input.sourceValue === 'string'
+    ? input.sourceValue
+    : fail('occurrence.sourceValue must be a string');
+  return Object.freeze({
+    occurrenceRef: ref(input.occurrenceRef, 'occurrence.occurrenceRef'),
+    surfaceRef: ref(input.surfaceRef, 'occurrence.surfaceRef'),
+    screenRef: nullableRef(input.screenRef ?? null, 'occurrence.screenRef'),
+    elementRef: ref(input.elementRef, 'occurrence.elementRef'),
+    parentElementRef: nullableRef(input.parentElementRef ?? null, 'occurrence.parentElementRef'),
+    elementKind: text(input.elementKind, 'occurrence.elementKind'),
+    bindingRole: text(input.bindingRole, 'occurrence.bindingRole'),
+    textRole: input.textRole ? text(input.textRole, 'occurrence.textRole') : null,
+    sourceStringRef,
+    sourceKey,
+    sourceValue,
+    sourcePath: input.sourcePath ? text(input.sourcePath, 'occurrence.sourcePath') : null,
+  });
+}
+
+export function createLocalizationInventory({
+  inventoryRef,
+  subjectRef,
+  sourceSnapshot,
+  sourceLocale = 'en',
+  buildRef = null,
+  producer,
+  sourceStrings,
+  occurrences,
+}) {
+  ref(inventoryRef, 'inventoryRef');
+  ref(subjectRef, 'subjectRef');
+  const normalizedSourceLocale = normalizeLocalizationLocaleRef(sourceLocale);
+  if (!sourceSnapshot || typeof sourceSnapshot !== 'object') fail('sourceSnapshot required');
+  ref(sourceSnapshot.repositoryRef, 'sourceSnapshot.repositoryRef');
+  text(sourceSnapshot.commit, 'sourceSnapshot.commit');
+  if (!Array.isArray(sourceStrings) || !sourceStrings.length) fail('sourceStrings must be a non-empty array');
+  if (!Array.isArray(occurrences)) fail('occurrences must be an array');
+  if (!producer || typeof producer !== 'object') fail('producer required');
+  ref(producer.ref, 'producer.ref');
+  text(producer.version, 'producer.version');
+
+  const sourceRows = sourceStrings.map((row) => normalizeSourceString(row, normalizedSourceLocale))
+    .sort((a, b) => a.sourceStringRef.localeCompare(b.sourceStringRef));
+  if (new Set(sourceRows.map((row) => row.sourceStringRef)).size !== sourceRows.length) {
+    fail('sourceStringRef must be unique');
+  }
+
+  const normalized = occurrences.map(normalizeOccurrence)
+    .sort((a, b) => a.occurrenceRef.localeCompare(b.occurrenceRef));
+  if (new Set(normalized.map((row) => row.occurrenceRef)).size !== normalized.length) {
+    fail('occurrenceRef must be unique');
+  }
+
+  const byString = new Map(sourceRows.map((row) => [row.sourceStringRef, {
+    ...row,
+    occurrenceRefs: [],
+    elementRefs: [],
+    screenRefs: [],
+    surfaceRefs: [],
+    bindingRoles: [],
+  }]));
+
+  for (const occurrence of normalized) {
+    const row = byString.get(occurrence.sourceStringRef);
+    if (!row) fail(`${occurrence.occurrenceRef} references unknown source string ${occurrence.sourceStringRef}`);
+    if (row.sourceKey !== occurrence.sourceKey || row.sourceValue !== occurrence.sourceValue) {
+      fail(`${occurrence.sourceStringRef} occurrence disagrees with source catalog`);
+    }
+    row.occurrenceRefs.push(occurrence.occurrenceRef);
+    row.elementRefs.push(occurrence.elementRef);
+    row.screenRefs.push(occurrence.screenRef);
+    row.surfaceRefs.push(occurrence.surfaceRef);
+    row.bindingRoles.push(occurrence.bindingRole);
+  }
+
+  const strings = [...byString.values()]
+    .map((row) => {
+      const format = localizationFormatSignature(row.sourceValue);
+      const occurrenceRefs = uniqueSorted(row.occurrenceRefs);
+      return Object.freeze({
+        sourceStringRef: row.sourceStringRef,
+        sourceKey: row.sourceKey,
+        sourceValue: row.sourceValue,
+        sourcePath: row.sourcePath,
+        formatSignature: format.signature,
+        placeholders: format.placeholders,
+        mapped: occurrenceRefs.length > 0,
+        occurrenceRefs: Object.freeze(occurrenceRefs),
+        elementRefs: Object.freeze(uniqueSorted(row.elementRefs)),
+        screenRefs: Object.freeze(uniqueSorted(row.screenRefs)),
+        surfaceRefs: Object.freeze(uniqueSorted(row.surfaceRefs)),
+        bindingRoles: Object.freeze(uniqueSorted(row.bindingRoles)),
+        ...(row.localeVariants ? { localeVariants: row.localeVariants } : {}),
+      });
+    })
+    .sort((a, b) => a.sourceStringRef.localeCompare(b.sourceStringRef));
+
+  const mapped = strings.filter((row) => row.mapped);
+  const variantLocales = uniqueSorted(sourceRows.flatMap((row) => Object.keys(row.localeVariants ?? {})));
+  const locales = [
+    Object.freeze({
+      localeRef: normalizedSourceLocale,
+      role: 'SOURCE',
+      completeness: 'OBSERVED_SOURCE',
+    }),
+    ...variantLocales.map((localeRef) => {
+      const observedStringCount = strings.filter((row) => Object.hasOwn(row.localeVariants ?? {}, localeRef)).length;
+      return Object.freeze({
+        localeRef,
+        role: 'VARIANT',
+        completeness: observedStringCount === strings.length ? 'OBSERVED_COMPLETE' : 'OBSERVED_PARTIAL',
+        observedStringCount,
+        missingStringCount: strings.length - observedStringCount,
+      });
+    }),
+  ];
+
+  return Object.freeze({
+    schemaVersion: LOCALIZATION_INVENTORY_SCHEMA,
+    inventoryRef,
+    subjectRef,
+    buildRef,
+    sourceLocale: normalizedSourceLocale,
+    sourceSnapshot: Object.freeze({
+      repositoryRef: sourceSnapshot.repositoryRef,
+      repositoryUrl: sourceSnapshot.repositoryUrl ?? null,
+      commit: sourceSnapshot.commit,
+      observedAt: sourceSnapshot.observedAt ?? null,
+    }),
+    producer: Object.freeze({ ref: producer.ref, version: producer.version }),
+    locales: Object.freeze(locales),
+    occurrences: Object.freeze(normalized),
+    strings: Object.freeze(strings),
+    summary: Object.freeze({
+      occurrenceCount: normalized.length,
+      sourceStringCount: strings.length,
+      mappedSourceStringCount: mapped.length,
+      unmappedSourceStringCount: strings.length - mapped.length,
+      reusedSourceStringCount: mapped.filter((row) => row.occurrenceRefs.length > 1).length,
+      formatStringCount: strings.filter((row) => row.placeholders.length > 0).length,
+      screenCount: uniqueSorted(normalized.map((row) => row.screenRef)).length,
+      surfaceCount: uniqueSorted(normalized.map((row) => row.surfaceRef)).length,
+    }),
+  });
+}
+
+export function occurrencesForString(inventory, sourceStringRef) {
+  return inventory.occurrences.filter((row) => row.sourceStringRef === sourceStringRef);
+}
+
+export function stringsForElement(inventory, elementRef) {
+  const refs = new Set(inventory.occurrences
+    .filter((row) => row.elementRef === elementRef)
+    .map((row) => row.sourceStringRef));
+  return inventory.strings.filter((row) => refs.has(row.sourceStringRef));
+}
+
+export function occurrencesForSurface(inventory, surfaceRef) {
+  return inventory.occurrences.filter((row) => row.surfaceRef === surfaceRef);
+}
+
+export function sourceStringsForExactValue(inventory, sourceValue) {
+  return inventory.strings.filter((row) => row.sourceValue === sourceValue);
+}
+
+export function normalizeLocalizationInventory(input) {
+  if (!input || input.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) {
+    fail(`schemaVersion must be ${LOCALIZATION_INVENTORY_SCHEMA}`);
+  }
+  const normalized = createLocalizationInventory({
+    inventoryRef: input.inventoryRef,
+    subjectRef: input.subjectRef,
+    buildRef: input.buildRef ?? null,
+    sourceLocale: input.sourceLocale,
+    sourceSnapshot: input.sourceSnapshot,
+    producer: input.producer,
+    sourceStrings: (input.strings ?? []).map((row) => ({
+      sourceStringRef: row.sourceStringRef,
+      sourceKey: row.sourceKey,
+      sourceValue: row.sourceValue,
+      sourcePath: row.sourcePath,
+      localeVariants: row.localeVariants ?? {},
+    })),
+    occurrences: input.occurrences ?? [],
+  });
+  if (JSON.stringify(normalized) !== JSON.stringify(input)) {
+    fail('materialized inventory disagrees with normalized source/occurrence relationships');
+  }
+  return normalized;
+}
+
+function localizationSearchScore(row, query) {
+  const exact = [row.sourceStringRef, row.sourceKey, row.sourceValue].map((value) => String(value).toLowerCase());
+  if (exact.includes(query)) return 0;
+  if (exact.some((value) => value.startsWith(query))) return 1;
+  if (exact.some((value) => value.includes(query))) return 2;
+  const locations = [...row.elementRefs, ...row.screenRefs, ...row.surfaceRefs].map((value) => String(value).toLowerCase());
+  if (locations.some((value) => value.includes(query))) return 3;
+  return null;
+}
+
+export function searchLocalizationStrings(inventory, query, { limit = 50 } = {}) {
+  if (!inventory || inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) fail('search requires a Localization Inventory');
+  if (!Number.isInteger(limit) || limit < 1 || limit > 200) fail('search limit must be an integer from 1 to 200');
+  const needle = String(query ?? '').trim().toLowerCase();
+  if (!needle) return [];
+  return inventory.strings
+    .map((row) => ({ row, score: localizationSearchScore(row, needle) }))
+    .filter((entry) => entry.score !== null)
+    .sort((left, right) => left.score - right.score || left.row.sourceStringRef.localeCompare(right.row.sourceStringRef))
+    .slice(0, limit)
+    .map((entry) => entry.row);
+}
+
+export function localizationOccurrenceTarget(inventory, occurrenceRef) {
+  if (!inventory || inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) fail('occurrence target requires a Localization Inventory');
+  const occurrence = inventory.occurrences.find((row) => row.occurrenceRef === occurrenceRef);
+  if (!occurrence) fail(`unknown occurrence ${occurrenceRef}`);
+  return Object.freeze({
+    screenRef: occurrence.screenRef,
+    elementRef: occurrence.elementRef,
+  });
+}
+
+export function observedLocalizationLocales(inventory) {
+  if (!inventory || inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) fail('locale query requires a Localization Inventory');
+  return inventory.locales.map((row) => row.localeRef);
+}
+
+export function localizationValueForLocale(inventory, sourceStringRef, localeRef) {
+  if (!inventory || inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA) fail('locale value requires a Localization Inventory');
+  const row = inventory.strings.find((candidate) => candidate.sourceStringRef === sourceStringRef);
+  if (!row) fail(`unknown source string ${sourceStringRef}`);
+  const locale = normalizeLocalizationLocaleRef(localeRef);
+  if (locale === inventory.sourceLocale) {
+    return Object.freeze({
+      sourceStringRef,
+      localeRef: locale,
+      state: 'SOURCE',
+      value: row.sourceValue,
+      sourceValue: row.sourceValue,
+    });
+  }
+  if (Object.hasOwn(row.localeVariants ?? {}, locale)) {
+    return Object.freeze({
+      sourceStringRef,
+      localeRef: locale,
+      state: 'VARIANT',
+      value: row.localeVariants[locale],
+      sourceValue: row.sourceValue,
+    });
+  }
+  return Object.freeze({
+    sourceStringRef,
+    localeRef: locale,
+    state: 'MISSING',
+    value: null,
+    sourceValue: row.sourceValue,
+  });
+}
+
+function csvCell(value) {
+  const textValue = value === null || value === undefined ? '' : String(value);
+  return /[",\n\r]/.test(textValue) ? `"${textValue.replaceAll('"', '""')}"` : textValue;
+}
+
+function csv(rows) {
+  return rows.map((row) => row.map(csvCell).join(',')).join('\n') + '\n';
+}
+
+export function localizationOccurrencesCsv(inventory) {
+  return csv([
+    ['occurrenceRef', 'surfaceRef', 'screenRef', 'elementRef', 'parentElementRef', 'elementKind', 'bindingRole', 'textRole', 'sourceStringRef', 'sourceKey', 'sourceValue', 'sourcePath'],
+    ...inventory.occurrences.map((row) => [
+      row.occurrenceRef,
+      row.surfaceRef,
+      row.screenRef,
+      row.elementRef,
+      row.parentElementRef,
+      row.elementKind,
+      row.bindingRole,
+      row.textRole,
+      row.sourceStringRef,
+      row.sourceKey,
+      row.sourceValue,
+      row.sourcePath,
+    ]),
+  ]);
+}
+
+export function localizationStringsCsv(inventory) {
+  return csv([
+    ['sourceStringRef', 'sourceKey', 'sourceValue', 'sourcePath', 'mapped', 'formatSignature', 'occurrenceCount', 'surfaceRefs', 'screenRefs', 'elementRefs', 'bindingRoles'],
+    ...inventory.strings.map((row) => [
+      row.sourceStringRef,
+      row.sourceKey,
+      row.sourceValue,
+      row.sourcePath,
+      row.mapped,
+      row.formatSignature,
+      row.occurrenceRefs.length,
+      row.surfaceRefs.join(' | '),
+      row.screenRefs.join(' | '),
+      row.elementRefs.join(' | '),
+      row.bindingRoles.join(' | '),
+    ]),
+  ]);
+}

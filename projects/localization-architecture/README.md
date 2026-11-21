@@ -88,7 +88,7 @@ Preserve the common relationship model, authority boundaries, projection diagram
 
 Durable source: [ARCHITECTURE.md](./ARCHITECTURE.md).
 
-### A1 — Android patient-zero inventory — READY
+### A1 — Android patient-zero inventory — COMPLETED
 
 Use current VexLife-Android source to prove a lossless first inventory:
 
@@ -111,7 +111,7 @@ First proof output should be machine-readable and sufficient to derive:
 
 No Android source mutation is required for this first slice.
 
-### A2 — Screen Lens Localization Inspector — WAITING on A1
+### A2 — Screen Lens Localization Inspector — COMPLETED
 
 Add a contextual localization control to a Product Screen Lens after inventory exists.
 
@@ -126,7 +126,7 @@ The Inspector should support:
 - clicking an occurrence to navigate/select/highlight its exact Lens element;
 - explicit missing/fallback state rather than pretending fallback text is translated.
 
-### A3 — Localization Change Set and source reconciliation — WAITING on A1
+### A3 — Localization Change Set and source reconciliation — COMPLETED
 
 Define an effect-free working overlay suitable for static GitHub Pages:
 
@@ -143,7 +143,7 @@ current source inventory
 
 The Change Set is not source truth. Its first persistence may be browser-local plus explicit export/import so work can be shared without giving the static page GitHub write authority.
 
-### A4 — duplicate / convergence analysis — WAITING on A1
+### A4 — duplicate / convergence analysis — COMPLETED
 
 Group source strings by normalized source value and other evidence to discover likely duplication, but keep the group derived.
 
@@ -158,7 +158,7 @@ Useful evidence includes:
 
 The analyzer may suggest `LIKELY_SHARED`, `NEEDS_REVIEW`, `KEEP_SEPARATE`, or `ALREADY_SHARED`; it does not create shared semantic identity by itself.
 
-### A5 — VexBoard Localization Workspace / CMS — WAITING on A2+A3+A4
+### A5 — VexBoard Localization Workspace / CMS — COMPLETED
 
 Project the earned relational model through its own VexBoard container/dashboard with pivots such as:
 
@@ -170,7 +170,12 @@ This is the global string/localization management surface. The contextual Screen
 
 Locale remains an orthogonal Screen Lens projection dimension rather than duplicated per-language pages.
 
-This workflow gets its own VexArchitecture/process projection inside this Project. It does **not** become a second VexWork Project yet. A separate operational Project is earned only if recurring translation campaigns later develop their own human ownership, assignment, approval or release lifecycle.
+The global workspace remains the inspection/comparison/Change Set surface for this Project. Recurring translator packet export/import, returned-work preflight, Product-specific source writeback and Relay/GitHub integration have now earned a separate successor Project named **Localization Transition** (`github.issue.vexwork.423`) rather than expanding A5 into a repository-mutation authority.
+
+Current A5 implementation source:
+- `src/shared/vexboard-localization-workspace.mjs` — pure cross-Product projection over normalized inventories, A4 convergence analysis and A3 Change Sets;
+- `vexboard/localization.html` — global Main-inventory workspace with Elements, Strings, Values, Groups, Locales, Coverage and Change Sets pivots;
+- the Screen Lens Inspector deep-links into the same workspace while preserving Product/string/locale context.
 
 ## First source map
 
@@ -202,8 +207,8 @@ VexBoard may inspect, group, compare, export and later propose source-owner chan
 
 ## Current next edge
 
-`work.vex.localization-architecture.android-inventory`
+Localization Architecture A0–A5 is completed on main at `c91766e715c447bb467346ee313724dba8f54650`.
 
-Prove the normalized relationship contract against Android before adding a localization CMS UI or cross-Product shared-string registry.
+The next recurring operational trajectory is the separate **Localization Transition** Project formation (`github.issue.vexwork.423`): translator packet selection/export, returned CSV preflight, reviewed Change Sets and Product-specific source writeback through the rightful GitHub/Relay lifecycle. That work is downstream of this completed architecture rather than another A5 phase.
 
 <!-- [VXG RealForever][VEXWORK][LOCALIZATION-ARCHITECTURE] -->

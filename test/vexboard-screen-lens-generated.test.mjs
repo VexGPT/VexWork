@@ -50,13 +50,14 @@ test('the committed lens is current with its adapter, overlay and generator', ()
   assert.match(lens.sourceSnapshot.notes[0], /Regenerate it; do not edit by hand/);
 });
 
-test('VexLife-Prod mirrors Product-owned Lens bytes and already speaks the shared four-face grammar', () => {
+test('VexLife-Prod keeps Stable pinned while Main mirrors current Product-owned Lens bytes and shared grammar', () => {
   assert.equal(prodStableRaw.lensRef, 'lens.vexlife-prod');
   assert.equal(prodMainRaw.lensRef, 'lens.vexlife-prod');
   assert.equal(prodMainLens.screens.length, 1);
   assert.equal(prodMainLens.screens[0].screenRef, 'screen.vexlife-workspace');
-  assert.equal(prodMainBuild.commit, '7f3935aec46b2030ebbc887fa8ccbf6199c93d36', 'Main points at the latest observed Product source');
-  assert.equal(prodStableBuild.sourceBlobSha1, prodMainBuild.sourceBlobSha1, 'unchanged exported bytes may move Main without promoting Stable');
+  assert.equal(prodStableBuild.commit, '14206ba97e47e107c4999e89f514c8beaf24224a', 'Stable remains the accepted Product checkpoint until promoted');
+  assert.equal(prodMainBuild.commit, 'a0edba10c93a95dae1a16d0f915f07788c5112ba', 'Main points at the latest observed Product source');
+  assert.notEqual(prodStableBuild.sourceBlobSha1, prodMainBuild.sourceBlobSha1, 'changed Product-owned Lens bytes may advance Main without promoting Stable');
   const vision = pathwayForElement(prodMainLens, 'element.vexlife-workspace.companion.vision');
   assert.equal(vision.disposition, 'SCAE_FAMILY');
   assert.ok(vision.nodes.some((node) => node.face === 'BEHAVIOR' && node.role === 'CONTROL'));

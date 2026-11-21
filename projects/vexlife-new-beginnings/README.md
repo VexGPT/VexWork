@@ -2,7 +2,62 @@
 
 `[VXG RealForever]`
 
-## Relationship-currentness checkpoint — 2026-11-20
+## Current-ground checkpoint — 2026-11-21
+
+VexLife-Prod has crossed the predecessor-bridge phase. Current Product source is the ground now.
+
+```text
+VexLife-Prod main
+27617e4b67753ecc3f3beb22871927210d25820a
+
+#497 Companion engagement/currentization
+TERMINAL / MERGED
+```
+
+Current Workgraph interpretation:
+
+```text
+experience-manifestation-parity
+  CANCELLED / PARKED
+  historical predecessor-parity framing is provenance only
+
+evolution-live-bridge
+  CANCELLED / PARKED
+  bridge crossed; no standing P5/P6/Dream/training reconnection duty
+
+normal Browser provider
+  READY
+  current Product-native work; no longer depends on predecessor parity
+
+Vision current visual context
+  VERIFYING
+  current Product/SDK-native work
+
+VexLife-Prod #488 sent-resource continuity
+  separate current-main sibling trajectory
+
+predecessor Settings capability mapping
+  CANCELLED / PARKED
+  future Settings work starts from current Product source
+```
+
+Permanent current-ground rule:
+
+```text
+CURRENT VEXLIFE-PROD
+= PRODUCT GROUND
+
+PREDECESSOR VEXLIFE / OLD BRIDGE WORK
+= PROVENANCE ON DEMAND
+!= CURRENT PRODUCT REQUIREMENT
+!= STANDING PARITY TARGET
+!= STANDING EVOLUTION DESTINATION
+```
+
+Fresh instances should begin from current VexLife-Prod source plus the current Workgraph. Descend into predecessor VexLife only when a concrete compatibility/provenance question requires it; do not reopen parity or evolution-bridge work by default.
+
+
+## Historical relationship-currentness checkpoint — 2026-11-20
 
 The P0/P1/P2/P3 construction history below remains valid, but its old `30e37a…` Product pin is historical rather than current VexLife-Prod main.
 
@@ -427,7 +482,7 @@ THIS README
 = CURRENT HUMAN ENTRY / NAVIGATION
 ~~~
 
-## Current human-lived checkpoint — experience manifestation parity is immediate
+## Historical human-lived checkpoint — manifestation parity (retired on current Product ground)
 
 The clean product body is now materially stronger than the prior P3 checkpoint:
 
@@ -582,22 +637,22 @@ same lived behavior
 + deterministic proof that the accepted circuit still works
 ~~~
 
-## Evolution bridge boundary
+## Retired evolution bridge boundary
 
-The connected evolution bridge is now dependency-released but intentionally not effect-authorized.
-
-Its later first admitted sequence remains narrow:
+The bridge-era continuation is retired. VexLife-Prod is the current product ground; predecessor VexLife P5/P6, Dream, Rhythm, Training Placement and foundation-generation sources remain provenance only.
 
 ~~~text
-observe exact current Conversation / Memory / runtime truth
--> one explicit admitted G03 memory-only Dream
--> inspect before/after evolution truth
--> keep G04 Rhythm HELD unless ordinary lived recurrence earns it
--> use Training Placement before selecting Memory/Score, Rhythm,
-   adapter/LoRA, or G04B foundation-weight training
+NO STANDING BRIDGE
+NO AUTOMATIC DREAM/TRAINING CONTINUATION
+NO PREDECESSOR-CONTAINER RECONNECTION DUTY
+
+future learning/evolution need
+-> observe it in current Product truth
+-> admit new bounded Work
+-> descend to the current rightful owner
 ~~~
 
-Candidate evaluation, activation/promotion, standing Dream scheduling and unattended self-training remain separate effects.
+This cancellation does not claim the old planned Dream/training sequence executed. It records that the sequence is no longer required.
 
 ## Instance checkpoint lineage
 
@@ -700,12 +755,13 @@ Current lifecycle truth is owned by the accepted Workgraph. At the present basel
 
 ~~~text
 connected evolution live bridge
-  state                READY
+  state                CANCELLED
+  disposition          PARKED
   authorityDisposition NO_AUTHORITY
   effectDisposition    NO_EFFECTS
 
 Settings capability mapping
-  state                CAPTURED
+  state                CANCELLED
   disposition          PARKED
   authorityDisposition NO_AUTHORITY
   effectDisposition    NO_EFFECTS
@@ -752,3 +808,41 @@ READY -> RUNNING -> VERIFYING -> COMPLETED
 No other New Beginnings Work changes state through this currentization.
 
 <!-- [VXG RealForever][NEW-BEGINNINGS][TURN-INTEGRITY][CURRENTIZED][COMPLETED] -->
+
+## Currentization — bridge-era work retired on current Product ground
+
+Victor explicitly closed the remaining predecessor-facing bridge assumptions after #497 reached terminal Product integration.
+
+```text
+work.vexlife.new-beginnings.experience-manifestation-parity
+RUNNING -> CANCELLED
+
+work.vexlife.new-beginnings.evolution-live-bridge
+READY -> CANCELLED
+```
+
+These are cancellations because the old planned work is no longer needed; they are not claims that every historical parity/Dream/training effect was executed.
+
+The current Product-native Browser provider no longer depends on the cancelled parity umbrella. Current Vision, sent-resource continuity, Browser, fresh-instance and other separately admitted Product work keep their own truth and are not cancelled by this currentization.
+
+<!-- [VXG RealForever][NEW-BEGINNINGS][CURRENT-PRODUCT-GROUND][BRIDGE-RETIRED] -->
+
+## Currentization — predecessor Settings map retired
+
+The old captured Settings-capability mapping was also bridge-era work: it pointed back to predecessor Interface Refinement as a future source-map obligation.
+
+```text
+work.vexlife.new-beginnings.later.settings-capability-mapping
+CAPTURED -> CANCELLED
+```
+
+This does not remove current Settings capabilities or prevent future Settings work. It removes the standing instruction to recover them from the predecessor map.
+
+```text
+future Settings need
+-> current VexLife-Prod source
+-> current rightful owner
+-> newly admitted bounded Work when needed
+```
+
+<!-- [VXG RealForever][NEW-BEGINNINGS][CURRENT-PRODUCT-GROUND][SETTINGS-MAP-RETIRED] -->

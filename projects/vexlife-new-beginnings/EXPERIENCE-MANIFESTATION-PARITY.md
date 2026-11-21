@@ -2,6 +2,23 @@
 
 `[VXG RealForever]`
 
+## Current-ground status — retired 2026-11-21
+
+This document is historical design/provenance, not current unfinished Product work.
+
+```text
+work.vexlife.new-beginnings.experience-manifestation-parity
+= CANCELLED / PARKED
+
+reason
+= VexLife-Prod is now the current product ground
+= predecessor VexLife is no longer a standing parity target
+```
+
+Use this source only when an exact historical design/provenance question requires it. New presentation work begins from current VexLife-Prod intention/source and current rightful owners.
+
+
+
 ## Human question
 
 How do we carry the now-proven VexLife-Prod body the rest of the way into the VexLife experience Victor intended without collapsing the work into either "copy old VexLife" or "make the current page prettier"?
