@@ -46,6 +46,76 @@ Therefore the first Kotlin Blueprint work in this Project is an **architecture/c
 
 A later source-owning VexLife change may choose Kotlin as the accepted primary authoring representation. That migration must be explicit. Until then, Kotlin Blueprint binds and projects the already-owned VexLife identities rather than inventing a second product truth.
 
+## This compiler pattern is already proven in VexLife-Prod
+
+This is not a hypothetical replacement architecture.
+
+Current accepted VexLife-Prod source already proves the core layers:
+
+```text
+src/commonMain/kotlin/vexlife/blueprint/VexUiBlueprint.kt
+  VexScreenBlueprint
+  VexUiElementRef
+  compiler-visible stable handles + parent relationships
+
+src/commonMain/kotlin/vexlife/web/VexWeb.kt
+  sealed Identity
+  sealed Binding
+  sealed Node
+  sealed Seam / XBoundary / YBoundary
+  Depth / Placement / Presentation / Interaction
+  validated Frame / Region / spatial relationships
+
+src/commonMain/kotlin/vexlife/web/VexWebAuthoring.kt
+  Kotlin DSL
+  -> forms the accepted VexWeb relationship objects
+  != renderer
+  != generator
+
+src/commonMain/kotlin/vexlife/web/VexWebArtifacts.kt
+  accepted VexWeb Surface
+  -> deterministic HTML / CSS / JS
+  -> semantic manifest preserving source relationships
+```
+
+The current source has already passed the important architecture separations:
+
+```text
+KOTLIN BLUEPRINT / RELATIONSHIP SOURCE
+!= COMPOSE MANIFESTATION
+
+RELATIONAL AUTHORING
+!= RENDERER
+
+RELATIONAL AUTHORING
+!= GENERATOR
+
+GENERATED HTML/CSS/JS
+!= AUTHORING SOURCE
+```
+
+The browser adapter is therefore a working reference for the target-adapter idea.
+
+The Component Library should **generalize this accepted pattern** to reusable component architecture and additional target adapters. It should not create a parallel generic Kotlin hierarchy merely because the same relationships can be renamed.
+
+A future iOS path can follow the same shape:
+
+```text
+accepted Kotlin Blueprint / portable relationship objects
+        ↓
+iOS target adapter
+        ↓
+SwiftUI-native source + target semantic manifest
+        ↓
+Swift compiler / native proof
+        ↓
+iOS Screen Lens projection
+```
+
+The first design question is therefore:
+
+> Which existing VexLife-Prod relationship types can be reused directly, which component-level contracts must be added, and which relationships are genuinely target-specific?
+
 ## The compiler shape
 
 ```text
@@ -111,85 +181,59 @@ The point is not that every target speaks Kotlin.
 
 The point is that **one strongly typed Blueprint compiler frontend can describe relationships precisely enough that each target adapter must account for them explicitly**.
 
-## Proposed Kotlin Blueprint vocabulary
+## Kotlin Blueprint vocabulary — extend accepted source, do not fork it
 
-The exact API should be earned through real components, but the ownership shape can already be stated.
+The first instinct would be to create a new generic hierarchy such as `VexComponent / Layout / Control / Presentation`.
+
+Current VexLife-Prod source shows why that should **not** be the default move.
+
+We already have compiler-visible roots:
 
 ```kotlin
-@JvmInline
-value class ComponentRef(val value: String)
+VexScreenBlueprint
+VexUiElementRef
 
-@JvmInline
-value class ElementRef(val value: String)
+VexWeb.Identity
+VexWeb.Binding
+VexWeb.Node
+VexWeb.Seam
+VexWeb.XBoundary
+VexWeb.YBoundary
+VexWeb.Depth
+VexWeb.Placement
+VexWeb.Presentation
+VexWeb.Interaction
 
-@JvmInline
-value class ActionRef(val value: String)
-
-sealed interface VexComponent {
-    val ref: ComponentRef
-    val role: Role
-    val children: List<VexComponent>
-}
-
-sealed interface Role {
-    data object Content : Role
-    data object Control : Role
-    data object Input : Role
-    data object Container : Role
-    data object Collection : Role
-    data object Presentation : Role
-    data object Navigation : Role
-}
-
-sealed interface Layout : VexComponent {
-    data class Flow(...)
-    data class Row(...)
-    data class Stack(...)
-    data class Surface(...)
-    data class Frame(...)
-    data class Region(...)
-}
-
-sealed interface Control : VexComponent {
-    val actionRef: ActionRef?
-
-    data class Action(...)
-    data class Selection(...)
-    data class Toggle(...)
-    data class Field(...)
-}
-
-sealed interface Presentation : VexComponent {
-    data class Modal(...)
-    data class AnchoredOverlay(...)
-    data class SwappableRegion(...)
-    data class ContextDock(...)
-}
-
-sealed interface Collection : VexComponent {
-    data class StableRepeater<ItemRef>(...)
-}
-
-sealed interface Navigation : VexComponent {
-    data class ScreenRoute(...)
-    data class LocalTrail(...)
-}
+VexWebAuthoring
 ```
 
-These names are illustrative architecture, not accepted source API yet.
+These types already encode many of the relationships this Component Library was about to rediscover.
 
-The important part is the relationship split:
+Therefore:
 
 ```text
-WHAT THE COMPONENT MEANS
-  Kotlin Blueprint contract
+EXISTING ACCEPTED TYPE ANSWERS THE QUESTION
+-> REUSE / GENERALIZE THE RIGHTFUL OWNER
 
-HOW ANDROID DRAWS IT
-  Compose adapter
+REAL COMPONENT PRESSURE EXCEEDS IT
+-> ADD THE SMALLEST NEW TYPED CONTRACT
 
-HOW IOS DRAWS IT
-  SwiftUI adapter
+SIMILAR NAME
+-> NOT ENOUGH REASON FOR A NEW ABSTRACTION
 ```
+
+A component-level Kotlin Blueprint may eventually earn new contracts for things such as:
+
+- stable repeated-item collections;
+- local navigation trails;
+- anchored transient overlays;
+- swappable regions;
+- Context Dock composition;
+- canonical VexLife component slots such as Action Vessel.
+
+But each should either compose the accepted identity/binding/spatial vocabulary or demonstrate why a new root is required.
+
+The key target-adapter property is exhaustiveness. When a sealed portable relationship gains a new admitted subtype, every adapter should be forced to decide how that relationship is realized or explicitly held.
 
 ## Semantic action binding is not native event wiring
 
@@ -310,6 +354,54 @@ TARGET SOURCE
 ```
 
 The Kotlin source is a strong authoring representation; the normalized IR prevents every downstream adapter from depending on Kotlin compiler internals or Android source structure.
+
+## VexWebArtifacts is the first target-adapter reference implementation
+
+The current browser generator already has the properties an iOS adapter needs to preserve:
+
+```text
+validated typed relationship source
+-> deterministic target-native artifact generation
+-> stable source identities retained in output
+-> separate semantic manifest
+-> generated geometry derived from relationships, not authored pixels
+-> byte-determinism proof
+```
+
+Current browser output:
+
+```text
+index.html
+vexweb.css
+vexweb.js
+vexweb-manifest.json
+```
+
+The manifest preserves relationships such as:
+
+```text
+ref
+sourceParentRef
+containerRef
+Placement
+Depth
+Presentation
+Interaction
+Binding / Fallback
+Frame / Seam / Region geometry projection
+```
+
+That semantic manifest is conceptually the bridge into Screen Lens.
+
+For iOS, the analogous bundle may eventually be:
+
+```text
+generated Swift source
+target resource/catalog source where needed
+vex-ios-manifest.json
+```
+
+The exact file split should be earned by the Swift/Xcode target, not copied mechanically from the browser bundle.
 
 ## Target adapters
 
