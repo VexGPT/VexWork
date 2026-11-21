@@ -56,6 +56,7 @@
     "localization.addLanguageLabel": "Add language",
     "localization.addLanguagePlaceholder": "Locale code, e.g. it or nl-NL",
     "localization.addLanguageAction": "Add",
-    "localization.addLanguageHelp": "Adds a browser-local translation target. Product support is not claimed until that locale appears in Product source."
+    "localization.addLanguageHelp": "Adds a browser-local translation target. Product support is not claimed until that locale appears in Product source.",
+    "localization.openWorkspace": "Open in Localization Workspace"
   }
 }
