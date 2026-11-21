@@ -547,3 +547,23 @@ test('the first Localization Inspector slice owns stable UI refs and keyed sourc
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A2-SLICE1]
+
+
+test('Localization preview locale is browser projection state and preserves explicit missing truth', () => {
+  assert.match(page, /previewLocale: null/);
+  assert.match(page, /Localization\.normalizeLocalizationLocaleRef/);
+  assert.match(page, /Localization\.observedLocalizationLocales\(inventory\)/);
+  assert.match(page, /Localization\.localizationValueForLocale/);
+  assert.match(page, /localization\.localeMissingDetail/);
+  assert.match(page, /next\.set\('locale', state\.localization\.previewLocale\)/);
+  assert.match(page, /next\.set\('string', state\.localization\.selectedStringRef\)/);
+  assert.match(page, /next\.set\('localization', '1'\)/);
+  assert.match(page, /snapshot\.localization\.previewLocale/);
+  assert.match(page, /snapshot\.localization\.inspectorOpen/);
+  assert.match(page, /element\.localization\.preview-locale/);
+  assert.match(page, /element\.localization\.locale-status/);
+  assert.doesNotMatch(page, /setApplicationLocales|LocaleManager|ProductRuntime.*locale/i, 'preview locale never mutates Product language');
+  assert.match(localizationCopy.strings['localization.previewLocaleHelp'], /does not change Product language/);
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A2-LOCALE-OBSERVATION]

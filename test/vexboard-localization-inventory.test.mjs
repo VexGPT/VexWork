@@ -7,7 +7,10 @@ import {
   localizationOccurrencesCsv,
   localizationStringsCsv,
   localizationOccurrenceTarget,
+  localizationValueForLocale,
   normalizeLocalizationInventory,
+  normalizeLocalizationLocaleRef,
+  observedLocalizationLocales,
   occurrencesForString,
   occurrencesForSurface,
   searchLocalizationStrings,
@@ -180,6 +183,80 @@ test('occurrence target exposes the existing Screen Lens navigation coordinates 
     { screenRef: 'screen.settings', elementRef: 'element.settings.button' },
   );
   assert.throws(() => localizationOccurrenceTarget(value, 'occurrence.missing'), /unknown occurrence/);
+});
+
+test('locale refs normalize for inspection without inventing Product support', () => {
+  assert.equal(normalizeLocalizationLocaleRef('EN'), 'en');
+  assert.equal(normalizeLocalizationLocaleRef('zh-hant'), 'zh-Hant');
+  assert.equal(normalizeLocalizationLocaleRef('es-419'), 'es-419');
+  assert.throws(() => normalizeLocalizationLocaleRef('../ja'), /localeRef/);
+});
+
+test('locale value observation distinguishes source, observed variant, and missing without fallback inference', () => {
+  const value = createLocalizationInventory({
+    inventoryRef: 'localization.locale-fixture',
+    subjectRef: 'subject.fixture',
+    buildRef: 'main',
+    sourceLocale: 'en',
+    sourceSnapshot: { repositoryRef: 'repo.fixture', commit: 'b'.repeat(40) },
+    producer: { ref: 'producer.fixture.localization', version: 'fixture/1' },
+    sourceStrings: [
+      {
+        sourceStringRef: 'fixture:string.settings',
+        sourceKey: 'settings',
+        sourceValue: 'Settings',
+        sourcePath: 'strings.json',
+        localeVariants: { ja: '設定', 'zh-hant': '設定' },
+      },
+      {
+        sourceStringRef: 'fixture:string.more',
+        sourceKey: 'more',
+        sourceValue: 'More',
+        sourcePath: 'strings.json',
+        localeVariants: { ja: 'その他' },
+      },
+    ],
+    occurrences: [],
+  });
+
+  assert.deepEqual(observedLocalizationLocales(value), ['en', 'ja', 'zh-Hant']);
+  assert.deepEqual(localizationValueForLocale(value, 'fixture:string.settings', 'EN'), {
+    sourceStringRef: 'fixture:string.settings',
+    localeRef: 'en',
+    state: 'SOURCE',
+    value: 'Settings',
+    sourceValue: 'Settings',
+  });
+  assert.deepEqual(localizationValueForLocale(value, 'fixture:string.settings', 'zh-hant'), {
+    sourceStringRef: 'fixture:string.settings',
+    localeRef: 'zh-Hant',
+    state: 'VARIANT',
+    value: '設定',
+    sourceValue: 'Settings',
+  });
+  assert.deepEqual(localizationValueForLocale(value, 'fixture:string.more', 'zh-Hant'), {
+    sourceStringRef: 'fixture:string.more',
+    localeRef: 'zh-Hant',
+    state: 'MISSING',
+    value: null,
+    sourceValue: 'More',
+  });
+  assert.equal(value.locales.find((row) => row.localeRef === 'ja').completeness, 'OBSERVED_COMPLETE');
+  assert.equal(value.locales.find((row) => row.localeRef === 'zh-Hant').completeness, 'OBSERVED_PARTIAL');
+  assert.throws(() => createLocalizationInventory({
+    inventoryRef: 'localization.bad-locale',
+    subjectRef: 'subject.fixture',
+    sourceLocale: 'en',
+    sourceSnapshot: { repositoryRef: 'repo.fixture', commit: 'c'.repeat(40) },
+    producer: { ref: 'producer.fixture.localization', version: 'fixture/1' },
+    sourceStrings: [{
+      sourceStringRef: 'fixture:string.bad',
+      sourceKey: 'bad',
+      sourceValue: 'Bad',
+      localeVariants: { en: 'Duplicate source' },
+    }],
+    occurrences: [],
+  }), /must not duplicate sourceLocale/);
 });
 
 test('occurrence referencing an absent source string fails rather than synthesizing source truth', () => {

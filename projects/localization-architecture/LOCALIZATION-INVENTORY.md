@@ -265,3 +265,48 @@ sourceStringRef
 Locale projection and recommendation preview layer on top only after the source/occurrence relationship is trusted.
 
 <!-- [VXG RealForever][LOCALIZATION-ARCHITECTURE][INVENTORY-V1] -->
+
+
+## A2 locale observation boundary
+
+The first contextual Inspector slice is followed by a browser-local preview-locale observation axis.
+
+```text
+PREVIEW_LOCALE
+!= PRODUCT_SUPPORTED_LOCALE
+!= PRODUCT_RUNTIME_SELECTED_LOCALE
+```
+
+The preview locale is an inspection coordinate. A human may ask about a locale even when Product source has not declared a translated variant.
+
+For one source string:
+
+```text
+selected locale == sourceLocale
+  -> SOURCE
+  -> show the observed source value
+
+selected locale has an observed Product-owned variant
+  -> VARIANT
+  -> show that exact observed value
+
+selected locale has no observed Product-owned variant
+  -> MISSING
+  -> do not synthesize translation
+  -> do not infer Product runtime fallback
+  -> keep Product projection unchanged
+```
+
+Locale refs use a small canonical BCP-47 shape so script distinctions such as `zh-Hant` remain representable.
+
+Current VexLife Android Main at `d857a92371555472e0303b18eadf353da2a868d6` contains only:
+
+```text
+app/src/main/res/values/strings.xml
+```
+
+No translated `values-*` string-resource directories are present in that exact Product revision. The Inspector therefore truthfully observes only source `en` today; selecting another locale is a missing-value question, not evidence that Android supports that locale.
+
+The browser history/shareable projection may preserve selected string + preview locale + whether the Inspector is open. That state remains VexBoard projection state only.
+
+<!-- [VXG RealForever][LOCALIZATION-ARCHITECTURE][A2][LOCALE-OBSERVATION] -->
