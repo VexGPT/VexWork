@@ -116,6 +116,99 @@ The first design question is therefore:
 
 > Which existing VexLife-Prod relationship types can be reused directly, which component-level contracts must be added, and which relationships are genuinely target-specific?
 
+## A3 owner topology — meaning stays local, machinery may become reusable
+
+The cross-Product census and the existing SDK architecture converge on an important correction:
+
+```text
+SAME FIRST-PRINCIPLE RELATIONSHIP
+!= SAME DOMAIN
+!= SAME PRODUCT OWNER
+!= AUTOMATIC SHARED TYPE
+```
+
+Therefore the Component Library does **not** need one canonical global component object that owns
+Android, VexLife-Prod and VexStream meaning.
+
+The intended topology is:
+
+```text
+Product repository
+  owns:
+    Product purpose / domain meaning
+    local state/action relationships
+    local source identity
+    source-specific constraints
+
+VexWork Component Library
+  owns:
+    inventory / where-used
+    candidate convergence
+    target-pressure evidence
+    trajectory and review state
+
+Reusable SDK machinery
+  may own:
+    source observation
+    normalized mapping/construction machinery
+    target generators/adapters
+    parity/proof machinery
+
+  only after:
+    multiple real consumers require the same executable invariant
+
+Target repository
+  owns:
+    target-native representation
+    target-specific improvements
+    native build/provider proof
+```
+
+Permanent:
+
+```text
+REUSABLE MEANING
+!= SHARED EXECUTABLE TYPE EQUATION
+
+SDK MAPPING OWNER
+!= PRODUCT SEMANTIC OWNER
+
+VEXWORK CANDIDATE LAW
+!= CANONICAL PRODUCT MEANING
+
+TARGET GENERATOR
+!= TARGET REPOSITORY OWNER
+```
+
+### First A3 formation core
+
+The current census supports a deliberately small formation set.
+
+**Reuse/generalize existing typed relationships rather than re-model them:**
+
+1. stable identity + parent/containment;
+2. semantic control/binding identity;
+3. Frame / Seam / Region / Allocation spatial relationships.
+
+**Form new relationship contracts only where cross-Product pressure has exposed a real missing
+executable invariant:**
+
+4. Stable Repeated Items;
+5. Local Selection.
+
+Stable Repeated Items already has Android + VexLife-Prod + SwiftUI target pressure.
+
+Local Selection already has Android + VexStream source convergence, while the current VexLife-Prod
+SwiftUI leg is explicitly held until Product source owns its default/current selection relationship.
+
+The following remain census/pressure candidates, not A3 formation commitments:
+
+- Modal Presentation;
+- Local Navigation Trail;
+- Anchored Overlay;
+- Context Dock;
+- Action Vessel / Adaptive Action Group convergence.
+
 ## The compiler shape
 
 ```text
