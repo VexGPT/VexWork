@@ -299,7 +299,11 @@ export function projectLocalizationWorkspace({
   const stringRows = strings(inventories);
   const elementRows = elements(inventories);
   const changeRows = changeSetRows(changeSetCollection, inventories);
-  const coverageRows = coverage(inventories, projectedWorkLocales, changeRows);
+  const effectiveWorkLocaleRefs = Object.freeze(uniqueSorted([
+    ...projectedWorkLocales,
+    ...changeRows.map((row) => row.localeRef),
+  ]));
+  const coverageRows = coverage(inventories, effectiveWorkLocaleRefs, changeRows);
   const localeRows = locales(coverageRows);
   const valueRows = values(stringRows, analysis);
   const groupRows = groups(analysis, stringRows);
@@ -308,6 +312,7 @@ export function projectLocalizationWorkspace({
     subjectRefs: Object.freeze(inventories.map((inventory) => inventory.subjectRef)),
     inventoryRefs: Object.freeze(inventories.map((inventory) => inventory.inventoryRef)),
     revisions: Object.freeze(Object.fromEntries(inventories.map((inventory) => [inventory.subjectRef, inventory.sourceSnapshot.commit]))),
+    workLocaleRefs: effectiveWorkLocaleRefs,
     elements: elementRows,
     strings: stringRows,
     values: valueRows,
@@ -326,7 +331,7 @@ export function projectLocalizationWorkspace({
       localeCount: localeRows.length,
       changeSetCount: uniqueSorted(changeRows.map((row) => row.changeSetRef)).length,
       activeChangeCount: changeRows.filter((row) => !['SATISFIED'].includes(row.state)).length,
-      workLocaleCount: projectedWorkLocales.length,
+      workLocaleCount: effectiveWorkLocaleRefs.length,
     }),
   });
 }
@@ -360,7 +365,9 @@ export function filterLocalizationWorkspaceRows(projection, pivot, {
   const locale = localeRef === null ? null : normalizeLocalizationLocaleRef(localeRef);
   return Object.freeze(rows.filter((row) => {
     if (subject && !rowSubjectRefs(row).includes(subject)) return false;
-    if (locale && !rowLocaleRefs(row).includes(locale)) return false;
+    const localeIsWorkTarget = locale && projection.workLocaleRefs.includes(locale);
+    const workTargetPivots = new Set(['ELEMENTS', 'STRINGS', 'VALUES', 'GROUPS']);
+    if (locale && !(localeIsWorkTarget && workTargetPivots.has(pivot)) && !rowLocaleRefs(row).includes(locale)) return false;
     if (needle && !JSON.stringify(row).toLowerCase().includes(needle)) return false;
     return true;
   }).slice(0, limit));
