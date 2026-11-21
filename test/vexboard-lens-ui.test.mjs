@@ -618,3 +618,31 @@ test('Localization Change Set authoring stays browser-local and projects the pro
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A3-AUTHORING-UI]
 
+test('Localization remains a shared-frame capability when a Product has no normalized sidecar yet', () => {
+  for (const key of [
+    'localization.notConnectedTitle',
+    'localization.notConnectedDetail',
+    'localization.loadErrorTitle',
+    'localization.loadErrorDetail',
+  ]) assert.equal(typeof localizationCopy.strings[key], 'string', key);
+
+  assert.match(page, /response\.status === 404\) \{ reset\('NOT_INDEXED'\); return; \}/);
+  assert.match(page, /subject \? h\('button', \{[\s\S]{0,500}LOCALIZATION_UI_REFS\.open/);
+  assert.match(page, /if \(state\.overlay === 'LOCALIZATION'\) main\.append\(renderLocalizationInspector\(\)\)/);
+  assert.match(page, /state\.localization\.status !== 'READY'/);
+  assert.match(page, /localization\.notConnectedTitle/);
+  assert.match(page, /localization\.notConnectedDetail/);
+  assert.match(page, /params\.get\('localization'\) === '1' && state\.request\?\.subject/);
+  assert.doesNotMatch(
+    page,
+    /state\.localization\.status === 'READY' \? h\('button',[\s\S]{0,500}LOCALIZATION_UI_REFS\.open/,
+    'READY controls data tools, never whether the shared Localization capability exists',
+  );
+  assert.match(
+    localizationCopy.strings['localization.notConnectedDetail'],
+    /shared VexBoard frame for every project/,
+  );
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][SHARED-FRAME]
+
