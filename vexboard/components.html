@@ -21,7 +21,7 @@ a{color:var(--focus)}button,input,select{font:inherit;color:inherit}:focus-visib
 .summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:18px}.metric{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}.metric b{display:block;font:600 20px/1.1 var(--mono)}.metric span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
 .source{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.source-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);font-size:12px}.source-chip .dot{width:7px;height:7px;border-radius:50%;background:#15803d}.source-chip code{font-size:11px;color:var(--muted)}
 .view-tabs{display:flex;gap:6px;margin-top:22px;padding:4px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);width:max-content}.view-tab{border:0;border-radius:7px;background:transparent;padding:7px 11px;color:var(--muted);font-weight:600;font-size:12.5px;cursor:pointer}.view-tab.on{background:var(--ink);color:#fff}.view-tab:hover:not(.on){background:#f5f6f8;color:var(--ink)}
-.workspace{margin-top:18px}.controls{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:8px}.controls input,.controls select{height:38px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet);padding:0 11px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.workspace{margin-top:18px}.controls{display:grid;grid-template-columns:minmax(220px,1fr) auto auto auto;gap:8px}.controls input,.controls select{height:38px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet);padding:0 11px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
 .match{margin:9px 0 0;color:var(--faint);font-size:12.5px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.family{width:100%;text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:15px;cursor:pointer}.family:hover{border-color:var(--rule-strong)}.family.on{border-color:var(--focus);box-shadow:0 0 0 2px color-mix(in srgb,var(--focus) 12%,transparent)}.family .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.family h2{margin:0;font-size:17px}.pill{display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;background:#fafbfc;font:10.5px var(--mono);color:var(--muted);white-space:nowrap}.family .counts{display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:11px;font-size:12px;color:var(--muted)}.family .counts b{color:var(--ink)}.family .sub{margin-top:10px;font-size:12px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .detail{margin-top:18px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px;overflow:hidden}.detail-head{padding:20px 22px;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.detail-head h2{margin:0;font-size:21px}.detail-head p{margin:5px 0 0;color:var(--muted);max-width:76ch}.facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.fact{padding:4px 8px;background:#f7f8fb;border-radius:7px;font-size:12px;color:var(--muted)}
 .table-wrap{overflow:auto}.table-wrap table{width:100%;border-collapse:collapse;min-width:980px}.table-wrap th{text-align:left;padding:9px 12px;background:#fafbfc;border-bottom:1px solid var(--rule);color:var(--faint);font-size:11.5px;font-weight:600;position:sticky;top:0}.table-wrap td{padding:10px 12px;border-bottom:1px solid #edf0f4;vertical-align:top;font-size:12.5px}.table-wrap tr:last-child td{border-bottom:0}.sub{display:block;margin-top:2px;color:var(--faint);font-size:11.5px}.value{max-width:34ch;overflow-wrap:anywhere}.open{display:inline-flex;align-items:center;justify-content:center;height:28px;padding:0 10px;border-radius:7px;background:var(--ink);color:#fff;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap}.open:hover{background:#0f1730}.empty{padding:28px;color:var(--muted)}
@@ -41,17 +41,17 @@ import * as Architecture from '../src/shared/vexboard-component-architecture.mjs
 
 const app=document.getElementById('app');
 const CATALOG_URL='../projects/vexboard/lens/catalog.json';
-const INVENTORY_URL='../projects/component-library-architecture/inventory/vexlife-android.main.components.json';
+const INVENTORY_DIR='../projects/component-library-architecture/inventory/';
 const ARCHITECTURE_URL='../projects/component-library-architecture/component-architecture-catalog.json';
 const params=new URLSearchParams(location.search);
-const state={catalog:null,subject:null,inventory:null,architecture:null,view:params.get('view')==='architecture'?'ARCHITECTURE':'SOURCE',query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null,architectureClass:params.get('class')??'',selectedArchitecture:params.get('architecture')??null};
+const state={catalog:null,subject:null,inventory:null,inventories:new Map(),sourceSubject:params.get('source')??'vexlife-android',architecture:null,view:params.get('view')==='architecture'?'ARCHITECTURE':'SOURCE',query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null,architectureClass:params.get('class')??'',selectedArchitecture:params.get('architecture')??null};
 
 function h(tag,attrs={},...children){const node=document.createElement(tag);for(const [key,value] of Object.entries(attrs||{})){if(value===null||value===undefined||value===false)continue;if(key==='class')node.className=value;else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);else if(key==='style')node.style.cssText=value;else node.setAttribute(key,value===true?'':String(value));}for(const child of children.flat(Infinity)){if(child===null||child===undefined||child===false)continue;node.append(child instanceof Node?child:document.createTextNode(String(child)));}return node;}
 async function fetchJson(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(url+' HTTP '+response.status);return response.json();}
 const short=(sha)=>String(sha??'').slice(0,7);
 const count=(value)=>Number(value??0).toLocaleString();
 const human=(value)=>String(value??'').toLowerCase().split(/[_-]/u).map((word)=>word?word[0].toUpperCase()+word.slice(1):word).join(' ');
-function syncUrl(){const next=new URL(location.href);next.search='';if(state.view==='ARCHITECTURE')next.searchParams.set('view','architecture');if(state.query)next.searchParams.set('q',state.query);if(state.view==='SOURCE'){if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);}else{if(state.architectureClass)next.searchParams.set('class',state.architectureClass);if(state.selectedArchitecture)next.searchParams.set('architecture',state.selectedArchitecture);}history.replaceState(null,'',next);}
+function syncUrl(){const next=new URL(location.href);next.search='';if(state.view==='ARCHITECTURE')next.searchParams.set('view','architecture');if(state.query)next.searchParams.set('q',state.query);if(state.view==='SOURCE'){if(state.sourceSubject!=='vexlife-android')next.searchParams.set('source',state.sourceSubject);if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);}else{if(state.architectureClass)next.searchParams.set('class',state.architectureClass);if(state.selectedArchitecture)next.searchParams.set('architecture',state.selectedArchitecture);}history.replaceState(null,'',next);}
 function occurrenceRows(component){return Components.occurrencesForComponent(state.inventory,component.componentRef).filter((row)=>!state.surface||row.surfaceRef===state.surface);}
 function visibleFamilies(){
  let rows=state.query?Components.searchComponentInventory(state.inventory,state.query,{limit:500}):state.inventory.components;
@@ -93,7 +93,7 @@ function detail(component){
  const rows=Components.occurrencesForComponent(state.inventory,component.componentRef);
  return h('section',{class:'detail'},
   h('div',{class:'detail-head'},
-   h('div',{},h('h2',{},human(component.kind)),h('p',{},'Observed Android source family. This groups current Element-kind occurrences for discovery and where-used; it is not yet an accepted cross-platform portable component.'),
+   h('div',{},h('h2',{},human(component.kind)),h('p',{},'Observed Product source family. This groups current Screen Lens element-kind occurrences for discovery and where-used; it is not yet an accepted cross-platform portable component.'),
     h('div',{class:'facts'},h('span',{class:'fact'},component.meaningState.replaceAll('_',' ').toLowerCase()),h('span',{class:'fact'},'portability: '+component.portability.toLowerCase()),h('span',{class:'fact'},count(rows.length)+' occurrences'),h('span',{class:'fact'},count(component.styles.length)+' styles'),h('span',{class:'fact'},count(component.localizationSourceStringRefs.length)+' source-string links'),h('span',{class:'fact'},'accessibility: '+component.accessibilityState.toLowerCase().replaceAll('_',' ')))),
    h('code',{class:'mono'},component.componentRef)),
   tableFor(component));
@@ -179,20 +179,36 @@ function renderSource({focusSearch=false}={}){
  if(selected&&state.selected!==selected.componentRef)state.selected=selected.componentRef;
  const kinds=[...inventory.components.map((row)=>row.kind)].sort();
  const surfaces=[...new Map(inventory.occurrences.map((row)=>[row.surfaceRef,row.surfaceLabel])).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
+ const inventorySubjects=[...state.inventories.keys()]
+  .map((slug)=>Catalog.subjectFor(state.catalog,slug))
+  .filter(Boolean)
+  .sort((a,b)=>a.label.localeCompare(b.label));
  const search=h('input',{type:'search',value:state.query,placeholder:'Find component kind, Screen, element, style, source, or realizer','aria-label':'Search source families'});
  search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
+ const product=h('select',{'aria-label':'Product inventory'},inventorySubjects.map((subject)=>h('option',{value:subject.slug,selected:state.sourceSubject===subject.slug},subject.label)));
+ product.onchange=()=>{
+  state.sourceSubject=product.value;
+  state.subject=Catalog.subjectFor(state.catalog,state.sourceSubject);
+  state.inventory=state.inventories.get(state.sourceSubject);
+  state.query='';
+  state.kind='';
+  state.surface='';
+  state.selected=null;
+  syncUrl();
+  render();
+ };
  const kind=h('select',{'aria-label':'Component kind'},h('option',{value:'',selected:!state.kind},'All component families'),kinds.map((value)=>h('option',{value,selected:state.kind===value},human(value))));
  kind.onchange=()=>{state.kind=kind.value;syncUrl();render();};
  const surface=h('select',{'aria-label':'Where-used surface'},h('option',{value:'',selected:!state.surface},'All Screens / surfaces'),surfaces.map(([ref,label])=>h('option',{value:ref,selected:state.surface===ref},label)));
  surface.onchange=()=>{state.surface=surface.value;syncUrl();render();};
  app.replaceChildren(
   h('section',{},
-   h('div',{class:'intro'},h('div',{},h('h1',{},'Component Gallery'),h('p',{},'What Vex already knows how to build, starting with exact current Android component/Element relationships. Source families remain evidence; they do not become portable architecture merely because Android implements them cleanly.')),h('div',{class:'truth'},'current Android source · ',h('strong',{},short(inventory.sourceSnapshot.commit)))),
-   h('div',{class:'boundary'},h('b',{},'Source boundary: '),'Observed source family ≠ portable component. Android production code stays unchanged; this view is a read/projection surface over existing Screen Lens + Localization truth.'),
+   h('div',{class:'intro'},h('div',{},h('h1',{},'Component Gallery'),h('p',{},'What Vex already knows how to build across current Product Screen Lens inventories. Source families remain Product evidence; same-looking controls do not become portable architecture merely because several Products use them.')),h('div',{class:'truth'},state.subject.label+' source · ',h('strong',{},short(inventory.sourceSnapshot.commit)))),
+   h('div',{class:'boundary'},h('b',{},'Source boundary: '),'Observed source family ≠ portable component. Product source stays unchanged; this view projects existing Screen Lens truth and joins Localization only where a current sidecar exists.'),
    h('div',{class:'summary'},metric(inventory.summary.componentFamilyCount,'source families'),metric(inventory.summary.occurrenceCount,'UI occurrences'),metric(inventory.summary.screenCount,'Screens'),metric(inventory.summary.localizedOccurrenceCount,'localized occurrences'),metric(inventory.summary.realizedOccurrenceCount,'realization-linked'),metric(inventory.summary.accessibilityProjectedOccurrenceCount,'accessibility projected')),
-   h('div',{class:'source'},h('span',{class:'source-chip'},h('span',{class:'dot'}),state.subject.label,h('code',{},short(inventory.sourceSnapshot.commit))),h('span',{class:'source-chip'},'Screen Lens · ',h('code',{},inventory.sourceSnapshot.lensRef)),h('span',{class:'source-chip'},'Localization · ',h('code',{},inventory.sourceSnapshot.localizationInventoryRef))),
+   h('div',{class:'source'},h('span',{class:'source-chip'},h('span',{class:'dot'}),state.subject.label,h('code',{},short(inventory.sourceSnapshot.commit))),h('span',{class:'source-chip'},'Screen Lens · ',h('code',{},inventory.sourceSnapshot.lensRef)),h('span',{class:'source-chip'},'Localization · ',inventory.sourceSnapshot.localizationInventoryRef?h('code',{},inventory.sourceSnapshot.localizationInventoryRef):h('span',{class:'sub'},'not connected'))),
    viewTabs()),
-  h('section',{class:'workspace'},h('div',{class:'controls'},search,kind,surface),h('p',{class:'match'},count(families.length)+' of '+count(inventory.components.length)+' source families in this view.'),h('div',{class:'grid'},families.map(familyCard)),selected?detail(selected):h('div',{class:'empty'},'No component families match this view.')),
+  h('section',{class:'workspace'},h('div',{class:'controls'},search,product,kind,surface),h('p',{class:'match'},count(families.length)+' of '+count(inventory.components.length)+' source families in this view.'),h('div',{class:'grid'},families.map(familyCard)),selected?detail(selected):h('div',{class:'empty'},'No component families match this view.')),
   h('footer',{},'Source families answer “what exists and where is it used?” The Architecture candidates view asks the separate question: “which recurring relationships deserve a typed portable Kotlin Blueprint contract?”'));
  if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
 }
@@ -229,13 +245,27 @@ function render(options={}){return state.view==='ARCHITECTURE'?renderArchitectur
 function metric(value,label){return h('div',{class:'metric'},h('b',{},count(value)),h('span',{},label));}
 async function boot(){
  state.catalog=Catalog.normalizeLensCatalog(await fetchJson(CATALOG_URL));
- state.subject=Catalog.subjectFor(state.catalog,'vexlife-android');
- if(!state.subject)throw new Error('VexLife Android is not in the current Lens catalog.');
- state.inventory=Components.normalizeComponentInventory(await fetchJson(INVENTORY_URL));
  state.architecture=Architecture.normalizeComponentArchitectureCatalog(await fetchJson(ARCHITECTURE_URL));
- if(state.inventory.subjectRef!==state.subject.subjectRef)throw new Error('Component Inventory subject does not match Lens catalog.');
- const main=Catalog.buildFor(state.subject,'main');
- if(!main||main.commit!==state.inventory.sourceSnapshot.commit)throw new Error('Component Inventory is not current with Android Main Lens.');
+ const loaded=await Promise.all(state.catalog.subjects.map(async(subject)=>{
+  const main=Catalog.buildFor(subject,'main');
+  if(!main)return null;
+  try{
+   const inventory=Components.normalizeComponentInventory(await fetchJson(INVENTORY_DIR+subject.slug+'.main.components.json'));
+   if(inventory.subjectRef!==subject.subjectRef)throw new Error(subject.slug+' Component Inventory subject does not match Lens catalog.');
+   if(inventory.sourceSnapshot.commit!==main.commit)throw new Error(subject.slug+' Component Inventory is not current with catalog Main.');
+   return [subject.slug,inventory];
+  }catch(error){
+   console.warn('Component inventory unavailable for '+subject.slug,error);
+   return null;
+  }
+ }));
+ state.inventories=new Map(loaded.filter(Boolean));
+ if(!state.inventories.size)throw new Error('No current Component Inventories are available.');
+ if(!state.inventories.has(state.sourceSubject)){
+  state.sourceSubject=state.inventories.has('vexlife-android')?'vexlife-android':state.inventories.keys().next().value;
+ }
+ state.subject=Catalog.subjectFor(state.catalog,state.sourceSubject);
+ state.inventory=state.inventories.get(state.sourceSubject);
  render();
 }
 boot().catch((error)=>{app.innerHTML='<div class="intro"><div><h1>Component Gallery could not load.</h1><p></p></div></div>';app.querySelector('p').textContent=error?.message||String(error);});
