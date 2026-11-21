@@ -5878,9 +5878,10 @@
         "vexboard/components.html",
         "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
         "projects/component-library-architecture/component-architecture-catalog.json",
-        "projects/component-library-architecture/KOTLIN-BLUEPRINT.md"
+        "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+        "github.pr.vexlife-prod.506"
       ],
-      "updatedAt": "2026-11-21T17:50:58.893Z"
+      "updatedAt": "2026-11-21T18:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -5958,9 +5959,10 @@
         "vexboard/components.html",
         "projects/component-library-architecture/TECH-DEBT.md",
         "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
-        "projects/component-library-architecture/component-architecture-catalog.json"
+        "projects/component-library-architecture/component-architecture-catalog.json",
+        "github.pr.vexlife-prod.506"
       ],
-      "updatedAt": "2026-11-21T17:50:58.889Z"
+      "updatedAt": "2026-11-21T18:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -5993,9 +5995,10 @@
         "project.vexlife.blueprint-source-of-truth",
         "work.vex.component-library-architecture.cross-product-census",
         "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
-        "projects/component-library-architecture/component-architecture-catalog.json"
+        "projects/component-library-architecture/component-architecture-catalog.json",
+        "github.pr.vexlife-prod.506"
       ],
-      "updatedAt": "2026-11-21T17:50:58.893Z"
+      "updatedAt": "2026-11-21T18:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6056,9 +6059,10 @@
         "project.vexlife.blueprint-source-of-truth",
         "work.vex.component-library-architecture.portable-contract",
         "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
-        "projects/component-library-architecture/component-architecture-catalog.json"
+        "projects/component-library-architecture/component-architecture-catalog.json",
+        "github.pr.vexlife-prod.506"
       ],
-      "updatedAt": "2026-11-21T17:50:58.893Z"
+      "updatedAt": "2026-11-21T18:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
