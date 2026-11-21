@@ -42,23 +42,30 @@ function normalizeInventories(input) {
 }
 
 function elements(inventories) {
-  return Object.freeze(inventories.flatMap((inventory) => inventory.occurrences.map((occurrence) => Object.freeze({
-    inventoryRef: inventory.inventoryRef,
-    subjectRef: inventory.subjectRef,
-    revision: inventory.sourceSnapshot.commit,
-    occurrenceRef: occurrence.occurrenceRef,
-    surfaceRef: occurrence.surfaceRef,
-    screenRef: occurrence.screenRef,
-    elementRef: occurrence.elementRef,
-    parentElementRef: occurrence.parentElementRef,
-    elementKind: occurrence.elementKind,
-    bindingRole: occurrence.bindingRole,
-    textRole: occurrence.textRole,
-    sourceStringRef: occurrence.sourceStringRef,
-    sourceKey: occurrence.sourceKey,
-    sourceValue: occurrence.sourceValue,
-    sourcePath: occurrence.sourcePath,
-  }))).sort(
+  return Object.freeze(inventories.flatMap((inventory) => inventory.occurrences.map((occurrence) => {
+    const source = inventory.strings.find((row) => row.sourceStringRef === occurrence.sourceStringRef);
+    return Object.freeze({
+      inventoryRef: inventory.inventoryRef,
+      subjectRef: inventory.subjectRef,
+      revision: inventory.sourceSnapshot.commit,
+      occurrenceRef: occurrence.occurrenceRef,
+      surfaceRef: occurrence.surfaceRef,
+      screenRef: occurrence.screenRef,
+      elementRef: occurrence.elementRef,
+      parentElementRef: occurrence.parentElementRef,
+      elementKind: occurrence.elementKind,
+      bindingRole: occurrence.bindingRole,
+      textRole: occurrence.textRole,
+      sourceStringRef: occurrence.sourceStringRef,
+      sourceKey: occurrence.sourceKey,
+      sourceValue: occurrence.sourceValue,
+      sourcePath: occurrence.sourcePath,
+      localeRefs: Object.freeze(uniqueSorted([
+        inventory.sourceLocale,
+        ...Object.keys(source?.localeVariants ?? {}),
+      ])),
+    });
+  })).sort(
     (left, right) => left.subjectRef.localeCompare(right.subjectRef)
       || String(left.screenRef ?? '').localeCompare(String(right.screenRef ?? ''))
       || left.elementRef.localeCompare(right.elementRef)
@@ -117,6 +124,7 @@ function values(stringRows, analysis) {
         memberCount: members.length,
         subjectRefs: Object.freeze(uniqueSorted(members.map((member) => member.subjectRef))),
         sourceStringRefs: Object.freeze(members.map((member) => member.sourceStringRef).sort()),
+        localeRefs: Object.freeze(uniqueSorted(members.flatMap((member) => member.localeRefs))),
         candidateGroupRefOrNull: candidate?.candidateGroupRef ?? null,
         suggestedDispositionOrNull: candidate?.suggestedDisposition ?? null,
         evidence: Object.freeze([...(candidate?.evidence ?? [])]),
@@ -124,7 +132,11 @@ function values(stringRows, analysis) {
     }));
 }
 
-function groups(analysis) {
+function groups(analysis, stringRows) {
+  const stringsByRef = new Map(stringRows.map((row) => [row.sourceStringRef, row]));
+  const localeRefsFor = (sourceStringRefs) => uniqueSorted(sourceStringRefs.flatMap(
+    (sourceStringRef) => stringsByRef.get(sourceStringRef)?.localeRefs ?? [],
+  ));
   const candidateRows = analysis.candidateGroups.map((group) => Object.freeze({
     groupType: 'CANDIDATE',
     groupRef: group.candidateGroupRef,
@@ -132,6 +144,7 @@ function groups(analysis) {
     memberCount: group.memberCount,
     subjectRefs: Object.freeze([...group.subjectRefs]),
     sourceStringRefs: Object.freeze([...group.sourceStringRefs]),
+    localeRefs: Object.freeze(localeRefsFor(group.sourceStringRefs)),
     disposition: group.suggestedDisposition,
     evidence: Object.freeze([...group.evidence]),
   }));
@@ -142,6 +155,7 @@ function groups(analysis) {
     memberCount: row.occurrenceRefs.length,
     subjectRefs: Object.freeze([row.subjectRef]),
     sourceStringRefs: Object.freeze([row.sourceStringRef]),
+    localeRefs: Object.freeze(localeRefsFor([row.sourceStringRef])),
     disposition: 'ALREADY_SHARED',
     evidence: Object.freeze(['ONE_SOURCE_IDENTITY_REUSED']),
   }));
@@ -269,7 +283,7 @@ export function projectLocalizationWorkspace({ inventories: inventoryInputs, cha
   const localeRows = locales(coverageRows);
   const changeRows = changeSetRows(changeSetCollection, inventories);
   const valueRows = values(stringRows, analysis);
-  const groupRows = groups(analysis);
+  const groupRows = groups(analysis, stringRows);
   return Object.freeze({
     schemaVersion: LOCALIZATION_WORKSPACE_SCHEMA,
     subjectRefs: Object.freeze(inventories.map((inventory) => inventory.subjectRef)),
