@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.issue.vexwork.400",
+  "pullRequest": "github.pull.vexwork.399",
+  "candidateBase": "27e325f211752552602fee6b994676ff22d1be61",
+  "candidateHead": "9b48268876ebba4b1ad91f753d9c497916d9bb74",
+  "candidateTree": "97dcfea635739834a0fe58738668a80db50567bc",
+  "candidateBranch": "VXG-112026-localization-architecture-project-a001",
+  "changedPaths": [
+    "blueprint/project-registry.json",
+    "projects/localization-architecture/ARCHITECTURE.md",
+    "projects/localization-architecture/README.md",
+    "projects/localization-architecture/project.json",
+    "public/workspace.json",
+    "test/vexboard-screen-lens-identity.test.mjs",
+    "workgraphs/public.json",
+    "workgraphs/segments/localization-architecture.json"
+  ],
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexwork-pr399-source-owner-a004",
+  "carrierPrefix": ".relay/vexwork-pr399/a004",
+  "bootstrapZip": {
+    "filename": "VEXWORK-PR399-LOCALIZATION-A0-RELAY-BOOTSTRAP-A004--sha256-1de0cbe3ff0d9a59e507619834eb225dc4985c7a3eb2540ed38864b465745fa4.zip",
+    "sha256": "1de0cbe3ff0d9a59e507619834eb225dc4985c7a3eb2540ed38864b465745fa4",
+    "bytes": 7275,
+    "deliveryMode": "DIGEST_BOUND_BINARY_DIRECT_TO_HUMAN"
+  },
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "2740eec7af99f405defbaef2aae3ccbcf9525dbdcab76c9f2ccfd8e904230e59",
+      "bytes": 1799
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "d98cf3b08183e4dcdc1c4aa44646a814ceb93963a178253c548af928c2bdf62f",
+      "bytes": 14327
+    }
+  },
+  "proofPredicates": [
+    "npm run project-registry:check",
+    "npm run workgraph:check",
+    "npm run workspace:check",
+    "node --test test/project-registry-source.test.mjs test/project-discoverability.test.mjs test/project-registry.test.mjs",
+    "npm run review"
+  ],
+  "priorAttempts": {
+    "A001": "SAFE_FAILURE_REVIEW_FLOOR_DIRECT_TEST_OWNER",
+    "A002": "SAFE_FAILURE_GENERATED_WORKGRAPH_ORDERING",
+    "A003": "FORMED_NOT_EXECUTED_SUPERSEDED_BY_CANDIDATE_REPAIR"
+  }
+}
