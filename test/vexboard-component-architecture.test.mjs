@@ -106,6 +106,8 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.ok(repeaterSwift.proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'OWED'));
   assert.ok(repeaterAndroid.relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'MAPPED'));
   assert.ok(repeaterAndroid.relationships.some((row) => row.relationRef.endsWith('scroll-lock') && row.disposition === 'MAPPED'));
+  assert.ok(repeaterAndroid.proofs.some((row) => row.proofRef === 'proof.android-insert-remove-source-formed' && row.state === 'PASS'));
+  assert.ok(repeaterAndroid.proofs.some((row) => row.proofRef === 'proof.android-insert-remove-identity' && row.state === 'OWED' && row.note.includes('PR #261')));
 
   const frame = targetPressuresForCandidate(catalog, 'candidate.component.frame-region-layout');
   assert.equal(frame[0].commit, 'befe31789834a74f5a2738cb6d6028c01aa7553c');
