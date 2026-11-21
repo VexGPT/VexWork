@@ -1083,7 +1083,7 @@ function normalizeLocalizationCopy(input) {
     'localization.localePartialStatus', 'localization.localeMissingStatus',
     'localization.addLanguage', 'localization.addLanguageLabel',
     'localization.addLanguagePlaceholder', 'localization.addLanguageAction',
-    'localization.addLanguageHelp',
+    'localization.addLanguageHelp', 'localization.openWorkspace',
   ];
   for (const key of required) {
     if (typeof input.strings[key] !== 'string' || !input.strings[key].trim()) throw new TypeError(`Localization copy missing ${key}`);
@@ -4180,6 +4180,17 @@ function openLocalizationOccurrence(occurrence) {
   state.flashRef = occurrence.elementRef;
   goToResult({ target: Localization.localizationOccurrenceTarget(state.localization.inventory, occurrence.occurrenceRef) });
 }
+function localizationWorkspaceHref(row) {
+  const subject = currentSubject();
+  if (!subject || !row) return './localization.html';
+  const target = new URL('./localization.html', location.href);
+  target.searchParams.set('subject', subject.slug);
+  target.searchParams.set('pivot', 'strings');
+  target.searchParams.set('string', row.sourceStringRef);
+  const locale = state.localization.previewLocale ?? state.localization.inventory?.sourceLocale ?? null;
+  if (locale) target.searchParams.set('locale', locale);
+  return `${target.pathname}${target.search}`;
+}
 const LOCALIZATION_CHANGE_STATE_COPY = Object.freeze({
   SATISFIED: 'localization.stateSatisfied',
   OPEN: 'localization.stateOpen',
@@ -4454,6 +4465,11 @@ function renderLocalizationStringDetail(row) {
       h('span', {}, localizationText('localization.source')),
       row.sourcePath ? h('code', {}, row.sourcePath) : null,
       h('span', {}, `${row.occurrenceRefs.length} ${localizationText(row.occurrenceRefs.length === 1 ? 'localization.location' : 'localization.locationsPlural')}`)),
+    h('a', {
+      class: 'tool',
+      style: 'display:inline-flex;width:max-content;margin-top:10px;text-decoration:none',
+      href: localizationWorkspaceHref(row),
+    }, localizationText('localization.openWorkspace')),
     h('h4', { style: 'margin-top:12px' }, localizationText('localization.locations')),
     occurrences.length
       ? h('div', { class: 'localization-occurrences' }, occurrences.map((occurrence) => {
