@@ -279,3 +279,66 @@ LOCAL PRESENTATION SELECTION
 != APP NAVIGATION
 ```
 
+
+
+## TD-10 — Context Inspector modal open/dismiss is split between typed source and browser runtime
+
+Observed current VexLife-Prod:
+
+```text
+typed VexWeb source
+  ContextInspector
+    depth = Modal
+  ContextInspectorClose
+    stable Blueprint child identity
+
+browser runtime
+  ContextReceiptView click
+    -> openCurrentContext()
+    -> showInspector(...)
+    -> inspector.showModal()
+
+  ContextInspectorClose click
+    -> inspector.close()
+```
+
+The Product therefore already has truthful modal **identity/depth** and a lived browser-native modal
+realization, but the opener/dismiss relationship is not one compiler-visible presentation contract.
+
+Android independently distinguishes:
+
+```text
+DialogElement
+ModalBottomSheetElement
+open(element)
+close(element)
+```
+
+Do not infer from that that every platform must preserve Android's exact modal classes.
+
+Before a SwiftUI adapter generates `.sheet`, `.alert`, `.popover` or another modality, the rightful
+Product source should make the smaller invariant explicit:
+
+```text
+modal identity
+open relationship
+dismiss relationship
+modal content ownership
+whether exact modality is required Product meaning or target choice
+```
+
+Permanent:
+
+```text
+MODAL DEPTH
+!= COMPLETE MODAL INTERACTION CONTRACT
+
+HTML dialog.showModal()
+!= PORTABLE MODAL AUTHORITY
+
+ANDROID DIALOG / BOTTOM SHEET DISTINCTION
+!= AUTOMATIC UNIVERSAL TAXONOMY
+```
+
+No current browser or Android modal implementation is changed by this note.
+
