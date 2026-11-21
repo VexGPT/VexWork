@@ -186,6 +186,17 @@
             "apply.9"
           ],
           "why": "Presentation may change form without becoming semantic truth owner."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "4150821f2ab346c62c80c892911760759f1650ea",
+          "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
+          "symbols": [
+            "VexLifeSwiftUiQuickActionsReference",
+            "VexQuickActionBinding",
+            "VexQuickActionsReferenceView"
+          ],
+          "why": "VexLife-Prod PR #506 pressure maps current typed Quick Actions relationships to native SwiftUI source while preserving exact source refs and binding meaning in a reverse-projection manifest."
         }
       ],
       "note": "The portable contract should say what action/control relationship exists, not which widget class handles it."
@@ -665,7 +676,79 @@
           "why": "Canonical VexLife Blueprint already distinguishes target bindings without collapsing them into one implementation."
         }
       ],
-      "note": "Best canonical first practicum because portable VexLife meaning already exists before this Component Library lane."
+      "note": "Canonical predecessor Action Vessel remains a strong convergence target, but the first current-source SwiftUI pressure uses VexLife-Prod Quick Actions. Keep those identities distinct until cross-Product evidence earns convergence."
+    },
+    {
+      "candidateRef": "candidate.component.adaptive-action-group",
+      "label": "Adaptive action group",
+      "class": "PRESENTATION",
+      "state": "SOURCE_INFLUENCED",
+      "question": "How can one stable action group and its trigger become a native Menu, floating cluster, toolbar group or other platform-appropriate presentation without losing action identity or source bindings?",
+      "sourceFamilyRefs": [],
+      "portableRelationships": [
+        "group identity is distinct from trigger identity",
+        "action children retain stable identities and bindings",
+        "target-native structure may differ from source containment",
+        "target manifest explicitly records each source node's target role and binding realization"
+      ],
+      "obligations": [
+        "target adaptation preserves source refs and binding targets",
+        "native trigger mechanics remain observable rather than silently replacing the source relationship",
+        "human words remain localization-owned rather than generator-owned"
+      ],
+      "mustNotOwn": [
+        "underlying action effects",
+        "localization values",
+        "feature semantic state",
+        "claim that every platform must use the same native container"
+      ],
+      "targetPressure": [
+        "VexLife-Prod browser Quick Actions / Spiral",
+        "SwiftUI Menu + Menu label + Menu actions",
+        "Android FAB/action-cluster pressure",
+        "desktop toolbar/floating/docked action-group pressure"
+      ],
+      "sourceEvidence": [
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+          "symbols": [
+            "QuickActions",
+            "QuickActionsTrigger",
+            "VexSummon",
+            "VisionQuickAccess",
+            "Speech",
+            "Language",
+            "Theme",
+            "ReleaseAlerts",
+            "Support"
+          ],
+          "why": "Current Product source owns one stable Quick Actions collection, one separate trigger and stable child identities."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
+          "symbols": [
+            "QuickActions",
+            "QuickActionsTrigger"
+          ],
+          "why": "Current accepted manifestation source binds the same identities to LocalInteraction, PresentationAction and ExternalNavigation relationships."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "4150821f2ab346c62c80c892911760759f1650ea",
+          "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
+          "symbols": [
+            "VexLifeSwiftUiQuickActionsReference",
+            "VexQuickActionBinding",
+            "VexQuickActionsReferenceView"
+          ],
+          "why": "VexLife-Prod PR #506 pressure maps current typed Quick Actions relationships to native SwiftUI source while preserving exact source refs and binding meaning in a reverse-projection manifest."
+        }
+      ],
+      "note": "First iOS pressure shows source collection+trigger can lawfully realize as SwiftUI Menu+label. This is source-influenced evidence, not portable acceptance."
     }
   ]
 }
