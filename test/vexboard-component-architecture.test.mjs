@@ -7,6 +7,7 @@ import {
   candidatesForSourceFamily,
   normalizeComponentArchitectureCatalog,
   searchComponentArchitecture,
+  targetPressuresForCandidate,
 } from '../src/shared/vexboard-component-architecture.mjs';
 
 const catalog = normalizeComponentArchitectureCatalog(JSON.parse(fs.readFileSync(
@@ -19,6 +20,8 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
   assert.equal(catalog.candidates.some((row) => row.state === 'ACCEPTED_PORTABLE'), false);
+  assert.equal(catalog.targetPressures.length, 3);
+  assert.equal(catalog.targetPressures.every((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS'), true);
 });
 
 test('architecture candidates preserve the richer relationship layer above source widget kinds', () => {
@@ -39,12 +42,31 @@ test('source families can point upward to architecture candidates without becomi
   assert.equal(button.every((row) => row.candidateRef !== 'component.source-family.vexlife-android.button'), true);
 });
 
+test('target pressure results preserve mapped, held and platform-specific truth separately from portable acceptance', () => {
+  const repeater = targetPressuresForCandidate(catalog, 'candidate.component.stable-repeater');
+  assert.equal(repeater.length, 1);
+  assert.equal(repeater[0].framework, 'SwiftUI');
+  assert.ok(repeater[0].relationships.some((row) => row.relationRef.endsWith('item-identity') && row.disposition === 'MAPPED'));
+  assert.ok(repeater[0].relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'HELD'));
+  assert.ok(repeater[0].relationships.some((row) => row.relationRef.endsWith('content-type-hint') && row.disposition === 'PLATFORM_SPECIFIC'));
+  assert.ok(repeater[0].proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'OWED'));
+
+  const frame = targetPressuresForCandidate(catalog, 'candidate.component.frame-region-layout');
+  assert.equal(frame[0].commit, 'befe31789834a74f5a2738cb6d6028c01aa7553c');
+  assert.ok(frame[0].relationships.some((row) => row.relationRef.endsWith('partial-multi-seam') && row.disposition === 'HELD'));
+
+  assert.deepEqual(targetPressuresForCandidate(catalog, 'candidate.component.context-dock'), []);
+  assert.throws(() => targetPressuresForCandidate(catalog, 'candidate.component.missing'), /unknown candidate/);
+});
+
 test('architecture search finds source evidence and cross-platform pressure', () => {
   assert.ok(searchComponentArchitecture(catalog, 'SwiftUI').length > 0);
   assert.ok(searchComponentArchitecture(catalog, 'VexStableLazyColumn').some((row) => row.candidateRef === 'candidate.component.stable-repeater'));
   assert.ok(searchComponentArchitecture(catalog, 'VexStableConversationTimeline').some((row) => row.candidateRef === 'candidate.component.stable-repeater'));
   assert.ok(searchComponentArchitecture(catalog, 'Action Vessel').some((row) => row.candidateRef === 'candidate.component.action-vessel'));
   assert.ok(searchComponentArchitecture(catalog, 'SwiftUI Menu').some((row) => row.candidateRef === 'candidate.component.adaptive-action-group'));
+  assert.ok(searchComponentArchitecture(catalog, 'partial-multi-seam').some((row) => row.candidateRef === 'candidate.component.frame-region-layout'));
+  assert.ok(searchComponentArchitecture(catalog, 'apple-swiftui-sdk').some((row) => row.candidateRef === 'candidate.component.stable-repeater'));
   assert.deepEqual(searchComponentArchitecture(catalog, ''), []);
 });
 
