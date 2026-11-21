@@ -19,13 +19,13 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.schemaVersion, 'vexboard.component-architecture-catalog/v1');
   assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
-  assert.equal(catalog.candidates.filter((row) => row.state === 'ACCEPTED_PORTABLE').length, 4);
+  assert.equal(catalog.candidates.filter((row) => row.state === 'ACCEPTED_PORTABLE').length, 5);
   assert.equal(catalog.targetPressures.length, 14);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 6);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 7);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'HELD_SOURCE_CONTRACT').length, 1);
   assert.equal(catalog.candidates.filter((row) => row.formation).length, 6);
-  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'ACCEPTED').length, 4);
+  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'ACCEPTED').length, 5);
 });
 
 test('architecture candidates preserve the richer relationship layer above source widget kinds', () => {
@@ -113,6 +113,10 @@ assert.equal(
   assert.equal(acceptedControl.state, 'ACCEPTED_PORTABLE');
   assert.equal(acceptedControl.formation.state, 'ACCEPTED');
   assert.ok(acceptedControl.sourceEvidence.some((row) => row.path.endsWith('VexLifeWebP1RuntimeArtifacts.kt')));
+
+  const acceptedRepeater = catalog.candidates.find((row) => row.candidateRef === 'candidate.component.stable-repeater');
+  assert.equal(acceptedRepeater.state, 'ACCEPTED_PORTABLE');
+  assert.equal(acceptedRepeater.formation.state, 'ACCEPTED');
 });
 
 test('target pressure results preserve mapped, held and platform-specific truth separately from portable acceptance', () => {
@@ -161,6 +165,7 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.ok(repeaterWeb.relationships.some((row) => row.relationRef.endsWith('duplicate-failure') && row.disposition === 'HELD'));
   assert.ok(repeaterWeb.relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'UNSUPPORTED'));
   assert.ok(repeaterWeb.proofs.some((row) => row.proofRef === 'proof.vexstream-population-projectability' && row.state === 'PASS'));
+  assert.ok(repeaterWeb.proofs.some((row) => row.proofRef === 'proof.vexstream-durable-item-mutation' && row.state === 'PASS' && row.note.includes('136a3c8863e19f8c0c4d4b4c878cf61d774d9255')));
 
   const frame = targetPressuresForCandidate(catalog, 'candidate.component.frame-region-layout');
   assert.equal(frame.length, 2);
