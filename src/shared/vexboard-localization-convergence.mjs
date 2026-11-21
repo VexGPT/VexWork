@@ -178,6 +178,12 @@ export function analyzeLocalizationConvergence(input) {
   if (inventories.some((inventory) => inventory.schemaVersion !== LOCALIZATION_INVENTORY_SCHEMA)) {
     fail('all inputs must be Localization Inventories');
   }
+  if (new Set(inventories.map((inventory) => inventory.inventoryRef)).size !== inventories.length) {
+    fail('inventoryRef must be unique across one analysis');
+  }
+  if (new Set(inventories.map((inventory) => inventory.subjectRef)).size !== inventories.length) {
+    fail('one current inventory per subject is required');
+  }
 
   const groups = candidateGroups(inventories);
   const shared = sharedSourceIdentities(inventories);
