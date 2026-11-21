@@ -35,6 +35,10 @@ Vision current visual context
 
 VexLife-Prod #488 sent-resource continuity
   separate current-main sibling trajectory
+
+predecessor Settings capability mapping
+  CANCELLED / PARKED
+  future Settings work starts from current Product source
 ```
 
 Permanent current-ground rule:
@@ -757,7 +761,7 @@ connected evolution live bridge
   effectDisposition    NO_EFFECTS
 
 Settings capability mapping
-  state                CAPTURED
+  state                CANCELLED
   disposition          PARKED
   authorityDisposition NO_AUTHORITY
   effectDisposition    NO_EFFECTS
@@ -822,3 +826,23 @@ These are cancellations because the old planned work is no longer needed; they a
 The current Product-native Browser provider no longer depends on the cancelled parity umbrella. Current Vision, sent-resource continuity, Browser, fresh-instance and other separately admitted Product work keep their own truth and are not cancelled by this currentization.
 
 <!-- [VXG RealForever][NEW-BEGINNINGS][CURRENT-PRODUCT-GROUND][BRIDGE-RETIRED] -->
+
+## Currentization — predecessor Settings map retired
+
+The old captured Settings-capability mapping was also bridge-era work: it pointed back to predecessor Interface Refinement as a future source-map obligation.
+
+```text
+work.vexlife.new-beginnings.later.settings-capability-mapping
+CAPTURED -> CANCELLED
+```
+
+This does not remove current Settings capabilities or prevent future Settings work. It removes the standing instruction to recover them from the predecessor map.
+
+```text
+future Settings need
+-> current VexLife-Prod source
+-> current rightful owner
+-> newly admitted bounded Work when needed
+```
+
+<!-- [VXG RealForever][NEW-BEGINNINGS][CURRENT-PRODUCT-GROUND][SETTINGS-MAP-RETIRED] -->
