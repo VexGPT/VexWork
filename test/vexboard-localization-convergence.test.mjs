@@ -646,3 +646,100 @@ test('review collection rejects duplicate exact bindings and duplicate semantic-
 
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A4-CONVERGENCE-REVIEW]
+
+test('stale historical acceptance may be re-reviewed with the same semanticGroupRef', () => {
+  const initial = inventory({
+    strings: [
+      { sourceStringRef: 'fixture:string.settings.a', sourceKey: 'settings_a', sourceValue: 'Settings' },
+      { sourceStringRef: 'fixture:string.settings.b', sourceKey: 'settings_b', sourceValue: 'Settings' },
+    ],
+    occurrences: [
+      occurrence({
+        ref: 'occurrence.settings-a',
+        sourceStringRef: 'fixture:string.settings.a',
+        sourceKey: 'settings_a',
+        sourceValue: 'Settings',
+        elementRef: 'element.settings.a',
+      }),
+      occurrence({
+        ref: 'occurrence.settings-b',
+        sourceStringRef: 'fixture:string.settings.b',
+        sourceKey: 'settings_b',
+        sourceValue: 'Settings',
+        elementRef: 'element.settings.b',
+      }),
+    ],
+  });
+  const initialAnalysis = analyzeLocalizationConvergence(initial);
+  const historical = createLocalizationConvergenceReview({
+    reviewRef: 'review.localization.settings.history',
+    candidate: initialAnalysis.candidateGroups[0],
+    decision: 'ACCEPT_SHARED',
+    semanticGroupRefOrNull: 'semantic-group.settings',
+    rationale: 'Initial accepted meaning.',
+  });
+
+  const current = inventory({
+    commit: '2'.repeat(40),
+    strings: [
+      { sourceStringRef: 'fixture:string.settings.a', sourceKey: 'settings_a', sourceValue: 'Settings', localeVariants: { es: 'Configuración' } },
+      { sourceStringRef: 'fixture:string.settings.b', sourceKey: 'settings_b', sourceValue: 'Settings', localeVariants: { es: 'Configuración' } },
+    ],
+    occurrences: initial.occurrences,
+  });
+  const currentAnalysis = analyzeLocalizationConvergence(current);
+  const reaffirmed = createLocalizationConvergenceReview({
+    reviewRef: 'review.localization.settings.reaffirmed',
+    candidate: currentAnalysis.candidateGroups[0],
+    decision: 'ACCEPT_SHARED',
+    semanticGroupRefOrNull: 'semantic-group.settings',
+    rationale: 'Re-reviewed after locale evidence arrived.',
+  });
+  const projection = applyLocalizationConvergenceReviews(currentAnalysis, [historical, reaffirmed]);
+
+  assert.equal(projection.summary.acceptedSemanticGroupCount, 1);
+  assert.equal(projection.summary.staleReviewCount, 1);
+  assert.equal(projection.acceptedSemanticGroups[0].semanticGroupRef, 'semantic-group.settings');
+  assert.equal(projection.acceptedSemanticGroups[0].reviewRef, 'review.localization.settings.reaffirmed');
+  assert.equal(projection.staleReviews[0].reviewRef, 'review.localization.settings.history');
+});
+
+test('review normalization rejects type coercion in imported candidate binding bytes', () => {
+  const source = inventory({
+    strings: [
+      { sourceStringRef: 'fixture:string.a', sourceKey: 'a', sourceValue: 'Settings' },
+      { sourceStringRef: 'fixture:string.b', sourceKey: 'b', sourceValue: 'Settings' },
+    ],
+    occurrences: [
+      occurrence({
+        ref: 'occurrence.a',
+        sourceStringRef: 'fixture:string.a',
+        sourceKey: 'a',
+        sourceValue: 'Settings',
+        elementRef: 'element.a',
+      }),
+      occurrence({
+        ref: 'occurrence.b',
+        sourceStringRef: 'fixture:string.b',
+        sourceKey: 'b',
+        sourceValue: 'Settings',
+        elementRef: 'element.b',
+      }),
+    ],
+  });
+  const candidate = analyzeLocalizationConvergence(source).candidateGroups[0];
+  const review = createLocalizationConvergenceReview({
+    reviewRef: 'review.localization.settings.valid',
+    candidate,
+    decision: 'KEEP_SEPARATE',
+    rationale: 'Fixture.',
+  });
+  const bytes = JSON.parse(JSON.stringify(review));
+  bytes.candidateBinding.members[0].mapped = 'false';
+
+  assert.throws(
+    () => normalizeLocalizationConvergenceReview(bytes),
+    /candidate.member.mapped must be boolean/,
+  );
+});
+
