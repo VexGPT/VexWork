@@ -67,6 +67,15 @@ test('explicit missing locale work target remains visible without becoming Produ
   assert.equal(coverage.every((row) => row.completeness === 'NOT_OBSERVED'), true);
   assert.equal(coverage.find((row) => row.subjectRef === 'subject.vexlife-android').missingStringCount, 405);
   assert.equal(coverage.find((row) => row.subjectRef === 'subject.vexlife-prod').missingStringCount, 1029);
+
+  const prodStrings = filterLocalizationWorkspaceRows(projection, 'STRINGS', {
+    subjectRef: 'subject.vexlife-prod',
+    localeRef: 'it',
+    query: 'private-kept',
+  });
+  assert.equal(prodStrings.length, 1);
+  assert.equal(prodStrings[0].sourceStringRef, 'vexlife-prod:workspace.status.private-kept');
+  assert.equal(prodStrings[0].localeRefs.includes('it'), false, 'work target filtering must not relabel Italian as an observed Product locale');
 });
 
 test('coverage says NOT_OBSERVED instead of pretending a locale exists for a Product', () => {
