@@ -323,12 +323,12 @@ function draftsLine() {
 
 async function boot() {
   const catalog = Catalog.normalizeLensCatalog(await fetchJson(`${LENS_DIR}catalog.json`));
-  const withLens = catalog.subjects.filter((subject) => subject.lens.status !== 'NOT_BUILT');
+  const withLens = catalog.subjects.filter((subject) => Catalog.defaultBuildFor(subject));
   const lenses = await Promise.all(withLens.map(async (subject) => {
     const build = Catalog.defaultBuildFor(subject);
     return Lens.normalizeScreenLens(Catalog.bindLensBuildSource(await fetchJson(LENS_DIR + build.lens), build));
   }));
-  const others = catalog.subjects.filter((subject) => subject.lens.status === 'NOT_BUILT');
+  const others = catalog.subjects.filter((subject) => !Catalog.defaultBuildFor(subject));
   app.replaceChildren(...[
     h('div', { class: 'intro' }, h('h1', {}, 'Projects'),
       h('p', {}, 'Subjects VexBoard can project or relate. Open a Screen Lens at its Stable build, its Main build or any commit, follow related boards, and descend to VexWork for Project and lifecycle truth.')),
