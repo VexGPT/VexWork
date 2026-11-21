@@ -1,0 +1,53 @@
+name: TEMP Project Closeout Candidate Review
+
+on:
+  push:
+    branches:
+      - VXG-112126-chatgpt-project-closeout-succession-a001
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build canonical VexWork projections
+        run: npm run workspace:build
+
+      - name: Run deterministic VexWork review
+        run: npm run review
+
+      - name: Show generated drift against candidate
+        id: drift
+        continue-on-error: true
+        run: |
+          git status --short
+          git diff --exit-code -- \
+            blueprint/project-registry.json \
+            workgraphs/public.json \
+            public/workspace.json
+
+      - name: Pack generated projection
+        if: always()
+        run: |
+          mkdir -p .candidate-review
+          cp blueprint/project-registry.json .candidate-review/project-registry.json
+          cp workgraphs/public.json .candidate-review/workgraph-public.json
+          cp public/workspace.json .candidate-review/workspace.json
+          printf '%s\n' "$GITHUB_SHA" > .candidate-review/source-head.txt
+
+      - name: Upload generated projection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vexwork-project-closeout-generated
+          path: .candidate-review/
