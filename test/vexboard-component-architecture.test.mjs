@@ -16,7 +16,7 @@ const catalog = normalizeComponentArchitectureCatalog(JSON.parse(fs.readFileSync
 
 test('component architecture catalog keeps source influence distinct from portable acceptance', () => {
   assert.equal(catalog.schemaVersion, 'vexboard.component-architecture-catalog/v1');
-  assert.equal(catalog.candidates.length, 11);
+  assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
   assert.equal(catalog.candidates.some((row) => row.state === 'ACCEPTED_PORTABLE'), false);
 });
@@ -26,6 +26,7 @@ test('architecture candidates preserve the richer relationship layer above sourc
   assert.ok(catalog.candidates.find((row) => row.candidateRef === 'candidate.component.context-dock'));
   assert.ok(catalog.candidates.find((row) => row.candidateRef === 'candidate.component.frame-region-layout'));
   assert.ok(catalog.candidates.find((row) => row.candidateRef === 'candidate.component.action-vessel'));
+  assert.ok(catalog.candidates.find((row) => row.candidateRef === 'candidate.component.adaptive-action-group'));
   assert.equal(candidatesByClass(catalog, 'PRESENTATION').length >= 4, true);
 });
 
@@ -42,6 +43,7 @@ test('architecture search finds source evidence and cross-platform pressure', ()
   assert.ok(searchComponentArchitecture(catalog, 'SwiftUI').length > 0);
   assert.ok(searchComponentArchitecture(catalog, 'VexStableLazyColumn').some((row) => row.candidateRef === 'candidate.component.stable-repeater'));
   assert.ok(searchComponentArchitecture(catalog, 'Action Vessel').some((row) => row.candidateRef === 'candidate.component.action-vessel'));
+  assert.ok(searchComponentArchitecture(catalog, 'SwiftUI Menu').some((row) => row.candidateRef === 'candidate.component.adaptive-action-group'));
   assert.deepEqual(searchComponentArchitecture(catalog, ''), []);
 });
 
