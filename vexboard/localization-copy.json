@@ -24,6 +24,25 @@
     "localization.localeSource": "Source value",
     "localization.localeVariant": "Observed locale value",
     "localization.localeMissing": "Missing locale value",
-    "localization.localeMissingDetail": "No value for this locale is observed in Product source. VexBoard leaves the Product projection unchanged rather than inventing fallback behavior."
+    "localization.localeMissingDetail": "No value for this locale is observed in Product source. VexBoard leaves the Product projection unchanged rather than inventing fallback behavior.",
+    "localization.changeSetTitle": "Working Change Set",
+    "localization.changeSetHelp": "Private to this browser. It records what you expect to become true; it does not change Product source.",
+    "localization.expectedValue": "Expected value",
+    "localization.expectedValuePlaceholder": "Enter the value you want this locale to use",
+    "localization.saveExpected": "Save expected value",
+    "localization.removeExpected": "Remove request",
+    "localization.savedLocally": "Saved to this browser.",
+    "localization.noDraft": "No expected value is saved for this string and locale.",
+    "localization.exportChangeSet": "Export Change Set",
+    "localization.importChangeSet": "Import Change Set",
+    "localization.importedChangeSet": "Imported and reconciled against current source.",
+    "localization.workingSetEmpty": "No changes are saved for this Product revision yet.",
+    "localization.reconciliation": "Current reconciliation",
+    "localization.stateSatisfied": "Already matches expected",
+    "localization.stateOpen": "Still at observed value",
+    "localization.stateOpenTranslation": "Translation is still missing",
+    "localization.stateDiverged": "Source changed differently",
+    "localization.stateSourceRemoved": "Source string is no longer present",
+    "localization.storageUnavailable": "Browser-local Change Sets are unavailable because saved data could not be read safely."
   }
 }
