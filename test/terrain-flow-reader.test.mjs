@@ -43,20 +43,27 @@ test('Operational Console keeps completed Terrain and Commerce as prior context 
   ]);
 });
 
-test('completed Connected Services no longer projects the retired acceptance walk as current roadmap work', () => {
+test('completed Connected Services removes the retired acceptance walk from current work while preserving historical dependency distance', () => {
   const p = project('project.vexlife.connected-services');
   assert.deepEqual(deepestCurrentFrontiers(p), []);
   const fronts = projectWorkfronts(p, { maxRows: 8 });
   assert.equal(fronts.rows.length, 1);
   assert.equal(fronts.rows[0].scopeRef, 'work.vexlife.connected-services.outcome');
   assert.equal(fronts.rows[0].basis, 'LATEST_COMPLETED');
-  assert.equal(projectSequenceDistance(p, 'work.vexlife.connected-services.human-acceptance-walk'), null);
+  const acceptance = projectSequenceDistance(p, 'work.vexlife.connected-services.human-acceptance-walk');
+  assert.equal(acceptance.distance, 1);
+  assert.equal(acceptance.basis, 'DEPENDENCY');
+  assert.equal(acceptance.fromScopeRef, 'work.vexlife.connected-services.vcs07-deployment-choices');
 });
 
-test('completed ToCompletion does not preserve retired later scopes as current dependency distance', () => {
+test('completed ToCompletion keeps retired horizon topology discoverable without projecting it as current work', () => {
   const p = project('project.vexlife.tocompletion');
-  assert.equal(projectSequenceDistance(p, 'work.vexlife.tocompletion.p6.cultivation-training-birth'), null);
-  assert.equal(projectSequenceDistance(p, 'work.vexlife.tocompletion.p7.whole-product-expansion'), null);
+  const p6 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p6.cultivation-training-birth');
+  assert.equal(p6.distance, 6);
+  assert.equal(p6.basis, 'DEPENDENCY');
+  const p7 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p7.whole-product-expansion');
+  assert.equal(p7.distance, 5);
+  assert.equal(p7.basis, 'DEPENDENCY');
   assert.equal(projectSequenceDistance(p, 'work.vexlife.tocompletion.productization.ordinary-heretic-setup'), null);
 });
 
