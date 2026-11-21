@@ -146,9 +146,13 @@
       ],
       "sourceRefs": [
         "projects/component-library-architecture/ARCHITECTURE.md",
-        "work.vex.component-library-architecture.android-inventory"
+        "work.vex.component-library-architecture.android-inventory",
+        "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+        "projects/component-library-architecture/inventory/vexstream-music.main.components.json",
+        "scripts/build-component-inventory.mjs",
+        "test/vexboard-component-inventory.test.mjs"
       ],
-      "updatedAt": "2026-11-21T18:35:01.000Z"
+      "updatedAt": "2026-11-21T18:55:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -378,7 +382,9 @@
     "projects/vexboard/SCREEN-LENS.md",
     "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
     "projects/component-library-architecture/component-architecture-catalog.json",
-    "github.pr.vexlife-prod.506"
+    "github.pr.vexlife-prod.506",
+    "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+    "projects/component-library-architecture/inventory/vexstream-music.main.components.json"
   ],
   "formedAt": "2026-11-21T08:20:00.000Z"
 }
