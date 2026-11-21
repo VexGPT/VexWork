@@ -31,16 +31,21 @@ const readJson = (root, relative) =>
 
 function parseArgs(argv) {
   const args = {
-    subject: DEFAULT_SUBJECT,
+    subject: null,
     build: DEFAULT_BUILD,
     check: false,
+    all: false,
   };
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === '--check') args.check = true;
+    else if (arg === '--all') args.all = true;
     else if (arg === '--subject') args.subject = argv[++index];
     else if (arg === '--build') args.build = argv[++index];
     else throw new Error('unexpected argument ' + arg);
+  }
+  if (args.all && args.subject) {
+    throw new Error('choose --all or --subject, not both');
   }
   return args;
 }
@@ -144,64 +149,82 @@ function outputPath(root, subjectSlug, buildRef) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const expected = componentInventoryBytes(
-    ROOT,
-    args.subject,
-    args.build,
-  );
-  const output = outputPath(
-    ROOT,
-    args.subject,
-    args.build,
-  );
+  const catalog = normalizeLensCatalog(readJson(ROOT, CATALOG_PATH));
+  const subjects = args.all
+    ? catalog.subjects
+        .filter((subject) => buildFor(subject, args.build))
+        .map((subject) => subject.slug)
+    : [args.subject ?? DEFAULT_SUBJECT];
 
-  if (args.check) {
-    const current = fs.existsSync(output)
-      ? fs.readFileSync(output, 'utf8')
-      : '';
-    if (current !== expected) {
-      console.error(
-        'Component inventory is stale for ' +
-          args.subject +
-          ' ' +
-          args.build +
-          '; run npm run components:build -- --subject ' +
-          args.subject,
-      );
-      process.exitCode = 1;
-      return;
-    }
+  const results = subjects.map((subjectSlug) => {
+    const expected = componentInventoryBytes(
+      ROOT,
+      subjectSlug,
+      args.build,
+    );
+    const output = outputPath(
+      ROOT,
+      subjectSlug,
+      args.build,
+    );
     const inventory = JSON.parse(expected);
-    console.log(
+    return {
+      subjectSlug,
+      expected,
+      output,
+      inventory,
+    };
+  });
+
+  const stale = [];
+  fs.mkdirSync(path.join(ROOT, OUTPUT_DIR), { recursive: true });
+
+  for (const result of results) {
+    if (args.check) {
+      const current = fs.existsSync(result.output)
+        ? fs.readFileSync(result.output, 'utf8')
+        : '';
+      if (current !== result.expected) {
+        stale.push(
+          path.relative(ROOT, result.output).replaceAll('\\', '/'),
+        );
+      }
+    } else {
+      fs.writeFileSync(result.output, result.expected, 'utf8');
+    }
+  }
+
+  if (stale.length) {
+    console.error(
       JSON.stringify(
         {
-          state: 'PASS',
+          state: 'STALE',
           mode: 'CHECK',
-          subject: args.subject,
           build: args.build,
-          sourceCommit: inventory.sourceSnapshot.commit,
-          summary: inventory.summary,
+          subjects,
+          stale,
+          fix: 'npm run components:build',
         },
         null,
         2,
       ),
     );
+    process.exitCode = 1;
     return;
   }
 
-  fs.mkdirSync(path.dirname(output), { recursive: true });
-  fs.writeFileSync(output, expected, 'utf8');
-  const inventory = JSON.parse(expected);
   console.log(
     JSON.stringify(
       {
         state: 'PASS',
-        mode: 'BUILD',
-        subject: args.subject,
+        mode: args.check ? 'CHECK' : 'BUILD',
         build: args.build,
-        sourceCommit: inventory.sourceSnapshot.commit,
-        output: path.relative(ROOT, output).replaceAll('\\', '/'),
-        summary: inventory.summary,
+        subjects: results.map((result) => ({
+          subject: result.subjectSlug,
+          sourceCommit: result.inventory.sourceSnapshot.commit,
+          output: path.relative(ROOT, result.output).replaceAll('\\', '/'),
+          summary: result.inventory.summary,
+        })),
       },
       null,
       2,
