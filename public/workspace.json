@@ -30328,7 +30328,7 @@
           "label": "Map reusable component pressure across Products",
           "purpose": "Apply the earned component inventory contract to materially different VexLife Prod, VexStream and other admitted Product sources; discover candidate equivalence and platform-specific distinctions from exact relationships rather than visual similarity or shared framework names.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
@@ -30351,8 +30351,36 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T08:20:00.000Z",
-          "updatedAt": "2026-11-21T08:20:03.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-21T18:35:01.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex.component-library-architecture.cross-product-census.ready-20261121",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "A1 inventory/materialization is formed and in VERIFYING. A2 is read-only census/pressure work and can consume that formed source without waiting for A1's independent repository-wide executable proof floor.",
+              "actorRef": "actor.vexgpt.component-library",
+              "sourceRefs": [
+                "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+                "projects/component-library-architecture/component-architecture-catalog.json",
+                "github.pr.vexlife-prod.506"
+              ],
+              "createdAt": "2026-11-21T18:35:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vex.component-library-architecture.cross-product-census.running-20261121",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Cross-Product census is actively comparing Android, current VexLife-Prod and SwiftUI target pressure: Action Group, Stable Repeater and Frame have reference results; Swappable Region and Modal expose typed-source gaps. No portable acceptance is implied.",
+              "actorRef": "actor.vexgpt.component-library",
+              "sourceRefs": [
+                "projects/component-library-architecture/component-architecture-catalog.json",
+                "projects/component-library-architecture/TECH-DEBT.md",
+                "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+                "github.pr.vexlife-prod.506"
+              ],
+              "createdAt": "2026-11-21T18:35:01.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vex.component-library-architecture.gallery",
@@ -30597,7 +30625,6 @@
           "label": "Planned",
           "workRefs": [
             "work.vex.component-library-architecture.construction-packs",
-            "work.vex.component-library-architecture.cross-product-census",
             "work.vex.component-library-architecture.gallery",
             "work.vex.component-library-architecture.portable-contract",
             "work.vex.component-library-architecture.self-projection",
@@ -30613,6 +30640,7 @@
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
+            "work.vex.component-library-architecture.cross-product-census",
             "work.vex.component-library-architecture.outcome"
           ]
         },
