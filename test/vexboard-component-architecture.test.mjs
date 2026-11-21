@@ -8,6 +8,7 @@ import {
   normalizeComponentArchitectureCatalog,
   searchComponentArchitecture,
   targetPressuresForCandidate,
+  targetRealizations,
 } from '../src/shared/vexboard-component-architecture.mjs';
 
 const catalog = normalizeComponentArchitectureCatalog(JSON.parse(fs.readFileSync(
@@ -218,6 +219,34 @@ test('portable candidate and formation acceptance fail closed when they disagree
     () => normalizeComponentArchitectureCatalog(splitFormation),
     /portable acceptance must agree with formation acceptance/,
   );
+});
+
+test('A4 realization view is derived only from accepted portable relationships', () => {
+  const realizations = targetRealizations(catalog);
+  assert.equal(realizations.length, 10);
+  assert.equal(new Set(realizations.map((row) => row.realizationRef)).size, realizations.length);
+  assert.equal(realizations.every((row) =>
+    catalog.candidates.find((candidate) => candidate.candidateRef === row.candidateRef)?.state === 'ACCEPTED_PORTABLE'
+  ), true);
+  assert.equal(realizations.some((row) => row.candidateRef === 'candidate.component.swappable-region'), false);
+  assert.equal(realizations.filter((row) => row.platformRef === 'platform.ios').length, 5);
+  assert.equal(realizations.filter((row) => row.platformRef === 'platform.browser').length, 4);
+  assert.equal(realizations.filter((row) => row.platformRef === 'platform.android').length, 1);
+
+  const swiftFrame = realizations.find((row) =>
+    row.candidateRef === 'candidate.component.frame-region-layout' &&
+    row.platformRef === 'platform.ios'
+  );
+  assert.equal(swiftFrame.commit, 'ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a');
+  assert.ok(swiftFrame.proofCounts.OWED > 0);
+  assert.ok(swiftFrame.relationCounts.HELD > 0);
+
+  const vexStreamRepeater = realizations.find((row) =>
+    row.candidateRef === 'candidate.component.stable-repeater' &&
+    row.repositoryRef === 'repo.vexstream-music'
+  );
+  assert.equal(vexStreamRepeater.proofCounts.PASS >= 3, true);
+  assert.ok(vexStreamRepeater.relationships.some((row) => row.disposition === 'UNSUPPORTED'));
 });
 
 test('architecture search finds source evidence and cross-platform pressure', () => {
