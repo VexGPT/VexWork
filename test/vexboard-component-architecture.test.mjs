@@ -42,6 +42,7 @@ test('source families can point upward to architecture candidates without becomi
 test('architecture search finds source evidence and cross-platform pressure', () => {
   assert.ok(searchComponentArchitecture(catalog, 'SwiftUI').length > 0);
   assert.ok(searchComponentArchitecture(catalog, 'VexStableLazyColumn').some((row) => row.candidateRef === 'candidate.component.stable-repeater'));
+  assert.ok(searchComponentArchitecture(catalog, 'VexStableConversationTimeline').some((row) => row.candidateRef === 'candidate.component.stable-repeater'));
   assert.ok(searchComponentArchitecture(catalog, 'Action Vessel').some((row) => row.candidateRef === 'candidate.component.action-vessel'));
   assert.ok(searchComponentArchitecture(catalog, 'SwiftUI Menu').some((row) => row.candidateRef === 'candidate.component.adaptive-action-group'));
   assert.deepEqual(searchComponentArchitecture(catalog, ''), []);
