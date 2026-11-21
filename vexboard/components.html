@@ -111,9 +111,10 @@ function visibleArchitecture(){
  return rows;
 }
 function architectureCard(candidate){
+ const results=Architecture.targetPressuresForCandidate(state.architecture,candidate.candidateRef);
  const button=h('button',{type:'button',class:'family'+(state.selectedArchitecture===candidate.candidateRef?' on':'')},
   h('div',{class:'top'},h('h2',{},candidate.label),h('span',{class:'pill'},candidate.state.replaceAll('_',' '))),
-  h('div',{class:'counts'},h('span',{},h('b',{},candidate.class),' class'),h('span',{},h('b',{},count(candidate.sourceEvidence.length)),' source witnesses'),h('span',{},h('b',{},count(candidate.sourceFamilyRefs.length)),' source families'),h('span',{},h('b',{},count(candidate.targetPressure.length)),' target pressures')),
+  h('div',{class:'counts'},h('span',{},h('b',{},candidate.class),' class'),h('span',{},h('b',{},count(candidate.sourceEvidence.length)),' source witnesses'),h('span',{},h('b',{},count(candidate.sourceFamilyRefs.length)),' source families'),h('span',{},h('b',{},count(results.length)),' target results')),
   h('div',{class:'sub'},candidate.candidateRef));
  button.onclick=()=>{state.selectedArchitecture=candidate.candidateRef;syncUrl();render();requestAnimationFrame(()=>document.querySelector('.detail')?.scrollIntoView({block:'nearest'}));};
  return button;
@@ -121,16 +122,43 @@ function architectureCard(candidate){
 function listBlock(title,rows){
  return h('div',{style:'padding:0 22px 18px'},h('b',{},title),rows.length?h('ul',{style:'margin:8px 0 0;padding-left:20px;color:var(--muted)'},rows.map((row)=>h('li',{},row))):h('span',{class:'sub'},'None declared.'));
 }
+function targetPressureBlock(candidate){
+ const results=Architecture.targetPressuresForCandidate(state.architecture,candidate.candidateRef);
+ if(!results.length)return h('div',{style:'padding:0 22px 18px'},h('b',{},'Target pressure results'),h('span',{class:'sub'},'No target experiment is formed for this candidate yet.'));
+ const rows=results.flatMap((pressure)=>pressure.relationships.map((relation)=>({pressure,relation})));
+ return h('div',{style:'padding:0 0 18px'},
+  h('div',{style:'padding:0 22px 10px'},h('b',{},'Target pressure results'),h('span',{class:'sub'},'Reference pressure is evidence, not portable acceptance or native proof.')),
+  h('div',{class:'table-wrap'},h('table',{},
+   h('thead',{},h('tr',{},['Target','Pressure state','Relationship','Disposition','Target mapping','Proof'].map((label)=>h('th',{},label)))),
+   h('tbody',{},rows.map(({pressure,relation})=>{
+    const passed=pressure.proofs.filter((proof)=>proof.state==='PASS').length;
+    const owed=pressure.proofs.filter((proof)=>proof.state==='OWED').length;
+    const held=pressure.proofs.filter((proof)=>proof.state==='HELD').length;
+    return h('tr',{},
+     h('td',{},h('b',{},pressure.platformRef),h('span',{class:'sub'},pressure.framework),h('span',{class:'sub mono'},short(pressure.commit))),
+     h('td',{},h('span',{class:'pill'},pressure.state.replaceAll('_',' ')),h('span',{class:'sub mono'},pressure.pressureRef)),
+     h('td',{class:'value'},h('code',{},relation.relationRef),h('span',{class:'sub'},relation.source)),
+     h('td',{},h('span',{class:'pill'},relation.disposition.replaceAll('_',' '))),
+     h('td',{class:'value'},relation.target),
+     h('td',{},h('b',{},passed+' pass'),owed?h('span',{class:'sub'},owed+' owed'):null,held?h('span',{class:'sub'},held+' held'):null)
+    );
+   }))
+  )),
+  h('div',{style:'padding:10px 22px 0'},results.map((pressure)=>h('div',{class:'source-chip'},pressure.repositoryRef,' · ',h('code',{},pressure.path))))
+ );
+}
 function architectureDetail(candidate){
+ const results=Architecture.targetPressuresForCandidate(state.architecture,candidate.candidateRef);
  return h('section',{class:'detail'},
   h('div',{class:'detail-head'},
    h('div',{},h('h2',{},candidate.label),h('p',{},candidate.question),
-    h('div',{class:'facts'},h('span',{class:'fact'},candidate.class.toLowerCase()),h('span',{class:'fact'},candidate.state.toLowerCase().replaceAll('_',' ')),h('span',{class:'fact'},count(candidate.sourceEvidence.length)+' witnesses'),h('span',{class:'fact'},count(candidate.targetPressure.length)+' target pressures'))),
+    h('div',{class:'facts'},h('span',{class:'fact'},candidate.class.toLowerCase()),h('span',{class:'fact'},candidate.state.toLowerCase().replaceAll('_',' ')),h('span',{class:'fact'},count(candidate.sourceEvidence.length)+' witnesses'),h('span',{class:'fact'},count(results.length)+' target results'))),
    h('code',{class:'mono'},candidate.candidateRef)),
   listBlock('Portable relationships',candidate.portableRelationships),
   listBlock('Obligations',candidate.obligations),
   listBlock('Must not own',candidate.mustNotOwn),
-  listBlock('Target pressure',candidate.targetPressure),
+  listBlock('Target pressure questions',candidate.targetPressure),
+  targetPressureBlock(candidate),
   h('div',{class:'table-wrap'},h('table',{},
    h('thead',{},h('tr',{},['Repository','Source','Symbols','Why it matters'].map((label)=>h('th',{},label)))),
    h('tbody',{},candidate.sourceEvidence.map((row)=>h('tr',{},
@@ -182,15 +210,19 @@ function renderArchitecture({focusSearch=false}={}){
  stateSelect.disabled=true;
  const evidenceCount=state.architecture.candidates.reduce((sum,row)=>sum+row.sourceEvidence.length,0);
  const familyLinks=new Set(state.architecture.candidates.flatMap((row)=>row.sourceFamilyRefs)).size;
+ const targetResults=state.architecture.targetPressures.length;
+ const targetRelations=state.architecture.targetPressures.flatMap((row)=>row.relationships);
+ const mappedRelations=targetRelations.filter((row)=>row.disposition==='MAPPED').length;
+ const heldRelations=targetRelations.filter((row)=>row.disposition==='HELD').length;
  app.replaceChildren(
   h('section',{},
    h('div',{class:'intro'},h('div',{},h('h1',{},'Component Architecture'),h('p',{},'Recurring presentation relationships influenced by real Product source, organized for a typed Kotlin Blueprint + platform-adapter compiler. Android teaches the questions; the portable contract must survive SwiftUI, web and desktop pressure before acceptance.')),h('div',{class:'truth'},'architecture candidates · ',h('strong',{},count(state.architecture.candidates.length)))),
    h('div',{class:'boundary'},h('b',{},'Compiler boundary: '),'Kotlin Blueprint can be the strongly typed authoring form; Compose is one target adapter. Portable IR, generated native source, target Screen Lens and native proof remain separate witnesses.'),
-   h('div',{class:'summary'},metric(state.architecture.candidates.length,'architecture candidates'),metric(classes.length,'relationship classes'),metric(evidenceCount,'source witnesses'),metric(familyLinks,'linked Android families'),metric(state.architecture.sourceSnapshots.length,'source snapshots'),metric(0,'accepted portable yet')),
+   h('div',{class:'summary'},metric(state.architecture.candidates.length,'architecture candidates'),metric(targetResults,'target experiments'),metric(mappedRelations,'mapped target relationships'),metric(heldRelations,'held target relationships'),metric(evidenceCount,'source witnesses'),metric(0,'accepted portable yet')),
    h('div',{class:'source'},state.architecture.sourceSnapshots.map((row)=>h('span',{class:'source-chip'},h('span',{class:'dot'}),row.repositoryRef,h('code',{},short(row.commit))))),
    viewTabs()),
   h('section',{class:'workspace'},h('div',{class:'controls'},search,classSelect,stateSelect),h('p',{class:'match'},count(rows.length)+' of '+count(state.architecture.candidates.length)+' architecture candidates in this view.'),h('div',{class:'grid'},rows.map(architectureCard)),selected?architectureDetail(selected):h('div',{class:'empty'},'No architecture candidates match this view.')),
-  h('footer',{},'Nothing in this view is accepted portable architecture yet. The next useful proof is to take one canonical VexLife component—Action Vessel is the strongest candidate—bind it through a typed Kotlin Blueprint, emit portable IR, generate a native target realization, compile it, then project that target source back into Screen Lens.'));
+  h('footer',{},'Nothing in this view is accepted portable architecture yet. Target-pressure results show what survived one native-framework pressure and what is still held; they are evidence for later convergence, not acceptance by themselves.'));
  if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
 }
 function render(options={}){return state.view==='ARCHITECTURE'?renderArchitecture(options):renderSource(options);}
