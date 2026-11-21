@@ -19,6 +19,7 @@ import {
   localizationOccurrencesCsv,
   localizationStringsCsv,
 } from '../src/shared/vexboard-localization-inventory.mjs';
+import { bindLensBuildSource } from '../src/shared/vexboard-lens-catalog.mjs';
 import {
   androidSourceStrings,
   projectAndroidLocalizationInventoryFromSourceStrings,
@@ -184,7 +185,7 @@ function buildOne({ args, catalog, subjectSlug }) {
   const producer = PRODUCERS[subject.slug];
   if (!producer) throw new Error(`${subject.slug} has no Localization source adapter yet`);
   const build = buildFor(subject, args.build);
-  const lens = readJson(path.posix.join(LENS_DIR, build.lens));
+  const lens = bindLensBuildSource(readJson(path.posix.join(LENS_DIR, build.lens)), build);
   const { source, temporary } = sourceCheckoutFor({ args, subject, build, producer });
 
   try {
