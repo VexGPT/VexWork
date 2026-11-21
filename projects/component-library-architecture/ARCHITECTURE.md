@@ -401,7 +401,66 @@ Slice 6
 self-use / self-projection / localization proof
 ```
 
-## 15. First completion test
+## 15. A1 observed inventory implementation
+
+The first implementation deliberately stops **before** portable-component acceptance.
+
+```text
+Android Main @ d857a92371555472e0303b18eadf353da2a868d6
+  Screen Lens
+  + Localization Inventory
+        ↓
+vexboard.component-inventory/v1
+        ↓
+observed source family
+  kind
+  occurrence / where-used
+  parent + direct children
+  style / slot / layer / text role
+  intent / action / pathway / navigation
+  localization resource + sourceString refs
+  realization realizedBy / realizedIn
+  explicit accessibility projection state
+```
+
+Current candidate census:
+
+```text
+15 source families
+274 occurrences
+13 Screens
+13 shell/chrome occurrences
+190 localization-linked occurrences
+121 realization-linked occurrences
+0 accessibility-projected occurrences
+```
+
+The zero is useful truth: accessibility meaning is not inferred from Material/Compose component type.
+It remains visible as `NOT_PROJECTED` until the rightful Product source/proof is connected.
+
+A1 source-family identities are intentionally Product-bound:
+
+```text
+component.source-family.vexlife-android.button
+component.source-family.vexlife-android.dialog
+...
+```
+
+They support discovery and where-used only.
+
+```text
+SOURCE_FAMILY
+!= CANDIDATE_PORTABLE_COMPONENT
+!= ACCEPTED_PORTABLE_COMPONENT
+```
+
+The human projection at `vexboard/components.html` is allowed to exist before A3 so the inventory
+has one stable place to become useful. It must continue labeling source families as observed and
+portability as unclassified until later cross-Product evidence changes that truth.
+
+Production refactor findings are isolated in `TECH-DEBT.md`; A1 does not mutate Android source.
+
+## 16. First completion test
 
 Before a big Gallery UI exists, machine data should answer:
 
