@@ -10,7 +10,7 @@ const committed = () => normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('
 const lens = committed();
 const STREAM = 'screen.vexstream-music';
 const stream = X.expressionsFor(lens, STREAM);
-const vexstreamDesktop = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexstream-music.main.screen-lens.json', import.meta.url), 'utf8')));
+const vexstreamDesktop = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('../projects/vexboard/lens/vexstream-music.screen-lens.json', import.meta.url), 'utf8')));
 const VEXSTREAM_DESKTOP = 'vexstream.desktop.library';
 const vexstreamDesktopExpressions = X.expressionsFor(vexstreamDesktop, VEXSTREAM_DESKTOP);
 const byWhat = (list, where, what) => list.find((expression) => expression.where === where && expression.what === what);

@@ -198,7 +198,7 @@ function track(subject, live) {
   const stable = Catalog.buildFor(subject, 'stable');
   const main = Catalog.buildFor(subject, 'main');
   const pins = [
-    { key: 'stable', label: 'Stable', sha: stable.commit },
+    stable ? { key: 'stable', label: 'Stable', sha: stable.commit } : null,
     { key: 'main', label: 'Main', sha: main.commit },
     live ? { key: 'head', label: `GitHub ${live.branch}`, sha: live.head.sha } : null,
   ].filter(Boolean);
@@ -246,6 +246,12 @@ function buildRow(subject, build, extra) {
     build.summary ? h('span', { class: 'note' }, build.summary) : null);
 }
 
+function unacceptedStable() {
+  return h('div', { class: 'pending' },
+    h('p', {}, h('b', {}, 'Stable not accepted')),
+    h('p', {}, 'Main is projectable now. Stable appears only after acceptance evidence earns promotion.'));
+}
+
 function boardLinks(boards) {
   return h('div', { class: 'boards' }, boards.map((board) => h('a', { class: board.role === 'TRIAL' ? 'trial' : '', href: Catalog.boardHref(board.boardRef), title: board.summary ?? board.boardRef },
     board.label, h('span', {}, board.role === 'TRIAL' ? 'earlier canvas trial' : 'related board'))));
@@ -271,7 +277,8 @@ function leadProject(subject, lens) {
   const trials = subject.boards.filter((board) => board.role === 'TRIAL');
   return h('article', { class: 'project lead', id: subject.slug },
     h('div', { class: 'info head' },
-      h('span', { class: 'kind' }, h('span', { class: 'dot', 'aria-hidden': 'true' }), 'Screen Lens · generated from source'),
+      h('span', { class: 'kind' }, h('span', { class: 'dot', 'aria-hidden': 'true' }),
+        subject.lens.status === 'CANDIDATE' ? 'Screen Lens · projectable candidate' : 'Screen Lens · generated from source'),
       h('h3', {}, subject.label),
       h('p', { class: 'summary' }, subject.summary),
       h('div', { class: 'stats' }, h('span', {}, h('b', {}, lens.screens.length), ' screens'), h('span', {}, h('b', {}, elements), ' elements'), h('span', {}, h('b', {}, lens.pathways.length), ' pathways'), h('span', {}, h('b', {}, bonds), ` Family bond${bonds === 1 ? '' : 's'}`))),
@@ -285,7 +292,7 @@ function leadProject(subject, lens) {
       h('h4', {}, 'Builds'),
       trackSlot,
       currencySlot,
-      buildRow(subject, stable),
+      stable ? buildRow(subject, stable) : unacceptedStable(),
       buildRow(subject, main, Catalog.sameCommit(subject) ? '· same commit as Stable' : ''),
       subject.lens.anyCommit ? anyCommitForm(subject) : null));
 }
@@ -316,12 +323,12 @@ function draftsLine() {
 
 async function boot() {
   const catalog = Catalog.normalizeLensCatalog(await fetchJson(`${LENS_DIR}catalog.json`));
-  const withLens = catalog.subjects.filter((subject) => subject.lens.status === 'GENERATED');
+  const withLens = catalog.subjects.filter((subject) => Catalog.defaultBuildFor(subject));
   const lenses = await Promise.all(withLens.map(async (subject) => {
-    const build = Catalog.buildFor(subject, 'stable');
+    const build = Catalog.defaultBuildFor(subject);
     return Lens.normalizeScreenLens(Catalog.bindLensBuildSource(await fetchJson(LENS_DIR + build.lens), build));
   }));
-  const others = catalog.subjects.filter((subject) => subject.lens.status !== 'GENERATED');
+  const others = catalog.subjects.filter((subject) => !Catalog.defaultBuildFor(subject));
   app.replaceChildren(...[
     h('div', { class: 'intro' }, h('h1', {}, 'Projects'),
       h('p', {}, 'Subjects VexBoard can project or relate. Open a Screen Lens at its Stable build, its Main build or any commit, follow related boards, and descend to VexWork for Project and lifecycle truth.')),
