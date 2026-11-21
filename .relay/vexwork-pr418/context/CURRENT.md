@@ -2,45 +2,38 @@
 
 [VXG RealForever]
 
-This branch carries proof context and canonical RETURN custody only. It is not Product source and is not a merge dependency.
-
-## Exact candidate
+Current executable attempt: **A002**.
 
 ```text
-PR    #418
-base  5adc12ac7983773a82955c4ef6d59fc386add75f
-head  c2d7edcc8b54baf2f41e3e90b6bc369937b83824
-tree  fc4e733086caa40219b3b84b6985d9731503a75d
-branch VXG-112126-localization-shared-frame-prod-preview-a001
+candidate head c2d7edcc8b54baf2f41e3e90b6bc369937b83824
+candidate tree fc4e733086caa40219b3b84b6985d9731503a75d
+proof issue     #419
+product PR      #418
+companion PR    #420
 ```
 
-Human lived preview: ACCEPTED.
+A001 is preserved as a pre-formation safe failure: `MANIFEST_CURRENT_LIFECYCLE_STATE`.
 
-## Current Relay binding
+A002 correction:
 
 ```text
-contractRef source.vexrelay.current-contract/v1
-contractBlob b53cbac01c2deeb45fad5c32ce98e0796c04126f
-sdkHead 6f8f6f50467f5df5a542713f7dc25b82db4ac8fa
-sdkTree 96795640b01f1969da980f52d5a8ec136a8c44aa
-recipe ExactHeadSourceOwnerProof
-host macos-victor
-carrier adapter.vexlocalbridge.native-vexrelay-task-archive/v1
+continuationPlan.currentLifecycleState
+SOURCE_OWNER_PROOF_PENDING -> SOURCE_READY
 ```
 
-## Bootstrap
+A002 bootstrap:
 
 ```text
-VEXWORK-PR418-A2-SOURCE-OWNER-BOOTSTRAP-A001--sha256-dd7d211fb5cc1e1804dcadf2212c1cae745ea6491480b5843ca89ecbb382a766.zip
-sha256 dd7d211fb5cc1e1804dcadf2212c1cae745ea6491480b5843ca89ecbb382a766
-bytes 20579
-gitBlob 49d3eabb0359deb2a70b2d0261ff226b7260a7b5
+VEXWORK-PR418-A2-SOURCE-OWNER-BOOTSTRAP-A002--sha256-25c05dd8ef9c9bcdd3c468e862d960378111a95f71b98b72162ea7f3f3be31b9.zip
+sha256 25c05dd8ef9c9bcdd3c468e862d960378111a95f71b98b72162ea7f3f3be31b9
+bytes 20925
+gitBlob 2f68c712059fb38bcd691979ef95964e8001346b
 ```
 
-The bootstrap forms the actual VexLocalBridge task on the host with the current SDK package builder and real formation clock, executes it once, and publishes only the canonical outer RETURN plus receipt to:
+Canonical RETURN custody on execution:
 
 ```text
-.relay/vexwork-pr418/a001/return/
+.relay/vexwork-pr418/a002/return/
 ```
 
-On PASS: consume exact RETURN, then fresh Independent Assurance. No READY or merge effect is included.
+On PASS: consume exact RETURN -> fresh Independent Assurance.

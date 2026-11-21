@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.issue.vexwork.419",
+  "pullRequest": "github.pull.vexwork.418",
+  "candidateBase": "5adc12ac7983773a82955c4ef6d59fc386add75f",
+  "candidateHead": "c2d7edcc8b54baf2f41e3e90b6bc369937b83824",
+  "candidateTree": "fc4e733086caa40219b3b84b6985d9731503a75d",
+  "candidateBranch": "VXG-112126-localization-shared-frame-prod-preview-a001",
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexwork-pr418-a2-source-owner-a001",
+  "carrierPrefix": ".relay/vexwork-pr418/a002",
+  "predecessor": {
+    "attempt": "A001",
+    "disposition": "SAFE_FAILURE_PRE_FORMATION",
+    "error": "MANIFEST_CURRENT_LIFECYCLE_STATE",
+    "taskFormationReached": false,
+    "candidateProofReached": false
+  },
+  "correction": {
+    "field": "continuationPlan.currentLifecycleState",
+    "from": "SOURCE_OWNER_PROOF_PENDING",
+    "to": "SOURCE_READY"
+  },
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "2ceb0e35d79df3190b0ebff9f281a1cc09a518a26144530264457c4288f44c69",
+      "bytes": 2166
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "7fb4f647d392e1e50d52a7fd28f58c0a0c617252bba681a7871af9a5d76374c5",
+      "bytes": 16825
+    }
+  }
+}
