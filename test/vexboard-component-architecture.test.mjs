@@ -79,7 +79,11 @@ test('A3 formation distinguishes reused typed laws from genuinely new relationsh
     assert.ok(candidate.formation.acceptanceProofs.length > 0);
   }
 
-  assert.equal(
+    const selection = catalog.candidates.find((row) => row.candidateRef === 'candidate.component.swappable-region');
+  assert.ok(selection.formation.portableFields.includes('choiceCoverage: explicit EXHAUSTIVE / BOUNDED / UNKNOWN coverage of the declared choice set'));
+  assert.equal(selection.formation.portableFields.some((field) => field.startsWith('exhaustive:')), false);
+
+assert.equal(
     catalog.candidates.find((row) => row.candidateRef === 'candidate.component.modal-presentation').formation,
     null,
   );
@@ -117,9 +121,9 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.ok(swappableSwift.proofs.some((row) => row.proofRef === 'proof.vexlife-prod-selection-contract' && row.state === 'HELD'));
   assert.equal(swappableAndroid.state, 'SOURCE_FORMED');
   assert.ok(swappableAndroid.relationships.some((row) => row.relationRef.endsWith('default-child') && row.disposition === 'MAPPED'));
-  assert.ok(swappableAndroid.relationships.some((row) => row.relationRef.endsWith('exhaustive-choice-set') && row.disposition === 'HELD'));
+  assert.ok(swappableAndroid.relationships.some((row) => row.relationRef.endsWith('choice-coverage') && row.disposition === 'HELD' && row.target.includes('UNKNOWN')));
   assert.equal(swappableWeb.state, 'SOURCE_FORMED');
-  assert.ok(swappableWeb.relationships.some((row) => row.relationRef.endsWith('exhaustive-choice-set') && row.disposition === 'MAPPED'));
+  assert.ok(swappableWeb.relationships.some((row) => row.relationRef.endsWith('choice-coverage') && row.disposition === 'MAPPED' && row.target.includes('EXHAUSTIVE')));
   assert.ok(swappableWeb.relationships.some((row) => row.relationRef.endsWith('many-to-one-selectors') && row.disposition === 'MAPPED'));
   assert.ok(swappableWeb.proofs.some((row) => row.proofRef === 'proof.vexstream-lens-self-currentness' && row.state === 'HELD'));
 
