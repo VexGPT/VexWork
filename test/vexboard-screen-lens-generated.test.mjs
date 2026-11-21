@@ -38,6 +38,7 @@ test('the committed lens is current with its adapter, overlay and generator', ()
     'vexlife-android:main:PASS',
     'vexlife-prod:stable:PASS',
     'vexlife-prod:main:PASS',
+    'vexstream-music:stable:PASS',
     'vexstream-music:main:PASS',
   ], 'every catalog build is verified at its own pointer');
   assert.match(raw.provenance.generator, /^vexlife-android-adapter\//);
