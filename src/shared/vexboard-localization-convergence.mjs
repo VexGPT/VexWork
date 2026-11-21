@@ -10,6 +10,11 @@ export const LOCALIZATION_CONVERGENCE_DISPOSITIONS = Object.freeze([
   'KEEP_SEPARATE',
   'ALREADY_SHARED',
 ]);
+export const LOCALIZATION_CONVERGENCE_REVIEW_SCHEMA = 'vexboard.localization-convergence-review/v1';
+export const LOCALIZATION_CONVERGENCE_REVIEW_DECISIONS = Object.freeze([
+  'ACCEPT_SHARED',
+  'KEEP_SEPARATE',
+]);
 
 function fail(message) {
   throw new TypeError(`localization convergence: ${message}`);
@@ -217,6 +222,236 @@ export function analyzeLocalizationConvergence(input) {
       candidateMemberCount: groups.reduce((sum, group) => sum + group.memberCount, 0),
       alreadySharedSourceCount: shared.length,
       dispositions: Object.freeze(counts),
+    }),
+  });
+}
+
+function stableReviewRef(value, label) {
+  if (typeof value !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u.test(value)) {
+    fail(`${label} must be one stable ref`);
+  }
+  return value;
+}
+
+function reviewText(value, label) {
+  if (typeof value !== 'string' || !value.trim()) fail(`${label} must be non-empty text`);
+  return value;
+}
+
+function reviewTimestampOrNull(value) {
+  if (value === null || value === undefined) return null;
+  if (
+    typeof value !== 'string'
+    || Number.isNaN(Date.parse(value))
+    || new Date(value).toISOString() !== value
+  ) {
+    fail('reviewedAtOrNull must be canonical UTC ISO or null');
+  }
+  return value;
+}
+
+function reviewStringArray(values, label) {
+  if (!Array.isArray(values) || values.some((value) => typeof value !== 'string')) {
+    fail(`${label} must be an array of strings`);
+  }
+  return Object.freeze(uniqueSorted(values));
+}
+
+function sortedLocaleVariants(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    fail('candidate.member.localeVariants must be an object');
+  }
+  const entries = Object.entries(value);
+  if (entries.some(([localeRef, variant]) => typeof localeRef !== 'string' || typeof variant !== 'string')) {
+    fail('candidate.member.localeVariants must map locale strings to value strings');
+  }
+  return Object.freeze(Object.fromEntries(
+    entries.sort(([left], [right]) => left.localeCompare(right)),
+  ));
+}
+
+export function localizationConvergenceCandidateBinding(candidate) {
+  if (!candidate || typeof candidate !== 'object' || !Array.isArray(candidate.members) || candidate.members.length < 2) {
+    fail('candidate binding requires one convergence candidate group');
+  }
+  const members = candidate.members.map((entry) => Object.freeze({
+    subjectRef: stableReviewRef(entry.subjectRef, 'candidate.member.subjectRef'),
+    sourceStringRef: stableReviewRef(entry.sourceStringRef, 'candidate.member.sourceStringRef'),
+    formatSignature: typeof entry.formatSignature === 'string' ? entry.formatSignature : fail('candidate.member.formatSignature must be a string'),
+    mapped: typeof entry.mapped === 'boolean' ? entry.mapped : fail('candidate.member.mapped must be boolean'),
+    textRoleRefs: reviewStringArray(entry.textRoleRefs ?? [], 'candidate.member.textRoleRefs'),
+    localeVariants: sortedLocaleVariants(entry.localeVariants ?? {}),
+  })).sort(
+    (left, right) => left.subjectRef.localeCompare(right.subjectRef)
+      || left.sourceStringRef.localeCompare(right.sourceStringRef),
+  );
+  if (new Set(members.map((entry) => `${entry.subjectRef}|${entry.sourceStringRef}`)).size !== members.length) {
+    fail('candidate binding members must be unique');
+  }
+  return Object.freeze({
+    normalizedSourceValue: normalizeCandidateValue(candidate.normalizedSourceValue),
+    evidence: reviewStringArray(candidate.evidence ?? [], 'candidate.evidence'),
+    members: Object.freeze(members),
+  });
+}
+
+function candidateBindingKey(binding) {
+  return JSON.stringify(binding);
+}
+
+function normalizeReviewBinding(binding) {
+  if (!binding || typeof binding !== 'object') fail('review candidateBinding required');
+  return localizationConvergenceCandidateBinding({
+    normalizedSourceValue: binding.normalizedSourceValue,
+    evidence: Array.isArray(binding.evidence) ? binding.evidence : fail('review candidateBinding.evidence must be an array'),
+    members: Array.isArray(binding.members) ? binding.members : fail('review candidateBinding.members must be an array'),
+  });
+}
+
+export function createLocalizationConvergenceReview({
+  reviewRef,
+  candidate,
+  decision,
+  semanticGroupRefOrNull = null,
+  rationale,
+  reviewedAtOrNull = null,
+}) {
+  stableReviewRef(reviewRef, 'reviewRef');
+  if (!LOCALIZATION_CONVERGENCE_REVIEW_DECISIONS.includes(decision)) {
+    fail(`unsupported review decision ${decision}`);
+  }
+  if (!['LIKELY_SHARED', 'NEEDS_REVIEW', 'KEEP_SEPARATE'].includes(candidate?.suggestedDisposition)) {
+    fail('candidate suggestedDisposition must be one current convergence suggestion');
+  }
+  const candidateBinding = localizationConvergenceCandidateBinding(candidate);
+  if (decision === 'ACCEPT_SHARED') {
+    if (candidate.suggestedDisposition === 'KEEP_SEPARATE') {
+      fail('ACCEPT_SHARED cannot override current strong separation evidence; split/reform the candidate or resolve the evidence first');
+    }
+    stableReviewRef(semanticGroupRefOrNull, 'semanticGroupRefOrNull');
+  } else if (semanticGroupRefOrNull !== null) {
+    fail('KEEP_SEPARATE must not mint semanticGroupRefOrNull');
+  }
+  return Object.freeze({
+    schemaVersion: LOCALIZATION_CONVERGENCE_REVIEW_SCHEMA,
+    reviewRef,
+    decision,
+    candidateGroupRefAtReview: stableReviewRef(candidate.candidateGroupRef, 'candidateGroupRefAtReview'),
+    candidateBinding,
+    suggestedDispositionAtReview: candidate.suggestedDisposition,
+    semanticGroupRefOrNull,
+    rationale: reviewText(rationale, 'rationale'),
+    reviewedAtOrNull: reviewTimestampOrNull(reviewedAtOrNull),
+  });
+}
+
+export function normalizeLocalizationConvergenceReview(input) {
+  if (!input || input.schemaVersion !== LOCALIZATION_CONVERGENCE_REVIEW_SCHEMA) {
+    fail(`review schemaVersion must be ${LOCALIZATION_CONVERGENCE_REVIEW_SCHEMA}`);
+  }
+  stableReviewRef(input.reviewRef, 'reviewRef');
+  if (!LOCALIZATION_CONVERGENCE_REVIEW_DECISIONS.includes(input.decision)) {
+    fail(`unsupported review decision ${input.decision}`);
+  }
+  stableReviewRef(input.candidateGroupRefAtReview, 'candidateGroupRefAtReview');
+  if (!['LIKELY_SHARED', 'NEEDS_REVIEW', 'KEEP_SEPARATE'].includes(input.suggestedDispositionAtReview)) {
+    fail('suggestedDispositionAtReview must be one convergence suggestion');
+  }
+  const candidateBinding = normalizeReviewBinding(input.candidateBinding);
+  if (input.decision === 'ACCEPT_SHARED') {
+    stableReviewRef(input.semanticGroupRefOrNull, 'semanticGroupRefOrNull');
+  } else if ((input.semanticGroupRefOrNull ?? null) !== null) {
+    fail('KEEP_SEPARATE must not mint semanticGroupRefOrNull');
+  }
+  return Object.freeze({
+    schemaVersion: LOCALIZATION_CONVERGENCE_REVIEW_SCHEMA,
+    reviewRef: input.reviewRef,
+    decision: input.decision,
+    candidateGroupRefAtReview: input.candidateGroupRefAtReview,
+    candidateBinding,
+    suggestedDispositionAtReview: input.suggestedDispositionAtReview,
+    semanticGroupRefOrNull: input.semanticGroupRefOrNull ?? null,
+    rationale: reviewText(input.rationale, 'rationale'),
+    reviewedAtOrNull: reviewTimestampOrNull(input.reviewedAtOrNull ?? null),
+  });
+}
+
+export function applyLocalizationConvergenceReviews(analysisInput, reviewInputs = []) {
+  if (!analysisInput || analysisInput.schemaVersion !== LOCALIZATION_CONVERGENCE_ANALYSIS_SCHEMA) {
+    fail('review projection requires a Localization Convergence Analysis');
+  }
+  if (!Array.isArray(reviewInputs)) fail('reviews must be an array');
+
+  const reviews = reviewInputs.map(normalizeLocalizationConvergenceReview);
+  if (new Set(reviews.map((review) => review.reviewRef)).size !== reviews.length) {
+    fail('reviewRef must be unique');
+  }
+  const bindingKeys = reviews.map((review) => candidateBindingKey(review.candidateBinding));
+  if (new Set(bindingKeys).size !== bindingKeys.length) {
+    fail('one review decision per exact candidate binding is allowed');
+  }
+  const reviewByBinding = new Map(reviews.map((review) => [candidateBindingKey(review.candidateBinding), review]));
+  const matchedReviewRefs = new Set();
+  const candidateGroups = analysisInput.candidateGroups.map((candidate) => {
+    const key = candidateBindingKey(localizationConvergenceCandidateBinding(candidate));
+    const review = reviewByBinding.get(key) ?? null;
+    if (review?.decision === 'ACCEPT_SHARED' && candidate.suggestedDisposition === 'KEEP_SEPARATE') {
+      fail(`review ${review.reviewRef} cannot ACCEPT_SHARED current strong separation evidence`);
+    }
+    if (review) matchedReviewRefs.add(review.reviewRef);
+    return Object.freeze({
+      ...candidate,
+      review: review ? Object.freeze({
+        reviewRef: review.reviewRef,
+        decision: review.decision,
+        semanticGroupRefOrNull: review.semanticGroupRefOrNull,
+        rationale: review.rationale,
+        reviewedAtOrNull: review.reviewedAtOrNull,
+      }) : null,
+    });
+  });
+
+  const currentAcceptedReviews = candidateGroups
+    .map((candidate) => candidate.review)
+    .filter((review) => review?.decision === 'ACCEPT_SHARED');
+  const currentSemanticGroupRefs = currentAcceptedReviews.map((review) => review.semanticGroupRefOrNull);
+  if (new Set(currentSemanticGroupRefs).size !== currentSemanticGroupRefs.length) {
+    fail('semanticGroupRefOrNull must be unique across current accepted candidate bindings');
+  }
+
+  const staleReviews = reviews
+    .filter((review) => !matchedReviewRefs.has(review.reviewRef))
+    .map((review) => Object.freeze({
+      reviewRef: review.reviewRef,
+      decision: review.decision,
+      semanticGroupRefOrNull: review.semanticGroupRefOrNull,
+      status: 'STALE_REVIEW',
+      reason: 'CURRENT_CANDIDATE_BINDING_NOT_FOUND',
+    }));
+  const acceptedSemanticGroups = candidateGroups
+    .filter((candidate) => candidate.review?.decision === 'ACCEPT_SHARED')
+    .map((candidate) => Object.freeze({
+      semanticGroupRef: candidate.review.semanticGroupRefOrNull,
+      reviewRef: candidate.review.reviewRef,
+      normalizedSourceValue: candidate.normalizedSourceValue,
+      memberRefs: Object.freeze(candidate.members.map((entry) => Object.freeze({
+        subjectRef: entry.subjectRef,
+        sourceStringRef: entry.sourceStringRef,
+      }))),
+    }));
+
+  return Object.freeze({
+    schemaVersion: 'vexboard.localization-convergence-review-projection/v1',
+    analysis: analysisInput,
+    candidateGroups: Object.freeze(candidateGroups),
+    acceptedSemanticGroups: Object.freeze(acceptedSemanticGroups),
+    staleReviews: Object.freeze(staleReviews),
+    summary: Object.freeze({
+      candidateGroupCount: candidateGroups.length,
+      reviewedCandidateCount: candidateGroups.filter((candidate) => candidate.review !== null).length,
+      acceptedSemanticGroupCount: acceptedSemanticGroups.length,
+      keptSeparateCount: candidateGroups.filter((candidate) => candidate.review?.decision === 'KEEP_SEPARATE').length,
+      staleReviewCount: staleReviews.length,
     }),
   });
 }
