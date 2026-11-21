@@ -19,7 +19,13 @@
   "bootstrapZipSha256": "b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c",
   "bootstrapZipBytes": 7306,
   "members": {
-    "bootstrap/FORM-AND-RUN.command": {"sha256": "92157e801d58125d250e01a3c64ee149c1bfd9885b3ab3bbdb17a24c244c30ac", "bytes": 1799},
-    "bootstrap/form-and-run.mjs": {"sha256": "f0b793cc71e94e6577d1569a04f8f68899eaa77595c3fddbc61bf6d7db7c0002", "bytes": 14961}
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "92157e801d58125d250e01a3c64ee149c1bfd9885b3ab3bbdb17a24c244c30ac",
+      "bytes": 1799
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "f0b793cc71e94e6577d1569a04f8f68899eaa77595c3fddbc61bf6d7db7c0002",
+      "bytes": 15008
+    }
   }
 }
