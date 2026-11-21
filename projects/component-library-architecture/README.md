@@ -354,6 +354,11 @@ Stable Repeated Items — portable core
   uniqueness
   caller-owned order
 
+  current target pressure
+    SwiftUI reference  -> identity/order/duplicate failure executable compatibility PASS
+    Android Compose    -> reorder/duplicate PASS; PR #261 insert/remove test source-formed, Gradle execution owed
+    VexStream browser -> stable playlist/trash runtime identity projected; duplicate playlist-entry continuity explicitly weaker
+
   target capability dispositions
     requested visibility
     visible-item projection
@@ -373,6 +378,24 @@ Local Selection — portable core
 
 This is intentionally the **intersection of proven relationships plus explicit target differences**,
 not a union of everything one framework can do.
+
+Frame / Seam / Region pressure now spans two materially different target shapes:
+
+```text
+VexLife-Prod -> SwiftUI
+  full-span HeaderBodySeam 1:11
+  full-span BrowserCompanionSeam 1:1
+  -> proportional VStack / HStack mapping
+
+VexStream browser
+  one Frame
+  zero Seams
+  one full Region
+  -> same FRAME grammar, no one-pane special type
+```
+
+Target relation disposition now includes `NOT_APPLICABLE` so a zero-Seam specimen can say
+“seam interaction does not apply” rather than falsely claiming the target cannot support Seams.
 
 The portable contract now has a stronger implementation direction from accepted VexLife-Prod evidence:
 
