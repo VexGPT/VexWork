@@ -22,9 +22,10 @@ test('Projects is the VexBoard front door, and every canvas deep link still open
   assert.match(canvas, /'Projects is now the way in'/);
 });
 
-test('the projects page reads the Lens-subject catalog and Stable lenses, and writes nothing', () => {
+test('the projects page reads the Lens-subject catalog and each subject\'s projectable default build, and writes nothing', () => {
   assert.match(projects, /<title>VexBoard Projects<\/title>/);
   assert.match(projects, /Catalog\.normalizeLensCatalog\(await fetchJson\(`\$\{LENS_DIR\}catalog\.json`\)\)/);
+  assert.match(projects, /Catalog\.defaultBuildFor\(subject\)/);
   assert.match(projects, /Catalog\.bindLensBuildSource\(await fetchJson\(LENS_DIR \+ build\.lens\), build\)/);
   assert.doesNotMatch(projects, /localStorage\.setItem/);
   assert.equal((projects.match(/sessionStorage\.setItem\(/g) || []).length, 1, 'only the ten-minute cache of branch heads');
@@ -46,7 +47,13 @@ test('each project shows its pointers, its currency against GitHub, and how to o
   assert.match(projects, /Run npm run lens:main to move Main\./);
   assert.match(projects, /Catalog\.sourceRefFromInput\(input\.value, subject\.repository\.url\)/);
   assert.match(projects, /h\('summary', \{\}, 'Earlier canvas trials'\)/);
-  assert.match(projects, /'No Screen Lens yet'/, 'the generic NOT_BUILT renderer remains available even though current Android and Prod subjects are GENERATED');
+  assert.match(projects, /'No Screen Lens yet'/, 'the generic NOT_BUILT renderer remains available for subjects with no projectable Lens');
+  assert.match(projects, /subject\.lens\.status !== 'NOT_BUILT'/, 'GENERATED and CANDIDATE subjects share the full Lens card');
+  assert.match(projects, /subject\.lens\.status === 'NOT_BUILT'/, 'only truly unbuilt subjects use the pending card');
+  assert.match(projects, /'Screen Lens · projectable candidate'/);
+  assert.match(projects, /'Stable not accepted'/);
+  assert.match(projects, /stable \? buildRow\(subject, stable\) : unacceptedStable\(\)/);
+  assert.doesNotMatch(projects, /subject\.slug === ['"]vexstream-music['"]/, 'candidate rendering remains Product-agnostic');
   assert.match(projects, /catalog\.trials\.length \? h\('details'/);
   assert.match(projects, /href: `\.\.\/\?project=\$\{encodeURIComponent\(ref\)\}`/);
 });
