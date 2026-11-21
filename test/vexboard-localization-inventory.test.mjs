@@ -1,0 +1,185 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+
+import {
+  createLocalizationInventory,
+  localizationFormatSignature,
+  localizationOccurrencesCsv,
+  localizationStringsCsv,
+  occurrencesForString,
+  occurrencesForSurface,
+  sourceStringsForExactValue,
+  stringsForElement,
+} from '../src/shared/vexboard-localization-inventory.mjs';
+
+function inventory() {
+  return createLocalizationInventory({
+    inventoryRef: 'localization.fixture',
+    subjectRef: 'subject.fixture',
+    buildRef: 'main',
+    sourceLocale: 'en',
+    sourceSnapshot: {
+      repositoryRef: 'repo.fixture',
+      repositoryUrl: 'https://example.test/fixture',
+      commit: '0123456789012345678901234567890123456789',
+      observedAt: '2026-11-21',
+    },
+    producer: {
+      ref: 'producer.fixture.localization',
+      version: 'fixture/1',
+    },
+    sourceStrings: [
+      { sourceStringRef: 'fixture:string.settings', sourceKey: 'settings', sourceValue: 'Settings', sourcePath: 'strings.json' },
+      { sourceStringRef: 'fixture:string.settings-alt', sourceKey: 'settings-alt', sourceValue: 'Settings', sourcePath: 'strings.json' },
+      { sourceStringRef: 'fixture:string.status', sourceKey: 'status', sourceValue: '%1$d of %2$d ready', sourcePath: 'strings.json' },
+      { sourceStringRef: 'fixture:string.unmapped', sourceKey: 'unmapped', sourceValue: 'Not projected yet', sourcePath: 'strings.json' },
+    ],
+    occurrences: [
+      {
+        occurrenceRef: 'occurrence.fixture.settings.label',
+        surfaceRef: 'screen.settings',
+        screenRef: 'screen.settings',
+        elementRef: 'element.settings.button',
+        parentElementRef: 'element.settings.body',
+        elementKind: 'BUTTON',
+        bindingRole: 'LABEL',
+        textRole: null,
+        sourceStringRef: 'fixture:string.settings',
+        sourceKey: 'settings',
+        sourceValue: 'Settings',
+        sourcePath: 'Settings.kt',
+      },
+      {
+        occurrenceRef: 'occurrence.fixture.home.label',
+        surfaceRef: 'screen.home',
+        screenRef: 'screen.home',
+        elementRef: 'element.home.settings',
+        parentElementRef: 'element.home.body',
+        elementKind: 'BUTTON',
+        bindingRole: 'LABEL',
+        textRole: null,
+        sourceStringRef: 'fixture:string.settings',
+        sourceKey: 'settings',
+        sourceValue: 'Settings',
+        sourcePath: 'Home.kt',
+      },
+      {
+        occurrenceRef: 'occurrence.fixture.status.text',
+        surfaceRef: 'screen.home',
+        screenRef: 'screen.home',
+        elementRef: 'element.home.status',
+        parentElementRef: 'element.home.body',
+        elementKind: 'TEXT',
+        bindingRole: 'TEXT',
+        textRole: 'SUPPORTING',
+        sourceStringRef: 'fixture:string.status',
+        sourceKey: 'status',
+        sourceValue: '%1$d of %2$d ready',
+        sourcePath: 'Home.kt',
+      },
+      {
+        occurrenceRef: 'occurrence.fixture.alt-settings.label',
+        surfaceRef: 'screen.other',
+        screenRef: 'screen.other',
+        elementRef: 'element.other.settings',
+        parentElementRef: null,
+        elementKind: 'BUTTON',
+        bindingRole: 'LABEL',
+        textRole: null,
+        sourceStringRef: 'fixture:string.settings-alt',
+        sourceKey: 'settings-alt',
+        sourceValue: 'Settings',
+        sourcePath: 'Other.kt',
+      },
+    ],
+  });
+}
+
+test('format signature preserves explicit argument identity without guessing implicit formatter indexing', () => {
+  assert.deepEqual(localizationFormatSignature('%1$d of %2$d · %3$s').placeholders, [
+    { ordinal: 1, argumentIndex: 1, type: 'INT', token: '%1$d' },
+    { ordinal: 2, argumentIndex: 2, type: 'INT', token: '%2$d' },
+    { ordinal: 3, argumentIndex: 3, type: 'STRING', token: '%3$s' },
+  ]);
+  assert.equal(localizationFormatSignature('%1$d of %2$d · %3$s').signature, 'arg1:INT|arg2:INT|arg3:STRING');
+  assert.deepEqual(localizationFormatSignature('%s then %2$d').placeholders, [
+    { ordinal: 1, argumentIndex: null, type: 'STRING', token: '%s' },
+    { ordinal: 2, argumentIndex: 2, type: 'INT', token: '%2$d' },
+  ]);
+  assert.equal(localizationFormatSignature('100%% ready').signature, '');
+});
+
+test('inventory preserves full source catalog while mapping exact source-string identity to occurrences', () => {
+  const value = inventory();
+  assert.equal(value.schemaVersion, 'vexboard.localization-inventory/v1');
+  assert.equal(value.summary.occurrenceCount, 4);
+  assert.equal(value.summary.sourceStringCount, 4);
+  assert.equal(value.summary.mappedSourceStringCount, 3);
+  assert.equal(value.summary.unmappedSourceStringCount, 1);
+  assert.equal(value.summary.reusedSourceStringCount, 1);
+  assert.equal(value.summary.formatStringCount, 1);
+
+  const settings = value.strings.find((row) => row.sourceStringRef === 'fixture:string.settings');
+  assert.equal(settings.occurrenceRefs.length, 2);
+  assert.equal(settings.mapped, true);
+  assert.deepEqual(settings.screenRefs, ['screen.home', 'screen.settings']);
+
+  const unmapped = value.strings.find((row) => row.sourceStringRef === 'fixture:string.unmapped');
+  assert.equal(unmapped.mapped, false);
+  assert.deepEqual(unmapped.occurrenceRefs, []);
+});
+
+test('reverse queries pivot one relational inventory by string, element, surface and exact value', () => {
+  const value = inventory();
+  assert.deepEqual(
+    occurrencesForString(value, 'fixture:string.settings').map((row) => row.elementRef),
+    ['element.home.settings', 'element.settings.button'],
+  );
+  assert.deepEqual(
+    stringsForElement(value, 'element.home.status').map((row) => row.sourceStringRef),
+    ['fixture:string.status'],
+  );
+  assert.equal(occurrencesForSurface(value, 'screen.home').length, 2);
+  assert.deepEqual(
+    sourceStringsForExactValue(value, 'Settings').map((row) => row.sourceStringRef),
+    ['fixture:string.settings', 'fixture:string.settings-alt'],
+  );
+});
+
+test('occurrence referencing an absent source string fails rather than synthesizing source truth', () => {
+  assert.throws(() => createLocalizationInventory({
+    inventoryRef: 'localization.bad',
+    subjectRef: 'subject.bad',
+    sourceSnapshot: { repositoryRef: 'repo.bad', commit: 'a'.repeat(40) },
+    producer: { ref: 'producer.bad', version: 'bad/1' },
+    sourceStrings: [
+      { sourceStringRef: 'bad:string.known', sourceKey: 'known', sourceValue: 'Known', sourcePath: 'strings.json' },
+    ],
+    occurrences: [
+      {
+        occurrenceRef: 'occurrence.bad.a',
+        surfaceRef: 'screen.a',
+        screenRef: 'screen.a',
+        elementRef: 'element.a',
+        parentElementRef: null,
+        elementKind: 'BUTTON',
+        bindingRole: 'LABEL',
+        textRole: null,
+        sourceStringRef: 'bad:string.missing',
+        sourceKey: 'missing',
+        sourceValue: 'Missing',
+        sourcePath: null,
+      },
+    ],
+  }), /references unknown source string/);
+});
+
+test('CSV projections remain deterministic materialized views, including unmapped source rows', () => {
+  const value = inventory();
+  const occurrences = localizationOccurrencesCsv(value);
+  const strings = localizationStringsCsv(value);
+  assert.match(occurrences, /^occurrenceRef,surfaceRef,screenRef,elementRef,/);
+  assert.match(strings, /^sourceStringRef,sourceKey,sourceValue,sourcePath,mapped,formatSignature,/);
+  assert.match(strings, /fixture:string\.unmapped,unmapped,Not projected yet,strings\.json,false,/);
+  assert.match(strings, /fixture:string\.status,status,%1\$d of %2\$d ready,strings\.json,true,arg1:INT\|arg2:INT/);
+});
