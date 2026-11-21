@@ -427,7 +427,7 @@
         "default/initial child identity is explicit",
         "selection owner and current selected child are source-visible",
         "choices bind admitted target child refs to one or more selector refs",
-        "selection may declare exhaustive=true or truthfully remain bounded/non-exhaustive",
+        "choice-set coverage is explicit: EXHAUSTIVE / BOUNDED / UNKNOWN; one Product's direct-child topology must not be used to infer another Product's completeness",
         "a choice may realize additional nested relationships while active",
         "an outer gate may condition the whole local selection without becoming the selected child",
         "selecting a peer child does not automatically create app navigation depth"
@@ -437,7 +437,7 @@
         "selector identity must remain distinct from selected child identity",
         "multiple selectors for one target must be preserved when source owns them",
         "defaultRef must name an admitted target",
-        "exhaustive selection must not silently omit admitted choices",
+        "EXHAUSTIVE coverage must not omit admitted choices; UNKNOWN coverage must not be promoted to exhaustive",
         "switching does not fabricate screen navigation history"
       ],
       "mustNotOwn": [
@@ -535,7 +535,7 @@
         "portableFields": [
           "subjectRef: stable source container/selection subject",
           "defaultRef: explicit admitted initial/default child",
-          "exhaustive: whether the declared choices cover the complete admitted child set",
+          "choiceCoverage: explicit EXHAUSTIVE / BOUNDED / UNKNOWN coverage of the declared choice set",
           "choices: targetRef plus one-or-more selectorRefs per admitted child",
           "currentSelection: source-owned current selected-child projection/coordinate",
           "gate: optional outer presence predicate distinct from child selection",
@@ -551,18 +551,18 @@
         "targetObligations": [
           "preserve selector identity separately from selected child identity",
           "preserve multiple selectors for one selected target",
-          "preserve truthful exhaustive=false without inventing missing choices",
+          "preserve explicit choice coverage; UNKNOWN must remain unknown rather than being inferred from child count",
           "never infer default/current selection solely from target runtime visibility strings",
           "keep local selection out of app navigation history unless Product source explicitly says otherwise"
         ],
         "acceptanceProofs": [
-          "Android and VexStream source laws normalize without losing default/exhaustive/selector relationships",
+          "Android and VexStream source laws normalize without losing default/current/selector relationships while Android coverage remains UNKNOWN and VexStream preserves EXHAUSTIVE/BOUNDED",
           "current VexLife-Prod forms or binds one compiler-visible default/current local-selection contract before its SwiftUI mapping proceeds",
           "at least one second target maps local selection without creating app navigation depth",
           "many-to-one selector mapping and bounded/non-exhaustive choice sets survive round-trip projection",
           "invalid default/target/selector relationships fail closed"
         ],
-        "note": "The cross-Product law is strong enough for formation, but VexLife-Prod SwiftUI target generation remains HELD until Product source owns its default/current selection contract."
+        "note": "Android proves typed default/current local selection through SwappableContainerElement + runtime.presentation.selected(container), but does not author a coverage-completeness flag. VexStream explicitly projects exhaustive true/false. The portable formation therefore carries EXHAUSTIVE / BOUNDED / UNKNOWN choiceCoverage rather than inferring a Boolean."
       }
     },
     {
@@ -1589,10 +1589,10 @@
           "target": "Compose control activation dispatches the local selection intent"
         },
         {
-          "relationRef": "relation.local-selection.exhaustive-choice-set",
+          "relationRef": "relation.local-selection.choice-coverage",
           "disposition": "HELD",
-          "source": "Android container direct children establish admission but do not expose the VexStream-style explicit exhaustive flag",
-          "target": "do not infer an explicit exhaustive contract from Android source alone"
+          "source": "Android validates default/direct-child admission but does not author explicit coverage completeness",
+          "target": "normalized choiceCoverage = UNKNOWN until source owns stronger completeness evidence"
         }
       ],
       "proofs": [
@@ -1645,10 +1645,10 @@
           "target": "source-owned browser controls select the projected child"
         },
         {
-          "relationRef": "relation.local-selection.exhaustive-choice-set",
+          "relationRef": "relation.local-selection.choice-coverage",
           "disposition": "MAPPED",
           "source": "Screen Lens exporter projects exhaustive true/false",
-          "target": "browser selection may truthfully declare complete or bounded choice coverage"
+          "target": "normalized choiceCoverage = EXHAUSTIVE or BOUNDED"
         },
         {
           "relationRef": "relation.local-selection.many-to-one-selectors",
