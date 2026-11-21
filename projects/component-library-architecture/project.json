@@ -38,7 +38,8 @@
     "src/shared/vexboard-component-architecture.mjs",
     "github.pr.vexlife-prod.506",
     "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
-    "projects/component-library-architecture/inventory/vexstream-music.main.components.json"
+    "projects/component-library-architecture/inventory/vexstream-music.main.components.json",
+    "github.pr.vexlife-android.261"
   ],
   "formedAt": "2026-11-21T08:20:00.000Z"
 }
