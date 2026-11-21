@@ -304,7 +304,7 @@ Do not assume same-looking controls share one portable component. Group by evide
 - style/theme relationship;
 - lifecycle/platform requirements.
 
-### A3 — portable relationship / component Blueprint contract — RUNNING (formation)
+### A3 — portable relationship / component Blueprint contract — COMPLETED
 
 A3 formation does not choose one universal semantic owner.
 
@@ -480,7 +480,35 @@ UNSUPPORTED
 
 Do not generalize a component merely because two source files look similar.
 
-### A4 — target realization / adapter map — WAITING on A3
+### A4 — target realization / adapter map — RUNNING
+
+A4 starts from the accepted A3 relationship spine and **derives** realization views from the existing
+target-pressure records. It does not create a second target registry.
+
+Current derived view:
+
+~~~text
+5 accepted portable relationships
+-> 10 realization evidence records
+   5 iOS / SwiftUI
+   4 browser
+   1 Android / Compose
+
+33 mapped target relationships
+11 held / unsupported target relationships
+29 PASS proofs
+12 OWED / HELD proofs
+~~~
+
+The Component Gallery now exposes a third view:
+
+~~~text
+Source families | Architecture | Realizations
+~~~
+
+Realizations is a proof/evidence map. It preserves each exact target source coordinate, relation
+disposition and proof state. A reference compatibility PASS or source-formed mapping does **not**
+become native acceptance because it appears in the Gallery.
 
 Each target should consume accepted portable relationship objects/IR through an explicit adapter:
 
@@ -517,8 +545,8 @@ The **Gallery shell exists early** at `vexboard/components.html` so A1 has a hum
 shows observed source families and where-used truth while portable meaning is still explicitly
 unclassified.
 
-Full A5 completion still waits for A3 portable-component convergence; the early shell is not a
-shortcut that promotes Android source families into portable Blueprints.
+A3 portable convergence is complete. Full A5 completion still waits on the remaining A1 verification
+boundary; the early shell is not a shortcut that promotes source families into portable Blueprints.
 
 Build one human-facing Gallery that can pivot by:
 
@@ -691,27 +719,30 @@ repository-owned execution runs.
 
 ## Current next edge
 
-`work.vex.component-library-architecture.portable-contract` — **VERIFYING**
+work.vex.component-library-architecture.target-realizations — **RUNNING**
 
-A3's formation decisions are complete:
+A3 is terminal:
 
-```text
+~~~text
 5 ACCEPTED_PORTABLE
-1 HELD
-0 unresolved FORMATION
-```
+1 HELD Local Selection
+0 unresolved formations
+~~~
 
-Verification now checks that the catalog/Gallery/tests preserve those distinctions and that accepted
-relationships do not accidentally inherit A4/native claims.
+A4 now organizes the target side without duplicating authority:
 
-Remaining external proof debt does not change the A3 decisions:
+~~~text
+accepted portable relationship
++ existing target-pressure record
+-> derived realization evidence
+-> exact source / mapping / proof / debt
+~~~
 
-- VexLife-Android #261 repository Gradle execution remains owed as an **Android target** Stable
-  Repeater proof; Swift + exact-source VexStream already satisfy the A3 two-target mutation predicate.
-- VexLife-Prod #506 repository Kotlin 2.4.20 and Apple SwiftUI/Xcode proof remain **A4 target proof**.
-- Local Selection stays HELD until current Product source owns/binds a compiler-visible
-  default/current selection contract. Do not infer it from browser `state.view`.
+Current target proof debt remains explicit rather than blocking unrelated mappings:
 
-After A3 verification closes, the next trajectory is A4 target realization/native proof mapping—not
-more component taxonomy.
+- VexLife-Prod #506 repository Kotlin 2.4.20 proof and Apple SwiftUI/Xcode native proof are owed;
+- VexLife-Android #261 Gradle execution remains owed for its Android Stable Repeater realization;
+- Local Selection is excluded from A4 because its A3 relationship remains HELD.
 
+Continue by closing target-native proof/mapping gaps on the **accepted five relationships**, not by
+expanding the portable taxonomy or refactoring production components.
