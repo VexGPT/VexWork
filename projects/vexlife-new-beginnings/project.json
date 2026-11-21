@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.new-beginnings",
   "label": "VexLife New Beginnings",
-  "purpose": "Build a clean VexLife product in VexGPT/VexLife-Prod from an explicit nested-browser + Vex companion experience: author product semantics and stable UI identity through compiler-constrained Kotlin VexArchitecture contracts, preserve Compose as a reference manifestation, establish VexWeb through fractally scalable Frame / Seam / Region / Allocation spatial relationships, then add compiler-visible authoring and deterministic generated native web artifacts before reconnecting Vex to canonical Conversation with bounded current browser/DOM context.",
+  "purpose": "Advance VexLife-Prod as the current product ground using explicit intention and compiler-constrained relationships. Preserve the accepted semantic/Blueprint/VexWeb/Conversation foundations and evolve current Product-native capabilities from present VexLife-Prod truth; predecessor VexLife/VexLife-Android sources are provenance on demand, not standing parity or bridge destinations.",
   "rootWorkRefs": [
     "work.vexlife.new-beginnings.outcome"
   ],
@@ -110,7 +110,10 @@
     "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5",
     "human.witness.vexlife-prod.manifestation-parity-gap.20261106",
     "projects/vexlife-new-beginnings/VEXLIFE-FRESH-INSTANCE-FEATURE.md",
-    "github.pull.vexwork.316"
+    "github.pull.vexwork.316",
+    "human.direction.vexlife.new-beginnings.current-ground.20261121",
+    "github.pull.vexlife-prod.497",
+    "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
