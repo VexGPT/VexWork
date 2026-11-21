@@ -26,6 +26,8 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'HELD_SOURCE_CONTRACT').length, 1);
   assert.equal(catalog.candidates.filter((row) => row.formation).length, 6);
   assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'ACCEPTED').length, 5);
+  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'HELD').length, 1);
+  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'FORMATION').length, 0);
 });
 
 test('architecture candidates preserve the richer relationship layer above source widget kinds', () => {
@@ -71,7 +73,7 @@ test('A3 formation distinguishes reused typed laws from genuinely new relationsh
   ]);
 
   for (const candidate of formed) {
-    assert.ok(['FORMATION', 'ACCEPTED'].includes(candidate.formation.state));
+    assert.ok(['FORMATION', 'ACCEPTED', 'HELD'].includes(candidate.formation.state));
     assert.equal(candidate.formation.state === 'ACCEPTED', candidate.state === 'ACCEPTED_PORTABLE');
     assert.ok(candidate.formation.sourceOwnerRefs.length > 0);
     assert.ok(candidate.formation.portableFields.length > 0);
@@ -81,6 +83,9 @@ test('A3 formation distinguishes reused typed laws from genuinely new relationsh
   }
 
     const selection = catalog.candidates.find((row) => row.candidateRef === 'candidate.component.swappable-region');
+  assert.equal(selection.state, 'HELD');
+  assert.equal(selection.formation.state, 'HELD');
+  assert.ok(selection.formation.note.includes('current VexLife-Prod'));
   assert.ok(selection.formation.portableFields.includes('choiceCoverage: explicit EXHAUSTIVE / BOUNDED / UNKNOWN coverage of the declared choice set'));
   assert.equal(selection.formation.portableFields.some((field) => field.startsWith('exhaustive:')), false);
 
