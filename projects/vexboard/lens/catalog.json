@@ -136,7 +136,7 @@
       "subjectRef": "subject.vexstream-music",
       "slug": "vexstream-music",
       "label": "VexStream Music",
-      "summary": "The VexStream desktop Product projected from its Product-owned Screen Lens exporter into the shared VexBoard renderer. Main is projectable now; Stable remains unaccepted until lived review earns promotion.",
+      "summary": "The VexStream desktop Product projected from its Product-owned Screen Lens exporter into the shared VexBoard renderer.",
       "repositoryRef": "repo.vexstream-music",
       "repository": {
         "url": "https://github.com/vgong24/VexstreamMusic",
@@ -147,17 +147,32 @@
         "project.vexboard"
       ],
       "lens": {
-        "status": "CANDIDATE",
+        "status": "GENERATED",
         "exportedLens": "v2/projection/vexboard-screen-lens.json",
         "anyCommit": true,
         "builds": [
           {
+            "buildRef": "stable",
+            "label": "Stable",
+            "summary": "Accepted first VexStream Screen Lens projection.",
+            "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+            "lens": "vexstream-music.screen-lens.json",
+            "since": "2026-11-20",
+            "observedAt": "2026-11-20",
+            "evidence": [
+              "github.pull.vexstream-music.33",
+              "github.pull.vexwork.393",
+              "human.victor.vexstream-screen-lens-initial-acceptance-2026-11-20"
+            ],
+            "sourceBlobSha1": "a485bcbaaf290e2e539be58743074b016fede330"
+          },
+          {
             "buildRef": "main",
             "label": "Main",
-            "summary": "Current Product-owned VexStream Screen Lens on main; not yet promoted to accepted Stable.",
+            "summary": "Current Product-owned exported Screen Lens on main.",
             "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
             "branch": "main",
-            "lens": "vexstream-music.main.screen-lens.json",
+            "lens": "vexstream-music.screen-lens.json",
             "observedAt": "2026-11-20",
             "sourceBlobSha1": "a485bcbaaf290e2e539be58743074b016fede330"
           }
