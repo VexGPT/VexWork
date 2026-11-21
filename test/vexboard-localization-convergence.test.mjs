@@ -97,7 +97,7 @@ test('exact value plus compatible context remains a derived LIKELY_SHARED candid
   assert.equal(Object.hasOwn(group, 'semanticGroupRef'), false, 'derived candidate must not mint accepted semantic identity');
 });
 
-test('incompatible format signatures are a strong KEEP_SEPARATE signal', () => {
+test('cross-Product value equality remains review evidence instead of automatic sharing', () => {
   const source = inventory({
     strings: [
       { sourceStringRef: 'fixture:string.count.a', sourceKey: 'count_a', sourceValue: '%1$d items' },
@@ -121,6 +121,26 @@ test('incompatible format signatures are a strong KEEP_SEPARATE signal', () => {
     }),
   ]);
   assert.equal(cross.candidateGroups[0].suggestedDisposition, 'NEEDS_REVIEW', 'cross-Product equality remains review, not automatic sharing');
+});
+
+
+
+test('analysis rejects multiple revisions of one subject so temporal copies cannot look like duplicates', () => {
+  const left = inventory({
+    inventoryRef: 'localization.fixture.left',
+    subjectRef: 'subject.fixture',
+    strings: [{ sourceStringRef: 'fixture:string.settings', sourceKey: 'settings', sourceValue: 'Settings' }],
+  });
+  const right = inventory({
+    inventoryRef: 'localization.fixture.right',
+    subjectRef: 'subject.fixture',
+    commit: '2'.repeat(40),
+    strings: [{ sourceStringRef: 'fixture:string.settings', sourceKey: 'settings', sourceValue: 'Settings' }],
+  });
+  assert.throws(
+    () => analyzeLocalizationConvergence([left, right]),
+    /one current inventory per subject is required/,
+  );
 });
 
 test('divergent locale variants force KEEP_SEPARATE while equal variant sets remain evidence only', () => {
