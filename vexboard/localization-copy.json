@@ -43,6 +43,10 @@
     "localization.stateOpenTranslation": "Translation is still missing",
     "localization.stateDiverged": "Source changed differently",
     "localization.stateSourceRemoved": "Source string is no longer present",
-    "localization.storageUnavailable": "Browser-local Change Sets are unavailable because saved data could not be read safely."
+    "localization.storageUnavailable": "Browser-local Change Sets are unavailable because saved data could not be read safely.",
+    "localization.notConnectedTitle": "Localization isn't connected to this Lens build yet.",
+    "localization.notConnectedDetail": "Localization is part of the shared VexBoard frame for every project. Once this Product exposes its localization source through an adapter, strings, locales, locations, and Change Sets appear here.",
+    "localization.loadErrorTitle": "Localization couldn't load for this Lens build.",
+    "localization.loadErrorDetail": "The rest of Screen Lens is still available. The localization source or sidecar needs to be repaired before its strings can be inspected here."
   }
 }
