@@ -250,9 +250,23 @@ function reviewTimestampOrNull(value) {
   return value;
 }
 
+function reviewStringArray(values, label) {
+  if (!Array.isArray(values) || values.some((value) => typeof value !== 'string')) {
+    fail(`${label} must be an array of strings`);
+  }
+  return Object.freeze(uniqueSorted(values));
+}
+
 function sortedLocaleVariants(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    fail('candidate.member.localeVariants must be an object');
+  }
+  const entries = Object.entries(value);
+  if (entries.some(([localeRef, variant]) => typeof localeRef !== 'string' || typeof variant !== 'string')) {
+    fail('candidate.member.localeVariants must map locale strings to value strings');
+  }
   return Object.freeze(Object.fromEntries(
-    Object.entries(value ?? {}).sort(([left], [right]) => left.localeCompare(right)),
+    entries.sort(([left], [right]) => left.localeCompare(right)),
   ));
 }
 
@@ -264,9 +278,9 @@ export function localizationConvergenceCandidateBinding(candidate) {
     subjectRef: stableReviewRef(entry.subjectRef, 'candidate.member.subjectRef'),
     sourceStringRef: stableReviewRef(entry.sourceStringRef, 'candidate.member.sourceStringRef'),
     formatSignature: typeof entry.formatSignature === 'string' ? entry.formatSignature : fail('candidate.member.formatSignature must be a string'),
-    mapped: Boolean(entry.mapped),
-    textRoleRefs: Object.freeze(uniqueSorted(entry.textRoleRefs ?? [])),
-    localeVariants: sortedLocaleVariants(entry.localeVariants),
+    mapped: typeof entry.mapped === 'boolean' ? entry.mapped : fail('candidate.member.mapped must be boolean'),
+    textRoleRefs: reviewStringArray(entry.textRoleRefs ?? [], 'candidate.member.textRoleRefs'),
+    localeVariants: sortedLocaleVariants(entry.localeVariants ?? {}),
   })).sort(
     (left, right) => left.subjectRef.localeCompare(right.subjectRef)
       || left.sourceStringRef.localeCompare(right.sourceStringRef),
@@ -276,7 +290,7 @@ export function localizationConvergenceCandidateBinding(candidate) {
   }
   return Object.freeze({
     normalizedSourceValue: normalizeCandidateValue(candidate.normalizedSourceValue),
-    evidence: Object.freeze(uniqueSorted(candidate.evidence ?? [])),
+    evidence: reviewStringArray(candidate.evidence ?? [], 'candidate.evidence'),
     members: Object.freeze(members),
   });
 }
@@ -305,6 +319,9 @@ export function createLocalizationConvergenceReview({
   stableReviewRef(reviewRef, 'reviewRef');
   if (!LOCALIZATION_CONVERGENCE_REVIEW_DECISIONS.includes(decision)) {
     fail(`unsupported review decision ${decision}`);
+  }
+  if (!['LIKELY_SHARED', 'NEEDS_REVIEW', 'KEEP_SEPARATE'].includes(candidate?.suggestedDisposition)) {
+    fail('candidate suggestedDisposition must be one current convergence suggestion');
   }
   const candidateBinding = localizationConvergenceCandidateBinding(candidate);
   if (decision === 'ACCEPT_SHARED') {
@@ -337,6 +354,9 @@ export function normalizeLocalizationConvergenceReview(input) {
     fail(`unsupported review decision ${input.decision}`);
   }
   stableReviewRef(input.candidateGroupRefAtReview, 'candidateGroupRefAtReview');
+  if (!['LIKELY_SHARED', 'NEEDS_REVIEW', 'KEEP_SEPARATE'].includes(input.suggestedDispositionAtReview)) {
+    fail('suggestedDispositionAtReview must be one convergence suggestion');
+  }
   const candidateBinding = normalizeReviewBinding(input.candidateBinding);
   if (input.decision === 'ACCEPT_SHARED') {
     stableReviewRef(input.semanticGroupRefOrNull, 'semanticGroupRefOrNull');
