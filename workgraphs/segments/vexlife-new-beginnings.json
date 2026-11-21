@@ -464,14 +464,14 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T02:28:00.000Z",
-      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-21T16:58:00.000Z",
       "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
-      "label": "Later — source-map Settings capabilities",
-      "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
+      "label": "Historical — predecessor Settings capability mapping (retired)",
+      "purpose": "Preserve the predecessor-era Settings mapping idea as provenance only. VexLife-Prod is now the product ground, so Context Window, resources, reasoning visibility, local sources, continuity, Memory and other Settings relationships must be understood from current Product source and current rightful owners when a concrete need arises. Do not reopen the old Interface Refinement map as standing future work.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
-      "priorityClass": "NORMAL",
+      "state": "CANCELLED",
+      "priorityClass": "LOW",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexlife-prod",
@@ -479,7 +479,11 @@
       ],
       "sourceRefs": [
         "human.design.vexlife.new-beginnings.initial-engagement.20261101",
-        "project.vexlife.interface-refinement"
+        "project.vexlife.interface-refinement",
+        "human.direction.vexlife.new-beginnings.current-ground.20261121",
+        "github.pull.vexwork.424",
+        "github.commit.vexwork.828d6041152daf4ea65bb6fa280fe0588a4bbf14",
+        "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -1687,6 +1691,22 @@
         "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
       ],
       "createdAt": "2026-11-21T16:45:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.settings-capability-mapping.captured-cancelled.current-product-ground",
+      "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
+      "priorState": "CAPTURED",
+      "nextState": "CANCELLED",
+      "reason": "The predecessor-era Settings source-map is no longer a useful standing future task. VexLife-Prod is current ground; any future Settings work must be newly admitted from current Product truth and its current owners rather than reviving the old Interface Refinement mapping.",
+      "actorRef": "actor.victor.vexlife-new-beginnings.current-ground",
+      "sourceRefs": [
+        "human.direction.vexlife.new-beginnings.current-ground.20261121",
+        "github.pull.vexwork.424",
+        "github.commit.vexwork.828d6041152daf4ea65bb6fa280fe0588a4bbf14",
+        "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
+      ],
+      "createdAt": "2026-11-21T16:58:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -1710,7 +1730,9 @@
     "github.pull.vexwork.316",
     "human.direction.vexlife.new-beginnings.current-ground.20261121",
     "github.pull.vexlife-prod.497",
-    "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
+    "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a",
+    "github.pull.vexwork.424",
+    "github.commit.vexwork.828d6041152daf4ea65bb6fa280fe0588a4bbf14"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }

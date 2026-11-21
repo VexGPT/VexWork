@@ -16341,12 +16341,12 @@
         },
         {
           "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
-          "label": "Later — source-map Settings capabilities",
-          "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
+          "label": "Historical — predecessor Settings capability mapping (retired)",
+          "purpose": "Preserve the predecessor-era Settings mapping idea as provenance only. VexLife-Prod is now the product ground, so Context Window, resources, reasoning visibility, local sources, continuity, Memory and other Settings relationships must be understood from current Product source and current rightful owners when a concrete need arises. Do not reopen the old Interface Refinement map as standing future work.",
           "workClass": "POTENTIAL",
-          "state": "CAPTURED",
+          "state": "CANCELLED",
           "workDisposition": "PARKED",
-          "priorityClass": "NORMAL",
+          "priorityClass": "LOW",
           "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [],
@@ -16356,15 +16356,34 @@
           ],
           "sourceRefs": [
             "human.design.vexlife.new-beginnings.initial-engagement.20261101",
-            "project.vexlife.interface-refinement"
+            "project.vexlife.interface-refinement",
+            "human.direction.vexlife.new-beginnings.current-ground.20261121",
+            "github.pull.vexwork.424",
+            "github.commit.vexwork.828d6041152daf4ea65bb6fa280fe0588a4bbf14",
+            "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-02T02:28:00.000Z",
-          "updatedAt": "2026-11-02T02:28:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-21T16:58:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.settings-capability-mapping.captured-cancelled.current-product-ground",
+              "priorState": "CAPTURED",
+              "nextState": "CANCELLED",
+              "reason": "The predecessor-era Settings source-map is no longer a useful standing future task. VexLife-Prod is current ground; any future Settings work must be newly admitted from current Product truth and its current owners rather than reviving the old Interface Refinement mapping.",
+              "actorRef": "actor.victor.vexlife-new-beginnings.current-ground",
+              "sourceRefs": [
+                "human.direction.vexlife.new-beginnings.current-ground.20261121",
+                "github.pull.vexwork.424",
+                "github.commit.vexwork.828d6041152daf4ea65bb6fa280fe0588a4bbf14",
+                "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
+              ],
+              "createdAt": "2026-11-21T16:58:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.new-beginnings.local-runtime-foundation",
@@ -17688,8 +17707,7 @@
           "laneRef": "lane.work.intake",
           "label": "Intake",
           "workRefs": [
-            "work.vexlife.new-beginnings.fresh-instance",
-            "work.vexlife.new-beginnings.later.settings-capability-mapping"
+            "work.vexlife.new-beginnings.fresh-instance"
           ]
         },
         {
@@ -17759,19 +17777,20 @@
           "label": "Archive",
           "workRefs": [
             "work.vexlife.new-beginnings.evolution-live-bridge",
-            "work.vexlife.new-beginnings.experience-manifestation-parity"
+            "work.vexlife.new-beginnings.experience-manifestation-parity",
+            "work.vexlife.new-beginnings.later.settings-capability-mapping"
           ]
         }
       ],
       "summary": {
         "workItemCount": 22,
-        "openWorkItemCount": 6,
+        "openWorkItemCount": 5,
         "outcomeCount": 1,
         "taskCount": 19,
         "defectCount": 0,
         "potentialCount": 2,
         "needsHumanCount": 0,
-        "completedCount": 16
+        "completedCount": 17
       },
       "rootItems": [
         {
@@ -30716,34 +30735,6 @@
             "createdAt": "2026-11-03T09:22:02.000Z"
           }
         ],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
-        "label": "Later — source-map Settings capabilities",
-        "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "NORMAL",
-        "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexlife-prod",
-          "repo.vexlife"
-        ],
-        "sourceRefs": [
-          "human.design.vexlife.new-beginnings.initial-engagement.20261101",
-          "project.vexlife.interface-refinement"
-        ],
-        "formationProcessRefOrNull": null,
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-02T02:28:00.000Z",
-        "updatedAt": "2026-11-02T02:28:00.000Z",
-        "transitionHistory": [],
         "graphRef": "workgraph.vexwork.foundation"
       },
       {
