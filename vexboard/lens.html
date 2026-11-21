@@ -1351,6 +1351,34 @@ function applyStaticColorMode(doc, view) {
   if (option.attributeValue === null) doc.documentElement.removeAttribute(colorMode.attribute);
   else doc.documentElement.setAttribute(colorMode.attribute, option.attributeValue);
 }
+const STATIC_LOCALIZATION_BINDINGS = Object.freeze([
+  ['data-vex-text', null],
+  ['data-vex-placeholder', 'placeholder'],
+  ['data-vex-aria-label', 'aria-label'],
+  ['data-vex-title', 'title'],
+]);
+function applyStaticLocalizationPreview(doc) {
+  const inventory = state.localization.status === 'READY' ? state.localization.inventory : null;
+  if (!inventory) return;
+  const locale = state.localization.previewLocale ?? inventory.sourceLocale;
+  const localeObservation = inventory.locales.find((row) => row.localeRef === locale) ?? null;
+  doc.documentElement.lang = locale === inventory.sourceLocale || localeObservation?.completeness === 'OBSERVED_COMPLETE'
+    ? locale
+    : inventory.sourceLocale;
+  for (const [binding, attribute] of STATIC_LOCALIZATION_BINDINGS) {
+    for (const element of doc.querySelectorAll(`[${binding}]`)) {
+      const sourceKey = element.getAttribute(binding);
+      const row = inventory.strings.find((candidate) => candidate.sourceKey === sourceKey) ?? null;
+      if (!row) continue;
+      const observed = Localization.localizationValueForLocale(inventory, row.sourceStringRef, locale);
+      element.setAttribute('data-vex-lens-localization-state', observed.state);
+      if (observed.state === 'MISSING') continue;
+      const words = observed.value ?? observed.sourceValue;
+      if (attribute === null) element.textContent = words;
+      else element.setAttribute(attribute, words);
+    }
+  }
+}
 function setStaticColorMode(ref) {
   const view = currentScreen()?.view;
   const colorMode = view?.colorMode;
@@ -2798,6 +2826,7 @@ function bindStaticView(frame, expression, { interactive }) {
   const screen = currentScreen();
   const view = screen.view;
   applyStaticColorMode(doc, view);
+  applyStaticLocalizationPreview(doc);
   applyStaticViewProjection(doc, view, expression);
 
   // Structure explains presentation by observing the Product stylesheet that the browser actually
