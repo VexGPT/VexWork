@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VexBoard Component Gallery</title>
+<meta name="description" content="Browse current reusable component source families, where-used occurrences, realization evidence, localization bindings, and the gaps still awaiting portable-component convergence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f6f9;--sheet:#fff;--ink:#18213a;--muted:#5d677b;--faint:#8a93a6;--rule:#d8dde6;--rule-strong:#b9c1cf;--focus:#2f5bea;--soft:#eef2ff;--sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--focus)}button,input,select{font:inherit;color:inherit}:focus-visible{outline:2px solid var(--focus);outline-offset:2px}code,.mono{font-family:var(--mono)}
+.bar{display:flex;align-items:center;gap:12px;padding:10px max(18px,env(safe-area-inset-right,0px)) 10px max(18px,env(safe-area-inset-left,0px));background:var(--sheet);border-bottom:1px solid var(--rule)}
+.bar .brand{font-weight:600;font-size:15px;color:var(--ink);text-decoration:none}.bar .here{color:var(--muted);font-weight:500}.bar .spacer{flex:1}.bar a.nav{color:var(--muted);text-decoration:none;font-size:13px}.bar a.nav:hover{color:var(--ink);text-decoration:underline}
+.page{max-width:1240px;margin:0 auto;padding:28px max(18px,env(safe-area-inset-right,0px)) 64px max(18px,env(safe-area-inset-left,0px))}
+.intro{display:flex;gap:28px;align-items:flex-start;justify-content:space-between}.intro h1{margin:0;font-size:26px;font-weight:600;letter-spacing:-.015em}.intro p{margin:6px 0 0;color:var(--muted);max-width:74ch}.truth{font-size:12.5px;color:var(--muted);white-space:nowrap;padding-top:5px}.truth strong{color:var(--ink)}
+.boundary{margin-top:18px;padding:12px 14px;border:1px solid #c7d2fe;background:var(--soft);border-radius:12px;font-size:13px;color:#373f70}.boundary b{color:var(--ink)}
+.summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:18px}.metric{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}.metric b{display:block;font:600 20px/1.1 var(--mono)}.metric span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
+.source{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.source-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);font-size:12px}.source-chip .dot{width:7px;height:7px;border-radius:50%;background:#15803d}.source-chip code{font-size:11px;color:var(--muted)}
+.workspace{margin-top:24px}.controls{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:8px}.controls input,.controls select{height:38px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet);padding:0 11px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.match{margin:9px 0 0;color:var(--faint);font-size:12.5px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.family{width:100%;text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:15px;cursor:pointer}.family:hover{border-color:var(--rule-strong)}.family.on{border-color:var(--focus);box-shadow:0 0 0 2px color-mix(in srgb,var(--focus) 12%,transparent)}.family .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.family h2{margin:0;font-size:17px}.pill{display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;background:#fafbfc;font:10.5px var(--mono);color:var(--muted);white-space:nowrap}.family .counts{display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:11px;font-size:12px;color:var(--muted)}.family .counts b{color:var(--ink)}.family .sub{margin-top:10px;font-size:12px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.detail{margin-top:18px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px;overflow:hidden}.detail-head{padding:20px 22px;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.detail-head h2{margin:0;font-size:21px}.detail-head p{margin:5px 0 0;color:var(--muted);max-width:76ch}.facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.fact{padding:4px 8px;background:#f7f8fb;border-radius:7px;font-size:12px;color:var(--muted)}
+.table-wrap{overflow:auto}.table-wrap table{width:100%;border-collapse:collapse;min-width:980px}.table-wrap th{text-align:left;padding:9px 12px;background:#fafbfc;border-bottom:1px solid var(--rule);color:var(--faint);font-size:11.5px;font-weight:600;position:sticky;top:0}.table-wrap td{padding:10px 12px;border-bottom:1px solid #edf0f4;vertical-align:top;font-size:12.5px}.table-wrap tr:last-child td{border-bottom:0}.sub{display:block;margin-top:2px;color:var(--faint);font-size:11.5px}.value{max-width:34ch;overflow-wrap:anywhere}.open{display:inline-flex;align-items:center;justify-content:center;height:28px;padding:0 10px;border-radius:7px;background:var(--ink);color:#fff;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap}.open:hover{background:#0f1730}.empty{padding:28px;color:var(--muted)}
+footer{margin-top:28px;color:var(--faint);font-size:12.5px;max-width:90ch}
+@media(max-width:900px){.summary{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.intro{display:block}.truth{margin-top:8px}.controls{grid-template-columns:1fr 1fr}.controls input{grid-column:1/-1}}
+@media(max-width:560px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.controls input{grid-column:auto}.detail-head{display:block}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><a class="nav" href="./projects.html">Projects</a><span class="here">Components</span><span class="spacer"></span><a class="nav" href="./localization.html">Localization</a><a class="nav" href="../">VexWork</a></header>
+<main class="page" id="app"><div class="intro"><div><h1>Component Gallery</h1><p>Loading current component inventory…</p></div></div></main>
+<script type="module">
+import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
+import * as Components from '../src/shared/vexboard-component-inventory.mjs';
+
+const app=document.getElementById('app');
+const CATALOG_URL='../projects/vexboard/lens/catalog.json';
+const INVENTORY_URL='../projects/component-library-architecture/inventory/vexlife-android.main.components.json';
+const params=new URLSearchParams(location.search);
+const state={catalog:null,subject:null,inventory:null,query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null};
+
+function h(tag,attrs={},...children){const node=document.createElement(tag);for(const [key,value] of Object.entries(attrs||{})){if(value===null||value===undefined||value===false)continue;if(key==='class')node.className=value;else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);else if(key==='style')node.style.cssText=value;else node.setAttribute(key,value===true?'':String(value));}for(const child of children.flat(Infinity)){if(child===null||child===undefined||child===false)continue;node.append(child instanceof Node?child:document.createTextNode(String(child)));}return node;}
+async function fetchJson(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(url+' HTTP '+response.status);return response.json();}
+const short=(sha)=>String(sha??'').slice(0,7);
+const count=(value)=>Number(value??0).toLocaleString();
+const human=(value)=>String(value??'').toLowerCase().split(/[_-]/u).map((word)=>word?word[0].toUpperCase()+word.slice(1):word).join(' ');
+function syncUrl(){const next=new URL(location.href);next.search='';if(state.query)next.searchParams.set('q',state.query);if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);history.replaceState(null,'',next);}
+function occurrenceRows(component){return Components.occurrencesForComponent(state.inventory,component.componentRef).filter((row)=>!state.surface||row.surfaceRef===state.surface);}
+function visibleFamilies(){
+ let rows=state.query?Components.searchComponentInventory(state.inventory,state.query,{limit:500}):state.inventory.components;
+ if(state.kind)rows=rows.filter((row)=>row.kind===state.kind);
+ if(state.surface)rows=rows.filter((row)=>row.surfaceRefs.includes(state.surface));
+ return rows;
+}
+function lensHref(row){if(!row.screenRef)return null;return Catalog.lensHref(state.subject,{build:'main',screen:row.screenRef,element:row.elementRef});}
+function familyCard(component){
+ const rows=Components.occurrencesForComponent(state.inventory,component.componentRef);
+ const localized=rows.filter((row)=>row.localization.sourceStringRefs.length).length;
+ const button=h('button',{type:'button',class:'family'+(state.selected===component.componentRef?' on':'')},
+  h('div',{class:'top'},h('h2',{},human(component.kind)),h('span',{class:'pill'},'OBSERVED')),
+  h('div',{class:'counts'},h('span',{},h('b',{},count(rows.length)),' occurrences'),h('span',{},h('b',{},count(component.screenRefs.length)),' screens'),h('span',{},h('b',{},count(component.realizerSymbols.length)),' realizers'),h('span',{},h('b',{},count(localized)),' localized')),
+  h('div',{class:'sub'},component.componentRef));
+ button.onclick=()=>{state.selected=component.componentRef;syncUrl();render();requestAnimationFrame(()=>document.querySelector('.detail')?.scrollIntoView({block:'nearest'}));};
+ return button;
+}
+function tableFor(component){
+ const rows=occurrenceRows(component);
+ if(!rows.length)return h('div',{class:'empty'},'No occurrences match the current surface filter.');
+ return h('div',{class:'table-wrap'},h('table',{},
+  h('thead',{},h('tr',{},['Where used','Element','Style / role','Localization','Realization','Source',''].map((label)=>h('th',{},label)))),
+  h('tbody',{},rows.map((row)=>{
+   const href=lensHref(row);
+   return h('tr',{},
+    h('td',{},h('b',{},row.surfaceLabel),h('span',{class:'sub mono'},row.surfaceRef)),
+    h('td',{class:'value'},h('span',{},row.label),h('span',{class:'sub mono'},row.elementRef),row.childElementRefs.length?h('span',{class:'sub'},count(row.childElementRefs.length)+' direct children'):null),
+    h('td',{},row.style?h('span',{class:'pill'},row.style):h('span',{class:'sub'},'default'),row.textRole?h('span',{class:'sub'},human(row.textRole)):null,row.intent?h('span',{class:'sub value'},row.intent):null),
+    h('td',{},row.localization.sourceStringRefs.length?h('b',{},count(row.localization.sourceStringRefs)+' string '+(row.localization.sourceStringRefs.length===1?'binding':'bindings')):h('span',{class:'sub'},row.localization.state.replaceAll('_',' ').toLowerCase()),row.localization.resourceRef?h('span',{class:'sub mono'},row.localization.resourceRef):null),
+    h('td',{},row.realization.realizedBy.length?row.realization.realizedBy.slice(0,3).map((value)=>h('span',{class:'sub mono'},value)):h('span',{class:'sub'},'No direct realizer projected'),row.realization.realizedBy.length>3?h('span',{class:'sub'},'+'+(row.realization.realizedBy.length-3)+' more'):null),
+    h('td',{class:'value'},row.sourcePath?h('code',{},row.sourcePath):h('span',{class:'sub'},'Surface source not projected')),
+    h('td',{},href?h('a',{class:'open',href},'Open in Lens'):h('span',{class:'sub'},'Chrome occurrence'))
+   );
+  }))
+ ));
+}
+function detail(component){
+ const rows=Components.occurrencesForComponent(state.inventory,component.componentRef);
+ return h('section',{class:'detail'},
+  h('div',{class:'detail-head'},
+   h('div',{},h('h2',{},human(component.kind)),h('p',{},'Observed Android source family. This groups current Element-kind occurrences for discovery and where-used; it is not yet an accepted cross-platform portable component.'),
+    h('div',{class:'facts'},h('span',{class:'fact'},component.meaningState.replaceAll('_',' ').toLowerCase()),h('span',{class:'fact'},'portability: '+component.portability.toLowerCase()),h('span',{class:'fact'},count(rows.length)+' occurrences'),h('span',{class:'fact'},count(component.styles.length)+' styles'),h('span',{class:'fact'},count(component.localizationSourceStringRefs.length)+' source-string links'),h('span',{class:'fact'},'accessibility: '+component.accessibilityState.toLowerCase().replaceAll('_',' ')))),
+   h('code',{class:'mono'},component.componentRef)),
+  tableFor(component));
+}
+function render(){
+ const inventory=state.inventory;
+ const families=visibleFamilies();
+ if(state.selected&&!inventory.components.some((row)=>row.componentRef===state.selected))state.selected=null;
+ const selected=inventory.components.find((row)=>row.componentRef===state.selected)??families[0]??null;
+ if(selected&&state.selected!==selected.componentRef)state.selected=selected.componentRef;
+ const kinds=[...inventory.components.map((row)=>row.kind)].sort();
+ const surfaces=[...new Map(inventory.occurrences.map((row)=>[row.surfaceRef,row.surfaceLabel])).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
+ const search=h('input',{type:'search',value:state.query,placeholder:'Find component kind, Screen, element, style, source, or realizer','aria-label':'Search Component Gallery'});
+ search.oninput=()=>{state.query=search.value;syncUrl();render();};
+ const kind=h('select',{'aria-label':'Component kind'},h('option',{value:'',selected:!state.kind},'All component families'),kinds.map((value)=>h('option',{value,selected:state.kind===value},human(value))));
+ kind.onchange=()=>{state.kind=kind.value;syncUrl();render();};
+ const surface=h('select',{'aria-label':'Where-used surface'},h('option',{value:'',selected:!state.surface},'All Screens / surfaces'),surfaces.map(([ref,label])=>h('option',{value:ref,selected:state.surface===ref},label)));
+ surface.onchange=()=>{state.surface=surface.value;syncUrl();render();};
+ app.replaceChildren(
+  h('section',{},
+   h('div',{class:'intro'},h('div',{},h('h1',{},'Component Gallery'),h('p',{},'What Vex already knows how to build, starting with the exact current Android component/Element relationships. Browse source families and where-used now; portable component meaning and additional target realizations converge here only after cross-Product evidence earns them.')),h('div',{class:'truth'},'current Android source · ',h('strong',{},short(inventory.sourceSnapshot.commit)))),
+   h('div',{class:'boundary'},h('b',{},'A1 boundary: '),'Observed source family ≠ portable component. Android production code stays unchanged; this Gallery is a read/projection surface over existing Screen Lens + Localization truth.'),
+   h('div',{class:'summary'},
+    metric(inventory.summary.componentFamilyCount,'source families'),metric(inventory.summary.occurrenceCount,'UI occurrences'),metric(inventory.summary.screenCount,'Screens'),metric(inventory.summary.localizedOccurrenceCount,'localized occurrences'),metric(inventory.summary.realizedOccurrenceCount,'realization-linked'),metric(inventory.summary.accessibilityProjectedOccurrenceCount,'accessibility projected')),
+   h('div',{class:'source'},h('span',{class:'source-chip'},h('span',{class:'dot'}),state.subject.label,h('code',{},short(inventory.sourceSnapshot.commit))),h('span',{class:'source-chip'},'Screen Lens · ',h('code',{},inventory.sourceSnapshot.lensRef)),h('span',{class:'source-chip'},'Localization · ',h('code',{},inventory.sourceSnapshot.localizationInventoryRef)))),
+  h('section',{class:'workspace'},h('div',{class:'controls'},search,kind,surface),h('p',{class:'match'},count(families.length)+' of '+count(inventory.components.length)+' source families in this view.'),h('div',{class:'grid'},families.map(familyCard)),selected?detail(selected):h('div',{class:'empty'},'No component families match this view.')),
+  h('footer',{},'This page deliberately exposes gaps instead of filling them with assumptions. Accessibility remains “not projected” until its rightful Product source/proof is connected; portability remains “unclassified” until A2/A3 cross-Product evidence earns a portable Blueprint.'));
+}
+function metric(value,label){return h('div',{class:'metric'},h('b',{},count(value)),h('span',{},label));}
+async function boot(){
+ state.catalog=Catalog.normalizeLensCatalog(await fetchJson(CATALOG_URL));
+ state.subject=Catalog.subjectFor(state.catalog,'vexlife-android');
+ if(!state.subject)throw new Error('VexLife Android is not in the current Lens catalog.');
+ state.inventory=Components.normalizeComponentInventory(await fetchJson(INVENTORY_URL));
+ if(state.inventory.subjectRef!==state.subject.subjectRef)throw new Error('Component Inventory subject does not match Lens catalog.');
+ const main=Catalog.buildFor(state.subject,'main');
+ if(!main||main.commit!==state.inventory.sourceSnapshot.commit)throw new Error('Component Inventory is not current with Android Main Lens.');
+ render();
+}
+boot().catch((error)=>{app.innerHTML='<div class="intro"><div><h1>Component Gallery could not load.</h1><p></p></div></div>';app.querySelector('p').textContent=error?.message||String(error);});
+</script>
+</body>
+</html>
+<!-- [VXG RealForever][VEXWORK][VEXBOARD][COMPONENT-GALLERY][A1] -->
