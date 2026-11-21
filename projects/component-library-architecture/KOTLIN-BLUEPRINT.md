@@ -622,6 +622,107 @@ local-location relationship.
 This remains an A2 candidate because no second native target has yet proved which of path/depth,
 detail identity, direction and reconciliation belong in the smallest portable contract.
 
+## A3 portable-core intersection from real target pressure
+
+A3 is now using the **intersection of truthful relationships**, not the union of every target's
+capabilities.
+
+### Stable Repeated Items
+
+Android currently supports more mechanics than the SwiftUI reference:
+
+```text
+relationship                 Android       SwiftUI reference
+
+collection identity          MAPPED        MAPPED
+stable item identity         MAPPED        MAPPED
+duplicate-ref failure        MAPPED        MAPPED
+caller-owned order           MAPPED        MAPPED
+
+requested visible item       MAPPED        HELD
+visible-item projection      MAPPED        HELD
+scroll lock                  MAPPED        HELD
+content-type reuse hint      MAPPED        PLATFORM_SPECIFIC
+```
+
+Therefore the current **portable-core candidate** is only:
+
+```text
+collectionRef
+feature-owned itemRef
+item-ref uniqueness
+caller-owned order
+```
+
+The other relationships are not discarded. They remain explicit target capabilities/dispositions.
+
+```text
+TARGET A HAS MORE CAPABILITY
+!= PORTABLE CONTRACT MUST REQUIRE IT
+```
+
+### Local Selection
+
+Android and VexStream independently share:
+
+```text
+stable selection subject
+admitted child targets
+explicit default target
+typed/current local selected target
+selector -> target relationship
+local presentation != app navigation
+```
+
+VexStream adds explicit coverage semantics and many-to-one selectors:
+
+```text
+choiceCoverage
+  EXHAUSTIVE
+  BOUNDED
+
+selectorRefs[]
+  may contain more than one selector for one target
+```
+
+Android does not source-author a coverage-completeness flag, so its normalized relation is:
+
+```text
+choiceCoverage = UNKNOWN
+```
+
+not an inferred `EXHAUSTIVE`.
+
+Current portable-core formation therefore carries:
+
+```text
+subjectRef
+defaultRef
+currentSelection
+choices[]
+  targetRef
+  selectorRefs[]
+
+choiceCoverage
+  EXHAUSTIVE | BOUNDED | UNKNOWN
+
+optional gate
+optional realizes[]
+```
+
+Current VexLife-Prod has equivalent lived Conversation/Settings switching, but its default/current
+selection is still split across typed VexWeb structure and browser `state.view`. Its SwiftUI
+mapping remains held until that Product relationship becomes compiler-visible.
+
+This is the A3 method:
+
+```text
+INTERSECT TRUTH
++ PRESERVE DIFFERENCES
++ KEEP HELD MECHANICS VISIBLE
+!= LOWEST-COMMON-DENOMINATOR AMNESIA
+```
+
 ## Semantic action binding is not native event wiring
 
 A portable control should bind to stable semantic meaning, not to a framework callback body.
