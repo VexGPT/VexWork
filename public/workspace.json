@@ -29519,7 +29519,7 @@
           "label": "Analyze duplicate strings without collapsing semantic identity",
           "purpose": "Derive value-first candidate groups and cross-Product where-used evidence from the proven inventory, preserving separate source string identities while classifying likely sharing, required separation, format/locale divergence, and human/source-reviewed semantic convergence.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
@@ -29539,14 +29539,18 @@
             "work.vex.localization-architecture.android-inventory",
             "src/shared/vexboard-localization-convergence.mjs",
             "test/vexboard-localization-convergence.test.mjs",
-            "projects/localization-architecture/inventory/vexlife-android.main.localization.json"
+            "projects/localization-architecture/inventory/vexlife-android.main.localization.json",
+            "github.pull.vexwork.414",
+            "github.commit.vexwork.ca1580ce1b45045af282a4ab76b0a5c536b07db4",
+            "github.pull.vexwork.415",
+            "github.commit.vexwork.e84d14293ffaaf61814bd2c6818dbd579f08223f"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T07:20:00.000Z",
-          "updatedAt": "2026-11-21T11:25:00.000Z",
+          "updatedAt": "2026-11-21T11:51:35.001Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vex.localization-architecture.duplicate-convergence.ready.a1-complete",
@@ -29575,6 +29579,34 @@
                 "projects/localization-architecture/inventory/vexlife-android.main.localization.json"
               ],
               "createdAt": "2026-11-21T11:25:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vex.localization-architecture.duplicate-convergence.verifying.a4-postmerge",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #414 and #415 landed the exact proved A4 derived convergence analysis and explicit human/source-review contract; PR #415 merged at e84d14293ffaaf61814bd2c6818dbd579f08223f with the merge tree equal to the proved candidate tree, so verify terminal A4 state from landed source rather than branch state.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.414",
+                "github.commit.vexwork.ca1580ce1b45045af282a4ab76b0a5c536b07db4",
+                "github.pull.vexwork.415",
+                "github.commit.vexwork.e84d14293ffaaf61814bd2c6818dbd579f08223f"
+              ],
+              "createdAt": "2026-11-21T11:51:35.000Z"
+            },
+            {
+              "transitionRef": "transition.vex.localization-architecture.duplicate-convergence.completed.a4-postmerge",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A4 is landed end to end: value-first candidate groups retain distinct source identities; context/format/locale evidence derives likely/review/separate dispositions; existing one-source reuse remains distinct; and explicit human/source reviews may keep candidates separate or accept semantic groups while stale evidence invalidates current acceptance. Exact SourceOwner and fresh Assurance were clear on the unchanged #415 tree, and the post-merge Pages build/deploy succeeded. Review persistence/UI belongs to the downstream Localization Workspace rather than A4 analysis.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.414",
+                "github.commit.vexwork.ca1580ce1b45045af282a4ab76b0a5c536b07db4",
+                "github.pull.vexwork.415",
+                "github.commit.vexwork.e84d14293ffaaf61814bd2c6818dbd579f08223f"
+              ],
+              "createdAt": "2026-11-21T11:51:35.001Z"
             }
           ]
         },
@@ -29798,7 +29830,6 @@
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
-            "work.vex.localization-architecture.duplicate-convergence",
             "work.vex.localization-architecture.outcome"
           ]
         },
@@ -29830,6 +29861,7 @@
           "workRefs": [
             "work.vex.localization-architecture.android-inventory",
             "work.vex.localization-architecture.change-set-reconciliation",
+            "work.vex.localization-architecture.duplicate-convergence",
             "work.vex.localization-architecture.relational-model"
           ]
         },
@@ -29841,13 +29873,13 @@
       ],
       "summary": {
         "workItemCount": 7,
-        "openWorkItemCount": 4,
+        "openWorkItemCount": 3,
         "outcomeCount": 1,
         "taskCount": 6,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 3
+        "completedCount": 4
       },
       "rootItems": [
         {
