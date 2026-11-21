@@ -1088,7 +1088,6 @@ function localizationInventoryUrl(subject, buildRef) {
 async function loadLocalizationContext() {
   const previous = state.localization?.selectedStringRef ?? null;
   const previousLocale = state.localization?.previewLocale ?? null;
-  const previousImport = state.localization?.lastImport ?? null;
   let changeSets;
   let changeSetStorageError = null;
   try {
@@ -1108,7 +1107,7 @@ async function loadLocalizationContext() {
       previewLocale: null,
       changeSets,
       changeSetStorageError,
-      lastImport: previousImport,
+      lastImport: null,
     };
   };
   if (state.request?.mode !== 'BUILD' || !state.request.subject || !state.request.build) { reset(); return; }
@@ -1144,7 +1143,7 @@ async function loadLocalizationContext() {
         : inventory.sourceLocale,
       changeSets,
       changeSetStorageError,
-      lastImport: previousImport,
+      lastImport: null,
     };
   } catch (error) {
     reset('ERROR', error);
@@ -4218,7 +4217,6 @@ function renderLocalizationChangeSetTools() {
     type: 'file',
     accept: 'application/json,.json',
     hidden: true,
-    dataset: { localizationRef: LOCALIZATION_UI_REFS.importChangeSet },
   });
   fileInput.addEventListener('change', async () => {
     const file = fileInput.files?.[0] ?? null;
@@ -4251,6 +4249,7 @@ function renderLocalizationChangeSetTools() {
       class: 'tool',
       type: 'button',
       disabled: Boolean(state.localization.changeSetStorageError),
+      dataset: { localizationRef: LOCALIZATION_UI_REFS.importChangeSet },
       onclick: () => fileInput.click(),
     }, localizationText('localization.importChangeSet')),
     fileInput);
