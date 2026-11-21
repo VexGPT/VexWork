@@ -562,7 +562,7 @@
           "many-to-one selector mapping and bounded/non-exhaustive choice sets survive round-trip projection",
           "invalid default/target/selector relationships fail closed"
         ],
-        "note": "Cross-Product core is now explicit: stable subject, admitted child targets, default/current local selection and selector-to-target binding recur across Android/VexStream. Choice coverage is EXHAUSTIVE / BOUNDED / UNKNOWN; VexLife-Prod SwiftUI remains HELD until Product source owns its default/current selection contract."
+        "note": "Local Selection now has executable source evidence on Android and VexStream: Android enforces Screen-local mutation boundaries; VexStream proves default/transition/reselect/unknown-negative behavior plus byte-regenerable coverage/gate/selector projection. Android still owes a dedicated positive runtime selection unit test, and current VexLife-Prod SwiftUI remains HELD until Product source owns its default/current selection contract."
       }
     },
     {
@@ -1630,6 +1630,16 @@
           "proofRef": "proof.android-selection-no-screen-depth",
           "state": "PASS",
           "note": "The typed SwapTo relationship is presentation-local rather than Screen navigation in the observed Android architecture."
+        },
+        {
+          "proofRef": "proof.android-cross-screen-local-selection-negative",
+          "state": "PASS",
+          "note": "Current BlueprintRegistryTest proves a local SwapTo intent cannot mutate a Swappable container owned by another Screen."
+        },
+        {
+          "proofRef": "proof.android-local-selection-positive-runtime",
+          "state": "OWED",
+          "note": "Current source exposes SwappableContainerElement.defaultChild, SwapTo and runtime.presentation.selected(container), but the observed unit suite does not contain one dedicated positive local-selection runtime mutation test."
         }
       ],
       "note": "Android proves default/local peer selection and typed control intent. VexStream adds explicit exhaustive/bounded selection and many-to-one selector pressure."
@@ -1703,6 +1713,31 @@
           "proofRef": "proof.vexstream-lens-self-currentness",
           "state": "HELD",
           "note": "The checked-in VexStream Lens omits its own commit/observedAt; VexBoard binds exact currentness externally through the Lens catalog."
+        },
+        {
+          "proofRef": "proof.vexstream-discover-default",
+          "state": "PASS",
+          "note": "discover-navigation.test.mjs proves Discover starts on the source-owned PC default."
+        },
+        {
+          "proofRef": "proof.vexstream-selection-transitions",
+          "state": "PASS",
+          "note": "discover-navigation.test.mjs proves PC/YouTube/Explore selection publishes current local location while remaining independent from feature truth ownership."
+        },
+        {
+          "proofRef": "proof.vexstream-reselect-stability",
+          "state": "PASS",
+          "note": "Reselecting the current Discover mode produces no duplicate projection emission."
+        },
+        {
+          "proofRef": "proof.vexstream-unknown-selection-negative",
+          "state": "PASS",
+          "note": "Unknown Discover mode fails instead of inventing Product navigation."
+        },
+        {
+          "proofRef": "proof.vexstream-selection-projectability",
+          "state": "PASS",
+          "note": "vexboard-screen-lens-export.test.mjs proves byte-regenerable SELECTION projection with defaultRef, exhaustive/bounded coverage, gates, selectorRefs and many-to-one selector mappings."
         }
       ],
       "note": "VexStream is the second materially different Product witness for local selection and adds exhaustive/bounded choice sets, many-to-one selectors and outer-gate separation."
