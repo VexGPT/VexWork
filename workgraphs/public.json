@@ -5804,7 +5804,7 @@
       "label": "Define exportable Localization Change Sets and source reconciliation",
       "purpose": "Represent requested string/translation changes as a mutable working overlay over exact observed source, support truthful browser-local persistence plus deterministic export/import for team sharing, and derive SATISFIED/OPEN/DIVERGED/REMOVED state by reconciling expected values against fresh Product source rather than maintaining a second manual completion ledger.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "dependencyRefs": [
         "work.vex.localization-architecture.android-inventory"
       ],
@@ -5816,9 +5816,18 @@
         "work.vex.localization-architecture.android-inventory",
         "vexboard-reader.js",
         "src/shared/vexboard-localization-change-set.mjs",
-        "test/vexboard-localization-change-set.test.mjs"
+        "test/vexboard-localization-change-set.test.mjs",
+        "vexboard/lens.html",
+        "vexboard/localization-copy.json",
+        "test/vexboard-lens-ui.test.mjs",
+        "github.pull.vexwork.410",
+        "github.commit.vexwork.ba63cc084bcf3a67eaa6de50a0752c9ae056b7a2",
+        "github.pull.vexwork.411",
+        "github.commit.vexwork.a7c2f2cc7818a7f96e1cfc9ae5d3a48b57074b30",
+        "github.pull.vexwork.412",
+        "github.commit.vexwork.00d23839381799f922851272d53bf3de3ad59fa0"
       ],
-      "updatedAt": "2026-11-21T10:34:45.001Z"
+      "updatedAt": "2026-11-21T11:17:43.001Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -16701,6 +16710,42 @@
         "test/vexboard-localization-change-set.test.mjs"
       ],
       "createdAt": "2026-11-21T10:34:45.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.change-set-reconciliation.verifying.a3-postmerge",
+      "workRef": "work.vex.localization-architecture.change-set-reconciliation",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #410, #411 and #412 landed the exact proved A3 relationship contract, browser-local persistence/interchange and contextual authoring UI; PR #412 merged at 00d23839381799f922851272d53bf3de3ad59fa0 with the merge tree equal to the proved candidate tree, so verify terminal A3 state from landed source rather than branch state.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.410",
+        "github.commit.vexwork.ba63cc084bcf3a67eaa6de50a0752c9ae056b7a2",
+        "github.pull.vexwork.411",
+        "github.commit.vexwork.a7c2f2cc7818a7f96e1cfc9ae5d3a48b57074b30",
+        "github.pull.vexwork.412",
+        "github.commit.vexwork.00d23839381799f922851272d53bf3de3ad59fa0"
+      ],
+      "createdAt": "2026-11-21T11:17:43.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.localization-architecture.change-set-reconciliation.completed.a3-postmerge",
+      "workRef": "work.vex.localization-architecture.change-set-reconciliation",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A3 is landed end to end: current Product inventory remains observed truth; Change Sets preserve requested truth; browser persistence is private; deterministic export/import is fingerprint-bound; contextual authoring uses the shared contract; and imported intent reconciles against current source. Exact SourceOwner and fresh Assurance were clear on the unchanged PR #412 tree, and the post-merge Pages build/deploy succeeded. Product/source writeback remains outside A3.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.410",
+        "github.commit.vexwork.ba63cc084bcf3a67eaa6de50a0752c9ae056b7a2",
+        "github.pull.vexwork.411",
+        "github.commit.vexwork.a7c2f2cc7818a7f96e1cfc9ae5d3a48b57074b30",
+        "github.pull.vexwork.412",
+        "github.commit.vexwork.00d23839381799f922851272d53bf3de3ad59fa0"
+      ],
+      "createdAt": "2026-11-21T11:17:43.001Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
