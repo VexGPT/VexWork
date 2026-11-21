@@ -669,12 +669,32 @@ The predecessor **Action Vessel** remains a valuable later convergence target be
 explicit trigger/menu/status/resize slots and platform bindings. Do not collapse it into current
 Quick Actions merely because both can manifest as an action group.
 
-After the Quick Actions adapter proves the construction loop, the next stronger pressures remain:
+The second pressure is now formed too:
 
-1. **Stable Repeater** — dynamic identity + visibility;
-2. **Swappable Region** — local selection without navigation depth;
-3. **Context Dock** — multi-axis native presentation while feature meaning remains external;
-4. **Action Vessel convergence** — determine whether current Quick Actions and the predecessor
+```text
+ConversationTimeline collection
++ durable Conversation messageRef / eventRef / sequence
+        ↓
+SwiftUI stable repeater reference
+        ↓
+Identifiable.id / ForEach / View.id
+
+requested visible item     HELD
+visible-item projection    HELD
+scroll lock                HELD
+content-type reuse hint    PLATFORM_SPECIFIC
+```
+
+This matters because the adapter does not need VexWeb to discover stable item identity. It composes
+the Product Blueprint collection coordinate with Conversation-owned runtime identity. That is direct
+evidence that a future component compiler should compose **rightful typed owners**, not force every
+relationship through one universal intermediate owner.
+
+After Quick Actions + Stable Repeater prove the construction loop, the next stronger pressures remain:
+
+1. **Swappable Region** — local selection without navigation depth;
+2. **Context Dock** — multi-axis native presentation while feature meaning remains external;
+3. **Action Vessel convergence** — determine whether current Quick Actions and the predecessor
    platform-adaptive vessel share portable meaning or merely family resemblance.
 
 A successful portable threshold eventually needs:
