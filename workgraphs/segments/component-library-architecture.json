@@ -229,9 +229,12 @@
         "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
         "projects/component-library-architecture/component-architecture-catalog.json",
         "github.pr.vexlife-prod.506",
-        "github.pr.vexlife-android.261"
+        "github.pr.vexlife-android.261",
+        "src/shared/vexboard-component-architecture.mjs",
+        "test/vexboard-component-architecture.test.mjs",
+        "vexboard/components.html"
       ],
-      "updatedAt": "2026-11-21T19:32:00.000Z"
+      "updatedAt": "2026-11-21T19:36:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
