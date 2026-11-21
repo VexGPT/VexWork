@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.issue.vexwork.400",
+  "pullRequest": "github.pull.vexwork.399",
+  "candidateBase": "27e325f211752552602fee6b994676ff22d1be61",
+  "candidateHead": "e5d2076045e3b9b965b1899ac6cb6623346ced9c",
+  "candidateTree": "15e3b0f9ef751181f2890b6197325c773da52054",
+  "candidateBranch": "VXG-112026-localization-architecture-project-a001",
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexwork-pr399-source-owner-a002",
+  "carrierPrefix": ".relay/vexwork-pr399/a002",
+  "bootstrapZipSha256": "3c7d1482a077507c64a013fbe841b2015829a270523e5bd3e6ba55584116c270",
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "514765c69816f26c48483a6b146c55210e16c4f2ba11a59ff02523cffb4d999c",
+      "bytes": 1799
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "201c8b1899c5a69cf7606e78bc42c30e24bcaf9d90947d278908323f7916f316",
+      "bytes": 14776
+    }
+  }
+}
