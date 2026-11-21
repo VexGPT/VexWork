@@ -135,7 +135,7 @@ proof
 
 Durable architecture: [ARCHITECTURE.md](./ARCHITECTURE.md).
 
-### A1 — Android Gallery / component inventory — READY
+### A1 — Android Gallery / component inventory — RUNNING
 
 Extract current Android reusable components and occurrences into a machine-readable inventory.
 
@@ -157,6 +157,31 @@ Given a source implementation:
 ```
 
 Reuse current VexLife Android element/Screen Lens source readers where possible.
+
+Current A1 candidate now does that without changing Android production source:
+
+```text
+current Android Main Screen Lens
++ current Android Main Localization Inventory
+-> vexboard.component-inventory/v1
+-> 15 observed source families
+-> 274 exact UI occurrences
+-> where-used + containment + style/intent + localization + realization evidence
+-> VexBoard Component Gallery
+```
+
+The first family projection is intentionally coarse:
+
+```text
+OBSERVED_SOURCE_FAMILY
++ portability=UNCLASSIFIED
+!= accepted portable component
+```
+
+The materialized inventory lives at
+`inventory/vexlife-android.main.components.json`; the deterministic builder is
+`scripts/build-component-inventory.mjs`. Production refactor opportunities discovered while
+organizing the source are recorded in [TECH-DEBT.md](./TECH-DEBT.md) rather than applied to Android.
 
 ### A2 — cross-Product component census — WAITING on A1
 
@@ -206,7 +231,14 @@ Each realization retains source coordinates, version/currentness and proof.
 
 This is not automatic source-to-source translation. A deterministic constructor/generator becomes valid only where an accepted mapping proves it.
 
-### A5 — Component Gallery / Library workspace — WAITING on A1+A3
+### A5 — Component Gallery / Library workspace — WAITING on portable convergence
+
+The **Gallery shell exists early** at `vexboard/components.html` so A1 has a human home now. It
+shows observed source families and where-used truth while portable meaning is still explicitly
+unclassified.
+
+Full A5 completion still waits for A3 portable-component convergence; the early shell is not a
+shortcut that promotes Android source families into portable Blueprints.
 
 Build one human-facing Gallery that can pivot by:
 
@@ -304,6 +336,6 @@ VEXWORK_PROJECT != IMPLEMENTATION_AUTHORITY
 
 `work.vex.component-library-architecture.android-inventory`
 
-Start from the current Android Gallery + element infrastructure and prove a useful inventory/where-used contract before designing code generators or a large Gallery UI.
+Prove the current A1 inventory builder/materialization + Component Gallery route against the exact Android Main Lens, then move the cross-Product census forward. Do not refactor Android production components from this lane; keep discovered cleanup in TECH-DEBT.md until a later source-owning refactor is admitted.
 
 <!-- [VXG RealForever][VEXWORK][COMPONENT-LIBRARY-ARCHITECTURE] -->
