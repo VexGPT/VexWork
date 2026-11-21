@@ -6,8 +6,11 @@ import {
   localizationFormatSignature,
   localizationOccurrencesCsv,
   localizationStringsCsv,
+  localizationOccurrenceTarget,
+  normalizeLocalizationInventory,
   occurrencesForString,
   occurrencesForSurface,
+  searchLocalizationStrings,
   sourceStringsForExactValue,
   stringsForElement,
 } from '../src/shared/vexboard-localization-inventory.mjs';
@@ -144,6 +147,39 @@ test('reverse queries pivot one relational inventory by string, element, surface
     sourceStringsForExactValue(value, 'Settings').map((row) => row.sourceStringRef),
     ['fixture:string.settings', 'fixture:string.settings-alt'],
   );
+});
+
+test('materialized inventory reload validates the same normalized relationship truth', () => {
+  const value = inventory();
+  const roundTrip = JSON.parse(JSON.stringify(value));
+  assert.deepEqual(normalizeLocalizationInventory(roundTrip), value);
+
+  const drift = JSON.parse(JSON.stringify(value));
+  drift.strings.find((row) => row.sourceStringRef === 'fixture:string.settings').sourceValue = 'Different';
+  assert.throws(() => normalizeLocalizationInventory(drift), /materialized inventory disagrees/);
+});
+
+test('localization search finds source identity, value and where-used coordinates without inferring semantics', () => {
+  const value = inventory();
+  assert.deepEqual(
+    searchLocalizationStrings(value, 'settings').map((row) => row.sourceStringRef),
+    ['fixture:string.settings', 'fixture:string.settings-alt'],
+  );
+  assert.deepEqual(
+    searchLocalizationStrings(value, 'screen.home').map((row) => row.sourceStringRef),
+    ['fixture:string.settings', 'fixture:string.status'],
+  );
+  assert.deepEqual(searchLocalizationStrings(value, ''), []);
+  assert.throws(() => searchLocalizationStrings(value, 'settings', { limit: 0 }), /search limit/);
+});
+
+test('occurrence target exposes the existing Screen Lens navigation coordinates only', () => {
+  const value = inventory();
+  assert.deepEqual(
+    localizationOccurrenceTarget(value, 'occurrence.fixture.settings.label'),
+    { screenRef: 'screen.settings', elementRef: 'element.settings.button' },
+  );
+  assert.throws(() => localizationOccurrenceTarget(value, 'occurrence.missing'), /unknown occurrence/);
 });
 
 test('occurrence referencing an absent source string fails rather than synthesizing source truth', () => {

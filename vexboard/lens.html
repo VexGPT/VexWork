@@ -509,6 +509,27 @@ a{color:var(--focus)}
 .legend .band b{font-weight:600}.legend .band .muted{color:var(--muted);font-size:11.5px}
 .legend .roles{display:flex;flex-wrap:wrap;gap:4px}
 .legend ul{margin:0;padding-left:18px;font-size:12.5px}.legend li{margin:2px 0}
+.localization-inspector{width:min(580px,calc(100% - 36px));padding:0}
+.localization-head{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--rule)}
+.localization-head h3{margin:0;font-size:14px;color:var(--ink)}
+.localization-head .tool{margin-left:auto}
+.localization-body{padding:12px 14px 14px}
+.localization-summary{margin:0 0 12px;color:var(--muted);font-size:12.5px}
+.localization-search{display:flex;flex-direction:column;gap:5px;margin:10px 0 12px}
+.localization-search label{font-size:11.5px;font-weight:600;color:var(--muted)}
+.localization-search input{height:34px;padding:0 10px;border:1px solid var(--rule);border-radius:8px;background:#fff;font-size:13px}
+.localization-search input:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.localization-bindings,.localization-results,.localization-occurrences{display:flex;flex-direction:column;gap:6px}
+.localization-binding,.localization-string,.localization-occurrence{width:100%;padding:8px 9px;border:1px solid var(--rule);border-radius:9px;background:#fff;text-align:left}
+.localization-binding:hover,.localization-string:hover,.localization-occurrence:hover{border-color:var(--rule-strong);background:#fbfcfd}
+.localization-string.on{border-color:var(--focus);box-shadow:0 0 0 1px var(--focus)}
+.localization-string .value,.localization-occurrence .value{display:block;margin-top:2px;color:var(--ink);font-size:12.5px}
+.localization-string code,.localization-binding code,.localization-occurrence code{font-size:10.5px;color:var(--muted);overflow-wrap:anywhere}
+.localization-meta{display:flex;flex-wrap:wrap;gap:5px 8px;margin-top:4px;color:var(--muted);font-size:11px}
+.localization-detail{margin-top:14px;padding-top:12px;border-top:1px solid var(--rule)}
+.localization-detail h4{margin:0 0 5px;font-size:13px}
+.localization-detail .source-value{margin:0 0 5px;font-size:14px}
+.localization-empty{padding:9px 0;color:var(--muted);font-size:12.5px}
 kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-width:2px;border-radius:4px;padding:0 4px;background:#fff}
 .boot{margin:12vh auto;max-width:56ch;padding:24px;color:var(--muted)}
 .boot h1{color:var(--ink);font-size:20px}
@@ -668,10 +689,23 @@ import * as Revision from '../src/shared/vexboard-screen-lens-revision.mjs';
 import * as Realization from '../src/shared/vexboard-screen-lens-realization.mjs';
 import * as Expressions from '../src/shared/vexboard-screen-lens-source-expressions.mjs';
 import * as Frames from '../src/shared/vexboard-screen-lens-frames.mjs';
+import * as Localization from '../src/shared/vexboard-localization-inventory.mjs';
 
 const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const LENS_DIR = '../projects/vexboard/lens/';
 const CATALOG_URL = `${LENS_DIR}catalog.json`;
+const LOCALIZATION_INVENTORY_DIR = '../projects/localization-architecture/inventory/';
+const LOCALIZATION_COPY_URL = './localization-copy.json';
+const LOCALIZATION_COPY_SCHEMA = 'vexboard.localization-copy/v1';
+const LOCALIZATION_UI_REFS = Object.freeze({
+  inspector: 'screen.localization.inspector',
+  open: 'element.localization.open',
+  close: 'element.localization.close',
+  search: 'element.localization.search',
+  currentElement: 'element.localization.current-element',
+  results: 'element.localization.string-results',
+  occurrences: 'element.localization.occurrence-list',
+});
 const params = new URLSearchParams(location.search);
 const app = document.getElementById('app');
 const SVG = 'http://www.w3.org/2000/svg';
@@ -811,6 +845,7 @@ async function openRequest(request, { onProgress = () => {}, announce = true } =
   state.commit = loaded.commit;
   state.stableLens = request.mode === 'BUILD' && request.build.buildRef === 'stable' ? state.lens : (request.subject ? await stableLensFor(request.subject).catch(() => null) : null);
   state.compare = computeCompare();
+  await loadLocalizationContext();
   state.menu = null;
   state.layouts.clear();
   state.cameras.clear();
@@ -818,6 +853,7 @@ async function openRequest(request, { onProgress = () => {}, announce = true } =
   state.walk = Lens.createScreenWalk(state.lens, start);
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
   if (state.overlay === 'CHANGES' && !state.compare) state.overlay = null;
+  if (state.overlay === 'LOCALIZATION' && state.localization.status !== 'READY') state.overlay = null;
   if (keepElement && Lens.elementsForScreen(state.lens, start).some((element) => element.ref === keepElement)) selectElement(keepElement);
   else render();
   if (announce && request.mode === 'COMMIT') {
@@ -957,6 +993,14 @@ const state = {
   commitForm: { value: '', busy: false, progress: null, error: null, recent: null, recentError: null },
   toast: null,
   diagnostics: [],
+  localization: {
+    status: 'UNAVAILABLE',
+    inventory: null,
+    copy: null,
+    error: null,
+    query: '',
+    selectedStringRef: null,
+  },
   // Which realization context the faces show: source defaults, one source-authored example, plus
   // browser-local scenario overrides. A plain value; never persisted, never sent anywhere. The
   // expression on screen is whichever one this context equals (or a custom one).
@@ -977,6 +1021,70 @@ const state = {
   historyRestoring: false,
 };
 let refs = {};
+
+function normalizeLocalizationCopy(input) {
+  if (!input || input.schemaVersion !== LOCALIZATION_COPY_SCHEMA || input.sourceLocale !== 'en' || !input.strings || typeof input.strings !== 'object') {
+    throw new TypeError(`unsupported Localization copy source; expected ${LOCALIZATION_COPY_SCHEMA}`);
+  }
+  const required = [
+    'localization.open', 'localization.title', 'localization.summary', 'localization.close',
+    'localization.currentElement', 'localization.searchLabel', 'localization.searchPlaceholder',
+    'localization.source', 'localization.locations', 'localization.location', 'localization.locationsPlural',
+    'localization.unmapped', 'localization.noMatches', 'localization.noSelection',
+    'localization.appShell', 'localization.openLocation',
+  ];
+  for (const key of required) {
+    if (typeof input.strings[key] !== 'string' || !input.strings[key].trim()) throw new TypeError(`Localization copy missing ${key}`);
+  }
+  return Object.freeze({ schemaVersion: input.schemaVersion, sourceLocale: input.sourceLocale, strings: Object.freeze({ ...input.strings }) });
+}
+function localizationText(key) {
+  const value = state.localization.copy?.strings?.[key];
+  if (!value) throw new TypeError(`Localization copy unavailable for ${key}`);
+  return value;
+}
+function localizationInventoryUrl(subject, buildRef) {
+  return `${LOCALIZATION_INVENTORY_DIR}${subject.slug}.${buildRef}.localization.json`;
+}
+async function loadLocalizationContext() {
+  const previous = state.localization?.selectedStringRef ?? null;
+  const reset = (status = 'UNAVAILABLE', error = null) => {
+    state.localization = { status, inventory: null, copy: null, error, query: '', selectedStringRef: null };
+  };
+  if (state.request?.mode !== 'BUILD' || !state.request.subject || !state.request.build) { reset(); return; }
+
+  const url = localizationInventoryUrl(state.request.subject, state.request.build.buildRef);
+  let response;
+  try { response = await fetch(url, { cache: 'no-store' }); }
+  catch (error) { reset('ERROR', error); return; }
+  if (response.status === 404) { reset(); return; }
+  if (!response.ok) { reset('ERROR', new Error(`${url} HTTP ${response.status}`)); return; }
+
+  try {
+    const [raw, rawCopy] = await Promise.all([response.json(), fetchJson(LOCALIZATION_COPY_URL)]);
+    const inventory = Localization.normalizeLocalizationInventory(raw);
+    const copy = normalizeLocalizationCopy(rawCopy);
+    const subject = state.request.subject;
+    const build = state.request.build;
+    if (inventory.subjectRef !== subject.subjectRef) throw new TypeError(`Localization subject ${inventory.subjectRef} does not match ${subject.subjectRef}`);
+    if (inventory.buildRef !== build.buildRef) throw new TypeError(`Localization build ${inventory.buildRef} does not match ${build.buildRef}`);
+    if (inventory.sourceSnapshot.repositoryRef !== subject.repositoryRef) throw new TypeError('Localization repository does not match the current Lens subject');
+    if (inventory.sourceSnapshot.commit !== state.lens.sourceSnapshot.commit || inventory.sourceSnapshot.commit !== build.commit) {
+      throw new TypeError('Localization inventory and Screen Lens do not describe the same Product commit');
+    }
+    state.localization = {
+      status: 'READY',
+      inventory,
+      copy,
+      error: null,
+      query: '',
+      selectedStringRef: inventory.strings.some((row) => row.sourceStringRef === previous) ? previous : null,
+    };
+  } catch (error) {
+    reset('ERROR', error);
+    console.warn('Localization inventory unavailable for this exact build', error);
+  }
+}
 
 function diagnosticMessage(value){
   return String(value?.message??value??'Unknown viewer failure.');
@@ -1505,6 +1613,12 @@ function renderBar() {
     commitLink,
     renderDeltaChip(),
     renderSearch(),
+    state.localization.status === 'READY' ? h('button', {
+      class: 'tool',
+      'aria-pressed': state.overlay === 'LOCALIZATION',
+      dataset: { localizationRef: LOCALIZATION_UI_REFS.open },
+      onclick: () => { state.overlay = state.overlay === 'LOCALIZATION' ? null : 'LOCALIZATION'; render(); },
+    }, localizationText('localization.open')) : null,
     h('button', { class: 'tool', 'aria-pressed': state.overlay === 'MAP', onclick: () => { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); } }, 'Screen map'),
     state.lens.relatedBoardRefs.length ? h('button', { class: 'tool', 'aria-pressed': state.overlay === 'RELATED', onclick: () => { state.overlay = state.overlay === 'RELATED' ? null : 'RELATED'; render(); } }, `Related ${state.lens.relatedBoardRefs.length}`) : null,
     h('button', { class: 'tool', 'aria-pressed': state.overlay === 'LEGEND', onclick: () => { state.overlay = state.overlay === 'LEGEND' ? null : 'LEGEND'; render(); } }, 'Legend'),
@@ -3837,6 +3951,134 @@ function renderMap() {
     viewport,
     unreached.length ? h('div', { class: 'unreached' }, 'No projected route reaches yet:', unreached.map((screen) => h('button', { class: 'screen-chip', onclick: () => jumpTo(screen.screenRef) }, h('span', { class: `mapped ${screen.mapped}` }), screen.label))) : null);
 }
+function localizationString(sourceStringRef) {
+  return state.localization.inventory?.strings.find((row) => row.sourceStringRef === sourceStringRef) ?? null;
+}
+function selectLocalizationString(sourceStringRef) {
+  if (!localizationString(sourceStringRef)) return;
+  state.localization.selectedStringRef = sourceStringRef;
+  render();
+}
+function localizationOccurrenceLabel(occurrence) {
+  const screen = occurrence.screenRef ? Lens.screenFor(state.lens, occurrence.screenRef) : null;
+  const element = Lens.elementFor(state.lens, occurrence.elementRef);
+  return {
+    where: screen?.label ?? localizationText('localization.appShell'),
+    element: element?.label ?? occurrence.elementRef,
+  };
+}
+function openLocalizationOccurrence(occurrence) {
+  state.flashRef = occurrence.elementRef;
+  goToResult({ target: Localization.localizationOccurrenceTarget(state.localization.inventory, occurrence.occurrenceRef) });
+}
+function renderLocalizationStringDetail(row) {
+  if (!row) return h('div', { class: 'localization-empty' }, localizationText('localization.noSelection'));
+  const occurrences = Localization.occurrencesForString(state.localization.inventory, row.sourceStringRef);
+  return h('section', { class: 'localization-detail', dataset: { localizationRef: LOCALIZATION_UI_REFS.occurrences } },
+    h('h4', {}, row.sourceKey),
+    h('p', { class: 'source-value' }, row.sourceValue),
+    h('code', {}, row.sourceStringRef),
+    h('div', { class: 'localization-meta' },
+      h('span', {}, localizationText('localization.source')),
+      row.sourcePath ? h('code', {}, row.sourcePath) : null,
+      h('span', {}, `${row.occurrenceRefs.length} ${localizationText(row.occurrenceRefs.length === 1 ? 'localization.location' : 'localization.locationsPlural')}`)),
+    h('h4', { style: 'margin-top:12px' }, localizationText('localization.locations')),
+    occurrences.length
+      ? h('div', { class: 'localization-occurrences' }, occurrences.map((occurrence) => {
+          const label = localizationOccurrenceLabel(occurrence);
+          return h('button', {
+            class: 'localization-occurrence',
+            type: 'button',
+            dataset: { occurrenceRef: occurrence.occurrenceRef },
+            title: localizationText('localization.openLocation'),
+            onclick: () => openLocalizationOccurrence(occurrence),
+          },
+            h('strong', {}, label.where),
+            h('span', { class: 'value' }, label.element),
+            h('code', {}, occurrence.elementRef),
+            h('span', { class: 'localization-meta' }, [occurrence.bindingRole, occurrence.textRole].filter(Boolean).join(' · ')));
+        }))
+      : h('div', { class: 'localization-empty' }, localizationText('localization.unmapped')));
+}
+function renderLocalizationInspector() {
+  const inventory = state.localization.inventory;
+  const anchorBindings = state.anchorElementRef ? Localization.stringsForElement(inventory, state.anchorElementRef) : [];
+  const auto = !state.localization.selectedStringRef && anchorBindings.length === 1 ? anchorBindings[0] : null;
+  const selected = localizationString(state.localization.selectedStringRef) ?? auto;
+  const body = h('div', { class: 'localization-body' });
+  body.append(h('p', { class: 'localization-summary' },
+    `${localizationText('localization.summary')} ${inventory.summary.sourceStringCount} · ${inventory.summary.occurrenceCount}`));
+
+  if (state.anchorElementRef) {
+    body.append(
+      h('h3', {}, localizationText('localization.currentElement')),
+      h('code', {}, state.anchorElementRef),
+      anchorBindings.length
+        ? h('div', { class: 'localization-bindings', dataset: { localizationRef: LOCALIZATION_UI_REFS.currentElement } },
+            anchorBindings.map((row) => h('button', {
+              class: 'localization-binding',
+              type: 'button',
+              onclick: () => selectLocalizationString(row.sourceStringRef),
+            }, h('strong', {}, row.sourceValue), h('code', {}, row.sourceStringRef))))
+        : h('div', { class: 'localization-empty' }, localizationText('localization.unmapped')),
+    );
+  }
+
+  const results = h('div', { class: 'localization-results', dataset: { localizationRef: LOCALIZATION_UI_REFS.results } });
+  const input = h('input', {
+    id: 'localization-search',
+    type: 'search',
+    value: state.localization.query,
+    placeholder: localizationText('localization.searchPlaceholder'),
+    autocomplete: 'off',
+    spellcheck: 'false',
+    dataset: { localizationRef: LOCALIZATION_UI_REFS.search },
+  });
+  const refresh = () => {
+    results.replaceChildren();
+    const rows = Localization.searchLocalizationStrings(inventory, state.localization.query, { limit: 60 });
+    if (!state.localization.query.trim()) return;
+    if (!rows.length) { results.append(h('div', { class: 'localization-empty' }, localizationText('localization.noMatches'))); return; }
+    for (const row of rows) {
+      results.append(h('button', {
+        class: `localization-string${selected?.sourceStringRef === row.sourceStringRef ? ' on' : ''}`,
+        type: 'button',
+        dataset: { sourceStringRef: row.sourceStringRef },
+        onclick: () => selectLocalizationString(row.sourceStringRef),
+      },
+        h('strong', {}, row.sourceKey),
+        h('span', { class: 'value' }, row.sourceValue),
+        h('code', {}, row.sourceStringRef),
+        h('span', { class: 'localization-meta' }, `${row.occurrenceRefs.length} ${localizationText(row.occurrenceRefs.length === 1 ? 'localization.location' : 'localization.locationsPlural')}`)));
+    }
+  };
+  input.addEventListener('input', () => { state.localization.query = input.value; refresh(); });
+  body.append(
+    h('div', { class: 'localization-search' },
+      h('label', { for: 'localization-search' }, localizationText('localization.searchLabel')),
+      input),
+    results,
+    renderLocalizationStringDetail(selected),
+  );
+  refresh();
+
+  return h('aside', {
+    class: 'legend localization-inspector',
+    role: 'dialog',
+    'aria-label': localizationText('localization.title'),
+    dataset: { localizationRef: LOCALIZATION_UI_REFS.inspector },
+  },
+    h('div', { class: 'localization-head' },
+      h('h3', {}, localizationText('localization.title')),
+      h('button', {
+        class: 'tool',
+        type: 'button',
+        dataset: { localizationRef: LOCALIZATION_UI_REFS.close },
+        onclick: () => { state.overlay = null; render(); },
+      }, localizationText('localization.close'))),
+    body);
+}
+
 function renderRelatedBoards() {
   return h('aside', { class: 'legend', role: 'dialog', 'aria-label': 'Related boards' },
     h('h3', {}, 'Related boards'),
@@ -4253,6 +4495,7 @@ function render() {
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
+  if (state.overlay === 'LOCALIZATION' && state.localization.status === 'READY') main.append(renderLocalizationInspector());
   if (state.overlay === 'RELATED') main.append(renderRelatedBoards());
   if (state.overlay === 'CHANGES' && state.compare?.count) main.append(renderChanges());
   if (state.overlay === 'LEGEND') main.append(renderLegend());
@@ -4344,6 +4587,7 @@ async function boot() {
     state.stableLens = currentBuildRef() === 'stable' ? state.lens : await stableLensFor(state.request.subject).catch(() => null);
     state.compare = computeCompare();
   }
+  await loadLocalizationContext();
   if (request.notice) showToast(request.notice);
   else if (state.request.mode === 'COMMIT' && state.commit.misses.length) showToast(`${state.commit.misses.length} overlay ${state.commit.misses.length === 1 ? 'note does' : 'notes do'} not apply at ${short(state.commit.sha)}.`);
   const startScreen = params.get('screen');
