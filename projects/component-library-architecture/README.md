@@ -379,17 +379,27 @@ Local Selection — portable core
 This is intentionally the **intersection of proven relationships plus explicit target differences**,
 not a union of everything one framework can do.
 
-### First accepted portable relationship — Frame / Seam / Region
+### Accepted portable A3 spine
 
-A3 now has one accepted portable relationship:
+A3 formation decisions are now resolved:
 
 ```text
-Frame / Seam / Region / Allocation
-state = ACCEPTED_PORTABLE
-formation.state = ACCEPTED
+ACCEPTED_PORTABLE
+  Identity-addressed presentation tree
+  Typed containment / source parent-child relationships
+  Semantic control binding
+  Frame / Seam / Region / Allocation
+  Stable Repeated Items
+
+HELD
+  Local Selection
+    -> current VexLife-Prod default/current selection is split across typed source + browser state.view
+    -> production refactor explicitly deferred
 ```
 
-Acceptance is intentionally narrower than target realization:
+No A3 formation remains in an ambiguous `FORMATION` state.
+
+Each acceptance is intentionally narrower than target realization. Frame / Seam / Region illustrates the boundary:
 
 ```text
 accepted portable relationship
@@ -639,7 +649,7 @@ Current candidates include identity-addressed trees, semantic control binding, t
 swappable regions, modal presentation, stable repeaters, anchored overlays, local navigation trails,
 Context Dock, Frame/Seam/Region layout and the canonical VexLife Action Vessel.
 
-No candidate is marked accepted portable yet.
+Five candidates are now accepted portable at A3; Local Selection is explicitly held. The remaining architecture candidates stay source-influenced/evidence until future pressure earns formation.
 
 ## Permanent boundaries
 
@@ -681,30 +691,27 @@ repository-owned execution runs.
 
 ## Current next edge
 
-`work.vex.component-library-architecture.portable-contract`
+`work.vex.component-library-architecture.portable-contract` — **VERIFYING**
 
-A3 is the foreground trajectory.
+A3's formation decisions are complete:
 
 ```text
-ACCEPTED
-  Frame / Seam / Region
-
-FORMATION
-  Stable Repeated Items
-  Local Selection
-  identity / containment / control-binding reuse/generalization
-
-HELD / evidence
-  Modal
-  Local Navigation Trail
-  Anchored Overlay
-  Context Dock
-  Action Vessel / adaptive-action convergence
+5 ACCEPTED_PORTABLE
+1 HELD
+0 unresolved FORMATION
 ```
 
-Continue by closing the smallest real acceptance predicates rather than expanding the taxonomy.
-Stable Repeated Items is waiting on VexLife-Android #261 repository-owned Gradle execution for its
-second-target insert/remove proof. Local Selection remains held from current VexLife-Prod SwiftUI
-generation until Product source owns its default/current selection relationship. Production refactors
-remain outside this lane.
+Verification now checks that the catalog/Gallery/tests preserve those distinctions and that accepted
+relationships do not accidentally inherit A4/native claims.
+
+Remaining external proof debt does not change the A3 decisions:
+
+- VexLife-Android #261 repository Gradle execution remains owed as an **Android target** Stable
+  Repeater proof; Swift + exact-source VexStream already satisfy the A3 two-target mutation predicate.
+- VexLife-Prod #506 repository Kotlin 2.4.20 and Apple SwiftUI/Xcode proof remain **A4 target proof**.
+- Local Selection stays HELD until current Product source owns/binds a compiler-visible
+  default/current selection contract. Do not infer it from browser `state.view`.
+
+After A3 verification closes, the next trajectory is A4 target realization/native proof mapping—not
+more component taxonomy.
 
