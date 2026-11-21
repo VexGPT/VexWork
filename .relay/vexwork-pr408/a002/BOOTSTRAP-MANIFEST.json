@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.pull.vexwork.408",
+  "pullRequest": "github.pull.vexwork.408",
+  "candidateBase": "4b1040ab4dde983eb66dadc6c81d1dba1f93fd43",
+  "candidateHead": "90a02ba3630f35485f817194d9ba26b3e57a5d26",
+  "candidateTree": "68b93bccc30a67cee7aa7b3270825a6a22a7b090",
+  "candidateBranch": "VXG-112126-localization-inspector-a2-slice1-a001",
+  "changedPaths": [
+    "public/workspace.json",
+    "src/shared/vexboard-localization-inventory.mjs",
+    "test/vexboard-lens-ui.test.mjs",
+    "test/vexboard-localization-inventory.test.mjs",
+    "vexboard/lens.html",
+    "vexboard/localization-copy.json",
+    "workgraphs/public.json",
+    "workgraphs/segments/localization-architecture.json"
+  ],
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexwork-pr408-source-owner-a002",
+  "carrierPrefix": ".relay/vexwork-pr408/a002",
+  "priorReturnSha256": "d751a2e19ffc60718a415e3b9b32c7f7ed34b5475326c4758e254db711fec8ab",
+  "repairRef": "github.pull.vexwork.408@90a02ba3630f35485f817194d9ba26b3e57a5d26",
+  "bootstrapZip": {
+    "filename": "VEXWORK-PR408-LOCALIZATION-A2-RELAY-BOOTSTRAP-A002--sha256-52bd9273836bed661c9fda83f17fe112d3c020064a6f18f5dbf48fe152fc9d34.zip",
+    "sha256": "52bd9273836bed661c9fda83f17fe112d3c020064a6f18f5dbf48fe152fc9d34",
+    "bytes": 7473,
+    "deliveryMode": "DIGEST_BOUND_BINARY_DIRECT_TO_HUMAN"
+  },
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "400731514d125a4bb5dcb746bd262aad470182e948219b96e925ea9dfb79ccc7",
+      "bytes": 1799
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "d1f4b4cbb41e79a4f5b1638cd193dd09adf8bb7e2a7c9d2850d92667ab14b6b6",
+      "bytes": 14647
+    }
+  },
+  "proofPredicates": [
+    "npm run localization:check",
+    "node --test test/vexboard-localization-inventory.test.mjs test/vexboard-lens-ui.test.mjs",
+    "npm run lens:verify",
+    "npm run workgraph:check",
+    "npm run workspace:check",
+    "npm run review"
+  ],
+  "a001Classification": {
+    "state": "SAFE_FAILURE",
+    "firstSubstantiveFailure": "focused regression test stimulus expected the later materialized-drift error after deliberately creating an earlier source/occurrence disagreement",
+    "implementationDefectObserved": false,
+    "repair": "change the test drift stimulus to a derived summary field so it reaches the intended materialized consistency guard"
+  }
+}
