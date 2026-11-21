@@ -343,6 +343,37 @@ KEEP IN A2 EVIDENCE / HELD
   Action Vessel / Adaptive Action Group convergence
 ```
 
+### A3 portable-core intersection
+
+Target pressure has now narrowed the two new typed relationship candidates:
+
+```text
+Stable Repeated Items — portable core
+  collection identity
+  feature-owned item identity
+  uniqueness
+  caller-owned order
+
+  target capability dispositions
+    requested visibility
+    visible-item projection
+    scroll lock
+    content-type/reuse hint
+
+Local Selection — portable core
+  subject
+  admitted targets
+  default/current selection
+  selector -> target mapping
+  choiceCoverage = EXHAUSTIVE | BOUNDED | UNKNOWN
+  optional gate / realized descendants
+
+  local selection != app navigation
+```
+
+This is intentionally the **intersection of proven relationships plus explicit target differences**,
+not a union of everything one framework can do.
+
 The portable contract now has a stronger implementation direction from accepted VexLife-Prod evidence:
 
 ```text
