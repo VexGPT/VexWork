@@ -173,9 +173,21 @@ same construction relationship.
 
 An accepted portable component Blueprint should answer only what must survive a target change.
 
-The first current acceptance is the **Frame / Seam / Region / Allocation** relationship. Its
-acceptance means the relational spatial grammar has survived Product/target pressure; it does not
-promote any one renderer's geometry implementation or native proof into portable meaning.
+The current accepted A3 spine is:
+
+```text
+Identity-addressed presentation tree
+Typed containment / source parent-child relationship
+Semantic control binding
+Frame / Seam / Region / Allocation
+Stable Repeated Items
+```
+
+Local Selection remains HELD because current VexLife-Prod does not yet own one compiler-visible
+default/current selection contract and production refactoring is intentionally deferred.
+
+These acceptances mean the smallest relationship law survived Product/target pressure; they do not
+promote any one renderer implementation or native proof into portable meaning.
 
 ```text
 A3 ACCEPTED_PORTABLE
