@@ -70,10 +70,24 @@ test('explicit missing locale work target remains visible without becoming Produ
   assert.equal(coverage.find((row) => row.subjectRef === 'subject.vexlife-android').missingStringCount, 405);
   assert.equal(coverage.find((row) => row.subjectRef === 'subject.vexlife-prod').missingStringCount, 1029);
 
-  const prodStrings = filterLocalizationWorkspaceRows(projection, 'STRINGS', {
+  const privateKeptStrings = filterLocalizationWorkspaceRows(projection, 'STRINGS', {
     subjectRef: 'subject.vexlife-prod',
     localeRef: 'it',
     query: 'private-kept',
+  });
+  assert.deepEqual(
+    privateKeptStrings.map((row) => row.sourceStringRef),
+    [
+      'vexlife-prod:workspace.description.private-kept',
+      'vexlife-prod:workspace.status.private-kept',
+    ],
+    'a structured fragment remains allowed to match every distinct source identity that actually contains it',
+  );
+
+  const prodStrings = filterLocalizationWorkspaceRows(projection, 'STRINGS', {
+    subjectRef: 'subject.vexlife-prod',
+    localeRef: 'it',
+    query: 'workspace.status.private-kept',
   });
   assert.equal(prodStrings.length, 1);
   assert.equal(prodStrings[0].sourceStringRef, 'vexlife-prod:workspace.status.private-kept');
