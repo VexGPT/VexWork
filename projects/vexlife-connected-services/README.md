@@ -2,6 +2,12 @@
 
 `[VXG RealForever]`
 
+## Portfolio closeout — program complete
+
+The Connected Services program is complete. The remaining one-time human acceptance walk is retired from this historical scope; future regressions or lived release checks belong to the exact current feature/experience validation owner.
+
+The completed VCS-00 through VCS-07 history remains readable here.
+
 This is the normal fresh-instance entry for the **VexLife Connected Services** trajectory.
 
 Use this page to answer four questions quickly:

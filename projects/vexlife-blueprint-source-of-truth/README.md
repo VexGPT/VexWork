@@ -2,6 +2,10 @@
 
 `[VXG RealForever]`
 
+## Portfolio closeout — portability practicum complete
+
+The Blueprint Source of Truth practicum is complete as predecessor portability/parity evidence. The unfinished MAUI target was never required by current VexLife-Prod and is retired rather than kept as permanent low-priority backlog. Current compiler-visible architecture work proceeds through current VexArchitecture/Product scopes.
+
 ## Current disposition — predecessor proof, not the default forward lane
 
 The October Play/Pause practicum remains valuable **accepted predecessor evidence** for portability,

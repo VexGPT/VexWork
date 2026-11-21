@@ -69,7 +69,7 @@
       "label": "Human acceptance walk — connected, offline and reconnect boundaries",
       "purpose": "Give Victor one calm lived acceptance walk across the already-completed Connected Services program: same-Wi-Fi VexStream stream/seek, verified download, Desktop unavailable -> LOCAL_ONLY playback, true phone-offline playback, Android restart restoration, Desktop restart -> HUB_AND_LOCAL reconciliation without reapproval, and Tailscale/cellular Home Conversation reachability. Explicitly record away-from-home HUB_ONLY VexStream streaming as HELD_NOT_ACCEPTED unless a matching remote producer is later source-accepted. Use a VexBoard/ProcessMap presentation as a guide/projection, never as the truth or effect owner.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "CANCELLED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -93,7 +93,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-27T02:26:27.000Z",
-      "updatedAt": "2026-10-27T02:26:27.000Z"
+      "updatedAt": "2026-11-21T09:38:08.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1359,6 +1359,20 @@
         "github.issue.vexlife.899.comment.6431637903"
       ],
       "createdAt": "2026-10-27T01:42:40.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.human-acceptance-walk.ready.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.connected-services.human-acceptance-walk",
+      "priorState": "READY",
+      "nextState": "CANCELLED",
+      "reason": "The program root and VCS-00 through VCS-07 are already complete. The old one-time human acceptance walk is not a standing Product obligation; future lived regressions or release checks belong to the exact feature/experience validation scope current at that time.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "project.vexlife-prod.end-to-end-tests"
+      ],
+      "createdAt": "2026-11-21T09:38:08.000Z"
     }
   ],
   "sourceRefs": [

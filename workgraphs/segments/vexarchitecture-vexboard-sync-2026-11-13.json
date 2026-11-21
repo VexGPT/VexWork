@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-13T08:00:00.000Z",
-      "updatedAt": "2026-11-13T09:09:08.000Z",
+      "updatedAt": "2026-11-21T09:38:21.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexarchitecture.vexboard-sync.20261113.outcome",
@@ -14,7 +14,7 @@
       "label": "VexArchitecture VexBoard Sync Nov 13, 2026",
       "purpose": "Establish a repeatable VexArchitecture-to-VexBoard sanity-check trajectory that can answer, from each human-facing feature coordinate, whether Screen Lens Surface/Structure/Behavior/Depth preserves the source-proven causal/lived feature slice from intention through semantic ownership and realization, across independently-owned reality and reconciliation, back to human-facing projection—without forcing optional architecture, inventing depth, or letting truthful relationships disappear behind shallow projection.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -152,7 +152,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-13T08:00:00.000Z",
-      "updatedAt": "2026-11-13T09:14:39.000Z",
+      "updatedAt": "2026-11-21T09:38:18.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
@@ -160,7 +160,7 @@
       "label": "Form only source-proven projection repairs",
       "purpose": "From accepted audit findings, form the smallest generic VexBoard reader/composition/projection/test corrections needed so source-proven causal neighborhoods remain intelligible from a human-facing feature coordinate through rightful owners and, where source proves it, back through return/presentation. Do not mutate Android meaning for VexBoard convenience, hand-edit generated Lens JSON, add feature-specific mappings, or invent Partner/Relay/Service/Widget semantics by analogy.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexarchitecture.vexboard-sync.20261113.depth-closure-audit",
@@ -182,7 +182,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-13T08:00:00.000Z",
-      "updatedAt": "2026-11-13T09:09:25.000Z",
+      "updatedAt": "2026-11-21T09:38:19.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexarchitecture.vexboard-sync.20261113.repeatable-sync-protocol",
@@ -190,7 +190,7 @@
       "label": "Extract repeatable VexArchitecture ↔ VexBoard sync protocol",
       "purpose": "Turn the completed audit into a lightweight reusable VexArchitecture ↔ VexBoard sync route: pin architecture/source/Lens coordinates, census feature coordinates/screens/pathways, inspect extraction/composition/projection loss and rightful terminals, preserve source-proven return/human visibility, regenerate/check, and keep proof surfaces claim-specific without creating a second architecture authority.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "CANCELLED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexarchitecture.vexboard-sync.20261113.depth-closure-audit",
@@ -529,6 +529,64 @@
         "src/shared/vexboard-screen-lens-source-expressions.mjs"
       ],
       "createdAt": "2026-11-13T09:14:39.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.vexboard-sync.20261113.earned-projection-repair.running.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.earned-projection-repair",
+      "priorState": "RUNNING",
+      "nextState": "CANCELLED",
+      "reason": "The dated repair lane has been overtaken by subsequent accepted VexBoard projection/currentization work, including the completed Projection Consolidation scope. Preserve its audit evidence without leaving the Nov 13 Project active.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vexboard.projection-consolidation",
+        "project.vexboard"
+      ],
+      "createdAt": "2026-11-21T09:38:18.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.vexboard-sync.20261113.repeatable-sync-protocol.ready.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.repeatable-sync-protocol",
+      "priorState": "READY",
+      "nextState": "CANCELLED",
+      "reason": "The repeatable idea is carried forward as a low-priority VexBoard Potential so a future source epoch can earn a fresh bounded audit without keeping this dated Project permanently open.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vexboard",
+        "work.vexboard.recurring-architecture-sync"
+      ],
+      "createdAt": "2026-11-21T09:38:19.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.vexboard-sync.20261113.outcome.running.verifying.portfolio-cut-20261121-1",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The Nov 13 audit's remaining repair/protocol work has been reconciled into subsequent accepted projection work and a future-current VexBoard Potential.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vexboard.projection-consolidation",
+        "project.vexboard",
+        "work.vexboard.recurring-architecture-sync"
+      ],
+      "createdAt": "2026-11-21T09:38:20.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexarchitecture.vexboard-sync.20261113.outcome.verifying.completed.portfolio-cut-20261121-2",
+      "workRef": "work.vexarchitecture.vexboard-sync.20261113.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The Nov 13 VexArchitecture ↔ VexBoard sync is complete as a dated audit threshold. Future architecture/source epochs should form fresh bounded sync evidence rather than extending this historical Project indefinitely.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "project.vexboard",
+        "work.vexboard.recurring-architecture-sync"
+      ],
+      "createdAt": "2026-11-21T09:38:21.000Z"
     }
   ],
   "sourceRefs": [

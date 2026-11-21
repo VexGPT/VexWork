@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "updatedAt": "2026-11-21T09:38:17.000Z",
       "workDisposition": "PARKED",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
@@ -14,7 +14,7 @@
       "label": "VexLife Blueprint Source of Truth",
       "purpose": "Preserve accepted VLBSoT portability/parity proof as predecessor lineage while the unfinished MAUI/Mac target leg is parked; current VexLife construction proceeds through VexLife New Beginnings / VexLife-Prod on accepted VexArchitecture.",
       "workClass": "OUTCOME",
-      "state": "PAUSED_AT_CHECKPOINT",
+      "state": "COMPLETED",
       "priorityClass": "LOW",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -40,7 +40,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "updatedAt": "2026-11-21T09:38:09.000Z",
       "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
@@ -48,7 +48,7 @@
       "label": "Play/Pause first complete semantic circuit",
       "purpose": "Preserve the completed Play/Pause semantic/parity thresholds and the exact unfinished target-native residue as historical lineage; do not resume the MAUI/Mac leg unless that target is explicitly wanted again.",
       "workClass": "OUTCOME",
-      "state": "PAUSED_AT_CHECKPOINT",
+      "state": "CANCELLED",
       "priorityClass": "LOW",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -315,7 +315,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "updatedAt": "2026-11-21T09:38:11.000Z",
       "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
@@ -323,7 +323,7 @@
       "label": "Target-native MAUI / MediaElement source admission",
       "purpose": "Park the unfinished MAUI / MediaElement target-native source admission. It is not a prerequisite for current VexArchitecture or VexLife-Prod; reactivate only if the exact C#/MAUI target becomes a current human outcome.",
       "workClass": "TASK",
-      "state": "WAITING_RESOURCE",
+      "state": "CANCELLED",
       "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection"
@@ -349,7 +349,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "updatedAt": "2026-11-21T09:38:10.000Z",
       "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
@@ -357,7 +357,7 @@
       "label": "Lived native provider conformance",
       "purpose": "Park the lived MAUI/provider proof with its dependency. Preserve it as an exact future target proof question, not as a blocker on current VexLife construction.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "CANCELLED",
       "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission"
@@ -380,7 +380,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "updatedAt": "2026-11-21T09:38:12.000Z",
       "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.reusable-v1",
@@ -388,7 +388,7 @@
       "label": "Reusable VLBSoT v1",
       "purpose": "Preserve the reusable-method intention as predecessor lineage; current compiler-constrained semantic construction is being developed in VexLife New Beginnings rather than by resuming this paused practicum.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "CANCELLED",
       "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vexlife.blueprint-source-of-truth.play-pause-practicum"
@@ -414,7 +414,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "updatedAt": "2026-11-21T09:38:13.000Z",
       "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.total-feature-capacity",
@@ -422,7 +422,7 @@
       "label": "Whole-product total feature capacity",
       "purpose": "Preserve the whole-product portability intention as lineage. Current Origin-outward product construction is owned by VexLife New Beginnings / VexLife-Prod; do not treat this old horizon as a parallel active architecture program.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "CANCELLED",
       "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vexlife.blueprint-source-of-truth.reusable-v1"
@@ -446,7 +446,131 @@
       "effectDisposition": "NO_EFFECTS"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.play-pause-practicum.paused_at_checkpoint.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+      "priorState": "PAUSED_AT_CHECKPOINT",
+      "nextState": "CANCELLED",
+      "reason": "The practicum already preserved the portability/parity learning it was created to discover. Its unfinished native-target residue is no longer required by current VexLife construction.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vexlife.new-beginnings",
+        "project.vextreme.architecture-convergence"
+      ],
+      "createdAt": "2026-11-21T09:38:09.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof.waiting_dependencies.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "CANCELLED",
+      "reason": "The MAUI/provider lived proof belongs only to an exact future MAUI target. No current human outcome requires that target, so it is retired from this predecessor scope rather than kept as generic backlog.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project"
+      ],
+      "createdAt": "2026-11-21T09:38:10.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.play-pause.native-source-admission.waiting_resource.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
+      "priorState": "WAITING_RESOURCE",
+      "nextState": "CANCELLED",
+      "reason": "The unfinished MAUI/MediaElement target is not a current VexLife prerequisite. A future explicit MAUI outcome must form its own current target scope and evidence.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project"
+      ],
+      "createdAt": "2026-11-21T09:38:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.reusable-v1.waiting_dependencies.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.blueprint-source-of-truth.reusable-v1",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "CANCELLED",
+      "reason": "Reusable compiler-constrained semantic construction continued in accepted VexArchitecture/New Beginnings rather than by resuming this predecessor practicum.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vextreme.architecture-convergence",
+        "project.vexlife.new-beginnings"
+      ],
+      "createdAt": "2026-11-21T09:38:12.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.total-feature-capacity.waiting_dependencies.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.blueprint-source-of-truth.total-feature-capacity",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "CANCELLED",
+      "reason": "Whole-product portability is now pressure-tested through current architecture/Product Projects; the old generic horizon is retired instead of remaining parallel architecture backlog.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vextreme.architecture-convergence",
+        "project.vexlife-prod.end-to-end-tests"
+      ],
+      "createdAt": "2026-11-21T09:38:13.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.outcome.paused_at_checkpoint.ready.portfolio-cut-20261121-1",
+      "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+      "priorState": "PAUSED_AT_CHECKPOINT",
+      "nextState": "READY",
+      "reason": "Accepted Blueprint portability/parity evidence is preserved and all target-specific residue has been reconciled against current architecture/Product work.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "project.vextreme.architecture-convergence"
+      ],
+      "createdAt": "2026-11-21T09:38:14.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.outcome.ready.running.portfolio-cut-20261121-2",
+      "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin bounded historical closeout of the predecessor Blueprint project; no target/source implementation is authorized.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project"
+      ],
+      "createdAt": "2026-11-21T09:38:15.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.outcome.running.verifying.portfolio-cut-20261121-3",
+      "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "All unfinished descendant scopes are retired or carried by current architecture/Product owners; verify the original Blueprint portability learning as achieved provenance.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vextreme.architecture-convergence",
+        "project.vexlife.new-beginnings"
+      ],
+      "createdAt": "2026-11-21T09:38:16.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.outcome.verifying.completed.portfolio-cut-20261121-4",
+      "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The Blueprint Source of Truth predecessor outcome is complete as an accepted portability/parity practicum. Future target-language or whole-product pressure must enter through then-current architecture/product scopes.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "project.vextreme.architecture-convergence"
+      ],
+      "createdAt": "2026-11-21T09:38:17.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.vexlife.blueprint-source-of-truth",
     "project.vexlife.new-beginnings",

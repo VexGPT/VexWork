@@ -163,6 +163,30 @@ CANCELLED PREDECESSOR SCOPE != LOST SUCCESSOR WORK
 SCOPE CREEP != PERMANENTLY RUNNING OLD PROJECT
 ```
 
+## Portfolio completion thresholds
+
+Completed Projects remain durable provenance, but the human portfolio should not become one endlessly growing wall of green cards.
+
+`blueprint/project-completion-thresholds.json` defines read-only historical cutoffs used only by the Pages projection. The first threshold is **Through Nov 21, 2026**.
+
+```text
+canonical Project + Workgraph lifecycle truth
+-> root terminal chronology
++ source-managed completion cutoff
+-> collapsible historical shelf
+```
+
+Threshold membership is derived from root terminal chronology. It is not stored on the Project and does not change WorkState, Project identity, release membership or authority.
+
+```text
+COMPLETION_THRESHOLD != WORK_STATE
+COMPLETION_THRESHOLD != PROJECT LIFECYCLE
+COMPLETION_THRESHOLD != RELEASE / MILESTONE AUTHORITY
+COLLAPSED HISTORY != DELETED HISTORY
+```
+
+Add a later threshold only when a real human navigation/history boundary is useful; do not create one per week or per batch merely because Projects completed.
+
 ## Version/release scope
 
 Release/version grouping is **not** source-placed by this foundation.
