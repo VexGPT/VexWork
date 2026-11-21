@@ -103,6 +103,11 @@ test('workspace filtering composes pivot, Product, locale and text without mutat
 
   const japaneseCoverage = filterLocalizationWorkspaceRows(projection, 'COVERAGE', { localeRef: 'ja' });
   assert.equal(japaneseCoverage.length, 2);
+
+  const spanishElements = filterLocalizationWorkspaceRows(projection, 'ELEMENTS', { localeRef: 'es' });
+  assert.equal(spanishElements.length, 687, 'complete Product locale relationships remain filterable from the Element pivot');
+  assert.equal(spanishElements.every((row) => row.subjectRef === 'subject.vexlife-prod'), true);
+
   assert.equal(JSON.stringify(projection), before);
 });
 
