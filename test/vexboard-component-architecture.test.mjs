@@ -20,9 +20,9 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
   assert.equal(catalog.candidates.some((row) => row.state === 'ACCEPTED_PORTABLE'), false);
-  assert.equal(catalog.targetPressures.length, 7);
+  assert.equal(catalog.targetPressures.length, 9);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 3);
-  assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 3);
+  assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 5);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'HELD_SOURCE_CONTRACT').length, 1);
   assert.equal(catalog.candidates.filter((row) => row.formation).length, 6);
   assert.equal(catalog.candidates.some((row) => row.formation?.state === 'ACCEPTED'), false);
@@ -95,9 +95,10 @@ assert.equal(
 
 test('target pressure results preserve mapped, held and platform-specific truth separately from portable acceptance', () => {
   const repeater = targetPressuresForCandidate(catalog, 'candidate.component.stable-repeater');
-  assert.equal(repeater.length, 2);
   const repeaterSwift = repeater.find((row) => row.platformRef === 'platform.ios');
   const repeaterAndroid = repeater.find((row) => row.platformRef === 'platform.android');
+  const repeaterWeb = repeater.find((row) => row.repositoryRef === 'repo.vexstream-music');
+  assert.equal(repeater.length, 3);
   assert.equal(repeaterSwift.framework, 'SwiftUI');
   assert.equal(repeaterAndroid.state, 'SOURCE_FORMED');
   assert.ok(repeaterSwift.relationships.some((row) => row.relationRef.endsWith('item-identity') && row.disposition === 'MAPPED'));
@@ -108,10 +109,21 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.ok(repeaterAndroid.relationships.some((row) => row.relationRef.endsWith('scroll-lock') && row.disposition === 'MAPPED'));
   assert.ok(repeaterAndroid.proofs.some((row) => row.proofRef === 'proof.android-insert-remove-source-formed' && row.state === 'PASS'));
   assert.ok(repeaterAndroid.proofs.some((row) => row.proofRef === 'proof.android-insert-remove-identity' && row.state === 'OWED' && row.note.includes('PR #261')));
+  assert.equal(repeaterWeb.state, 'SOURCE_FORMED');
+  assert.ok(repeaterWeb.relationships.some((row) => row.relationRef.endsWith('item-identity') && row.disposition === 'MAPPED'));
+  assert.ok(repeaterWeb.relationships.some((row) => row.relationRef.endsWith('duplicate-failure') && row.disposition === 'HELD'));
+  assert.ok(repeaterWeb.relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'UNSUPPORTED'));
+  assert.ok(repeaterWeb.proofs.some((row) => row.proofRef === 'proof.vexstream-population-projectability' && row.state === 'PASS'));
 
   const frame = targetPressuresForCandidate(catalog, 'candidate.component.frame-region-layout');
-  assert.equal(frame[0].commit, 'befe31789834a74f5a2738cb6d6028c01aa7553c');
-  assert.ok(frame[0].relationships.some((row) => row.relationRef.endsWith('partial-multi-seam') && row.disposition === 'HELD'));
+  assert.equal(frame.length, 2);
+  const frameSwift = frame.find((row) => row.platformRef === 'platform.ios');
+  const frameWeb = frame.find((row) => row.repositoryRef === 'repo.vexstream-music');
+  assert.equal(frameSwift.commit, 'befe31789834a74f5a2738cb6d6028c01aa7553c');
+  assert.ok(frameSwift.relationships.some((row) => row.relationRef.endsWith('partial-multi-seam') && row.disposition === 'HELD'));
+  assert.ok(frameWeb.relationships.some((row) => row.relationRef.endsWith('zero-seam-frame') && row.disposition === 'MAPPED'));
+  assert.ok(frameWeb.relationships.some((row) => row.relationRef.endsWith('seam-resize-collapse') && row.disposition === 'NOT_APPLICABLE'));
+  assert.ok(frameWeb.proofs.some((row) => row.proofRef === 'proof.vexstream-zero-seam-frame' && row.state === 'PASS'));
 
   const swappable = targetPressuresForCandidate(catalog, 'candidate.component.swappable-region');
   assert.equal(swappable.length, 3);
