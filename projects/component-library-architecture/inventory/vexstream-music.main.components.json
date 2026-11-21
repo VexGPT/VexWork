@@ -1,0 +1,4156 @@
+{
+  "schemaVersion": "vexboard.component-inventory/v1",
+  "inventoryRef": "components.vexstream-music.main",
+  "subjectRef": "subject.vexstream-music",
+  "buildRef": "main",
+  "sourceSnapshot": {
+    "repositoryRef": "repo.vexstream-music",
+    "repositoryUrl": "https://github.com/vgong24/VexstreamMusic.git",
+    "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+    "observedAt": "2026-11-20",
+    "lensRef": "lens.vexstream-music.desktop",
+    "localizationInventoryRef": null
+  },
+  "producer": {
+    "ref": "producer.vexboard.components.screen-lens",
+    "version": "vexstream-music-components/1"
+  },
+  "components": [
+    {
+      "componentRef": "component.source-family.vexstream-music.button",
+      "kind": "BUTTON",
+      "meaningState": "OBSERVED_SOURCE_FAMILY",
+      "portability": "UNCLASSIFIED",
+      "occurrenceRefs": [
+        "occurrence.component.vexstream-music.vexstream.discover.add.open",
+        "occurrence.component.vexstream-music.vexstream.discover.mode.explore",
+        "occurrence.component.vexstream-music.vexstream.discover.mode.pc",
+        "occurrence.component.vexstream-music.vexstream.discover.mode.youtube",
+        "occurrence.component.vexstream-music.vexstream.explore.back",
+        "occurrence.component.vexstream-music.vexstream.explore.clear",
+        "occurrence.component.vexstream-music.vexstream.explore.from-track",
+        "occurrence.component.vexstream-music.vexstream.import.inspect",
+        "occurrence.component.vexstream-music.vexstream.import.jobs.refresh",
+        "occurrence.component.vexstream-music.vexstream.library.mode.albums",
+        "occurrence.component.vexstream-music.vexstream.library.mode.artists",
+        "occurrence.component.vexstream-music.vexstream.library.mode.songs",
+        "occurrence.component.vexstream-music.vexstream.library.rescan",
+        "occurrence.component.vexstream-music.vexstream.library.search.execute",
+        "occurrence.component.vexstream-music.vexstream.library.selection.toggle",
+        "occurrence.component.vexstream-music.vexstream.library.song-layout.open",
+        "occurrence.component.vexstream-music.vexstream.phone.connection.open",
+        "occurrence.component.vexstream-music.vexstream.playback.play-pause",
+        "occurrence.component.vexstream-music.vexstream.player.add-queue",
+        "occurrence.component.vexstream-music.vexstream.player.play-library-view",
+        "occurrence.component.vexstream-music.vexstream.player.play-next",
+        "occurrence.component.vexstream-music.vexstream.player.play-playlist",
+        "occurrence.component.vexstream-music.vexstream.player.previous",
+        "occurrence.component.vexstream-music.vexstream.player.shuffle-library",
+        "occurrence.component.vexstream-music.vexstream.player.shuffle-playlist",
+        "occurrence.component.vexstream-music.vexstream.playlists.create",
+        "occurrence.component.vexstream-music.vexstream.playlists.delete",
+        "occurrence.component.vexstream-music.vexstream.playlists.detail.add-songs",
+        "occurrence.component.vexstream-music.vexstream.playlists.detail.close",
+        "occurrence.component.vexstream-music.vexstream.playlists.rename",
+        "occurrence.component.vexstream-music.vexstream.queue.clear-after-current",
+        "occurrence.component.vexstream-music.vexstream.queue.drawer.toggle",
+        "occurrence.component.vexstream-music.vexstream.queue.next",
+        "occurrence.component.vexstream-music.vexstream.queue.repeat",
+        "occurrence.component.vexstream-music.vexstream.queue.shuffle",
+        "occurrence.component.vexstream-music.vexstream.queue.shuffle-upcoming",
+        "occurrence.component.vexstream-music.vexstream.shell.sidebar.toggle",
+        "occurrence.component.vexstream-music.vexstream.shell.view.albums",
+        "occurrence.component.vexstream-music.vexstream.shell.view.artists",
+        "occurrence.component.vexstream-music.vexstream.shell.view.deleted",
+        "occurrence.component.vexstream-music.vexstream.shell.view.discover",
+        "occurrence.component.vexstream-music.vexstream.shell.view.home",
+        "occurrence.component.vexstream-music.vexstream.shell.view.playlists",
+        "occurrence.component.vexstream-music.vexstream.shell.view.songs",
+        "occurrence.component.vexstream-music.vexstream.sources.add-folder",
+        "occurrence.component.vexstream-music.vexstream.sources.discover",
+        "occurrence.component.vexstream-music.vexstream.sources.discover-deep",
+        "occurrence.component.vexstream-music.vexstream.sources.ignored.clear",
+        "occurrence.component.vexstream-music.vexstream.sources.ignored.toggle",
+        "occurrence.component.vexstream-music.vexstream.system.exit",
+        "occurrence.component.vexstream-music.vexstream.system.status.open",
+        "occurrence.component.vexstream-music.vexstream.track.action.edit",
+        "occurrence.component.vexstream-music.vexstream.track.action.trash",
+        "occurrence.component.vexstream-music.vexstream.trash.refresh"
+      ],
+      "surfaceRefs": [
+        "vexstream.desktop.library"
+      ],
+      "screenRefs": [
+        "vexstream.desktop.library"
+      ],
+      "elementRefs": [
+        "element.vexstream.discover.add.open",
+        "element.vexstream.discover.mode.explore",
+        "element.vexstream.discover.mode.pc",
+        "element.vexstream.discover.mode.youtube",
+        "element.vexstream.explore.back",
+        "element.vexstream.explore.clear",
+        "element.vexstream.explore.from-track",
+        "element.vexstream.import.inspect",
+        "element.vexstream.import.jobs.refresh",
+        "element.vexstream.library.mode.albums",
+        "element.vexstream.library.mode.artists",
+        "element.vexstream.library.mode.songs",
+        "element.vexstream.library.rescan",
+        "element.vexstream.library.search.execute",
+        "element.vexstream.library.selection.toggle",
+        "element.vexstream.library.song-layout.open",
+        "element.vexstream.phone.connection.open",
+        "element.vexstream.playback.play-pause",
+        "element.vexstream.player.add-queue",
+        "element.vexstream.player.play-library-view",
+        "element.vexstream.player.play-next",
+        "element.vexstream.player.play-playlist",
+        "element.vexstream.player.previous",
+        "element.vexstream.player.shuffle-library",
+        "element.vexstream.player.shuffle-playlist",
+        "element.vexstream.playlists.create",
+        "element.vexstream.playlists.delete",
+        "element.vexstream.playlists.detail.add-songs",
+        "element.vexstream.playlists.detail.close",
+        "element.vexstream.playlists.rename",
+        "element.vexstream.queue.clear-after-current",
+        "element.vexstream.queue.drawer.toggle",
+        "element.vexstream.queue.next",
+        "element.vexstream.queue.repeat",
+        "element.vexstream.queue.shuffle",
+        "element.vexstream.queue.shuffle-upcoming",
+        "element.vexstream.shell.sidebar.toggle",
+        "element.vexstream.shell.view.albums",
+        "element.vexstream.shell.view.artists",
+        "element.vexstream.shell.view.deleted",
+        "element.vexstream.shell.view.discover",
+        "element.vexstream.shell.view.home",
+        "element.vexstream.shell.view.playlists",
+        "element.vexstream.shell.view.songs",
+        "element.vexstream.sources.add-folder",
+        "element.vexstream.sources.discover",
+        "element.vexstream.sources.discover-deep",
+        "element.vexstream.sources.ignored.clear",
+        "element.vexstream.sources.ignored.toggle",
+        "element.vexstream.system.exit",
+        "element.vexstream.system.status.open",
+        "element.vexstream.track.action.edit",
+        "element.vexstream.track.action.trash",
+        "element.vexstream.trash.refresh"
+      ],
+      "styles": [],
+      "textRoles": [],
+      "slots": [],
+      "sourcePaths": [
+        "v2:web/index.html"
+      ],
+      "realizerSymbols": [],
+      "localizationSourceStringRefs": [],
+      "accessibilityState": "NOT_PROJECTED"
+    },
+    {
+      "componentRef": "component.source-family.vexstream-music.field",
+      "kind": "FIELD",
+      "meaningState": "OBSERVED_SOURCE_FAMILY",
+      "portability": "UNCLASSIFIED",
+      "occurrenceRefs": [
+        "occurrence.component.vexstream-music.vexstream.import.source-url",
+        "occurrence.component.vexstream-music.vexstream.library.filter.genre",
+        "occurrence.component.vexstream-music.vexstream.library.search.query",
+        "occurrence.component.vexstream-music.vexstream.library.sort.preset",
+        "occurrence.component.vexstream-music.vexstream.playback.timeline.seek",
+        "occurrence.component.vexstream-music.vexstream.playback.volume.set",
+        "occurrence.component.vexstream-music.vexstream.playlists.create.name",
+        "occurrence.component.vexstream-music.vexstream.playlists.rename.name"
+      ],
+      "surfaceRefs": [
+        "vexstream.desktop.library"
+      ],
+      "screenRefs": [
+        "vexstream.desktop.library"
+      ],
+      "elementRefs": [
+        "element.vexstream.import.source-url",
+        "element.vexstream.library.filter.genre",
+        "element.vexstream.library.search.query",
+        "element.vexstream.library.sort.preset",
+        "element.vexstream.playback.timeline.seek",
+        "element.vexstream.playback.volume.set",
+        "element.vexstream.playlists.create.name",
+        "element.vexstream.playlists.rename.name"
+      ],
+      "styles": [],
+      "textRoles": [],
+      "slots": [],
+      "sourcePaths": [
+        "v2:web/index.html"
+      ],
+      "realizerSymbols": [],
+      "localizationSourceStringRefs": [],
+      "accessibilityState": "NOT_PROJECTED"
+    },
+    {
+      "componentRef": "component.source-family.vexstream-music.frame",
+      "kind": "FRAME",
+      "meaningState": "OBSERVED_SOURCE_FAMILY",
+      "portability": "UNCLASSIFIED",
+      "occurrenceRefs": [
+        "occurrence.component.vexstream-music.vexstream.desktop.library.frame"
+      ],
+      "surfaceRefs": [
+        "vexstream.desktop.library"
+      ],
+      "screenRefs": [
+        "vexstream.desktop.library"
+      ],
+      "elementRefs": [
+        "vexstream.desktop.library.frame"
+      ],
+      "styles": [],
+      "textRoles": [],
+      "slots": [],
+      "sourcePaths": [
+        "v2:web/index.html"
+      ],
+      "realizerSymbols": [],
+      "localizationSourceStringRefs": [],
+      "accessibilityState": "NOT_PROJECTED"
+    },
+    {
+      "componentRef": "component.source-family.vexstream-music.region",
+      "kind": "REGION",
+      "meaningState": "OBSERVED_SOURCE_FAMILY",
+      "portability": "UNCLASSIFIED",
+      "occurrenceRefs": [
+        "occurrence.component.vexstream-music.vexstream.desktop.library.discover-mode-selection",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.discover-panel.explore",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.discover-panel.pc",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.discover-panel.youtube",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.mode-selection",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.mode-state.albums",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.mode-state.artists",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.mode-state.songs",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.panel.deleted",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.panel.discover",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.panel.home",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.panel.library",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.panel.playlists",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.playlists.detail",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.playlists.overview",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.region.shell",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.terrain",
+        "occurrence.component.vexstream-music.vexstream.desktop.library.track-choices"
+      ],
+      "surfaceRefs": [
+        "vexstream.desktop.library"
+      ],
+      "screenRefs": [
+        "vexstream.desktop.library"
+      ],
+      "elementRefs": [
+        "vexstream.desktop.library.discover-mode-selection",
+        "vexstream.desktop.library.discover-panel.explore",
+        "vexstream.desktop.library.discover-panel.pc",
+        "vexstream.desktop.library.discover-panel.youtube",
+        "vexstream.desktop.library.mode-selection",
+        "vexstream.desktop.library.mode-state.albums",
+        "vexstream.desktop.library.mode-state.artists",
+        "vexstream.desktop.library.mode-state.songs",
+        "vexstream.desktop.library.panel.deleted",
+        "vexstream.desktop.library.panel.discover",
+        "vexstream.desktop.library.panel.home",
+        "vexstream.desktop.library.panel.library",
+        "vexstream.desktop.library.panel.playlists",
+        "vexstream.desktop.library.playlists.detail",
+        "vexstream.desktop.library.playlists.overview",
+        "vexstream.desktop.library.region.shell",
+        "vexstream.desktop.library.terrain",
+        "vexstream.desktop.library.track-choices"
+      ],
+      "styles": [],
+      "textRoles": [],
+      "slots": [],
+      "sourcePaths": [
+        "v2:web/index.html"
+      ],
+      "realizerSymbols": [],
+      "localizationSourceStringRefs": [],
+      "accessibilityState": "NOT_PROJECTED"
+    }
+  ],
+  "occurrences": [
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.discover.add.open",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.discover.add.open",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "add / open",
+      "symbol": "vexstream.discover.add.open",
+      "declared": "data-vex-action=\"vexstream.discover.add.open\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.discover.add.open",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.discover.mode.explore",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.discover.mode.explore",
+      "parentElementRef": "vexstream.desktop.library.discover-mode-selection",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Discover mode: Explore",
+      "symbol": "vexstream.discover.mode.explore",
+      "declared": "data-discover-mode=\"explore\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.discover.mode.explore",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.discover.mode.pc",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.discover.mode.pc",
+      "parentElementRef": "vexstream.desktop.library.discover-mode-selection",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Discover mode: Pc",
+      "symbol": "vexstream.discover.mode.pc",
+      "declared": "data-discover-mode=\"pc\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.discover.mode.pc",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.discover.mode.youtube",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.discover.mode.youtube",
+      "parentElementRef": "vexstream.desktop.library.discover-mode-selection",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Discover mode: Youtube",
+      "symbol": "vexstream.discover.mode.youtube",
+      "declared": "data-discover-mode=\"youtube\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.discover.mode.youtube",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.explore.back",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.explore.back",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.explore",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "explore / back",
+      "symbol": "vexstream.explore.back",
+      "declared": "data-vex-control=\"vexstream.explore.back\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.explore.back",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.explore.clear",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.explore.clear",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.explore",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "explore / clear",
+      "symbol": "vexstream.explore.clear",
+      "declared": "data-vex-control=\"vexstream.explore.clear\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.explore.clear",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.explore.from-track",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.explore.from-track",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "explore / from track",
+      "symbol": "vexstream.explore.from-track",
+      "declared": "data-vex-action=\"vexstream.explore.from-track\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.explore.from-track",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.import.inspect",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.import.inspect",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.youtube",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "import / inspect",
+      "symbol": "vexstream.import.inspect",
+      "declared": "data-vex-action=\"vexstream.import.inspect\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.import.inspect",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.import.jobs.refresh",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.import.jobs.refresh",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.youtube",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "jobs / refresh",
+      "symbol": "vexstream.import.jobs.refresh",
+      "declared": "data-vex-action=\"vexstream.import.jobs.refresh\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.import.jobs.refresh",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.import.source-url",
+      "componentRef": "component.source-family.vexstream-music.field",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.import.source-url",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.youtube",
+      "childElementRefs": [],
+      "kind": "FIELD",
+      "semanticRole": "ELEMENT",
+      "label": "import / source url",
+      "symbol": "vexstream.import.source-url",
+      "declared": "data-vex-action=\"vexstream.import.source-url\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.import.source-url",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.filter.genre",
+      "componentRef": "component.source-family.vexstream-music.field",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.filter.genre",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "FIELD",
+      "semanticRole": "ELEMENT",
+      "label": "filter / genre",
+      "symbol": "vexstream.library.filter.genre",
+      "declared": "data-vex-action=\"vexstream.library.filter.genre\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.filter.genre",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.mode.albums",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.mode.albums",
+      "parentElementRef": "vexstream.desktop.library.mode-selection",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Library mode: Albums",
+      "symbol": "vexstream.library.mode.albums",
+      "declared": "data-library-mode=\"albums\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.mode.albums",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.mode.artists",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.mode.artists",
+      "parentElementRef": "vexstream.desktop.library.mode-selection",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Library mode: Artists",
+      "symbol": "vexstream.library.mode.artists",
+      "declared": "data-library-mode=\"artists\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.mode.artists",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.mode.songs",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.mode.songs",
+      "parentElementRef": "vexstream.desktop.library.mode-selection",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Library mode: Songs",
+      "symbol": "vexstream.library.mode.songs",
+      "declared": "data-library-mode=\"songs\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.mode.songs",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.rescan",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.rescan",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "library / rescan",
+      "symbol": "vexstream.library.rescan",
+      "declared": "data-vex-action=\"vexstream.library.rescan\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.rescan",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.search.execute",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.search.execute",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "search / execute",
+      "symbol": "vexstream.library.search.execute",
+      "declared": "data-vex-action=\"vexstream.library.search.execute\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.search.execute",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.search.query",
+      "componentRef": "component.source-family.vexstream-music.field",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.search.query",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "FIELD",
+      "semanticRole": "ELEMENT",
+      "label": "search / query",
+      "symbol": "vexstream.library.search.query",
+      "declared": "data-vex-action=\"vexstream.library.search.query\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.search.query",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.selection.toggle",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.selection.toggle",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "selection / toggle",
+      "symbol": "vexstream.library.selection.toggle",
+      "declared": "data-vex-action=\"vexstream.library.selection.toggle\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.selection.toggle",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.song-layout.open",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.song-layout.open",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "song layout / open",
+      "symbol": "vexstream.library.song-layout.open",
+      "declared": "data-vex-action=\"vexstream.library.song-layout.open\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.song-layout.open",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.library.sort.preset",
+      "componentRef": "component.source-family.vexstream-music.field",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.library.sort.preset",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "FIELD",
+      "semanticRole": "ELEMENT",
+      "label": "sort / preset",
+      "symbol": "vexstream.library.sort.preset",
+      "declared": "data-vex-action=\"vexstream.library.sort.preset\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.library.sort.preset",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.phone.connection.open",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.phone.connection.open",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Connect VexLife phone",
+      "symbol": "vexstream.phone.connection.open",
+      "declared": "data-vex-action=\"vexstream.phone.connection.open\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.phone.connection.open",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.phone.connection.open",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playback.play-pause",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playback.play-pause",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Play / Pause",
+      "symbol": "vexstream.playback.play-pause",
+      "declared": "data-vex-control=\"vexstream.playback.play-pause\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playback.play-pause",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.playback.play-pause",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playback.timeline.seek",
+      "componentRef": "component.source-family.vexstream-music.field",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playback.timeline.seek",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "FIELD",
+      "semanticRole": "ELEMENT",
+      "label": "timeline / seek",
+      "symbol": "vexstream.playback.timeline.seek",
+      "declared": "data-vex-action=\"vexstream.playback.timeline.seek\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playback.timeline.seek",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playback.volume.set",
+      "componentRef": "component.source-family.vexstream-music.field",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playback.volume.set",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "FIELD",
+      "semanticRole": "ELEMENT",
+      "label": "volume / set",
+      "symbol": "vexstream.playback.volume.set",
+      "declared": "data-vex-action=\"vexstream.playback.volume.set\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playback.volume.set",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.player.add-queue",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.player.add-queue",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "player / add queue",
+      "symbol": "vexstream.player.add-queue",
+      "declared": "data-vex-action=\"vexstream.player.add-queue\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.player.add-queue",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.player.play-library-view",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.player.play-library-view",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "player / play library view",
+      "symbol": "vexstream.player.play-library-view",
+      "declared": "data-vex-action=\"vexstream.player.play-library-view\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.player.play-library-view",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.player.play-next",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.player.play-next",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "player / play next",
+      "symbol": "vexstream.player.play-next",
+      "declared": "data-vex-action=\"vexstream.player.play-next\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.player.play-next",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.player.play-playlist",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.player.play-playlist",
+      "parentElementRef": "vexstream.desktop.library.playlists.detail",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Play playlist",
+      "symbol": "vexstream.player.play-playlist",
+      "declared": "data-vex-action=\"vexstream.player.play-playlist\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.player.play-playlist",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.player.play-playlist",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.player.previous",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.player.previous",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Previous",
+      "symbol": "vexstream.player.previous",
+      "declared": "data-vex-action=\"vexstream.player.previous\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.player.previous",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.player.previous",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.player.shuffle-library",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.player.shuffle-library",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "player / shuffle library",
+      "symbol": "vexstream.player.shuffle-library",
+      "declared": "data-vex-action=\"vexstream.player.shuffle-library\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.player.shuffle-library",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.player.shuffle-playlist",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.player.shuffle-playlist",
+      "parentElementRef": "vexstream.desktop.library.playlists.detail",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shuffle playlist",
+      "symbol": "vexstream.player.shuffle-playlist",
+      "declared": "data-vex-action=\"vexstream.player.shuffle-playlist\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.player.shuffle-playlist",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.player.shuffle-playlist",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playlists.create",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playlists.create",
+      "parentElementRef": "vexstream.desktop.library.playlists.overview",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Create playlist",
+      "symbol": "vexstream.playlists.create",
+      "declared": "data-vex-action=\"vexstream.playlists.create\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playlists.create",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playlists.create.name",
+      "componentRef": "component.source-family.vexstream-music.field",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playlists.create.name",
+      "parentElementRef": "vexstream.desktop.library.playlists.overview",
+      "childElementRefs": [],
+      "kind": "FIELD",
+      "semanticRole": "ELEMENT",
+      "label": "New playlist name",
+      "symbol": "vexstream.playlists.create.name",
+      "declared": "data-vex-action=\"vexstream.playlists.create.name\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playlists.create.name",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playlists.delete",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playlists.delete",
+      "parentElementRef": "vexstream.desktop.library.playlists.detail",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Delete playlist",
+      "symbol": "vexstream.playlists.delete",
+      "declared": "data-vex-action=\"vexstream.playlists.delete\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playlists.delete",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.playlists.delete",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playlists.detail.add-songs",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playlists.detail.add-songs",
+      "parentElementRef": "vexstream.desktop.library.playlists.detail",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Add songs",
+      "symbol": "vexstream.playlists.detail.add-songs",
+      "declared": "data-vex-action=\"vexstream.playlists.detail.add-songs\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playlists.detail.add-songs",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.playlists.detail.add-songs",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playlists.detail.close",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playlists.detail.close",
+      "parentElementRef": "vexstream.desktop.library.playlists.detail",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Back to all playlists",
+      "symbol": "vexstream.playlists.detail.close",
+      "declared": "data-vex-action=\"vexstream.playlists.detail.close\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playlists.detail.close",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.playlists.detail.close",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playlists.rename",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playlists.rename",
+      "parentElementRef": "vexstream.desktop.library.playlists.detail",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Rename playlist",
+      "symbol": "vexstream.playlists.rename",
+      "declared": "data-vex-action=\"vexstream.playlists.rename\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playlists.rename",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.playlists.rename",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.playlists.rename.name",
+      "componentRef": "component.source-family.vexstream-music.field",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.playlists.rename.name",
+      "parentElementRef": "vexstream.desktop.library.playlists.detail",
+      "childElementRefs": [],
+      "kind": "FIELD",
+      "semanticRole": "ELEMENT",
+      "label": "Playlist name",
+      "symbol": "vexstream.playlists.rename.name",
+      "declared": "data-vex-action=\"vexstream.playlists.rename.name\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.playlists.rename.name",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.playlists.rename",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.queue.clear-after-current",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.queue.clear-after-current",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "queue / clear after current",
+      "symbol": "vexstream.queue.clear-after-current",
+      "declared": "data-vex-control=\"vexstream.queue.clear-after-current\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.queue.clear-after-current",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.queue.drawer.toggle",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.queue.drawer.toggle",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "drawer / toggle",
+      "symbol": "vexstream.queue.drawer.toggle",
+      "declared": "data-vex-action=\"vexstream.queue.drawer.toggle\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.queue.drawer.toggle",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.queue.next",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.queue.next",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Next",
+      "symbol": "vexstream.queue.next",
+      "declared": "data-vex-control=\"vexstream.queue.next\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.queue.next",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.queue.next",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.queue.repeat",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.queue.repeat",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Repeat",
+      "symbol": "vexstream.queue.repeat",
+      "declared": "data-vex-control=\"vexstream.queue.repeat\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.queue.repeat",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.queue.repeat",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.queue.shuffle",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.queue.shuffle",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shuffle",
+      "symbol": "vexstream.queue.shuffle",
+      "declared": "data-vex-control=\"vexstream.queue.shuffle\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.queue.shuffle",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.queue.shuffle",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.queue.shuffle-upcoming",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.queue.shuffle-upcoming",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "queue / shuffle upcoming",
+      "symbol": "vexstream.queue.shuffle-upcoming",
+      "declared": "data-vex-action=\"vexstream.queue.shuffle-upcoming\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.queue.shuffle-upcoming",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.shell.sidebar.toggle",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.shell.sidebar.toggle",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "sidebar / toggle",
+      "symbol": "vexstream.shell.sidebar.toggle",
+      "declared": "data-vex-action=\"vexstream.shell.sidebar.toggle\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.shell.sidebar.toggle",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.shell.view.albums",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.shell.view.albums",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shell view: Albums",
+      "symbol": "vexstream.shell.view.albums",
+      "declared": "data-shell-view=\"albums\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.shell.view.albums",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.shell.view.artists",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.shell.view.artists",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shell view: Artists",
+      "symbol": "vexstream.shell.view.artists",
+      "declared": "data-shell-view=\"artists\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.shell.view.artists",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.shell.view.deleted",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.shell.view.deleted",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shell view: Deleted",
+      "symbol": "vexstream.shell.view.deleted",
+      "declared": "data-shell-view=\"deleted\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.shell.view.deleted",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.shell.view.discover",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.shell.view.discover",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shell view: Discover",
+      "symbol": "vexstream.shell.view.discover",
+      "declared": "data-shell-view=\"discover\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.shell.view.discover",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.shell.view.home",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.shell.view.home",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shell view: Home",
+      "symbol": "vexstream.shell.view.home",
+      "declared": "data-shell-view=\"home\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.shell.view.home",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.shell.view.playlists",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.shell.view.playlists",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shell view: Playlists",
+      "symbol": "vexstream.shell.view.playlists",
+      "declared": "data-shell-view=\"playlists\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.shell.view.playlists",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.shell.view.songs",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.shell.view.songs",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Shell view: Songs",
+      "symbol": "vexstream.shell.view.songs",
+      "declared": "data-shell-view=\"songs\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.shell.view.songs",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.sources.add-folder",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.sources.add-folder",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.pc",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "sources / add folder",
+      "symbol": "vexstream.sources.add-folder",
+      "declared": "data-vex-action=\"vexstream.sources.add-folder\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.sources.add-folder",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.sources.discover",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.sources.discover",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.pc",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "sources / discover",
+      "symbol": "vexstream.sources.discover",
+      "declared": "data-vex-action=\"vexstream.sources.discover\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.sources.discover",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.sources.discover-deep",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.sources.discover-deep",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.pc",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "sources / discover deep",
+      "symbol": "vexstream.sources.discover-deep",
+      "declared": "data-vex-action=\"vexstream.sources.discover-deep\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.sources.discover-deep",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.sources.ignored.clear",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.sources.ignored.clear",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.pc",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "ignored / clear",
+      "symbol": "vexstream.sources.ignored.clear",
+      "declared": "data-vex-action=\"vexstream.sources.ignored.clear\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.sources.ignored.clear",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.sources.ignored.toggle",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.sources.ignored.toggle",
+      "parentElementRef": "vexstream.desktop.library.discover-panel.pc",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "ignored / toggle",
+      "symbol": "vexstream.sources.ignored.toggle",
+      "declared": "data-vex-action=\"vexstream.sources.ignored.toggle\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.sources.ignored.toggle",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.system.exit",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.system.exit",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "system / exit",
+      "symbol": "vexstream.system.exit",
+      "declared": "data-vex-action=\"vexstream.system.exit\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.system.exit",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.system.status.open",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.system.status.open",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "System status",
+      "symbol": "vexstream.system.status.open",
+      "declared": "data-vex-action=\"vexstream.system.status.open\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.system.status.open",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": "pathway.vexstream.system.status.open",
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.track.action.edit",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.track.action.edit",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Track action: Edit",
+      "symbol": "vexstream.track.action.edit",
+      "declared": "data-track-action=\"edit\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.track.action.edit",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.track.action.trash",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.track.action.trash",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Track action: Trash",
+      "symbol": "vexstream.track.action.trash",
+      "declared": "data-track-action=\"trash\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.track.action.trash",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.trash.refresh",
+      "componentRef": "component.source-family.vexstream-music.button",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "element.vexstream.trash.refresh",
+      "parentElementRef": "vexstream.desktop.library.panel.deleted",
+      "childElementRefs": [],
+      "kind": "BUTTON",
+      "semanticRole": "ELEMENT",
+      "label": "Refresh Deleted music",
+      "symbol": "vexstream.trash.refresh",
+      "declared": "data-vex-action=\"vexstream.trash.refresh\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": "CHROME",
+      "textRole": null,
+      "icon": null,
+      "intent": "vexstream.trash.refresh",
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [
+        "ACTIVATE"
+      ],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.discover-mode-selection",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.discover-mode-selection",
+      "parentElementRef": "vexstream.desktop.library.panel.discover",
+      "childElementRefs": [
+        "element.vexstream.discover.mode.explore",
+        "element.vexstream.discover.mode.pc",
+        "element.vexstream.discover.mode.youtube",
+        "vexstream.desktop.library.discover-panel.explore",
+        "vexstream.desktop.library.discover-panel.pc",
+        "vexstream.desktop.library.discover-panel.youtube"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Discover mode selection",
+      "symbol": "DiscoverNavigation.currentProjection.mode",
+      "declared": "This PC / YouTube / Explore selection",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.discover-panel.explore",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.discover-panel.explore",
+      "parentElementRef": "vexstream.desktop.library.discover-mode-selection",
+      "childElementRefs": [
+        "element.vexstream.explore.back",
+        "element.vexstream.explore.clear"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Explore mode",
+      "symbol": "[data-discover-panel=\"explore\"]",
+      "declared": "data-discover-panel=\"explore\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.discover-panel.pc",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.discover-panel.pc",
+      "parentElementRef": "vexstream.desktop.library.discover-mode-selection",
+      "childElementRefs": [
+        "element.vexstream.sources.add-folder",
+        "element.vexstream.sources.discover",
+        "element.vexstream.sources.discover-deep",
+        "element.vexstream.sources.ignored.clear",
+        "element.vexstream.sources.ignored.toggle"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "This PC mode",
+      "symbol": "[data-discover-panel=\"pc\"]",
+      "declared": "data-discover-panel=\"pc\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.discover-panel.youtube",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.discover-panel.youtube",
+      "parentElementRef": "vexstream.desktop.library.discover-mode-selection",
+      "childElementRefs": [
+        "element.vexstream.import.inspect",
+        "element.vexstream.import.jobs.refresh",
+        "element.vexstream.import.source-url"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "YouTube mode",
+      "symbol": "[data-discover-panel=\"youtube\"]",
+      "declared": "data-discover-panel=\"youtube\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.frame",
+      "componentRef": "component.source-family.vexstream-music.frame",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.frame",
+      "parentElementRef": null,
+      "childElementRefs": [
+        "vexstream.desktop.library.region.shell"
+      ],
+      "kind": "FRAME",
+      "semanticRole": "CONTAINER",
+      "label": "Desktop shell frame",
+      "symbol": "body[data-vex-screen]",
+      "declared": "data-vex-screen=\"vexstream.desktop.library\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.mode-selection",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.mode-selection",
+      "parentElementRef": "vexstream.desktop.library.panel.library",
+      "childElementRefs": [
+        "element.vexstream.library.mode.albums",
+        "element.vexstream.library.mode.artists",
+        "element.vexstream.library.mode.songs",
+        "vexstream.desktop.library.mode-state.albums",
+        "vexstream.desktop.library.mode-state.artists",
+        "vexstream.desktop.library.mode-state.songs"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Library mode selection",
+      "symbol": "libraryView.mode",
+      "declared": "Songs / Albums / Artists selection",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.mode-state.albums",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.mode-state.albums",
+      "parentElementRef": "vexstream.desktop.library.mode-selection",
+      "childElementRefs": [],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Albums mode",
+      "symbol": "albums",
+      "declared": "libraryView.mode = albums",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.mode-state.artists",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.mode-state.artists",
+      "parentElementRef": "vexstream.desktop.library.mode-selection",
+      "childElementRefs": [],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Artists mode",
+      "symbol": "artists",
+      "declared": "libraryView.mode = artists",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.mode-state.songs",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.mode-state.songs",
+      "parentElementRef": "vexstream.desktop.library.mode-selection",
+      "childElementRefs": [],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Songs mode",
+      "symbol": "songs",
+      "declared": "libraryView.mode = songs",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.panel.deleted",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.panel.deleted",
+      "parentElementRef": "vexstream.desktop.library.terrain",
+      "childElementRefs": [
+        "element.vexstream.trash.refresh"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Deleted music terrain",
+      "symbol": "[data-shell-panel=\"deleted\"]",
+      "declared": "data-shell-panel=\"deleted\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.panel.discover",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.panel.discover",
+      "parentElementRef": "vexstream.desktop.library.terrain",
+      "childElementRefs": [
+        "vexstream.desktop.library.discover-mode-selection"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Discover terrain",
+      "symbol": "[data-shell-panel=\"discover\"]",
+      "declared": "data-shell-panel=\"discover\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.panel.home",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.panel.home",
+      "parentElementRef": "vexstream.desktop.library.terrain",
+      "childElementRefs": [],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Home terrain",
+      "symbol": "[data-shell-panel=\"home\"]",
+      "declared": "data-shell-panel=\"home\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.panel.library",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.panel.library",
+      "parentElementRef": "vexstream.desktop.library.terrain",
+      "childElementRefs": [
+        "vexstream.desktop.library.mode-selection",
+        "vexstream.desktop.library.track-choices"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Library terrain",
+      "symbol": "[data-shell-panel=\"library\"]",
+      "declared": "data-shell-panel=\"library\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.panel.playlists",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.panel.playlists",
+      "parentElementRef": "vexstream.desktop.library.terrain",
+      "childElementRefs": [
+        "vexstream.desktop.library.playlists.detail",
+        "vexstream.desktop.library.playlists.overview"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Playlists terrain",
+      "symbol": "[data-shell-panel=\"playlists\"]",
+      "declared": "data-shell-panel=\"playlists\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.playlists.detail",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.playlists.detail",
+      "parentElementRef": "vexstream.desktop.library.panel.playlists",
+      "childElementRefs": [
+        "element.vexstream.player.play-playlist",
+        "element.vexstream.player.shuffle-playlist",
+        "element.vexstream.playlists.delete",
+        "element.vexstream.playlists.detail.add-songs",
+        "element.vexstream.playlists.detail.close",
+        "element.vexstream.playlists.rename",
+        "element.vexstream.playlists.rename.name"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Selected Playlist detail",
+      "symbol": "#playlistDetail",
+      "declared": "id=\"playlistDetail\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.playlists.overview",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.playlists.overview",
+      "parentElementRef": "vexstream.desktop.library.panel.playlists",
+      "childElementRefs": [
+        "element.vexstream.playlists.create",
+        "element.vexstream.playlists.create.name"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Playlists overview",
+      "symbol": "#playlistOverview",
+      "declared": "id=\"playlistOverview\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.region.shell",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.region.shell",
+      "parentElementRef": "vexstream.desktop.library.frame",
+      "childElementRefs": [
+        "element.vexstream.discover.add.open",
+        "element.vexstream.explore.from-track",
+        "element.vexstream.library.filter.genre",
+        "element.vexstream.library.rescan",
+        "element.vexstream.library.search.execute",
+        "element.vexstream.library.search.query",
+        "element.vexstream.library.selection.toggle",
+        "element.vexstream.library.song-layout.open",
+        "element.vexstream.library.sort.preset",
+        "element.vexstream.phone.connection.open",
+        "element.vexstream.playback.play-pause",
+        "element.vexstream.playback.timeline.seek",
+        "element.vexstream.playback.volume.set",
+        "element.vexstream.player.add-queue",
+        "element.vexstream.player.play-library-view",
+        "element.vexstream.player.play-next",
+        "element.vexstream.player.previous",
+        "element.vexstream.player.shuffle-library",
+        "element.vexstream.queue.clear-after-current",
+        "element.vexstream.queue.drawer.toggle",
+        "element.vexstream.queue.next",
+        "element.vexstream.queue.repeat",
+        "element.vexstream.queue.shuffle",
+        "element.vexstream.queue.shuffle-upcoming",
+        "element.vexstream.shell.sidebar.toggle",
+        "element.vexstream.shell.view.albums",
+        "element.vexstream.shell.view.artists",
+        "element.vexstream.shell.view.deleted",
+        "element.vexstream.shell.view.discover",
+        "element.vexstream.shell.view.home",
+        "element.vexstream.shell.view.playlists",
+        "element.vexstream.shell.view.songs",
+        "element.vexstream.system.exit",
+        "element.vexstream.system.status.open",
+        "element.vexstream.track.action.edit",
+        "element.vexstream.track.action.trash",
+        "vexstream.desktop.library.terrain"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "V3-shaped V4 shell",
+      "symbol": "main.shell",
+      "declared": "<main class=\"shell\">",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.terrain",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.terrain",
+      "parentElementRef": "vexstream.desktop.library.region.shell",
+      "childElementRefs": [
+        "vexstream.desktop.library.panel.deleted",
+        "vexstream.desktop.library.panel.discover",
+        "vexstream.desktop.library.panel.home",
+        "vexstream.desktop.library.panel.library",
+        "vexstream.desktop.library.panel.playlists"
+      ],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Admitted Shell terrain selection",
+      "symbol": "ShellNavigation.currentProjection.panel",
+      "declared": "bounded Home / Library / Discover / Playlists / Deleted projection",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    },
+    {
+      "occurrenceRef": "occurrence.component.vexstream-music.vexstream.desktop.library.track-choices",
+      "componentRef": "component.source-family.vexstream-music.region",
+      "surfaceKind": "SCREEN",
+      "surfaceRef": "vexstream.desktop.library",
+      "surfaceLabel": "VexStream Music desktop",
+      "screenRef": "vexstream.desktop.library",
+      "elementRef": "vexstream.desktop.library.track-choices",
+      "parentElementRef": "vexstream.desktop.library.panel.library",
+      "childElementRefs": [],
+      "kind": "REGION",
+      "semanticRole": "CONTAINER",
+      "label": "Library results terrain",
+      "symbol": "#trackChoices",
+      "declared": "id=\"trackChoices\"",
+      "sourcePath": "v2:web/index.html",
+      "style": null,
+      "slot": null,
+      "layer": null,
+      "textRole": null,
+      "icon": null,
+      "intent": null,
+      "actionKey": null,
+      "call": null,
+      "pathwayRef": null,
+      "navigatesTo": null,
+      "visibleWhen": null,
+      "alwaysVisible": false,
+      "interactions": [],
+      "localization": {
+        "state": "NOT_OBSERVED",
+        "resourceRef": null,
+        "sourceStringRefs": []
+      },
+      "accessibility": {
+        "state": "NOT_PROJECTED",
+        "refs": []
+      },
+      "realization": {
+        "realizedBy": [],
+        "realizedIn": [],
+        "presenceRefs": [],
+        "conditionRefs": []
+      }
+    }
+  ],
+  "summary": {
+    "componentFamilyCount": 4,
+    "occurrenceCount": 81,
+    "screenCount": 1,
+    "chromeOccurrenceCount": 0,
+    "localizedOccurrenceCount": 0,
+    "realizedOccurrenceCount": 0,
+    "accessibilityProjectedOccurrenceCount": 0
+  }
+}
