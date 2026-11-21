@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.vision",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.vision.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Vision",
+      "purpose": "Complete the accepted VexLife Vision relationship on the current Product: preserve explicit selected-scope State/Control ownership, currentize the proved visual-input realization, and earn lived installed-artifact ENGAGE/LOOK/interpretation evidence without continuous capture or raw-pixel persistence.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.close-and-succeed-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.vision",
+        "project.vexlife.new-beginnings",
+        "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+        "work.vexlife.new-beginnings.vision-scope-current-context",
+        "repo.vexlife-prod:docs/foundation/VEXLIFE-VISION-COMPANION.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T09:20:10.000Z",
+      "updatedAt": "2026-11-21T09:20:10.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.vision.accepted-selected-scope-baseline",
+      "parentWorkRefOrNull": "work.vexlife.vision.outcome",
+      "label": "Preserve accepted Vision selected-scope baseline",
+      "purpose": "Treat the current Vision Family, persistent selected-scope source and Product Control route as already-earned baseline rather than replaying their formation inside the successor Project.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.close-and-succeed-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "repo.vexlife-prod:docs/foundation/VEXLIFE-VISION-COMPANION.md",
+        "work.vexlife.new-beginnings.vision-companion-product-surface",
+        "work.vexlife.new-beginnings.vision-product-runtime-orchestration"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T09:20:10.000Z",
+      "updatedAt": "2026-11-21T09:20:10.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.vision.currentize-visual-stack",
+      "parentWorkRefOrNull": "work.vexlife.vision.outcome",
+      "label": "Currentize the proved visual-input stack",
+      "purpose": "Reconcile the already-proved visual/resource stack with actual current VexLife-Prod source/lifetime truth rather than replaying stale candidate bytes; preserve exact Vision ownership and current resource/model capability boundaries.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.vision.accepted-selected-scope-baseline"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.close-and-succeed-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-prod.471",
+        "github.commit.vexlife-prod.26e29e587c49885f36beb4c2fdd16f28531ca0ce",
+        "project.vexlife.new-beginnings"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T09:20:10.000Z",
+      "updatedAt": "2026-11-21T09:20:10.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.vision.lived-engage-look",
+      "parentWorkRefOrNull": "work.vexlife.vision.outcome",
+      "label": "Prove lived installed ENGAGE / LOOK / interpretation",
+      "purpose": "On a current installed Product, prove explicit scope engagement, demand-driven fresh visual observation and one Vex turn that lawfully uses the bounded visual result, with Stop/release behavior and no continuous raw-pixel accumulation.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.vision.currentize-visual-stack"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.close-and-succeed-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "repo.vexlife-prod:docs/foundation/VEXLIFE-VISION-COMPANION.md",
+        "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+        "work.vexlife.new-beginnings.vision-scope-current-context"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T09:20:10.000Z",
+      "updatedAt": "2026-11-21T09:20:10.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexlife.vision",
+    "project.vexlife.new-beginnings",
+    "process.vexwork.close-and-succeed-project",
+    "github.pull.vexlife-prod.471"
+  ],
+  "formedAt": "2026-11-21T09:20:10.000Z"
+}

@@ -14,18 +14,17 @@ import {
 const workspace = JSON.parse(fs.readFileSync(new URL('../public/workspace.json', import.meta.url), 'utf8'));
 const project = (ref) => workspace.projects.find((entry) => entry.project.projectRef === ref);
 
-test('ToCompletion treats terminal Heretic integration as historical under paused productization', () => {
+test('completed ToCompletion collapses to one historical root workfront', () => {
   const p = project('project.vexlife.tocompletion');
   assert.deepEqual(deepestCurrentFrontiers(p), []);
-
-  const rows = projectWorkfronts(p, { maxRows: 8 }).rows;
-  const productization = rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
-  assert.ok(productization);
-  assert.equal(productization.basis, 'LATEST_COMPLETED');
-  assert.deepEqual(productization.currentItems.map((item) => [item.workRef, item.state]), [
-    ['work.vexlife.tocompletion.productization.heretic-normal-start-integration', 'COMPLETED'],
+  const result = projectWorkfronts(p, { maxRows: 8 });
+  assert.equal(result.currentFrontierCount, 0);
+  assert.equal(result.rows.length, 1);
+  assert.equal(result.rows[0].scopeRef, 'work.vexlife.tocompletion.outcome');
+  assert.equal(result.rows[0].basis, 'LATEST_COMPLETED');
+  assert.deepEqual(result.rows[0].currentItems.map((item) => [item.workRef, item.state]), [
+    ['work.vexlife.tocompletion.outcome', 'COMPLETED'],
   ]);
-  assert.deepEqual(productization.nextDependencyItems.map((item) => item.workRef), []);
 });
 
 test('Operational Console keeps completed Terrain and Commerce as prior context while Antique Plate remains current', () => {
@@ -44,40 +43,30 @@ test('Operational Console keeps completed Terrain and Commerce as prior context 
   ]);
 });
 
-test('Connected Services Roadmap releases the human acceptance walk after terminal VCS-07', () => {
+test('completed Connected Services removes the retired acceptance walk from current work while preserving historical dependency distance', () => {
   const p = project('project.vexlife.connected-services');
-  const roadmap = projectScopeRoadmap(p, { maxSteps: 4 });
-  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.connected-services.human-acceptance-walk');
-  assert.ok(row);
-  assert.deepEqual(row.priorItems.map((item) => item.workRef), [
-    'work.vexlife.connected-services.vcs07-deployment-choices',
-  ]);
-  assert.deepEqual(
-    row.steps.map((step) => step.items.map((item) => item.workRef)),
-    [
-      ['work.vexlife.connected-services.human-acceptance-walk'],
-    ],
-  );
-  assert.deepEqual(row.steps.map((step) => step.basis), ['CURRENT']);
+  assert.deepEqual(deepestCurrentFrontiers(p), []);
+  const fronts = projectWorkfronts(p, { maxRows: 8 });
+  assert.equal(fronts.rows.length, 1);
+  assert.equal(fronts.rows[0].scopeRef, 'work.vexlife.connected-services.outcome');
+  assert.equal(fronts.rows[0].basis, 'LATEST_COMPLETED');
+  const acceptance = projectSequenceDistance(p, 'work.vexlife.connected-services.human-acceptance-walk');
+  assert.equal(acceptance.distance, 1);
+  assert.equal(acceptance.basis, 'DEPENDENCY');
+  assert.equal(acceptance.fromScopeRef, 'work.vexlife.connected-services.vcs07-deployment-choices');
 });
 
-test('ToCompletion Roadmap preserves paused later scopes while dependency distance remains discoverable', () => {
+test('completed ToCompletion keeps retired horizon topology discoverable without projecting it as current work', () => {
   const p = project('project.vexlife.tocompletion');
-  const roadmap = projectScopeRoadmap(p, { maxSteps: 4 });
-  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.tocompletion.p0b.foundation');
-  assert.ok(row);
-  assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning'), true);
-  assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth'), true);
-  assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion'), true);
-  assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup'), true);
-
   const p6 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   assert.equal(p6.distance, 6);
   assert.equal(p6.basis, 'DEPENDENCY');
-
   const p7 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p7.whole-product-expansion');
   assert.equal(p7.distance, 5);
   assert.equal(p7.basis, 'DEPENDENCY');
+  const productization = projectSequenceDistance(p, 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
+  assert.equal(productization.distance, 5);
+  assert.equal(productization.basis, 'DEPENDENCY');
 });
 
 test('time lens preserves the current Antique workfront while project activity counts accepted movement', () => {
@@ -104,17 +93,15 @@ test('completed Foundation collapses to a latest-completed workfront instead of 
   assert.equal(result.rows[0].basis, 'LATEST_COMPLETED');
 });
 
-test('local workfront roadmap keeps completed setup safety and terminal Heretic integration as historical context', () => {
+test('completed ToCompletion roadmap keeps one historical completion coordinate', () => {
   const p = project('project.vexlife.tocompletion');
   const roadmap = projectRoadmap(p, { maxSteps: 4, maxRows: 8 });
-  const productization = roadmap.rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
-  assert.ok(productization);
-  assert.equal(productization.steps[0].basis, 'HISTORICAL');
-  assert.deepEqual(productization.steps[0].items.map((item) => item.workRef), [
-    'work.vexlife.tocompletion.productization.heretic-normal-start-integration',
+  assert.equal(roadmap.rows.length, 1);
+  assert.equal(roadmap.rows[0].scopeRef, 'work.vexlife.tocompletion.outcome');
+  assert.equal(roadmap.rows[0].steps[0].basis, 'HISTORICAL');
+  assert.deepEqual(roadmap.rows[0].steps[0].items.map((item) => item.workRef), [
+    'work.vexlife.tocompletion.outcome',
   ]);
-  assert.equal(productization.steps.length, 1);
-  assert.equal(productization.priorItems.some((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence' && item.state === 'COMPLETED'), true);
 });
 
 test('flow projections never freeze or mutate the canonical public workspace input', () => {

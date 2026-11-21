@@ -62,7 +62,7 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   const p5 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
   const p5G02 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer');
   const p5G03 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g03.daily-memory-dream');
-  assert.equal(p5.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(p5.state, 'CANCELLED');
   assert.equal(p5G02.state, 'COMPLETED');
   assert.equal(p5G03.state, 'COMPLETED');
   assert.deepEqual(p5.childWorkRefs, [
@@ -72,16 +72,16 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   const productization = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
   const setupConvergence = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence');
   const hereticIntegration = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration');
-  assert.equal(productization.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(productization.state, 'CANCELLED');
   assert.equal(setupConvergence.state, 'COMPLETED');
   assert.equal(hereticIntegration.state, 'COMPLETED');
   assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(setupConvergence.workRef), true);
   assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(hereticIntegration.workRef), true);
-  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(productization.workRef), true);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.archive').workRefs.includes(productization.workRef), true);
   const p6 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   const p7 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion');
-  assert.equal(p6.state, 'WAITING_DEPENDENCIES');
-  assert.equal(p7.state, 'PLAN_VALIDATED');
+  assert.equal(p6.state, 'CANCELLED');
+  assert.equal(p7.state, 'CANCELLED');
   assert.deepEqual(p6.childWorkRefs, []);
   assert.deepEqual(p7.childWorkRefs, []);
 });
@@ -155,15 +155,15 @@ test('Connected Services completes VCS-07 and releases the human acceptance walk
   assert.equal(vcs05.state, 'COMPLETED');
   assert.equal(vcs06.state, 'COMPLETED');
   assert.equal(vcs07.state, 'COMPLETED');
-  assert.equal(acceptance.state, 'READY');
+  assert.equal(acceptance.state, 'CANCELLED');
   const done = connected.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs;
-  const ready = connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs;
+  const archived = connected.lanes.find((lane) => lane.laneRef === 'lane.work.archive').workRefs;
   assert.equal(done.includes(vcs04.workRef), true);
   assert.equal(done.includes(phase6.workRef), true);
   assert.equal(done.includes(vcs05.workRef), true);
   assert.equal(done.includes(vcs06.workRef), true);
   assert.equal(done.includes(vcs07.workRef), true);
-  assert.deepEqual(ready, [acceptance.workRef]);
+  assert.deepEqual(archived, [acceptance.workRef]);
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
@@ -284,27 +284,27 @@ test('Vex Universe Foundations exposes this trajectory and keeps the VexBoard re
   assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes('work.vex-universe.journey-evidence-patient-zero'), true);
 });
 
-test('Blueprint SOT is durably paused without active effects while preserving its exact resume edge', () => {
+test('Blueprint SOT closes as predecessor provenance while retired target residue remains visible in Archive', () => {
   const workspace = buildWorkspace();
   const blueprint = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.blueprint-source-of-truth');
   assert.ok(blueprint);
   assert.equal(blueprint.summary.workItemCount, 14);
-  assert.equal(blueprint.summary.completedCount, 8);
-  assert.equal(blueprint.summary.openWorkItemCount, 6);
+  assert.equal(blueprint.summary.completedCount, 14);
+  assert.equal(blueprint.summary.openWorkItemCount, 0);
   const root = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.outcome');
   const practicum = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
   const nativeSource = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission');
-  assert.equal(root.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(root.state, 'COMPLETED');
   assert.equal(root.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(root.effectDisposition, 'NO_EFFECTS');
-  assert.equal(practicum.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(practicum.state, 'CANCELLED');
   assert.equal(practicum.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(practicum.effectDisposition, 'NO_EFFECTS');
-  assert.equal(nativeSource.state, 'WAITING_RESOURCE');
+  assert.equal(nativeSource.state, 'CANCELLED');
   assert.equal(nativeSource.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(nativeSource.effectDisposition, 'NO_EFFECTS');
-  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(root.workRef), true);
-  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(nativeSource.workRef), true);
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(root.workRef), true);
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.archive').workRefs.includes(nativeSource.workRef), true);
 });
 
 
@@ -313,10 +313,12 @@ test('public workspace includes source-derived New Beginnings and VexArchitectur
   const refs = workspace.projects.map((entry) => entry.project.projectRef);
   assert.equal(refs.includes('project.vexlife.new-beginnings'), true);
   assert.equal(refs.includes('project.vexwork.vexarchitecture-alignment'), true);
+  const newBeginnings = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.new-beginnings');
+  assert.equal(newBeginnings.rootItems[0].state, 'COMPLETED');
   assert.equal(
     workspace.parkingLot.items.some((item) =>
       item.workRef === 'work.vexlife.new-beginnings.later.settings-capability-mapping'
     ),
-    true,
+    false,
   );
 });

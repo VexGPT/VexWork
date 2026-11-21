@@ -185,6 +185,23 @@ test('portfolio groups distinguish unfinished, completed, and archived Projects 
   assert.deepEqual(groups.archived.map((project) => project.project.projectRef), ['project.cancelled']);
 });
 
+test('completion thresholds group terminal Projects by root completion chronology without changing lifecycle truth', () => {
+  const makeProject = (projectRef, completedAt) => ({
+    project: { projectRef, rootWorkRefs: [projectRef + '.outcome'] },
+    items: [{ workRef: projectRef + '.outcome', state: 'COMPLETED', updatedAt: completedAt, transitionHistory: [{ transitionRef: projectRef + '.completed', priorState: 'VERIFYING', nextState: 'COMPLETED', createdAt: completedAt }] }],
+    summary: { openWorkItemCount: 0 },
+  });
+  const thresholds = reader.validateProjectCompletionThresholds({ schemaVersion: 'vexwork.project-completion-thresholds/v1', thresholds: [{ thresholdRef: 'threshold.one', label: 'First cutoff', cutoffAt: '2026-11-22T07:59:59.999Z', timeZone: 'America/Los_Angeles', purpose: 'Test cutoff.' }] });
+  const early = makeProject('project.early', '2026-11-20T12:00:00.000Z'), later = makeProject('project.later', '2026-11-23T12:00:00.000Z');
+  const projection = reader.projectCompletionThresholdGroups({ projects: [early, later] }, thresholds);
+  assert.deepEqual(projection.thresholds[0].projects.map((project) => project.project.projectRef), ['project.early']);
+  assert.deepEqual(projection.afterThresholds.map((project) => project.project.projectRef), ['project.later']);
+  assert.deepEqual(projection.unclassified, []);
+  assert.equal(reader.projectCompletionAt(early), '2026-11-20T12:00:00.000Z');
+  assert.equal(projection.effects, false);
+  assert.equal(projection.executionAuthority, 'NONE');
+});
+
 test('recursive containment and incoming dependencies remain projection helpers', () => {
   const project = {
     project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
@@ -236,8 +253,11 @@ test('portfolio first read compares Projects to complete with Completed Projects
   assert.match(page, /Completed Projects/);
   assert.match(page, /Archived \/ exited Projects/);
   assert.match(page, /Reader\.projectPortfolioGroups\(workspace\)/);
+  assert.match(page, /const COMPLETION_THRESHOLDS_URL = '\.\/blueprint\/project-completion-thresholds\.json'/);
+  assert.match(page, /Reader\.projectCompletionThresholdGroups\(workspace,completionThresholds\)/);
+  assert.match(page, /expand historical thresholds/);
   assert.match(page, /unfinished · /);
-  assert.match(page, /completed outcomes with no open Project-selected Work/);
+  assert.match(page, /renderCompletedProjectThresholds\(groups\.completed\)/);
   assert.doesNotMatch(page, /workspace\.projects\.length,'Projects'/);
 });
 

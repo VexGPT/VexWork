@@ -171,18 +171,18 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const blueprintNativeLived = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof');
   const blueprintReusable = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.reusable-v1');
   const blueprintTotal = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.total-feature-capacity');
-  assert.equal(blueprintRoot.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(blueprintRoot.state, 'COMPLETED');
   assert.equal(blueprintRoot.effectDisposition, 'NO_EFFECTS');
-  assert.equal(blueprintPracticum.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(blueprintPracticum.state, 'CANCELLED');
   assert.equal(blueprintPracticum.effectDisposition, 'NO_EFFECTS');
-  assert.equal(blueprintNativeSource.state, 'WAITING_RESOURCE');
+  assert.equal(blueprintNativeSource.state, 'CANCELLED');
   assert.equal(blueprintNativeSource.effectDisposition, 'NO_EFFECTS');
   assert.equal(blueprintNativeSource.sourceRefs.includes('github.pull.VexGPT.VexLife-Construction-Reference.12'), true);
-  assert.equal(blueprintNativeLived.state, 'WAITING_DEPENDENCIES');
+  assert.equal(blueprintNativeLived.state, 'CANCELLED');
   assert.deepEqual(blueprintNativeLived.dependencyRefs, [blueprintNativeSource.workRef]);
-  assert.equal(blueprintReusable.state, 'WAITING_DEPENDENCIES');
+  assert.equal(blueprintReusable.state, 'CANCELLED');
   assert.deepEqual(blueprintReusable.dependencyRefs, [blueprintPracticum.workRef]);
-  assert.equal(blueprintTotal.state, 'WAITING_DEPENDENCIES');
+  assert.equal(blueprintTotal.state, 'CANCELLED');
   assert.deepEqual(blueprintTotal.dependencyRefs, [blueprintReusable.workRef]);
 
   const mobile = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.outcome');
@@ -222,7 +222,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
 
   const toCompletion = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.outcome');
   assert.equal(toCompletion.workClass, 'OUTCOME');
-  assert.equal(toCompletion.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(toCompletion.state, 'COMPLETED');
   assert.equal(toCompletion.authorityDisposition, 'AUTHORIZED_BOUNDED');
   const p0 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p0.research-closure');
   const p0b = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p0b.foundation');
@@ -245,7 +245,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(p4A054.state, 'COMPLETED');
   assert.deepEqual(p4A054.dependencyRefs, ['work.vexlife.tocompletion.p4.lived-attempt-a053']);
   const p5 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
-  assert.equal(p5.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(p5.state, 'CANCELLED');
   assert.equal(p5.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(p5.effectDisposition, 'NO_EFFECTS');
   assert.deepEqual(p5.dependencyRefs, ['work.vexlife.tocompletion.p4.typed-local-effect']);
@@ -263,17 +263,17 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const productization = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
   const setupConvergence = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence');
   const hereticIntegration = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration');
-  assert.equal(productization.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(productization.state, 'CANCELLED');
   assert.equal(setupConvergence.state, 'COMPLETED');
   assert.equal(hereticIntegration.state, 'COMPLETED');
   assert.deepEqual(hereticIntegration.dependencyRefs, ['work.vexlife.tocompletion.productization.setup-safety-convergence']);
   assert.equal(hereticIntegration.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(hereticIntegration.effectDisposition, 'EFFECTS_BOUND');
   const p6 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
-  assert.equal(p6.state, 'WAITING_DEPENDENCIES');
+  assert.equal(p6.state, 'CANCELLED');
   assert.deepEqual(p6.dependencyRefs, ['work.vexlife.tocompletion.p5.lived-continuity-learning']);
   const p7 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion');
-  assert.equal(p7.state, 'PLAN_VALIDATED');
+  assert.equal(p7.state, 'CANCELLED');
   assert.deepEqual(p7.dependencyRefs, ['work.vexlife.tocompletion.p4.typed-local-effect']);
   const connectedOutcome = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.outcome');
   const connectedPhase1 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase1-prechallenge');

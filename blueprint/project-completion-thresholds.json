@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "vexwork.project-completion-thresholds/v1",
+  "thresholds": [
+    {
+      "thresholdRef": "threshold.vexwork.completed-through.2026-11-21",
+      "label": "Through Nov 21, 2026",
+      "cutoffAt": "2026-11-22T07:59:59.999Z",
+      "timeZone": "America/Los_Angeles",
+      "purpose": "First historical completion shelf: Projects whose root completion chronology is on or before the Nov 21, 2026 product-stabilization cutoff."
+    }
+  ]
+}

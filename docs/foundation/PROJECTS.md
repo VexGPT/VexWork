@@ -140,6 +140,53 @@ projects/<physical-project-directory>/
 
 Use `process.vexwork.form-project` when a human-approved outcome has enough real structure that future workers would otherwise reconstruct grouping, decomposition, repository relationships, or execution posture from chat/provider history.
 
+## Project closeout and succession
+
+A Project does not need to remain unfinished forever because later product work grew out of it.
+
+Use `process.vexwork.close-and-succeed-project` when the original human outcome has matured and the
+remaining open Work is stale, no longer owed, or better owned by a newer scope.
+
+```text
+currentize predecessor Work
+-> reuse/form rightful successor Work first
+-> cross-reference predecessor and successor
+-> cancel old-scope Work that is no longer owed there
+-> complete the original root only when its original outcome was achieved
+```
+
+This uses existing WorkState; it does not add a Project lifecycle or synthetic "migrated" state.
+
+```text
+PROJECT_CLOSEOUT != HISTORY DELETION
+CANCELLED PREDECESSOR SCOPE != LOST SUCCESSOR WORK
+SCOPE CREEP != PERMANENTLY RUNNING OLD PROJECT
+```
+
+## Portfolio completion thresholds
+
+Completed Projects remain durable provenance, but the human portfolio should not become one endlessly growing wall of green cards.
+
+`blueprint/project-completion-thresholds.json` defines read-only historical cutoffs used only by the Pages projection. The first threshold is **Through Nov 21, 2026**.
+
+```text
+canonical Project + Workgraph lifecycle truth
+-> root terminal chronology
++ source-managed completion cutoff
+-> collapsible historical shelf
+```
+
+Threshold membership is derived from root terminal chronology. It is not stored on the Project and does not change WorkState, Project identity, release membership or authority.
+
+```text
+COMPLETION_THRESHOLD != WORK_STATE
+COMPLETION_THRESHOLD != PROJECT LIFECYCLE
+COMPLETION_THRESHOLD != RELEASE / MILESTONE AUTHORITY
+COLLAPSED HISTORY != DELETED HISTORY
+```
+
+Add a later threshold only when a real human navigation/history boundary is useful; do not create one per week or per batch merely because Projects completed.
+
 ## Version/release scope
 
 Release/version grouping is **not** source-placed by this foundation.
