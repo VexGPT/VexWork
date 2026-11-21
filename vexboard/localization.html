@@ -12,12 +12,12 @@
 :root{--paper:#f4f6f9;--sheet:#fff;--ink:#18213a;--muted:#5d677b;--faint:#8a93a6;--rule:#d8dde6;--rule-strong:#b9c1cf;--focus:#2f5bea;--good:#15803d;--warn:#b45309;--bad:#be123c;--sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased}a{color:var(--focus)}button,input,select{font:inherit;color:inherit}:focus-visible{outline:2px solid var(--focus);outline-offset:2px}code,.mono{font-family:var(--mono)}
 .bar{display:flex;align-items:center;gap:12px;padding:10px max(18px,env(safe-area-inset-right,0px)) 10px max(18px,env(safe-area-inset-left,0px));background:var(--sheet);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:10}.bar .brand{font-weight:600;font-size:15px;color:var(--ink);text-decoration:none}.bar a.nav{color:var(--muted);text-decoration:none;font-size:13px}.bar a.nav:hover{color:var(--ink);text-decoration:underline}.bar .here{font-weight:600}.bar .spacer{flex:1}
-.page{max-width:1380px;margin:0 auto;padding:28px max(18px,env(safe-area-inset-right,0px)) 64px max(18px,env(safe-area-inset-left,0px))}.intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end}.intro h1{margin:0;font-size:28px;letter-spacing:-.02em}.intro p{margin:6px 0 0;max-width:78ch;color:var(--muted)}.truth{font:11px var(--mono);color:var(--faint);text-align:right}.truth strong{color:var(--ink)}
+.page{max-width:1380px;margin:0 auto;padding:28px max(18px,env(safe-area-inset-right,0px)) 64px max(18px,env(safe-area-inset-left,0px))}.overview{overflow:hidden}.intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end}.intro h1{margin:0;font-size:28px;letter-spacing:-.02em}.intro p{margin:6px 0 0;max-width:78ch;color:var(--muted)}.truth{font:11px var(--mono);color:var(--faint);text-align:right}.truth strong{color:var(--ink)}
 .summary{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px;margin-top:20px}.metric{padding:14px 16px;background:var(--sheet);border:1px solid var(--rule);border-radius:12px}.metric b{display:block;font-size:22px;letter-spacing:-.02em}.metric span{color:var(--muted);font-size:12px}
 .sources{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0 0}.source-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);font-size:12px}.source-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--good)}.source-chip.off .dot{background:transparent;border:1px solid var(--faint)}.source-chip code{font-size:10.5px;color:var(--muted)}
-.workspace{margin-top:22px;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;overflow:hidden}.controls{display:grid;grid-template-columns:minmax(240px,1fr) 220px 180px;gap:8px;padding:12px;border-bottom:1px solid var(--rule);background:#fbfcfd}.controls input,.controls select{height:36px;border:1px solid var(--rule);border-radius:8px;background:#fff;padding:0 10px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}.translation-head{display:flex;align-items:center;gap:7px;white-space:nowrap}.translation-head select{max-width:170px;height:28px;border:1px solid var(--rule);border-radius:7px;background:#fff;padding:0 7px;text-transform:none;letter-spacing:normal;color:var(--ink);font:11px var(--sans)}
+.overview-resizer{height:24px;display:flex;align-items:center;justify-content:center;cursor:ns-resize;touch-action:none;user-select:none}.overview-resizer::before{content:'';display:block;width:86px;height:4px;border-radius:999px;background:var(--rule-strong)}.overview-resizer:hover::before,.overview-resizer:focus-visible::before{background:var(--focus)}.overview-resizer:focus-visible{outline:none}.workspace{margin-top:0;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;overflow:hidden}.controls{display:grid;grid-template-columns:minmax(240px,1fr) 220px 180px;gap:8px;padding:12px;border-bottom:1px solid var(--rule);background:#fbfcfd}.controls input,.controls select{height:36px;border:1px solid var(--rule);border-radius:8px;background:#fff;padding:0 10px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}.translation-head{display:flex;align-items:center;gap:7px;white-space:nowrap}.translation-head select{max-width:170px;height:28px;border:1px solid var(--rule);border-radius:7px;background:#fff;padding:0 7px;text-transform:none;letter-spacing:normal;color:var(--ink);font:11px var(--sans)}
 .tabs{display:flex;overflow:auto;border-bottom:1px solid var(--rule);background:#fff}.tab{flex:none;padding:10px 13px;border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);cursor:pointer;font-size:12.5px}.tab:hover{color:var(--ink)}.tab.on{color:var(--focus);border-bottom-color:var(--focus);font-weight:600}.tab .count{margin-left:5px;color:var(--faint);font:10px var(--mono)}
-.pivot-note{padding:10px 14px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12.5px;background:#fcfcfd}.match-note{margin-left:8px;color:var(--faint)}.table-wrap{overflow:auto;max-height:min(68vh,820px)}table{width:100%;border-collapse:collapse;min-width:1080px}th{position:sticky;top:0;z-index:2;text-align:left;background:#f8fafc;color:var(--faint);font-size:10.5px;text-transform:uppercase;letter-spacing:.055em;font-weight:600;border-bottom:1px solid var(--rule)}th,td{padding:9px 11px;vertical-align:top}td{border-bottom:1px solid #eceff4;font-size:12.5px}tbody tr:hover{background:#fafbff}td code{font-size:11px;overflow-wrap:anywhere}.value{max-width:360px;white-space:normal}.sub{display:block;color:var(--faint);font-size:11px;margin-top:2px}.pill{display:inline-flex;align-items:center;min-height:21px;padding:1px 7px;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:10.5px;font-weight:600;white-space:nowrap}.pill.good{background:#ecfdf5;color:#166534}.pill.warn{background:#fff7ed;color:#9a3412}.pill.bad{background:#fff1f2;color:#9f1239}.pill.muted{background:#f3f4f6;color:#6b7280}.open{display:inline-flex;align-items:center;height:27px;padding:0 9px;border:1px solid var(--rule);border-radius:7px;color:var(--ink);text-decoration:none;white-space:nowrap;background:#fff}.open:hover{border-color:var(--rule-strong)}.empty{padding:42px 18px;text-align:center;color:var(--muted)}.error{margin-top:14px;padding:10px 12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:9px;color:#9f1239;font-size:12.5px}
+.pivot-note{padding:10px 14px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12.5px;background:#fcfcfd}.overview-collapsed .table-wrap{max-height:calc(100vh - 205px)}.match-note{margin-left:8px;color:var(--faint)}.table-wrap{overflow:auto;max-height:min(68vh,820px)}table{width:100%;border-collapse:collapse;min-width:1080px}th{position:sticky;top:0;z-index:2;text-align:left;background:#f8fafc;color:var(--faint);font-size:10.5px;text-transform:uppercase;letter-spacing:.055em;font-weight:600;border-bottom:1px solid var(--rule)}th,td{padding:9px 11px;vertical-align:top}td{border-bottom:1px solid #eceff4;font-size:12.5px}tbody tr:hover{background:#fafbff}td code{font-size:11px;overflow-wrap:anywhere}.value{max-width:360px;white-space:normal}.sub{display:block;color:var(--faint);font-size:11px;margin-top:2px}.pill{display:inline-flex;align-items:center;min-height:21px;padding:1px 7px;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:10.5px;font-weight:600;white-space:nowrap}.pill.good{background:#ecfdf5;color:#166534}.pill.warn{background:#fff7ed;color:#9a3412}.pill.bad{background:#fff1f2;color:#9f1239}.pill.muted{background:#f3f4f6;color:#6b7280}.open{display:inline-flex;align-items:center;height:27px;padding:0 9px;border:1px solid var(--rule);border-radius:7px;color:var(--ink);text-decoration:none;white-space:nowrap;background:#fff}.open:hover{border-color:var(--rule-strong)}.empty{padding:42px 18px;text-align:center;color:var(--muted)}.error{margin-top:14px;padding:10px 12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:9px;color:#9f1239;font-size:12.5px}
 footer{margin-top:22px;color:var(--faint);font-size:12px;max-width:90ch}
 @media(max-width:820px){.intro{grid-template-columns:1fr}.truth{text-align:left}.summary{grid-template-columns:repeat(2,minmax(120px,1fr))}.controls{grid-template-columns:1fr}.page{padding-top:20px}}@media(max-width:480px){.summary{grid-template-columns:1fr 1fr}.bar{gap:9px}.bar .nav{font-size:12px}}
 </style>
@@ -131,6 +131,8 @@ const state = {
   subjectRef: null,
   localeRef: params.get('locale') || null,
   valueLocaleRef: params.get('valueLocale') || null,
+  overviewHeight: null,
+  overviewExpandedHeight: null,
 };
 
 function syncUrl() {
@@ -142,6 +144,91 @@ function syncUrl() {
   if (state.valueLocaleRef) next.searchParams.set('valueLocale', state.valueLocaleRef);
   if (state.query) next.searchParams.set('q', state.query);
   history.replaceState(null, '', next);
+}
+
+function applyOverviewHeight() {
+  const overview = document.getElementById('localization-overview');
+  if (!overview) return;
+  if (state.overviewHeight === null) {
+    overview.style.removeProperty('height');
+    app.classList.remove('overview-collapsed');
+    return;
+  }
+  const height = Math.max(0, state.overviewHeight);
+  overview.style.height = `${height}px`;
+  app.classList.toggle('overview-collapsed', height <= 8);
+}
+function setOverviewHeight(height, maximum = null) {
+  const overview = document.getElementById('localization-overview');
+  if (!overview) return;
+  const max = maximum ?? state.overviewExpandedHeight ?? overview.scrollHeight;
+  state.overviewHeight = Math.max(0, Math.min(height, Math.max(0, max)));
+  applyOverviewHeight();
+}
+function overviewResizer() {
+  const handle = h('div', {
+    class: 'overview-resizer',
+    role: 'separator',
+    tabindex: '0',
+    'aria-orientation': 'horizontal',
+    'aria-label': 'Resize overview and Localization workspace',
+    title: 'Drag up to hide the overview; drag down to restore it. Double-click to toggle.',
+  });
+  const refreshAria = () => {
+    const overview = document.getElementById('localization-overview');
+    const height = overview?.getBoundingClientRect().height ?? 0;
+    handle.setAttribute('aria-valuenow', String(Math.round(height)));
+    handle.setAttribute('aria-valuemin', '0');
+    handle.setAttribute('aria-valuemax', String(Math.round(state.overviewExpandedHeight ?? overview?.scrollHeight ?? height)));
+  };
+  handle.addEventListener('pointerdown', (event) => {
+    const overview = document.getElementById('localization-overview');
+    if (!overview) return;
+    const startHeight = overview.getBoundingClientRect().height;
+    const maximum = Math.max(startHeight, overview.scrollHeight);
+    state.overviewExpandedHeight = maximum;
+    state.overviewHeight = startHeight;
+    const startY = event.clientY;
+    handle.setPointerCapture?.(event.pointerId);
+    const move = (moveEvent) => {
+      setOverviewHeight(startHeight + moveEvent.clientY - startY, maximum);
+      refreshAria();
+    };
+    const end = () => {
+      handle.removeEventListener('pointermove', move);
+      handle.removeEventListener('pointerup', end);
+      handle.removeEventListener('pointercancel', end);
+      refreshAria();
+    };
+    handle.addEventListener('pointermove', move);
+    handle.addEventListener('pointerup', end);
+    handle.addEventListener('pointercancel', end);
+    refreshAria();
+  });
+  handle.addEventListener('dblclick', () => {
+    const overview = document.getElementById('localization-overview');
+    if (!overview) return;
+    const current = overview.getBoundingClientRect().height;
+    const expanded = Math.max(state.overviewExpandedHeight ?? 0, overview.scrollHeight);
+    state.overviewExpandedHeight = expanded;
+    setOverviewHeight(current <= 8 ? expanded : 0, expanded);
+    refreshAria();
+  });
+  handle.addEventListener('keydown', (event) => {
+    if (!['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const overview = document.getElementById('localization-overview');
+    if (!overview) return;
+    const current = overview.getBoundingClientRect().height;
+    const expanded = Math.max(state.overviewExpandedHeight ?? 0, overview.scrollHeight, current);
+    state.overviewExpandedHeight = expanded;
+    if (event.key === 'Home') setOverviewHeight(0, expanded);
+    else if (event.key === 'End') setOverviewHeight(expanded, expanded);
+    else setOverviewHeight(current + (event.key === 'ArrowDown' ? 40 : -40), expanded);
+    refreshAria();
+  });
+  requestAnimationFrame(refreshAria);
+  return handle;
 }
 
 function lensHref(row) {
@@ -326,20 +413,22 @@ function render() {
   search.addEventListener('input', () => { state.query = search.value; syncUrl(); renderRows(); });
 
   app.replaceChildren(
-    h('div', { class: 'intro' },
-      h('div', {}, h('h1', {}, 'Localization'), h('p', {}, 'Cross-Product projection over current Main Localization Inventories. Products keep source ownership; this workspace changes the pivot, not the truth.')),
-      h('div', { class: 'truth' }, 'current source · ', h('strong', {}, `${summary.inventoryCount} connected inventories`))),
-    h('div', { class: 'summary' },
-      metric(summary.subjectCount, 'connected Products'),
-      metric(summary.sourceStringCount, 'source strings'),
-      metric(summary.occurrenceCount, 'element occurrences'),
-      metric(summary.localeCount, 'locale views'),
-      metric(summary.activeChangeCount, 'active requested changes')),
-    h('div', { class: 'sources' },
-      state.connected.map(({ subject, inventory }) => h('span', { class: 'source-chip' }, h('span', { class: 'dot' }), subject.label, h('code', {}, short(inventory.sourceSnapshot.commit)))),
-      state.unavailable.map(({ subject, state: availability }) => h('span', { class: 'source-chip off', title: availability === 'ERROR' ? 'Inventory failed to load' : 'No Main localization sidecar is connected' }, h('span', { class: 'dot' }), subject.label, h('span', { class: 'sub' }, availability.replaceAll('_', ' '))))),
-    state.storageError ? h('div', { class: 'error' }, `Browser-local Change Sets could not be read safely: ${state.storageError.message}`) : null,
-    state.unavailable.some((row) => row.state === 'ERROR') ? h('div', { class: 'error' }, 'One or more Product inventories failed validation. They are excluded rather than projected with uncertain identity.') : null,
+    h('section', { class: 'overview', id: 'localization-overview' },
+      h('div', { class: 'intro' },
+        h('div', {}, h('h1', {}, 'Localization'), h('p', {}, 'Cross-Product projection over current Main Localization Inventories. Products keep source ownership; this workspace changes the pivot, not the truth.')),
+        h('div', { class: 'truth' }, 'current source · ', h('strong', {}, `${summary.inventoryCount} connected inventories`))),
+      h('div', { class: 'summary' },
+        metric(summary.subjectCount, 'connected Products'),
+        metric(summary.sourceStringCount, 'source strings'),
+        metric(summary.occurrenceCount, 'element occurrences'),
+        metric(summary.localeCount, 'locale views'),
+        metric(summary.activeChangeCount, 'active requested changes')),
+      h('div', { class: 'sources' },
+        state.connected.map(({ subject, inventory }) => h('span', { class: 'source-chip' }, h('span', { class: 'dot' }), subject.label, h('code', {}, short(inventory.sourceSnapshot.commit)))),
+        state.unavailable.map(({ subject, state: availability }) => h('span', { class: 'source-chip off', title: availability === 'ERROR' ? 'Inventory failed to load' : 'No Main localization sidecar is connected' }, h('span', { class: 'dot' }), subject.label, h('span', { class: 'sub' }, availability.replaceAll('_', ' '))))),
+      state.storageError ? h('div', { class: 'error' }, `Browser-local Change Sets could not be read safely: ${state.storageError.message}`) : null,
+      state.unavailable.some((row) => row.state === 'ERROR') ? h('div', { class: 'error' }, 'One or more Product inventories failed validation. They are excluded rather than projected with uncertain identity.') : null),
+    overviewResizer(),
     h('section', { class: 'workspace' },
       h('div', { class: 'controls' }, search, subjectSelect, localeSelect),
       h('div', { class: 'tabs' }, Workspace.LOCALIZATION_WORKSPACE_PIVOTS.map((pivot) => {
@@ -350,6 +439,7 @@ function render() {
       h('div', { class: 'pivot-note' }, h('span', {}, pivotNotes[state.pivot]), h('span', { id: 'match-summary', class: 'match-note' }, matchSummary(rows))),
       h('div', { id: 'rows' }, renderers[state.pivot](rows))),
     h('footer', {}, 'Observed Product strings remain immutable here. Requested future values live in the existing browser-local Localization Change Set layer and reconcile against current source; equal values remain evidence, not semantic identity.'));
+  applyOverviewHeight();
 }
 function metric(value, label) { return h('div', { class: 'metric' }, h('b', {}, count(value)), h('span', {}, label)); }
 function renderRows() {

@@ -68,6 +68,31 @@ test('STRINGS keeps source value anchored and adds one switchable locale-value c
   assert.match(workspace, /valueLocaleRef: state\.valueLocaleRef/);
 });
 
+
+test('overview error absence never leaks null text into the page', () => {
+  assert.match(workspace, /h\('section', \{ class: 'overview', id: 'localization-overview' \}/);
+  assert.match(workspace, /state\.storageError \? h\('div', \{ class: 'error' \}/);
+  assert.doesNotMatch(
+    workspace,
+    /app\.replaceChildren\([\s\S]{0,1400}state\.storageError \?/,
+    'optional null error children must be normalized inside h(), not passed directly to DOM replaceChildren',
+  );
+});
+
+test('overview can collapse into working space through one accessible vertical splitter', () => {
+  assert.match(workspace, /class: 'overview-resizer'/);
+  assert.match(workspace, /role: 'separator'/);
+  assert.match(workspace, /aria-orientation': 'horizontal'/);
+  assert.match(workspace, /pointerdown/);
+  assert.match(workspace, /pointermove/);
+  assert.match(workspace, /ArrowUp/);
+  assert.match(workspace, /ArrowDown/);
+  assert.match(workspace, /Home/);
+  assert.match(workspace, /End/);
+  assert.match(workspace, /overview-collapsed/);
+  assert.match(workspace, /max-height:calc\(100vh - 205px\)/);
+});
+
 test('global workspace links rows back into the existing Screen Lens selection/localization path', () => {
   assert.match(workspace, /target\.searchParams\.set\('localization', '1'\)/);
   assert.match(workspace, /target\.searchParams\.set\('string', sourceStringRef\)/);
