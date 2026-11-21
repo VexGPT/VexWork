@@ -1369,15 +1369,15 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "Repository-owned Gradle execution of proof-capable/current VexLife-Prod #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10 remains owed."
+          "note": "repository Kotlin/JVM/JS proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Qualified Xcode / Apple SwiftUI SDK compile remains owed."
+          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         }
       ],
-      "note": "Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from 4150821f2ab346c62c80c892911760759f1650ea; Reference pressure only. The target-native Menu tree differs from source containment while source identity and realization mapping stay explicit."
+      "note": "VexLife-Prod #511 A001 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from 4150821f2ab346c62c80c892911760759f1650ea; Reference pressure only. The target-native Menu tree differs from source containment while source identity and realization mapping stay explicit."
     },
     {
       "pressureRef": "pressure.component.stable-repeater.swiftui-conversation-timeline",
@@ -1463,12 +1463,12 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "Repository-owned Gradle execution of proof-capable/current VexLife-Prod #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10 remains owed."
+          "note": "repository Kotlin/JVM/JS proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Qualified Xcode / Apple SwiftUI SDK compile remains owed."
+          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         },
         {
           "proofRef": "proof.swift-stable-identity-mutations",
@@ -1481,7 +1481,7 @@
           "note": "Generated Swift target initializer rejected duplicate item IDs through its precondition (nonzero process exit), independently of the Kotlin-side negative case."
         }
       ],
-      "note": "Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from aa48f99634d83941ca9a96c3af96170614658109; Exact generated Swift now has target-runtime identity pressure in addition to parse/API-shape proof: insert/remove/reorder preserve source-owned IDs and duplicate IDs fail closed. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions rather than portable core."
+      "note": "VexLife-Prod #511 A001 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from aa48f99634d83941ca9a96c3af96170614658109; Exact generated Swift now has target-runtime identity pressure in addition to parse/API-shape proof: insert/remove/reorder preserve source-owned IDs and duplicate IDs fail closed. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions rather than portable core."
     },
     {
       "pressureRef": "pressure.component.frame-region-layout.swiftui-workspace",
@@ -1544,15 +1544,15 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "Repository-owned Gradle execution of proof-capable/current VexLife-Prod #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10 remains owed."
+          "note": "repository Kotlin/JVM/JS proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Qualified Xcode / Apple SwiftUI SDK compile remains owed."
+          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         }
       ],
-      "note": "Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from befe31789834a74f5a2738cb6d6028c01aa7553c; The first compile caught and corrected an invalid VexLifeWeb import before PASS. Generic irregular geometry remains held rather than duplicating VexWeb's private browser geometry machinery."
+      "note": "VexLife-Prod #511 A001 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from befe31789834a74f5a2738cb6d6028c01aa7553c; The first compile caught and corrected an invalid VexLifeWeb import before PASS. Generic irregular geometry remains held rather than duplicating VexWeb's private browser geometry machinery."
     },
     {
       "pressureRef": "pressure.component.swappable-region.swiftui-vexlife-prod",
@@ -2100,10 +2100,10 @@
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple SwiftUI/Xcode native typecheck remains A4 target proof and is not required for A3 identity-law acceptance."
+          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         }
       ],
-      "note": "Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a; SwiftUI pressure proves the same Product source refs survive a materially different target form while the target-specific accessibility hook remains explicitly non-canonical."
+      "note": "VexLife-Prod #511 A001 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a; SwiftUI pressure proves the same Product source refs survive a materially different target form while the target-specific accessibility hook remains explicitly non-canonical."
     },
     {
       "pressureRef": "pressure.component.typed-containment.swiftui-quick-actions",
@@ -2160,10 +2160,10 @@
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple native target proof remains A4 and does not gate the A3 containment law."
+          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         }
       ],
-      "note": "Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a; This pressure proves the portable law is source containment + explicit target mapping, not literal cross-framework view-tree sameness."
+      "note": "VexLife-Prod #511 A001 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a; This pressure proves the portable law is source containment + explicit target mapping, not literal cross-framework view-tree sameness."
     },
     {
       "pressureRef": "pressure.component.semantic-control-binding.vexlife-prod-browser",
@@ -2271,15 +2271,15 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "Repository-owned Gradle execution of proof-capable/current VexLife-Prod #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10 remains owed."
+          "note": "repository Kotlin/JVM/JS proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple SwiftUI/Xcode native proof remains A4 target evidence."
+          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A001 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
         }
       ],
-      "note": "Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. SwiftUI reference maps the same Product binding meaning into a native Menu form, refuses unadmitted binding kinds, and keeps host callback/effect execution outside generated presentation. Product #506 is ordinary-forward current and its source-owner sweep repaired one candidate-local Gradle settings formation defect (literal backslash-n between module includes); the SwiftUI generator/test blobs and consumed Blueprint/VexWeb/Conversation inputs remain unchanged."
+      "note": "VexLife-Prod #511 A001 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. SwiftUI reference maps the same Product binding meaning into a native Menu form, refuses unadmitted binding kinds, and keeps host callback/effect execution outside generated presentation. Product #506 is ordinary-forward current and its source-owner sweep repaired one candidate-local Gradle settings formation defect (literal backslash-n between module includes); the SwiftUI generator/test blobs and consumed Blueprint/VexWeb/Conversation inputs remain unchanged."
     }
   ]
 }
