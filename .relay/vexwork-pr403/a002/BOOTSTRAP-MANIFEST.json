@@ -18,6 +18,17 @@
   "repairRef": "github.pull.vexwork.399@9b48268876ebba4b1ad91f753d9c497916d9bb74",
   "bootstrapZipSha256": "b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c",
   "bootstrapZipBytes": 7306,
+  "bootstrapGitBlobSha": "d79fac7dfd8b388034da8133e38bbdca144c2dda",
+  "bootstrapCarrierMode": "DIRECT_GIT_BINARY_BLOB",
+  "bootstrapCarrierPath": ".relay/vexwork-pr403/context/a002/VEXWORK-PR403-LOCALIZATION-A1-RELAY-BOOTSTRAP-A002--sha256-b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c.zip",
+  "supersededCarrier": {
+    "mode": "BASE64_TEXT_RECONSTRUCTION",
+    "failure": "ONE_BASE64_CHARACTER_MISSING",
+    "expectedBase64Chars": 9744,
+    "observedBase64Chars": 9743,
+    "observedDecodedSha256": "e02cf917b231cc20d3b3b21a1afc53c42bd1162fd6696be5604de118112617a2",
+    "payloadExecutionReached": false
+  },
   "members": {
     "bootstrap/FORM-AND-RUN.command": {
       "sha256": "92157e801d58125d250e01a3c64ee149c1bfd9885b3ab3bbdb17a24c244c30ac",
