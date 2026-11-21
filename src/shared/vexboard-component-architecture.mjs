@@ -20,6 +20,26 @@ export const COMPONENT_ARCHITECTURE_STATES = Object.freeze([
   'HELD',
 ]);
 
+export const COMPONENT_TARGET_PRESSURE_STATES = Object.freeze([
+  'REFERENCE_COMPATIBILITY_PASS',
+  'SOURCE_FORMED',
+  'HELD_SOURCE_CONTRACT',
+]);
+
+export const COMPONENT_TARGET_RELATION_DISPOSITIONS = Object.freeze([
+  'MAPPED',
+  'HELD',
+  'PLATFORM_SPECIFIC',
+  'UNSUPPORTED',
+]);
+
+export const COMPONENT_TARGET_PROOF_STATES = Object.freeze([
+  'PASS',
+  'OWED',
+  'HELD',
+  'NOT_APPLICABLE',
+]);
+
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 
 function fail(message) {
@@ -69,6 +89,51 @@ function normalizeEvidence(entry, label) {
   };
 }
 
+function normalizeTargetRelation(entry, label) {
+  const disposition = text(entry?.disposition, label + '.disposition');
+  if (!COMPONENT_TARGET_RELATION_DISPOSITIONS.includes(disposition)) {
+    fail(label + '.disposition is unknown');
+  }
+  return {
+    relationRef: ref(entry?.relationRef, label + '.relationRef'),
+    disposition,
+    source: text(entry?.source, label + '.source'),
+    target: text(entry?.target, label + '.target'),
+  };
+}
+
+function normalizeTargetProof(entry, label) {
+  const state = text(entry?.state, label + '.state');
+  if (!COMPONENT_TARGET_PROOF_STATES.includes(state)) fail(label + '.state is unknown');
+  return {
+    proofRef: ref(entry?.proofRef, label + '.proofRef'),
+    state,
+    note: optionalText(entry?.note, label + '.note'),
+  };
+}
+
+function normalizeTargetPressure(entry, index) {
+  const label = 'targetPressures[' + index + ']';
+  const state = text(entry?.state, label + '.state');
+  if (!COMPONENT_TARGET_PRESSURE_STATES.includes(state)) fail(label + '.state is unknown');
+  return {
+    pressureRef: ref(entry?.pressureRef, label + '.pressureRef'),
+    candidateRef: ref(entry?.candidateRef, label + '.candidateRef'),
+    platformRef: ref(entry?.platformRef, label + '.platformRef'),
+    framework: text(entry?.framework, label + '.framework'),
+    state,
+    sourceRef: ref(entry?.sourceRef, label + '.sourceRef'),
+    repositoryRef: ref(entry?.repositoryRef, label + '.repositoryRef'),
+    commit: text(entry?.commit, label + '.commit'),
+    path: text(entry?.path, label + '.path'),
+    relationships: (entry?.relationships ?? []).map((row, relationIndex) =>
+      normalizeTargetRelation(row, label + '.relationships[' + relationIndex + ']')),
+    proofs: (entry?.proofs ?? []).map((row, proofIndex) =>
+      normalizeTargetProof(row, label + '.proofs[' + proofIndex + ']')),
+    note: optionalText(entry?.note, label + '.note'),
+  };
+}
+
 function normalizeCandidate(entry, index) {
   const label = 'candidates[' + index + ']';
   const classRef = text(entry?.class, label + '.class');
@@ -107,6 +172,23 @@ export function normalizeComponentArchitectureCatalog(input) {
   const candidateRefs = candidates.map((row) => row.candidateRef);
   if (new Set(candidateRefs).size !== candidateRefs.length) fail('candidateRef must be unique');
 
+  const targetPressures = (input.targetPressures ?? []).map(normalizeTargetPressure);
+  const pressureRefs = targetPressures.map((row) => row.pressureRef);
+  if (new Set(pressureRefs).size !== pressureRefs.length) fail('target pressure refs must be unique');
+  for (const pressure of targetPressures) {
+    if (!candidateRefs.includes(pressure.candidateRef)) {
+      fail(pressure.pressureRef + ' references unknown candidate ' + pressure.candidateRef);
+    }
+    const relationRefs = pressure.relationships.map((row) => row.relationRef);
+    if (new Set(relationRefs).size !== relationRefs.length) {
+      fail(pressure.pressureRef + ' relationship refs must be unique');
+    }
+    const proofRefs = pressure.proofs.map((row) => row.proofRef);
+    if (new Set(proofRefs).size !== proofRefs.length) {
+      fail(pressure.pressureRef + ' proof refs must be unique');
+    }
+  }
+
   return freezeDeep({
     schemaVersion: COMPONENT_ARCHITECTURE_CATALOG_SCHEMA,
     catalogRef: ref(input.catalogRef, 'catalogRef'),
@@ -115,6 +197,7 @@ export function normalizeComponentArchitectureCatalog(input) {
     principleRefs: refs(input.principleRefs ?? [], 'principleRefs'),
     sourceSnapshots,
     candidates,
+    targetPressures,
   });
 }
 
@@ -128,6 +211,15 @@ export function candidatesForSourceFamily(catalog, sourceFamilyRef) {
   catalog = normalizeComponentArchitectureCatalog(catalog);
   ref(sourceFamilyRef, 'sourceFamilyRef');
   return catalog.candidates.filter((row) => row.sourceFamilyRefs.includes(sourceFamilyRef));
+}
+
+export function targetPressuresForCandidate(catalog, candidateRef) {
+  catalog = normalizeComponentArchitectureCatalog(catalog);
+  ref(candidateRef, 'candidateRef');
+  if (!catalog.candidates.some((row) => row.candidateRef === candidateRef)) {
+    fail('unknown candidate ' + candidateRef);
+  }
+  return catalog.targetPressures.filter((row) => row.candidateRef === candidateRef);
 }
 
 export function searchComponentArchitecture(catalog, query, { limit = 100 } = {}) {
@@ -148,6 +240,26 @@ export function searchComponentArchitecture(catalog, query, { limit = 100 } = {}
       ...row.mustNotOwn,
       ...row.targetPressure,
       ...row.sourceEvidence.flatMap((evidence) => [evidence.path, ...evidence.symbols, evidence.why]),
+      ...catalog.targetPressures
+        .filter((pressure) => pressure.candidateRef === row.candidateRef)
+        .flatMap((pressure) => [
+          pressure.pressureRef,
+          pressure.platformRef,
+          pressure.framework,
+          pressure.state,
+          pressure.sourceRef,
+          pressure.repositoryRef,
+          pressure.commit,
+          pressure.path,
+          ...pressure.relationships.flatMap((relation) => [
+            relation.relationRef,
+            relation.disposition,
+            relation.source,
+            relation.target,
+          ]),
+          ...pressure.proofs.flatMap((proof) => [proof.proofRef, proof.state, proof.note]),
+          pressure.note,
+        ]),
       row.note,
     ].filter(Boolean).join('\n').toLowerCase().includes(needle))
     .slice(0, limit);
