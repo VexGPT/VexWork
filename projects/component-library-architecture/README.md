@@ -183,7 +183,7 @@ The materialized inventory lives at
 `scripts/build-component-inventory.mjs`. Production refactor opportunities discovered while
 organizing the source are recorded in [TECH-DEBT.md](./TECH-DEBT.md) rather than applied to Android.
 
-### A2 — cross-Product component census — RUNNING
+### A2 — cross-Product component census — VERIFYING
 
 A1 remains **VERIFYING** while A2 runs. This is intentional: the Android inventory source is formed
 and deterministic enough to consume read-only; A1's repository-wide executable proof floor remains
@@ -304,7 +304,44 @@ Do not assume same-looking controls share one portable component. Group by evide
 - style/theme relationship;
 - lifecycle/platform requirements.
 
-### A3 — portable component Blueprint contract — WAITING on A1+A2
+### A3 — portable relationship / component Blueprint contract — RUNNING (formation)
+
+A3 formation does not choose one universal semantic owner.
+
+```text
+Product source
+  owns Product/domain meaning
+
+VexWork
+  owns census / trajectory / candidate architecture navigation
+
+Vextreme-SDK
+  may own reusable observation / mapping / construction / proof machinery
+  only when multiple real consumers earn one executable invariant
+
+target repository
+  owns target-native representation
+```
+
+The first A3 formation set is intentionally small:
+
+```text
+FOUNDATIONAL RELATIONSHIPS — reuse/generalize existing typed source where rightful
+  stable identity + parent/containment
+  semantic control binding
+  Frame / Seam / Region / Allocation
+
+NEW RELATIONSHIP CONTRACT CANDIDATES — formation, not acceptance
+  Stable Repeated Items
+  Local Selection
+
+KEEP IN A2 EVIDENCE / HELD
+  Modal presentation
+  Local Navigation Trail
+  Anchored Overlay
+  Context Dock
+  Action Vessel / Adaptive Action Group convergence
+```
 
 The portable contract now has a stronger implementation direction from accepted VexLife-Prod evidence:
 
