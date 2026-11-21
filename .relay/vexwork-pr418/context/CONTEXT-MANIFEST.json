@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "vexwork.vexrelay-companion-context/v1",
+  "continuity": "[VXG RealForever]",
+  "productPullRequest": "github.pull.vexwork.418",
+  "proofIssue": "github.issue.vexwork.419",
+  "candidate": {
+    "base": "5adc12ac7983773a82955c4ef6d59fc386add75f",
+    "head": "c2d7edcc8b54baf2f41e3e90b6bc369937b83824",
+    "tree": "fc4e733086caa40219b3b84b6985d9731503a75d",
+    "branch": "VXG-112126-localization-shared-frame-prod-preview-a001"
+  },
+  "relay": {
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "carrier": "adapter.vexlocalbridge.native-vexrelay-task-archive/v1"
+  },
+  "bootstrap": {
+    "filename": "VEXWORK-PR418-A2-SOURCE-OWNER-BOOTSTRAP-A001--sha256-dd7d211fb5cc1e1804dcadf2212c1cae745ea6491480b5843ca89ecbb382a766.zip",
+    "sha256": "dd7d211fb5cc1e1804dcadf2212c1cae745ea6491480b5843ca89ecbb382a766",
+    "bytes": 20579,
+    "gitBlob": "49d3eabb0359deb2a70b2d0261ff226b7260a7b5",
+    "carrierMode": "DIRECT_GIT_BINARY_BLOB",
+    "path": ".relay/vexwork-pr418/context/a001/VEXWORK-PR418-A2-SOURCE-OWNER-BOOTSTRAP-A001--sha256-dd7d211fb5cc1e1804dcadf2212c1cae745ea6491480b5843ca89ecbb382a766.zip"
+  },
+  "returnCustody": {
+    "prefix": ".relay/vexwork-pr418/a001/return"
+  }
+}
