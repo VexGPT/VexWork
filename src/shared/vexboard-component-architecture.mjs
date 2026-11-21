@@ -40,6 +40,17 @@ export const COMPONENT_TARGET_PROOF_STATES = Object.freeze([
   'NOT_APPLICABLE',
 ]);
 
+export const COMPONENT_FORMATION_STATES = Object.freeze([
+  'FORMATION',
+  'HELD',
+  'ACCEPTED',
+]);
+
+export const COMPONENT_FORMATION_KINDS = Object.freeze([
+  'REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP',
+  'NEW_TYPED_RELATIONSHIP_CANDIDATE',
+]);
+
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 
 function fail(message) {
@@ -134,6 +145,37 @@ function normalizeTargetPressure(entry, index) {
   };
 }
 
+function normalizeFormation(entry, label) {
+  if (!entry) return null;
+  const state = text(entry.state, label + '.state');
+  if (!COMPONENT_FORMATION_STATES.includes(state)) fail(label + '.state is unknown');
+  const kind = text(entry.kind, label + '.kind');
+  if (!COMPONENT_FORMATION_KINDS.includes(kind)) fail(label + '.kind is unknown');
+  const sourceOwnerRefs = refs(entry.sourceOwnerRefs ?? [], label + '.sourceOwnerRefs');
+  if (!sourceOwnerRefs.length) fail(label + '.sourceOwnerRefs must not be empty');
+  const portableFields = strings(entry.portableFields ?? [], label + '.portableFields');
+  if (!portableFields.length) fail(label + '.portableFields must not be empty');
+  const nonOwnership = strings(entry.nonOwnership ?? [], label + '.nonOwnership');
+  if (!nonOwnership.length) fail(label + '.nonOwnership must not be empty');
+  const targetObligations = strings(entry.targetObligations ?? [], label + '.targetObligations');
+  if (!targetObligations.length) fail(label + '.targetObligations must not be empty');
+  const acceptanceProofs = strings(entry.acceptanceProofs ?? [], label + '.acceptanceProofs');
+  if (!acceptanceProofs.length) fail(label + '.acceptanceProofs must not be empty');
+
+  return {
+    formationRef: ref(entry.formationRef, label + '.formationRef'),
+    state,
+    kind,
+    sourceOwnerRefs,
+    ownerRule: text(entry.ownerRule, label + '.ownerRule'),
+    portableFields,
+    nonOwnership,
+    targetObligations,
+    acceptanceProofs,
+    note: optionalText(entry.note, label + '.note'),
+  };
+}
+
 function normalizeCandidate(entry, index) {
   const label = 'candidates[' + index + ']';
   const classRef = text(entry?.class, label + '.class');
@@ -154,6 +196,7 @@ function normalizeCandidate(entry, index) {
     targetPressure: strings(entry?.targetPressure ?? [], label + '.targetPressure'),
     sourceEvidence: (entry?.sourceEvidence ?? []).map((row, evidenceIndex) =>
       normalizeEvidence(row, label + '.sourceEvidence[' + evidenceIndex + ']')),
+    formation: normalizeFormation(entry?.formation, label + '.formation'),
     note: optionalText(entry?.note, label + '.note'),
   };
 }
@@ -240,6 +283,18 @@ export function searchComponentArchitecture(catalog, query, { limit = 100 } = {}
       ...row.mustNotOwn,
       ...row.targetPressure,
       ...row.sourceEvidence.flatMap((evidence) => [evidence.path, ...evidence.symbols, evidence.why]),
+      ...(row.formation ? [
+        row.formation.formationRef,
+        row.formation.state,
+        row.formation.kind,
+        ...row.formation.sourceOwnerRefs,
+        row.formation.ownerRule,
+        ...row.formation.portableFields,
+        ...row.formation.nonOwnership,
+        ...row.formation.targetObligations,
+        ...row.formation.acceptanceProofs,
+        row.formation.note,
+      ] : []),
       ...catalog.targetPressures
         .filter((pressure) => pressure.candidateRef === row.candidateRef)
         .flatMap((pressure) => [
