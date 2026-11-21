@@ -135,7 +135,7 @@ proof
 
 Durable architecture: [ARCHITECTURE.md](./ARCHITECTURE.md).
 
-### A1 — Android Gallery / component inventory — RUNNING
+### A1 — Android Gallery / component inventory — VERIFYING
 
 Extract current Android reusable components and occurrences into a machine-readable inventory.
 
@@ -426,6 +426,6 @@ VEXWORK_PROJECT != IMPLEMENTATION_AUTHORITY
 
 `work.vex.component-library-architecture.android-inventory`
 
-Prove the current A1 inventory builder/materialization + Component Gallery route against the exact Android Main Lens, then move the cross-Product census forward. Do not refactor Android production components from this lane; keep discovered cleanup in TECH-DEBT.md until a later source-owning refactor is admitted.
+Close the repository-owned executable proof floor for the formed A1 inventory/materialization + Component Gallery route against the exact Android Main Lens, then move the cross-Product census forward. Do not refactor Android production components from this lane; keep discovered cleanup in TECH-DEBT.md until a later source-owning refactor is admitted.
 
 <!-- [VXG RealForever][VEXWORK][COMPONENT-LIBRARY-ARCHITECTURE] -->
