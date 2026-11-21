@@ -135,7 +135,43 @@
           "why": "VexStream uses stable region/control refs and parent relationships to project one browser product without a test-only identity registry."
         }
       ],
-      "note": "Strong first Kotlin Blueprint root law: identity before renderer."
+      "note": "Strong first Kotlin Blueprint root law: identity before renderer.",
+      "formation": {
+        "formationRef": "formation.component.identity-addressed-tree.a3",
+        "state": "FORMATION",
+        "kind": "REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP",
+        "sourceOwnerRefs": [
+          "repo.vexlife-android",
+          "repo.vexlife-prod",
+          "repo.vexstream-music"
+        ],
+        "ownerRule": "Each Product owns the meaning of its identities; the portable relationship carries stable addressability and source parentage only, never Product state or human-facing words.",
+        "portableFields": [
+          "stableRef: source-owned stable node/element/component identity",
+          "sourceParentRef: optional source-owned parent identity",
+          "roleOrKind: bounded source-visible structural/presentation role",
+          "sourceCoordinate: repository/revision/source path or equivalent provenance coordinate"
+        ],
+        "nonOwnership": [
+          "Product semantic state",
+          "human-facing labels or localized words",
+          "platform view object identity/lifetime",
+          "target-native accessibility/test mechanism as canonical identity"
+        ],
+        "targetObligations": [
+          "preserve the stable source identity through generated/native target form",
+          "preserve or explicitly map source parentage even when target-native containment differs",
+          "fail closed on duplicate source identities",
+          "project target identity mapping back through a target manifest or Screen Lens coordinate"
+        ],
+        "acceptanceProofs": [
+          "same source identities survive at least two materially different target forms",
+          "duplicate identity negative case fails deterministically",
+          "target projection can reconstruct source ref and parent relationship without parsing human labels",
+          "no target-specific object identity is promoted into Product meaning"
+        ],
+        "note": "This formation should reuse existing VexUiElementRef / Screen Lens identity laws where rightful rather than create a second global identity registry."
+      }
     },
     {
       "candidateRef": "candidate.component.semantic-control-binding",
@@ -227,7 +263,44 @@
           "why": "VexStream projects dozens of stable control identities with source-owned intent refs and bounded pathways independently of VexLife/Android widget classes."
         }
       ],
-      "note": "The portable contract should say what action/control relationship exists, not which widget class handles it."
+      "note": "The portable contract should say what action/control relationship exists, not which widget class handles it.",
+      "formation": {
+        "formationRef": "formation.component.semantic-control-binding.a3",
+        "state": "FORMATION",
+        "kind": "REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP",
+        "sourceOwnerRefs": [
+          "repo.vexlife-android",
+          "repo.vexlife-prod",
+          "repo.vexstream-music"
+        ],
+        "ownerRule": "The Product/domain owner defines what an action, capability, local interaction or navigation target means. The portable relationship binds a visible/control identity to that already-owned meaning without owning effects.",
+        "portableFields": [
+          "controlRef: stable source-owned control/element identity",
+          "interactionKind: activate/change/resize or another admitted source interaction",
+          "bindingKind: source-owned action/capability/local-interaction/navigation relationship",
+          "bindingTargetRef: stable source-owned target/action/capability coordinate when one exists"
+        ],
+        "nonOwnership": [
+          "effect execution",
+          "provider success or acknowledgement",
+          "feature state mutation",
+          "native callback/function identity",
+          "presentation words or icons"
+        ],
+        "targetObligations": [
+          "preserve semantic binding independently of native event callback syntax",
+          "map every admitted binding kind or return an explicit HELD/PLATFORM_SPECIFIC/UNSUPPORTED disposition",
+          "preserve capability/permission boundaries when the Product source owns them",
+          "project target event/control realization without making it a second semantic owner"
+        ],
+        "acceptanceProofs": [
+          "same semantic binding survives materially different interaction forms",
+          "target generation rejects or holds unknown binding kinds instead of guessing",
+          "target manifestation can be traced back to the exact source control and binding target",
+          "effect authority remains outside the presentation mapping"
+        ],
+        "note": "Buttons, menus, voice actions and other forms may manifest one semantic binding without becoming the binding's meaning."
+      }
     },
     {
       "candidateRef": "candidate.component.typed-containment",
@@ -302,7 +375,43 @@
           "why": "The VexStream Lens recovers source-authored parent/child containment across shell terrain, nested modes and controls in a materially different Product."
         }
       ],
-      "note": "This is the composable readability Victor is pointing at: code nesting should carry relationship meaning, not just syntax."
+      "note": "This is the composable readability Victor is pointing at: code nesting should carry relationship meaning, not just syntax.",
+      "formation": {
+        "formationRef": "formation.component.typed-containment.a3",
+        "state": "FORMATION",
+        "kind": "REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP",
+        "sourceOwnerRefs": [
+          "repo.vexlife-android",
+          "repo.vexlife-prod",
+          "repo.vexstream-music"
+        ],
+        "ownerRule": "Each Product owns its authored structural/topological relationships. Portable containment preserves source parent/child/slot meaning while allowing target-native manifestation trees to differ when the mapping is explicit.",
+        "portableFields": [
+          "parentRef: stable source container/parent identity",
+          "childRefs: admitted direct source child identities",
+          "slotRef: optional source-owned semantic slot",
+          "placementOrRole: optional source-owned placement/role relationship"
+        ],
+        "nonOwnership": [
+          "feature/domain state merely because a container presents it",
+          "framework layout object types",
+          "target-native spacing/padding mechanics",
+          "literal target view hierarchy as canonical source topology"
+        ],
+        "targetObligations": [
+          "preserve direct source parent/child ownership or explicitly record the target realization mapping",
+          "preserve source-owned slot identity where present",
+          "reject child references outside the admitted source relationship",
+          "never infer source ownership solely from the target-native view tree"
+        ],
+        "acceptanceProofs": [
+          "nested source relationships reconstruct identically from more than one Product",
+          "at least one target proves non-literal native containment while preserving source topology",
+          "invalid child/parent or slot relationships fail before target acceptance",
+          "target Screen Lens/manifest can distinguish source containment from target manifestation containment"
+        ],
+        "note": "This is the reusable law behind readable nested Blueprint/Compose structures, not a universal Row/Column class hierarchy."
+      }
     },
     {
       "candidateRef": "candidate.component.swappable-region",
@@ -412,7 +521,49 @@
           "why": "VexStream Screen Lens projects the source-owned selection region, its admitted child panels and stable selector controls as one inspectable relationship tree."
         }
       ],
-      "note": "Android Gallery and VexStream Discover now independently prove the local-selection law. Current VexLife-Prod has equivalent lived Conversation/Settings behavior but lacks one compiler-visible selected/default-child contract, so SwiftUI generation for that Product remains held rather than inferred from browser state.view."
+      "note": "Android Gallery and VexStream Discover now independently prove the local-selection law. Current VexLife-Prod has equivalent lived Conversation/Settings behavior but lacks one compiler-visible selected/default-child contract, so SwiftUI generation for that Product remains held rather than inferred from browser state.view.",
+      "formation": {
+        "formationRef": "formation.component.local-selection.a3",
+        "state": "FORMATION",
+        "kind": "NEW_TYPED_RELATIONSHIP_CANDIDATE",
+        "sourceOwnerRefs": [
+          "repo.vexlife-android",
+          "repo.vexstream-music",
+          "repo.vexlife-prod"
+        ],
+        "ownerRule": "The Product source owns the local selection meaning/currentness. The reusable relationship carries an admitted child-selection topology and selector mapping without turning local presentation into app navigation or feature-domain state.",
+        "portableFields": [
+          "subjectRef: stable source container/selection subject",
+          "defaultRef: explicit admitted initial/default child",
+          "exhaustive: whether the declared choices cover the complete admitted child set",
+          "choices: targetRef plus one-or-more selectorRefs per admitted child",
+          "currentSelection: source-owned current selected-child projection/coordinate",
+          "gate: optional outer presence predicate distinct from child selection",
+          "realizes: optional source-owned descendant relationships active under a selected child"
+        ],
+        "nonOwnership": [
+          "feature/domain semantic state by default",
+          "application Screen navigation depth/history",
+          "target hidden/visible implementation flags",
+          "selector control presentation",
+          "outer presence gate as selected-child identity"
+        ],
+        "targetObligations": [
+          "preserve selector identity separately from selected child identity",
+          "preserve multiple selectors for one selected target",
+          "preserve truthful exhaustive=false without inventing missing choices",
+          "never infer default/current selection solely from target runtime visibility strings",
+          "keep local selection out of app navigation history unless Product source explicitly says otherwise"
+        ],
+        "acceptanceProofs": [
+          "Android and VexStream source laws normalize without losing default/exhaustive/selector relationships",
+          "current VexLife-Prod forms or binds one compiler-visible default/current local-selection contract before its SwiftUI mapping proceeds",
+          "at least one second target maps local selection without creating app navigation depth",
+          "many-to-one selector mapping and bounded/non-exhaustive choice sets survive round-trip projection",
+          "invalid default/target/selector relationships fail closed"
+        ],
+        "note": "The cross-Product law is strong enough for formation, but VexLife-Prod SwiftUI target generation remains HELD until Product source owns its default/current selection contract."
+      }
     },
     {
       "candidateRef": "candidate.component.modal-presentation",
@@ -489,7 +640,8 @@
           "why": "Current browser realization chooses native HTML dialog mechanics and wires open/close in runtime JavaScript, exposing a typed-source gap before another target should generate modal behavior."
         }
       ],
-      "note": "Current pressure does not yet prove Dialog vs Bottom Sheet is universally portable. The smaller earned need is compiler-visible modal identity + open/dismiss relationship; target-specific modality (.sheet/.alert/.popover/etc.) should remain explicit until Product meaning requires one."
+      "note": "Current pressure does not yet prove Dialog vs Bottom Sheet is universally portable. The smaller earned need is compiler-visible modal identity + open/dismiss relationship; target-specific modality (.sheet/.alert/.popover/etc.) should remain explicit until Product meaning requires one.",
+      "formation": null
     },
     {
       "candidateRef": "candidate.component.stable-repeater",
@@ -580,7 +732,45 @@
           "why": "VexLife-Prod PR #506 maps the current ConversationTimeline collection + durable messageRef/eventRef/sequence coordinates into SwiftUI stable item identity while explicitly holding unproved viewport mechanics."
         }
       ],
-      "note": "Cross-platform pressure is now real: Android has VexStableLazyColumn; current VexLife-Prod has stable Conversation message identity but ordinary browser renders rebuild the timeline while live streaming requires mounted-node preservation. A portable contract should own stable repeated-item mechanics only, leaving message meaning/order/store with Conversation."
+      "note": "Cross-platform pressure is now real: Android has VexStableLazyColumn; current VexLife-Prod has stable Conversation message identity but ordinary browser renders rebuild the timeline while live streaming requires mounted-node preservation. A portable contract should own stable repeated-item mechanics only, leaving message meaning/order/store with Conversation.",
+      "formation": {
+        "formationRef": "formation.component.stable-repeater.a3",
+        "state": "FORMATION",
+        "kind": "NEW_TYPED_RELATIONSHIP_CANDIDATE",
+        "sourceOwnerRefs": [
+          "repo.vexlife-android",
+          "repo.vexlife-prod"
+        ],
+        "ownerRule": "The feature/domain owner supplies item identity, item meaning and ordering. The reusable repeated-item relationship owns only stable presentation identity mechanics and target capability dispositions.",
+        "portableFields": [
+          "collectionRef: stable source collection identity",
+          "itemRef: feature-owned stable identity for each runtime row/item",
+          "orderedItems: caller-supplied presentation order without adapter sorting",
+          "identityUniqueness: blank/duplicate item refs are invalid",
+          "targetCapabilities: explicit dispositions for requested visibility, visible-item projection, scroll locking or reuse hints when those are not universally mapped"
+        ],
+        "nonOwnership": [
+          "item semantic meaning",
+          "durable item store or repository",
+          "feature ordering/sorting policy",
+          "Conversation chronology ownership",
+          "target viewport state as durable domain truth"
+        ],
+        "targetObligations": [
+          "never use visual/list index as the portable item identity",
+          "preserve feature-owned item identity through target-native keyed/diffable collection APIs",
+          "preserve caller order unless the source relationship explicitly delegates ordering",
+          "report optional viewport/visibility mechanics as MAPPED/HELD/PLATFORM_SPECIFIC/UNSUPPORTED rather than silently dropping them"
+        ],
+        "acceptanceProofs": [
+          "dynamic insert/remove/reorder preserves stable item identity in at least two materially different target realizations",
+          "duplicate/blank item refs fail closed",
+          "target projection returns collection and item identities without list-index reconstruction",
+          "caller-owned order remains unchanged by the adapter",
+          "optional visibility/scroll relationships have explicit target dispositions"
+        ],
+        "note": "Android VexStableLazyColumn and current VexLife-Prod Conversation identity plus SwiftUI ForEach pressure earn formation of a shared repeated-item contract, not ownership of Conversation rows."
+      }
     },
     {
       "candidateRef": "candidate.component.anchored-overlay",
@@ -623,7 +813,8 @@
           "why": "Android separates target-relative overlay relationship from platform geometry resolution and caller-owned meaning."
         }
       ],
-      "note": null
+      "note": null,
+      "formation": null
     },
     {
       "candidateRef": "candidate.component.local-navigation-trail",
@@ -688,7 +879,8 @@
           "why": "VexStream Playlists independently owns a bounded local overview/detail route with open/close and reconciliation when the selected durable playlist disappears."
         }
       ],
-      "note": "Android and VexStream independently establish local navigation as a bounded presentation-location owner beneath one Screen. Android contributes path/depth/back-fallthrough/direction; VexStream contributes open/close plus reconciliation when a durable selected playlist disappears. Keep A2 until a second target realization proves the smallest shared contract."
+      "note": "Android and VexStream independently establish local navigation as a bounded presentation-location owner beneath one Screen. Android contributes path/depth/back-fallthrough/direction; VexStream contributes open/close plus reconciliation when a durable selected playlist disappears. Keep A2 until a second target realization proves the smallest shared contract.",
+      "formation": null
     },
     {
       "candidateRef": "candidate.component.context-dock",
@@ -733,7 +925,8 @@
           "why": "Two independent presentation axes are reusable while page semantics stay with contributing features."
         }
       ],
-      "note": "Excellent candidate for testing whether the Kotlin Blueprint can describe richer composable structure without carrying Compose implementation details."
+      "note": "Excellent candidate for testing whether the Kotlin Blueprint can describe richer composable structure without carrying Compose implementation details.",
+      "formation": null
     },
     {
       "candidateRef": "candidate.component.frame-region-layout",
@@ -829,7 +1022,44 @@
           "why": "VexStream projects the same Frame/Region grammar in its degenerate zero-Seam form: one Frame, one full-bounds Region, showing the grammar does not require a split special case."
         }
       ],
-      "note": "Current SwiftUI pressure maps only the exact full-span single-Seam workspace shape. Partial/multi-Seam geometry, overlay depth and seam resize/collapse remain held; do not reduce the accepted Frame/Seam/Region grammar to a two-pane abstraction."
+      "note": "Current SwiftUI pressure maps only the exact full-span single-Seam workspace shape. Partial/multi-Seam geometry, overlay depth and seam resize/collapse remain held; do not reduce the accepted Frame/Seam/Region grammar to a two-pane abstraction.",
+      "formation": {
+        "formationRef": "formation.component.frame-region-layout.a3",
+        "state": "FORMATION",
+        "kind": "REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP",
+        "sourceOwnerRefs": [
+          "repo.vexlife-prod",
+          "repo.vexstream-music"
+        ],
+        "ownerRule": "Products own their spatial composition. The reusable relationship preserves Frame/Seam/Region/Allocation/Depth meaning and validation without promoting browser percentages, Compose weights or SwiftUI frames into authored source.",
+        "portableFields": [
+          "frameRef: stable local spatial frame identity",
+          "seams: typed axis, bounded span and source-owned allocation",
+          "regions: stable region refs bounded by frame edges or admitted seams",
+          "allocation: relationship form such as ratio rather than authored target pixels",
+          "depth: source-owned content/chrome/transient/modal plane when present"
+        ],
+        "nonOwnership": [
+          "absolute target pixels or percentages as canonical geometry",
+          "target resize widget mechanics",
+          "Product content/state presented inside a region",
+          "arbitrary generic constraints not earned by source pressure"
+        ],
+        "targetObligations": [
+          "derive target geometry from accepted relational bounds rather than repair invalid source geometry",
+          "preserve zero-Seam, full-span and partial/multi-Seam cases without inventing special Product ontologies",
+          "map or explicitly hold seam interaction and overlay/depth mechanics",
+          "retain frame/region/seam source identities in target projection"
+        ],
+        "acceptanceProofs": [
+          "zero-Seam one-region Product case validates through the same grammar",
+          "full-span ratio case maps to at least one second target without authored pixels",
+          "partial/multi-Seam irregular case maps or is explicitly HELD by the target adapter",
+          "invalid/cyclic/reversed spatial relationships fail closed before target generation",
+          "target manifest or Screen Lens reconstructs the relational geometry source"
+        ],
+        "note": "Current SwiftUI pressure proves only the full-span 1:11 and 1:1 cases; generic irregular and interactive spatial realization remains held."
+      }
     },
     {
       "candidateRef": "candidate.component.action-vessel",
@@ -886,7 +1116,8 @@
           "why": "Canonical VexLife Blueprint already distinguishes target bindings without collapsing them into one implementation."
         }
       ],
-      "note": "Canonical predecessor Action Vessel remains a strong convergence target, but the first current-source SwiftUI pressure uses VexLife-Prod Quick Actions. Keep those identities distinct until cross-Product evidence earns convergence."
+      "note": "Canonical predecessor Action Vessel remains a strong convergence target, but the first current-source SwiftUI pressure uses VexLife-Prod Quick Actions. Keep those identities distinct until cross-Product evidence earns convergence.",
+      "formation": null
     },
     {
       "candidateRef": "candidate.component.adaptive-action-group",
@@ -958,7 +1189,8 @@
           "why": "VexLife-Prod PR #506 pressure maps current typed Quick Actions relationships to native SwiftUI source while preserving exact source refs and binding meaning in a reverse-projection manifest."
         }
       ],
-      "note": "First iOS pressure shows source collection+trigger can lawfully realize as SwiftUI Menu+label. This is source-influenced evidence, not portable acceptance."
+      "note": "First iOS pressure shows source collection+trigger can lawfully realize as SwiftUI Menu+label. This is source-influenced evidence, not portable acceptance.",
+      "formation": null
     }
   ],
   "targetPressures": [
