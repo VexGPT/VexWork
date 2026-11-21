@@ -31,6 +31,7 @@ export const COMPONENT_TARGET_RELATION_DISPOSITIONS = Object.freeze([
   'HELD',
   'PLATFORM_SPECIFIC',
   'UNSUPPORTED',
+  'NOT_APPLICABLE',
 ]);
 
 export const COMPONENT_TARGET_PROOF_STATES = Object.freeze([
