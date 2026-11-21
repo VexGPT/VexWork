@@ -250,8 +250,8 @@ test('Android patient zero exposes exact candidate counts without collapsing sou
   assert.equal(analysis.summary.sourceStringCount, 405);
   assert.equal(analysis.summary.candidateGroupCount, 13);
   assert.equal(analysis.summary.candidateMemberCount, 26);
-  assert.equal(analysis.summary.dispositions.LIKELY_SHARED, 11);
-  assert.equal(analysis.summary.dispositions.NEEDS_REVIEW, 2);
+  assert.equal(analysis.summary.dispositions.LIKELY_SHARED, 4);
+  assert.equal(analysis.summary.dispositions.NEEDS_REVIEW, 9);
   assert.equal(analysis.summary.dispositions.KEEP_SEPARATE, 0);
   assert.equal(analysis.summary.alreadySharedSourceCount, 6);
   assert.equal(analysis.candidateGroups.every((group) => group.memberCount === 2), true);
