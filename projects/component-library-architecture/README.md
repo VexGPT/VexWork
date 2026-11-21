@@ -189,6 +189,33 @@ A1 remains **VERIFYING** while A2 runs. This is intentional: the Android invento
 and deterministic enough to consume read-only; A1's repository-wide executable proof floor remains
 independent.
 
+### A2 inventory census
+
+The same `vexboard.component-inventory/v1` contract now materializes every current VexBoard Lens
+subject through the Lens catalog's Main coordinate:
+
+| Product | Source families | Occurrences | Localized occurrences | Direct realizers |
+| --- | ---: | ---: | ---: | ---: |
+| VexLife Android | 15 | 274 | 190 | 121 |
+| VexLife Prod | 9 | 152 | 105 | 0 |
+| VexStream Music | 4 | 81 | 0 | 0 |
+
+The zeros are meaningful:
+
+- VexStream has no Component-Library Localization sidecar yet;
+- VexStream and VexLife-Prod express richer current presentation/presence relationships outside
+  `realization.elements`, so the inventory does not flatten those relationships into fake direct
+  realizers;
+- accessibility remains not projected across these inventories until a rightful source is connected.
+
+`scripts/build-component-inventory.mjs --all` now reuses the shared Lens-catalog build binding used
+by Localization. An embedded Lens commit must agree with the catalog when present; exported Lens
+subjects whose source commit is intentionally omitted are bound by the catalog's exact build
+coordinate.
+
+The Source Families Gallery is Product-selectable and reads these same materialized inventories.
+No Product-specific Gallery route or component parser was added.
+
 Current A2 evidence already spans:
 
 ```text
@@ -211,6 +238,47 @@ SwiftUI reference pressure (Product PR #506)
   adaptive action group
   stable repeated-item identity
   current full-span Frame / Seam / Region layout
+```
+
+### VexStream cross-Product pressure
+
+VexStream Music is now a materially different A2 witness, not merely a related historical board.
+
+Its current source independently exposes:
+
+```text
+Discover / Library / Shell
+  source-owned local SELECTION
+  default child
+  exhaustive / bounded choice set
+  selectorRefs[]
+  optional gate
+  current projection
+
+Playlists
+  local overview/detail navigation
+  open / close / reconcile
+
+Screen Lens layout
+  one Frame
+  one full Region
+  zero Seams
+
+controls
+  stable source intent/pathway identities
+```
+
+The just-merged VexStream projectability work is especially useful because its Lens exporter already
+projects `SELECTION` as a source relationship instead of forcing a future consumer to infer it from
+DOM visibility.
+
+This independently confirms several Android-discovered questions while adding new pressure:
+
+```text
+one target may have multiple selector controls
+exhaustive selection != bounded/non-exhaustive selection
+outer gate != selected child
+zero-Seam Frame is still the same Frame/Region grammar
 ```
 
 Current source gaps are preserved rather than guessed:
