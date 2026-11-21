@@ -688,9 +688,19 @@
             "layoutRole"
           ],
           "why": "Screen Lens consumes/project this source-authored spatial grammar without becoming its authority."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "befe31789834a74f5a2738cb6d6028c01aa7553c",
+          "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiWorkspaceFrameReference.kt",
+          "symbols": [
+            "VexLifeSwiftUiWorkspaceFrameReference",
+            "VexWorkspaceFrameReference"
+          ],
+          "why": "VexLife-Prod PR #506 maps the exact current full-span Frame/Seam/Region ratios to target-native SwiftUI proportional layout while holding generic irregular and interactive spatial mechanics."
         }
       ],
-      "note": "This likely becomes more important for Chromebook/Linux/desktop than for phone-first UI."
+      "note": "Current SwiftUI pressure maps only the exact full-span single-Seam workspace shape. Partial/multi-Seam geometry, overlay depth and seam resize/collapse remain held; do not reduce the accepted Frame/Seam/Region grammar to a two-pane abstraction."
     },
     {
       "candidateRef": "candidate.component.action-vessel",
@@ -820,6 +830,238 @@
         }
       ],
       "note": "First iOS pressure shows source collection+trigger can lawfully realize as SwiftUI Menu+label. This is source-influenced evidence, not portable acceptance."
+    }
+  ],
+  "targetPressures": [
+    {
+      "pressureRef": "pressure.component.adaptive-action-group.swiftui-quick-actions",
+      "candidateRef": "candidate.component.adaptive-action-group",
+      "platformRef": "platform.ios",
+      "framework": "SwiftUI",
+      "state": "REFERENCE_COMPATIBILITY_PASS",
+      "sourceRef": "github.pr.vexlife-prod.506",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "4150821f2ab346c62c80c892911760759f1650ea",
+      "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.action-group.native-container",
+          "disposition": "MAPPED",
+          "source": "QuickActions collection + trigger + action children",
+          "target": "SwiftUI Menu + Menu label + Menu actions"
+        },
+        {
+          "relationRef": "relation.action-group.trigger-identity",
+          "disposition": "MAPPED",
+          "source": "QuickActionsTrigger stable element ref",
+          "target": "Menu label accessibility identity"
+        },
+        {
+          "relationRef": "relation.action-group.action-binding",
+          "disposition": "MAPPED",
+          "source": "LocalInteraction / PresentationAction / ExternalNavigation",
+          "target": "typed VexQuickActionBinding + host dispatch"
+        },
+        {
+          "relationRef": "relation.action-group.localized-words",
+          "disposition": "MAPPED",
+          "source": "Product localization remains outside generator",
+          "target": "VexQuickActionsStrings supplied by host"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.kotlin-generator-compatibility",
+          "state": "PASS",
+          "note": "Exact generator source compiled in the bounded local compatibility harness."
+        },
+        {
+          "proofRef": "proof.swift-parse",
+          "state": "PASS",
+          "note": "Generated source passed Swift 6.2.1 frontend parse."
+        },
+        {
+          "proofRef": "proof.swiftui-api-shape",
+          "state": "PASS",
+          "note": "Generated source typechecked against a deliberately minimal SwiftUI API-shape module."
+        },
+        {
+          "proofRef": "proof.repository-kotlin-2.4.20",
+          "state": "OWED",
+          "note": "Repository-owned Gradle proof remains owed."
+        },
+        {
+          "proofRef": "proof.apple-swiftui-sdk",
+          "state": "OWED",
+          "note": "Qualified Xcode / Apple SwiftUI SDK compile remains owed."
+        }
+      ],
+      "note": "Reference pressure only. The target-native Menu tree differs from source containment while source identity and realization mapping stay explicit."
+    },
+    {
+      "pressureRef": "pressure.component.stable-repeater.swiftui-conversation-timeline",
+      "candidateRef": "candidate.component.stable-repeater",
+      "platformRef": "platform.ios",
+      "framework": "SwiftUI",
+      "state": "REFERENCE_COMPATIBILITY_PASS",
+      "sourceRef": "github.pr.vexlife-prod.506",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "aa48f99634d83941ca9a96c3af96170614658109",
+      "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiStableRepeaterReference.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.stable-repeater.item-identity",
+          "disposition": "MAPPED",
+          "source": "Conversation-owned messageRef",
+          "target": "Identifiable.id + ForEach identity + View.id"
+        },
+        {
+          "relationRef": "relation.stable-repeater.collection-identity",
+          "disposition": "MAPPED",
+          "source": "ConversationTimeline Blueprint ref",
+          "target": "container accessibilityIdentifier"
+        },
+        {
+          "relationRef": "relation.stable-repeater.duplicate-failure",
+          "disposition": "MAPPED",
+          "source": "stable repeated-item uniqueness invariant",
+          "target": "Swift initializer precondition"
+        },
+        {
+          "relationRef": "relation.stable-repeater.caller-order",
+          "disposition": "MAPPED",
+          "source": "Conversation chronology / supplied order",
+          "target": "ForEach consumes supplied order without sorting"
+        },
+        {
+          "relationRef": "relation.stable-repeater.requested-visible-item",
+          "disposition": "HELD",
+          "source": "Android requestedVisibleItemRef pressure",
+          "target": "Apple deployment/API floor not yet selected"
+        },
+        {
+          "relationRef": "relation.stable-repeater.visible-item-projection",
+          "disposition": "HELD",
+          "source": "Android visible-item refs + browser viewport continuity pressure",
+          "target": "SwiftUI visibility observation semantics not yet accepted"
+        },
+        {
+          "relationRef": "relation.stable-repeater.content-type-hint",
+          "disposition": "PLATFORM_SPECIFIC",
+          "source": "Android contentType reuse optimization",
+          "target": "no portable SwiftUI mapping claimed"
+        },
+        {
+          "relationRef": "relation.stable-repeater.scroll-lock",
+          "disposition": "HELD",
+          "source": "Android userScrollEnabled pressure",
+          "target": "target interaction contract not yet selected"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.kotlin-generator-compatibility",
+          "state": "PASS",
+          "note": "Exact generator blob d94b6bafa3380bec6b677d6434eb6676f0b5cc68 compiled and executed in the bounded harness."
+        },
+        {
+          "proofRef": "proof.negative-duplicate-identity",
+          "state": "PASS",
+          "note": "Duplicate stable item refs fail closed."
+        },
+        {
+          "proofRef": "proof.swift-parse",
+          "state": "PASS",
+          "note": "Generated source passed Swift 6.2.1 frontend parse."
+        },
+        {
+          "proofRef": "proof.swiftui-api-shape",
+          "state": "PASS",
+          "note": "Generated ScrollView/LazyVStack/ForEach structure passed the minimal API-shape typecheck."
+        },
+        {
+          "proofRef": "proof.repository-kotlin-2.4.20",
+          "state": "OWED",
+          "note": "Repository-owned Gradle proof remains owed."
+        },
+        {
+          "proofRef": "proof.apple-swiftui-sdk",
+          "state": "OWED",
+          "note": "Qualified Xcode / Apple SwiftUI SDK compile remains owed."
+        }
+      ],
+      "note": "This pressure composes Blueprint collection identity with Conversation-owned runtime item identity; it does not route those facts through one universal VexWeb owner."
+    },
+    {
+      "pressureRef": "pressure.component.frame-region-layout.swiftui-workspace",
+      "candidateRef": "candidate.component.frame-region-layout",
+      "platformRef": "platform.ios",
+      "framework": "SwiftUI",
+      "state": "REFERENCE_COMPATIBILITY_PASS",
+      "sourceRef": "github.pr.vexlife-prod.506",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "befe31789834a74f5a2738cb6d6028c01aa7553c",
+      "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiWorkspaceFrameReference.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.frame-layout.full-span-single-seam",
+          "disposition": "MAPPED",
+          "source": "current full-span HeaderBodySeam + BrowserCompanionSeam Ratio allocations",
+          "target": "GeometryReader + nested VStack/HStack proportional layout"
+        },
+        {
+          "relationRef": "relation.frame-layout.region-identity",
+          "disposition": "MAPPED",
+          "source": "source-addressable Frame Region refs",
+          "target": "region accessibilityIdentifier"
+        },
+        {
+          "relationRef": "relation.frame-layout.seam-resize-collapse",
+          "disposition": "HELD",
+          "source": "current VexWeb seam interaction pressure",
+          "target": "native drag/collapse interaction not selected"
+        },
+        {
+          "relationRef": "relation.frame-layout.partial-multi-seam",
+          "disposition": "HELD",
+          "source": "accepted generic partial/multi-Seam grammar",
+          "target": "generic SwiftUI geometry realization not yet accepted"
+        },
+        {
+          "relationRef": "relation.frame-layout.overlay-depth",
+          "disposition": "HELD",
+          "source": "accepted VexWeb depth/overlay relationships",
+          "target": "bounded reference maps content geometry only"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.kotlin-generator-compatibility",
+          "state": "PASS",
+          "note": "Exact corrected generator blob 97271143877e0ba0c78e78fdb1a8a7964c7a24c2 compiled and executed."
+        },
+        {
+          "proofRef": "proof.swift-parse",
+          "state": "PASS",
+          "note": "Generated source passed Swift 6.2.1 frontend parse."
+        },
+        {
+          "proofRef": "proof.swiftui-api-shape",
+          "state": "PASS",
+          "note": "Generated GeometryReader/VStack/HStack source passed the minimal API-shape typecheck."
+        },
+        {
+          "proofRef": "proof.repository-kotlin-2.4.20",
+          "state": "OWED",
+          "note": "Repository-owned Gradle proof remains owed."
+        },
+        {
+          "proofRef": "proof.apple-swiftui-sdk",
+          "state": "OWED",
+          "note": "Qualified Xcode / Apple SwiftUI SDK compile remains owed."
+        }
+      ],
+      "note": "The first compile caught and corrected an invalid VexLifeWeb import before PASS. Generic irregular geometry remains held rather than duplicating VexWeb's private browser geometry machinery."
     }
   ]
 }
