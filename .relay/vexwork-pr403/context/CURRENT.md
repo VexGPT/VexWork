@@ -1,184 +1,118 @@
-# PR403 Localization A1 — Relay companion context
+# PR403 Localization A1 — terminal Relay companion context
 
 `[VXG RealForever]`
 
-This branch/PR is the durable continuity + canonical RETURN custody companion for VexWork PR #403. It is not Product source, Workgraph lifecycle truth, or a second localization authority.
+This branch/PR is retained as **historical proof + canonical RETURN custody** for Localization Architecture A1.
 
-## Current exact candidate
+It is not Product source, Workgraph lifecycle truth, or a merge prerequisite.
 
-```text
-PR      #403
-base    9b48268876ebba4b1ad91f753d9c497916d9bb74
-head    544d18d9f85a237f120d0cf5dbb9a2ffbfd06af0
-tree    8652a693cf3d36d799183c4f4b7bb6681f7b7c1f
-branch  VXG-112126-localization-android-inventory-a001
-```
-
-The A1 localization delta remains exactly 14 paths. The base changed only because PR #399 corrected one Screen Lens identity regression fixture.
-
-## A003 returned evidence
-
-Canonical outer RETURN:
+## Terminal state
 
 ```text
-RETURN-vexwork-pr403-a1-source-owner-a003--sha256-60949db56f293382ff5d018d07dcfd13f6efedd302983d839ab775088f8ba305.zip
-sha256=60949db56f293382ff5d018d07dcfd13f6efedd302983d839ab775088f8ba305
+A0 / PR #399
+  merged  3947b35b7b17cf39969bb75a57266b295ebf8be8
+  tree    97dcfea635739834a0fe58738668a80db50567bc
+  postmerge build/report/deploy PASS
+
+A1 / PR #403
+  proved head  544d18d9f85a237f120d0cf5dbb9a2ffbfd06af0
+  proved tree  8652a693cf3d36d799183c4f4b7bb6681f7b7c1f
+  merged       9a826467c2412719ef9b36d20dc865e94d7684d2
+  merge tree   8652a693cf3d36d799183c4f4b7bb6681f7b7c1f
+  postmerge build/report/deploy PASS
+
+A1 lifecycle currentization / PR #407
+  merged  4b1040ab4dde983eb66dadc6c81d1dba1f93fd43
+  tree    75d4b74a35bbcf9b564da9d736b04936a5b4deab
+  postmerge build/report/deploy PASS
 ```
 
-A003 proved:
+Current `main`:
 
 ```text
-localization:check                           PASS
-11 focused localization tests              PASS
-lens:verify                                PASS
-workgraph:check                            PASS
-workspace:check                            PASS
-npm run review                             FAIL
+4b1040ab4dde983eb66dadc6c81d1dba1f93fd43
 ```
 
-The review-floor failure was not in localization source. PR #399 had added a direct regression test for the existing Screen Lens identity normalizer using synthetic input `row / title`, while the actual source contract uses slash-delimited local paths such as `row/title` and `actions/play`.
-
-Rightful repair:
+Current Work truth:
 
 ```text
-PR #399
-test/vexboard-screen-lens-identity.test.mjs
-row / title -> row/title
-
-repair commit
-9b48268876ebba4b1ad91f753d9c497916d9bb74
+A1 android-inventory          COMPLETED
+A2 localization-inspector     READY
+A3 change-set-reconciliation  READY
+A4 duplicate-convergence      READY
+A5 vexboard-workspace         WAITING_DEPENDENCIES on A2 + A3 + A4
 ```
 
-No Screen Lens identity implementation changed.
-
-PR #403 was then forward-composed on the corrected A0 base:
+Public Workspace projects the same truth:
 
 ```text
-head 544d18d9f85a237f120d0cf5dbb9a2ffbfd06af0
-tree 8652a693cf3d36d799183c4f4b7bb6681f7b7c1f
+Done     A0 relational model, A1 Android inventory
+Ready    A2 Inspector, A3 Change Set, A4 duplicate/token-pattern analysis
+Planned  A5 global Localization Workspace
 ```
 
-## Current proof route
+## Canonical A1 proof custody
 
-SDK and Relay currentness remain unchanged:
-
-```text
-SDK head      6f8f6f50467f5df5a542713f7dc25b82db4ac8fa
-SDK tree      96795640b01f1969da980f52d5a8ec136a8c44aa
-contract blob b53cbac01c2deeb45fad5c32ce98e0796c04126f
-contractRef   source.vexrelay.current-contract/v1
-recipe        ExactHeadSourceOwnerProof
-host          macos-victor
-```
-
-Fresh proof package:
-
-```text
-VEXWORK-PR403-LOCALIZATION-A1-RELAY-BOOTSTRAP-A002--sha256-b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c.zip
-sha256=b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c
-bytes=7306
-gitBlob=d79fac7dfd8b388034da8133e38bbdca144c2dda
-carrierMode=DIRECT_GIT_BINARY_BLOB
-```
-
-Active companion path:
-
-```text
-.relay/vexwork-pr403/context/a002/VEXWORK-PR403-LOCALIZATION-A1-RELAY-BOOTSTRAP-A002--sha256-b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c.zip
-```
-
-The runner verifies the checked-out ZIP's exact 7306-byte length and SHA-256 directly before extraction.
-
-## A002 carrier incident — resolved
-
-The first A002 companion attempt stopped at its pre-execution digest gate:
-
-```text
-expected=b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c
-observed=e02cf917b231cc20d3b3b21a1afc53c42bd1162fd6696be5604de118112617a2
-```
-
-Root cause was the companion representation, not the trusted ZIP:
-
-```text
-correct base64 characters = 9744
-GitHub-held base64 chars  = 9743
-one character missing
-```
-
-That fragile text carriage has been removed from the active path. The exact ZIP is now one Git binary blob whose Git object identity was independently recomputed from the trusted local bytes:
-
-```text
-git hash-object trusted ZIP
-= d79fac7dfd8b388034da8133e38bbdca144c2dda
-
-GitHub binary blob
-= d79fac7dfd8b388034da8133e38bbdca144c2dda
-```
-
-Because the failed invocation never passed the companion digest gate:
-
-```text
-ZIP extraction          NOT_REACHED
-Relay task formation    NOT_REACHED
-attempt reservation     NOT_REACHED
-candidate proof         NOT_REACHED
-repository mutation     NOT_REACHED
-```
-
-The same A002 semantic proof remains current; this was a transport-only repair.
-
-Detailed evidence:
-`.relay/vexwork-pr403/a002/CARRIER-INCIDENT.md`
-
-On execution, canonical RETURN custody is published under:
+Successful outer carrier RETURN:
 
 ```text
 .relay/vexwork-pr403/a002/return/
+RETURN-vexwork-pr403-a1-source-owner-a004--sha256-d74dbc5db4949ee31b20d2fa3f67e5ccbb0d0a8b872475e712215591febaad8c.zip
+
+sha256
+d74dbc5db4949ee31b20d2fa3f67e5ccbb0d0a8b872475e712215591febaad8c
 ```
 
-A004 PASS has now been consumed.
+Retained inner canonical VexRelay RETURN:
 
 ```text
-outer RETURN sha256 d74dbc5db4949ee31b20d2fa3f67e5ccbb0d0a8b872475e712215591febaad8c
-inner RETURN sha256 a58e7480aefd4ef8518f3a84795d935cb5c8951fe90af9d266747abca7693728
-
-SourceOwner       PASS
-Assurance         CLEAR_ON_EXACT_HEAD
-Lifecycle current PASS
+sha256
+a58e7480aefd4ef8518f3a84795d935cb5c8951fe90af9d266747abca7693728
 ```
 
-The Assurance disposition is PR #403 review 6004377971, explicitly disclosed as same-conversation role re-grounding over a fresh hosted GitHub read surface.
-
-Current held effect is integration ordering only:
+A1 SourceOwner:
 
 ```text
-PR403 A1
-  waits for stacked PR399 A0 integration
-
-!= candidate defect
-!= proof replay
+localization:check          PASS
+focused localization tests PASS 11/11
+lens:verify                 PASS
+workgraph:check             PASS
+workspace:check             PASS
+npm run review              PASS
+findings                    0
 ```
 
-Issue #400 / `relay/vexwork-pr399-source-owner-a004` owns the one remaining exact A0 SourceOwner edge.
+Assurance:
+- PR #403 review 6004377971 — CLEAR_ON_EXACT_HEAD on stacked base.
+- PR #403 review 6004432857 — CLEAR_ON_EXACT_HEAD re-grounded after PR #399 landed to main.
+- Disclosure on both: same-conversation role re-grounding over fresh hosted GitHub read surfaces, not a separate human/account/model witness.
 
-## Product trajectory after A1
+## Historical carrier incident
 
-Do not jump to final toolbar placement.
+The earlier A002 companion base64 representation lost one character and was rejected by its pre-execution digest gate. No Relay task or candidate proof executed on that failed carrier.
+
+The detailed retained incident is:
+
+```text
+.relay/vexwork-pr403/a002/CARRIER-INCIDENT.md
+```
+
+The active correction was direct binary Git carriage. Historical evidence is preserved; no replay is needed.
+
+## Next grounded product edge
+
+A1 is terminal. No host action remains.
+
+The smallest human-facing successor remains:
 
 ```text
 source string
--> locations
--> select one occurrence
+-> occurrence list
+-> select occurrence
 -> Screen Lens jump/select/highlight
--> locale preview
--> Current vs Recommended
--> Change Set reconciliation
--> duplicate/convergence pattern analysis
--> global Localization Workspace refinement
 ```
 
-Draft 1 now also retains lexical/token-shape pattern evidence for later A4 analysis:
+That is A2. A3 and A4 are independently READY; A4 includes the accepted lexical/token-shape evidence direction:
 
 ```text
 LEXICAL_SIMILARITY != SEMANTIC_IDENTITY
@@ -186,4 +120,6 @@ PATTERN_DETECTED != DEFECT
 UNKNOWN_INTENT != UNMAPPED
 ```
 
-<!-- [VXG RealForever][VEXWORK][LOCALIZATION-ARCHITECTURE][PR403][RELAY-COMPANION][CURRENT] -->
+A5 waits for A2 + A3 + A4 rather than forcing a global workspace shape prematurely.
+
+<!-- [VXG RealForever][VEXWORK][LOCALIZATION-ARCHITECTURE][PR403][RELAY-COMPANION][TERMINAL] -->
