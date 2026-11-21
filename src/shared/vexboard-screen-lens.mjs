@@ -88,6 +88,7 @@ export const PATHWAY_DISPOSITIONS = Object.freeze({
   TYPED_PRESENTATION: 'Open / Close / Toggle already says everything; no Behavior is earned.',
   TYPED_NAVIGATION: 'NavigateTo(ScreenId) already says everything; no Act identity is earned.',
   DIRECT_REGISTRATION: 'The registration calls owners directly; no Family has earned this meaning yet.',
+  RELATIONSHIP_PROJECTION: 'Source projects a read-only relationship among truths already owned elsewhere; the pathway must return one Projection and must not impersonate a Family or Partner circuit.',
   PARTNER_CIRCUIT: 'Source proves an external Partner / Connection / Conversion / Signal / Observation / Receiver path and its return through Store / Family truth without pretending ingress is a Family Control.',
 });
 
@@ -372,6 +373,23 @@ export function normalizeScreenLens(input) {
       };
     });
     if (!nodes.some((node) => node.face === 'BEHAVIOR')) fail(`${pathwayRef} needs at least one BEHAVIOR node`);
+    if (entry.disposition === 'RELATIONSHIP_PROJECTION') {
+      const forbiddenRoles = new Set([
+        'CONTROL', 'STATE', 'ACT', 'EFFECT',
+        'PARTNER', 'SOURCE', 'SIGNAL', 'CONNECTION', 'CONVERSION', 'DECODER', 'RECEIVER',
+      ]);
+      const forbidden = nodes.filter((node) => forbiddenRoles.has(node.role));
+      if (forbidden.length) {
+        fail(`${pathwayRef} RELATIONSHIP_PROJECTION may not claim Family or Partner roles: ${forbidden.map((node) => node.role).join(', ')}`);
+      }
+      const projectionNodes = nodes.filter((node) => node.role === 'PROJECTION');
+      if (projectionNodes.length !== 1) {
+        fail(`${pathwayRef} RELATIONSHIP_PROJECTION needs exactly one PROJECTION node`);
+      }
+      if (entry.returnRef !== projectionNodes[0].ref) {
+        fail(`${pathwayRef} RELATIONSHIP_PROJECTION returnRef must name its PROJECTION node`);
+      }
+    }
     const local = new Set(nodes.map((node) => node.ref));
     const edges = (entry.edges || []).map((edge) => {
       if (!local.has(edge?.from) || !local.has(edge?.to)) fail(`${pathwayRef} edge ${edge?.from} -> ${edge?.to} leaves the pathway`);
