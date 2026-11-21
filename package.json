@@ -31,8 +31,8 @@
     "experience:verify": "node scripts/build-experience-graph.mjs --verify",
     "experience:probe": "node scripts/run-experience-law-probe.mjs",
     "experience:converge": "node scripts/inspect-experience-convergence.mjs",
-    "localization:build": "node scripts/build-localization-inventory.mjs",
-    "localization:check": "node scripts/build-localization-inventory.mjs --check"
+    "localization:build": "node scripts/build-localization-inventory.mjs --fetch",
+    "localization:check": "node scripts/build-localization-inventory.mjs --fetch --check"
   },
   "engines": {
     "node": ">=20.1"
