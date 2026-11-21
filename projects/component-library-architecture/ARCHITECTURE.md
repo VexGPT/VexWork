@@ -173,6 +173,16 @@ same construction relationship.
 
 An accepted portable component Blueprint should answer only what must survive a target change.
 
+The first current acceptance is the **Frame / Seam / Region / Allocation** relationship. Its
+acceptance means the relational spatial grammar has survived Product/target pressure; it does not
+promote any one renderer's geometry implementation or native proof into portable meaning.
+
+```text
+A3 ACCEPTED_PORTABLE
+!= A4 TARGET_NATIVE_ACCEPTED
+```
+
+
 Conceptual shape:
 
 ```text
