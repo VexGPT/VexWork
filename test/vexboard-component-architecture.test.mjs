@@ -19,13 +19,13 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.schemaVersion, 'vexboard.component-architecture-catalog/v1');
   assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
-  assert.equal(catalog.candidates.filter((row) => row.state === 'ACCEPTED_PORTABLE').length, 1);
-  assert.equal(catalog.targetPressures.length, 9);
-  assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 3);
-  assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 5);
+  assert.equal(catalog.candidates.filter((row) => row.state === 'ACCEPTED_PORTABLE').length, 2);
+  assert.equal(catalog.targetPressures.length, 11);
+  assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 4);
+  assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 6);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'HELD_SOURCE_CONTRACT').length, 1);
   assert.equal(catalog.candidates.filter((row) => row.formation).length, 6);
-  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'ACCEPTED').length, 1);
+  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'ACCEPTED').length, 2);
 });
 
 test('architecture candidates preserve the richer relationship layer above source widget kinds', () => {
@@ -98,9 +98,23 @@ assert.equal(
   assert.equal(acceptedFrame.formation.state, 'ACCEPTED');
   assert.ok(acceptedFrame.sourceEvidence.some((row) => row.path.endsWith('VexWebSpatialScalabilityTest.kt')));
   assert.ok(acceptedFrame.sourceEvidence.some((row) => row.path.endsWith('VexWebArtifactsTest.kt')));
+
+  const acceptedIdentity = catalog.candidates.find((row) => row.candidateRef === 'candidate.component.identity-addressed-tree');
+  assert.equal(acceptedIdentity.state, 'ACCEPTED_PORTABLE');
+  assert.equal(acceptedIdentity.formation.state, 'ACCEPTED');
+  assert.ok(acceptedIdentity.sourceEvidence.some((row) => row.path.endsWith('BlueprintRegistryTest.kt')));
 });
 
 test('target pressure results preserve mapped, held and platform-specific truth separately from portable acceptance', () => {
+  const identity = targetPressuresForCandidate(catalog, 'candidate.component.identity-addressed-tree');
+  assert.equal(identity.length, 2);
+  const identityWeb = identity.find((row) => row.platformRef === 'platform.browser');
+  const identitySwift = identity.find((row) => row.platformRef === 'platform.ios');
+  assert.ok(identityWeb.relationships.some((row) => row.relationRef.endsWith('stable-ref') && row.disposition === 'MAPPED'));
+  assert.ok(identityWeb.relationships.some((row) => row.relationRef.endsWith('target-hook') && row.disposition === 'PLATFORM_SPECIFIC'));
+  assert.ok(identitySwift.relationships.some((row) => row.relationRef.endsWith('source-parent') && row.disposition === 'MAPPED'));
+  assert.ok(identitySwift.proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'OWED'));
+
   const repeater = targetPressuresForCandidate(catalog, 'candidate.component.stable-repeater');
   const repeaterSwift = repeater.find((row) => row.platformRef === 'platform.ios');
   const repeaterAndroid = repeater.find((row) => row.platformRef === 'platform.android');
