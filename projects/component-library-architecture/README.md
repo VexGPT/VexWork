@@ -355,6 +355,41 @@ Component axis:
 portableComponentRef -> targetRealizationRef
 ```
 
+### First target-pressure experiment — SwiftUI Quick Actions
+
+VexLife-Prod PR #506 now carries the first bounded second-target experiment:
+
+```text
+current VexLife-Prod Quick Actions relationships
+-> reference:swiftui
+-> generated SwiftUI-native source
+-> reverse-projection semantic manifest
+```
+
+The candidate remains deliberately non-production and non-portable:
+
+```text
+SOURCE_INFLUENCED
+!= ACCEPTED_PORTABLE
+
+Swift parse / API-shape proof
+!= Apple SwiftUI / Xcode native proof
+```
+
+The first earned platform-adapter law is that a target does not need to copy the source tree literally:
+
+```text
+source collection + trigger
+-> SwiftUI Menu + Menu label
+```
+
+provided stable source identities remain intact and the target manifest explicitly records the target
+role / realization mapping.
+
+The Component Gallery carries this as
+`candidate.component.adaptive-action-group`, kept distinct from predecessor Action Vessel until
+cross-Product evidence earns convergence.
+
 ### Architecture candidates — source influence before acceptance
 
 The Component Gallery now has two explicit layers:
