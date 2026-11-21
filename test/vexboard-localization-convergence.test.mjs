@@ -143,7 +143,7 @@ test('analysis rejects multiple revisions of one subject so temporal copies cann
   );
 });
 
-test('divergent locale variants force KEEP_SEPARATE while equal variant sets remain evidence only', () => {
+test('observed conflicting locale variants force KEEP_SEPARATE', () => {
   const divergent = inventory({
     strings: [
       { sourceStringRef: 'fixture:string.open.action', sourceKey: 'open_action', sourceValue: 'Open', localeVariants: { es: 'Abrir' } },
@@ -169,6 +169,65 @@ test('divergent locale variants force KEEP_SEPARATE while equal variant sets rem
   const group = analyzeLocalizationConvergence(divergent).candidateGroups[0];
   assert.equal(group.suggestedDisposition, 'KEEP_SEPARATE');
   assert.ok(group.evidence.includes('DIVERGENT_TRANSLATION_SET'));
+  assert.equal(group.evidence.includes('VARIANT_EVIDENCE_INCOMPLETE'), false);
+});
+
+test('missing locale variants stay incomplete review evidence instead of becoming divergence', () => {
+  const partial = inventory({
+    strings: [
+      { sourceStringRef: 'fixture:string.open.action', sourceKey: 'open_action', sourceValue: 'Open', localeVariants: { es: 'Abrir' } },
+      { sourceStringRef: 'fixture:string.open.secondary', sourceKey: 'open_secondary', sourceValue: 'Open' },
+    ],
+    occurrences: [
+      occurrence({
+        ref: 'occurrence.open-action',
+        sourceStringRef: 'fixture:string.open.action',
+        sourceKey: 'open_action',
+        sourceValue: 'Open',
+        elementRef: 'element.open.action',
+      }),
+      occurrence({
+        ref: 'occurrence.open-secondary',
+        sourceStringRef: 'fixture:string.open.secondary',
+        sourceKey: 'open_secondary',
+        sourceValue: 'Open',
+        elementRef: 'element.open.secondary',
+      }),
+    ],
+  });
+  const group = analyzeLocalizationConvergence(partial).candidateGroups[0];
+  assert.equal(group.suggestedDisposition, 'NEEDS_REVIEW');
+  assert.ok(group.evidence.includes('VARIANT_EVIDENCE_INCOMPLETE'));
+  assert.equal(group.evidence.includes('DIVERGENT_TRANSLATION_SET'), false);
+});
+
+test('equal complete locale variants are compatible evidence only, never semantic identity', () => {
+  const aligned = inventory({
+    strings: [
+      { sourceStringRef: 'fixture:string.settings.nav', sourceKey: 'settings_nav', sourceValue: 'Settings', localeVariants: { es: 'Configuración' } },
+      { sourceStringRef: 'fixture:string.settings.title', sourceKey: 'settings_title', sourceValue: 'Settings', localeVariants: { es: 'Configuración' } },
+    ],
+    occurrences: [
+      occurrence({
+        ref: 'occurrence.settings-nav',
+        sourceStringRef: 'fixture:string.settings.nav',
+        sourceKey: 'settings_nav',
+        sourceValue: 'Settings',
+        elementRef: 'element.settings.nav',
+      }),
+      occurrence({
+        ref: 'occurrence.settings-title',
+        sourceStringRef: 'fixture:string.settings.title',
+        sourceKey: 'settings_title',
+        sourceValue: 'Settings',
+        elementRef: 'element.settings.title',
+      }),
+    ],
+  });
+  const group = analyzeLocalizationConvergence(aligned).candidateGroups[0];
+  assert.equal(group.suggestedDisposition, 'LIKELY_SHARED');
+  assert.ok(group.evidence.includes('SAME_TRANSLATION_SET'));
+  assert.equal(Object.hasOwn(group, 'semanticGroupRef'), false);
 });
 
 test('unmapped candidates stay NEEDS_REVIEW rather than becoming likely-shared from value equality alone', () => {
