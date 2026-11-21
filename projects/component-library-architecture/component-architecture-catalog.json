@@ -46,7 +46,7 @@
       "candidateRef": "candidate.component.identity-addressed-tree",
       "label": "Identity-addressed presentation tree",
       "class": "IDENTITY",
-      "state": "PORTABLE_CANDIDATE",
+      "state": "ACCEPTED_PORTABLE",
       "question": "How can every nested presentation node remain stably addressable across source nesting, runtime realization, tests and Screen Lens without making visual position its identity?",
       "sourceFamilyRefs": [],
       "portableRelationships": [
@@ -133,12 +133,52 @@
             "element.vexstream.library.mode.songs"
           ],
           "why": "VexStream uses stable region/control refs and parent relationships to project one browser product without a test-only identity registry."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonTest/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprintTest.kt",
+          "symbols": [
+            "workspaceCompositionKeepsStableUniquePerceptibleAddresses"
+          ],
+          "why": "Accepted current Product test proves the authored workspace identity set is unique and verifies exact parentRef relationships without using human labels."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonTest/kotlin/vexlife/web/VexWebArtifactsTest.kt",
+          "symbols": [
+            "currentVexLifeSurfaceGeneratesDeterministicSourceAddressableArtifacts",
+            "semanticManifestPreservesSourceParentContainerAndFallbackMeaning"
+          ],
+          "why": "Accepted browser artifact tests preserve source refs as data-vex-ref and source parent/container relationships in the semantic manifest."
+        },
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/test/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistryTest.kt",
+          "symbols": [
+            "duplicateElementIdentityFailsClosed",
+            "registryKeepsStaticPlacementSeparateFromRuntimeScreenContext"
+          ],
+          "why": "Accepted Android tests fail closed on duplicate element identity and recover static parent/Screen ownership independently of runtime view object identity."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a",
+          "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
+          "symbols": [
+            "VexQuickActionsIdentity",
+            "VexQuickAction",
+            "VexQuickActionsReferenceView"
+          ],
+          "why": "Current SwiftUI reference pressure carries the exact source element refs into typed Swift raw identities/accessibility identifiers and the reverse-projection manifest."
         }
       ],
       "note": "Strong first Kotlin Blueprint root law: identity before renderer.",
       "formation": {
         "formationRef": "formation.component.identity-addressed-tree.a3",
-        "state": "FORMATION",
+        "state": "ACCEPTED",
         "kind": "REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP",
         "sourceOwnerRefs": [
           "repo.vexlife-android",
@@ -170,7 +210,7 @@
           "target projection can reconstruct source ref and parent relationship without parsing human labels",
           "no target-specific object identity is promoted into Product meaning"
         ],
-        "note": "This formation should reuse existing VexUiElementRef / Screen Lens identity laws where rightful rather than create a second global identity registry."
+        "note": "A3 portable identity relationship accepted: VexLife-Prod browser generation preserves source refs and parentage in target artifacts/manifests; SwiftUI reference generation carries the same Product refs into typed Swift identities and reverse-projection metadata; accepted Android BlueprintRegistry tests fail closed on duplicate element identity; accepted Product tests verify current unique refs and exact parent relationships. Portable acceptance covers stable source addressability, source parentage, bounded role/kind and provenance only. DOM attributes, SwiftUI accessibility identifiers and native view-object identity remain target mechanisms under A4."
       }
     },
     {
@@ -1921,6 +1961,99 @@
         }
       ],
       "note": "This is the materially different zero-Seam case required by the Frame/Seam/Region formation. It proves the grammar scales down without inventing a one-pane special case."
+    },
+    {
+      "pressureRef": "pressure.component.identity-addressed-tree.vexlife-prod-browser",
+      "candidateRef": "candidate.component.identity-addressed-tree",
+      "platformRef": "platform.browser",
+      "framework": "HTML/CSS/JavaScript + VexWeb semantic manifest",
+      "state": "SOURCE_FORMED",
+      "sourceRef": "source.vexlife-prod.main.27617e4b",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+      "path": "src/commonMain/kotlin/vexlife/web/VexWebArtifacts.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.identity.stable-ref",
+          "disposition": "MAPPED",
+          "source": "VexUiElementRef / VexWeb Identity source ref",
+          "target": "data-vex-ref + semantic-manifest ref"
+        },
+        {
+          "relationRef": "relation.identity.source-parent",
+          "disposition": "MAPPED",
+          "source": "VexUiElementRef.parentRef / VexWeb Identity.sourceParentRef",
+          "target": "semantic-manifest sourceParentRef + containerRef"
+        },
+        {
+          "relationRef": "relation.identity.target-hook",
+          "disposition": "PLATFORM_SPECIFIC",
+          "source": "stable source ref",
+          "target": "DOM data-vex-ref attribute is a browser realization hook, not canonical identity"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.vexlife-prod-browser-source-addressability",
+          "state": "PASS",
+          "note": "Accepted VexWebArtifactsTest proves generated browser artifacts carry exact source refs and semantic manifests preserve source parent/container relationships."
+        },
+        {
+          "proofRef": "proof.vexlife-prod-workspace-identity-uniqueness",
+          "state": "PASS",
+          "note": "Accepted VexLifeWorkspaceBlueprintTest proves all current workspace refs are unique and exact parent relationships remain source-visible."
+        }
+      ],
+      "note": "Accepted browser target source proves source identity survives generation without DOM node identity becoming Product meaning."
+    },
+    {
+      "pressureRef": "pressure.component.identity-addressed-tree.swiftui-quick-actions",
+      "candidateRef": "candidate.component.identity-addressed-tree",
+      "platformRef": "platform.ios",
+      "framework": "SwiftUI",
+      "state": "REFERENCE_COMPATIBILITY_PASS",
+      "sourceRef": "github.pr.vexlife-prod.506",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a",
+      "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.identity.stable-ref",
+          "disposition": "MAPPED",
+          "source": "VexLifeWorkspaceBlueprint element refs",
+          "target": "VexQuickAction raw values + component/trigger identity constants"
+        },
+        {
+          "relationRef": "relation.identity.source-parent",
+          "disposition": "MAPPED",
+          "source": "source parent relationships",
+          "target": "SwiftUI reverse-projection manifest sourceParentRef"
+        },
+        {
+          "relationRef": "relation.identity.target-hook",
+          "disposition": "PLATFORM_SPECIFIC",
+          "source": "stable source ref",
+          "target": "SwiftUI accessibilityIdentifier is a target hook, not canonical identity"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.swift-identity-source-carry",
+          "state": "PASS",
+          "note": "Reference generator assertions prove exact Blueprint refs are emitted without deriving identity from display words."
+        },
+        {
+          "proofRef": "proof.swift-parse",
+          "state": "PASS",
+          "note": "Generated source passed Swift 6.2.1 frontend parse in the bounded target-pressure proof."
+        },
+        {
+          "proofRef": "proof.apple-swiftui-sdk",
+          "state": "OWED",
+          "note": "Apple SwiftUI/Xcode native typecheck remains A4 target proof and is not required for A3 identity-law acceptance."
+        }
+      ],
+      "note": "SwiftUI pressure proves the same Product source refs survive a materially different target form while the target-specific accessibility hook remains explicitly non-canonical."
     }
   ]
 }
