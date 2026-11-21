@@ -48,8 +48,8 @@ test('each project shows its pointers, its currency against GitHub, and how to o
   assert.match(projects, /Catalog\.sourceRefFromInput\(input\.value, subject\.repository\.url\)/);
   assert.match(projects, /h\('summary', \{\}, 'Earlier canvas trials'\)/);
   assert.match(projects, /'No Screen Lens yet'/, 'the generic NOT_BUILT renderer remains available for subjects with no projectable Lens');
-  assert.match(projects, /subject\.lens\.status !== 'NOT_BUILT'/, 'GENERATED and CANDIDATE subjects share the full Lens card');
-  assert.match(projects, /subject\.lens\.status === 'NOT_BUILT'/, 'only truly unbuilt subjects use the pending card');
+  assert.match(projects, /catalog\.subjects\.filter\(\(subject\) => Catalog\.defaultBuildFor\(subject\)\)/, 'any subject with a default build is detected as projectable');
+  assert.match(projects, /catalog\.subjects\.filter\(\(subject\) => !Catalog\.defaultBuildFor\(subject\)\)/, 'only subjects without a projectable build use the pending card');
   assert.match(projects, /'Screen Lens · projectable candidate'/);
   assert.match(projects, /'Stable not accepted'/);
   assert.match(projects, /stable \? buildRow\(subject, stable\) : unacceptedStable\(\)/);
