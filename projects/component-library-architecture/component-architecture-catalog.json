@@ -1349,9 +1349,19 @@
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
           "note": "Qualified Xcode / Apple SwiftUI SDK compile remains owed."
+        },
+        {
+          "proofRef": "proof.swift-stable-identity-mutations",
+          "state": "PASS",
+          "note": "Generated Swift 6.2.1 target model preserved feature-owned IDs/event coordinates across insert, reorder and remove; VexStableConversationTimeline preserved caller order."
+        },
+        {
+          "proofRef": "proof.swift-duplicate-identity-negative",
+          "state": "PASS",
+          "note": "Generated Swift target initializer rejected duplicate item IDs through its precondition (nonzero process exit), independently of the Kotlin-side negative case."
         }
       ],
-      "note": "This pressure composes Blueprint collection identity with Conversation-owned runtime item identity; it does not route those facts through one universal VexWeb owner."
+      "note": "Exact generated Swift now has target-runtime identity pressure in addition to parse/API-shape proof: insert/remove/reorder preserve source-owned IDs and duplicate IDs fail closed. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions rather than portable core."
     },
     {
       "pressureRef": "pressure.component.frame-region-layout.swiftui-workspace",
