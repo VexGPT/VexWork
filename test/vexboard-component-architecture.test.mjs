@@ -19,13 +19,13 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.schemaVersion, 'vexboard.component-architecture-catalog/v1');
   assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
-  assert.equal(catalog.candidates.filter((row) => row.state === 'ACCEPTED_PORTABLE').length, 3);
-  assert.equal(catalog.targetPressures.length, 12);
-  assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 5);
-  assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 6);
+  assert.equal(catalog.candidates.filter((row) => row.state === 'ACCEPTED_PORTABLE').length, 4);
+  assert.equal(catalog.targetPressures.length, 14);
+  assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 6);
+  assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 7);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'HELD_SOURCE_CONTRACT').length, 1);
   assert.equal(catalog.candidates.filter((row) => row.formation).length, 6);
-  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'ACCEPTED').length, 3);
+  assert.equal(catalog.candidates.filter((row) => row.formation?.state === 'ACCEPTED').length, 4);
 });
 
 test('architecture candidates preserve the richer relationship layer above source widget kinds', () => {
@@ -108,6 +108,11 @@ assert.equal(
   assert.equal(acceptedContainment.state, 'ACCEPTED_PORTABLE');
   assert.equal(acceptedContainment.formation.state, 'ACCEPTED');
   assert.ok(acceptedContainment.sourceEvidence.some((row) => row.path.endsWith('VexLifeWorkspaceBlueprintTest.kt')));
+
+  const acceptedControl = catalog.candidates.find((row) => row.candidateRef === 'candidate.component.semantic-control-binding');
+  assert.equal(acceptedControl.state, 'ACCEPTED_PORTABLE');
+  assert.equal(acceptedControl.formation.state, 'ACCEPTED');
+  assert.ok(acceptedControl.sourceEvidence.some((row) => row.path.endsWith('VexLifeWebP1RuntimeArtifacts.kt')));
 });
 
 test('target pressure results preserve mapped, held and platform-specific truth separately from portable acceptance', () => {
@@ -125,6 +130,16 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.ok(containment[0].relationships.some((row) => row.relationRef.endsWith('source-parentage') && row.disposition === 'MAPPED'));
   assert.ok(containment[0].relationships.some((row) => row.relationRef.endsWith('nonliteral-target-tree') && row.disposition === 'MAPPED'));
   assert.ok(containment[0].relationships.some((row) => row.relationRef.endsWith('slot-identity') && row.disposition === 'NOT_APPLICABLE'));
+
+  const control = targetPressuresForCandidate(catalog, 'candidate.component.semantic-control-binding');
+  assert.equal(control.length, 2);
+  const controlWeb = control.find((row) => row.platformRef === 'platform.browser');
+  const controlSwift = control.find((row) => row.platformRef === 'platform.ios');
+  assert.ok(controlWeb.relationships.some((row) => row.relationRef.endsWith('presentation-form') && row.disposition === 'MAPPED'));
+  assert.ok(controlWeb.relationships.some((row) => row.relationRef.endsWith('callback-identity') && row.disposition === 'PLATFORM_SPECIFIC'));
+  assert.ok(controlSwift.relationships.some((row) => row.relationRef.endsWith('unknown-binding') && row.disposition === 'HELD'));
+  assert.ok(controlSwift.proofs.some((row) => row.proofRef === 'proof.swift-unknown-binding-negative' && row.state === 'PASS'));
+  assert.ok(controlSwift.proofs.some((row) => row.proofRef === 'proof.repository-kotlin-2.4.20' && row.state === 'OWED'));
 
   const repeater = targetPressuresForCandidate(catalog, 'candidate.component.stable-repeater');
   const repeaterSwift = repeater.find((row) => row.platformRef === 'platform.ios');
