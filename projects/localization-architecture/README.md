@@ -84,7 +84,7 @@ The human experience may pivot by Element, String, Value, Locale, Project or sem
 
 ### A0 — relational localization architecture — COMPLETED in this formation
 
-Preserve the common relationship model, authority boundaries, projection diagrams, CSV/materialized-view meaning, and the distinction between source identity and derived grouping.
+Preserve the common relationship model, authority boundaries, projection diagrams, CSV/materialized-view meaning, contextual Lens placement, Change Set reconciliation model, and the distinction between source identity and derived grouping.
 
 Durable source: [ARCHITECTURE.md](./ARCHITECTURE.md).
 
@@ -111,7 +111,39 @@ First proof output should be machine-readable and sufficient to derive:
 
 No Android source mutation is required for this first slice.
 
-### A2 — duplicate / convergence analysis — WAITING on A1
+### A2 — Screen Lens Localization Inspector — WAITING on A1
+
+Add a contextual localization control to a Product Screen Lens after inventory exists.
+
+The intended placement is the current secondary-inspector toolbar slot occupied by `Related N`. Related boards remain reachable from a lower-priority Project/overflow surface; the frequent inspection affordance becomes Localization.
+
+The Inspector should support:
+
+- Preview Locale selection without mutating Product runtime language;
+- current-element text bindings;
+- project/screen/string filtering and search;
+- reverse source-string -> occurrence results;
+- clicking an occurrence to navigate/select/highlight its exact Lens element;
+- explicit missing/fallback state rather than pretending fallback text is translated.
+
+### A3 — Localization Change Set and source reconciliation — WAITING on A1
+
+Define an effect-free working overlay suitable for static GitHub Pages:
+
+```text
+current source inventory
+  -> local draft Change Set
+  -> export artifact
+  -> Product/source-owner work
+  -> new source inventory
+  -> import/reconcile
+  -> satisfied intents clear automatically
+  -> residual/diverged intents remain
+```
+
+The Change Set is not source truth. Its first persistence may be browser-local plus explicit export/import so work can be shared without giving the static page GitHub write authority.
+
+### A4 — duplicate / convergence analysis — WAITING on A1
 
 Group source strings by normalized source value and other evidence to discover likely duplication, but keep the group derived.
 
@@ -126,15 +158,19 @@ Useful evidence includes:
 
 The analyzer may suggest `LIKELY_SHARED`, `NEEDS_REVIEW`, `KEEP_SEPARATE`, or `ALREADY_SHARED`; it does not create shared semantic identity by itself.
 
-### A3 — VexBoard localization workspace — WAITING on A2
+### A5 — VexBoard Localization Workspace / CMS — WAITING on A2+A3+A4
 
-Project the earned relational model through one VexBoard localization surface with pivots such as:
+Project the earned relational model through its own VexBoard container/dashboard with pivots such as:
 
 ```text
-ELEMENTS | STRINGS | VALUES | GROUPS | LOCALES | COVERAGE
+ELEMENTS | STRINGS | VALUES | GROUPS | LOCALES | COVERAGE | CHANGE SETS
 ```
 
-Locale should become an orthogonal Screen Lens projection dimension rather than duplicated per-language pages.
+This is the global string/localization management surface. The contextual Screen Lens Inspector is the focused in-Product widget over the same data.
+
+Locale remains an orthogonal Screen Lens projection dimension rather than duplicated per-language pages.
+
+This workflow gets its own VexArchitecture/process projection inside this Project. It does **not** become a second VexWork Project yet. A separate operational Project is earned only if recurring translation campaigns later develop their own human ownership, assignment, approval or release lifecycle.
 
 ## First source map
 
