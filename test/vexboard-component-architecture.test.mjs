@@ -20,8 +20,11 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
   assert.equal(catalog.candidates.some((row) => row.state === 'ACCEPTED_PORTABLE'), false);
-  assert.equal(catalog.targetPressures.length, 3);
-  assert.equal(catalog.targetPressures.every((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS'), true);
+  assert.equal(catalog.targetPressures.length, 4);
+  assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 3);
+  assert.equal(catalog.targetPressures.filter((row) => row.state === 'HELD_SOURCE_CONTRACT').length, 1);
+  assert.equal(catalog.candidates.filter((row) => row.formation).length, 6);
+  assert.equal(catalog.candidates.some((row) => row.formation?.state === 'ACCEPTED'), false);
 });
 
 test('architecture candidates preserve the richer relationship layer above source widget kinds', () => {
@@ -40,6 +43,49 @@ test('source families can point upward to architecture candidates without becomi
   const button = candidatesForSourceFamily(catalog, 'component.source-family.vexlife-android.button');
   assert.ok(button.some((row) => row.candidateRef === 'candidate.component.semantic-control-binding'));
   assert.equal(button.every((row) => row.candidateRef !== 'component.source-family.vexlife-android.button'), true);
+});
+
+test('A3 formation distinguishes reused typed laws from genuinely new relationship candidates', () => {
+  const formed = catalog.candidates.filter((row) => row.formation);
+  assert.equal(formed.length, 6);
+
+  const reused = formed
+    .filter((row) => row.formation.kind === 'REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP')
+    .map((row) => row.candidateRef)
+    .sort();
+  assert.deepEqual(reused, [
+    'candidate.component.frame-region-layout',
+    'candidate.component.identity-addressed-tree',
+    'candidate.component.semantic-control-binding',
+    'candidate.component.typed-containment',
+  ]);
+
+  const newTyped = formed
+    .filter((row) => row.formation.kind === 'NEW_TYPED_RELATIONSHIP_CANDIDATE')
+    .map((row) => row.candidateRef)
+    .sort();
+  assert.deepEqual(newTyped, [
+    'candidate.component.stable-repeater',
+    'candidate.component.swappable-region',
+  ]);
+
+  for (const candidate of formed) {
+    assert.equal(candidate.formation.state, 'FORMATION');
+    assert.ok(candidate.formation.sourceOwnerRefs.length > 0);
+    assert.ok(candidate.formation.portableFields.length > 0);
+    assert.ok(candidate.formation.nonOwnership.length > 0);
+    assert.ok(candidate.formation.targetObligations.length > 0);
+    assert.ok(candidate.formation.acceptanceProofs.length > 0);
+  }
+
+  assert.equal(
+    catalog.candidates.find((row) => row.candidateRef === 'candidate.component.modal-presentation').formation,
+    null,
+  );
+  assert.equal(
+    catalog.candidates.find((row) => row.candidateRef === 'candidate.component.context-dock').formation,
+    null,
+  );
 });
 
 test('target pressure results preserve mapped, held and platform-specific truth separately from portable acceptance', () => {
@@ -72,6 +118,8 @@ test('architecture search finds source evidence and cross-platform pressure', ()
   assert.ok(searchComponentArchitecture(catalog, 'SwiftUI Menu').some((row) => row.candidateRef === 'candidate.component.adaptive-action-group'));
   assert.ok(searchComponentArchitecture(catalog, 'partial-multi-seam').some((row) => row.candidateRef === 'candidate.component.frame-region-layout'));
   assert.ok(searchComponentArchitecture(catalog, 'apple-swiftui-sdk').some((row) => row.candidateRef === 'candidate.component.stable-repeater'));
+  assert.ok(searchComponentArchitecture(catalog, 'NEW_TYPED_RELATIONSHIP_CANDIDATE').some((row) => row.candidateRef === 'candidate.component.stable-repeater'));
+  assert.ok(searchComponentArchitecture(catalog, 'many selectors').some((row) => row.candidateRef === 'candidate.component.swappable-region') || searchComponentArchitecture(catalog, 'multiple selectors').some((row) => row.candidateRef === 'candidate.component.swappable-region'));
   assert.deepEqual(searchComponentArchitecture(catalog, ''), []);
 });
 
