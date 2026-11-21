@@ -397,7 +397,9 @@
         "Compose LazyColumn keys",
         "SwiftUI ForEach identifiable IDs",
         "web keyed list/virtualization",
-        "desktop virtualized collections"
+        "desktop virtualized collections",
+        "VexLife-Prod ConversationTimeline: durable messageRef/eventRef identity + ordinary browser list rebuild",
+        "SwiftUI ForEach/List keyed by feature-owned stable item identity"
       ],
       "sourceEvidence": [
         {
@@ -410,9 +412,40 @@
             "stableListHeaderKey"
           ],
           "why": "Several materially different Android consumers earned stable repeated-item mechanics independent of feature meaning."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+          "symbols": [
+            "ConversationTimeline"
+          ],
+          "why": "Current Product Blueprint already identifies ConversationTimeline as a collection without making runtime messages static Blueprint elements."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/conversation/VexLifeConversationContract.kt",
+          "symbols": [
+            "messageRef",
+            "eventRef",
+            "sequence"
+          ],
+          "why": "Durable Conversation rows already carry feature-owned stable identity and chronology coordinates independently of visual list position."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+          "symbols": [
+            "messageNode",
+            "renderTimeline",
+            "updateLiveTurn"
+          ],
+          "why": "Browser realization currently rebuilds ordinary timeline nodes with replaceChildren while separately preserving the mounted live-stream node, exposing real pressure for reusable stable repeated-item mechanics."
         }
       ],
-      "note": "This is a stronger architectural component than a static ROW kind because it preserves identity across dynamic population."
+      "note": "Cross-platform pressure is now real: Android has VexStableLazyColumn; current VexLife-Prod has stable Conversation message identity but ordinary browser renders rebuild the timeline while live streaming requires mounted-node preservation. A portable contract should own stable repeated-item mechanics only, leaving message meaning/order/store with Conversation."
     },
     {
       "candidateRef": "candidate.component.anchored-overlay",
