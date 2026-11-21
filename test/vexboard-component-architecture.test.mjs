@@ -20,8 +20,9 @@ test('component architecture catalog keeps source influence distinct from portab
   assert.equal(catalog.candidates.length, 12);
   assert.equal(catalog.candidates.every((row) => ['SOURCE_INFLUENCED', 'PORTABLE_CANDIDATE', 'ACCEPTED_PORTABLE', 'PLATFORM_SPECIFIC', 'HELD'].includes(row.state)), true);
   assert.equal(catalog.candidates.some((row) => row.state === 'ACCEPTED_PORTABLE'), false);
-  assert.equal(catalog.targetPressures.length, 4);
+  assert.equal(catalog.targetPressures.length, 7);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'REFERENCE_COMPATIBILITY_PASS').length, 3);
+  assert.equal(catalog.targetPressures.filter((row) => row.state === 'SOURCE_FORMED').length, 3);
   assert.equal(catalog.targetPressures.filter((row) => row.state === 'HELD_SOURCE_CONTRACT').length, 1);
   assert.equal(catalog.candidates.filter((row) => row.formation).length, 6);
   assert.equal(catalog.candidates.some((row) => row.formation?.state === 'ACCEPTED'), false);
@@ -90,21 +91,37 @@ test('A3 formation distinguishes reused typed laws from genuinely new relationsh
 
 test('target pressure results preserve mapped, held and platform-specific truth separately from portable acceptance', () => {
   const repeater = targetPressuresForCandidate(catalog, 'candidate.component.stable-repeater');
-  assert.equal(repeater.length, 1);
-  assert.equal(repeater[0].framework, 'SwiftUI');
-  assert.ok(repeater[0].relationships.some((row) => row.relationRef.endsWith('item-identity') && row.disposition === 'MAPPED'));
-  assert.ok(repeater[0].relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'HELD'));
-  assert.ok(repeater[0].relationships.some((row) => row.relationRef.endsWith('content-type-hint') && row.disposition === 'PLATFORM_SPECIFIC'));
-  assert.ok(repeater[0].proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'OWED'));
+  assert.equal(repeater.length, 2);
+  const repeaterSwift = repeater.find((row) => row.platformRef === 'platform.ios');
+  const repeaterAndroid = repeater.find((row) => row.platformRef === 'platform.android');
+  assert.equal(repeaterSwift.framework, 'SwiftUI');
+  assert.equal(repeaterAndroid.state, 'SOURCE_FORMED');
+  assert.ok(repeaterSwift.relationships.some((row) => row.relationRef.endsWith('item-identity') && row.disposition === 'MAPPED'));
+  assert.ok(repeaterSwift.relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'HELD'));
+  assert.ok(repeaterSwift.relationships.some((row) => row.relationRef.endsWith('content-type-hint') && row.disposition === 'PLATFORM_SPECIFIC'));
+  assert.ok(repeaterSwift.proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'OWED'));
+  assert.ok(repeaterAndroid.relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'MAPPED'));
+  assert.ok(repeaterAndroid.relationships.some((row) => row.relationRef.endsWith('scroll-lock') && row.disposition === 'MAPPED'));
 
   const frame = targetPressuresForCandidate(catalog, 'candidate.component.frame-region-layout');
   assert.equal(frame[0].commit, 'befe31789834a74f5a2738cb6d6028c01aa7553c');
   assert.ok(frame[0].relationships.some((row) => row.relationRef.endsWith('partial-multi-seam') && row.disposition === 'HELD'));
 
   const swappable = targetPressuresForCandidate(catalog, 'candidate.component.swappable-region');
-  assert.equal(swappable[0].state, 'HELD_SOURCE_CONTRACT');
-  assert.ok(swappable[0].relationships.every((row) => row.disposition === 'HELD'));
-  assert.ok(swappable[0].proofs.some((row) => row.proofRef === 'proof.vexlife-prod-selection-contract' && row.state === 'HELD'));
+  assert.equal(swappable.length, 3);
+  const swappableSwift = swappable.find((row) => row.platformRef === 'platform.ios');
+  const swappableAndroid = swappable.find((row) => row.platformRef === 'platform.android');
+  const swappableWeb = swappable.find((row) => row.platformRef === 'platform.browser');
+  assert.equal(swappableSwift.state, 'HELD_SOURCE_CONTRACT');
+  assert.ok(swappableSwift.relationships.every((row) => row.disposition === 'HELD'));
+  assert.ok(swappableSwift.proofs.some((row) => row.proofRef === 'proof.vexlife-prod-selection-contract' && row.state === 'HELD'));
+  assert.equal(swappableAndroid.state, 'SOURCE_FORMED');
+  assert.ok(swappableAndroid.relationships.some((row) => row.relationRef.endsWith('default-child') && row.disposition === 'MAPPED'));
+  assert.ok(swappableAndroid.relationships.some((row) => row.relationRef.endsWith('exhaustive-choice-set') && row.disposition === 'HELD'));
+  assert.equal(swappableWeb.state, 'SOURCE_FORMED');
+  assert.ok(swappableWeb.relationships.some((row) => row.relationRef.endsWith('exhaustive-choice-set') && row.disposition === 'MAPPED'));
+  assert.ok(swappableWeb.relationships.some((row) => row.relationRef.endsWith('many-to-one-selectors') && row.disposition === 'MAPPED'));
+  assert.ok(swappableWeb.proofs.some((row) => row.proofRef === 'proof.vexstream-lens-self-currentness' && row.state === 'HELD'));
 
   assert.deepEqual(targetPressuresForCandidate(catalog, 'candidate.component.context-dock'), []);
   assert.throws(() => targetPressuresForCandidate(catalog, 'candidate.component.missing'), /unknown candidate/);
