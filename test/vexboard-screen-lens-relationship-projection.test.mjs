@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import test from 'node:test';
 
 import {
@@ -111,6 +112,12 @@ test('relationship projection fails closed when it claims Family or Partner role
       role,
     );
   }
+});
+
+test('the Lens reader names relationship projections without a Product-specific rendering branch', () => {
+  const html = fs.readFileSync(new URL('../vexboard/lens.html', import.meta.url), 'utf8');
+  assert.match(html, /RELATIONSHIP_PROJECTION:\s*'Relationship projection'/);
+  assert.match(html, /Lens\.PATHWAY_DISPOSITIONS\[pathway\.disposition\]/);
 });
 
 test('relationship projection has exactly one explicit outward Projection return', () => {
