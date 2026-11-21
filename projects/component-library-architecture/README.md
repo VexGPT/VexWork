@@ -183,7 +183,44 @@ The materialized inventory lives at
 `scripts/build-component-inventory.mjs`. Production refactor opportunities discovered while
 organizing the source are recorded in [TECH-DEBT.md](./TECH-DEBT.md) rather than applied to Android.
 
-### A2 — cross-Product component census — WAITING on A1
+### A2 — cross-Product component census — RUNNING
+
+A1 remains **VERIFYING** while A2 runs. This is intentional: the Android inventory source is formed
+and deterministic enough to consume read-only; A1's repository-wide executable proof floor remains
+independent.
+
+Current A2 evidence already spans:
+
+```text
+Android
+  component/Element source families
+  StableLazyColumn
+  Swappable/SwapTo
+  Dialog / BottomSheet
+  Context Dock
+  NavigationTrail
+  anchored overlays
+
+current VexLife-Prod
+  compiler-visible Blueprint identity
+  VexWeb typed relationships
+  Conversation durable item identity
+  current browser presentation pressure
+
+SwiftUI reference pressure (Product PR #506)
+  adaptive action group
+  stable repeated-item identity
+  current full-span Frame / Seam / Region layout
+```
+
+Current source gaps are preserved rather than guessed:
+
+```text
+Swappable Region -> HELD on compiler-visible selected/default-child contract
+Modal presentation -> HELD on compiler-visible open/dismiss + modality contract
+```
+
+
 
 Apply the inventory contract to VexLife Prod, VexStream and other admitted Products.
 
