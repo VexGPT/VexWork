@@ -201,11 +201,12 @@ new VexArchitecture owner.
 Each pathway also carries an honest disposition, so the lens never implies SCAE where it was not earned:
 
 ```text
-SCAE_FAMILY          source earns a semantic owner and explicit State / Control / Act / Effect / Projection relationships
-PARTNER_CIRCUIT      source proves Partner / Connection / Signal / Observation / Receiver depth and its lawful Store / Family return
-TYPED_PRESENTATION   Open / Close / Toggle already says everything (Show log, + FAB)
-TYPED_NAVIGATION     NavigateTo(ScreenId) already says everything (bottom nav, FAB options)
-DIRECT_REGISTRATION  registration calls owners directly; no Family yet (Reset log, Events lab)
+SCAE_FAMILY             source earns a semantic owner and explicit State / Control / Act / Effect / Projection relationships
+PARTNER_CIRCUIT         source proves Partner / Connection / Signal / Observation / Receiver depth and its lawful Store / Family return
+RELATIONSHIP_PROJECTION source projects a read-only relationship among truths already owned elsewhere; exactly one outward Projection returns and no Family / Partner circuit is invented
+TYPED_PRESENTATION      Open / Close / Toggle already says everything (Show log, + FAB)
+TYPED_NAVIGATION        NavigateTo(ScreenId) already says everything (bottom nav, FAB options)
+DIRECT_REGISTRATION     registration calls owners directly; no Family yet (Reset log, Events lab)
 ```
 
 
