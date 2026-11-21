@@ -51,6 +51,24 @@ test('global Localization Workspace projects current inventories through all ear
   assert.equal(['LIKELY_SHARED', 'NEEDS_REVIEW', 'KEEP_SEPARATE'].includes(candidate.disposition), true);
 });
 
+test('explicit missing locale work target remains visible without becoming Product support', () => {
+  const projection = projectLocalizationWorkspace({
+    inventories: [android, prod],
+    workLocaleRefs: ['it'],
+  });
+  const italian = projection.locales.find((row) => row.localeRef === 'it');
+  assert.ok(italian);
+  assert.equal(italian.observedSubjectCount, 0);
+  assert.equal(italian.completeSubjectCount, 0);
+  assert.equal(italian.requestedChangeCount, 0);
+
+  const coverage = filterLocalizationWorkspaceRows(projection, 'COVERAGE', { localeRef: 'it' });
+  assert.equal(coverage.length, 2);
+  assert.equal(coverage.every((row) => row.completeness === 'NOT_OBSERVED'), true);
+  assert.equal(coverage.find((row) => row.subjectRef === 'subject.vexlife-android').missingStringCount, 405);
+  assert.equal(coverage.find((row) => row.subjectRef === 'subject.vexlife-prod').missingStringCount, 1029);
+});
+
 test('coverage says NOT_OBSERVED instead of pretending a locale exists for a Product', () => {
   const projection = projectLocalizationWorkspace({ inventories: [android, prod] });
   const spanish = filterLocalizationWorkspaceRows(projection, 'COVERAGE', { localeRef: 'es' });
@@ -86,6 +104,15 @@ test('existing browser Change Sets reconcile against the current inventory in th
   assert.equal(projection.summary.activeChangeCount, 1);
   assert.equal(projection.changeSets.length, 1);
   assert.equal(projection.changeSets[0].state, 'OPEN_TRANSLATION');
+  const italian = projection.locales.find((row) => row.localeRef === 'it');
+  assert.ok(italian);
+  assert.equal(italian.observedSubjectCount, 0);
+  assert.equal(italian.requestedChangeCount, 1);
+  const prodItalian = projection.coverage.find((row) => row.subjectRef === 'subject.vexlife-prod' && row.localeRef === 'it');
+  const androidItalian = projection.coverage.find((row) => row.subjectRef === 'subject.vexlife-android' && row.localeRef === 'it');
+  assert.equal(prodItalian.completeness, 'NOT_OBSERVED');
+  assert.equal(prodItalian.requestedChangeCount, 1);
+  assert.equal(androidItalian.requestedChangeCount, 0);
   assert.equal(projection.changeSets[0].currentValueOrNull, null);
   assert.equal(projection.changeSets[0].expectedValue, 'Conservata');
 });
