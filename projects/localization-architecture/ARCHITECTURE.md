@@ -395,4 +395,296 @@ Given source value Z:
 
 If those questions require source archaeology after inventory generation, the normalized contract is incomplete.
 
+
+## 15. Two UI surfaces over one localization model
+
+The current Screen Lens already separates frequent contextual inspection from broader navigation. Localization should follow the same pattern.
+
+### Contextual surface — Localization Inspector
+
+On a Product Screen Lens, the current top-bar `Related N` slot is a good home for a **Localization** control because it is already a secondary inspector affordance and localization is directly relevant to the element being inspected.
+
+```text
+VexBoard | Product | Stable/Main | Source | Search | Screen map | Localization | Legend | Colors
+```
+
+Related boards remain useful provenance but do not need the same top-level prominence. Preserve them under the Product menu, overflow, or another secondary information surface rather than deleting their meaning.
+
+The Localization Inspector is scoped to the current subject/revision and should expose:
+
+```text
+Preview locale
+Search / filter strings
+Current element bindings
+Where used
+Missing / fallback status
+Open in Localization Workspace
+```
+
+Changing Preview Locale changes only the VexBoard projection.
+
+```text
+VEXBOARD_PREVIEW_LOCALE != PRODUCT_RUNTIME_SELECTED_LOCALE
+```
+
+A later live runtime control may be admitted separately when a Product exposes lawful language-selection effects.
+
+### Global surface — Localization Workspace
+
+The full content-management system belongs in its own VexBoard container, for example a `Localization` entry adjacent to `Projects`.
+
+It operates across subjects and is optimized for string-first/value-first/locale-first work rather than Screen topology:
+
+```text
+Projects     -> Product / Screen Lens entry
+Localization -> cross-Product string/content workspace
+```
+
+Both surfaces consume the same localization inventory and relationship indexes.
+
+```text
+LOCALIZATION INSPECTOR
+  focused contextual projection
+
+LOCALIZATION WORKSPACE
+  global management / analysis projection
+
+!= two localization truth stores
+```
+
+## 16. Localization Inspector interaction
+
+The contextual flow should preserve the Screen Lens's existing selection semantics.
+
+```mermaid
+flowchart LR
+  L[Localization button] --> D[Inspector drawer / panel]
+  D --> Q[Search / filter strings]
+  D --> P[Preview locale]
+  Q --> R[String result]
+  R --> O[Occurrence list]
+  O --> J[Jump to Screen]
+  J --> E[Select + highlight Element]
+  P --> T[Reproject element text]
+  T --> E
+```
+
+A String result may have one or many occurrences.
+
+```text
+sourceStringRef
+  -> occurrence 1 -> screen A / element X / LABEL
+  -> occurrence 2 -> screen B / element Y / A11Y_LABEL
+  -> occurrence 3 -> screen B / element Z / LABEL
+```
+
+Selecting an occurrence should reuse existing Screen Lens navigation/selection primitives: move to the owning screen if necessary, anchor the element, and visibly highlight it. Do not create a second element-selection mechanism for localization.
+
+Search should match at least:
+
+- source string ID;
+- current/source value;
+- selected-locale value;
+- element ref;
+- screen/surface;
+- semantic group when one is accepted.
+
+Fallback must remain visible:
+
+```text
+requested ES
+translation absent
+-> render source/EN fallback if the Product's law allows it
+-> mark MISSING_ES / FALLBACK
+!= translated ES
+```
+
+## 17. Change Set — mutable intent over immutable observation
+
+Static GitHub Pages cannot be treated as a shared write-authority surface. The first useful authoring model is therefore an explicit **Localization Change Set**.
+
+A Change Set stores requested/expected change intent against observed source identity:
+
+```text
+changeRef
+subjectRef
+observedRevision
+sourceStringRef
+locale
+observedValueOrNull
+expectedValue
+occurrenceRefs[]
+noteOrRationale
+```
+
+Its current state is derived when compared with fresh source:
+
+```text
+current == expected
+  -> SATISFIED
+
+current == observed && current != expected
+  -> OPEN
+
+current != observed && current != expected
+  -> DIVERGED
+
+source string absent
+  -> SOURCE_REMOVED / NEEDS_REVIEW
+
+target locale missing and expected supplied
+  -> OPEN_TRANSLATION
+```
+
+The key property is automatic reconciliation:
+
+```mermaid
+flowchart TD
+  S0[Source inventory at revision A] --> C[Draft Change Set]
+  C --> X[Export artifact]
+  X --> H[Human / team / source-owner implementation]
+  H --> S1[Source inventory at revision B]
+  C --> R[Reconcile against revision B]
+  S1 --> R
+  R -->|current == expected| D[Satisfied / clears from active work]
+  R -->|still old| O[Open]
+  R -->|changed differently| V[Diverged / review]
+```
+
+The Change Set never overwrites the source observation. It is a second relationship layer:
+
+```text
+CURRENT_SOURCE_VALUE
+!=
+EXPECTED_CHANGE_VALUE
+```
+
+## 18. Static-page persistence and team sharing
+
+The first persistence mode may reuse VexBoard's existing browser-local draft posture:
+
+```text
+localStorage / browser state
+  -> useful private working set
+  -> no claim of shared team state
+```
+
+Team sharing is explicit through export/import.
+
+A first artifact should be deterministic and revision-bound:
+
+```text
+localization-change-set.json
+manifest.json
+optional review.csv
+```
+
+The manifest should bind:
+
+- schema/version;
+- subject(s);
+- observed Product revisions;
+- localization inventory fingerprint(s);
+- Change Set fingerprint;
+- export time only as metadata, not semantic identity.
+
+Import does not blindly restore old status. It reloads the Change Set and reconciles every requested change against **current** source.
+
+This makes an exported artifact useful even after the Product moves.
+
+## 19. VexArchitecture projection of the change workflow
+
+The change/reconciliation process belongs in this Localization Architecture Project because it explains how source truth, human intent and projection relate.
+
+```text
+OBSERVE
+Product source
+  -> Localization Inventory
+
+ORIENT
+Inventory
+  -> Element/String/Value/Locale pivots
+
+INTEND
+Human marks expected string/translation change
+  -> Localization Change Set
+
+CARRY
+Change Set
+  -> local persistence and/or exported artifact
+
+REALIZE
+Product/source owner changes rightful source
+
+REOBSERVE
+new Product revision
+  -> new Localization Inventory
+
+RECONCILE
+expected vs current
+  -> SATISFIED / OPEN / DIVERGED / REMOVED
+
+PROJECT
+Screen Lens Inspector + global Localization Workspace
+```
+
+This is a VexArchitecture/process projection, not automatically a second Project.
+
+A future **Localization Operations** Project is earned only if recurring campaigns develop materially separate human/work lifecycle such as translator assignment, review ownership, deadlines, approvals or release gating.
+
+## 20. Updated implementation order
+
+The UI should not get ahead of the relationship contract.
+
+```text
+A1 Android inventory
+   |
+   +--> A2 contextual Localization Inspector + locale preview
+   |
+   +--> A3 Change Set + export/import reconciliation
+   |
+   +--> A4 duplicate/convergence analysis
+          |
+          +------+
+                 v
+A5 global Localization Workspace / CMS
+```
+
+A2 can start as soon as A1 can answer where-used and locale lookup for Android. It does not need to wait for cross-Product semantic convergence.
+
+A5 waits because the global dashboard should be shaped by real inventory, real change-intent behavior and real grouping evidence rather than by speculative CMS screens.
+
+## 21. Placement decision record
+
+```text
+L1  Localization replaces Related as the primary contextual Lens toolbar inspector
+    why       localization is directly actionable while inspecting a Product element;
+              Related boards are useful provenance but infrequent
+    preserve  move Related access to Product/overflow/secondary information, do not delete it
+
+L2  Localization Inspector and Localization Workspace consume one relational inventory
+    why       context-first and global string-first work need different layouts, not different truth
+
+L3  preview locale is projection state
+    why       a static Lens must not imply it changed the running Product's language preference
+
+L4  string search results navigate to occurrences using existing Lens selection
+    why       element identity already owns highlight/jump behavior; localization should reuse it
+
+L5  expected edits live in Change Sets, never in the source inventory
+    why       observed truth and requested future truth must remain simultaneously visible
+
+L6  local browser persistence is private working state
+    why       GitHub Pages has no shared authenticated write contract by default
+
+L7  team sharing begins with deterministic export/import artifacts
+    why       explicit custody is truthful and portable before provider-backed collaboration is earned
+
+L8  reconciliation derives completion from current source
+    why       once current source equals expected value the request should disappear from active debt automatically
+
+L9  change/reconciliation receives a VexArchitecture projection inside Localization Architecture
+    why       it is part of understanding the system; it does not yet justify another Project
+```
+
 <!-- [VXG RealForever][VEXWORK][LOCALIZATION-ARCHITECTURE][RELATIONAL-MODEL] -->
