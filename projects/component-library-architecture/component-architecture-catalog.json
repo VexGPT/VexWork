@@ -346,7 +346,7 @@
       "candidateRef": "candidate.component.typed-containment",
       "label": "Typed containment and slots",
       "class": "CONTAINER",
-      "state": "PORTABLE_CANDIDATE",
+      "state": "ACCEPTED_PORTABLE",
       "question": "How can source visually communicate what fits inside what while preserving explicit parent/child/slot relationships for target generation and Screen Lens?",
       "sourceFamilyRefs": [
         "component.source-family.vexlife-android.column",
@@ -413,12 +413,41 @@
             "vexstream.desktop.library.discover-mode-selection"
           ],
           "why": "The VexStream Lens recovers source-authored parent/child containment across shell terrain, nested modes and controls in a materially different Product."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonTest/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprintTest.kt",
+          "symbols": [
+            "workspaceCompositionKeepsStableUniquePerceptibleAddresses"
+          ],
+          "why": "Accepted Product test reconstructs exact authored parent relationships for the current nested workspace from compiler-visible Blueprint coordinates."
+        },
+        {
+          "repositoryRef": "repo.vexlife-android",
+          "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+          "path": "architecture/elements/src/test/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistryTest.kt",
+          "symbols": [
+            "registryKeepsStaticPlacementSeparateFromRuntimeScreenContext",
+            "localPresentationIntentCannotMutateAnotherScreensContainer"
+          ],
+          "why": "Android registry tests recover source parentage separately from runtime context and fail closed when a local child/container relationship crosses its admitted Screen ownership."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a",
+          "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
+          "symbols": [
+            "VexLifeSwiftUiQuickActionsReference",
+            "VexQuickActionsReferenceView"
+          ],
+          "why": "SwiftUI pressure realizes source collection/trigger/action containment as Menu/label/actions while retaining sourceParentRef and explicit targetRole metadata instead of copying the source tree literally."
         }
       ],
       "note": "This is the composable readability Victor is pointing at: code nesting should carry relationship meaning, not just syntax.",
       "formation": {
         "formationRef": "formation.component.typed-containment.a3",
-        "state": "FORMATION",
+        "state": "ACCEPTED",
         "kind": "REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP",
         "sourceOwnerRefs": [
           "repo.vexlife-android",
@@ -450,7 +479,7 @@
           "invalid child/parent or slot relationships fail before target acceptance",
           "target Screen Lens/manifest can distinguish source containment from target manifestation containment"
         ],
-        "note": "This is the reusable law behind readable nested Blueprint/Compose structures, not a universal Row/Column class hierarchy."
+        "note": "A3 portable containment accepted: VexLife-Prod and Android compiler-visible trees plus VexStream Lens reconstruct nested source ownership across materially different Products; Android registry source fails closed on cross-container/Screen relationship violations; SwiftUI Quick Actions proves a non-literal native target tree can preserve source parentage through explicit target-role mapping. Acceptance covers source parentRef/direct childRefs/optional slotRef/optional placement-role relationships only. Framework containers, spacing and literal native view hierarchies remain target concerns."
       }
     },
     {
@@ -2054,6 +2083,66 @@
         }
       ],
       "note": "SwiftUI pressure proves the same Product source refs survive a materially different target form while the target-specific accessibility hook remains explicitly non-canonical."
+    },
+    {
+      "pressureRef": "pressure.component.typed-containment.swiftui-quick-actions",
+      "candidateRef": "candidate.component.typed-containment",
+      "platformRef": "platform.ios",
+      "framework": "SwiftUI",
+      "state": "REFERENCE_COMPATIBILITY_PASS",
+      "sourceRef": "github.pr.vexlife-prod.506",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a",
+      "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.containment.source-parentage",
+          "disposition": "MAPPED",
+          "source": "QuickActions source collection owns trigger/action children",
+          "target": "reverse-projection manifest preserves each sourceParentRef"
+        },
+        {
+          "relationRef": "relation.containment.nonliteral-target-tree",
+          "disposition": "MAPPED",
+          "source": "source collection + trigger + action-child topology",
+          "target": "SwiftUI Menu + Menu label + Menu actions with explicit targetRole mapping"
+        },
+        {
+          "relationRef": "relation.containment.target-view-hierarchy",
+          "disposition": "PLATFORM_SPECIFIC",
+          "source": "source topology remains canonical relationship",
+          "target": "SwiftUI native view hierarchy is realization detail and is not promoted to source ownership"
+        },
+        {
+          "relationRef": "relation.containment.slot-identity",
+          "disposition": "NOT_APPLICABLE",
+          "source": "bounded Quick Actions specimen has no separate semantic slotRef contract",
+          "target": "no slot mapping synthesized"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.swift-source-parent-projection",
+          "state": "PASS",
+          "note": "Reference manifest emits sourceParentRef separately from targetRole/bindingRealization."
+        },
+        {
+          "proofRef": "proof.swift-nonliteral-containment",
+          "state": "PASS",
+          "note": "Quick Actions collection/trigger/actions form a native Menu/label/actions tree without losing source identity relationships."
+        },
+        {
+          "proofRef": "proof.android-invalid-cross-container-source",
+          "state": "PASS",
+          "note": "Accepted Android BlueprintRegistryTest source fails closed when a local presentation relationship attempts to mutate another Screen's container."
+        },
+        {
+          "proofRef": "proof.apple-swiftui-sdk",
+          "state": "OWED",
+          "note": "Apple native target proof remains A4 and does not gate the A3 containment law."
+        }
+      ],
+      "note": "This pressure proves the portable law is source containment + explicit target mapping, not literal cross-framework view-tree sameness."
     }
   ]
 }
