@@ -291,7 +291,9 @@
         "Compose selected-child rendering",
         "SwiftUI enum/conditional child region",
         "web tab/region swap",
-        "desktop panel selection"
+        "desktop panel selection",
+        "SwiftUI target generation HELD until current Product owns one compiler-visible local selection/default-child relationship",
+        "Current VexLife-Prod behavior is split across typed VexWeb structure and browser-local state.view"
       ],
       "sourceEvidence": [
         {
@@ -313,9 +315,32 @@
             "UIBlueprintRegistry"
           ],
           "why": "Registry validates direct-child and same-scope SwapTo relationships."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
+          "symbols": [
+            "CompanionContent",
+            "Conversation",
+            "Settings",
+            "CompanionViewSwitch"
+          ],
+          "why": "Current typed presentation source establishes one local content container with Conversation/Settings children and a local-interaction switch control, but does not encode the full selected/default-child contract."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+          "symbols": [
+            "state.view",
+            "renderCompanionHead",
+            "ui.viewSwitch"
+          ],
+          "why": "Current browser runtime owns the missing local selection facts: default conversation, settings/conversation toggle, mutually exclusive visibility, and no app-navigation depth."
         }
       ],
-      "note": "Good early cross-platform proof because it tests topology and interaction depth without needing provider/runtime effects."
+      "note": "Cross-Product pressure now exposes a source-contract gap: Android has typed Swappable/SwapTo; current VexLife-Prod has equivalent lived local presentation behavior, but default/selected-child truth is split between VexWeb structure and browser JS. Do not let a SwiftUI adapter reconstruct that architecture from runtime strings. Form or bind the rightful typed Product contract first."
     },
     {
       "candidateRef": "candidate.component.modal-presentation",
