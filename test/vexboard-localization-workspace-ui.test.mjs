@@ -70,16 +70,18 @@ test('STRINGS keeps source value anchored and adds one switchable locale-value c
 
 
 test('overview error absence never leaks null text into the page', () => {
-  assert.match(workspace, /h\('section', \{ class: 'overview', id: 'localization-overview' \}/);
-  assert.match(workspace, /state\.storageError \? h\('div', \{ class: 'error' \}/);
-  assert.doesNotMatch(
-    workspace,
-    /app\.replaceChildren\([\s\S]{0,1400}state\.storageError \?/,
-    'optional null error children must be normalized inside h(), not passed directly to DOM replaceChildren',
-  );
+  const overviewStart = workspace.indexOf("h('section', { class: 'overview', id: 'localization-overview' }");
+  const storageError = workspace.indexOf("state.storageError ? h('div', { class: 'error' }", overviewStart);
+  const inventoryError = workspace.indexOf("state.unavailable.some((row) => row.state === 'ERROR') ? h('div', { class: 'error' }", overviewStart);
+  const resizer = workspace.indexOf('overviewResizer()', overviewStart);
+
+  assert.ok(overviewStart >= 0);
+  assert.ok(storageError > overviewStart && storageError < resizer);
+  assert.ok(inventoryError > overviewStart && inventoryError < resizer);
+  assert.match(workspace, /if \(child === null \|\| child === undefined \|\| child === false\) continue;/);
 });
 
-test('overview can collapse into working space through one accessible vertical splitter', () => {
+test('overview continuously yields viewport space through one accessible vertical splitter', () => {
   assert.match(workspace, /class: 'overview-resizer'/);
   assert.match(workspace, /role: 'separator'/);
   assert.match(workspace, /aria-orientation': 'horizontal'/);
@@ -89,8 +91,9 @@ test('overview can collapse into working space through one accessible vertical s
   assert.match(workspace, /ArrowDown/);
   assert.match(workspace, /Home/);
   assert.match(workspace, /End/);
-  assert.match(workspace, /overview-collapsed/);
-  assert.match(workspace, /max-height:calc\(100vh - 205px\)/);
+  assert.match(workspace, /--overview-height/);
+  assert.match(workspace, /visibleHeight = overview\.getBoundingClientRect\(\)\.height/);
+  assert.match(workspace, /max-height:max\(260px,calc\(100vh - 205px - var\(--overview-height,0px\)\)\)/);
 });
 
 test('global workspace links rows back into the existing Screen Lens selection/localization path', () => {
