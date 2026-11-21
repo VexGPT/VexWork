@@ -368,7 +368,9 @@
       "targetPressure": [
         "Android AlertDialog/ModalBottomSheet",
         "SwiftUI alert/sheet/fullScreenCover/popover",
-        "web dialog/popover"
+        "web dialog/popover",
+        "Current VexLife-Prod ContextInspector: typed Depth.Modal identity + browser-native dialog showModal/close runtime realization",
+        "SwiftUI modal generation HELD until opener/dismiss relationship and required-vs-platform-specific modality are compiler-visible"
       ],
       "sourceEvidence": [
         {
@@ -390,9 +392,32 @@
             "BottomSheetModalSample"
           ],
           "why": "Gallery carries both modal realization patterns under the same local presentation ownership rules."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
+          "symbols": [
+            "ContextInspector",
+            "ContextInspectorClose",
+            "VexWeb.Depth.Modal"
+          ],
+          "why": "Current Product typed presentation source identifies a Context Inspector on the Modal depth plane, but does not bind its open/dismiss controls in the typed relationship source."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+          "symbols": [
+            "showInspector",
+            "openCurrentContext",
+            "showModal",
+            "inspectorClose"
+          ],
+          "why": "Current browser realization chooses native HTML dialog mechanics and wires open/close in runtime JavaScript, exposing a typed-source gap before another target should generate modal behavior."
         }
       ],
-      "note": null
+      "note": "Current pressure does not yet prove Dialog vs Bottom Sheet is universally portable. The smaller earned need is compiler-visible modal identity + open/dismiss relationship; target-specific modality (.sheet/.alert/.popover/etc.) should remain explicit until Product meaning requires one."
     },
     {
       "candidateRef": "candidate.component.stable-repeater",
