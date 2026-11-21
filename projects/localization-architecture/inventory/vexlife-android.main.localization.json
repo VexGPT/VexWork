@@ -2688,6 +2688,8 @@
       "sourceStringRef": "android:R.string.back",
       "sourceKey": "back",
       "sourceValue": "Back",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.shell.back.label",
         "occurrence.localization.vexlife-android.element.vexstream-music.body.collection.back.label"
@@ -2705,14 +2707,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.cgm_partner_lab_debug_helper",
       "sourceKey": "cgm_partner_lab_debug_helper",
       "sourceValue": "Patient-zero architecture lab for two provider representations → one Partner Signal vocabulary → Store → Family. Synthetic only; no clinical or real-device claim.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.cgm-partner.helper.text"
       ],
@@ -2727,14 +2729,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.cgm_partner_lab_intro",
       "sourceKey": "cgm_partner_lab_intro",
       "sourceValue": "Inject BLE-like bytes or an HTTP-like response and watch both provider representations convert into the same Partner Signals before Observation, Store, Family State, and Projection.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.cgm-partner-lab.body.intro.text"
       ],
@@ -2749,14 +2751,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.cgm_partner_lab_open",
       "sourceKey": "cgm_partner_lab_open",
       "sourceValue": "Open CGM Partner Circuit",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.cgm-partner.actions.open.label"
       ],
@@ -2771,14 +2773,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.cgm_partner_lab_receive_http",
       "sourceKey": "cgm_partner_lab_receive_http",
       "sourceValue": "Receive HTTP-like CGM response",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.cgm-partner-lab.body.actions.receive-http.label"
       ],
@@ -2793,14 +2795,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.cgm_partner_lab_receive_packet",
       "sourceKey": "cgm_partner_lab_receive_packet",
       "sourceValue": "Receive BLE-like CGM packet",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.cgm-partner-lab.body.actions.receive-packet.label"
       ],
@@ -2815,14 +2817,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.cgm_partner_lab_title",
       "sourceKey": "cgm_partner_lab_title",
       "sourceValue": "CGM Partner Circuit",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.cgm-partner.title.text"
       ],
@@ -2837,14 +2839,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.close",
       "sourceKey": "close",
       "sourceValue": "Close",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.bottom-sheet.close.label",
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.dialog.close.label",
@@ -2873,14 +2875,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.conversation_family_title",
       "sourceKey": "conversation_family_title",
       "sourceValue": "Family Conversation",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.home.body.systems.family-conversation.label"
       ],
@@ -2895,14 +2897,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.conversation_loading",
       "sourceKey": "conversation_loading",
       "sourceValue": "Loading current Family conversation…",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.family-conversation.body.state.text"
       ],
@@ -2917,14 +2919,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.conversation_message",
       "sourceKey": "conversation_message",
       "sourceValue": "Message",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.family-conversation.body.composer.message.label"
       ],
@@ -2939,14 +2941,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.conversation_send",
       "sourceKey": "conversation_send",
       "sourceValue": "Send",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.family-conversation.body.composer.send.label"
       ],
@@ -2961,14 +2963,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.dark_mode",
       "sourceKey": "dark_mode",
       "sourceValue": "Dark mode",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.dark-mode.label"
       ],
@@ -2983,14 +2985,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_preview_body",
       "sourceKey": "events_preview_body",
       "sourceValue": "External information will appear here as stable chronological event rows.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.events.body.empty.text"
       ],
@@ -3005,14 +3007,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_emit_burst",
       "sourceKey": "events_simulator_emit_burst",
       "sourceValue": "Emit 12-event burst",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.emit-burst.label"
       ],
@@ -3027,14 +3029,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_emit_next",
       "sourceKey": "events_simulator_emit_next",
       "sourceValue": "Emit next",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.emit-next.label"
       ],
@@ -3049,14 +3051,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_guide_body",
       "sourceKey": "events_simulator_guide_body",
       "sourceValue": "Reset lab → choose Rotation or Random → Next expectation → open Events. The popup names the scenario, seed, target position, preferred placement, queue counts, and expected button results. Rotation cycles top, middle, bottom, then blocking-freeze. Random is seeded and replayable. If the stated next state does not happen, that is a bug.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator-guide.body.text"
       ],
@@ -3071,14 +3073,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_guide_title",
       "sourceKey": "events_simulator_guide_title",
       "sourceValue": "Attention test guide",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator-guide.title.text"
       ],
@@ -3093,14 +3095,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_helper",
       "sourceKey": "events_simulator_helper",
       "sourceValue": "Debug fixture only. Timer tests outside-screen arrival. Emit next is immediate. Burst fills enough rows to scroll. Insert older changes list order without changing existing IDs. Remove oldest tests provider-removal candidate advancement.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.helper.text"
       ],
@@ -3115,14 +3117,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_insert_historical",
       "sourceKey": "events_simulator_insert_historical",
       "sourceValue": "Insert older event",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.insert-historical.label"
       ],
@@ -3137,14 +3139,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_next_scenario",
       "sourceKey": "events_simulator_next_scenario",
       "sourceValue": "Next expectation",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.next-scenario.label"
       ],
@@ -3159,14 +3161,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_remove_oldest",
       "sourceKey": "events_simulator_remove_oldest",
       "sourceValue": "Remove oldest",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.remove-oldest.label"
       ],
@@ -3181,14 +3183,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_reset_lab",
       "sourceKey": "events_simulator_reset_lab",
       "sourceValue": "Reset lab",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.reset-lab.label"
       ],
@@ -3203,14 +3205,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_start",
       "sourceKey": "events_simulator_start",
       "sourceValue": "Start 5-second feed",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.start.label"
       ],
@@ -3225,14 +3227,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_stop",
       "sourceKey": "events_simulator_stop",
       "sourceValue": "Stop feed",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.stop.label"
       ],
@@ -3247,14 +3249,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_title",
       "sourceKey": "events_simulator_title",
       "sourceValue": "Events simulator",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.title.text"
       ],
@@ -3269,14 +3271,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_use_random",
       "sourceKey": "events_simulator_use_random",
       "sourceValue": "Random mode",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.use-random.label"
       ],
@@ -3291,14 +3293,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.events_simulator_use_rotation",
       "sourceKey": "events_simulator_use_rotation",
       "sourceValue": "Rotation mode",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.events-simulator.actions.use-rotation.label"
       ],
@@ -3313,14 +3315,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.fab_debug",
       "sourceKey": "fab_debug",
       "sourceValue": "Debug menu",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.label"
       ],
@@ -3333,14 +3335,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.fab_gallery",
       "sourceKey": "fab_gallery",
       "sourceValue": "Gallery",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.label"
       ],
@@ -3353,14 +3355,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.fab_more",
       "sourceKey": "fab_more",
       "sourceValue": "+",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.shell.fab.add.label"
       ],
@@ -3373,14 +3375,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.fab_profile",
       "sourceKey": "fab_profile",
       "sourceValue": "User profile",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.user-profile.label"
       ],
@@ -3393,14 +3395,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_app_graph",
       "sourceKey": "gallery_app_graph",
       "sourceValue": "AppGraph",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.bottom-navigation.app-graph.label"
       ],
@@ -3415,14 +3417,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_dialog_sample_body",
       "sourceKey": "gallery_dialog_sample_body",
       "sourceValue": "AlertDialog remains available as a centered blocking modal pattern.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.dialog.body.text"
       ],
@@ -3437,14 +3439,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_dialog_sample_title",
       "sourceKey": "gallery_dialog_sample_title",
       "sourceValue": "Dialog modal sample",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.dialog.title.text"
       ],
@@ -3459,14 +3461,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_elements",
       "sourceKey": "gallery_elements",
       "sourceValue": "Elements",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.bottom-navigation.elements.label"
       ],
@@ -3481,14 +3483,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_graph_intro",
       "sourceKey": "gallery_graph_intro",
       "sourceValue": "Registered topology. Open a row to move one layer deeper without flattening the whole app into one map.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.app-graph.intro.text"
       ],
@@ -3503,14 +3505,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_intro",
       "sourceKey": "gallery_intro",
       "sourceValue": "Reusable cells used by this first Android construction practicum.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.intro.text"
       ],
@@ -3525,14 +3527,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_modal_samples_body",
       "sourceKey": "gallery_modal_samples_body",
       "sourceValue": "Two local presentation styles using the same open/close ownership rules.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.description.text"
       ],
@@ -3547,14 +3549,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_modal_samples_title",
       "sourceKey": "gallery_modal_samples_title",
       "sourceValue": "Modal presentation samples",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.title.text"
       ],
@@ -3569,14 +3571,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_sample_button",
       "sourceKey": "gallery_sample_button",
       "sourceValue": "Button",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.samples.button-row.button.label"
       ],
@@ -3591,14 +3593,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_sample_fab",
       "sourceKey": "gallery_sample_fab",
       "sourceValue": "FAB",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.samples.fab.label"
       ],
@@ -3613,14 +3615,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_sample_text",
       "sourceKey": "gallery_sample_text",
       "sourceValue": "Container and row compose smaller cells without changing their identities.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.samples.description.text"
       ],
@@ -3635,14 +3637,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_sample_toggle",
       "sourceKey": "gallery_sample_toggle",
       "sourceValue": "Toggle row",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.samples.toggle.label"
       ],
@@ -3657,14 +3659,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_sheet_sample_body",
       "sourceKey": "gallery_sheet_sample_body",
       "sourceValue": "ModalBottomSheet is suited to draggable, vertically spacious content and can be dismissed by dragging down.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.bottom-sheet.content.body.text"
       ],
@@ -3679,14 +3681,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_sheet_sample_title",
       "sourceKey": "gallery_sheet_sample_title",
       "sourceValue": "Bottom sheet modal sample",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.bottom-sheet.content.title.text"
       ],
@@ -3701,14 +3703,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_show_dialog_sample",
       "sourceKey": "gallery_show_dialog_sample",
       "sourceValue": "Show dialog",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.actions.show-dialog.label"
       ],
@@ -3723,14 +3725,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.gallery_show_sheet_sample",
       "sourceKey": "gallery_show_sheet_sample",
       "sourceValue": "Show bottom sheet",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.gallery.page.content.elements.modal-samples.actions.show-bottom-sheet.label"
       ],
@@ -3745,14 +3747,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.home_talk_to_vex",
       "sourceKey": "home_talk_to_vex",
       "sourceValue": "Talk to Vex",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.home.body.systems.talk-to-vex.label"
       ],
@@ -3767,14 +3769,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.home_vexmaps",
       "sourceKey": "home_vexmaps",
       "sourceValue": "VexMaps",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.home.body.systems.vex-maps.label"
       ],
@@ -3789,14 +3791,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.home_vexstream_connect",
       "sourceKey": "home_vexstream_connect",
       "sourceValue": "Connect VexStream Music",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.home.body.vexstream.connect.label"
       ],
@@ -3811,14 +3813,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.home_vexstream_open",
       "sourceKey": "home_vexstream_open",
       "sourceValue": "Open VexStream Music",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.home.body.systems.vexstream-music.label"
       ],
@@ -3833,14 +3835,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.insulin_partner_lab_debug_helper",
       "sourceKey": "insulin_partner_lab_debug_helper",
       "sourceValue": "Pressure Partner symmetry with a sparse connected pen and a bidirectional pump. Synthetic architecture lab only; no treatment or real-device claim.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.insulin-partner.helper.text"
       ],
@@ -3855,14 +3857,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.insulin_partner_lab_intro",
       "sourceKey": "insulin_partner_lab_intro",
       "sourceValue": "Compare two Partners converging into one Store and Family. Pen reports sparse dose truth; Pump exercises Family Effect → Method → Partner acknowledgement, then a separate reported outcome back through Store.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.insulin-partner-lab.body.intro.text"
       ],
@@ -3877,14 +3879,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.insulin_partner_lab_open",
       "sourceKey": "insulin_partner_lab_open",
       "sourceValue": "Open Insulin Partner Circuit",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.insulin-partner.actions.open.label"
       ],
@@ -3899,14 +3901,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.insulin_partner_lab_receive_pen",
       "sourceKey": "insulin_partner_lab_receive_pen",
       "sourceValue": "Receive synthetic pen packet",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.insulin-partner-lab.body.pen.actions.receive.label"
       ],
@@ -3921,14 +3923,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.insulin_partner_lab_receive_pump",
       "sourceKey": "insulin_partner_lab_receive_pump",
       "sourceValue": "Receive synthetic pump outcome",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.insulin-partner-lab.body.pump.actions.receive.label"
       ],
@@ -3943,14 +3945,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.insulin_partner_lab_request_pump",
       "sourceKey": "insulin_partner_lab_request_pump",
       "sourceValue": "Request synthetic pump delivery",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.insulin-partner-lab.body.pump.actions.request.label"
       ],
@@ -3965,14 +3967,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.insulin_partner_lab_title",
       "sourceKey": "insulin_partner_lab_title",
       "sourceValue": "Insulin Partner Circuit",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.insulin-partner.title.text"
       ],
@@ -3987,14 +3989,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.log_history",
       "sourceKey": "log_history",
       "sourceValue": "Log History",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.log-history.title.text"
       ],
@@ -4009,14 +4011,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.log_history_helper",
       "sourceKey": "log_history_helper",
       "sourceValue": "Reset clears the persisted Log History. New actions begin a fresh history immediately after.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.log-history.helper.text"
       ],
@@ -4031,14 +4033,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.log_history_reset",
       "sourceKey": "log_history_reset",
       "sourceValue": "Reset",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.log-history.actions.reset.label"
       ],
@@ -4053,14 +4055,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.log_history_show",
       "sourceKey": "log_history_show",
       "sourceValue": "Show",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.log-history.actions.show.label"
       ],
@@ -4075,14 +4077,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.nav_events",
       "sourceKey": "nav_events",
       "sourceValue": "Events",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.navigation.events.label"
       ],
@@ -4095,14 +4097,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.nav_home",
       "sourceKey": "nav_home",
       "sourceValue": "Home",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.navigation.home.label"
       ],
@@ -4115,14 +4117,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.nav_settings",
       "sourceKey": "nav_settings",
       "sourceValue": "Settings",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.navigation.settings.label"
       ],
@@ -4135,14 +4137,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_automation_toggle",
       "sourceKey": "partners_circuit_lab_automation_toggle",
       "sourceValue": "Enable synthetic CGM → Pump rule",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.partners-circuit-lab.body.automation.enabled.label"
       ],
@@ -4157,14 +4159,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_debug_helper",
       "sourceKey": "partners_circuit_lab_debug_helper",
       "sourceValue": "Start here for the end-to-end Partner feedback path: provider representation → Partner → Store → Family → optional cross-Family rule → Control/Effect/Method → Pump Partner → later observed outcome. Synthetic architecture fixture only.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.partners-circuit.helper.text"
       ],
@@ -4179,14 +4181,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_intro",
       "sourceKey": "partners_circuit_lab_intro",
       "sourceValue": "Trace the complete synthetic feedback loop: CGM Partner observations rise through Store and Family, then an optional lab rule enters Insulin Family through Control and reaches the Pump Partner through Effect and Method before a later Partner Signal reports the observed outcome.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.partners-circuit-lab.body.intro.text"
       ],
@@ -4201,14 +4203,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_open",
       "sourceKey": "partners_circuit_lab_open",
       "sourceValue": "Open Partner Feedback Circuit",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.partners-circuit.actions.open.label"
       ],
@@ -4223,14 +4225,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_receive_cgm",
       "sourceKey": "partners_circuit_lab_receive_cgm",
       "sourceValue": "Receive BLE-like CGM packet",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.partners-circuit-lab.body.cgm.actions.receive.label"
       ],
@@ -4245,14 +4247,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_receive_cgm_http",
       "sourceKey": "partners_circuit_lab_receive_cgm_http",
       "sourceValue": "Receive HTTP-like CGM response",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.partners-circuit-lab.body.cgm.actions.receive-http.label"
       ],
@@ -4267,14 +4269,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_receive_pen",
       "sourceKey": "partners_circuit_lab_receive_pen",
       "sourceValue": "Receive synthetic pen packet",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.partners-circuit-lab.body.pen.actions.receive.label"
       ],
@@ -4289,14 +4291,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_receive_pump",
       "sourceKey": "partners_circuit_lab_receive_pump",
       "sourceValue": "Receive synthetic pump outcome",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.partners-circuit-lab.body.pump.actions.receive.label"
       ],
@@ -4311,14 +4313,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_request_pump",
       "sourceKey": "partners_circuit_lab_request_pump",
       "sourceValue": "Request synthetic pump delivery manually",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.partners-circuit-lab.body.pump.actions.request.label"
       ],
@@ -4333,14 +4335,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.partners_circuit_lab_title",
       "sourceKey": "partners_circuit_lab_title",
       "sourceValue": "Partner Feedback Circuit",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.debug-menu.body.partners-circuit.title.text"
       ],
@@ -4355,14 +4357,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.settings_preview_body",
       "sourceKey": "settings_preview_body",
       "sourceValue": "Future home for preferences, device posture, and user-controlled configuration. This is placeholder content for the first navigation practicum.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.settings.body.preview.message.text"
       ],
@@ -4377,14 +4379,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.settings_preview_title",
       "sourceKey": "settings_preview_title",
       "sourceValue": "Settings preview",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.settings.body.preview.title.text"
       ],
@@ -4399,14 +4401,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.talk_to_vex_placeholder_action",
       "sourceKey": "talk_to_vex_placeholder_action",
       "sourceValue": "Run Talk to Vex placeholder action",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.talk-to-vex.body.placeholder.actions.run.label"
       ],
@@ -4421,14 +4423,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.talk_to_vex_placeholder_body",
       "sourceKey": "talk_to_vex_placeholder_body",
       "sourceValue": "A future conversational Vex runtime can attach here. For now this screen proves that its semantic action stays owned beside the feature instead of moving into the app root.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.talk-to-vex.body.placeholder.message.text"
       ],
@@ -4443,14 +4445,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.talk_to_vex_placeholder_title",
       "sourceKey": "talk_to_vex_placeholder_title",
       "sourceValue": "Talk to Vex placeholder",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.talk-to-vex.body.placeholder.title.text"
       ],
@@ -4465,14 +4467,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.user_profile_intro",
       "sourceKey": "user_profile_intro",
       "sourceValue": "Small persisted profile proof. Edit the draft name and save; the persisted field below updates from the repository database flow.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.user-profile.body.profile.intro.text"
       ],
@@ -4487,14 +4489,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.user_profile_name_label",
       "sourceKey": "user_profile_name_label",
       "sourceValue": "Edit display name",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.user-profile.body.profile.display-name.label"
       ],
@@ -4509,14 +4511,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.user_profile_persisted_name_label",
       "sourceKey": "user_profile_persisted_name_label",
       "sourceValue": "Persisted name",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.user-profile.body.profile.persisted-name.label"
       ],
@@ -4531,14 +4533,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.user_profile_save",
       "sourceKey": "user_profile_save",
       "sourceValue": "Save name",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.user-profile.body.profile.actions.save.label"
       ],
@@ -4553,14 +4555,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_appearance",
       "sourceKey": "vexmaps_appearance",
       "sourceValue": "Map appearance",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.map.appearance.open.label"
       ],
@@ -4575,14 +4577,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_appearance_automatic",
       "sourceKey": "vexmaps_appearance_automatic",
       "sourceValue": "Automatic",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.map.appearance.automatic.label"
       ],
@@ -4597,14 +4599,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_appearance_dark",
       "sourceKey": "vexmaps_appearance_dark",
       "sourceValue": "Dark",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.map.appearance.dark.label"
       ],
@@ -4619,14 +4621,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_appearance_light",
       "sourceKey": "vexmaps_appearance_light",
       "sourceValue": "Light",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.map.appearance.light.label"
       ],
@@ -4641,14 +4643,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_destination_search_action",
       "sourceKey": "vexmaps_destination_search_action",
       "sourceValue": "Search",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.destination-search.search.label"
       ],
@@ -4663,14 +4665,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_destination_search_hint",
       "sourceKey": "vexmaps_destination_search_hint",
       "sourceValue": "Where to?",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.destination-search.query.label"
       ],
@@ -4685,14 +4687,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_distribution_add_stop",
       "sourceKey": "vexmaps_distribution_add_stop",
       "sourceValue": "Add stop",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.distribution.stop.add.label"
       ],
@@ -4707,14 +4709,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_distribution_clear",
       "sourceKey": "vexmaps_distribution_clear",
       "sourceValue": "Clear delivery route",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.distribution.delivery-route.clear.label"
       ],
@@ -4729,14 +4731,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_distribution_delivered",
       "sourceKey": "vexmaps_distribution_delivered",
       "sourceValue": "Delivered",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.distribution.delivery-route.mark-delivered.label"
       ],
@@ -4751,14 +4753,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_distribution_prepare",
       "sourceKey": "vexmaps_distribution_prepare",
       "sourceValue": "Prepare delivery route",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.distribution.delivery-route.prepare.label"
       ],
@@ -4773,14 +4775,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_distribution_retry",
       "sourceKey": "vexmaps_distribution_retry",
       "sourceValue": "Retry",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.distribution.delivery-route.retry-leg.label"
       ],
@@ -4795,14 +4797,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_distribution_return_on",
       "sourceKey": "vexmaps_distribution_return_on",
       "sourceValue": "Return to start: On",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.distribution.return.toggle.label"
       ],
@@ -4817,14 +4819,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_distribution_start",
       "sourceKey": "vexmaps_distribution_start",
       "sourceValue": "Start delivery route",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.distribution.delivery-route.start.label"
       ],
@@ -4839,14 +4841,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_distribution_title",
       "sourceKey": "vexmaps_distribution_title",
       "sourceValue": "Distribution",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.distribution.mode.toggle.label"
       ],
@@ -4861,14 +4863,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_foundation_body",
       "sourceKey": "vexmaps_foundation_body",
       "sourceValue": "VexMaps is ready for map, place, route, and navigation experiences. Opening this screen does not require location permission; device location will be requested only when a location-dependent action needs it.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.foundation.message.text"
       ],
@@ -4883,14 +4885,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_foundation_title",
       "sourceKey": "vexmaps_foundation_title",
       "sourceValue": "Maps and navigation",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.foundation.title.text"
       ],
@@ -4905,14 +4907,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_map_options",
       "sourceKey": "vexmaps_map_options",
       "sourceValue": "Map options",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.map-menu.open.label"
       ],
@@ -4927,14 +4929,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_navigation_done",
       "sourceKey": "vexmaps_navigation_done",
       "sourceValue": "Done",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.navigation.done.label"
       ],
@@ -4949,14 +4951,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_navigation_edit_route",
       "sourceKey": "vexmaps_navigation_edit_route",
       "sourceValue": "Edit route",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.navigation.edit-route.label"
       ],
@@ -4971,14 +4973,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_navigation_recenter",
       "sourceKey": "vexmaps_navigation_recenter",
       "sourceValue": "Recenter",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.navigation.recenter.label"
       ],
@@ -4993,14 +4995,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_navigation_start",
       "sourceKey": "vexmaps_navigation_start",
       "sourceValue": "Start",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.navigation.start.label"
       ],
@@ -5015,14 +5017,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_navigation_stop",
       "sourceKey": "vexmaps_navigation_stop",
       "sourceValue": "Stop navigation",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.navigation.stop.label"
       ],
@@ -5037,14 +5039,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_offline_map_import",
       "sourceKey": "vexmaps_offline_map_import",
       "sourceValue": "Import offline map region",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.offline-map.import.label"
       ],
@@ -5059,14 +5061,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_offline_maps",
       "sourceKey": "vexmaps_offline_maps",
       "sourceValue": "Offline maps",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.map-menu.offline.label",
         "occurrence.localization.vexlife-android.element.vex-maps.body.offline.prepare.toggle.label"
@@ -5083,14 +5085,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_offline_prepare_advanced",
       "sourceKey": "vexmaps_offline_prepare_advanced",
       "sourceValue": "Advanced imports",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.offline.prepare.advanced.label"
       ],
@@ -5105,14 +5107,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_offline_prepare_around",
       "sourceKey": "vexmaps_offline_prepare_around",
       "sourceValue": "Around me",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.offline.prepare.around-me.label"
       ],
@@ -5127,14 +5129,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_offline_prepare_regions",
       "sourceKey": "vexmaps_offline_prepare_regions",
       "sourceValue": "Browse regions",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.offline.prepare.regions.label"
       ],
@@ -5149,14 +5151,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_offline_prepare_trip",
       "sourceKey": "vexmaps_offline_prepare_trip",
       "sourceValue": "Prepare a trip",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.offline.prepare.trip.label"
       ],
@@ -5171,14 +5173,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_place_search_action",
       "sourceKey": "vexmaps_place_search_action",
       "sourceValue": "Search offline",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.place-search.search.label"
       ],
@@ -5193,14 +5195,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_place_search_import",
       "sourceKey": "vexmaps_place_search_import",
       "sourceValue": "Import place search region",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.place-search.import.label"
       ],
@@ -5215,14 +5217,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_place_search_query",
       "sourceKey": "vexmaps_place_search_query",
       "sourceValue": "Find a place",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.place-search.query.label"
       ],
@@ -5237,14 +5239,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_region_pack_import",
       "sourceKey": "vexmaps_region_pack_import",
       "sourceValue": "Import routing region",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.routing-region.import.label"
       ],
@@ -5259,14 +5261,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_route_choose_start",
       "sourceKey": "vexmaps_route_choose_start",
       "sourceValue": "Choose route start",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.origin.choose-on-map.label"
       ],
@@ -5281,14 +5283,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_route_here",
       "sourceKey": "vexmaps_route_here",
       "sourceValue": "Route here",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.route.calculate.label"
       ],
@@ -5303,14 +5305,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_route_mode_bicycle",
       "sourceKey": "vexmaps_route_mode_bicycle",
       "sourceValue": "Bike",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.travel-mode.bicycle.label"
       ],
@@ -5325,14 +5327,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_route_mode_drive",
       "sourceKey": "vexmaps_route_mode_drive",
       "sourceValue": "Drive",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.travel-mode.drive.label"
       ],
@@ -5347,14 +5349,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_route_mode_walk",
       "sourceKey": "vexmaps_route_mode_walk",
       "sourceValue": "Walk",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.travel-mode.walk.label"
       ],
@@ -5369,14 +5371,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_route_use_current_start",
       "sourceKey": "vexmaps_route_use_current_start",
       "sourceValue": "Use current location as start",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.planner.origin.use-device.label"
       ],
@@ -5391,14 +5393,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexmaps_use_precise_location",
       "sourceKey": "vexmaps_use_precise_location",
       "sourceValue": "Use precise location",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vex-maps.body.location.use-precise.label"
       ],
@@ -5413,14 +5415,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_add_queue",
       "sourceKey": "vexstream_music_add_queue",
       "sourceValue": "Add to queue",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.track-actions.add-queue.label"
       ],
@@ -5435,14 +5437,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_albums",
       "sourceKey": "vexstream_music_albums",
       "sourceValue": "Albums",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library-tabs.albums.label"
       ],
@@ -5457,14 +5459,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_artists",
       "sourceKey": "vexstream_music_artists",
       "sourceValue": "Artists",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library-tabs.artists.label"
       ],
@@ -5479,14 +5481,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_cancel",
       "sourceKey": "vexstream_music_cancel",
       "sourceValue": "Cancel",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.forget.cancel.label"
       ],
@@ -5501,14 +5503,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_clear_queue",
       "sourceKey": "vexstream_music_clear_queue",
       "sourceValue": "Clear queue",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.queue.sheet.clear.label"
       ],
@@ -5523,14 +5525,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_confirm_code",
       "sourceKey": "vexstream_music_confirm_code",
       "sourceValue": "Codes match · Request access",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.confirm-code.label"
       ],
@@ -5545,14 +5547,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_download",
       "sourceKey": "vexstream_music_download",
       "sourceValue": "Download",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.track-actions.download.label"
       ],
@@ -5567,14 +5569,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_download_all_missing",
       "sourceKey": "vexstream_music_download_all_missing",
       "sourceValue": "Download missing songs & artwork",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.library.download-all-missing.label"
       ],
@@ -5589,14 +5591,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_download_missing",
       "sourceKey": "vexstream_music_download_missing",
       "sourceValue": "Download missing",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.collection.download-missing.label"
       ],
@@ -5611,14 +5613,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_downloads",
       "sourceKey": "vexstream_music_downloads",
       "sourceValue": "Downloads",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library-tabs.downloads.label"
       ],
@@ -5633,14 +5635,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_filter_any_duration",
       "sourceKey": "vexstream_music_filter_any_duration",
       "sourceValue": "Any duration",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.duration.any.label"
       ],
@@ -5655,14 +5657,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_filter_clear",
       "sourceKey": "vexstream_music_filter_clear",
       "sourceValue": "Clear filters",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.clear-filters.label"
       ],
@@ -5677,14 +5679,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_filter_duration_minutes",
       "sourceKey": "vexstream_music_filter_duration_minutes",
       "sourceValue": "Minutes",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.duration-minutes.label"
       ],
@@ -5699,14 +5701,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_filter_greater_than",
       "sourceKey": "vexstream_music_filter_greater_than",
       "sourceValue": "Greater than",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.duration.greater-than.label"
       ],
@@ -5721,14 +5723,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_filter_less_than",
       "sourceKey": "vexstream_music_filter_less_than",
       "sourceValue": "Less than",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.duration.less-than.label"
       ],
@@ -5743,14 +5745,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_filter_toggle",
       "sourceKey": "vexstream_music_filter_toggle",
       "sourceValue": "Toggle library filter",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.filter.toggle.label"
       ],
@@ -5765,14 +5767,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_filters_active",
       "sourceKey": "vexstream_music_filters_active",
       "sourceValue": "Filters active",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization-status.active.text"
       ],
@@ -5787,14 +5789,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_filters_no_matches",
       "sourceKey": "vexstream_music_filters_no_matches",
       "sourceValue": "No songs match these filters",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization-status.no-matches.text"
       ],
@@ -5809,14 +5811,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_find",
       "sourceKey": "vexstream_music_find",
       "sourceValue": "Find VexStream",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.find.label"
       ],
@@ -5831,14 +5833,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_forget",
       "sourceKey": "vexstream_music_forget",
       "sourceValue": "Forget this VexStream",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.forget.request.label"
       ],
@@ -5853,14 +5855,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_forget_confirm",
       "sourceKey": "vexstream_music_forget_confirm",
       "sourceValue": "Forget VexStream",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.forget.label"
       ],
@@ -5875,14 +5877,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_intro",
       "sourceKey": "vexstream_music_intro",
       "sourceValue": "Your music from VexStream, on this phone. Stream while your computer is nearby or keep songs downloaded for offline playback.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.intro.text"
       ],
@@ -5897,14 +5899,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_manage_connection",
       "sourceKey": "vexstream_music_manage_connection",
       "sourceValue": "Manage VexStream connection",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.manage.label"
       ],
@@ -5919,14 +5921,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_next",
       "sourceKey": "vexstream_music_next",
       "sourceValue": "Next",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.player.next.label"
       ],
@@ -5941,14 +5943,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_no_search_results",
       "sourceKey": "vexstream_music_no_search_results",
       "sourceValue": "No matching music.",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.search-sheet.content.no-results.text"
       ],
@@ -5963,14 +5965,14 @@
       ],
       "bindingRoles": [
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_now_playing",
       "sourceKey": "vexstream_music_now_playing",
       "sourceValue": "Now playing",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.player.open.label",
         "occurrence.localization.vexlife-android.element.vexstream-music.body.queue.sheet.now-playing.label"
@@ -5987,14 +5989,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_open_collection",
       "sourceKey": "vexstream_music_open_collection",
       "sourceValue": "Open collection",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.collection.open.label"
       ],
@@ -6009,14 +6011,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_organize",
       "sourceKey": "vexstream_music_organize",
       "sourceValue": "Sort & filter",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.open.label"
       ],
@@ -6031,14 +6033,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_play",
       "sourceKey": "vexstream_music_play",
       "sourceValue": "Play",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.track-actions.play.label"
       ],
@@ -6053,14 +6055,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_play_all",
       "sourceKey": "vexstream_music_play_all",
       "sourceValue": "Play all",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library-actions.play-all.label"
       ],
@@ -6075,14 +6077,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_play_next",
       "sourceKey": "vexstream_music_play_next",
       "sourceValue": "Play next",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.track-actions.play-next.label"
       ],
@@ -6097,14 +6099,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_play_pause",
       "sourceKey": "vexstream_music_play_pause",
       "sourceValue": "Play / Pause",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.player.play-pause.label"
       ],
@@ -6119,14 +6121,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_playlists",
       "sourceKey": "vexstream_music_playlists",
       "sourceValue": "Playlists",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library-tabs.playlists.label"
       ],
@@ -6141,14 +6143,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_previous",
       "sourceKey": "vexstream_music_previous",
       "sourceValue": "Previous",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.player.previous.label"
       ],
@@ -6163,14 +6165,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_queue",
       "sourceKey": "vexstream_music_queue",
       "sourceValue": "Queue",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.player.queue.show.label"
       ],
@@ -6185,14 +6187,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_queue_play",
       "sourceKey": "vexstream_music_queue_play",
       "sourceValue": "Play queued song",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.queue.sheet.play.label"
       ],
@@ -6207,14 +6209,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_queue_reorder",
       "sourceKey": "vexstream_music_queue_reorder",
       "sourceValue": "Reorder queue",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.queue.sheet.reorder.label"
       ],
@@ -6229,14 +6231,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_reconnect",
       "sourceKey": "vexstream_music_reconnect",
       "sourceValue": "Reconnect",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.reconnect.label"
       ],
@@ -6251,14 +6253,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_refresh",
       "sourceKey": "vexstream_music_refresh",
       "sourceValue": "Refresh library",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.refresh.label"
       ],
@@ -6273,14 +6275,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_remove_all_downloaded",
       "sourceKey": "vexstream_music_remove_all_downloaded",
       "sourceValue": "Remove all downloaded songs",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.connection.library.remove-all-downloaded.label"
       ],
@@ -6295,14 +6297,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_remove_download",
       "sourceKey": "vexstream_music_remove_download",
       "sourceValue": "Remove download",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.track-actions.remove-download.label"
       ],
@@ -6317,14 +6319,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_repeat",
       "sourceKey": "vexstream_music_repeat",
       "sourceValue": "Repeat",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.queue.sheet.repeat.label"
       ],
@@ -6339,14 +6341,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_search",
       "sourceKey": "vexstream_music_search",
       "sourceValue": "Search your VexStream library",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.search-sheet.content.prompt.text",
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.search.label"
@@ -6364,14 +6366,14 @@
       "bindingRoles": [
         "LABEL",
         "TEXT"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_search_action",
       "sourceKey": "vexstream_music_search_action",
       "sourceValue": "Search library",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.search.open.label"
       ],
@@ -6386,14 +6388,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_seek",
       "sourceKey": "vexstream_music_seek",
       "sourceValue": "Seek playback",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.player.seek.label"
       ],
@@ -6408,14 +6410,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_shuffle",
       "sourceKey": "vexstream_music_shuffle",
       "sourceValue": "Shuffle",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.player.shuffle.label",
         "occurrence.localization.vexlife-android.element.vexstream-music.body.queue.sheet.shuffle.label"
@@ -6432,14 +6434,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_shuffle_all",
       "sourceKey": "vexstream_music_shuffle_all",
       "sourceValue": "Shuffle all",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library-actions.shuffle-all.label"
       ],
@@ -6454,14 +6456,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_songs",
       "sourceKey": "vexstream_music_songs",
       "sourceValue": "Songs",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library-tabs.songs.label"
       ],
@@ -6476,14 +6478,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_sort_album",
       "sourceKey": "vexstream_music_sort_album",
       "sourceValue": "Album",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.sort.album.label"
       ],
@@ -6498,14 +6500,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_sort_artist",
       "sourceKey": "vexstream_music_sort_artist",
       "sourceValue": "Artist",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.sort.artist.label"
       ],
@@ -6520,14 +6522,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_sort_duration",
       "sourceKey": "vexstream_music_sort_duration",
       "sourceValue": "Duration",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.sort.duration.label"
       ],
@@ -6542,14 +6544,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_sort_title",
       "sourceKey": "vexstream_music_sort_title",
       "sourceValue": "Title",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.sort.title.label"
       ],
@@ -6564,14 +6566,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_sort_year",
       "sourceKey": "vexstream_music_sort_year",
       "sourceValue": "Year",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.library.organization.sort.year.label"
       ],
@@ -6586,14 +6588,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_track_menu",
       "sourceKey": "vexstream_music_track_menu",
       "sourceValue": "Song options",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.track-actions.menu.label"
       ],
@@ -6608,14 +6610,14 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     },
     {
       "sourceStringRef": "android:R.string.vexstream_music_visit_artist",
       "sourceKey": "vexstream_music_visit_artist",
       "sourceValue": "Visit artist",
+      "formatSignature": "",
+      "placeholders": [],
       "occurrenceRefs": [
         "occurrence.localization.vexlife-android.element.vexstream-music.body.track-actions.visit-artist.label"
       ],
@@ -6630,9 +6632,7 @@
       ],
       "bindingRoles": [
         "LABEL"
-      ],
-      "formatSignature": "",
-      "placeholders": []
+      ]
     }
   ],
   "summary": {
