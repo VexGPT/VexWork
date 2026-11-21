@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vex.localization-architecture",
+  "label": "Localization Architecture",
+  "purpose": "Build one source-faithful relational localization architecture across VexBoard and participating Products so stable element/string/locale identities can be reverse-searched and regrouped without making source-language values, generated CSVs, semantic candidate groups, or VexBoard itself a second localization authority; preserve and consume the existing VexSite localization trajectory rather than replacing its scheduler/source ownership.",
+  "rootWorkRefs": [
+    "work.vex.localization-architecture.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme",
+    "repo.vexlife-android",
+    "repo.vexlife-prod",
+    "repo.vexstream-music"
+  ],
+  "sourceRefs": [
+    "projects/localization-architecture/README.md",
+    "projects/localization-architecture/ARCHITECTURE.md",
+    "project.vextreme.vexsite-localization",
+    "repo.vextreme:docs/architecture/06-i18n.md",
+    "src/core/experience-graph-localization.mjs",
+    "src/core/vexboard-screen-lens-android-adapter.mjs",
+    "repo.vexlife-android:docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt",
+    "repo.vexlife-android:app/src/main/res/values/strings.xml",
+    "github.issue.vexwork.138",
+    "github.pull.vexwork.393",
+    "github.pull.vexwork.395"
+  ],
+  "formedAt": "2026-11-21T07:20:00.000Z"
+}
