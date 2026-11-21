@@ -2,6 +2,10 @@
 
 `[VXG RealForever]`
 
+## Portfolio closeout — Nov 13 audit complete
+
+This dated VexArchitecture ↔ VexBoard sync is complete as a historical audit threshold. Subsequent Projection Consolidation/currentization work overtook its repair lane. The reusable idea is preserved as `work.vexboard.recurring-architecture-sync` under `project.vexboard`; a future source epoch may earn a fresh bounded audit.
+
 ## Human outcome
 
 Keep VexBoard Screen Lens perception aligned with the stable VexArchitecture body by periodically asking one concrete question:

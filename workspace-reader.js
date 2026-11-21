@@ -1,6 +1,7 @@
 export const PROJECTS_VIEWS = Object.freeze(['projects', 'roadmap', 'open']);
 export const PROJECT_VIEWS = Object.freeze(['story', 'open', 'board', 'dependencies']);
 export const ITEM_VIEWS = Object.freeze(['overview', 'children', 'dependencies', 'history']);
+export const PROJECT_COMPLETION_THRESHOLDS_SCHEMA = 'vexwork.project-completion-thresholds/v1';
 
 const DONE_STATES = new Set(['COMPLETED', 'CONVERGED', 'CLOSED']);
 const BLOCKED_STATES = new Set(['BLOCKED', 'FAILED_RECOVERABLE']);
@@ -119,6 +120,57 @@ export function projectPortfolioGroups(workspace) {
     toComplete: Object.freeze(groups.toComplete),
     completed: Object.freeze(groups.completed),
     archived: Object.freeze(groups.archived),
+  });
+}
+
+export function validateProjectCompletionThresholds(data) {
+  if (!data || data.schemaVersion !== PROJECT_COMPLETION_THRESHOLDS_SCHEMA) throw new Error('unsupported Project completion-threshold schema');
+  if (!Array.isArray(data.thresholds)) throw new Error('Project completion thresholds required');
+  const refs = new Set();
+  let priorCutoff = null;
+  const thresholds = data.thresholds.map((threshold) => {
+    if (!threshold || typeof threshold.thresholdRef !== 'string' || !threshold.thresholdRef) throw new Error('completion thresholdRef required');
+    if (refs.has(threshold.thresholdRef)) throw new Error('duplicate completion thresholdRef ' + threshold.thresholdRef);
+    refs.add(threshold.thresholdRef);
+    if (typeof threshold.label !== 'string' || !threshold.label.trim()) throw new Error('completion threshold label required');
+    if (typeof threshold.cutoffAt !== 'string' || Number.isNaN(Date.parse(threshold.cutoffAt))) throw new Error('completion threshold cutoffAt invalid');
+    if (new Date(threshold.cutoffAt).toISOString() !== threshold.cutoffAt) throw new Error('completion threshold cutoffAt must be canonical UTC ISO');
+    if (priorCutoff !== null && threshold.cutoffAt <= priorCutoff) throw new Error('completion thresholds must be strictly chronological');
+    priorCutoff = threshold.cutoffAt;
+    return Object.freeze({ ...threshold });
+  });
+  return Object.freeze({ ...data, thresholds: Object.freeze(thresholds) });
+}
+
+export function projectCompletionAt(project) {
+  const roots = projectRootItems(project);
+  if (roots.length === 0 || !roots.every((item) => DONE_STATES.has(item.state))) return null;
+  const terminalTimes = roots.map((item) => {
+    const terminalTransition = [...(item.transitionHistory || [])].reverse().find((transition) => DONE_STATES.has(transition.nextState));
+    return terminalTransition?.createdAt || item.updatedAt || null;
+  });
+  if (terminalTimes.some((value) => value === null)) return null;
+  return [...terminalTimes].sort().at(-1);
+}
+
+export function projectCompletionThresholdGroups(workspace, definition) {
+  const validated = validateProjectCompletionThresholds(definition);
+  const completed = projectPortfolioGroups(workspace).completed;
+  const buckets = validated.thresholds.map((threshold) => ({ ...threshold, projects: [] }));
+  const afterThresholds = [];
+  const unclassified = [];
+  for (const project of completed) {
+    const completionAt = projectCompletionAt(project);
+    if (!completionAt) { unclassified.push(project); continue; }
+    const bucket = buckets.find((threshold) => completionAt <= threshold.cutoffAt);
+    if (bucket) bucket.projects.push(project); else afterThresholds.push(project);
+  }
+  return Object.freeze({
+    thresholds: Object.freeze(buckets.map((bucket) => Object.freeze({ ...bucket, projects: Object.freeze(bucket.projects) }))),
+    afterThresholds: Object.freeze(afterThresholds),
+    unclassified: Object.freeze(unclassified),
+    effects: false,
+    executionAuthority: 'NONE',
   });
 }
 

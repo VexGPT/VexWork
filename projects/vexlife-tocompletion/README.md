@@ -6,6 +6,17 @@
 
 `[VXG RealForever]`
 
+## Portfolio closeout — completed through Nov 21, 2026
+
+The ToCompletion trajectory is now closed as **completed predecessor provenance**. The lived core and developmental lessons remain valid; current continuity, interface and release work lives in narrower successor scopes.
+
+- P5 continuity/lesson pressure -> `project.vexlife.memory-depth-exploration`
+- ordinary Product/release path -> `project.vexlife.release-roadmap` + current VexLife-Prod
+- current interface work -> `project.vexlife.interface-refinement`
+- unearned Rhythm/training remains unearned; it is not standing backlog
+
+Do not reopen this Project merely because VexLife continues to evolve.
+
 This Project is the durable VexWork entry for the **VexLife ToCompletion** trajectory. It exists so a fresh human or AI can understand the purpose, completed phases, architecture, causal lessons, current edge, and remaining completion path without reconstructing the journey from chat history or a long GitHub issue timeline.
 
 VexWork owns the **work truth and navigation** here. VexLife and the other rightful source/runtime owners still own product source, runtime contracts, lifecycle effects, private Home state, model state, and proof.

@@ -11,13 +11,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-11-06T06:48:01.000Z",
+      "updatedAt": "2026-11-21T09:38:07.000Z",
       "workRef": "work.vexlife.tocompletion.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife ToCompletion",
       "purpose": "Preserve the completed ToCompletion core and ordinary Heretic runtime/restart evidence as durable provenance while retaining the genuinely unresolved original-VexLife front-door acceptance and later developmental/whole-product horizons. Current product construction proceeds through Interface Refinement and New Beginnings/VexLife-Prod; this historical root is paused rather than presented as active IMMEDIATE work or falsely declared complete.",
       "workClass": "OUTCOME",
-      "state": "PAUSED_AT_CHECKPOINT",
+      "state": "COMPLETED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -317,13 +317,13 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-22T01:08:02.000Z",
-      "updatedAt": "2026-11-06T06:48:01.000Z",
+      "updatedAt": "2026-11-21T09:38:00.000Z",
       "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
       "label": "P5 — lived continuity and learning",
       "purpose": "Preserve the lived developmental frontier after terminal G02 Score continuity and terminal G03 memory-only Daily Dream. Resume only when another ordinary source-bound episode/correction/recurrence creates real Continuity Evolution evidence; do not manufacture G04 Rhythm, training or weight work from the absence of evidence.",
       "workClass": "OUTCOME",
-      "state": "PAUSED_AT_CHECKPOINT",
+      "state": "CANCELLED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexlife.tocompletion.p4.typed-local-effect"
@@ -481,7 +481,7 @@
       "label": "P6 — Cultivation, School, Training Placement, optional Birth",
       "purpose": "Once the lived operational surface is stable, use actual developmental evidence to re-enter Cultivation/School, let Training Placement decide the rightful learning surface, and perform neural training/candidate evaluation/succession only when a weight route is genuinely earned.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "CANCELLED",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
@@ -504,7 +504,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-20T00:14:25.000Z",
-      "updatedAt": "2026-11-06T06:48:01.000Z"
+      "updatedAt": "2026-11-21T09:38:01.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -513,7 +513,7 @@
       "label": "P7 — connected, native and whole-product expansion",
       "purpose": "Mature Home Bridge, Android Conversation, VexMaps, VexStream, Family consent/invitation, voice, Living Journal, Relationships, Purpose Workspace and native-platform branches while consuming the same core Home/identity/capability/continuity laws rather than creating alternate Vex universes.",
       "workClass": "OUTCOME",
-      "state": "PLAN_VALIDATED",
+      "state": "CANCELLED",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
@@ -533,7 +533,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-20T00:14:25.000Z",
-      "updatedAt": "2026-10-20T00:14:25.000Z"
+      "updatedAt": "2026-11-21T09:38:02.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -571,13 +571,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-11-06T06:48:01.000Z",
+      "updatedAt": "2026-11-21T09:38:03.000Z",
       "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
       "label": "Ordinary productization — Heretic lived path preserved; original front-door acceptance paused",
       "purpose": "Preserve A034's terminal ordinary Heretic runtime/restart proof and the accepted normal-start source chain, while retaining the later original-VexLife Mac front-door Open -> Conversation -> real Heretic reply -> same-Conversation re-entry witness as genuinely unresolved. Current product construction continues in New Beginnings/VexLife-Prod, so this predecessor outcome is paused instead of advertised as active immediate work.",
       "workClass": "OUTCOME",
-      "state": "PAUSED_AT_CHECKPOINT",
+      "state": "CANCELLED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexlife.tocompletion.p4.typed-local-effect"
@@ -962,6 +962,124 @@
         "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b"
       ],
       "createdAt": "2026-10-24T08:03:08.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p5.lived-continuity-learning.paused_at_checkpoint.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
+      "priorState": "PAUSED_AT_CHECKPOINT",
+      "nextState": "CANCELLED",
+      "reason": "The ToCompletion developmental frontier no longer belongs in the predecessor trajectory. Current continuity/context/lesson work is carried by project.vexlife.memory-depth-exploration, while Rhythm/training remains evidence-gated rather than standing unfinished Work.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "work.vexlife.memory-depth-exploration.context-provider-convergence"
+      ],
+      "createdAt": "2026-11-21T09:38:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p6.cultivation-training-birth.waiting_dependencies.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.tocompletion.p6.cultivation-training-birth",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "CANCELLED",
+      "reason": "Cultivation/Training/Birth remains unearned by current evidence. Close the predecessor horizon instead of keeping an empty dependency chain alive; any future earned training outcome must form from then-current evidence and rightful source.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "project.vexlife.memory-depth-exploration"
+      ],
+      "createdAt": "2026-11-21T09:38:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p7.whole-product-expansion.plan_validated.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.tocompletion.p7.whole-product-expansion",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "CANCELLED",
+      "reason": "Whole-product expansion has decomposed into concrete current Projects and Product owners. The old umbrella horizon no longer earns an open predecessor Work item; feature/platform evolution continues through those narrower scopes.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vexlife.release-roadmap",
+        "project.vexlife.interface-refinement",
+        "project.vexlife.connected-services",
+        "project.vexlife.local-voice-input"
+      ],
+      "createdAt": "2026-11-21T09:38:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.ordinary-heretic-setup.paused_at_checkpoint.cancelled.portfolio-cut-20261121",
+      "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+      "priorState": "PAUSED_AT_CHECKPOINT",
+      "nextState": "CANCELLED",
+      "reason": "The original-VexLife front-door acceptance is no longer the current Product route. VexLife-Prod/New Beginnings established the successor Product body and the present release path is tracked by project.vexlife.release-roadmap.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vexlife.new-beginnings",
+        "project.vexlife.release-roadmap",
+        "work.vexlife.release-roadmap.web-local-v1"
+      ],
+      "createdAt": "2026-11-21T09:38:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.outcome.paused_at_checkpoint.ready.portfolio-cut-20261121-1",
+      "workRef": "work.vexlife.tocompletion.outcome",
+      "priorState": "PAUSED_AT_CHECKPOINT",
+      "nextState": "READY",
+      "reason": "The predecessor ToCompletion trajectory has been fully currentized: completed core evidence remains preserved, still-real continuity/product work has successor owners, and unearned horizons are no longer represented as standing backlog.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "project.vexlife.memory-depth-exploration",
+        "project.vexlife.release-roadmap"
+      ],
+      "createdAt": "2026-11-21T09:38:04.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.outcome.ready.running.portfolio-cut-20261121-2",
+      "workRef": "work.vexlife.tocompletion.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin the bounded closeout pass over the historical ToCompletion scope; no Product effect is authorized by this lifecycle movement.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project"
+      ],
+      "createdAt": "2026-11-21T09:38:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.outcome.running.verifying.portfolio-cut-20261121-3",
+      "workRef": "work.vexlife.tocompletion.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Every nonterminal ToCompletion descendant is now either carried into a current successor or retired because its old horizon is no longer owed. Verify the original trajectory on its achieved core meaning.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "project.vexlife.release-roadmap",
+        "project.vexlife.interface-refinement"
+      ],
+      "createdAt": "2026-11-21T09:38:06.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.outcome.verifying.completed.portfolio-cut-20261121-4",
+      "workRef": "work.vexlife.tocompletion.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The ToCompletion predecessor trajectory is complete as durable provenance: its lived core and developmental lessons were achieved/preserved, while later Product evolution now lives in successor scopes instead of keeping this historical root open.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-portfolio-cut",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "project.vexlife.memory-depth-exploration",
+        "project.vexlife.release-roadmap",
+        "project.vexlife.interface-refinement"
+      ],
+      "createdAt": "2026-11-21T09:38:07.000Z"
     }
   ],
   "sourceRefs": [

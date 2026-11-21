@@ -438,9 +438,38 @@
         "github.pull.vexlife-prod.371",
         "github.pull.vexlife-prod.383",
         "github.pull.vexlife-prod.393",
-        "github.pull.vexlife-prod.403"
+        "github.pull.vexlife-prod.403",
+        "project.vexlife.tocompletion",
+        "work.vexlife.tocompletion.p5.lived-continuity-learning"
       ],
       "formationProcessRefOrNull": null
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.memory-depth-exploration.fresh-conversation-entry",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Potential — fresh canonical Conversation entry",
+      "purpose": "Preserve the optional human capability to start a new canonical Conversation with fresh thread-local working context while retaining the same Vex Home, person settings, accepted Memory/semantic continuity and bounded historical reach. Evaluate it only after current continuity/rollover behavior is grounded; do not use a fresh thread as a hidden workaround for context placement or latency.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.close-and-succeed-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.new-beginnings",
+        "work.vexlife.new-beginnings.fresh-instance",
+        "project.vexlife.memory-depth-exploration"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T09:20:01.000Z",
+      "updatedAt": "2026-11-21T09:20:01.000Z"
     }
   ],
   "transitions": [
@@ -796,7 +825,8 @@
     "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
     "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
     "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
-    "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json"
+    "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
+    "project.vexlife.new-beginnings"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }

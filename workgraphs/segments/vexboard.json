@@ -731,6 +731,33 @@
       ],
       "createdAt": "2026-11-07T06:24:13.000Z",
       "updatedAt": "2026-11-20T08:14:00.008Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.recurring-architecture-sync",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Potential — repeat VexArchitecture ↔ VexBoard source-sync audit when new pressure earns it",
+      "purpose": "Preserve the reusable lesson from the Nov 13 architecture-to-projection sync without keeping that dated Project open forever. When a new Product/source epoch exposes projection loss, form one bounded current audit from current source and decide whether it belongs inside VexBoard, Architecture Convergence, or a fresh time-bounded scope.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.close-and-succeed-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "project.vexarchitecture.vexboard-sync.20261113",
+        "work.vexarchitecture.vexboard-sync.20261113.repeatable-sync-protocol",
+        "project.vexboard.projection-consolidation"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T09:38:18.000Z",
+      "updatedAt": "2026-11-21T09:38:18.000Z"
     }
   ],
   "transitions": [

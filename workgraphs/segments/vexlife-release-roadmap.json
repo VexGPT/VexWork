@@ -58,7 +58,9 @@
         "projects/vexlife-release-roadmap/README.md",
         "repo.vexlife-prod:README.md",
         "repo.vexlife-prod:site/index.html",
-        "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+        "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2",
+        "project.vexlife.tocompletion",
+        "work.vexlife.tocompletion.productization.ordinary-heretic-setup"
       ]
     },
     {
@@ -117,6 +119,33 @@
         "human.lived-feedback.vexlife.mac-distribution-trust.20261119.java-libjli-gatekeeper",
         "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
       ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.release-roadmap.normal-browser-provider",
+      "parentWorkRefOrNull": "work.vexlife.release-roadmap.web-local-v1",
+      "label": "Potential — normal Internet browser provider for VexLife v1",
+      "purpose": "Decide explicitly whether the web/local v1 threshold requires the VexLife Browser pane to use a normal-site-capable provider for ordinary HTTP(S), session/history and pages that refuse embedding. If admitted, reuse current browser-state/context ownership rather than reviving the old New Beginnings provider assumption wholesale.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.close-and-succeed-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.new-beginnings",
+        "work.vexlife.new-beginnings.normal-browser-provider",
+        "project.vexlife.release-roadmap",
+        "github.commit.vexlife-prod.26e29e587c49885f36beb4c2fdd16f28531ca0ce"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T09:20:01.000Z",
+      "updatedAt": "2026-11-21T09:20:01.000Z"
     }
   ],
   "transitions": [
@@ -156,7 +185,8 @@
   "sourceRefs": [
     "project.vexlife.release-roadmap",
     "projects/vexlife-release-roadmap/README.md",
-    "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2"
+    "human.decision.vexlife.release-roadmap.20261119.web-v1-native-v2",
+    "project.vexlife.new-beginnings"
   ],
   "formedAt": "2026-11-20T05:32:00.000Z"
 }
