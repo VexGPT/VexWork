@@ -115,11 +115,11 @@ test('A4 public Projects surface consumes the generated workspace population wit
   assert.match(html, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
   assert.match(html, /Reader\.projectPortfolioGroups\(workspace\)/);
   assert.match(html, /renderProjectGroup\('Projects to complete'/);
-  assert.match(html, /renderProjectGroup\('Completed Projects'/);
+  assert.match(html, /renderCompletedProjectThresholds\(groups\.completed\)/);
 
   const groups = projectPortfolioGroups(workspace);
   assert.equal(
-    groups.toComplete.some((entry) => entry.project.projectRef === 'project.vexlife.new-beginnings'),
+    groups.completed.some((entry) => entry.project.projectRef === 'project.vexlife.new-beginnings'),
     true,
   );
   assert.equal(

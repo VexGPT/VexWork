@@ -257,7 +257,7 @@ test('portfolio first read compares Projects to complete with Completed Projects
   assert.match(page, /Reader\.projectCompletionThresholdGroups\(workspace,completionThresholds\)/);
   assert.match(page, /expand historical thresholds/);
   assert.match(page, /unfinished · /);
-  assert.match(page, /completed outcomes with no open Project-selected Work/);
+  assert.match(page, /renderCompletedProjectThresholds\(groups\.completed\)/);
   assert.doesNotMatch(page, /workspace\.projects\.length,'Projects'/);
 });
 

@@ -463,9 +463,12 @@ test('New Beginnings outcome history uses only lawful Work transitions', () => {
     [
       ['PLAN_VALIDATED', 'READY'],
       ['READY', 'RUNNING'],
+      ['RUNNING', 'VERIFYING'],
+      ['VERIFYING', 'COMPLETED'],
     ],
   );
   assert.equal(outcomeTransitions[0].createdAt, outcomeTransitions[1].createdAt);
+  assert.equal(outcomeTransitions[2].createdAt < outcomeTransitions[3].createdAt, true);
 });
 
 
@@ -527,6 +530,16 @@ test('A2 generated consequences make both patient-zero Projects navigable', () =
     generatedPublicWorkspace.parkingLot.items.some((item) =>
       item.workRef === 'work.vexlife.new-beginnings.later.settings-capability-mapping'
     ),
+    false,
+  );
+  assert.equal(
+    generatedPublicWorkspace.projects.find((entry) =>
+      entry.project.projectRef === 'project.vexlife.new-beginnings'
+    ).rootItems[0].state,
+    'COMPLETED',
+  );
+  assert.equal(
+    generatedProjectRegistry.projects.some((entry) => entry.projectRef === 'project.vexlife.vision'),
     true,
   );
 });
