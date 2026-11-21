@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.pull.vexwork.408",
+  "pullRequest": "github.pull.vexwork.408",
+  "candidateBase": "4b1040ab4dde983eb66dadc6c81d1dba1f93fd43",
+  "candidateHead": "3d9f1a9ec605d5a46830e141bf7516e8976793b8",
+  "candidateTree": "2239c7985b550093fde23b91c3a5b4bbaa048bf0",
+  "candidateBranch": "VXG-112126-localization-inspector-a2-slice1-a001",
+  "changedPaths": [
+    "public/workspace.json",
+    "src/shared/vexboard-localization-inventory.mjs",
+    "test/vexboard-lens-ui.test.mjs",
+    "test/vexboard-localization-inventory.test.mjs",
+    "vexboard/lens.html",
+    "vexboard/localization-copy.json",
+    "workgraphs/public.json",
+    "workgraphs/segments/localization-architecture.json"
+  ],
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexwork-pr408-source-owner-a003",
+  "carrierPrefix": ".relay/vexwork-pr408/a003",
+  "priorReturnSha256": "f32919ba218a1020e4ef07e61b7f6591cbdbf9fb437ca0857798acf1d205e792",
+  "repairRef": "github.pull.vexwork.408@3d9f1a9ec605d5a46830e141bf7516e8976793b8",
+  "bootstrapZip": {
+    "filename": "VEXWORK-PR408-LOCALIZATION-A2-RELAY-BOOTSTRAP-A003--sha256-768e7b36cc4f386817efbb9b77c52eea62bce880d66338fc56bff82df06eab2a.zip",
+    "sha256": "768e7b36cc4f386817efbb9b77c52eea62bce880d66338fc56bff82df06eab2a",
+    "bytes": 7472,
+    "deliveryMode": "DIGEST_BOUND_BINARY_DIRECT_TO_HUMAN"
+  },
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "91838d60eefa41d4d619580c5db5a1d04edfde3f9be3776f01e00f36eb23d81a",
+      "bytes": 1799
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "e604a7de98d51c1312807f0ab1a6b80c85bb20b4a2373245eaedffd0f3e31e28",
+      "bytes": 14647
+    }
+  },
+  "proofPredicates": [
+    "npm run localization:check",
+    "node --test test/vexboard-localization-inventory.test.mjs test/vexboard-lens-ui.test.mjs",
+    "npm run lens:verify",
+    "npm run workgraph:check",
+    "npm run workspace:check",
+    "npm run review"
+  ],
+  "a002Classification": {
+    "state": "SAFE_FAILURE",
+    "firstSubstantiveFailure": "workgraphs/public.json was stale under the canonical Workgraph transition-order composition law",
+    "implementationDefectObserved": false,
+    "repair": "regenerate public transition order by workRef while preserving per-work transition chronology"
+  }
+}
