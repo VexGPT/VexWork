@@ -633,15 +633,22 @@
       "question": "How can layered exploration inside one Screen own local depth/back without contaminating app-level navigation history?",
       "sourceFamilyRefs": [],
       "portableRelationships": [
-        "local trail root/current/path are scoped beneath one Screen",
-        "push/back mutate local depth",
-        "Back at local root yields to the outer navigation owner",
-        "direction follows the same path mutation"
+        "local route/trail is scoped beneath one stable Screen or presentation surface",
+        "root/current/path or equivalent local-location projection remains separate from app-level navigation",
+        "push/open changes local depth or local detail identity without creating a new app Screen",
+        "back/close at local depth returns toward the local root",
+        "Back at the local root yields to the outer navigation owner",
+        "reselecting the current local destination does not create duplicate depth",
+        "transition direction may derive from the same mutation that changes local location",
+        "local selection reconciles when the currently selected durable target disappears"
       ],
       "obligations": [
-        "must remain distinct from app Screen navigation",
-        "duplicate current destination does not create depth",
-        "target adapter must preserve outer-back fallthrough"
+        "must remain distinct from primary app Screen navigation",
+        "outer Back fallthrough must remain explicit at local root",
+        "current local destination must be source-visible",
+        "duplicate current destination must not create artificial depth",
+        "when local detail identity depends on an external durable item set, vanished targets must reconcile to a valid local location",
+        "target presentation animation must not become the owner of route truth"
       ],
       "mustNotOwn": [
         "primary app navigation",
@@ -681,7 +688,7 @@
           "why": "VexStream Playlists independently owns a bounded local overview/detail route with open/close and reconciliation when the selected durable playlist disappears."
         }
       ],
-      "note": null
+      "note": "Android and VexStream independently establish local navigation as a bounded presentation-location owner beneath one Screen. Android contributes path/depth/back-fallthrough/direction; VexStream contributes open/close plus reconciliation when a durable selected playlist disappears. Keep A2 until a second target realization proves the smallest shared contract."
     },
     {
       "candidateRef": "candidate.component.context-dock",
