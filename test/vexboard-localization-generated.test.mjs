@@ -85,7 +85,7 @@ test('VexLife Prod Main sidecar carries Product-owned translated strings through
     mappedSourceStringCount: 10,
     unmappedSourceStringCount: 362,
     reusedSourceStringCount: 0,
-    formatStringCount: 0,
+    formatStringCount: 72,
     screenCount: 1,
     surfaceCount: 1,
   });
