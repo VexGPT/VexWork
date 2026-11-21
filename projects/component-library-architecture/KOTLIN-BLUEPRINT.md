@@ -235,6 +235,168 @@ But each should either compose the accepted identity/binding/spatial vocabulary 
 
 The key target-adapter property is exhaustiveness. When a sealed portable relationship gains a new admitted subtype, every adapter should be forced to decide how that relationship is realized or explicitly held.
 
+## Emerging cross-Product relationship — local selection
+
+A2 has now found the same local-selection law independently in **VexLife Android** and **VexStream
+Music**, with current VexLife-Prod providing a third lived-but-not-yet-typed pressure.
+
+This is strong enough to state the candidate relationship precisely, but not yet to accept a portable
+Kotlin type.
+
+```text
+Local Selection
+  subjectRef
+    stable region/container whose expression is selected
+
+  owner
+    source owner of current selection
+
+  defaultRef
+    explicit initial/default child
+
+  exhaustive
+    whether the declared choices cover the owner's full admitted child set
+
+  choices[]
+    targetRef
+      admitted child expression
+
+    selectorRefs[]
+      one or more stable controls that select this child
+
+    condition / selection coordinate
+      source-visible current-selection rule
+
+    realizes[]
+      optional descendants/relationships projected when this child is active
+
+  gate?
+    optional outer presence/selection predicate
+```
+
+Important laws earned by the census:
+
+```text
+SELECTED CHILD
+!= FEATURE DOMAIN STATE BY DEFAULT
+
+LOCAL SELECTION
+!= APP NAVIGATION DEPTH
+
+SELECTOR
+!= SELECTED CHILD
+
+ONE CHILD
+MAY HAVE
+MULTIPLE SELECTORS
+
+EXHAUSTIVE SELECTION
+!= PARTIAL / BOUNDED SELECTION
+
+GATE
+!= CHILD SELECTION
+```
+
+### Android pressure
+
+Android Gallery already has:
+
+```text
+SwappableContainerElement
+  defaultChild
+
+swapTo(container, child)
+  -> validates local peer selection
+  -> no Screen navigation / Back depth
+```
+
+### VexStream pressure
+
+VexStream independently owns the same relationship through browser/desktop-native source.
+
+Its current Screen Lens exporter projects:
+
+```text
+presence.vexstream.discover.mode
+  kind        SELECTION
+  subjectRef  discover-mode-selection
+  owner       DiscoverNavigation
+  defaultRef  PC
+  exhaustive  true
+  choices
+    PC       selectorRefs [discover.mode.pc]
+    YouTube  selectorRefs [discover.mode.youtube]
+    Explore  selectorRefs [discover.mode.explore]
+```
+
+The Library selection adds a new pressure:
+
+```text
+Songs child
+  selectorRefs
+    shell.view.songs
+    library.mode.songs
+
+Albums child
+  selectorRefs
+    shell.view.albums
+    library.mode.albums
+```
+
+So selector identity cannot be collapsed into child identity.
+
+The Shell selection adds another:
+
+```text
+exhaustive = false
+```
+
+meaning a bounded projected selection may truthfully expose only the relationships currently admitted
+to the Lens without claiming a closed universal child set.
+
+### Current VexLife-Prod pressure
+
+The Product visibly has:
+
+```text
+CompanionContent
+  Conversation
+  Settings
+
+default runtime view = Conversation
+view switch
+  Conversation <-> Settings
+```
+
+but the default/selected-child contract is still split between typed VexWeb source and browser
+`state.view`.
+
+Therefore the Component Library must **not** generate a SwiftUI enum/switch from those runtime strings
+yet. That target pressure remains held until current Product source owns the relationship explicitly.
+
+### Kotlin implication
+
+If this survives the rest of A2, a future typed Kotlin form may look conceptually like:
+
+```kotlin
+sealed interface LocalSelection<Choice : StableRef> {
+    val subjectRef: ElementRef
+    val defaultRef: Choice
+    val exhaustive: Boolean
+    val choices: List<SelectionChoice<Choice>>
+}
+
+data class SelectionChoice<Choice : StableRef>(
+    val targetRef: Choice,
+    val selectorRefs: List<ElementRef>,
+)
+```
+
+That is **illustrative**, not accepted source API.
+
+The important thing is that a future compiler would consume an already-owned selection relationship.
+It would not infer one from hidden/visible DOM state, Compose branches, or SwiftUI view conditionals.
+
 ## Semantic action binding is not native event wiring
 
 A portable control should bind to stable semantic meaning, not to a framework callback body.
