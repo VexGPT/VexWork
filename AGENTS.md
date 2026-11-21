@@ -96,6 +96,10 @@ A lane that reaches merge-ready may temporarily become the Integration Steward, 
   -> docs/foundation/PROJECTS.md
   -> docs/process/FORM-PROJECT.md
 
+"Project is stale / close it / carry remaining work forward / succeed the scope"
+  -> docs/process/CLOSE-AND-SUCCEED-PROJECT.md
+  -> docs/foundation/PROJECTS.md
+
 "How may an AI advance work while Victor stays aware of phase changes?"
   -> docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md
 

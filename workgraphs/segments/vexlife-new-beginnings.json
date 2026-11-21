@@ -9,13 +9,13 @@
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T02:28:00.000Z",
-      "updatedAt": "2026-11-20T07:16:00.000Z",
+      "updatedAt": "2026-11-21T09:20:09.000Z",
       "workRef": "work.vexlife.new-beginnings.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife New Beginnings",
       "purpose": "Recompose VexLife in the clean VexLife-Prod container from explicit product intention and compiler-constrained semantic relationships: establish the repository front door, author one portable Kotlin contract/Blueprint language, realize the initial nested-browser + companion UI without pretending backend connectivity, then reconnect Vex through the canonical Conversation with bounded current browser/DOM context and lived proof.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -396,13 +396,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T02:40:00.000Z",
-      "updatedAt": "2026-11-20T07:16:00.000Z",
+      "updatedAt": "2026-11-21T09:20:01.000Z",
       "workRef": "work.vexlife.new-beginnings.experience-manifestation-parity",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Immediate — restore VexLife experience manifestation with architecture integrity",
       "purpose": "Carry the now-proven live VexLife-Prod body into a faithful VexLife human experience by reconciling original VexLife experience source, design tokens and reference browser behavior with VexLife-Prod's accepted Blueprint/VexWeb relationships. Preserve canonical semantic/runtime owners, Conversation/Context currentness and VexBoard-projectable identity; do not copy historical implementation wholesale, hand-edit generated artifacts, or reduce the work to cosmetic CSS parity.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.p3.lived-context-aware-browser-conversation",
@@ -458,13 +458,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T02:28:00.000Z",
-      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-21T09:20:04.000Z",
       "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Later — source-map Settings capabilities",
       "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "state": "CANCELLED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -484,13 +484,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-06T03:57:42.000Z",
-      "updatedAt": "2026-11-06T07:12:00.000Z",
+      "updatedAt": "2026-11-21T09:20:02.000Z",
       "workRef": "work.vexlife.new-beginnings.evolution-live-bridge",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Bridge — reconnect lived evolution to the connected New Beginnings body",
       "purpose": "After the fresh product has one real connected Conversation path, reconnect the already-earned VexLife developmental owners as modular relationships rather than rebuilding an autonomous-learning stack. Begin from exact current New Beginnings Conversation/Memory/runtime truth; prove one explicit manual G03 memory-only Dream on the connected product and make its before/after state inspectable; preserve G04 Rhythm as HELD_NOT_EARNED unless ordinary lived correction/recurrence actually earns a candidate; let Training Placement decide whether a later earned change belongs in Memory/Score, Rhythm, an adapter/LoRA experiment, or G04B foundation-weight training; keep candidate evaluation, model-generation activation, standing Dream scheduling and unattended self-training as separate effects. Existing ToCompletion P5/P6 and stable VexLife evolution sources are lineage/reference, not permission to transplant their historical container or fabricate learning.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "CANCELLED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.local-runtime-foundation",
@@ -590,13 +590,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T08:06:00.000Z",
-      "updatedAt": "2026-11-20T07:16:00.000Z",
+      "updatedAt": "2026-11-21T09:20:06.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "High — Vex Vision companion for real-browser witnessing",
       "purpose": "Let Victor use a normal browser with ordinary site/session behavior while one explicitly selected window remains an engaged Vex Vision scope. Ordinary scrolling/navigation may change the current contents without continuous frame accumulation; when a Conversation turn materially benefits from vision, Vex may request one fresh snapshot of the current selected scope, derive one bounded visual observation for Conversation Context, and discard raw pixels. Preserve Vision current state as separate from Conversation history and durable Memory, and do not make VexLife UI the sensor owner or enable background monitoring.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.local-runtime-foundation",
@@ -768,13 +768,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-12T10:03:45.000Z",
-      "updatedAt": "2026-11-20T07:16:00.000Z",
+      "updatedAt": "2026-11-21T09:20:07.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "label": "High — persistent Vision scope + demand-driven current visual context",
       "purpose": "Evolve the accepted one-shot Vision path into the intended conversational relationship without continuous capture: let one explicitly selected window remain the engaged Vision scope across ordinary scrolling/navigation, let turn/context composition request one fresh current snapshot only when vision is materially relevant, give actual capture a distinct visible looking-now signal, derive bounded visual meaning into canonical Conversation Context, discard raw pixels, and keep Vision state, Conversation history, durable Memory, training and effect authority as separate owners.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "CANCELLED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.vision-companion-product-surface",
@@ -835,13 +835,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-13T02:30:00.000Z",
-      "updatedAt": "2026-11-20T07:16:00.000Z",
+      "updatedAt": "2026-11-21T09:20:05.000Z",
       "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Immediate — normal Internet browser provider for the VexLife Browser pane",
       "purpose": "Replace the web-hosted iframe as the terminal human Browser provider with a real browser-provider relationship that owns exact current browser state (URL/document/navigation/session currentness), preserves ordinary HTTP(S) site behavior and pages that refuse embedding, and keeps human page display separate from Vex context/perception and local Product effect authority. Browser current state is owner truth outside the model window; one Vex turn receives only an exact bounded projection/snapshot when requested or otherwise lawfully bound. Current provider truth must not be copied into durable Memory merely to make it accessible. Select the provider from current product/macOS evidence rather than pre-choosing Electron, JCEF, WKWebView or another engine by familiarity.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "CANCELLED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.experience-manifestation-parity",
@@ -1020,13 +1020,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-18T10:49:09.000Z",
-      "updatedAt": "2026-11-20T13:51:11.243Z",
+      "updatedAt": "2026-11-21T09:20:03.000Z",
       "workRef": "work.vexlife.new-beginnings.fresh-instance",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Later — start a fresh Conversation with fresh working context",
       "purpose": "Preserve a cheap reversible Start fresh feature that forms/selects a new canonical Conversation thread with no prior-thread Conversation tail resident by default, while keeping Home, person settings, accepted Memory/semantic continuity and bounded historical reach under their rightful owners. Measure responsiveness rather than attributing latency to thread length by assumption.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "state": "CANCELLED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -1647,6 +1647,145 @@
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
       ],
       "createdAt": "2026-11-20T09:50:50.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.experience-manifestation-parity.running.cancelled.closeout-20261121",
+      "workRef": "work.vexlife.new-beginnings.experience-manifestation-parity",
+      "priorState": "RUNNING",
+      "nextState": "CANCELLED",
+      "reason": "The broad manifestation-parity construction scope is no longer the rightful active owner. Current Product source now contains real Companion turn cancellation, while whole-experience branch/lived/release validation is owned by project.vexlife-prod.end-to-end-tests.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "project.vexlife-prod.end-to-end-tests",
+        "work.vexlife-prod.end-to-end-tests.release-threshold",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionCancellation.kt",
+        "github.pull.vexlife-prod.408"
+      ],
+      "createdAt": "2026-11-21T09:20:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.evolution-live-bridge.ready.cancelled.closeout-20261121",
+      "workRef": "work.vexlife.new-beginnings.evolution-live-bridge",
+      "priorState": "READY",
+      "nextState": "CANCELLED",
+      "reason": "The old evolution bridge is no longer owed as New Beginnings construction. Current Product source contains the deterministic manual G03 memory-only Daily Dream; Rhythm/training remain explicitly unearned and deeper continuity/lesson behavior belongs to Memory Depth Exploration.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeDailyMemoryDream.kt"
+      ],
+      "createdAt": "2026-11-21T09:20:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.fresh-instance.captured.cancelled.carried-memory-depth-20261121",
+      "workRef": "work.vexlife.new-beginnings.fresh-instance",
+      "priorState": "CAPTURED",
+      "nextState": "CANCELLED",
+      "reason": "The optional fresh-Conversation idea remains useful but no longer belongs under Product construction. It is carried forward as a Potential under Memory Depth Exploration before this predecessor scope closes.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "work.vexlife.memory-depth-exploration.fresh-conversation-entry"
+      ],
+      "createdAt": "2026-11-21T09:20:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.later.settings-capability-mapping.captured.cancelled.closeout-20261121",
+      "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
+      "priorState": "CAPTURED",
+      "nextState": "CANCELLED",
+      "reason": "The old broad Settings catch-all no longer represents one coherent owner. Application re-entry/Home lifecycle settings, Vex Context, Models/runtime configuration, continuity and experience coverage now have separate rightful owners.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "project.vexlife.application-level-settings",
+        "project.vexlife-prod.end-to-end-tests",
+        "repo.vexlife-prod:docs/foundation/VEX-CONTEXT-PROFILES.md",
+        "repo.vexlife-prod:docs/foundation/HERETIC-PRODUCT-MODEL.md"
+      ],
+      "createdAt": "2026-11-21T09:20:04.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.normal-browser-provider.ready.cancelled.carried-release-roadmap-20261121",
+      "workRef": "work.vexlife.new-beginnings.normal-browser-provider",
+      "priorState": "READY",
+      "nextState": "CANCELLED",
+      "reason": "A normal-site-capable Browser provider is now a release-scope Product choice, not unfinished New Beginnings construction. The question is preserved as a v1 Potential under the Release Roadmap.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "project.vexlife.release-roadmap",
+        "work.vexlife.release-roadmap.normal-browser-provider"
+      ],
+      "createdAt": "2026-11-21T09:20:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.vision-companion-real-browser-witness.running.cancelled.carried-vision-20261121",
+      "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+      "priorState": "RUNNING",
+      "nextState": "CANCELLED",
+      "reason": "Vision has grown into a coherent Product capability with accepted selected-scope source and its own currentization/lived-proof trajectory. Still-real work is carried into project.vexlife.vision.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "project.vexlife.vision",
+        "work.vexlife.vision.outcome",
+        "work.vexlife.vision.lived-engage-look"
+      ],
+      "createdAt": "2026-11-21T09:20:06.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.vision-scope-current-context.verifying.cancelled.carried-vision-20261121",
+      "workRef": "work.vexlife.new-beginnings.vision-scope-current-context",
+      "priorState": "VERIFYING",
+      "nextState": "CANCELLED",
+      "reason": "Persistent Vision scope/current-context completion now belongs to the narrower VexLife Vision successor. Preserve predecessor proof history and continue current visual-stack/lived ENGAGE-LOOK evidence there.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "project.vexlife.vision",
+        "work.vexlife.vision.currentize-visual-stack",
+        "work.vexlife.vision.lived-engage-look"
+      ],
+      "createdAt": "2026-11-21T09:20:07.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.outcome.running.verifying.patient-zero-closeout",
+      "workRef": "work.vexlife.new-beginnings.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "All remaining New Beginnings Work has been reconciled against current Product truth: still-real work exists in narrower successor scopes before predecessor cancellation, and stale catch-all assumptions are retired.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "project.vexlife-prod.end-to-end-tests",
+        "project.vexlife.memory-depth-exploration",
+        "project.vexlife.release-roadmap",
+        "project.vexlife.vision"
+      ],
+      "createdAt": "2026-11-21T09:20:08.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.outcome.verifying.completed.patient-zero-closeout",
+      "workRef": "work.vexlife.new-beginnings.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The original New Beginnings outcome is achieved: the clean VexLife-Prod Product body exists with its core semantic/VexWeb/Conversation/runtime foundations, while later product evolution has been explicitly succeeded into narrower scopes.",
+      "actorRef": "actor.chatgpt.vexwork-project-closeout-patient-zero",
+      "sourceRefs": [
+        "process.vexwork.close-and-succeed-project",
+        "github.commit.vexlife-prod.26e29e587c49885f36beb4c2fdd16f28531ca0ce",
+        "project.vexlife-prod.end-to-end-tests",
+        "project.vexlife.memory-depth-exploration",
+        "project.vexlife.release-roadmap",
+        "project.vexlife.vision"
+      ],
+      "createdAt": "2026-11-21T09:20:09.000Z"
     }
   ],
   "sourceRefs": [

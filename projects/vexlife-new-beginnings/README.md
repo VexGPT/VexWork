@@ -2,6 +2,37 @@
 
 `[VXG RealForever]`
 
+## Project closeout — New Beginnings achieved
+
+The original **New Beginnings** outcome is complete: VexLife was successfully recomposed into the
+clean `VexGPT/VexLife-Prod` Product body. Later work has grown into narrower product scopes rather
+than remaining hidden as unfinished construction.
+
+```text
+process.vexwork.close-and-succeed-project
+```
+
+| Old open Work | Closeout / successor |
+|---|---|
+| experience manifestation parity | current whole-experience/release validation -> `project.vexlife-prod.end-to-end-tests` |
+| evolution live bridge | manual G03 exists; continuity/lesson pressure -> `project.vexlife.memory-depth-exploration`; Rhythm/training unearned |
+| fresh Conversation | carried as Potential -> `project.vexlife.memory-depth-exploration` |
+| broad Settings mapping | retired catch-all; concrete rightful owners now exist |
+| normal browser provider | carried as v1 Potential -> `project.vexlife.release-roadmap` |
+| Vision witness/current scope | carried -> `project.vexlife.vision` |
+
+```text
+NEW BEGINNINGS COMPLETE
+!= VEXLIFE HAS NO FUTURE WORK
+
+FORMATION PROJECT COMPLETE
+-> NARROWER SUCCESSOR SCOPES OWN LATER EVOLUTION
+```
+
+The construction history below remains provenance. Do not reopen New Beginnings merely because a
+later VexLife feature remains unfinished.
+
+
 ## Relationship-currentness checkpoint — 2026-11-20
 
 The P0/P1/P2/P3 construction history below remains valid, but its old `30e37a…` Product pin is historical rather than current VexLife-Prod main.

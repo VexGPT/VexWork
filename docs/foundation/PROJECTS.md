@@ -140,6 +140,29 @@ projects/<physical-project-directory>/
 
 Use `process.vexwork.form-project` when a human-approved outcome has enough real structure that future workers would otherwise reconstruct grouping, decomposition, repository relationships, or execution posture from chat/provider history.
 
+## Project closeout and succession
+
+A Project does not need to remain unfinished forever because later product work grew out of it.
+
+Use `process.vexwork.close-and-succeed-project` when the original human outcome has matured and the
+remaining open Work is stale, no longer owed, or better owned by a newer scope.
+
+```text
+currentize predecessor Work
+-> reuse/form rightful successor Work first
+-> cross-reference predecessor and successor
+-> cancel old-scope Work that is no longer owed there
+-> complete the original root only when its original outcome was achieved
+```
+
+This uses existing WorkState; it does not add a Project lifecycle or synthetic "migrated" state.
+
+```text
+PROJECT_CLOSEOUT != HISTORY DELETION
+CANCELLED PREDECESSOR SCOPE != LOST SUCCESSOR WORK
+SCOPE CREEP != PERMANENTLY RUNNING OLD PROJECT
+```
+
 ## Version/release scope
 
 Release/version grouping is **not** source-placed by this foundation.

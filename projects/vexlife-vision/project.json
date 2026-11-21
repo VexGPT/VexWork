@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.vision",
+  "label": "VexLife Vision",
+  "purpose": "Finish VexLife Vision as its own Product capability after New Beginnings: preserve the accepted selected-scope Vision Family/currentness boundary, reconcile the proved visual-input stack onto current VexLife-Prod, and prove one lived installed-artifact ENGAGE/LOOK/visual-interpretation path without making presentation, raw pixels or Conversation the sensor-state owner.",
+  "rootWorkRefs": [
+    "work.vexlife.vision.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "project.vexlife.new-beginnings",
+    "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+    "work.vexlife.new-beginnings.vision-scope-current-context",
+    "process.vexwork.close-and-succeed-project",
+    "repo.vexlife-prod:docs/foundation/VEXLIFE-VISION-COMPANION.md",
+    "github.pull.vexlife-prod.471",
+    "github.commit.vexlife-prod.26e29e587c49885f36beb4c2fdd16f28531ca0ce"
+  ],
+  "formedAt": "2026-11-21T09:20:10.000Z"
+}

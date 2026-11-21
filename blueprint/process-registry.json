@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.process-registry/v1",
   "registryRef": "registry.vexwork.processes.001",
-  "registryVersion": 8,
+  "registryVersion": 9,
   "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
   "processes": [
     {
@@ -27,6 +27,19 @@
       ],
       "appliesWhen": "One coherent outcome has enough related work topology that future humans or agents would otherwise reconstruct grouping, decomposition, routes, or currentness from chat/provider history.",
       "boardRefOrNull": "board.vexwork.form-project",
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.vexwork.close-and-succeed-project",
+      "label": "Close and succeed a VexWork Project",
+      "purpose": "Close an evolved Project without deleting its history: currentize every open Work item, carry still-real work into an existing or newly earned successor scope, retire stale predecessor assumptions truthfully, and complete or cancel the original root outcome only when its own meaning warrants it.",
+      "ownerRepositoryRef": "repo.vexwork",
+      "entryRefs": [
+        "docs/process/CLOSE-AND-SUCCEED-PROJECT.md",
+        "docs/foundation/PROJECTS.md"
+      ],
+      "appliesWhen": "A Project's original human outcome is mature enough to close, but its board still contains stale, scope-crept, deferred, or successor-owned Work that must be reconciled without losing causal continuity.",
+      "boardRefOrNull": null,
       "executionAuthority": "NONE"
     },
     {
