@@ -1,11 +1,22 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import { semanticHash as nodeSemanticHash } from '../src/core/semantic.mjs';
 import { createLocalizationInventory } from '../src/shared/vexboard-localization-inventory.mjs';
 import {
+  LOCALIZATION_CHANGE_SET_STORAGE_KEY,
   createLocalizationChangeSet,
+  createLocalizationChangeSetCollection,
+  createLocalizationChangeSetExport,
+  importLocalizationChangeSetExport,
+  loadLocalizationChangeSetCollection,
+  localizationSemanticHash,
   normalizeLocalizationChangeSet,
+  normalizeLocalizationChangeSetExport,
   reconcileLocalizationChangeSet,
+  saveLocalizationChangeSetCollection,
+  serializeLocalizationChangeSetExport,
+  upsertLocalizationChangeSet,
 } from '../src/shared/vexboard-localization-change-set.mjs';
 
 function inventory({
@@ -224,3 +235,163 @@ test('import normalization rejects stale shape and reconciliation rejects anothe
   });
   assert.throws(() => reconcileLocalizationChangeSet(formed, other), /subject mismatch/);
 });
+
+test('localization semantic fingerprint matches the established VexWork canonical hash contract', async () => {
+  const value = {
+    z: ['two', 'one'],
+    a: { z: 2, a: 1 },
+    middle: null,
+  };
+  assert.equal(await localizationSemanticHash(value), nodeSemanticHash(value));
+  assert.equal(
+    await localizationSemanticHash({ middle: null, a: { a: 1, z: 2 }, z: ['two', 'one'] }),
+    nodeSemanticHash(value),
+    'object key order must not change semantic identity',
+  );
+});
+
+test('browser-local Change Set collection is normalized, deterministic and storage-adapter bounded', () => {
+  const first = changeSet();
+  const source = inventory();
+  const second = createLocalizationChangeSet({
+    changeSetRef: 'change-set.fixture.accessibility-review',
+    inventory: source,
+    changes: [{
+      changeRef: 'change.fixture.settings.en',
+      sourceStringRef: 'fixture:string.settings',
+      locale: 'en',
+      expectedValue: 'Preferences',
+    }],
+  });
+  const collection = createLocalizationChangeSetCollection([first, second]);
+  assert.deepEqual(
+    collection.changeSets.map((entry) => entry.changeSetRef),
+    ['change-set.fixture.accessibility-review', 'change-set.fixture.copy-review'],
+  );
+
+  const revisedSecond = createLocalizationChangeSet({
+    changeSetRef: second.changeSetRef,
+    inventory: source,
+    changes: [{
+      changeRef: 'change.fixture.settings.en',
+      sourceStringRef: 'fixture:string.settings',
+      locale: 'en',
+      expectedValue: 'App settings',
+    }],
+  });
+  const updated = upsertLocalizationChangeSet(collection, revisedSecond);
+  assert.equal(updated.changeSets.length, 2);
+  assert.equal(
+    updated.changeSets.find((entry) => entry.changeSetRef === revisedSecond.changeSetRef).changes[0].expectedValue,
+    'App settings',
+  );
+
+  const values = new Map();
+  const storage = {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+  };
+  saveLocalizationChangeSetCollection(storage, updated);
+  assert.ok(values.get(LOCALIZATION_CHANGE_SET_STORAGE_KEY).endsWith('\n'));
+  assert.deepEqual(loadLocalizationChangeSetCollection(storage), updated);
+});
+
+test('deterministic export binds exact observed inventory and Change Set fingerprints', async () => {
+  const observed = inventory();
+  const set = changeSet();
+  const exported = await createLocalizationChangeSetExport({
+    changeSet: set,
+    inventory: observed,
+    exportedAtOrNull: '2026-11-21T11:00:00.000Z',
+  });
+
+  assert.match(exported.manifest.inventoryFingerprint, /^[0-9a-f]{64}$/);
+  assert.match(exported.manifest.changeSetFingerprint, /^[0-9a-f]{64}$/);
+  assert.equal(exported.manifest.subjectRef, set.subjectRef);
+  assert.equal(exported.manifest.observedRevision, set.observedRevision);
+  assert.equal(exported.manifest.inventoryRef, set.inventoryRef);
+
+  const serialized = await serializeLocalizationChangeSetExport(exported);
+  const roundTrip = await normalizeLocalizationChangeSetExport(JSON.parse(serialized));
+  assert.deepEqual(roundTrip, exported);
+  assert.equal(await serializeLocalizationChangeSetExport(roundTrip), serialized);
+
+  const laterMetadata = await createLocalizationChangeSetExport({
+    changeSet: set,
+    inventory: observed,
+    exportedAtOrNull: '2026-11-21T12:00:00.000Z',
+  });
+  assert.equal(laterMetadata.manifest.inventoryFingerprint, exported.manifest.inventoryFingerprint);
+  assert.equal(laterMetadata.manifest.changeSetFingerprint, exported.manifest.changeSetFingerprint);
+  assert.notEqual(
+    await serializeLocalizationChangeSetExport(laterMetadata),
+    serialized,
+    'export time is transport metadata and may change bytes without changing semantic fingerprints',
+  );
+});
+
+test('export refuses rewritten observed truth and import rejects fingerprint-tampered Change Sets', async () => {
+  const observed = inventory();
+  const set = changeSet();
+  const rewrittenObservation = structuredClone(set);
+  rewrittenObservation.changes[0].observedValueOrNull = 'Resume';
+  await assert.rejects(
+    createLocalizationChangeSetExport({
+      changeSet: rewrittenObservation,
+      inventory: observed,
+      exportedAtOrNull: '2026-11-21T11:00:00.000Z',
+    }),
+    /observedValueOrNull disagrees with observed inventory/,
+  );
+
+  const exported = await createLocalizationChangeSetExport({
+    changeSet: set,
+    inventory: observed,
+    exportedAtOrNull: '2026-11-21T11:00:00.000Z',
+  });
+  const tampered = structuredClone(exported);
+  tampered.changeSet.changes[0].observedValueOrNull = 'Resume';
+  await assert.rejects(
+    normalizeLocalizationChangeSetExport(tampered),
+    /Change Set fingerprint mismatch/,
+  );
+});
+
+test('import never restores stale status and reconciles the portable Change Set against fresh Product source', async () => {
+  const observed = inventory();
+  const exported = await createLocalizationChangeSetExport({
+    changeSet: changeSet(),
+    inventory: observed,
+    exportedAtOrNull: '2026-11-21T11:00:00.000Z',
+  });
+  const serialized = await serializeLocalizationChangeSetExport(exported);
+  const current = inventory({
+    commit: '2'.repeat(40),
+    play: 'Start',
+    playJa: '再生する',
+    settingsJa: '設定',
+  });
+
+  const imported = await importLocalizationChangeSetExport(serialized, current);
+  assert.equal(imported.observedInventoryVerification, 'NOT_AVAILABLE');
+  assert.equal(imported.reconciliation.currentRevision, '2'.repeat(40));
+  assert.deepEqual(imported.reconciliation.changes.map((change) => change.state), [
+    'SATISFIED',
+    'SATISFIED',
+    'SATISFIED',
+  ]);
+
+  const verified = await importLocalizationChangeSetExport(serialized, current, {
+    observedInventoryOrNull: observed,
+  });
+  assert.equal(verified.observedInventoryVerification, 'VERIFIED');
+
+  const sameRevision = await importLocalizationChangeSetExport(serialized, observed);
+  assert.equal(sameRevision.observedInventoryVerification, 'VERIFIED');
+  assert.deepEqual(sameRevision.reconciliation.changes.map((change) => change.state), [
+    'OPEN',
+    'OPEN',
+    'OPEN_TRANSLATION',
+  ]);
+});
+
