@@ -27,11 +27,10 @@ const source = () => ({
         label: 'Timeline',
       },
       {
-        ref: 'element.relationship-projection.timeline.resource-review',
-        kind: 'BUTTON',
-        label: 'Review resource',
+        ref: 'element.relationship-projection.timeline.resource',
+        kind: 'CARD',
+        label: 'Historical resource',
         parentRef: 'element.relationship-projection.timeline',
-        interactions: ['ACTIVATE'],
         pathwayRef: 'pathway.relationship-projection.history',
       },
     ],
@@ -95,7 +94,7 @@ const source = () => ({
 
 test('read-only relationship projection keeps existing owners visible without inventing Family or Partner semantics', () => {
   const lens = normalizeScreenLens(source());
-  const pathway = pathwayForElement(lens, 'element.relationship-projection.timeline.resource-review');
+  const pathway = pathwayForElement(lens, 'element.relationship-projection.timeline.resource');
 
   assert.equal(pathway.disposition, 'RELATIONSHIP_PROJECTION');
   assert.equal(pathway.returnRef, 'relationship-projection.history.projection');
