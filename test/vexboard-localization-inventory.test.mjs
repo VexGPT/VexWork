@@ -113,6 +113,15 @@ test('format signature preserves explicit argument identity without guessing imp
     { ordinal: 2, argumentIndex: 2, type: 'INT', token: '%2$d' },
   ]);
   assert.equal(localizationFormatSignature('100%% ready').signature, '');
+  assert.deepEqual(localizationFormatSignature('reading {target} ({state})').placeholders, [
+    { ordinal: 1, name: 'target', type: 'NAMED', token: '{target}' },
+    { ordinal: 2, name: 'state', type: 'NAMED', token: '{state}' },
+  ]);
+  assert.equal(localizationFormatSignature('reading {target} ({state})').signature, 'name:target|name:state');
+  assert.deepEqual(localizationFormatSignature('%1$s → {target}').placeholders, [
+    { ordinal: 1, argumentIndex: 1, type: 'STRING', token: '%1$s' },
+    { ordinal: 2, name: 'target', type: 'NAMED', token: '{target}' },
+  ]);
 });
 
 test('inventory preserves full source catalog while mapping exact source-string identity to occurrences', () => {

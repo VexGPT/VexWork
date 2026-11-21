@@ -19,7 +19,7 @@
     "localization.appShell": "App shell",
     "localization.openLocation": "Open location",
     "localization.previewLocale": "Preview locale",
-    "localization.previewLocaleHelp": "Inspection only. This does not change Product language or claim the Product supports this locale.",
+    "localization.previewLocaleHelp": "Read-only Lens preview. It reprojects Product-authored localized bindings here; it does not change Product language or saved settings.",
     "localization.observedLocales": "Observed in source",
     "localization.localeSource": "Source value",
     "localization.localeVariant": "Observed locale value",
@@ -43,6 +43,19 @@
     "localization.stateOpenTranslation": "Translation is still missing",
     "localization.stateDiverged": "Source changed differently",
     "localization.stateSourceRemoved": "Source string is no longer present",
-    "localization.storageUnavailable": "Browser-local Change Sets are unavailable because saved data could not be read safely."
+    "localization.storageUnavailable": "Browser-local Change Sets are unavailable because saved data could not be read safely.",
+    "localization.notConnectedTitle": "Localization isn't connected to this Lens build yet.",
+    "localization.notConnectedDetail": "Localization is part of the shared VexBoard frame for every project. Once this Product exposes its localization source through an adapter, strings, locales, locations, and Change Sets appear here.",
+    "localization.loadErrorTitle": "Localization couldn't load for this Lens build.",
+    "localization.loadErrorDetail": "The rest of Screen Lens is still available. The localization source or sidecar needs to be repaired before its strings can be inspected here.",
+    "localization.localeSourceStatus": "Source",
+    "localization.localeCompleteStatus": "Complete",
+    "localization.localePartialStatus": "Partial",
+    "localization.localeMissingStatus": "Not in source",
+    "localization.addLanguage": "＋ Add language…",
+    "localization.addLanguageLabel": "Add language",
+    "localization.addLanguagePlaceholder": "Locale code, e.g. it or nl-NL",
+    "localization.addLanguageAction": "Add",
+    "localization.addLanguageHelp": "Adds a browser-local translation target. Product support is not claimed until that locale appears in Product source."
   }
 }

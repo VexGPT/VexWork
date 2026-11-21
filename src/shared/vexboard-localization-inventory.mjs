@@ -65,20 +65,44 @@ function placeholderType(type) {
 
 export function localizationFormatSignature(value) {
   const source = String(value ?? '');
-  const placeholders = [];
-  let ordinal = 0;
+  const found = [];
+
   for (const match of source.matchAll(/%(?:(\d+)\$)?[-#+ 0,(<]*\d*(?:\.\d+)?([A-Za-z%])/g)) {
     if (match[2] === '%') continue;
-    ordinal += 1;
-    placeholders.push({
-      ordinal,
+    found.push({
+      index: match.index ?? 0,
+      kind: 'PRINTF',
       argumentIndex: match[1] ? Number(match[1]) : null,
       type: placeholderType(match[2]),
       token: match[0],
     });
   }
+  for (const match of source.matchAll(/\{([A-Za-z][A-Za-z0-9_-]*)\}/g)) {
+    found.push({
+      index: match.index ?? 0,
+      kind: 'NAMED',
+      name: match[1],
+      type: 'NAMED',
+      token: match[0],
+    });
+  }
+
+  found.sort((left, right) => left.index - right.index);
+  const placeholders = found.map((placeholder, index) => {
+    const ordinal = index + 1;
+    return placeholder.kind === 'NAMED'
+      ? { ordinal, name: placeholder.name, type: placeholder.type, token: placeholder.token }
+      : {
+          ordinal,
+          argumentIndex: placeholder.argumentIndex,
+          type: placeholder.type,
+          token: placeholder.token,
+        };
+  });
   const signature = placeholders
-    .map((placeholder) => `${placeholder.argumentIndex === null ? `seq${placeholder.ordinal}` : `arg${placeholder.argumentIndex}`}:${placeholder.type}`)
+    .map((placeholder) => Object.hasOwn(placeholder, 'name')
+      ? `name:${placeholder.name}`
+      : `${placeholder.argumentIndex === null ? `seq${placeholder.ordinal}` : `arg${placeholder.argumentIndex}`}:${placeholder.type}`)
     .join('|');
   return Object.freeze({
     signature,

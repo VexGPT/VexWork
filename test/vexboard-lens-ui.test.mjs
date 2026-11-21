@@ -554,6 +554,23 @@ test('Localization preview locale is browser projection state and preserves expl
   assert.match(page, /Localization\.normalizeLocalizationLocaleRef/);
   assert.match(page, /Localization\.observedLocalizationLocales\(inventory\)/);
   assert.match(page, /Localization\.localizationValueForLocale/);
+  assert.match(page, /const STATIC_LOCALIZATION_BINDINGS = Object\.freeze/);
+  assert.match(page, /\['data-vex-text', null\]/);
+  assert.match(page, /\['data-vex-placeholder', 'placeholder'\]/);
+  assert.match(page, /\['data-vex-aria-label', 'aria-label'\]/);
+  assert.match(page, /\['data-vex-title', 'title'\]/);
+  assert.match(page, /function applyStaticLocalizationPreview\(doc\)/);
+  assert.match(page, /applyStaticLocalizationPreview\(doc\);/);
+  assert.match(page, /data-vex-lens-localization-state/);
+  assert.match(page, /new Intl\.DisplayNames\(\['en'\], \{ type: 'language' \}\)/);
+  assert.match(page, /function localizationLocaleStatus\(localeRef/);
+  assert.match(page, /function localizationLocaleOptionLabel\(localeRef/);
+  assert.match(page, /function addLocalizationPreviewLocale\(value\)/);
+  assert.match(page, /value: '__ADD__'/);
+  assert.match(page, /localization\.addLanguage/);
+  assert.match(page, /localization\.localeCompleteStatus/);
+  assert.match(page, /localization\.localeMissingStatus/);
+  assert.match(page, /addedLocales: Object\.freeze/);
   assert.match(page, /localization\.localeMissingDetail/);
   assert.match(page, /next\.set\('locale', state\.localization\.previewLocale\)/);
   assert.match(page, /next\.set\('string', state\.localization\.selectedStringRef\)/);
@@ -564,6 +581,10 @@ test('Localization preview locale is browser projection state and preserves expl
   assert.match(page, /element\.localization\.locale-status/);
   assert.doesNotMatch(page, /setApplicationLocales|LocaleManager|ProductRuntime.*locale/i, 'preview locale never mutates Product language');
   assert.match(localizationCopy.strings['localization.previewLocaleHelp'], /does not change Product language/);
+  assert.match(localizationCopy.strings['localization.addLanguage'], /Add language/);
+  assert.match(localizationCopy.strings['localization.addLanguageHelp'], /browser-local translation target/);
+  assert.equal(localizationCopy.strings['localization.localeCompleteStatus'], 'Complete');
+  assert.equal(localizationCopy.strings['localization.localeMissingStatus'], 'Not in source');
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A2-LOCALE-OBSERVATION]
@@ -617,4 +638,32 @@ test('Localization Change Set authoring stays browser-local and projects the pro
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A3-AUTHORING-UI]
+
+test('Localization remains a shared-frame capability when a Product has no normalized sidecar yet', () => {
+  for (const key of [
+    'localization.notConnectedTitle',
+    'localization.notConnectedDetail',
+    'localization.loadErrorTitle',
+    'localization.loadErrorDetail',
+  ]) assert.equal(typeof localizationCopy.strings[key], 'string', key);
+
+  assert.match(page, /response\.status === 404\) \{ reset\('NOT_INDEXED'\); return; \}/);
+  assert.match(page, /subject \? h\('button', \{[\s\S]{0,500}LOCALIZATION_UI_REFS\.open/);
+  assert.match(page, /if \(state\.overlay === 'LOCALIZATION'\) main\.append\(renderLocalizationInspector\(\)\)/);
+  assert.match(page, /state\.localization\.status !== 'READY'/);
+  assert.match(page, /localization\.notConnectedTitle/);
+  assert.match(page, /localization\.notConnectedDetail/);
+  assert.match(page, /params\.get\('localization'\) === '1' && state\.request\?\.subject/);
+  assert.doesNotMatch(
+    page,
+    /state\.localization\.status === 'READY' \? h\('button',[\s\S]{0,500}LOCALIZATION_UI_REFS\.open/,
+    'READY controls data tools, never whether the shared Localization capability exists',
+  );
+  assert.match(
+    localizationCopy.strings['localization.notConnectedDetail'],
+    /shared VexBoard frame for every project/,
+  );
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][SHARED-FRAME]
 
