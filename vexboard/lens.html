@@ -534,6 +534,17 @@ a{color:var(--focus)}
 .localization-locale-state.variant{border-color:color-mix(in srgb,var(--r-RESULT) 45%,var(--rule))}
 .localization-locale-state.missing{border-style:dashed;color:var(--muted)}
 .localization-locale-state p{margin:0;font-size:11.5px}
+.localization-change-set{margin:12px 0;padding:10px;border:1px solid var(--rule);border-radius:10px;background:#fbfcfd}
+.localization-change-set h4{margin:0 0 5px;font-size:12.5px}
+.localization-change-set .actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.localization-change-set .tool[disabled]{opacity:.45;cursor:not-allowed}
+.localization-expected{display:flex;flex-direction:column;gap:5px;margin-top:10px}
+.localization-expected label{font-size:11.5px;font-weight:600;color:var(--muted)}
+.localization-expected textarea{min-height:66px;resize:vertical;padding:8px 9px;border:1px solid var(--rule);border-radius:8px;background:#fff;font:12.5px/1.4 var(--sans)}
+.localization-expected textarea:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.localization-reconciliation{margin-top:7px;padding:7px 8px;border-radius:7px;background:#fff;border:1px solid var(--rule);font-size:11.5px}
+.localization-reconciliation code{font-size:10px}
+.localization-import-summary{margin-top:8px;padding-top:8px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted)}
 .localization-empty{padding:9px 0;color:var(--muted);font-size:12.5px}
 kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-width:2px;border-radius:4px;padding:0 4px;background:#fff}
 .boot{margin:12vh auto;max-width:56ch;padding:24px;color:var(--muted)}
@@ -695,6 +706,7 @@ import * as Realization from '../src/shared/vexboard-screen-lens-realization.mjs
 import * as Expressions from '../src/shared/vexboard-screen-lens-source-expressions.mjs';
 import * as Frames from '../src/shared/vexboard-screen-lens-frames.mjs';
 import * as Localization from '../src/shared/vexboard-localization-inventory.mjs';
+import * as LocalizationChanges from '../src/shared/vexboard-localization-change-set.mjs';
 
 const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const LENS_DIR = '../projects/vexboard/lens/';
@@ -712,6 +724,13 @@ const LOCALIZATION_UI_REFS = Object.freeze({
   occurrences: 'element.localization.occurrence-list',
   previewLocale: 'element.localization.preview-locale',
   localeStatus: 'element.localization.locale-status',
+  changeSet: 'element.localization.change-set',
+  expectedValue: 'element.localization.expected-value',
+  saveExpected: 'element.localization.save-expected',
+  removeExpected: 'element.localization.remove-expected',
+  reconciliation: 'element.localization.reconciliation',
+  exportChangeSet: 'element.localization.export-change-set',
+  importChangeSet: 'element.localization.import-change-set',
 });
 const params = new URLSearchParams(location.search);
 const app = document.getElementById('app');
@@ -1008,6 +1027,9 @@ const state = {
     query: '',
     selectedStringRef: null,
     previewLocale: null,
+    changeSets: LocalizationChanges.createLocalizationChangeSetCollection(),
+    changeSetStorageError: null,
+    lastImport: null,
   },
   // Which realization context the faces show: source defaults, one source-authored example, plus
   // browser-local scenario overrides. A plain value; never persisted, never sent anywhere. The
@@ -1042,6 +1064,13 @@ function normalizeLocalizationCopy(input) {
     'localization.appShell', 'localization.openLocation', 'localization.previewLocale',
     'localization.previewLocaleHelp', 'localization.observedLocales', 'localization.localeSource',
     'localization.localeVariant', 'localization.localeMissing', 'localization.localeMissingDetail',
+    'localization.changeSetTitle', 'localization.changeSetHelp', 'localization.expectedValue',
+    'localization.expectedValuePlaceholder', 'localization.saveExpected', 'localization.removeExpected',
+    'localization.savedLocally', 'localization.noDraft', 'localization.exportChangeSet',
+    'localization.importChangeSet', 'localization.importedChangeSet', 'localization.workingSetEmpty',
+    'localization.reconciliation', 'localization.stateSatisfied', 'localization.stateOpen',
+    'localization.stateOpenTranslation', 'localization.stateDiverged',
+    'localization.stateSourceRemoved', 'localization.storageUnavailable',
   ];
   for (const key of required) {
     if (typeof input.strings[key] !== 'string' || !input.strings[key].trim()) throw new TypeError(`Localization copy missing ${key}`);
@@ -1059,8 +1088,27 @@ function localizationInventoryUrl(subject, buildRef) {
 async function loadLocalizationContext() {
   const previous = state.localization?.selectedStringRef ?? null;
   const previousLocale = state.localization?.previewLocale ?? null;
+  let changeSets;
+  let changeSetStorageError = null;
+  try {
+    changeSets = LocalizationChanges.loadLocalizationChangeSetCollection(localStorage);
+  } catch (error) {
+    changeSets = LocalizationChanges.createLocalizationChangeSetCollection();
+    changeSetStorageError = error;
+  }
   const reset = (status = 'UNAVAILABLE', error = null) => {
-    state.localization = { status, inventory: null, copy: null, error, query: '', selectedStringRef: null, previewLocale: null };
+    state.localization = {
+      status,
+      inventory: null,
+      copy: null,
+      error,
+      query: '',
+      selectedStringRef: null,
+      previewLocale: null,
+      changeSets,
+      changeSetStorageError,
+      lastImport: null,
+    };
   };
   if (state.request?.mode !== 'BUILD' || !state.request.subject || !state.request.build) { reset(); return; }
 
@@ -1093,6 +1141,9 @@ async function loadLocalizationContext() {
       previewLocale: previousLocale
         ? Localization.normalizeLocalizationLocaleRef(previousLocale)
         : inventory.sourceLocale,
+      changeSets,
+      changeSetStorageError,
+      lastImport: null,
     };
   } catch (error) {
     reset('ERROR', error);
@@ -4013,6 +4064,254 @@ function openLocalizationOccurrence(occurrence) {
   state.flashRef = occurrence.elementRef;
   goToResult({ target: Localization.localizationOccurrenceTarget(state.localization.inventory, occurrence.occurrenceRef) });
 }
+const LOCALIZATION_CHANGE_STATE_COPY = Object.freeze({
+  SATISFIED: 'localization.stateSatisfied',
+  OPEN: 'localization.stateOpen',
+  OPEN_TRANSLATION: 'localization.stateOpenTranslation',
+  DIVERGED: 'localization.stateDiverged',
+  SOURCE_REMOVED: 'localization.stateSourceRemoved',
+});
+function localizationWorkingChangeSetRef() {
+  const subject = currentSubject();
+  const inventory = state.localization.inventory;
+  if (!subject || !inventory) return null;
+  return `change-set.browser.${subject.slug}.${inventory.sourceSnapshot.commit}`;
+}
+function localizationWorkingChangeSet() {
+  const ref = localizationWorkingChangeSetRef();
+  return ref
+    ? state.localization.changeSets?.changeSets.find((changeSet) => changeSet.changeSetRef === ref) ?? null
+    : null;
+}
+function localizationChangeFor(row, localeRef = state.localization.previewLocale) {
+  const changeSet = localizationWorkingChangeSet();
+  if (!changeSet || !row || !localeRef) return null;
+  const locale = Localization.normalizeLocalizationLocaleRef(localeRef);
+  return changeSet.changes.find((change) => change.sourceStringRef === row.sourceStringRef && change.locale === locale) ?? null;
+}
+function localizationChangeRequests(changeSet) {
+  return (changeSet?.changes ?? []).map((change) => ({
+    changeRef: change.changeRef,
+    sourceStringRef: change.sourceStringRef,
+    locale: change.locale,
+    expectedValue: change.expectedValue,
+    occurrenceRefs: [...change.occurrenceRefs],
+    noteOrRationale: change.noteOrRationale,
+  }));
+}
+function persistLocalizationChangeSets(collection) {
+  if (state.localization.changeSetStorageError) throw state.localization.changeSetStorageError;
+  const saved = LocalizationChanges.saveLocalizationChangeSetCollection(localStorage, collection);
+  state.localization.changeSets = saved;
+  return saved;
+}
+function saveLocalizationExpectedValue(row, expectedValue) {
+  try {
+    const inventory = state.localization.inventory;
+    const locale = Localization.normalizeLocalizationLocaleRef(state.localization.previewLocale ?? inventory.sourceLocale);
+    const changeSetRef = localizationWorkingChangeSetRef();
+    const current = localizationWorkingChangeSet();
+    const requests = localizationChangeRequests(current)
+      .filter((change) => !(change.sourceStringRef === row.sourceStringRef && change.locale === locale));
+    requests.push({
+      changeRef: `change.${row.sourceStringRef}.${locale}`,
+      sourceStringRef: row.sourceStringRef,
+      locale,
+      expectedValue,
+    });
+    const nextSet = LocalizationChanges.createLocalizationChangeSet({
+      changeSetRef,
+      inventory,
+      changes: requests,
+    });
+    persistLocalizationChangeSets(LocalizationChanges.upsertLocalizationChangeSet(state.localization.changeSets, nextSet));
+    showToast(localizationText('localization.savedLocally'));
+    render();
+  } catch (error) {
+    showToast(String(error?.message ?? error).replace(/^localization change set: /, ''));
+  }
+}
+function removeLocalizationExpectedValue(row) {
+  try {
+    const inventory = state.localization.inventory;
+    const locale = Localization.normalizeLocalizationLocaleRef(state.localization.previewLocale ?? inventory.sourceLocale);
+    const current = localizationWorkingChangeSet();
+    if (!current) return;
+    const remaining = localizationChangeRequests(current)
+      .filter((change) => !(change.sourceStringRef === row.sourceStringRef && change.locale === locale));
+    let nextCollection;
+    if (remaining.length) {
+      const nextSet = LocalizationChanges.createLocalizationChangeSet({
+        changeSetRef: current.changeSetRef,
+        inventory,
+        changes: remaining,
+      });
+      nextCollection = LocalizationChanges.upsertLocalizationChangeSet(state.localization.changeSets, nextSet);
+    } else {
+      nextCollection = LocalizationChanges.createLocalizationChangeSetCollection(
+        state.localization.changeSets.changeSets.filter((changeSet) => changeSet.changeSetRef !== current.changeSetRef),
+      );
+    }
+    persistLocalizationChangeSets(nextCollection);
+    showToast(localizationText('localization.savedLocally'));
+    render();
+  } catch (error) {
+    showToast(String(error?.message ?? error).replace(/^localization change set: /, ''));
+  }
+}
+function localizationWorkingReconciliation() {
+  const current = localizationWorkingChangeSet();
+  if (!current) return null;
+  return LocalizationChanges.reconcileLocalizationChangeSet(current, state.localization.inventory);
+}
+function localizationReconciliationLabel(value) {
+  return value ? localizationText(LOCALIZATION_CHANGE_STATE_COPY[value.state] ?? 'localization.reconciliation') : null;
+}
+async function exportLocalizationWorkingChangeSet() {
+  const current = localizationWorkingChangeSet();
+  if (!current) { showToast(localizationText('localization.workingSetEmpty')); return; }
+  try {
+    const exported = await LocalizationChanges.createLocalizationChangeSetExport({
+      changeSet: current,
+      inventory: state.localization.inventory,
+      exportedAtOrNull: new Date().toISOString(),
+    });
+    const serialized = await LocalizationChanges.serializeLocalizationChangeSetExport(exported);
+    const blob = new Blob([serialized], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    const subject = currentSubject();
+    anchor.href = url;
+    anchor.download = `${subject?.slug ?? 'localization'}-${short(current.observedRevision)}-localization-change-set.json`;
+    anchor.hidden = true;
+    document.body.append(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 0);
+  } catch (error) {
+    showToast(String(error?.message ?? error).replace(/^localization change set: /, ''));
+  }
+}
+async function importLocalizationChangeSetFile(file) {
+  if (!file) return;
+  try {
+    if (state.localization.changeSetStorageError) throw state.localization.changeSetStorageError;
+    const imported = await LocalizationChanges.importLocalizationChangeSetExport(
+      await file.text(),
+      state.localization.inventory,
+    );
+    persistLocalizationChangeSets(
+      LocalizationChanges.upsertLocalizationChangeSet(state.localization.changeSets, imported.changeSet),
+    );
+    state.localization.lastImport = imported;
+    showToast(localizationText('localization.importedChangeSet'));
+    render();
+  } catch (error) {
+    showToast(String(error?.message ?? error).replace(/^localization change set: /, ''));
+  }
+}
+function renderLocalizationChangeSetTools() {
+  const current = localizationWorkingChangeSet();
+  const reconciliation = localizationWorkingReconciliation();
+  const fileInput = h('input', {
+    type: 'file',
+    accept: 'application/json,.json',
+    hidden: true,
+  });
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files?.[0] ?? null;
+    fileInput.value = '';
+    await importLocalizationChangeSetFile(file);
+  });
+  const section = h('section', {
+    class: 'localization-change-set',
+    dataset: { localizationRef: LOCALIZATION_UI_REFS.changeSet },
+  },
+    h('h4', {}, localizationText('localization.changeSetTitle')),
+    h('p', { class: 'localization-help' }, localizationText('localization.changeSetHelp')));
+  if (state.localization.changeSetStorageError) {
+    section.append(h('div', { class: 'localization-empty' }, localizationText('localization.storageUnavailable')));
+  } else if (current && reconciliation) {
+    section.append(h('div', { class: 'localization-meta' },
+      `${current.changes.length} change${current.changes.length === 1 ? '' : 's'} · ${reconciliation.summary.activeCount} active`));
+  } else {
+    section.append(h('div', { class: 'localization-empty' }, localizationText('localization.workingSetEmpty')));
+  }
+  const actions = h('div', { class: 'actions' },
+    h('button', {
+      class: 'tool',
+      type: 'button',
+      disabled: !current || Boolean(state.localization.changeSetStorageError),
+      dataset: { localizationRef: LOCALIZATION_UI_REFS.exportChangeSet },
+      onclick: exportLocalizationWorkingChangeSet,
+    }, localizationText('localization.exportChangeSet')),
+    h('button', {
+      class: 'tool',
+      type: 'button',
+      disabled: Boolean(state.localization.changeSetStorageError),
+      dataset: { localizationRef: LOCALIZATION_UI_REFS.importChangeSet },
+      onclick: () => fileInput.click(),
+    }, localizationText('localization.importChangeSet')),
+    fileInput);
+  section.append(actions);
+  const imported = state.localization.lastImport;
+  if (imported) {
+    const summary = imported.reconciliation.summary;
+    section.append(h('div', { class: 'localization-import-summary' },
+      h('strong', {}, imported.changeSet.changeSetRef),
+      h('div', {}, `${localizationText('localization.reconciliation')}: ${summary.activeCount} active · ${summary.SATISFIED} satisfied`),
+      h('code', {}, `observed inventory ${imported.observedInventoryVerification.toLowerCase().replaceAll('_', ' ')}`)));
+  }
+  return section;
+}
+function renderLocalizationExpectedEditor(row) {
+  if (!row) return null;
+  const locale = Localization.normalizeLocalizationLocaleRef(
+    state.localization.previewLocale ?? state.localization.inventory.sourceLocale,
+  );
+  const existing = localizationChangeFor(row, locale);
+  const reconciliation = localizationWorkingReconciliation();
+  const reconciled = reconciliation?.changes.find((change) =>
+    change.sourceStringRef === row.sourceStringRef && change.locale === locale) ?? null;
+  const input = h('textarea', {
+    id: 'localization-expected-value',
+    placeholder: localizationText('localization.expectedValuePlaceholder'),
+    spellcheck: 'true',
+    dataset: { localizationRef: LOCALIZATION_UI_REFS.expectedValue },
+  });
+  input.value = existing?.expectedValue ?? '';
+  const section = h('div', { class: 'localization-expected' },
+    h('label', { for: 'localization-expected-value' }, localizationText('localization.expectedValue')),
+    input,
+    h('div', { class: 'actions' },
+      h('button', {
+        class: 'tool',
+        type: 'button',
+        disabled: Boolean(state.localization.changeSetStorageError),
+        dataset: { localizationRef: LOCALIZATION_UI_REFS.saveExpected },
+        onclick: () => saveLocalizationExpectedValue(row, input.value),
+      }, localizationText('localization.saveExpected')),
+      existing ? h('button', {
+        class: 'tool',
+        type: 'button',
+        dataset: { localizationRef: LOCALIZATION_UI_REFS.removeExpected },
+        onclick: () => removeLocalizationExpectedValue(row),
+      }, localizationText('localization.removeExpected')) : null));
+  if (reconciled) {
+    section.append(h('div', {
+      class: 'localization-reconciliation',
+      dataset: { localizationRef: LOCALIZATION_UI_REFS.reconciliation },
+    },
+      h('strong', {}, `${localizationText('localization.reconciliation')}: ${localizationReconciliationLabel(reconciled)}`),
+      h('div', { class: 'localization-meta' },
+        h('code', {}, reconciled.state),
+        reconciled.currentValueOrNull !== null ? h('span', {}, `current · ${reconciled.currentValueOrNull}`) : null)));
+  } else {
+    section.append(h('span', { class: 'localization-help' }, localizationText('localization.noDraft')));
+  }
+  return section;
+}
+
 function renderLocalizationStringDetail(row) {
   if (!row) return h('div', { class: 'localization-empty' }, localizationText('localization.noSelection'));
   const occurrences = Localization.occurrencesForString(state.localization.inventory, row.sourceStringRef);
@@ -4034,6 +4333,7 @@ function renderLocalizationStringDetail(row) {
       h('strong', {}, `${localeValue.localeRef} · ${localeLabel}`),
       localeValue.value !== null ? h('span', { class: 'value' }, localeValue.value) : null,
       localeValue.state === 'MISSING' ? h('p', {}, localizationText('localization.localeMissingDetail')) : null),
+    renderLocalizationExpectedEditor(row),
     h('div', { class: 'localization-meta' },
       h('span', {}, localizationText('localization.source')),
       row.sourcePath ? h('code', {}, row.sourcePath) : null,
@@ -4086,6 +4386,7 @@ function renderLocalizationInspector() {
       h('datalist', { id: 'localization-observed-locales' }, observedLocales.map((localeRef) => h('option', { value: localeRef }))),
       h('span', { class: 'localization-help' }, localizationText('localization.previewLocaleHelp')),
       h('span', { class: 'localization-meta' }, `${localizationText('localization.observedLocales')}: ${observedLocales.join(', ')}`)),
+    renderLocalizationChangeSetTools(),
   );
 
   if (state.anchorElementRef) {
