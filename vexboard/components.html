@@ -237,7 +237,8 @@ function renderArchitecture({focusSearch=false}={}){
  search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
  const classSelect=h('select',{'aria-label':'Architecture class'},h('option',{value:'',selected:!state.architectureClass},'All architecture classes'),classes.map((value)=>h('option',{value,selected:state.architectureClass===value},human(value))));
  classSelect.onchange=()=>{state.architectureClass=classSelect.value;syncUrl();render();};
- const stateSelect=h('select',{'aria-label':'Architecture state'},h('option',{value:''},'Portable acceptance: none yet'));
+ const acceptedPortable=state.architecture.candidates.filter((row)=>row.state==='ACCEPTED_PORTABLE');
+ const stateSelect=h('select',{'aria-label':'Architecture state'},h('option',{value:''},'Portable acceptance: '+count(acceptedPortable.length)+' accepted'));
  stateSelect.disabled=true;
  const evidenceCount=state.architecture.candidates.reduce((sum,row)=>sum+row.sourceEvidence.length,0);
  const familyLinks=new Set(state.architecture.candidates.flatMap((row)=>row.sourceFamilyRefs)).size;
@@ -250,11 +251,11 @@ function renderArchitecture({focusSearch=false}={}){
   h('section',{},
    h('div',{class:'intro'},h('div',{},h('h1',{},'Component Architecture'),h('p',{},'Recurring presentation relationships influenced by real Product source, organized for a typed Kotlin Blueprint + platform-adapter compiler. Android teaches the questions; the portable contract must survive SwiftUI, web and desktop pressure before acceptance.')),h('div',{class:'truth'},'architecture candidates · ',h('strong',{},count(state.architecture.candidates.length)))),
    h('div',{class:'boundary'},h('b',{},'Compiler boundary: '),'Kotlin Blueprint can be the strongly typed authoring form; Compose is one target adapter. Portable IR, generated native source, target Screen Lens and native proof remain separate witnesses.'),
-   h('div',{class:'summary'},metric(state.architecture.candidates.length,'architecture candidates'),metric(formations,'A3 formations'),metric(targetResults,'target experiments'),metric(mappedRelations,'mapped target relationships'),metric(heldRelations,'held target relationships'),metric(0,'accepted portable yet')),
+   h('div',{class:'summary'},metric(state.architecture.candidates.length,'architecture candidates'),metric(formations,'A3 formations'),metric(targetResults,'target experiments'),metric(mappedRelations,'mapped target relationships'),metric(heldRelations,'held target relationships'),metric(acceptedPortable.length,'accepted portable')),
    h('div',{class:'source'},state.architecture.sourceSnapshots.map((row)=>h('span',{class:'source-chip'},h('span',{class:'dot'}),row.repositoryRef,h('code',{},short(row.commit))))),
    viewTabs()),
   h('section',{class:'workspace'},h('div',{class:'controls'},search,classSelect,stateSelect),h('p',{class:'match'},count(rows.length)+' of '+count(state.architecture.candidates.length)+' architecture candidates in this view.'),h('div',{class:'grid'},rows.map(architectureCard)),selected?architectureDetail(selected):h('div',{class:'empty'},'No architecture candidates match this view.')),
-  h('footer',{},'Nothing in this view is accepted portable architecture yet. Target-pressure results show what survived one native-framework pressure and what is still held; they are evidence for later convergence, not acceptance by themselves.'));
+  h('footer',{},acceptedPortable.length+' portable relationship'+(acceptedPortable.length===1?' is':'s are')+' accepted at A3. Target-pressure results remain separate evidence: native/framework proof and held target mechanics do not become portable acceptance merely because a relationship is accepted.'));
  if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
 }
 function render(options={}){return state.view==='ARCHITECTURE'?renderArchitecture(options):renderSource(options);}
