@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.issue.vexwork.404",
+  "pullRequest": "github.pull.vexwork.403",
+  "candidateBase": "9b48268876ebba4b1ad91f753d9c497916d9bb74",
+  "candidateHead": "544d18d9f85a237f120d0cf5dbb9a2ffbfd06af0",
+  "candidateTree": "8652a693cf3d36d799183c4f4b7bb6681f7b7c1f",
+  "candidateBranch": "VXG-112126-localization-android-inventory-a001",
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexwork-pr403-source-owner-a001",
+  "carrierPrefix": ".relay/vexwork-pr403/a002",
+  "priorReturnSha256": "60949db56f293382ff5d018d07dcfd13f6efedd302983d839ab775088f8ba305",
+  "repairRef": "github.pull.vexwork.399@9b48268876ebba4b1ad91f753d9c497916d9bb74",
+  "bootstrapZipSha256": "b4cac1a8ab0bf34ac51596186d63a2f2a523dc98614f5a505fb19cb51ef5f08c",
+  "bootstrapZipBytes": 7306,
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {"sha256": "92157e801d58125d250e01a3c64ee149c1bfd9885b3ab3bbdb17a24c244c30ac", "bytes": 1799},
+    "bootstrap/form-and-run.mjs": {"sha256": "f0b793cc71e94e6577d1569a04f8f68899eaa77595c3fddbc61bf6d7db7c0002", "bytes": 14961}
+  }
+}
