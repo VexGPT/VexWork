@@ -27,7 +27,12 @@
     "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt",
     "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistry.kt",
     "projects/vexboard/SCREEN-LENS.md",
-    "github.issue.vexwork.330"
+    "github.issue.vexwork.330",
+    "projects/component-library-architecture/TECH-DEBT.md",
+    "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+    "src/shared/vexboard-component-inventory.mjs",
+    "scripts/build-component-inventory.mjs",
+    "vexboard/components.html"
   ],
   "formedAt": "2026-11-21T08:20:00.000Z"
 }
