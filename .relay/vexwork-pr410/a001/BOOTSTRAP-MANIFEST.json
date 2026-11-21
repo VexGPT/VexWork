@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "vexwork.vexrelay-github-bootstrap/v1",
+  "continuity": "[VXG RealForever]",
+  "carrierIssue": "github.pull.vexwork.410",
+  "pullRequest": "github.pull.vexwork.410",
+  "candidateBase": "c4f4f699596192e407e99358b714a8e579608413",
+  "candidateHead": "1bf964c8558859f1b99005a543a0279711051e27",
+  "candidateTree": "51be4b3fead979bacbde1e7d84083dc890ae527f",
+  "candidateBranch": "VXG-112126-localization-change-set-a3-contract-a001",
+  "changedPaths": [
+    "public/workspace.json",
+    "src/shared/vexboard-localization-change-set.mjs",
+    "test/vexboard-localization-change-set.test.mjs",
+    "workgraphs/public.json",
+    "workgraphs/segments/localization-architecture.json"
+  ],
+  "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+  "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+  "currentContractBlob": "b53cbac01c2deeb45fad5c32ce98e0796c04126f",
+  "contractRef": "source.vexrelay.current-contract/v1",
+  "recipe": "ExactHeadSourceOwnerProof",
+  "carrierBranch": "relay/vexwork-pr410-source-owner-a001",
+  "carrierPrefix": ".relay/vexwork-pr410/a001",
+  "bootstrapZip": {
+    "filename": "VEXWORK-PR410-LOCALIZATION-A3-CHANGE-SET-RELAY-BOOTSTRAP-A001--sha256-a41c80d2ad3f1c2837fc24eb5356a11862309a15e4944fdd343ffe864685f7f0.zip",
+    "sha256": "a41c80d2ad3f1c2837fc24eb5356a11862309a15e4944fdd343ffe864685f7f0",
+    "bytes": 7307,
+    "deliveryMode": "DIGEST_BOUND_BINARY_DIRECT_TO_HUMAN"
+  },
+  "members": {
+    "bootstrap/FORM-AND-RUN.command": {
+      "sha256": "ef311ab865035ddda78e4f42cb6586403693282c427f4beb278971674b37a63f",
+      "bytes": 1799
+    },
+    "bootstrap/form-and-run.mjs": {
+      "sha256": "32ace09b423e9d546c443f2f0db024a875f034d093b73f121f053f785d85e8d0",
+      "bytes": 14592
+    }
+  },
+  "proofPredicates": [
+    "npm run localization:check",
+    "node --test test/vexboard-localization-change-set.test.mjs",
+    "npm run workgraph:check",
+    "npm run workspace:check",
+    "npm run review"
+  ],
+  "heldAfterPass": [
+    "INDEPENDENT_ASSURANCE",
+    "LIFECYCLE_CURRENTNESS",
+    "READY",
+    "MERGE",
+    "A3_BROWSER_PERSISTENCE",
+    "A3_EXPORT_IMPORT",
+    "A3_AUTHORING_UI",
+    "PRODUCT_SOURCE_MUTATION",
+    "A4_DUPLICATE_CONVERGENCE"
+  ]
+}
