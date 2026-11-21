@@ -165,8 +165,15 @@ function groups(analysis, stringRows) {
   ));
 }
 
-function coverage(inventories) {
-  const localeRefs = uniqueSorted(inventories.flatMap((inventory) => inventory.locales.map((row) => row.localeRef)));
+function coverage(inventories, workLocaleRefs, changeRows) {
+  const localeRefs = uniqueSorted([
+    ...inventories.flatMap((inventory) => inventory.locales.map((row) => row.localeRef)),
+    ...workLocaleRefs,
+    ...changeRows.map((row) => row.localeRef),
+  ]);
+  const activeRequestCount = (subjectRef, localeRef) => changeRows.filter(
+    (row) => row.subjectRef === subjectRef && row.localeRef === localeRef && row.state !== 'SATISFIED',
+  ).length;
   return Object.freeze(inventories.flatMap((inventory) => localeRefs.map((localeRef) => {
     const observed = inventory.locales.find((row) => row.localeRef === localeRef) ?? null;
     if (localeRef === inventory.sourceLocale) {
@@ -180,6 +187,7 @@ function coverage(inventories) {
         observedStringCount: inventory.summary.sourceStringCount,
         missingStringCount: 0,
         sourceStringCount: inventory.summary.sourceStringCount,
+        requestedChangeCount: activeRequestCount(inventory.subjectRef, localeRef),
       });
     }
     if (!observed) {
@@ -193,6 +201,7 @@ function coverage(inventories) {
         observedStringCount: 0,
         missingStringCount: inventory.summary.sourceStringCount,
         sourceStringCount: inventory.summary.sourceStringCount,
+        requestedChangeCount: activeRequestCount(inventory.subjectRef, localeRef),
       });
     }
     return Object.freeze({
@@ -205,6 +214,7 @@ function coverage(inventories) {
       observedStringCount: observed.observedStringCount ?? inventory.summary.sourceStringCount,
       missingStringCount: observed.missingStringCount ?? 0,
       sourceStringCount: inventory.summary.sourceStringCount,
+      requestedChangeCount: activeRequestCount(inventory.subjectRef, localeRef),
     });
   })).sort((left, right) => left.subjectRef.localeCompare(right.subjectRef) || left.localeRef.localeCompare(right.localeRef)));
 }
@@ -223,6 +233,7 @@ function locales(coverageRows) {
     observedStringCount: rows.reduce((sum, row) => sum + row.observedStringCount, 0),
     missingStringCount: rows.reduce((sum, row) => sum + row.missingStringCount, 0),
     sourceStringCount: rows.reduce((sum, row) => sum + row.sourceStringCount, 0),
+    requestedChangeCount: rows.reduce((sum, row) => sum + row.requestedChangeCount, 0),
     subjectRefs: Object.freeze(rows.map((row) => row.subjectRef)),
   })));
 }
@@ -274,14 +285,22 @@ function changeSetRows(collectionInput, inventories) {
   ));
 }
 
-export function projectLocalizationWorkspace({ inventories: inventoryInputs, changeSetCollection = null } = {}) {
+export function projectLocalizationWorkspace({
+  inventories: inventoryInputs,
+  changeSetCollection = null,
+  workLocaleRefs = [],
+} = {}) {
   const inventories = normalizeInventories(inventoryInputs);
+  if (!Array.isArray(workLocaleRefs)) fail('workLocaleRefs must be an array');
+  const projectedWorkLocales = Object.freeze(uniqueSorted(
+    workLocaleRefs.map((localeRef) => normalizeLocalizationLocaleRef(localeRef)),
+  ));
   const analysis = analyzeLocalizationConvergence(inventories);
   const stringRows = strings(inventories);
   const elementRows = elements(inventories);
-  const coverageRows = coverage(inventories);
-  const localeRows = locales(coverageRows);
   const changeRows = changeSetRows(changeSetCollection, inventories);
+  const coverageRows = coverage(inventories, projectedWorkLocales, changeRows);
+  const localeRows = locales(coverageRows);
   const valueRows = values(stringRows, analysis);
   const groupRows = groups(analysis, stringRows);
   return Object.freeze({
@@ -307,6 +326,7 @@ export function projectLocalizationWorkspace({ inventories: inventoryInputs, cha
       localeCount: localeRows.length,
       changeSetCount: uniqueSorted(changeRows.map((row) => row.changeSetRef)).length,
       activeChangeCount: changeRows.filter((row) => !['SATISFIED'].includes(row.state)).length,
+      workLocaleCount: projectedWorkLocales.length,
     }),
   });
 }
