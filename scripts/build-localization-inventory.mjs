@@ -145,6 +145,18 @@ function main() {
   }
   if (!source) throw new Error('pass --fetch or --source <android-checkout>');
 
+  if (!temporary) {
+    let sourceHead;
+    try {
+      sourceHead = git(source, 'rev-parse', 'HEAD');
+    } catch {
+      throw new Error('--source must be an Android git checkout so source currentness can be proven');
+    }
+    if (sourceHead !== build.commit) {
+      throw new Error(`Android source checkout is at ${sourceHead}, not bound ${build.commit}`);
+    }
+  }
+
   try {
     const artifacts = buildLocalizationArtifacts({
       catalog,
