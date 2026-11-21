@@ -95,21 +95,19 @@ export function androidLocalizationOccurrences({ subjectRef, lens, sourceStrings
   return rows;
 }
 
-export function projectAndroidLocalizationInventory({
+export function projectAndroidLocalizationInventoryFromSourceStrings({
   subjectRef = 'subject.vexlife-android',
   lens,
-  stringsXml,
+  sourceStrings,
   sourceLocale = 'en',
   buildRef = null,
-  stringsPath = ANDROID_DEFAULT_STRINGS_PATH,
 }) {
   if (!lens?.sourceSnapshot?.repositoryRef || !lens?.sourceSnapshot?.commit) {
     throw new TypeError('android localization: Screen Lens sourceSnapshot is required');
   }
-  if (typeof stringsXml !== 'string') {
-    throw new TypeError('android localization: exact strings.xml source is required');
+  if (!Array.isArray(sourceStrings) || !sourceStrings.length) {
+    throw new TypeError('android localization: source string catalog is required');
   }
-  const sourceStrings = androidSourceStrings(stringsXml, { sourcePath: stringsPath });
   return createLocalizationInventory({
     inventoryRef: `localization.${subjectRef.replace(/^subject\./, '')}`,
     subjectRef,
@@ -119,5 +117,25 @@ export function projectAndroidLocalizationInventory({
     producer: ANDROID_LOCALIZATION_PRODUCER,
     sourceStrings,
     occurrences: androidLocalizationOccurrences({ subjectRef, lens, sourceStrings }),
+  });
+}
+
+export function projectAndroidLocalizationInventory({
+  subjectRef = 'subject.vexlife-android',
+  lens,
+  stringsXml,
+  sourceLocale = 'en',
+  buildRef = null,
+  stringsPath = ANDROID_DEFAULT_STRINGS_PATH,
+}) {
+  if (typeof stringsXml !== 'string') {
+    throw new TypeError('android localization: exact strings.xml source is required');
+  }
+  return projectAndroidLocalizationInventoryFromSourceStrings({
+    subjectRef,
+    lens,
+    sourceStrings: androidSourceStrings(stringsXml, { sourcePath: stringsPath }),
+    sourceLocale,
+    buildRef,
   });
 }
