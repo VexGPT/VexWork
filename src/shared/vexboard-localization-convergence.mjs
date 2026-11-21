@@ -60,8 +60,25 @@ function roleSignature(value) {
   return [...value.textRoleRefs].sort();
 }
 
-function translationSignature(value) {
-  return Object.fromEntries(Object.entries(value.localeVariants).sort(([left], [right]) => left.localeCompare(right)));
+function translationEvidence(members) {
+  const localeRefs = uniqueSorted(members.flatMap((entry) => Object.keys(entry.localeVariants)));
+  if (!localeRefs.length) return Object.freeze(['NO_VARIANT_EVIDENCE']);
+
+  let incomplete = false;
+  let divergent = false;
+  for (const localeRef of localeRefs) {
+    const observed = members
+      .filter((entry) => Object.hasOwn(entry.localeVariants, localeRef))
+      .map((entry) => entry.localeVariants[localeRef]);
+    if (observed.length !== members.length) incomplete = true;
+    if (new Set(observed).size > 1) divergent = true;
+  }
+
+  const evidence = [];
+  if (divergent) evidence.push('DIVERGENT_TRANSLATION_SET');
+  if (incomplete) evidence.push('VARIANT_EVIDENCE_INCOMPLETE');
+  if (!divergent && !incomplete) evidence.push('SAME_TRANSLATION_SET');
+  return Object.freeze(evidence);
 }
 
 function evidenceFor(members) {
@@ -84,12 +101,7 @@ function evidenceFor(members) {
       : 'DIFFERENT_DOMAIN',
   );
 
-  const translations = members.map(translationSignature);
-  if (translations.every((value) => Object.keys(value).length === 0)) {
-    evidence.push('NO_VARIANT_EVIDENCE');
-  } else {
-    evidence.push(sameJson(translations) ? 'SAME_TRANSLATION_SET' : 'DIVERGENT_TRANSLATION_SET');
-  }
+  evidence.push(...translationEvidence(members));
 
   if (members.some((entry) => !entry.mapped)) evidence.push('UNMAPPED_CONTEXT');
   return Object.freeze(evidence);
@@ -104,6 +116,7 @@ function suggestedDisposition(evidence) {
     set.has('DIFFERENT_TEXT_ROLE')
     || set.has('DIFFERENT_DOMAIN')
     || set.has('TEXT_ROLE_CONTEXT_INCOMPLETE')
+    || set.has('VARIANT_EVIDENCE_INCOMPLETE')
     || set.has('UNMAPPED_CONTEXT')
   ) {
     return 'NEEDS_REVIEW';
