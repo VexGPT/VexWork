@@ -554,6 +554,14 @@ test('Localization preview locale is browser projection state and preserves expl
   assert.match(page, /Localization\.normalizeLocalizationLocaleRef/);
   assert.match(page, /Localization\.observedLocalizationLocales\(inventory\)/);
   assert.match(page, /Localization\.localizationValueForLocale/);
+  assert.match(page, /const STATIC_LOCALIZATION_BINDINGS = Object\.freeze/);
+  assert.match(page, /\['data-vex-text', null\]/);
+  assert.match(page, /\['data-vex-placeholder', 'placeholder'\]/);
+  assert.match(page, /\['data-vex-aria-label', 'aria-label'\]/);
+  assert.match(page, /\['data-vex-title', 'title'\]/);
+  assert.match(page, /function applyStaticLocalizationPreview\(doc\)/);
+  assert.match(page, /applyStaticLocalizationPreview\(doc\);/);
+  assert.match(page, /data-vex-lens-localization-state/);
   assert.match(page, /localization\.localeMissingDetail/);
   assert.match(page, /next\.set\('locale', state\.localization\.previewLocale\)/);
   assert.match(page, /next\.set\('string', state\.localization\.selectedStringRef\)/);
