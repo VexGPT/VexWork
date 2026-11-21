@@ -15906,7 +15906,7 @@
       "project": {
         "projectRef": "project.vexlife.new-beginnings",
         "label": "VexLife New Beginnings",
-        "purpose": "Build a clean VexLife product in VexGPT/VexLife-Prod from an explicit nested-browser + Vex companion experience: author product semantics and stable UI identity through compiler-constrained Kotlin VexArchitecture contracts, preserve Compose as a reference manifestation, establish VexWeb through fractally scalable Frame / Seam / Region / Allocation spatial relationships, then add compiler-visible authoring and deterministic generated native web artifacts before reconnecting Vex to canonical Conversation with bounded current browser/DOM context.",
+        "purpose": "Advance VexLife-Prod as the current product ground using explicit intention and compiler-constrained relationships. Preserve the accepted semantic/Blueprint/VexWeb/Conversation foundations and evolve current Product-native capabilities from present VexLife-Prod truth; predecessor VexLife/VexLife-Android sources are provenance on demand, not standing parity or bridge destinations.",
         "rootWorkRefs": [
           "work.vexlife.new-beginnings.outcome"
         ],
@@ -16014,7 +16014,10 @@
           "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5",
           "human.witness.vexlife-prod.manifestation-parity-gap.20261106",
           "projects/vexlife-new-beginnings/VEXLIFE-FRESH-INSTANCE-FEATURE.md",
-          "github.pull.vexwork.316"
+          "github.pull.vexwork.316",
+          "human.direction.vexlife.new-beginnings.current-ground.20261121",
+          "github.pull.vexlife-prod.497",
+          "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
         ],
         "formedAt": "2026-11-02T02:28:00.000Z"
       },
@@ -16137,12 +16140,12 @@
         },
         {
           "workRef": "work.vexlife.new-beginnings.evolution-live-bridge",
-          "label": "Bridge — reconnect lived evolution to the connected New Beginnings body",
-          "purpose": "After the fresh product has one real connected Conversation path, reconnect the already-earned VexLife developmental owners as modular relationships rather than rebuilding an autonomous-learning stack. Begin from exact current New Beginnings Conversation/Memory/runtime truth; prove one explicit manual G03 memory-only Dream on the connected product and make its before/after state inspectable; preserve G04 Rhythm as HELD_NOT_EARNED unless ordinary lived correction/recurrence actually earns a candidate; let Training Placement decide whether a later earned change belongs in Memory/Score, Rhythm, an adapter/LoRA experiment, or G04B foundation-weight training; keep candidate evaluation, model-generation activation, standing Dream scheduling and unattended self-training as separate effects. Existing ToCompletion P5/P6 and stable VexLife evolution sources are lineage/reference, not permission to transplant their historical container or fabricate learning.",
+          "label": "Historical — evolution live bridge (crossed; retired)",
+          "purpose": "Preserve the bridge-era developmental lineage as provenance only. VexLife-Prod is now stable current ground, so no standing Dream, Training Placement, P5/P6, or historical-VexLife bridge is required. Any future Memory, learning, Rhythm, training, or model-evolution work must be newly admitted from current Product truth and its current rightful owners rather than reopening this bridge.",
           "workClass": "TASK",
-          "state": "READY",
-          "workDisposition": "ACTIVE",
-          "priorityClass": "HIGH",
+          "state": "CANCELLED",
+          "workDisposition": "PARKED",
+          "priorityClass": "LOW",
           "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
@@ -16168,14 +16171,17 @@
             "github.pull.vexlife-prod.38",
             "github.commit.vexlife-prod.1a1745547558110fdbc420d4c15896cd353f5c46",
             "artifact.vexlife-prod.new-beginnings.a065.return.sha256.16de85d00a4fdc9b62e71c8286d59d6918b33f5e06844dc02b45670b355d61ad",
-            "github.pull.vexlife-prod.37.comment.6679191516"
+            "github.pull.vexlife-prod.37.comment.6679191516",
+            "human.direction.vexlife.new-beginnings.current-ground.20261121",
+            "github.pull.vexlife-prod.497",
+            "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-06T03:57:42.000Z",
-          "updatedAt": "2026-11-06T07:12:00.000Z",
+          "updatedAt": "2026-11-21T16:45:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.new-beginnings.evolution.waiting-ready.connected-baseline-complete",
@@ -16189,17 +16195,30 @@
                 "github.pull.vexlife-prod.37.comment.6679191516"
               ],
               "createdAt": "2026-11-06T07:12:17.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.evolution.ready-cancelled.current-product-ground",
+              "priorState": "READY",
+              "nextState": "CANCELLED",
+              "reason": "Victor closed the bridge-era continuation: VexLife-Prod is now stable current ground, so reconnecting historical VexLife P5/P6/Dream/training evolution is no longer required. Preserve that lineage as provenance only; any future learning/evolution work must be newly admitted from current Product truth.",
+              "actorRef": "actor.victor.vexlife-new-beginnings.current-ground",
+              "sourceRefs": [
+                "human.direction.vexlife.new-beginnings.current-ground.20261121",
+                "github.pull.vexlife-prod.497",
+                "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
+              ],
+              "createdAt": "2026-11-21T16:45:00.000Z"
             }
           ]
         },
         {
           "workRef": "work.vexlife.new-beginnings.experience-manifestation-parity",
-          "label": "Immediate — restore VexLife experience manifestation with architecture integrity",
-          "purpose": "Carry the now-proven live VexLife-Prod body into a faithful VexLife human experience by reconciling original VexLife experience source, design tokens and reference browser behavior with VexLife-Prod's accepted Blueprint/VexWeb relationships. Preserve canonical semantic/runtime owners, Conversation/Context currentness and VexBoard-projectable identity; do not copy historical implementation wholesale, hand-edit generated artifacts, or reduce the work to cosmetic CSS parity.",
+          "label": "Historical — predecessor VexLife manifestation parity (retired)",
+          "purpose": "Preserve the historical manifestation-parity investigation as provenance for how VexLife-Prod matured. Current VexLife-Prod is now the product ground; predecessor VexLife is not a standing parity target. New presentation work must arise from current Product intention and current rightful owners rather than reopening parity against the historical container.",
           "workClass": "TASK",
-          "state": "RUNNING",
-          "workDisposition": "ACTIVE",
-          "priorityClass": "IMMEDIATE",
+          "state": "CANCELLED",
+          "workDisposition": "PARKED",
+          "priorityClass": "LOW",
           "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
           "childWorkRefs": [
             "work.vexlife.new-beginnings.companion-turn-interaction-integrity"
@@ -16247,14 +16266,17 @@
             "github.pull.vexlife-prod.251",
             "github.pull.vexlife-prod.345",
             "github.commit.vexlife-prod.09b3a702acb771efcf782376ef9f1c535b114921",
-            "github.commit.vexlife-prod.146b0d482517201b85990a9d7b0b9ebf04075fd9"
+            "github.commit.vexlife-prod.146b0d482517201b85990a9d7b0b9ebf04075fd9",
+            "human.direction.vexlife.new-beginnings.current-ground.20261121",
+            "github.pull.vexlife-prod.497",
+            "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-07T02:40:00.000Z",
-          "updatedAt": "2026-11-20T07:16:00.000Z",
+          "updatedAt": "2026-11-21T16:45:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.new-beginnings.experience-manifestation-parity.ready-running.relationship-currentness-20261120",
@@ -16271,6 +16293,19 @@
                 "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
               ],
               "createdAt": "2026-11-20T07:16:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.experience-manifestation-parity.running-cancelled.current-product-ground",
+              "priorState": "RUNNING",
+              "nextState": "CANCELLED",
+              "reason": "Historical VexLife manifestation parity is no longer a standing Product outcome. The current VexLife-Prod body, including terminal Companion engagement integration #497, is the product ground; future presentation changes start from current Product intention/source rather than parity against the predecessor container.",
+              "actorRef": "actor.victor.vexlife-new-beginnings.current-ground",
+              "sourceRefs": [
+                "human.direction.vexlife.new-beginnings.current-ground.20261121",
+                "github.pull.vexlife-prod.497",
+                "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
+              ],
+              "createdAt": "2026-11-21T16:45:00.000Z"
             }
           ]
         },
@@ -16446,7 +16481,6 @@
           "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
-            "work.vexlife.new-beginnings.experience-manifestation-parity",
             "work.vexlife.new-beginnings.local-runtime-foundation"
           ],
           "repositoryRefs": [
@@ -16475,20 +16509,22 @@
             "github.pull.vexwork.301",
             "github.pull.vexlife-prod.101.comment.6852270470",
             "github.pull.vexlife-prod.101.comment.6852285207",
-            "github.pull.vexlife-prod.101.comment.6986912100"
+            "github.pull.vexlife-prod.101.comment.6986912100",
+            "human.direction.vexlife.new-beginnings.current-ground.20261121",
+            "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-13T02:30:00.000Z",
-          "updatedAt": "2026-11-20T07:16:00.000Z",
+          "updatedAt": "2026-11-21T16:45:00.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexlife.new-beginnings.outcome",
           "label": "VexLife New Beginnings",
-          "purpose": "Recompose VexLife in the clean VexLife-Prod container from explicit product intention and compiler-constrained semantic relationships: establish the repository front door, author one portable Kotlin contract/Blueprint language, realize the initial nested-browser + companion UI without pretending backend connectivity, then reconnect Vex through the canonical Conversation with bounded current browser/DOM context and lived proof.",
+          "purpose": "Advance VexLife-Prod as the current VexLife product ground: preserve compiler-constrained semantic relationships, canonical Conversation/Context truth, and current provider/runtime ownership while evolving Product-native capabilities from present source truth. Historical VexLife and VexLife-Android remain provenance only when an exact compatibility or design question requires them; there is no standing parity or bridge-back obligation.",
           "workClass": "OUTCOME",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -16538,14 +16574,17 @@
             "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md",
             "github.pull.vexlife-prod.338",
             "github.commit.vexlife-prod.146b0d482517201b85990a9d7b0b9ebf04075fd9",
-            "repo.vexlife-prod:docs/foundation/INDEX.md"
+            "repo.vexlife-prod:docs/foundation/INDEX.md",
+            "human.direction.vexlife.new-beginnings.current-ground.20261121",
+            "github.pull.vexlife-prod.497",
+            "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-02T02:28:00.000Z",
-          "updatedAt": "2026-11-20T07:16:00.000Z",
+          "updatedAt": "2026-11-21T16:45:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.new-beginnings.outcome.plan-validated-ready.p0-front-door",
@@ -17662,15 +17701,13 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vexlife.new-beginnings.normal-browser-provider",
-            "work.vexlife.new-beginnings.evolution-live-bridge"
+            "work.vexlife.new-beginnings.normal-browser-provider"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
-            "work.vexlife.new-beginnings.experience-manifestation-parity",
             "work.vexlife.new-beginnings.outcome",
             "work.vexlife.new-beginnings.vision-companion-real-browser-witness"
           ]
@@ -17720,24 +17757,27 @@
         {
           "laneRef": "lane.work.archive",
           "label": "Archive",
-          "workRefs": []
+          "workRefs": [
+            "work.vexlife.new-beginnings.evolution-live-bridge",
+            "work.vexlife.new-beginnings.experience-manifestation-parity"
+          ]
         }
       ],
       "summary": {
         "workItemCount": 22,
-        "openWorkItemCount": 8,
+        "openWorkItemCount": 6,
         "outcomeCount": 1,
         "taskCount": 19,
         "defectCount": 0,
         "potentialCount": 2,
         "needsHumanCount": 0,
-        "completedCount": 14
+        "completedCount": 16
       },
       "rootItems": [
         {
           "workRef": "work.vexlife.new-beginnings.outcome",
           "label": "VexLife New Beginnings",
-          "purpose": "Recompose VexLife in the clean VexLife-Prod container from explicit product intention and compiler-constrained semantic relationships: establish the repository front door, author one portable Kotlin contract/Blueprint language, realize the initial nested-browser + companion UI without pretending backend connectivity, then reconnect Vex through the canonical Conversation with bounded current browser/DOM context and lived proof.",
+          "purpose": "Advance VexLife-Prod as the current VexLife product ground: preserve compiler-constrained semantic relationships, canonical Conversation/Context truth, and current provider/runtime ownership while evolving Product-native capabilities from present source truth. Historical VexLife and VexLife-Android remain provenance only when an exact compatibility or design question requires them; there is no standing parity or bridge-back obligation.",
           "workClass": "OUTCOME",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -17787,14 +17827,17 @@
             "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md",
             "github.pull.vexlife-prod.338",
             "github.commit.vexlife-prod.146b0d482517201b85990a9d7b0b9ebf04075fd9",
-            "repo.vexlife-prod:docs/foundation/INDEX.md"
+            "repo.vexlife-prod:docs/foundation/INDEX.md",
+            "human.direction.vexlife.new-beginnings.current-ground.20261121",
+            "github.pull.vexlife-prod.497",
+            "github.commit.vexlife-prod.27617e4b67753ecc3f3beb22871927210d25820a"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-02T02:28:00.000Z",
-          "updatedAt": "2026-11-20T07:16:00.000Z",
+          "updatedAt": "2026-11-21T16:45:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.new-beginnings.outcome.plan-validated-ready.p0-front-door",
