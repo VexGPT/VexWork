@@ -21,6 +21,7 @@
     "work.full-security.outcome",
     "work.vex-cgm-labs.outcome",
     "work.vex-universe.outcome",
+    "work.vex.localization-architecture.outcome",
     "work.vex.security-assurance.outcome",
     "work.vexarchitecture.public-archive.outcome",
     "work.vexarchitecture.vexboard-sync.20261113.outcome",
@@ -5747,6 +5748,167 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T03:45:00.000Z",
       "updatedAt": "2026-10-24T03:59:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-21T07:20:00.000Z",
+      "workRef": "work.vex.localization-architecture.android-inventory",
+      "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
+      "label": "Prove Android element-to-string localization inventory",
+      "purpose": "Use the existing Android Screen Lens source-reading seam to emit a lossless patient-zero inventory of elementRef -> textRole -> sourceStringRef -> source/default value and reverse sourceStringRef -> element occurrences, without mutating Android source or creating a second Android parser unless current source proves that necessary.",
+      "workClass": "TASK",
+      "state": "READY",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/localization-architecture/ARCHITECTURE.md",
+        "src/core/vexboard-screen-lens-android-adapter.mjs",
+        "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ],
+      "updatedAt": "2026-11-21T07:20:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-21T07:20:00.000Z",
+      "workRef": "work.vex.localization-architecture.duplicate-convergence",
+      "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
+      "label": "Analyze duplicate strings without collapsing semantic identity",
+      "purpose": "Derive value-first candidate groups and cross-Product where-used evidence from the proven inventory, preserving separate source string identities while classifying likely sharing, required separation, format/locale divergence, and human/source-reviewed semantic convergence.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "dependencyRefs": [
+        "work.vex.localization-architecture.android-inventory"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vextreme",
+        "repo.vexlife-prod",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/localization-architecture/ARCHITECTURE.md",
+        "work.vex.localization-architecture.android-inventory"
+      ],
+      "updatedAt": "2026-11-21T07:20:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-21T07:20:00.000Z",
+      "workRef": "work.vex.localization-architecture.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Localization Architecture",
+      "purpose": "Build one source-faithful relational localization architecture across VexBoard and participating Products so stable element/string/locale identities can be reverse-searched and regrouped without making source-language values, generated CSVs, semantic candidate groups, or VexBoard itself a second localization authority; preserve and consume the existing VexSite localization trajectory rather than replacing its scheduler/source ownership.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife-android",
+        "repo.vexlife-prod",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/localization-architecture/README.md",
+        "projects/localization-architecture/ARCHITECTURE.md",
+        "project.vextreme.vexsite-localization",
+        "repo.vextreme:docs/architecture/06-i18n.md",
+        "src/core/experience-graph-localization.mjs",
+        "src/core/vexboard-screen-lens-android-adapter.mjs",
+        "repo.vexlife-android:docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md",
+        "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml",
+        "github.issue.vexwork.138",
+        "github.pull.vexwork.393",
+        "github.pull.vexwork.395"
+      ],
+      "updatedAt": "2026-11-21T07:20:04.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-21T07:20:00.000Z",
+      "workRef": "work.vex.localization-architecture.relational-model",
+      "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
+      "label": "Define the source-faithful relational localization model",
+      "purpose": "Preserve stable element, text-binding, source-string and locale-variant identities; derived candidate/semantic grouping; reverse where-used queries; locale projection; CSV/materialized-view meaning; and source/writeback authority boundaries before implementation hardens around a CMS shape.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife-android",
+        "repo.vexlife-prod",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/localization-architecture/README.md",
+        "projects/localization-architecture/ARCHITECTURE.md",
+        "project.vextreme.vexsite-localization",
+        "repo.vextreme:docs/architecture/06-i18n.md",
+        "src/core/experience-graph-localization.mjs",
+        "github.issue.vexwork.138",
+        "github.pull.vexwork.393",
+        "github.pull.vexwork.395"
+      ],
+      "updatedAt": "2026-11-21T07:20:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-21T07:20:00.000Z",
+      "workRef": "work.vex.localization-architecture.vexboard-workspace",
+      "parentWorkRefOrNull": "work.vex.localization-architecture.outcome",
+      "label": "Project localization through one VexBoard relational workspace",
+      "purpose": "After the inventory/grouping model is earned, expose Element, String, Value, Group, Locale and Coverage pivots plus a locale projection axis through VexBoard without creating per-language Screen Lens pages or taking Product localization source ownership.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "dependencyRefs": [
+        "work.vex.localization-architecture.duplicate-convergence"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/localization-architecture/ARCHITECTURE.md",
+        "work.vex.localization-architecture.duplicate-convergence",
+        "projects/vexboard/SCREEN-LENS.md"
+      ],
+      "updatedAt": "2026-11-21T07:20:04.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
