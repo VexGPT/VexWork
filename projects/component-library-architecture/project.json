@@ -32,7 +32,10 @@
     "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
     "src/shared/vexboard-component-inventory.mjs",
     "scripts/build-component-inventory.mjs",
-    "vexboard/components.html"
+    "vexboard/components.html",
+    "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+    "projects/component-library-architecture/component-architecture-catalog.json",
+    "src/shared/vexboard-component-architecture.mjs"
   ],
   "formedAt": "2026-11-21T08:20:00.000Z"
 }
