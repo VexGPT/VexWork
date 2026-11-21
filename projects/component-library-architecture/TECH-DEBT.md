@@ -217,3 +217,65 @@ live mounted presentation continuity
 != durable Conversation identity
 ```
 
+
+
+## TD-09 — Companion local view selection is not one compiler-visible contract
+
+Observed current VexLife-Prod:
+
+```text
+VexLifeWebP1.CompanionContent
+  children = Conversation, Settings
+
+VexLifeWebP1.CompanionViewSwitch
+  LocalInteraction(Settings)
+
+browser runtime
+  state.view = 'conversation'        // default
+  click viewSwitch
+    conversation <-> settings
+  renderCompanionHead
+    conversation.hidden = settings
+    settings.hidden = !settings
+```
+
+The lived relationship is clear:
+
+```text
+one local presentation region
+-> exactly one selected child
+-> default Conversation
+-> local Settings/Conversation swap
+-> no app-navigation depth
+```
+
+But that relationship is not yet one compiler-visible current Product contract.
+
+Android independently has a typed Swappable/SwapTo relationship. A SwiftUI adapter would naturally
+want an enum/switch or equivalent target-native local selection.
+
+This is **not authorization to refactor the current browser implementation**. The Component Library
+should hold target generation here until the rightful Product source can express:
+
+```text
+container identity
+admitted child identities
+default child
+selected child / local selection input
+swap relationship
+navigation depth = NONE
+```
+
+Permanent:
+
+```text
+LIVED LOCAL SWAP
+!= TARGET ADAPTER PERMISSION TO INFER SOURCE CONTRACT
+
+BROWSER state.view
+!= PORTABLE COMPONENT AUTHORITY
+
+LOCAL PRESENTATION SELECTION
+!= APP NAVIGATION
+```
+
