@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 import {
+  aggregateContainedFaceGraph,
   normalizeScreenLens,
   pathwayForElement,
 } from '../src/shared/vexboard-screen-lens.mjs';
@@ -19,12 +20,21 @@ const source = () => ({
     label: 'Relationship projection',
     placement: 'PRIMARY',
     mapped: 'MAPPED',
-    elements: [{
-      ref: 'element.relationship-projection.timeline',
-      kind: 'STACK',
-      label: 'Timeline',
-      pathwayRef: 'pathway.relationship-projection.history',
-    }],
+    elements: [
+      {
+        ref: 'element.relationship-projection.timeline',
+        kind: 'STACK',
+        label: 'Timeline',
+      },
+      {
+        ref: 'element.relationship-projection.timeline.resource-review',
+        kind: 'BUTTON',
+        label: 'Review resource',
+        parentRef: 'element.relationship-projection.timeline',
+        interactions: ['ACTIVATE'],
+        pathwayRef: 'pathway.relationship-projection.history',
+      },
+    ],
   }],
   pathways: [{
     pathwayRef: 'pathway.relationship-projection.history',
@@ -85,7 +95,7 @@ const source = () => ({
 
 test('read-only relationship projection keeps existing owners visible without inventing Family or Partner semantics', () => {
   const lens = normalizeScreenLens(source());
-  const pathway = pathwayForElement(lens, 'element.relationship-projection.timeline');
+  const pathway = pathwayForElement(lens, 'element.relationship-projection.timeline.resource-review');
 
   assert.equal(pathway.disposition, 'RELATIONSHIP_PROJECTION');
   assert.equal(pathway.returnRef, 'relationship-projection.history.projection');
@@ -93,6 +103,21 @@ test('read-only relationship projection keeps existing owners visible without in
     pathway.nodes.map((node) => node.role),
     ['REALIZATION', 'STORE', 'OBSERVATION', 'PROJECTION'],
   );
+
+  const behavior = aggregateContainedFaceGraph(
+    lens,
+    'element.relationship-projection.timeline',
+    'BEHAVIOR',
+  );
+  const depth = aggregateContainedFaceGraph(
+    lens,
+    'element.relationship-projection.timeline',
+    'DEPTH',
+  );
+  assert.deepEqual(behavior.pathwayRefs, ['pathway.relationship-projection.history']);
+  assert.ok(behavior.nodes.some((node) => node.role === 'PROJECTION'));
+  assert.ok(depth.nodes.some((node) => node.role === 'STORE'));
+  assert.ok(depth.nodes.some((node) => node.role === 'OBSERVATION'));
 });
 
 test('relationship projection fails closed when it claims Family or Partner roles', () => {
