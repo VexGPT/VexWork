@@ -990,7 +990,7 @@ function glyph(name) {
   for (const [tag, attrs] of GLYPHS[name] ?? [['circle', { cx: 12, cy: 12, r: 4 }]]) svg.append(s(tag, attrs));
   return svg;
 }
-const DISPOSITION_NAMES = { SCAE_FAMILY: 'SCAE Family', PARTNER_CIRCUIT: 'Partner circuit', TYPED_PRESENTATION: 'Typed presentation', TYPED_NAVIGATION: 'Typed navigation', DIRECT_REGISTRATION: 'Direct registration' };
+const DISPOSITION_NAMES = { SCAE_FAMILY: 'SCAE Family', PARTNER_CIRCUIT: 'Partner circuit', RELATIONSHIP_PROJECTION: 'Relationship projection', TYPED_PRESENTATION: 'Typed presentation', TYPED_NAVIGATION: 'Typed navigation', DIRECT_REGISTRATION: 'Direct registration' };
 function breakable(value) { const out = []; String(value).split(/(?<=[.(,>_/])/).forEach((part, i) => { if (i) out.push(h('wbr')); out.push(part); }); return out; }
 function chip(role) { const info = Lens.roleFor(role); return h('span', { class: `chip role-${role}`, title: `${info.label} · ${Lens.LENS_BANDS[info.band].label}` }, info.chip); }
 function elementChip(element) { return h('span', { class: `chip role-${element.role}`, title: element.kind.toLowerCase().replace('_', ' ') }, element.kind.replace('_', ' ').toLowerCase()); }
