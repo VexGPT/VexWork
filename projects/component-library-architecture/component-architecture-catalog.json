@@ -399,7 +399,9 @@
         "web keyed list/virtualization",
         "desktop virtualized collections",
         "VexLife-Prod ConversationTimeline: durable messageRef/eventRef identity + ordinary browser list rebuild",
-        "SwiftUI ForEach/List keyed by feature-owned stable item identity"
+        "SwiftUI ForEach/List keyed by feature-owned stable item identity",
+        "VexLife-Prod #506 exact SwiftUI reference: messageRef -> Identifiable.id / ForEach / View.id",
+        "SwiftUI requested-visible / visible-item / scroll-lock relationships remain HELD pending target API proof"
       ],
       "sourceEvidence": [
         {
@@ -443,6 +445,17 @@
             "updateLiveTurn"
           ],
           "why": "Browser realization currently rebuilds ordinary timeline nodes with replaceChildren while separately preserving the mounted live-stream node, exposing real pressure for reusable stable repeated-item mechanics."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "aa48f99634d83941ca9a96c3af96170614658109",
+          "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiStableRepeaterReference.kt",
+          "symbols": [
+            "VexLifeSwiftUiStableRepeaterReference",
+            "VexStableConversationTimeline",
+            "VexConversationTimelineItem"
+          ],
+          "why": "VexLife-Prod PR #506 maps the current ConversationTimeline collection + durable messageRef/eventRef/sequence coordinates into SwiftUI stable item identity while explicitly holding unproved viewport mechanics."
         }
       ],
       "note": "Cross-platform pressure is now real: Android has VexStableLazyColumn; current VexLife-Prod has stable Conversation message identity but ordinary browser renders rebuild the timeline while live streaming requires mounted-node preservation. A portable contract should own stable repeated-item mechanics only, leaving message meaning/order/store with Conversation."
