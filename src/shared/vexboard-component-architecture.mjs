@@ -215,6 +215,13 @@ export function normalizeComponentArchitectureCatalog(input) {
   if (!candidates.length) fail('at least one candidate is required');
   const candidateRefs = candidates.map((row) => row.candidateRef);
   if (new Set(candidateRefs).size !== candidateRefs.length) fail('candidateRef must be unique');
+  for (const candidate of candidates) {
+    const formationAccepted = candidate.formation?.state === 'ACCEPTED';
+    const candidateAccepted = candidate.state === 'ACCEPTED_PORTABLE';
+    if (formationAccepted !== candidateAccepted) {
+      fail(candidate.candidateRef + ' portable acceptance must agree with formation acceptance');
+    }
+  }
 
   const targetPressures = (input.targetPressures ?? []).map(normalizeTargetPressure);
   const pressureRefs = targetPressures.map((row) => row.pressureRef);
