@@ -217,7 +217,7 @@
       "candidateRef": "candidate.component.semantic-control-binding",
       "label": "Semantic control binding",
       "class": "CONTROL",
-      "state": "PORTABLE_CANDIDATE",
+      "state": "ACCEPTED_PORTABLE",
       "question": "How can a visible control bind to stable action meaning while each platform remains free to choose the appropriate native interaction form?",
       "sourceFamilyRefs": [
         "component.source-family.vexlife-android.button",
@@ -301,12 +301,33 @@
             "pathway.vexstream.playback.play-pause"
           ],
           "why": "VexStream projects dozens of stable control identities with source-owned intent refs and bounded pathways independently of VexLife/Android widget classes."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+          "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+          "symbols": [
+            "initializeQuickActions",
+            "configureSourceQuickAction",
+            "configureSourceSupportQuickAction",
+            "renderQuickActions"
+          ],
+          "why": "Current browser manifestation realizes the typed Quick Actions relationships as native glyph buttons/links and local presentation callbacks while Product/source binding identities remain upstream."
+        },
+        {
+          "repositoryRef": "repo.vexlife-prod",
+          "commit": "2209ce038a5a563384155ca03bd1b40614e32b6f",
+          "path": "reference/swiftui/src/test/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReferenceTest.kt",
+          "symbols": [
+            "unknownBindingKindFailsClosedInsteadOfGuessingATargetCallback"
+          ],
+          "why": "SwiftUI reference test source deliberately supplies an unadmitted Capability binding through the rightful VexWebAuthoring boundary and expects deterministic failure rather than callback invention."
         }
       ],
       "note": "The portable contract should say what action/control relationship exists, not which widget class handles it.",
       "formation": {
         "formationRef": "formation.component.semantic-control-binding.a3",
-        "state": "FORMATION",
+        "state": "ACCEPTED",
         "kind": "REUSE_OR_GENERALIZE_EXISTING_TYPED_RELATIONSHIP",
         "sourceOwnerRefs": [
           "repo.vexlife-android",
@@ -339,7 +360,7 @@
           "target manifestation can be traced back to the exact source control and binding target",
           "effect authority remains outside the presentation mapping"
         ],
-        "note": "Buttons, menus, voice actions and other forms may manifest one semantic binding without becoming the binding's meaning."
+        "note": "A3 portable semantic-control binding accepted: current browser Quick Actions and SwiftUI Menu reference preserve the same source binding meanings across materially different forms; Swift generation carries exact binding targets and keeps host callback/effect execution outside generated presentation; an unadmitted binding kind is rejected rather than guessed; VexStream/Android independently demonstrate stable source-owned control intents/pathways outside these target forms. Acceptance covers controlRef + admitted interactionKind + bindingKind + stable bindingTargetRef only. Effect execution, provider success, native callback identity, words/icons and Apple native proof remain outside A3."
       }
     },
     {
@@ -2143,6 +2164,122 @@
         }
       ],
       "note": "This pressure proves the portable law is source containment + explicit target mapping, not literal cross-framework view-tree sameness."
+    },
+    {
+      "pressureRef": "pressure.component.semantic-control-binding.vexlife-prod-browser",
+      "candidateRef": "candidate.component.semantic-control-binding",
+      "platformRef": "platform.browser",
+      "framework": "Browser DOM/JavaScript",
+      "state": "SOURCE_FORMED",
+      "sourceRef": "source.vexlife-prod.main.27617e4b",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "27617e4b67753ecc3f3beb22871927210d25820a",
+      "path": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.control-binding.semantic-target",
+          "disposition": "MAPPED",
+          "source": "VexWeb LocalInteraction / PresentationAction / ExternalNavigation binding",
+          "target": "browser quick-action button/link/local presentation handler"
+        },
+        {
+          "relationRef": "relation.control-binding.presentation-form",
+          "disposition": "MAPPED",
+          "source": "stable control/binding meaning",
+          "target": "glyph button, anchor link, panel trigger or other browser-native control form"
+        },
+        {
+          "relationRef": "relation.control-binding.callback-identity",
+          "disposition": "PLATFORM_SPECIFIC",
+          "source": "semantic binding target remains source-owned",
+          "target": "JavaScript event-listener/function identity is browser realization detail"
+        },
+        {
+          "relationRef": "relation.control-binding.effect-authority",
+          "disposition": "MAPPED",
+          "source": "presentation source projects/dispatches the already-owned relationship",
+          "target": "renderer callbacks do not become a second Product semantic owner"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.vexlife-prod-browser-current-source",
+          "state": "PASS",
+          "note": "Current Product browser artifact source was observed at accepted main and keeps Quick Actions binding coordinates upstream of browser event callbacks."
+        },
+        {
+          "proofRef": "proof.browser-form-divergence",
+          "state": "PASS",
+          "note": "Current browser Quick Actions use buttons/links/panel triggers rather than the SwiftUI Menu structure, providing a materially different presentation form."
+        }
+      ],
+      "note": "Browser manifestation is one target form of the same current Product binding relationships; event listener identity remains implementation detail."
+    },
+    {
+      "pressureRef": "pressure.component.semantic-control-binding.swiftui-quick-actions",
+      "candidateRef": "candidate.component.semantic-control-binding",
+      "platformRef": "platform.ios",
+      "framework": "SwiftUI",
+      "state": "REFERENCE_COMPATIBILITY_PASS",
+      "sourceRef": "github.pr.vexlife-prod.506",
+      "repositoryRef": "repo.vexlife-prod",
+      "commit": "2209ce038a5a563384155ca03bd1b40614e32b6f",
+      "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.control-binding.semantic-target",
+          "disposition": "MAPPED",
+          "source": "LocalInteraction / PresentationAction / ExternalNavigation",
+          "target": "typed VexQuickActionBinding returned per stable action identity"
+        },
+        {
+          "relationRef": "relation.control-binding.presentation-form",
+          "disposition": "MAPPED",
+          "source": "current Quick Actions source bindings",
+          "target": "SwiftUI Menu / Button actions with host dispatch"
+        },
+        {
+          "relationRef": "relation.control-binding.unknown-binding",
+          "disposition": "HELD",
+          "source": "unadmitted Capability or future binding kind",
+          "target": "adapter rejects instead of guessing a Swift callback"
+        },
+        {
+          "relationRef": "relation.control-binding.callback-identity",
+          "disposition": "PLATFORM_SPECIFIC",
+          "source": "semantic binding is source-owned",
+          "target": "onActivate closure identity is target-host detail"
+        },
+        {
+          "relationRef": "relation.control-binding.effect-authority",
+          "disposition": "MAPPED",
+          "source": "binding meaning only",
+          "target": "generated View emits onActivate(action); effect execution stays outside generated presentation"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.swift-binding-carry",
+          "state": "PASS",
+          "note": "Generated source and semantic manifest preserve exact binding targets for current Quick Actions."
+        },
+        {
+          "proofRef": "proof.swift-unknown-binding-negative",
+          "state": "PASS",
+          "note": "Reference test source forms the unknown-binding negative; bounded compatibility kernel PASS rejected an unadmitted Capability binding with IllegalStateException. Harness sha256 2fac6760a1bd19b514d072622bf9b3baaa9a29ce78b06b65f459665d0dd82bae."
+        },
+        {
+          "proofRef": "proof.repository-kotlin-2.4.20",
+          "state": "OWED",
+          "note": "Repository-owned Gradle execution of the updated #506 reference test remains owed."
+        },
+        {
+          "proofRef": "proof.apple-swiftui-sdk",
+          "state": "OWED",
+          "note": "Apple SwiftUI/Xcode native proof remains A4 target evidence."
+        }
+      ],
+      "note": "SwiftUI reference maps the same Product binding meaning into a native Menu form, refuses unadmitted binding kinds, and keeps host callback/effect execution outside generated presentation."
     }
   ]
 }
