@@ -134,7 +134,7 @@
       "label": "Map reusable component pressure across Products",
       "purpose": "Apply the earned component inventory contract to materially different VexLife Prod, VexStream and other admitted Product sources; discover candidate equivalence and platform-specific distinctions from exact relationships rather than visual similarity or shared framework names.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "dependencyRefs": [
         "work.vex.component-library-architecture.android-inventory"
       ],
@@ -152,7 +152,7 @@
         "scripts/build-component-inventory.mjs",
         "test/vexboard-component-inventory.test.mjs"
       ],
-      "updatedAt": "2026-11-21T18:55:00.000Z"
+      "updatedAt": "2026-11-21T19:10:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -166,9 +166,9 @@
       "workRef": "work.vex.component-library-architecture.portable-contract",
       "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
       "label": "Earn the portable component Blueprint contract",
-      "purpose": "From materially different source occurrences and accepted VexLife-Prod compiler pressure, accept the smallest portable component relationships that survive target changes; use Kotlin sealed/typed authoring where it strengthens relationship contracts, compile to a normalized portable IR, and preserve PORTABLE / PLATFORM_SPECIFIC / CANDIDATE / HELD / UNSUPPORTED dispositions without making Kotlin/Compose the semantic owner.",
+      "purpose": "Form the smallest source-addressed portable relationship contracts that survive materially different Products and target pressure; compose rightful Product-owned meaning, use Kotlin sealed/typed authoring where compiler constraints are earned, and preserve MAPPED / PLATFORM_SPECIFIC / CANDIDATE / HELD / UNSUPPORTED dispositions without making Kotlin, VexWork, the SDK, Compose or one Product the universal semantic owner.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "dependencyRefs": [
         "work.vex.component-library-architecture.android-inventory",
         "work.vex.component-library-architecture.cross-product-census"
@@ -186,9 +186,12 @@
         "work.vex.component-library-architecture.cross-product-census",
         "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
         "projects/component-library-architecture/component-architecture-catalog.json",
-        "github.pr.vexlife-prod.506"
+        "github.pr.vexlife-prod.506",
+        "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+        "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+        "projects/component-library-architecture/inventory/vexstream-music.main.components.json"
       ],
-      "updatedAt": "2026-11-21T18:05:00.000Z"
+      "updatedAt": "2026-11-21T19:10:02.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -369,6 +372,52 @@
         "github.pr.vexlife-prod.506"
       ],
       "createdAt": "2026-11-21T18:35:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.component-library-architecture.cross-product-census.verifying-20261121",
+      "workRef": "work.vex.component-library-architecture.cross-product-census",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A2 discovery is formed: every current VexBoard Lens subject now materializes through one component inventory contract; Android, current VexLife-Prod and materially different VexStream source pressure are bound; target-pressure mappings and exact held source gaps are explicit. Hold completion for executable/review proof rather than continuing open-ended Product archaeology.",
+      "actorRef": "actor.vexgpt.component-library",
+      "sourceRefs": [
+        "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+        "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+        "projects/component-library-architecture/inventory/vexstream-music.main.components.json",
+        "projects/component-library-architecture/component-architecture-catalog.json",
+        "projects/component-library-architecture/TECH-DEBT.md"
+      ],
+      "createdAt": "2026-11-21T19:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.component-library-architecture.portable-contract.ready-20261121",
+      "workRef": "work.vex.component-library-architecture.portable-contract",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "A1 and A2 have formed source and are independently VERIFYING. A3 formation is read-only architecture/source-owner work and can consume those exact formed artifacts without claiming their verification complete or accepting a portable contract.",
+      "actorRef": "actor.vexgpt.component-library",
+      "sourceRefs": [
+        "projects/component-library-architecture/component-architecture-catalog.json",
+        "projects/component-library-architecture/KOTLIN-BLUEPRINT.md"
+      ],
+      "createdAt": "2026-11-21T19:10:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.component-library-architecture.portable-contract.running-formation-20261121",
+      "workRef": "work.vex.component-library-architecture.portable-contract",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin portable relationship-contract formation only. Product repositories retain Product meaning; reusable construction/mapping/proof machinery may descend to the existing SDK owner only when an executable invariant is actually earned. No SDK/Product mutation or portable acceptance is implied.",
+      "actorRef": "actor.vexgpt.component-library",
+      "sourceRefs": [
+        "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+        "projects/component-library-architecture/ARCHITECTURE.md",
+        "github.pr.vexlife-prod.506"
+      ],
+      "createdAt": "2026-11-21T19:10:02.000Z"
     }
   ],
   "sourceRefs": [
