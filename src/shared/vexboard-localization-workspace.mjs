@@ -94,6 +94,7 @@ function strings(inventories) {
       screenRefs: Object.freeze([...row.screenRefs]),
       surfaceRefs: Object.freeze([...row.surfaceRefs]),
       bindingRoles: Object.freeze([...row.bindingRoles]),
+      localeVariants: Object.freeze({ ...(row.localeVariants ?? {}) }),
       localeRefs: Object.freeze(uniqueSorted([inventory.sourceLocale, ...Object.keys(row.localeVariants ?? {})])),
       firstOccurrenceOrNull: firstOccurrence ? Object.freeze({
         occurrenceRef: firstOccurrence.occurrenceRef,
@@ -373,19 +374,36 @@ function searchTokens(value) {
   return normalizeSearchText(value).match(/[\p{L}\p{N}]+/gu) ?? [];
 }
 
-function localizationWorkspaceSearchValues(row, pivot) {
-  return LOCALIZATION_WORKSPACE_SEARCH_FIELDS[pivot]
-    .flatMap((field) => Array.isArray(row[field]) ? row[field] : [row[field]])
-    .filter((value) => value !== null && value !== undefined);
+export function localizationWorkspaceStringValue(row, localeRef) {
+  if (!row || typeof row !== 'object' || typeof row.sourceStringRef !== 'string') fail('string row required');
+  const locale = normalizeLocalizationLocaleRef(localeRef);
+  if (locale === row.sourceLocale) {
+    return Object.freeze({ localeRef: locale, state: 'SOURCE', value: row.sourceValue });
+  }
+  if (Object.hasOwn(row.localeVariants ?? {}, locale)) {
+    return Object.freeze({ localeRef: locale, state: 'VARIANT', value: row.localeVariants[locale] });
+  }
+  return Object.freeze({ localeRef: locale, state: 'MISSING', value: null });
 }
 
-function localizationWorkspaceSearchScore(row, pivot, query) {
+function localizationWorkspaceSearchValues(row, pivot, valueLocaleRef = null) {
+  const values = LOCALIZATION_WORKSPACE_SEARCH_FIELDS[pivot]
+    .flatMap((field) => Array.isArray(row[field]) ? row[field] : [row[field]])
+    .filter((value) => value !== null && value !== undefined);
+  if (pivot === 'STRINGS' && valueLocaleRef) {
+    const localized = localizationWorkspaceStringValue(row, valueLocaleRef);
+    if (localized.value !== null) values.push(localized.value);
+  }
+  return values;
+}
+
+function localizationWorkspaceSearchScore(row, pivot, query, valueLocaleRef = null) {
   const normalizedQuery = normalizeSearchText(query).trim();
   if (!normalizedQuery) return 0;
   const terms = [...new Set(searchTokens(query))];
   if (!terms.length) return null;
 
-  const fields = localizationWorkspaceSearchValues(row, pivot).map((value) => ({
+  const fields = localizationWorkspaceSearchValues(row, pivot, valueLocaleRef).map((value) => ({
     normalized: normalizeSearchText(value),
     tokens: searchTokens(value),
   }));
@@ -408,6 +426,7 @@ export function filterLocalizationWorkspaceRows(projection, pivot, {
   query = '',
   subjectRef = null,
   localeRef = null,
+  valueLocaleRef = null,
   limit = 500,
 } = {}) {
   if (!Number.isInteger(limit) || limit < 1 || limit > 5000) fail('limit must be an integer from 1 to 5000');
@@ -415,6 +434,7 @@ export function filterLocalizationWorkspaceRows(projection, pivot, {
   const queryText = String(query ?? '').trim();
   const subject = subjectRef === null ? null : String(subjectRef);
   const locale = localeRef === null ? null : normalizeLocalizationLocaleRef(localeRef);
+  const valueLocale = valueLocaleRef === null ? null : normalizeLocalizationLocaleRef(valueLocaleRef);
   const workTargetPivots = new Set(['ELEMENTS', 'STRINGS', 'VALUES', 'GROUPS']);
   const matches = [];
 
@@ -422,7 +442,7 @@ export function filterLocalizationWorkspaceRows(projection, pivot, {
     if (subject && !rowSubjectRefs(row).includes(subject)) return;
     const localeIsWorkTarget = locale && projection.workLocaleRefs.includes(locale);
     if (locale && !(localeIsWorkTarget && workTargetPivots.has(pivot)) && !rowLocaleRefs(row).includes(locale)) return;
-    const searchScore = localizationWorkspaceSearchScore(row, pivot, queryText);
+    const searchScore = localizationWorkspaceSearchScore(row, pivot, queryText, valueLocale);
     if (searchScore === null) return;
     matches.push({ row, index, searchScore });
   });

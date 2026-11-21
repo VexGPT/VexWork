@@ -6,6 +6,7 @@ import {
   LOCALIZATION_WORKSPACE_PIVOTS,
   LOCALIZATION_WORKSPACE_SCHEMA,
   filterLocalizationWorkspaceRows,
+  localizationWorkspaceStringValue,
   projectLocalizationWorkspace,
 } from '../src/shared/vexboard-localization-workspace.mjs';
 import { analyzeLocalizationConvergence } from '../src/shared/vexboard-localization-convergence.mjs';
@@ -244,6 +245,65 @@ test('workspace search is case/diacritic tolerant, punctuation-aware, and ranks 
   assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: 'conversacion' }).length, 1);
   assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: '再生' }).length, 1);
   assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: '---' }).length, 0);
+});
+
+
+test('STRINGS can compare one selected locale beside source truth without rewriting source identity', () => {
+  const projection = projectLocalizationWorkspace({ inventories: [android, prod] });
+  const rawLocalized = prod.strings.find((row) => (
+    row.localeVariants?.es
+    && row.localeVariants?.ja
+    && row.localeVariants.es !== row.sourceValue
+    && row.localeVariants.es !== row.localeVariants.ja
+  ));
+  assert.ok(rawLocalized, 'Product fixture must contain at least one distinct Spanish/Japanese variant');
+
+  const row = projection.strings.find((candidate) => candidate.sourceStringRef === rawLocalized.sourceStringRef);
+  assert.ok(row);
+  assert.equal(row.sourceValue, rawLocalized.sourceValue);
+  assert.deepEqual(row.localeVariants, rawLocalized.localeVariants);
+
+  const spanish = localizationWorkspaceStringValue(row, 'es');
+  assert.equal(spanish.state, 'VARIANT');
+  assert.equal(spanish.value, rawLocalized.localeVariants.es);
+
+  const source = localizationWorkspaceStringValue(row, row.sourceLocale);
+  assert.equal(source.state, 'SOURCE');
+  assert.equal(source.value, row.sourceValue);
+
+  const androidOnly = projection.strings.find((candidate) => candidate.subjectRef === 'subject.vexlife-android');
+  const missingSpanish = localizationWorkspaceStringValue(androidOnly, 'es');
+  assert.equal(missingSpanish.state, 'MISSING');
+  assert.equal(missingSpanish.value, null, 'missing locale must not fall back to the source value');
+});
+
+test('STRINGS search includes only the currently visible comparison locale value', () => {
+  const projection = projectLocalizationWorkspace({ inventories: [android, prod] });
+  const rawLocalized = prod.strings.find((row) => (
+    row.localeVariants?.es
+    && row.localeVariants?.ja
+    && row.localeVariants.es !== row.sourceValue
+    && row.localeVariants.es !== row.localeVariants.ja
+  ));
+  assert.ok(rawLocalized);
+
+  const spanishSearch = filterLocalizationWorkspaceRows(projection, 'STRINGS', {
+    subjectRef: 'subject.vexlife-prod',
+    valueLocaleRef: 'es',
+    query: rawLocalized.localeVariants.es,
+  });
+  assert.equal(spanishSearch.some((row) => row.sourceStringRef === rawLocalized.sourceStringRef), true);
+
+  const japaneseSearch = filterLocalizationWorkspaceRows(projection, 'STRINGS', {
+    subjectRef: 'subject.vexlife-prod',
+    valueLocaleRef: 'ja',
+    query: rawLocalized.localeVariants.es,
+  });
+  assert.equal(
+    japaneseSearch.some((row) => row.sourceStringRef === rawLocalized.sourceStringRef),
+    false,
+    'a hidden Spanish value must not remain searchable while Japanese is the visible comparison locale',
+  );
 });
 
 test('workspace rejects duplicate current inventories for one subject', () => {

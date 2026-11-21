@@ -57,6 +57,17 @@ test('workspace search copy follows the active pivot and distinguishes totals fr
   assert.match(workspace, /matchSummary\(rows\)/);
 });
 
+
+test('STRINGS keeps source value anchored and adds one switchable locale-value comparison column', () => {
+  assert.match(workspace, /Translation/);
+  assert.match(workspace, /aria-label': 'Translation language'/);
+  assert.match(workspace, /valueLocale/);
+  assert.match(workspace, /localizationWorkspaceStringValue/);
+  assert.match(workspace, /Not observed/);
+  assert.match(workspace, /lang: state\.valueLocaleRef/);
+  assert.match(workspace, /valueLocaleRef: state\.valueLocaleRef/);
+});
+
 test('global workspace links rows back into the existing Screen Lens selection/localization path', () => {
   assert.match(workspace, /target\.searchParams\.set\('localization', '1'\)/);
   assert.match(workspace, /target\.searchParams\.set\('string', sourceStringRef\)/);
