@@ -347,8 +347,13 @@ Local Selection
   defaultRef
     explicit initial/default child
 
-  exhaustive
-    whether the declared choices cover the owner's full admitted child set
+  choiceCoverage
+    EXHAUSTIVE
+    BOUNDED
+    UNKNOWN
+
+    whether source truth proves the declared choices cover the admitted child set;
+    UNKNOWN remains unknown rather than being inferred
 
   choices[]
     targetRef
@@ -383,8 +388,9 @@ ONE CHILD
 MAY HAVE
 MULTIPLE SELECTORS
 
-EXHAUSTIVE SELECTION
-!= PARTIAL / BOUNDED SELECTION
+EXHAUSTIVE COVERAGE
+!= BOUNDED COVERAGE
+!= UNKNOWN COVERAGE
 
 GATE
 != CHILD SELECTION
@@ -402,6 +408,38 @@ swapTo(container, child)
   -> validates local peer selection
   -> no Screen navigation / Back depth
 ```
+
+### Android current-selection pressure
+
+Android also confirms that **current selection itself is a typed relationship**, not merely a
+render-branch convention:
+
+```text
+SwappableContainerElement
+  defaultChild
+
+runtime.presentation.selected(container)
+  -> current selected child
+
+SwapTo(container, child)
+  -> validated local mutation
+```
+
+What Android does **not** author is a separate coverage-completeness flag equivalent to VexStream's
+`exhaustive`.
+
+Therefore:
+
+```text
+ANDROID DIRECT CHILD SET
+!= AUTOMATIC EXHAUSTIVE CLAIM
+
+normalized choiceCoverage
+  Android   -> UNKNOWN unless stronger source evidence exists
+  VexStream -> EXHAUSTIVE / BOUNDED from source exporter
+```
+
+This keeps the portable contract smaller and more truthful.
 
 ### VexStream pressure
 
@@ -475,7 +513,7 @@ If this survives the rest of A2, a future typed Kotlin form may look conceptuall
 sealed interface LocalSelection<Choice : StableRef> {
     val subjectRef: ElementRef
     val defaultRef: Choice
-    val exhaustive: Boolean
+    val choiceCoverage: ChoiceCoverage
     val choices: List<SelectionChoice<Choice>>
 }
 
