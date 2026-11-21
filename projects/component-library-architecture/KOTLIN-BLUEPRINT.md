@@ -397,6 +397,100 @@ That is **illustrative**, not accepted source API.
 The important thing is that a future compiler would consume an already-owned selection relationship.
 It would not infer one from hidden/visible DOM state, Compose branches, or SwiftUI view conditionals.
 
+## Emerging cross-Product relationship — local navigation
+
+A2 also has two independent Product witnesses for navigation that happens **inside one already-selected
+Screen/surface**.
+
+### Android
+
+```text
+NavigationTrail<T>
+  root
+  path
+  current
+  depth
+  canGoBack
+  push(destination)
+  goBack() -> false at root
+
+NavigationDirection
+  Forward / Backward
+  changes with the same mutation that changes path
+```
+
+The explicit law is:
+
+```text
+LOCAL TRAIL
+!= APP SCREEN NAVIGATION
+
+BACK AT LOCAL ROOT
+-> YIELD TO OUTER BACK OWNER
+```
+
+### VexStream
+
+Playlists independently owns:
+
+```text
+overview
+-> open(playlistID)
+-> detail
+
+detail
+-> close()
+-> overview
+
+reconcile(current playlist IDs)
+-> selected playlist disappeared
+-> return to overview
+```
+
+That adds a law Android's generic trail did not need to express:
+
+```text
+LOCAL TARGET IDENTITY MAY DEPEND ON DURABLE FEATURE DATA
+
+TARGET DISAPPEARS
+-> RECONCILE LOCAL LOCATION
+
+DO NOT
+-> keep a dead detail route
+```
+
+### Candidate shape
+
+A future portable contract may therefore need enough meaning to represent:
+
+```text
+LocalNavigation
+  scopeRef
+  rootRef
+  currentRef / current target
+  local depth or path
+  canGoBack
+  push/open
+  back/close
+  outer-back fallthrough
+  optional target reconciliation
+  optional direction projection
+```
+
+It must **not** automatically own:
+
+- primary app navigation;
+- durable feature data;
+- process-death restoration;
+- transition animation technology.
+
+A target may realize this through Compose `AnimatedContent`, SwiftUI `NavigationStack`, a local
+conditional/detail surface, or another native structure. Those manifestations are downstream of the
+local-location relationship.
+
+This remains an A2 candidate because no second native target has yet proved which of path/depth,
+detail identity, direction and reconciliation belong in the smallest portable contract.
+
 ## Semantic action binding is not native event wiring
 
 A portable control should bind to stable semantic meaning, not to a framework callback body.
