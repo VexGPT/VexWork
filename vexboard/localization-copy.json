@@ -19,7 +19,7 @@
     "localization.appShell": "App shell",
     "localization.openLocation": "Open location",
     "localization.previewLocale": "Preview locale",
-    "localization.previewLocaleHelp": "Inspection only. This does not change Product language or claim the Product supports this locale.",
+    "localization.previewLocaleHelp": "Read-only Lens preview. It reprojects Product-authored localized bindings here; it does not change Product language or saved settings.",
     "localization.observedLocales": "Observed in source",
     "localization.localeSource": "Source value",
     "localization.localeVariant": "Observed locale value",
