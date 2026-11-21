@@ -562,7 +562,7 @@
           "many-to-one selector mapping and bounded/non-exhaustive choice sets survive round-trip projection",
           "invalid default/target/selector relationships fail closed"
         ],
-        "note": "Android proves typed default/current local selection through SwappableContainerElement + runtime.presentation.selected(container), but does not author a coverage-completeness flag. VexStream explicitly projects exhaustive true/false. The portable formation therefore carries EXHAUSTIVE / BOUNDED / UNKNOWN choiceCoverage rather than inferring a Boolean."
+        "note": "Cross-Product core is now explicit: stable subject, admitted child targets, default/current local selection and selector-to-target binding recur across Android/VexStream. Choice coverage is EXHAUSTIVE / BOUNDED / UNKNOWN; VexLife-Prod SwiftUI remains HELD until Product source owns its default/current selection contract."
       }
     },
     {
@@ -769,7 +769,7 @@
           "caller-owned order remains unchanged by the adapter",
           "optional visibility/scroll relationships have explicit target dispositions"
         ],
-        "note": "Android VexStableLazyColumn and current VexLife-Prod Conversation identity plus SwiftUI ForEach pressure earn formation of a shared repeated-item contract, not ownership of Conversation rows."
+        "note": "Cross-target intersection is now explicit: Android + SwiftUI both preserve collection identity, feature-owned item identity, duplicate-ref failure and caller-owned order. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions rather than mandatory portable fields."
       }
     },
     {
