@@ -137,7 +137,30 @@ On execution, canonical RETURN custody is published under:
 .relay/vexwork-pr403/a002/return/
 ```
 
-On PASS: consume exact RETURN -> fresh Independent Assurance on exact head `544d18d9...`.
+A004 PASS has now been consumed.
+
+```text
+outer RETURN sha256 d74dbc5db4949ee31b20d2fa3f67e5ccbb0d0a8b872475e712215591febaad8c
+inner RETURN sha256 a58e7480aefd4ef8518f3a84795d935cb5c8951fe90af9d266747abca7693728
+
+SourceOwner       PASS
+Assurance         CLEAR_ON_EXACT_HEAD
+Lifecycle current PASS
+```
+
+The Assurance disposition is PR #403 review 6004377971, explicitly disclosed as same-conversation role re-grounding over a fresh hosted GitHub read surface.
+
+Current held effect is integration ordering only:
+
+```text
+PR403 A1
+  waits for stacked PR399 A0 integration
+
+!= candidate defect
+!= proof replay
+```
+
+Issue #400 / `relay/vexwork-pr399-source-owner-a004` owns the one remaining exact A0 SourceOwner edge.
 
 ## Product trajectory after A1
 
