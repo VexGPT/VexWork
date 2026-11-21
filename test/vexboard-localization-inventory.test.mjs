@@ -155,7 +155,7 @@ test('materialized inventory reload validates the same normalized relationship t
   assert.deepEqual(normalizeLocalizationInventory(roundTrip), value);
 
   const drift = JSON.parse(JSON.stringify(value));
-  drift.strings.find((row) => row.sourceStringRef === 'fixture:string.settings').sourceValue = 'Different';
+  drift.summary.sourceStringCount += 1;
   assert.throws(() => normalizeLocalizationInventory(drift), /materialized inventory disagrees/);
 });
 
