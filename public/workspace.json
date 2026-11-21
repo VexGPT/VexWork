@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 36,
+  "projectRegistryVersion": 37,
   "projects": [
     {
       "project": {
@@ -30190,6 +30190,500 @@
               "createdAt": "2026-11-21T17:05:49.003Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vex.component-library-architecture",
+        "label": "Component Library Architecture",
+        "purpose": "Build one cross-Product reusable component inventory, portable component Blueprint layer, target-realization map and human Gallery so accepted UI/infrastructure relationships can be discovered, reverse-searched and reconstructed across code languages/frameworks without repeatedly re-reading historical Product implementations or mistaking one source language for canonical meaning.",
+        "rootWorkRefs": [
+          "work.vex.component-library-architecture.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android",
+          "repo.vexlife-prod",
+          "repo.vexstream-music",
+          "repo.vextreme",
+          "repo.vexlife",
+          "repo.vexlife-construction-reference"
+        ],
+        "sourceRefs": [
+          "projects/component-library-architecture/README.md",
+          "projects/component-library-architecture/ARCHITECTURE.md",
+          "project.vex.localization-architecture",
+          "project.vexlife.blueprint-source-of-truth",
+          "project.android-widget-foundation",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/GalleryScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/elements/ElementsGallery.kt",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistry.kt",
+          "projects/vexboard/SCREEN-LENS.md",
+          "github.issue.vexwork.330",
+          "projects/component-library-architecture/TECH-DEBT.md",
+          "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+          "src/shared/vexboard-component-inventory.mjs",
+          "scripts/build-component-inventory.mjs",
+          "vexboard/components.html"
+        ],
+        "formedAt": "2026-11-21T08:20:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vex.component-library-architecture.board",
+      "items": [
+        {
+          "workRef": "work.vex.component-library-architecture.android-inventory",
+          "label": "Inventory Android Gallery and reusable component occurrences",
+          "purpose": "Use current VexLife Android Gallery, element registry, cell/rendering infrastructure and Screen Lens relationships to emit a lossless first component inventory with where-used, slots/children, styles, localization/accessibility bindings and typed interaction relationships, without inventing a second Android component taxonomy.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/GalleryScreen.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/elements/ElementsGallery.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistry.kt",
+            "projects/vexboard/SCREEN-LENS.md",
+            "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+            "src/shared/vexboard-component-inventory.mjs",
+            "scripts/build-component-inventory.mjs",
+            "test/vexboard-component-inventory.test.mjs",
+            "projects/component-library-architecture/TECH-DEBT.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T17:31:46.448Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.component-library-architecture.construction-packs",
+          "label": "Produce target-bound construction/reference packs where mappings are proven",
+          "purpose": "Allow accepted portable components to emit deterministic target-bound Blueprint/mapping/reference artifacts and proof expectations so new construction can reuse established patterns without rereading historical implementation source; keep generated source subordinate to portable meaning and native/parity proof.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.component-library-architecture.target-realizations",
+            "work.vex.component-library-architecture.gallery"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "project.vexlife.blueprint-source-of-truth",
+            "work.vex.component-library-architecture.target-realizations",
+            "work.vex.component-library-architecture.gallery"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T08:20:07.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.component-library-architecture.cross-product-census",
+          "label": "Map reusable component pressure across Products",
+          "purpose": "Apply the earned component inventory contract to materially different VexLife Prod, VexStream and other admitted Product sources; discover candidate equivalence and platform-specific distinctions from exact relationships rather than visual similarity or shared framework names.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.component-library-architecture.android-inventory"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod",
+            "repo.vexstream-music"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "work.vex.component-library-architecture.android-inventory"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T08:20:03.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.component-library-architecture.gallery",
+          "label": "Build the Component Library / Gallery workspace",
+          "purpose": "Expose a projectable human Gallery over the proven component inventory with progressive disclosure for components, variants/states, target realizations, where-used, localization/accessibility bindings, source/proof and copyable construction briefs while remaining a read/projection surface rather than component source authority.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.component-library-architecture.android-inventory",
+            "work.vex.component-library-architecture.portable-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "work.vex.component-library-architecture.android-inventory",
+            "work.vex.component-library-architecture.portable-contract",
+            "projects/vexboard/SCREEN-LENS.md",
+            "vexboard/components.html",
+            "projects/component-library-architecture/inventory/vexlife-android.main.components.json"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T17:31:46.448Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.component-library-architecture.model",
+          "label": "Define portable component and target-realization architecture",
+          "purpose": "Preserve the distinction between source component/occurrence, derived candidate grouping, accepted portable component Blueprint, target realization, where-used and proof; consume the accepted Blueprint Source-of-Truth portability laws and Localization Architecture's relational/pivot lessons without collapsing strings, components, code, or platform meaning.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod",
+            "repo.vexstream-music",
+            "repo.vextreme",
+            "repo.vexlife",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/README.md",
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "project.vexlife.blueprint-source-of-truth",
+            "project.vex.localization-architecture"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T08:20:01.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.component-library-architecture.outcome",
+          "label": "Component Library Architecture",
+          "purpose": "Build one cross-Product reusable component inventory, portable component Blueprint layer, target-realization map and human Gallery so accepted UI/infrastructure relationships can be discovered, reverse-searched and reconstructed across code languages/frameworks without repeatedly re-reading historical Product implementations or mistaking one source language for canonical meaning.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex.component-library-architecture.android-inventory",
+            "work.vex.component-library-architecture.construction-packs",
+            "work.vex.component-library-architecture.cross-product-census",
+            "work.vex.component-library-architecture.gallery",
+            "work.vex.component-library-architecture.model",
+            "work.vex.component-library-architecture.portable-contract",
+            "work.vex.component-library-architecture.self-projection",
+            "work.vex.component-library-architecture.target-realizations"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod",
+            "repo.vexstream-music",
+            "repo.vextreme",
+            "repo.vexlife",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/README.md",
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "project.vex.localization-architecture",
+            "project.vexlife.blueprint-source-of-truth",
+            "project.android-widget-foundation",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/GalleryScreen.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/elements/ElementsGallery.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistry.kt",
+            "projects/vexboard/SCREEN-LENS.md",
+            "github.issue.vexwork.330",
+            "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+            "src/shared/vexboard-component-inventory.mjs",
+            "vexboard/components.html",
+            "projects/component-library-architecture/TECH-DEBT.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T17:31:46.448Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.component-library-architecture.portable-contract",
+          "label": "Earn the portable component Blueprint contract",
+          "purpose": "From materially different source occurrences, accept only the smallest language/framework-neutral component relationships that survive target changes, preserving PORTABLE / PLATFORM_SPECIFIC / CANDIDATE / HELD / UNSUPPORTED dispositions and refusing universal components where source evidence does not support them.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.component-library-architecture.android-inventory",
+            "work.vex.component-library-architecture.cross-product-census"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod",
+            "repo.vexstream-music",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "project.vexlife.blueprint-source-of-truth",
+            "work.vex.component-library-architecture.cross-product-census"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T08:20:04.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.component-library-architecture.self-projection",
+          "label": "Dogfood the Component Library through its own components and projection",
+          "purpose": "Make the Gallery/Library a first-class Vextreme Product whose own Screens/Elements/localization/component occurrences are projected through Screen Lens and the Component Library itself, proving no privileged admin exception and exposing its own where-used relationships.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.component-library-architecture.gallery"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "work.vex.component-library-architecture.gallery",
+            "project.vex.localization-architecture"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T08:20:08.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.component-library-architecture.target-realizations",
+          "label": "Map target-language and framework realizations",
+          "purpose": "Bind accepted portable component Blueprints to target-native realization mappings and proof for Android/Compose, Web/HTML+CSS+JS, SwiftUI, C#/.NET or other earned targets without treating source-to-source translation or compiler success as semantic parity.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.component-library-architecture.portable-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod",
+            "repo.vexstream-music",
+            "repo.vexlife",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "project.vexlife.blueprint-source-of-truth",
+            "work.vex.component-library-architecture.portable-contract"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T08:20:05.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vex.component-library-architecture.construction-packs",
+            "work.vex.component-library-architecture.cross-product-census",
+            "work.vex.component-library-architecture.gallery",
+            "work.vex.component-library-architecture.portable-contract",
+            "work.vex.component-library-architecture.self-projection",
+            "work.vex.component-library-architecture.target-realizations"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vex.component-library-architecture.android-inventory",
+            "work.vex.component-library-architecture.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vex.component-library-architecture.model"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 9,
+        "openWorkItemCount": 8,
+        "outcomeCount": 1,
+        "taskCount": 8,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 1
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vex.component-library-architecture.outcome",
+          "label": "Component Library Architecture",
+          "purpose": "Build one cross-Product reusable component inventory, portable component Blueprint layer, target-realization map and human Gallery so accepted UI/infrastructure relationships can be discovered, reverse-searched and reconstructed across code languages/frameworks without repeatedly re-reading historical Product implementations or mistaking one source language for canonical meaning.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex.component-library-architecture.android-inventory",
+            "work.vex.component-library-architecture.construction-packs",
+            "work.vex.component-library-architecture.cross-product-census",
+            "work.vex.component-library-architecture.gallery",
+            "work.vex.component-library-architecture.model",
+            "work.vex.component-library-architecture.portable-contract",
+            "work.vex.component-library-architecture.self-projection",
+            "work.vex.component-library-architecture.target-realizations"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod",
+            "repo.vexstream-music",
+            "repo.vextreme",
+            "repo.vexlife",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/component-library-architecture/README.md",
+            "projects/component-library-architecture/ARCHITECTURE.md",
+            "project.vex.localization-architecture",
+            "project.vexlife.blueprint-source-of-truth",
+            "project.android-widget-foundation",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/GalleryScreen.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/elements/ElementsGallery.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistry.kt",
+            "projects/vexboard/SCREEN-LENS.md",
+            "github.issue.vexwork.330",
+            "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+            "src/shared/vexboard-component-inventory.mjs",
+            "vexboard/components.html",
+            "projects/component-library-architecture/TECH-DEBT.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-21T08:20:00.000Z",
+          "updatedAt": "2026-11-21T17:31:46.448Z",
+          "transitionHistory": []
         }
       ]
     }
