@@ -379,6 +379,43 @@ Local Selection — portable core
 This is intentionally the **intersection of proven relationships plus explicit target differences**,
 not a union of everything one framework can do.
 
+### First accepted portable relationship — Frame / Seam / Region
+
+A3 now has one accepted portable relationship:
+
+```text
+Frame / Seam / Region / Allocation
+state = ACCEPTED_PORTABLE
+formation.state = ACCEPTED
+```
+
+Acceptance is intentionally narrower than target realization:
+
+```text
+accepted portable relationship
+  frame identity
+  typed axis/boundary relationships
+  region bounds
+  relationship allocation
+  source-owned depth where present
+  fail-closed spatial validation
+
+!= Apple SwiftUI native acceptance
+!= universal resize/collapse realization
+!= generic SwiftUI irregular-geometry implementation
+```
+
+The five formation predicates are satisfied by current evidence:
+
+1. VexStream proves the zero-Seam / one-Region case through the same grammar;
+2. VexLife-Prod #506 maps current full-span ratio Seams to SwiftUI without authored target pixels;
+3. partial/multi-Seam SwiftUI geometry and seam interaction remain explicitly HELD;
+4. accepted VexLife-Prod spatial tests reject cycles and invalid Seam/Region coverage;
+5. accepted VexWeb artifact tests preserve Frame/Seam/Region source boundaries in the target semantic manifest.
+
+A4 still owns native target acceptance and proof.
+
+
 Frame / Seam / Region pressure now spans two materially different target shapes:
 
 ```text
@@ -644,8 +681,30 @@ repository-owned execution runs.
 
 ## Current next edge
 
-`work.vex.component-library-architecture.android-inventory`
+`work.vex.component-library-architecture.portable-contract`
 
-Close the repository-owned executable proof floor for the formed A1 inventory/materialization + Component Gallery route against the exact Android Main Lens, then move the cross-Product census forward. Do not refactor Android production components from this lane; keep discovered cleanup in TECH-DEBT.md until a later source-owning refactor is admitted.
+A3 is the foreground trajectory.
 
-<!-- [VXG RealForever][VEXWORK][COMPONENT-LIBRARY-ARCHITECTURE] -->
+```text
+ACCEPTED
+  Frame / Seam / Region
+
+FORMATION
+  Stable Repeated Items
+  Local Selection
+  identity / containment / control-binding reuse/generalization
+
+HELD / evidence
+  Modal
+  Local Navigation Trail
+  Anchored Overlay
+  Context Dock
+  Action Vessel / adaptive-action convergence
+```
+
+Continue by closing the smallest real acceptance predicates rather than expanding the taxonomy.
+Stable Repeated Items is waiting on VexLife-Android #261 repository-owned Gradle execution for its
+second-target insert/remove proof. Local Selection remains held from current VexLife-Prod SwiftUI
+generation until Product source owns its default/current selection relationship. Production refactors
+remain outside this lane.
+
