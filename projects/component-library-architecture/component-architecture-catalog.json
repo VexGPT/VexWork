@@ -1478,6 +1478,209 @@
         }
       ],
       "note": "Do not generate SwiftUI from browser state.view. Form or bind the current Product selection contract first."
+    },
+    {
+      "pressureRef": "pressure.component.stable-repeater.android-compose",
+      "candidateRef": "candidate.component.stable-repeater",
+      "platformRef": "platform.android",
+      "framework": "Jetpack Compose",
+      "state": "SOURCE_FORMED",
+      "sourceRef": "source.vexlife-android.main.d857a923",
+      "repositoryRef": "repo.vexlife-android",
+      "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+      "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.stable-repeater.item-identity",
+          "disposition": "MAPPED",
+          "source": "caller-supplied stable itemRef",
+          "target": "LazyColumn key(itemRef)"
+        },
+        {
+          "relationRef": "relation.stable-repeater.collection-identity",
+          "disposition": "MAPPED",
+          "source": "listRef",
+          "target": "stable list/test/projection identity"
+        },
+        {
+          "relationRef": "relation.stable-repeater.duplicate-failure",
+          "disposition": "MAPPED",
+          "source": "stable item refs must be nonblank/unique",
+          "target": "source validation fails before rendering"
+        },
+        {
+          "relationRef": "relation.stable-repeater.caller-order",
+          "disposition": "MAPPED",
+          "source": "caller item sequence",
+          "target": "LazyColumn emits supplied order"
+        },
+        {
+          "relationRef": "relation.stable-repeater.requested-visible-item",
+          "disposition": "MAPPED",
+          "source": "requestedVisibleItemRef",
+          "target": "target scroll-to-item realization"
+        },
+        {
+          "relationRef": "relation.stable-repeater.visible-item-projection",
+          "disposition": "MAPPED",
+          "source": "visible semantic item refs",
+          "target": "onVisibleItemRefsChanged projection"
+        },
+        {
+          "relationRef": "relation.stable-repeater.content-type-hint",
+          "disposition": "MAPPED",
+          "source": "caller contentType relationship",
+          "target": "Compose LazyColumn contentType reuse hint"
+        },
+        {
+          "relationRef": "relation.stable-repeater.scroll-lock",
+          "disposition": "MAPPED",
+          "source": "userScrollEnabled relationship",
+          "target": "Compose userScrollEnabled"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.android-source-current",
+          "state": "PASS",
+          "note": "Exact source is observed on the same Android main commit used by the current Component Inventory."
+        },
+        {
+          "proofRef": "proof.android-target-native-regression",
+          "state": "OWED",
+          "note": "This target-pressure record does not independently rerun the Android repository's native test/build floor."
+        }
+      ],
+      "note": "Android demonstrates the richest currently observed stable-repeater target mechanics. Their presence here does not make requested scrolling, visibility projection, contentType or scroll-lock mandatory portable fields."
+    },
+    {
+      "pressureRef": "pressure.component.local-selection.android-compose",
+      "candidateRef": "candidate.component.swappable-region",
+      "platformRef": "platform.android",
+      "framework": "Jetpack Compose / VexArchitecture",
+      "state": "SOURCE_FORMED",
+      "sourceRef": "source.vexlife-android.main.d857a923",
+      "repositoryRef": "repo.vexlife-android",
+      "commit": "d857a92371555472e0303b18eadf353da2a868d6",
+      "path": "architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt",
+      "relationships": [
+        {
+          "relationRef": "relation.local-selection.subject-and-children",
+          "disposition": "MAPPED",
+          "source": "SwappableContainerElement owns direct child expressions",
+          "target": "Compose renders the current admitted child under one local container"
+        },
+        {
+          "relationRef": "relation.local-selection.default-child",
+          "disposition": "MAPPED",
+          "source": "SwappableContainerElement.defaultChild",
+          "target": "initial local presentation child"
+        },
+        {
+          "relationRef": "relation.local-selection.selected-child",
+          "disposition": "MAPPED",
+          "source": "SwapTo(containerRef, childRef)",
+          "target": "local presentation selection without Screen navigation depth"
+        },
+        {
+          "relationRef": "relation.local-selection.selector-binding",
+          "disposition": "MAPPED",
+          "source": "source controls emit typed SwapTo intent",
+          "target": "Compose control activation dispatches the local selection intent"
+        },
+        {
+          "relationRef": "relation.local-selection.exhaustive-choice-set",
+          "disposition": "HELD",
+          "source": "Android container direct children establish admission but do not expose the VexStream-style explicit exhaustive flag",
+          "target": "do not infer an explicit exhaustive contract from Android source alone"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.android-source-current",
+          "state": "PASS",
+          "note": "Exact source is observed on Android main at the Component Inventory revision."
+        },
+        {
+          "proofRef": "proof.android-selection-no-screen-depth",
+          "state": "PASS",
+          "note": "The typed SwapTo relationship is presentation-local rather than Screen navigation in the observed Android architecture."
+        }
+      ],
+      "note": "Android proves default/local peer selection and typed control intent. VexStream adds explicit exhaustive/bounded selection and many-to-one selector pressure."
+    },
+    {
+      "pressureRef": "pressure.component.local-selection.vexstream-browser",
+      "candidateRef": "candidate.component.swappable-region",
+      "platformRef": "platform.browser",
+      "framework": "Browser DOM/JavaScript",
+      "state": "SOURCE_FORMED",
+      "sourceRef": "github.pull.vexstream-music.33",
+      "repositoryRef": "repo.vexstream-music",
+      "commit": "a70c5292cedfec32356cb9fc34aa637808047e30",
+      "path": "v2/web/features/discover/navigation.js",
+      "relationships": [
+        {
+          "relationRef": "relation.local-selection.subject-and-children",
+          "disposition": "MAPPED",
+          "source": "DiscoverNavigation owns a finite source-authored mode set",
+          "target": "browser-native local mode projection"
+        },
+        {
+          "relationRef": "relation.local-selection.default-child",
+          "disposition": "MAPPED",
+          "source": "initial DiscoverMode.PC",
+          "target": "initial browser presentation mode"
+        },
+        {
+          "relationRef": "relation.local-selection.selected-child",
+          "disposition": "MAPPED",
+          "source": "select(next) + currentProjection",
+          "target": "browser local presentation mode"
+        },
+        {
+          "relationRef": "relation.local-selection.selector-binding",
+          "disposition": "MAPPED",
+          "source": "Screen Lens SELECTION projection binds targetRef to selectorRefs[]",
+          "target": "source-owned browser controls select the projected child"
+        },
+        {
+          "relationRef": "relation.local-selection.exhaustive-choice-set",
+          "disposition": "MAPPED",
+          "source": "Screen Lens exporter projects exhaustive true/false",
+          "target": "browser selection may truthfully declare complete or bounded choice coverage"
+        },
+        {
+          "relationRef": "relation.local-selection.many-to-one-selectors",
+          "disposition": "MAPPED",
+          "source": "Library mode targets may carry both shell and local selector refs",
+          "target": "multiple browser controls may select the same child identity"
+        },
+        {
+          "relationRef": "relation.local-selection.outer-gate",
+          "disposition": "MAPPED",
+          "source": "optional outer presence/gate is projected separately from selected child",
+          "target": "browser gate does not become child identity"
+        }
+      ],
+      "proofs": [
+        {
+          "proofRef": "proof.vexstream-current-source",
+          "state": "PASS",
+          "note": "Exact VexStream main source and its checked-in Screen Lens projection were observed at a70c5292."
+        },
+        {
+          "proofRef": "proof.vexstream-projectability-selection",
+          "state": "PASS",
+          "note": "Merged VexStream projectability work exports source-owned selection controls and rejects synthetic selector identity."
+        },
+        {
+          "proofRef": "proof.vexstream-lens-self-currentness",
+          "state": "HELD",
+          "note": "The checked-in VexStream Lens omits its own commit/observedAt; VexBoard binds exact currentness externally through the Lens catalog."
+        }
+      ],
+      "note": "VexStream is the second materially different Product witness for local selection and adds exhaustive/bounded choice sets, many-to-one selectors and outer-gate separation."
     }
   ]
 }
