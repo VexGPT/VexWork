@@ -4,6 +4,7 @@ import test from 'node:test';
 
 import {
   LOCALIZATION_WORKSPACE_PIVOTS,
+  LOCALIZATION_WORKSPACE_SCHEMA,
   filterLocalizationWorkspaceRows,
   projectLocalizationWorkspace,
 } from '../src/shared/vexboard-localization-workspace.mjs';
@@ -145,6 +146,104 @@ test('workspace filtering composes pivot, Product, locale and text without mutat
   assert.equal(spanishElements.every((row) => row.subjectRef === 'subject.vexlife-prod'), true);
 
   assert.equal(JSON.stringify(projection), before);
+});
+
+
+test('workspace text search follows active-pivot meaning instead of serialized hidden relations', () => {
+  const projection = projectLocalizationWorkspace({ inventories: [android, prod] });
+  const playStrings = filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: 'play', limit: 5000 });
+
+  assert.equal(playStrings[0].sourceStringRef, 'android:R.string.vexstream_music_play', 'exact visible Play ranks first');
+  assert.equal(playStrings.some((row) => row.sourceStringRef === 'android:R.string.vexstream_music_play_all'), true);
+  assert.equal(playStrings.some((row) => row.sourceStringRef === 'android:R.string.vexstream_music_now_playing'), true);
+  assert.equal(playStrings.some((row) => row.sourceStringRef === 'android:R.string.close'), false, 'hidden element.player relation must not leak into STRINGS search');
+  assert.equal(playStrings.some((row) => row.sourceStringRef === 'android:R.string.events_attention_lab_blocking'), false, 'displayed must not match play');
+  assert.equal(playStrings.some((row) => row.sourceStringRef === 'android:R.string.events_attention_lab_seed'), false, 'Replay must not match play');
+
+  const replayStrings = filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: 'replay' });
+  assert.equal(replayStrings.some((row) => row.sourceStringRef === 'android:R.string.events_attention_lab_seed'), true);
+});
+
+test('workspace search keeps relationship locality with the pivot where that relationship is visible', () => {
+  const projection = {
+    schemaVersion: LOCALIZATION_WORKSPACE_SCHEMA,
+    workLocaleRefs: [],
+    strings: [{
+      subjectRef: 'subject.test',
+      sourceStringRef: 'android:R.string.close',
+      sourceValue: 'Close',
+      sourcePath: 'app/src/main/res/values/strings.xml',
+      formatSignature: '',
+      elementRefs: ['element.player.sheet.close'],
+    }],
+    elements: [{
+      subjectRef: 'subject.test',
+      elementRef: 'element.player.sheet.close',
+      screenRef: 'screen.music',
+      textRole: 'LABEL',
+      bindingRole: 'LABEL',
+      sourceStringRef: 'android:R.string.close',
+      sourceValue: 'Close',
+    }],
+    values: [],
+    groups: [],
+    locales: [],
+    coverage: [],
+    changeSets: [],
+  };
+
+  assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: 'play' }).length, 0);
+  assert.equal(filterLocalizationWorkspaceRows(projection, 'ELEMENTS', { query: 'play' }).length, 1);
+});
+
+test('workspace search is case/diacritic tolerant, punctuation-aware, and ranks before applying the row limit', () => {
+  const prefixRows = Array.from({ length: 800 }, (_, index) => ({
+    subjectRef: 'subject.test',
+    sourceStringRef: `android:R.string.player_${String(index).padStart(4, '0')}`,
+    sourceValue: `Player ${index}`,
+    sourcePath: 'app/src/main/res/values/strings.xml',
+    formatSignature: '',
+  }));
+  const projection = {
+    schemaVersion: LOCALIZATION_WORKSPACE_SCHEMA,
+    workLocaleRefs: [],
+    strings: [
+      ...prefixRows,
+      {
+        subjectRef: 'subject.test',
+        sourceStringRef: 'android:R.string.play',
+        sourceValue: 'Play',
+        sourcePath: 'app/src/main/res/values/strings.xml',
+        formatSignature: '',
+      },
+      {
+        subjectRef: 'subject.test',
+        sourceStringRef: 'vexlife-prod:workspace.status.private-kept',
+        sourceValue: 'Conversación',
+        sourcePath: 'src/locales/es.json',
+        formatSignature: '',
+      },
+      {
+        subjectRef: 'subject.test',
+        sourceStringRef: 'test:ja.play',
+        sourceValue: '再生',
+        sourcePath: 'src/locales/ja.json',
+        formatSignature: '',
+      },
+    ],
+    elements: [],
+    values: [],
+    groups: [],
+    locales: [],
+    coverage: [],
+    changeSets: [],
+  };
+
+  assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: 'play', limit: 10 })[0].sourceStringRef, 'android:R.string.play');
+  assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: 'private-kept' }).length, 1);
+  assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: 'conversacion' }).length, 1);
+  assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: '再生' }).length, 1);
+  assert.equal(filterLocalizationWorkspaceRows(projection, 'STRINGS', { query: '---' }).length, 0);
 });
 
 test('workspace rejects duplicate current inventories for one subject', () => {

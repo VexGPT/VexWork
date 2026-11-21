@@ -46,6 +46,17 @@ test('Screen Lens Localization Inspector can carry current subject, string and l
   assert.match(lens, /localizationText\('localization\.openWorkspace'\)/);
 });
 
+
+test('workspace search copy follows the active pivot and distinguishes totals from filtered matches', () => {
+  assert.match(workspace, /const searchPlaceholders = Object\.freeze/);
+  assert.match(workspace, /Find source string ID, visible value, source path, or format signature/);
+  assert.match(workspace, /Find element, screen, role, source string, or visible value/);
+  assert.match(workspace, /Find locale code, e\.g\. es, ja, or zh-Hant/);
+  assert.match(workspace, /Total rows before filters/);
+  assert.match(workspace, /id: 'match-summary'/);
+  assert.match(workspace, /matchSummary\(rows\)/);
+});
+
 test('global workspace links rows back into the existing Screen Lens selection/localization path', () => {
   assert.match(workspace, /target\.searchParams\.set\('localization', '1'\)/);
   assert.match(workspace, /target\.searchParams\.set\('string', sourceStringRef\)/);

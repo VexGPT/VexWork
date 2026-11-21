@@ -352,6 +352,58 @@ function rowLocaleRefs(row) {
   return Array.isArray(row.localeRefs) ? row.localeRefs : [];
 }
 
+const LOCALIZATION_WORKSPACE_SEARCH_FIELDS = Object.freeze({
+  ELEMENTS: Object.freeze(['elementRef', 'screenRef', 'textRole', 'bindingRole', 'sourceStringRef', 'sourceValue']),
+  STRINGS: Object.freeze(['sourceStringRef', 'sourceValue', 'sourcePath', 'formatSignature']),
+  VALUES: Object.freeze(['normalizedSourceValue', 'suggestedDispositionOrNull', 'evidence']),
+  GROUPS: Object.freeze(['groupRef', 'normalizedSourceValue', 'disposition', 'evidence']),
+  LOCALES: Object.freeze(['localeRef']),
+  COVERAGE: Object.freeze(['localeRef', 'completeness', 'role', 'revision']),
+  CHANGE_SETS: Object.freeze(['changeSetRef', 'sourceStringRef', 'localeRef', 'state', 'currentValueOrNull', 'expectedValue']),
+});
+
+function normalizeSearchText(value) {
+  return String(value ?? '')
+    .normalize('NFKD')
+    .replace(/\p{M}+/gu, '')
+    .toLowerCase();
+}
+
+function searchTokens(value) {
+  return normalizeSearchText(value).match(/[\p{L}\p{N}]+/gu) ?? [];
+}
+
+function localizationWorkspaceSearchValues(row, pivot) {
+  return LOCALIZATION_WORKSPACE_SEARCH_FIELDS[pivot]
+    .flatMap((field) => Array.isArray(row[field]) ? row[field] : [row[field]])
+    .filter((value) => value !== null && value !== undefined);
+}
+
+function localizationWorkspaceSearchScore(row, pivot, query) {
+  const normalizedQuery = normalizeSearchText(query).trim();
+  if (!normalizedQuery) return 0;
+  const terms = [...new Set(searchTokens(query))];
+  if (!terms.length) return null;
+
+  const fields = localizationWorkspaceSearchValues(row, pivot).map((value) => ({
+    normalized: normalizeSearchText(value),
+    tokens: searchTokens(value),
+  }));
+  if (fields.some((field) => field.normalized === normalizedQuery)) return 0;
+
+  let score = 0;
+  for (const term of terms) {
+    let termScore = Number.POSITIVE_INFINITY;
+    for (const field of fields) {
+      if (field.tokens.includes(term)) termScore = Math.min(termScore, 1);
+      if (field.tokens.some((token) => token.startsWith(term))) termScore = Math.min(termScore, 2);
+    }
+    if (!Number.isFinite(termScore)) return null;
+    score += termScore;
+  }
+  return score;
+}
+
 export function filterLocalizationWorkspaceRows(projection, pivot, {
   query = '',
   subjectRef = null,
@@ -360,17 +412,23 @@ export function filterLocalizationWorkspaceRows(projection, pivot, {
 } = {}) {
   if (!Number.isInteger(limit) || limit < 1 || limit > 5000) fail('limit must be an integer from 1 to 5000');
   const rows = localizationWorkspaceRows(projection, pivot);
-  const needle = String(query ?? '').trim().toLowerCase();
+  const queryText = String(query ?? '').trim();
   const subject = subjectRef === null ? null : String(subjectRef);
   const locale = localeRef === null ? null : normalizeLocalizationLocaleRef(localeRef);
-  return Object.freeze(rows.filter((row) => {
-    if (subject && !rowSubjectRefs(row).includes(subject)) return false;
+  const workTargetPivots = new Set(['ELEMENTS', 'STRINGS', 'VALUES', 'GROUPS']);
+  const matches = [];
+
+  rows.forEach((row, index) => {
+    if (subject && !rowSubjectRefs(row).includes(subject)) return;
     const localeIsWorkTarget = locale && projection.workLocaleRefs.includes(locale);
-    const workTargetPivots = new Set(['ELEMENTS', 'STRINGS', 'VALUES', 'GROUPS']);
-    if (locale && !(localeIsWorkTarget && workTargetPivots.has(pivot)) && !rowLocaleRefs(row).includes(locale)) return false;
-    if (needle && !JSON.stringify(row).toLowerCase().includes(needle)) return false;
-    return true;
-  }).slice(0, limit));
+    if (locale && !(localeIsWorkTarget && workTargetPivots.has(pivot)) && !rowLocaleRefs(row).includes(locale)) return;
+    const searchScore = localizationWorkspaceSearchScore(row, pivot, queryText);
+    if (searchScore === null) return;
+    matches.push({ row, index, searchScore });
+  });
+
+  if (queryText) matches.sort((left, right) => left.searchScore - right.searchScore || left.index - right.index);
+  return Object.freeze(matches.slice(0, limit).map(({ row }) => row));
 }
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LOCALIZATION][A5-WORKSPACE]
