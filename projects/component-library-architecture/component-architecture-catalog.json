@@ -769,7 +769,7 @@
           "caller-owned order remains unchanged by the adapter",
           "optional visibility/scroll relationships have explicit target dispositions"
         ],
-        "note": "Cross-target intersection is now explicit: Android + SwiftUI both preserve collection identity, feature-owned item identity, duplicate-ref failure and caller-owned order. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions rather than mandatory portable fields."
+        "note": "Cross-target core is now executable on both sides: Android current unit tests prove reorder-stable semantic refs + duplicate failure; exact generated Swift runtime proof covers insert/remove/reorder + duplicate failure. Android still owes an explicit insert/remove target test before this formation can satisfy its full two-target mutation proof. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions."
       }
     },
     {
@@ -1559,9 +1559,24 @@
           "proofRef": "proof.android-target-native-regression",
           "state": "OWED",
           "note": "This target-pressure record does not independently rerun the Android repository's native test/build floor."
+        },
+        {
+          "proofRef": "proof.android-stable-identity-reorder",
+          "state": "PASS",
+          "note": "Current VexStableLazyListTest proves stableItemRefs returns the same semantic ref set after item reorder even when row content changes."
+        },
+        {
+          "proofRef": "proof.android-duplicate-identity-negative",
+          "state": "PASS",
+          "note": "Current VexStableLazyListTest proves duplicate stable refs fail closed."
+        },
+        {
+          "proofRef": "proof.android-insert-remove-identity",
+          "state": "OWED",
+          "note": "The observed Android unit test explicitly covers reorder, not a separate executable insert/remove case; source key=itemRef makes the intended law clear but A3 acceptance keeps this exact target proof owed."
         }
       ],
-      "note": "Android demonstrates the richest currently observed stable-repeater target mechanics. Their presence here does not make requested scrolling, visibility projection, contentType or scroll-lock mandatory portable fields."
+      "note": "Android source-native evidence now includes an exact unit test for reorder-stable semantic refs and duplicate-ref failure. A separate executable Android insert/remove identity case remains owed; requested visibility, visible-item projection, contentType and scroll-lock remain richer target capabilities rather than portable-core requirements."
     },
     {
       "pressureRef": "pressure.component.local-selection.android-compose",
