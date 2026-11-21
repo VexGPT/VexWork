@@ -1461,8 +1461,15 @@
       "sourceKey": "setup.description.home-held",
       "sourceValue": "{reason} Nothing in it was changed, moved or deleted.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:reason",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "reason",
+          "type": "NAMED",
+          "token": "{reason}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -1643,8 +1650,33 @@
       "sourceKey": "setup.description.host-held",
       "sourceValue": "{reason} {requirement} {observed} {outcome}",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:reason|name:requirement|name:observed|name:outcome",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "reason",
+          "type": "NAMED",
+          "token": "{reason}"
+        },
+        {
+          "ordinal": 2,
+          "name": "requirement",
+          "type": "NAMED",
+          "token": "{requirement}"
+        },
+        {
+          "ordinal": 3,
+          "name": "observed",
+          "type": "NAMED",
+          "token": "{observed}"
+        },
+        {
+          "ordinal": 4,
+          "name": "outcome",
+          "type": "NAMED",
+          "token": "{outcome}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -1721,8 +1753,21 @@
       "sourceKey": "setup.description.host-observed",
       "sourceValue": "This Mac: {chip}, {memory}.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:chip|name:memory",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "chip",
+          "type": "NAMED",
+          "token": "{chip}"
+        },
+        {
+          "ordinal": 2,
+          "name": "memory",
+          "type": "NAMED",
+          "token": "{memory}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -1877,8 +1922,21 @@
       "sourceKey": "setup.description.host-requirement",
       "sourceValue": "VexLife's local model currently runs on Macs with an {chip} chip and at least {memory} GiB of memory.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:chip|name:memory",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "chip",
+          "type": "NAMED",
+          "token": "{chip}"
+        },
+        {
+          "ordinal": 2,
+          "name": "memory",
+          "type": "NAMED",
+          "token": "{memory}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -1903,8 +1961,15 @@
       "sourceKey": "setup.description.inspection-failure",
       "sourceValue": "VexLife tried to look at {path} and this Mac before offering anything, and the check itself did not finish. Nothing was changed.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:path",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "path",
+          "type": "NAMED",
+          "token": "{path}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -1955,8 +2020,15 @@
       "sourceKey": "setup.description.model-files-held",
       "sourceValue": "Some model files in your Vex Home are not the size VexLife expects ({affected} GiB affected). VexLife keeps them and will not delete or replace them on its own. If you moved or edited files inside your Vex Home, put them back and choose Check Again. Guided model-file repair is not part of this setup yet.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:affected",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "affected",
+          "type": "NAMED",
+          "token": "{affected}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -2007,8 +2079,15 @@
       "sourceKey": "setup.description.notice-protected-location",
       "sourceValue": "Heads-up: this location is inside {place}, which macOS protects. macOS may ask you to allow access, and VexLife's background service can be blocked from reading it later. A location such as ~/.vexlife avoids this.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:place",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "place",
+          "type": "NAMED",
+          "token": "{place}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -2033,8 +2112,21 @@
       "sourceKey": "setup.description.notice-storage-shortfall",
       "sourceValue": "Heads-up: the local model step will need about {required} GiB free on this drive, and it has {free} GiB. You can still create the Home now and free up space before the next step.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:required|name:free",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "required",
+          "type": "NAMED",
+          "token": "{required}"
+        },
+        {
+          "ordinal": 2,
+          "name": "free",
+          "type": "NAMED",
+          "token": "{free}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -2085,8 +2177,15 @@
       "sourceKey": "setup.description.ready",
       "sourceValue": "VexLife is running on this Mac and opened in your browser at {origin}. You can close this window. To start VexLife again later (for example after restarting your Mac), run the same setup command: it checks first and offers only what is needed.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:origin",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "origin",
+          "type": "NAMED",
+          "token": "{origin}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -2293,8 +2392,21 @@
       "sourceKey": "setup.description.storage-held",
       "sourceValue": "VexLife needs about {required} GiB free on the drive that holds your Vex Home before it can download the local model. That drive has {free} GiB free. Free up space and choose Check Again, or choose a location on another drive. Nothing was downloaded.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:required|name:free",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "required",
+          "type": "NAMED",
+          "token": "{required}"
+        },
+        {
+          "ordinal": 2,
+          "name": "free",
+          "type": "NAMED",
+          "token": "{free}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3281,8 +3393,15 @@
       "sourceKey": "setup.label.found-chosen-model",
       "sourceValue": "Model: {model}",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3307,8 +3426,15 @@
       "sourceKey": "setup.label.found-free-space",
       "sourceValue": "Free space on that drive: {amount}",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:amount",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "amount",
+          "type": "NAMED",
+          "token": "{amount}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3333,8 +3459,21 @@
       "sourceKey": "setup.label.found-home",
       "sourceValue": "Vex Home: {path} — {status}",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:path|name:status",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "path",
+          "type": "NAMED",
+          "token": "{path}"
+        },
+        {
+          "ordinal": 2,
+          "name": "status",
+          "type": "NAMED",
+          "token": "{status}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3359,8 +3498,27 @@
       "sourceKey": "setup.label.found-mac",
       "sourceValue": "This Mac: {chip}, {memory} — {verdict}",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:chip|name:memory|name:verdict",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "chip",
+          "type": "NAMED",
+          "token": "{chip}"
+        },
+        {
+          "ordinal": 2,
+          "name": "memory",
+          "type": "NAMED",
+          "token": "{memory}"
+        },
+        {
+          "ordinal": 3,
+          "name": "verdict",
+          "type": "NAMED",
+          "token": "{verdict}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3385,8 +3543,15 @@
       "sourceKey": "setup.label.found-model",
       "sourceValue": "Local model: {status}",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:status",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "status",
+          "type": "NAMED",
+          "token": "{status}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3411,8 +3576,15 @@
       "sourceKey": "setup.label.found-service",
       "sourceValue": "VexLife service: {status}",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:status",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "status",
+          "type": "NAMED",
+          "token": "{status}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3437,8 +3609,15 @@
       "sourceKey": "setup.label.gib-amount",
       "sourceValue": "{amount} GiB",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:amount",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "amount",
+          "type": "NAMED",
+          "token": "{amount}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3463,8 +3642,15 @@
       "sourceKey": "setup.label.memory-amount",
       "sourceValue": "{memory} GiB memory",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:memory",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "memory",
+          "type": "NAMED",
+          "token": "{memory}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3489,8 +3675,27 @@
       "sourceKey": "setup.label.model-choice",
       "sourceValue": "{model} · {size} GiB · {fit}",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model|name:size|name:fit",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        },
+        {
+          "ordinal": 2,
+          "name": "size",
+          "type": "NAMED",
+          "token": "{size}"
+        },
+        {
+          "ordinal": 3,
+          "name": "fit",
+          "type": "NAMED",
+          "token": "{fit}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3671,8 +3876,15 @@
       "sourceKey": "setup.label.plan-available",
       "sourceValue": "{amount} GiB available",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:amount",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "amount",
+          "type": "NAMED",
+          "token": "{amount}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3697,8 +3909,21 @@
       "sourceKey": "setup.label.plan-download",
       "sourceValue": "Download about {missing} GiB of verified model files ({model})",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:missing|name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "missing",
+          "type": "NAMED",
+          "token": "{missing}"
+        },
+        {
+          "ordinal": 2,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3749,8 +3974,21 @@
       "sourceKey": "setup.label.plan-needs",
       "sourceValue": "Needs about {required} GiB free · {available}. Needs an internet connection; downloads resume if interrupted.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:required|name:available",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "required",
+          "type": "NAMED",
+          "token": "{required}"
+        },
+        {
+          "ordinal": 2,
+          "name": "available",
+          "type": "NAMED",
+          "token": "{available}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -3775,8 +4013,15 @@
       "sourceKey": "setup.label.plan-reuse",
       "sourceValue": "Re-use the model files already in your Home ({model})",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4035,8 +4280,21 @@
       "sourceKey": "setup.label.up-next-model",
       "sourceValue": "Local model: about {download} GiB download, about {free} GiB free space on this drive, and an internet connection.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:download|name:free",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "download",
+          "type": "NAMED",
+          "token": "{download}"
+        },
+        {
+          "ordinal": 2,
+          "name": "free",
+          "type": "NAMED",
+          "token": "{free}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4165,8 +4423,15 @@
       "sourceKey": "setup.status.home-new-folders",
       "sourceValue": "new; VexLife will also create {count} folders leading to it",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:count",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "count",
+          "type": "NAMED",
+          "token": "{count}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4191,8 +4456,15 @@
       "sourceKey": "setup.status.home-new-one-folder",
       "sourceValue": "new; VexLife will also create {count} folder leading to it",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:count",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "count",
+          "type": "NAMED",
+          "token": "{count}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4217,8 +4489,15 @@
       "sourceKey": "setup.status.home-preserved",
       "sourceValue": "preserved ({detail})",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:detail",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "detail",
+          "type": "NAMED",
+          "token": "{detail}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4269,8 +4548,21 @@
       "sourceKey": "setup.status.mac-needs",
       "sourceValue": "needs {chip} and {memory} GiB memory",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:chip|name:memory",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "chip",
+          "type": "NAMED",
+          "token": "{chip}"
+        },
+        {
+          "ordinal": 2,
+          "name": "memory",
+          "type": "NAMED",
+          "token": "{memory}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4347,8 +4639,15 @@
       "sourceKey": "setup.status.model-needs-memory",
       "sourceValue": "wants {memory} GiB of memory",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:memory",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "memory",
+          "type": "NAMED",
+          "token": "{memory}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4425,8 +4724,21 @@
       "sourceKey": "setup.status.model-partial",
       "sourceValue": "{present} of {total} GiB downloaded",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:present|name:total",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "present",
+          "type": "NAMED",
+          "token": "{present}"
+        },
+        {
+          "ordinal": 2,
+          "name": "total",
+          "type": "NAMED",
+          "token": "{total}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4451,8 +4763,15 @@
       "sourceKey": "setup.status.model-present",
       "sourceValue": "on this Mac ({total} GiB)",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:total",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "total",
+          "type": "NAMED",
+          "token": "{total}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4503,8 +4822,15 @@
       "sourceKey": "setup.status.model-size-mismatch",
       "sourceValue": "{affected} GiB of files do not match their expected size",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:affected",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "affected",
+          "type": "NAMED",
+          "token": "{affected}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4607,8 +4933,27 @@
       "sourceKey": "setup.status.progress-downloading",
       "sourceValue": "Downloading the local model — {done} of {total} GiB ({percent}%). Keep this window open; an interrupted download resumes next time.",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:done|name:total|name:percent",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "done",
+          "type": "NAMED",
+          "token": "{done}"
+        },
+        {
+          "ordinal": 2,
+          "name": "total",
+          "type": "NAMED",
+          "token": "{total}"
+        },
+        {
+          "ordinal": 3,
+          "name": "percent",
+          "type": "NAMED",
+          "token": "{percent}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -4841,8 +5186,15 @@
       "sourceKey": "setup.status.service-earlier",
       "sourceValue": "running an earlier version ({version})",
       "sourcePath": "localization/strings/source/setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:version",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "version",
+          "type": "NAMED",
+          "token": "{version}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -5163,8 +5515,15 @@
       "sourceKey": "windows-setup.label.free-space",
       "sourceValue": "Free space on this drive: {space} GiB",
       "sourcePath": "localization/strings/source/windows-setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:space",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "space",
+          "type": "NAMED",
+          "token": "{space}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -5177,8 +5536,15 @@
       "sourceKey": "windows-setup.label.home",
       "sourceValue": "Vex Home: {path}",
       "sourcePath": "localization/strings/source/windows-setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:path",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "path",
+          "type": "NAMED",
+          "token": "{path}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -5191,8 +5557,15 @@
       "sourceKey": "windows-setup.label.model",
       "sourceValue": "Model: {model}",
       "sourcePath": "localization/strings/source/windows-setup.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -6779,8 +7152,21 @@
       "sourceKey": "workspace.label.diagnostics-records",
       "sourceValue": "{count} records kept since {since}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:count|name:since",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "count",
+          "type": "NAMED",
+          "token": "{count}"
+        },
+        {
+          "ordinal": 2,
+          "name": "since",
+          "type": "NAMED",
+          "token": "{since}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -6961,8 +7347,15 @@
       "sourceKey": "workspace.label.local-asr-spoken-language-follow",
       "sourceValue": "Follow Vex reply language · {language}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:language",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "language",
+          "type": "NAMED",
+          "token": "{language}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -6987,8 +7380,21 @@
       "sourceKey": "workspace.label.model-cache-current",
       "sourceValue": "Using {current} · Recommended: {recommended}.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:current|name:recommended",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "current",
+          "type": "NAMED",
+          "token": "{current}"
+        },
+        {
+          "ordinal": 2,
+          "name": "recommended",
+          "type": "NAMED",
+          "token": "{recommended}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7013,8 +7419,15 @@
       "sourceKey": "workspace.label.model-cache-current-recommended",
       "sourceValue": "Using {current} — recommended.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:current",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "current",
+          "type": "NAMED",
+          "token": "{current}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7247,8 +7660,27 @@
       "sourceKey": "workspace.label.model-facts",
       "sourceValue": "{size} GiB on disk · about {memory} GiB memory · {fit}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:size|name:memory|name:fit",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "size",
+          "type": "NAMED",
+          "token": "{size}"
+        },
+        {
+          "ordinal": 2,
+          "name": "memory",
+          "type": "NAMED",
+          "token": "{memory}"
+        },
+        {
+          "ordinal": 3,
+          "name": "fit",
+          "type": "NAMED",
+          "token": "{fit}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7273,8 +7705,15 @@
       "sourceKey": "workspace.label.model-facts-memory-unestablished",
       "sourceValue": "{size} GiB on disk · memory fit not established",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:size",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "size",
+          "type": "NAMED",
+          "token": "{size}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7325,8 +7764,15 @@
       "sourceKey": "workspace.label.model-free-space",
       "sourceValue": "{free} GiB free on this disk",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:free",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "free",
+          "type": "NAMED",
+          "token": "{free}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7351,8 +7797,27 @@
       "sourceKey": "workspace.label.model-import-facts",
       "sourceValue": "{size} GiB download · License {license} · exact revision {revision}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:size|name:license|name:revision",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "size",
+          "type": "NAMED",
+          "token": "{size}"
+        },
+        {
+          "ordinal": 2,
+          "name": "license",
+          "type": "NAMED",
+          "token": "{license}"
+        },
+        {
+          "ordinal": 3,
+          "name": "revision",
+          "type": "NAMED",
+          "token": "{revision}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7559,8 +8024,15 @@
       "sourceKey": "workspace.label.model-state-selected",
       "sourceValue": "Selected next: {model}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7585,8 +8057,15 @@
       "sourceKey": "workspace.label.model-state-serving",
       "sourceValue": "Vex is using {model}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7637,8 +8116,15 @@
       "sourceKey": "workspace.label.reach-state",
       "sourceValue": "({state})",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:state",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "state",
+          "type": "NAMED",
+          "token": "{state}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -7741,8 +8227,15 @@
       "sourceKey": "workspace.label.screen-language-follow",
       "sourceValue": "Same as Vex's replies ({language})",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:language",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "language",
+          "type": "NAMED",
+          "token": "{language}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -8053,8 +8546,15 @@
       "sourceKey": "workspace.status.diagnostics-enhanced-on",
       "sourceValue": "Enhanced capture: on until {until}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:until",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "until",
+          "type": "NAMED",
+          "token": "{until}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -8235,8 +8735,27 @@
       "sourceKey": "workspace.status.local-asr-ready",
       "sourceValue": "Ready locally · {provider} · {model} · {size}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:provider|name:model|name:size",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "provider",
+          "type": "NAMED",
+          "token": "{provider}"
+        },
+        {
+          "ordinal": 2,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        },
+        {
+          "ordinal": 3,
+          "name": "size",
+          "type": "NAMED",
+          "token": "{size}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -8287,8 +8806,21 @@
       "sourceKey": "workspace.status.local-asr-selected",
       "sourceValue": "Selected {provider} · {model}.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:provider|name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "provider",
+          "type": "NAMED",
+          "token": "{provider}"
+        },
+        {
+          "ordinal": 2,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -8703,8 +9235,15 @@
       "sourceKey": "workspace.status.model-download-failed",
       "sourceValue": "The download didn't finish: {reason}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:reason",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "reason",
+          "type": "NAMED",
+          "token": "{reason}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -8755,8 +9294,21 @@
       "sourceKey": "workspace.status.model-downloading",
       "sourceValue": "downloading {done} of {total} GiB",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:done|name:total",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "done",
+          "type": "NAMED",
+          "token": "{done}"
+        },
+        {
+          "ordinal": 2,
+          "name": "total",
+          "type": "NAMED",
+          "token": "{total}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -8807,8 +9359,15 @@
       "sourceKey": "workspace.status.model-import-added",
       "sourceValue": "Added {model} to My Models.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -8833,8 +9392,15 @@
       "sourceKey": "workspace.status.model-import-held",
       "sourceValue": "VexLife can't add this model yet: {reason}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:reason",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "reason",
+          "type": "NAMED",
+          "token": "{reason}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -8989,8 +9555,15 @@
       "sourceKey": "workspace.status.model-removed",
       "sourceValue": "Removed — {freed} GiB freed.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:freed",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "freed",
+          "type": "NAMED",
+          "token": "{freed}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9041,8 +9614,15 @@
       "sourceKey": "workspace.status.model-runtime-configured",
       "sourceValue": "Runtime configuration saved · {entries} warm cache entries.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:entries",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "entries",
+          "type": "NAMED",
+          "token": "{entries}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9067,8 +9647,15 @@
       "sourceKey": "workspace.status.model-selected",
       "sourceValue": "Selected {model}. Review its configuration, then start it when you're ready.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9093,8 +9680,21 @@
       "sourceKey": "workspace.status.model-switch-failed",
       "sourceValue": "Could not switch to {model}: {reason}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model|name:reason",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        },
+        {
+          "ordinal": 2,
+          "name": "reason",
+          "type": "NAMED",
+          "token": "{reason}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9119,8 +9719,15 @@
       "sourceKey": "workspace.status.model-switch-preparing",
       "sourceValue": "Checking {model} and its local runtime.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9145,8 +9752,15 @@
       "sourceKey": "workspace.status.model-switch-requested",
       "sourceValue": "Switch accepted. Preparing {model}.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9171,8 +9785,15 @@
       "sourceKey": "workspace.status.model-switch-runtime",
       "sourceValue": "Switching the local model to {model}.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9197,8 +9818,15 @@
       "sourceKey": "workspace.status.model-switch-waiting",
       "sourceValue": "Waiting for the current Vex turn to finish before switching to {model}.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9223,8 +9851,15 @@
       "sourceKey": "workspace.status.model-switched",
       "sourceValue": "Vex is now using {model}.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:model",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "model",
+          "type": "NAMED",
+          "token": "{model}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9327,8 +9962,15 @@
       "sourceKey": "workspace.status.reach-github",
       "sourceValue": "reading GitHub {target}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:target",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "target",
+          "type": "NAMED",
+          "token": "{target}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9353,8 +9995,15 @@
       "sourceKey": "workspace.status.reach-home",
       "sourceValue": "looking in my Home at {target}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:target",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "target",
+          "type": "NAMED",
+          "token": "{target}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9379,8 +10028,15 @@
       "sourceKey": "workspace.status.reach-memory",
       "sourceValue": "searching Memory for {target}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:target",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "target",
+          "type": "NAMED",
+          "token": "{target}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9405,8 +10061,15 @@
       "sourceKey": "workspace.status.reach-web-fetch",
       "sourceValue": "reading {target}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:target",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "target",
+          "type": "NAMED",
+          "token": "{target}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9431,8 +10094,15 @@
       "sourceKey": "workspace.status.reach-web-search",
       "sourceValue": "searching the web for {target}",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:target",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "target",
+          "type": "NAMED",
+          "token": "{target}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9457,8 +10127,15 @@
       "sourceKey": "workspace.status.reply-language-changed",
       "sourceValue": "Vex will reply in {language}.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:language",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "language",
+          "type": "NAMED",
+          "token": "{language}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9483,8 +10160,15 @@
       "sourceKey": "workspace.status.screen-language-changed",
       "sourceValue": "VexLife now appears in {language}.",
       "sourcePath": "localization/strings/source/workspace.json",
-      "formatSignature": "",
-      "placeholders": [],
+      "formatSignature": "name:language",
+      "placeholders": [
+        {
+          "ordinal": 1,
+          "name": "language",
+          "type": "NAMED",
+          "token": "{language}"
+        }
+      ],
       "mapped": false,
       "occurrenceRefs": [],
       "elementRefs": [],
@@ -9797,7 +10481,7 @@
     "mappedSourceStringCount": 10,
     "unmappedSourceStringCount": 362,
     "reusedSourceStringCount": 0,
-    "formatStringCount": 0,
+    "formatStringCount": 72,
     "screenCount": 1,
     "surfaceCount": 1
   }
