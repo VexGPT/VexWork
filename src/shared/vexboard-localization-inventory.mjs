@@ -2,9 +2,9 @@
 //
 // Platform-neutral localization inventory.
 //
-// Product/source adapters emit exact text occurrences. This module owns only:
+// Product/source adapters emit exact source strings plus exact text occurrences. This module owns only:
 // - stable inventory normalization;
-// - source-string aggregation;
+// - exact source-string aggregation;
 // - reverse where-used queries;
 // - deterministic CSV materializations.
 //
@@ -51,23 +51,38 @@ function placeholderType(type) {
 export function localizationFormatSignature(value) {
   const source = String(value ?? '');
   const placeholders = [];
-  let implicit = 0;
+  let ordinal = 0;
   for (const match of source.matchAll(/%(?:(\d+)\$)?[-#+ 0,(<]*\d*(?:\.\d+)?([A-Za-z%])/g)) {
     if (match[2] === '%') continue;
-    implicit += 1;
+    ordinal += 1;
     placeholders.push({
-      index: match[1] ? Number(match[1]) : implicit,
+      ordinal,
+      argumentIndex: match[1] ? Number(match[1]) : null,
       type: placeholderType(match[2]),
       token: match[0],
     });
   }
   const signature = placeholders
-    .map((placeholder) => `${placeholder.index}:${placeholder.type}`)
+    .map((placeholder) => `${placeholder.argumentIndex === null ? `seq${placeholder.ordinal}` : `arg${placeholder.argumentIndex}`}:${placeholder.type}`)
     .join('|');
   return Object.freeze({
     signature,
     placeholders: Object.freeze(placeholders.map((placeholder) => Object.freeze(placeholder))),
   });
+}
+
+function normalizeSourceString(input) {
+  const sourceStringRef = ref(input.sourceStringRef, 'sourceString.sourceStringRef');
+  const sourceKey = text(input.sourceKey, 'sourceString.sourceKey');
+  const sourceValue = typeof input.sourceValue === 'string'
+    ? input.sourceValue
+    : fail('sourceString.sourceValue must be a string');
+  return {
+    sourceStringRef,
+    sourceKey,
+    sourceValue,
+    sourcePath: input.sourcePath ? text(input.sourcePath, 'sourceString.sourcePath') : null,
+  };
 }
 
 function normalizeOccurrence(input) {
@@ -99,6 +114,7 @@ export function createLocalizationInventory({
   sourceLocale = 'en',
   buildRef = null,
   producer,
+  sourceStrings,
   occurrences,
 }) {
   ref(inventoryRef, 'inventoryRef');
@@ -107,10 +123,17 @@ export function createLocalizationInventory({
   if (!sourceSnapshot || typeof sourceSnapshot !== 'object') fail('sourceSnapshot required');
   ref(sourceSnapshot.repositoryRef, 'sourceSnapshot.repositoryRef');
   text(sourceSnapshot.commit, 'sourceSnapshot.commit');
+  if (!Array.isArray(sourceStrings) || !sourceStrings.length) fail('sourceStrings must be a non-empty array');
   if (!Array.isArray(occurrences)) fail('occurrences must be an array');
   if (!producer || typeof producer !== 'object') fail('producer required');
   ref(producer.ref, 'producer.ref');
   text(producer.version, 'producer.version');
+
+  const sourceRows = sourceStrings.map(normalizeSourceString)
+    .sort((a, b) => a.sourceStringRef.localeCompare(b.sourceStringRef));
+  if (new Set(sourceRows.map((row) => row.sourceStringRef)).size !== sourceRows.length) {
+    fail('sourceStringRef must be unique');
+  }
 
   const normalized = occurrences.map(normalizeOccurrence)
     .sort((a, b) => a.occurrenceRef.localeCompare(b.occurrenceRef));
@@ -118,25 +141,21 @@ export function createLocalizationInventory({
     fail('occurrenceRef must be unique');
   }
 
-  const byString = new Map();
+  const byString = new Map(sourceRows.map((row) => [row.sourceStringRef, {
+    ...row,
+    occurrenceRefs: [],
+    elementRefs: [],
+    screenRefs: [],
+    surfaceRefs: [],
+    bindingRoles: [],
+  }]));
+
   for (const occurrence of normalized) {
-    const prior = byString.get(occurrence.sourceStringRef);
-    if (prior && (prior.sourceKey !== occurrence.sourceKey || prior.sourceValue !== occurrence.sourceValue)) {
-      fail(`${occurrence.sourceStringRef} resolves to inconsistent source values`);
-    }
-    if (!prior) {
-      byString.set(occurrence.sourceStringRef, {
-        sourceStringRef: occurrence.sourceStringRef,
-        sourceKey: occurrence.sourceKey,
-        sourceValue: occurrence.sourceValue,
-        occurrenceRefs: [],
-        elementRefs: [],
-        screenRefs: [],
-        surfaceRefs: [],
-        bindingRoles: [],
-      });
-    }
     const row = byString.get(occurrence.sourceStringRef);
+    if (!row) fail(`${occurrence.occurrenceRef} references unknown source string ${occurrence.sourceStringRef}`);
+    if (row.sourceKey !== occurrence.sourceKey || row.sourceValue !== occurrence.sourceValue) {
+      fail(`${occurrence.sourceStringRef} occurrence disagrees with source catalog`);
+    }
     row.occurrenceRefs.push(occurrence.occurrenceRef);
     row.elementRefs.push(occurrence.elementRef);
     row.screenRefs.push(occurrence.screenRef);
@@ -147,13 +166,16 @@ export function createLocalizationInventory({
   const strings = [...byString.values()]
     .map((row) => {
       const format = localizationFormatSignature(row.sourceValue);
+      const occurrenceRefs = uniqueSorted(row.occurrenceRefs);
       return Object.freeze({
         sourceStringRef: row.sourceStringRef,
         sourceKey: row.sourceKey,
         sourceValue: row.sourceValue,
+        sourcePath: row.sourcePath,
         formatSignature: format.signature,
         placeholders: format.placeholders,
-        occurrenceRefs: Object.freeze(uniqueSorted(row.occurrenceRefs)),
+        mapped: occurrenceRefs.length > 0,
+        occurrenceRefs: Object.freeze(occurrenceRefs),
         elementRefs: Object.freeze(uniqueSorted(row.elementRefs)),
         screenRefs: Object.freeze(uniqueSorted(row.screenRefs)),
         surfaceRefs: Object.freeze(uniqueSorted(row.surfaceRefs)),
@@ -162,8 +184,7 @@ export function createLocalizationInventory({
     })
     .sort((a, b) => a.sourceStringRef.localeCompare(b.sourceStringRef));
 
-  const reusedSourceStringCount = strings.filter((row) => row.occurrenceRefs.length > 1).length;
-  const formatStringCount = strings.filter((row) => row.placeholders.length > 0).length;
+  const mapped = strings.filter((row) => row.mapped);
 
   return Object.freeze({
     schemaVersion: LOCALIZATION_INVENTORY_SCHEMA,
@@ -190,8 +211,10 @@ export function createLocalizationInventory({
     summary: Object.freeze({
       occurrenceCount: normalized.length,
       sourceStringCount: strings.length,
-      reusedSourceStringCount,
-      formatStringCount,
+      mappedSourceStringCount: mapped.length,
+      unmappedSourceStringCount: strings.length - mapped.length,
+      reusedSourceStringCount: mapped.filter((row) => row.occurrenceRefs.length > 1).length,
+      formatStringCount: strings.filter((row) => row.placeholders.length > 0).length,
       screenCount: uniqueSorted(normalized.map((row) => row.screenRef)).length,
       surfaceCount: uniqueSorted(normalized.map((row) => row.surfaceRef)).length,
     }),
@@ -248,11 +271,13 @@ export function localizationOccurrencesCsv(inventory) {
 
 export function localizationStringsCsv(inventory) {
   return csv([
-    ['sourceStringRef', 'sourceKey', 'sourceValue', 'formatSignature', 'occurrenceCount', 'surfaceRefs', 'screenRefs', 'elementRefs', 'bindingRoles'],
+    ['sourceStringRef', 'sourceKey', 'sourceValue', 'sourcePath', 'mapped', 'formatSignature', 'occurrenceCount', 'surfaceRefs', 'screenRefs', 'elementRefs', 'bindingRoles'],
     ...inventory.strings.map((row) => [
       row.sourceStringRef,
       row.sourceKey,
       row.sourceValue,
+      row.sourcePath,
+      row.mapped,
       row.formatSignature,
       row.occurrenceRefs.length,
       row.surfaceRefs.join(' | '),
