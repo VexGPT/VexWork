@@ -25,7 +25,7 @@
 </style>
 </head>
 <body>
-<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><a class="nav" href="./projects.html">Projects</a><span class="here">Components</span><span class="spacer"></span><a class="nav" href="./localization.html">Localization</a><a class="nav" href="../">VexWork</a></header>
+<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><a class="nav" href="./projects.html">Projects</a><span class="here">Components</span><span class="spacer"></span><a class="nav" href="./builder.html">Builder</a><a class="nav" href="./localization.html">Localization</a><a class="nav" href="../">VexWork</a></header>
 <main class="page" id="app"><div class="hero"><div><h1>Component Library</h1><p>Loading current component source…</p></div></div></main>
 <input id="studio-import" class="hidden" type="file" accept="application/json,.json">
 <script type="module">
@@ -280,7 +280,7 @@ function renderGallery(){
  app.replaceChildren(hero(),modeTabs(),h('div',{class:'shell'},libraryPanel(),galleryStage(family,row),inspectorPanel(family,row)));
 }
 function hero(){
- return h('section',{class:'hero'},h('div',{},h('h1',{},'Component Library'),h('p',{},'Browse source-grounded specimens like tools in a building catalog. Inspect one in isolation, exercise local preview behavior, then place it into Studio without losing the relationships that make it buildable.')),h('div',{class:'truth'},h('span',{class:'badge good'},'AI required: No'),h('span',{class:'badge'},'A5 Gallery + Studio'),h('span',{class:'badge'},'A6 generates target code')));
+ return h('section',{class:'hero'},h('div',{},h('h1',{},'Component Library'),h('p',{},'Browse source-grounded specimens like tools in a building catalog. Inspect one in isolation, exercise local preview behavior, then move into Builder when you want to compose a full UI Blueprint.')),h('div',{class:'truth'},h('span',{class:'badge good'},'AI required: No'),h('span',{class:'badge'},'A5 Gallery + Builder'),h('span',{class:'badge'},'A6 generates target code'),h('a',{class:'btn soft',href:'./builder.html'},'Open Builder')));
 }
 function modeTabs(){
  return h('div',{class:'mode-tabs','aria-label':'Component Library mode'},h('button',{class:'tab'+(state.mode==='GALLERY'?' on':''),onclick:()=>{state.mode='GALLERY';render();}},'Gallery'),h('button',{class:'tab'+(state.mode==='STUDIO'?' on':''),onclick:()=>{state.mode='STUDIO';render();}},'Studio'));

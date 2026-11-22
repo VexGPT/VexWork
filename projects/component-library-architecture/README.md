@@ -540,7 +540,7 @@ Each realization retains source coordinates, version/currentness and proof.
 
 This is not automatic source-to-source translation. A deterministic constructor/generator becomes valid only where an accepted mapping proves it.
 
-### A5 — Component Gallery + Studio — RUNNING
+### A5 — Component Gallery + Builder — RUNNING
 
 The first A5 lived browser review corrected the center of gravity.
 
@@ -623,6 +623,63 @@ AI != REQUIRED CONSTRUCTION INTERPRETER
 A6 consumes the Studio Blueprint through accepted target adapters. A5 therefore saves the
 relationship-preserving construction input; A6 owns target-native source / construction packs and
 their proof.
+
+### A5 Builder view — relational UI authoring
+
+Victor's next lived correction adds a dedicated **Builder** beside the Gallery. The Gallery remains
+the showroom: see source-grounded components in isolation, cycle real examples, and inspect evidence.
+The Builder is the construction surface:
+
+```text
+┌──────────────────┬────────────────────────────────────┬─────────────────────┐
+│ COMPONENTS       │              PREVIEW               │ SELECTED            │
+│                  │                                    │                     │
+│ Search...        │  Mobile / Windows / Container      │ source identity     │
+│                  │                                    │ layout              │
+│ Layout           │  drag component into canvas        │ constraints         │
+│ Controls         │  nest inside containers            │ open callbacks      │
+│ Content          │  flow + constraint relationships   │ portability         │
+│                  │                                    │                     │
+├──────────────────┴────────────────────────────────────┴─────────────────────┤
+│ Structure / relationship path                              Save Design      │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
+The existing Studio Blueprint remains the source-grounded component-composition precursor. Builder
+adds a richer, still non-executing envelope:
+
+```text
+vexboard.ui-blueprint/v1
+
+component/source identity
++ authored containment and sibling order
++ Flow / Constraint container relationships
++ parent-relative edge constraints
++ preview profile (preview-only)
++ open callback ports
+
+aiRequired = false
+effects = false
+executionAuthority = NONE
+```
+
+The callback boundary follows VexArchitecture ownership rather than embedding business code in the
+design. Builder can say that a visible interaction exposes an open port such as
+`callback.saveProfile`; it does not become the application's State, Effect, Store, Family, provider,
+or callback implementation owner. A deterministic A6 adapter or an AI integrator may bind those open
+ports inside the target application's rightful architecture while preserving the authored UI
+relationships.
+
+The first Builder preview profiles are deliberately presentation-only:
+
+```text
+Mobile     390 × 844
+Windows   1280 × 800
+Container  960 × 640
+```
+
+Changing the preview profile does not rewrite component meaning. It exposes how the same relational
+blueprint behaves under a different available surface.
 
 ### A6 — construction/export packs — WAITING on A4+A5
 
