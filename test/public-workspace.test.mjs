@@ -317,6 +317,6 @@ test('public workspace includes source-derived New Beginnings and VexArchitectur
     workspace.parkingLot.items.some((item) =>
       item.workRef === 'work.vexlife.new-beginnings.later.settings-capability-mapping'
     ),
-    true,
+    false,
   );
 });
