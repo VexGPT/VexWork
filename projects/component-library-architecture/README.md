@@ -135,7 +135,7 @@ proof
 
 Durable architecture: [ARCHITECTURE.md](./ARCHITECTURE.md).
 
-### A1 — Android Gallery / component inventory — VERIFYING
+### A1 — Android Gallery / component inventory — COMPLETED
 
 Extract current Android reusable components and occurrences into a machine-readable inventory.
 
@@ -183,7 +183,7 @@ The materialized inventory lives at
 `scripts/build-component-inventory.mjs`. Production refactor opportunities discovered while
 organizing the source are recorded in [TECH-DEBT.md](./TECH-DEBT.md) rather than applied to Android.
 
-### A2 — cross-Product component census — VERIFYING
+### A2 — cross-Product component census — COMPLETED
 
 A1 remains **VERIFYING** while A2 runs. This is intentional: the Android inventory source is formed
 and deterministic enough to consume read-only; A1's repository-wide executable proof floor remains
@@ -480,7 +480,7 @@ UNSUPPORTED
 
 Do not generalize a component merely because two source files look similar.
 
-### A4 — target realization / adapter map — RUNNING
+### A4 — target realization / adapter map — COMPLETED
 
 A4 starts from the accepted A3 relationship spine and **derives** realization views from the existing
 target-pressure records. It does not create a second target registry.
@@ -496,8 +496,9 @@ Current derived view:
 
 33 mapped target relationships
 11 held / unsupported target relationships
-29 PASS proofs
-12 OWED / HELD proofs
+39 PASS proofs
+0 OWED proofs
+2 intentional HELD proofs
 ~~~
 
 The Component Gallery now exposes a third view:
@@ -539,7 +540,7 @@ Each realization retains source coordinates, version/currentness and proof.
 
 This is not automatic source-to-source translation. A deterministic constructor/generator becomes valid only where an accepted mapping proves it.
 
-### A5 — Component Gallery / Library workspace — WAITING on portable convergence
+### A5 — Component Gallery / Library workspace — READY
 
 The **Gallery shell exists early** at `vexboard/components.html` so A1 has a human home now. It
 shows observed source families and where-used truth while portable meaning is still explicitly
@@ -719,7 +720,7 @@ repository-owned execution runs.
 
 ## Current next edge
 
-work.vex.component-library-architecture.target-realizations — **RUNNING**
+work.vex.component-library-architecture.gallery — **READY**
 
 A3 is terminal:
 
@@ -738,11 +739,11 @@ accepted portable relationship
 -> exact source / mapping / proof / debt
 ~~~
 
-Current target proof debt remains explicit rather than blocking unrelated mappings:
+A4 target proof is now closed over the accepted five relationships:
 
-- VexLife-Prod #506 repository Kotlin 2.4.20 proof and Apple SwiftUI/Xcode native proof are owed;
-- VexLife-Android #261 Gradle execution remains owed for its Android Stable Repeater realization;
-- Local Selection is excluded from A4 because its A3 relationship remains HELD.
+- VexLife-Prod #506 SwiftUI realization: exact-head SourceOwner PASS + fresh Assurance CLEAR;
+- VexLife-Android #261 Stable Repeater realization: exact-head SourceOwner PASS + fresh Assurance CLEAR;
+- VexStream: two Lens self-currentness proofs remain intentionally HELD because VexBoard binds exact currentness externally;
+- Local Selection remains outside A4 because its A3 relationship is intentionally HELD.
 
-Continue by closing target-native proof/mapping gaps on the **accepted five relationships**, not by
-expanding the portable taxonomy or refactoring production components.
+Continue with A5 as the human Component Library workspace. Do not reopen portable taxonomy or target proof merely because A5 now consumes the proven map.
