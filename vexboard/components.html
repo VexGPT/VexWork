@@ -20,7 +20,7 @@ a{color:var(--focus)}button,input,select{font:inherit;color:inherit}:focus-visib
 .boundary{margin-top:18px;padding:12px 14px;border:1px solid #c7d2fe;background:var(--soft);border-radius:12px;font-size:13px;color:#373f70}.boundary b{color:var(--ink)}
 .summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:18px}.metric{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}.metric b{display:block;font:600 20px/1.1 var(--mono)}.metric span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
 .source{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.source-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);font-size:12px}.source-chip .dot{width:7px;height:7px;border-radius:50%;background:#15803d}.source-chip code{font-size:11px;color:var(--muted)}
-.view-tabs{display:flex;gap:6px;margin-top:22px;padding:4px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);width:max-content}.view-tab{border:0;border-radius:7px;background:transparent;padding:7px 11px;color:var(--muted);font-weight:600;font-size:12.5px;cursor:pointer}.view-tab.on{background:var(--ink);color:#fff}.view-tab:hover:not(.on){background:#f5f6f8;color:var(--ink)}
+.view-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px;padding:4px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);width:max-content;max-width:100%}.view-tab{border:0;border-radius:7px;background:transparent;padding:7px 11px;color:var(--muted);font-weight:600;font-size:12.5px;cursor:pointer}.view-tab.on{background:var(--ink);color:#fff}.view-tab:hover:not(.on){background:#f5f6f8;color:var(--ink)}
 .workspace{margin-top:18px}.controls{display:grid;grid-template-columns:minmax(220px,1fr) auto auto auto;gap:8px}.controls input,.controls select{height:38px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet);padding:0 11px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
 .match{margin:9px 0 0;color:var(--faint);font-size:12.5px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.family{width:100%;text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:15px;cursor:pointer}.family:hover{border-color:var(--rule-strong)}.family.on{border-color:var(--focus);box-shadow:0 0 0 2px color-mix(in srgb,var(--focus) 12%,transparent)}.family .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.family h2{margin:0;font-size:17px}.pill{display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;background:#fafbfc;font:10.5px var(--mono);color:var(--muted);white-space:nowrap}.family .counts{display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:11px;font-size:12px;color:var(--muted)}.family .counts b{color:var(--ink)}.family .sub{margin-top:10px;font-size:12px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .detail{margin-top:18px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px;overflow:hidden}.detail-head{padding:20px 22px;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.detail-head h2{margin:0;font-size:21px}.detail-head p{margin:5px 0 0;color:var(--muted);max-width:76ch}.facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.fact{padding:4px 8px;background:#f7f8fb;border-radius:7px;font-size:12px;color:var(--muted)}
@@ -45,14 +45,41 @@ const INVENTORY_DIR='../projects/component-library-architecture/inventory/';
 const ARCHITECTURE_URL='../projects/component-library-architecture/component-architecture-catalog.json';
 const params=new URLSearchParams(location.search);
 const requestedView=params.get('view');
-const state={catalog:null,subject:null,inventory:null,inventories:new Map(),sourceSubject:params.get('source')??'vexlife-android',architecture:null,view:requestedView==='architecture'?'ARCHITECTURE':requestedView==='realizations'?'REALIZATIONS':'SOURCE',query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null,architectureClass:params.get('class')??'',selectedArchitecture:params.get('architecture')??null,realizationPlatform:params.get('platform')??'',selectedRealization:params.get('realization')??null};
+const PIVOT_KEYS=Object.freeze(['COMPONENTS','STATES','VARIANTS','PRODUCTS','REALIZATIONS','WHERE_USED','PROOF']);
+const requestedPivot=String(params.get('pivot')??'').toUpperCase().replaceAll('-','_');
+const initialPivot=requestedView==='realizations'?'REALIZATIONS':PIVOT_KEYS.includes(requestedPivot)?requestedPivot:'COMPONENTS';
+const initialView=requestedView==='architecture'?'ARCHITECTURE':'SOURCE';
+const state={catalog:null,subject:null,inventory:null,inventories:new Map(),sourceSubject:params.get('source')??'vexlife-android',architecture:null,pivot:initialPivot,view:initialView,query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null,architectureClass:params.get('class')??'',selectedArchitecture:params.get('architecture')??null,realizationPlatform:params.get('platform')??'',selectedRealization:params.get('realization')??null,workspaceProduct:params.get('product')??''};
 
 function h(tag,attrs={},...children){const node=document.createElement(tag);for(const [key,value] of Object.entries(attrs||{})){if(value===null||value===undefined||value===false)continue;if(key==='class')node.className=value;else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);else if(key==='style')node.style.cssText=value;else node.setAttribute(key,value===true?'':String(value));}for(const child of children.flat(Infinity)){if(child===null||child===undefined||child===false)continue;node.append(child instanceof Node?child:document.createTextNode(String(child)));}return node;}
 async function fetchJson(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(url+' HTTP '+response.status);return response.json();}
 const short=(sha)=>String(sha??'').slice(0,7);
 const count=(value)=>Number(value??0).toLocaleString();
 const human=(value)=>String(value??'').toLowerCase().split(/[_-]/u).map((word)=>word?word[0].toUpperCase()+word.slice(1):word).join(' ');
-function syncUrl(){const next=new URL(location.href);next.search='';if(state.view==='ARCHITECTURE')next.searchParams.set('view','architecture');if(state.view==='REALIZATIONS')next.searchParams.set('view','realizations');if(state.query)next.searchParams.set('q',state.query);if(state.view==='SOURCE'){if(state.sourceSubject!=='vexlife-android')next.searchParams.set('source',state.sourceSubject);if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);}else if(state.view==='ARCHITECTURE'){if(state.architectureClass)next.searchParams.set('class',state.architectureClass);if(state.selectedArchitecture)next.searchParams.set('architecture',state.selectedArchitecture);}else{if(state.realizationPlatform)next.searchParams.set('platform',state.realizationPlatform);if(state.selectedRealization)next.searchParams.set('realization',state.selectedRealization);}history.replaceState(null,'',next);}
+function syncUrl(){
+ const next=new URL(location.href);
+ next.search='';
+ if(state.pivot!=='COMPONENTS')next.searchParams.set('pivot',state.pivot.toLowerCase().replaceAll('_','-'));
+ if(state.pivot==='COMPONENTS'&&state.view==='ARCHITECTURE')next.searchParams.set('view','architecture');
+ if(state.query)next.searchParams.set('q',state.query);
+ if(state.pivot==='COMPONENTS'){
+  if(state.view==='SOURCE'){
+   if(state.sourceSubject!=='vexlife-android')next.searchParams.set('source',state.sourceSubject);
+   if(state.kind)next.searchParams.set('kind',state.kind);
+   if(state.surface)next.searchParams.set('surface',state.surface);
+   if(state.selected)next.searchParams.set('component',state.selected);
+  }else if(state.view==='ARCHITECTURE'){
+   if(state.architectureClass)next.searchParams.set('class',state.architectureClass);
+   if(state.selectedArchitecture)next.searchParams.set('architecture',state.selectedArchitecture);
+  }
+ }else if(state.pivot==='REALIZATIONS'){
+  if(state.realizationPlatform)next.searchParams.set('platform',state.realizationPlatform);
+  if(state.selectedRealization)next.searchParams.set('realization',state.selectedRealization);
+ }else if(['STATES','VARIANTS','WHERE_USED'].includes(state.pivot)&&state.workspaceProduct){
+  next.searchParams.set('product',state.workspaceProduct);
+ }
+ history.replaceState(null,'',next);
+}
 function occurrenceRows(component){return Components.occurrencesForComponent(state.inventory,component.componentRef).filter((row)=>!state.surface||row.surfaceRef===state.surface);}
 function visibleFamilies(){
  let rows=state.query?Components.searchComponentInventory(state.inventory,state.query,{limit:500}):state.inventory.components;
@@ -102,11 +129,9 @@ function detail(component){
 function viewTabs(){
  const source=h('button',{type:'button',class:'view-tab'+(state.view==='SOURCE'?' on':'')},'Source families');
  const architecture=h('button',{type:'button',class:'view-tab'+(state.view==='ARCHITECTURE'?' on':'')},'Architecture');
- const realizations=h('button',{type:'button',class:'view-tab'+(state.view==='REALIZATIONS'?' on':'')},'Realizations');
- source.onclick=()=>{state.view='SOURCE';state.query='';syncUrl();render();};
- architecture.onclick=()=>{state.view='ARCHITECTURE';state.query='';syncUrl();render();};
- realizations.onclick=()=>{state.view='REALIZATIONS';state.query='';syncUrl();render();};
- return h('div',{class:'view-tabs','aria-label':'Component Library view'},source,architecture,realizations);
+ source.onclick=()=>{state.pivot='COMPONENTS';state.view='SOURCE';state.query='';syncUrl();render();};
+ architecture.onclick=()=>{state.pivot='COMPONENTS';state.view='ARCHITECTURE';state.query='';syncUrl();render();};
+ return h('div',{class:'view-tabs','aria-label':'Component evidence layer'},source,architecture);
 }
 function visibleArchitecture(){
  let rows=state.query?Architecture.searchComponentArchitecture(state.architecture,state.query,{limit:500}):state.architecture.candidates;
@@ -246,6 +271,156 @@ function realizationDetail(realization){
   realization.note?h('div',{class:'boundary',style:'margin:18px 22px'},h('b',{},'Target note: '),realization.note):null
  );
 }
+
+function inventoryEntries(){
+ return [...state.inventories.entries()].map(([slug,inventory])=>({slug,subject:Catalog.subjectFor(state.catalog,slug),inventory})).filter((row)=>row.subject).sort((a,b)=>a.subject.label.localeCompare(b.subject.label));
+}
+function allOccurrenceRows(){
+ return inventoryEntries().flatMap(({slug,subject,inventory})=>inventory.occurrences.map((row)=>({slug,subject,inventory,row})));
+}
+function lensHrefFor(subject,row){if(!row.screenRef)return null;return Catalog.lensHref(subject,{build:'main',screen:row.screenRef,element:row.elementRef});}
+function componentHref(slug,componentRef=null){
+ const next=new URL(location.href);
+ next.search='';
+ if(slug!=='vexlife-android')next.searchParams.set('source',slug);
+ if(componentRef)next.searchParams.set('component',componentRef);
+ return next;
+}
+function workspacePivots(){
+ const labels={COMPONENTS:'Components',STATES:'States',VARIANTS:'Variants',PRODUCTS:'Products',REALIZATIONS:'Realizations',WHERE_USED:'Where used',PROOF:'Proof'};
+ return h('div',{class:'view-tabs','aria-label':'Component Library workspace pivot'},PIVOT_KEYS.map((key)=>{
+  const button=h('button',{type:'button',class:'view-tab'+(state.pivot===key?' on':'')},labels[key]);
+  button.onclick=()=>{state.pivot=key;if(key==='COMPONENTS'&&!['SOURCE','ARCHITECTURE'].includes(state.view))state.view='SOURCE';state.query='';state.workspaceProduct='';syncUrl();render();};
+  return button;
+ }));
+}
+function workspaceSearch(placeholder,label){
+ const search=h('input',{type:'search',value:state.query,placeholder,'aria-label':label});
+ search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
+ return search;
+}
+function workspaceProductSelect(){
+ const entries=inventoryEntries();
+ const select=h('select',{'aria-label':'Product filter'},h('option',{value:'',selected:!state.workspaceProduct},'All Products'),entries.map(({slug,subject})=>h('option',{value:slug,selected:state.workspaceProduct===slug},subject.label)));
+ select.onchange=()=>{state.workspaceProduct=select.value;syncUrl();render();};
+ return select;
+}
+function workspaceRows(rows){
+ let next=state.workspaceProduct?rows.filter((row)=>row.slug===state.workspaceProduct):rows;
+ const needle=state.query.trim().toLowerCase();
+ if(needle)next=next.filter((row)=>row.searchText.includes(needle));
+ return next;
+}
+function workspaceTable(headers,rows,emptyText){
+ if(!rows.length)return h('div',{class:'empty'},emptyText);
+ return h('div',{class:'table-wrap'},h('table',{},h('thead',{},h('tr',{},headers.map((label)=>h('th',{},label)))),h('tbody',{},rows)));
+}
+function pivotHeader(title,body,boundary,truth,metrics){
+ return h('section',{},
+  h('div',{class:'intro'},h('div',{},h('h1',{},title),h('p',{},body)),h('div',{class:'truth'},truth)),
+  h('div',{class:'boundary'},h('b',{},'Projection boundary: '),boundary),
+  h('div',{class:'summary'},metrics.map(([value,label])=>metric(value,label))),
+  workspacePivots()
+ );
+}
+function refocusWorkspace(focusSearch){
+ if(!focusSearch)return;
+ requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
+}
+function stateRows(){
+ const out=[];
+ for(const {slug,subject,inventory,row} of allOccurrenceRows()){
+  const evidence=[];
+  if(row.visibleWhen)evidence.push({kind:'VISIBLE_WHEN',value:row.visibleWhen});
+  if(row.alwaysVisible)evidence.push({kind:'ALWAYS_VISIBLE',value:'true'});
+  for(const ref of row.realization.presenceRefs)evidence.push({kind:'PRESENCE',value:ref});
+  for(const ref of row.realization.conditionRefs)evidence.push({kind:'CONDITION',value:ref});
+  for(const item of evidence)out.push({slug,subject,inventoryCommit:inventory.sourceSnapshot.commit,row,...item,searchText:[subject.label,row.componentRef,row.kind,row.label,row.elementRef,row.surfaceLabel,item.kind,item.value,row.sourcePath].filter(Boolean).join('\n').toLowerCase()});
+ }
+ return out.sort((a,b)=>a.subject.label.localeCompare(b.subject.label)||a.row.elementRef.localeCompare(b.row.elementRef)||a.kind.localeCompare(b.kind));
+}
+function variantRows(){
+ const groups=new Map();
+ for(const {slug,subject,row} of allOccurrenceRows()){
+  const parts=[];
+  if(row.style)parts.push('style='+row.style);
+  if(row.slot)parts.push('slot='+row.slot);
+  if(row.layer)parts.push('layer='+row.layer);
+  if(row.textRole)parts.push('text='+row.textRole);
+  if(row.interactions.length)parts.push('interactions='+[...row.interactions].sort().join('+'));
+  if(!parts.length)continue;
+  const signature=parts.join(' · ');
+  const key=[slug,row.componentRef,signature].join('|');
+  let group=groups.get(key);
+  if(!group){group={slug,subject,componentRef:row.componentRef,kind:row.kind,signature,count:0,screens:new Set(),examples:[],searchText:''};groups.set(key,group);}
+  group.count+=1;if(row.screenRef)group.screens.add(row.screenRef);if(group.examples.length<3)group.examples.push(row);
+ }
+ return [...groups.values()].map((row)=>({...row,screenRefs:[...row.screens].sort(),searchText:[row.subject.label,row.componentRef,row.kind,row.signature,...row.examples.flatMap((example)=>[example.label,example.elementRef,example.sourcePath])].filter(Boolean).join('\n').toLowerCase()})).sort((a,b)=>a.subject.label.localeCompare(b.subject.label)||a.kind.localeCompare(b.kind)||a.signature.localeCompare(b.signature));
+}
+function proofRows(){
+ const candidates=new Map(state.architecture.candidates.map((row)=>[row.candidateRef,row]));
+ return state.architecture.targetPressures.flatMap((pressure)=>(pressure.proofs??[]).map((proof)=>{
+  const candidate=candidates.get(pressure.candidateRef);
+  return {candidate,pressure,proof,slug:'',searchText:[candidate?.label,pressure.candidateRef,pressure.platformRef,pressure.framework,pressure.repositoryRef,pressure.commit,proof.proofRef,proof.state,proof.note].filter(Boolean).join('\n').toLowerCase()};
+ })).sort((a,b)=>a.proof.state.localeCompare(b.proof.state)||String(a.candidate?.label??'').localeCompare(String(b.candidate?.label??''))||a.proof.proofRef.localeCompare(b.proof.proofRef));
+}
+function renderStates({focusSearch=false}={}){
+ const all=stateRows(),rows=workspaceRows(all);
+ const productCount=new Set(all.map((row)=>row.slug)).size;
+ const presence=all.filter((row)=>row.kind==='PRESENCE').length;
+ const conditions=all.filter((row)=>row.kind==='CONDITION'||row.kind==='VISIBLE_WHEN').length;
+ app.replaceChildren(
+  pivotHeader('Component States','Source-projected state and presentation relationships across current Product component occurrences.','Only explicit visibility, presence and condition relationships appear here. Absence stays “not observed”; the Gallery does not infer disabled/pressed/selected states from framework widgets.','observed source relationships',[[all.length,'state / presence rows'],[productCount,'Products'],[presence,'presence refs'],[conditions,'condition / visibility'],[0,'inferred states'],[0,'write effects']]),
+  h('section',{class:'workspace'},h('div',{class:'controls'},workspaceSearch('Find Product, component, element, condition, or presence ref','Search component state evidence'),workspaceProductSelect()),h('p',{class:'match'},count(rows.length)+' of '+count(all.length)+' observed state/presence relationships.'),workspaceTable(['Product','Source family','Element','Evidence','Observed relationship','Source',''],rows.map(({subject,inventoryCommit,row,kind,value})=>{
+   const href=lensHrefFor(subject,row);
+   return h('tr',{},h('td',{},h('b',{},subject.label),h('span',{class:'sub mono'},short(inventoryCommit))),h('td',{class:'value'},h('a',{href:componentHref(subject.slug,row.componentRef)},human(row.kind)),h('span',{class:'sub mono'},row.componentRef)),h('td',{class:'value'},row.label,h('span',{class:'sub mono'},row.elementRef)),h('td',{},h('span',{class:'pill'},human(kind))),h('td',{class:'value'},value),h('td',{class:'value'},row.sourcePath?h('code',{},row.sourcePath):h('span',{class:'sub'},'Not projected')),h('td',{},href?h('a',{class:'open',href},'Open in Lens'):h('span',{class:'sub'},'Chrome occurrence')));
+  }),'No source-projected state or presence relationships match this view.')),
+  h('footer',{},'States is evidence navigation, not a universal component-state enum. Framework affordances are not promoted into portable state unless source owns that relationship.')
+ );
+ refocusWorkspace(focusSearch);
+}
+function renderVariants({focusSearch=false}={}){
+ const all=variantRows(),rows=workspaceRows(all);
+ app.replaceChildren(
+  pivotHeader('Component Variants','Observed source-shape differences across current Product component occurrences.','A style / slot / layer / text-role / interaction signature is derived evidence only. It is not an accepted portable variant identity and does not create a new component taxonomy.','derived source-shape evidence',[[all.length,'observed signatures'],[new Set(all.map((row)=>row.slug)).size,'Products'],[new Set(all.map((row)=>row.componentRef)).size,'source families'],[all.reduce((n,row)=>n+row.count,0),'occurrences'],[0,'accepted variant IDs'],[0,'write effects']]),
+  h('section',{class:'workspace'},h('div',{class:'controls'},workspaceSearch('Find Product, source family, style, slot, layer, or interaction','Search observed source variants'),workspaceProductSelect()),h('p',{class:'match'},count(rows.length)+' of '+count(all.length)+' derived source-shape signatures.'),workspaceTable(['Product','Source family','Observed source shape','Occurrences','Screens','Examples','Status'],rows.map((row)=>h('tr',{},h('td',{},h('b',{},row.subject.label)),h('td',{class:'value'},h('a',{href:componentHref(row.slug,row.componentRef)},human(row.kind)),h('span',{class:'sub mono'},row.componentRef)),h('td',{class:'value'},row.signature),h('td',{},count(row.count)),h('td',{},count(row.screenRefs.length)),h('td',{class:'value'},row.examples.map((example)=>h('span',{class:'sub mono'},example.elementRef))),h('td',{},h('span',{class:'pill'},'DERIVED · NOT VARIANT ID')))),'No source-shape variant evidence matches this view.')),
+  h('footer',{},'Variants remains deliberately weaker than portable meaning. A recurring source shape becomes a typed variant only when a rightful source relationship and cross-target pressure earn it.')
+ );
+ refocusWorkspace(focusSearch);
+}
+function renderProducts({focusSearch=false}={}){
+ const all=inventoryEntries().map(({slug,subject,inventory})=>({slug,subject,inventory,searchText:[subject.label,subject.repositoryRef,inventory.sourceSnapshot.commit,inventory.sourceSnapshot.lensRef,inventory.sourceSnapshot.localizationInventoryRef].filter(Boolean).join('\n').toLowerCase()}));
+ const rows=workspaceRows(all);
+ app.replaceChildren(
+  pivotHeader('Products','Current Main component-inventory coverage by Product.','Each Product retains its own source identity and semantic meaning. Counts are observation coverage, not a score and not evidence that source families converge into one portable component.','current inventory coverage',[[all.length,'Products'],[all.reduce((n,row)=>n+row.inventory.summary.componentFamilyCount,0),'source families'],[all.reduce((n,row)=>n+row.inventory.summary.occurrenceCount,0),'occurrences'],[all.reduce((n,row)=>n+row.inventory.summary.localizedOccurrenceCount,0),'localized'],[all.reduce((n,row)=>n+row.inventory.summary.realizedOccurrenceCount,0),'direct realizers'],[all.reduce((n,row)=>n+row.inventory.summary.accessibilityProjectedOccurrenceCount,0),'accessibility projected']]),
+  h('section',{class:'workspace'},h('div',{class:'controls'},workspaceSearch('Find Product, repository, Lens, localization inventory, or commit','Search Product component coverage')),h('p',{class:'match'},count(rows.length)+' of '+count(all.length)+' current Product inventories.'),workspaceTable(['Product','Current source','Families','Occurrences','Screens','Localization','Realization','Accessibility'],rows.map(({slug,subject,inventory})=>h('tr',{},h('td',{},h('a',{href:componentHref(slug)},subject.label),h('span',{class:'sub mono'},subject.repositoryRef)),h('td',{class:'value'},h('code',{},short(inventory.sourceSnapshot.commit)),h('span',{class:'sub mono'},inventory.sourceSnapshot.lensRef)),h('td',{},count(inventory.summary.componentFamilyCount)),h('td',{},count(inventory.summary.occurrenceCount)),h('td',{},count(inventory.summary.screenCount)),h('td',{},count(inventory.summary.localizedOccurrenceCount)),h('td',{},count(inventory.summary.realizedOccurrenceCount)),h('td',{},count(inventory.summary.accessibilityProjectedOccurrenceCount)))),'No Product inventories match this view.')),
+  h('footer',{},'Products answers “where is component evidence currently projected?” It does not make VexWork the owner of Product source.')
+ );
+ refocusWorkspace(focusSearch);
+}
+function renderWhereUsed({focusSearch=false}={}){
+ const all=allOccurrenceRows().map(({slug,subject,row})=>({slug,subject,row,searchText:[subject.label,row.componentRef,row.kind,row.surfaceLabel,row.surfaceRef,row.label,row.elementRef,row.style,row.textRole,row.intent,row.sourcePath,...row.localization.sourceStringRefs].filter(Boolean).join('\n').toLowerCase()}));
+ const rows=workspaceRows(all);
+ app.replaceChildren(
+  pivotHeader('Where used','One cross-Product occurrence index over the current component inventories.','Occurrences point back to Product-owned Screen Lens coordinates. This reverse index does not create component meaning or source authority.','cross-Product reverse index',[[all.length,'occurrences'],[new Set(all.map((row)=>row.slug)).size,'Products'],[new Set(all.map((row)=>row.row.componentRef)).size,'source families'],[new Set(all.map((row)=>row.row.screenRef).filter(Boolean)).size,'Screens'],[all.filter((row)=>row.row.localization.sourceStringRefs.length).length,'localized'],[all.filter((row)=>row.row.realization.realizedBy.length||row.row.realization.realizedIn.length).length,'direct realizers']]),
+  h('section',{class:'workspace'},h('div',{class:'controls'},workspaceSearch('Find Product, component, Screen, element, style, intent, source, or string ref','Search where used'),workspaceProductSelect()),h('p',{class:'match'},count(rows.length)+' of '+count(all.length)+' component occurrences.'),workspaceTable(['Product','Component','Where used','Element','Style / role','Localization','Source',''],rows.map(({slug,subject,row})=>{
+   const href=lensHrefFor(subject,row);
+   return h('tr',{},h('td',{},h('b',{},subject.label)),h('td',{class:'value'},h('a',{href:componentHref(slug,row.componentRef)},human(row.kind)),h('span',{class:'sub mono'},row.componentRef)),h('td',{},h('b',{},row.surfaceLabel),h('span',{class:'sub mono'},row.surfaceRef)),h('td',{class:'value'},row.label,h('span',{class:'sub mono'},row.elementRef)),h('td',{},row.style?h('span',{class:'pill'},row.style):h('span',{class:'sub'},'default'),row.textRole?h('span',{class:'sub'},human(row.textRole)):null,row.intent?h('span',{class:'sub value'},row.intent):null),h('td',{},row.localization.sourceStringRefs.length?count(row.localization.sourceStringRefs)+' bindings':human(row.localization.state)),h('td',{class:'value'},row.sourcePath?h('code',{},row.sourcePath):h('span',{class:'sub'},'Not projected')),h('td',{},href?h('a',{class:'open',href},'Open in Lens'):h('span',{class:'sub'},'Chrome occurrence')));
+  }),'No component occurrences match this view.')),
+  h('footer',{},'Where used is bidirectional navigation: source families can find their occurrences, and every occurrence keeps its Product/Lens coordinate.')
+ );
+ refocusWorkspace(focusSearch);
+}
+function renderProof({focusSearch=false}={}){
+ const all=proofRows(),rows=workspaceRows(all);
+ const pass=all.filter((row)=>row.proof.state==='PASS').length,held=all.filter((row)=>row.proof.state==='HELD').length,owed=all.filter((row)=>row.proof.state==='OWED').length;
+ app.replaceChildren(
+  pivotHeader('Component Proof','Exact target-pressure proof records behind the accepted portable relationship map.','Proof remains attached to its candidate, repository, target and commit. HELD is not failure and is never promoted to PASS for presentation convenience.','A4 evidence ledger',[[all.length,'proof records'],[pass,'PASS'],[held,'HELD'],[owed,'OWED'],[new Set(all.map((row)=>row.pressure.repositoryRef)).size,'repositories'],[new Set(all.map((row)=>row.pressure.platformRef)).size,'platforms']]),
+  h('section',{class:'workspace'},h('div',{class:'controls'},workspaceSearch('Find component relationship, target, repository, proof ref, state, or evidence note','Search component proof')),h('p',{class:'match'},count(rows.length)+' of '+count(all.length)+' exact proof records.'),workspaceTable(['Component relationship','Target','Proof','State','Commit','What this proves / still holds'],rows.map(({candidate,pressure,proof})=>h('tr',{},h('td',{class:'value'},candidate?h('a',{href:'?view=architecture&architecture='+encodeURIComponent(candidate.candidateRef)},candidate.label):pressure.candidateRef,h('span',{class:'sub mono'},pressure.candidateRef)),h('td',{},h('b',{},pressure.platformRef),h('span',{class:'sub'},pressure.framework),h('span',{class:'sub mono'},pressure.repositoryRef)),h('td',{class:'value'},h('code',{},proof.proofRef)),h('td',{},h('span',{class:'pill'},proof.state)),h('td',{},h('code',{},short(pressure.commit))),h('td',{class:'value'},proof.note)))),'No proof records match this view.')),
+  h('footer',{},'Proof is evidence navigation only. Semantic clearance, native acceptance, Product rollout and merge remain separate lifecycle effects.')
+ );
+ refocusWorkspace(focusSearch);
+}
 function renderRealizations({focusSearch=false}={}){
  const all=Architecture.targetRealizations(state.architecture);
  const rows=visibleRealizations();
@@ -270,7 +445,7 @@ function renderRealizations({focusSearch=false}={}){
    h('div',{class:'intro'},h('div',{},h('h1',{},'Target Realizations'),h('p',{},'How accepted portable relationships currently map into concrete target frameworks. This view is derived from the existing target-pressure evidence; it does not create another registry or turn reference/source proof into native acceptance.')),h('div',{class:'truth'},'derived realization evidence · ',h('strong',{},count(all.length)))),
    h('div',{class:'boundary'},h('b',{},'A4 boundary: '),'Portable relationship ≠ target acceptance. Each record keeps mapped, held, unsupported and platform-specific relationships plus exact proof debt. Native compile/lived proof remains owned by the target claim.'),
    h('div',{class:'summary'},metric(acceptedCount,'accepted portable'),metric(all.length,'realization evidence'),metric(platforms.length,'target platforms'),metric(mapped,'mapped relations'),metric(held,'held / unsupported'),metric(owed,'owed / held proofs')),
-   viewTabs()),
+   workspacePivots()),
   h('section',{class:'workspace'},h('div',{class:'controls'},search,platform,status),h('p',{class:'match'},count(rows.length)+' of '+count(all.length)+' realization evidence records in this view · '+count(passed)+' current PASS proofs overall.'),h('div',{class:'grid'},rows.map(realizationCard)),selected?realizationDetail(selected):h('div',{class:'empty'},'No target realizations match this view.')),
   h('footer',{},'Realizations are derived from accepted A3 relationships plus their existing target-pressure records. They remain evidence/proof maps, not target semantic authority and not a claim that every native implementation is accepted.'));
  if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
@@ -311,7 +486,7 @@ function renderSource({focusSearch=false}={}){
    h('div',{class:'boundary'},h('b',{},'Source boundary: '),'Observed source family ≠ portable component. Product source stays unchanged; this view projects existing Screen Lens truth and joins Localization only where a current sidecar exists.'),
    h('div',{class:'summary'},metric(inventory.summary.componentFamilyCount,'source families'),metric(inventory.summary.occurrenceCount,'UI occurrences'),metric(inventory.summary.screenCount,'Screens'),metric(inventory.summary.localizedOccurrenceCount,'localized occurrences'),metric(inventory.summary.realizedOccurrenceCount,'realization-linked'),metric(inventory.summary.accessibilityProjectedOccurrenceCount,'accessibility projected')),
    h('div',{class:'source'},h('span',{class:'source-chip'},h('span',{class:'dot'}),state.subject.label,h('code',{},short(inventory.sourceSnapshot.commit))),h('span',{class:'source-chip'},'Screen Lens · ',h('code',{},inventory.sourceSnapshot.lensRef)),h('span',{class:'source-chip'},'Localization · ',inventory.sourceSnapshot.localizationInventoryRef?h('code',{},inventory.sourceSnapshot.localizationInventoryRef):h('span',{class:'sub'},'not connected'))),
-   viewTabs()),
+   workspacePivots(),viewTabs()),
   h('section',{class:'workspace'},h('div',{class:'controls'},search,product,kind,surface),h('p',{class:'match'},count(families.length)+' of '+count(inventory.components.length)+' source families in this view.'),h('div',{class:'grid'},families.map(familyCard)),selected?detail(selected):h('div',{class:'empty'},'No component families match this view.')),
   h('footer',{},'Source families answer “what exists and where is it used?” The Architecture candidates view asks the separate question: “which recurring relationships deserve a typed portable Kotlin Blueprint contract?”'));
  if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
@@ -342,12 +517,20 @@ function renderArchitecture({focusSearch=false}={}){
    h('div',{class:'boundary'},h('b',{},'Compiler boundary: '),'Kotlin Blueprint can be the strongly typed authoring form; Compose is one target adapter. Portable IR, generated native source, target Screen Lens and native proof remain separate witnesses.'),
    h('div',{class:'summary'},metric(state.architecture.candidates.length,'architecture candidates'),metric(formations,'A3 formations'),metric(targetResults,'target experiments'),metric(mappedRelations,'mapped target relationships'),metric(heldRelations,'held target relationships'),metric(acceptedPortable.length,'accepted portable')),
    h('div',{class:'source'},state.architecture.sourceSnapshots.map((row)=>h('span',{class:'source-chip'},h('span',{class:'dot'}),row.repositoryRef,h('code',{},short(row.commit))))),
-   viewTabs()),
+   workspacePivots(),viewTabs()),
   h('section',{class:'workspace'},h('div',{class:'controls'},search,classSelect,stateSelect),h('p',{class:'match'},count(rows.length)+' of '+count(state.architecture.candidates.length)+' architecture candidates in this view.'),h('div',{class:'grid'},rows.map(architectureCard)),selected?architectureDetail(selected):h('div',{class:'empty'},'No architecture candidates match this view.')),
   h('footer',{},acceptedPortable.length+' portable relationship'+(acceptedPortable.length===1?' is':'s are')+' accepted at A3. Target-pressure results remain separate evidence: native/framework proof and held target mechanics do not become portable acceptance merely because a relationship is accepted.'));
  if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
 }
-function render(options={}){if(state.view==='REALIZATIONS')return renderRealizations(options);return state.view==='ARCHITECTURE'?renderArchitecture(options):renderSource(options);}
+function render(options={}){
+ if(state.pivot==='STATES')return renderStates(options);
+ if(state.pivot==='VARIANTS')return renderVariants(options);
+ if(state.pivot==='PRODUCTS')return renderProducts(options);
+ if(state.pivot==='REALIZATIONS')return renderRealizations(options);
+ if(state.pivot==='WHERE_USED')return renderWhereUsed(options);
+ if(state.pivot==='PROOF')return renderProof(options);
+ return state.view==='ARCHITECTURE'?renderArchitecture(options):renderSource(options);
+}
 function metric(value,label){return h('div',{class:'metric'},h('b',{},count(value)),h('span',{},label));}
 async function boot(){
  state.catalog=Catalog.normalizeLensCatalog(await fetchJson(CATALOG_URL));
@@ -378,4 +561,4 @@ boot().catch((error)=>{app.innerHTML='<div class="intro"><div><h1>Component Gall
 </script>
 </body>
 </html>
-<!-- [VXG RealForever][VEXWORK][VEXBOARD][COMPONENT-GALLERY][A1] -->
+<!-- [VXG RealForever][VEXWORK][VEXBOARD][COMPONENT-GALLERY][A5-WORKSPACE] -->

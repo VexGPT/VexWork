@@ -197,7 +197,7 @@ subject through the Lens catalog's Main coordinate:
 | Product | Source families | Occurrences | Localized occurrences | Direct realizers |
 | --- | ---: | ---: | ---: | ---: |
 | VexLife Android | 15 | 274 | 190 | 121 |
-| VexLife Prod | 9 | 152 | 105 | 0 |
+| VexLife Prod | 9 | 152 | 123 | 0 |
 | VexStream Music | 4 | 81 | 0 | 0 |
 
 The zeros are meaningful:
@@ -540,34 +540,49 @@ Each realization retains source coordinates, version/currentness and proof.
 
 This is not automatic source-to-source translation. A deterministic constructor/generator becomes valid only where an accepted mapping proves it.
 
-### A5 — Component Gallery / Library workspace — READY
+### A5 — Component Gallery / Library workspace — RUNNING
 
-The **Gallery shell exists early** at `vexboard/components.html` so A1 has a human home now. It
-shows observed source families and where-used truth while portable meaning is still explicitly
-unclassified.
+A1-A4 are now accepted on `main`; A5 is the foreground human workspace rather than a proof-management continuation.
 
-A3 portable convergence is complete. Full A5 completion still waits on the remaining A1 verification
-boundary; the early shell is not a shortcut that promotes source families into portable Blueprints.
+The existing `vexboard/components.html` shell already preserves the three architecture evidence layers:
 
-Build one human-facing Gallery that can pivot by:
+```text
+Source families
+Architecture
+Realizations
+```
+
+A5 now adds the human pivots over those same sources:
 
 ```text
 COMPONENTS | STATES | VARIANTS | PRODUCTS | REALIZATIONS | WHERE USED | PROOF
 ```
 
-A component detail should expose:
+The workspace remains projection-only:
 
-- portable meaning;
-- visual specimen(s);
-- slots / parameters;
-- states/variants;
-- controls/intents;
-- localization bindings;
-- accessibility meaning;
-- platform realizations;
-- where-used;
-- source / proof;
-- copyable construction brief / sample when earned.
+- **Components** keeps Product source families distinct from accepted portable architecture.
+- **States** shows only explicit `visibleWhen`, `alwaysVisible`, presence and condition relationships already projected by current source.
+- **Variants** groups observed source-shape signatures (style / slot / layer / text role / interactions) as derived evidence only; it creates no portable variant identity.
+- **Products** summarizes current Main component inventory coverage without scoring or collapsing Product ownership.
+- **Realizations** reuses the A4 target-realization map.
+- **Where used** provides one cross-Product reverse occurrence index with Screen Lens deep links.
+- **Proof** flattens the exact A4 proof records while preserving PASS / HELD / OWED distinctions.
+
+Permanent A5 honesty:
+
+```text
+ABSENT STATE RELATIONSHIP
+-> NOT OBSERVED
+!= INFER FROM FRAMEWORK WIDGET
+
+DERIVED SOURCE SHAPE
+!= PORTABLE VARIANT ID
+
+GALLERY PIVOT
+!= NEW COMPONENT TRUTH STORE
+```
+
+A component detail still exposes the earned source/portable/target relationships. Copyable target-bound construction/reference artifacts remain A6; A5 may navigate the evidence required to form them but does not make generated code canonical meaning.
 
 ### A6 — construction/export packs — WAITING on A4+A5
 
@@ -720,7 +735,7 @@ repository-owned execution runs.
 
 ## Current next edge
 
-work.vex.component-library-architecture.gallery — **READY**
+work.vex.component-library-architecture.gallery — **RUNNING**
 
 A3 is terminal:
 

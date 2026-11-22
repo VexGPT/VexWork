@@ -250,7 +250,7 @@
       "label": "Build the Component Library / Gallery workspace",
       "purpose": "Expose a projectable human Gallery over the proven component inventory with progressive disclosure for components, variants/states, target realizations, where-used, localization/accessibility bindings, source/proof and copyable construction briefs while remaining a read/projection surface rather than component source authority.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "dependencyRefs": [
         "work.vex.component-library-architecture.android-inventory",
         "work.vex.component-library-architecture.portable-contract"
@@ -269,7 +269,7 @@
         "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
         "github.pr.vexlife-prod.506"
       ],
-      "updatedAt": "2026-11-22T15:41:04.000Z"
+      "updatedAt": "2026-11-22T16:58:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -575,6 +575,23 @@
         "projects/component-library-architecture/component-architecture-catalog.json"
       ],
       "createdAt": "2026-11-22T15:41:04.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.component-library-architecture.gallery.running.a5-workspace-20261122",
+      "workRef": "work.vex.component-library-architecture.gallery",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A5 enters its human workspace implementation from the merged A1-A4 foundation: add Components / States / Variants / Products / Realizations / Where Used / Proof pivots over the existing inventories and architecture catalog, keep absent state/variant relationships explicit, and preserve the Gallery as read-only projection rather than component source authority.",
+      "actorRef": "actor.vexgpt.component-library",
+      "sourceRefs": [
+        "github.pull.vexwork.402",
+        "github.commit.vexwork.e3fd23dfff3bc98b4fca737c26e127fb21d1d800",
+        "vexboard/components.html",
+        "projects/component-library-architecture/README.md",
+        "test/vexboard-component-workspace-ui.test.mjs"
+      ],
+      "createdAt": "2026-11-22T16:58:00.000Z"
     }
   ],
   "sourceRefs": [
