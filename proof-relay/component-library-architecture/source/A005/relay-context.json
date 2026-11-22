@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "vexwork.pr402-component-library-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 402,
+  "attempt": "A005",
+  "disposition": "A004_STALE_REGRESSION_EXPECTATIONS_SUCCESSOR_DETERMINISTIC_REVIEW",
+  "candidate": {
+    "base": "c4d9c70853e07c100379712ed870bf83c6d5b9a6",
+    "head": "de842056f1d6b5f61c316923787c45b2094d9812",
+    "tree": "e3630cc188259dfcd6d64147b462fad88323e23e",
+    "branch": "VXG-112026-component-library-architecture-project-a001",
+    "changedPathCount": 26,
+    "changedPaths": [
+      "blueprint/project-registry.json",
+      "package.json",
+      "projects/component-library-architecture/ARCHITECTURE.md",
+      "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+      "projects/component-library-architecture/README.md",
+      "projects/component-library-architecture/TECH-DEBT.md",
+      "projects/component-library-architecture/component-architecture-catalog.json",
+      "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+      "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+      "projects/component-library-architecture/inventory/vexstream-music.main.components.json",
+      "projects/component-library-architecture/project.json",
+      "public/work-dashboard.json",
+      "public/workspace.json",
+      "scripts/build-component-inventory.mjs",
+      "src/shared/vexboard-component-architecture.mjs",
+      "src/shared/vexboard-component-inventory.mjs",
+      "test/vexboard-component-architecture.test.mjs",
+      "test/vexboard-component-inventory.test.mjs",
+      "test/public-workspace.test.mjs",
+      "test/vexboard-localization-workspace-ui.test.mjs",
+      "test/vexwork-vexarchitecture-alignment-project.test.mjs",
+      "vexboard/components.html",
+      "vexboard/localization.html",
+      "vexboard/projects.html",
+      "workgraphs/public.json",
+      "workgraphs/segments/component-library-architecture.json"
+    ]
+  },
+  "candidateLifecycle": [
+    "A1 Android inventory: COMPLETED candidate",
+    "A2 cross-Product census: COMPLETED candidate",
+    "A3 portable contract: already COMPLETED",
+    "A4 target realizations: COMPLETED candidate at 39 PASS / 0 OWED / 2 intentional HELD",
+    "A5 Component Gallery: READY candidate",
+    "A6 construction packs: WAITING_DEPENDENCIES",
+    "A7 self-projection: WAITING_DEPENDENCIES"
+  ],
+  "proofMeaning": [
+    "review:deterministic remains the unchanged repository-owned acceptance floor.",
+    "A005 proves the exact #402 candidate after closing all six A004 regressions at their rightful currentness boundaries.",
+    "Component A4 proof expectations now reflect already-earned exact-head PASS evidence; VexLife-Prod component inventory is byte-exact current from the Product Lens; Components/Localization navigation tests reflect the admitted Gallery; two stale Parking Lot assertions are aligned with current main Workgraph truth where the Settings mapping is CANCELLED/PARKED.",
+    "No broader #406 portfolio-closeout semantics are imported."
+  ],
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No source mutation.",
+    "No Product/native proof replay.",
+    "No READY/merge/release effect.",
+    "A5 implementation does not begin until exact VexWork candidate proof is consumed."
+  ],
+  "onPass": {
+    "next": "Fresh read-only Independent Assurance on exact repaired #402 head; if clear, accept A1/A2/A4 completion and A5 READY, then enter A5."
+  },
+  "predecessor": {
+    "attempt": "A004",
+    "state": "SAFE_FAILURE",
+    "outerCarrier": "PASS",
+    "innerSourceOwner": "SAFE_FAILURE",
+    "classification": "stale-regression-currentness",
+    "observedFailureCount": 6,
+    "correction": [
+      "Update Component Architecture A4 proof assertions from old OWED/source-head expectations to the already-earned PASS evidence recorded in the catalog.",
+      "Regenerate vexlife-prod.main.components.json from the current Product Screen Lens + Localization inventory; resulting bytes are 373214 and Git blob 50c74387d5b41acb2e20006c20e867adaab463c8.",
+      "Update the Product localized occurrence expectation from 105 to 123.",
+      "Update the Localization navigation regression to preserve Projects -> Components -> Localization.",
+      "Correct only the two stale active-Parking-Lot expectations whose asserted Settings item is already CANCELLED/PARKED on current main Workgraph source.",
+      "Do not import #406's broader portfolio-closeout changes."
+    ],
+    "sourceMutation": true
+  }
+}

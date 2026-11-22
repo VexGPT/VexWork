@@ -521,7 +521,7 @@ test('A2 generated consequences make both patient-zero Projects navigable', () =
     generatedPublicWorkgraph.items.some((item) =>
       item.workRef === 'work.vexwork.vexarchitecture-alignment.outcome'
     ),
-    true,
+    false,
   );
   assert.equal(
     generatedPublicWorkspace.parkingLot.items.some((item) =>
