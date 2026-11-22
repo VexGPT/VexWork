@@ -521,13 +521,13 @@ test('A2 generated consequences make both patient-zero Projects navigable', () =
     generatedPublicWorkgraph.items.some((item) =>
       item.workRef === 'work.vexwork.vexarchitecture-alignment.outcome'
     ),
-    false,
+    true,
   );
   assert.equal(
     generatedPublicWorkspace.parkingLot.items.some((item) =>
       item.workRef === 'work.vexlife.new-beginnings.later.settings-capability-mapping'
     ),
-    true,
+    false,
   );
 });
 
