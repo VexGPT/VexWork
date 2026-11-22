@@ -133,7 +133,7 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.ok(identityWeb.relationships.some((row) => row.relationRef.endsWith('stable-ref') && row.disposition === 'MAPPED'));
   assert.ok(identityWeb.relationships.some((row) => row.relationRef.endsWith('target-hook') && row.disposition === 'PLATFORM_SPECIFIC'));
   assert.ok(identitySwift.relationships.some((row) => row.relationRef.endsWith('source-parent') && row.disposition === 'MAPPED'));
-  assert.ok(identitySwift.proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'OWED'));
+  assert.ok(identitySwift.proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'PASS'));
 
   const containment = targetPressuresForCandidate(catalog, 'candidate.component.typed-containment');
   assert.equal(containment.length, 1);
@@ -149,7 +149,7 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.ok(controlWeb.relationships.some((row) => row.relationRef.endsWith('callback-identity') && row.disposition === 'PLATFORM_SPECIFIC'));
   assert.ok(controlSwift.relationships.some((row) => row.relationRef.endsWith('unknown-binding') && row.disposition === 'HELD'));
   assert.ok(controlSwift.proofs.some((row) => row.proofRef === 'proof.swift-unknown-binding-negative' && row.state === 'PASS'));
-  assert.ok(controlSwift.proofs.some((row) => row.proofRef === 'proof.repository-kotlin-2.4.20' && row.state === 'OWED'));
+  assert.ok(controlSwift.proofs.some((row) => row.proofRef === 'proof.repository-kotlin-2.4.20' && row.state === 'PASS'));
 
   const repeater = targetPressuresForCandidate(catalog, 'candidate.component.stable-repeater');
   const repeaterSwift = repeater.find((row) => row.platformRef === 'platform.ios');
@@ -161,11 +161,11 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.ok(repeaterSwift.relationships.some((row) => row.relationRef.endsWith('item-identity') && row.disposition === 'MAPPED'));
   assert.ok(repeaterSwift.relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'HELD'));
   assert.ok(repeaterSwift.relationships.some((row) => row.relationRef.endsWith('content-type-hint') && row.disposition === 'PLATFORM_SPECIFIC'));
-  assert.ok(repeaterSwift.proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'OWED'));
+  assert.ok(repeaterSwift.proofs.some((row) => row.proofRef === 'proof.apple-swiftui-sdk' && row.state === 'PASS'));
   assert.ok(repeaterAndroid.relationships.some((row) => row.relationRef.endsWith('visible-item-projection') && row.disposition === 'MAPPED'));
   assert.ok(repeaterAndroid.relationships.some((row) => row.relationRef.endsWith('scroll-lock') && row.disposition === 'MAPPED'));
   assert.ok(repeaterAndroid.proofs.some((row) => row.proofRef === 'proof.android-insert-remove-source-formed' && row.state === 'PASS'));
-  assert.ok(repeaterAndroid.proofs.some((row) => row.proofRef === 'proof.android-insert-remove-identity' && row.state === 'OWED' && row.note.includes('PR #261')));
+  assert.ok(repeaterAndroid.proofs.some((row) => row.proofRef === 'proof.android-insert-remove-identity' && row.state === 'PASS' && row.note.includes('#261')));
   assert.equal(repeaterWeb.state, 'SOURCE_FORMED');
   assert.ok(repeaterWeb.relationships.some((row) => row.relationRef.endsWith('item-identity') && row.disposition === 'MAPPED'));
   assert.ok(repeaterWeb.relationships.some((row) => row.relationRef.endsWith('duplicate-failure') && row.disposition === 'HELD'));
@@ -237,8 +237,8 @@ test('A4 realization view is derived only from accepted portable relationships',
     row.candidateRef === 'candidate.component.frame-region-layout' &&
     row.platformRef === 'platform.ios'
   );
-  assert.equal(swiftFrame.commit, 'ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a');
-  assert.ok(swiftFrame.proofCounts.OWED > 0);
+  assert.equal(swiftFrame.commit, '8c1fbee1e9029f89f4452c86dfcc9e7f08e4834b');
+  assert.equal(swiftFrame.proofCounts.OWED ?? 0, 0);\n  assert.ok(swiftFrame.proofCounts.PASS >= 5);
   assert.ok(swiftFrame.relationCounts.HELD > 0);
 
   const vexStreamRepeater = realizations.find((row) =>

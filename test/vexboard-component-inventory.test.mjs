@@ -72,7 +72,7 @@ test('A2 applies the same inventory contract to materially different Products', 
   assert.equal(inventories.prod.summary.componentFamilyCount, 9);
   assert.equal(inventories.prod.summary.occurrenceCount, 152);
   assert.equal(inventories.prod.summary.screenCount, 1);
-  assert.equal(inventories.prod.summary.localizedOccurrenceCount, 105);
+  assert.equal(inventories.prod.summary.localizedOccurrenceCount, 123);
   assert.equal(inventories.prod.summary.realizedOccurrenceCount, 0);
   assert.equal(
     inventories.prod.sourceSnapshot.commit,

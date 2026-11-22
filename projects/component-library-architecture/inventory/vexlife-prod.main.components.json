@@ -268,7 +268,54 @@
         "vexlife-prod:workspace.label.context-profile-foundation-mode",
         "vexlife-prod:workspace.label.context-profile-foundation-product",
         "vexlife-prod:workspace.label.context-profile-saved-option",
-        "vexlife-prod:workspace.label.context-profile-saved-profile"
+        "vexlife-prod:workspace.label.context-profile-saved-profile",
+        "vexlife-prod:workspace.label.continuity-mode",
+        "vexlife-prod:workspace.label.conversation-persistence",
+        "vexlife-prod:workspace.label.dream-sync",
+        "vexlife-prod:workspace.label.local-asr-composer-output",
+        "vexlife-prod:workspace.label.local-asr-output-as-spoken",
+        "vexlife-prod:workspace.label.local-asr-output-translate-english",
+        "vexlife-prod:workspace.label.local-asr-selection",
+        "vexlife-prod:workspace.label.local-asr-spoken-language",
+        "vexlife-prod:workspace.label.local-asr-spoken-language-auto",
+        "vexlife-prod:workspace.label.local-asr-spoken-language-follow",
+        "vexlife-prod:workspace.label.low-memory-alert",
+        "vexlife-prod:workspace.label.model-choice",
+        "vexlife-prod:workspace.label.reply-language",
+        "vexlife-prod:workspace.label.screen-language",
+        "vexlife-prod:workspace.label.screen-language-follow",
+        "vexlife-prod:workspace.label.speech-natural-voices",
+        "vexlife-prod:workspace.label.speech-read-thoughts",
+        "vexlife-prod:workspace.label.speech-speed",
+        "vexlife-prod:workspace.label.speech-system-voices",
+        "vexlife-prod:workspace.label.speech-voice",
+        "vexlife-prod:workspace.label.thought-visibility",
+        "vexlife-prod:workspace.label.vex-labs-memory-current",
+        "vexlife-prod:workspace.label.vex-labs-memory-mode",
+        "vexlife-prod:workspace.label.vex-labs-memory-none",
+        "vexlife-prod:workspace.label.vision",
+        "vexlife-prod:workspace.nav.app-archives",
+        "vexlife-prod:workspace.nav.app-browser",
+        "vexlife-prod:workspace.nav.app-source-template",
+        "vexlife-prod:workspace.nav.app-vex-context",
+        "vexlife-prod:workspace.status.context-share-included",
+        "vexlife-prod:workspace.status.context-share-reading",
+        "vexlife-prod:workspace.status.local-sources-choosing-folder",
+        "vexlife-prod:workspace.status.low-memory-not-connected",
+        "vexlife-prod:workspace.status.private-active",
+        "vexlife-prod:workspace.status.private-kept",
+        "vexlife-prod:workspace.status.vision-changed-before-action",
+        "vexlife-prod:workspace.status.vision-checking",
+        "vexlife-prod:workspace.status.vision-engaged",
+        "vexlife-prod:workspace.status.vision-held",
+        "vexlife-prod:workspace.status.vision-looking",
+        "vexlife-prod:workspace.status.vision-ready",
+        "vexlife-prod:workspace.status.vision-request-failed",
+        "vexlife-prod:workspace.status.vision-request-mismatch",
+        "vexlife-prod:workspace.status.vision-request-not-completed",
+        "vexlife-prod:workspace.status.vision-selecting",
+        "vexlife-prod:workspace.status.vision-summary",
+        "vexlife-prod:workspace.status.vision-working"
       ],
       "accessibilityState": "NOT_PROJECTED"
     },
@@ -366,7 +413,13 @@
         "vexlife-prod:workspace.label.composer",
         "vexlife-prod:workspace.label.context-profile-foundation-text",
         "vexlife-prod:workspace.label.context-profile-name",
-        "vexlife-prod:workspace.label.context-profile-new-name-default"
+        "vexlife-prod:workspace.label.context-profile-new-name-default",
+        "vexlife-prod:workspace.label.vex-labs-active-context",
+        "vexlife-prod:workspace.label.vex-labs-memory-depth",
+        "vexlife-prod:workspace.placeholder.browser-query",
+        "vexlife-prod:workspace.placeholder.browser-query-unlocated",
+        "vexlife-prod:workspace.placeholder.composer",
+        "vexlife-prod:workspace.placeholder.context-profile-foundation-text"
       ],
       "accessibilityState": "NOT_PROJECTED"
     },
@@ -436,7 +489,11 @@
         "vexlife-prod:workspace.button.browser-show",
         "vexlife-prod:workspace.button.companion-hide",
         "vexlife-prod:workspace.button.companion-show",
-        "vexlife-prod:workspace.label.browser-companion-resize"
+        "vexlife-prod:workspace.label.browser-companion-resize",
+        "vexlife-prod:workspace.status.browser-collapsed",
+        "vexlife-prod:workspace.status.browser-height",
+        "vexlife-prod:workspace.status.browser-width",
+        "vexlife-prod:workspace.status.companion-collapsed"
       ],
       "accessibilityState": "NOT_PROJECTED"
     },
@@ -654,7 +711,78 @@
         "vexlife-prod:workspace.label.context-placement-request",
         "vexlife-prod:workspace.label.context-placement-standing",
         "vexlife-prod:workspace.label.context-profile-imported-fallback",
-        "vexlife-prod:workspace.label.context-unknown-schema"
+        "vexlife-prod:workspace.label.context-unknown-schema",
+        "vexlife-prod:workspace.label.home-unknown-value",
+        "vexlife-prod:workspace.label.resources-no-model-selected",
+        "vexlife-prod:workspace.label.resources-unknown-value",
+        "vexlife-prod:workspace.label.speech-panel",
+        "vexlife-prod:workspace.label.vex-labs-save-name-default",
+        "vexlife-prod:workspace.status.archives-checking",
+        "vexlife-prod:workspace.status.context-browser-not-used",
+        "vexlife-prod:workspace.status.context-browser-used",
+        "vexlife-prod:workspace.status.context-budget-condensed",
+        "vexlife-prod:workspace.status.context-budget-recent-fit",
+        "vexlife-prod:workspace.status.context-budget-started",
+        "vexlife-prod:workspace.status.context-continuity-carried",
+        "vexlife-prod:workspace.status.context-continuity-not-needed",
+        "vexlife-prod:workspace.status.context-conversation-many",
+        "vexlife-prod:workspace.status.context-conversation-none",
+        "vexlife-prod:workspace.status.context-conversation-one",
+        "vexlife-prod:workspace.status.context-foundation-carried",
+        "vexlife-prod:workspace.status.context-foundation-unavailable",
+        "vexlife-prod:workspace.status.context-held-completed-turn",
+        "vexlife-prod:workspace.status.context-input-browser-checking",
+        "vexlife-prod:workspace.status.context-input-checking",
+        "vexlife-prod:workspace.status.context-input-components-order",
+        "vexlife-prod:workspace.status.context-input-continuity-checking",
+        "vexlife-prod:workspace.status.context-input-conversation-checking",
+        "vexlife-prod:workspace.status.context-input-foundation-standing",
+        "vexlife-prod:workspace.status.context-input-request-current",
+        "vexlife-prod:workspace.status.context-last-completed-reply",
+        "vexlife-prod:workspace.status.context-memory-daily",
+        "vexlife-prod:workspace.status.context-memory-daily-and-semantic",
+        "vexlife-prod:workspace.status.context-memory-not-used",
+        "vexlife-prod:workspace.status.context-memory-semantic",
+        "vexlife-prod:workspace.status.context-model-view-unavailable",
+        "vexlife-prod:workspace.status.context-profile-foundation-required",
+        "vexlife-prod:workspace.status.context-profile-import-invalid",
+        "vexlife-prod:workspace.status.context-profile-imported",
+        "vexlife-prod:workspace.status.context-profile-save-failed",
+        "vexlife-prod:workspace.status.context-profile-saved",
+        "vexlife-prod:workspace.status.context-refresh-failed",
+        "vexlife-prod:workspace.status.context-request-exact",
+        "vexlife-prod:workspace.status.context-request-unavailable",
+        "vexlife-prod:workspace.status.context-unavailable-build",
+        "vexlife-prod:workspace.status.context-unavailable-detail",
+        "vexlife-prod:workspace.status.context-unsupported-detail",
+        "vexlife-prod:workspace.status.home-current",
+        "vexlife-prod:workspace.status.home-unobserved",
+        "vexlife-prod:workspace.status.models-unavailable",
+        "vexlife-prod:workspace.status.product-reloading",
+        "vexlife-prod:workspace.status.product-updated",
+        "vexlife-prod:workspace.status.speech-choose-start",
+        "vexlife-prod:workspace.status.speech-natural-failed",
+        "vexlife-prod:workspace.status.speech-natural-fallback",
+        "vexlife-prod:workspace.status.speech-natural-loading",
+        "vexlife-prod:workspace.status.speech-no-voice",
+        "vexlife-prod:workspace.status.speech-nothing-to-read",
+        "vexlife-prod:workspace.status.speech-off",
+        "vexlife-prod:workspace.status.speech-paused",
+        "vexlife-prod:workspace.status.speech-reading",
+        "vexlife-prod:workspace.status.speech-replies",
+        "vexlife-prod:workspace.status.speech-stopped-unavailable",
+        "vexlife-prod:workspace.status.speech-thoughts-and-replies",
+        "vexlife-prod:workspace.status.vex-context-no-turn",
+        "vexlife-prod:workspace.status.vex-labs-context-budget-held",
+        "vexlife-prod:workspace.status.vex-labs-load-failed",
+        "vexlife-prod:workspace.status.vex-labs-profile-not-loaded",
+        "vexlife-prod:workspace.status.vex-labs-real-state-mutation",
+        "vexlife-prod:workspace.status.vex-labs-save-failed",
+        "vexlife-prod:workspace.status.vex-labs-saved-supported",
+        "vexlife-prod:workspace.status.vex-labs-test-before-save",
+        "vexlife-prod:workspace.status.vex-labs-turn-failed",
+        "vexlife-prod:workspace.status.vex-labs-unavailable-build",
+        "vexlife-prod:workspace.status.vex-labs-unavailable-detail"
       ],
       "accessibilityState": "NOT_PROJECTED"
     },
@@ -858,7 +986,89 @@
         "vexlife-prod:workspace.label.context-after-conversation",
         "vexlife-prod:workspace.label.context-after-evidence",
         "vexlife-prod:workspace.label.context-after-next-turn",
-        "vexlife-prod:workspace.label.context-after-process"
+        "vexlife-prod:workspace.label.context-after-process",
+        "vexlife-prod:workspace.label.conversation-role-vex",
+        "vexlife-prod:workspace.label.conversation-role-you",
+        "vexlife-prod:workspace.label.execution-field-context-profile-input-token-budget",
+        "vexlife-prod:workspace.label.execution-field-continuity-adaptive-context-policy",
+        "vexlife-prod:workspace.label.execution-field-continuity-capability-exchange-reserve-tokens",
+        "vexlife-prod:workspace.label.execution-field-continuity-direct-turn-input-with-reach-tokens",
+        "vexlife-prod:workspace.label.execution-field-continuity-hard-input-output-token-limit",
+        "vexlife-prod:workspace.label.execution-field-continuity-input-token-budget",
+        "vexlife-prod:workspace.label.execution-field-continuity-maximum-memory-tokens",
+        "vexlife-prod:workspace.label.execution-field-continuity-maximum-requests-per-turn",
+        "vexlife-prod:workspace.label.execution-field-continuity-reserved-output-tokens",
+        "vexlife-prod:workspace.label.execution-field-generation-capability-representation",
+        "vexlife-prod:workspace.label.execution-field-generation-maximum-output-tokens",
+        "vexlife-prod:workspace.label.execution-field-generation-message-protocol",
+        "vexlife-prod:workspace.label.execution-field-generation-reach-standing",
+        "vexlife-prod:workspace.label.execution-field-generation-reasoning-effort",
+        "vexlife-prod:workspace.label.execution-field-generation-reasoning-representation",
+        "vexlife-prod:workspace.label.execution-field-generation-temperature",
+        "vexlife-prod:workspace.label.execution-field-generation-top-k",
+        "vexlife-prod:workspace.label.execution-field-generation-top-p",
+        "vexlife-prod:workspace.label.execution-field-model-architecture-class",
+        "vexlife-prod:workspace.label.execution-field-model-attention-heads",
+        "vexlife-prod:workspace.label.execution-field-model-cache-enabled",
+        "vexlife-prod:workspace.label.execution-field-model-full-attention-interval",
+        "vexlife-prod:workspace.label.execution-field-model-full-attention-layers",
+        "vexlife-prod:workspace.label.execution-field-model-head-dimension",
+        "vexlife-prod:workspace.label.execution-field-model-hidden-layers",
+        "vexlife-prod:workspace.label.execution-field-model-key-value-heads",
+        "vexlife-prod:workspace.label.execution-field-model-linear-attention-layers",
+        "vexlife-prod:workspace.label.execution-field-model-native-context-tokens",
+        "vexlife-prod:workspace.label.execution-field-model-type",
+        "vexlife-prod:workspace.label.execution-field-runtime-decode-concurrency",
+        "vexlife-prod:workspace.label.execution-field-runtime-kv-bits",
+        "vexlife-prod:workspace.label.execution-field-runtime-kv-group-size",
+        "vexlife-prod:workspace.label.execution-field-runtime-mlx-lm-version",
+        "vexlife-prod:workspace.label.execution-field-runtime-prefill-step-size",
+        "vexlife-prod:workspace.label.execution-field-runtime-prompt-cache-bytes",
+        "vexlife-prod:workspace.label.execution-field-runtime-prompt-cache-entries",
+        "vexlife-prod:workspace.label.execution-field-runtime-prompt-concurrency",
+        "vexlife-prod:workspace.label.execution-field-runtime-quantized-kv-start",
+        "vexlife-prod:workspace.label.execution-unit-bits",
+        "vexlife-prod:workspace.label.execution-unit-bytes",
+        "vexlife-prod:workspace.label.execution-unit-entries",
+        "vexlife-prod:workspace.label.execution-unit-heads",
+        "vexlife-prod:workspace.label.execution-unit-layers",
+        "vexlife-prod:workspace.label.execution-unit-requests",
+        "vexlife-prod:workspace.label.execution-unit-tokens",
+        "vexlife-prod:workspace.label.vex-labs-field-applies",
+        "vexlife-prod:workspace.label.vex-labs-field-current",
+        "vexlife-prod:workspace.label.vex-labs-field-current-test",
+        "vexlife-prod:workspace.label.vex-labs-field-default",
+        "vexlife-prod:workspace.label.vex-labs-field-not-set",
+        "vexlife-prod:workspace.label.vex-labs-field-observed-floor",
+        "vexlife-prod:workspace.label.vex-labs-field-owner",
+        "vexlife-prod:workspace.label.vex-labs-field-range",
+        "vexlife-prod:workspace.label.vex-labs-field-recommended",
+        "vexlife-prod:workspace.label.vex-labs-field-value-unit",
+        "vexlife-prod:workspace.nav.archives-timeline",
+        "vexlife-prod:workspace.nav.conversation-timeline",
+        "vexlife-prod:workspace.nav.quick-actions",
+        "vexlife-prod:workspace.nav.source-template",
+        "vexlife-prod:workspace.status.archives-empty",
+        "vexlife-prod:workspace.status.archives-summary",
+        "vexlife-prod:workspace.status.context-after-stayed",
+        "vexlife-prod:workspace.status.context-output-exact",
+        "vexlife-prod:workspace.status.context-process-not-kept",
+        "vexlife-prod:workspace.status.context-process-session",
+        "vexlife-prod:workspace.status.context-process-visible-session",
+        "vexlife-prod:workspace.status.conversation-checking-vex",
+        "vexlife-prod:workspace.status.conversation-preparing",
+        "vexlife-prod:workspace.status.conversation-reconnecting-vex",
+        "vexlife-prod:workspace.status.conversation-responding",
+        "vexlife-prod:workspace.status.conversation-stopped-before-finishing",
+        "vexlife-prod:workspace.status.conversation-thinking",
+        "vexlife-prod:workspace.status.private-send-failed",
+        "vexlife-prod:workspace.status.vex-labs-current-snapshot",
+        "vexlife-prod:workspace.status.vex-labs-empty-scratch",
+        "vexlife-prod:workspace.status.vex-labs-field-edit-test",
+        "vexlife-prod:workspace.status.vex-labs-field-held",
+        "vexlife-prod:workspace.status.vex-labs-field-read-only",
+        "vexlife-prod:workspace.status.vex-labs-field-restart",
+        "vexlife-prod:workspace.status.vex-labs-loading"
       ],
       "accessibilityState": "NOT_PROJECTED"
     },
@@ -981,7 +1191,89 @@
         "vexlife-prod:workspace.label.context-profile-product-default",
         "vexlife-prod:workspace.label.context-profile-saved",
         "vexlife-prod:workspace.label.context-receipt-included-page",
-        "vexlife-prod:workspace.label.context-window-not-measured"
+        "vexlife-prod:workspace.label.context-window-not-measured",
+        "vexlife-prod:workspace.label.diagnostics-no-records",
+        "vexlife-prod:workspace.label.diagnostics-records",
+        "vexlife-prod:workspace.label.local-asr-free-space",
+        "vexlife-prod:workspace.label.model-none",
+        "vexlife-prod:workspace.label.model-state-selected",
+        "vexlife-prod:workspace.label.model-state-serving",
+        "vexlife-prod:workspace.label.private-note-kept",
+        "vexlife-prod:workspace.label.private-note-proposal",
+        "vexlife-prod:workspace.label.settings-context-meter",
+        "vexlife-prod:workspace.label.settings-context-no",
+        "vexlife-prod:workspace.label.settings-context-yes",
+        "vexlife-prod:workspace.label.system-memory-known",
+        "vexlife-prod:workspace.label.system-memory-minimum-unknown",
+        "vexlife-prod:workspace.label.system-memory-not-measured",
+        "vexlife-prod:workspace.label.system-memory-unknown",
+        "vexlife-prod:workspace.legend.context-window-input",
+        "vexlife-prod:workspace.legend.context-window-remaining",
+        "vexlife-prod:workspace.legend.context-window-reserved",
+        "vexlife-prod:workspace.status.attachment-empty",
+        "vexlife-prod:workspace.status.attachment-file-name-invalid",
+        "vexlife-prod:workspace.status.attachment-image-held",
+        "vexlife-prod:workspace.status.attachment-image-metadata-unreadable",
+        "vexlife-prod:workspace.status.attachment-image-signature-missing",
+        "vexlife-prod:workspace.status.attachment-limit",
+        "vexlife-prod:workspace.status.attachment-no-readable-text",
+        "vexlife-prod:workspace.status.attachment-not-readable-yet",
+        "vexlife-prod:workspace.status.attachment-office-xml-damaged",
+        "vexlife-prod:workspace.status.attachment-read-failed",
+        "vexlife-prod:workspace.status.attachment-readable-text-too-large",
+        "vexlife-prod:workspace.status.attachment-ready",
+        "vexlife-prod:workspace.status.attachment-refused",
+        "vexlife-prod:workspace.status.attachment-staging",
+        "vexlife-prod:workspace.status.attachment-staging-cancelled",
+        "vexlife-prod:workspace.status.attachment-too-large",
+        "vexlife-prod:workspace.status.attachment-zip-read-failed",
+        "vexlife-prod:workspace.status.browser-address-required",
+        "vexlife-prod:workspace.status.browser-context-ready",
+        "vexlife-prod:workspace.status.browser-embedded-credentials",
+        "vexlife-prod:workspace.status.browser-local-service-rejected",
+        "vexlife-prod:workspace.status.browser-open-failed",
+        "vexlife-prod:workspace.status.browser-opened-context-available",
+        "vexlife-prod:workspace.status.browser-opened-context-unavailable",
+        "vexlife-prod:workspace.status.browser-opening-context-available",
+        "vexlife-prod:workspace.status.browser-opening-context-unavailable",
+        "vexlife-prod:workspace.status.browser-page-unlocated",
+        "vexlife-prod:workspace.status.browser-reading-context",
+        "vexlife-prod:workspace.status.browser-scheme-unsupported",
+        "vexlife-prod:workspace.status.companion-checking",
+        "vexlife-prod:workspace.status.companion-not-checked",
+        "vexlife-prod:workspace.status.companion-ready",
+        "vexlife-prod:workspace.status.companion-reconciling",
+        "vexlife-prod:workspace.status.companion-reconnecting",
+        "vexlife-prod:workspace.status.companion-responding",
+        "vexlife-prod:workspace.status.companion-retrying-exact",
+        "vexlife-prod:workspace.status.companion-send-failed",
+        "vexlife-prod:workspace.status.companion-send-unresolved",
+        "vexlife-prod:workspace.status.companion-thinking",
+        "vexlife-prod:workspace.status.companion-trying-again",
+        "vexlife-prod:workspace.status.companion-unavailable",
+        "vexlife-prod:workspace.status.context-window-not-exposed",
+        "vexlife-prod:workspace.status.conversation-stream-body-unavailable",
+        "vexlife-prod:workspace.status.conversation-stream-ended",
+        "vexlife-prod:workspace.status.conversation-stream-invalid-json",
+        "vexlife-prod:workspace.status.conversation-turn-failed",
+        "vexlife-prod:workspace.status.diagnostics-enhanced-off",
+        "vexlife-prod:workspace.status.diagnostics-enhanced-on",
+        "vexlife-prod:workspace.status.diagnostics-recording",
+        "vexlife-prod:workspace.status.diagnostics-unavailable",
+        "vexlife-prod:workspace.status.local-asr-provider-mismatch",
+        "vexlife-prod:workspace.status.local-service-not-ready",
+        "vexlife-prod:workspace.status.memory-behind",
+        "vexlife-prod:workspace.status.memory-checking",
+        "vexlife-prod:workspace.status.memory-current",
+        "vexlife-prod:workspace.status.memory-not-formed",
+        "vexlife-prod:workspace.status.memory-unreadable",
+        "vexlife-prod:workspace.status.model-runtime-configuration-pending",
+        "vexlife-prod:workspace.status.settings-context-measured",
+        "vexlife-prod:workspace.status.settings-context-no-receipt",
+        "vexlife-prod:workspace.status.system-memory-measuring",
+        "vexlife-prod:workspace.status.system-memory-not-measured",
+        "vexlife-prod:workspace.status.vex-labs-configuration-armed",
+        "vexlife-prod:workspace.status.vex-labs-scratch"
       ],
       "accessibilityState": "NOT_PROJECTED"
     }
@@ -1075,7 +1367,8 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.heading.archives"
+          "vexlife-prod:workspace.heading.archives",
+          "vexlife-prod:workspace.status.archives-checking"
         ]
       },
       "accessibility": {
@@ -1128,7 +1421,10 @@
           "vexlife-prod:workspace.label.archives-kept-note",
           "vexlife-prod:workspace.label.archives-private",
           "vexlife-prod:workspace.label.archives-role-vex",
-          "vexlife-prod:workspace.label.archives-role-you"
+          "vexlife-prod:workspace.label.archives-role-you",
+          "vexlife-prod:workspace.nav.archives-timeline",
+          "vexlife-prod:workspace.status.archives-empty",
+          "vexlife-prod:workspace.status.archives-summary"
         ]
       },
       "accessibility": {
@@ -1172,9 +1468,17 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.status.browser-context-ready",
+          "vexlife-prod:workspace.status.browser-opened-context-available",
+          "vexlife-prod:workspace.status.browser-opened-context-unavailable",
+          "vexlife-prod:workspace.status.browser-opening-context-available",
+          "vexlife-prod:workspace.status.browser-opening-context-unavailable",
+          "vexlife-prod:workspace.status.browser-page-unlocated",
+          "vexlife-prod:workspace.status.browser-reading-context"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -1220,7 +1524,8 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.description.source-template-family"
+          "vexlife-prod:workspace.description.source-template-family",
+          "vexlife-prod:workspace.nav.source-template"
         ]
       },
       "accessibility": {
@@ -1282,7 +1587,17 @@
           "vexlife-prod:workspace.heading.vex-context",
           "vexlife-prod:workspace.heading.vex-context-causal",
           "vexlife-prod:workspace.label.context-input-tokens",
-          "vexlife-prod:workspace.label.context-unknown-schema"
+          "vexlife-prod:workspace.label.context-unknown-schema",
+          "vexlife-prod:workspace.status.context-budget-condensed",
+          "vexlife-prod:workspace.status.context-budget-recent-fit",
+          "vexlife-prod:workspace.status.context-budget-started",
+          "vexlife-prod:workspace.status.context-held-completed-turn",
+          "vexlife-prod:workspace.status.context-last-completed-reply",
+          "vexlife-prod:workspace.status.context-refresh-failed",
+          "vexlife-prod:workspace.status.context-unavailable-build",
+          "vexlife-prod:workspace.status.context-unavailable-detail",
+          "vexlife-prod:workspace.status.context-unsupported-detail",
+          "vexlife-prod:workspace.status.vex-context-no-turn"
         ]
       },
       "accessibility": {
@@ -1338,7 +1653,8 @@
           "vexlife-prod:workspace.label.context-after-conversation",
           "vexlife-prod:workspace.label.context-after-evidence",
           "vexlife-prod:workspace.label.context-after-next-turn",
-          "vexlife-prod:workspace.label.context-after-process"
+          "vexlife-prod:workspace.label.context-after-process",
+          "vexlife-prod:workspace.status.context-after-stayed"
         ]
       },
       "accessibility": {
@@ -1517,7 +1833,10 @@
           "vexlife-prod:workspace.label.context-browser-captured-text",
           "vexlife-prod:workspace.label.context-browser-context",
           "vexlife-prod:workspace.label.context-browser-page",
-          "vexlife-prod:workspace.label.context-browser-reached"
+          "vexlife-prod:workspace.label.context-browser-reached",
+          "vexlife-prod:workspace.status.context-browser-not-used",
+          "vexlife-prod:workspace.status.context-browser-used",
+          "vexlife-prod:workspace.status.context-input-browser-checking"
         ]
       },
       "accessibility": {
@@ -1586,7 +1905,9 @@
           "vexlife-prod:workspace.label.context-model-view-one",
           "vexlife-prod:workspace.label.context-placement-current",
           "vexlife-prod:workspace.label.context-placement-request",
-          "vexlife-prod:workspace.label.context-placement-standing"
+          "vexlife-prod:workspace.label.context-placement-standing",
+          "vexlife-prod:workspace.status.context-input-components-order",
+          "vexlife-prod:workspace.status.context-model-view-unavailable"
         ]
       },
       "accessibility": {
@@ -1636,7 +1957,10 @@
           "vexlife-prod:workspace.button.context-continuity-show-reference",
           "vexlife-prod:workspace.description.context-continuity-carried",
           "vexlife-prod:workspace.description.context-continuity-not-needed",
-          "vexlife-prod:workspace.heading.context-input-continuity"
+          "vexlife-prod:workspace.heading.context-input-continuity",
+          "vexlife-prod:workspace.status.context-continuity-carried",
+          "vexlife-prod:workspace.status.context-continuity-not-needed",
+          "vexlife-prod:workspace.status.context-input-continuity-checking"
         ]
       },
       "accessibility": {
@@ -1690,7 +2014,11 @@
           "vexlife-prod:workspace.heading.context-input-conversation",
           "vexlife-prod:workspace.label.context-conversation-human-exact",
           "vexlife-prod:workspace.label.context-conversation-source",
-          "vexlife-prod:workspace.label.context-conversation-vex-exact"
+          "vexlife-prod:workspace.label.context-conversation-vex-exact",
+          "vexlife-prod:workspace.status.context-conversation-many",
+          "vexlife-prod:workspace.status.context-conversation-none",
+          "vexlife-prod:workspace.status.context-conversation-one",
+          "vexlife-prod:workspace.status.context-input-conversation-checking"
         ]
       },
       "accessibility": {
@@ -1749,7 +2077,10 @@
           "vexlife-prod:workspace.label.context-foundation-built-in",
           "vexlife-prod:workspace.label.context-foundation-exact-evidence",
           "vexlife-prod:workspace.label.context-foundation-personal",
-          "vexlife-prod:workspace.label.context-foundation-profile-for-reply"
+          "vexlife-prod:workspace.label.context-foundation-profile-for-reply",
+          "vexlife-prod:workspace.status.context-foundation-carried",
+          "vexlife-prod:workspace.status.context-foundation-unavailable",
+          "vexlife-prod:workspace.status.context-input-foundation-standing"
         ]
       },
       "accessibility": {
@@ -1806,7 +2137,12 @@
           "vexlife-prod:workspace.heading.context-input-memory",
           "vexlife-prod:workspace.label.context-memory-accepted-semantic",
           "vexlife-prod:workspace.label.context-memory-daily-currentness",
-          "vexlife-prod:workspace.label.context-memory-evidence"
+          "vexlife-prod:workspace.label.context-memory-evidence",
+          "vexlife-prod:workspace.status.context-input-checking",
+          "vexlife-prod:workspace.status.context-memory-daily",
+          "vexlife-prod:workspace.status.context-memory-daily-and-semantic",
+          "vexlife-prod:workspace.status.context-memory-not-used",
+          "vexlife-prod:workspace.status.context-memory-semantic"
         ]
       },
       "accessibility": {
@@ -1854,7 +2190,10 @@
         "resourceRef": null,
         "sourceStringRefs": [
           "vexlife-prod:workspace.description.context-request-unavailable",
-          "vexlife-prod:workspace.heading.context-input-request"
+          "vexlife-prod:workspace.heading.context-input-request",
+          "vexlife-prod:workspace.status.context-input-request-current",
+          "vexlife-prod:workspace.status.context-request-exact",
+          "vexlife-prod:workspace.status.context-request-unavailable"
         ]
       },
       "accessibility": {
@@ -1918,7 +2257,18 @@
           "vexlife-prod:workspace.description.vex-labs-controller-scratch",
           "vexlife-prod:workspace.description.vex-labs-intro",
           "vexlife-prod:workspace.description.vex-labs-save-name-prompt",
-          "vexlife-prod:workspace.heading.vex-labs"
+          "vexlife-prod:workspace.heading.vex-labs",
+          "vexlife-prod:workspace.label.vex-labs-save-name-default",
+          "vexlife-prod:workspace.status.vex-labs-context-budget-held",
+          "vexlife-prod:workspace.status.vex-labs-load-failed",
+          "vexlife-prod:workspace.status.vex-labs-profile-not-loaded",
+          "vexlife-prod:workspace.status.vex-labs-real-state-mutation",
+          "vexlife-prod:workspace.status.vex-labs-save-failed",
+          "vexlife-prod:workspace.status.vex-labs-saved-supported",
+          "vexlife-prod:workspace.status.vex-labs-test-before-save",
+          "vexlife-prod:workspace.status.vex-labs-turn-failed",
+          "vexlife-prod:workspace.status.vex-labs-unavailable-build",
+          "vexlife-prod:workspace.status.vex-labs-unavailable-detail"
         ]
       },
       "accessibility": {
@@ -1965,7 +2315,8 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.description.vex-labs-active-context"
+          "vexlife-prod:workspace.description.vex-labs-active-context",
+          "vexlife-prod:workspace.label.vex-labs-active-context"
         ]
       },
       "accessibility": {
@@ -2121,7 +2472,69 @@
           "vexlife-prod:workspace.description.vex-labs-field-increase",
           "vexlife-prod:workspace.description.vex-labs-loading-fields",
           "vexlife-prod:workspace.description.vex-labs-save-supported-blocked",
-          "vexlife-prod:workspace.description.vex-labs-save-supported-ready"
+          "vexlife-prod:workspace.description.vex-labs-save-supported-ready",
+          "vexlife-prod:workspace.label.execution-field-context-profile-input-token-budget",
+          "vexlife-prod:workspace.label.execution-field-continuity-adaptive-context-policy",
+          "vexlife-prod:workspace.label.execution-field-continuity-capability-exchange-reserve-tokens",
+          "vexlife-prod:workspace.label.execution-field-continuity-direct-turn-input-with-reach-tokens",
+          "vexlife-prod:workspace.label.execution-field-continuity-hard-input-output-token-limit",
+          "vexlife-prod:workspace.label.execution-field-continuity-input-token-budget",
+          "vexlife-prod:workspace.label.execution-field-continuity-maximum-memory-tokens",
+          "vexlife-prod:workspace.label.execution-field-continuity-maximum-requests-per-turn",
+          "vexlife-prod:workspace.label.execution-field-continuity-reserved-output-tokens",
+          "vexlife-prod:workspace.label.execution-field-generation-capability-representation",
+          "vexlife-prod:workspace.label.execution-field-generation-maximum-output-tokens",
+          "vexlife-prod:workspace.label.execution-field-generation-message-protocol",
+          "vexlife-prod:workspace.label.execution-field-generation-reach-standing",
+          "vexlife-prod:workspace.label.execution-field-generation-reasoning-effort",
+          "vexlife-prod:workspace.label.execution-field-generation-reasoning-representation",
+          "vexlife-prod:workspace.label.execution-field-generation-temperature",
+          "vexlife-prod:workspace.label.execution-field-generation-top-k",
+          "vexlife-prod:workspace.label.execution-field-generation-top-p",
+          "vexlife-prod:workspace.label.execution-field-model-architecture-class",
+          "vexlife-prod:workspace.label.execution-field-model-attention-heads",
+          "vexlife-prod:workspace.label.execution-field-model-cache-enabled",
+          "vexlife-prod:workspace.label.execution-field-model-full-attention-interval",
+          "vexlife-prod:workspace.label.execution-field-model-full-attention-layers",
+          "vexlife-prod:workspace.label.execution-field-model-head-dimension",
+          "vexlife-prod:workspace.label.execution-field-model-hidden-layers",
+          "vexlife-prod:workspace.label.execution-field-model-key-value-heads",
+          "vexlife-prod:workspace.label.execution-field-model-linear-attention-layers",
+          "vexlife-prod:workspace.label.execution-field-model-native-context-tokens",
+          "vexlife-prod:workspace.label.execution-field-model-type",
+          "vexlife-prod:workspace.label.execution-field-runtime-decode-concurrency",
+          "vexlife-prod:workspace.label.execution-field-runtime-kv-bits",
+          "vexlife-prod:workspace.label.execution-field-runtime-kv-group-size",
+          "vexlife-prod:workspace.label.execution-field-runtime-mlx-lm-version",
+          "vexlife-prod:workspace.label.execution-field-runtime-prefill-step-size",
+          "vexlife-prod:workspace.label.execution-field-runtime-prompt-cache-bytes",
+          "vexlife-prod:workspace.label.execution-field-runtime-prompt-cache-entries",
+          "vexlife-prod:workspace.label.execution-field-runtime-prompt-concurrency",
+          "vexlife-prod:workspace.label.execution-field-runtime-quantized-kv-start",
+          "vexlife-prod:workspace.label.execution-unit-bits",
+          "vexlife-prod:workspace.label.execution-unit-bytes",
+          "vexlife-prod:workspace.label.execution-unit-entries",
+          "vexlife-prod:workspace.label.execution-unit-heads",
+          "vexlife-prod:workspace.label.execution-unit-layers",
+          "vexlife-prod:workspace.label.execution-unit-requests",
+          "vexlife-prod:workspace.label.execution-unit-tokens",
+          "vexlife-prod:workspace.label.vex-labs-field-applies",
+          "vexlife-prod:workspace.label.vex-labs-field-current",
+          "vexlife-prod:workspace.label.vex-labs-field-current-test",
+          "vexlife-prod:workspace.label.vex-labs-field-default",
+          "vexlife-prod:workspace.label.vex-labs-field-not-set",
+          "vexlife-prod:workspace.label.vex-labs-field-observed-floor",
+          "vexlife-prod:workspace.label.vex-labs-field-owner",
+          "vexlife-prod:workspace.label.vex-labs-field-range",
+          "vexlife-prod:workspace.label.vex-labs-field-recommended",
+          "vexlife-prod:workspace.label.vex-labs-field-value-unit",
+          "vexlife-prod:workspace.status.vex-labs-current-snapshot",
+          "vexlife-prod:workspace.status.vex-labs-empty-scratch",
+          "vexlife-prod:workspace.status.vex-labs-field-edit-test",
+          "vexlife-prod:workspace.status.vex-labs-field-held",
+          "vexlife-prod:workspace.status.vex-labs-field-read-only",
+          "vexlife-prod:workspace.status.vex-labs-field-restart",
+          "vexlife-prod:workspace.status.vex-labs-loading"
         ]
       },
       "accessibility": {
@@ -2215,7 +2628,10 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.description.vex-labs-memory-mode"
+          "vexlife-prod:workspace.description.vex-labs-memory-mode",
+          "vexlife-prod:workspace.label.vex-labs-memory-current",
+          "vexlife-prod:workspace.label.vex-labs-memory-mode",
+          "vexlife-prod:workspace.label.vex-labs-memory-none"
         ]
       },
       "accessibility": {
@@ -2262,7 +2678,8 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.description.vex-labs-memory-depth"
+          "vexlife-prod:workspace.description.vex-labs-memory-depth",
+          "vexlife-prod:workspace.label.vex-labs-memory-depth"
         ]
       },
       "accessibility": {
@@ -2315,7 +2732,8 @@
           "vexlife-prod:workspace.description.vex-labs-running",
           "vexlife-prod:workspace.description.vex-labs-scratch-boundary",
           "vexlife-prod:workspace.description.vex-labs-stale",
-          "vexlife-prod:workspace.description.vex-labs-tested"
+          "vexlife-prod:workspace.description.vex-labs-tested",
+          "vexlife-prod:workspace.status.vex-labs-configuration-armed"
         ]
       },
       "accessibility": {
@@ -2500,9 +2918,11 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.status.vex-labs-scratch"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -2596,7 +3016,8 @@
         "resourceRef": null,
         "sourceStringRefs": [
           "vexlife-prod:workspace.description.context-output-unavailable",
-          "vexlife-prod:workspace.heading.context-output"
+          "vexlife-prod:workspace.heading.context-output",
+          "vexlife-prod:workspace.status.context-output-exact"
         ]
       },
       "accessibility": {
@@ -2648,7 +3069,10 @@
           "vexlife-prod:workspace.description.context-process-not-kept",
           "vexlife-prod:workspace.description.context-process-reach-many",
           "vexlife-prod:workspace.description.context-process-reach-one",
-          "vexlife-prod:workspace.heading.context-process"
+          "vexlife-prod:workspace.heading.context-process",
+          "vexlife-prod:workspace.status.context-process-not-kept",
+          "vexlife-prod:workspace.status.context-process-session",
+          "vexlife-prod:workspace.status.context-process-visible-session"
         ]
       },
       "accessibility": {
@@ -2764,7 +3188,12 @@
           "vexlife-prod:workspace.description.context-profile-saved-extension",
           "vexlife-prod:workspace.description.context-profile-saved-note",
           "vexlife-prod:workspace.heading.context-profile",
-          "vexlife-prod:workspace.label.context-profile-imported-fallback"
+          "vexlife-prod:workspace.label.context-profile-imported-fallback",
+          "vexlife-prod:workspace.status.context-profile-foundation-required",
+          "vexlife-prod:workspace.status.context-profile-import-invalid",
+          "vexlife-prod:workspace.status.context-profile-imported",
+          "vexlife-prod:workspace.status.context-profile-save-failed",
+          "vexlife-prod:workspace.status.context-profile-saved"
         ]
       },
       "accessibility": {
@@ -2909,7 +3338,8 @@
         "resourceRef": null,
         "sourceStringRefs": [
           "vexlife-prod:workspace.description.context-profile-foundation-text",
-          "vexlife-prod:workspace.label.context-profile-foundation-text"
+          "vexlife-prod:workspace.label.context-profile-foundation-text",
+          "vexlife-prod:workspace.placeholder.context-profile-foundation-text"
         ]
       },
       "accessibility": {
@@ -3492,7 +3922,24 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.button.companion-check"
+          "vexlife-prod:workspace.button.companion-check",
+          "vexlife-prod:workspace.status.companion-checking",
+          "vexlife-prod:workspace.status.companion-not-checked",
+          "vexlife-prod:workspace.status.companion-ready",
+          "vexlife-prod:workspace.status.companion-reconciling",
+          "vexlife-prod:workspace.status.companion-reconnecting",
+          "vexlife-prod:workspace.status.companion-responding",
+          "vexlife-prod:workspace.status.companion-retrying-exact",
+          "vexlife-prod:workspace.status.companion-send-failed",
+          "vexlife-prod:workspace.status.companion-send-unresolved",
+          "vexlife-prod:workspace.status.companion-thinking",
+          "vexlife-prod:workspace.status.companion-trying-again",
+          "vexlife-prod:workspace.status.companion-unavailable",
+          "vexlife-prod:workspace.status.conversation-stream-body-unavailable",
+          "vexlife-prod:workspace.status.conversation-stream-ended",
+          "vexlife-prod:workspace.status.conversation-stream-invalid-json",
+          "vexlife-prod:workspace.status.conversation-turn-failed",
+          "vexlife-prod:workspace.status.local-service-not-ready"
         ]
       },
       "accessibility": {
@@ -3654,7 +4101,8 @@
           "vexlife-prod:workspace.description.composer-reading-context",
           "vexlife-prod:workspace.description.composer-send-failed-preserved",
           "vexlife-prod:workspace.description.composer-send-unresolved",
-          "vexlife-prod:workspace.label.composer"
+          "vexlife-prod:workspace.label.composer",
+          "vexlife-prod:workspace.placeholder.composer"
         ]
       },
       "accessibility": {
@@ -3702,7 +4150,24 @@
         "resourceRef": null,
         "sourceStringRefs": [
           "vexlife-prod:workspace.button.attachment-cancel",
-          "vexlife-prod:workspace.button.attachment-remove"
+          "vexlife-prod:workspace.button.attachment-remove",
+          "vexlife-prod:workspace.status.attachment-empty",
+          "vexlife-prod:workspace.status.attachment-file-name-invalid",
+          "vexlife-prod:workspace.status.attachment-image-held",
+          "vexlife-prod:workspace.status.attachment-image-metadata-unreadable",
+          "vexlife-prod:workspace.status.attachment-image-signature-missing",
+          "vexlife-prod:workspace.status.attachment-limit",
+          "vexlife-prod:workspace.status.attachment-no-readable-text",
+          "vexlife-prod:workspace.status.attachment-not-readable-yet",
+          "vexlife-prod:workspace.status.attachment-office-xml-damaged",
+          "vexlife-prod:workspace.status.attachment-read-failed",
+          "vexlife-prod:workspace.status.attachment-readable-text-too-large",
+          "vexlife-prod:workspace.status.attachment-ready",
+          "vexlife-prod:workspace.status.attachment-refused",
+          "vexlife-prod:workspace.status.attachment-staging",
+          "vexlife-prod:workspace.status.attachment-staging-cancelled",
+          "vexlife-prod:workspace.status.attachment-too-large",
+          "vexlife-prod:workspace.status.attachment-zip-read-failed"
         ]
       },
       "accessibility": {
@@ -3951,7 +4416,9 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.button.context-share"
+          "vexlife-prod:workspace.button.context-share",
+          "vexlife-prod:workspace.status.context-share-included",
+          "vexlife-prod:workspace.status.context-share-reading"
         ]
       },
       "accessibility": {
@@ -4053,7 +4520,9 @@
         "sourceStringRefs": [
           "vexlife-prod:workspace.description.private-banner",
           "vexlife-prod:workspace.description.private-composer-hold",
-          "vexlife-prod:workspace.description.private-replying"
+          "vexlife-prod:workspace.description.private-replying",
+          "vexlife-prod:workspace.label.private-note-kept",
+          "vexlife-prod:workspace.label.private-note-proposal"
         ]
       },
       "accessibility": {
@@ -4395,7 +4864,17 @@
           "vexlife-prod:workspace.description.conversation-retry-safe-route",
           "vexlife-prod:workspace.heading.conversation-empty",
           "vexlife-prod:workspace.heading.conversation-empty-labs",
-          "vexlife-prod:workspace.heading.conversation-empty-private"
+          "vexlife-prod:workspace.heading.conversation-empty-private",
+          "vexlife-prod:workspace.label.conversation-role-vex",
+          "vexlife-prod:workspace.label.conversation-role-you",
+          "vexlife-prod:workspace.nav.conversation-timeline",
+          "vexlife-prod:workspace.status.conversation-checking-vex",
+          "vexlife-prod:workspace.status.conversation-preparing",
+          "vexlife-prod:workspace.status.conversation-reconnecting-vex",
+          "vexlife-prod:workspace.status.conversation-responding",
+          "vexlife-prod:workspace.status.conversation-stopped-before-finishing",
+          "vexlife-prod:workspace.status.conversation-thinking",
+          "vexlife-prod:workspace.status.private-send-failed"
         ]
       },
       "accessibility": {
@@ -4548,7 +5027,10 @@
           "vexlife-prod:workspace.button.private-begin",
           "vexlife-prod:workspace.button.private-end",
           "vexlife-prod:workspace.description.private-active",
-          "vexlife-prod:workspace.description.private-kept"
+          "vexlife-prod:workspace.description.private-kept",
+          "vexlife-prod:workspace.label.conversation-persistence",
+          "vexlife-prod:workspace.status.private-active",
+          "vexlife-prod:workspace.status.private-kept"
         ]
       },
       "accessibility": {
@@ -4709,7 +5191,16 @@
           "vexlife-prod:workspace.description.settings-context-reply-language",
           "vexlife-prod:workspace.description.settings-context-selected-events",
           "vexlife-prod:workspace.description.settings-context-whole-history",
-          "vexlife-prod:workspace.label.context-window-not-measured"
+          "vexlife-prod:workspace.label.context-window-not-measured",
+          "vexlife-prod:workspace.label.settings-context-meter",
+          "vexlife-prod:workspace.label.settings-context-no",
+          "vexlife-prod:workspace.label.settings-context-yes",
+          "vexlife-prod:workspace.legend.context-window-input",
+          "vexlife-prod:workspace.legend.context-window-remaining",
+          "vexlife-prod:workspace.legend.context-window-reserved",
+          "vexlife-prod:workspace.status.context-window-not-exposed",
+          "vexlife-prod:workspace.status.settings-context-measured",
+          "vexlife-prod:workspace.status.settings-context-no-receipt"
         ]
       },
       "accessibility": {
@@ -4808,7 +5299,8 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.button.continuity-mode-unavailable"
+          "vexlife-prod:workspace.button.continuity-mode-unavailable",
+          "vexlife-prod:workspace.label.continuity-mode"
         ]
       },
       "accessibility": {
@@ -4855,7 +5347,8 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.button.dream-sync-unavailable"
+          "vexlife-prod:workspace.button.dream-sync-unavailable",
+          "vexlife-prod:workspace.label.dream-sync"
         ]
       },
       "accessibility": {
@@ -4911,7 +5404,12 @@
           "vexlife-prod:workspace.description.memory-unreadable",
           "vexlife-prod:workspace.description.settings-memory-awaiting-turn",
           "vexlife-prod:workspace.description.settings-memory-included",
-          "vexlife-prod:workspace.description.settings-memory-none"
+          "vexlife-prod:workspace.description.settings-memory-none",
+          "vexlife-prod:workspace.status.memory-behind",
+          "vexlife-prod:workspace.status.memory-checking",
+          "vexlife-prod:workspace.status.memory-current",
+          "vexlife-prod:workspace.status.memory-not-formed",
+          "vexlife-prod:workspace.status.memory-unreadable"
         ]
       },
       "accessibility": {
@@ -5147,9 +5645,16 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.diagnostics-no-records",
+          "vexlife-prod:workspace.label.diagnostics-records",
+          "vexlife-prod:workspace.status.diagnostics-enhanced-off",
+          "vexlife-prod:workspace.status.diagnostics-enhanced-on",
+          "vexlife-prod:workspace.status.diagnostics-recording",
+          "vexlife-prod:workspace.status.diagnostics-unavailable"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -5199,7 +5704,10 @@
         "resourceRef": null,
         "sourceStringRefs": [
           "vexlife-prod:workspace.description.home-boundary",
-          "vexlife-prod:workspace.heading.settings-home"
+          "vexlife-prod:workspace.heading.settings-home",
+          "vexlife-prod:workspace.label.home-unknown-value",
+          "vexlife-prod:workspace.status.home-current",
+          "vexlife-prod:workspace.status.home-unobserved"
         ]
       },
       "accessibility": {
@@ -5392,7 +5900,10 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.description.local-asr-composer-output-note"
+          "vexlife-prod:workspace.description.local-asr-composer-output-note",
+          "vexlife-prod:workspace.label.local-asr-composer-output",
+          "vexlife-prod:workspace.label.local-asr-output-as-spoken",
+          "vexlife-prod:workspace.label.local-asr-output-translate-english"
         ]
       },
       "accessibility": {
@@ -5481,9 +5992,11 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.local-asr-selection"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -5529,7 +6042,10 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.description.local-asr-spoken-language-note"
+          "vexlife-prod:workspace.description.local-asr-spoken-language-note",
+          "vexlife-prod:workspace.label.local-asr-spoken-language",
+          "vexlife-prod:workspace.label.local-asr-spoken-language-auto",
+          "vexlife-prod:workspace.label.local-asr-spoken-language-follow"
         ]
       },
       "accessibility": {
@@ -5573,9 +6089,11 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.status.local-asr-provider-mismatch"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -5618,9 +6136,11 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.local-asr-free-space"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -5716,7 +6236,8 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.button.local-sources-add"
+          "vexlife-prod:workspace.button.local-sources-add",
+          "vexlife-prod:workspace.status.local-sources-choosing-folder"
         ]
       },
       "accessibility": {
@@ -5810,9 +6331,11 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.status.models-unavailable"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -5855,9 +6378,11 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.model-choice"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -6136,9 +6661,14 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.model-none",
+          "vexlife-prod:workspace.label.model-state-selected",
+          "vexlife-prod:workspace.label.model-state-serving",
+          "vexlife-prod:workspace.status.model-runtime-configuration-pending"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -6192,7 +6722,9 @@
           "vexlife-prod:workspace.description.resources-summary",
           "vexlife-prod:workspace.description.resources-unavailable",
           "vexlife-prod:workspace.description.resources-unobserved",
-          "vexlife-prod:workspace.heading.settings-resources"
+          "vexlife-prod:workspace.heading.settings-resources",
+          "vexlife-prod:workspace.label.resources-no-model-selected",
+          "vexlife-prod:workspace.label.resources-unknown-value"
         ]
       },
       "accessibility": {
@@ -6236,9 +6768,12 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.low-memory-alert",
+          "vexlife-prod:workspace.status.low-memory-not-connected"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -6285,7 +6820,13 @@
         "resourceRef": null,
         "sourceStringRefs": [
           "vexlife-prod:workspace.description.system-memory-current",
-          "vexlife-prod:workspace.description.system-memory-unavailable"
+          "vexlife-prod:workspace.description.system-memory-unavailable",
+          "vexlife-prod:workspace.label.system-memory-known",
+          "vexlife-prod:workspace.label.system-memory-minimum-unknown",
+          "vexlife-prod:workspace.label.system-memory-not-measured",
+          "vexlife-prod:workspace.label.system-memory-unknown",
+          "vexlife-prod:workspace.status.system-memory-measuring",
+          "vexlife-prod:workspace.status.system-memory-not-measured"
         ]
       },
       "accessibility": {
@@ -6329,9 +6870,11 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.thought-visibility"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -6438,7 +6981,20 @@
           "vexlife-prod:workspace.description.vision-held-screen-safety-not-current",
           "vexlife-prod:workspace.description.vision-looking",
           "vexlife-prod:workspace.description.vision-ready",
-          "vexlife-prod:workspace.description.vision-selecting"
+          "vexlife-prod:workspace.description.vision-selecting",
+          "vexlife-prod:workspace.label.vision",
+          "vexlife-prod:workspace.status.vision-changed-before-action",
+          "vexlife-prod:workspace.status.vision-checking",
+          "vexlife-prod:workspace.status.vision-engaged",
+          "vexlife-prod:workspace.status.vision-held",
+          "vexlife-prod:workspace.status.vision-looking",
+          "vexlife-prod:workspace.status.vision-ready",
+          "vexlife-prod:workspace.status.vision-request-failed",
+          "vexlife-prod:workspace.status.vision-request-mismatch",
+          "vexlife-prod:workspace.status.vision-request-not-completed",
+          "vexlife-prod:workspace.status.vision-selecting",
+          "vexlife-prod:workspace.status.vision-summary",
+          "vexlife-prod:workspace.status.vision-working"
         ]
       },
       "accessibility": {
@@ -6536,7 +7092,11 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.label.app-selector"
+          "vexlife-prod:workspace.label.app-selector",
+          "vexlife-prod:workspace.nav.app-archives",
+          "vexlife-prod:workspace.nav.app-browser",
+          "vexlife-prod:workspace.nav.app-source-template",
+          "vexlife-prod:workspace.nav.app-vex-context"
         ]
       },
       "accessibility": {
@@ -6633,7 +7193,9 @@
           "vexlife-prod:workspace.label.browser-page-address",
           "vexlife-prod:workspace.label.browser-suggestion-vextreme-terrain",
           "vexlife-prod:workspace.label.browser-suggestion-vexwork-navigator",
-          "vexlife-prod:workspace.label.browser-suggestion-vexwork-orientation"
+          "vexlife-prod:workspace.label.browser-suggestion-vexwork-orientation",
+          "vexlife-prod:workspace.placeholder.browser-query",
+          "vexlife-prod:workspace.placeholder.browser-query-unlocated"
         ]
       },
       "accessibility": {
@@ -6677,9 +7239,15 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.status.browser-address-required",
+          "vexlife-prod:workspace.status.browser-embedded-credentials",
+          "vexlife-prod:workspace.status.browser-local-service-rejected",
+          "vexlife-prod:workspace.status.browser-open-failed",
+          "vexlife-prod:workspace.status.browser-scheme-unsupported"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -6872,7 +7440,8 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.description.reply-language"
+          "vexlife-prod:workspace.description.reply-language",
+          "vexlife-prod:workspace.label.reply-language"
         ]
       },
       "accessibility": {
@@ -6921,7 +7490,9 @@
         "state": "OBSERVED",
         "resourceRef": null,
         "sourceStringRefs": [
-          "vexlife-prod:workspace.description.screen-language"
+          "vexlife-prod:workspace.description.screen-language",
+          "vexlife-prod:workspace.label.screen-language",
+          "vexlife-prod:workspace.label.screen-language-follow"
         ]
       },
       "accessibility": {
@@ -6974,9 +7545,11 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.nav.quick-actions"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -7514,9 +8087,21 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.speech-panel",
+          "vexlife-prod:workspace.status.speech-choose-start",
+          "vexlife-prod:workspace.status.speech-natural-failed",
+          "vexlife-prod:workspace.status.speech-natural-loading",
+          "vexlife-prod:workspace.status.speech-no-voice",
+          "vexlife-prod:workspace.status.speech-nothing-to-read",
+          "vexlife-prod:workspace.status.speech-off",
+          "vexlife-prod:workspace.status.speech-paused",
+          "vexlife-prod:workspace.status.speech-reading",
+          "vexlife-prod:workspace.status.speech-replies",
+          "vexlife-prod:workspace.status.speech-thoughts-and-replies"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -7807,9 +8392,11 @@
         "CHANGE"
       ],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.speech-speed"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -7854,9 +8441,11 @@
         "CHANGE"
       ],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.speech-read-thoughts"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -7950,9 +8539,13 @@
         "CHANGE"
       ],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.label.speech-natural-voices",
+          "vexlife-prod:workspace.label.speech-system-voices",
+          "vexlife-prod:workspace.label.speech-voice"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -8298,7 +8891,11 @@
           "vexlife-prod:workspace.button.browser-show",
           "vexlife-prod:workspace.button.companion-hide",
           "vexlife-prod:workspace.button.companion-show",
-          "vexlife-prod:workspace.label.browser-companion-resize"
+          "vexlife-prod:workspace.label.browser-companion-resize",
+          "vexlife-prod:workspace.status.browser-collapsed",
+          "vexlife-prod:workspace.status.browser-height",
+          "vexlife-prod:workspace.status.browser-width",
+          "vexlife-prod:workspace.status.companion-collapsed"
         ]
       },
       "accessibility": {
@@ -8438,9 +9035,14 @@
       "alwaysVisible": false,
       "interactions": [],
       "localization": {
-        "state": "NOT_OBSERVED",
+        "state": "OBSERVED",
         "resourceRef": null,
-        "sourceStringRefs": []
+        "sourceStringRefs": [
+          "vexlife-prod:workspace.status.product-reloading",
+          "vexlife-prod:workspace.status.product-updated",
+          "vexlife-prod:workspace.status.speech-natural-fallback",
+          "vexlife-prod:workspace.status.speech-stopped-unavailable"
+        ]
       },
       "accessibility": {
         "state": "NOT_PROJECTED",
@@ -8598,7 +9200,7 @@
     "occurrenceCount": 152,
     "screenCount": 1,
     "chromeOccurrenceCount": 0,
-    "localizedOccurrenceCount": 105,
+    "localizedOccurrenceCount": 123,
     "realizedOccurrenceCount": 0,
     "accessibilityProjectedOccurrenceCount": 0
   }
