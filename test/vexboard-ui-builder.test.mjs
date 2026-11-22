@@ -4,6 +4,7 @@ import test from 'node:test';
 
 import {
   UI_BLUEPRINT_SCHEMA,
+  UI_PREVIEW_PROFILES,
   createUiBlueprint,
   normalizeUiBlueprint,
   uiBlueprintBytes,
@@ -101,16 +102,18 @@ test('UI Blueprint supports parent-relative constraints without turning preview 
   assert.equal(blueprint.preview.height, 844);
 });
 
-test('Builder surface is a visual toolbox + preview + relationship inspector', () => {
+test('Builder surface is a visual toolbox + preview + relationship inspector with source-owned preview profiles', () => {
   assert.match(page, /UI Builder/);
   assert.match(page, /Components/);
   assert.match(page, /Preview surface/);
   assert.match(page, /Selected/);
   assert.match(page, /draggable/);
   assert.match(page, /Flow \+ Constraint/);
-  assert.match(page, /Mobile/);
-  assert.match(page, /Windows/);
-  assert.match(page, /Container/);
+  assert.match(page, /Ui\.UI_PREVIEW_PROFILES/);
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(UI_PREVIEW_PROFILES).map(([key, value]) => [key, value.label])),
+    { MOBILE: 'Mobile', WINDOWS: 'Windows', CONTAINER: 'Container' },
+  );
   assert.match(page, /Save Design/);
   assert.match(page, /OPEN · target app \/ AI binds implementation/);
   assert.match(page, /vexboard-ui-blueprint\.mjs/);
