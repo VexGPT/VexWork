@@ -794,6 +794,42 @@ COMPONENT INSTANCE PORT
 != CALLBACK IMPLEMENTATION
 ```
 
+#### Depth / foreground — sibling-local composition order
+
+Once spatial nodes can overlap, foreground/background becomes authored UI intent. Builder preserves
+that as `depthOrder` relative to siblings in the same parent.
+
+```text
+same parent
+  child A depthOrder 0
+  child B depthOrder 1
+  child C depthOrder 2
+
+higher depthOrder
+  -> projected in front when overlap occurs
+```
+
+Human controls are relational rather than browser-specific:
+
+```text
+Send backward
+Bring forward
+Send to back
+Bring to front
+```
+
+The browser projects `depthOrder` to CSS `z-index` for preview only.
+
+```text
+depthOrder
+!= CSS z-index semantic ownership
+!= source-observed layer metadata
+```
+
+Source `layer` evidence and Builder-authored depth stay distinct. A reusable component definition
+can preserve internal depth among its template nodes, while each placed instance independently owns
+its depth relative to siblings in the parent where that instance is placed.
+
 Human-facing boundary:
 
 ```text

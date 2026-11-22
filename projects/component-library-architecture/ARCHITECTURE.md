@@ -549,6 +549,43 @@ The first A5 contract intentionally flattens nested reusable-instance provenance
 saved as a new definition. Recursive reusable-component dependency/cycle semantics would create a new
 maintained subsystem and are not required for the present human construction need.
 
+### Foreground / background depth
+
+Overlap creates one additional Builder-authored relationship: sibling-local depth.
+
+```text
+parent
+  child A depthOrder 0
+  child B depthOrder 1
+  child C depthOrder 2
+```
+
+The number is not global and does not describe Product/domain depth. It answers one UI construction
+question only:
+
+> among these siblings, which one is projected in front when their presentation overlaps?
+
+This keeps three meanings separate:
+
+```text
+source.presentation.layer
+  = source-observed Product presentation evidence
+
+authoring.layout.depthOrder
+  = Builder-authored sibling stacking relationship
+
+CSS z-index / target-native stacking primitive
+  = realization of that relationship on one target
+```
+
+A6 may map the same depth relationship to Compose `zIndex`, SwiftUI `zIndex`, CSS stacking or a
+future target-native equivalent where supported. The Builder must not treat the CSS number as the
+portable contract.
+
+Reusable definitions may preserve internal template depth. A reusable instance has a separate root
+depth relative to siblings in its placement parent, so two instances of the same definition can
+occupy different foreground/background positions without changing the definition.
+
 ## 9. Reverse where-used
 
 The system should be bidirectional.

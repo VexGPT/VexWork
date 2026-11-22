@@ -48,6 +48,7 @@ test('UI Blueprint preserves source-grounded component meaning while adding Buil
     columnSpan: 12,
     rowSpan: 5,
   };
+  node.authoring.layout.depthOrder = 4;
   node.authoring.callbackPorts = [{
     portRef: 'callback.saveProfile',
     eventRef: 'CLICK',
@@ -79,6 +80,8 @@ test('UI Blueprint preserves source-grounded component meaning while adding Buil
     rowSpan: 5,
   });
   assert.equal(blueprint.summary.spatialNodeCount, 1);
+  assert.equal(blueprint.nodes[0].authoring.layout.depthOrder, 4);
+  assert.equal(blueprint.summary.layeredNodeCount, 1);
   assert.equal(blueprint.integration.bindingMode, 'OPEN_PORTS');
   assert.equal(blueprint.integration.openCallbackPorts[0].portRef, 'callback.saveProfile');
   assert.equal(blueprint.integration.openCallbackPorts[0].bindingState, 'OPEN');
@@ -134,6 +137,10 @@ test('Builder surface is a visual toolbox + preview + relationship inspector wit
   assert.match(page, /function beginSpatialGesture/);
   assert.match(page, /function resizePlacement/);
   assert.match(page, /resize-handle/);
+  assert.match(page, /function setDepth/);
+  assert.match(page, /Bring to front/);
+  assert.match(page, /Send to back/);
+  assert.match(page, /z-index:/);
   assert.match(page, /Save as reusable component/);
   assert.match(page, /id="reusable-list"/);
   assert.match(page, /\.\.\.layoutControls/);
@@ -259,6 +266,51 @@ test('UI Blueprint rejects ratio-grid placement that escapes its parent grid', (
       nodes: [node],
     }),
     /exceeds grid columns/,
+  );
+});
+
+test('UI Blueprint depthOrder is explicit, sibling-local authoring data', () => {
+  const back = structuredClone(uiNodeFromOccurrence({
+    nodeRef: 'ui.node.back',
+    inventory,
+    occurrenceRef: occurrenceFor('CARD'),
+    architectureCatalog: architecture,
+  }));
+  const front = structuredClone(uiNodeFromOccurrence({
+    nodeRef: 'ui.node.front',
+    inventory,
+    occurrenceRef: occurrenceFor('BUTTON'),
+    architectureCatalog: architecture,
+  }));
+  back.authoring.layout.depthOrder = 0;
+  front.authoring.layout.depthOrder = 1;
+
+  const blueprint = createUiBlueprint({
+    blueprintRef: 'ui.blueprint.depth',
+    label: 'Depth',
+    nodes: [back, front],
+  });
+
+  assert.equal(blueprint.nodes.find((node) => node.nodeRef === back.nodeRef).authoring.layout.depthOrder, 0);
+  assert.equal(blueprint.nodes.find((node) => node.nodeRef === front.nodeRef).authoring.layout.depthOrder, 1);
+  assert.equal(blueprint.summary.layeredNodeCount, 1);
+});
+
+test('UI Blueprint rejects negative depthOrder', () => {
+  const node = structuredClone(uiNodeFromOccurrence({
+    nodeRef: 'ui.node.depth-invalid',
+    inventory,
+    occurrenceRef: occurrenceFor('BUTTON'),
+    architectureCatalog: architecture,
+  }));
+  node.authoring.layout.depthOrder = -1;
+  assert.throws(
+    () => createUiBlueprint({
+      blueprintRef: 'ui.blueprint.depth-invalid',
+      label: 'Depth invalid',
+      nodes: [node],
+    }),
+    /depthOrder must be an integer from 0/,
   );
 });
 

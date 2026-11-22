@@ -103,6 +103,10 @@ function normalizeGridPlacement(input, label) {
     rowSpan,
   };
 }
+function normalizeDepthOrder(value, label) {
+  if (value === undefined || value === null) return 0;
+  return gridInteger(value, label, 0, 1000000);
+}
 function normalizeComponentInstance(input, nodeRef) {
   if (input === undefined || input === null) return null;
   return {
@@ -136,6 +140,10 @@ function normalizeLayout(input, nodeRef, kind) {
     gridPlacement: normalizeGridPlacement(
       value.gridPlacement,
       nodeRef + ' authoring.layout.gridPlacement',
+    ),
+    depthOrder: normalizeDepthOrder(
+      value.depthOrder,
+      nodeRef + ' authoring.layout.depthOrder',
     ),
   };
 }
@@ -374,6 +382,7 @@ export function createUiBlueprint({
     constrainedNodeCount: normalized.filter((node) => node.authoring.layout.constraints.length > 0).length,
     constraintContainerCount: normalized.filter((node) => node.authoring.layout.containerMode === 'CONSTRAINT').length,
     spatialNodeCount: normalized.filter((node) => node.authoring.layout.gridPlacement !== null).length,
+    layeredNodeCount: normalized.filter((node) => node.authoring.layout.depthOrder > 0).length,
     componentDefinitionCount: definitions.length,
     componentInstanceCount: new Set(
       normalized
