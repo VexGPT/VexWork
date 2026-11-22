@@ -30746,10 +30746,22 @@
           "updatedAt": "2026-11-22T15:41:03.000Z",
           "transitionHistory": [
             {
-              "transitionRef": "transition.vex.component-library-architecture.target-realizations.running.after-a3-20261121",
+              "transitionRef": "transition.vex.component-library-architecture.target-realizations.ready.after-a3-20261121",
               "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "A3 portable relationship decisions are terminal and A4 dependencies are satisfied. Admit A4 to READY before execution so Workgraph lifecycle continuity remains explicit.",
+              "actorRef": "actor.vexgpt.component-library",
+              "sourceRefs": [
+                "work.vex.component-library-architecture.portable-contract",
+                "projects/component-library-architecture/component-architecture-catalog.json"
+              ],
+              "createdAt": "2026-11-21T19:31:59.000Z"
+            },
+            {
+              "transitionRef": "transition.vex.component-library-architecture.target-realizations.running.after-a3-20261121",
+              "priorState": "READY",
               "nextState": "RUNNING",
-              "reason": "A3 portable relationship decisions are terminal. Begin A4 by deriving target realization views from existing target-pressure evidence; do not create a second target authority or promote reference/native proof beyond its recorded state.",
+              "reason": "A4 is READY after A3 terminal acceptance. Begin target realization derivation from existing target-pressure evidence without creating a second target authority or promoting reference/native proof beyond its recorded state.",
               "actorRef": "actor.vexgpt.component-library",
               "sourceRefs": [
                 "work.vex.component-library-architecture.portable-contract",
