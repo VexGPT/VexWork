@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "vexwork.pr428-component-library-a5-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 428,
+  "attempt": "A005",
+  "disposition": "A004_TASK_FORMATION_SYNTAX_FAILURE_COMPATIBLE_RETRY",
+  "candidate": {
+    "base": "e3fd23dfff3bc98b4fca737c26e127fb21d1d800",
+    "head": "039aee22684055de59954e1d09d5b27cdc642054",
+    "tree": "8d0b7a7f86c307ccf454b6aba1b8b92f9c5988e5",
+    "branch": "VXG-112226-component-library-a5-workspace-a001",
+    "changedPathCount": 12,
+    "changedPaths": [
+      "projects/component-library-architecture/ARCHITECTURE.md",
+      "projects/component-library-architecture/README.md",
+      "public/workspace.json",
+      "src/shared/vexboard-component-studio.mjs",
+      "src/shared/vexboard-ui-blueprint.mjs",
+      "test/vexboard-component-studio.test.mjs",
+      "test/vexboard-component-workspace-ui.test.mjs",
+      "test/vexboard-ui-builder.test.mjs",
+      "vexboard/builder.html",
+      "vexboard/components.html",
+      "workgraphs/public.json",
+      "workgraphs/segments/component-library-architecture.json"
+    ]
+  },
+  "lifecycle": {
+    "outcome": "RUNNING",
+    "A1": "COMPLETED",
+    "A2": "COMPLETED",
+    "A3": "COMPLETED",
+    "A4": "COMPLETED",
+    "A5": "RUNNING",
+    "A6": "WAITING_DEPENDENCIES",
+    "A7": "WAITING_DEPENDENCIES"
+  },
+  "workspaceMeaning": {
+    "center": "GALLERY_SPECIMEN_PLUS_RELATIONAL_UI_BUILDER",
+    "gallery": "VISUAL_SOURCE_GROUNDED_SHOWROOM",
+    "builder": "DRAG_NEST_FLOW_CONSTRAINT_AUTHORING",
+    "previewProfiles": [
+      "MOBILE",
+      "WINDOWS",
+      "CONTAINER"
+    ],
+    "uiBlueprintSchema": "vexboard.ui-blueprint/v1",
+    "integration": "OPEN_CALLBACK_PORTS",
+    "aiRequired": false,
+    "targetApplicationSemanticsOwner": "TARGET_APPLICATION",
+    "targetCodeOwner": "A6_OR_RIGHTFUL_APP_INTEGRATOR",
+    "architectureLaw": [
+      "BUILDER_UI_RELATIONSHIPS != TARGET_APPLICATION_STATE",
+      "OPEN_CALLBACK_PORT != CALLBACK_IMPLEMENTATION",
+      "PREVIEW_PIXELS != CANONICAL_LAYOUT_MEANING",
+      "TARGET_ADAPTER != SEMANTIC_OWNER"
+    ]
+  },
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No Product source mutation.",
+    "No target application State/Effect/Store/Family ownership.",
+    "No portable-contract or target-proof mutation.",
+    "No callback implementation or AI-authored business logic.",
+    "No A5 completion.",
+    "No A6 construction/export pack.",
+    "No A7 self-projection.",
+    "No READY/merge/release effect."
+  ],
+  "onPass": {
+    "next": "Open the exact-head Gallery + Builder lived preview; judge drag/nest/flow/constraint/open-port experience before A5 completion or integration."
+  },
+  "predecessor": {
+    "attempt": "A004",
+    "classification": "HARNESS_TASK_FORMATION",
+    "sameSemanticTask": true,
+    "semanticTaskRef": "task.vexwork.pr428.component-library-a5.source-owner.gallery-builder-ui-blueprint-a004",
+    "candidateHead": "039aee22684055de59954e1d09d5b27cdc642054",
+    "candidateTree": "8d0b7a7f86c307ccf454b6aba1b8b92f9c5988e5",
+    "observed": "Victor's host reached `A004: forming exact task/carrier...`; the generated form-vexwork-pr428-stable-repeater-a004.mjs then failed JavaScript parsing on the unescaped apostrophe in `Victor's`, with SyntaxError `Unexpected identifier 's'`. Package formation, candidate proof execution, and canonical RETURN formation were not reached by the observed trace.",
+    "correction": [
+      "Preserve the same fixed-head semantic proof task and candidate.",
+      "Rotate attempt/request/correlation/package/single-use identities to A005.",
+      "Preserve role and authority identities because no role transition or new grant occurred.",
+      "Quote the originalIntent safely.",
+      "Run Node --check against the exact generated .mjs before formation so the observed A004 failure shape is regression-covered.",
+      "Continue through the current source-managed ExactHeadSourceOwnerProof + native VexRelay/VexLocalBridge carrier."
+    ],
+    "singleUsePackageReplayed": false
+  }
+}
