@@ -1678,7 +1678,7 @@
         {
           "proofRef": "proof.android-target-native-regression",
           "state": "OWED",
-          "note": "OWED on exact Android #261 head 04a24d6d08c0afe5d6263db4652eb1e409162fe4. VexLife-Android #262 A001 now carries one current-contract ExactHeadSourceOwnerProof with focused VexStableLazyListTest followed by repository-owned vexVerifyJvm; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact Android #261 head 04a24d6d08c0afe5d6263db4652eb1e409162fe4. #262 A001 did not execute product tests because the harness used unsupported `--tests`; #262 A002 now runs repository-owned :architecture:elements:test followed by vexVerifyJvm."
         },
         {
           "proofRef": "proof.android-stable-identity-reorder",
@@ -1698,10 +1698,10 @@
         {
           "proofRef": "proof.android-insert-remove-identity",
           "state": "OWED",
-          "note": "OWED on exact Android #261 head 04a24d6d08c0afe5d6263db4652eb1e409162fe4. #262 A001 explicitly runs the focused insert/remove/reorder/duplicate VexStableLazyListTest before vexVerifyJvm in the same Relay attempt."
+          "note": "OWED on exact Android #261 head 04a24d6d08c0afe5d6263db4652eb1e409162fe4. #262 A002 is the current physical proof attempt for the insert/remove/reorder/duplicate Stable Lazy List suite and repository JVM aggregate."
         }
       ],
-      "note": "VexLife-Android #262 A001 is the current source-controlled VexRelay SourceOwner carriage for both remaining Android A4 proof debts on exact #261 head 04a24d6d08c0afe5d6263db4652eb1e409162fe4. Android source-native evidence includes reorder-stable refs, duplicate-ref failure, and PR #261's focused insert/remove identity test source. Exact repository Gradle execution for #261 remains owed; requested visibility, visible-item projection, contentType and scroll-lock remain richer target capabilities rather than portable-core requirements."
+      "note": "Android #262 A001 is immutable harness SAFE_FAILURE: exact #261 candidate grounded cleanly, but the focused Gradle command used unsupported `--tests` filtering before any Android test ran. #262 A002 is the current corrected SourceOwner attempt on the same #261 head/tree, running :architecture:elements:test then vexVerifyJvm. VexLife-Android #262 A001 is the current source-controlled VexRelay SourceOwner carriage for both remaining Android A4 proof debts on exact #261 head 04a24d6d08c0afe5d6263db4652eb1e409162fe4. Android source-native evidence includes reorder-stable refs, duplicate-ref failure, and PR #261's focused insert/remove identity test source. Exact repository Gradle execution for #261 remains owed; requested visibility, visible-item projection, contentType and scroll-lock remain richer target capabilities rather than portable-core requirements."
     },
     {
       "pressureRef": "pressure.component.local-selection.android-compose",
