@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "vexwork.pr428-component-library-a5-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 428,
+  "attempt": "A001",
+  "disposition": "A5_INITIAL_EXACT_HEAD_DETERMINISTIC_REVIEW",
+  "candidate": {
+    "base": "e3fd23dfff3bc98b4fca737c26e127fb21d1d800",
+    "head": "9318cd08bf4210a9338f4a4d71f267baf341dac5",
+    "tree": "f25573ebfe56e0ef374aba5fd8542c53bfe199ae",
+    "branch": "VXG-112226-component-library-a5-workspace-a001",
+    "changedPathCount": 6,
+    "changedPaths": [
+      "vexboard/components.html",
+      "projects/component-library-architecture/README.md",
+      "workgraphs/segments/component-library-architecture.json",
+      "workgraphs/public.json",
+      "public/workspace.json",
+      "test/vexboard-component-workspace-ui.test.mjs"
+    ]
+  },
+  "lifecycle": {
+    "outcome": "RUNNING",
+    "A1": "COMPLETED",
+    "A2": "COMPLETED",
+    "A3": "COMPLETED",
+    "A4": "COMPLETED",
+    "A5": "RUNNING",
+    "A6": "WAITING_DEPENDENCIES",
+    "A7": "WAITING_DEPENDENCIES"
+  },
+  "workspaceMeaning": {
+    "pivots": [
+      "COMPONENTS",
+      "STATES",
+      "VARIANTS",
+      "PRODUCTS",
+      "REALIZATIONS",
+      "WHERE_USED",
+      "PROOF"
+    ],
+    "sourceAuthority": "READ_ONLY_PROJECTION",
+    "states": "EXPLICIT_SOURCE_RELATIONSHIPS_ONLY",
+    "variants": "DERIVED_SOURCE_SHAPE_NOT_PORTABLE_VARIANT_ID",
+    "constructionPacks": "A6_HELD"
+  },
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No Product source mutation.",
+    "No portable contract or target proof change.",
+    "No A5 completion.",
+    "No A6 construction/export pack.",
+    "No A7 self-projection.",
+    "No READY/merge/release effect."
+  ],
+  "onPass": {
+    "next": "Human-lived A5 workspace review on exact candidate; then fresh semantic Assurance before A5 completion/integration."
+  }
+}
