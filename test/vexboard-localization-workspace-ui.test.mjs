@@ -7,9 +7,9 @@ const projects = fs.readFileSync(new URL('../vexboard/projects.html', import.met
 const lens = fs.readFileSync(new URL('../vexboard/lens.html', import.meta.url), 'utf8');
 const copy = JSON.parse(fs.readFileSync(new URL('../vexboard/localization-copy.json', import.meta.url), 'utf8'));
 
-test('VexBoard exposes one global Localization entry adjacent to Projects', () => {
-  assert.match(projects, /href="\.\/localization\.html">Localization<\/a>/);
-  assert.match(workspace, /<a class="nav" href="\.\/projects\.html">Projects<\/a><span class="here">Localization<\/span>/);
+test('VexBoard exposes Components and Localization beside Projects', () => {
+  assert.match(projects, /href="\.\/components\.html">Components<\/a><a class="out" href="\.\/localization\.html">Localization<\/a>/);
+  assert.match(workspace, /<a class="nav" href="\.\/projects\.html">Projects<\/a><span class="spacer"><\/span><a class="nav" href="\.\/components\.html">Components<\/a><span class="here">Localization<\/span>/);
   assert.match(workspace, /Cross-Product projection over current Main Localization Inventories/);
 });
 

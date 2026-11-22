@@ -32,7 +32,9 @@
     "experience:probe": "node scripts/run-experience-law-probe.mjs",
     "experience:converge": "node scripts/inspect-experience-convergence.mjs",
     "localization:build": "node scripts/build-localization-inventory.mjs --fetch",
-    "localization:check": "node scripts/build-localization-inventory.mjs --fetch --check"
+    "localization:check": "node scripts/build-localization-inventory.mjs --fetch --check",
+    "components:build": "node scripts/build-component-inventory.mjs --all",
+    "components:check": "node scripts/build-component-inventory.mjs --all --check"
   },
   "engines": {
     "node": ">=20.1"

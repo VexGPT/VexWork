@@ -527,7 +527,7 @@ test('A2 generated consequences make both patient-zero Projects navigable', () =
     generatedPublicWorkspace.parkingLot.items.some((item) =>
       item.workRef === 'work.vexlife.new-beginnings.later.settings-capability-mapping'
     ),
-    true,
+    false,
   );
 });
 

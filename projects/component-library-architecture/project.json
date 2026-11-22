@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vex.component-library-architecture",
+  "label": "Component Library Architecture",
+  "purpose": "Build one cross-Product reusable component inventory, portable component Blueprint layer, target-realization map and human Gallery so accepted UI/infrastructure relationships can be discovered, reverse-searched and reconstructed across code languages/frameworks without repeatedly re-reading historical Product implementations or mistaking one source language for canonical meaning.",
+  "rootWorkRefs": [
+    "work.vex.component-library-architecture.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android",
+    "repo.vexlife-prod",
+    "repo.vexstream-music",
+    "repo.vextreme",
+    "repo.vexlife",
+    "repo.vexlife-construction-reference"
+  ],
+  "sourceRefs": [
+    "projects/component-library-architecture/README.md",
+    "projects/component-library-architecture/ARCHITECTURE.md",
+    "project.vex.localization-architecture",
+    "project.vexlife.blueprint-source-of-truth",
+    "project.android-widget-foundation",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/GalleryScreen.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/gallery/elements/ElementsGallery.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistry.kt",
+    "projects/vexboard/SCREEN-LENS.md",
+    "github.issue.vexwork.330",
+    "projects/component-library-architecture/TECH-DEBT.md",
+    "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+    "src/shared/vexboard-component-inventory.mjs",
+    "scripts/build-component-inventory.mjs",
+    "vexboard/components.html",
+    "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+    "projects/component-library-architecture/component-architecture-catalog.json",
+    "src/shared/vexboard-component-architecture.mjs",
+    "github.pr.vexlife-prod.506",
+    "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+    "projects/component-library-architecture/inventory/vexstream-music.main.components.json",
+    "github.pr.vexlife-android.261"
+  ],
+  "formedAt": "2026-11-21T08:20:00.000Z"
+}
