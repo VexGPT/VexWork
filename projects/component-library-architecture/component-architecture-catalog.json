@@ -1322,7 +1322,7 @@
       "state": "REFERENCE_COMPATIBILITY_PASS",
       "sourceRef": "github.pr.vexlife-prod.506",
       "repositoryRef": "repo.vexlife-prod",
-      "commit": "f7865b9ff0cd2029e490d0bd84020b18e59b9a10",
+      "commit": "ed8bec16a385fd9f1be6a84c366a426b9de58777",
       "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
       "relationships": [
         {
@@ -1369,15 +1369,15 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "repository Kotlin/JVM/JS proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 proved root jvmTest, compileKotlinJs and compileTestKotlinJs before :reference:swiftui:compileKotlin failed with SMARTCAST_IMPOSSIBLE; #511 A003 carries the corrected source and identical proof threshold."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 did not reach Apple SwiftUI SDK typecheck because the preceding SwiftUI Kotlin compile failed; #511 A003 must first pass repository Kotlin/materialization, then typecheck those exact generated Swift bytes."
         }
       ],
-      "note": "VexLife-Prod #511 A002 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from 4150821f2ab346c62c80c892911760759f1650ea; Reference pressure only. The target-native Menu tree differs from source containment while source identity and realization mapping stay explicit."
+      "note": "Current realization coordinate is corrected VexLife-Prod #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. Relay #511 A002 outer carrier PASS / inner SourceOwner SAFE_FAILURE proved root jvmTest + JS compile through compileTestKotlinJs, then Kotlin 2.4.20 rejected the Quick Actions cross-module property smart cast before SwiftUI materialization; Apple SDK proof was not reached. #511 A003 is the current exact-head successor after the one local-binding capture correction. Earlier bounded Quick Actions target-form evidence remains provenance; the native Menu tree may differ from source containment while stable source identity and explicit realization mapping remain required."
     },
     {
       "pressureRef": "pressure.component.stable-repeater.swiftui-conversation-timeline",
@@ -1387,7 +1387,7 @@
       "state": "REFERENCE_COMPATIBILITY_PASS",
       "sourceRef": "github.pr.vexlife-prod.506",
       "repositoryRef": "repo.vexlife-prod",
-      "commit": "f7865b9ff0cd2029e490d0bd84020b18e59b9a10",
+      "commit": "ed8bec16a385fd9f1be6a84c366a426b9de58777",
       "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiStableRepeaterReference.kt",
       "relationships": [
         {
@@ -1463,12 +1463,12 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "repository Kotlin/JVM/JS proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 proved root jvmTest, compileKotlinJs and compileTestKotlinJs before :reference:swiftui:compileKotlin failed with SMARTCAST_IMPOSSIBLE; #511 A003 carries the corrected source and identical proof threshold."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 did not reach Apple SwiftUI SDK typecheck because the preceding SwiftUI Kotlin compile failed; #511 A003 must first pass repository Kotlin/materialization, then typecheck those exact generated Swift bytes."
         },
         {
           "proofRef": "proof.swift-stable-identity-mutations",
@@ -1481,7 +1481,7 @@
           "note": "Generated Swift target initializer rejected duplicate item IDs through its precondition (nonzero process exit), independently of the Kotlin-side negative case."
         }
       ],
-      "note": "VexLife-Prod #511 A002 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from aa48f99634d83941ca9a96c3af96170614658109; Exact generated Swift now has target-runtime identity pressure in addition to parse/API-shape proof: insert/remove/reorder preserve source-owned IDs and duplicate IDs fail closed. Requested visibility, visible-item projection, scroll locking and content-type reuse remain target-capability dispositions rather than portable core."
+      "note": "Current realization coordinate is corrected VexLife-Prod #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. Relay #511 A002 outer carrier PASS / inner SourceOwner SAFE_FAILURE proved root jvmTest + JS compile through compileTestKotlinJs, then Kotlin 2.4.20 rejected the Quick Actions cross-module property smart cast before SwiftUI materialization; Apple SDK proof was not reached. #511 A003 is the current exact-head successor after the one local-binding capture correction. Earlier exact Stable Repeater generator evidence remains provenance: feature-owned IDs survive insert/remove/reorder and duplicate IDs fail closed; requested visibility, visible-item projection and scroll lock remain HELD, while the reuse/content-type hint remains PLATFORM_SPECIFIC."
     },
     {
       "pressureRef": "pressure.component.frame-region-layout.swiftui-workspace",
@@ -1491,7 +1491,7 @@
       "state": "REFERENCE_COMPATIBILITY_PASS",
       "sourceRef": "github.pr.vexlife-prod.506",
       "repositoryRef": "repo.vexlife-prod",
-      "commit": "f7865b9ff0cd2029e490d0bd84020b18e59b9a10",
+      "commit": "ed8bec16a385fd9f1be6a84c366a426b9de58777",
       "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiWorkspaceFrameReference.kt",
       "relationships": [
         {
@@ -1544,15 +1544,15 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "repository Kotlin/JVM/JS proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 proved root jvmTest, compileKotlinJs and compileTestKotlinJs before :reference:swiftui:compileKotlin failed with SMARTCAST_IMPOSSIBLE; #511 A003 carries the corrected source and identical proof threshold."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 did not reach Apple SwiftUI SDK typecheck because the preceding SwiftUI Kotlin compile failed; #511 A003 must first pass repository Kotlin/materialization, then typecheck those exact generated Swift bytes."
         }
       ],
-      "note": "VexLife-Prod #511 A002 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from befe31789834a74f5a2738cb6d6028c01aa7553c; The first compile caught and corrected an invalid VexLifeWeb import before PASS. Generic irregular geometry remains held rather than duplicating VexWeb's private browser geometry machinery."
+      "note": "Current realization coordinate is corrected VexLife-Prod #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. Relay #511 A002 outer carrier PASS / inner SourceOwner SAFE_FAILURE proved root jvmTest + JS compile through compileTestKotlinJs, then Kotlin 2.4.20 rejected the Quick Actions cross-module property smart cast before SwiftUI materialization; Apple SDK proof was not reached. #511 A003 is the current exact-head successor after the one local-binding capture correction. Earlier exact Frame generator evidence remains provenance for the current full-span ratio mapping to proportional VStack/HStack; generic partial/multi-Seam geometry, resize/collapse and overlay-depth mapping remain HELD."
     },
     {
       "pressureRef": "pressure.component.swappable-region.swiftui-vexlife-prod",
@@ -2064,7 +2064,7 @@
       "state": "REFERENCE_COMPATIBILITY_PASS",
       "sourceRef": "github.pr.vexlife-prod.506",
       "repositoryRef": "repo.vexlife-prod",
-      "commit": "f7865b9ff0cd2029e490d0bd84020b18e59b9a10",
+      "commit": "ed8bec16a385fd9f1be6a84c366a426b9de58777",
       "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
       "relationships": [
         {
@@ -2100,10 +2100,10 @@
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 did not reach Apple SwiftUI SDK typecheck because the preceding SwiftUI Kotlin compile failed; #511 A003 must first pass repository Kotlin/materialization, then typecheck those exact generated Swift bytes."
         }
       ],
-      "note": "VexLife-Prod #511 A002 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a; SwiftUI pressure proves the same Product source refs survive a materially different target form while the target-specific accessibility hook remains explicitly non-canonical."
+      "note": "Current realization coordinate is corrected VexLife-Prod #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. Relay #511 A002 outer carrier PASS / inner SourceOwner SAFE_FAILURE proved root jvmTest + JS compile through compileTestKotlinJs, then Kotlin 2.4.20 rejected the Quick Actions cross-module property smart cast before SwiftUI materialization; Apple SDK proof was not reached. #511 A003 is the current exact-head successor after the one local-binding capture correction. Earlier identity pressure remains provenance that Product source refs survive a materially different target form while the SwiftUI accessibility hook remains target-specific."
     },
     {
       "pressureRef": "pressure.component.typed-containment.swiftui-quick-actions",
@@ -2113,7 +2113,7 @@
       "state": "REFERENCE_COMPATIBILITY_PASS",
       "sourceRef": "github.pr.vexlife-prod.506",
       "repositoryRef": "repo.vexlife-prod",
-      "commit": "f7865b9ff0cd2029e490d0bd84020b18e59b9a10",
+      "commit": "ed8bec16a385fd9f1be6a84c366a426b9de58777",
       "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
       "relationships": [
         {
@@ -2160,10 +2160,10 @@
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 did not reach Apple SwiftUI SDK typecheck because the preceding SwiftUI Kotlin compile failed; #511 A003 must first pass repository Kotlin/materialization, then typecheck those exact generated Swift bytes."
         }
       ],
-      "note": "VexLife-Prod #511 A002 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. Earlier PASS evidence remains provenance from ef599e5c8ff87a92b6e6e348d7dbbb33a73f958a; This pressure proves the portable law is source containment + explicit target mapping, not literal cross-framework view-tree sameness."
+      "note": "Current realization coordinate is corrected VexLife-Prod #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. Relay #511 A002 outer carrier PASS / inner SourceOwner SAFE_FAILURE proved root jvmTest + JS compile through compileTestKotlinJs, then Kotlin 2.4.20 rejected the Quick Actions cross-module property smart cast before SwiftUI materialization; Apple SDK proof was not reached. #511 A003 is the current exact-head successor after the one local-binding capture correction. Earlier containment pressure remains provenance that portable containment means source parentage plus explicit target mapping, not literal cross-framework view-tree sameness."
     },
     {
       "pressureRef": "pressure.component.semantic-control-binding.vexlife-prod-browser",
@@ -2223,7 +2223,7 @@
       "state": "REFERENCE_COMPATIBILITY_PASS",
       "sourceRef": "github.pr.vexlife-prod.506",
       "repositoryRef": "repo.vexlife-prod",
-      "commit": "f7865b9ff0cd2029e490d0bd84020b18e59b9a10",
+      "commit": "ed8bec16a385fd9f1be6a84c366a426b9de58777",
       "path": "reference/swiftui/src/main/kotlin/vexlife/reference/swiftui/VexLifeSwiftUiQuickActionsReference.kt",
       "relationships": [
         {
@@ -2271,15 +2271,15 @@
         {
           "proofRef": "proof.repository-kotlin-2.4.20",
           "state": "OWED",
-          "note": "repository Kotlin/JVM/JS proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 proved root jvmTest, compileKotlinJs and compileTestKotlinJs before :reference:swiftui:compileKotlin failed with SMARTCAST_IMPOSSIBLE; #511 A003 carries the corrected source and identical proof threshold."
         },
         {
           "proofRef": "proof.apple-swiftui-sdk",
           "state": "OWED",
-          "note": "Apple SwiftUI SDK proof remains OWED. VexLife-Prod #511 A002 now source-forms one current-contract ExactHeadSourceOwnerProof on exact #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10; no PASS is claimed until its canonical Relay RETURN is consumed."
+          "note": "OWED on exact #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. A002 did not reach Apple SwiftUI SDK typecheck because the preceding SwiftUI Kotlin compile failed; #511 A003 must first pass repository Kotlin/materialization, then typecheck those exact generated Swift bytes."
         }
       ],
-      "note": "VexLife-Prod #511 A002 is the source-controlled VexRelay SourceOwner carriage for the remaining repository/native proof on exact current realization head f7865b9ff0cd2029e490d0bd84020b18e59b9a10. Current realization coordinate is #506 head f7865b9ff0cd2029e490d0bd84020b18e59b9a10, which adds only the proof-only SwiftUI output materialization seam after the repaired current head. Current realization coordinate is repaired/currentized #506 head f4cfa528c2789c53a66e1ee2d5bf6a8651f8ac8f. SwiftUI reference maps the same Product binding meaning into a native Menu form, refuses unadmitted binding kinds, and keeps host callback/effect execution outside generated presentation. Product #506 is ordinary-forward current and its source-owner sweep repaired one candidate-local Gradle settings formation defect (literal backslash-n between module includes); the SwiftUI generator/test blobs and consumed Blueprint/VexWeb/Conversation inputs remain unchanged."
+      "note": "Current realization coordinate is corrected VexLife-Prod #506 head ed8bec16a385fd9f1be6a84c366a426b9de58777. Relay #511 A002 outer carrier PASS / inner SourceOwner SAFE_FAILURE proved root jvmTest + JS compile through compileTestKotlinJs, then Kotlin 2.4.20 rejected the Quick Actions cross-module property smart cast before SwiftUI materialization; Apple SDK proof was not reached. #511 A003 is the current exact-head successor after the one local-binding capture correction. The corrected Quick Actions adapter still maps the same Product binding meaning into native Menu form, refuses unadmitted binding kinds, and keeps host callback/effect execution outside generated presentation; no semantic relationship changed."
     }
   ]
 }
