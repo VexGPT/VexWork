@@ -33,6 +33,21 @@ test('A5 Products Where-used and Proof remain projections over existing inventor
   assert.match(page, /Proof is evidence navigation only/);
 });
 
+test('A5 checked-in browser module parses before boot so the lived Gallery cannot freeze at Loading', () => {
+  const openTag = '<script type="module">';
+  const closeTag = '</script>';
+  const openIndex = page.indexOf(openTag);
+  const closeIndex = page.indexOf(closeTag, openIndex);
+  assert.ok(openIndex >= 0);
+  assert.ok(closeIndex > openIndex);
+  const moduleSource = page.slice(openIndex + openTag.length, closeIndex);
+  const parseable = moduleSource
+    .split('\n')
+    .filter((line) => !line.trim().startsWith('import '))
+    .join('\n');
+  assert.doesNotThrow(() => new Function(parseable));
+});
+
 test('A5 workspace remains read-only and loads only checked-in relative data', () => {
   assert.match(page, /const CATALOG_URL='\.\.\/projects\/vexboard\/lens\/catalog\.json'/);
   assert.match(page, /const INVENTORY_DIR='\.\.\/projects\/component-library-architecture\/inventory\/'/);
