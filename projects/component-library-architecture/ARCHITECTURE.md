@@ -476,6 +476,27 @@ Card body
 The durable meaning is relational. Preview pixels help the human judge the composition, but they do
 not become the canonical source of layout meaning.
 
+A lived Builder preview added a further presentation law:
+
+```text
+SOURCE-GROUNDED KIND
+-> visually distinguishable Builder expression
+
+BUT
+
+BUILDER VISUAL EXPRESSION
+!= portable semantic owner
+!= target-native parity proof
+```
+
+The Builder must not collapse Card, Column, Row, Stack, Dialog, Sheet, Region/Frame and Menu into one
+generic container rectangle. That makes relationship truth technically present but humanly
+indistinguishable. Conversely, giving those kinds distinct preview shells does not authorize the
+Builder to invent source children, Product State, target-native styling or business behavior.
+
+Technical node identity and layout-mode diagnostics remain available through selection/inspection;
+they are not the primary visual content of the composed interface.
+
 ## 9. Reverse where-used
 
 The system should be bidirectional.

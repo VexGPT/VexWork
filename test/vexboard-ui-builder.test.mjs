@@ -109,6 +109,12 @@ test('Builder surface is a visual toolbox + preview + relationship inspector wit
   assert.match(page, /Selected/);
   assert.match(page, /draggable/);
   assert.match(page, /Flow \+ Constraint/);
+  assert.match(page, /function containerVisual/);
+  for (const visualClass of ['v-card','v-column','v-row','v-stack','v-dialog','v-sheet','v-region','v-menu']) {
+    assert.match(page, new RegExp(visualClass));
+  }
+  assert.doesNotMatch(page, /CONTAINER_KINDS\.has\(kind\)\)return h\('div',\{class:'v-box'\}/);
+  assert.match(page, /node-tag/);
   assert.match(page, /Ui\.UI_PREVIEW_PROFILES/);
   assert.deepEqual(
     Object.fromEntries(Object.entries(UI_PREVIEW_PROFILES).map(([key, value]) => [key, value.label])),
@@ -118,6 +124,13 @@ test('Builder surface is a visual toolbox + preview + relationship inspector wit
   assert.match(page, /OPEN · target app \/ AI binds implementation/);
   assert.match(page, /vexboard-ui-blueprint\.mjs/);
   assert.match(page, /Builder owns UI relationships only/);
+});
+
+test('Builder toolbox previews preserve distinct component silhouettes', () => {
+  for (const silhouette of ['thumb-card','thumb-column','thumb-row','thumb-stack','thumb-dialog','thumb-sheet','thumb-region','thumb-menu']) {
+    assert.match(page, new RegExp(silhouette));
+  }
+  assert.match(page, /function thumb\(row\)/);
 });
 
 // [VXG RealForever][VEXWORK][COMPONENT-LIBRARY][A5-UI-BUILDER-TEST]

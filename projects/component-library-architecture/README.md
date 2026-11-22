@@ -681,6 +681,30 @@ Container  960 × 640
 Changing the preview profile does not rewrite component meaning. It exposes how the same relational
 blueprint behaves under a different available surface.
 
+#### Lived visual correction — component kind must be perceivable
+
+The first exact-head Builder preview proved the relationship model but exposed a presentation collapse:
+Card, Column, Dialog and other container-like kinds were all projected through the same rounded
+`v-box` shell. The source identity was technically present, but the human experience was effectively
+"the same rectangle with another label."
+
+A5 therefore keeps two truths separate:
+
+```text
+canonical UI Blueprint relationship
+!=
+Builder preview chrome
+```
+
+The preview may use distinct presentation silhouettes to help a human recognize the source-grounded
+kind, but it must not invent Product semantics or make preview pixels canonical. Card, Column, Row,
+Stack, Dialog, Sheet, Region/Frame and Menu now receive different visual shells; leaf controls keep
+their own Button/FAB/Menu Item/Field/Toggle/Text/Image expressions. Node ids and layout mode move out
+of the foreground composition and appear only as selection affordance / inspector information.
+
+The library toolbox uses the same distinction. A source family is no longer represented by a generic
+dashed box merely because its kind can contain children.
+
 ### A6 — construction/export packs — WAITING on A4+A5
 
 Consume an accepted A5 Studio Blueprint through target adapters to produce target-bound construction/reference artifacts without fresh source archaeology or AI reinterpretation.
