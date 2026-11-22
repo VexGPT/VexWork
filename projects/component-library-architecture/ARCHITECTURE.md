@@ -286,44 +286,104 @@ This is a stronger starting point than decompiling arbitrary UI because:
 
 A1 should reuse those sources rather than inventing another Android component registry.
 
-## 8. Gallery as a human workspace
+## 8. Gallery + Studio as a human workspace
 
-The Gallery should answer:
+The lived A5 correction is that a Gallery cannot center the occurrence index.
 
-> What do we already know how to build?
+The human question is:
 
-A compact default card might show:
+> What do we already know how to build, what is the thing like by itself, and what can I make with it?
 
-```text
-Action Button
-Portable · 4 realizations
-
-States
-default · disabled · pressed
-
-Used in
-Android 18
-Prod 7
-Stream 4
-
-[Open specimen] [Where used] [Realizations]
-```
-
-Expanded detail may show:
+The default relationship should be:
 
 ```text
-Meaning
-Slots / parameters
-States / variants
-Localization
-Accessibility
-Behavior / intent relationship
-Target realizations
-Source/proof
-Construction brief
+component source family
+-> one real source occurrence as an isolated specimen
+-> actual source examples / styles / conditions
+-> relationship inspector
+-> place into Studio
+-> deterministic composition blueprint
 ```
 
-Progressive disclosure should follow the same human-workflow lesson as Localization Architecture.
+Where-used, target realizations and proof remain evidence behind the selected specimen.
+
+### Isolated specimen
+
+A specimen is drawn from one current source occurrence and its projected relationships:
+
+```text
+kind
+label
+style / slot / layer / text role
+children
+intent / action / pathway
+visibility / presence / condition evidence
+localization bindings
+accessibility projection state
+```
+
+The specimen is a relationship projection, not native pixel parity.
+
+```text
+SOURCE-GROUNDED SPECIMEN
+!= SCREENSHOT
+!= TARGET-NATIVE ACCEPTANCE
+```
+
+Cycling examples means cycling actual source occurrences. The Gallery does not invent framework
+states merely because a control type could theoretically have them.
+
+### Studio
+
+The Studio treats component specimens like buildable furniture: a person can place an item at the
+composition root or inside a selected container, inspect the resulting structure, reorder it and
+remove it.
+
+The Studio composition is not stored as pixels. It is stored as relationships.
+
+```text
+vexboard.component-studio-blueprint/v1
+
+composition node
+  nodeRef
+  parentNodeRefOrNull
+  siblingOrder
+
+  exact source occurrence coordinate
+  presentation relationships
+  behavior relationships
+
+  portability disposition
+    PORTABLE_RELATIONSHIP_AVAILABLE
+    PORTABILITY_HELD
+    SOURCE_BOUND
+
+  accepted portable candidate refs
+  target realization refs
+```
+
+The artifact is deterministic and explicitly non-executing:
+
+```text
+aiRequired = false
+effects = false
+executionAuthority = NONE
+```
+
+This is the bridge from human composition to future target construction without making an AI
+reconstruct intent from screenshots, prose or historical source.
+
+A6 consumes the Studio Blueprint through target adapters. Therefore:
+
+```text
+A5 Studio Blueprint
+!= generated Compose / SwiftUI / Web source
+
+A6 target construction
+-> adapter
+-> target-native source / reference artifact
+-> target proof
+```
 
 ## 9. Reverse where-used
 
@@ -484,30 +544,34 @@ No privileged admin exception.
 
 ## 15. Paired implementation slices
 
-Avoid building a library UI disconnected from the reusable contract.
+Avoid building a Library UI disconnected from the reusable relationship contract.
 
 ```text
 Slice 1
-Android component inventory
-+ first portable Gallery container identity
+source inventory
++ first isolated source-grounded specimen
 
 Slice 2
-component search / where-used
-+ projectable Gallery controls
+specimen example cycling / edge evidence
++ where-used / Screen Lens deep link
 
 Slice 3
-portable component candidate/detail
-+ component relationship projection
+portable relationship / realization / proof inspector
++ explicit source-bound / held states
 
 Slice 4
-target realization tabs
-+ currentness / proof mapping
+Studio composition tree
++ parent / order / containment preservation
 
 Slice 5
-construction brief / export
-+ deterministic target mapping where earned
+deterministic Studio Blueprint export / import
++ no-AI reconstruction contract
 
-Slice 6
+Slice 6 (A6)
+Studio Blueprint -> target adapter
++ target-native construction / proof
+
+Slice 7 (A7)
 self-use / self-projection / localization proof
 ```
 
