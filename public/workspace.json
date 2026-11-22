@@ -29868,9 +29868,7 @@
           "updatedAt": "2026-11-21T17:05:49.003Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vex.localization-architecture.outcome.verifying.a5-terminal",
-              "workRef": "work.vex.localization-architecture.outcome",
               "priorState": "RUNNING",
               "nextState": "VERIFYING",
               "reason": "A0 through A5 are now completed on main. The recurring translator packet/import/source-write lifecycle has been deliberately separated into Localization Transition rather than extending this architecture outcome into repository mutation operations.",
@@ -29882,9 +29880,7 @@
               "createdAt": "2026-11-21T17:05:49.002Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vex.localization-architecture.outcome.completed.a5-terminal",
-              "workRef": "work.vex.localization-architecture.outcome",
               "priorState": "VERIFYING",
               "nextState": "COMPLETED",
               "reason": "Localization Architecture is complete: the source-faithful relational model, Android inventory, contextual inspector, Change Set reconciliation, duplicate/convergence analysis and global VexBoard workspace are all landed and current. Translation campaign/export/import/source-write operations continue separately as Localization Transition.",
@@ -29990,9 +29986,7 @@
               "createdAt": "2026-11-21T15:26:56.004Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vex.localization-architecture.vexboard-workspace.running.a5-lived-preview",
-              "workRef": "work.vex.localization-architecture.vexboard-workspace",
               "priorState": "READY",
               "nextState": "RUNNING",
               "reason": "A5 entered preview-first implementation on PR #422: the global VexBoard Localization Workspace projected the already-earned inventories, Change Sets and convergence analysis across seven pivots while lived review refined search locality, one-locale translation comparison and reclaimable workspace height without taking Product source ownership.",
@@ -30005,9 +29999,7 @@
               "createdAt": "2026-11-21T15:49:55.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vex.localization-architecture.vexboard-workspace.verifying.a5-postmerge",
-              "workRef": "work.vex.localization-architecture.vexboard-workspace",
               "priorState": "RUNNING",
               "nextState": "VERIFYING",
               "reason": "PR #422 merged the exact A003-proved A5 candidate to main at c91766e715c447bb467346ee313724dba8f54650 after SourceOwner PASS, fresh Independent Assurance CLEAR_ON_EXACT_HEAD and a provider synthetic merge that preserved both the current-main New Beginnings changes and all eight A5 paths without overlap.",
@@ -30020,9 +30012,7 @@
               "createdAt": "2026-11-21T17:05:49.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vex.localization-architecture.vexboard-workspace.completed.a5-postmerge",
-              "workRef": "work.vex.localization-architecture.vexboard-workspace",
               "priorState": "VERIFYING",
               "nextState": "COMPLETED",
               "reason": "A5 is landed end to end: the global workspace consumes current Product-owned localization inventories, preserves separate source identities, exposes Elements/Strings/Values/Groups/Locales/Coverage/Change Sets, supports visible-locale comparison and pivot-local search, keeps missing translations explicit, and round-trips to Screen Lens. SourceOwner A003 passed localization currentness, Lens verification, 20/20 focused A5 tests and the full repository review with zero findings; Product writeback remains outside A5 in the separate Localization Transition trajectory.",
@@ -30160,9 +30150,7 @@
           "updatedAt": "2026-11-21T17:05:49.003Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vex.localization-architecture.outcome.verifying.a5-terminal",
-              "workRef": "work.vex.localization-architecture.outcome",
               "priorState": "RUNNING",
               "nextState": "VERIFYING",
               "reason": "A0 through A5 are now completed on main. The recurring translator packet/import/source-write lifecycle has been deliberately separated into Localization Transition rather than extending this architecture outcome into repository mutation operations.",
@@ -30174,9 +30162,7 @@
               "createdAt": "2026-11-21T17:05:49.002Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vex.localization-architecture.outcome.completed.a5-terminal",
-              "workRef": "work.vex.localization-architecture.outcome",
               "priorState": "VERIFYING",
               "nextState": "COMPLETED",
               "reason": "Localization Architecture is complete: the source-faithful relational model, Android inventory, contextual inspector, Change Set reconciliation, duplicate/convergence analysis and global VexBoard workspace are all landed and current. Translation campaign/export/import/source-write operations continue separately as Localization Transition.",
