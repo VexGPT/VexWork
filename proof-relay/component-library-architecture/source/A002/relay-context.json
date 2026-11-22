@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "vexwork.pr402-component-library-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 402,
+  "attempt": "A002",
+  "disposition": "A001_WORKGRAPH_TRANSITION_SAFE_FAILURE_SUCCESSOR_DETERMINISTIC_REVIEW",
+  "candidate": {
+    "base": "c4d9c70853e07c100379712ed870bf83c6d5b9a6",
+    "head": "b6aeb352c47be162b6d9a9dace30da6c97dd3b55",
+    "tree": "c3a02de1f55016c702d777c044fb94eaa89f5445",
+    "branch": "VXG-112026-component-library-architecture-project-a001",
+    "changedPathCount": 22,
+    "changedPaths": [
+      "blueprint/project-registry.json",
+      "package.json",
+      "projects/component-library-architecture/ARCHITECTURE.md",
+      "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+      "projects/component-library-architecture/README.md",
+      "projects/component-library-architecture/TECH-DEBT.md",
+      "projects/component-library-architecture/component-architecture-catalog.json",
+      "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+      "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+      "projects/component-library-architecture/inventory/vexstream-music.main.components.json",
+      "projects/component-library-architecture/project.json",
+      "public/workspace.json",
+      "scripts/build-component-inventory.mjs",
+      "src/shared/vexboard-component-architecture.mjs",
+      "src/shared/vexboard-component-inventory.mjs",
+      "test/vexboard-component-architecture.test.mjs",
+      "test/vexboard-component-inventory.test.mjs",
+      "vexboard/components.html",
+      "vexboard/localization.html",
+      "vexboard/projects.html",
+      "workgraphs/public.json",
+      "workgraphs/segments/component-library-architecture.json"
+    ]
+  },
+  "candidateLifecycle": [
+    "A1 Android inventory: COMPLETED candidate",
+    "A2 cross-Product census: COMPLETED candidate",
+    "A3 portable contract: already COMPLETED",
+    "A4 target realizations: COMPLETED candidate at 39 PASS / 0 OWED / 2 intentional HELD",
+    "A5 Component Gallery: READY candidate",
+    "A6 construction packs: WAITING_DEPENDENCIES",
+    "A7 self-projection: WAITING_DEPENDENCIES"
+  ],
+  "proofMeaning": [
+    "review:deterministic remains the unchanged repository-owned acceptance floor.",
+    "A002 re-proves the same lifecycle-transition candidate after repairing the only illegal Component Library Workgraph edge.",
+    "A1/A2/A4 completed and A5 ready remain candidate state until A002 PASS and fresh Assurance."
+  ],
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No source mutation.",
+    "No Product/native proof replay.",
+    "No READY/merge/release effect.",
+    "A5 implementation does not begin until exact VexWork candidate proof is consumed."
+  ],
+  "onPass": {
+    "next": "Fresh read-only Independent Assurance on exact repaired #402 head; if clear, accept A1/A2/A4 completion and A5 READY, then enter A5."
+  },
+  "predecessor": {
+    "attempt": "A001",
+    "state": "SAFE_FAILURE",
+    "outerCarrier": "PASS",
+    "innerSourceOwner": "SAFE_FAILURE",
+    "classification": "candidate",
+    "error": "transition WAITING_DEPENDENCIES -> RUNNING not allowed",
+    "testSummary": {
+      "tests": 992,
+      "pass": 953,
+      "fail": 39
+    },
+    "rootCause": "One pre-existing Component Library A4 history record skipped READY. All 39 failures collapsed to Workgraph construction failing on that illegal transition.",
+    "correction": [
+      "Add transition target-realizations WAITING_DEPENDENCIES -> READY at 2026-11-21T19:31:59Z.",
+      "Correct existing target-realizations running transition to READY -> RUNNING.",
+      "Project the same repaired history into workgraphs/public.json and public/workspace.json.",
+      "Do not weaken the Workgraph validator or change current A1/A2/A4/A5 candidate states."
+    ],
+    "sourceMutation": true
+  }
+}
