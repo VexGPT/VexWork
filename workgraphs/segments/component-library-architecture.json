@@ -247,8 +247,8 @@
       "createdAt": "2026-11-21T08:20:00.000Z",
       "workRef": "work.vex.component-library-architecture.gallery",
       "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
-      "label": "Build the Component Library Gallery + Studio",
-      "purpose": "Create a human Gallery where source-grounded component specimens can be viewed in isolation, cycled through real source examples and inspected with their relationships; let a person combine those specimens in a Studio that preserves parent/order/source/presentation/behavior/portability relationships and exports/imports a deterministic platform-neutral Studio Blueprint without AI, while where-used/realizations/proof remain supporting evidence rather than component source authority.",
+      "label": "Build the Component Library Gallery + Builder",
+      "purpose": "Create a human Gallery where source-grounded component specimens can be viewed in isolation, cycled through real source examples and inspected with their relationships; let a person compose those specimens in one Builder that preserves containment, container layout, authored content beside source evidence, OPEN behavior seams, visibility, accessibility and reusable definition/instance relationships, and exports/imports a deterministic platform-neutral UI Blueprint plus construction brief without AI, while where-used/realizations/proof remain supporting evidence rather than component source authority.",
       "workClass": "TASK",
       "state": "RUNNING",
       "dependencyRefs": [
@@ -268,11 +268,19 @@
         "projects/component-library-architecture/component-architecture-catalog.json",
         "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
         "github.pr.vexlife-prod.506",
-        "src/shared/vexboard-component-studio.mjs",
-        "test/vexboard-component-studio.test.mjs",
-        "test/vexboard-component-workspace-ui.test.mjs"
+        "test/vexboard-component-workspace-ui.test.mjs",
+        "vexboard/builder.html",
+        "src/shared/vexboard-ui-kinds.mjs",
+        "src/shared/vexboard-ui-blueprint.mjs",
+        "src/shared/vexboard-ui-document.mjs",
+        "src/shared/vexboard-ui-review.mjs",
+        "test/vexboard-ui-blueprint.test.mjs",
+        "test/vexboard-ui-document.test.mjs",
+        "test/vexboard-ui-review.test.mjs",
+        "test/vexboard-ui-builder.test.mjs",
+        "github.pr.vexwork.428"
       ],
-      "updatedAt": "2026-11-22T17:18:00.000Z"
+      "updatedAt": "2026-11-22T22:00:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",

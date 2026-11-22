@@ -832,6 +832,7 @@ export function expandBlueprint(blueprint) {
       visibility: node.visibility,
       accessibility: node.accessibility,
       seams: resolvedSeams,
+      slotHostOrNull: context.slotHost(node.nodeRef),
       children: [],
     };
     const kids = context.children.get(node.nodeRef) ?? [];
@@ -866,6 +867,10 @@ export function expandBlueprint(blueprint) {
       textOverride,
       childPath: (child) => path + '/' + child.nodeRef,
       resolveTarget: (templateRef) => path + '/' + templateRef,
+      slotHost: (templateRef) => {
+        const slot = definition.slots.find((row) => row.templateNodeRef === templateRef);
+        return slot ? { instancePath: path, slotRef: slot.slotRef, label: slot.label } : null;
+      },
       slotChildren: (templateRef) => {
         const slot = definition.slots.find((row) => row.templateNodeRef === templateRef);
         if (!slot) return [];
@@ -891,6 +896,7 @@ export function expandBlueprint(blueprint) {
     textOverride: () => null,
     childPath: (child) => child.nodeRef,
     resolveTarget: (nodeRef) => nodeRef,
+    slotHost: () => null,
     slotChildren: () => [],
   };
   const roots = (topChildren.get('') ?? []).map((node) => expandNode(node, node.nodeRef, topContext));
