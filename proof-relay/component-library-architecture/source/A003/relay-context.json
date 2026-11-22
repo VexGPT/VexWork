@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "vexwork.pr402-component-library-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 402,
+  "attempt": "A003",
+  "disposition": "A002_GENERATED_CURRENTNESS_SAFE_FAILURE_SUCCESSOR_DETERMINISTIC_REVIEW",
+  "candidate": {
+    "base": "c4d9c70853e07c100379712ed870bf83c6d5b9a6",
+    "head": "3239743fdbc9410b49c06cca0e896a840763bbec",
+    "tree": "0fb443e82b4c5ee83e729c7f8e297534354aa316",
+    "branch": "VXG-112026-component-library-architecture-project-a001",
+    "changedPathCount": 22,
+    "changedPaths": [
+      "blueprint/project-registry.json",
+      "package.json",
+      "projects/component-library-architecture/ARCHITECTURE.md",
+      "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+      "projects/component-library-architecture/README.md",
+      "projects/component-library-architecture/TECH-DEBT.md",
+      "projects/component-library-architecture/component-architecture-catalog.json",
+      "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+      "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+      "projects/component-library-architecture/inventory/vexstream-music.main.components.json",
+      "projects/component-library-architecture/project.json",
+      "public/workspace.json",
+      "scripts/build-component-inventory.mjs",
+      "src/shared/vexboard-component-architecture.mjs",
+      "src/shared/vexboard-component-inventory.mjs",
+      "test/vexboard-component-architecture.test.mjs",
+      "test/vexboard-component-inventory.test.mjs",
+      "vexboard/components.html",
+      "vexboard/localization.html",
+      "vexboard/projects.html",
+      "workgraphs/public.json",
+      "workgraphs/segments/component-library-architecture.json"
+    ]
+  },
+  "candidateLifecycle": [
+    "A1 Android inventory: COMPLETED candidate",
+    "A2 cross-Product census: COMPLETED candidate",
+    "A3 portable contract: already COMPLETED",
+    "A4 target realizations: COMPLETED candidate at 39 PASS / 0 OWED / 2 intentional HELD",
+    "A5 Component Gallery: READY candidate",
+    "A6 construction packs: WAITING_DEPENDENCIES",
+    "A7 self-projection: WAITING_DEPENDENCIES"
+  ],
+  "proofMeaning": [
+    "review:deterministic remains the unchanged repository-owned acceptance floor.",
+    "A003 re-proves the exact regenerated #402 candidate after restoring Workgraph composition and its public dashboard/workspace consequences from rightful source truth.",
+    "A1/A2/A4 completed and A5 READY remain candidate state until A003 PASS and fresh semantic Assurance."
+  ],
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No source mutation.",
+    "No Product/native proof replay.",
+    "No READY/merge/release effect.",
+    "A5 implementation does not begin until exact VexWork candidate proof is consumed."
+  ],
+  "onPass": {
+    "next": "Fresh read-only Independent Assurance on exact repaired #402 head; if clear, accept A1/A2/A4 completion and A5 READY, then enter A5."
+  },
+  "predecessor": {
+    "attempt": "A002",
+    "state": "SAFE_FAILURE",
+    "outerCarrier": "PASS",
+    "innerSourceOwner": "SAFE_FAILURE",
+    "classification": "candidate-generated-currentness",
+    "observedFailures": [
+      "not ok 218 — checked-in public dashboard exactly matches the canonical projection",
+      "not ok 245 — checked-in public workspace is generated-current"
+    ],
+    "evidenceLimit": "Captured A002 test stdout truncated before the final TAP summary; no exact total failure count is claimed.",
+    "rootCause": "The Component lifecycle transition had been manually projected into workgraphs/public.json and public/workspace.json while those generated consequences were already behind accepted segment/main truth. The A001 lifecycle repair itself was valid; the composed/generated surfaces were not current.",
+    "correction": [
+      "Recompose workgraphs/public.json from the exact accepted main generated graph plus the current Component Library segment under repository compatibility-order rules.",
+      "Restore public/work-dashboard.json to exact accepted generated main bytes because the Component segment adds no Foundation-board or nonterminal Parking-Lot item.",
+      "Rebuild the Component project entry over the current accepted workspace baseline at Project Registry v37 while preserving public transition projection shape.",
+      "Preserve current New Beginnings and Localization source truth plus the repaired A4 WAITING_DEPENDENCIES -> READY -> RUNNING history.",
+      "Fast-forward #402 to 3239743fdbc9410b49c06cca0e896a840763bbec with tree 0fb443e82b4c5ee83e729c7f8e297534354aa316; no Component architecture/catalog/inventory source bytes changed by this correction."
+    ],
+    "sourceMutation": true
+  }
+}
