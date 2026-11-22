@@ -177,7 +177,7 @@ test('target pressure results preserve mapped, held and platform-specific truth 
   assert.equal(frame.length, 2);
   const frameSwift = frame.find((row) => row.platformRef === 'platform.ios');
   const frameWeb = frame.find((row) => row.repositoryRef === 'repo.vexstream-music');
-  assert.equal(frameSwift.commit, 'befe31789834a74f5a2738cb6d6028c01aa7553c');
+  assert.equal(frameSwift.commit, '8c1fbee1e9029f89f4452c86dfcc9e7f08e4834b');
   assert.ok(frameSwift.relationships.some((row) => row.relationRef.endsWith('partial-multi-seam') && row.disposition === 'HELD'));
   assert.ok(frameWeb.relationships.some((row) => row.relationRef.endsWith('zero-seam-frame') && row.disposition === 'MAPPED'));
   assert.ok(frameWeb.relationships.some((row) => row.relationRef.endsWith('seam-resize-collapse') && row.disposition === 'NOT_APPLICABLE'));
