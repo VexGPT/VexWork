@@ -286,7 +286,7 @@ This is a stronger starting point than decompiling arbitrary UI because:
 
 A1 should reuse those sources rather than inventing another Android component registry.
 
-## 8. Gallery + Studio as a human workspace
+## 8. Gallery + Builder as a human workspace
 
 The lived A5 correction is that a Gallery cannot center the occurrence index.
 
@@ -384,6 +384,97 @@ A6 target construction
 -> target-native source / reference artifact
 -> target proof
 ```
+
+### Builder — a VexArchitecture-shaped UI Blueprint surface
+
+Gallery and Builder answer different human questions:
+
+```text
+Gallery
+  "what building blocks exist, and what are they like?"
+
+Builder
+  "what UI do I mean to construct with them?"
+```
+
+The Builder keeps the visual experience in front while preserving ownership underneath:
+
+```text
+SOURCE / PRODUCT OWNERS
+  exact component occurrence + Product meaning
+        ↓ projected, not copied into a second semantic owner
+
+BUILDER AUTHORING
+  parent / sibling order
+  Flow or Constraint container relationship
+  parent-relative constraints
+  presentation preview profile
+  open integration ports
+        ↓
+
+UI BLUEPRINT
+  deterministic relationship artifact
+  effects = false
+  executionAuthority = NONE
+        ↓
+  ┌───────────────────────────────┐
+  │                               │
+  ▼                               ▼
+A6 deterministic adapter       AI integrator
+target-native realization      app-specific port binding
+  │                               │
+  └──────── rightful target/application architecture ────────┘
+```
+
+This applies the VexArchitecture rule that every owner answers one rightful question. The Builder
+does not invent target application State, Effect, Store, Family, provider truth, or execution
+custody. Its callback ports are intentionally **OPEN**. They preserve the visible interaction seam
+and any source intent evidence while leaving implementation to the target application's rightful
+semantic owner.
+
+The first full Builder interface is:
+
+```text
+┌────────────────────────────────────────────────────────────────────────────┐
+│ UI Builder      [Mobile ▾] [390 × 844]       Import        Save Design    │
+├────────────────┬─────────────────────────────────────┬─────────────────────┤
+│ COMPONENTS     │                                     │ SELECTED            │
+│                │           preview surface           │                     │
+│ Search...      │                                     │ source identity     │
+│                │    ┌───────────────────────────┐    │                     │
+│ Layout         │    │                           │    │ Layout              │
+│ ▸ Column       │    │  nested relational UI     │    │ Flow / Constraint   │
+│ ▸ Row          │    │                           │    │ width / height      │
+│ ▸ Stack        │    │  drag / drop here         │    │ parent constraints │
+│ ▸ Container    │    │                           │    │                     │
+│                │    └───────────────────────────┘    │ Integration         │
+│ Controls       │                                     │ callback.* = OPEN   │
+│ ▸ Button       │                                     │                     │
+│ ▸ Toggle       │                                     │ portability/source  │
+│ ▸ Field        │                                     │                     │
+│                │                                     │                     │
+├────────────────┴─────────────────────────────────────┴─────────────────────┤
+│ Structure: Root > Container > ...                    UI Blueprint         │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
+Flow and Constraint are composable rather than competing layout systems:
+
+```text
+Constraint container
+  Card
+    start/end -> parent
+    top       -> parent + 24
+
+Card body
+  Vertical Flow
+    Text
+    Field
+    Button
+```
+
+The durable meaning is relational. Preview pixels help the human judge the composition, but they do
+not become the canonical source of layout meaning.
 
 ## 9. Reverse where-used
 
