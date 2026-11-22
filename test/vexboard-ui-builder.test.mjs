@@ -133,4 +133,12 @@ test('Builder toolbox previews preserve distinct component silhouettes', () => {
   assert.match(page, /function thumb\(row\)/);
 });
 
+test('Builder explains its browser-only boundary and stays adjacent to Localization', () => {
+  assert.match(page, /Browser-only workspace/);
+  assert.match(page, /does not start a local shell\/server or write to an app or repository/);
+  assert.match(page, /Import reads only the file you choose after clicking Import/);
+  assert.match(page, /Save Design downloads the UI Blueprint only after you click Save Design/);
+  assert.match(page, /href="\.\/localization\.html">Localization/);
+});
+
 // [VXG RealForever][VEXWORK][COMPONENT-LIBRARY][A5-UI-BUILDER-TEST]

@@ -705,6 +705,43 @@ of the foreground composition and appear only as selection affordance / inspecto
 The library toolbox uses the same distinction. A source family is no longer represented by a generic
 dashed box merely because its kind can contain children.
 
+#### VexBoard placement / hosted-browser boundary
+
+Builder follows the existing Localization adjacency instead of inventing a separate application shell:
+
+```text
+VexBoard / Projects
+  Components
+  Builder
+  Localization
+  VexWork
+```
+
+`vexboard/projects.html` is the VexBoard front door. Builder therefore lives as
+`vexboard/builder.html` beside `vexboard/localization.html` and
+`vexboard/components.html`. On a normal hosted VexBoard deployment, opening Builder is ordinary
+same-site browser navigation.
+
+The localhost server used during exact-PR lived review is preview harness only. It is not part of the
+Builder product contract.
+
+Human-facing boundary:
+
+```text
+open Builder
+  -> browser loads hosted HTML / modules / source projections
+  -> no local shell/server launch
+  -> no app/repository mutation
+
+click Import
+  -> browser file picker
+  -> only the user-selected blueprint is read
+
+click Save Design
+  -> browser download
+  -> deterministic UI Blueprint bytes
+```
+
 ### A6 — construction/export packs — WAITING on A4+A5
 
 Consume an accepted A5 Studio Blueprint through target adapters to produce target-bound construction/reference artifacts without fresh source archaeology or AI reinterpretation.
