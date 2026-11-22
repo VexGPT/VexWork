@@ -4,8 +4,12 @@ import test from 'node:test';
 
 import {
   UI_BLUEPRINT_SCHEMA,
+  UI_COMPONENT_DEFINITION_SCHEMA,
   UI_PREVIEW_PROFILES,
+  UI_SPATIAL_GRID,
   createUiBlueprint,
+  createUiComponentDefinition,
+  instantiateUiComponentDefinition,
   normalizeUiBlueprint,
   uiBlueprintBytes,
   uiNodeFromOccurrence,
@@ -36,6 +40,14 @@ test('UI Blueprint preserves source-grounded component meaning while adding Buil
   }));
   node.authoring.layout.containerMode = 'CONSTRAINT';
   node.authoring.layout.width = { mode: 'FILL', valueOrNull: null };
+  node.authoring.layout.gridPlacement = {
+    mode: 'GRID_RATIO',
+    gridRef: UI_SPATIAL_GRID.gridRef,
+    columnStart: 3,
+    rowStart: 4,
+    columnSpan: 12,
+    rowSpan: 5,
+  };
   node.authoring.callbackPorts = [{
     portRef: 'callback.saveProfile',
     eventRef: 'CLICK',
@@ -58,6 +70,15 @@ test('UI Blueprint preserves source-grounded component meaning while adding Buil
   assert.equal(blueprint.preview.previewOnly, true);
   assert.equal(blueprint.nodes[0].source.occurrenceRef, node.source.occurrenceRef);
   assert.equal(blueprint.nodes[0].authoring.layout.containerMode, 'CONSTRAINT');
+  assert.deepEqual(blueprint.nodes[0].authoring.layout.gridPlacement, {
+    mode: 'GRID_RATIO',
+    gridRef: UI_SPATIAL_GRID.gridRef,
+    columnStart: 3,
+    rowStart: 4,
+    columnSpan: 12,
+    rowSpan: 5,
+  });
+  assert.equal(blueprint.summary.spatialNodeCount, 1);
   assert.equal(blueprint.integration.bindingMode, 'OPEN_PORTS');
   assert.equal(blueprint.integration.openCallbackPorts[0].portRef, 'callback.saveProfile');
   assert.equal(blueprint.integration.openCallbackPorts[0].bindingState, 'OPEN');
@@ -109,6 +130,14 @@ test('Builder surface is a visual toolbox + preview + relationship inspector wit
   assert.match(page, /Selected/);
   assert.match(page, /draggable/);
   assert.match(page, /Flow \+ Constraint/);
+  assert.match(page, /24 × 24 ratio grid/);
+  assert.match(page, /function beginSpatialGesture/);
+  assert.match(page, /function resizePlacement/);
+  assert.match(page, /resize-handle/);
+  assert.match(page, /Save as reusable component/);
+  assert.match(page, /id="reusable-list"/);
+  assert.match(page, /\.\.\.layoutControls/);
+  assert.match(page, /\.\.\.ports/);
   assert.match(page, /function containerVisual/);
   for (const visualClass of ['v-card','v-column','v-row','v-stack','v-dialog','v-sheet','v-region','v-menu']) {
     assert.match(page, new RegExp(visualClass));
@@ -139,6 +168,98 @@ test('Builder explains its browser-only boundary and stays adjacent to Localizat
   assert.match(page, /Import reads only the file you choose after clicking Import/);
   assert.match(page, /Save Design downloads the UI Blueprint only after you click Save Design/);
   assert.match(page, /href="\.\/localization\.html">Localization/);
+});
+
+test('Reusable UI component definitions preserve one source-grounded template and create distinct instances', () => {
+  const root = structuredClone(uiNodeFromOccurrence({
+    nodeRef: 'template.card',
+    inventory,
+    occurrenceRef: occurrenceFor('CARD'),
+    architectureCatalog: architecture,
+  }));
+  const child = structuredClone(uiNodeFromOccurrence({
+    nodeRef: 'template.button',
+    inventory,
+    occurrenceRef: occurrenceFor('BUTTON'),
+    architectureCatalog: architecture,
+    parentNodeRefOrNull: root.nodeRef,
+  }));
+  child.authoring.callbackPorts = [{
+    portRef: 'callback.definition.action',
+    eventRef: 'CLICK',
+    sourceIntentOrNull: child.relationships.intentOrNull,
+    bindingState: 'OPEN',
+  }];
+
+  const definition = createUiComponentDefinition({
+    definitionRef: 'component.local.settings-card',
+    label: 'Settings Card',
+    nodes: [root, child],
+  });
+
+  assert.equal(definition.schemaVersion, UI_COMPONENT_DEFINITION_SCHEMA);
+  assert.equal(definition.rootTemplateNodeRef, root.nodeRef);
+  assert.equal(definition.summary.nodeCount, 2);
+  assert.equal(definition.aiRequired, false);
+
+  const first = instantiateUiComponentDefinition({
+    definition,
+    instanceRef: 'instance.local.1',
+    nodeRefFactory: (_templateRef, index) => 'first.' + (index + 1),
+    rootGridPlacement: {
+      mode: 'GRID_RATIO',
+      gridRef: UI_SPATIAL_GRID.gridRef,
+      columnStart: 2,
+      rowStart: 2,
+      columnSpan: 18,
+      rowSpan: 8,
+    },
+  });
+  const second = instantiateUiComponentDefinition({
+    definition,
+    instanceRef: 'instance.local.2',
+    nodeRefFactory: (_templateRef, index) => 'second.' + (index + 1),
+  });
+
+  assert.equal(first[0].authoring.componentInstance.definitionRef, definition.definitionRef);
+  assert.equal(first[0].authoring.componentInstance.instanceRef, 'instance.local.1');
+  assert.equal(second[0].authoring.componentInstance.instanceRef, 'instance.local.2');
+  assert.notEqual(first[1].authoring.callbackPorts[0].portRef, second[1].authoring.callbackPorts[0].portRef);
+
+  const blueprint = createUiBlueprint({
+    blueprintRef: 'ui.blueprint.reuse',
+    label: 'Reuse',
+    nodes: first,
+    componentDefinitions: [definition],
+  });
+  assert.equal(blueprint.summary.componentDefinitionCount, 1);
+  assert.equal(blueprint.summary.componentInstanceCount, 1);
+  assert.deepEqual(normalizeUiBlueprint(blueprint), blueprint);
+});
+
+test('UI Blueprint rejects ratio-grid placement that escapes its parent grid', () => {
+  const node = structuredClone(uiNodeFromOccurrence({
+    nodeRef: 'ui.node.escape',
+    inventory,
+    occurrenceRef: occurrenceFor('BUTTON'),
+    architectureCatalog: architecture,
+  }));
+  node.authoring.layout.gridPlacement = {
+    mode: 'GRID_RATIO',
+    gridRef: UI_SPATIAL_GRID.gridRef,
+    columnStart: 20,
+    rowStart: 0,
+    columnSpan: 8,
+    rowSpan: 3,
+  };
+  assert.throws(
+    () => createUiBlueprint({
+      blueprintRef: 'ui.blueprint.escape',
+      label: 'Escape',
+      nodes: [node],
+    }),
+    /exceeds grid columns/,
+  );
 });
 
 // [VXG RealForever][VEXWORK][COMPONENT-LIBRARY][A5-UI-BUILDER-TEST]

@@ -725,6 +725,75 @@ same-site browser navigation.
 The localhost server used during exact-PR lived review is preview harness only. It is not part of the
 Builder product contract.
 
+#### Spatial authoring — Lucid-like manipulation without pixel-owned meaning
+
+Lived review exposed that placement was still one-way: a component could be dropped but not directly
+moved or resized. Builder therefore gives the preview root and every Constraint container a
+parent-relative **24 × 24 ratio grid**.
+
+```text
+drag node
+  -> columnStart / rowStart
+
+resize edge / corner
+  -> columnSpan / rowSpan
+
+saved relationship
+  -> GRID_RATIO relative to parent
+  -> not viewport x/y pixels
+```
+
+Flow stays compositional. A Flow child is ordered by its parent rather than pretending to own
+independent spatial coordinates. Switching a container to Constraint activates ratio-grid placement
+for its children.
+
+#### Reusable dynamic components — definition != instance
+
+A Builder element is not terminal merely because it came from a source component family. Any
+source-grounded subtree can be captured as a reusable UI component definition:
+
+```text
+source-grounded nodes
+  -> reusable component definition
+       stable definitionRef
+       one template root
+       source snapshots
+       exposed open callback ports
+  -> reusable component instance
+       instanceRef
+       definitionRef
+       templateNodeRef per expanded node
+       instance-qualified callback ports
+       independent parent placement
+```
+
+The left library therefore has two sources:
+
+```text
+Source components
+  observed Product-backed building blocks
+
+Reusable
+  user-authored relationship fragments built from those source-grounded blocks
+```
+
+A reusable definition remains non-executing and does not become Product State/business meaning.
+Instances can be positioned and integrated independently while retaining their definition
+provenance. In the first A5 version, saving an already-instanced subtree deliberately flattens its
+nested instance provenance back to the underlying source-grounded nodes; recursive component
+package/dependency semantics are not invented merely for convenience.
+
+```text
+REUSE
+!= COPY/PASTE PIXELS
+
+COMPONENT DEFINITION
+!= PRODUCT SEMANTIC OWNER
+
+COMPONENT INSTANCE PORT
+!= CALLBACK IMPLEMENTATION
+```
+
 Human-facing boundary:
 
 ```text

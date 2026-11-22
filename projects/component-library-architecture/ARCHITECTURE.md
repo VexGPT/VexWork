@@ -497,6 +497,58 @@ Builder to invent source children, Product State, target-native styling or busin
 Technical node identity and layout-mode diagnostics remain available through selection/inspection;
 they are not the primary visual content of the composed interface.
 
+### Spatial composition and reusable definitions
+
+Direct manipulation is represented as parent-relative relationships rather than screenshot geometry:
+
+```text
+ROOT / Constraint parent
+  -> abstract 24 × 24 ratio surface
+
+child
+  columnStart
+  rowStart
+  columnSpan
+  rowSpan
+
+browser preview
+  ratio relationship -> current viewport pixels
+```
+
+This lets a node move/resize like a Lucid or Figma object while the Blueprint remains portable across
+Mobile / Windows / arbitrary Container previews. Flow children remain Flow-owned instead.
+
+The same non-collapsing rule applies to reuse:
+
+```text
+source occurrence
+  != reusable definition
+  != reusable instance
+  != target realization
+```
+
+A reusable definition owns only a Builder-authored UI relationship fragment. Its nodes retain their
+source coordinates; its callback ports remain OPEN. An instance keeps a stable `definitionRef`,
+`instanceRef` and per-template-node provenance while receiving instance-qualified integration
+ports and its own placement relationship.
+
+This enables higher-order components without claiming that the Builder invented Product semantics:
+
+```text
+Text + Toggle + Button
+  -> Settings Card definition
+  -> instance A
+  -> instance B
+
+same definition
+!= same callback binding
+!= same parent placement
+```
+
+The first A5 contract intentionally flattens nested reusable-instance provenance when a subtree is
+saved as a new definition. Recursive reusable-component dependency/cycle semantics would create a new
+maintained subsystem and are not required for the present human construction need.
+
 ## 9. Reverse where-used
 
 The system should be bidirectional.
