@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "vexwork.pr428-component-library-a5-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 428,
+  "attempt": "A002",
+  "disposition": "A001_LIVED_BROWSER_PARSE_FAILURE_SUCCESSOR_DETERMINISTIC_REVIEW",
+  "candidate": {
+    "base": "e3fd23dfff3bc98b4fca737c26e127fb21d1d800",
+    "head": "b002497e79888f5dada2b4a8d3e1663e551e51ac",
+    "tree": "88a5d7b4c094745136ff89cc4ace5d28860caede",
+    "branch": "VXG-112226-component-library-a5-workspace-a001",
+    "changedPathCount": 6,
+    "changedPaths": [
+      "vexboard/components.html",
+      "projects/component-library-architecture/README.md",
+      "workgraphs/segments/component-library-architecture.json",
+      "workgraphs/public.json",
+      "public/workspace.json",
+      "test/vexboard-component-workspace-ui.test.mjs"
+    ]
+  },
+  "lifecycle": {
+    "outcome": "RUNNING",
+    "A1": "COMPLETED",
+    "A2": "COMPLETED",
+    "A3": "COMPLETED",
+    "A4": "COMPLETED",
+    "A5": "RUNNING",
+    "A6": "WAITING_DEPENDENCIES",
+    "A7": "WAITING_DEPENDENCIES"
+  },
+  "workspaceMeaning": {
+    "pivots": [
+      "COMPONENTS",
+      "STATES",
+      "VARIANTS",
+      "PRODUCTS",
+      "REALIZATIONS",
+      "WHERE_USED",
+      "PROOF"
+    ],
+    "sourceAuthority": "READ_ONLY_PROJECTION",
+    "states": "EXPLICIT_SOURCE_RELATIONSHIPS_ONLY",
+    "variants": "DERIVED_SOURCE_SHAPE_NOT_PORTABLE_VARIANT_ID",
+    "constructionPacks": "A6_HELD"
+  },
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No Product source mutation.",
+    "No portable contract or target proof change.",
+    "No A5 completion.",
+    "No A6 construction/export pack.",
+    "No A7 self-projection.",
+    "No READY/merge/release effect."
+  ],
+  "onPass": {
+    "next": "Repeat exact-head lived A5 browser preview; if the Gallery boots and the seven pivots are usable, consume human-lived evidence, then fresh Assurance before A5 completion/integration."
+  },
+  "predecessor": {
+    "attempt": "A001",
+    "sourceOwner": "PASS",
+    "deterministic": {
+      "tests": 1031,
+      "pass": 1031,
+      "fail": 0
+    },
+    "livedReview": "FAIL",
+    "observed": "Exact-head browser preview remained stuck on 'Loading current component inventory…'.",
+    "rootCause": "vexboard/components.html contained one extra closing parenthesis inside renderProof(), causing the entire module to fail parsing before boot().",
+    "correction": [
+      "Remove the extra closing parenthesis in renderProof().",
+      "Add a regression that extracts and parses the actual embedded browser module before boot.",
+      "Advance #428 to b002497e79888f5dada2b4a8d3e1663e551e51ac / 88a5d7b4c094745136ff89cc4ace5d28860caede."
+    ]
+  }
+}
