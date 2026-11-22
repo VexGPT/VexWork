@@ -319,6 +319,10 @@ export function instantiateUiComponentDefinition({
       instanceRef,
       templateNodeRef: template.nodeRef,
     };
+    node.authoring.callbackPorts = node.authoring.callbackPorts.map((port, index) => ({
+      ...port,
+      portRef: 'callback.' + slug(instanceRef) + '.' + slug(port.eventRef) + '-' + (index + 1),
+    }));
     return freezeDeep(node);
   });
 }
