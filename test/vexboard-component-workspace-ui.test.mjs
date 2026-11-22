@@ -18,9 +18,10 @@ test('A5 centers Gallery specimens and Studio composition instead of a where-use
 test('A5 specimens cycle real source occurrences and keep evidence behind the selected item', () => {
   assert.match(page, /Components\.occurrencesForComponent/);
   assert.match(page, /Source example/);
-  for (const label of ['About','Where Used','Realizations','Proof','Source']) {
-    assert.match(page, new RegExp(label, 'i'));
+  for (const evidenceKey of ['ABOUT','WHERE_USED','REALIZATIONS','PROOF','SOURCE']) {
+    assert.match(page, new RegExp("'" + evidenceKey + "'"));
   }
+  assert.match(page, /human\(key\)/);
   assert.match(page, /Open full Lens/);
 });
 

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "vexwork.pr428-component-library-a5-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 428,
+  "attempt": "A006",
+  "disposition": "A005_SOURCE_OWNER_SAFE_FAILURE_TEST_OWNER_REPAIR_FRESH_FIXED_HEAD_PROOF",
+  "candidate": {
+    "base": "e3fd23dfff3bc98b4fca737c26e127fb21d1d800",
+    "head": "ca9650eb8b1f054ad09ec44abc815e8dabd7f1ea",
+    "tree": "1e7b9c5fbc5dbdba93fb7ca3d6af3cf001229f08",
+    "branch": "VXG-112226-component-library-a5-workspace-a001",
+    "changedPathCount": 12,
+    "changedPaths": [
+      "projects/component-library-architecture/ARCHITECTURE.md",
+      "projects/component-library-architecture/README.md",
+      "public/workspace.json",
+      "src/shared/vexboard-component-studio.mjs",
+      "src/shared/vexboard-ui-blueprint.mjs",
+      "test/vexboard-component-studio.test.mjs",
+      "test/vexboard-component-workspace-ui.test.mjs",
+      "test/vexboard-ui-builder.test.mjs",
+      "vexboard/builder.html",
+      "vexboard/components.html",
+      "workgraphs/public.json",
+      "workgraphs/segments/component-library-architecture.json"
+    ]
+  },
+  "lifecycle": {
+    "outcome": "RUNNING",
+    "A1": "COMPLETED",
+    "A2": "COMPLETED",
+    "A3": "COMPLETED",
+    "A4": "COMPLETED",
+    "A5": "RUNNING",
+    "A6": "WAITING_DEPENDENCIES",
+    "A7": "WAITING_DEPENDENCIES"
+  },
+  "workspaceMeaning": {
+    "center": "GALLERY_SPECIMEN_PLUS_RELATIONAL_UI_BUILDER",
+    "gallery": "VISUAL_SOURCE_GROUNDED_SHOWROOM",
+    "builder": "DRAG_NEST_FLOW_CONSTRAINT_AUTHORING",
+    "previewProfiles": [
+      "MOBILE",
+      "WINDOWS",
+      "CONTAINER"
+    ],
+    "uiBlueprintSchema": "vexboard.ui-blueprint/v1",
+    "integration": "OPEN_CALLBACK_PORTS",
+    "aiRequired": false,
+    "targetApplicationSemanticsOwner": "TARGET_APPLICATION",
+    "targetCodeOwner": "A6_OR_RIGHTFUL_APP_INTEGRATOR",
+    "architectureLaw": [
+      "BUILDER_UI_RELATIONSHIPS != TARGET_APPLICATION_STATE",
+      "OPEN_CALLBACK_PORT != CALLBACK_IMPLEMENTATION",
+      "PREVIEW_PIXELS != CANONICAL_LAYOUT_MEANING",
+      "TARGET_ADAPTER != SEMANTIC_OWNER"
+    ]
+  },
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No Product source mutation.",
+    "No target application State/Effect/Store/Family ownership.",
+    "No portable-contract or target-proof mutation.",
+    "No callback implementation or AI-authored business logic.",
+    "No A5 completion.",
+    "No A6 construction/export pack.",
+    "No A7 self-projection.",
+    "No READY/merge/release effect."
+  ],
+  "onPass": {
+    "next": "Consume exact A006 deterministic PASS, then enter lived Gallery + Builder preview and semantic Assurance without reopening A1-A4 unless contradictory evidence appears."
+  },
+  "predecessor": {
+    "attempt": "A005",
+    "outerReturn": {
+      "disposition": "PASS",
+      "sha256": "4d76b7c9da303b0a62f67954080111221c08bf0c888c518b35ab88cedeb46445"
+    },
+    "innerReturn": {
+      "disposition": "SAFE_FAILURE",
+      "taskRef": "task.vexwork.pr428.component-library-a5.source-owner.gallery-builder-ui-blueprint-a004",
+      "attemptRef": "attempt.vexwork.pr428.component-library-architecture.source-owner.a005.20261122",
+      "proofCommand": "npm run review:deterministic",
+      "tests": 1039,
+      "pass": 1037,
+      "fail": 2,
+      "failures": [
+        "test/vexboard-component-workspace-ui.test.mjs asserted rendered label `Where Used` against raw HTML even though `WHERE_USED` is the canonical key humanized at runtime.",
+        "test/vexboard-ui-builder.test.mjs asserted preview labels against builder.html even though UI_PREVIEW_PROFILES in vexboard-ui-blueprint.mjs is their source owner."
+      ]
+    },
+    "classification": "CANDIDATE_TEST_SOURCE_OWNER_MISMATCH",
+    "correction": {
+      "priorHead": "039aee22684055de59954e1d09d5b27cdc642054",
+      "currentHead": "ca9650eb8b1f054ad09ec44abc815e8dabd7f1ea",
+      "currentTree": "1e7b9c5fbc5dbdba93fb7ca3d6af3cf001229f08",
+      "changedPaths": [
+        "test/vexboard-component-workspace-ui.test.mjs",
+        "test/vexboard-ui-builder.test.mjs"
+      ],
+      "productionBuilderBytesChanged": false,
+      "semanticTaskRelation": "NEW_FIXED_HEAD_PROOF_REQUIRED"
+    }
+  }
+}
