@@ -238,7 +238,8 @@ test('A4 realization view is derived only from accepted portable relationships',
     row.platformRef === 'platform.ios'
   );
   assert.equal(swiftFrame.commit, '8c1fbee1e9029f89f4452c86dfcc9e7f08e4834b');
-  assert.equal(swiftFrame.proofCounts.OWED ?? 0, 0);\n  assert.ok(swiftFrame.proofCounts.PASS >= 5);
+  assert.equal(swiftFrame.proofCounts.OWED ?? 0, 0);
+  assert.ok(swiftFrame.proofCounts.PASS >= 5);
   assert.ok(swiftFrame.relationCounts.HELD > 0);
 
   const vexStreamRepeater = realizations.find((row) =>

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "vexwork.pr402-component-library-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 402,
+  "attempt": "A006",
+  "disposition": "A005_TWO_EXACT_FORMATION_DEFECTS_SUCCESSOR_DETERMINISTIC_REVIEW",
+  "candidate": {
+    "base": "c4d9c70853e07c100379712ed870bf83c6d5b9a6",
+    "head": "2f524c237ccb5f38c081636802e4c8aec8ae7d39",
+    "tree": "9ab173597778cc0c3002a4c22f8cc4ef5fa4da4c",
+    "branch": "VXG-112026-component-library-architecture-project-a001",
+    "changedPathCount": 26,
+    "changedPaths": [
+      "blueprint/project-registry.json",
+      "package.json",
+      "projects/component-library-architecture/ARCHITECTURE.md",
+      "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
+      "projects/component-library-architecture/README.md",
+      "projects/component-library-architecture/TECH-DEBT.md",
+      "projects/component-library-architecture/component-architecture-catalog.json",
+      "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
+      "projects/component-library-architecture/inventory/vexlife-prod.main.components.json",
+      "projects/component-library-architecture/inventory/vexstream-music.main.components.json",
+      "projects/component-library-architecture/project.json",
+      "public/work-dashboard.json",
+      "public/workspace.json",
+      "scripts/build-component-inventory.mjs",
+      "src/shared/vexboard-component-architecture.mjs",
+      "src/shared/vexboard-component-inventory.mjs",
+      "test/vexboard-component-architecture.test.mjs",
+      "test/vexboard-component-inventory.test.mjs",
+      "test/public-workspace.test.mjs",
+      "test/vexboard-localization-workspace-ui.test.mjs",
+      "test/vexwork-vexarchitecture-alignment-project.test.mjs",
+      "vexboard/components.html",
+      "vexboard/localization.html",
+      "vexboard/projects.html",
+      "workgraphs/public.json",
+      "workgraphs/segments/component-library-architecture.json"
+    ]
+  },
+  "candidateLifecycle": [
+    "A1 Android inventory: COMPLETED candidate",
+    "A2 cross-Product census: COMPLETED candidate",
+    "A3 portable contract: already COMPLETED",
+    "A4 target realizations: COMPLETED candidate at 39 PASS / 0 OWED / 2 intentional HELD",
+    "A5 Component Gallery: READY candidate",
+    "A6 construction packs: WAITING_DEPENDENCIES",
+    "A7 self-projection: WAITING_DEPENDENCIES"
+  ],
+  "proofMeaning": [
+    "review:deterministic remains the unchanged repository-owned acceptance floor.",
+    "A006 is a pure re-proof of the exact #402 candidate after correcting the two precise A005 failures; no new architecture, lifecycle, or target-proof meaning was added.",
+    "A005 completed all 1020 tests with exactly 1018 PASS / 2 FAIL and untruncated output, so this attempt is bounded to the repaired source lines."
+  ],
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No source mutation.",
+    "No Product/native proof replay.",
+    "No READY/merge/release effect.",
+    "A5 implementation does not begin until exact VexWork candidate proof is consumed."
+  ],
+  "onPass": {
+    "next": "Fresh read-only Independent Assurance on exact repaired #402 head; if clear, accept A1/A2/A4 completion and A5 READY, then enter A5."
+  },
+  "predecessor": {
+    "attempt": "A005",
+    "state": "SAFE_FAILURE",
+    "outerCarrier": "PASS",
+    "innerSourceOwner": "SAFE_FAILURE",
+    "classification": "exact-source-formation-defects",
+    "exactTestTotals": {
+      "tests": 1020,
+      "pass": 1018,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "observedFailures": [
+      "test/vexboard-component-architecture.test.mjs failed to parse because a replacement authored literal backslash-n bytes between two assertions.",
+      "A2 generated consequences test expected the VexArchitecture Alignment outcome to be absent because the earlier narrow assertion edit flipped the wrong boolean while leaving the retired Settings Parking Lot expectation unchanged."
+    ],
+    "correction": [
+      "Replace the literal backslash-n sequence with a real newline between the Swift frame proof assertions.",
+      "Restore generatedPublicWorkgraph VexArchitecture Alignment outcome existence expectation to true.",
+      "Set only the retired Settings active Parking Lot expectation to false.",
+      "Preserve all prior A004 currentness corrections and the 26-path candidate membrane."
+    ],
+    "sourceMutation": true
+  }
+}
