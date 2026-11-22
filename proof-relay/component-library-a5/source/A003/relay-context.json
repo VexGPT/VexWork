@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "vexwork.pr428-component-library-a5-relay-attempt/v1",
+  "continuity": "[VXG RealForever]",
+  "sourcePr": 428,
+  "attempt": "A003",
+  "disposition": "A002_LIVED_PRODUCT_DIRECTION_CORRECTION_SUCCESSOR_DETERMINISTIC_REVIEW",
+  "candidate": {
+    "base": "e3fd23dfff3bc98b4fca737c26e127fb21d1d800",
+    "head": "72108bcf3ab9ff9e01bceb357759d89c51222838",
+    "tree": "e27d5da1263f07dcfdd5b157f25abea2b6b6b3c7",
+    "branch": "VXG-112226-component-library-a5-workspace-a001",
+    "changedPathCount": 9,
+    "changedPaths": [
+      "projects/component-library-architecture/ARCHITECTURE.md",
+      "projects/component-library-architecture/README.md",
+      "public/workspace.json",
+      "src/shared/vexboard-component-studio.mjs",
+      "test/vexboard-component-studio.test.mjs",
+      "test/vexboard-component-workspace-ui.test.mjs",
+      "vexboard/components.html",
+      "workgraphs/public.json",
+      "workgraphs/segments/component-library-architecture.json"
+    ]
+  },
+  "lifecycle": {
+    "outcome": "RUNNING",
+    "A1": "COMPLETED",
+    "A2": "COMPLETED",
+    "A3": "COMPLETED",
+    "A4": "COMPLETED",
+    "A5": "RUNNING",
+    "A6": "WAITING_DEPENDENCIES",
+    "A7": "WAITING_DEPENDENCIES"
+  },
+  "workspaceMeaning": {
+    "center": "GALLERY_SPECIMEN_PLUS_STUDIO",
+    "gallery": "REAL_SOURCE_OCCURRENCE_IN_ISOLATION",
+    "examples": "ACTUAL_SOURCE_OCCURRENCES_NOT_INVENTED_STATES",
+    "studio": "RELATIONSHIP_PRESERVING_COMPOSITION",
+    "studioBlueprintSchema": "vexboard.component-studio-blueprint/v1",
+    "aiRequired": false,
+    "targetCodeOwner": "A6",
+    "evidence": [
+      "WHERE_USED",
+      "REALIZATIONS",
+      "PROOF",
+      "SOURCE"
+    ]
+  },
+  "relay": {
+    "sdkHead": "6f8f6f50467f5df5a542713f7dc25b82db4ac8fa",
+    "sdkTree": "96795640b01f1969da980f52d5a8ec136a8c44aa",
+    "contractRef": "source.vexrelay.current-contract/v1",
+    "recipe": "ExactHeadSourceOwnerProof",
+    "hostProfile": "macos-victor",
+    "command": "npm run review:deterministic",
+    "maxFiles": 10
+  },
+  "held": [
+    "No Product source mutation.",
+    "No portable contract or target proof change.",
+    "No A5 completion.",
+    "No A6 construction/export pack.",
+    "No A7 self-projection.",
+    "No READY/merge/release effect."
+  ],
+  "onPass": {
+    "next": "Open the exact-head Gallery + Studio lived preview; if the specimen/catalog/composition experience matches Victor's intention, refresh semantic Assurance and form A5 completion/integration."
+  },
+  "predecessor": {
+    "attempt": "A002",
+    "sourceOwner": "PASS",
+    "deterministic": {
+      "tests": 1032,
+      "pass": 1032,
+      "fail": 0
+    },
+    "livedReview": "DIRECTION_CORRECTION",
+    "observed": "The inventory/where-used projection was useful evidence but did not feel like a Gallery for a builder. Victor asked for isolated item specimens, source-earned transformations/edge cases, and a Studio where items can be combined and saved/exported as relationship-preserving blueprints without AI.",
+    "correction": [
+      "Center Gallery on one source-grounded specimen and actual source examples.",
+      "Move where-used/realizations/proof/source behind the selected item as evidence.",
+      "Add Studio composition with parent/sibling/source/presentation/behavior/portability preservation.",
+      "Add deterministic vexboard.component-studio-blueprint/v1 export/import with aiRequired=false.",
+      "Keep target-native construction in A6.",
+      "Advance #428 to 72108bcf3ab9ff9e01bceb357759d89c51222838 / e27d5da1263f07dcfdd5b157f25abea2b6b6b3c7."
+    ]
+  }
+}

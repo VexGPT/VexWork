@@ -540,53 +540,93 @@ Each realization retains source coordinates, version/currentness and proof.
 
 This is not automatic source-to-source translation. A deterministic constructor/generator becomes valid only where an accepted mapping proves it.
 
-### A5 — Component Gallery / Library workspace — RUNNING
+### A5 — Component Gallery + Studio — RUNNING
 
-A1-A4 are now accepted on `main`; A5 is the foreground human workspace rather than a proof-management continuation.
+The first A5 lived browser review corrected the center of gravity.
 
-The existing `vexboard/components.html` shell already preserves the three architecture evidence layers:
+An inventory table answers:
+
+> Where is this used?
+
+That remains useful evidence, but it is not the primary human Gallery outcome. The Gallery should answer:
+
+> What can I build, what is this item like by itself, how does it behave at its edges, and how can I combine it with other things without losing the relationships that make it buildable?
+
+The current A5 direction is therefore:
 
 ```text
-Source families
-Architecture
+LIBRARY
+  browse source-grounded component specimens
+  -> choose one real source occurrence
+  -> view it in isolation
+  -> cycle real source examples / styles / conditions
+  -> inspect meaning / containment / intent / localization / proof
+
+STUDIO
+  place specimens at root or inside a selected container
+  -> preserve parent / sibling order / source occurrence / presentation / behavior relationships
+  -> preserve portable accepted / held / source-bound disposition
+  -> save / import deterministic Studio Blueprint JSON
+```
+
+The Gallery does **not** manufacture pressed/disabled/selected states or target-native appearance when
+source has not projected them. Local specimen clicks/toggles are browser-local preview behavior only;
+they perform no Product effect.
+
+Supporting evidence remains reachable from the selected item:
+
+```text
+Where used
 Realizations
+Proof
+Source
 ```
 
-A5 now adds the human pivots over those same sources:
+but those are no longer the default Gallery experience.
+
+### A5 Studio Blueprint
+
+A5 owns a deterministic, platform-neutral composition artifact:
 
 ```text
-COMPONENTS | STATES | VARIANTS | PRODUCTS | REALIZATIONS | WHERE USED | PROOF
+vexboard.component-studio-blueprint/v1
+
+node
+  source occurrence identity
+  parent Studio node or ROOT
+  sibling order
+  source presentation relationships
+  intent / action / pathway / visibility relationships
+  accepted portable candidate refs
+  held candidate refs
+  target-realization refs
+
+aiRequired = false
+effects = false
+executionAuthority = NONE
 ```
 
-The workspace remains projection-only:
+A Studio node can remain `SOURCE_BOUND` or `PORTABILITY_HELD`. Exporting it does not pretend every
+component is already cross-platform.
 
-- **Components** keeps Product source families distinct from accepted portable architecture.
-- **States** shows only explicit `visibleWhen`, `alwaysVisible`, presence and condition relationships already projected by current source.
-- **Variants** groups observed source-shape signatures (style / slot / layer / text role / interactions) as derived evidence only; it creates no portable variant identity.
-- **Products** summarizes current Main component inventory coverage without scoring or collapsing Product ownership.
-- **Realizations** reuses the A4 target-realization map.
-- **Where used** provides one cross-Product reverse occurrence index with Screen Lens deep links.
-- **Proof** flattens the exact A4 proof records while preserving PASS / HELD / OWED distinctions.
-
-Permanent A5 honesty:
+Permanent:
 
 ```text
-ABSENT STATE RELATIONSHIP
--> NOT OBSERVED
-!= INFER FROM FRAMEWORK WIDGET
-
-DERIVED SOURCE SHAPE
-!= PORTABLE VARIANT ID
-
-GALLERY PIVOT
-!= NEW COMPONENT TRUTH STORE
+GALLERY SPECIMEN != NATIVE PIXEL PARITY
+LOCAL PREVIEW INTERACTION != PRODUCT EFFECT
+DERIVED SOURCE SHAPE != PORTABLE VARIANT ID
+STUDIO BLUEPRINT != GENERATED TARGET CODE
+STUDIO BLUEPRINT != SECOND PRODUCT SEMANTIC OWNER
+AI != REQUIRED CONSTRUCTION INTERPRETER
 ```
 
-A component detail still exposes the earned source/portable/target relationships. Copyable target-bound construction/reference artifacts remain A6; A5 may navigate the evidence required to form them but does not make generated code canonical meaning.
+A6 consumes the Studio Blueprint through accepted target adapters. A5 therefore saves the
+relationship-preserving construction input; A6 owns target-native source / construction packs and
+their proof.
 
 ### A6 — construction/export packs — WAITING on A4+A5
 
-Allow an accepted component relationship to produce a target-bound construction/reference artifact without forcing fresh source archaeology.
+Consume an accepted A5 Studio Blueprint through target adapters to produce target-bound construction/reference artifacts without fresh source archaeology or AI reinterpretation.
 
 Possible outputs:
 
