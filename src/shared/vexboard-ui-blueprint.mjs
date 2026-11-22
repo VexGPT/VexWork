@@ -1179,7 +1179,8 @@ function v1Placement(node) {
   };
 }
 
-function migrateV1Nodes(v1Nodes, { notes, rootMode, isTemplate, idPrefix }) {
+function migrateV1Nodes(v1Nodes, { notes: allNotes, rootMode, isTemplate, idPrefix, scopeLabel = null }) {
+  const notes = { push: (note) => allNotes.push(scopeLabel ? scopeLabel + ' › ' + note : note) };
   const byRef = new Map(v1Nodes.map((node) => [node.nodeRef, node]));
   const parentMode = (node) => {
     if (!node.parentNodeRefOrNull) return isTemplate ? null : rootMode;
@@ -1256,7 +1257,7 @@ export function migrateUiBlueprintV1(input) {
   const rootMode = 'FREEFORM'; // v1 root was always the 24 x 24 ratio grid
   notes.push('Surface migrated as a free-form area because v1 placed every root node on the 24 × 24 ratio grid.');
   const definitions = (input.componentDefinitions ?? []).map((definition) => {
-    const nodes = migrateV1Nodes(definition.nodes ?? [], { notes, rootMode: null, isTemplate: true, idPrefix: '' });
+    const nodes = migrateV1Nodes(definition.nodes ?? [], { notes, rootMode: null, isTemplate: true, idPrefix: '', scopeLabel: definition.definitionRef });
     const roots = nodes.filter((node) => !node.parentRef);
     if (roots.length !== 1) fail(definition.definitionRef + ' could not be migrated with exactly one root');
     roots[0].layout.placement = null;

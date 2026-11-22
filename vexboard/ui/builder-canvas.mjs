@@ -246,7 +246,7 @@ export const CANVAS_CSS = `
 .cond-badge{background:#fff4dc;color:#7a5410;border:1px solid #f0d49b}
 .instance-badge{background:#f1ebfd;color:#5b33b5;border:1px solid #d8c9f7;inset-inline-end:auto;inset-inline-start:8px}
 .node-chip{position:absolute;top:-22px;inset-inline-start:0;z-index:20;padding:2px 8px;border-radius:6px;background:#2f5be6;color:#fff;font:600 10px/1.6 ui-sans-serif,system-ui;white-space:nowrap;cursor:grab;user-select:none}
-.node.instance .node-chip{background:#7c4ddb}
+.node.instance>.node-chip{background:#7c4ddb}
 .handle{position:absolute;z-index:21;width:10px;height:10px;background:#fff;border:2px solid #2f5be6;border-radius:3px}
 .handle-n{top:-6px;left:calc(50% - 5px);cursor:ns-resize}.handle-s{bottom:-6px;left:calc(50% - 5px);cursor:ns-resize}
 .handle-e{right:-6px;top:calc(50% - 5px);cursor:ew-resize}.handle-w{left:-6px;top:calc(50% - 5px);cursor:ew-resize}

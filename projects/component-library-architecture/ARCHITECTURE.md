@@ -288,303 +288,115 @@ A1 should reuse those sources rather than inventing another Android component re
 
 ## 8. Gallery + Builder as a human workspace
 
-The lived A5 correction is that a Gallery cannot center the occurrence index.
-
-The human question is:
-
-> What do we already know how to build, what is the thing like by itself, and what can I make with it?
-
-The default relationship should be:
+The Gallery and Builder are projections over source-grounded evidence. Neither becomes a Product
+semantic owner, and neither turns preview pixels into layout meaning.
 
 ```text
-component source family
--> one real source occurrence as an isolated specimen
--> actual source examples / styles / conditions
--> relationship inspector
--> place into Studio
--> deterministic composition blueprint
+Library  (vexboard/components.html)  showroom: isolated specimen, real examples, evidence
+Builder  (vexboard/builder.html)     the one composer: UI Blueprint v2
+Review   (Builder dialog)            integration contract, findings, construction brief
 ```
-
-Where-used, target realizations and proof remain evidence behind the selected specimen.
 
 ### Isolated specimen
 
-A specimen is drawn from one current source occurrence and its projected relationships:
+A specimen is one real source occurrence drawn by the shared renderer, optionally with a bounded
+slice of its real source children. Cycling examples shows actual source differences instead of an
+invented Storybook taxonomy. Local clicks / toggles are browser-local; no Product effect runs.
+Pressed / disabled / selected states are not manufactured when source does not project them.
 
-```text
-kind
-label
-style / slot / layer / text role
-children
-intent / action / pathway
-visibility / presence / condition evidence
-localization bindings
-accessibility projection state
+### One composer, one blueprint
+
+The earlier Gallery "Studio" (`vexboard.component-studio-blueprint/v1`) is retired. Composition has
+one truth owner: the Builder's `vexboard.ui-blueprint/v2`. The Gallery hands items over by reference
+(`builder.html?add=<product>~<occurrenceRef>[&children=1]`).
+
+### UI Blueprint v2 contract
+
+```mermaid
+flowchart TD
+  K[Kind capability registry] --> N[Blueprint node]
+  S[Source evidence<br/>occurrence · commit · disposition] --> N
+  C[Authored content<br/>beside source] --> N
+  L[Container layout<br/>STACK · OVERLAY · FREEFORM] --> N
+  B[Behavior seams<br/>ACTION · NAVIGATION · PRESENTATION] --> N
+  V[Visibility<br/>ALWAYS · WHEN_OPEN · CONDITIONAL] --> N
+  A[Accessibility] --> N
+  N --> X[Expanded tree<br/>stable paths]
+  D[Definition<br/>versioned template · ports · texts · slots] --> I[Instance node<br/>overrides · bindings · slot children]
+  I --> X
+  X --> G[Derived integration contract]
+  X --> R[Review + construction brief]
 ```
 
-The specimen is a relationship projection, not native pixel parity.
+**Kinds.** A data registry answers what an element of kind K may structurally do: contain children
+(and which), be an overlay, which triggers it has, which accessible role it carries. It replaces the
+prototype's three renderer switch statements as the architectural owner. Unknown future kinds degrade
+to a HELD leaf instead of being mapped onto a familiar kind.
+
+**Layout.** A container owns how its children are arranged:
 
 ```text
-SOURCE-GROUNDED SPECIMEN
-!= SCREENSHOT
-!= TARGET-NATIVE ACCEPTANCE
+STACK     axis VERTICAL | HORIZONTAL, gap / padding tokens, align, distribute
+          -> Compose Column/Row, SwiftUI VStack/HStack, CSS flex
+OVERLAY   children pinned to one of nine logical anchors with an inset
+          -> Compose Box, SwiftUI ZStack, CSS grid-area
+FREEFORM  children placed in 1/24 fractions of a FIXED-height area (logical start/end);
+          an axis end left empty hugs the content
 ```
 
-Cycling examples means cycling actual source occurrences. The Gallery does not invent framework
-states merely because a control type could theoretically have them.
+Children declare size per axis: `HUG | FILL | FIXED(dp)`. Placement exists only when the parent mode
+gives it meaning; depth exists only in layered or free-form parents. The prototype's simultaneous
+24×24 grid + pixel edge offsets + Wrap/Fill/Fixed contradiction is removed. Ratio units survive as
+the FREEFORM fraction snap, and vertical size hugs content unless deliberately set, so a button's
+height no longer depends on screen height.
 
-### Studio
+**Overlays.** Dialog / Sheet / Menu attach to the surface overlay layer (never nested), are shown
+WHEN_OPEN, and stack by overlay depth. Anchored popovers remain HELD with A3.
 
-The Studio treats component specimens like buildable furniture: a person can place an item at the
-composition root or inside a selected container, inspect the resulting structure, reorder it and
-remove it.
-
-The Studio composition is not stored as pixels. It is stored as relationships.
+**Behavior seams.** Source intents are classified, never invented:
 
 ```text
-vexboard.component-studio-blueprint/v1
-
-composition node
-  nodeRef
-  parentNodeRefOrNull
-  siblingOrder
-
-  exact source occurrence coordinate
-  presentation relationships
-  behavior relationships
-
-  portability disposition
-    PORTABLE_RELATIONSHIP_AVAILABLE
-    PORTABILITY_HELD
-    SOURCE_BOUND
-
-  accepted portable candidate refs
-  target realization refs
+invoke(ActionKey) / localEffect() / capability X / action X / presentation X / <product intent>
+  -> ACTION        OPEN; key = source actionKey when present
+navigateTo(S) / navigateBack() / external URL
+  -> NAVIGATION    OPEN; destination hint kept
+open(X) / close(X) / toggle(X)
+  -> PRESENTATION  Builder-local when bound to an overlay in the same design; otherwise OPEN
+swapTo(X) / local element.X
+  -> PRESENTATION  OPEN (Local Selection HELD in A3)
 ```
 
-The artifact is deterministic and explicitly non-executing:
+This mirrors VexLife's own UI boundary: an element names `invoke(ActionKey)`, the owning screen
+registers the handler, and `requireCoverage` fails construction if an Invoke has no owner. The
+blueprint's derived integration contract lists one OPEN entry per action key with every element path
+that triggers it — the coverage list an integrator (human, adapter or AI) must satisfy inside the
+target app's rightful owners.
+
+**Reuse.** A definition is a versioned template with a derived public interface: ports (its OPEN
+seams), overridable texts, and named slots. An instance is one node referencing
+`definitionRef + version`; it can change only declared overrides and fill slots — it cannot be edited
+structurally. Editing a definition propagates to every instance with a version bump; overrides that no
+longer address the template are pruned and reported. Nested instances are preserved (outer placements
+may rebind nested ports / texts); definition cycles are rejected. Detach turns an instance back into
+ordinary nodes, carrying overrides and bindings.
+
+**Paths.** Expanded nodes carry stable paths: `nodeRef` for authored nodes, `instancePath/templateRef`
+inside instances. Generated target code can keep these as mapping keys for reverse comparison.
+
+**Currentness and history.** Editing commands are re-validated by the canonical normalizer before
+admission, with undo / redo. Review compares saved source evidence with loaded inventories
+(CURRENT / MOVED / CHANGED / MISSING / UNKNOWN) and offers explicit rebinding. v1 blueprints migrate
+with visible notes rather than silent reinterpretation.
 
 ```text
-aiRequired = false
-effects = false
-executionAuthority = NONE
+PREVIEW PIXELS != LAYOUT MEANING
+SOURCE EVIDENCE != AUTHORED CONTENT
+OPEN SEAM != CALLBACK IMPLEMENTATION
+BUILDER-LOCAL PRESENTATION != PRODUCT STATE
+DEFINITION != INSTANCE != TARGET REALIZATION
+SOURCE LAYER != AUTHORED DEPTH
+PROJECTION != EFFECT AUTHORITY
 ```
-
-This is the bridge from human composition to future target construction without making an AI
-reconstruct intent from screenshots, prose or historical source.
-
-A6 consumes the Studio Blueprint through target adapters. Therefore:
-
-```text
-A5 Studio Blueprint
-!= generated Compose / SwiftUI / Web source
-
-A6 target construction
--> adapter
--> target-native source / reference artifact
--> target proof
-```
-
-### Builder — a VexArchitecture-shaped UI Blueprint surface
-
-Gallery and Builder answer different human questions:
-
-```text
-Gallery
-  "what building blocks exist, and what are they like?"
-
-Builder
-  "what UI do I mean to construct with them?"
-```
-
-The Builder keeps the visual experience in front while preserving ownership underneath:
-
-```text
-SOURCE / PRODUCT OWNERS
-  exact component occurrence + Product meaning
-        ↓ projected, not copied into a second semantic owner
-
-BUILDER AUTHORING
-  parent / sibling order
-  Flow or Constraint container relationship
-  parent-relative constraints
-  presentation preview profile
-  open integration ports
-        ↓
-
-UI BLUEPRINT
-  deterministic relationship artifact
-  effects = false
-  executionAuthority = NONE
-        ↓
-  ┌───────────────────────────────┐
-  │                               │
-  ▼                               ▼
-A6 deterministic adapter       AI integrator
-target-native realization      app-specific port binding
-  │                               │
-  └──────── rightful target/application architecture ────────┘
-```
-
-This applies the VexArchitecture rule that every owner answers one rightful question. The Builder
-does not invent target application State, Effect, Store, Family, provider truth, or execution
-custody. Its callback ports are intentionally **OPEN**. They preserve the visible interaction seam
-and any source intent evidence while leaving implementation to the target application's rightful
-semantic owner.
-
-The first full Builder interface is:
-
-```text
-┌────────────────────────────────────────────────────────────────────────────┐
-│ UI Builder      [Mobile ▾] [390 × 844]       Import        Save Design    │
-├────────────────┬─────────────────────────────────────┬─────────────────────┤
-│ COMPONENTS     │                                     │ SELECTED            │
-│                │           preview surface           │                     │
-│ Search...      │                                     │ source identity     │
-│                │    ┌───────────────────────────┐    │                     │
-│ Layout         │    │                           │    │ Layout              │
-│ ▸ Column       │    │  nested relational UI     │    │ Flow / Constraint   │
-│ ▸ Row          │    │                           │    │ width / height      │
-│ ▸ Stack        │    │  drag / drop here         │    │ parent constraints │
-│ ▸ Container    │    │                           │    │                     │
-│                │    └───────────────────────────┘    │ Integration         │
-│ Controls       │                                     │ callback.* = OPEN   │
-│ ▸ Button       │                                     │                     │
-│ ▸ Toggle       │                                     │ portability/source  │
-│ ▸ Field        │                                     │                     │
-│                │                                     │                     │
-├────────────────┴─────────────────────────────────────┴─────────────────────┤
-│ Structure: Root > Container > ...                    UI Blueprint         │
-└────────────────────────────────────────────────────────────────────────────┘
-```
-
-Flow and Constraint are composable rather than competing layout systems:
-
-```text
-Constraint container
-  Card
-    start/end -> parent
-    top       -> parent + 24
-
-Card body
-  Vertical Flow
-    Text
-    Field
-    Button
-```
-
-The durable meaning is relational. Preview pixels help the human judge the composition, but they do
-not become the canonical source of layout meaning.
-
-A lived Builder preview added a further presentation law:
-
-```text
-SOURCE-GROUNDED KIND
--> visually distinguishable Builder expression
-
-BUT
-
-BUILDER VISUAL EXPRESSION
-!= portable semantic owner
-!= target-native parity proof
-```
-
-The Builder must not collapse Card, Column, Row, Stack, Dialog, Sheet, Region/Frame and Menu into one
-generic container rectangle. That makes relationship truth technically present but humanly
-indistinguishable. Conversely, giving those kinds distinct preview shells does not authorize the
-Builder to invent source children, Product State, target-native styling or business behavior.
-
-Technical node identity and layout-mode diagnostics remain available through selection/inspection;
-they are not the primary visual content of the composed interface.
-
-### Spatial composition and reusable definitions
-
-Direct manipulation is represented as parent-relative relationships rather than screenshot geometry:
-
-```text
-ROOT / Constraint parent
-  -> abstract 24 × 24 ratio surface
-
-child
-  columnStart
-  rowStart
-  columnSpan
-  rowSpan
-
-browser preview
-  ratio relationship -> current viewport pixels
-```
-
-This lets a node move/resize like a Lucid or Figma object while the Blueprint remains portable across
-Mobile / Windows / arbitrary Container previews. Flow children remain Flow-owned instead.
-
-The same non-collapsing rule applies to reuse:
-
-```text
-source occurrence
-  != reusable definition
-  != reusable instance
-  != target realization
-```
-
-A reusable definition owns only a Builder-authored UI relationship fragment. Its nodes retain their
-source coordinates; its callback ports remain OPEN. An instance keeps a stable `definitionRef`,
-`instanceRef` and per-template-node provenance while receiving instance-qualified integration
-ports and its own placement relationship.
-
-This enables higher-order components without claiming that the Builder invented Product semantics:
-
-```text
-Text + Toggle + Button
-  -> Settings Card definition
-  -> instance A
-  -> instance B
-
-same definition
-!= same callback binding
-!= same parent placement
-```
-
-The first A5 contract intentionally flattens nested reusable-instance provenance when a subtree is
-saved as a new definition. Recursive reusable-component dependency/cycle semantics would create a new
-maintained subsystem and are not required for the present human construction need.
-
-### Foreground / background depth
-
-Overlap creates one additional Builder-authored relationship: sibling-local depth.
-
-```text
-parent
-  child A depthOrder 0
-  child B depthOrder 1
-  child C depthOrder 2
-```
-
-The number is not global and does not describe Product/domain depth. It answers one UI construction
-question only:
-
-> among these siblings, which one is projected in front when their presentation overlaps?
-
-This keeps three meanings separate:
-
-```text
-source.presentation.layer
-  = source-observed Product presentation evidence
-
-authoring.layout.depthOrder
-  = Builder-authored sibling stacking relationship
-
-CSS z-index / target-native stacking primitive
-  = realization of that relationship on one target
-```
-
-A6 may map the same depth relationship to Compose `zIndex`, SwiftUI `zIndex`, CSS stacking or a
-future target-native equivalent where supported. The Builder must not treat the CSS number as the
-portable contract.
-
-Reusable definitions may preserve internal template depth. A reusable instance has a separate root
-depth relative to siblings in its placement parent, so two instances of the same definition can
-occupy different foreground/background positions without changing the definition.
 
 ## 9. Reverse where-used
 
@@ -761,15 +573,15 @@ portable relationship / realization / proof inspector
 + explicit source-bound / held states
 
 Slice 4
-Studio composition tree
-+ parent / order / containment preservation
+Builder composition (UI Blueprint v2)
++ containment / container layout / overlays / depth / seams / reuse
 
 Slice 5
-deterministic Studio Blueprint export / import
+deterministic UI Blueprint save / open / v1 migration + review / construction brief
 + no-AI reconstruction contract
 
 Slice 6 (A6)
-Studio Blueprint -> target adapter
+UI Blueprint -> target adapter
 + target-native construction / proof
 
 Slice 7 (A7)

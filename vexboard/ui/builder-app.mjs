@@ -882,7 +882,7 @@ function onKeyDown(event) {
   }
   if (mod && event.key.toLowerCase() === 'y') { if (!typing) { event.preventDefault(); redo(); } return; }
   if (mod && event.key.toLowerCase() === 's') { event.preventDefault(); saveBlueprint(); return; }
-  if (typing || app.ui.reviewOpen) return;
+  if (typing || app.ui.reviewOpen || event.target.closest('#palette')) return;
   const { selection, draft, scope } = app.editor;
   const nodes = Doc.scopeNodes(draft, scope);
   const node = nodes.find((row) => row.nodeRef === selection);
@@ -1105,6 +1105,21 @@ function wireToolbar() {
   });
   $('save-json').addEventListener('click', saveBlueprint);
   $('search').addEventListener('input', (event) => { app.ui.query = event.target.value; renderPalette(); });
+  // Keyboard: Enter adds the top match; ArrowDown moves into the results.
+  $('search').addEventListener('keydown', (event) => {
+    const first = $('palette').querySelector('.family-main');
+    if (event.key === 'Enter' && first && app.ui.query.trim()) { event.preventDefault(); first.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); }
+    if (event.key === 'ArrowDown' && first) { event.preventDefault(); first.focus(); }
+  });
+  $('palette').addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+    const items = [...$('palette').querySelectorAll('.family-main, .example-main')];
+    const index = items.indexOf(document.activeElement);
+    if (index < 0) return;
+    event.preventDefault();
+    if (event.key === 'ArrowUp' && index === 0) return $('search').focus();
+    items[Math.max(0, Math.min(items.length - 1, index + (event.key === 'ArrowDown' ? 1 : -1)))].focus();
+  });
   $('tab-add').addEventListener('click', () => { app.ui.tab = 'ADD'; renderTabs(); });
   $('tab-layers').addEventListener('click', () => { app.ui.tab = 'LAYERS'; renderTabs(); renderLayers(); });
   $('product').addEventListener('change', (event) => { app.ui.product = event.target.value; renderPalette(); });

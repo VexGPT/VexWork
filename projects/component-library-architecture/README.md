@@ -542,314 +542,112 @@ This is not automatic source-to-source translation. A deterministic constructor/
 
 ### A5 — Component Gallery + Builder — RUNNING
 
-The first A5 lived browser review corrected the center of gravity.
-
-An inventory table answers:
-
-> Where is this used?
-
-That remains useful evidence, but it is not the primary human Gallery outcome. The Gallery should answer:
-
-> What can I build, what is this item like by itself, how does it behave at its edges, and how can I combine it with other things without losing the relationships that make it buildable?
-
-The current A5 direction is therefore:
+A5 is the human workspace over the A1–A4 evidence. Lived review corrected its center of gravity
+several times, and those corrections are preserved here because they explain the current shape:
 
 ```text
-LIBRARY
-  browse source-grounded component specimens
-  -> choose one real source occurrence
-  -> view it in isolation
-  -> cycle real source examples / styles / conditions
-  -> inspect meaning / containment / intent / localization / proof
-
-STUDIO
-  place specimens at root or inside a selected container
-  -> preserve parent / sibling order / source occurrence / presentation / behavior relationships
-  -> preserve portable accepted / held / source-bound disposition
-  -> save / import deterministic Studio Blueprint JSON
+inventory / CMS table           -> Gallery became a showroom of the actual thing
+generic container collapse      -> each kind received its own visual grammar
+"where is the Builder?"         -> Builder sits beside Localization in VexBoard
+placed but not movable          -> spatial move / resize
+"elements can be reusable too"  -> component definition != component instance
+overlap                         -> foreground / background depth
 ```
 
-The Gallery does **not** manufacture pressed/disabled/selected states or target-native appearance when
-source has not projected them. Local specimen clicks/toggles are browser-local preview behavior only;
-they perform no Product effect.
+PR #428 carried those corrections one patch at a time. A fresh fullness review (branch
+`VXG-112226-component-library-fullness-claude-a001`, successor to the #428 prototype) found that the patches had begun to
+contradict each other — three layout systems stored at once, instances that were editable stamped
+copies, Android receiving zero integration seams, source evidence overwritten to change text, two
+composers with two schemas — and replaced the authoring model as one coherent contract:
+`vexboard.ui-blueprint/v2`.
 
-Supporting evidence remains reachable from the selected item:
+#### Human model
 
 ```text
-Where used
-Realizations
-Proof
-Source
+Library   what building blocks exist?           Gallery: specimens from real source, real examples,
+                                                evidence behind the item, "Use in Builder"
+Builder   what am I making?                     one composer: palette | canvas | inspector, layers,
+                                                undo/redo, Try it, preview sizes / RTL / long text
+Review    what exactly did I mean, and what     what the app must supply, what is already defined,
+          must someone else supply?             findings, construction brief, blueprint JSON
 ```
 
-but those are no longer the default Gallery experience.
+The Gallery no longer composes. "Studio" and `vexboard.component-studio-blueprint/v1` are retired:
+one composition truth, one blueprint format. The Gallery hands an occurrence (optionally with its real
+source children) to the Builder by reference, and the Builder links back to the Library item.
 
-### A5 Studio Blueprint
+Gallery and Builder draw components through one shared renderer
+(`vexboard/ui/component-renderer.mjs`), so the same kind and source style look the same everywhere.
 
-A5 owns a deterministic, platform-neutral composition artifact:
+#### UI Blueprint v2 — what is preserved
 
 ```text
-vexboard.component-studio-blueprint/v1
+kinds            capability registry (src/shared/vexboard-ui-kinds.mjs): containment, overlay,
+                 triggers, accessible role; unknown future kinds degrade to a HELD leaf
+source evidence  exact occurrence / element / commit / repository / portable disposition — immutable
+content          authored text lives BESIDE source evidence; new text needs a localization string
+layout           container-owned: STACK (axis, gap, align, distribute) | OVERLAY (anchored) |
+                 FREEFORM (children placed in 1/24 fractions of a FIXED-height area);
+                 children size per axis: HUG | FILL | FIXED dp. One layout system, no pixel offsets.
+overlays         Dialog / Sheet / Menu live on the surface overlay layer; shown WHEN_OPEN
+depth            sibling-local, only inside layered / free-form parents; source `layer` stays evidence
+behavior seams   from source intent: ACTION (OPEN, keyed by actionKey) | NAVIGATION (OPEN) |
+                 PRESENTATION (Builder-local open/close of an overlay, or OPEN when unbound)
+visibility       ALWAYS | WHEN_OPEN | CONDITIONAL(conditionKey = OPEN data seam)
+accessibility    accessible name override, decorative images; role from kind; reading order = layers
+reuse            definition (versioned template, ports, overridable texts, named slots) vs instance
+                 (one node: definitionRef + version + text overrides + port bindings + slot children);
+                 nested reuse preserved, cycles rejected, edits propagate with a version bump
+paths            expanded nodes carry stable paths (instance/template) for target back-mapping
+derived          integration contract (one entry per action key — mirrors VexLife invoke(ActionKey)
+                 + requireCoverage), source snapshots, summary; verified on import
+```
 
-node
-  source occurrence identity
-  parent Studio node or ROOT
-  sibling order
-  source presentation relationships
-  intent / action / pathway / visibility relationships
-  accepted portable candidate refs
-  held candidate refs
-  target-realization refs
-
+```text
 aiRequired = false
 effects = false
 executionAuthority = NONE
 ```
 
-A Studio node can remain `SOURCE_BOUND` or `PORTABILITY_HELD`. Exporting it does not pretend every
-component is already cross-platform.
+Editing commands (`src/shared/vexboard-ui-document.mjs`) are re-validated by the canonical
+normalizer before admission, so the editor cannot produce a blueprint that import would reject.
+Review (`src/shared/vexboard-ui-review.mjs`) reports currentness against loaded inventories
+(CURRENT / MOVED / CHANGED / MISSING / UNKNOWN), accessibility, localization, portability and held
+selection, and projects a deterministic construction brief. Reconciliation (rebinding to the current
+source commit) is an explicit edit, never a silent rewrite. v1 files migrate with visible notes.
 
 Permanent:
 
 ```text
 GALLERY SPECIMEN != NATIVE PIXEL PARITY
 LOCAL PREVIEW INTERACTION != PRODUCT EFFECT
-DERIVED SOURCE SHAPE != PORTABLE VARIANT ID
-STUDIO BLUEPRINT != GENERATED TARGET CODE
-STUDIO BLUEPRINT != SECOND PRODUCT SEMANTIC OWNER
+PREVIEW PIXELS != LAYOUT MEANING
+SOURCE EVIDENCE != AUTHORED CONTENT
+OPEN SEAM != CALLBACK IMPLEMENTATION
+BUILDER-LOCAL PRESENTATION != PRODUCT STATE
+DEFINITION != INSTANCE != TARGET REALIZATION
+SOURCE LAYER != AUTHORED DEPTH
+UI BLUEPRINT != GENERATED TARGET CODE
+UI BLUEPRINT != SECOND PRODUCT SEMANTIC OWNER
 AI != REQUIRED CONSTRUCTION INTERPRETER
 ```
-
-A6 consumes the Studio Blueprint through accepted target adapters. A5 therefore saves the
-relationship-preserving construction input; A6 owns target-native source / construction packs and
-their proof.
-
-### A5 Builder view — relational UI authoring
-
-Victor's next lived correction adds a dedicated **Builder** beside the Gallery. The Gallery remains
-the showroom: see source-grounded components in isolation, cycle real examples, and inspect evidence.
-The Builder is the construction surface:
-
-```text
-┌──────────────────┬────────────────────────────────────┬─────────────────────┐
-│ COMPONENTS       │              PREVIEW               │ SELECTED            │
-│                  │                                    │                     │
-│ Search...        │  Mobile / Windows / Container      │ source identity     │
-│                  │                                    │ layout              │
-│ Layout           │  drag component into canvas        │ constraints         │
-│ Controls         │  nest inside containers            │ open callbacks      │
-│ Content          │  flow + constraint relationships   │ portability         │
-│                  │                                    │                     │
-├──────────────────┴────────────────────────────────────┴─────────────────────┤
-│ Structure / relationship path                              Save Design      │
-└────────────────────────────────────────────────────────────────────────────┘
-```
-
-The existing Studio Blueprint remains the source-grounded component-composition precursor. Builder
-adds a richer, still non-executing envelope:
-
-```text
-vexboard.ui-blueprint/v1
-
-component/source identity
-+ authored containment and sibling order
-+ Flow / Constraint container relationships
-+ parent-relative edge constraints
-+ preview profile (preview-only)
-+ open callback ports
-
-aiRequired = false
-effects = false
-executionAuthority = NONE
-```
-
-The callback boundary follows VexArchitecture ownership rather than embedding business code in the
-design. Builder can say that a visible interaction exposes an open port such as
-`callback.saveProfile`; it does not become the application's State, Effect, Store, Family, provider,
-or callback implementation owner. A deterministic A6 adapter or an AI integrator may bind those open
-ports inside the target application's rightful architecture while preserving the authored UI
-relationships.
-
-The first Builder preview profiles are deliberately presentation-only:
-
-```text
-Mobile     390 × 844
-Windows   1280 × 800
-Container  960 × 640
-```
-
-Changing the preview profile does not rewrite component meaning. It exposes how the same relational
-blueprint behaves under a different available surface.
-
-#### Lived visual correction — component kind must be perceivable
-
-The first exact-head Builder preview proved the relationship model but exposed a presentation collapse:
-Card, Column, Dialog and other container-like kinds were all projected through the same rounded
-`v-box` shell. The source identity was technically present, but the human experience was effectively
-"the same rectangle with another label."
-
-A5 therefore keeps two truths separate:
-
-```text
-canonical UI Blueprint relationship
-!=
-Builder preview chrome
-```
-
-The preview may use distinct presentation silhouettes to help a human recognize the source-grounded
-kind, but it must not invent Product semantics or make preview pixels canonical. Card, Column, Row,
-Stack, Dialog, Sheet, Region/Frame and Menu now receive different visual shells; leaf controls keep
-their own Button/FAB/Menu Item/Field/Toggle/Text/Image expressions. Node ids and layout mode move out
-of the foreground composition and appear only as selection affordance / inspector information.
-
-The library toolbox uses the same distinction. A source family is no longer represented by a generic
-dashed box merely because its kind can contain children.
-
-#### VexBoard placement / hosted-browser boundary
-
-Builder follows the existing Localization adjacency instead of inventing a separate application shell:
-
-```text
-VexBoard / Projects
-  Components
-  Builder
-  Localization
-  VexWork
-```
-
-`vexboard/projects.html` is the VexBoard front door. Builder therefore lives as
-`vexboard/builder.html` beside `vexboard/localization.html` and
-`vexboard/components.html`. On a normal hosted VexBoard deployment, opening Builder is ordinary
-same-site browser navigation.
-
-The localhost server used during exact-PR lived review is preview harness only. It is not part of the
-Builder product contract.
-
-#### Spatial authoring — Lucid-like manipulation without pixel-owned meaning
-
-Lived review exposed that placement was still one-way: a component could be dropped but not directly
-moved or resized. Builder therefore gives the preview root and every Constraint container a
-parent-relative **24 × 24 ratio grid**.
-
-```text
-drag node
-  -> columnStart / rowStart
-
-resize edge / corner
-  -> columnSpan / rowSpan
-
-saved relationship
-  -> GRID_RATIO relative to parent
-  -> not viewport x/y pixels
-```
-
-Flow stays compositional. A Flow child is ordered by its parent rather than pretending to own
-independent spatial coordinates. Switching a container to Constraint activates ratio-grid placement
-for its children.
-
-#### Reusable dynamic components — definition != instance
-
-A Builder element is not terminal merely because it came from a source component family. Any
-source-grounded subtree can be captured as a reusable UI component definition:
-
-```text
-source-grounded nodes
-  -> reusable component definition
-       stable definitionRef
-       one template root
-       source snapshots
-       exposed open callback ports
-  -> reusable component instance
-       instanceRef
-       definitionRef
-       templateNodeRef per expanded node
-       instance-qualified callback ports
-       independent parent placement
-```
-
-The left library therefore has two sources:
-
-```text
-Source components
-  observed Product-backed building blocks
-
-Reusable
-  user-authored relationship fragments built from those source-grounded blocks
-```
-
-A reusable definition remains non-executing and does not become Product State/business meaning.
-Instances can be positioned and integrated independently while retaining their definition
-provenance. In the first A5 version, saving an already-instanced subtree deliberately flattens its
-nested instance provenance back to the underlying source-grounded nodes; recursive component
-package/dependency semantics are not invented merely for convenience.
-
-```text
-REUSE
-!= COPY/PASTE PIXELS
-
-COMPONENT DEFINITION
-!= PRODUCT SEMANTIC OWNER
-
-COMPONENT INSTANCE PORT
-!= CALLBACK IMPLEMENTATION
-```
-
-#### Depth / foreground — sibling-local composition order
-
-Once spatial nodes can overlap, foreground/background becomes authored UI intent. Builder preserves
-that as `depthOrder` relative to siblings in the same parent.
-
-```text
-same parent
-  child A depthOrder 0
-  child B depthOrder 1
-  child C depthOrder 2
-
-higher depthOrder
-  -> projected in front when overlap occurs
-```
-
-Human controls are relational rather than browser-specific:
-
-```text
-Send backward
-Bring forward
-Send to back
-Bring to front
-```
-
-The browser projects `depthOrder` to CSS `z-index` for preview only.
-
-```text
-depthOrder
-!= CSS z-index semantic ownership
-!= source-observed layer metadata
-```
-
-Source `layer` evidence and Builder-authored depth stay distinct. A reusable component definition
-can preserve internal depth among its template nodes, while each placed instance independently owns
-its depth relative to siblings in the parent where that instance is placed.
 
 Human-facing boundary:
 
 ```text
-open Builder
-  -> browser loads hosted HTML / modules / source projections
-  -> no local shell/server launch
-  -> no app/repository mutation
-
-click Import
-  -> browser file picker
-  -> only the user-selected blueprint is read
-
-click Save Design
-  -> browser download
-  -> deterministic UI Blueprint bytes
+open Builder   -> browser loads hosted HTML / modules / source projections; no shell, no repository write
+Open…          -> browser file picker; only the chosen blueprint is read
+Save           -> browser download of deterministic UI Blueprint bytes
+draft          -> kept only in this browser (localStorage) so a refresh does not lose work
 ```
+
+Not yet earned (next edges, deliberately not invented): per-size-class layout overrides,
+min/max/aspect sizing, anchored popovers (A3 HELD), Local Selection binding (A3 HELD), sharing
+component definitions across designs / repositories, and A7 self-projection of the Builder.
 
 ### A6 — construction/export packs — WAITING on A4+A5
 
-Consume an accepted A5 Studio Blueprint through target adapters to produce target-bound construction/reference artifacts without fresh source archaeology or AI reinterpretation.
+Consume an accepted A5 UI Blueprint through target adapters to produce target-bound construction/reference artifacts without fresh source archaeology or AI reinterpretation.
 
 Possible outputs:
 
