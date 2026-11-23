@@ -2066,6 +2066,85 @@ accepted/current no-effect NetworkPlan
 macOS/Windows protected host stores and the actual transport remain unformed. No live provider
 account is required for #561.
 
+## Protected host-effect correction — no secret return to JVM
+
+Platform-source research tightened the credential boundary.
+
+Official OS direction:
+- macOS: application secrets belong in Keychain Services / Security.framework;
+- Windows: application credentials belong in Windows Credential Manager.
+
+Current Product has no generic native-FFI credential layer. Therefore the production design no longer
+allows the protected provider secret to be read back into JVM Product/runtime code after storage.
+
+Current source:
+
+~~~text
+#558 custody
+ProtectedHostStore
+  store
+  contains
+  delete
+
+secret-read method
+  NONE
+
+#561 execution
+VexLifePartnerHostEffect.Executor
+  execute(NetworkPlan) -> Result
+~~~
+
+Host effect owner:
+
+~~~text
+platform native helper
+  resolve OS-protected credential internally
+  form authentication header internally
+  execute exact HTTPS request
+  refuse redirect
+  discard secret internally
+  return only non-secret response/evidence
+~~~
+
+JVM receives:
+
+~~~text
+HTTP status / ephemeral body / bounded non-secret headers
+or host transport-failure classification
+
+receipt:
+  providerRef
+  credentialRef
+  request URL
+  request-body SHA-256
+  HTTP status / response-body SHA when present
+  redirectFollowed=false
+  secretProjected=false
+~~~
+
+Provider 4xx/5xx responses remain HTTP responses so P1/A5 can interpret provider-specific failure
+meaning. Redirects are host failures and are never followed with credential material.
+
+Remaining platform work is now concrete:
+
+~~~text
+macOS native helper
+  Security.framework Keychain + HTTPS, redirect denial
+
+Windows native helper
+  Credential Manager + HTTPS, redirect denial
+
+helper packaging / identity / process protocol
+platform proof
+~~~
+
+Do not regress to:
+- secret-bearing argv;
+- secret-bearing environment variables;
+- temp secret files;
+- JVM credential-return methods;
+- homemade reversible Home encryption.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
