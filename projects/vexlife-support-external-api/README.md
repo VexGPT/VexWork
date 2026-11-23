@@ -1443,15 +1443,17 @@ P0 DOCUMENTED CONTRACT FIDELITY
   -> fixture-shape assertions
 ~~~
 
-Provider coverage:
+Provider coverage is now bidirectional:
 
 ~~~text
 OpenAI Responses
+  request shape + read-only function schema
   text SSE
   function-call call_id correlation
   auth/rate/credit/spend/server failure distinctions
 
 Anthropic Messages
+  request shape + read-only tool input_schema
   block-shaped content
   partial streamed tool JSON
   message_stop terminal completion
@@ -1459,7 +1461,8 @@ Anthropic Messages
   auth/billing/permission/rate/overload distinctions
 
 Kimi Open Platform
-  OpenAI-compatible Chat Completions
+  OpenAI-compatible request shape + read-only function schema
+  Chat Completions response
   streamed tool_calls assembly
   finish_reason=tool_calls
   auth/permission/model/rate/quota/overload/server distinctions
@@ -1468,7 +1471,7 @@ Kimi Open Platform
 Current exact connected-repository readback:
 
 ~~~text
-declared fixtures                  10
+declared fixtures                  13
 all JSON fixtures                  PARSE PASS
 all SSE JSON data                  PARSE PASS
 OpenAI terminal completion         PASS
