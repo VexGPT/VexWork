@@ -138,6 +138,61 @@ primary source seams
 Future work must re-ground current Product source before mutation. The formation commit is provenance,
 not a perpetual implementation pin.
 
+## Current source-coordination checkpoint — 2026-11-23
+
+The first Product mutation edge is **not path-free**.
+
+Current remote evidence at this checkpoint:
+
+~~~text
+VexLife-Prod main
+0566b1eed876a28c2fcc6586743ae1f4af7eaecd
+
+current-main overlapping writer
+PR #518
+[Warm Boot][Stage B] Prepare and validate the initial reusable provider prefix
+
+overlap
+  src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt
+  src/jvmTest/kotlin/vexlife/companion/DirectCompanionConnectionTest.kt
+  plus DirectCompanionTurn / prompt-preparation lifecycle consumers
+~~~
+
+#518 is based directly on the current main above and owns provider-prefix / prompt-cache preparation
+semantics in the same Connection boundary. Support External API must not fork or overwrite that
+current writer.
+
+Two older open branches are relevant architectural provenance but are **not** the current mutation
+owner for this Project:
+
+~~~text
+PR #442
+  older stacked runtime-attention candidate
+  CLEAR_ON_EXACT_HEAD on its historical exact head
+  not based on current main
+  overlaps DirectCompanionConnection + test
+
+PR #383
+  older native-tools / layered-context candidate
+  provider-native tool architecture is useful provenance
+  current PR is non-mergeable
+  overlaps DirectCompanionConnection and wider capability/context source
+~~~
+
+Permanent coordination rule for A0:
+
+~~~text
+CURRENT ACTIVE OVERLAP
+-> hold only edits to the overlapping Connection/test surface
+-> continue provider-neutral contract analysis, fixture design and disjoint proof planning
+-> re-ground #518 / main before authoring
+-> after #518 resolves, consume its accepted final Connection semantics
+-> do not revive #383 or #442 as current owners merely because they contain useful architecture
+~~~
+
+This checkpoint is mutable coordination evidence, not permanent Product truth. A fresh instance must
+re-observe current main and open ownership before mutation.
+
 ## VexArchitecture ownership map
 
 This Project follows the VexArchitecture rule that one semantic owner may have multiple realizations.
