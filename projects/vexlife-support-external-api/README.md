@@ -1954,6 +1954,60 @@ The provider-issued ID never enters the canonical control text.
 This closes the **pure semantic↔provider carriage shape** but does not yet perform the Bridge or
 network effect. JVM execution remains owed.
 
+## A5 failure/currentness checkpoint — Product #560
+
+A no-effect integration workbench now composes P1 provider failure evidence with A2 connection
+standing:
+
+~~~text
+P1 #554 head
+6cef2b6cb733175ff325644f3c03f8386c1f71ef
+
+A2 #558 head
+ec10602f1714f75d343c5dedb850a3d305ae9716
+
+composition
+389d38908454b66b7ffc8042514d1f32b1680a58
+
+A5 PR #560
+[Support External API][A5][DRAFT]
+Map provider failures into connection currentness
+~~~
+
+A5-authored source is only:
+
+~~~text
+VexLifePartnerFailureProjection.kt
+VexLifePartnerFailureProjectionTest.kt
+docs/work/support-external-api-failure-standing/README.md
+~~~
+
+Mapping keeps materially different current truths distinct:
+
+~~~text
+credential rejected -> credential REJECTED + dependent stale observations UNKNOWN
+billing held         -> account BILLING_HELD
+permission held      -> account PERMISSION_HELD
+model no access      -> model NO_ACCESS
+rate limited         -> service RATE_LIMITED
+overloaded           -> service OVERLOADED
+provider unavailable -> service UNAVAILABLE
+
+request/context invalid
+  -> connection remains current
+  -> invocation failed
+
+stream/response/unknown failure
+  -> service UNKNOWN
+  -> stop claiming stale READY
+~~~
+
+Provider failure evidence must match the exact provider connection. Retry disposition remains
+evidence only; #560 performs no retry, network call, credential mutation, model switch, fallback,
+Conversation mutation or Memory mutation.
+
+Acceptance remains dependency-held behind current P1 + A2 acceptance and exact repository execution.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
