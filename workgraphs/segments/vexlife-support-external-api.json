@@ -101,7 +101,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T21:52:00.000Z",
+      "updatedAt": "2026-11-23T20:28:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -110,7 +110,7 @@
       "workRef": "work.vexlife.support-external-api.a2-provider-connection",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A2 — Partner Provider Connection + credential/account/model contract",
-      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned built-in endpoint/dialect, protected host credential custody by opaque credentialRef, account/service state, provider-visible model offerings and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph. Product #558 now source-forms the connection-standing projection, built-in provider catalog, and the earned credential-custody boundary after current Product/predecessor audit established no exact reusable API-secret owner. Exact macOS/Windows protected credential realizations remain unformed; do not invent encrypted Home JSON or reuse unrelated Home session/signing-key owners.",
+      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned built-in endpoint/dialect, protected host credential custody by opaque credentialRef, account/service state, provider-visible model offerings and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph. Product #558 now source-forms connection standing, built-in provider catalog, the earned credential-custody boundary, and a portable custody coordinator/protected-host-store port with provider-bound store/observe/resolve/replace/retire semantics and negative controls. Exact macOS/Windows protected credential realizations and repository-native JVM proof remain unformed/owed; do not invent encrypted Home JSON or reuse unrelated session/signing-key owners.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -132,7 +132,9 @@
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerProviderCatalog.kt",
         "repo.vexlife-prod:docs/work/support-external-api-credential-custody/README.md",
         "repo.vexlife:platform/android/app/src/main/kotlin/vexlife/android/security/AndroidHomeDevicePossessionKey.kt",
-        "repo.vexlife:docs/HOME-BRIDGE-AUTHENTICATED-SESSION.md"
+        "repo.vexlife:docs/HOME-BRIDGE-AUTHENTICATED-SESSION.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerCredentialCustody.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerCredentialCustodyTest.kt"
       ]
     },
     {
