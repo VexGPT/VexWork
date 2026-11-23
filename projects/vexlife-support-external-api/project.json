@@ -90,7 +90,11 @@
     "github.pull.vexlife-prod.564",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelSourceProjection.kt",
     "repo.vexlife-prod:src/commonTest/kotlin/vexlife/model/VexLifeModelSourceProjectionTest.kt",
-    "repo.vexlife-prod:docs/work/support-external-api-model-source/README.md"
+    "repo.vexlife-prod:docs/work/support-external-api-model-source/README.md",
+    "github.pull.vexlife-prod.566",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifePartnerEffectiveModelCapabilities.kt",
+    "repo.vexlife-prod:src/commonTest/kotlin/vexlife/model/VexLifePartnerEffectiveModelCapabilitiesTest.kt",
+    "repo.vexlife-prod:docs/work/support-external-api-effective-capabilities/README.md"
   ],
   "formedAt": "2026-11-23T17:02:00.000Z"
 }
