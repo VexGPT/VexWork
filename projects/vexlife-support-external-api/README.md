@@ -232,6 +232,87 @@ VEXLIFE TURN OWNER
 A renderer may display this truth. It does not become the truth owner.
 A provider adapter may translate this truth. It does not become the semantic owner.
 
+## Home accessibility correction — 2026-11-23
+
+The lived-experience / VexArchitecture convergence adds one prerequisite above the provider-neutral
+inference seam:
+
+~~~text
+VEXLIFE ENTRY / HOME ACCESS
+  choose / reopen / relocate / recover a Home
+  inspect truthful Home-owned state
+  reach Settings / model-provider repair
+        ↓
+SELECTED HOME / HOME-SCOPED PRODUCT BODY
+  Conversation / Memory / Context / Models / Partner connection coordinates
+        ↓
+OPTIONAL CURRENT INFERENCE SESSION
+  Local Heretic
+  Partner provider/model
+  none / held / switching / unavailable
+        ↓
+SEND only when the selected realization is qualified
+~~~
+
+Current Product source still constructs `VexLifeProdLocalService` only after
+`LOCAL_HERETIC_FOUNDATION_READY` with qualified local runtime evidence. That is truthful for the
+current local-only implementation, but it must not become the permanent accessibility boundary.
+
+Permanent:
+
+~~~text
+HOME ACCESS != INFERENCE ACCESS
+HOME ACCESS != LOCAL RUNTIME READY
+HOME ACCESS != PARTNER READY
+HOME ACCESS != MEMORY CURRENT
+HOME ACCESS != CACHE READY
+
+A LOCAL / PARTNER / CACHE / CREDENTIAL / RUNTIME FAILURE
+MAY HOLD THE DEPENDENT INFERENCE EFFECT
+BUT MUST NOT REMOVE THE PERSON'S ROUTE TO HOME.
+~~~
+
+This does **not** create a second Home owner or authorize a durable "known Homes" registry. The
+human-selected coordinate remains a custody choice; each actual Home remains authoritative for its
+own identity, lineage, Conversation, Memory and settings. A future return/recent-locator may be added
+only if a concrete lived need proves it, and any locator remains a hint that must re-observe the Home
+rather than a replacement truth store.
+
+Home transition also stays distinct from inference transition:
+
+~~~text
+MODEL / PROVIDER REBIND
+  same Home continuity
+  replace/requalify inference realization
+
+HOME RE-ENTRY
+  selected Home root changes
+  quiesce old Home-scoped active effects
+  re-observe identity / lineage / Conversation / Memory / configuration
+  construct the new Home-scoped Product body
+  then establish that Home's selected inference realization
+~~~
+
+A coherent Home that is unreadable, damaged, duplicated, moved, or currently under conflicting
+custody is not declared meaningless by Product admission. Accessibility remains; only unsafe
+dependent mutation may hold while recovery / human selection resolves the relationship.
+
+This correction is an A0 prerequisite, not a new parallel architecture. Do not "generalize" the
+current service gate from LOCAL-ready to LOCAL-or-PARTNER-ready; split Home/Product accessibility
+from selected inference readiness first.
+
+Source pressure for this correction:
+
+~~~text
+docs/foundation/VEXLIFE-PROD-HOME.md
+src/jvmMain/kotlin/vexlife/local/VexLifeProdRuntimeSession.kt
+src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt
+src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt
+PR #518 warm-preparation/service lifecycle
+PR #573 Conversation-prefix cache
+Multi-Vex cache-neutral ownership pressure
+~~~
+
 ## A0 source-grounded seam — current design result
 
 The current source trace shows the first provider-neutral boundary must be **above** the HTTP
