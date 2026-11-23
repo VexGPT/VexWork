@@ -35,7 +35,8 @@
         "github.pull.vexlife-prod.558",
         "github.pull.vexlife-prod.518",
         "github.pull.vexlife-prod.559",
-        "github.pull.vextreme-sdk.1969"
+        "github.pull.vextreme-sdk.1969",
+        "github.pull.vexlife-prod.564"
       ]
     },
     {
@@ -73,7 +74,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T21:05:00.000Z",
+      "updatedAt": "2026-11-23T21:50:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -82,7 +83,7 @@
       "workRef": "work.vexlife.support-external-api.a1-model-source-topology",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A1 — Settings Local / Partner model-source topology",
-      "purpose": "Evolve the existing Models human relationship so Local / Partner is first a presentation filter over canonical model offerings rather than a second durable model-choice truth. Each model row carries its source relationship (LOCAL or PARTNER(providerRef)); exact model Select/Use remains the semantic choice. Local rows keep artifact/runtime controls, Partner rows consume A2 Provider Connection/model-access truth and expose only lawful remote controls. Persist a separate source preference only if later Product pressure proves independent meaning.",
+      "purpose": "Evolve the existing Models human relationship so Local / Partner is a presentation filter over canonical model offerings rather than a second durable model-choice truth. Product #564 now source-forms that read-only projection on top of #559: exact target/serving rows derive their source; Partner rows carry exact connection/support standing and live-validation disclosure; duplicate/inconsistent source rows are rejected. The candidate owns no Select/Use Control or persisted source preference. Actual adaptation into VexLifeModels.projection() and renderer/localization remain dependency-held.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -97,7 +98,11 @@
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt",
         "github.pull.vexlife-prod.556",
-        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerSupportQualification.kt"
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerSupportQualification.kt",
+        "github.pull.vexlife-prod.564",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelSourceProjection.kt",
+        "repo.vexlife-prod:src/commonTest/kotlin/vexlife/model/VexLifeModelSourceProjectionTest.kt",
+        "repo.vexlife-prod:docs/work/support-external-api-model-source/README.md"
       ]
     },
     {
