@@ -980,6 +980,69 @@ PROVIDER CONNECTION != TOOL AUTHORITY
 MULTIMODAL MODEL != QUALIFIED VEX VISUAL INPUT
 ~~~
 
+## A4 provider call-identity continuation pressure
+
+Current local native-tool carriage reconstructs one deterministic OpenAI-compatible tool-call ID from
+the canonical Vex request control hash when it re-projects capability exchanges for a later provider
+stage.
+
+That is sufficient for the current local/provider-template relationship because VexLife controls the
+representation on both sides.
+
+External Partner APIs add one independently-owned carriage coordinate:
+
+~~~text
+OpenAI Responses
+  function_call.call_id
+
+Anthropic Messages
+  tool_use.id
+  -> later tool_result.tool_use_id
+
+Kimi / OpenAI-compatible Chat
+  tool_call.id
+  -> later role=tool tool_call_id
+~~~
+
+The exact provider call identity must survive the canonical Vex capability round trip:
+
+~~~text
+provider native tool call
+  providerCallRef = X
+        ↓
+normalize semantic call
+        ↓
+Vex Capability Bridge admission + rightful owner read
+        ↓
+canonical Vex result
+        ↓
+provider-native continuation
+  references SAME X
+~~~
+
+Permanent:
+
+~~~text
+PROVIDER CALL ID != VEX CAPABILITY IDENTITY
+PROVIDER CALL ID != EFFECT AUTHORITY
+PROVIDER CALL ID != CONVERSATION IDENTITY
+
+BUT
+
+PROVIDER CALL ID IS REQUIRED CARRIAGE CURRENTNESS
+FOR THE SAME PROVIDER TOOL EXCHANGE
+~~~
+
+Do not replace a real Partner call ID with the current local synthetic `call_<control-sha>` value
+unless the provider contract explicitly permits reminting.
+
+The provider call reference should remain bounded to the provider-stage exchange/evidence. It does
+not enter Memory or become a new semantic owner.
+
+This pressure means the pure P1 codecs may normalize and preserve providerCallRef now, but full
+tool-result continuation integration remains an A4 seam question until Direct Companion / Bridge
+exchange state can carry that identity without moving capability authority into the provider layer.
+
 ## Failure and availability semantics
 
 A generic `API_ERROR` is insufficient.
