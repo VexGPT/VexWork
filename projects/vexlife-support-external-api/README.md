@@ -313,6 +313,75 @@ PR #573 Conversation-prefix cache
 Multi-Vex cache-neutral ownership pressure
 ~~~
 
+## Selected integration / proof checkpoint — #578 / #1970
+
+The disjoint Partner body is now currentized into one selected Product candidate:
+
+~~~text
+VexLife-Prod #578
+head  5cdfd44da89b9f88411096fdf954b370c5ad89a8
+tree  39e4763a21992e81d9fae82004e1372cdea84b43
+paths 75
+behind main-at-formation 0
+mergeable YES
+~~~
+
+Exact composition:
+
+~~~text
+#572
+  already descends from #559
+  + #564 / #567 / #569
+  + #570 / #571
+  retains truthful Partner Models restart/current-state projection
+
+#575
+  supersedes only its transition-aware settings/currentness/custody paths
+  adds crash-recoverable connection convergence
+
+#566
+  adds effective Partner capability joining
+~~~
+
+Representative readback proved the selected #575/#572/#566 blobs are exact in #578.
+
+The candidate deliberately does not touch the currently contested shared paths:
+
+~~~text
+VexLifeProdLocalService.kt
+DirectCompanionConnection.kt
+DirectCompanionTurn.kt
+VexLifeProdEntryFamily.kt
+~~~
+
+so #396 / #518 / #573 remain independent current owners.
+
+Fresh proof carriage is SDK PR #1970:
+
+~~~text
+[TEMP RELAY][#578][DRAFT] Support External API SourceOwner A002
+
+SDK companion head
+6899a9419358ec215cf04902c08b95874c24f78a
+
+tree
+aba4f679aa9574f483dd0a4ded795d642c5a4e88
+
+contract
+source.vexrelay.current-contract/v1
+
+recipe
+ExactHeadSourceOwnerProof
+
+Product proof
+./gradlew --no-daemon -Dorg.gradle.jvmargs=-Xmx4g --max-workers=1
+  jvmTest compileKotlinJs compileTestKotlinJs checkVexLifeStrings
+~~~
+
+#1969 remains stale/unexecuted evidence for the older #559 candidate and must not be used as current
+proof. The next completion edge is A002 execution/consumption on exact #578. PASS advances to fresh
+Independent Assurance; failure is diagnosed without mutating Product source.
+
 ## A0 source-grounded seam — current design result
 
 The current source trace shows the first provider-neutral boundary must be **above** the HTTP
