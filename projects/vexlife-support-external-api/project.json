@@ -108,7 +108,11 @@
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConnectionSettingsStore.kt",
     "repo.vexlife-prod:src/commonTest/kotlin/vexlife/partner/VexLifePartnerConnectionSettingsTest.kt",
     "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerConnectionSettingsStoreTest.kt",
-    "repo.vexlife-prod:docs/work/support-external-api-connection-settings/README.md"
+    "repo.vexlife-prod:docs/work/support-external-api-connection-settings/README.md",
+    "github.pull.vexlife-prod.571",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConfiguredCurrentness.kt",
+    "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerConfiguredCurrentnessTest.kt",
+    "repo.vexlife-prod:docs/work/support-external-api-connection-settings/CURRENTNESS.md"
   ],
   "formedAt": "2026-11-23T17:02:00.000Z"
 }
