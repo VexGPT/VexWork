@@ -204,7 +204,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T20:45:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -213,7 +213,7 @@
       "workRef": "work.vexlife.support-external-api.a5-failure-availability-semantics",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A5 — Provider failure, availability and retry semantics",
-      "purpose": "Normalize provider-specific status plus machine error type/code/body and stream-terminal evidence into truthful Vex meanings for invalid credentials, billing/quota holds, permission/model access, rate limits, overload, provider unavailability, invalid requests, context limits, malformed responses and interrupted streams; expose human controls without automatic cross-provider fallback or unsafe replay.",
+      "purpose": "Normalize provider-specific status plus machine error type/code/body and stream-terminal evidence into truthful Vex meanings for invalid credentials, billing/quota holds, permission/model access, rate limits, overload, provider unavailability, invalid requests, context limits, malformed responses and interrupted streams; expose human controls without automatic cross-provider fallback or unsafe replay. Product #560 now source-forms a provisional no-effect mapping from P1 failure meaning into A2 connection currentness, including conservative UNKNOWN service standing for ambiguous stream/response failures and exact provider-identity binding. Acceptance remains dependency-held on current P1/A2 source and exact JVM proof.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -227,7 +227,11 @@
       "sourceRefs": [
         "projects/vexlife-support-external-api/README.md",
         "https://platform.claude.com/docs/en/api/errors",
-        "https://www.kimi.ai/help/kimi-api/api-troubleshooting"
+        "https://www.kimi.ai/help/kimi-api/api-troubleshooting",
+        "github.pull.vexlife-prod.560",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerFailureProjection.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerFailureProjectionTest.kt",
+        "repo.vexlife-prod:docs/work/support-external-api-failure-standing/README.md"
       ]
     },
     {
