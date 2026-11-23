@@ -96,7 +96,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T18:02:00.000Z",
+      "updatedAt": "2026-11-23T21:28:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -105,7 +105,7 @@
       "workRef": "work.vexlife.support-external-api.a2-provider-connection",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A2 — Partner Provider Connection + credential/account/model contract",
-      "purpose": "Form one truthful Partner connection relationship covering provider identity, built-in endpoint realization, secure credential reference and standing, account/service state, provider-visible model offerings and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph. Preserve provider discovery as evidence rather than Product support authority: lawful Use is the intersection of a source-owned VexLife Partner model profile, current connection/account/model access, adapter support and exact qualification.",
+      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned built-in endpoint/dialect, secure credential reference and standing, account/service state, provider-visible model offerings and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph. Preserve provider discovery as evidence rather than Product support authority. Product PR #558 now source-forms the read-only connection-standing projection plus built-in OpenAI/Anthropic/Kimi Open Platform topology (including current Anthropic API version/workspace pressure) on disjoint paths; the exact credential store/network effect owner remains separately unresolved.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -121,7 +121,10 @@
         "project.vex.security-assurance",
         "https://platform.openai.com/docs/api-reference/responses",
         "https://platform.claude.com/docs/en/api/messages",
-        "https://www.kimi.ai/help/kimi-api/api-overview"
+        "https://www.kimi.ai/help/kimi-api/api-overview",
+        "github.pull.vexlife-prod.558",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerConnectionProjection.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerProviderCatalog.kt"
       ]
     },
     {
