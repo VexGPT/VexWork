@@ -1774,6 +1774,47 @@ repository-native Gradle/JVM proof  OWED
 Do not replace the protected-host gap with reversible encrypted Home JSON, a production in-memory
 fallback, or secret-bearing process arguments merely to close A2 faster.
 
+## A1 model-source projection checkpoint — Product #564
+
+The Local / Partner source relationship is now source-formed on a focused candidate:
+
+~~~text
+VexLife-Prod #564
+[Support External API][A1][DRAFT]
+Derive Local and Partner model-source projection
+
+base
+#559 integration head 7c53da3c987ff1654085c05ff3c1121cca58de95
+
+delta
+3 exact new paths
+Warm Boot #518 overlap 0
+~~~
+
+The source preserves:
+
+~~~text
+UI SOURCE FILTER != DURABLE MODEL CHOICE
+
+exact targeted row -> targeted source
+exact serving row  -> serving source
+~~~
+
+It combines already-owned Local and Partner offerings into one presentation list and carries Partner
+connection/support standing plus the live-validation disclosure requirement.
+
+It owns no Select/Use Control, activation, provider connection, credential action, discovery,
+localized wording, or persisted source preference.
+
+Exact Partner rows must bind the same providerRef/modelRef across:
+- row identity;
+- connection projection;
+- support qualification.
+
+Duplicate handles, multiple targeted rows, and multiple serving rows are rejected.
+
+Future integration into the existing `VexLifeModels.projection()` remains separately owed.
+
 ## Work trajectory
 
 Current Work decomposition:
