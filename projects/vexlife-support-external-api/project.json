@@ -64,7 +64,10 @@
     "github.pull.vexlife-prod.561",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerNetworkPlan.kt",
     "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerNetworkPlanTest.kt",
-    "repo.vexlife-prod:docs/work/support-external-api-network-plan/README.md"
+    "repo.vexlife-prod:docs/work/support-external-api-network-plan/README.md",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerHostEffect.kt",
+    "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerHostEffectTest.kt",
+    "repo.vexlife-prod:docs/work/support-external-api-host-effect/README.md"
   ],
   "formedAt": "2026-11-23T17:02:00.000Z"
 }
