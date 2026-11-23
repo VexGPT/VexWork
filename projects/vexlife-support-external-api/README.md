@@ -2298,6 +2298,90 @@ Repository-owned hosted workflows were also inspected. The only relevant manual 
 the full app/DMG and is explicitly billing-aware; it is not an appropriate executor for these focused
 tests. No new CI ceremony is added just to avoid the current source-runner boundary.
 
+## Single current integration / proof candidate
+
+The previously disjoint Product source slices are now composed into one exact current integration
+candidate while retaining the focused PRs as provenance:
+
+~~~text
+VexLife-Prod #559
+[Support External API][Integration][DRAFT]
+Compose zero-cost Partner foundation
+
+base  0566b1eed876a28c2fcc6586743ae1f4af7eaecd
+head  2d89ad5efb3b1d1dbf61038c9c28c57161c6182a
+tree  c64dd783f76f927d475d36c1c7ebba28ee01a543
+paths 31
+behind base 0
+~~~
+
+The integration commit carries explicit ancestry from:
+- P1 #554, which descends from P0 #553;
+- support standing #556;
+- A2 provider topology/connection #558.
+
+Current merge coordination:
+
+~~~text
+#553 / #554 / #556 / #558
+-> focused source/provenance
+-> DO NOT independently merge while #559 is selected
+
+#559
+-> one combined SourceOwner / Assurance / integration / eventual merge candidate
+~~~
+
+Warm Boot #518 remains separately owned and has zero current path overlap with #559.
+
+### SourceOwner A001
+
+Current proof carriage:
+
+~~~text
+Vextreme-SDK #1969
+[TEMP RELAY][#559][DRAFT] Support External API SourceOwner A001
+
+companion head d3c5cf09a5b83039f45fbca2132c6e48a63a2632
+companion tree 33675bc099fd356b6a459b003a7e2a129fb8fb33
+paths 3 exact
+~~~
+
+It binds the accepted current Relay:
+
+~~~text
+SDK head  6f8f6f50467f5df5a542713f7dc25b82db4ac8fa
+SDK tree  96795640b01f1969da980f52d5a8ec136a8c44aa
+contract  source.vexrelay.current-contract/v1
+runtime   v0.2.0-RC1
+recipe    ExactHeadSourceOwnerProof
+carrier   adapter.vexlocalbridge.native-vexrelay-task-archive/v1
+~~~
+
+Exact Product proof threshold:
+
+~~~text
+full jvmTest
+compileKotlinJs
+compileTestKotlinJs
+checkVexLifeStrings
+~~~
+
+Current state:
+
+~~~text
+integration candidate          FORMED
+SourceOwner carriage           FORMED
+SourceOwner host execution     PENDING_ONE_MAC_ACTION
+SourceOwner PASS/FAIL          NOT YET OBSERVED
+Independent Assurance         WAITS_ON_SOURCEOWNER
+merge                          HELD
+external API calls             NOT PERFORMED
+credentials                    NOT USED
+~~~
+
+The proof uses the accepted native repository adapter, not the VexLife-Prod lifecycle host profile,
+because it performs only exact source checkout + Gradle proof in a disposable Relay workspace.
+
 ## Fresh-instance resume coordinate
 
 A fresh instance should begin here:
