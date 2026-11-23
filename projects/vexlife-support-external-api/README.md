@@ -2452,6 +2452,58 @@ Mac service-image assembly now compiles `VexLifePartnerHost.swift`, writes `bin/
 `VexLifeProdPrivateServiceImage.observe(...)` validates the helper and returns `partnerHostExecutablePathOrNull`, giving later A0 integration a source-proven helper coordinate.
 
 macOS execution remains owed: Gradle/Kotlin, swiftc, codesign, v6 image observation, synthetic Keychain lifecycle and ad-hoc-signing continuity.
+## A4 effective-capability checkpoint — Product #566
+
+A focused A4 candidate now source-forms the Partner capability/currentness join:
+
+~~~text
+VexLife-Prod #566
+[Support External API][A4][DRAFT]
+Join Partner effective model capabilities
+
+base
+#559 integration head 7c53da3c987ff1654085c05ff3c1121cca58de95
+
+delta
+3 exact new paths
+Warm Boot #518 overlap 0
+~~~
+
+The source makes no concrete OpenAI/Anthropic/Kimi model capability claim.
+
+A rightful Partner profile must supply, for each capability:
+
+~~~text
+represented
+qualificationRef?
+~~~
+
+Current availability then joins the exact Partner connection dimensions:
+
+~~~text
+credential ACCEPTED
+account USABLE
+service READY
+modelAccess AVAILABLE
+~~~
+
+and reuses the existing Local capability standing vocabulary:
+
+~~~text
+not represented                         -> NOT_APPLICABLE
+represented / unqualified               -> HELD
+represented + qualified / connection held -> HELD
+represented + qualified / connection ready -> AVAILABLE
+~~~
+
+A4 deliberately does not consume final Support Qualification standing. That prevents a circular proof
+dependency: A4/P2 may help earn the Vex relationship proof ref that later lets #556 project
+CONTRACT_PROVEN_LIVE_UNQUALIFIED.
+
+Visual input keeps its own Product qualification requirement.
+
+Concrete source-owned Partner model/profile inventory remains unformed.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
