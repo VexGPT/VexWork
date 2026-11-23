@@ -2008,6 +2008,64 @@ Conversation mutation or Memory mutation.
 
 Acceptance remains dependency-held behind current P1 + A2 acceptance and exact repository execution.
 
+## A6 no-effect network-plan checkpoint — Product #561
+
+A second no-effect integration workbench now carries the exact intended remote request before any
+credential secret is resolved:
+
+~~~text
+P1 #554 request body
++ A2 #558 built-in provider topology
++ exact provider-bound credentialRef
+        ↓
+VexLifePartnerNetworkPlan
+~~~
+
+Product PR:
+
+~~~text
+#561
+[Support External API][A6][DRAFT]
+Bind exact provider network plan before credential resolution
+~~~
+
+The plan binds:
+
+~~~text
+providerRef
+credentialRef                  # opaque only
+exact built-in HTTPS origin/path
+provider dialect
+credential-carriage class      # not value
+account-scope requirement
+POST
+public protocol headers
+ephemeral request body
+requestBodySha256
+redirectPolicy = DENY
+~~~
+
+It contains no network client and never calls credential resolution.
+
+Executable source imports are limited to UTF-8 + SHA-256 utilities. The constructor rejects
+credential-bearing protocol headers, and the exact provider credential coordinate must match the
+selected providerRef.
+
+Current remaining execution chain is now sharply bounded:
+
+~~~text
+accepted/current no-effect NetworkPlan
+-> protected host credential resolution
+-> authentication header injection
+-> exact HTTPS POST with redirects denied
+-> SSE/JSON response
+-> P1 provider wire parser
+-> A5 connection-currentness projection
+~~~
+
+macOS/Windows protected host stores and the actual transport remain unformed. No live provider
+account is required for #561.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
