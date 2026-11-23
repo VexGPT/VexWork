@@ -2593,6 +2593,42 @@ The adapter adds no network, persistence, Select/Use Control, runtime convergenc
 `VexLifeModels.kt` mutation. Actual Models service integration still needs a rightful current
 Partner state source and a fresh current-writer check.
 
+## Durable non-secret Partner connection settings — Product #570
+
+Partner connection coordinates now have a Home-owned persistence candidate:
+
+~~~text
+VexLife-Prod #570
+[Support External API][A2][DRAFT]
+Persist non-secret Partner connection coordinates
+
+path
+runtime/vexlife-prod/settings/partner-connections.json
+~~~
+
+Stored:
+- providerRef;
+- opaque credentialRef;
+- admitted non-secret account scope.
+
+Not stored:
+- API key/token;
+- auth header;
+- protected-store blob;
+- billing/model standing;
+- provider response;
+- live qualification.
+
+The store reuses `VexDurableContractFile`: strict contract decoding, Home-owned path confinement,
+private permissions where supported, and atomic replacement.
+
+Unknown fields are rejected, so an injected `apiKey` member does not become an accepted durable
+contract.
+
+This store does not mutate OS credential custody. The next safe source edge is current-state
+observation from durable ref + protected-host presence; transactional add/replace/remove convergence
+remains separately owned.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
