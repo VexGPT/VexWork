@@ -34,7 +34,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:20:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -43,7 +43,7 @@
       "workRef": "work.vexlife.support-external-api.a0-provider-neutral-seam",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A0 — Provider-neutral Companion inference seam",
-      "purpose": "Re-ground the current Direct Companion circuit and form the smallest provider-neutral inference boundary that preserves current local mlx-lm behavior exactly while separating Vex-facing prepared messages, capability offer, generation intent, progress/cancellation and normalized result/evidence from the current numeric-loopback-only provider realization.",
+      "purpose": "Re-ground the current Direct Companion circuit and form the smallest provider-neutral inference boundary that preserves current local mlx-lm behavior exactly while separating Vex-facing prepared messages, capability offer, generation intent, progress/cancellation and normalized result/evidence from the current numeric-loopback-only provider realization. At the 2026-11-23 checkpoint, current-main Warm Boot PR #518 owns overlapping DirectCompanionConnection/test paths, so overlapping mutation is held while provider-neutral contract analysis and disjoint proof planning continue; older #442/#383 remain provenance, not current mutation ownership.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -56,7 +56,10 @@
         "repo.vexlife-prod:docs/foundation/DIRECT-PERSONAL-COMPANION.md",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt",
-        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/companion/DirectCompanionConnectionTest.kt"
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/companion/DirectCompanionConnectionTest.kt",
+        "github.pull.vexlife-prod.518",
+        "github.pull.vexlife-prod.442",
+        "github.pull.vexlife-prod.383"
       ]
     },
     {
