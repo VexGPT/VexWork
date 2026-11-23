@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.support-external-api",
   "label": "Support External API",
-  "purpose": "Extend VexLife-Prod's existing selectable-model, direct-Companion and capability architecture so one Vex Home can intentionally select either a local model or an external Partner provider/model while VexLife remains the owner of Conversation, Memory, contextual ground, capability admission, lifecycle and durable evidence; add truthful provider-connection, credential, availability, failure and privacy semantics; preserve explicit no-automatic-fallback behavior; prove provider adapters and failure handling deterministically without paid API access; and leave real external-provider qualification as an explicit later gate rather than treating synthetic proof as live completion.",
+  "purpose": "Keep VexLife Home access and Home-scoped Product controls available independently of inference realization, then extend VexLife-Prod's existing selectable-model, direct-Companion and capability architecture so one selected Vex Home can intentionally use either a local model or an external Partner provider/model while VexLife remains the owner of Home, Conversation, Memory, contextual ground, capability admission, lifecycle and durable evidence; add truthful provider-connection, credential, availability, failure and privacy semantics; preserve explicit no-automatic-fallback behavior; prove provider adapters and failure handling deterministically without paid API access; and leave real external-provider qualification as an explicit later gate rather than treating synthetic proof as live completion.",
   "rootWorkRefs": [
     "work.vexlife.support-external-api.outcome"
   ],
@@ -120,7 +120,12 @@
     "github.pull.vexlife-prod.575",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConnectionConfiguration.kt",
     "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerConnectionConfigurationTest.kt",
-    "repo.vexlife-prod:docs/work/support-external-api-connection-settings/CONVERGENCE.md"
+    "repo.vexlife-prod:docs/work/support-external-api-connection-settings/CONVERGENCE.md",
+    "repo.vexlife-prod:docs/foundation/VEXLIFE-PROD-HOME.md",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/local/VexLifeProdRuntimeSession.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt",
+    "github.pull.vexlife-prod.573"
   ],
   "formedAt": "2026-11-23T17:02:00.000Z"
 }
