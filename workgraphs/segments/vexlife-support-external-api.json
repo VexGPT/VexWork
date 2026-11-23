@@ -40,7 +40,8 @@
         "github.pull.vexlife-prod.566",
         "github.pull.vexlife-prod.567",
         "github.pull.vexlife-prod.569",
-        "github.pull.vexlife-prod.570"
+        "github.pull.vexlife-prod.570",
+        "github.pull.vexlife-prod.571"
       ]
     },
     {
@@ -118,7 +119,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:42:00.000Z",
+      "updatedAt": "2026-11-23T22:52:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -127,7 +128,7 @@
       "workRef": "work.vexlife.support-external-api.a2-provider-connection",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A2 — Partner Provider Connection + credential/account/model contract",
-      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned endpoint/dialect, protected host credential custody by opaque credentialRef, optional non-secret account scope, durable Home connection coordinates, account/service/model state and invocation qualification without storing secret values in semantic/durable surfaces. #558/#561/#562/#563 source-form provider topology and protected host custody; #570 now source-forms strict atomic Home persistence for providerRef + credentialRef + account scope only. Current-state observation from persisted ref + protected-host presence is the next safe edge; transactional add/replace/remove convergence remains separately unformed.",
+      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned endpoint/dialect, protected host credential custody by opaque credentialRef, optional non-secret account scope, durable Home coordinates, current protected-secret presence, account/service/model state and invocation qualification without storing secret values in semantic/durable surfaces. #570 persists refs/scope only; #571 now joins those refs with host contains() into NOT_CONFIGURED/PRESENT/DANGLING_REF currentness and forms initial model connection truth with account/service/model UNKNOWN. No historical provider success is replayed after restart. Transactional add/replace/remove convergence remains separately unformed.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -158,7 +159,9 @@
         "repo.vexlife-prod:src/commonTest/kotlin/vexlife/partner/VexLifePartnerAccountScopeTest.kt",
         "github.pull.vexlife-prod.570",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerConnectionSettings.kt",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConnectionSettingsStore.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConnectionSettingsStore.kt",
+        "github.pull.vexlife-prod.571",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConfiguredCurrentness.kt"
       ]
     },
     {
