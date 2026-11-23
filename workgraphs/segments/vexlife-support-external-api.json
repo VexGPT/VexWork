@@ -241,7 +241,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T21:24:00.000Z",
+      "updatedAt": "2026-11-23T21:42:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -250,7 +250,7 @@
       "workRef": "work.vexlife.support-external-api.a6-security-privacy-boundary",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A6 — Credential, context-egress, tool-admission and replay security boundary",
-      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Current candidates now keep the provider secret out of JVM read paths entirely after storage: #558 exposes only store/contains/delete protected custody; #561 forms an exact no-secret NetworkPlan plus a HostEffect executor contract that delegates OS credential lookup, authentication-header formation, HTTPS execution and redirect refusal to a platform-native helper. Provider 4xx/5xx remain ordinary HTTP observations for P1/A5; redirects remain host failures. macOS Security.framework and Windows Credential Manager helper realizations/packaging remain unformed.",
+      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Current candidates keep the provider secret out of JVM read paths after storage: #558 exposes store/contains/delete protected custody with a 2,560-byte cross-platform bound; #561 forms exact no-secret NetworkPlan, HostEffect, native-helper protocol and JVM helper client. The JVM launches only the helper path, sends non-secret protocol metadata plus raw STORE/request payload bytes over stdin, drains stderr without logging, validates exact event coordinates and never receives the API key. Actual Windows Credential Manager/macOS Security.framework helpers, packaging and platform proof remain unformed.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -273,13 +273,19 @@
         "repo.vexlife-prod:docs/work/support-external-api-network-plan/README.md",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerHostEffect.kt",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerHostEffectTest.kt",
-        "repo.vexlife-prod:docs/work/support-external-api-host-effect/README.md"
+        "repo.vexlife-prod:docs/work/support-external-api-host-effect/README.md",
+        "github.pull.vexlife-prod.559",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerNativeHostProtocol.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerNativeHostClient.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerNativeHostProtocolTest.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerNativeHostClientTest.kt",
+        "repo.vexlife-prod:docs/work/support-external-api-host-effect/NATIVE-PROTOCOL.md"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:55:00.000Z",
+      "updatedAt": "2026-11-23T21:42:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
