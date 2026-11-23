@@ -280,7 +280,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T19:10:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -289,7 +289,7 @@
       "workRef": "work.vexlife.support-external-api.a8-live-provider-qualification",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A8 — Real external provider qualification",
-      "purpose": "After deterministic conformance is accepted, run the smallest bounded real provider/model round trip needed to prove the exact credential/account/model/stream/tool relationship claimed supported. This work remains held until a legitimate usable provider credential/account/credit or an explicitly accepted equivalent is available; no paid access is required for predecessor construction.",
+      "purpose": "After deterministic conformance is accepted, run the smallest bounded real provider/model round trip needed to prove the exact credential/account/model/stream/tool relationship claimed live-qualified. This work remains held until a legitimate usable provider credential/account/credit or an explicitly accepted equivalent is available. The Product may still reach an accepted CONTRACT_PROVEN/LIVE_UNQUALIFIED production posture before this gate when release authority accepts it, provided the UI exposes a small accessible information affordance that says live provider validation is pending and does not claim live qualification.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
