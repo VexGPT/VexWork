@@ -1049,6 +1049,201 @@ negative controls. Real provider/adversarial effects require their own explicit 
 The Support External API Project consumes Security Assurance meaning. It does not create a second
 security ontology.
 
+## A6 source-grounded security / privacy result
+
+Current Product source narrows the first security problem.
+
+### Current Capability Bridge is read-only
+
+At the formation/current-main checkpoint, `VexLifeCapabilityBridge` states:
+
+~~~text
+every capability in this Bridge is a read
+externalEffectsExecuted = false
+effectAuthorityGranted = false
+rawResultContentPersisted = false
+~~~
+
+The trace constructor rejects an entry that claims external effects or effect authority.
+
+Therefore the first Partner-provider implementation should expose **only the same currently admitted
+read-only Vex capability surface**.
+
+~~~text
+PARTNER TOOL CALL
+-> current Vex Capability Bridge read admission
+-> rightful read owner
+-> bounded result
+-> same provider turn continues
+
+!= arbitrary provider effect execution
+!= provider-hosted effect authority
+!= new Vex write-capability contract
+~~~
+
+This materially reduces replay risk for the first release. A provider retry may repeat inference, but
+it must not widen into a new mutating Vex tool surface.
+
+If Vex later admits a capability with external/mutating effects, that work must separately earn:
+
+~~~text
+stable effect/request identity
+owner-defined idempotency / replay semantics
+performed-effect evidence
+retry reconciliation
+authority binding
+~~~
+
+Do not infer those semantics from today's read-only Bridge.
+
+### Current request identity / trace
+
+For today's read reach, the Bridge forms a bounded call coordinate from:
+
+~~~text
+parsed control SHA
++ request number within the human turn
+-> callRef
+~~~
+
+and records:
+
+~~~text
+capability/action
+argument SHA
+control SHA
+result SHA
+owner source path
+source refs / frontier refs
+current-turn request number
+~~~
+
+That trace is evidence, not effect authority.
+
+External provider adapters must preserve the distinction between:
+
+~~~text
+provider tool-call ID
+!= canonical Vex capability meaning
+!= owner authority
+!= durable Conversation identity
+~~~
+
+A provider-native ID may be retained as bounded invocation evidence where useful, but admission still
+comes from the Vex turn + Capability Bridge.
+
+### Credential owner remains unresolved
+
+No accepted current VexLife-Prod credential/secret-store owner has been established by the source
+review performed for this Project.
+
+Current disposition:
+
+~~~text
+credential semantic need       ESTABLISHED
+secret must remain out of Vex context/evidence/Git  ESTABLISHED
+exact Product credential owner UNKNOWN
+platform secure-storage realization UNKNOWN
+~~~
+
+Therefore:
+
+~~~text
+UNKNOWN CREDENTIAL OWNER
+-> source lookup / rightful owner formation before A2 implementation
+-> DO NOT invent a second secret store in the provider adapter
+~~~
+
+A future source audit may discover an accepted reusable owner. If not, the smallest credential
+relationship must be earned then.
+
+### Exact-origin credential confinement
+
+The current local HTTP transport already disables redirects.
+
+Preserve the stronger remote rule:
+
+~~~text
+built-in providerRef
+-> one source-owned HTTPS origin / API family
+-> credential injected only for that exact admitted origin
+-> redirects not followed with credential material
+-> response redirect = connection failure / re-ground provider contract
+~~~
+
+For an explicit future Custom provider, a human-supplied origin must remain bound to that credential
+relationship; it must not make built-in credentials portable to arbitrary hosts.
+
+Permanent:
+
+~~~text
+CREDENTIAL REF != SECRET VALUE
+PROVIDER REF != ARBITRARY HOST
+REDIRECT != AUTHORIZATION TO FORWARD SECRET
+TLS SUCCESS != PROVIDER IDENTITY BY ITSELF
+~~~
+
+### Context egress
+
+The existing prompt owners remain the only owners of what is selected for a turn.
+
+Security acceptance for Partner inference requires proving:
+
+~~~text
+bounded provider-ready messages formed first
+-> explicit selected Partner realization
+-> exact provider adapter receives only those messages + admitted tool schema
+-> no filesystem/Home/Memory enumeration is added by the adapter
+-> secret headers are added after semantic prompt formation
+-> request-body/evidence hashing excludes secret material
+~~~
+
+Provider responses and tool arguments are untrusted input. They may influence model judgment and
+request a capability, but they cannot grant authority or become accepted source merely because the
+provider produced them.
+
+### Initial negative-control matrix
+
+A6/A7 should include deterministic checks for:
+
+~~~text
+secret value absent from:
+  request body fixture
+  request-body hash input
+  Conversation
+  Memory/context
+  VexLogger detail
+  provider invocation receipt
+  Workgraph / Project source
+
+wrong provider credentialRef
+  -> fail before network effect
+
+built-in provider redirect
+  -> fail closed
+  -> no credential forwarding
+
+provider tool call for unoffered capability
+  -> Bridge INVALID_REQUEST / NOT_AVAILABLE
+  -> no owner effect
+
+provider attempts write/effect-like unsupported tool
+  -> not admitted by current read-only Atlas/Bridge
+
+malformed tool arguments
+  -> rejected before rightful owner read
+
+provider returns instruction-like/untrusted source content
+  -> remains source/result content
+  -> does not become authority
+
+network/stream retry after read-only capability return
+  -> may continue/retry only under turn policy
+  -> cannot widen to automatic other-provider fallback
+~~~
+
+These are defensive fixture requirements, not claims that Product source has implemented them yet.
+
 ## Work trajectory
 
 Current Work decomposition:
