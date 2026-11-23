@@ -2294,6 +2294,54 @@ live provider qualification                NOT REQUIRED
 ~~~
 
 One transient tree-currentization tip b375c7ba... temporarily projected zero Windows paths and is explicitly superseded; current #562 restored the exact 3-path platform delta.
+## Platform host source checkpoint — Windows #562 / macOS #563
+
+Both protected host realizations are now source-formed as separate children of the shared #561 native protocol/client. They remain outside the platform-neutral #559 integration candidate until native-host execution proof is observed.
+
+Windows #562:
+~~~text
+Credential Manager generic credential lifecycle
+CRED_PERSIST_LOCAL_MACHINE capability check
+PowerShell 5.1 + embedded C#
+AllowAutoRedirect=false
+one-command no-API proof runner
+  STORE synthetic credential
+  OBSERVE present
+  DELETE
+  OBSERVE absent
+  EXECUTE deleted ref -> CREDENTIAL_NOT_PRESENT before network
+~~~
+
+macOS #563:
+~~~text
+Security.framework generic password lifecycle
+SecItemAdd / SecItemCopyMatching / SecItemDelete
+ephemeral URLSession
+redirect delegate -> completionHandler(nil)
+atomic one-terminal-event ownership
+one-command no-API proof runner
+  xcrun swiftc exact helper source
+  STORE synthetic credential
+  OBSERVE present
+  DELETE
+  OBSERVE absent
+  EXECUTE deleted ref -> CREDENTIAL_NOT_PRESENT before network
+~~~
+
+Neither proof uses a real provider credential or provider network request.
+
+Current standing:
+~~~text
+Windows source/static audit    PRESENT
+Windows native execution       OWED
+macOS source/static audit      PRESENT
+macOS swiftc/Keychain execution OWED
+platform packaging identity    OWED
+live provider qualification    NOT REQUIRED FOR THESE GATES
+~~~
+
+Important macOS held question:
+current VexLife distribution is ad-hoc signed, so Keychain access continuity across rebuilt helper binaries must be lived proven rather than assumed.
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
