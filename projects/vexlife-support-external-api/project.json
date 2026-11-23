@@ -33,7 +33,8 @@
     "https://platform.claude.com/docs/en/api/errors",
     "https://www.kimi.ai/help/kimi-api/api-overview",
     "https://www.kimi.ai/help/kimi-api/api-troubleshooting",
-    "human.design.vexlife.support-external-api.20261123"
+    "human.design.vexlife.support-external-api.20261123",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/local/VexLifeProdLocalSetup.kt"
   ],
   "formedAt": "2026-11-23T17:02:00.000Z"
 }
