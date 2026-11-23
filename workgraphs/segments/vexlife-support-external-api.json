@@ -125,7 +125,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T20:05:00.000Z",
+      "updatedAt": "2026-11-23T20:42:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -151,13 +151,14 @@
         "https://platform.claude.com/docs/en/api/messages",
         "https://www.kimi.ai/help/kimi-api/api-overview",
         "github.pull.vexlife-prod.554",
-        "repo.vexlife-prod:docs/work/support-external-api-wire-codecs/README.md"
+        "repo.vexlife-prod:docs/work/support-external-api-wire-codecs/README.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/PartnerCapabilityExchange.kt"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T19:35:00.000Z",
+      "updatedAt": "2026-11-23T20:42:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -180,7 +181,9 @@
         "projects/vexlife-support-external-api/README.md",
         "repo.vexlife-prod:docs/foundation/CAPABILITY-ATLAS-SELF-FRAME.md",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeEffectiveModelCapabilities.kt",
-        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt"
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
+        "github.pull.vexlife-prod.554",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/PartnerCapabilityExchange.kt"
       ]
     },
     {
@@ -246,7 +249,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T20:05:00.000Z",
+      "updatedAt": "2026-11-23T20:42:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -255,7 +258,7 @@
       "workRef": "work.vexlife.support-external-api.a7-zero-cost-conformance",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A7 — Zero-cost deterministic provider conformance",
-      "purpose": "Exercise exact provider request/stream/tool/failure fixtures through injected transports and local harnesses so the external-provider consumer body, Settings state, effective capabilities, secret redaction, turn failure semantics and no-fallback laws can be proven without paid API calls; keep all real-provider availability and billing claims explicitly unestablished. Product PR #553 now forms the P0 bidirectional official-doc-conformant request/response/error fixture corpus and JVM fixture-integrity source on disjoint paths; connected readback proves fixture structure while JVM execution remains owed. A7 itself stays dependency-held until the A0/A1/A2/A3/A4/A5/A6 implementation relationships exist.",
+      "purpose": "Exercise exact provider request/stream/tool/failure fixtures through injected transports and local harnesses so the external-provider consumer body, Settings state, effective capabilities, secret redaction, turn failure semantics and no-fallback laws can be proven without paid API calls; keep all real-provider availability and billing claims explicitly unestablished. Product PR #553 now forms the P0 official-doc-conformant request/response/stream/tool/error fixture corpus and JVM fixture-integrity source on disjoint paths; connected readback proves fixture structure while JVM execution remains owed. A7 itself stays dependency-held until the A0/A1/A2/A3/A4/A5/A6 implementation relationships exist.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
