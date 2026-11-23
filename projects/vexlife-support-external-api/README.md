@@ -2664,6 +2664,46 @@ provider request.
 Initial per-model restart truth deliberately resets account/service/model access to UNKNOWN and
 invocation to NEVER_QUALIFIED. Historical successful provider state is not replayed as current truth.
 
+## Partner Models restart state — Product #572
+
+A1 now has a truthful read-only Partner Models state source:
+
+~~~text
+VexLife-Prod #572
+[Support External API][A1][DRAFT]
+Form truthful Partner Models restart state
+~~~
+
+It composes:
+- #569 catalog-bound Partner inventory;
+- #570 durable non-secret connection settings;
+- #571 protected-host credential currentness;
+- current support projections supplied by their rightful owner.
+
+Restart projection:
+
+~~~text
+no configured credential
+-> NEEDS_CREDENTIAL
+
+configured ref + protected secret present
+-> PRESENT_UNVERIFIED
+-> CHECKING
+
+configured ref + protected secret missing
+-> DANGLING_REF
+-> NEEDS_CREDENTIAL
+~~~
+
+Account/service/model access remain UNKNOWN until provider observation refreshes them. Historical
+provider success is not replayed.
+
+The source performs no network, credential mutation, persistence write, model Select/Use, or Warm
+Boot path mutation.
+
+This is the first source that can lawfully supply Partner rows to the real Models/Settings surface
+without fake connection defaults.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
