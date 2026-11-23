@@ -2381,6 +2381,36 @@ macOS #563 head bc739e5c090618edb6b0965b1596b81e8b1e7d4d
 ~~~
 
 Do not fold #562/#563 into the foundation candidate until their native host execution evidence exists.
+## macOS packaging checkpoint — Product #563
+
+The macOS Partner host is now source-bound into the existing private service-image owner.
+
+~~~text
+#563 head
+6b83cadb396c61fca87aa8581146458fa35e3085
+
+platform delta
+7 paths
+0 behind #561
+0 Warm Boot #518 overlap
+~~~
+
+Private service-image schema evolution:
+
+~~~text
+v3 legacy
+v4 Vision
+v5 Local-ASR
+v6 Partner host
+~~~
+
+v3/v4/v5 remain readable. v6 requires the exact bundled Partner-host path + SHA while retaining the current Local-ASR relationship.
+
+Mac service-image assembly now compiles `VexLifePartnerHost.swift`, writes `bin/vexlife-partner-host`, applies owner-only executable permissions, ad-hoc signs/verifies it, records its SHA in `service-image.json`, and includes it in the existing payload fingerprint.
+
+`VexLifeProdPrivateServiceImage.observe(...)` validates the helper and returns `partnerHostExecutablePathOrNull`, giving later A0 integration a source-proven helper coordinate.
+
+macOS execution remains owed: Gradle/Kotlin, swiftc, codesign, v6 image observation, synthetic Keychain lifecycle and ad-hoc-signing continuity.
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
