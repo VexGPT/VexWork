@@ -2629,6 +2629,41 @@ This store does not mutate OS credential custody. The next safe source edge is c
 observation from durable ref + protected-host presence; transactional add/replace/remove convergence
 remains separately owned.
 
+## Configured credential restart currentness — Product #571
+
+A2 now has a read-only restart/currentness source over durable settings + protected host presence:
+
+~~~text
+VexLife-Prod #571
+[Support External API][A2][DRAFT]
+Project configured Partner credential currentness
+~~~
+
+States:
+
+~~~text
+NOT_CONFIGURED
+  no durable entry
+  -> credential MISSING
+
+PRESENT
+  durable providerRef/credentialRef
+  + protected host contains exact coordinate
+  -> credential PRESENT_UNVERIFIED
+
+DANGLING_REF
+  durable coordinate exists
+  + protected host secret absent
+  -> credential MISSING
+  -> preserve ref as recovery evidence
+~~~
+
+Observation calls only `contains()`; it never stores, deletes, reads secret bytes, or performs a
+provider request.
+
+Initial per-model restart truth deliberately resets account/service/model access to UNKNOWN and
+invocation to NEVER_QUALIFIED. Historical successful provider state is not replayed as current truth.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
