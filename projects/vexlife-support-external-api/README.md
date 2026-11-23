@@ -706,6 +706,66 @@ Kimi in particular demonstrates why Provider and Credential are separate coordin
 Platform and Kimi Code/subscription relationships may use different hosts, authentication and account
 semantics. Similar names must not be treated as one interchangeable credential surface.
 
+## A2 model discovery / Product support boundary
+
+A provider model-list response is provider/account evidence. It is not Product support authority.
+
+Keep three relationships distinct:
+
+~~~text
+Provider-visible offering
+  "this credential/account can currently see model X"
+
+VexLife Partner model profile
+  source-owned knowledge of how VexLife represents model X / family:
+    provider API family
+    message / reasoning representation
+    tool representation
+    Product output/context assumptions where established
+    feature qualification requirements
+
+Effective Partner model
+  intersection of:
+    provider-visible offering
+    + VexLife-supported profile
+    + current account/model access
+    + current adapter support
+    + exact qualification
+~~~
+
+Permanent:
+
+~~~text
+PROVIDER MODEL LIST != VEXLIFE MODEL CATALOG AUTHORITY
+MODEL NAME MATCH != REPRESENTATION QUALIFICATION
+ACCOUNT CAN ACCESS != PRODUCT SUPPORT
+PRODUCT SUPPORT != ACCOUNT CAN ACCESS
+~~~
+
+Human projection may distinguish:
+
+~~~text
+Supported and available
+  -> selectable / Use when all current predicates pass
+
+Supported but unavailable to this connection
+  -> visible with truthful account/model-access standing
+
+Provider-visible but not supported by this VexLife version
+  -> optional bounded informational projection
+  -> no Use control
+
+Source-supported but no longer provider-visible
+  -> unavailable / re-ground provider lifecycle
+~~~
+
+Do not dynamically manufacture a VexLife representation profile for every string returned by a
+provider.
+
+For provider families whose model discovery endpoint is absent or insufficient, a source-owned
+supported profile plus a bounded exact invocation may establish availability; do not invent a
+universal discovery requirement when the provider contract does not offer one.
+
 ## Credential boundary
 
 Credentials are provider-connection dependencies, not model context.
