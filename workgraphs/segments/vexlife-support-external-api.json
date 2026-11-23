@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:18:00.000Z",
+      "updatedAt": "2026-11-23T22:55:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -33,7 +33,9 @@
         "github.pull.vexlife-prod.554",
         "github.pull.vexlife-prod.556",
         "github.pull.vexlife-prod.558",
-        "github.pull.vexlife-prod.518"
+        "github.pull.vexlife-prod.518",
+        "github.pull.vexlife-prod.559",
+        "github.pull.vextreme-sdk.1969"
       ]
     },
     {
@@ -268,7 +270,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T20:42:00.000Z",
+      "updatedAt": "2026-11-23T22:55:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -300,7 +302,9 @@
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/ExternalProviderContractFixturesTest.kt",
         "repo.vexlife-prod:src/jvmTest/resources/vexlife/partner/provider-contract-fixtures/manifest.json",
         "github.pull.vexlife-prod.554",
-        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/ExternalProviderWireCodecTest.kt"
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/ExternalProviderWireCodecTest.kt",
+        "github.pull.vexlife-prod.559",
+        "github.pull.vextreme-sdk.1969"
       ]
     },
     {
