@@ -2084,6 +2084,104 @@ Product implementation authority        NOT GRANTED BY THIS PROJECT
 The lack of paid access holds only A8/A9 live-provider claims. It does not hold A0-A7 construction
 and deterministic proof once Product source authority is separately admitted.
 
+## Current candidate integration map
+
+The source candidates are intentionally separated by responsibility.
+
+~~~text
+#553  P0 provider contract fixtures
+  new docs/test/test-resource paths
+  independent of #518
+
+#554  P1 pure provider wire codecs + providerCallRef carrier
+  stacked on #553
+  new partner source/test paths
+  independent of #518 live Connection paths
+
+#556  Partner support qualification
+  2 common source/test paths
+  independent of #518
+
+#558  A2 built-in provider topology + connection standing + credential-custody design
+  5 source/test/doc paths
+  independent of #518
+
+#518  Warm Boot current-main writer
+  DirectCompanionConnection / DirectCompanionTurn / prompt-preparation neighborhood
+  remains separate current ownership
+~~~
+
+### Intended acceptance order
+
+No single order is required between the disjoint siblings #553 / #556 / #558, but preserve these
+dependencies:
+
+~~~text
+#553 P0 accepted
+-> retarget/rebase #554 onto accepted current main
+-> prove P1 on current source
+-> accept P1 only after P0
+
+#556 / #558
+-> may be reviewed/accepted independently when their exact source proof is green
+
+#518
+-> may resolve independently of all four above
+~~~
+
+Only after the accepted current source contains the needed pieces:
+
+~~~text
+accepted Warm Boot/local Connection semantics
++ accepted P0 fixtures
++ accepted P1 provider wire codecs
++ accepted A2 provider topology/connection standing
++ accepted support qualification
+        ↓
+A0 integration candidate
+  separate Home/Conversation foundation from selected inference-session readiness
+  adapt the existing local Heretic path through the provider-neutral seam
+  prove local parity
+        ↓
+Partner network + credential realization
+        ↓
+P2 Vex relationship conformance
+~~~
+
+### Conflict rule
+
+If #518 changes a class/signature used by the later A0 integration:
+
+~~~text
+preserve #518 accepted local behavior
+preserve P0/P1 provider-contract meaning
+resolve only the integration adapter around the current accepted source
+do not rewrite official provider fixtures to imitate old local APIs
+do not resurrect historical #383/#442 ownership
+~~~
+
+Current #553/#554/#556/#558 do not edit #518 paths, so there is no current semantic merge conflict to
+solve.
+
+### Supplemental local sanity
+
+A local Kotlin 1.9 / Java 21 harness compiled and executed the executable declarations for the
+support-qualification, connection-standing and provider-catalog candidates using only a stub
+`@Serializable` annotation.
+
+Observed:
+
+~~~text
+FOCUSED_PARTNER_SEMANTICS_PASS
+~~~
+
+This proves a narrow syntax/type/state-machine sanity only. It does not replace exact repository
+Gradle/Kotlin 2.4/serialization proof.
+
+Repository-owned hosted workflows were also inspected. The only relevant manual Mac workflow proves
+the full app/DMG and is explicitly billing-aware; it is not an appropriate executor for these focused
+tests. No new CI ceremony is added just to avoid the current source-runner boundary.
+
 ## Fresh-instance resume coordinate
 
 A fresh instance should begin here:
