@@ -766,6 +766,90 @@ For provider families whose model discovery endpoint is absent or insufficient, 
 supported profile plus a bounded exact invocation may establish availability; do not invent a
 universal discovery requirement when the provider contract does not offer one.
 
+## A2 source candidate — Product PR #558
+
+The Partner connection/currentness and built-in provider topology now have a disjoint Product
+candidate:
+
+~~~text
+VexLife-Prod #558
+[Support External API][A2][DRAFT]
+Source Partner topology and connection standing
+
+base current main
+0566b1eed876a28c2fcc6586743ae1f4af7eaecd
+
+paths 4
+shared #518 overlap 0
+~~~
+
+### Built-in provider topology
+
+Current source candidate:
+
+~~~text
+OpenAI
+  providerRef  provider.openai.api
+  origin       https://api.openai.com
+  path         /v1/responses
+  dialect      OPENAI_RESPONSES
+  credential  bearer carriage at future execution boundary
+
+Anthropic
+  providerRef  provider.anthropic.api
+  origin       https://api.anthropic.com
+  path         /v1/messages
+  dialect      ANTHROPIC_MESSAGES
+  credential  bearer carriage at future execution boundary
+  protocol    anthropic-version: 2026-10-21
+  workspace   conditionally selected when credential is not workspace-scoped
+
+Kimi Open Platform international
+  providerRef  provider.kimi.open-platform.international
+  origin       https://api.moonshot.ai
+  path         /v1/chat/completions
+  dialect      OPENAI_CHAT_COMPLETIONS
+  credential  bearer carriage at future execution boundary
+~~~
+
+Kimi Code is not represented by this catalog. Current Kimi documentation establishes that Open
+Platform, Kimi Code and Membership have separate billing/key relationships and their keys are not
+interchangeable.
+
+Current Anthropic official direct-HTTP documentation now prefers Bearer authentication and requires
+API version `2026-10-21`; legacy `x-api-key` remains supported. This current official contract
+supersedes older/different secondary implementation examples.
+
+### Connection standing
+
+The same candidate projects independently observed dimensions:
+
+~~~text
+credential
+account
+service
+model access
+invocation
+        ↓
+NEEDS_CREDENTIAL
+CHECKING
+CREDENTIAL_REJECTED
+BILLING_HELD
+PERMISSION_HELD
+MODEL_NOT_ACCESSIBLE
+MODEL_DEPRECATED
+MODEL_RETIRED
+RATE_LIMITED
+PROVIDER_OVERLOADED
+PROVIDER_UNAVAILABLE
+READY_TO_ATTEMPT
+QUALIFIED_SERVING
+LAST_INVOCATION_FAILED
+~~~
+
+This is a read-only projection. It does not own the credential value, HTTP request, billing effect,
+model discovery, retry effect, model Use, Conversation or Memory.
+
 ## Credential boundary
 
 Credentials are provider-connection dependencies, not model context.
