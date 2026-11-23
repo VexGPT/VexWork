@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:55:00.000Z",
+      "updatedAt": "2026-11-23T23:59:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -15,7 +15,7 @@
       "workRef": "work.vexlife.support-external-api.outcome",
       "parentWorkRefOrNull": null,
       "label": "Support External API",
-      "purpose": "Let one VexLife Home intentionally select local or external Partner model realization while VexLife remains the owner of Conversation, Memory, contextual ground, capability admission and durable turn truth; add truthful provider connection, credential, availability, failure, privacy and qualification semantics; prove the body deterministically without paid API access; and keep real provider qualification as an explicit later gate.",
+      "purpose": "Keep the person's route to VexLife Home accessible independently of local/Partner inference readiness, then let one selected VexLife Home intentionally choose local or external Partner model realization while VexLife remains the owner of Home, Conversation, Memory, contextual ground, capability admission and durable turn truth; add truthful provider connection, credential, availability, failure, privacy and qualification semantics; prove the body deterministically without paid API access; and keep real provider qualification as an explicit later gate.",
       "workClass": "OUTCOME",
       "state": "DECOMPOSED",
       "priorityClass": "HIGH",
@@ -43,13 +43,16 @@
         "github.pull.vexlife-prod.570",
         "github.pull.vexlife-prod.571",
         "github.pull.vexlife-prod.572",
-        "github.pull.vexlife-prod.575"
+        "github.pull.vexlife-prod.575",
+        "repo.vexlife-prod:docs/foundation/VEXLIFE-PROD-HOME.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt",
+        "github.pull.vexlife-prod.573"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:32:00.000Z",
+      "updatedAt": "2026-11-23T23:59:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -57,8 +60,8 @@
       "nextProcessRefs": [],
       "workRef": "work.vexlife.support-external-api.a0-provider-neutral-seam",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
-      "label": "A0 — Provider-neutral Companion inference seam",
-      "purpose": "Re-ground the current Direct Companion circuit and form the smallest provider-neutral inference boundary that preserves current local mlx-lm behavior exactly while separating Vex-facing prepared messages, capability offer, generation intent, progress/cancellation and normalized result/evidence from the current numeric-loopback-only provider realization. At the 2026-11-23 checkpoint, current-main Warm Boot PR #518 owns overlapping DirectCompanionConnection/test paths, so overlapping mutation is held while provider-neutral contract analysis and disjoint proof planning continue; older #442/#383 remain provenance, not current mutation ownership.",
+      "label": "A0 — Home-accessible Product foundation + provider-neutral Companion inference seam",
+      "purpose": "First separate VexLife Home/Product accessibility from selected inference-session readiness so local runtime failure, Partner failure, missing credentials, cache failure, switching or an unconfigured model can hold only dependent inference while the person retains a truthful route to Home, Settings, recovery and another realization. Then form the smallest provider-neutral Direct Companion inference boundary that preserves current local mlx-lm behavior exactly while allowing Local Heretic or Partner realization beneath the same Vex-owned Conversation/Memory/capability turn. Current Warm Boot #518 owns VexLifeProdLocalService.kt plus DirectCompanionConnection/Turn overlap and Response Readiness #573 owns overlapping Companion/runtime cache paths, so do not race those writers; continue only disjoint Home-foundation/current-state source until their accepted results can be inherited.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -75,7 +78,12 @@
         "github.pull.vexlife-prod.518",
         "github.pull.vexlife-prod.442",
         "github.pull.vexlife-prod.383",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/local/VexLifeProdLocalSetup.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/local/VexLifeProdLocalSetup.kt",
+        "repo.vexlife-prod:docs/foundation/VEXLIFE-PROD-HOME.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/local/VexLifeProdRuntimeSession.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt",
+        "github.pull.vexlife-prod.573"
       ]
     },
     {
@@ -90,7 +98,7 @@
       "workRef": "work.vexlife.support-external-api.a1-model-source-topology",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A1 — Settings Local / Partner model-source topology",
-      "purpose": "Evolve Models so Local / Partner is a presentation filter over canonical model offerings rather than a second durable model-choice truth. #564/#567/#569/#572 now source-form source filtering, narrow Partner profiles, catalog-bound inventory and truthful restart Partner rows. Actual live service composition is held because current Warm Boot #518 owns VexLifeProdLocalService.kt, the route owner for GET /api/v1/models; do not race that writer. The live service also still needs a rightful accepted Partner support-proof source rather than hard-coded standing.",
+      "purpose": "Evolve Models so Local / Partner is a presentation filter over canonical model offerings rather than a second durable model-choice truth. #564/#567/#569/#572 now source-form source filtering, narrow Partner profiles, catalog-bound inventory and truthful restart Partner rows. Actual live service composition is held because current Warm Boot #518 owns VexLifeProdLocalService.kt, the route owner for GET /api/v1/models; do not race that writer. When composition opens, Models must remain reachable from the Home-accessible Product body even when no inference realization is currently usable. The live service also still needs a rightful accepted Partner support-proof source rather than hard-coded standing.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -409,7 +417,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T23:59:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -418,7 +426,7 @@
       "workRef": "work.vexlife.support-external-api.a9-cross-provider-lived-switching",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A9 — Lived local ↔ Partner model switching with one Vex continuity",
-      "purpose": "Prove the human can switch among qualified local and Partner models while one canonical Vex Home, Conversation, Memory and capability relationship persists; each turn reconstructs bounded provider-ready ground through the selected adapter; provider-side history/cache remains execution detail; and failures never cause silent provider fallback or duplicate turn effects.",
+      "purpose": "Prove the human can switch among qualified local and Partner models while one canonical Vex Home, Conversation, Memory and capability relationship persists; Home/Settings remain accessible during switching and failure so the person can recover, choose another realization or return without automatic fallback; each turn reconstructs bounded provider-ready ground through the selected adapter; provider-side history/cache remains execution detail; and failures never cause silent provider fallback or duplicate turn effects.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
