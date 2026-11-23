@@ -125,7 +125,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T20:05:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -134,7 +134,7 @@
       "workRef": "work.vexlife.support-external-api.a3-provider-adapters",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A3 — OpenAI / Anthropic / Kimi provider adapters",
-      "purpose": "Implement bounded provider realizations that translate the provider-neutral Companion contract into each provider's current request, authentication, streaming, reasoning/content and tool-call/result grammar, then normalize the result back into Vex-owned meaning without spreading vendor wire semantics through Conversation, Memory or capability owners.",
+      "purpose": "Implement bounded provider realizations that translate the provider-neutral Companion contract into each provider's current request, authentication, streaming, reasoning/content and tool-call/result grammar, then normalize the result back into Vex-owned meaning without spreading vendor wire semantics through Conversation, Memory or capability owners. Product PR #554 now source-forms a provisional pure wire-codec body for OpenAI Responses, Anthropic Messages and Kimi Chat Completions on disjoint paths, including exact provider-call identity preservation/result carriage; A3 remains dependency-held because network/credential/provider-session integration still requires A0/A2 and exact JVM execution is owed.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -149,7 +149,9 @@
         "projects/vexlife-support-external-api/README.md",
         "https://platform.openai.com/docs/api-reference/responses",
         "https://platform.claude.com/docs/en/api/messages",
-        "https://www.kimi.ai/help/kimi-api/api-overview"
+        "https://www.kimi.ai/help/kimi-api/api-overview",
+        "github.pull.vexlife-prod.554",
+        "repo.vexlife-prod:docs/work/support-external-api-wire-codecs/README.md"
       ]
     },
     {
@@ -244,7 +246,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T18:52:00.000Z",
+      "updatedAt": "2026-11-23T20:05:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -274,7 +276,9 @@
         "github.pull.vexlife-prod.553",
         "repo.vexlife-prod:docs/work/support-external-api-contract-fixtures/README.md",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/ExternalProviderContractFixturesTest.kt",
-        "repo.vexlife-prod:src/jvmTest/resources/vexlife/partner/provider-contract-fixtures/manifest.json"
+        "repo.vexlife-prod:src/jvmTest/resources/vexlife/partner/provider-contract-fixtures/manifest.json",
+        "github.pull.vexlife-prod.554",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/ExternalProviderWireCodecTest.kt"
       ]
     },
     {
