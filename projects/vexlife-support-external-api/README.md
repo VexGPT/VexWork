@@ -2212,6 +2212,88 @@ helper packaging / exact identity / platform proof
 
 No provider API account is required for those deterministic host proofs.
 
+## Windows host realization checkpoint — Product #562
+
+The first platform-protected host realization is now source-formed on Windows as a separate child of the shared #561 protocol/client.
+
+Current candidate:
+
+~~~text
+VexLife-Prod #562
+[Support External API][Windows Host][DRAFT]
+Protect credentials with Credential Manager
+
+head f7c6cba2f63a827ca403d993900448a4c2d3cbed
+base #561 current head 4d361ab6d242632b39d75becedd73d770e7ecc20
+ahead 9
+behind 0
+Windows-authored paths 3
+Warm Boot #518 overlap 0
+~~~
+
+Windows source:
+
+~~~text
+packaging/windows-partner-host/vexlife-partner-host.ps1
+docs/work/support-external-api-host-effect/WINDOWS-HOST.md
+VexLifePartnerWindowsHostSourceTest.kt
+~~~
+
+The helper uses the existing Windows PowerShell host substrate with embedded C# P/Invoke:
+
+~~~text
+Credential Manager
+  CRED_TYPE_GENERIC
+  CredWriteW / CredReadW / CredDeleteW / CredFree
+  CredGetSessionTypes
+  CRED_PERSIST_LOCAL_MACHINE required
+  no session-only fallback
+
+HTTPS
+  HttpClientHandler
+  AllowAutoRedirect=false
+  no default credentials
+  no cookies
+  certificate revocation checking
+~~~
+
+Secret membrane:
+
+~~~text
+argv
+  fixed PowerShell interpreter/flags/helper path only
+
+stdin STORE
+  non-secret header + raw secret bytes
+
+stdin EXECUTE
+  non-secret header + raw provider request body
+
+stdout
+  protocol NDJSON only
+
+API-key environment variables  NONE
+temporary secret files         NONE
+PowerShell transcript          NONE
+Write-Host debug path          NONE
+~~~
+
+The helper independently revalidates exact OpenAI / Anthropic / Kimi built-in provider coordinates. Provider 4xx/5xx remain ordinary response events for P1/A5; 3xx becomes REDIRECT_REJECTED.
+
+Current Windows standing:
+
+~~~text
+source formation                          PRESENT
+static source/security audit              PRESENT
+PowerShell 5.1 / embedded-C# execution    OWED
+Credential Manager lived lifecycle        OWED
+local deterministic HTTPS host proof      OWED
+packaging/helper identity                  OWED
+JVM -> Windows helper lived protocol       OWED
+live provider qualification                NOT REQUIRED
+~~~
+
+One transient tree-currentization tip b375c7ba... temporarily projected zero Windows paths and is explicitly superseded; current #562 restored the exact 3-path platform delta.
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
