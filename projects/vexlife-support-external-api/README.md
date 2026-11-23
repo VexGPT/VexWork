@@ -2556,6 +2556,43 @@ REPRESENTATION SUPPORT != PRODUCT QUALIFICATION
 The catalog is deliberately one baseline per provider so the full Vex relationship can be proven
 before broadening model choice.
 
+## A1 catalog-bound Partner inventory — Product #569
+
+The A1 source-filter trajectory now has a catalog-bound Partner inventory adapter:
+
+~~~text
+VexLife-Prod #569
+[Support External API][A1][DRAFT]
+Form catalog-bound Partner model inventory
+
+parents
+  A1 model-source projection #564
+  source-owned Partner profile catalog #567
+~~~
+
+The adapter iterates the VexLife-owned profile catalog rather than provider discovery.
+
+Permanent:
+
+~~~text
+PROVIDER-VISIBLE UNKNOWN MODEL
+!= PRODUCT INVENTORY ROW
+~~~
+
+For every source-supported profile it requires exact current:
+- Partner connection truth;
+- Partner support truth.
+
+Missing truth is rejected rather than defaulted. Targeted/serving coordinates must name an exact
+source-supported providerRef + modelRef.
+
+A HELD profile may remain visible without becoming selected or usable. Visibility remains distinct
+from model Use authority.
+
+The adapter adds no network, persistence, Select/Use Control, runtime convergence, or
+`VexLifeModels.kt` mutation. Actual Models service integration still needs a rightful current
+Partner state source and a fresh current-writer check.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
