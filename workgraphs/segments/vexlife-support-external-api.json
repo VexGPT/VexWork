@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.support-external-api",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Support External API",
+      "purpose": "Let one VexLife Home intentionally select local or external Partner model realization while VexLife remains the owner of Conversation, Memory, contextual ground, capability admission and durable turn truth; add truthful provider connection, credential, availability, failure, privacy and qualification semantics; prove the body deterministically without paid API access; and keep real provider qualification as an explicit later gate.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.support-external-api",
+        "projects/vexlife-support-external-api/README.md",
+        "human.design.vexlife.support-external-api.20261123",
+        "github.commit.vexlife-prod.0566b1eed876a28c2fcc6586743ae1f4af7eaecd"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a0-provider-neutral-seam",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A0 — Provider-neutral Companion inference seam",
+      "purpose": "Re-ground the current Direct Companion circuit and form the smallest provider-neutral inference boundary that preserves current local mlx-lm behavior exactly while separating Vex-facing prepared messages, capability offer, generation intent, progress/cancellation and normalized result/evidence from the current numeric-loopback-only provider realization.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "repo.vexlife-prod:docs/foundation/DIRECT-PERSONAL-COMPANION.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/companion/DirectCompanionConnectionTest.kt"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a1-model-source-topology",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A1 — Settings Local / Partner model-source topology",
+      "purpose": "Evolve the existing Models human relationship so the person first selects Local or Partner, then sees only the lawful models and controls for that realization; keep one model-selection semantic owner while local artifact/runtime controls and remote provider-connection controls remain distinct.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.support-external-api.a0-provider-neutral-seam"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a2-provider-connection",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A2 — Partner Provider Connection + credential/account/model contract",
+      "purpose": "Form one truthful Partner connection relationship covering provider identity, built-in endpoint realization, secure credential reference and standing, account/service state, provider-visible model access and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.support-external-api.a0-provider-neutral-seam",
+        "work.vexlife.support-external-api.a6-security-privacy-boundary"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "project.vex.security-assurance",
+        "https://platform.openai.com/docs/api-reference/responses",
+        "https://platform.claude.com/docs/en/api/messages",
+        "https://www.kimi.ai/help/kimi-api/api-overview"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a3-provider-adapters",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A3 — OpenAI / Anthropic / Kimi provider adapters",
+      "purpose": "Implement bounded provider realizations that translate the provider-neutral Companion contract into each provider's current request, authentication, streaming, reasoning/content and tool-call/result grammar, then normalize the result back into Vex-owned meaning without spreading vendor wire semantics through Conversation, Memory or capability owners.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.support-external-api.a0-provider-neutral-seam",
+        "work.vexlife.support-external-api.a2-provider-connection"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "https://platform.openai.com/docs/api-reference/responses",
+        "https://platform.claude.com/docs/en/api/messages",
+        "https://www.kimi.ai/help/kimi-api/api-overview"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a4-context-capability-continuity",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A4 — Preserve Vex context, Capability Bridge and effective capabilities across providers",
+      "purpose": "Prove that provider switching changes only the model/provider realization: canonical Conversation, Memory, Foundation, bounded prompt context and Capability Atlas/Bridge remain Vex-owned; provider-native tool requests converge into the same canonical Vex capability meaning; and effective capability availability is joined from exact connection/model/adapter/Product qualification rather than model names or marketing claims.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.support-external-api.a3-provider-adapters"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "repo.vexlife-prod:docs/foundation/CAPABILITY-ATLAS-SELF-FRAME.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeEffectiveModelCapabilities.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a5-failure-availability-semantics",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A5 — Provider failure, availability and retry semantics",
+      "purpose": "Normalize provider-specific status plus machine error type/code/body and stream-terminal evidence into truthful Vex meanings for invalid credentials, billing/quota holds, permission/model access, rate limits, overload, provider unavailability, invalid requests, context limits, malformed responses and interrupted streams; expose human controls without automatic cross-provider fallback or unsafe replay.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.support-external-api.a2-provider-connection",
+        "work.vexlife.support-external-api.a3-provider-adapters"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "https://platform.claude.com/docs/en/api/errors",
+        "https://www.kimi.ai/help/kimi-api/api-troubleshooting"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a6-security-privacy-boundary",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A6 — Credential, context-egress, tool-admission and replay security boundary",
+      "purpose": "Use the existing Vex Security Assurance question owner to source-place the minimum invariants for provider/credential identity, secret custody, bounded remote context egress, provider tool-call admission, failure/retry/replay and observability; prove them first through source review and synthetic/loopback negative controls without broad security ceremony or real external attack effects.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "project.vex.security-assurance",
+        "projects/vex-security-assurance/README.md",
+        "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a7-zero-cost-conformance",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A7 — Zero-cost deterministic provider conformance",
+      "purpose": "Exercise exact provider request/stream/tool/failure fixtures through injected transports and local harnesses so the external-provider consumer body, Settings state, effective capabilities, secret redaction, turn failure semantics and no-fallback laws can be proven without paid API calls; keep all real-provider availability and billing claims explicitly unestablished.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.support-external-api.a1-model-source-topology",
+        "work.vexlife.support-external-api.a2-provider-connection",
+        "work.vexlife.support-external-api.a3-provider-adapters",
+        "work.vexlife.support-external-api.a4-context-capability-continuity",
+        "work.vexlife.support-external-api.a5-failure-availability-semantics",
+        "work.vexlife.support-external-api.a6-security-privacy-boundary"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/companion/DirectCompanionConnectionTest.kt"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a8-live-provider-qualification",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A8 — Real external provider qualification",
+      "purpose": "After deterministic conformance is accepted, run the smallest bounded real provider/model round trip needed to prove the exact credential/account/model/stream/tool relationship claimed supported. This work remains held until a legitimate usable provider credential/account/credit or an explicitly accepted equivalent is available; no paid access is required for predecessor construction.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.support-external-api.a7-zero-cost-conformance"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "human.constraint.vexlife.support-external-api.no-funded-api-access.20261123"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.vexlife.support-external-api.a9-cross-provider-lived-switching",
+      "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
+      "label": "A9 — Lived local ↔ Partner model switching with one Vex continuity",
+      "purpose": "Prove the human can switch among qualified local and Partner models while one canonical Vex Home, Conversation, Memory and capability relationship persists; each turn reconstructs bounded provider-ready ground through the selected adapter; provider-side history/cache remains execution detail; and failures never cause silent provider fallback or duplicate turn effects.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.support-external-api.a8-live-provider-qualification"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-support-external-api/README.md",
+        "repo.vexlife-prod:docs/foundation/DIRECT-PERSONAL-COMPANION.md"
+      ]
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexlife.support-external-api",
+    "projects/vexlife-support-external-api/README.md",
+    "human.design.vexlife.support-external-api.20261123",
+    "human.constraint.vexlife.support-external-api.no-funded-api-access.20261123",
+    "github.commit.vexlife-prod.0566b1eed876a28c2fcc6586743ae1f4af7eaecd"
+  ],
+  "formedAt": "2026-11-23T17:02:00.000Z"
+}
