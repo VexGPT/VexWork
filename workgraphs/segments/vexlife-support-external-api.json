@@ -36,7 +36,8 @@
         "github.pull.vexlife-prod.518",
         "github.pull.vexlife-prod.559",
         "github.pull.vextreme-sdk.1969",
-        "github.pull.vexlife-prod.564"
+        "github.pull.vexlife-prod.564",
+        "github.pull.vexlife-prod.566"
       ]
     },
     {
@@ -186,7 +187,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T20:42:00.000Z",
+      "updatedAt": "2026-11-23T22:08:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -195,7 +196,7 @@
       "workRef": "work.vexlife.support-external-api.a4-context-capability-continuity",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A4 — Preserve Vex context, Capability Bridge and effective capabilities across providers",
-      "purpose": "Prove that provider switching changes only the model/provider realization: canonical Conversation, Memory, Foundation, bounded prompt context and Capability Atlas/Bridge remain Vex-owned; provider-native tool requests converge into the same canonical Vex capability meaning; and effective capability availability is joined from exact connection/model/adapter/Product qualification rather than model names or marketing claims. Preserve the exact provider-native call identity (OpenAI call_id, Anthropic tool_use.id, Kimi tool_call.id) across the Bridge result continuation as bounded carriage evidence without making that provider ID capability/effect/Conversation authority.",
+      "purpose": "Prove that provider switching changes only the model/provider realization: canonical Conversation, Memory, Foundation, bounded prompt context and Capability Atlas/Bridge remain Vex-owned; provider-native tool requests converge into the same canonical Vex capability meaning; and effective capability availability is joined from exact connection/model/profile/Product qualification rather than model names or marketing claims. Product #566 now source-forms a generic Partner effective-capability join using the existing AVAILABLE/HELD/NOT_APPLICABLE vocabulary, with no concrete provider/model capability assertions and no circular dependency on final Support Standing. Provider-native call identity carriage remains preserved by #554. A source-owned Partner model/profile inventory and full P2 turn proof remain unformed.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -211,7 +212,11 @@
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeEffectiveModelCapabilities.kt",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
         "github.pull.vexlife-prod.554",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/PartnerCapabilityExchange.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/PartnerCapabilityExchange.kt",
+        "github.pull.vexlife-prod.566",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifePartnerEffectiveModelCapabilities.kt",
+        "repo.vexlife-prod:src/commonTest/kotlin/vexlife/model/VexLifePartnerEffectiveModelCapabilitiesTest.kt",
+        "repo.vexlife-prod:docs/work/support-external-api-effective-capabilities/README.md"
       ]
     },
     {
