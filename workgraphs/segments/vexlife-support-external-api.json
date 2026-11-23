@@ -244,7 +244,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T18:40:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -253,7 +253,7 @@
       "workRef": "work.vexlife.support-external-api.a7-zero-cost-conformance",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A7 — Zero-cost deterministic provider conformance",
-      "purpose": "Exercise exact provider request/stream/tool/failure fixtures through injected transports and local harnesses so the external-provider consumer body, Settings state, effective capabilities, secret redaction, turn failure semantics and no-fallback laws can be proven without paid API calls; keep all real-provider availability and billing claims explicitly unestablished.",
+      "purpose": "Exercise exact provider request/stream/tool/failure fixtures through injected transports and local harnesses so the external-provider consumer body, Settings state, effective capabilities, secret redaction, turn failure semantics and no-fallback laws can be proven without paid API calls; keep all real-provider availability and billing claims explicitly unestablished. Product PR #553 now forms the P0 official-doc-conformant fixture corpus and JVM fixture-integrity source on disjoint paths; connected readback proves fixture structure while JVM execution remains owed. A7 itself stays dependency-held until the A0/A1/A2/A3/A4/A5/A6 implementation relationships exist.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -270,7 +270,11 @@
       ],
       "sourceRefs": [
         "projects/vexlife-support-external-api/README.md",
-        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/companion/DirectCompanionConnectionTest.kt"
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/companion/DirectCompanionConnectionTest.kt",
+        "github.pull.vexlife-prod.553",
+        "repo.vexlife-prod:docs/work/support-external-api-contract-fixtures/README.md",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/ExternalProviderContractFixturesTest.kt",
+        "repo.vexlife-prod:src/jvmTest/resources/vexlife/partner/provider-contract-fixtures/manifest.json"
       ]
     },
     {
