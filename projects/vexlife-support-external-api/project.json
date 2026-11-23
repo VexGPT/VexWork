@@ -60,7 +60,11 @@
     "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerFailureProjectionTest.kt",
     "repo.vexlife-prod:docs/work/support-external-api-failure-standing/README.md",
     "github.pull.vexlife-prod.559",
-    "github.pull.vextreme-sdk.1969"
+    "github.pull.vextreme-sdk.1969",
+    "github.pull.vexlife-prod.561",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerNetworkPlan.kt",
+    "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerNetworkPlanTest.kt",
+    "repo.vexlife-prod:docs/work/support-external-api-network-plan/README.md"
   ],
   "formedAt": "2026-11-23T17:02:00.000Z"
 }
