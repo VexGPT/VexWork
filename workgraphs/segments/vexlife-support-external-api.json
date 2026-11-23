@@ -103,7 +103,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T21:24:00.000Z",
+      "updatedAt": "2026-11-23T22:08:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -136,7 +136,9 @@
         "repo.vexlife:platform/android/app/src/main/kotlin/vexlife/android/security/AndroidHomeDevicePossessionKey.kt",
         "repo.vexlife:docs/HOME-BRIDGE-AUTHENTICATED-SESSION.md",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerCredentialCustody.kt",
-        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerCredentialCustodyTest.kt"
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerCredentialCustodyTest.kt",
+        "github.pull.vexlife-prod.562",
+        "repo.vexlife-prod:packaging/windows-partner-host/vexlife-partner-host.ps1"
       ]
     },
     {
@@ -241,7 +243,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T21:42:00.000Z",
+      "updatedAt": "2026-11-23T22:08:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -250,7 +252,7 @@
       "workRef": "work.vexlife.support-external-api.a6-security-privacy-boundary",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A6 — Credential, context-egress, tool-admission and replay security boundary",
-      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Current candidates keep the provider secret out of JVM read paths after storage: #558 exposes store/contains/delete protected custody with a 2,560-byte cross-platform bound; #561 forms exact no-secret NetworkPlan, HostEffect, native-helper protocol and JVM helper client. The JVM launches only the helper path, sends non-secret protocol metadata plus raw STORE/request payload bytes over stdin, drains stderr without logging, validates exact event coordinates and never receives the API key. Actual Windows Credential Manager/macOS Security.framework helpers, packaging and platform proof remain unformed.",
+      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Platform-neutral source keeps secrets out of JVM read paths; #562 now source-forms the first Windows protected host using generic Credential Manager storage with local-machine persistence checks and authenticated HTTPS with automatic redirects disabled. Windows execution/lived proof and helper packaging remain owed, and macOS Security.framework realization remains unformed. Provider-hosted/mutating tools and automatic fallback stay held.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -279,7 +281,11 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerNativeHostClient.kt",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerNativeHostProtocolTest.kt",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerNativeHostClientTest.kt",
-        "repo.vexlife-prod:docs/work/support-external-api-host-effect/NATIVE-PROTOCOL.md"
+        "repo.vexlife-prod:docs/work/support-external-api-host-effect/NATIVE-PROTOCOL.md",
+        "github.pull.vexlife-prod.562",
+        "repo.vexlife-prod:packaging/windows-partner-host/vexlife-partner-host.ps1",
+        "repo.vexlife-prod:docs/work/support-external-api-host-effect/WINDOWS-HOST.md",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerWindowsHostSourceTest.kt"
       ]
     },
     {
