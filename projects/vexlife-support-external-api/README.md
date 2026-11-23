@@ -2504,6 +2504,58 @@ Visual input keeps its own Product qualification requirement.
 
 Concrete source-owned Partner model/profile inventory remains unformed.
 
+## Initial Partner model/profile catalog — Product #567
+
+A source-owned representation catalog now exists:
+
+~~~text
+VexLife-Prod #567
+[Support External API][Profiles][DRAFT]
+Source initial Partner model catalog
+
+base
+#559 integration head 7c53da3c987ff1654085c05ff3c1121cca58de95
+
+delta
+3 exact new paths
+Warm Boot #518 overlap 0
+~~~
+
+Initial narrow baseline:
+
+~~~text
+OpenAI      gpt-6.2-sol
+Anthropic   claude-sonnet-5-5
+Kimi        kimi-k3
+~~~
+
+The catalog owns representation only:
+
+~~~text
+providerRef
+modelRef
+profileRef
+dialect
+provider-native client-tool representation
+reasoning-effort-control representation
+visual-input representation
+public source refs
+~~~
+
+It owns no account access, billing, qualification ref, live standing or provider-hosted tool
+authority.
+
+Permanent:
+
+~~~text
+PROVIDER MODEL LIST != VEXLIFE SUPPORT CATALOG
+PUBLIC MODEL SUPPORT != THIS ACCOUNT CAN ACCESS
+REPRESENTATION SUPPORT != PRODUCT QUALIFICATION
+~~~
+
+The catalog is deliberately one baseline per provider so the full Vex relationship can be proven
+before broadening model choice.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
