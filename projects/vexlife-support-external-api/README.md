@@ -232,6 +232,210 @@ VEXLIFE TURN OWNER
 A renderer may display this truth. It does not become the truth owner.
 A provider adapter may translate this truth. It does not become the semantic owner.
 
+## A0 source-grounded seam — current design result
+
+The current source trace shows the first provider-neutral boundary must be **above** the HTTP
+Connection.
+
+At the formation/current-main checkpoint, `DirectCompanionTurn` still consumes:
+
+~~~text
+VexLifeProdRuntimeSession.Foundation
+  state
+  productHome
+  qualifiedRuntimeEvidence : HereticModelConfiguration.QualifiedRuntimeEvidence
+
+DirectCompanionTurn
+  requires state == LOCAL_HERETIC_FOUNDATION_READY
+
+provider stage
+  runtimeEvidence : HereticModelConfiguration.QualifiedRuntimeEvidence
+  model           : HereticModelCatalog.Entry
+  transport       : DirectCompanionConnection.Transport
+        ↓
+DirectCompanionConnection.invoke(...)
+~~~
+
+That is truthful for today's local Product but structurally local-only.
+
+The durable Product split should become:
+
+~~~text
+HOME / CONVERSATION FOUNDATION
+  productHome
+  canonical Conversation
+  Memory / context owners
+  writer/currentness
+        |
+        +-------------------------------+
+                                        |
+SELECTED INFERENCE SESSION              |
+  exact selected model/provider         |
+  exact representation profile          |
+  exact current qualification            |
+  currentness / recovery semantics       |
+        |                               |
+        v                               v
+provider-neutral Direct Companion turn / capability loop
+        |
+        v
+provider realization
+  local Heretic runtime
+  Partner provider
+~~~
+
+Permanent:
+
+~~~text
+HOME_READY != LOCAL_HERETIC_RUNTIME_READY
+LOCAL_RUNTIME_READY != ONLY_VALID_COMPANION_REALIZATION
+
+PARTNER_PROVIDER_READY
+!= LOCAL ARTIFACT READY
+!= LOCAL PROCESS OWNERSHIP
+
+TURN OWNER
+!= PROVIDER SESSION OWNER
+~~~
+
+### Smallest extraction target
+
+Do not create one giant "universal provider" object.
+
+The smallest useful seam has three responsibilities:
+
+~~~text
+1. Qualified selected-inference evidence
+   enough identity/currentness/capability truth for the turn to admit one provider stage;
+   no Conversation/Memory ownership.
+
+2. Provider-stage invocation contract
+   prepared provider-ready messages
+   + current capability offer
+   + bounded attention/generation intent
+   + progress/cancellation
+   -> normalized provider-stage result.
+
+3. Provider realization
+   Local Heretic adapter keeps today's exact:
+     model catalog / runtime realization
+     loopback-only origin guard
+     mlx-lm/OpenAI/Harmony representation
+     local runtime recovery/lifetime evidence
+
+   Partner adapter keeps:
+     provider endpoint/auth/account/model currentness
+     external transport
+     provider wire grammar
+     provider failure classification.
+~~~
+
+Candidate recognition shape only—**not accepted Product class names**:
+
+~~~text
+QualifiedCompanionInference
+  selectionRef
+  providerRef
+  modelRef
+  profileRef
+  qualificationRef
+  contextWindowTokens?
+  providerSessionRef/currentness
+
+CompanionInferenceConnection
+  invoke(
+    qualifiedInference,
+    messages,
+    capabilityOffer,
+    progress,
+    cancellation
+  )
+  -> normalized Result
+
+LocalHereticInference
+  adapts HereticModelConfiguration.QualifiedRuntimeEvidence
+  + HereticModelCatalog.Entry
+  + existing DirectCompanionConnection behavior
+
+PartnerInference
+  adapts ProviderConnection currentness
+  + external provider/model realization
+~~~
+
+The exact names and source placement must be earned after #518 resolves and current Product source is
+re-grounded.
+
+### What remains with DirectCompanionTurn
+
+Do **not** move these into provider adapters:
+
+~~~text
+canonical human REQUEST durability
+request idempotency / failed-send semantics
+Conversation writer lease
+Memory/context selection
+Foundational Field selection
+capability current-frame admission
+capability request budget
+Conversation Source Return policy
+tool/source result loop ownership
+human progress projection policy
+canonical RESPONSE commit
+turn failure receipt / exact retry route
+Working Continuity post-completion stewardship
+~~~
+
+Those are Vex turn relationships, not provider relationships.
+
+### What moves below the provider-neutral seam
+
+Provider realizations may own only their bounded representation/effect questions:
+
+~~~text
+endpoint + authentication injection
+request wire format
+provider model identifier
+generation/reasoning wire controls
+tool declaration wire format
+stream / content / reasoning / tool-call parsing
+provider usage / timing observations
+provider error normalization
+provider invocation evidence
+~~~
+
+### Why this preserves current local behavior
+
+The first implementation should be an extraction/refactor test:
+
+~~~text
+before
+  DirectCompanionTurn -> DirectCompanionConnection(local)
+
+after
+  DirectCompanionTurn -> provider-neutral seam -> Local Heretic adapter
+                                      |
+                                      +-> same existing local Connection mechanics
+
+observable local request/response/evidence
+  = unchanged unless a separately admitted correction is required
+~~~
+
+Only after the local realization proves parity should a Partner adapter become a production
+realization.
+
+### Current source dependency
+
+The exact overlapping implementation surface remains owned by Warm Boot #518 at this checkpoint.
+Therefore the immediate A0 completion edge is:
+
+~~~text
+finish source-grounded seam / tests / acceptance shape
+-> wait only on overlapping mutation
+-> re-ground accepted #518 result + current main
+-> integrate the provider-neutral seam around the accepted warm-prefix behavior
+-> prove local parity
+~~~
+
 ## Settings topology
 
 The existing model dropdown should evolve as one Models relationship rather than creating a separate
