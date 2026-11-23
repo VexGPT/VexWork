@@ -98,7 +98,11 @@
     "github.pull.vexlife-prod.567",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerModelProfileCatalog.kt",
     "repo.vexlife-prod:src/commonTest/kotlin/vexlife/partner/VexLifePartnerModelProfileCatalogTest.kt",
-    "repo.vexlife-prod:docs/work/support-external-api-model-profile-catalog/README.md"
+    "repo.vexlife-prod:docs/work/support-external-api-model-profile-catalog/README.md",
+    "github.pull.vexlife-prod.569",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifePartnerModelInventory.kt",
+    "repo.vexlife-prod:src/commonTest/kotlin/vexlife/model/VexLifePartnerModelInventoryTest.kt",
+    "repo.vexlife-prod:docs/work/support-external-api-model-source/PARTNER-INVENTORY.md"
   ],
   "formedAt": "2026-11-23T17:02:00.000Z"
 }
