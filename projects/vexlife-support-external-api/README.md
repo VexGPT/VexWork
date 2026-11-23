@@ -1,0 +1,925 @@
+# Support External API
+
+`[VXG RealForever]`
+
+## Human outcome
+
+Let one VexLife Home intentionally choose **where Vex is realized** without making the selected provider
+the owner of the person's Vex.
+
+A person should be able to open **Settings → Models**, choose:
+
+~~~text
+Model source
+  Local
+  Partner
+~~~
+
+and then continue through the truthful options for that source:
+
+~~~text
+LOCAL
+  -> offered / imported local models
+  -> local artifacts + runtime realization
+  -> current local qualification
+
+PARTNER
+  -> provider connection
+  -> models actually available through that connection
+  -> selected remote model
+  -> current external qualification
+~~~
+
+The provider may change. The person's canonical Vex continuity does not.
+
+~~~text
+Vex Home
+  Conversation
+  Memory
+  contextual ground
+  Foundational Field
+  Capability Atlas / Bridge
+  durable turn history
+        |
+        +-> selected model/provider realization
+~~~
+
+Permanent:
+
+~~~text
+MODEL PROVIDER != VEX
+MODEL PROVIDER != CONVERSATION OWNER
+MODEL PROVIDER != MEMORY OWNER
+MODEL PROVIDER != CAPABILITY AUTHORITY
+MODEL PROVIDER != HOME OWNER
+
+SWITCH MODEL
+!= MIGRATE MEMORY
+!= START A NEW VEX
+!= COPY CONVERSATION INTO A PROVIDER-OWNED HISTORY
+
+LOCAL FAILURE
+!= AUTOMATIC CLOUD FALLBACK
+~~~
+
+## Why this Project exists
+
+VexLife-Prod already contains most of the architectural seam required for this work.
+
+At formation on 2026-11-23, current Product source showed:
+
+~~~text
+canonical Conversation / Memory / Foundation / context
+        ↓
+DirectPromptContext + DirectCompanionTurn
+        ↓
+HereticCompanionRepresentation
+  message protocol
+  reasoning representation
+  capability representation
+  generation configuration
+        ↓
+DirectCompanionConnection
+        ↓
+qualified runtime
+        ↓
+normalized result + invocation evidence
+        ↓
+same canonical Conversation
+~~~
+
+The current Connection is intentionally **numeric-loopback HTTP only**. It already:
+
+- consumes provider-ready messages rather than owning Conversation;
+- streams provider results;
+- understands provider-native OpenAI-style tool calls;
+- keeps raw provider response/request material bounded and mostly ephemeral;
+- records exact runtime/invocation evidence;
+- keeps Capability Atlas meaning and effect admission in VexLife;
+- rejects endpoint drift away from the currently qualified local runtime.
+
+That means external-provider support should not be implemented as a second Conversation stack or as
+provider-specific branches spread through Memory, UI and capability owners.
+
+The narrow architectural evolution is:
+
+~~~text
+current local-only provider realization
+        ↓
+provider-neutral Companion inference boundary
+        ↓
+one exact provider realization
+   local
+   OpenAI
+   Anthropic
+   Kimi
+   later custom compatible provider
+~~~
+
+Everything above that boundary stays VexLife-owned.
+
+Formation source ground:
+
+~~~text
+VexLife-Prod main observed
+0566b1eed876a28c2fcc6586743ae1f4af7eaecd
+
+primary source seams
+  VexLifeModelsFamily
+  VexLifeEffectiveModelCapabilities
+  HereticCompanionRepresentation
+  HereticRuntimeRealization
+  DirectCompanionConnection
+  DirectCompanionConnectionTest
+  Capability Atlas + Self-Capability Frame
+  Direct Personal Companion
+~~~
+
+Future work must re-ground current Product source before mutation. The formation commit is provenance,
+not a perpetual implementation pin.
+
+## VexArchitecture ownership map
+
+This Project follows the VexArchitecture rule that one semantic owner may have multiple realizations.
+
+~~~text
+PERSON'S MODEL CHOICE
+  VexLifeModelsFamily
+        ↓
+
+MODEL / PROVIDER REPRESENTATION
+  how already-owned Vex meanings are carried
+        ↓
+
+PROVIDER CONNECTION
+  provider identity
+  endpoint realization
+  credential reference / standing
+  account + service observation
+        ↓
+
+PROVIDER ADAPTER
+  request encoding
+  authentication injection
+  streaming / response decoding
+  provider error classification
+        ↓
+
+NORMALIZED COMPANION RESULT
+        ↓
+
+VEXLIFE TURN OWNER
+  capability admission
+  Conversation commit
+  evidence
+~~~
+
+A renderer may display this truth. It does not become the truth owner.
+A provider adapter may translate this truth. It does not become the semantic owner.
+
+## Settings topology
+
+The existing model dropdown should evolve as one Models relationship rather than creating a separate
+"cloud settings" owner.
+
+Human topology:
+
+~~~text
+Settings → Models
+
+Model source
+  ● Local
+  ○ Partner
+
+LOCAL
+  Model
+    Heretic 4B
+    Heretic 9B
+    Heretic 27B
+    imported local model
+    ...
+
+  truthful local-only controls when applicable
+    Download
+    Redownload
+    Remove
+    local runtime configuration
+    Use / Restart
+
+PARTNER
+  Provider
+    OpenAI
+    Anthropic
+    Kimi
+    Custom provider      # later / advanced, only if earned
+
+  Connection
+    Not connected
+    Checking
+    Connected
+    Needs attention
+    Temporarily unavailable
+
+  Model
+    models available through the exact current connection
+
+  Use this model
+~~~
+
+Permanent distinctions:
+
+~~~text
+SELECT SOURCE
+!= SELECT PROVIDER
+!= CONNECT PROVIDER
+!= SELECT MODEL
+!= AUTHORIZE REMOTE CONTEXT
+!= QUALIFY MODEL INVOCATION
+
+LOCAL ARTIFACT PRESENCE
+!= REMOTE PROVIDER AVAILABILITY
+
+DOWNLOAD / REMOVE
+-> local realization only
+
+API CONNECTION / ACCOUNT STANDING
+-> Partner realization only
+~~~
+
+The Product should project only lawful controls for the selected realization. It should not make
+remote models pretend to have downloadable artifacts or make local models pretend to have external
+billing/account state.
+
+## Provider Connection is a first-class relationship
+
+An API key alone is not the connection.
+
+For a built-in Partner, usable inference depends on the conjunction of:
+
+~~~text
+provider identity
++ admitted endpoint / API dialect
++ credential reference + current standing
++ account / organization / project standing where the provider exposes it
++ model accessibility
++ provider service availability
++ request capability compatibility
++ exact invocation qualification
+~~~
+
+Suggested semantic shape:
+
+~~~text
+ProviderConnection
+  providerRef
+
+  endpoint realization
+    BUILT_IN
+    CUSTOM       # only for an explicit custom-provider feature
+
+  credential
+    MISSING
+    PRESENT_UNVERIFIED
+    ACCEPTED
+    REJECTED
+
+  account
+    UNKNOWN
+    USABLE
+    BILLING_HELD
+    PERMISSION_HELD
+
+  service
+    UNKNOWN
+    READY
+    RATE_LIMITED
+    OVERLOADED
+    UNAVAILABLE
+
+  selected model access
+    UNKNOWN
+    AVAILABLE
+    NO_ACCESS
+    DEPRECATED
+    RETIRED
+
+  invocation
+    NEVER_QUALIFIED
+    QUALIFIED
+    LAST_INVOCATION_FAILED
+~~~
+
+These names are formation vocabulary, not accepted Product enums. Product source should earn the
+smallest compiler-visible representation required by real behavior and proof.
+
+### Built-in host versus user-supplied host
+
+For built-in providers, **VexLife owns the host/base endpoint**.
+
+The normal person should not have to know the provider hostname or API path.
+
+~~~text
+OpenAI built-in
+  Product/provider adapter owns current admitted endpoint + protocol
+
+Anthropic built-in
+  Product/provider adapter owns current admitted endpoint + protocol
+
+Kimi built-in
+  Product/provider adapter owns the exact selected Kimi product relationship
+
+Custom provider
+  only this explicit advanced relationship may accept a human-supplied base URL
+~~~
+
+Do not expose "base URL" as a normal field for OpenAI/Anthropic/Kimi merely because an HTTP client
+needs one internally.
+
+Kimi in particular demonstrates why Provider and Credential are separate coordinates: Kimi Open
+Platform and Kimi Code/subscription relationships may use different hosts, authentication and account
+semantics. Similar names must not be treated as one interchangeable credential surface.
+
+## Credential boundary
+
+Credentials are provider-connection dependencies, not model context.
+
+The durable Vex state may retain:
+
+~~~text
+credentialRef
+providerRef
+credential standing
+last bounded verification result
+~~~
+
+The secret itself must not enter:
+
+~~~text
+Conversation
+Memory
+Foundation
+prompt context
+Capability Atlas payload
+VexLogger human-content export
+provider request evidence
+Git
+Workgraph
+public Project source
+~~~
+
+Platform realization should use secure credential storage appropriate to the host.
+
+~~~text
+SECRET VALUE != CREDENTIAL REF
+CREDENTIAL PRESENT != AUTH ACCEPTED
+AUTH ACCEPTED != ACCOUNT USABLE
+ACCOUNT USABLE != MODEL ACCESSIBLE
+MODEL ACCESSIBLE != INVOCATION QUALIFIED
+~~~
+
+No credential value belongs in VexWork source or future Project receipts.
+
+## External-context privacy boundary
+
+Selecting a Partner model changes the data boundary.
+
+The human must be able to understand the difference:
+
+~~~text
+Local
+  bounded Vex context remains on this machine
+
+Partner
+  bounded context required for this turn is sent to the selected provider
+~~~
+
+Provider selection must not silently grant every available Vex source to that provider.
+
+The existing prompt/context owners continue to select the bounded turn ground. The provider adapter
+only receives the already-admitted provider-ready material.
+
+~~~text
+PROVIDER CONNECTION
+!= CONTEXT AUTHORITY
+
+REMOTE MODEL SELECTED
+!= SEND ALL MEMORY
+
+CAPABILITY AVAILABLE
+!= PROVIDER MAY EXECUTE IT DIRECTLY
+~~~
+
+Automatic local→remote fallback is explicitly held. A local model failure may offer a human choice to
+select another model; it must not silently export context to an external provider.
+
+## Provider representation and adapter contract
+
+The Vex-facing inference contract should normalize the relationship rather than expose each vendor's
+wire format throughout Product source.
+
+Conceptual boundary:
+
+~~~text
+Prepared Vex messages
++ current capability offer
++ generation intent
++ cancellation / progress observer
++ exact selected provider/model realization
+        ↓
+Provider Adapter
+  encode request
+  attach credential privately
+  perform bounded network transport
+  parse stream / response
+  normalize reasoning/content/tool-call observations
+  classify provider errors
+        ↓
+Normalized Companion Result
+  content
+  bounded human reasoning projection when admitted
+  capability request
+  provider usage/measurement
+  exact invocation evidence
+        ↓
+Direct Companion turn continues
+~~~
+
+Initial adapter families:
+
+~~~text
+LOCAL OPENAI-COMPATIBLE
+  preserve current mlx-lm behavior exactly
+
+OPENAI
+  use the current official OpenAI API contract selected at implementation time
+
+ANTHROPIC
+  Messages/content-block/tool-use representation
+
+KIMI OPEN PLATFORM
+  current OpenAI-compatible family where still true at implementation time
+
+CUSTOM OPENAI-COMPATIBLE
+  later, only when a real human need earns endpoint/configuration semantics
+~~~
+
+Current official API docs in this Project are formation references only. External provider contracts
+must be re-grounded before implementation or live proof.
+
+## Capability tools remain Vex-owned
+
+Current VexLife already carries the right semantic split:
+
+~~~text
+Capability Atlas
+  canonical capability meaning
+        ↓
+provider-native declaration grammar
+        ↓
+model asks for a capability
+        ↓
+VexLifeCapabilityBridge
+  current-frame admission
+  action/argument validation
+  request-count/token bounds
+        ↓
+rightful Vex source owner performs the read/effect
+        ↓
+canonical Vex result
+        ↓
+provider-native tool-result grammar
+        ↓
+same human turn continues
+~~~
+
+External providers must consume this same relationship.
+
+Examples:
+
+~~~text
+OpenAI tool/function request
+Anthropic tool_use
+Kimi OpenAI-compatible tool_call
+local Qwen native tool call
+        ↓
+ONE canonical Vex capability request meaning
+~~~
+
+Provider-hosted tools are **not** automatically equivalent to Vex-owned capabilities.
+
+Version 1 should prefer Vex-owned client tools only.
+
+~~~text
+OPENAI WEB SEARCH
+!= VEX WEB REACH
+
+ANTHROPIC HOSTED TOOL
+!= VEX CAPABILITY OWNER
+~~~
+
+A provider-hosted tool may become a separately admitted realization later if a concrete Product need
+earns it.
+
+## Effective model capabilities
+
+The current `VexLifeEffectiveModelCapabilities` is a strong starting seam.
+
+Today it joins provider/model representation + exact runtime realization + qualified runtime evidence
+to answer what is available **now**.
+
+External support should extend that idea rather than infer capabilities from model names or provider
+marketing.
+
+Potential future join:
+
+~~~text
+selected model
++ provider representation
++ provider connection standing
++ exact model access
++ provider-adapter capability
++ current invocation qualification
++ Product-owned feature qualification
+        ↓
+effective capabilities now
+~~~
+
+Preserve:
+
+~~~text
+MODEL NAME != CAPABILITY
+PROVIDER CLAIM != PRODUCT QUALIFICATION
+PROVIDER CONNECTION != TOOL AUTHORITY
+MULTIMODAL MODEL != QUALIFIED VEX VISUAL INPUT
+~~~
+
+## Failure and availability semantics
+
+A generic `API_ERROR` is insufficient.
+
+The provider adapter should preserve provider-specific evidence while projecting a bounded canonical
+Vex meaning.
+
+Canonical human-relevant families should distinguish at least:
+
+~~~text
+CREDENTIAL_REJECTED
+ACCOUNT_OR_BILLING_HELD
+MODEL_NOT_ACCESSIBLE
+PERMISSION_HELD
+RATE_LIMITED
+PROVIDER_OVERLOADED
+PROVIDER_UNAVAILABLE
+REQUEST_INVALID
+CONTEXT_LIMIT_EXCEEDED
+CAPABILITY_REPRESENTATION_UNSUPPORTED
+STREAM_INTERRUPTED
+RESPONSE_INVALID
+UNKNOWN_PROVIDER_FAILURE
+~~~
+
+Exact enum/source shape is implementation work.
+
+The adapter must classify from the provider's current status + machine error type/code/body contract,
+not status code alone.
+
+Examples of why:
+
+~~~text
+429 rate limited
+!= 429 quota/balance exhausted
+!= 429 provider overloaded
+
+HTTP 200 stream established
+!= stream completed successfully
+~~~
+
+DisplayState should translate that truth into human language such as:
+
+~~~text
+"Your key is not accepted."
+"Your connection is valid, but this account needs billing attention."
+"This model is not available to this provider account."
+"The provider is temporarily limiting requests."
+"The provider is overloaded right now."
+"The response stream ended before Vex received a complete answer."
+~~~
+
+The UI should normally offer the smallest meaningful controls:
+
+~~~text
+Check again
+Manage connection
+Change model
+Retry this turn      # only when the turn/retry contract permits it
+~~~
+
+No provider failure should rewrite the selected model, delete history, fabricate a response, or
+silently route the turn through another provider.
+
+## Turn / Conversation failure boundary
+
+Provider invocation happens inside a larger canonical Vex turn.
+
+Preserve causal truth:
+
+~~~text
+human Send
+-> canonical request may become durable
+-> provider invocation
+-> provider completes
+-> canonical response commit
+~~~
+
+If invocation fails after the request is durable:
+
+~~~text
+request remains historical truth
+response is NOT fabricated
+partial provider text is NOT silently promoted to completed Conversation
+failure / recovery state is retained at the rightful evidence boundary
+retry follows the existing turn/idempotency contract
+~~~
+
+A stream that starts with success and later fails must be treated by its terminal stream semantics,
+not by the opening HTTP status alone.
+
+## Model switching
+
+Provider switching should preserve one canonical Vex continuity:
+
+~~~text
+turn 1 -> Heretic 4B
+turn 2 -> Anthropic model
+turn 3 -> OpenAI model
+turn 4 -> Kimi model
+turn 5 -> local 27B
+
+all remain:
+  one Vex Home
+  one Conversation lineage
+  current Memory
+  current Context relationships
+~~~
+
+Each turn reconstructs the bounded provider-ready ground from Vex-owned sources and translates it
+through the exact selected provider adapter.
+
+Provider-native conversation/history products are not the canonical Vex Conversation in the first
+implementation.
+
+Provider-side prompt/cache state may later be used as execution optimization where truthful:
+
+~~~text
+PROVIDER CACHE != VEX MEMORY
+PROVIDER CONVERSATION ID != CANONICAL VEX CONVERSATION
+~~~
+
+## Zero-cost construction and proof
+
+Lack of paid API access is **not** a blocker for the main engineering body.
+
+Current `DirectCompanionConnectionTest` already demonstrates the needed test seam: inject a
+deterministic Transport, feed exact JSON/SSE, inspect the formed request, and verify normalized
+Product behavior without a real provider.
+
+The Project should build the external-provider consumer body using source-bound synthetic fixtures:
+
+~~~text
+provider request encoder
+provider auth-header injection seam
+provider streaming parser
+tool-call / tool-result parser
+usage/measurement parser
+error classifier
+credential redaction
+connection/model discovery normalization
+Settings DisplayState
+effective capability projection
+turn failure / retry behavior
+~~~
+
+Minimum deterministic fixture matrix:
+
+~~~text
+successful text response
+successful stream
+successful native tool call
+tool result continuation
+reasoning/content representation
+invalid credential
+permission denied
+model unavailable
+billing/quota held
+rate limit with retry signal
+rate limit without useful retry signal
+provider overload
+5xx / transient service failure
+connection timeout/reset
+malformed response
+partial SSE / stream error after initial success
+context too large
+malformed tool call
+unoffered tool call
+unknown provider error
+credential value never logged/persisted
+no automatic cross-provider fallback
+Conversation not corrupted on failure
+~~~
+
+Synthetic PASS means exactly:
+
+~~~text
+consumer/adapter behavior is proven for the fixture
+~~~
+
+It does **not** mean:
+
+~~~text
+real provider reachable
+real credential valid
+real billing usable
+real model accessible
+real provider tool behavior conformant
+live end-to-end qualified
+~~~
+
+## Selective Security Assurance relationship
+
+This work is security-relevant because it introduces / changes:
+
+~~~text
+credential / secret custody
+external network/provider boundary
+private Conversation/Memory/context egress
+model + tool-call boundary
+provider error/retry behavior
+fallback/replay behavior
+~~~
+
+Use the existing Vex Security Assurance Project selectively.
+
+Relevant adversarial question families include:
+
+~~~text
+IDENTITY
+  can one provider/host/key be mistaken for another?
+
+SCOPE
+  can context/tool data exceed the admitted turn/provider scope?
+
+PRIVILEGE
+  can one credential be reused outside its provider/account/lifetime?
+
+MEMORY / CONTEXT
+  can provider-returned or attacker-controlled text become durable truth incorrectly?
+
+TOOL / EFFECT
+  can a provider tool request bypass Vex capability admission?
+
+RETRY / RECOVERY
+  can timeout/failure cause duplicate provider requests, widened fallback or duplicate effects?
+
+OBSERVABILITY
+  can remote egress/effects occur without evidence sufficient to diagnose them?
+~~~
+
+Prefer A0-A2 Security Assurance tiers—source review, synthetic fixtures, loopback/deterministic
+negative controls. Real provider/adversarial effects require their own explicit later authority.
+
+The Support External API Project consumes Security Assurance meaning. It does not create a second
+security ontology.
+
+## Work trajectory
+
+Current Work decomposition:
+
+~~~text
+Support External API                                         DECOMPOSED
+
+A0 Provider-neutral inference seam                           READY
+   preserve current local behavior while separating Vex-facing inference meaning from
+   loopback-only realization.
+
+A1 Settings Local / Partner topology                         WAITING_DEPENDENCIES
+   evolve the existing Models Family so lawful controls differ by local vs Partner realization
+   without creating two model-selection owners.
+
+A2 Provider Connection + credential/account/model contract  WAITING_DEPENDENCIES
+   built-in endpoints, secure credential refs, account/model/service standing, model discovery.
+
+A3 External provider adapters                               WAITING_DEPENDENCIES
+   OpenAI, Anthropic and Kimi request/stream/tool/result translations.
+
+A4 Capability + context continuity                          WAITING_DEPENDENCIES
+   prove one Vex Capability Bridge / Conversation / Memory relationship survives provider change.
+
+A5 Failure / availability / retry semantics                 WAITING_DEPENDENCIES
+   exact provider failures -> canonical Vex meaning -> truthful human controls.
+
+A6 Security / privacy boundary                              READY
+   source-place the minimum credential, egress, tool-admission, replay/fallback and evidence
+   invariants using Vex Security Assurance as the question owner.
+
+A7 Zero-cost deterministic conformance                      WAITING_DEPENDENCIES
+   fixture matrix across adapters + Settings + capability + turn failure behavior.
+
+A8 Real provider qualification                              WAITING_DEPENDENCIES
+   after A7, requires a real usable provider credential/account/credit or an explicitly accepted
+   equivalent. One small bounded live proof per provider/model relationship.
+
+A9 Cross-provider lived switching                           WAITING_DEPENDENCIES
+   prove local ↔ Partner switching preserves one Vex continuity and never silently falls back.
+~~~
+
+Project formation does not itself authorize Product mutation. Exact VexLife-Prod source work must
+enter through the Product's current source/culture/coordination route.
+
+## Completion direction
+
+The Project is not complete when an API request returns 200.
+
+Completion should establish:
+
+~~~text
+one Models human topology
++ one provider-connection semantic relationship
++ secure credential custody
++ provider-neutral Vex-facing inference contract
++ exact provider adapter realizations
++ provider-native tool translation into one Vex Capability Bridge
++ canonical failure/retry/availability semantics
++ no automatic local↔remote fallback
++ deterministic $0 conformance evidence
++ selective security/privacy proof
++ at least one live qualified round trip for each provider relationship claimed supported
++ lived cross-provider model switching preserving canonical Conversation/Memory
++ current human-readable Work / proof state
+~~~
+
+Support claims remain provider/model-specific.
+
+~~~text
+OPENAI QUALIFIED
+!= ANTHROPIC QUALIFIED
+!= KIMI QUALIFIED
+!= CUSTOM PROVIDER QUALIFIED
+~~~
+
+A provider integration may ship in stages if the Product/release owner permits it. The Project does
+not require all imaginable external providers to complete simultaneously.
+
+## Current held edge
+
+At formation:
+
+~~~text
+Architecture / current Product seam     SOURCE_GROUNDED
+Project formation                       IN PROGRESS ON VEXWORK CANDIDATE
+Paid external API access                NOT AVAILABLE TO VICTOR
+Real provider qualification             HELD
+Synthetic provider proof                AVAILABLE
+Product implementation authority        NOT GRANTED BY THIS PROJECT
+~~~
+
+The lack of paid access holds only A8/A9 live-provider claims. It does not hold A0-A7 construction
+and deterministic proof once Product source authority is separately admitted.
+
+## Fresh-instance resume coordinate
+
+A fresh instance should begin here:
+
+~~~text
+projects/vexlife-support-external-api/README.md
+-> project.json
+-> workgraphs/segments/vexlife-support-external-api.json
+-> re-ground current VexLife-Prod AGENTS.md + docs/CULTURE.md
+-> inspect current versions of the exact seams named in Current source ground
+-> inspect current official provider contract only for the provider being implemented
+-> consume Vex Security Assurance only for the boundary being changed
+-> select the first unfinished Work item whose dependency + authority predicates are satisfied
+~~~
+
+Do not reconstruct this design from old chats.
+Do not assume the formation-time Product commit is still current.
+Do not re-decide the permanent ownership distinctions unless current source contradicts them.
+
+## Formation boundary
+
+This Project formation does **not** authorize:
+
+- VexLife-Prod source mutation;
+- credential creation or collection;
+- use of Victor's real provider accounts;
+- paid inference;
+- purchase or billing changes;
+- transmission of real Conversation/Memory to an external provider;
+- automatic provider fallback;
+- provider-hosted tool activation;
+- public deployment/release;
+- weakening current loopback restrictions before the provider-neutral seam and security contract are
+  properly admitted and proven.
+
+Those remain exact later effects under their rightful source/authority owners.
+
+<!-- [VXG RealForever][VEXWORK][VEXLIFE][SUPPORT-EXTERNAL-API][PROJECT] -->
