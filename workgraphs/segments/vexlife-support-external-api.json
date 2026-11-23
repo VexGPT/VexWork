@@ -213,7 +213,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:45:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -222,7 +222,7 @@
       "workRef": "work.vexlife.support-external-api.a6-security-privacy-boundary",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A6 — Credential, context-egress, tool-admission and replay security boundary",
-      "purpose": "Use the existing Vex Security Assurance question owner to source-place the minimum invariants for provider/credential identity, secret custody, bounded remote context egress, provider tool-call admission, failure/retry/replay and observability; prove them first through source review and synthetic/loopback negative controls without broad security ceremony or real external attack effects.",
+      "purpose": "Use the existing Vex Security Assurance question owner to source-place the minimum invariants for provider/credential identity, secret custody, bounded remote context egress, provider tool-call admission, failure/retry/replay and observability. Current source proves the first Capability Bridge surface is read-only (`effectAuthorityGranted=false`, `externalEffectsExecuted=false`) and current transport disables redirects; preserve those bounds, keep mutating/provider-hosted tools held, and resolve the exact Product credential owner before A2 implementation. Prove first through source review and synthetic/loopback negative controls without broad security ceremony or real external attack effects.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -235,7 +235,10 @@
         "projects/vexlife-support-external-api/README.md",
         "project.vex.security-assurance",
         "projects/vex-security-assurance/README.md",
-        "projects/vex-security-assurance/ADVERSARIAL-LENS.md"
+        "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityBridge.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/capability/VexLifeCapabilityRequest.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt"
       ]
     },
     {
