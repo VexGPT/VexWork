@@ -66,7 +66,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:02:00.000Z",
+      "updatedAt": "2026-11-23T17:55:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -75,7 +75,7 @@
       "workRef": "work.vexlife.support-external-api.a1-model-source-topology",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A1 — Settings Local / Partner model-source topology",
-      "purpose": "Evolve the existing Models human relationship so the person first selects Local or Partner, then sees only the lawful models and controls for that realization; keep one model-selection semantic owner while local artifact/runtime controls and remote provider-connection controls remain distinct.",
+      "purpose": "Evolve the existing Models human relationship so Local / Partner is first a presentation filter over canonical model offerings rather than a second durable model-choice truth. Each model row carries its source relationship (LOCAL or PARTNER(providerRef)); exact model Select/Use remains the semantic choice. Local rows keep artifact/runtime controls, Partner rows consume A2 Provider Connection/model-access truth and expose only lawful remote controls. Persist a separate source preference only if later Product pressure proves independent meaning.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
