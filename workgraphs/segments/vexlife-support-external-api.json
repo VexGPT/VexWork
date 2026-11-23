@@ -245,7 +245,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:52:00.000Z",
+      "updatedAt": "2026-11-23T23:08:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -254,7 +254,7 @@
       "workRef": "work.vexlife.support-external-api.a6-security-privacy-boundary",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A6 — Credential, context-egress, tool-admission and replay security boundary",
-      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Platform-neutral #561 keeps secrets out of JVM read paths and defines the native host protocol/client. Windows #562 now source-forms Credential Manager + redirect-denying HTTPS and a no-API synthetic host proof runner; macOS #563 source-forms Security.framework Keychain + redirect-refusing URLSession and a no-API proof runner that compiles the exact Swift helper first. Native OS execution, packaging identity and lived helper protocol proof remain owed; provider-hosted/mutating tools and automatic fallback stay held.",
+      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Platform-neutral #561 keeps secrets out of JVM read paths and defines the native host protocol/client. Windows #562 source-forms Credential Manager + redirect-denying HTTPS and a synthetic no-API host proof. macOS #563 now additionally source-binds the Security.framework helper into private service-image v6: helper compile/sign/verify, exact SHA manifest ownership, payload fingerprinting, and observation through VexLifeProdPrivateServiceImage.partnerHostExecutablePathOrNull. Native OS execution and lived proof remain owed; provider-hosted/mutating tools and automatic fallback stay held.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -293,7 +293,10 @@
         "repo.vexlife-prod:packaging/macos-partner-host/VexLifePartnerHost.swift",
         "repo.vexlife-prod:tools/macos-partner-host/PROVE-CREDENTIAL-HOST.command",
         "repo.vexlife-prod:docs/work/support-external-api-host-effect/MACOS-HOST.md",
-        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerAccountScope.kt"
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerAccountScope.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/packaging/VexLifeProdPrivateServiceImage.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/packaging/VexLifeProdPrivateServiceImageTest.kt",
+        "repo.vexlife-prod:build.gradle.kts"
       ]
     },
     {
