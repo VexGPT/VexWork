@@ -103,7 +103,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:08:00.000Z",
+      "updatedAt": "2026-11-23T22:52:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -112,7 +112,7 @@
       "workRef": "work.vexlife.support-external-api.a2-provider-connection",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A2 — Partner Provider Connection + credential/account/model contract",
-      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned built-in endpoint/dialect, protected host credential custody by opaque credentialRef, account/service state, provider-visible model offerings and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph. Product #558 now source-forms connection standing, built-in provider catalog, portable store/observe/replace/retire credential custody, and a protected-host store port with no JVM credential-read method. Production request execution is delegated to a native host effect so the API secret remains inside Keychain/Credential Manager ownership after storage. Exact macOS/Windows helpers and repository-native JVM proof remain unformed/owed.",
+      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned built-in endpoint/dialect, protected host credential custody by opaque credentialRef, optional provider-specific non-secret account scope, account/service state, provider-visible model offerings and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph. Product #558 source-forms connection standing, provider catalog, no-JVM-secret credential custody, and VexLifePartnerAccountScope; Anthropic may carry an explicit wrkspc_ workspace coordinate only when the credential is not already scoped, while OpenAI/Kimi reject that coordinate. Platform host execution remains separately unproved.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -138,7 +138,9 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerCredentialCustody.kt",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerCredentialCustodyTest.kt",
         "github.pull.vexlife-prod.562",
-        "repo.vexlife-prod:packaging/windows-partner-host/vexlife-partner-host.ps1"
+        "repo.vexlife-prod:packaging/windows-partner-host/vexlife-partner-host.ps1",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerAccountScope.kt",
+        "repo.vexlife-prod:src/commonTest/kotlin/vexlife/partner/VexLifePartnerAccountScopeTest.kt"
       ]
     },
     {
@@ -243,7 +245,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:34:00.000Z",
+      "updatedAt": "2026-11-23T22:52:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -290,7 +292,8 @@
         "repo.vexlife-prod:tools/windows-partner-host/PROVE-CREDENTIAL-HOST.ps1",
         "repo.vexlife-prod:packaging/macos-partner-host/VexLifePartnerHost.swift",
         "repo.vexlife-prod:tools/macos-partner-host/PROVE-CREDENTIAL-HOST.command",
-        "repo.vexlife-prod:docs/work/support-external-api-host-effect/MACOS-HOST.md"
+        "repo.vexlife-prod:docs/work/support-external-api-host-effect/MACOS-HOST.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerAccountScope.kt"
       ]
     },
     {
