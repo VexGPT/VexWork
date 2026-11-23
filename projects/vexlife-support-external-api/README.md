@@ -1412,6 +1412,108 @@ network/stream retry after read-only capability return
 
 These are defensive fixture requirements, not claims that Product source has implemented them yet.
 
+## Zero-cost proof checkpoint — Product PR #553
+
+A parallel Product proof lane is now source-formed:
+
+~~~text
+VexLife-Prod PR #553
+[Support External API][P0][DRAFT] Add official-contract provider fixtures
+
+base
+0566b1eed876a28c2fcc6586743ae1f4af7eaecd
+
+branch
+VXG-112326-support-external-api-contract-fixtures-a001
+
+changed paths
+13 exact
+all new docs / JVM-test / test-resource paths
+
+overlap with Warm Boot #518 shared Connection/Turn paths
+0
+~~~
+
+The first proof class is:
+
+~~~text
+P0 DOCUMENTED CONTRACT FIDELITY
+  official provider docs
+  -> source-controlled synthetic fixtures
+  -> fixture-shape assertions
+~~~
+
+Provider coverage:
+
+~~~text
+OpenAI Responses
+  text SSE
+  function-call call_id correlation
+  auth/rate/credit/spend/server failure distinctions
+
+Anthropic Messages
+  block-shaped content
+  partial streamed tool JSON
+  message_stop terminal completion
+  error event after stream establishment
+  auth/billing/permission/rate/overload distinctions
+
+Kimi Open Platform
+  OpenAI-compatible Chat Completions
+  streamed tool_calls assembly
+  finish_reason=tool_calls
+  auth/permission/model/rate/quota/overload/server distinctions
+~~~
+
+Current exact connected-repository readback:
+
+~~~text
+declared fixtures                  10
+all JSON fixtures                  PARSE PASS
+all SSE JSON data                  PARSE PASS
+OpenAI terminal completion         PASS
+OpenAI call_id correlation         PASS
+Anthropic partial tool JSON        PASS
+Anthropic started-stream error     PASS
+Kimi streamed tool assembly        PASS
+credential-like fixture hits       0
+~~~
+
+A JVM fixture-integrity test is source-formed but not executed by the current hosted runner because
+that runner could not resolve GitHub for source acquisition. Therefore:
+
+~~~text
+fixture bytes / structural readback    PROVEN
+JVM test source                        FORMED
+JVM execution                          OWED
+live provider qualification            NOT ESTABLISHED
+~~~
+
+This does **not** advance A7 to READY or RUNNING. P0 is an input to later A7 adapter/Vex conformance.
+A7 still depends on the provider-neutral seam, Partner connection, adapters, capability continuity,
+failure semantics and security boundary.
+
+### Merge-conflict rule
+
+#553 is intentionally disjoint from current Warm Boot #518.
+
+~~~text
+#518 merges
+-> retain #553 fixture meaning
+-> re-ground accepted #518 Connection/Turn semantics
+-> later adapter candidate consumes fixtures through accepted A0 seam
+
+#518 closes unmerged
+-> retain #553 fixture meaning
+-> re-ground current main
+-> form A0 source from accepted Product
+
+#518 changes shared APIs/classes
+-> fixture corpus does not chase historical class names
+-> future adapter/integration branch resolves compile/source relationship
+-> do not manufacture semantic merge conflicts where fixture truth is unchanged
+~~~
+
 ## Work trajectory
 
 Current Work decomposition:
