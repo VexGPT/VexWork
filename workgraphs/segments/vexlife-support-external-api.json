@@ -66,7 +66,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T17:55:00.000Z",
+      "updatedAt": "2026-11-23T21:05:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -88,7 +88,9 @@
       "sourceRefs": [
         "projects/vexlife-support-external-api/README.md",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt",
+        "github.pull.vexlife-prod.556",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerSupportQualification.kt"
       ]
     },
     {
@@ -287,7 +289,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T19:10:00.000Z",
+      "updatedAt": "2026-11-23T21:05:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -308,7 +310,9 @@
       ],
       "sourceRefs": [
         "projects/vexlife-support-external-api/README.md",
-        "human.constraint.vexlife.support-external-api.no-funded-api-access.20261123"
+        "human.constraint.vexlife.support-external-api.no-funded-api-access.20261123",
+        "github.pull.vexlife-prod.556",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerSupportQualification.kt"
       ]
     },
     {
