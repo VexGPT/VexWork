@@ -2145,6 +2145,73 @@ Do not regress to:
 - JVM credential-return methods;
 - homemade reversible Home encryption.
 
+## Native helper protocol/client checkpoint — Product #559 / #561
+
+The zero-cost execution boundary is now source-formed through the JVM/native process membrane.
+
+Current combined Product candidate:
+
+~~~text
+#559 integration head
+2182041d094fe0265eaddc77b78430773a4ac0b0
+
+base current main
+0566b1eed876a28c2fcc6586743ae1f4af7eaecd
+
+ahead 92
+behind 0
+paths 47
+Warm Boot #518 overlap 0
+~~~
+
+Current source includes:
+
+~~~text
+VexLifePartnerNativeHostProtocol
+  one-shot STORE / OBSERVE / DELETE / EXECUTE framing
+  secret absent from JSON
+  STORE secret only as raw stdin bytes
+  EXECUTE request body only as raw stdin bytes
+  NDJSON non-secret output events
+  providerRef independently revalidated by native helper
+  redirect denial only
+
+VexLifePartnerNativeHostClient
+  argv = helper executable path only
+  stdin = header + raw payload
+  stdout = protocol events
+  stderr = drained/discarded
+  bounded process timeout while stdout/stderr drain concurrently
+  exact providerRef/credentialRef event validation
+  body-chunk reassembly + terminal digest verification
+~~~
+
+Credential custody now uses one cross-platform secret bound:
+
+~~~text
+MaximumSecretBytes = 2,560 UTF-8 bytes
+~~~
+
+matching the current Windows generic Credential Manager blob maximum. The size is measured without
+forming an immutable secret String.
+
+Production JVM source still has no credential-read method. The native platform helper is the only
+future owner allowed to resolve an OS-protected secret for authenticated HTTPS execution.
+
+Remaining host work:
+
+~~~text
+Windows helper
+  Credential Manager + HTTPS + redirect refusal
+
+macOS helper
+  Security.framework Keychain + HTTPS + redirect refusal
+
+helper packaging / exact identity / platform proof
+~~~
+
+No provider API account is required for those deterministic host proofs.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
