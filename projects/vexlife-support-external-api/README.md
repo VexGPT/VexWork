@@ -2342,6 +2342,45 @@ live provider qualification    NOT REQUIRED FOR THESE GATES
 
 Important macOS held question:
 current VexLife distribution is ad-hoc signed, so Keychain access continuity across rebuilt helper binaries must be lived proven rather than assumed.
+## Current integration / account-scope checkpoint
+
+Current platform-neutral zero-cost candidate:
+
+~~~text
+VexLife-Prod #559
+head 7c53da3c987ff1654085c05ff3c1121cca58de95
+base current main 0566b1eed876a28c2fcc6586743ae1f4af7eaecd
+paths 49
+Warm Boot #518 overlap 0
+~~~
+
+The foundation now includes an explicit non-secret provider account-scope relationship:
+
+~~~text
+Anthropic scoped credential
+  -> workspaceId may be absent
+
+Anthropic unscoped credential
+  -> VexLifePartnerAccountScope(workspaceId=wrkspc_...)
+  -> public anthropic-workspace-id header
+
+OpenAI / Kimi
+  -> workspace coordinate rejected
+~~~
+
+This coordinate is not the API key, billing authority, model support authority or live qualification.
+
+Platform children remain separate:
+
+~~~text
+Windows #562 head 37b8b295cd8604a68dd54b7c4f27a0650c225c2f
+  no-API Credential Manager proof runner formed
+
+macOS #563 head bc739e5c090618edb6b0965b1596b81e8b1e7d4d
+  no-API swiftc + Keychain proof runner formed
+~~~
+
+Do not fold #562/#563 into the foundation candidate until their native host execution evidence exists.
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
