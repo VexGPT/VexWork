@@ -1712,6 +1712,68 @@ Windows protected secret storage UNFORMED
 An OS-backed secret facility is preferred. Product-owned reversible encrypted JSON in Vex Home is
 not admitted merely for convenience.
 
+## Credential-custody implementation checkpoint — Product #558
+
+The earned credential-custody owner has advanced beyond design-only source.
+
+Current Product source:
+
+~~~text
+VexLifePartnerCredentialCustody
+  built-in providerRef binding
+  opaque credentialRef lifecycle
+  protected-host store port
+  store / observe / withCredential / replace / retire
+  non-secret mutation receipts
+  zeroized execution-callback copy
+
+test-only fake
+  deterministic proof realization only
+  not production fallback
+~~~
+
+Current negative controls source-pressure:
+
+~~~text
+wrong providerRef
+  -> fail before protected-secret callback
+
+replace
+  -> stage new ref
+  -> retire old ref
+  -> if old retirement fails:
+       retire staged new ref
+       prove staged ref absent
+       fail replacement
+
+retire
+  -> exact ref absent + unresolvable
+
+Custom provider
+  -> unformed / not admitted to custody
+~~~
+
+Static source membrane:
+
+~~~text
+network dependency                  0
+VexLogger / console secret path     0
+environment secret lookup           0
+secret field in mutation receipt    0
+shared Warm Boot #518 overlap       0
+~~~
+
+Remaining host realization:
+
+~~~text
+macOS protected host store          UNFORMED
+Windows protected host store        UNFORMED
+repository-native Gradle/JVM proof  OWED
+~~~
+
+Do not replace the protected-host gap with reversible encrypted Home JSON, a production in-memory
+fallback, or secret-bearing process arguments merely to close A2 faster.
+
 ## Work trajectory
 
 Current Work decomposition:
