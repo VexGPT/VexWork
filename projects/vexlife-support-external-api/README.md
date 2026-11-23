@@ -1562,6 +1562,99 @@ A9 Cross-provider lived switching                           WAITING_DEPENDENCIES
 Project formation does not itself authorize Product mutation. Exact VexLife-Prod source work must
 enter through the Product's current source/culture/coordination route.
 
+## Product support standing before live qualification
+
+Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
+live-provider proof exists, provided the Product does **not** misrepresent that absence as live
+qualification.
+
+The first human-facing support distinction should remain small:
+
+~~~text
+CONTRACT_PROVEN / LIVE_UNQUALIFIED
+  source + deterministic contract fixtures + adapter/Vex conformance are accepted
+  real provider/account/model call has not yet been observed
+
+LIVE_QUALIFIED
+  the same implementation also has an exact accepted live provider/model qualification receipt
+~~~
+
+These labels are Project vocabulary, not yet accepted Product enum names.
+
+### Human presentation
+
+A Partner model that is contract-proven but live-unqualified may remain available when the Product
+owner/release threshold accepts that support posture.
+
+The row should carry a small information affordance rather than a blocking warning:
+
+~~~text
+Partner model                                  ⓘ
+[Use this model]
+
+ⓘ
+Contract-tested; live provider validation pending.
+This integration is verified against the provider's published API contract and deterministic
+fixtures, but has not yet been exercised with a live provider account.
+~~~
+
+Do not expose the internal budget reason as customer-facing Product copy.
+
+Internal evidence may truthfully retain:
+
+~~~text
+live qualification held because no funded/usable provider account was available to the current
+development trajectory
+~~~
+
+but human Product copy should answer the user's technical question:
+
+~~~text
+what has been proven?
+what has not yet been proven?
+~~~
+
+Permanent:
+
+~~~text
+PRODUCTION-READY IMPLEMENTATION
+!= LIVE-PROVIDER QUALIFICATION
+
+LIVE_UNQUALIFIED
+!= BROKEN
+
+CONTRACT-PROVEN
+!= LIVE-PROVEN
+
+INFO DISCLOSURE
+!= BLOCKING ERROR
+~~~
+
+### Interaction
+
+The `ⓘ` affordance is a bounded presentation over support/qualification standing.
+
+It does not become:
+
+~~~text
+model selection owner
+provider connection owner
+qualification owner
+billing owner
+failure owner
+~~~
+
+Desktop/web may expose the explanation on hover and keyboard focus; touch surfaces require an
+equivalent activate/tap path. Do not make hover the only accessible route.
+
+When live qualification is later accepted, the same support projection may become:
+
+~~~text
+Live provider validation completed for this provider/model relationship.
+~~~
+
+without changing the model identity or Conversation/Memory relationship.
+
 ## Completion direction
 
 The Project is not complete when an API request returns 200.
