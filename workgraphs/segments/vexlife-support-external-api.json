@@ -42,7 +42,8 @@
         "github.pull.vexlife-prod.569",
         "github.pull.vexlife-prod.570",
         "github.pull.vexlife-prod.571",
-        "github.pull.vexlife-prod.572"
+        "github.pull.vexlife-prod.572",
+        "github.pull.vexlife-prod.575"
       ]
     },
     {
@@ -80,7 +81,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T23:02:00.000Z",
+      "updatedAt": "2026-11-23T23:35:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -89,7 +90,7 @@
       "workRef": "work.vexlife.support-external-api.a1-model-source-topology",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A1 — Settings Local / Partner model-source topology",
-      "purpose": "Evolve the existing Models human relationship so Local / Partner is a presentation filter over canonical model offerings rather than a second durable model-choice truth. #564 source-forms source filtering; #567 source-owns the initial Partner profiles; #569 forms catalog-bound Partner inventory; #570/#571 form durable non-secret connection settings and restart credential currentness; #572 now composes those into truthful Partner Models rows without fake provider/account defaults. Actual integration into the live Models/Settings service and renderer remains dependency-held pending exact construction-owner grounding.",
+      "purpose": "Evolve Models so Local / Partner is a presentation filter over canonical model offerings rather than a second durable model-choice truth. #564/#567/#569/#572 now source-form source filtering, narrow Partner profiles, catalog-bound inventory and truthful restart Partner rows. Actual live service composition is held because current Warm Boot #518 owns VexLifeProdLocalService.kt, the route owner for GET /api/v1/models; do not race that writer. The live service also still needs a rightful accepted Partner support-proof source rather than hard-coded standing.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -122,7 +123,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:52:00.000Z",
+      "updatedAt": "2026-11-23T23:35:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -131,7 +132,7 @@
       "workRef": "work.vexlife.support-external-api.a2-provider-connection",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A2 — Partner Provider Connection + credential/account/model contract",
-      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned endpoint/dialect, protected host credential custody by opaque credentialRef, optional non-secret account scope, durable Home coordinates, current protected-secret presence, account/service/model state and invocation qualification without storing secret values in semantic/durable surfaces. #570 persists refs/scope only; #571 now joins those refs with host contains() into NOT_CONFIGURED/PRESENT/DANGLING_REF currentness and forms initial model connection truth with account/service/model UNKNOWN. No historical provider success is replayed after restart. Transactional add/replace/remove convergence remains separately unformed.",
+      "purpose": "Form one truthful Partner connection relationship covering source-owned provider identity, protected host credential custody, durable non-secret Home coordinates, restart currentness and crash-recoverable add/replace/remove convergence without storing secret values in semantic/durable surfaces. #570/#571 source-form persistence/currentness; #575 now adds one durable transition surface (STAGE_CONNECT/STAGE_REPLACE/CLEANUP_REPLACED/REMOVE), preallocation collision proof, recovery without secret replay, durable cleanup debt, and non-secret account-scope update. Repository-native execution and platform lived proof remain owed.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -164,7 +165,10 @@
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerConnectionSettings.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConnectionSettingsStore.kt",
         "github.pull.vexlife-prod.571",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConfiguredCurrentness.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConfiguredCurrentness.kt",
+        "github.pull.vexlife-prod.575",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConnectionConfiguration.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerConnectionConfigurationTest.kt"
       ]
     },
     {
