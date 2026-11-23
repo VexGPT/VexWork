@@ -509,6 +509,114 @@ The Product should project only lawful controls for the selected realization. It
 remote models pretend to have downloadable artifacts or make local models pretend to have external
 billing/account state.
 
+## A1 source-grounded Settings result
+
+Current `VexLifeModelsFamily` is one model-row semantic owner. Its State answers whether that exact
+offering is present/targeted/chosen/serving and which Controls are lawful. `VexLifeModels` aggregates
+those rows and retains the staged target model.
+
+That means the requested top-level **Local / Partner** choice does not initially need another durable
+Home setting.
+
+Preferred first shape:
+
+~~~text
+VexLifeModels projection
+  rows[]
+    modelRef
+    human label
+    modelSource
+      LOCAL
+      PARTNER(providerRef)
+    selected / targeted / serving
+    effective capabilities
+    realization-specific display + controls
+
+presentation
+  Model source filter
+    Local
+    Partner
+        ↓
+  filters the same canonical model rows
+        ↓
+  exact model Select / Use remains semantic choice
+~~~
+
+Permanent:
+
+~~~text
+UI SOURCE FILTER
+!= DURABLE MODEL CHOICE
+
+SELECTED MODEL
+-> IMPLIES ITS MODEL SOURCE
+
+DO NOT PERSIST:
+  selectedSource=PARTNER
+  selectedModel=local-4b
+as two independently writable truths
+~~~
+
+If future Product pressure proves a durable source preference has meaning independently of exact model
+choice, that relationship can be earned then.
+
+### Local row
+
+Current local behavior remains the reference:
+
+~~~text
+artifact presence
+download / redownload / remove
+import / forget
+local runtime realization
+prompt-cache/runtime configuration
+Select
+Use / Restart
+~~~
+
+### Partner row
+
+A Partner model row should consume A2 Provider Connection truth and expose only controls that are
+lawful for that model/provider relationship:
+
+~~~text
+provider connection standing
+model access standing
+selected / targeted / serving
+effective capabilities
+Select
+Use
+Manage connection / reconnect projection when needed
+~~~
+
+It must not pretend to have:
+
+~~~text
+downloaded artifact bytes
+remove model files
+local prompt-cache entries
+local runtime process ownership
+~~~
+
+### Provider selection versus model selection
+
+Within the Partner presentation, selecting a provider may narrow/discover model offerings. That is
+connection/discovery interaction, not the final Vex model choice.
+
+~~~text
+Provider picker
+  -> ProviderConnection / discovered offerings
+
+Model picker / row
+  -> VexLifeModels semantic target
+
+Use this model
+  -> selected inference-session convergence
+~~~
+
+This keeps A2 connection truth and Models meaning separate while allowing the human experience to
+remain one Settings surface.
+
 ## Provider Connection is a first-class relationship
 
 An API key alone is not the connection.
