@@ -96,7 +96,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T21:28:00.000Z",
+      "updatedAt": "2026-11-23T21:52:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -105,7 +105,7 @@
       "workRef": "work.vexlife.support-external-api.a2-provider-connection",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A2 — Partner Provider Connection + credential/account/model contract",
-      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned built-in endpoint/dialect, secure credential reference and standing, account/service state, provider-visible model offerings and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph. Preserve provider discovery as evidence rather than Product support authority. Product PR #558 now source-forms the read-only connection-standing projection plus built-in OpenAI/Anthropic/Kimi Open Platform topology (including current Anthropic API version/workspace pressure) on disjoint paths; the exact credential store/network effect owner remains separately unresolved.",
+      "purpose": "Form one truthful Partner connection relationship covering provider identity, source-owned built-in endpoint/dialect, protected host credential custody by opaque credentialRef, account/service state, provider-visible model offerings and exact invocation qualification without placing secret values in Conversation, Memory, Context, logs, Git or Workgraph. Product #558 now source-forms the connection-standing projection, built-in provider catalog, and the earned credential-custody boundary after current Product/predecessor audit established no exact reusable API-secret owner. Exact macOS/Windows protected credential realizations remain unformed; do not invent encrypted Home JSON or reuse unrelated Home session/signing-key owners.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -124,7 +124,10 @@
         "https://www.kimi.ai/help/kimi-api/api-overview",
         "github.pull.vexlife-prod.558",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerConnectionProjection.kt",
-        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerProviderCatalog.kt"
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerProviderCatalog.kt",
+        "repo.vexlife-prod:docs/work/support-external-api-credential-custody/README.md",
+        "repo.vexlife:platform/android/app/src/main/kotlin/vexlife/android/security/AndroidHomeDevicePossessionKey.kt",
+        "repo.vexlife:docs/HOME-BRIDGE-AUTHENTICATED-SESSION.md"
       ]
     },
     {
