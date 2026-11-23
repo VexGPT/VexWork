@@ -76,7 +76,12 @@
     "github.pull.vexlife-prod.562",
     "repo.vexlife-prod:packaging/windows-partner-host/vexlife-partner-host.ps1",
     "repo.vexlife-prod:docs/work/support-external-api-host-effect/WINDOWS-HOST.md",
-    "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerWindowsHostSourceTest.kt"
+    "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerWindowsHostSourceTest.kt",
+    "github.pull.vexlife-prod.563",
+    "repo.vexlife-prod:tools/windows-partner-host/PROVE-CREDENTIAL-HOST.ps1",
+    "repo.vexlife-prod:packaging/macos-partner-host/VexLifePartnerHost.swift",
+    "repo.vexlife-prod:tools/macos-partner-host/PROVE-CREDENTIAL-HOST.command",
+    "repo.vexlife-prod:docs/work/support-external-api-host-effect/MACOS-HOST.md"
   ],
   "formedAt": "2026-11-23T17:02:00.000Z"
 }
