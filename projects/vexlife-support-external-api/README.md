@@ -1853,6 +1853,55 @@ Live provider validation completed for this provider/model relationship.
 
 without changing the model identity or Conversation/Memory relationship.
 
+## Product support-standing source — Product PR #556
+
+Victor's requested live-validation disclosure now has a small semantic Product candidate:
+
+~~~text
+VexLife-Prod #556
+[Support External API][Support Standing][DRAFT]
+Distinguish contract-proven from live-qualified
+
+base current main
+0566b1eed876a28c2fcc6586743ae1f4af7eaecd
+
+paths 2
+shared #518 overlap 0
+~~~
+
+Source:
+
+~~~text
+VexLifePartnerSupportQualification
+
+P0 proof ref
++ P1 adapter proof ref
++ P2 Vex relationship proof ref
+        ↓
+CONTRACT_PROVEN_LIVE_UNQUALIFIED
+  liveValidationDisclosureRequired = true
+
++ accepted live provider/model qualification receipt
+        ↓
+LIVE_QUALIFIED
+  liveValidationDisclosureRequired = false
+~~~
+
+Otherwise the standing remains HELD.
+
+The projection explicitly does **not** own:
+- provider connection;
+- credentials;
+- billing;
+- model availability;
+- inference;
+- model selection;
+- release authority;
+- human wording.
+
+The later localized model-row renderer consumes this standing. Current localization law still owns the
+actual customer-visible string and accessibility mapping.
+
 ## Completion direction
 
 The Project is not complete when an API request returns 200.
