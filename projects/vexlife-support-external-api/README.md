@@ -1534,7 +1534,7 @@ Kimi Open Platform
 Current exact connected-repository readback:
 
 ~~~text
-declared fixtures                  13
+declared fixtures                  14
 all JSON fixtures                  PARSE PASS
 all SSE JSON data                  PARSE PASS
 OpenAI terminal completion         PASS
@@ -1638,7 +1638,7 @@ base
 P0 #553 branch / exact P0 head 6121d24699c5cd2644432630c7925b30bf6c7f60
 
 P1 delta
-6 exact new source/test/doc paths
+7 exact new source/test/doc paths
 
 shared Warm Boot #518 overlap
 0
@@ -1680,7 +1680,7 @@ mechanic must not overwrite a real external provider-issued call identity during
 Current source readback:
 
 ~~~text
-P1 paths over P0                  6
+P1 paths over P0                  7
 network imports                   0
 credential APIs/stores            0
 providerCallRef retained          all 3 codecs
@@ -1692,6 +1692,73 @@ live qualification                NOT ESTABLISHED
 
 This is contract-first provisional implementation allowed to continue while A0 shared-source
 integration remains occupied. It does not advance A3's lifecycle to production implementation.
+
+## Current P0/P1 checkpoint — streamed OpenAI tools + canonical carrier
+
+The zero-cost Product proof stack has advanced again without touching Warm Boot #518.
+
+~~~text
+P0 #553
+head  58315923c4c58b67b83627096fa0dfa9d709b72b
+paths 17
+fixtures 14
+behind main 0
+
+P1 #554
+base current P0 head above
+head  6cef2b6cb733175ff325644f3c03f8386c1f71ef
+paths 7 over P0
+behind P0 0
+shared #518 path overlap 0
+~~~
+
+P0's added OpenAI fixture now covers typed streamed function-call arguments:
+
+~~~text
+response.output_item.added
+-> response.function_call_arguments.delta
+-> response.function_call_arguments.delta
+-> response.function_call_arguments.done
+-> response.completed
+~~~
+
+Exact fixture readback preserves:
+
+~~~text
+call_id       call_stream_fixture
+item_id       fc_stream_fixture
+function      memory_search
+arguments     {"terms":["provider continuity"]}
+terminal      response.completed
+~~~
+
+P1 now contains `PartnerCapabilityExchange`, a no-effect carrier around the existing canonical
+Vex capability grammar:
+
+~~~text
+provider ToolCall(providerCallRef=X, memory_search, args)
+        ↓
+PartnerCapabilityExchange.normalize
+        ├─ providerCallRef X remains bounded carriage
+        └─ canonical Vex request:
+             capability=memory
+             action=search
+             arguments unchanged
+        ↓
+existing Bridge later owns admission/read
+        ↓
+canonical Vex result
+        ↓
+PartnerCapabilityExchange.encodeResult
+        ↓
+provider-native result references SAME X
+~~~
+
+The current Capability Atlas source confirms `memory.search` is a real registered read-only action.
+The provider-issued ID never enters the canonical control text.
+
+This closes the **pure semantic↔provider carriage shape** but does not yet perform the Bridge or
+network effect. JVM execution remains owed.
 
 ## Product support standing before live qualification
 
