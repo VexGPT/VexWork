@@ -2704,6 +2704,70 @@ Boot path mutation.
 This is the first source that can lawfully supply Partner rows to the real Models/Settings surface
 without fake connection defaults.
 
+## Crash-recoverable connection convergence — Product #575
+
+The cross-store configuration edge is now durable as:
+
+~~~text
+VexLife-Prod #575
+[Support External API][A2][DRAFT]
+Recover Partner connection configuration across stores
+
+head
+38e17c36dc6a64c0a757c6ba2dd08d1943360d68
+
+base
+#571 configured-currentness head
+deb3c997772d3bfc9d0fbbc5c81ca85bfb286f40
+
+Warm Boot #518 overlap
+0
+~~~
+
+The same durable `partner-connections.json` contract now carries transition intent:
+
+~~~text
+STAGE_CONNECT
+STAGE_REPLACE
+CLEANUP_REPLACED
+REMOVE
+~~~
+
+This allows recovery across OS credential custody + Home settings without a second journal.
+
+Key laws:
+- exact credentialRef is allocated/proved absent before transition persistence;
+- connect can recover after secret store but before final Home commit without asking for the secret again;
+- replace keeps the old ref current until the new secret is protected;
+- old-secret cleanup debt remains durable;
+- remove remains durable until exact protected credential retirement is proven;
+- non-secret Anthropic workspace scope may change without replacing the credential;
+- caller secret CharArrays are zeroed on connect/replace exit.
+
+The convergence coordinator contains no network/auth effect.
+
+## Current live-service hold
+
+Re-grounding the actual Product service showed:
+
+~~~text
+Warm Boot #518 owns:
+src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt
+plus DirectCompanionConnection / DirectCompanionTurn / prompt preparation
+
+Support External API live Models route needs:
+VexLifeProdLocalService.kt
+~~~
+
+Therefore actual `GET /api/v1/models` Local+Partner service composition is **held on #518 current
+ownership**, not because Partner Models source is missing.
+
+The read-only Partner state is already source-formed in #572. Do not force a parallel edit to
+`VexLifeProdLocalService.kt`.
+
+A second prerequisite also remains: the live service needs a rightful current source for accepted
+Partner support proof rather than hard-coded HELD/CONTRACT_PROVEN standing.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
