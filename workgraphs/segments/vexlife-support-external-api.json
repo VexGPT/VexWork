@@ -41,7 +41,8 @@
         "github.pull.vexlife-prod.567",
         "github.pull.vexlife-prod.569",
         "github.pull.vexlife-prod.570",
-        "github.pull.vexlife-prod.571"
+        "github.pull.vexlife-prod.571",
+        "github.pull.vexlife-prod.572"
       ]
     },
     {
@@ -79,7 +80,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:30:00.000Z",
+      "updatedAt": "2026-11-23T23:02:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -88,7 +89,7 @@
       "workRef": "work.vexlife.support-external-api.a1-model-source-topology",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A1 — Settings Local / Partner model-source topology",
-      "purpose": "Evolve the existing Models human relationship so Local / Partner is a presentation filter over canonical model offerings rather than a second durable model-choice truth. #564 source-forms the read-only source projection; #567 source-forms the narrow Partner profile catalog; #569 now composes them into a catalog-bound Partner inventory where provider-visible unknown models cannot mint Product rows and each supported profile requires exact connection/support truth. Actual VexLifeModels service integration, persisted Partner connection coordinates and renderer/localization remain dependency-held.",
+      "purpose": "Evolve the existing Models human relationship so Local / Partner is a presentation filter over canonical model offerings rather than a second durable model-choice truth. #564 source-forms source filtering; #567 source-owns the initial Partner profiles; #569 forms catalog-bound Partner inventory; #570/#571 form durable non-secret connection settings and restart credential currentness; #572 now composes those into truthful Partner Models rows without fake provider/account defaults. Actual integration into the live Models/Settings service and renderer remains dependency-held pending exact construction-owner grounding.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -113,7 +114,9 @@
         "github.pull.vexlife-prod.569",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifePartnerModelInventory.kt",
         "repo.vexlife-prod:src/commonTest/kotlin/vexlife/model/VexLifePartnerModelInventoryTest.kt",
-        "repo.vexlife-prod:docs/work/support-external-api-model-source/PARTNER-INVENTORY.md"
+        "repo.vexlife-prod:docs/work/support-external-api-model-source/PARTNER-INVENTORY.md",
+        "github.pull.vexlife-prod.572",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifePartnerModelsCurrentState.kt"
       ]
     },
     {
