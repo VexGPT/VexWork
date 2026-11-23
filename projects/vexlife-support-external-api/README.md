@@ -1664,6 +1664,54 @@ failure semantics and security boundary.
 -> do not manufacture semantic merge conflicts where fixture truth is unchanged
 ~~~
 
+## Credential-custody resolution checkpoint
+
+The A2 credential-owner search is no longer an unbounded UNKNOWN.
+
+Current conclusion:
+
+~~~text
+current VexLife-Prod exact credential/API-key owner  NOT FOUND
+
+predecessor Android possession-key owner
+  -> non-exportable signing key
+  -> NOT the external API secret owner
+
+predecessor Home authenticated-session owner
+  -> short-lived opaque process handle
+  -> NOT the durable external API secret owner
+
+therefore
+  -> one new narrow host credential-custody responsibility is EARNED
+~~~
+
+Product #558 now retains the source design at:
+
+~~~text
+docs/work/support-external-api-credential-custody/README.md
+~~~
+
+The future owner may retain only non-secret durable coordinates such as:
+
+~~~text
+credentialRef
+providerRef
+credential standing
+host custody realization ref/evidence
+~~~
+
+The secret itself is resolved only at the exact admitted provider network boundary.
+
+Held platform realization:
+
+~~~text
+macOS protected secret storage   UNFORMED
+Windows protected secret storage UNFORMED
+~~~
+
+An OS-backed secret facility is preferred. Product-owned reversible encrypted JSON in Vex Home is
+not admitted merely for convenience.
+
 ## Work trajectory
 
 Current Work decomposition:
