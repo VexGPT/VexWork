@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.support-external-api",
+  "label": "Support External API",
+  "purpose": "Extend VexLife-Prod's existing selectable-model, direct-Companion and capability architecture so one Vex Home can intentionally select either a local model or an external Partner provider/model while VexLife remains the owner of Conversation, Memory, contextual ground, capability admission, lifecycle and durable evidence; add truthful provider-connection, credential, availability, failure and privacy semantics; preserve explicit no-automatic-fallback behavior; prove provider adapters and failure handling deterministically without paid API access; and leave real external-provider qualification as an explicit later gate rather than treating synthetic proof as live completion.",
+  "rootWorkRefs": [
+    "work.vexlife.support-external-api.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-support-external-api/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "project.vex.security-assurance",
+    "projects/vex-security-assurance/README.md",
+    "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+    "repo.vexlife-prod:docs/CULTURE.md",
+    "repo.vexlife-prod:docs/foundation/DIRECT-PERSONAL-COMPANION.md",
+    "repo.vexlife-prod:docs/foundation/CAPABILITY-ATLAS-SELF-FRAME.md",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeModelsFamily.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeEffectiveModelCapabilities.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionConnection.kt",
+    "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/companion/DirectCompanionConnectionTest.kt",
+    "github.commit.vexlife-prod.0566b1eed876a28c2fcc6586743ae1f4af7eaecd",
+    "https://vgong24.github.io/Vextreme/pages/vexarchitecture-first-stable-body.html",
+    "https://vgong24.github.io/Vextreme/pages/vexarchitecture-live-demonstration.html",
+    "https://platform.openai.com/docs/api-reference/responses",
+    "https://platform.claude.com/docs/en/api/messages",
+    "https://platform.claude.com/docs/en/api/errors",
+    "https://www.kimi.ai/help/kimi-api/api-overview",
+    "https://www.kimi.ai/help/kimi-api/api-troubleshooting",
+    "human.design.vexlife.support-external-api.20261123"
+  ],
+  "formedAt": "2026-11-23T17:02:00.000Z"
+}
