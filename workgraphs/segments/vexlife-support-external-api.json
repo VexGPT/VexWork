@@ -243,7 +243,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:08:00.000Z",
+      "updatedAt": "2026-11-23T22:34:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -252,7 +252,7 @@
       "workRef": "work.vexlife.support-external-api.a6-security-privacy-boundary",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A6 — Credential, context-egress, tool-admission and replay security boundary",
-      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Platform-neutral source keeps secrets out of JVM read paths; #562 now source-forms the first Windows protected host using generic Credential Manager storage with local-machine persistence checks and authenticated HTTPS with automatic redirects disabled. Windows execution/lived proof and helper packaging remain owed, and macOS Security.framework realization remains unformed. Provider-hosted/mutating tools and automatic fallback stay held.",
+      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Platform-neutral #561 keeps secrets out of JVM read paths and defines the native host protocol/client. Windows #562 now source-forms Credential Manager + redirect-denying HTTPS and a no-API synthetic host proof runner; macOS #563 source-forms Security.framework Keychain + redirect-refusing URLSession and a no-API proof runner that compiles the exact Swift helper first. Native OS execution, packaging identity and lived helper protocol proof remain owed; provider-hosted/mutating tools and automatic fallback stay held.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -285,13 +285,18 @@
         "github.pull.vexlife-prod.562",
         "repo.vexlife-prod:packaging/windows-partner-host/vexlife-partner-host.ps1",
         "repo.vexlife-prod:docs/work/support-external-api-host-effect/WINDOWS-HOST.md",
-        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerWindowsHostSourceTest.kt"
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerWindowsHostSourceTest.kt",
+        "github.pull.vexlife-prod.563",
+        "repo.vexlife-prod:tools/windows-partner-host/PROVE-CREDENTIAL-HOST.ps1",
+        "repo.vexlife-prod:packaging/macos-partner-host/VexLifePartnerHost.swift",
+        "repo.vexlife-prod:tools/macos-partner-host/PROVE-CREDENTIAL-HOST.command",
+        "repo.vexlife-prod:docs/work/support-external-api-host-effect/MACOS-HOST.md"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T21:42:00.000Z",
+      "updatedAt": "2026-11-23T22:34:00.000Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -325,7 +330,11 @@
         "github.pull.vexlife-prod.554",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/ExternalProviderWireCodecTest.kt",
         "github.pull.vexlife-prod.559",
-        "github.pull.vextreme-sdk.1969"
+        "github.pull.vextreme-sdk.1969",
+        "github.pull.vexlife-prod.562",
+        "github.pull.vexlife-prod.563",
+        "repo.vexlife-prod:tools/windows-partner-host/PROVE-CREDENTIAL-HOST.ps1",
+        "repo.vexlife-prod:tools/macos-partner-host/PROVE-CREDENTIAL-HOST.command"
       ]
     },
     {
