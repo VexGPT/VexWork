@@ -1625,6 +1625,74 @@ A9 Cross-provider lived switching                           WAITING_DEPENDENCIES
 Project formation does not itself authorize Product mutation. Exact VexLife-Prod source work must
 enter through the Product's current source/culture/coordination route.
 
+## P1 pure provider-wire checkpoint — Product PR #554
+
+A stacked Product successor now consumes the P0 fixture corpus without touching the live Connection:
+
+~~~text
+VexLife-Prod PR #554
+[Support External API][P1][DRAFT]
+Normalize OpenAI, Anthropic, and Kimi wire contracts
+
+base
+P0 #553 branch / exact P0 head 6121d24699c5cd2644432630c7925b30bf6c7f60
+
+P1 delta
+6 exact new source/test/doc paths
+
+shared Warm Boot #518 overlap
+0
+~~~
+
+P1 owns only pure translation:
+
+~~~text
+prepared provider-facing Vex meaning
+-> provider JSON/SSE
+-> normalized provider observation
+~~~
+
+It has no network/credential/Home/Conversation/Memory/effect owner.
+
+Current pure source covers:
+- provider-specific request serialization;
+- text/stream completion parsing;
+- provider-native tool-call parsing;
+- partial streamed argument assembly;
+- provider-specific error normalization;
+- provider call-ID preservation;
+- provider-native result encoding through the existing shared Vex provider-result shaper.
+
+Important A4 pressure proven by source:
+
+~~~text
+OpenAI call_id
+Anthropic tool_use.id
+Kimi tool_call.id
+-> providerCallRef
+-> canonical Vex capability result
+-> provider-native result must reuse the same providerCallRef
+~~~
+
+Current local native-tool re-projection may synthesize an ID from the control hash. That local
+mechanic must not overwrite a real external provider-issued call identity during Partner continuation.
+
+Current source readback:
+
+~~~text
+P1 paths over P0                  6
+network imports                   0
+credential APIs/stores            0
+providerCallRef retained          all 3 codecs
+shared provider-result shaper     all 3 codecs
+focused JVM test source           FORMED
+focused JVM execution             OWED
+live qualification                NOT ESTABLISHED
+~~~
+
+This is contract-first provisional implementation allowed to continue while A0 shared-source
+integration remains occupied. It does not advance A3's lifecycle to production implementation.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
