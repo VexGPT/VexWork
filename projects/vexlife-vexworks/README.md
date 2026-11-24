@@ -52,6 +52,89 @@ LOCAL_SOURCE != ATTACHMENT
 PROVIDER_NATIVE_TOOLING != VEX_CAPABILITY_AUTHORITY
 ```
 
+## Current checkpoint — 2026-11-24: A1-A3 landed; A4 is the real remaining acceptance edge
+
+The durable VexWork state has been reconciled to current VexLife-Prod `main` rather than the Nov 20 starting point.
+
+```text
+VexLife-Prod main
+c7905c3922682e39dacbac07b9ab15cbe9ec7586
+tree
+78bf9cae8a404b1b70e680b1dec425844b3cef8a
+```
+
+That exact tree was the physically proved top #602 tree before merge.
+
+Current Project Work truth:
+
+```text
+A0  Local Artifacts + Local Sources convergence      COMPLETED
+A1  Effective selected-model capability projection  COMPLETED
+A2  Claude-like model selector                       COMPLETED
+A3  Dynamic imported-model hookup detection          COMPLETED
+A4  Lived Local Artifacts cross-model proof          READY
+
+root [VexLife Local Artifacts]                       RUNNING
+```
+
+### What A1-A3 completion means
+
+Current Product main now contains:
+
+- one explicit `VexLifeEffectiveModelCapabilities` projection joining the model's Companion representation, current-target runtime realization, exact qualified serving runtime and qualified visual input;
+- a compact Models selector that keeps `targeted != chosen != serving`, returns existing `Select` / configuration / `Use` Controls, and never turns selection into implicit activation;
+- explicit switch phases and a runtime-switch realization seam, with repository proof covering a 27B-serving -> 9B-target -> explicit Use -> 9B-serving relationship;
+- conservative imported-model inspection/addition with exact provider revision/member custody, current-target runtime realization, native-tool grammar recognition where present, and fail-closed rejection of unsupported/remote-code-required relationships.
+
+The final #602 integrated candidate passed the full JVM suite and full physical Mac candidate proof, then merged with a byte-identical proved tree.
+
+### What is *not* yet complete: A4
+
+Repository/source proof of model switching is not the same as the lived Project outcome.
+
+A4 still owes one human-lived circuit on current main:
+
+```text
+same existing Conversation
++ one admitted file or Local Source
+-> Select another exact qualified local model
+-> explicitly Start / converge it
+-> wait for that exact target to become serving
+-> capability/model presentation currentizes truthfully
+-> Send the next ordinary turn through the newly serving model
+-> Conversation identity unchanged
+-> Memory identity/aggregate not silently rebound
+-> artifact/source identities unchanged
+```
+
+That is why the Project remains `RUNNING` while A4 is `READY`. This remaining work is visible rather than being hidden behind the completed Response Readiness merge.
+
+### Relationship to Response Readiness
+
+VexLife-Prod #514 / #602 completed the Response Readiness trajectory and landed its source on main. That work materially supplied A1/A2 runtime-currentness and model-configuration truth, but:
+
+```text
+RESPONSE READINESS COMPLETE
+!=
+[VEXLIFE LOCAL ARTIFACTS] WHOLE PROJECT COMPLETE
+```
+
+The broader Project closes only after A4's cross-model lived continuity acceptance.
+
+### Adjacent active Product work is not silently absorbed
+
+The following open Product lanes are **not** completion dependencies of A4 and are not owned by this Project merely because Response Readiness supplied evidence to them:
+
+- #171 Runtime Reliability — future pressure/hold/recycle safety authority; the passing cache2 matrix did not earn a universal RAM threshold.
+- #172 Resources — broader read-side runtime/resource-pressure awareness; no guessed browser threshold was earned.
+- #510 Mac Startup — separate runtime/service-restart custody work.
+- #543 Multi-Vex — separate counterpart/participant trajectory.
+- #601 Support External API — separate provider-neutral inference-target trajectory.
+
+Those lanes should remain visible under their rightful owners until independently completed, superseded or cancelled. Their existence does not make A1-A3 incomplete.
+
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-VEXWORKS][CURRENT-20261124] -->
+
 ## Current starting point
 
 The current Local Artifacts successor work establishes the first half of this outcome:
@@ -527,19 +610,17 @@ A0  Local Artifacts + Local Sources convergence
     COMPLETED on VexLife-Prod main 8dbbd3f250556fe9cc6664849be65a67e9c1fc76
 
 A1  Effective model-capability projection
-    CURRENT FOREGROUND
-    derive one human-readable capability view from the selected model's exact
-    Companion representation + current runtime realization/qualification
+    COMPLETED on current Product main
 
 A2  Claude-like model selector
-    project offered/imported models and existing Select / Use switch semantics
-    without creating another model owner
+    COMPLETED on current Product main
 
 A3  Imported-model relationship recognizers
-    retain today's exact Qwen3 recognizer; add new architecture/provider
-    recognizers only when a qualified runtime relationship actually exists
+    COMPLETED for today's admitted Qwen3/current-runtime relationship;
+    future recognizers require separately earned qualified relationships
 
-A4  Lived Local Artifacts proof
+A4  Lived Local Artifacts cross-model proof
+    READY — current Project foreground acceptance edge
     same Conversation + same admitted files/sources
     -> switch model
     -> capability surface changes truthfully
