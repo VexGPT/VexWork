@@ -354,7 +354,7 @@ DirectCompanionTurn.kt
 VexLifeProdEntryFamily.kt
 ~~~
 
-so #396 / #518 / #573 remain independent current owners.
+so #396 / #518 / #525 / #573 remain independent current owners.
 
 Fresh proof carriage is SDK PR #1970:
 
@@ -381,6 +381,55 @@ Product proof
 #1969 remains stale/unexecuted evidence for the older #559 candidate and must not be used as current
 proof. The next completion edge is A002 execution/consumption on exact #578. PASS advances to fresh
 Independent Assurance; failure is diagnosed without mutating Product source.
+
+## Shared convergence ownership — current map
+
+The final Home-accessible inference composition must consume owner lineages rather than flattening all
+open PRs into one merge set:
+
+~~~text
+#396
+  application entry / native presentation / Product Quit
+  owns VexLifeProdEntryFamily + application/service lifecycle edges
+
+#518
+  Warm Boot Stage-B provider-prefix preparation
+        ↓
+#525
+  current service/runtime-continuity successor stacked directly on #518
+  owns the more current VexLifeProdLocalService/runtime handoff composition
+
+#573
+  Response Readiness Conversation-prefix provider-cache projection
+  owns DirectPromptContext / DirectCompanionTurn / DirectCompanionConnection cache boundary
+
+#578
+  Support External API disjoint Partner body
+  owns Partner topology / wire / connection / currentness / custody /
+  model projection / effective capabilities
+~~~
+
+Convergence consequence:
+
+~~~text
+for shared service/runtime truth
+  inherit #525 lineage (which already includes #518)
+
+for Conversation-prefix cache truth
+  inherit current #573 exact accepted result
+
+for application-entry/Home-access manifestation
+  inherit current #396 exact accepted result
+
+for Partner realization
+  inherit #578 exact proved/assured body
+
+then form one current integration against the repository's accepted main
+without making any one of these realization owners the Home/Conversation/Memory owner.
+~~~
+
+A PR being open does not itself create a blocker or authority. Exact current accepted source and live
+coordination are re-observed at the mutation edge.
 
 ## A0 source-grounded seam — current design result
 
