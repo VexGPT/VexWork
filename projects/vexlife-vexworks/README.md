@@ -130,6 +130,34 @@ The existing Qwen3 import path is patient zero: it already pins exact provider s
 
 The active Support External API stack (#606/#607) is already introducing provider-neutral inference currentness/session admission and overlaps `VexLifeModels.kt`. Model Adaptation should consume that owner if it lands rather than create a competing local-only current-inference abstraction.
 
+### Security boundary for adaptation
+
+Model/provider inspection crosses an untrusted provider/model/tool boundary. Model Adaptation therefore preserves the existing Security Assurance pre-convergence rule: inspect identity/provenance/currentness before letting downstream convergence look healthy.
+
+```text
+PROVIDER METADATA / CHAT TEMPLATE
+!= AUTHORITY
+
+RECOGNIZED TOOL GRAMMAR
+!= QUALIFIED TOOL RELATIONSHIP
+!= VEX TOOL EFFECT AUTHORITY
+
+REMOTE-CODE-REQUIRED MODEL
+-> HELD
+-> never execute provider code merely to discover compatibility
+
+OPTIONAL ADAPTER FAILURE
+-> HELD or already-qualified narrower fallback
+-> never nearest-adapter guessing
+-> never authority widening
+
+QUALIFICATION
+-> lowest sufficient scope first
+-> deterministic / synthetic / loopback before real provider or credential effects
+```
+
+A provider-native tool adapter may change carriage only. Capability Atlas / owning Families continue to decide what Vex may actually read or do. A failed adapter must not create broader reach, fallback to arbitrary execution, or promote provider/model output directly into accepted Product truth.
+
 ### Why A2 and A3 are dependency-held
 
 A2's compact selector/switch implementation is already substantial. A3's conservative Qwen3 import recognizer is also already substantial. Neither should be rebuilt.
