@@ -1,21 +1,35 @@
-# [VexLife Local Artifacts]
+# [VexLife Model Adaptation]
 
 `[VXG RealForever]`
 
 ## Human outcome
 
-Make VexLife feel like a real local AI work environment:
+Let VexLife change which model does the work without making the rest of Vex reconstruct what changed:
 
 ```text
-person
-  -> gives Vex files / selected local sources
-  -> Vex can reach only the exact admitted material
-  -> Conversation keeps the durable human/Vex thread
-  -> model may be switched explicitly
-  -> Vex projects only the features that the selected model/provider/runtime relationship can actually carry
+exact model/provider source
+-> recognize only grounded representation/runtime relationships
+-> propose narrow existing adapters
+-> qualify the relationships that actually work
+-> hold or use an already-qualified fallback for the ones that do not
+-> converge one exact serving inference relationship
+-> existing Conversation / Memory / Local Artifacts / Local Sources remain themselves
+-> capability + presentation projections observe the new current truth
 ```
 
-This Project is titled **[VexLife Local Artifacts]** because the human outcome is broader than “attachments” or “model settings”: it is the bounded place where a person gives Vex material to work with, Vex reaches it, and the person chooses which local model does that work.
+This is the same stable VexWork Project identity, `project.vexlife.vexworks`. It began as **[VexLife Local Artifacts]** because A0 had to establish the material/work surface first. A0 is now completed; the unfinished foreground is model adaptation, so the human label is currentized without re-identifying the Project or erasing its Local Artifacts lineage.
+
+Permanent:
+
+```text
+PROJECT LABEL CHANGE != NEW PROJECT
+MODEL ADAPTATION != MODEL IDENTITY
+RECOGNIZED ADAPTER != QUALIFIED RELATIONSHIP
+MODEL SWITCH != CONVERSATION SWITCH
+MODEL SWITCH != MEMORY SWITCH
+MODEL SWITCH != ARTIFACT / LOCAL SOURCE REBIND
+CAPABILITY PROJECTION != CAPABILITY AUTHORITY
+```
 
 ## Ownership boundary
 
@@ -34,7 +48,7 @@ Capability Atlas / owning Families
 model/provider representation
   owns how already-owned meanings are represented to one selected model
 
-[VexLife Local Artifacts] Project
+[VexLife Model Adaptation] Project
   groups the outcome and sequence only
 ```
 
@@ -69,12 +83,12 @@ The durable Workgraph is currentized to what is actually true now:
 
 ```text
 A0  Local Artifacts + Local Sources convergence      COMPLETED
-A1  Effective selected-model capability projection  RUNNING
-A2  Claude-like model selector                       WAITING_DEPENDENCIES
-A3  Dynamic imported-model hookup detection          WAITING_DEPENDENCIES
-A4  Lived Local Artifacts cross-model proof          WAITING_DEPENDENCIES
+A1  Model adaptation truth                           RUNNING
+A2  Selection + serving convergence                  WAITING_DEPENDENCIES
+A3  Imported-model adaptation recognizers            WAITING_DEPENDENCIES
+A4  Lived model-adaptation continuity proof           WAITING_DEPENDENCIES
 
-root [VexLife Local Artifacts]                       RUNNING
+root [VexLife Model Adaptation]                      RUNNING
 ```
 
 ### What current Product already has
@@ -90,48 +104,56 @@ Those source facts are preserved as evidence. They do **not** automatically comp
 
 ### Why A1 is still RUNNING
 
-A1 promises a **human-readable capability view**.
+A1 is no longer framed as a UI-only capability checklist. The Product already computes useful effective capability truth, but the adaptation chain is not yet complete enough to make that the whole claim.
 
-Current Models presentation does not yet render the model row's `VexLifeEffectiveModelCapabilities.Projection`. It shows model availability/resource facts, selection/serving/switching, storage and runtime configuration, but the human cannot yet directly see the effective capability meanings A1 names.
-
-Therefore:
+The current grounded direction is:
 
 ```text
-CAPABILITY PROJECTION EXISTS IN SOURCE
-!=
-A1 HUMAN CAPABILITY VIEW COMPLETE
+MODEL SOURCE INSPECTION
+-> candidate representation/runtime adapter
+-> exact runtime qualification
+-> separately-qualified optional relationships
+-> one coherent current serving observation
+-> effective capability projection
+-> bounded human presentation
 ```
 
-The smallest current A1 edge is to project the already-owned effective capability truth into the existing compact Models presentation without creating another capability owner or inferring from model names.
+Permanent:
+
+```text
+REPRESENTATION RECOGNIZED != RELATIONSHIP QUALIFIED
+OPTIONAL ADAPTER FAILURE != WHOLE MODEL FAILURE
+CURRENT SERVING OBSERVATION != A SET OF UNCOORDINATED READS
+```
+
+The existing Qwen3 import path is patient zero: it already pins exact provider source, recognizes a narrow architecture/runtime relationship, detects native Qwen tool grammar and falls back to VexLife text-control carriage when that grammar is absent. A1 should preserve that shape and add qualification/currentness where the claim requires it rather than proliferating model-name branches.
+
+The active Support External API stack (#606/#607) is already introducing provider-neutral inference currentness/session admission and overlaps `VexLifeModels.kt`. Model Adaptation should consume that owner if it lands rather than create a competing local-only current-inference abstraction.
 
 ### Why A2 and A3 are dependency-held
 
-A2's compact selector implementation is already present, and A3's conservative import recognizer is already present. But both Work items explicitly depend on A1.
+A2's compact selector/switch implementation is already substantial. A3's conservative Qwen3 import recognizer is also already substantial. Neither should be rebuilt.
 
-They are therefore `WAITING_DEPENDENCIES`, not hidden and not falsely marked complete.
-
-When A1's human capability view closes, A2/A3 can be re-evaluated from their already-landed source rather than rebuilt.
+They remain `WAITING_DEPENDENCIES` because A1 must first establish the adaptation/currentness contract they consume. Once A1 closes, re-evaluate the already-landed source and only add code for a concrete missing end-to-end relationship.
 
 ### A4 remains visible
 
-A4's lived acceptance is now planned, but it is not ready until A2/A3 close.
-
-Its eventual circuit remains:
+A4 is the lived proof that adaptation is architecture rather than bookkeeping:
 
 ```text
-same existing Conversation
-+ one admitted file or Local Source
--> Select another exact qualified local model
+same Vex
++ same Conversation / Memory
++ same admitted file or Local Source
+-> select another exact model
 -> explicitly Start / converge it
 -> exact target becomes serving
--> human capability/model presentation currentizes truthfully
--> next ordinary Send uses the newly serving model
--> Conversation identity unchanged
--> Memory not silently rebound
--> artifact/source identities unchanged
+-> adapter/capability truth realigns
+-> unsupported optional relationship stays HELD or uses its qualified fallback
+-> next ordinary Send uses the new serving model
+-> surrounding identities remain unchanged
 ```
 
-Repository switching tests are useful evidence; they are not this lived human proof.
+Repository switch tests are useful evidence; they are not this lived human proof.
 
 ### Relationship to completed Response Readiness
 
