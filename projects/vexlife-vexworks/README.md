@@ -104,17 +104,20 @@ Those source facts are preserved as evidence. They do **not** automatically comp
 
 ### Current A1 Product owner
 
-`VexGPT/VexLife-Prod#608` is now the bounded A1 source candidate for the first concrete adaptation correction:
+`VexGPT/VexLife-Prod#608` completed the first bounded A1 source correction on exact head `6eb4aca11e04326ab24b1d0fa91e5fedbabdf5d7`: SourceOwner PASS + fresh Independent Assurance CLEAR. It establishes `RECOGNIZED_HELD` and keeps the qualified text-control fallback active.
+
+`VexGPT/VexLife-Prod#611` is the current A1 successor. It adds the first bounded model-specific qualification relationship:
 
 ```text
-pinned imported Qwen chat-template evidence
--> native-tool grammar recognized
--> RECOGNIZED_HELD
--> qualified VexLife text-control carriage remains active
--> effective provider-native tools = HELD
+RECOGNIZED_HELD
+-> ordinary runtime qualification
+-> synthetic no-effect native-tool round trip
+-> PASS: exact runtime carries native-tool qualification
+-> FAIL: runtime still qualified; text-control fallback remains
+-> effective capability + provider carriage realign from the exact runtime evidence
 ```
 
-#608 is stacked on the assured #606 convergence and is path-disjoint from #607's provider-neutral Companion invocation extraction. It does not add a second model/runtime/currentness owner. Source formation is not completion; exact-head SourceOwner proof is next.
+#611 is stacked directly on the cleared #608 head and remains path-disjoint from current Multi-Vex, Mac Startup, Runtime Reliability, Visual, and Support External API successor work. Source formation is not completion; exact-head SourceOwner proof is next.
 
 ### Why A1 is still RUNNING
 
