@@ -362,10 +362,10 @@ Fresh proof carriage is SDK PR #1970:
 [TEMP RELAY][#578][DRAFT] Support External API SourceOwner A002
 
 SDK companion head
-c3baec6d6cf88b2178768e9c30f25b49388e175b
+80d9dc6b3f64dcef2bed7f943e1d02e10e7fc126
 
 tree
-541764fcb6be7420b1adf6f594817a3692293fac
+a2c1bfdaecb80800950ada489c186ad41cd59e2f
 
 contract
 source.vexrelay.current-contract/v1
@@ -430,6 +430,12 @@ without making any one of these realization owners the Home/Conversation/Memory 
 
 A PR being open does not itself create a blocker or authority. Exact current accepted source and live
 coordination are re-observed at the mutation edge.
+
+### SourceOwner evidence projection bound
+
+#578 carries 75 exact changed paths. Current Relay keeps those 75 paths in the source membrane and
+candidate identity while bounding RETURN review evidence to 10 selected source files, 5 MB selected
+source bytes, and 10 MB diff bytes. Review omission is evidence bounding, not source omission.
 
 ## A0 source-grounded seam — current design result
 
