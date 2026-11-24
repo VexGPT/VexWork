@@ -24,7 +24,12 @@
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticModelImport.kt",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticCompanionRepresentation.kt",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
-    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/heretic/HuggingFaceModelInspection.kt"
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/heretic/HuggingFaceModelInspection.kt",
+    "github.pull.vexlife-prod.602",
+    "github.commit.vexlife-prod.c7905c3922682e39dacbac07b9ab15cbe9ec7586",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeEffectiveModelCapabilities.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
   ],
   "formedAt": "2026-11-20T05:39:00.000Z"
 }

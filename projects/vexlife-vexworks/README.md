@@ -52,6 +52,105 @@ LOCAL_SOURCE != ATTACHMENT
 PROVIDER_NATIVE_TOOLING != VEX_CAPABILITY_AUTHORITY
 ```
 
+## Current checkpoint — 2026-11-24: source advanced; A1 remains the real foreground
+
+VexLife-Prod has advanced substantially beyond this Project's Nov 20 starting checkpoint:
+
+```text
+current Product main
+c7905c3922682e39dacbac07b9ab15cbe9ec7586
+tree
+78bf9cae8a404b1b70e680b1dec425844b3cef8a
+```
+
+That exact tree was physically proved before the #602 merge.
+
+The durable Workgraph is currentized to what is actually true now:
+
+```text
+A0  Local Artifacts + Local Sources convergence      COMPLETED
+A1  Effective selected-model capability projection  RUNNING
+A2  Claude-like model selector                       WAITING_DEPENDENCIES
+A3  Dynamic imported-model hookup detection          WAITING_DEPENDENCIES
+A4  Lived Local Artifacts cross-model proof          WAITING_DEPENDENCIES
+
+root [VexLife Local Artifacts]                       RUNNING
+```
+
+### What current Product already has
+
+Current main already contains substantial source for the model tail:
+
+- `VexLifeEffectiveModelCapabilities` computes capability truth from Companion representation + exact current-target runtime realization + qualified serving/visual evidence;
+- Settings -> Models has a compact selector with separate targeted/chosen/serving/switching truth, explicit Select versus Start/Use, runtime-configuration choices and model storage controls;
+- repository tests cover a 27B-serving -> select 9B -> explicit Use -> 9B-serving switch relationship;
+- imported-model inspection/addition pins exact provider revision/members, recognizes today's admitted Qwen3 MLX/Safetensors relationship conservatively, detects native tool grammar where present, and fails closed on remote-code-required/unsupported relationships.
+
+Those source facts are preserved as evidence. They do **not** automatically complete their Work items.
+
+### Why A1 is still RUNNING
+
+A1 promises a **human-readable capability view**.
+
+Current Models presentation does not yet render the model row's `VexLifeEffectiveModelCapabilities.Projection`. It shows model availability/resource facts, selection/serving/switching, storage and runtime configuration, but the human cannot yet directly see the effective capability meanings A1 names.
+
+Therefore:
+
+```text
+CAPABILITY PROJECTION EXISTS IN SOURCE
+!=
+A1 HUMAN CAPABILITY VIEW COMPLETE
+```
+
+The smallest current A1 edge is to project the already-owned effective capability truth into the existing compact Models presentation without creating another capability owner or inferring from model names.
+
+### Why A2 and A3 are dependency-held
+
+A2's compact selector implementation is already present, and A3's conservative import recognizer is already present. But both Work items explicitly depend on A1.
+
+They are therefore `WAITING_DEPENDENCIES`, not hidden and not falsely marked complete.
+
+When A1's human capability view closes, A2/A3 can be re-evaluated from their already-landed source rather than rebuilt.
+
+### A4 remains visible
+
+A4's lived acceptance is now planned, but it is not ready until A2/A3 close.
+
+Its eventual circuit remains:
+
+```text
+same existing Conversation
++ one admitted file or Local Source
+-> Select another exact qualified local model
+-> explicitly Start / converge it
+-> exact target becomes serving
+-> human capability/model presentation currentizes truthfully
+-> next ordinary Send uses the newly serving model
+-> Conversation identity unchanged
+-> Memory not silently rebound
+-> artifact/source identities unchanged
+```
+
+Repository switching tests are useful evidence; they are not this lived human proof.
+
+### Relationship to completed Response Readiness
+
+VexLife-Prod #514 / #602 completed and landed Response Readiness. That work supplies important runtime/readiness evidence to this Project, but:
+
+```text
+RESPONSE READINESS COMPLETE
+!=
+[VEXLIFE LOCAL ARTIFACTS] PROJECT COMPLETE
+```
+
+### Adjacent open Product work remains visible under separate owners
+
+#171 Runtime Reliability, #172 Resources, #510 Mac Startup, #543 Multi-Vex and #601 Support External API are separate active trajectories. They are not silently absorbed here and are not completion dependencies merely because some share source or consumed Response Readiness evidence.
+
+They should be independently completed, superseded or cancelled under their rightful Work owners.
+
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-VEXWORKS][CURRENT-20261124] -->
+
 ## Current starting point
 
 The current Local Artifacts successor work establishes the first half of this outcome:
