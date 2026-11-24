@@ -52,86 +52,102 @@ LOCAL_SOURCE != ATTACHMENT
 PROVIDER_NATIVE_TOOLING != VEX_CAPABILITY_AUTHORITY
 ```
 
-## Current checkpoint — 2026-11-24: A1-A3 landed; A4 is the real remaining acceptance edge
+## Current checkpoint — 2026-11-24: source advanced; A1 remains the real foreground
 
-The durable VexWork state has been reconciled to current VexLife-Prod `main` rather than the Nov 20 starting point.
+VexLife-Prod has advanced substantially beyond this Project's Nov 20 starting checkpoint:
 
 ```text
-VexLife-Prod main
+current Product main
 c7905c3922682e39dacbac07b9ab15cbe9ec7586
 tree
 78bf9cae8a404b1b70e680b1dec425844b3cef8a
 ```
 
-That exact tree was the physically proved top #602 tree before merge.
+That exact tree was physically proved before the #602 merge.
 
-Current Project Work truth:
+The durable Workgraph is currentized to what is actually true now:
 
 ```text
 A0  Local Artifacts + Local Sources convergence      COMPLETED
-A1  Effective selected-model capability projection  COMPLETED
-A2  Claude-like model selector                       COMPLETED
-A3  Dynamic imported-model hookup detection          COMPLETED
-A4  Lived Local Artifacts cross-model proof          READY
+A1  Effective selected-model capability projection  RUNNING
+A2  Claude-like model selector                       WAITING_DEPENDENCIES
+A3  Dynamic imported-model hookup detection          WAITING_DEPENDENCIES
+A4  Lived Local Artifacts cross-model proof          WAITING_DEPENDENCIES
 
 root [VexLife Local Artifacts]                       RUNNING
 ```
 
-### What A1-A3 completion means
+### What current Product already has
 
-Current Product main now contains:
+Current main already contains substantial source for the model tail:
 
-- one explicit `VexLifeEffectiveModelCapabilities` projection joining the model's Companion representation, current-target runtime realization, exact qualified serving runtime and qualified visual input;
-- a compact Models selector that keeps `targeted != chosen != serving`, returns existing `Select` / configuration / `Use` Controls, and never turns selection into implicit activation;
-- explicit switch phases and a runtime-switch realization seam, with repository proof covering a 27B-serving -> 9B-target -> explicit Use -> 9B-serving relationship;
-- conservative imported-model inspection/addition with exact provider revision/member custody, current-target runtime realization, native-tool grammar recognition where present, and fail-closed rejection of unsupported/remote-code-required relationships.
+- `VexLifeEffectiveModelCapabilities` computes capability truth from Companion representation + exact current-target runtime realization + qualified serving/visual evidence;
+- Settings -> Models has a compact selector with separate targeted/chosen/serving/switching truth, explicit Select versus Start/Use, runtime-configuration choices and model storage controls;
+- repository tests cover a 27B-serving -> select 9B -> explicit Use -> 9B-serving switch relationship;
+- imported-model inspection/addition pins exact provider revision/members, recognizes today's admitted Qwen3 MLX/Safetensors relationship conservatively, detects native tool grammar where present, and fails closed on remote-code-required/unsupported relationships.
 
-The final #602 integrated candidate passed the full JVM suite and full physical Mac candidate proof, then merged with a byte-identical proved tree.
+Those source facts are preserved as evidence. They do **not** automatically complete their Work items.
 
-### What is *not* yet complete: A4
+### Why A1 is still RUNNING
 
-Repository/source proof of model switching is not the same as the lived Project outcome.
+A1 promises a **human-readable capability view**.
 
-A4 still owes one human-lived circuit on current main:
+Current Models presentation does not yet render the model row's `VexLifeEffectiveModelCapabilities.Projection`. It shows model availability/resource facts, selection/serving/switching, storage and runtime configuration, but the human cannot yet directly see the effective capability meanings A1 names.
+
+Therefore:
+
+```text
+CAPABILITY PROJECTION EXISTS IN SOURCE
+!=
+A1 HUMAN CAPABILITY VIEW COMPLETE
+```
+
+The smallest current A1 edge is to project the already-owned effective capability truth into the existing compact Models presentation without creating another capability owner or inferring from model names.
+
+### Why A2 and A3 are dependency-held
+
+A2's compact selector implementation is already present, and A3's conservative import recognizer is already present. But both Work items explicitly depend on A1.
+
+They are therefore `WAITING_DEPENDENCIES`, not hidden and not falsely marked complete.
+
+When A1's human capability view closes, A2/A3 can be re-evaluated from their already-landed source rather than rebuilt.
+
+### A4 remains visible
+
+A4's lived acceptance is now planned, but it is not ready until A2/A3 close.
+
+Its eventual circuit remains:
 
 ```text
 same existing Conversation
 + one admitted file or Local Source
 -> Select another exact qualified local model
 -> explicitly Start / converge it
--> wait for that exact target to become serving
--> capability/model presentation currentizes truthfully
--> Send the next ordinary turn through the newly serving model
+-> exact target becomes serving
+-> human capability/model presentation currentizes truthfully
+-> next ordinary Send uses the newly serving model
 -> Conversation identity unchanged
--> Memory identity/aggregate not silently rebound
+-> Memory not silently rebound
 -> artifact/source identities unchanged
 ```
 
-That is why the Project remains `RUNNING` while A4 is `READY`. This remaining work is visible rather than being hidden behind the completed Response Readiness merge.
+Repository switching tests are useful evidence; they are not this lived human proof.
 
-### Relationship to Response Readiness
+### Relationship to completed Response Readiness
 
-VexLife-Prod #514 / #602 completed the Response Readiness trajectory and landed its source on main. That work materially supplied A1/A2 runtime-currentness and model-configuration truth, but:
+VexLife-Prod #514 / #602 completed and landed Response Readiness. That work supplies important runtime/readiness evidence to this Project, but:
 
 ```text
 RESPONSE READINESS COMPLETE
 !=
-[VEXLIFE LOCAL ARTIFACTS] WHOLE PROJECT COMPLETE
+[VEXLIFE LOCAL ARTIFACTS] PROJECT COMPLETE
 ```
 
-The broader Project closes only after A4's cross-model lived continuity acceptance.
+### Adjacent open Product work remains visible under separate owners
 
-### Adjacent active Product work is not silently absorbed
+#171 Runtime Reliability, #172 Resources, #510 Mac Startup, #543 Multi-Vex and #601 Support External API are separate active trajectories. They are not silently absorbed here and are not completion dependencies merely because some share source or consumed Response Readiness evidence.
 
-The following open Product lanes are **not** completion dependencies of A4 and are not owned by this Project merely because Response Readiness supplied evidence to them:
-
-- #171 Runtime Reliability — future pressure/hold/recycle safety authority; the passing cache2 matrix did not earn a universal RAM threshold.
-- #172 Resources — broader read-side runtime/resource-pressure awareness; no guessed browser threshold was earned.
-- #510 Mac Startup — separate runtime/service-restart custody work.
-- #543 Multi-Vex — separate counterpart/participant trajectory.
-- #601 Support External API — separate provider-neutral inference-target trajectory.
-
-Those lanes should remain visible under their rightful owners until independently completed, superseded or cancelled. Their existence does not make A1-A3 incomplete.
+They should be independently completed, superseded or cancelled under their rightful Work owners.
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-VEXWORKS][CURRENT-20261124] -->
 
@@ -610,17 +626,19 @@ A0  Local Artifacts + Local Sources convergence
     COMPLETED on VexLife-Prod main 8dbbd3f250556fe9cc6664849be65a67e9c1fc76
 
 A1  Effective model-capability projection
-    COMPLETED on current Product main
+    CURRENT FOREGROUND
+    derive one human-readable capability view from the selected model's exact
+    Companion representation + current runtime realization/qualification
 
 A2  Claude-like model selector
-    COMPLETED on current Product main
+    project offered/imported models and existing Select / Use switch semantics
+    without creating another model owner
 
 A3  Imported-model relationship recognizers
-    COMPLETED for today's admitted Qwen3/current-runtime relationship;
-    future recognizers require separately earned qualified relationships
+    retain today's exact Qwen3 recognizer; add new architecture/provider
+    recognizers only when a qualified runtime relationship actually exists
 
-A4  Lived Local Artifacts cross-model proof
-    READY — current Project foreground acceptance edge
+A4  Lived Local Artifacts proof
     same Conversation + same admitted files/sources
     -> switch model
     -> capability surface changes truthfully
