@@ -469,6 +469,34 @@ tree 8ac93a7e91badfbb055108af874ccd24bc4f6179
 
 #1970 / A002 is consumed evidence and must not be treated as current proof carriage.
 
+## A003 exact SourceOwner PASS
+
+Canonical A003 proof is consumed:
+
+~~~text
+outer RETURN sha256
+d42312fe19d7070b363992cda835c9a05a2beb153ae3867d511234ac45b811a7
+
+Product #578
+head 53a7665b4f2ef68928a36d40939e70e22568a438
+tree 3203d775f3357ac0650ae626fcd60d322c053bc1
+
+outer carrier PASS
+inner SourceOwner PASS
+~~~
+
+The exact repository proof passed:
+
+~~~text
+jvmTest
+compileKotlinJs
+compileTestKotlinJs
+checkVexLifeStrings
+~~~
+
+The accepted inner continuation is `F13.RUN_FRESH_ASSURANCE`. No merge/READY/share-path
+composition is implied by SourceOwner PASS.
+
 ## A0 source-grounded seam — current design result
 
 The current source trace shows the first provider-neutral boundary must be **above** the HTTP
