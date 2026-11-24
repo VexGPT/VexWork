@@ -362,10 +362,10 @@ Fresh proof carriage is SDK PR #1970:
 [TEMP RELAY][#578][DRAFT] Support External API SourceOwner A002
 
 SDK companion head
-6899a9419358ec215cf04902c08b95874c24f78a
+c3baec6d6cf88b2178768e9c30f25b49388e175b
 
 tree
-aba4f679aa9574f483dd0a4ded795d642c5a4e88
+541764fcb6be7420b1adf6f594817a3692293fac
 
 contract
 source.vexrelay.current-contract/v1
