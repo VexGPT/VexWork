@@ -102,6 +102,20 @@ Current main already contains substantial source for the model tail:
 
 Those source facts are preserved as evidence. They do **not** automatically complete their Work items.
 
+### Current A1 Product owner
+
+`VexGPT/VexLife-Prod#608` is now the bounded A1 source candidate for the first concrete adaptation correction:
+
+```text
+pinned imported Qwen chat-template evidence
+-> native-tool grammar recognized
+-> RECOGNIZED_HELD
+-> qualified VexLife text-control carriage remains active
+-> effective provider-native tools = HELD
+```
+
+#608 is stacked on the assured #606 convergence and is path-disjoint from #607's provider-neutral Companion invocation extraction. It does not add a second model/runtime/currentness owner. Source formation is not completion; exact-head SourceOwner proof is next.
+
 ### Why A1 is still RUNNING
 
 A1 is no longer framed as a UI-only capability checklist. The Product already computes useful effective capability truth, but the adaptation chain is not yet complete enough to make that the whole claim.
