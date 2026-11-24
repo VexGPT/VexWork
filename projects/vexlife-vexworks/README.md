@@ -162,12 +162,12 @@ VexLife-Prod #514 / #602 completed and landed Response Readiness. That work supp
 ```text
 RESPONSE READINESS COMPLETE
 !=
-[VEXLIFE LOCAL ARTIFACTS] PROJECT COMPLETE
+[VEXLIFE MODEL ADAPTATION] PROJECT COMPLETE
 ```
 
 ### Adjacent open Product work remains visible under separate owners
 
-#171 Runtime Reliability, #172 Resources, #510 Mac Startup, #543 Multi-Vex and #601 Support External API are separate active trajectories. They are not silently absorbed here and are not completion dependencies merely because some share source or consumed Response Readiness evidence.
+#171 Runtime Reliability, #172 Resources, #510 Mac Startup, #543 Multi-Vex and the active Support External API stack (#606/#607, descended from #601) are separate active trajectories. They are not silently absorbed here and are not completion dependencies merely because some share source or consumed Response Readiness evidence.
 
 They should be independently completed, superseded or cancelled under their rightful Work owners.
 
