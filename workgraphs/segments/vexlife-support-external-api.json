@@ -54,7 +54,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T19:45:00.000-08:00",
+      "updatedAt": "2026-11-23T19:48:00.000-08:00",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -63,7 +63,7 @@
       "workRef": "work.vexlife.support-external-api.a0-provider-neutral-seam",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A0 — Home-accessible Product foundation + provider-neutral Companion inference seam",
-      "purpose": "First separate VexLife Home/Product accessibility from selected inference-session readiness so local runtime failure, Partner failure, missing credentials, cache failure, switching or an unconfigured model can hold only dependent inference while the person retains a truthful route to Home, Settings, recovery and another realization. Then form the smallest provider-neutral Direct Companion inference boundary that preserves current local mlx-lm behavior exactly while allowing Local Heretic or Partner realization beneath the same Vex-owned Conversation/Memory/capability turn. Current Warm Boot #518 owns VexLifeProdLocalService.kt plus DirectCompanionConnection/Turn overlap and Response Readiness #573 owns overlapping Companion/runtime cache paths, so do not race those writers; continue only disjoint Home-foundation/current-state source until their accepted results can be inherited. Disjoint Partner source is now currentized in Product PR #578 at exact head 5cdfd44da89b9f88411096fdf954b370c5ad89a8; A002 was consumed as SAFE_FAILURE at compileKotlinJvm; the inherited Partner host-client redeclaration is corrected on #578 and fresh exact-head proof carriage is now SDK #1971 / A003.",
+      "purpose": "First separate VexLife Home/Product accessibility from selected inference-session readiness so local runtime failure, Partner failure, missing credentials, cache failure, switching or an unconfigured model can hold only dependent inference while the person retains a truthful route to Home, Settings, recovery and another realization. Then form the smallest provider-neutral Direct Companion inference boundary that preserves current local mlx-lm behavior exactly while allowing Local Heretic or Partner realization beneath the same Vex-owned Conversation/Memory/capability turn. Current Warm Boot #518 owns VexLifeProdLocalService.kt plus DirectCompanionConnection/Turn overlap and Response Readiness #573 owns overlapping Companion/runtime cache paths, so do not race those writers; continue only disjoint Home-foundation/current-state source until their accepted results can be inherited. Disjoint Partner source is now currentized in Product PR #578 at exact head 5cdfd44da89b9f88411096fdf954b370c5ad89a8; A002 was consumed as SAFE_FAILURE at compileKotlinJvm; the inherited Partner host-client redeclaration is corrected on #578 and fresh exact-head proof carriage is now SDK #1971 / A003. Exact corrected #578 head 53a7665b4f2ef68928a36d40939e70e22568a438 now has canonical A003 SourceOwner PASS; next lifecycle edge is fresh Independent Assurance.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -90,7 +90,8 @@
         "github.pull.vextreme-sdk.1970",
         "github.pull.vexlife-prod.396",
         "github.pull.vexlife-prod.525",
-        "github.pull.vextreme-sdk.1971"
+        "github.pull.vextreme-sdk.1971",
+        "evidence.vexrelay.return.sha256.d42312fe19d7070b363992cda835c9a05a2beb153ae3867d511234ac45b811a7"
       ]
     },
     {
