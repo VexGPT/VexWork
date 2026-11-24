@@ -437,6 +437,38 @@ coordination are re-observed at the mutation edge.
 candidate identity while bounding RETURN review evidence to 10 selected source files, 5 MB selected
 source bytes, and 10 MB diff bytes. Review omission is evidence bounding, not source omission.
 
+## A002 SourceOwner result / A003 correction
+
+A002 produced canonical evidence rather than a proof-wrapper failure:
+
+~~~text
+outer RETURN
+822b7051cf2742497bd5b1073f5629363ff7ebbc527db840dcb52c00f3adcb37
+
+outer carrier PASS
+inner SourceOwner SAFE_FAILURE
+
+exact head/tree gates PASS
+compileKotlinJvm FAIL
+VexLifePartnerNativeHostClient bodyBytes local redeclaration
+~~~
+
+The same failing blob was inherited from #561/#559. #578 now carries only a request/response
+ByteArray local-name disambiguation with no semantic/protocol delta.
+
+~~~text
+corrected #578
+head 53a7665b4f2ef68928a36d40939e70e22568a438
+tree 3203d775f3357ac0650ae626fcd60d322c053bc1
+
+fresh proof
+SDK #1971 / A003
+head 1801b2ecdc0a5e50f739bae16a591698ceec0034
+tree 8ac93a7e91badfbb055108af874ccd24bc4f6179
+~~~
+
+#1970 / A002 is consumed evidence and must not be treated as current proof carriage.
+
 ## A0 source-grounded seam — current design result
 
 The current source trace shows the first provider-neutral boundary must be **above** the HTTP
