@@ -299,7 +299,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T20:00:00.000-08:00",
+      "updatedAt": "2026-11-23T20:05:00.000-08:00",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -308,7 +308,7 @@
       "workRef": "work.vexlife.support-external-api.a6-security-privacy-boundary",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A6 — Credential, context-egress, tool-admission and replay security boundary",
-      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Platform-neutral #561 keeps secrets out of JVM read paths and defines the native host protocol/client. Windows #562 source-forms Credential Manager + redirect-denying HTTPS and a synthetic no-API host proof. macOS #563 now additionally source-binds the Security.framework helper into private service-image v6: helper compile/sign/verify, exact SHA manifest ownership, payload fingerprinting, and observation through VexLifeProdPrivateServiceImage.partnerHostExecutablePathOrNull. Native OS execution and lived proof remain owed; provider-hosted/mutating tools and automatic fallback stay held. Current overlap review: macOS host #563 is disjoint from #578/#525/#573 but shares build.gradle.kts with application-entry #396, so do not compose those branches yet. Next non-overlapping edge is exact macOS native proof of #563's Swift/Keychain helper using the source-owned no-API proof runner. First exact Mac host execution reached swiftc and exposed one current-toolchain compile incompatibility in URLError.Code rawValue optional binding; #563 now carries a semantic-neutral correction at head 92a5f2b7397cdd3126ffaa434f35cdaa44477717 / tree cc85c155e476132b1c94cc87c76a3b1101b926aa. No Keychain/provider effect occurred before the stop; fresh exact-host proof is next.",
+      "purpose": "Use the existing Vex Security Assurance question owner to source-place minimum invariants for provider/credential identity, secret custody, bounded remote context egress, tool admission, replay/fallback and evidence. Platform-neutral #561 keeps secrets out of JVM read paths and defines the native host protocol/client. Windows #562 source-forms Credential Manager + redirect-denying HTTPS and a synthetic no-API host proof. macOS #563 now additionally source-binds the Security.framework helper into private service-image v6: helper compile/sign/verify, exact SHA manifest ownership, payload fingerprinting, and observation through VexLifeProdPrivateServiceImage.partnerHostExecutablePathOrNull. Native OS execution and lived proof remain owed; provider-hosted/mutating tools and automatic fallback stay held. Current overlap review: macOS host #563 is disjoint from #578/#525/#573 but shares build.gradle.kts with application-entry #396, so do not compose those branches yet. Next non-overlapping edge is exact macOS native proof of #563's Swift/Keychain helper using the source-owned no-API proof runner. First exact Mac host execution reached swiftc and exposed one current-toolchain compile incompatibility in URLError.Code rawValue optional binding; #563 now carries a semantic-neutral correction at head 92a5f2b7397cdd3126ffaa434f35cdaa44477717 / tree cc85c155e476132b1c94cc87c76a3b1101b926aa. No Keychain/provider effect occurred before the stop; fresh exact-host proof is next. Corrected #563 exact head 92a5f2b7397cdd3126ffaa434f35cdaa44477717 now has lived macOS protected-host A002 PASS: swiftCompile/store/observe/delete/observe-absent/missing-credential-before-network all PASS, with no real provider credential/network effect and no persisted proof secret. Next A6 edge is packaged service-image v6 + observed-helper/upgrade-continuity proof, still separate from #396 build.gradle convergence.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -352,7 +352,8 @@
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/packaging/VexLifeProdPrivateServiceImageTest.kt",
         "repo.vexlife-prod:build.gradle.kts",
         "github.pull.vexlife-prod.396",
-        "github.commit.vexlife-prod.92a5f2b7397cdd3126ffaa434f35cdaa44477717"
+        "github.commit.vexlife-prod.92a5f2b7397cdd3126ffaa434f35cdaa44477717",
+        "evidence.macos.partner-host.sha256.045833b137581dfdf7868b01050084d5452023ea066c1fcda1d1f9a5715a0378"
       ]
     },
     {
