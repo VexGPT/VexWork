@@ -246,13 +246,19 @@ function addSurface(builder, surface, laws) {
     const evidence = { capability: element.bindingTarget, pathwayRef: pathway.pathwayRef, disposition: pathway.disposition };
     if (law) {
       const declaredControlRefs = pathway.controlRefs ?? [];
+      const matchesControl = (selector, control) =>
+        selector === control.ref ||
+        selector === control.name ||
+        selector === control.symbol ||
+        selector === control.symbol.split('.').at(-1);
       const controls =
         declaredControlRefs.length
-          ? law.controls.filter((control) => declaredControlRefs.includes(control.ref))
+          ? law.controls.filter((control) => declaredControlRefs.some((selector) => matchesControl(selector, control)))
           : law.controls;
       if (declaredControlRefs.length) {
-        const found = new Set(controls.map((control) => control.ref));
-        const missing = declaredControlRefs.filter((ref) => !found.has(ref));
+        const missing = declaredControlRefs.filter(
+          (selector) => !law.controls.some((control) => matchesControl(selector, control)),
+        );
         assert(
           missing.length === 0,
           `Lens pathway ${pathway.pathwayRef} names unknown ${law.family} Control refs: ${missing.join(', ')}`,
