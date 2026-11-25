@@ -250,7 +250,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:40:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.cold-start-proof",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Prove cold-start, rollover and missing-old-context continuity",
@@ -260,7 +260,7 @@
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.memory-depth-exploration.context-provider-convergence",
-        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.semantic-candidate-index"
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.product-adapter-model-probe"
       ],
       "repositoryRefs": [
         "repo.vexwork",
@@ -295,7 +295,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:40:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.measurement",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Measure traversal, response quality, lesson transfer and orchestration savings",
@@ -305,7 +305,7 @@
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.memory-depth-exploration.context-provider-convergence",
-        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.five-year-scale-recovery-proof"
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.product-adapter-model-probe"
       ],
       "repositoryRefs": [
         "repo.vexwork",
@@ -453,11 +453,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:24:36.000Z",
-      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:40:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Complete long-horizon Memory storage, indexing and recall expansion",
-      "purpose": "Make years of VexLife continuity remain fast and source-truthful by keeping canonical Conversation/Score/Daily/Memory objects with their rightful file-backed owners while adding only rebuildable local retrieval/index projections, exact source re-open/currentness verification, measured shard evolution, paraphrase candidate retrieval, and five-year scale/recovery proof. A database/index may accelerate lookup but must never become Memory, semantic acceptance or canonical Conversation truth.",
+      "purpose": "Make years of VexLife continuity remain fast and source-truthful on both the ordinary Send path and old-context recall path: preserve canonical Conversation/Score/Daily/Memory truth with rightful owners, avoid lifetime enumeration on hot currentness/read/write paths, add only rebuildable local recall/index projections, verify every candidate against exact current lifecycle/privacy source, support measured shard evolution and paraphrase candidate retrieval, then prove the same implementation through deterministic Product and optional real-model scratch-Home tests.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -565,7 +565,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:24:36.000Z",
-      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:40:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lexical-typed-index",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
       "label": "Add incremental lexical and typed-edge retrieval without lifetime scans",
@@ -574,7 +574,8 @@
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
       "dependencyRefs": [
-        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.derived-retrieval-store"
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.derived-retrieval-store",
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lifecycle-leakage-boundary"
       ],
       "repositoryRefs": [
         "repo.vexwork",
@@ -642,7 +643,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:24:36.000Z",
-      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:40:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.five-year-scale-recovery-proof",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
       "label": "Prove five-year-scale recall, rebuild, deletion and crash recovery",
@@ -652,7 +653,9 @@
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lexical-typed-index",
-        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.semantic-candidate-index"
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.semantic-candidate-index",
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.canonical-fast-path",
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lifecycle-leakage-boundary"
       ],
       "repositoryRefs": [
         "repo.vexwork",
@@ -710,6 +713,116 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
         "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
         "repo.vextreme-sdk:lib/living-journal/projection.js"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:40:00.000Z",
+      "updatedAt": "2026-11-25T17:40:00.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.canonical-fast-path",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Remove lifetime enumeration from ordinary Conversation / current-state paths",
+      "purpose": "Refactor the current long-lived Product path so an ordinary Send, current-head read and exact source reopen do not enumerate/replay the full lifetime event set merely to prove currentness or uniqueness. Preserve DirectConversationStore invariants through a head/currentness slice plus a current derived identity/index generation that fails closed and rebuilds when stale; keep full-history validation as an explicit diagnostic/rebuild proof rather than the per-turn hot path. Apply the same pressure to Score/current Memory replay where current source still scales with total accepted history.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.derived-retrieval-store"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "github.pull.vexlife-prod.500",
+        "github.pull.vexlife-prod.504",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:40:00.000Z",
+      "updatedAt": "2026-11-25T17:40:00.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lifecycle-leakage-boundary",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Prove lifecycle-aware recall cannot leak stale, private, superseded or deleted content",
+      "purpose": "Bind derived recall/index entries to exact owner generations, privacy/retention state, correction/supersession lineage and tombstone/content-destruction evidence. A stale/poisoned/missing derived store must hold rather than return remembered bytes; deletion or withdrawal invalidates searchable material; rebuilding must recover only what canonical owners still permit. Keep index deletion distinct from Memory deletion and preserve content-free integrity/tombstone evidence where rightful owners require it.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.derived-retrieval-store"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "github.pull.vexlife-prod.500",
+        "github.pull.vexlife-prod.504",
+        "project.vex.security-assurance",
+        "repo.vextreme-sdk:docs/architecture/local-sovereign-runtime-boundaries.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:40:00.000Z",
+      "updatedAt": "2026-11-25T17:40:00.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.product-adapter-model-probe",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Bridge the long-horizon corpus into VexLife-Prod deterministic and live-model proof",
+      "purpose": "Reuse the existing Continuity Pressure / scratch-Home adapter rather than create another model harness. Seed a synthetic long-horizon corpus through the rightful Product test owner, build/reobserve the accepted derived recall generation, run actual Product retrieval/currentization into DirectPromptContext with a deterministic fixture provider first, then optionally the selected real model through the existing HOST_SEMANTIC_MODEL_RUNTIME route. Prove exact recall, semantic/paraphrase recall, currentization, lesson reuse, honest tombstone/absence and no private/stale leakage without requiring the Companion UI.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.five-year-scale-recovery-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "github.pull.vexlife-prod.500",
+        "github.pull.vexlife-prod.504",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/PRODUCT-ADAPTER-PICKUP.md",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/harness/ContinuityPressureAdapter.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/DirectConversationContextProjection.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     }
