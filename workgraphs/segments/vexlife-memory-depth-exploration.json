@@ -10,11 +10,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-20T10:52:25.001Z",
+      "updatedAt": "2026-11-25T18:12:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Memory Depth Exploration",
-      "purpose": "Make Vex continuity deep, inspectable and provider-correct: a fresh or successor Vex can recover relevant source-grounded history through rightful owners, current context/capability truth reaches the selected model through its qualified provider representation, and the person can inspect the causal chain from source/context through provider request, reach/effect evidence and resulting continuity without creating another Memory, Conversation, Working Continuity or execution-truth owner.",
+      "purpose": "Make Vex continuity deep, inspectable, provider-correct and long-horizon scalable: a fresh or successor Vex can recover relevant source-grounded history through rightful owners, bounded continuity source location remains backend/platform modular without becoming Memory truth, current context/capability truth reaches the selected model through its qualified provider representation, and the person can inspect the causal chain from canonical source through location/currentization/provider placement and back into durable continuation without creating another Memory, Conversation, Working Continuity or execution-truth owner.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -489,11 +489,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:24:36.000Z",
-      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T18:12:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.architecture-convergence",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
-      "label": "Converge SDK Memory/shard/index contracts with current Product storage",
-      "purpose": "Map Vex Memory #225, durable semantic-memory identity, Living Journal shard-manifest/currentness contracts and Lesson Resonance rebuildable-index rules onto the current VexLife-Prod Conversation, Score, Daily Memory and ContextRevisit physical/read paths. Produce one exact owner/currentness map that distinguishes canonical files, logical shards, derived indexes, semantic compaction and physical compaction before implementation source is admitted.",
+      "label": "Converge VexArchitecture ownership + SDK Memory/shard/index contracts with current Product storage",
+      "purpose": "Walk the long-horizon circuit through VexArchitecture rightful-owner questions and the current Product source: existing Conversation/Memory/Working Continuity remain semantic/source owners; the new relationship is bounded continuity source location, not a LongTermMemory Family or database owner; construction/platform realization stays orthogonal; chronology, convergence and presentation remain bounded projections. Map Vex Memory #225, durable semantic-memory identity, Living Journal shard-manifest/currentness, Lesson Resonance rebuildable-index rules, EvolveContext/ContextRevisit and the Product's current Mac/Windows realization seams into one end-to-end consequence map with every container/member/next edge explicit.",
       "workClass": "TASK",
       "state": "VERIFYING",
       "priorityClass": "IMMEDIATE",
@@ -515,7 +515,11 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
         "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
         "repo.vextreme-sdk:docs/architecture/local-sovereign-runtime-boundaries.md",
-        "project.vex.security-assurance"
+        "project.vex.security-assurance",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -526,11 +530,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:24:36.000Z",
-      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T18:12:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.derived-retrieval-store",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
-      "label": "Define and prove the rebuildable local retrieval-store contract",
-      "purpose": "Define the smallest derived local store that can index stable owner/source refs, sequence/time, typed relationships, shard placement/currentness and lexical lookup while remaining disposable and reconstructable. Compare a file-only derived index with an embedded/on-demand SQLite-class store on cold-open, incremental update, rebuild, crash recovery, privacy/retention and operational cost; no always-running database daemon is required by default and no adapter may become a second Memory truth owner.",
+      "label": "Define and prove the portable Continuity Source Locator realization seam",
+      "purpose": "Define the smallest Product-facing Continuity Source Locator contract that can answer which exact canonical refs are candidates and whether the derived locator generation is current enough to use as a locator, while remaining disposable/reconstructable and never becoming Memory truth. Keep concrete technology below this boundary: compare file-only and embedded/on-demand SQLite-class realizations, and make construction/deployment modular so a qualified alternative backend may be supplied without changing Conversation/Memory identity or consumer semantics. Reuse the existing exact-target VexLifePlatformRealization posture so Mac/Windows differences stay in construction/packaging rather than scattered Product branches.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "IMMEDIATE",
@@ -554,7 +558,11 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
         "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
         "repo.vextreme-sdk:docs/architecture/local-sovereign-runtime-boundaries.md",
-        "project.vex.security-assurance"
+        "project.vex.security-assurance",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -565,11 +573,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:24:36.000Z",
-      "updatedAt": "2026-11-25T17:40:00.000Z",
+      "updatedAt": "2026-11-25T18:12:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lexical-typed-index",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
       "label": "Add incremental lexical and typed-edge retrieval without lifetime scans",
-      "purpose": "Implement the selected rebuildable retrieval adapter so old-context location can shortlist stable Conversation/Memory/relationship source refs without projecting or scanning the whole lifetime archive on every recall. Bind index frontier to exact canonical heads, ingest only valid descendant deltas, detect stale/missing/corrupt state, and require exact canonical owner re-open/currentness verification before ContextRevisit or Memory returns material.",
+      "purpose": "Implement the selected Continuity Source Locator realization so old-context location can shortlist stable Conversation/Memory/relationship source refs without projecting or scanning the whole lifetime archive on every recall. Bind locator frontier to exact canonical heads, ingest only valid descendant deltas, detect stale/missing/corrupt state, and require exact canonical owner re-open/currentness/lifecycle verification before ContextRevisit or request-bound projection returns material. Consumer behavior must remain backend-independent.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -593,7 +601,11 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
         "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
-        "project.vex.security-assurance"
+        "project.vex.security-assurance",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -604,11 +616,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:24:36.000Z",
-      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T18:12:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.semantic-candidate-index",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
       "label": "Add paraphrase / semantic candidate retrieval with exact source recovery",
-      "purpose": "Add a rebuildable semantic-neighborhood candidate layer only after the lexical/typed-edge index is current. Embeddings or another semantic representation may rank candidate anchors, but similarity cannot create a relationship, accepted Memory or autobiographical meaning; top candidates must recover exact prior sources, scope, counterexamples, correction/supersession and currentness before use.",
+      "purpose": "Add a rebuildable semantic-neighborhood candidate capability behind the same Continuity Source Locator relationship only after lexical/typed-edge location is current. Embeddings or another semantic representation may rank candidate anchors, but similarity cannot create a relationship, accepted Memory or autobiographical meaning; top candidates must recover exact prior sources, scope, counterexamples, correction/supersession and currentness before use. Backend/model profile changes invalidate/rebuild derived semantic artifacts without changing canonical source identity.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -632,7 +644,11 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
         "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
         "github.issue.vextreme-sdk.312",
-        "project.vex.security-assurance"
+        "project.vex.security-assurance",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -643,11 +659,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:24:36.000Z",
-      "updatedAt": "2026-11-25T17:40:00.000Z",
+      "updatedAt": "2026-11-25T18:12:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.five-year-scale-recovery-proof",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
       "label": "Prove five-year-scale recall, rebuild, deletion and crash recovery",
-      "purpose": "Form a deterministic lifetime-scale corpus and measure ordinary-turn I/O, old-context lookup latency, candidate coverage, exact source descent, incremental indexing, full rebuild, missing/stale/corrupt index recovery, interruption during index update, deletion/tombstone/supersession invalidation and disk overhead. Establish product thresholds from measured baseline rather than inventing them, and prove index loss never becomes Memory loss.",
+      "purpose": "Form a deterministic lifetime-scale corpus and prove both semantic equivalence and implementation interchangeability: ordinary-turn I/O, old-context lookup latency, candidate coverage, exact source descent, incremental indexing, full rebuild, missing/stale/corrupt locator recovery, interruption during locator update, deletion/tombstone/supersession invalidation, shard relocation and disk overhead. Where two qualified realizations are available, the same canonical corpus and queries must yield the same candidate/source identities and lifecycle decisions even if performance differs. Establish Product thresholds from measured baseline rather than inventing them.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -674,7 +690,11 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
         "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
         "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
-        "project.vex.security-assurance"
+        "project.vex.security-assurance",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -795,11 +815,11 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-25T17:40:00.000Z",
-      "updatedAt": "2026-11-25T17:40:00.000Z",
+      "updatedAt": "2026-11-25T18:12:00.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.product-adapter-model-probe",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
       "label": "Bridge the long-horizon corpus into VexLife-Prod deterministic and live-model proof",
-      "purpose": "Reuse the existing Continuity Pressure / scratch-Home adapter rather than create another model harness. Seed a synthetic long-horizon corpus through the rightful Product test owner, build/reobserve the accepted derived recall generation, run actual Product retrieval/currentization into DirectPromptContext with a deterministic fixture provider first, then optionally the selected real model through the existing HOST_SEMANTIC_MODEL_RUNTIME route. Prove exact recall, semantic/paraphrase recall, currentization, lesson reuse, honest tombstone/absence and no private/stale leakage without requiring the Companion UI.",
+      "purpose": "Reuse the existing Continuity Pressure / scratch-Home adapter rather than create another model harness. Seed a synthetic long-horizon corpus through the rightful Product test owner, construct the Continuity Source Locator through the same Product/platform realization seam used by ordinary runtime composition, build/reobserve its current derived generation, run actual Product retrieval/currentization into DirectPromptContext with a deterministic fixture provider first, then optionally the selected real model through HOST_SEMANTIC_MODEL_RUNTIME. Prove exact recall, semantic/paraphrase recall, currentization, lesson reuse, honest tombstone/absence and no private/stale leakage without requiring the Companion UI; also prove presentation/debug surfaces inspect the same refs rather than creating another recall path.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -822,7 +842,11 @@
         "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
         "projects/vexlife-memory-depth-exploration/pressure-harness/PRODUCT-ADAPTER-PICKUP.md",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/harness/ContinuityPressureAdapter.kt",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/DirectConversationContextProjection.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/DirectConversationContextProjection.kt",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     }
@@ -1182,7 +1206,9 @@
     "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
     "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
     "github.issue.vexwork.445",
-    "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md"
+    "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
