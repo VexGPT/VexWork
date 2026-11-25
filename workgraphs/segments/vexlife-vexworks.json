@@ -50,7 +50,11 @@
         "github.pull.vexlife-prod.607",
         "github.pull.vexlife-prod.608",
         "github.pull.vexlife-prod.611",
-        "github.pull.vexlife-prod.608.comment.7143129665"
+        "github.pull.vexlife-prod.608.comment.7143129665",
+        "github.commit.vexlife-prod.28225345ceaf3f527fe0edd680d6c95ea6c9d54d",
+        "github.pull.vexlife-prod.440",
+        "github.pull.vexlife-prod.612",
+        "github.pull.vexlife-prod.614"
       ]
     },
     {
@@ -131,7 +135,11 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeInferenceSessionAdmission.kt",
         "github.pull.vexlife-prod.608",
         "github.pull.vexlife-prod.611",
-        "github.pull.vexlife-prod.608.comment.7143129665"
+        "github.pull.vexlife-prod.608.comment.7143129665",
+        "github.commit.vexlife-prod.28225345ceaf3f527fe0edd680d6c95ea6c9d54d",
+        "github.pull.vexlife-prod.440",
+        "github.commit.vexlife-prod.cda67ccde54cc79d7b5a14e04d6622c34b6d53d5",
+        "github.pull.vexlife-prod.612"
       ]
     },
     {
@@ -168,7 +176,10 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
         "repo.vexlife-prod:src/commonTest/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifactsTest.kt",
-        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/model/VexLifeModelsTest.kt"
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/model/VexLifeModelsTest.kt",
+        "github.commit.vexlife-prod.28225345ceaf3f527fe0edd680d6c95ea6c9d54d",
+        "github.pull.vexlife-prod.338",
+        "github.commit.vexlife-prod.1c96c04d553ab54c475c16aeedc317e57412663c"
       ]
     },
     {
@@ -203,7 +214,13 @@
         "github.pull.vexlife-prod.602.comment.7141652008",
         "github.issue.vexlife-prod.514.comment.7141652751",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/model/heretic/HuggingFaceModelInspectionTest.kt",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt"
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt",
+        "github.commit.vexlife-prod.28225345ceaf3f527fe0edd680d6c95ea6c9d54d",
+        "github.pull.vexlife-prod.255",
+        "github.commit.vexlife-prod.73c2b06a7f463043cdce03101b500024ca679470",
+        "github.pull.vexlife-prod.608",
+        "github.pull.vexlife-prod.611",
+        "github.pull.vexlife-prod.612"
       ]
     },
     {
@@ -239,7 +256,9 @@
         "github.issue.vexlife-prod.514.comment.7141652751",
         "repo.vexlife-prod:src/commonMain/kotlin/vexlife/model/VexLifeEffectiveModelCapabilities.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifeModels.kt",
-        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt",
+        "github.commit.vexlife-prod.28225345ceaf3f527fe0edd680d6c95ea6c9d54d",
+        "github.pull.vexlife-prod.612"
       ]
     }
   ],
