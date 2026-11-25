@@ -3033,6 +3033,127 @@ The read-only Partner state is already source-formed in #572. Do not force a par
 A second prerequisite also remains: the live service needs a rightful current source for accepted
 Partner support proof rather than hard-coded HELD/CONTRACT_PROVEN standing.
 
+## Current funding-held pause boundary — Product #629
+
+The zero-cost Support External API Product/UI phase has advanced well beyond the older #559/#597
+formation record.
+
+Current exact pause candidate:
+
+~~~text
+VexLife-Prod #629
+[Support External API][Settings][DRAFT]
+Show gated Partner API connection
+
+head
+9dc045696b5a155805ab3b16e2b0b1c84a1fb127
+
+tree
+3d008396591c0357b3e35839935148a93f44c243
+~~~
+
+SourceOwner A006 is canonical PASS:
+
+~~~text
+outer RETURN
+50935678ed34e0f9a11ab5621a5e764e688bc117766451ac2de32de9c81d7fbb
+
+retained inner RETURN
+f038b0528de0ad00cf67617a7086d6bc019484731e1b6feb10673a9777adb875
+
+focused seven-check gate
+PASS
+
+full repository threshold
+jvmTest
+compileKotlinJs
+compileTestKotlinJs
+checkVexLifeStrings
+PASS
+~~~
+
+Fresh Independent Assurance:
+
+~~~text
+review
+6050249370
+
+disposition
+CLEAR_ON_EXACT_HEAD_FOR_FUNDING_GATED_PARTNER_API_SETTINGS
+~~~
+
+Human/Product pause meaning:
+
+~~~text
+Settings -> Models -> Partner APIs
+  OpenAI
+  Anthropic
+  Kimi Open Platform
+
+future connection path
+  WIRED
+
+ordinary Product state
+  HELD_FUNDING
+
+connectEnabled
+  false
+
+credential controls
+  disabled
+
+manual service POST
+  held before credential-body use while funding gate is closed
+
+paid live-provider qualification
+  NOT ESTABLISHED
+~~~
+
+The deterministic test-only enablement still proves the underlying protected connection route works;
+the ordinary Product gate remains closed.
+
+A006 corrected only:
+- committed Screen Lens currentness;
+- localization manifest currentness (11 additive Partner API keys);
+- Partner API CSS design-token/relationship-selector currentness.
+
+No funding behavior was weakened.
+
+### Integration debt / successor pressure
+
+Current Product main is:
+
+~~~text
+66752be53be83422fdf23a438e503c1b934edd0d
+~~~
+
+#629 is currently a deep open stack:
+
+~~~text
+ahead of main   359 commits
+behind main     2 commits
+main-relative   139 changed paths
+~~~
+
+This depth is now a material continuity cost. Before opening another Support External API child PR,
+prefer a fresh integration / merge-currentness judgment on the assured stack.
+
+Do not equate open PR count with unfinished semantics:
+- #626 current-main convergence has SourceOwner/Assurance evidence;
+- #627 protected Partner connection control is Assurance-clear (review 6049743130);
+- #629 funding-held Settings boundary is now SourceOwner/Assurance-clear (review 6050249370).
+
+Whether/how those candidates merge remains a separate repository lifecycle decision.
+
+### Adjacent Model Adaptation
+
+Product #630 was formed from an earlier #629 head (`8778cbdd...`) while the Settings renderer was
+occupied. It must re-ground/rebase on exact assured #629 head
+`9dc045696b5a155805ab3b16e2b0b1c84a1fb127` before consuming that renderer.
+
+#630 owns the local model capability presentation edge; Partner API Settings meaning remains Support
+External API-owned.
+
 ## Product support standing before live qualification
 
 Victor explicitly permits the implementation to reach a merge/production-ready state before a paid
