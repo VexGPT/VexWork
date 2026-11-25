@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.vexworks",
   "label": "[VexLife Model Adaptation]",
-  "purpose": "Let VexLife adapt an exact model/provider relationship into the existing human work experience without rebinding Vex identity: preserve completed Local Artifacts + Local Sources continuity, recognize grounded model/provider facts, resolve only lawful representation/runtime adapters, qualify meaningful capability relationships independently, converge the exact serving inference relationship, and project only capabilities that are truthful for the current model/provider/runtime relationship. The existing Qwen3/MLX import path is the first recognizer family; Partner/external inference remains owned by its separate Support External API trajectory.",
+  "purpose": "Let VexLife adapt an exact model/provider relationship into the existing human work experience without rebinding Vex identity: preserve completed Local Artifacts + Local Sources continuity, recognize grounded model/provider facts, resolve only lawful representation/runtime adapter candidates, qualify optional relationships independently, converge one exact serving inference relationship, and project only capabilities truthful for the current model/provider/runtime relationship. Current Product main already contains the merged import/switch/capability foundations; the cleared #608/#611/#612 adaptation lineage remains unmerged and lived whole-app continuity proof remains owed. Partner/external inference remains owned by Support External API.",
   "rootWorkRefs": [
     "work.vexlife.vexworks.outcome"
   ],
@@ -36,7 +36,12 @@
     "github.pull.vexlife-prod.607",
     "github.pull.vexlife-prod.608",
     "github.pull.vexlife-prod.611",
-    "github.pull.vexlife-prod.608.comment.7143129665"
+    "github.pull.vexlife-prod.608.comment.7143129665",
+    "github.commit.vexlife-prod.28225345ceaf3f527fe0edd680d6c95ea6c9d54d",
+    "github.pull.vexlife-prod.440",
+    "github.commit.vexlife-prod.cda67ccde54cc79d7b5a14e04d6622c34b6d53d5",
+    "github.pull.vexlife-prod.612",
+    "github.pull.vexlife-prod.614"
   ],
   "formedAt": "2026-11-20T05:39:00.000Z"
 }
