@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.vexworks",
   "label": "[VexLife Model Adaptation]",
-  "purpose": "Let VexLife adapt exact local/imported model relationships into the existing human work experience without rebinding Vex identity. A0 Local Artifacts + Local Sources, A1 truthful human capability projection, A2 selector/serving convergence, and A3 the bounded imported Qwen3 recognizer/adapter contract are now completed on Product main. The remaining foreground is A4: one lived whole relationship over the same Vex/Conversation/Memory plus admitted Artifact/Local Source/reach, including imported-model adaptation pressure. Partner/external inference remains separately owned by Support External API.",
+  "purpose": "Let VexLife adapt exact local/imported model relationships into the existing human work experience without rebinding Vex identity. A0-A4 are completed: Local Artifacts + Local Sources retain exact identity, capability presentation projects only qualified current relationships, Select/Use converges on exact serving truth, imported Qwen3 recognition/runtime adaptation stays bounded, and the lived Mac circuit proved an imported model can serve an ordinary turn over the same Vex/Conversation/Memory/Artifact/Local Source relationships while unsupported Vex Reach remains HELD and the prior serving model can be restored coherently. Partner/external inference remains separately owned by Support External API.",
   "rootWorkRefs": [
     "work.vexlife.vexworks.outcome"
   ],
@@ -46,7 +46,13 @@
     "github.commit.vexlife-prod.4f9cdf0253249d76b2c2457dcad3b6bb64968bd0",
     "human.return.vexlife-prod.pr630.source-owner.a002.3a6d4ad9bafd981b08bc41d5f10bbef6ebc8e45eb77e7b262632726dbef4a2d6",
     "human.return.vexlife-prod.pr630.assurance.a001.1439c0e3410158c7efafe77633004e9274185f26d077859af495fce4d28b52e1",
-    "human.return.vexlife-model-adaptation.a003.8485a1fbadf4f7725f9a3942beece421559d03bc19dd15629af878feb01c9b57"
+    "human.return.vexlife-model-adaptation.a003.8485a1fbadf4f7725f9a3942beece421559d03bc19dd15629af878feb01c9b57",
+    "github.pull.vexlife-prod.635",
+    "github.commit.vexlife-prod.13d3663c467b851f43e50001b934a658757789b0",
+    "github.commit.vexlife-prod.188a37b4435c3a5f7327097b0cc7f2f48f9da315",
+    "github.pull.vextreme-sdk.2039",
+    "human.return.vexlife-model-adaptation.a4.a004.c8ceb9213d1cff71ca0c75e0a251811e0f561245d848c06617bbde4c230633d7",
+    "human.return.vexlife-model-adaptation.a4.a006.4f703e54cb5ba04861dbf42792d257f18556c4c376bf9711beed17993bccc624"
   ],
   "formedAt": "2026-11-20T05:39:00.000Z"
 }
