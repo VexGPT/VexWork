@@ -43,6 +43,27 @@ after their own rightful source and acceptance contracts become real. The target
 proving ground that future lanes can build toward, not a script that forces unfinished capabilities
 into existence.
 
+### Held scalability pressure — Project Projection
+
+Long-term multi-project / roleplay / research continuity is preserved as a **held future pressure** in
+[`PROJECT-PROJECTION-CONTINUITY-PRESSURE.md`](PROJECT-PROJECTION-CONTINUITY-PRESSURE.md).
+
+The current priority remains A5 -> VexLife-Prod #631 Capability C3 -> one ground-up builder canary ->
+A5 terminal decision. Project Projection must not preempt that trajectory merely because the idea is
+valuable.
+
+The preserved design direction is source projection rather than a second truth store:
+
+~~~text
+human-recognized coherent whole
+-> source-addressable Project Projection
+-> rebuild current view from Conversation / Memory / Working Continuity / Local Sources
+-> resume from current working position
+~~~
+
+Deprecated `project.self-development`-era naming is provenance only and is not the future Project
+architecture.
+
 ## Why this is its own VexWork Project
 
 VexLife-Prod is still evolving rapidly. Kotlin classes, stores, service routes, renderer structure and provider adapters may change while the intended experience remains stable.
