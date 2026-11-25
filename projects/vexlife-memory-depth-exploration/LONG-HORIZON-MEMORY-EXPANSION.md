@@ -123,6 +123,39 @@ PROMPT SCALE IS BOUNDED
 LIFETIME DISK / RECALL COST IS ALREADY SUBLINEAR
 ~~~
 
+## Complete performance pressure: recall path **and** ordinary turn path
+
+The current Product bottleneck is not only historical search.
+
+Current Conversation source still has ordinary paths that enumerate/read the full event directory and replay the
+canonical chain for checks that occur while forming or committing a new turn. Current Score loading similarly
+replays its event history to prove current projection.
+
+Therefore:
+
+~~~text
+FAST OLD-CONTEXT LOOKUP
+!=
+FIVE-YEAR PRODUCT FAST ENOUGH
+
+long-horizon completion requires both:
+
+ordinary Send/currentness path
+  no lifetime enumeration by default
+
+historical recall path
+  no lifetime enumeration by default
+~~~
+
+The intended refactor keeps a full-history validator as an explicit diagnostic/rebuild proof, while the live path
+uses exact current heads plus a current derived identity/index generation. If that derived generation is absent,
+stale, corrupt or not provably descended from the canonical head, the dependent fast path holds/rebuilds rather
+than trusting stale acceleration.
+
+The same question applies to Score/current Memory replay: a current semantic projection should eventually be
+recoverable from exact current owner materialization/checkpoint evidence instead of replaying all accepted history
+on every prompt merely because the history exists.
+
 ## Storage posture
 
 ### Canonical source stays file-backed
@@ -300,26 +333,34 @@ LH-1  derived-store contract + adapter comparison
       file-only derived index vs embedded/on-demand SQLite-class store
       exact currentness / rebuild / deletion semantics
 
-LH-2  lexical + typed-edge retrieval index
+LH-2  lifecycle / leakage membrane
+      stale/private/superseded/tombstoned source cannot leak through derived recall
+
+LH-3  canonical hot path
+      ordinary Conversation / Score currentness does not enumerate lifetime history by default
+
+LH-4  lexical + typed-edge retrieval index
       replace full-history location scan with candidate source refs
       exact canonical verification before return
 
-LH-3  shard-manifest / physical partition adapter
-      only if measured filesystem pressure earns it
-
-LH-4  semantic/paraphrase candidate index
+LH-5  semantic/paraphrase candidate index
       similarity nominates; source + relationship owners decide
 
-LH-5  five-year deterministic scale + recovery proof
+LH-6  five-year deterministic scale + recovery proof
+      ordinary-turn cost + recall cost
       missing/stale/corrupt index
       crash during incremental update
       rebuild
       deletion/tombstone invalidation
       cold-start recall latency / coverage
 
-LH-6  live circuit reconnection
-      current ContextRevisit / Memory Depth cold-start proof
-      measurement / lesson-transfer proof
+LH-7  Product adapter / model probe
+      actual Product owners + deterministic fixture provider first
+      then selected real model in isolated scratch Home
+      no Companion UI required
+
+LH-8  shard-manifest / physical partition adapter
+      only if measured filesystem pressure earns it
 ~~~
 
 Construction and real integration dependencies remain distinct. LH-1/LH-2 can be proven without pretending the final cold-start lived gate already passed.
