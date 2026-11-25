@@ -368,6 +368,62 @@ The builder scenario should reuse current admitted capabilities and existing con
 
 Do not create a new generic builder framework before inspecting those existing surfaces.
 
+## Builder capability currentness finding
+
+Current Product source at `66752be53be83422fdf23a438e503c1b934edd0d` does **not** yet admit the effect surface Family B requires.
+
+Current capability Atlas / Bridge offers:
+
+```text
+atlas        list / describe             EFFECT_FREE_DESCRIBE
+web          fetch / find / search       READ_ONLY_EXTERNAL
+github       describe / tree / read      READ_ONLY_EXTERNAL
+home         list / read                 READ_ONLY_LOCAL
+attachments  list / read                 READ_ONLY_LOCAL
+sources      list / find / read          READ_ONLY_LOCAL
+memory       search                      READ_ONLY_LOCAL
+conversation return                      READ_ONLY_LOCAL
+continuity   revisit                     READ_ONLY_LOCAL
+```
+
+Current bridge law is explicit:
+
+```text
+Every capability here is a read.
+externalEffectsExecuted = false
+effectAuthorityGranted = false
+```
+
+`VexLifeRepositoryReach` is read-only public GitHub reach.
+`VexLifeLocalSourceReach` is read-only reach into an already-granted folder.
+
+Repository-wide current-source inspection found no separately accepted Vex capability for:
+- create/write/edit/delete inside a bounded workspace;
+- run/build/test/process execution;
+- effect-authorized repository mutation.
+
+Therefore:
+
+```text
+A5 Family B builder canary
+!= merely an unrun test
+
+A5 Family B builder canary
+= HELD_MISSING_PRODUCT_CAPABILITY
+```
+
+The next rightful Product edge is a bounded workspace-effect capability that preserves:
+- explicit human/admitted workspace authority;
+- exact root/path confinement;
+- no traversal/symlink escape;
+- typed create/read/edit/delete semantics as actually needed;
+- bounded command/build/test execution only when separately admitted;
+- effect receipts/currentness;
+- recover-before-replay for uncertain mutations;
+- no generic shell authority merely because the builder scenario needs to run tests.
+
+A5 should not invent this effect inside its observer/harness. Once the Product capability is accepted and current, Family B can consume it through the ordinary Vex capability path.
+
 ## Completion after builder
 
 If the builder canary passes:
