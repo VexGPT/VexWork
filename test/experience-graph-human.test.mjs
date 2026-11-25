@@ -105,7 +105,7 @@ test('Lens-declared Control subsets remove manifestation ambiguity without inven
   assert.equal(
     language.missing.some((row) => row.predicate === 'AMBIGUOUS_MANIFESTATION_BINDING'),
     false,
-    'R2 must not widen reply/screen Controls back across both interactive elements',
+    'current Lens evidence for one Control must not become ambiguous when the same element ref is repeated',
   );
   const deterministic = language.missing.filter((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION');
   assert.ok(deterministic.length > 0, 'precise manifestation does not itself earn a browser/runtime action harness');
