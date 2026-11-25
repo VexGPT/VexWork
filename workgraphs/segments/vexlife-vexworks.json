@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-20T05:39:00.000Z",
-      "updatedAt": "2026-11-24T19:20:50.474Z",
+      "updatedAt": "2026-11-25T04:01:28.383Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -17,7 +17,7 @@
       "label": "[VexLife Model Adaptation]",
       "purpose": "Adapt exact local model/provider relationships into VexLife without making model swapping leak into Conversation, Memory, artifact, source, capability or presentation owners: retain completed Local Artifacts + Local Sources as continuity, recognize grounded representation/runtime adapter candidates, qualify meaningful relationships independently, converge one current serving inference relationship, and project only truthful current capabilities to the person.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -54,7 +54,14 @@
         "github.commit.vexlife-prod.28225345ceaf3f527fe0edd680d6c95ea6c9d54d",
         "github.pull.vexlife-prod.440",
         "github.pull.vexlife-prod.612",
-        "github.pull.vexlife-prod.614"
+        "github.pull.vexlife-prod.614",
+        "work.vexlife.vexworks.lived-cross-model-proof",
+        "github.pull.vexlife-prod.635",
+        "github.commit.vexlife-prod.13d3663c467b851f43e50001b934a658757789b0",
+        "github.commit.vexlife-prod.188a37b4435c3a5f7327097b0cc7f2f48f9da315",
+        "github.pull.vextreme-sdk.2039",
+        "human.return.vexlife-model-adaptation.a4.a004.c8ceb9213d1cff71ca0c75e0a251811e0f561245d848c06617bbde4c230633d7",
+        "human.return.vexlife-model-adaptation.a4.a006.4f703e54cb5ba04861dbf42792d257f18556c4c376bf9711beed17993bccc624"
       ]
     },
     {
@@ -237,7 +244,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-20T05:39:00.000Z",
-      "updatedAt": "2026-11-25T02:31:20.000Z",
+      "updatedAt": "2026-11-25T04:01:28.381Z",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -248,7 +255,7 @@
       "label": "A4 — Lived model-adaptation continuity proof",
       "purpose": "Prove the human circuit over the same Vex, Conversation, Memory and admitted file/Local Source identities: select and Start another exact model, observe serving/adaptation truth realign, see capability presentation change from the newly qualified relationships, send the next ordinary turn through that serving model, and verify unsupported adapter relationships stay held/fallback locally instead of silently rebinding surrounding Product truth.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.vexworks.model-selector",
@@ -271,7 +278,13 @@
         "github.commit.vexlife-prod.28225345ceaf3f527fe0edd680d6c95ea6c9d54d",
         "github.pull.vexlife-prod.612",
         "github.commit.vexlife-prod.4f9cdf0253249d76b2c2457dcad3b6bb64968bd0",
-        "human.return.vexlife-model-adaptation.a003.8485a1fbadf4f7725f9a3942beece421559d03bc19dd15629af878feb01c9b57"
+        "human.return.vexlife-model-adaptation.a003.8485a1fbadf4f7725f9a3942beece421559d03bc19dd15629af878feb01c9b57",
+        "github.pull.vexlife-prod.635",
+        "github.commit.vexlife-prod.13d3663c467b851f43e50001b934a658757789b0",
+        "github.commit.vexlife-prod.188a37b4435c3a5f7327097b0cc7f2f48f9da315",
+        "github.pull.vextreme-sdk.2039",
+        "human.return.vexlife-model-adaptation.a4.a004.c8ceb9213d1cff71ca0c75e0a251811e0f561245d848c06617bbde4c230633d7",
+        "human.return.vexlife-model-adaptation.a4.a006.4f703e54cb5ba04861dbf42792d257f18556c4c376bf9711beed17993bccc624"
       ]
     }
   ],
@@ -728,6 +741,86 @@
         "work.vexlife.vexworks.imported-model-hookup"
       ],
       "createdAt": "2026-11-25T02:31:20.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.lived-cross-model-proof.ready.running.a004-lived-imported-turn",
+      "workRef": "work.vexlife.vexworks.lived-cross-model-proof",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A4 entered lived execution on current Product truth through SDK #2039: an exact Home-imported Qwen3-0.6B relationship was acquired, explicitly selected and used on the same existing Vex, with one request-bound Artifact staged for the ordinary turn.",
+      "actorRef": "actor.chatgpt.vexlife-model-adaptation-a4-closure",
+      "sourceRefs": [
+        "github.pull.vextreme-sdk.2039",
+        "github.commit.vexlife-prod.188a37b4435c3a5f7327097b0cc7f2f48f9da315",
+        "human.return.vexlife-model-adaptation.a4.a004.c8ceb9213d1cff71ca0c75e0a251811e0f561245d848c06617bbde4c230633d7"
+      ],
+      "createdAt": "2026-11-25T04:01:28.379Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.lived-cross-model-proof.running.verifying.a004-structural-lived-proof",
+      "workRef": "work.vexlife.vexworks.lived-cross-model-proof",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A004 established the material lived relationships: imported Qwen became exact QUALIFIED_SERVING, Vex Reach truthfully projected HELD, the staged Artifact/projection survived the model switch, the ordinary model call completed, the actual prompt receipt contained source-bound direct current-request Artifact content, no capability effect was used, and recovery restored the prior model and removed attempt-created import state. The model's hidden-phrase mismatch is retained as output-quality observation rather than promoted into Product continuity authority.",
+      "actorRef": "actor.chatgpt.vexlife-model-adaptation-a4-closure",
+      "sourceRefs": [
+        "human.return.vexlife-model-adaptation.a4.a004.c8ceb9213d1cff71ca0c75e0a251811e0f561245d848c06617bbde4c230633d7",
+        "github.pull.vexlife-prod.635",
+        "github.commit.vexlife-prod.13d3663c467b851f43e50001b934a658757789b0"
+      ],
+      "createdAt": "2026-11-25T04:01:28.380Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.lived-cross-model-proof.verifying.completed.a006-read-only-continuity",
+      "workRef": "work.vexlife.vexworks.lived-cross-model-proof",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A006 closed the canonical A4 continuity evidence without replay: Product/service source remained exact, the first 110 Conversation messages matched the A004 baseline hash, the exact A004 human request and Vex response followed immediately with the request Artifact resource still durable, Home/Device/Companion and project/thread/channel identities were unchanged, Memory ref/fingerprint matched baseline and prompt evidence, Local Source refs were unchanged, and A006 performed zero effects.",
+      "actorRef": "actor.chatgpt.vexlife-model-adaptation-a4-closure",
+      "sourceRefs": [
+        "human.return.vexlife-model-adaptation.a4.a006.4f703e54cb5ba04861dbf42792d257f18556c4c376bf9711beed17993bccc624",
+        "human.return.vexlife-model-adaptation.a4.a004.c8ceb9213d1cff71ca0c75e0a251811e0f561245d848c06617bbde4c230633d7",
+        "github.commit.vexlife-prod.188a37b4435c3a5f7327097b0cc7f2f48f9da315"
+      ],
+      "createdAt": "2026-11-25T04:01:28.381Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.outcome.running.verifying.a4-complete",
+      "workRef": "work.vexlife.vexworks.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A0-A3 were already complete and A4 has now completed its lived imported-model continuity gate. The root outcome enters verification against the Project's human promise: model adaptation changed the serving worker while Conversation, Memory, Artifact and Local Source identities remained themselves and unsupported Vex Reach stayed held.",
+      "actorRef": "actor.chatgpt.vexlife-model-adaptation-a4-closure",
+      "sourceRefs": [
+        "work.vexlife.vexworks.lived-cross-model-proof",
+        "human.return.vexlife-model-adaptation.a4.a006.4f703e54cb5ba04861dbf42792d257f18556c4c376bf9711beed17993bccc624",
+        "github.commit.vexlife-prod.188a37b4435c3a5f7327097b0cc7f2f48f9da315"
+      ],
+      "createdAt": "2026-11-25T04:01:28.382Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.vexworks.outcome.verifying.completed.a4-terminal",
+      "workRef": "work.vexlife.vexworks.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The Model Adaptation outcome is complete across A0-A4: admitted local material remains coherent, current model/runtime capability truth stays projection-owned, Select/Use converges only on exact serving truth, imported Qwen recognition/runtime relationships remain bounded, and the lived A4 circuit proved another imported model could serve an ordinary turn over the same Vex/Conversation/Memory/Artifact/Local Source relationships with unsupported reach held and coherent reversibility.",
+      "actorRef": "actor.chatgpt.vexlife-model-adaptation-a4-closure",
+      "sourceRefs": [
+        "work.vexlife.vexworks.local-artifacts-and-sources",
+        "work.vexlife.vexworks.model-capability-projection",
+        "work.vexlife.vexworks.model-selector",
+        "work.vexlife.vexworks.imported-model-hookup",
+        "work.vexlife.vexworks.lived-cross-model-proof",
+        "github.pull.vexlife-prod.635",
+        "github.commit.vexlife-prod.188a37b4435c3a5f7327097b0cc7f2f48f9da315",
+        "human.return.vexlife-model-adaptation.a4.a006.4f703e54cb5ba04861dbf42792d257f18556c4c376bf9711beed17993bccc624"
+      ],
+      "createdAt": "2026-11-25T04:01:28.383Z"
     }
   ],
   "sourceRefs": [

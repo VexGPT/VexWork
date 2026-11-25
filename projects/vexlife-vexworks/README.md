@@ -66,259 +66,137 @@ LOCAL_SOURCE != ATTACHMENT
 PROVIDER_NATIVE_TOOLING != VEX_CAPABILITY_AUTHORITY
 ```
 
-## Current checkpoint — 2026-11-24: A1/A2/A3 completed; A4 is the single lived foreground
+## Current checkpoint — 2026-11-24: A0-A4 completed; Model Adaptation outcome complete
 
-### Product main
+### Accepted Product truth
 
-VexLife-Prod now contains the merged Model Adaptation A1 human capability projection:
+Current VexLife-Prod main after the Model Adaptation reach correction and the disjoint Capability C3-W2 integration is:
 
 ```text
-main
-head 4f9cdf0253249d76b2c2457dcad3b6bb64968bd0
-tree 5a3d901e885aa3950656be1c1c635094d49bd70b
-
-merged PR
-#630
+head 188a37b4435c3a5f7327097b0cc7f2f48f9da315
+tree 05db26135a2265dcbddd7d73e01ef7565d3c2c79
 ```
 
-That exact Product tree was the SourceOwner/Assurance-reviewed A1 tree.
-
-### A1 — Model adaptation truth — COMPLETED
-
-A1 now preserves one VexArchitecture projection boundary:
+Model Adaptation correction #635 landed as:
 
 ```text
-exact current model/provider/runtime relationship truth
-        ↓
-VexLifeEffectiveModelCapabilities
-        ↓
-localized DisplayFact(label + standing + status)
-        ↓
-VexLifeModels.Row
-        ↓
-Settings / Models manifestation
+merge 13d3663c467b851f43e50001b934a658757789b0
 ```
 
-Permanent:
+It preserves:
 
 ```text
-CAPABILITY PROJECTION != CAPABILITY AUTHORITY
-DISPLAY FACT != CAPABILITY IDENTITY
-BROWSER PRESENTATION != CAPABILITY POLICY
-RUNTIME STATUS != CAPABILITY PRESENTATION
+RUNTIME QUALIFIED_SERVING != VEX REACH QUALIFIED
+PROVIDER-NATIVE TOOL QUALIFICATION != VEX REACH QUALIFICATION
+HOME-IMPORTED QWEN3
+  -> runtime may serve
+  -> Vex Reach remains HELD until that exact reach relationship is separately qualified
 ```
 
-Current human wording includes:
+### A4 lived completion
+
+A004 performed the actual imported-model circuit.
+
+Canonical RETURN:
 
 ```text
-Vex reach
-Provider-native tools
-Reasoning effort
-Visual input
-
-Available now
-Not active now
-Not used by this model
+c8ceb9213d1cff71ca0c75e0a251811e0f561245d848c06617bbde4c230633d7
+PARTIAL_FAIL_CLOSED
 ```
 
-SourceOwner A002:
+The disposition remains preserved because the host runner had added a hidden-phrase correctness gate that the Qwen3-0.6B model did not satisfy. That model-output observation is not rewritten.
+
+Before that extra gate stopped the runner, A004 proved:
 
 ```text
-outer 3a6d4ad9bafd981b08bc41d5f10bbef6ebc8e45eb77e7b262632726dbef4a2d6 PASS
-inner f68b5bbab13abbd2c249d673f271102fd8a7022312f1fc920622ba73c3ae5a42 PASS
+same existing Vex
+-> exact Home-imported Qwen3-0.6B artifact acquired
+-> Select
+-> Use / Start
+-> imported target QUALIFIED_SERVING
+-> human Vex Reach presentation HELD
+-> staged Artifact/projection identity survived the switch
+-> ordinary Conversation Send completed through imported runtime
+-> actual prompt receipt contained current-request-artifact-content
+-> direct Artifact content source-bound exact artifactRef + projectionRef
+-> capabilityUses = []
+-> prior serving 4B restored
+-> attempt-created import removed + forgotten
+-> draft EMPTY
 ```
 
-Fresh Independent Assurance A001:
+Canonical A4 acceptance is continuity, not a benchmark of whether one small model reproduces a hidden token.
+
+A006 therefore recovered the missing continuity evidence without replaying any Product/runtime effect.
+
+Canonical A006 RETURN:
 
 ```text
-outer 1439c0e3410158c7efafe77633004e9274185f26d077859af495fce4d28b52e1 PASS
-inner f19528094b6673babb4f19e1ccac1aaf70c0f36dc9d1a2dc6e92419c2e979e7e PASS
-
-selected 7
-omitted 0
-truncated false
-```
-
-Operations consumed that review and cleared the exact tree. Product main later landed the same Screen
-Lens blob independently, so #630 was re-anchored with the **same exact tree** and merged with an
-expected-head guard.
-
-### A2 — Selection + serving convergence — COMPLETED
-
-A2 is source/convergence work, not the final human-lived acceptance gate.
-
-Current Product still owns:
-
-```text
-Select
-  -> stage target only
-  -> no runtime activation
-
-Use / Start
-  -> exact staged + realizable + present target
-  -> SwitchModel
-  -> runtime realization
-  -> serving truth changes only after exact target is serving
-```
-
-Current provider-neutral targeting strengthens the old local-only path:
-
-- local and Partner targets share one staged inference-coordinate relationship;
-- a held Partner attempt leaves Local serving truth untouched;
-- stale Partner qualification cannot become serving after the target changes;
-- successful Local takeover clears Partner serving only **after** the Local target is actually serving;
-- configuration changes remain distinct from activation.
-
-Current repository tests prove those relationships. A003 remains useful lived pressure for the local
-4B → 27B → 4B circuit, but A4 owns the final whole human continuity proof.
-
-### A3 — Imported-model adaptation recognizers — COMPLETED
-
-The deliberately narrow current recognizer/adapter contract is complete for public Qwen3
-MLX/Safetensors relationships.
-
-Current source/tests prove:
-
-```text
-public Qwen3 provider page
--> exact pinned revision/member inspection
--> no weight download during inspection
--> one HOME_IMPORTED record
-
-tool grammar present
--> RECOGNIZED_HELD
-!= active native tooling
-
-remote code required
--> fail closed before import
-
-HOME_IMPORTED MLX
--> Mac Arm64 runtime Supported
--> Windows x64 Unsupported / held
-
-optional native-tool qualification
--> independent qualification ref when earned
--> ordinary runtime qualification shape unchanged
-```
-
-Import custody also survives restart and supports admitted download/remove/redownload/forget controls.
-
-A3 completion does **not** claim that a real imported model has already done human work. That lived
-relationship is intentionally A4 pressure.
-
-### A003 lived local switch — preserved, not replayed
-
-A003 RETURN:
-
-```text
-8485a1fbadf4f7725f9a3942beece421559d03bc19dd15629af878feb01c9b57
+4f703e54cb5ba04861dbf42792d257f18556c4c376bf9711beed17993bccc624
 PASS
+reason A4_READ_ONLY_CONTINUITY_RECOVERY_COMPLETED
 ```
 
-Observed:
+A006 proved:
 
 ```text
-same Vex / service
-4B ordinary turn
--> Select + Use 27B
--> 27B serving
--> ordinary turn
--> Select + Use 4B
--> 4B serving
--> ordinary turn
+Product/service source exact
+same Home / Device / Companion lineage
+same project / thread / channel
 
-original 102 Conversation messages remain exact prefix
-project / thread / channel identity unchanged
-Memory context identity unchanged
-Local Source refs unchanged
+first 110 Conversation messages
+-> exact A004 baseline hash
+
+message 111
+-> exact A004 human request
+-> exact attached Artifact resource still durable
+
+message 112
+-> exact A004 Vex response
+
+Memory ref + fingerprint
+-> unchanged from baseline
+-> same identity used in A004 provider prompt
+
+Local Source refs
+-> unchanged
+
+A006 effects
+-> none
 ```
 
-Lived capability contrast:
+This satisfies A4's source-owned human/runtime gate:
 
 ```text
-4B
-  Vex Reach              HELD
-  Provider-native tools  NOT_APPLICABLE
-  Visual input           AVAILABLE
-
-27B
-  Vex Reach              AVAILABLE
-  Provider-native tools  AVAILABLE
-  Visual input           HELD
+MODEL SWITCH != VEX SWITCH
+MODEL SWITCH != CONVERSATION SWITCH
+MODEL SWITCH != MEMORY SWITCH
+MODEL SWITCH != ARTIFACT / LOCAL SOURCE REBIND
+RUNTIME QUALIFICATION != REACH QUALIFICATION
+HELD REACH != FAILED MODEL
 ```
 
-A003 had no granted Local Source, no attachment, and no capability use. It also used built-in Product
-offerings rather than a Home-imported model.
-
-### A4 — lived model-adaptation continuity — READY
-
-A4 is now the **single remaining Project gate**.
-
-Do not split it back into separate A2/A3 proof loops.
-
-The next lived circuit should work in one whole:
-
-```text
-current Product main
-+ same existing Vex / Conversation / Memory
-+ one already-admitted Artifact or Local Source / reach relationship
-+ current serving model
-        ↓
-obtain or reuse one exact admitted imported Qwen3 relationship on Mac
-        ↓
-Select imported target
-        ↓
-explicit Use / Start
-        ↓
-exact imported target becomes serving
-        ↓
-human capability presentation currentizes
-        ↓
-ordinary next turn through that serving relationship
-        ↓
-exercise one real admitted Artifact / Local Source / reach path
-        ↓
-unsupported optional relationship remains HELD or uses the qualified fallback
-        ↓
-Conversation / Memory / Artifact / Local Source identities remain coherent
-        ↓
-return to the prior local serving model only if needed to prove coherent reversibility
-```
-
-Do not manufacture capability use merely to make a receipt non-empty. The lived action should have a
-real bounded human/model purpose and let the capability path arise from that purpose.
-
-### Current Workgraph
+### Terminal Workgraph
 
 ```text
 A0  Local Artifacts + Local Sources convergence      COMPLETED
 A1  Model adaptation truth                           COMPLETED
 A2  Selection + serving convergence                  COMPLETED
 A3  Imported-model adaptation recognizers            COMPLETED
-A4  Lived model-adaptation continuity proof          READY
+A4  Lived model-adaptation continuity proof          COMPLETED
 
-root [VexLife Model Adaptation]                       RUNNING
+root [VexLife Model Adaptation]                       COMPLETED
 ```
 
-### Human execution pattern
+A001-A006 host/proof attempts remain provenance. The terminal SDK #2039 lane is evidence-only and may close without merge after this VexWork completion is accepted.
 
-For future host-dependent A4 work, prefer the GitHub companion-PR pattern:
+No Partner/external-provider claim is absorbed by this completion; Support External API remains its own Project/source owner.
 
-```text
-durable exact runner/context in SDK companion PR
--> one gh command fetches immutable files
--> verify Git blob identities
--> execute
--> canonical RETURN
-```
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-MODEL-ADAPTATION][A0-A4-COMPLETED][CURRENT-20261124-R5] -->
 
-Do not create a human-download execution ZIP merely because a fresh chat begins.
+## Historical starting point
 
-<!-- [VXG RealForever][VEXWORK][VEXLIFE-MODEL-ADAPTATION][A4-READY][CURRENT-20261124-R4] -->
-
-## Current starting point
-
-The current Local Artifacts successor work establishes the first half of this outcome:
+The original Local Artifacts successor work established the first half of this outcome:
 
 ```text
 human files / folder grants
