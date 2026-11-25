@@ -24,6 +24,17 @@ test('Screen Lens surface keeps element bindings and Family pathway depth as Pro
   assert.deepEqual(sightPathway.depth.map((node) => [node.role, node.symbol]), [['CONNECTION', 'VexLifeSightRuntime'], ['PARTNER', 'OS picker session']]);
   assert.equal(sightPathway.projection.symbol, 'VexLifeSightFamily.DisplayState');
 
+  const parameterizedLens = structuredClone(LENS);
+  const parameterizedControl = parameterizedLens.pathways
+    .find((pathway) => pathway.pathwayRef === 'pathway.fixture.sight')
+    .nodes.find((node) => node.role === 'CONTROL');
+  parameterizedControl.symbol = 'VexLifeSightFamily';
+  parameterizedControl.label = 'Ready + Control.Engage(scope)';
+  const parameterizedPathway = readLensSurface(parameterizedLens).pathways
+    .find((pathway) => pathway.pathwayRef === 'pathway.fixture.sight');
+  assert.equal(parameterizedPathway.family, 'VexLifeSightFamily');
+  assert.deepEqual(parameterizedPathway.controlRefs, ['Engage']);
+
   const send = surface.pathways.find((pathway) => pathway.pathwayRef === 'pathway.fixture.send');
   assert.equal(send.family, null);
   assert.equal(send.method.symbol, 'DirectCompanionTurn');

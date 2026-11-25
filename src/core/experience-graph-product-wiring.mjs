@@ -35,6 +35,15 @@ function lensSourcePath(source) {
   return match ? `src/${match[1]}Main/kotlin/vexlife/${match[2]}` : null;
 }
 
+function lensControlSelectors(control) {
+  if (!control) return [];
+  const label = String(control.label ?? '');
+  const parameterized = [...label.matchAll(/\bControl\.([A-Za-z_][A-Za-z0-9_]*)\b/g)]
+    .map((match) => match[1]);
+  if (parameterized.length) return [...new Set(parameterized)];
+  return label.split('·').map((value) => value.trim()).filter(Boolean);
+}
+
 export function readLensSurface(lens) {
   assert(lens?.schemaVersion === 'vexboard.screen-lens/v1', 'Product Screen Lens schema mismatch');
   const pathways = new Map(lens.pathways.map((pathway) => [pathway.pathwayRef, pathway]));
@@ -60,9 +69,7 @@ export function readLensSurface(lens) {
     const role = (name) => pathway.nodes.filter((node) => node.role === name);
     const control = role('CONTROL')[0] ?? null;
     const family = control ? control.symbol.replace(/\.Control$/, '') : null;
-    const controlRefs = control
-      ? control.label.split('·').map((value) => value.trim()).filter(Boolean)
-      : [];
+    const controlRefs = lensControlSelectors(control);
     const method = role('METHOD')[0] ?? null;
     const effect = role('EFFECT')[0] ?? null;
     const projection = role('PROJECTION')[0] ?? null;

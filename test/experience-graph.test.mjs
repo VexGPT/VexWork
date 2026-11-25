@@ -91,6 +91,32 @@ test('Lens-declared Control subsets prevent one element from manifesting every F
   );
 });
 
+test('parameterized Lens Control selectors resolve through Family variant names to canonical refs', () => {
+  const parameterized = structuredClone(LENS);
+  const sightControl = parameterized.pathways
+    .find((pathway) => pathway.pathwayRef === 'pathway.fixture.sight')
+    .nodes.find((node) => node.role === 'CONTROL');
+  sightControl.symbol = 'VexLifeSightFamily';
+  sightControl.label = 'Ready + Control.Engage(scope)';
+
+  const graph = fixtureGraph({ lens: parameterized });
+  assert.ok(edge(graph, 'edge:MANIFESTS:element.workspace.sight:VexLifeSightFamily.Engage'));
+  assert.equal(
+    edge(graph, 'edge:MANIFESTS:element.workspace.sight:VexLifeSightFamily.Stop'),
+    undefined,
+    'a parameterized Engage selector must not widen to every Family Control',
+  );
+
+  const invalid = structuredClone(parameterized);
+  invalid.pathways
+    .find((pathway) => pathway.pathwayRef === 'pathway.fixture.sight')
+    .nodes.find((node) => node.role === 'CONTROL').label = 'Ready + Control.NotReal(scope)';
+  assert.throws(
+    () => fixtureGraph({ lens: invalid }),
+    /Lens pathway pathway\.fixture\.sight names unknown VexLifeSightFamily Control refs: NotReal/,
+  );
+});
+
 test('fingerprint is semantic: node / edge order and extractor identity do not move it', () => {
   const graph = fixtureGraph();
   const reordered = normalizeExperienceGraph({ ...graph, nodes: [...graph.nodes].reverse(), edges: [...graph.edges].reverse(), extractor: { modules: [] } });
