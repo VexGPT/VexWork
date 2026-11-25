@@ -1,11 +1,11 @@
-# Experience Graph convergence R1
+# Experience Graph human convergence — current main
 
 `[VXG RealForever]`
 
-This is the small convergence experiment between the two independent VexLife-Prod E2E graph strategies.
+This is the current-main convergence between the two existing VexLife-Prod E2E graph layers.
 
-- Claude's `src/core/experience-graph*.mjs` remains the **mechanical source reader**: Family law, Product wiring, Screen Lens/key identity, localization, route/debt derivation, law probes, perturbations and branch dynamics.
-- ChatGPT's `relationship-lattice.seed.json` + `relationship-graph.mjs` remain the **human-semantic layer**: named lived outcomes, cross-owner relationships, loops, explicit projectability debt, and VexBoard/BoardJourney-oriented patient-zero routes.
+- `src/core/experience-graph*.mjs` is the **mechanical source reader**: Family law, Product wiring, Screen Lens/key identity, localization, route/debt derivation, law probes, perturbations and branch dynamics.
+- `relationship-lattice.seed.json` + `relationship-graph.mjs` are the **human-semantic layer**: named lived outcomes, cross-owner relationships, loops, explicit projectability debt, and VexBoard/BoardJourney-oriented patient-zero routes.
 - `src/core/experience-graph-human.mjs` does **not** inject the hand seed into the mechanical graph. It compares them and keeps two answers separate:
   - `structuralStatus`: can rightful source relationships form the route?
   - `experienceStatus`: can this lane actually execute and prove the human route end to end without inventing a seam?
@@ -37,8 +37,7 @@ npm run experience:verify
 npm run experience:converge -- --source <exact-VexLife-Prod-checkout>
 ```
 
-The final convergence command reads one exact Product checkout and emits the human-readable
-structural-vs-experience result. It does not rewrite Screen Lens or Product source.
+The final convergence command reads the exact Product-main revision pinned by `plan.json`, requires the human seed to bind the same Product commit, and emits the human-readable structural-vs-experience result. It does not rewrite Screen Lens or Product source.
 
 ## What a person is actually checking
 
