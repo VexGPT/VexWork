@@ -48,13 +48,15 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/service/VexLifeProdLocalService.kt",
         "github.pull.vexlife-prod.573",
         "github.pull.vexlife-prod.578",
-        "github.pull.vextreme-sdk.1970"
+        "github.pull.vextreme-sdk.1970",
+        "github.pull.vexlife-prod.629",
+        "github.review.vexlife-prod.629.6050249370"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-24T10:25:00.000-08:00",
+      "updatedAt": "2026-11-24T17:45:00.000-08:00",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -63,7 +65,7 @@
       "workRef": "work.vexlife.support-external-api.a0-provider-neutral-seam",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A0 — Home-accessible Product foundation + provider-neutral Companion inference seam",
-      "purpose": "First separate VexLife Home/Product accessibility from selected inference-session readiness so local runtime failure, Partner failure, missing credentials, cache failure, switching or an unconfigured model can hold only dependent inference while the person retains a truthful route to Home, Settings, recovery and another realization. Then form the smallest provider-neutral Direct Companion inference boundary that preserves current local mlx-lm behavior exactly while allowing Local Heretic or Partner realization beneath the same Vex-owned Conversation/Memory/capability turn. Current Warm Boot #518 owns VexLifeProdLocalService.kt plus DirectCompanionConnection/Turn overlap and Response Readiness #573 owns overlapping Companion/runtime cache paths, so do not race those writers; continue only disjoint Home-foundation/current-state source until their accepted results can be inherited. Disjoint Partner source is now currentized in Product PR #578 at exact head 5cdfd44da89b9f88411096fdf954b370c5ad89a8; A002 was consumed as SAFE_FAILURE at compileKotlinJvm; the inherited Partner host-client redeclaration is corrected on #578 and fresh exact-head proof carriage is now SDK #1971 / A003. Exact corrected #578 head 53a7665b4f2ef68928a36d40939e70e22568a438 now has canonical A003 SourceOwner PASS; next lifecycle edge is fresh Independent Assurance. Fresh direct Independent Assurance is CLEAR on exact #578 head 53a7665b4f2ef68928a36d40939e70e22568a438 (review 6033378878); this is evidence only, not merge authority. Current owner protection after A6 host closure: Support External API #578 remains the disjoint Partner body and must not mutate shared runtime/turn/application paths. Warm Boot/runtime owner #525 owns VexLifeProdLocalService and Mac runtime/service continuity. Response Readiness #573 owns DirectCompanionConnection/Turn/PromptContext plus HereticPersistentRuntime; #587/#590 currently pressure-test cache headroom without adding shared Product implementation. Multi-Vex #543 also owns HereticPersistentRuntime plus build.gradle.kts in its counterpart foundation trajectory, while #552 is Foundation/profile/harness-only. Therefore final composition must inherit current accepted #543/#552 Multi-Vex identity semantics and #525/#573 Response Readiness/runtime semantics rather than treating model-source integration as authority to rewrite them. Model selection is an inference-realization relationship inside one Vex/Home; it is not Multi-Vex participant identity. After A6 host closure, the first non-disruptive shared-convergence slice is Product #592 stacked directly on proved Partner body #578. #592 adds only two new common source/test files and projects exact targeted/serving inference coordinates plus switchPending/sourceSwitchPending. It does not persist choice, mutate Home, touch Multi-Vex identity, own runtime/cache/application source, or perform provider effects. This is the current A0 source edge. Fresh exact-head SourceOwner carriage for #592 is SDK #1983 at companion head 30e638b96bf22340fd440d06835e6d8ee4785b6d / tree d305b601f441e5d0bd36a3e02e80af6054608443; embedded formation syntax preflight PASS. #592 SourceOwner A001 PASS is consumed (outer 2e1bbda813efa396cbb32bc3ca9a0b051157be1f470fc2ec5495a9bd57886564, inner 7d4b49aed6e43321f77b7a2583189b1bdac200d084588aeee07d10f7ca34b2e3) and fresh Independent Assurance is CLEAR on exact head (review 6044616772). TEMP wrapper original-intent wording had stale Windows-host text but exact Product identity/membrane/proof/lifecycle routing were correct; do not copy that metadata forward. The next no-effect current-state join is Product #595 stacked on #592. It adds only VexLifeInferenceCurrentState + tests, resolves Local row modelRef through Home-owned HereticModelOfferings rather than editing #454's VexLifeModels.kt, composes Local + Partner current rows, and permits an already-decided process-local staged target to re-mark one exact row without persistence or switch effects. Fresh exact-head SourceOwner carriage for #595 is SDK #1984 at companion head cbcc262644f0a5f595cd3e7474a37c8f6a417717 / tree 30dbd47a24dc72b88a1f1bb2e2e13c0c7a7435f0; clean original-intent metadata and inference-current-state package stem preflight PASS. #595 SourceOwner A001 consumed SAFE_FAILURE after exact head/tree + compile PASS; jvmTest rejected two expression-bodied failure-case tests because assertFailsWith inferred IllegalArgumentException return type. Only two Unit lines were added to the test file; implementation unchanged. #595 is now head 4b0bf7531a7ef75d993183c66178f8619a120101 / tree 138d942b94e92fe8c8dea1c46af7fe8de1aa24e8; fresh SourceOwner continuation is SDK #1985 / A002 at head f58b01ee53aebd647d317b28a38d33a9f383211b / tree c5cc5c98d326b820872b269bfc4756b6bcc5ae29. #595 SourceOwner A002 canonical PASS is consumed for exact head 4b0bf7531a7ef75d993183c66178f8619a120101 / tree 138d942b94e92fe8c8dea1c46af7fe8de1aa24e8; fresh Independent Assurance is CLEAR on exact head (review 6044813656). Next edge is to identify the rightful process-local staged-target owner so cross-source selection can be requested without creating a second durable model-choice truth. Current convergence candidate is Product #597: exact two-parent commit 86427f7673a41a8c9c55f0ee2ee6641cbdb9e6b4 / tree 345b5bc75f18cfeb7fbf38cd1b46f662ef6912ba, parents #525 and #595. Their divergent membranes are path-disjoint; full candidate relative common base contains 95 paths. Fresh SourceOwner carriage is SDK #1986 at head 6f55dc0db4e9180574c3e7090b5afc8e4b3f26b2 / tree 8105342d5528350af30bc48e4574fd675ed24253, with full 95-path membrane and bounded 10-file review evidence.",
+      "purpose": "The provider-neutral Local/Partner turn and ordinary service path have advanced through the current-main convergence stack. Product #626 carries the cleared Partner Use/Send relationship onto then-current main; #627 adds protected Partner credential configuration and is Assurance-clear; #629 now exposes Settings -> Models -> Partner APIs while keeping the ordinary Product live-effect gate HELD_FUNDING. Exact #629 head 9dc045696b5a155805ab3b16e2b0b1c84a1fb127 has SourceOwner A006 PASS plus fresh Independent Assurance 6050249370. The underlying deterministic credential-control route and funding-held service/UI routes pass together, while paid live-provider qualification remains unestablished. Before authoring another Support External API child, re-ground current main and perform an integration/merge-currentness judgment: #629 is a deep open stack (359 ahead / 2 behind current main, 139 main-relative paths), and continuing to stack would impose avoidable continuity cost.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "HIGH",
@@ -113,13 +115,17 @@
         "github.review.vexlife-prod.595.6044813656",
         "github.pull.vexlife-prod.597",
         "github.commit.vexlife-prod.86427f7673a41a8c9c55f0ee2ee6641cbdb9e6b4",
-        "github.pull.vextreme-sdk.1986"
+        "github.pull.vextreme-sdk.1986",
+        "github.pull.vexlife-prod.626",
+        "github.pull.vexlife-prod.627",
+        "github.pull.vexlife-prod.629",
+        "github.review.vexlife-prod.629.6050249370"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T23:35:00.000Z",
+      "updatedAt": "2026-11-24T17:45:00.000-08:00",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -128,7 +134,7 @@
       "workRef": "work.vexlife.support-external-api.a1-model-source-topology",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A1 — Settings Local / Partner model-source topology",
-      "purpose": "Evolve Models so Local / Partner is a presentation filter over canonical model offerings rather than a second durable model-choice truth. #564/#567/#569/#572 now source-form source filtering, narrow Partner profiles, catalog-bound inventory and truthful restart Partner rows. Actual live service composition is held because current Warm Boot #518 owns VexLifeProdLocalService.kt, the route owner for GET /api/v1/models; do not race that writer. When composition opens, Models must remain reachable from the Home-accessible Product body even when no inference realization is currently usable. The live service also still needs a rightful accepted Partner support-proof source rather than hard-coded standing.",
+      "purpose": "Settings now truthfully exposes the Partner API relationship in #629 while the live connection effect is held by funding. The adjacent Model Adaptation local-capability presentation is Product #630, but #630 was formed from an earlier #629 head and must re-ground onto exact assured #629 head 9dc045696b5a155805ab3b16e2b0b1c84a1fb127 before consuming the occupied renderer. Partner Settings meaning remains Support External API-owned; local model capability presentation remains Model Adaptation-owned.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -156,13 +162,15 @@
         "repo.vexlife-prod:docs/work/support-external-api-model-source/PARTNER-INVENTORY.md",
         "github.pull.vexlife-prod.572",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/model/VexLifePartnerModelsCurrentState.kt",
-        "github.pull.vexlife-prod.578"
+        "github.pull.vexlife-prod.578",
+        "github.pull.vexlife-prod.629",
+        "github.pull.vexlife-prod.630"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T23:35:00.000Z",
+      "updatedAt": "2026-11-24T17:45:00.000-08:00",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -171,7 +179,7 @@
       "workRef": "work.vexlife.support-external-api.a2-provider-connection",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A2 — Partner Provider Connection + credential/account/model contract",
-      "purpose": "Form one truthful Partner connection relationship covering source-owned provider identity, protected host credential custody, durable non-secret Home coordinates, restart currentness and crash-recoverable add/replace/remove convergence without storing secret values in semantic/durable surfaces. #570/#571 source-form persistence/currentness; #575 now adds one durable transition surface (STAGE_CONNECT/STAGE_REPLACE/CLEANUP_REPLACED/REMOVE), preallocation collision proof, recovery without secret replay, durable cleanup debt, and non-secret account-scope update. Repository-native execution and platform lived proof remain owed.",
+      "purpose": "Protected Partner connection configuration is source-formed and proof-cleared through #627: CONNECT/REPLACE use the existing protected credential/custody owner, secret ingress remains bounded, connection mutation and Partner Send are lease-separated, and crash recovery remains owned by the existing transition state. #628/#629 add the current funding gate and human Settings surface without weakening that route. While HELD_FUNDING, ordinary manual/UI connection effects stop before credential-body use; the deterministic test gate still proves the underlying route. Paid provider qualification remains separate.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -208,7 +216,11 @@
         "github.pull.vexlife-prod.575",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/partner/VexLifePartnerConnectionConfiguration.kt",
         "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/partner/VexLifePartnerConnectionConfigurationTest.kt",
-        "github.pull.vexlife-prod.578"
+        "github.pull.vexlife-prod.578",
+        "github.pull.vexlife-prod.627",
+        "github.review.vexlife-prod.627.6049743130",
+        "github.pull.vexlife-prod.628",
+        "github.pull.vexlife-prod.629"
       ]
     },
     {
@@ -416,7 +428,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T22:34:00.000Z",
+      "updatedAt": "2026-11-24T17:45:00.000-08:00",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -425,7 +437,7 @@
       "workRef": "work.vexlife.support-external-api.a7-zero-cost-conformance",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A7 — Zero-cost deterministic provider conformance",
-      "purpose": "Exercise exact provider request/stream/tool/failure fixtures through injected transports and local harnesses so the external-provider consumer body, Settings state, effective capabilities, secret redaction, turn failure semantics and no-fallback laws can be proven without paid API calls; keep all real-provider availability and billing claims explicitly unestablished. Product PR #553 now forms the P0 official-doc-conformant request/response/stream/tool/error fixture corpus and JVM fixture-integrity source on disjoint paths; connected readback proves fixture structure while JVM execution remains owed. A7 itself stays dependency-held until the A0/A1/A2/A3/A4/A5/A6 implementation relationships exist.",
+      "purpose": "Zero-cost conformance now proves the funding-held service route, explicitly enabled deterministic protected credential-control route, and funding-gated Settings UI on exact #629, plus the full repository JVM/JS/string threshold. SourceOwner A006 and Independent Assurance 6050249370 are clear on the exact final funding-gated candidate. This evidence does not establish live provider/account/model qualification and does not authorize credential or paid-provider effects.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -454,13 +466,16 @@
         "github.pull.vexlife-prod.562",
         "github.pull.vexlife-prod.563",
         "repo.vexlife-prod:tools/windows-partner-host/PROVE-CREDENTIAL-HOST.ps1",
-        "repo.vexlife-prod:tools/macos-partner-host/PROVE-CREDENTIAL-HOST.command"
+        "repo.vexlife-prod:tools/macos-partner-host/PROVE-CREDENTIAL-HOST.command",
+        "github.pull.vexlife-prod.629",
+        "github.review.vexlife-prod.629.6050249370",
+        "evidence.vexrelay.return.sha256.50935678ed34e0f9a11ab5621a5e764e688bc117766451ac2de32de9c81d7fbb"
       ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-11-23T17:02:00.000Z",
-      "updatedAt": "2026-11-23T21:05:00.000Z",
+      "updatedAt": "2026-11-24T17:45:00.000-08:00",
       "workDisposition": "ACTIVE",
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
@@ -469,7 +484,7 @@
       "workRef": "work.vexlife.support-external-api.a8-live-provider-qualification",
       "parentWorkRefOrNull": "work.vexlife.support-external-api.outcome",
       "label": "A8 — Real external provider qualification",
-      "purpose": "After deterministic conformance is accepted, run the smallest bounded real provider/model round trip needed to prove the exact credential/account/model/stream/tool relationship claimed live-qualified. This work remains held until a legitimate usable provider credential/account/credit or an explicitly accepted equivalent is available. The Product may still reach an accepted CONTRACT_PROVEN/LIVE_UNQUALIFIED production posture before this gate when release authority accepts it, provided the UI exposes a small accessible information affordance that says live provider validation is pending and does not claim live qualification.",
+      "purpose": "Live external provider qualification is intentionally HELD_FUNDING. Product #629 is fully wired and human-visible while its ordinary connection controls remain disabled and the service rejects live credential effects before secret-body use. Resume this work only when legitimate funding/provider access is intentionally supplied; then open the exact Product gate and prove the smallest real provider/model round trip without silently reinterpreting the current contract-proven evidence as live qualification.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -483,7 +498,9 @@
         "projects/vexlife-support-external-api/README.md",
         "human.constraint.vexlife.support-external-api.no-funded-api-access.20261123",
         "github.pull.vexlife-prod.556",
-        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerSupportQualification.kt"
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/partner/VexLifePartnerSupportQualification.kt",
+        "github.pull.vexlife-prod.629",
+        "github.review.vexlife-prod.629.6050249370"
       ]
     },
     {
