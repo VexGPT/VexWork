@@ -1,7 +1,70 @@
 {
   "schemaVersion": "vexwork.experience-graph.law-probe/v1",
-  "graphFingerprint": "7c4f1615deb1a67192f758d66eccb8e87cb6279e50200737c944b4f35f0566c6",
+  "graphFingerprint": "59a110e3584c4f4287a4c6ded22bb26aa0951e424f793096ba4df9a95d0102b7",
   "families": [
+    {
+      "family": "VexLifeAttachmentDraftFamily",
+      "instance": "vexlife.attachment.VexLifeAttachmentDraftFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Empty",
+          "fixtures": [
+            {
+              "label": "Empty",
+              "expr": "vexlife.attachment.VexLifeAttachmentDraftFamily.Empty"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Draft",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for items: List<Item>"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "AddFiles",
+          "fixtures": [
+            {
+              "label": "AddFiles",
+              "expr": "vexlife.attachment.VexLifeAttachmentDraftFamily.AddFiles"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "CancelStage",
+          "fixtures": [
+            {
+              "label": "CancelStage#0",
+              "expr": "vexlife.attachment.VexLifeAttachmentDraftFamily.CancelStage(draftRef = \"fixture-draftRef-a\")"
+            },
+            {
+              "label": "CancelStage#1",
+              "expr": "vexlife.attachment.VexLifeAttachmentDraftFamily.CancelStage(draftRef = \"fixture-draftRef-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Remove",
+          "fixtures": [
+            {
+              "label": "Remove#0",
+              "expr": "vexlife.attachment.VexLifeAttachmentDraftFamily.Remove(draftRef = \"fixture-draftRef-a\")"
+            },
+            {
+              "label": "Remove#1",
+              "expr": "vexlife.attachment.VexLifeAttachmentDraftFamily.Remove(draftRef = \"fixture-draftRef-b\")"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
     {
       "family": "VexLifeContextProfileFamily",
       "instance": "vexlife.context.VexLifeContextProfileFamily",
@@ -105,6 +168,82 @@
             {
               "label": "End",
               "expr": "vexlife.continuity.VexLifePrivateModeFamily.End"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
+      "family": "VexLifeConversationTurnFamily",
+      "instance": "vexlife.conversation.VexLifeConversationTurnFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Ready",
+          "fixtures": [
+            {
+              "label": "Ready",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Ready"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Active",
+          "fixtures": [
+            {
+              "label": "Active#0",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Active(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt(\"A\"))"
+            },
+            {
+              "label": "Active#1",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Active(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt(\"B\"))"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Cancelling",
+          "fixtures": [
+            {
+              "label": "Cancelling#0",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Cancelling(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt(\"A\"))"
+            },
+            {
+              "label": "Cancelling#1",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Cancelling(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt(\"B\"))"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Send",
+          "fixtures": [
+            {
+              "label": "Send#0",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Send(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt(\"A\"))"
+            },
+            {
+              "label": "Send#1",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Send(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt(\"B\"))"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Stop",
+          "fixtures": [
+            {
+              "label": "Stop#0",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Stop(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt(\"A\"))"
+            },
+            {
+              "label": "Stop#1",
+              "expr": "vexlife.conversation.VexLifeConversationTurnFamily.Stop(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt(\"B\"))"
             }
           ],
           "notFixturable": null
@@ -510,6 +649,104 @@
       ]
     },
     {
+      "family": "VexLifeLocalAsrModelsFamily",
+      "instance": "vexlife.localasr.VexLifeLocalAsrModelsFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "State",
+          "fixtures": [
+            {
+              "label": "State#0",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = \"fixture-artifactState-a\", selected = true, downloading = true, anyDownloadRunning = true)"
+            },
+            {
+              "label": "State#1",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = \"fixture-artifactState-a\", selected = true, downloading = true, anyDownloadRunning = false)"
+            },
+            {
+              "label": "State#2",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = \"fixture-artifactState-a\", selected = true, downloading = false, anyDownloadRunning = true)"
+            },
+            {
+              "label": "State#3",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = \"fixture-artifactState-a\", selected = true, downloading = false, anyDownloadRunning = false)"
+            },
+            {
+              "label": "State#4",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = \"fixture-artifactState-a\", selected = false, downloading = true, anyDownloadRunning = true)"
+            },
+            {
+              "label": "State#5",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = \"fixture-artifactState-a\", selected = false, downloading = true, anyDownloadRunning = false)"
+            },
+            {
+              "label": "State#6",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = \"fixture-artifactState-a\", selected = false, downloading = false, anyDownloadRunning = true)"
+            },
+            {
+              "label": "State#7",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = \"fixture-artifactState-a\", selected = false, downloading = false, anyDownloadRunning = false)"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "Use",
+          "fixtures": [
+            {
+              "label": "Use",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.Use"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Download",
+          "fixtures": [
+            {
+              "label": "Download",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.Download"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Redownload",
+          "fixtures": [
+            {
+              "label": "Redownload",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.Redownload"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Remove",
+          "fixtures": [
+            {
+              "label": "Remove",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.Remove"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "InstallProvider",
+          "fixtures": [
+            {
+              "label": "InstallProvider",
+              "expr": "vexlife.localasr.VexLifeLocalAsrModelsFamily.InstallProvider"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
       "family": "VexLifeMemoryFamily",
       "instance": "vexlife.memory.VexLifeMemoryFamily",
       "runnable": false,
@@ -661,13 +898,46 @@
     {
       "family": "VexLifeModelsFamily",
       "instance": "vexlife.model.VexLifeModelsFamily",
-      "runnable": false,
+      "runnable": true,
       "notRunnable": null,
       "states": [
         {
           "variant": "State",
-          "fixtures": [],
-          "notFixturable": "no deterministic fixture for runtimeConfiguration: HereticRuntimeConfiguration.Effective"
+          "fixtures": [
+            {
+              "label": "State#0",
+              "expr": "vexlife.model.VexLifeModelsFamily.State(handle = \"fixture-handle-a\", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = true, runtimeConfiguration = null, anyDownloadRunning = true, anySwitchRunning = true)"
+            },
+            {
+              "label": "State#1",
+              "expr": "vexlife.model.VexLifeModelsFamily.State(handle = \"fixture-handle-a\", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = true, runtimeConfiguration = null, anyDownloadRunning = true, anySwitchRunning = false)"
+            },
+            {
+              "label": "State#2",
+              "expr": "vexlife.model.VexLifeModelsFamily.State(handle = \"fixture-handle-a\", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = true, runtimeConfiguration = null, anyDownloadRunning = false, anySwitchRunning = true)"
+            },
+            {
+              "label": "State#3",
+              "expr": "vexlife.model.VexLifeModelsFamily.State(handle = \"fixture-handle-a\", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = true, runtimeConfiguration = null, anyDownloadRunning = false, anySwitchRunning = false)"
+            },
+            {
+              "label": "State#4",
+              "expr": "vexlife.model.VexLifeModelsFamily.State(handle = \"fixture-handle-a\", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = false, runtimeConfiguration = null, anyDownloadRunning = true, anySwitchRunning = true)"
+            },
+            {
+              "label": "State#5",
+              "expr": "vexlife.model.VexLifeModelsFamily.State(handle = \"fixture-handle-a\", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = false, runtimeConfiguration = null, anyDownloadRunning = true, anySwitchRunning = false)"
+            },
+            {
+              "label": "State#6",
+              "expr": "vexlife.model.VexLifeModelsFamily.State(handle = \"fixture-handle-a\", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = false, runtimeConfiguration = null, anyDownloadRunning = false, anySwitchRunning = true)"
+            },
+            {
+              "label": "State#7",
+              "expr": "vexlife.model.VexLifeModelsFamily.State(handle = \"fixture-handle-a\", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = false, runtimeConfiguration = null, anyDownloadRunning = false, anySwitchRunning = false)"
+            }
+          ],
+          "notFixturable": null
         }
       ],
       "controls": [
@@ -798,6 +1068,90 @@
       ]
     },
     {
+      "family": "VexLifeLanguageFamily",
+      "instance": "vexlife.person.VexLifeLanguageFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "FollowingReplies",
+          "fixtures": [
+            {
+              "label": "FollowingReplies#0",
+              "expr": "vexlife.person.VexLifeLanguageFamily.FollowingReplies(replyLanguage = \"fixture-replyLanguage-a\")"
+            },
+            {
+              "label": "FollowingReplies#1",
+              "expr": "vexlife.person.VexLifeLanguageFamily.FollowingReplies(replyLanguage = \"fixture-replyLanguage-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ScreenChosen",
+          "fixtures": [
+            {
+              "label": "ScreenChosen#0",
+              "expr": "vexlife.person.VexLifeLanguageFamily.ScreenChosen(replyLanguage = \"fixture-replyLanguage-a\", screenLanguage = \"fixture-screenLanguage-a\")"
+            },
+            {
+              "label": "ScreenChosen#1",
+              "expr": "vexlife.person.VexLifeLanguageFamily.ScreenChosen(replyLanguage = \"fixture-replyLanguage-a\", screenLanguage = \"fixture-screenLanguage-b\")"
+            },
+            {
+              "label": "ScreenChosen#2",
+              "expr": "vexlife.person.VexLifeLanguageFamily.ScreenChosen(replyLanguage = \"fixture-replyLanguage-b\", screenLanguage = \"fixture-screenLanguage-a\")"
+            },
+            {
+              "label": "ScreenChosen#3",
+              "expr": "vexlife.person.VexLifeLanguageFamily.ScreenChosen(replyLanguage = \"fixture-replyLanguage-b\", screenLanguage = \"fixture-screenLanguage-b\")"
+            }
+          ],
+          "notFixturable": null
+        }
+      ],
+      "controls": [
+        {
+          "variant": "ChooseReplyLanguage",
+          "fixtures": [
+            {
+              "label": "ChooseReplyLanguage#0",
+              "expr": "vexlife.person.VexLifeLanguageFamily.ChooseReplyLanguage(code = \"fixture-code-a\")"
+            },
+            {
+              "label": "ChooseReplyLanguage#1",
+              "expr": "vexlife.person.VexLifeLanguageFamily.ChooseReplyLanguage(code = \"fixture-code-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "ChooseScreenLanguage",
+          "fixtures": [
+            {
+              "label": "ChooseScreenLanguage#0",
+              "expr": "vexlife.person.VexLifeLanguageFamily.ChooseScreenLanguage(code = \"fixture-code-a\")"
+            },
+            {
+              "label": "ChooseScreenLanguage#1",
+              "expr": "vexlife.person.VexLifeLanguageFamily.ChooseScreenLanguage(code = \"fixture-code-b\")"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "FollowReplyLanguage",
+          "fixtures": [
+            {
+              "label": "FollowReplyLanguage",
+              "expr": "vexlife.person.VexLifeLanguageFamily.FollowReplyLanguage"
+            }
+          ],
+          "notFixturable": null
+        }
+      ]
+    },
+    {
       "family": "VexLifeReleaseInboxFamily",
       "instance": "vexlife.release.VexLifeReleaseInboxFamily",
       "runnable": false,
@@ -819,6 +1173,55 @@
           "variant": "Control.Dismiss",
           "fixtures": [],
           "notFixturable": "no deterministic fixture for identity: VexLifeReleaseIdentity.Value"
+        }
+      ]
+    },
+    {
+      "family": "VexLifeLocalSourcesFamily",
+      "instance": "vexlife.sources.VexLifeLocalSourcesFamily",
+      "runnable": true,
+      "notRunnable": null,
+      "states": [
+        {
+          "variant": "Empty",
+          "fixtures": [
+            {
+              "label": "Empty",
+              "expr": "vexlife.sources.VexLifeLocalSourcesFamily.Empty"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Granted",
+          "fixtures": [],
+          "notFixturable": "no deterministic fixture for grants: List<Grant>"
+        }
+      ],
+      "controls": [
+        {
+          "variant": "AddFolder",
+          "fixtures": [
+            {
+              "label": "AddFolder",
+              "expr": "vexlife.sources.VexLifeLocalSourcesFamily.AddFolder"
+            }
+          ],
+          "notFixturable": null
+        },
+        {
+          "variant": "Remove",
+          "fixtures": [
+            {
+              "label": "Remove#0",
+              "expr": "vexlife.sources.VexLifeLocalSourcesFamily.Remove(sourceRef = \"fixture-sourceRef-a\")"
+            },
+            {
+              "label": "Remove#1",
+              "expr": "vexlife.sources.VexLifeLocalSourcesFamily.Remove(sourceRef = \"fixture-sourceRef-b\")"
+            }
+          ],
+          "notFixturable": null
         }
       ]
     },

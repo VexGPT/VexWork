@@ -23,6 +23,27 @@ class ExperienceLawProbeTest {
         out.append("{\"family\":\"" + family + "\",\"state\":\"" + stateVariant + "\",\"stateFixture\":\"" + esc(stateFixture) + "\",\"control\":\"" + controlVariant + "\",\"controlFixture\":\"" + esc(controlFixture) + "\",\"result\":" + result + "}\n")
     }
 
+    private fun probeVexLifeAttachmentDraftFamily(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
+        val family = vexlife.attachment.VexLifeAttachmentDraftFamily
+        val states: List<Triple<String, String, () -> vexlife.attachment.VexLifeAttachmentDraftFamily.State>> = listOf(
+            Triple("Empty", "Empty", { vexlife.attachment.VexLifeAttachmentDraftFamily.Empty }),
+        )
+        val controls: List<Triple<String, String, () -> vexlife.attachment.VexLifeAttachmentDraftFamily.Control>> = listOf(
+            Triple("AddFiles", "AddFiles", { vexlife.attachment.VexLifeAttachmentDraftFamily.AddFiles }),
+            Triple("CancelStage", "CancelStage#0", { vexlife.attachment.VexLifeAttachmentDraftFamily.CancelStage(draftRef = "fixture-draftRef-a") }),
+            Triple("CancelStage", "CancelStage#1", { vexlife.attachment.VexLifeAttachmentDraftFamily.CancelStage(draftRef = "fixture-draftRef-b") }),
+            Triple("Remove", "Remove#0", { vexlife.attachment.VexLifeAttachmentDraftFamily.Remove(draftRef = "fixture-draftRef-a") }),
+            Triple("Remove", "Remove#1", { vexlife.attachment.VexLifeAttachmentDraftFamily.Remove(draftRef = "fixture-draftRef-b") }),
+        )
+        for ((stateVariant, stateFixture, state) in states) {
+            for ((controlVariant, controlFixture, control) in controls) {
+                cell("VexLifeAttachmentDraftFamily", stateVariant, stateFixture, controlVariant, controlFixture) {
+                    family.resolve(state(), control())?.let { act -> simple(act.admittedState) to simple(act.effect) }
+                }
+            }
+        }
+    }
+
     private fun probeVexLifePrivateModeFamily(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
         val family = vexlife.continuity.VexLifePrivateModeFamily
         val states: List<Triple<String, String, () -> vexlife.continuity.VexLifePrivateModeFamily.State>> = listOf(
@@ -36,6 +57,30 @@ class ExperienceLawProbeTest {
         for ((stateVariant, stateFixture, state) in states) {
             for ((controlVariant, controlFixture, control) in controls) {
                 cell("VexLifePrivateModeFamily", stateVariant, stateFixture, controlVariant, controlFixture) {
+                    family.resolve(state(), control())?.let { act -> simple(act.admittedState) to simple(act.effect) }
+                }
+            }
+        }
+    }
+
+    private fun probeVexLifeConversationTurnFamily(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
+        val family = vexlife.conversation.VexLifeConversationTurnFamily
+        val states: List<Triple<String, String, () -> vexlife.conversation.VexLifeConversationTurnFamily.State>> = listOf(
+            Triple("Ready", "Ready", { vexlife.conversation.VexLifeConversationTurnFamily.Ready }),
+            Triple("Active", "Active#0", { vexlife.conversation.VexLifeConversationTurnFamily.Active(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt("A")) }),
+            Triple("Active", "Active#1", { vexlife.conversation.VexLifeConversationTurnFamily.Active(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt("B")) }),
+            Triple("Cancelling", "Cancelling#0", { vexlife.conversation.VexLifeConversationTurnFamily.Cancelling(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt("A")) }),
+            Triple("Cancelling", "Cancelling#1", { vexlife.conversation.VexLifeConversationTurnFamily.Cancelling(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt("B")) }),
+        )
+        val controls: List<Triple<String, String, () -> vexlife.conversation.VexLifeConversationTurnFamily.Control>> = listOf(
+            Triple("Send", "Send#0", { vexlife.conversation.VexLifeConversationTurnFamily.Send(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt("A")) }),
+            Triple("Send", "Send#1", { vexlife.conversation.VexLifeConversationTurnFamily.Send(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt("B")) }),
+            Triple("Stop", "Stop#0", { vexlife.conversation.VexLifeConversationTurnFamily.Stop(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt("A")) }),
+            Triple("Stop", "Stop#1", { vexlife.conversation.VexLifeConversationTurnFamily.Stop(attempt = vexlife.conversation.VexLifeConversationTurnFamily.Attempt("B")) }),
+        )
+        for ((stateVariant, stateFixture, state) in states) {
+            for ((controlVariant, controlFixture, control) in controls) {
+                cell("VexLifeConversationTurnFamily", stateVariant, stateFixture, controlVariant, controlFixture) {
                     family.resolve(state(), control())?.let { act -> simple(act.admittedState) to simple(act.effect) }
                 }
             }
@@ -129,6 +174,34 @@ class ExperienceLawProbeTest {
         }
     }
 
+    private fun probeVexLifeLocalAsrModelsFamily(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
+        val family = vexlife.localasr.VexLifeLocalAsrModelsFamily
+        val states: List<Triple<String, String, () -> vexlife.localasr.VexLifeLocalAsrModelsFamily.State>> = listOf(
+            Triple("State", "State#0", { vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = "fixture-artifactState-a", selected = true, downloading = true, anyDownloadRunning = true) }),
+            Triple("State", "State#1", { vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = "fixture-artifactState-a", selected = true, downloading = true, anyDownloadRunning = false) }),
+            Triple("State", "State#2", { vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = "fixture-artifactState-a", selected = true, downloading = false, anyDownloadRunning = true) }),
+            Triple("State", "State#3", { vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = "fixture-artifactState-a", selected = true, downloading = false, anyDownloadRunning = false) }),
+            Triple("State", "State#4", { vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = "fixture-artifactState-a", selected = false, downloading = true, anyDownloadRunning = true) }),
+            Triple("State", "State#5", { vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = "fixture-artifactState-a", selected = false, downloading = true, anyDownloadRunning = false) }),
+            Triple("State", "State#6", { vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = "fixture-artifactState-a", selected = false, downloading = false, anyDownloadRunning = true) }),
+            Triple("State", "State#7", { vexlife.localasr.VexLifeLocalAsrModelsFamily.State(artifactState = "fixture-artifactState-a", selected = false, downloading = false, anyDownloadRunning = false) }),
+        )
+        val controls: List<Triple<String, String, () -> vexlife.localasr.VexLifeLocalAsrModelsFamily.Control>> = listOf(
+            Triple("Use", "Use", { vexlife.localasr.VexLifeLocalAsrModelsFamily.Use }),
+            Triple("Download", "Download", { vexlife.localasr.VexLifeLocalAsrModelsFamily.Download }),
+            Triple("Redownload", "Redownload", { vexlife.localasr.VexLifeLocalAsrModelsFamily.Redownload }),
+            Triple("Remove", "Remove", { vexlife.localasr.VexLifeLocalAsrModelsFamily.Remove }),
+            Triple("InstallProvider", "InstallProvider", { vexlife.localasr.VexLifeLocalAsrModelsFamily.InstallProvider }),
+        )
+        for ((stateVariant, stateFixture, state) in states) {
+            for ((controlVariant, controlFixture, control) in controls) {
+                cell("VexLifeLocalAsrModelsFamily", stateVariant, stateFixture, controlVariant, controlFixture) {
+                    family.resolve(state(), control())?.let { act -> simple(act.admittedState) to simple(act.effect) }
+                }
+            }
+        }
+    }
+
     private fun probeVexLifeMemoryReviewFamily(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
         val family = vexlife.memory.VexLifeMemoryReviewFamily
         val states: List<Triple<String, String, () -> vexlife.memory.VexLifeMemoryReviewFamily.State>> = listOf(
@@ -159,6 +232,37 @@ class ExperienceLawProbeTest {
         }
     }
 
+    private fun probeVexLifeModelsFamily(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
+        val family = vexlife.model.VexLifeModelsFamily
+        val states: List<Triple<String, String, () -> vexlife.model.VexLifeModelsFamily.State>> = listOf(
+            Triple("State", "State#0", { vexlife.model.VexLifeModelsFamily.State(handle = "fixture-handle-a", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = true, runtimeConfiguration = null, anyDownloadRunning = true, anySwitchRunning = true) }),
+            Triple("State", "State#1", { vexlife.model.VexLifeModelsFamily.State(handle = "fixture-handle-a", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = true, runtimeConfiguration = null, anyDownloadRunning = true, anySwitchRunning = false) }),
+            Triple("State", "State#2", { vexlife.model.VexLifeModelsFamily.State(handle = "fixture-handle-a", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = true, runtimeConfiguration = null, anyDownloadRunning = false, anySwitchRunning = true) }),
+            Triple("State", "State#3", { vexlife.model.VexLifeModelsFamily.State(handle = "fixture-handle-a", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = true, runtimeConfiguration = null, anyDownloadRunning = false, anySwitchRunning = false) }),
+            Triple("State", "State#4", { vexlife.model.VexLifeModelsFamily.State(handle = "fixture-handle-a", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = false, runtimeConfiguration = null, anyDownloadRunning = true, anySwitchRunning = true) }),
+            Triple("State", "State#5", { vexlife.model.VexLifeModelsFamily.State(handle = "fixture-handle-a", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = false, runtimeConfiguration = null, anyDownloadRunning = true, anySwitchRunning = false) }),
+            Triple("State", "State#6", { vexlife.model.VexLifeModelsFamily.State(handle = "fixture-handle-a", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = false, runtimeConfiguration = null, anyDownloadRunning = false, anySwitchRunning = true) }),
+            Triple("State", "State#7", { vexlife.model.VexLifeModelsFamily.State(handle = "fixture-handle-a", artifactPresence = vexlife.model.VexLifeModelsFamily.ArtifactPresence.Absent, downloading = true, chosen = true, targeted = true, serving = true, switching = false, runtimeConfiguration = null, anyDownloadRunning = false, anySwitchRunning = false) }),
+        )
+        val controls: List<Triple<String, String, () -> vexlife.model.VexLifeModelsFamily.Control>> = listOf(
+            Triple("Select", "Select", { vexlife.model.VexLifeModelsFamily.Select }),
+            Triple("Use", "Use", { vexlife.model.VexLifeModelsFamily.Use }),
+            Triple("UseRecommendedRuntimeConfiguration", "UseRecommendedRuntimeConfiguration", { vexlife.model.VexLifeModelsFamily.UseRecommendedRuntimeConfiguration }),
+            Triple("SetPromptCacheEntries", "SetPromptCacheEntries#0", { vexlife.model.VexLifeModelsFamily.SetPromptCacheEntries(entries = 0) }),
+            Triple("Download", "Download", { vexlife.model.VexLifeModelsFamily.Download }),
+            Triple("Redownload", "Redownload", { vexlife.model.VexLifeModelsFamily.Redownload }),
+            Triple("Remove", "Remove", { vexlife.model.VexLifeModelsFamily.Remove }),
+            Triple("ForgetImportedModel", "ForgetImportedModel", { vexlife.model.VexLifeModelsFamily.ForgetImportedModel }),
+        )
+        for ((stateVariant, stateFixture, state) in states) {
+            for ((controlVariant, controlFixture, control) in controls) {
+                cell("VexLifeModelsFamily", stateVariant, stateFixture, controlVariant, controlFixture) {
+                    family.resolve(state(), control())?.let { act -> simple(act.admittedState) to simple(act.effect) }
+                }
+            }
+        }
+    }
+
     private fun probeHereticRuntimeAvailability(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
         val family = vexlife.model.heretic.HereticRuntimeAvailability
         val states: List<Triple<String, String, () -> vexlife.model.heretic.HereticRuntimeAvailability.State>> = listOf(
@@ -171,6 +275,51 @@ class ExperienceLawProbeTest {
         for ((stateVariant, stateFixture, state) in states) {
             for ((controlVariant, controlFixture, control) in controls) {
                 cell("HereticRuntimeAvailability", stateVariant, stateFixture, controlVariant, controlFixture) {
+                    family.resolve(state(), control())?.let { act -> simple(act.admittedState) to simple(act.effect) }
+                }
+            }
+        }
+    }
+
+    private fun probeVexLifeLanguageFamily(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
+        val family = vexlife.person.VexLifeLanguageFamily
+        val states: List<Triple<String, String, () -> vexlife.person.VexLifeLanguageFamily.State>> = listOf(
+            Triple("FollowingReplies", "FollowingReplies#0", { vexlife.person.VexLifeLanguageFamily.FollowingReplies(replyLanguage = "fixture-replyLanguage-a") }),
+            Triple("FollowingReplies", "FollowingReplies#1", { vexlife.person.VexLifeLanguageFamily.FollowingReplies(replyLanguage = "fixture-replyLanguage-b") }),
+            Triple("ScreenChosen", "ScreenChosen#0", { vexlife.person.VexLifeLanguageFamily.ScreenChosen(replyLanguage = "fixture-replyLanguage-a", screenLanguage = "fixture-screenLanguage-a") }),
+            Triple("ScreenChosen", "ScreenChosen#1", { vexlife.person.VexLifeLanguageFamily.ScreenChosen(replyLanguage = "fixture-replyLanguage-a", screenLanguage = "fixture-screenLanguage-b") }),
+            Triple("ScreenChosen", "ScreenChosen#2", { vexlife.person.VexLifeLanguageFamily.ScreenChosen(replyLanguage = "fixture-replyLanguage-b", screenLanguage = "fixture-screenLanguage-a") }),
+            Triple("ScreenChosen", "ScreenChosen#3", { vexlife.person.VexLifeLanguageFamily.ScreenChosen(replyLanguage = "fixture-replyLanguage-b", screenLanguage = "fixture-screenLanguage-b") }),
+        )
+        val controls: List<Triple<String, String, () -> vexlife.person.VexLifeLanguageFamily.Control>> = listOf(
+            Triple("ChooseReplyLanguage", "ChooseReplyLanguage#0", { vexlife.person.VexLifeLanguageFamily.ChooseReplyLanguage(code = "fixture-code-a") }),
+            Triple("ChooseReplyLanguage", "ChooseReplyLanguage#1", { vexlife.person.VexLifeLanguageFamily.ChooseReplyLanguage(code = "fixture-code-b") }),
+            Triple("ChooseScreenLanguage", "ChooseScreenLanguage#0", { vexlife.person.VexLifeLanguageFamily.ChooseScreenLanguage(code = "fixture-code-a") }),
+            Triple("ChooseScreenLanguage", "ChooseScreenLanguage#1", { vexlife.person.VexLifeLanguageFamily.ChooseScreenLanguage(code = "fixture-code-b") }),
+            Triple("FollowReplyLanguage", "FollowReplyLanguage", { vexlife.person.VexLifeLanguageFamily.FollowReplyLanguage }),
+        )
+        for ((stateVariant, stateFixture, state) in states) {
+            for ((controlVariant, controlFixture, control) in controls) {
+                cell("VexLifeLanguageFamily", stateVariant, stateFixture, controlVariant, controlFixture) {
+                    family.resolve(state(), control())?.let { act -> simple(act.admittedState) to simple(act.effect) }
+                }
+            }
+        }
+    }
+
+    private fun probeVexLifeLocalSourcesFamily(cell: (String, String, String, String, String, () -> Pair<String?, String?>?) -> Unit) {
+        val family = vexlife.sources.VexLifeLocalSourcesFamily
+        val states: List<Triple<String, String, () -> vexlife.sources.VexLifeLocalSourcesFamily.State>> = listOf(
+            Triple("Empty", "Empty", { vexlife.sources.VexLifeLocalSourcesFamily.Empty }),
+        )
+        val controls: List<Triple<String, String, () -> vexlife.sources.VexLifeLocalSourcesFamily.Control>> = listOf(
+            Triple("AddFolder", "AddFolder", { vexlife.sources.VexLifeLocalSourcesFamily.AddFolder }),
+            Triple("Remove", "Remove#0", { vexlife.sources.VexLifeLocalSourcesFamily.Remove(sourceRef = "fixture-sourceRef-a") }),
+            Triple("Remove", "Remove#1", { vexlife.sources.VexLifeLocalSourcesFamily.Remove(sourceRef = "fixture-sourceRef-b") }),
+        )
+        for ((stateVariant, stateFixture, state) in states) {
+            for ((controlVariant, controlFixture, control) in controls) {
+                cell("VexLifeLocalSourcesFamily", stateVariant, stateFixture, controlVariant, controlFixture) {
                     family.resolve(state(), control())?.let { act -> simple(act.admittedState) to simple(act.effect) }
                 }
             }
@@ -231,11 +380,17 @@ class ExperienceLawProbeTest {
 
     @Test
     fun probeFamilyLaw() {
+        probeVexLifeAttachmentDraftFamily(::cell)
         probeVexLifePrivateModeFamily(::cell)
+        probeVexLifeConversationTurnFamily(::cell)
         probeVexLifeDiagnosticsFamily(::cell)
         probeVexLifeProdEntryFamily(::cell)
+        probeVexLifeLocalAsrModelsFamily(::cell)
         probeVexLifeMemoryReviewFamily(::cell)
+        probeVexLifeModelsFamily(::cell)
         probeHereticRuntimeAvailability(::cell)
+        probeVexLifeLanguageFamily(::cell)
+        probeVexLifeLocalSourcesFamily(::cell)
         probeVexLifeVisionFamily(::cell)
         probeVexLifeVoiceInputFamily(::cell)
         val target = File(System.getProperty("user.dir"), "build/experience-law-probe.jsonl")

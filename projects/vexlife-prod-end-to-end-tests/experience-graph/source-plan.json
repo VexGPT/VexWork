@@ -2,11 +2,11 @@
   "schemaVersion": "vexwork.experience-graph.source-plan/v1",
   "repository": "VexGPT/VexLife-Prod",
   "url": "https://github.com/VexGPT/VexLife-Prod",
-  "commit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-  "commitObservedAt": "2026-11-19",
-  "commitNote": "Re-observed current main: #368 Swirl restoration merged at fb4ea859 (quick actions become the Spiral; the language action projects a language). Every scope branch is rebased onto it.",
-  "priorCommit": "a58777106b08bd58c167608fa0115729185ae3dd",
-  "priorCommitNote": "The previous pin (#361). Used only as the prior revision for graph change impact.",
+  "commit": "66752be53be83422fdf23a438e503c1b934edd0d",
+  "commitObservedAt": "2026-11-24",
+  "commitNote": "A5 current-main Experience Relationship Graph after accepted #625 runtime recovery, #622 A4 continuity, and VexWork #436 reader currentization.",
+  "priorCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
+  "priorCommitNote": "Previous accepted live Experience Graph Product pin before A5 currentization.",
   "familyRoot": "src/commonMain",
   "wiringRoots": [
     "src/commonMain",
@@ -31,105 +31,5 @@
     "markup": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1ExperienceMarkup.kt",
     "runtime": "src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt"
   },
-  "builds": [
-    {
-      "buildRef": "scope-vision-scope-state",
-      "label": "Vision scope state decoded at the boundary",
-      "axis": "IDENTITY",
-      "branch": "VXG-111826-claude-scope-vision-scope-state",
-      "commit": "ecb7b8c59093fdaef95dc5cb53dcb773fc97b6a4",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "summary": "VexLifeVisionFamily decodes the service's scope state once, at the boundary, instead of the service comparing raw strings."
-    },
-    {
-      "buildRef": "scope-keyed-elements",
-      "label": "Keyed elements named from their owners",
-      "axis": "IDENTITY",
-      "branch": "VXG-111826-claude-scope-keyed-elements",
-      "commit": "17cb5ad7e69e43dcd8b64a54ad72afeee6376031",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "summary": "Workspace and release-alert dataKeys come from an owner registry in main source, and Screen Lens elements are named by their keys."
-    },
-    {
-      "buildRef": "scope-typed-runtime-refs",
-      "label": "Typed refs and owner constants in the browser runtime",
-      "axis": "IDENTITY",
-      "branch": "VXG-111826-claude-scope-typed-runtime-refs",
-      "commit": "0d4c0f2d97dcaae2de45fe486fc20126400601f1",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "summary": "The browser runtime finds typed elements by their Blueprint ref and compares owner constants instead of copied strings."
-    },
-    {
-      "buildRef": "scope-zh-hant-script",
-      "label": "Traditional Chinese as its own screen language",
-      "axis": "LOCALIZATION",
-      "branch": "VXG-111826-claude-scope-zh-hant-script",
-      "commit": "f11c2c945b2a4f53ecd9b727770266a9e30bf55d",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "summary": "zh-Hant is a screen language of its own, so a reader of Traditional Chinese never sees a Simplified screen."
-    },
-    {
-      "buildRef": "scope-complete-translations",
-      "label": "Complete workspace text; complete languages only",
-      "axis": "LOCALIZATION",
-      "branch": "VXG-111826-claude-scope-complete-translations",
-      "commit": "6fc0d0f441eb0516205a8e793fb73be08c1586ed",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "stackedOn": "scope-zh-hant-script",
-      "summary": "Workspace and release-alert text in all eleven screen languages, and only complete languages are served."
-    },
-    {
-      "buildRef": "scope-language-choices",
-      "label": "Two language choices, one Family",
-      "axis": "LOCALIZATION",
-      "branch": "VXG-111826-claude-scope-language-choices",
-      "commit": "e9c012650b18bf9dba98d4d262b05e4ba2c39f46",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "stackedOn": "scope-complete-translations",
-      "summary": "The screen language is its own Home choice beside Vex's reply language; VexLifeLanguageFamily owns how the two move."
-    },
-    {
-      "buildRef": "scope-design-foundation",
-      "label": "Design foundation aligned with Vextreme v2",
-      "axis": "DESIGN",
-      "branch": "VXG-111826-claude-scope-design-foundation",
-      "commit": "852a34dfcc93e13886a56dd84b9f800d590ee3a5",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "summary": "Vextreme Design Foundation v2 tokens, both themes authored, and the relationship legend as quiet rails (presentation only; the graph should not move)."
-    },
-    {
-      "buildRef": "consolidated-claude",
-      "label": "Everything Claude changed, merged once",
-      "axis": "ALL",
-      "branch": "VXG-111826-claude-consolidated",
-      "commit": "37ae931d402eb29bad2601bb0cc8479f55750928",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "members": [
-        "scope-vision-scope-state",
-        "scope-keyed-elements",
-        "scope-typed-runtime-refs",
-        "scope-language-choices",
-        "scope-design-foundation"
-      ],
-      "summary": "All seven scopes merged in order, with the resolutions between them made once."
-    },
-    {
-      "buildRef": "candidate-convergence-r2",
-      "label": "Product R2 semantic + spatial convergence",
-      "axis": "ALL",
-      "branch": "VXG-111926-vexlife-prod-experience-convergence-r2",
-      "commit": "479544c5c319ad796a0853125ae131d85afc9671",
-      "basis": "main",
-      "basisCommit": "fb4ea859949f2fcba47bf55857669df37d2730ce",
-      "summary": "Current Product source composed with #380 semantic evolution and #385 VexWeb browser-workspace Screen Lens realization."
-    }
-  ]
+  "builds": []
 }
