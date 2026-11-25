@@ -731,8 +731,7 @@
         "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
-        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
-        "repo.vextreme-sdk:lib/living-journal/projection.js"
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -766,9 +765,7 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt",
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
         "github.pull.vexlife-prod.500",
-        "github.pull.vexlife-prod.504",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
-        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/memory/VexLifeCurrentMemoryReader.kt"
+        "github.pull.vexlife-prod.504"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
