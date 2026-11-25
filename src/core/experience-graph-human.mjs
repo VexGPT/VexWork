@@ -55,7 +55,9 @@ function experienceRoute(route, derivationCase, seed) {
   }));
   const human = (route.steps ?? []).find((step) => step.step === 'HUMAN_ACTION') ?? null;
   const elementRefs = human?.elementRefs ?? [];
-  const interactiveElementRefs = elementRefs.filter((ref) => String(ref).startsWith('element.'));
+  const interactiveElementRefs = [
+    ...new Set(elementRefs.filter((ref) => String(ref).startsWith('element.'))),
+  ];
   if (interactiveElementRefs.length > 1) {
     pushMissing(
       missing,
