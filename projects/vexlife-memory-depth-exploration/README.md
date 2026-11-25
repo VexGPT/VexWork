@@ -54,8 +54,9 @@ Current source-grounded conclusion:
 
 ~~~text
 canonical files / heads remain Memory + Conversation truth
-rebuildable local retrieval store becomes acceleration only
-index hit -> exact canonical source re-open/currentness verification
+Continuity Source Locator becomes rebuildable acceleration only
+backend realization (file / SQLite / future qualified implementation) stays construction detail
+locator hit -> exact canonical source re-open/currentness verification
 no always-running database daemon required by default
 semantic similarity nominates candidates; it never creates accepted meaning
 physical shard movement cannot change object identity
@@ -63,6 +64,8 @@ physical shard movement cannot change object identity
 
 This consumes the already-formed Vextreme-SDK Vex Memory, durable semantic-memory, Living Journal shard,
 and Lesson Resonance index contracts rather than inventing a second long-term Memory system.
+
+R2 VexArchitecture review also binds the feature to the Builder Field Guide / Live Demonstration: no new LongTermMemory Family is earned by indexing alone, Store/provider does not imply database, construction identity never becomes semantic identity, and the full source -> locate -> reopen/currentize -> provider -> Vex -> canonical continuation -> locator catch-up loop is explicit. Current VexLife `VexLifePlatformRealization` / `VexLifeJvmPlatformTarget` is the precedent for Mac/Windows/default-backend construction without consumer OS branching.
 
 The missing Product work is now explicit: choose/prove the smallest derived-store adapter, remove lifetime
 linear scans from old-context location, add paraphrase candidate retrieval with exact source recovery, prove
