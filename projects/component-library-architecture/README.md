@@ -197,7 +197,7 @@ subject through the Lens catalog's Main coordinate:
 | Product | Source families | Occurrences | Localized occurrences | Direct realizers |
 | --- | ---: | ---: | ---: | ---: |
 | VexLife Android | 15 | 274 | 190 | 121 |
-| VexLife Prod | 9 | 152 | 105 | 0 |
+| VexLife Prod | 9 | 152 | 123 | 0 |
 | VexStream Music | 4 | 81 | 0 | 0 |
 
 The zeros are meaningful:
@@ -540,38 +540,114 @@ Each realization retains source coordinates, version/currentness and proof.
 
 This is not automatic source-to-source translation. A deterministic constructor/generator becomes valid only where an accepted mapping proves it.
 
-### A5 — Component Gallery / Library workspace — READY
+### A5 — Component Gallery + Builder — RUNNING
 
-The **Gallery shell exists early** at `vexboard/components.html` so A1 has a human home now. It
-shows observed source families and where-used truth while portable meaning is still explicitly
-unclassified.
-
-A3 portable convergence is complete. Full A5 completion still waits on the remaining A1 verification
-boundary; the early shell is not a shortcut that promotes source families into portable Blueprints.
-
-Build one human-facing Gallery that can pivot by:
+A5 is the human workspace over the A1–A4 evidence. Lived review corrected its center of gravity
+several times, and those corrections are preserved here because they explain the current shape:
 
 ```text
-COMPONENTS | STATES | VARIANTS | PRODUCTS | REALIZATIONS | WHERE USED | PROOF
+inventory / CMS table           -> Gallery became a showroom of the actual thing
+generic container collapse      -> each kind received its own visual grammar
+"where is the Builder?"         -> Builder sits beside Localization in VexBoard
+placed but not movable          -> spatial move / resize
+"elements can be reusable too"  -> component definition != component instance
+overlap                         -> foreground / background depth
 ```
 
-A component detail should expose:
+PR #428 carried those corrections one patch at a time. A fresh fullness review (branch
+`VXG-112226-component-library-fullness-claude-a001`, successor to the #428 prototype) found that the patches had begun to
+contradict each other — three layout systems stored at once, instances that were editable stamped
+copies, Android receiving zero integration seams, source evidence overwritten to change text, two
+composers with two schemas — and replaced the authoring model as one coherent contract:
+`vexboard.ui-blueprint/v2`.
 
-- portable meaning;
-- visual specimen(s);
-- slots / parameters;
-- states/variants;
-- controls/intents;
-- localization bindings;
-- accessibility meaning;
-- platform realizations;
-- where-used;
-- source / proof;
-- copyable construction brief / sample when earned.
+#### Human model
+
+```text
+Library   what building blocks exist?           Gallery: specimens from real source, real examples,
+                                                evidence behind the item, "Use in Builder"
+Builder   what am I making?                     one composer: palette | canvas | inspector, layers,
+                                                undo/redo, Try it, preview sizes / RTL / long text
+Review    what exactly did I mean, and what     what the app must supply, what is already defined,
+          must someone else supply?             findings, construction brief, blueprint JSON
+```
+
+The Gallery no longer composes. "Studio" and `vexboard.component-studio-blueprint/v1` are retired:
+one composition truth, one blueprint format. The Gallery hands an occurrence (optionally with its real
+source children) to the Builder by reference, and the Builder links back to the Library item.
+
+Gallery and Builder draw components through one shared renderer
+(`vexboard/ui/component-renderer.mjs`), so the same kind and source style look the same everywhere.
+
+#### UI Blueprint v2 — what is preserved
+
+```text
+kinds            capability registry (src/shared/vexboard-ui-kinds.mjs): containment, overlay,
+                 triggers, accessible role; unknown future kinds degrade to a HELD leaf
+source evidence  exact occurrence / element / commit / repository / portable disposition — immutable
+content          authored text lives BESIDE source evidence; new text needs a localization string
+layout           container-owned: STACK (axis, gap, align, distribute) | OVERLAY (anchored) |
+                 FREEFORM (children placed in 1/24 fractions of a FIXED-height area);
+                 children size per axis: HUG | FILL | FIXED dp. One layout system, no pixel offsets.
+overlays         Dialog / Sheet / Menu live on the surface overlay layer; shown WHEN_OPEN
+depth            sibling-local, only inside layered / free-form parents; source `layer` stays evidence
+behavior seams   from source intent: ACTION (OPEN, keyed by actionKey) | NAVIGATION (OPEN) |
+                 PRESENTATION (Builder-local open/close of an overlay, or OPEN when unbound)
+visibility       ALWAYS | WHEN_OPEN | CONDITIONAL(conditionKey = OPEN data seam)
+accessibility    accessible name override, decorative images; role from kind; reading order = layers
+reuse            definition (versioned template, ports, overridable texts, named slots) vs instance
+                 (one node: definitionRef + version + text overrides + port bindings + slot children);
+                 nested reuse preserved, cycles rejected, edits propagate with a version bump
+paths            expanded nodes carry stable paths (instance/template) for target back-mapping
+derived          integration contract (one entry per action key — mirrors VexLife invoke(ActionKey)
+                 + requireCoverage), source snapshots, summary; verified on import
+```
+
+```text
+aiRequired = false
+effects = false
+executionAuthority = NONE
+```
+
+Editing commands (`src/shared/vexboard-ui-document.mjs`) are re-validated by the canonical
+normalizer before admission, so the editor cannot produce a blueprint that import would reject.
+Review (`src/shared/vexboard-ui-review.mjs`) reports currentness against loaded inventories
+(CURRENT / MOVED / CHANGED / MISSING / UNKNOWN), accessibility, localization, portability and held
+selection, and projects a deterministic construction brief. Reconciliation (rebinding to the current
+source commit) is an explicit edit, never a silent rewrite. v1 files migrate with visible notes.
+
+Permanent:
+
+```text
+GALLERY SPECIMEN != NATIVE PIXEL PARITY
+LOCAL PREVIEW INTERACTION != PRODUCT EFFECT
+PREVIEW PIXELS != LAYOUT MEANING
+SOURCE EVIDENCE != AUTHORED CONTENT
+OPEN SEAM != CALLBACK IMPLEMENTATION
+BUILDER-LOCAL PRESENTATION != PRODUCT STATE
+DEFINITION != INSTANCE != TARGET REALIZATION
+SOURCE LAYER != AUTHORED DEPTH
+UI BLUEPRINT != GENERATED TARGET CODE
+UI BLUEPRINT != SECOND PRODUCT SEMANTIC OWNER
+AI != REQUIRED CONSTRUCTION INTERPRETER
+```
+
+Human-facing boundary:
+
+```text
+open Builder   -> browser loads hosted HTML / modules / source projections; no shell, no repository write
+Open…          -> browser file picker; only the chosen blueprint is read
+Save           -> browser download of deterministic UI Blueprint bytes
+draft          -> kept only in this browser (localStorage) so a refresh does not lose work
+```
+
+Not yet earned (next edges, deliberately not invented): per-size-class layout overrides,
+min/max/aspect sizing, anchored popovers (A3 HELD), Local Selection binding (A3 HELD), sharing
+component definitions across designs / repositories, and A7 self-projection of the Builder.
 
 ### A6 — construction/export packs — WAITING on A4+A5
 
-Allow an accepted component relationship to produce a target-bound construction/reference artifact without forcing fresh source archaeology.
+Consume an accepted A5 UI Blueprint through target adapters to produce target-bound construction/reference artifacts without fresh source archaeology or AI reinterpretation.
 
 Possible outputs:
 
@@ -720,7 +796,7 @@ repository-owned execution runs.
 
 ## Current next edge
 
-work.vex.component-library-architecture.gallery — **READY**
+work.vex.component-library-architecture.gallery — **RUNNING**
 
 A3 is terminal:
 

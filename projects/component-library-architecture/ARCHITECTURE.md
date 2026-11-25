@@ -286,44 +286,117 @@ This is a stronger starting point than decompiling arbitrary UI because:
 
 A1 should reuse those sources rather than inventing another Android component registry.
 
-## 8. Gallery as a human workspace
+## 8. Gallery + Builder as a human workspace
 
-The Gallery should answer:
-
-> What do we already know how to build?
-
-A compact default card might show:
+The Gallery and Builder are projections over source-grounded evidence. Neither becomes a Product
+semantic owner, and neither turns preview pixels into layout meaning.
 
 ```text
-Action Button
-Portable · 4 realizations
-
-States
-default · disabled · pressed
-
-Used in
-Android 18
-Prod 7
-Stream 4
-
-[Open specimen] [Where used] [Realizations]
+Library  (vexboard/components.html)  showroom: isolated specimen, real examples, evidence
+Builder  (vexboard/builder.html)     the one composer: UI Blueprint v2
+Review   (Builder dialog)            integration contract, findings, construction brief
 ```
 
-Expanded detail may show:
+### Isolated specimen
+
+A specimen is one real source occurrence drawn by the shared renderer, optionally with a bounded
+slice of its real source children. Cycling examples shows actual source differences instead of an
+invented Storybook taxonomy. Local clicks / toggles are browser-local; no Product effect runs.
+Pressed / disabled / selected states are not manufactured when source does not project them.
+
+### One composer, one blueprint
+
+The earlier Gallery "Studio" (`vexboard.component-studio-blueprint/v1`) is retired. Composition has
+one truth owner: the Builder's `vexboard.ui-blueprint/v2`. The Gallery hands items over by reference
+(`builder.html?add=<product>~<occurrenceRef>[&children=1]`).
+
+### UI Blueprint v2 contract
+
+```mermaid
+flowchart TD
+  K[Kind capability registry] --> N[Blueprint node]
+  S[Source evidence<br/>occurrence · commit · disposition] --> N
+  C[Authored content<br/>beside source] --> N
+  L[Container layout<br/>STACK · OVERLAY · FREEFORM] --> N
+  B[Behavior seams<br/>ACTION · NAVIGATION · PRESENTATION] --> N
+  V[Visibility<br/>ALWAYS · WHEN_OPEN · CONDITIONAL] --> N
+  A[Accessibility] --> N
+  N --> X[Expanded tree<br/>stable paths]
+  D[Definition<br/>versioned template · ports · texts · slots] --> I[Instance node<br/>overrides · bindings · slot children]
+  I --> X
+  X --> G[Derived integration contract]
+  X --> R[Review + construction brief]
+```
+
+**Kinds.** A data registry answers what an element of kind K may structurally do: contain children
+(and which), be an overlay, which triggers it has, which accessible role it carries. It replaces the
+prototype's three renderer switch statements as the architectural owner. Unknown future kinds degrade
+to a HELD leaf instead of being mapped onto a familiar kind.
+
+**Layout.** A container owns how its children are arranged:
 
 ```text
-Meaning
-Slots / parameters
-States / variants
-Localization
-Accessibility
-Behavior / intent relationship
-Target realizations
-Source/proof
-Construction brief
+STACK     axis VERTICAL | HORIZONTAL, gap / padding tokens, align, distribute
+          -> Compose Column/Row, SwiftUI VStack/HStack, CSS flex
+OVERLAY   children pinned to one of nine logical anchors with an inset
+          -> Compose Box, SwiftUI ZStack, CSS grid-area
+FREEFORM  children placed in 1/24 fractions of a FIXED-height area (logical start/end);
+          an axis end left empty hugs the content
 ```
 
-Progressive disclosure should follow the same human-workflow lesson as Localization Architecture.
+Children declare size per axis: `HUG | FILL | FIXED(dp)`. Placement exists only when the parent mode
+gives it meaning; depth exists only in layered or free-form parents. The prototype's simultaneous
+24×24 grid + pixel edge offsets + Wrap/Fill/Fixed contradiction is removed. Ratio units survive as
+the FREEFORM fraction snap, and vertical size hugs content unless deliberately set, so a button's
+height no longer depends on screen height.
+
+**Overlays.** Dialog / Sheet / Menu attach to the surface overlay layer (never nested), are shown
+WHEN_OPEN, and stack by overlay depth. Anchored popovers remain HELD with A3.
+
+**Behavior seams.** Source intents are classified, never invented:
+
+```text
+invoke(ActionKey) / localEffect() / capability X / action X / presentation X / <product intent>
+  -> ACTION        OPEN; key = source actionKey when present
+navigateTo(S) / navigateBack() / external URL
+  -> NAVIGATION    OPEN; destination hint kept
+open(X) / close(X) / toggle(X)
+  -> PRESENTATION  Builder-local when bound to an overlay in the same design; otherwise OPEN
+swapTo(X) / local element.X
+  -> PRESENTATION  OPEN (Local Selection HELD in A3)
+```
+
+This mirrors VexLife's own UI boundary: an element names `invoke(ActionKey)`, the owning screen
+registers the handler, and `requireCoverage` fails construction if an Invoke has no owner. The
+blueprint's derived integration contract lists one OPEN entry per action key with every element path
+that triggers it — the coverage list an integrator (human, adapter or AI) must satisfy inside the
+target app's rightful owners.
+
+**Reuse.** A definition is a versioned template with a derived public interface: ports (its OPEN
+seams), overridable texts, and named slots. An instance is one node referencing
+`definitionRef + version`; it can change only declared overrides and fill slots — it cannot be edited
+structurally. Editing a definition propagates to every instance with a version bump; overrides that no
+longer address the template are pruned and reported. Nested instances are preserved (outer placements
+may rebind nested ports / texts); definition cycles are rejected. Detach turns an instance back into
+ordinary nodes, carrying overrides and bindings.
+
+**Paths.** Expanded nodes carry stable paths: `nodeRef` for authored nodes, `instancePath/templateRef`
+inside instances. Generated target code can keep these as mapping keys for reverse comparison.
+
+**Currentness and history.** Editing commands are re-validated by the canonical normalizer before
+admission, with undo / redo. Review compares saved source evidence with loaded inventories
+(CURRENT / MOVED / CHANGED / MISSING / UNKNOWN) and offers explicit rebinding. v1 blueprints migrate
+with visible notes rather than silent reinterpretation.
+
+```text
+PREVIEW PIXELS != LAYOUT MEANING
+SOURCE EVIDENCE != AUTHORED CONTENT
+OPEN SEAM != CALLBACK IMPLEMENTATION
+BUILDER-LOCAL PRESENTATION != PRODUCT STATE
+DEFINITION != INSTANCE != TARGET REALIZATION
+SOURCE LAYER != AUTHORED DEPTH
+PROJECTION != EFFECT AUTHORITY
+```
 
 ## 9. Reverse where-used
 
@@ -484,30 +557,34 @@ No privileged admin exception.
 
 ## 15. Paired implementation slices
 
-Avoid building a library UI disconnected from the reusable contract.
+Avoid building a Library UI disconnected from the reusable relationship contract.
 
 ```text
 Slice 1
-Android component inventory
-+ first portable Gallery container identity
+source inventory
++ first isolated source-grounded specimen
 
 Slice 2
-component search / where-used
-+ projectable Gallery controls
+specimen example cycling / edge evidence
++ where-used / Screen Lens deep link
 
 Slice 3
-portable component candidate/detail
-+ component relationship projection
+portable relationship / realization / proof inspector
++ explicit source-bound / held states
 
 Slice 4
-target realization tabs
-+ currentness / proof mapping
+Builder composition (UI Blueprint v2)
++ containment / container layout / overlays / depth / seams / reuse
 
 Slice 5
-construction brief / export
-+ deterministic target mapping where earned
+deterministic UI Blueprint save / open / v1 migration + review / construction brief
++ no-AI reconstruction contract
 
-Slice 6
+Slice 6 (A6)
+UI Blueprint -> target adapter
++ target-native construction / proof
+
+Slice 7 (A7)
 self-use / self-projection / localization proof
 ```
 
