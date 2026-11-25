@@ -250,7 +250,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T07:10:00.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.cold-start-proof",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Prove cold-start, rollover and missing-old-context continuity",
@@ -259,7 +259,8 @@
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
       "dependencyRefs": [
-        "work.vexlife.memory-depth-exploration.context-provider-convergence"
+        "work.vexlife.memory-depth-exploration.context-provider-convergence",
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.semantic-candidate-index"
       ],
       "repositoryRefs": [
         "repo.vexwork",
@@ -282,7 +283,8 @@
         "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
         "github.pull.vexlife-prod.393",
         "github.pull.vexlife-prod.403",
-        "github.pull.vexwork.318"
+        "github.pull.vexwork.318",
+        "github.issue.vexwork.445"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -293,7 +295,7 @@
       "workDisposition": "ACTIVE",
       "nextProcessRefs": [],
       "createdAt": "2026-11-17T04:28:55.000Z",
-      "updatedAt": "2026-11-17T07:10:00.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
       "workRef": "work.vexlife.memory-depth-exploration.measurement",
       "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
       "label": "Measure traversal, response quality, lesson transfer and orchestration savings",
@@ -302,7 +304,8 @@
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
       "dependencyRefs": [
-        "work.vexlife.memory-depth-exploration.context-provider-convergence"
+        "work.vexlife.memory-depth-exploration.context-provider-convergence",
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.five-year-scale-recovery-proof"
       ],
       "repositoryRefs": [
         "repo.vexwork",
@@ -323,7 +326,8 @@
         "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
         "github.pull.vexlife-prod.393",
         "github.pull.vexlife-prod.403",
-        "github.pull.vexwork.318"
+        "github.pull.vexwork.318",
+        "github.issue.vexwork.445"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
     },
@@ -441,6 +445,273 @@
         "github.pull.vexlife-prod.403"
       ],
       "formationProcessRefOrNull": null
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Complete long-horizon Memory storage, indexing and recall expansion",
+      "purpose": "Make years of VexLife continuity remain fast and source-truthful by keeping canonical Conversation/Score/Daily/Memory objects with their rightful file-backed owners while adding only rebuildable local retrieval/index projections, exact source re-open/currentness verification, measured shard evolution, paraphrase candidate retrieval, and five-year scale/recovery proof. A database/index may accelerate lookup but must never become Memory, semantic acceptance or canonical Conversation truth.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "github.issue.vextreme-sdk.225",
+        "repo.vextreme-sdk:lib/vex-memory/durable-semantic-memory.js",
+        "repo.vextreme-sdk:lib/living-journal/projection.js",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/03-stability-node-and-binding-schema.md",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "project.vex.security-assurance"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.architecture-convergence",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Converge SDK Memory/shard/index contracts with current Product storage",
+      "purpose": "Map Vex Memory #225, durable semantic-memory identity, Living Journal shard-manifest/currentness contracts and Lesson Resonance rebuildable-index rules onto the current VexLife-Prod Conversation, Score, Daily Memory and ContextRevisit physical/read paths. Produce one exact owner/currentness map that distinguishes canonical files, logical shards, derived indexes, semantic compaction and physical compaction before implementation source is admitted.",
+      "workClass": "TASK",
+      "state": "VERIFYING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "github.issue.vextreme-sdk.225",
+        "repo.vextreme-sdk:lib/vex-memory/durable-semantic-memory.js",
+        "repo.vextreme-sdk:lib/living-journal/projection.js",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/03-stability-node-and-binding-schema.md",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "repo.vextreme-sdk:docs/architecture/local-sovereign-runtime-boundaries.md",
+        "project.vex.security-assurance"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.derived-retrieval-store",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Define and prove the rebuildable local retrieval-store contract",
+      "purpose": "Define the smallest derived local store that can index stable owner/source refs, sequence/time, typed relationships, shard placement/currentness and lexical lookup while remaining disposable and reconstructable. Compare a file-only derived index with an embedded/on-demand SQLite-class store on cold-open, incremental update, rebuild, crash recovery, privacy/retention and operational cost; no always-running database daemon is required by default and no adapter may become a second Memory truth owner.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.architecture-convergence"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "github.issue.vextreme-sdk.225",
+        "repo.vextreme-sdk:lib/vex-memory/durable-semantic-memory.js",
+        "repo.vextreme-sdk:lib/living-journal/projection.js",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/03-stability-node-and-binding-schema.md",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "repo.vextreme-sdk:docs/architecture/local-sovereign-runtime-boundaries.md",
+        "project.vex.security-assurance"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lexical-typed-index",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Add incremental lexical and typed-edge retrieval without lifetime scans",
+      "purpose": "Implement the selected rebuildable retrieval adapter so old-context location can shortlist stable Conversation/Memory/relationship source refs without projecting or scanning the whole lifetime archive on every recall. Bind index frontier to exact canonical heads, ingest only valid descendant deltas, detect stale/missing/corrupt state, and require exact canonical owner re-open/currentness verification before ContextRevisit or Memory returns material.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.derived-retrieval-store"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "github.issue.vextreme-sdk.225",
+        "repo.vextreme-sdk:lib/vex-memory/durable-semantic-memory.js",
+        "repo.vextreme-sdk:lib/living-journal/projection.js",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/03-stability-node-and-binding-schema.md",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "project.vex.security-assurance"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.semantic-candidate-index",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Add paraphrase / semantic candidate retrieval with exact source recovery",
+      "purpose": "Add a rebuildable semantic-neighborhood candidate layer only after the lexical/typed-edge index is current. Embeddings or another semantic representation may rank candidate anchors, but similarity cannot create a relationship, accepted Memory or autobiographical meaning; top candidates must recover exact prior sources, scope, counterexamples, correction/supersession and currentness before use.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lexical-typed-index"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "github.issue.vextreme-sdk.225",
+        "repo.vextreme-sdk:lib/vex-memory/durable-semantic-memory.js",
+        "repo.vextreme-sdk:lib/living-journal/projection.js",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/03-stability-node-and-binding-schema.md",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "github.issue.vextreme-sdk.312",
+        "project.vex.security-assurance"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "ACTIVE",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.five-year-scale-recovery-proof",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Prove five-year-scale recall, rebuild, deletion and crash recovery",
+      "purpose": "Form a deterministic lifetime-scale corpus and measure ordinary-turn I/O, old-context lookup latency, candidate coverage, exact source descent, incremental indexing, full rebuild, missing/stale/corrupt index recovery, interruption during index update, deletion/tombstone/supersession invalidation and disk overhead. Establish product thresholds from measured baseline rather than inventing them, and prove index loss never becomes Memory loss.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.lexical-typed-index",
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.semantic-candidate-index"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "github.issue.vextreme-sdk.225",
+        "repo.vextreme-sdk:lib/vex-memory/durable-semantic-memory.js",
+        "repo.vextreme-sdk:lib/living-journal/projection.js",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/03-stability-node-and-binding-schema.md",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
+        "project.vex.security-assurance"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "PARKED",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-25T17:24:36.000Z",
+      "updatedAt": "2026-11-25T17:24:36.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.physical-shard-adapter",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion",
+      "label": "Potential — physical shard-manifest / partition adapter when measured pressure earns it",
+      "purpose": "If five-year proof shows filesystem-directory, append/validation, backup or recovery pressure that the derived index alone does not solve, implement the accepted SHARD_MANIFEST relationship so stable object identity survives relocation/split/compaction. Choose physical partitioning from measured owner behavior; DAY/CONTEXT/RELATIONSHIP/SEARCH shards remain logical many-to-many views and directory neatness alone does not justify migration.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.five-year-scale-recovery-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.445",
+        "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+        "github.issue.vextreme-sdk.225",
+        "repo.vextreme-sdk:lib/vex-memory/durable-semantic-memory.js",
+        "repo.vextreme-sdk:lib/living-journal/projection.js",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/03-stability-node-and-binding-schema.md",
+        "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "repo.vextreme-sdk:lib/living-journal/projection.js"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project"
     }
   ],
   "transitions": [
@@ -796,7 +1067,9 @@
     "projects/vexlife-memory-depth-exploration/pressure-harness/README.md",
     "projects/vexlife-memory-depth-exploration/pressure-harness/index.json",
     "projects/vexlife-memory-depth-exploration/pressure-harness/PRESSURE-HARNESS-INTERFACE.md",
-    "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json"
+    "projects/vexlife-memory-depth-exploration/pressure-harness/relay/STAGE-CATALOG.json",
+    "github.issue.vexwork.445",
+    "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
