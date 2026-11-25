@@ -123,6 +123,278 @@ PROMPT SCALE IS BOUNDED
 LIFETIME DISK / RECALL COST IS ALREADY SUBLINEAR
 ~~~
 
+## VexArchitecture alignment — follow the relationship, not the database
+
+The Builder Field Guide and Live Demonstration sharpen this design in one important way:
+
+~~~text
+implementation placement / naming
+!= architecture authority
+
+Store/provider
+!= database
+
+construction identity
+!= semantic identity
+~~~
+
+The long-horizon capability therefore does **not** earn a new `LongTermMemoryFamily`,
+`LongTermMemoryDatabase`, `SQLiteMemoryStore`, or universal context graph merely because the
+implementation needs durable acceleration.
+
+### Rightful questions
+
+The existing owners continue to answer their own questions:
+
+~~~text
+Conversation
+  what was actually said?
+
+Score / accepted Memory
+  what meaning is currently accepted, corrected, superseded or released?
+
+Working Continuity
+  where does active work stand?
+
+ContextRevisit / request-bound context projection
+  what bounded historical source should this turn receive?
+
+Continuity Source Locator
+  which exact canonical source coordinates are plausible candidates,
+  and is the derived locator current enough to use as a locator?
+
+DirectPromptContext
+  what exact bounded material reaches this provider turn?
+
+Vex / provider realization
+  what judgment/answer follows from the admitted context?
+~~~
+
+The **Continuity Source Locator** name is architectural working language because it states the
+relationship being performed without pretending to own Memory. Exact source may choose another name
+only if it answers this same question more truthfully.
+
+Concrete technology belongs below that semantic boundary:
+
+~~~text
+VexLifeContinuitySourceLocator
+  portable/product-facing relationship
+
+FileContinuitySourceLocator
+SqliteContinuitySourceLocator
+<future backend>
+  construction/provider realizations
+
+SQLite / file layout / JDBC / native packaging
+  implementation detail
+~~~
+
+A database row ID, index row, shard placement, driver name, platform target or realization ref must
+never replace the canonical Conversation eventRef, Memory ref/revision, Score ref/head, or other
+rightful source identity.
+
+### End-to-end consequence walk
+
+Apply the Live Demonstration reading rule literally: every step names the container, member/question,
+why traversal arrived there, and the exact next edge.
+
+~~~text
+L0  Product construction
+    Container: VexLife platform/application construction
+    Member: Continuity Source Locator provider realization
+    Why here: the Product needs one locator implementation for this host/deployment
+    Next: resolve the exact realization and its canonical-owner adapters
+
+L1  Canonical owners
+    Container: Conversation / Score / Daily Memory / Working Continuity
+    Member: immutable objects + exact current heads/frontiers
+    Why here: only rightful owners can state durable truth
+    Next: expose source-addressable facts/frontier to the derived locator
+
+L2  Derived ingestion
+    Container: Continuity Source Locator realization
+    Member: candidate metadata / lexical terms / typed edges / source hashes / owner frontier
+    Why here: accelerate source location without copying semantic authority
+    Next: atomically publish one derived generation after canonical source is already durable
+
+L3  Current request
+    Container: ContextRevisit or request-bound EvolveContext projection
+    Member: bounded query + owner scopes + current request binding
+    Why here: current human request needs older source
+    Next: ask the locator for candidates, not answers
+
+L4  Candidate location
+    Container: Continuity Source Locator
+    Member: candidate source coordinates + evidence + derived-generation standing
+    Why here: avoid lifetime enumeration
+    Next: reopen exact canonical source through its rightful owner
+
+L5  Source reconciliation
+    Container: rightful Conversation / Memory / Continuity owner
+    Member: exact source bytes/hash + lifecycle/privacy/currentness/supersession standing
+    Why here: locator evidence is not source truth
+    Next: accept, currentize, hold, or reject the candidate
+
+L6  Multi-owner fusion
+    Container: existing ContextRevisit / continuation machinery
+    Member: verified source nodes + typed relationships + frontier
+    Why here: one turn may need several independently-owned truths
+    Next: budget/group the bounded context without creating another truth owner
+
+L7  Provider placement
+    Container: DirectPromptContext / provider representation
+    Member: verified bounded context packet + source refs
+    Why here: this exact model turn needs usable context
+    Next: provider inference
+
+L8  Vex answer / reach
+    Container: selected model/provider realization
+    Member: answer and any lawful follow-up capability request
+    Why here: judgment remains with Vex, not with the index
+    Next: durable Conversation response + Turn Context evidence
+
+L9  Chronology
+    Container: VexLogger / Turn Context evidence
+    Member: timings, locator generation, candidate refs, returned refs, held reasons
+    Why here: explain what happened without becoming truth
+    Next: future debugging/performance/currentness observation
+
+L10 canonical continuation
+    Container: Conversation owner
+    Member: committed request/response and new head
+    Why here: the human/Vex exchange becomes durable source
+    Next: locator sees owner frontier advance
+
+L11 semantic continuation when separately admitted
+    Container: semantic acceptance / Score / Daily Memory owners
+    Member: accepted correction, supersession, release/tombstone, lesson or current Memory change
+    Why here: recall does not itself write Memory
+    Next: locator sees semantic-owner frontier/edge changes
+
+L12 derived catch-up / invalidation
+    Container: Continuity Source Locator realization
+    Member: incremental delta or rebuild from exact owner frontiers
+    Why here: future recall must not expose stale/deleted/superseded material
+    Next: next bounded request begins again at L3
+~~~
+
+This closes the circuit in both directions:
+
+~~~text
+source -> locate -> reopen -> context -> Vex -> canonical continuation
+                                      |
+                                      +-> semantic change only through rightful owner
+                                                        |
+                                                        v
+                                              derived catch-up/invalidation
+                                                        |
+                                                        └-> future locate
+~~~
+
+No introduced object disappears behind "later."
+
+### VexArchitecture role boundaries
+
+~~~text
+Family / semantic owner
+  existing Conversation / Memory / feature owners keep meaning
+  no new LongTermMemory Family is earned by indexing alone
+
+Execution
+  only if active cancellable/overlap custody is genuinely needed
+  local lookup is not wrapped in VexExecution merely because it performs work
+
+Store / provider
+  derived locator backend is outside/derived truth
+  Store does not mean database
+
+Partner
+  NOT earned for local SQLite/file/index technology
+  may become relevant only if a genuinely independently-owned external participant/service
+  develops Source/Signal/Connection/Observation relationships that survive pressure testing
+
+Construction
+  chooses/builds the concrete locator realization and its lifetime
+  construction ref never becomes Memory identity
+
+Chronology
+  records lookup/catch-up/rebuild timing and held reasons
+  never becomes current Memory
+
+Convergence
+  existing ContextRevisit/fusion may relate verified owner truths
+  do not create a new Relay solely because several owners are searched
+
+Presentation
+  Vex Context / Archives / debug surfaces may explain source/retrieval standing
+  presentation never becomes source or index authority
+~~~
+
+### Mac / Windows / alternative backend realization seam
+
+Current Product source already has the correct platform precedent:
+
+~~~text
+VexLifeJvmPlatformTarget
+  -> exact VexLifePlatformRealization.Target
+
+VexLifePlatformRealization.Catalog
+  -> exact target realization
+  -> no nearest-target fallback
+
+consumer Product owners
+  -> receive the resolved target/realization
+  -> do not scatter Mac/Windows branches
+~~~
+
+Long-horizon storage should reuse that posture.
+
+The backend choice is **construction/deployment realization**, not ordinary user semantic state.
+A normal person does not need a "database selector." A technical builder may provide another qualified
+implementation at composition time.
+
+Candidate relationship:
+
+~~~text
+ContinuitySourceLocatorProvider
+  dependencies:
+    canonical owner adapters
+    owned-path / file-lease facilities
+    platform target
+    logger/diagnostic sink where earned
+    backend realization
+
+default realization catalog
+  macOS arm64/x86_64 -> qualified default locator
+  Windows x86_64/... -> qualified default locator
+
+custom technical composition
+  may substitute another locator realization
+  only when the same contract + lifecycle/leakage proof passes
+~~~
+
+Do **not** make platform family or database engine part of semantic Memory state.
+
+A single portable implementation may serve Mac and Windows when its runtime dependencies are truly
+portable. If a backend needs target-specific native libraries, packaging, locking, encryption or file
+semantics, that difference belongs inside its exact platform/construction realization.
+
+Required interchangeability law:
+
+~~~text
+same canonical source corpus
++ same Continuity Source Locator contract
++ different qualified backend realization
+->
+same candidate/source identities
+same lifecycle/leakage decisions
+same currentization semantics
+implementation-specific performance may differ
+~~~
+
+A custom Postgres/search/vector service is not automatically Partner. It remains a provider realization
+unless an independently meaningful external-participant relationship is actually present.
+
 ## Complete performance pressure: recall path **and** ordinary turn path
 
 The current Product bottleneck is not only historical search.
@@ -214,8 +486,9 @@ REBUILD != SOURCE REWRITE
 
 The retrieval store must be disposable and reconstructable from canonical sources plus accepted relationship edges.
 
-## Database decision
+## Database / backend realization decision
 
+The architectural identity is the Continuity Source Locator relationship, not the database engine.
 No constantly running database service is required by this outcome.
 
 The first adapter comparison should include an embedded/on-demand SQLite-class store because it can provide, in one local file:
