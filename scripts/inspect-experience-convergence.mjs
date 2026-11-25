@@ -33,10 +33,13 @@ function main() {
   const args = parseArgs(process.argv.slice(2));
   const source = path.resolve(args.source);
   const convergencePlan = readJson(PLAN);
-  const expected = convergencePlan.productCandidate.commit;
+  if (convergencePlan.schemaVersion !== 'vexwork.vexlife-prod-experience-convergence-plan/v2') {
+    throw new Error(`Experience convergence plan schema mismatch: ${convergencePlan.schemaVersion}`);
+  }
+  const expected = convergencePlan.productSource.commit;
   const head = git(source, 'rev-parse', 'HEAD');
   if (head !== expected) {
-    throw new Error(`Product checkout is ${head}; convergence R1 expects ${expected} on ${convergencePlan.productCandidate.branch}`);
+    throw new Error(`Product checkout is ${head}; current human convergence expects ${expected} on ${convergencePlan.productSource.branch}`);
   }
 
   const sourcePlan = readJson(SOURCE_PLAN);
@@ -45,6 +48,9 @@ function main() {
   const frontier = deriveFrontier(graph);
   const derivation = deriveRoutes(graph, frontier);
   const seed = readJson(SEED);
+  if (seed.currentness?.vexLifeProdMain !== head || seed.sourceBindings?.vexlifeProdMain !== head) {
+    throw new Error(`Human seed Product currentness does not match checkout ${head}`);
+  }
   const result = deriveHumanExperienceConvergence(graph, derivation, seed);
 
   process.stdout.write(renderHumanExperienceConvergence(result));
