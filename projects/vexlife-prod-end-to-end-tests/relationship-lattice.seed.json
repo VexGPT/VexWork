@@ -4,65 +4,14 @@
   "projectRef": "project.vexlife-prod.end-to-end-tests",
   "purpose": "Read-only experience-validation map over existing Product coordinates and exact source symbols. It does not mint parallel feature/relationship identities. VexLife-Prod and VexArchitecture sources remain the owners of Family, State, Control, Act, Effect, observation, realization and projection meaning.",
   "sourceBindings": {
-    "vexlifeProdMain": "152c323ee6c3d4a43243d0a9c9b6de2ce11f605b",
-    "vexWorkMain": "d70da76d9f95645ee83dc09c7cf7384b6c572cf5",
+    "vexlifeProdMain": "66752be53be83422fdf23a438e503c1b934edd0d",
+    "vexWorkMain": "fdf97e65d93f5ab0a87997e60dca44e155322791",
     "vexLifeAndroidMain": "d857a92371555472e0303b18eadf353da2a868d6",
-    "activeCandidates": [
-      {
-        "ref": "github.pull.vexlife-prod.343",
-        "meaning": "E2E validation excavation / current Product coverage map"
-      },
-      {
-        "ref": "github.pull.vexwork.298",
-        "meaning": "recurring VexArchitecture ↔ VexBoard Screen Lens sync"
-      },
-      {
-        "ref": "github.pull.vexwork.300",
-        "meaning": "Screen Lens realization topology"
-      },
-      {
-        "ref": "github.pull.vexwork.303",
-        "meaning": "Direct Registration dependency classification"
-      },
-      {
-        "ref": "github.pull.vexwork.310",
-        "meaning": "shared continuity-pressure harness"
-      },
-      {
-        "ref": "github.pull.vexlife-prod.380",
-        "meaning": "Claude consolidated UI/identity/localization/design candidate, tested here together with current Product main."
-      },
-      {
-        "ref": "github.pull.vexlife-prod.385",
-        "meaning": "VexWeb-derived browser-workspace spatial Screen Lens export candidate; projection-only, awaiting human raw-git witness."
-      },
-      {
-        "ref": "github.pull.vexwork.329",
-        "meaning": "Historical input: generic workspace-frame renderer now inherited by foreground VexWork convergence #328."
-      },
-      {
-        "ref": "github.pull.vexlife-prod.387",
-        "meaning": "Foreground Product convergence: #380 semantic evolution + #385 browser-workspace spatial export, with the Product-owned Lens regenerated at the exact published candidate head."
-      },
-      {
-        "ref": "github.pull.vexwork.328",
-        "meaning": "Single foreground VexWork convergence: source-derived Experience Graph + precise Lens Control subsets + peer Product Screen Lens + browser-workspace renderer."
-      }
-    ],
+    "activeCandidates": [],
     "experienceCandidate": {
-      "ref": "github.branch.vexlife-prod.VXG-111926-vexlife-prod-experience-convergence-r1",
-      "commit": "af21cccce50262c4f0b4980b993e496b4449ab67",
-      "meaning": "Current VexLife-Prod main plus Claude consolidated #380; runnable Product candidate for Experience Graph convergence."
-    },
-    "experienceSuccessorCandidate": {
-      "ref": "github.branch.vexlife-prod.VXG-111926-vexlife-prod-experience-convergence-r2",
-      "commit": "479544c5c319ad796a0853125ae131d85afc9671",
-      "meaning": "Foreground Product convergence #387: semantic + spatial source composed and Product-owned Screen Lens regenerated/published (97 elements, 15 pathways, FRAME layout)."
-    },
-    "experienceGraphSuccessorCandidate": {
-      "ref": "github.pull.vexwork.328",
-      "meaning": "Single foreground VexWork convergence. Product R2 Lens is now published; generated graph artifacts are being regenerated with exact Lens-declared Family Control subsets before human witness.",
-      "sourceCorrectionCommit": "a418759be2a8e717aeddec0bb75b6cf75410c23f"
+      "ref": "github.branch.vexlife-prod.main",
+      "commit": "66752be53be83422fdf23a438e503c1b934edd0d",
+      "meaning": "Exact accepted VexLife-Prod main consumed by A5 human Experience convergence after mechanical R0 currentization."
     }
   },
   "topologyLayers": [
@@ -354,9 +303,8 @@
     {
       "coordinate": "VexLifeLanguageFamily",
       "coordinateClass": "FAMILY_OR_SEMANTIC_OWNER",
-      "disposition": "ACTIVE_CANDIDATE",
+      "disposition": "CURRENT_MAIN",
       "sourcePath": "src/commonMain/kotlin/vexlife/person/VexLifeLanguageFamily.kt",
-      "sourceRef": "github.pull.vexlife-prod.380",
       "stateRefs": [
         "FOLLOWING_REPLIES",
         "SCREEN_CHOSEN"
@@ -372,14 +320,14 @@
         "CHOOSE_SCREEN_LANGUAGE",
         "FOLLOW_REPLY_LANGUAGE"
       ],
-      "humanMeaning": "Candidate semantic owner for the person's two language choices: what Vex replies in and what VexLife screens are written in. Choosing one never moves the other; screens may explicitly follow replies."
+      "humanMeaning": "Current semantic owner for the person's two language choices: what Vex replies in and what VexLife screens are written in. Choosing one never moves the other; screens may explicitly follow replies."
     },
     {
       "coordinate": "VexLifePersonSettings",
       "coordinateClass": "OWNER_OR_SOURCE_SYMBOL",
-      "disposition": "CURRENT_MAIN_PLUS_ACTIVE_EVOLUTION",
+      "disposition": "CURRENT_MAIN",
       "sourceRef": null,
-      "humanMeaning": "Person language settings. Current main owns reply-language behavior; the convergence candidate adds an independent screen-language choice whose movement is owned by VexLifeLanguageFamily."
+      "humanMeaning": "Current Person language settings. Reply language and screen language are independent current truths whose movement is owned by VexLifeLanguageFamily."
     },
     {
       "coordinate": "DirectCompanionTurn",
@@ -905,13 +853,12 @@
       "journeyRef": "journey.language.reply-switch-history",
       "shardRef": "voice-language",
       "disposition": "CURRENT_MAIN",
-      "humanOutcome": "Change Vex reply language across Sends and prove accepted turns keep their captured reply context; when the candidate Language Family is present, a separately chosen screen language must not move with the reply choice."
+      "humanOutcome": "Change Vex reply language across Sends and prove accepted turns keep their captured reply context while a separately chosen current screen language does not move with the reply choice."
     },
     {
       "journeyRef": "journey.language.reply-screen-independence",
       "shardRef": "voice-language",
-      "disposition": "ACTIVE_CANDIDATE",
-      "sourceRef": "github.pull.vexlife-prod.380",
+      "disposition": "CURRENT_MAIN",
       "humanOutcome": "Change what Vex replies in without moving an explicitly chosen VexLife screen language; change the screen language without moving Vex replies; then choose Follow replies and prove the screens derive from reply language again.",
       "coordinateRefs": [
         "VexLifeLanguageFamily",
@@ -928,9 +875,10 @@
     {
       "journeyRef": "journey.windows.entry-first-turn",
       "shardRef": "windows-entry",
-      "disposition": "ACTIVE_CANDIDATE",
+      "disposition": "HELD",
       "sourceRef": "github.pull.vexlife-prod.317",
-      "humanOutcome": "Native Windows entry reaches the same canonical Home/service/Conversation turn relationship when accepted."
+      "humanOutcome": "Native Windows entry reaches the same canonical Home/service/Conversation turn relationship when accepted.",
+      "currentnessNote": "Prior Product #317 is closed unmerged. Rebind this journey to a current Windows entry owner/source before A5 credit; do not treat the old candidate as live pressure."
     },
     {
       "journeyRef": "journey.browser.context-share-direct-navigation",
@@ -1532,8 +1480,8 @@
     }
   },
   "currentness": {
-    "observedAt": "2026-11-19",
-    "vexLifeProdMain": "152c323ee6c3d4a43243d0a9c9b6de2ce11f605b",
+    "observedAt": "2026-11-24",
+    "vexLifeProdMain": "66752be53be83422fdf23a438e503c1b934edd0d",
     "mergedPressure": {
       "251": {
         "state": "MERGED",
@@ -1548,23 +1496,6 @@
         "mergeCommit": "98a22ede8d37b3b8868eb42f4e7a9a1d612b97d0"
       }
     },
-    "activePressure": {
-      "343": {
-        "state": "OPEN_DRAFT",
-        "head": "78c6fe406fa223ddf0034295734c39d7db2558f5"
-      },
-      "380": {
-        "state": "OPEN_DRAFT",
-        "head": "37ae931d402eb29bad2601bb0cc8479f55750928"
-      },
-      "385": {
-        "state": "OPEN_DRAFT_SUPERSEDED_BY_387",
-        "head": "55ce7a1e35dcb49d01d3d29d472a177fe5a43f8b"
-      },
-      "387": {
-        "state": "OPEN_DRAFT_FOREGROUND_CONVERGENCE",
-        "head": "479544c5c319ad796a0853125ae131d85afc9671"
-      }
-    }
+    "activePressure": {}
   }
 }
