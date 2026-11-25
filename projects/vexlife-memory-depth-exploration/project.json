@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.memory-depth-exploration",
   "label": "VexLife Memory Depth Exploration",
-  "purpose": "Build and prove one inspectable VexLife continuity/context circuit so a fresh or successor Vex can recover source-grounded continuity through rightful owners, receive current context and capability truth through the selected model/provider's qualified representation, and let a person inspect what was supplied, available, requested, admitted, executed, returned and carried forward; preserve bounded hydration, truthful effect evidence and optimizable context placement without creating a second Memory, Conversation, Working Continuity, provider-profile or execution-truth owner.",
+  "purpose": "Build and prove one inspectable VexLife continuity/context circuit so a fresh or successor Vex can recover source-grounded continuity through rightful owners, remain fast across long-horizon/lifetime history through rebuildable retrieval/index projections rather than a second Memory truth store, receive current context and capability truth through the selected model/provider's qualified representation, and let a person inspect what was supplied, available, requested, admitted, executed, returned and carried forward; preserve bounded hydration, truthful effect evidence, exact source descent and optimizable context placement without creating a second Memory, Conversation, Working Continuity, provider-profile, database-truth or execution-truth owner.",
   "rootWorkRefs": [
     "work.vexlife.memory-depth-exploration.outcome"
   ],
@@ -86,7 +86,17 @@
     "github.pull.vexlife-prod.371",
     "github.pull.vexlife-prod.383",
     "github.pull.vexlife-prod.393",
-    "github.pull.vexlife-prod.403"
+    "github.pull.vexlife-prod.403",
+    "github.issue.vexwork.445",
+    "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
+    "repo.vextreme-sdk:lib/vex-memory/durable-semantic-memory.js",
+    "repo.vextreme-sdk:lib/living-journal/projection.js",
+    "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/03-stability-node-and-binding-schema.md",
+    "repo.vextreme-sdk:docs/private-continuity/lesson-resonance/05-index-projection-staleness-and-rejected-similarity.md",
+    "repo.vextreme-sdk:docs/architecture/local-sovereign-runtime-boundaries.md",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+    "project.vex.security-assurance"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
