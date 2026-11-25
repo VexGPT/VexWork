@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.memory-depth-exploration",
   "label": "VexLife Memory Depth Exploration",
-  "purpose": "Build and prove one inspectable VexLife continuity/context circuit so a fresh or successor Vex can recover source-grounded continuity through rightful owners, remain fast across long-horizon/lifetime history through rebuildable retrieval/index projections rather than a second Memory truth store, receive current context and capability truth through the selected model/provider's qualified representation, and let a person inspect what was supplied, available, requested, admitted, executed, returned and carried forward; preserve bounded hydration, truthful effect evidence, exact source descent and optimizable context placement without creating a second Memory, Conversation, Working Continuity, provider-profile, database-truth or execution-truth owner.",
+  "purpose": "Build and prove one inspectable VexLife continuity/context circuit so a fresh or successor Vex can recover source-grounded continuity through rightful owners, remain fast across long-horizon/lifetime history through a portable Continuity Source Locator relationship with interchangeable qualified backend realizations rather than a second Memory truth store, receive current context and capability truth through the selected model/provider's qualified representation, and let a person inspect what was supplied, available, requested, admitted, executed, returned and carried forward; preserve bounded hydration, truthful effect evidence, exact source descent, platform/construction modularity and optimizable context placement without creating a second Memory, Conversation, Working Continuity, provider-profile, database-truth or execution-truth owner.",
   "rootWorkRefs": [
     "work.vexlife.memory-depth-exploration.outcome"
   ],
@@ -96,7 +96,11 @@
     "repo.vextreme-sdk:docs/architecture/local-sovereign-runtime-boundaries.md",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/conversation/DirectConversationStore.kt",
     "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
-    "project.vex.security-assurance"
+    "project.vex.security-assurance",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt",
+    "repo.vexlife-prod:src/commonTest/kotlin/vexlife/platform/VexLifePlatformRealizationTest.kt",
+    "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/platform/VexLifeJvmPlatformTargetTest.kt"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }
