@@ -66,157 +66,154 @@ LOCAL_SOURCE != ATTACHMENT
 PROVIDER_NATIVE_TOOLING != VEX_CAPABILITY_AUTHORITY
 ```
 
-## Current checkpoint — 2026-11-24: source advanced; A1 remains the real foreground
+## Current checkpoint — 2026-11-24: merged foundation is real; Model Adaptation is not terminal
 
-VexLife-Prod has advanced substantially beyond this Project's Nov 20 starting checkpoint:
+Current VexLife-Prod main:
 
 ```text
-current Product main
-c7905c3922682e39dacbac07b9ab15cbe9ec7586
-tree
-78bf9cae8a404b1b70e680b1dec425844b3cef8a
+28225345ceaf3f527fe0edd680d6c95ea6c9d54d
 ```
 
-That exact tree was physically proved before the #602 merge.
+The merged multi-model foundation is still present on current main:
 
-The durable Workgraph is currentized to what is actually true now:
+- #255 — exact Hugging Face models can enter My Models through the admitted import path;
+- #338 — dynamic local model/runtime switching converges the actual serving runtime;
+- #393 — provider-native tool representation composes with the existing Vex capability bridge;
+- #440 — effective selected-model capability truth is computed from exact representation/runtime/qualification evidence;
+- #602 — Response Readiness and its runtime/cache convergence are landed.
+
+These are accepted Product ancestry, not merely historical experiments.
+
+The durable Workgraph therefore remains:
 
 ```text
 A0  Local Artifacts + Local Sources convergence      COMPLETED
 A1  Model adaptation truth                           RUNNING
 A2  Selection + serving convergence                  WAITING_DEPENDENCIES
 A3  Imported-model adaptation recognizers            WAITING_DEPENDENCIES
-A4  Lived model-adaptation continuity proof           WAITING_DEPENDENCIES
+A4  Lived model-adaptation continuity proof          WAITING_DEPENDENCIES
 
-root [VexLife Model Adaptation]                      RUNNING
+root [VexLife Model Adaptation]                       RUNNING
 ```
 
-### What current Product already has
+### What is trustworthy on current main
 
-Current main already contains substantial source for the model tail:
-
-- `VexLifeEffectiveModelCapabilities` computes capability truth from Companion representation + exact current-target runtime realization + qualified serving/visual evidence;
-- Settings -> Models has a compact selector with separate targeted/chosen/serving/switching truth, explicit Select versus Start/Use, runtime-configuration choices and model storage controls;
-- repository tests cover a 27B-serving -> select 9B -> explicit Use -> 9B-serving switch relationship;
-- imported-model inspection/addition pins exact provider revision/members, recognizes today's admitted Qwen3 MLX/Safetensors relationship conservatively, detects native tool grammar where present, and fails closed on remote-code-required/unsupported relationships.
-
-Those source facts are preserved as evidence. They do **not** automatically complete their Work items.
-
-### Current A1 Product owner
-
-`VexGPT/VexLife-Prod#608` completed the first bounded A1 source correction on exact head `6eb4aca11e04326ab24b1d0fa91e5fedbabdf5d7`: SourceOwner PASS + fresh Independent Assurance CLEAR. It establishes `RECOGNIZED_HELD` and keeps the qualified text-control fallback active.
-
-`VexGPT/VexLife-Prod#611` is the current A1 successor. It adds the first bounded model-specific qualification relationship:
+Current main already has the substantial human/product foundation:
 
 ```text
-RECOGNIZED_HELD
--> ordinary runtime qualification
--> synthetic no-effect native-tool round trip
--> PASS: exact runtime carries native-tool qualification
--> FAIL: runtime still qualified; text-control fallback remains
--> effective capability + provider carriage realign from the exact runtime evidence
+exact supported imported model
+-> My Models
+-> Select
+-> explicit Use / Start / SwitchModel
+-> exact local runtime qualification
+-> serving model changes
+-> same Conversation / Memory / artifact / Local Source owners remain
 ```
 
-#611 is stacked directly on the cleared #608 head and remains path-disjoint from current Multi-Vex, Mac Startup, Runtime Reliability, Visual, and Support External API successor work. Source formation is not completion; exact-head SourceOwner proof is next.
+Current main also computes `VexLifeEffectiveModelCapabilities` for exact local model/runtime relationships.
 
-### Why A1 is still RUNNING
+However, the current Models renderer still presents model status, resource/configuration, targeted/serving/switching and storage facts; it does not yet render the effective capability projection as the promised human-readable A1 view.
 
-A1 is no longer framed as a UI-only capability checklist. The Product already computes useful effective capability truth, but the adaptation chain is not yet complete enough to make that the whole claim.
-
-The current grounded direction is:
+Therefore:
 
 ```text
-MODEL SOURCE INSPECTION
--> candidate representation/runtime adapter
--> exact runtime qualification
--> separately-qualified optional relationships
--> one coherent current serving observation
--> effective capability projection
--> bounded human presentation
+CAPABILITY TRUTH EXISTS
+!= HUMAN CAPABILITY VIEW COMPLETE
 ```
 
-Permanent:
+### Cleared Model Adaptation source that is not yet current main
+
+The imported-model/native-tool adaptation progressed beyond recognition:
 
 ```text
-REPRESENTATION RECOGNIZED != RELATIONSHIP QUALIFIED
-OPTIONAL ADAPTER FAILURE != WHOLE MODEL FAILURE
-CURRENT SERVING OBSERVATION != A SET OF UNCOORDINATED READS
+#608  RECOGNIZED_HELD
+      recognition != qualification
+      text-control fallback remains safe
+
+#611  fail-soft native-tool qualification
+      optional qualification failure does not reject the whole model
+
+#612  one coherent realized relationship drives:
+      prompt semantics
+      capability offer
+      request carriage
+      cache eligibility
+      effective capability projection
 ```
 
-The existing Qwen3 import path is patient zero: it already pins exact provider source, recognizes a narrow architecture/runtime relationship, detects native Qwen tool grammar and falls back to VexLife text-control carriage when that grammar is absent. A1 should preserve that shape and add qualification/currentness where the claim requires it rather than proliferating model-name branches.
-
-The active Support External API stack (#606/#607) is already introducing provider-neutral inference currentness/session admission and overlaps `VexLifeModels.kt`. Model Adaptation should consume that owner if it lands rather than create a competing local-only current-inference abstraction.
-
-### Security boundary for adaptation
-
-Model/provider inspection crosses an untrusted provider/model/tool boundary. Model Adaptation therefore preserves the existing Security Assurance pre-convergence rule: inspect identity/provenance/currentness before letting downstream convergence look healthy.
+#612 exact current cleared source:
 
 ```text
-PROVIDER METADATA / CHAT TEMPLATE
-!= AUTHORITY
-
-RECOGNIZED TOOL GRAMMAR
-!= QUALIFIED TOOL RELATIONSHIP
-!= VEX TOOL EFFECT AUTHORITY
-
-REMOTE-CODE-REQUIRED MODEL
--> HELD
--> never execute provider code merely to discover compatibility
-
-OPTIONAL ADAPTER FAILURE
--> HELD or already-qualified narrower fallback
--> never nearest-adapter guessing
--> never authority widening
-
-QUALIFICATION
--> lowest sufficient scope first
--> deterministic / synthetic / loopback before real provider or credential effects
+head 97861e49f74a18b9977698d2f4df96a0f4926338
+tree 3694b2caec63c6eb7d3fd83fed34517d82422c32
+SourceOwner A003 PASS
+Independent Assurance CLEAR
 ```
 
-A provider-native tool adapter may change carriage only. Capability Atlas / owning Families continue to decide what Vex may actually read or do. A failed adapter must not create broader reach, fallback to arbitrary execution, or promote provider/model output directly into accepted Product truth.
+That source was consumed as the fixed base for downstream Partner work (#614), but #608/#611/#612 remain open Product PRs and their exact commits are not ancestors of current Product main. They are accepted evidence/proven source, not current-main runtime truth.
 
-### Why A2 and A3 are dependency-held
+### Why A1 remains RUNNING
 
-A2's compact selector/switch implementation is already substantial. A3's conservative Qwen3 import recognizer is also already substantial. Neither should be rebuilt.
+A1 still has two concrete closure predicates:
 
-They remain `WAITING_DEPENDENCIES` because A1 must first establish the adaptation/currentness contract they consume. Once A1 closes, re-evaluate the already-landed source and only add code for a concrete missing end-to-end relationship.
+1. reconcile the cleared Model Adaptation semantics onto the Product line that actually becomes accepted main, without replaying stale branch bytes over newer provider-neutral work;
+2. present the already-owned effective capability truth to the person in Models.
 
-### A4 remains visible
+Do not mark A1 complete from SourceOwner/Assurance alone.
 
-A4 is the lived proof that adaptation is architecture rather than bookkeeping:
+### Why A2 and A3 remain dependency-held
+
+A2's selector/switch behavior and A3's imported-model inspection are already substantially merged. They should not be rebuilt.
+
+They remain dependency-held because their full human meaning depends on A1's coherent adaptation/currentness contract:
 
 ```text
-same Vex
-+ same Conversation / Memory
-+ same admitted file or Local Source
--> select another exact model
--> explicitly Start / converge it
+TARGET != SERVING
+RECOGNIZED != QUALIFIED
+QUALIFICATION != CAPABILITY EFFECT AUTHORITY
+MODEL SWITCH != CONVERSATION / MEMORY / ARTIFACT / SOURCE SWITCH
+```
+
+Once A1 closes on accepted Product source, re-evaluate A2/A3 from existing merged behavior and close only the genuinely satisfied predicates.
+
+### A4 is the trust gate Victor has not yet run
+
+The project is not terminal until one current Product build proves the actual human circuit:
+
+```text
+same existing Vex / Conversation / Memory
++ admitted file or Local Source
+-> use current serving model
+-> Select another exact model
+-> explicit Use / Start
 -> exact target becomes serving
--> adapter/capability truth realigns
--> unsupported optional relationship stays HELD or uses its qualified fallback
--> next ordinary Send uses the new serving model
--> surrounding identities remain unchanged
+-> capability/adaptation presentation currentizes
+-> ordinary next Send uses the newly serving model
+-> capability/reach path behaves according to that model's qualified relationship
+-> unsupported optional relationship remains HELD or uses the qualified fallback
+-> Conversation / Memory / artifact / Local Source identities remain unchanged
+-> switch back and remain coherent
 ```
 
-Repository switch tests are useful evidence; they are not this lived human proof.
+Repository tests and historical lived fragments do not substitute for this whole current-build circuit.
 
-### Relationship to completed Response Readiness
+### Relationship to Multi-Vex / Dream sync
 
-VexLife-Prod #514 / #602 completed and landed Response Readiness. That work supplies important runtime/readiness evidence to this Project, but:
+Multi-Vex #543 and the Dream/Memory continuity work remain separate adjacent trajectories. It is not yet truthful to say they are the only unfinished circuitry.
+
+The current completion picture is:
 
 ```text
-RESPONSE READINESS COMPLETE
-!=
-[VEXLIFE MODEL ADAPTATION] PROJECT COMPLETE
+merged multi-model foundation                  TRUSTED
+cleared but unmerged Model Adaptation source   PRESERVED / NOT CURRENT MAIN
+human capability projection                    STILL OWED
+whole-app cross-model lived proof               STILL OWED
+Multi-Vex / Dream synchronization               SEPARATE PARALLEL FRONTIER
 ```
 
-### Adjacent open Product work remains visible under separate owners
+Support External API remains separate as well. Its open Partner work may consume Model Adaptation relationships, but it does not make this Project terminal by itself.
 
-#171 Runtime Reliability, #172 Resources, #510 Mac Startup, #543 Multi-Vex and the active Support External API stack (#606/#607, descended from #601) are separate active trajectories. They are not silently absorbed here and are not completion dependencies merely because some share source or consumed Response Readiness evidence.
-
-They should be independently completed, superseded or cancelled under their rightful Work owners.
-
-<!-- [VXG RealForever][VEXWORK][VEXLIFE-VEXWORKS][CURRENT-20261124] -->
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-MODEL-ADAPTATION][CURRENT-20261124-R2] -->
 
 ## Current starting point
 
