@@ -66,154 +66,255 @@ LOCAL_SOURCE != ATTACHMENT
 PROVIDER_NATIVE_TOOLING != VEX_CAPABILITY_AUTHORITY
 ```
 
-## Current checkpoint — 2026-11-24: merged foundation is real; Model Adaptation is not terminal
+## Current checkpoint — 2026-11-24: A1/A2/A3 completed; A4 is the single lived foreground
 
-Current VexLife-Prod main:
+### Product main
+
+VexLife-Prod now contains the merged Model Adaptation A1 human capability projection:
 
 ```text
-28225345ceaf3f527fe0edd680d6c95ea6c9d54d
+main
+head 4f9cdf0253249d76b2c2457dcad3b6bb64968bd0
+tree 5a3d901e885aa3950656be1c1c635094d49bd70b
+
+merged PR
+#630
 ```
 
-The merged multi-model foundation is still present on current main:
+That exact Product tree was the SourceOwner/Assurance-reviewed A1 tree.
 
-- #255 — exact Hugging Face models can enter My Models through the admitted import path;
-- #338 — dynamic local model/runtime switching converges the actual serving runtime;
-- #393 — provider-native tool representation composes with the existing Vex capability bridge;
-- #440 — effective selected-model capability truth is computed from exact representation/runtime/qualification evidence;
-- #602 — Response Readiness and its runtime/cache convergence are landed.
+### A1 — Model adaptation truth — COMPLETED
 
-These are accepted Product ancestry, not merely historical experiments.
+A1 now preserves one VexArchitecture projection boundary:
 
-The durable Workgraph therefore remains:
+```text
+exact current model/provider/runtime relationship truth
+        ↓
+VexLifeEffectiveModelCapabilities
+        ↓
+localized DisplayFact(label + standing + status)
+        ↓
+VexLifeModels.Row
+        ↓
+Settings / Models manifestation
+```
+
+Permanent:
+
+```text
+CAPABILITY PROJECTION != CAPABILITY AUTHORITY
+DISPLAY FACT != CAPABILITY IDENTITY
+BROWSER PRESENTATION != CAPABILITY POLICY
+RUNTIME STATUS != CAPABILITY PRESENTATION
+```
+
+Current human wording includes:
+
+```text
+Vex reach
+Provider-native tools
+Reasoning effort
+Visual input
+
+Available now
+Not active now
+Not used by this model
+```
+
+SourceOwner A002:
+
+```text
+outer 3a6d4ad9bafd981b08bc41d5f10bbef6ebc8e45eb77e7b262632726dbef4a2d6 PASS
+inner f68b5bbab13abbd2c249d673f271102fd8a7022312f1fc920622ba73c3ae5a42 PASS
+```
+
+Fresh Independent Assurance A001:
+
+```text
+outer 1439c0e3410158c7efafe77633004e9274185f26d077859af495fce4d28b52e1 PASS
+inner f19528094b6673babb4f19e1ccac1aaf70c0f36dc9d1a2dc6e92419c2e979e7e PASS
+
+selected 7
+omitted 0
+truncated false
+```
+
+Operations consumed that review and cleared the exact tree. Product main later landed the same Screen
+Lens blob independently, so #630 was re-anchored with the **same exact tree** and merged with an
+expected-head guard.
+
+### A2 — Selection + serving convergence — COMPLETED
+
+A2 is source/convergence work, not the final human-lived acceptance gate.
+
+Current Product still owns:
+
+```text
+Select
+  -> stage target only
+  -> no runtime activation
+
+Use / Start
+  -> exact staged + realizable + present target
+  -> SwitchModel
+  -> runtime realization
+  -> serving truth changes only after exact target is serving
+```
+
+Current provider-neutral targeting strengthens the old local-only path:
+
+- local and Partner targets share one staged inference-coordinate relationship;
+- a held Partner attempt leaves Local serving truth untouched;
+- stale Partner qualification cannot become serving after the target changes;
+- successful Local takeover clears Partner serving only **after** the Local target is actually serving;
+- configuration changes remain distinct from activation.
+
+Current repository tests prove those relationships. A003 remains useful lived pressure for the local
+4B → 27B → 4B circuit, but A4 owns the final whole human continuity proof.
+
+### A3 — Imported-model adaptation recognizers — COMPLETED
+
+The deliberately narrow current recognizer/adapter contract is complete for public Qwen3
+MLX/Safetensors relationships.
+
+Current source/tests prove:
+
+```text
+public Qwen3 provider page
+-> exact pinned revision/member inspection
+-> no weight download during inspection
+-> one HOME_IMPORTED record
+
+tool grammar present
+-> RECOGNIZED_HELD
+!= active native tooling
+
+remote code required
+-> fail closed before import
+
+HOME_IMPORTED MLX
+-> Mac Arm64 runtime Supported
+-> Windows x64 Unsupported / held
+
+optional native-tool qualification
+-> independent qualification ref when earned
+-> ordinary runtime qualification shape unchanged
+```
+
+Import custody also survives restart and supports admitted download/remove/redownload/forget controls.
+
+A3 completion does **not** claim that a real imported model has already done human work. That lived
+relationship is intentionally A4 pressure.
+
+### A003 lived local switch — preserved, not replayed
+
+A003 RETURN:
+
+```text
+8485a1fbadf4f7725f9a3942beece421559d03bc19dd15629af878feb01c9b57
+PASS
+```
+
+Observed:
+
+```text
+same Vex / service
+4B ordinary turn
+-> Select + Use 27B
+-> 27B serving
+-> ordinary turn
+-> Select + Use 4B
+-> 4B serving
+-> ordinary turn
+
+original 102 Conversation messages remain exact prefix
+project / thread / channel identity unchanged
+Memory context identity unchanged
+Local Source refs unchanged
+```
+
+Lived capability contrast:
+
+```text
+4B
+  Vex Reach              HELD
+  Provider-native tools  NOT_APPLICABLE
+  Visual input           AVAILABLE
+
+27B
+  Vex Reach              AVAILABLE
+  Provider-native tools  AVAILABLE
+  Visual input           HELD
+```
+
+A003 had no granted Local Source, no attachment, and no capability use. It also used built-in Product
+offerings rather than a Home-imported model.
+
+### A4 — lived model-adaptation continuity — READY
+
+A4 is now the **single remaining Project gate**.
+
+Do not split it back into separate A2/A3 proof loops.
+
+The next lived circuit should work in one whole:
+
+```text
+current Product main
++ same existing Vex / Conversation / Memory
++ one already-admitted Artifact or Local Source / reach relationship
++ current serving model
+        ↓
+obtain or reuse one exact admitted imported Qwen3 relationship on Mac
+        ↓
+Select imported target
+        ↓
+explicit Use / Start
+        ↓
+exact imported target becomes serving
+        ↓
+human capability presentation currentizes
+        ↓
+ordinary next turn through that serving relationship
+        ↓
+exercise one real admitted Artifact / Local Source / reach path
+        ↓
+unsupported optional relationship remains HELD or uses the qualified fallback
+        ↓
+Conversation / Memory / Artifact / Local Source identities remain coherent
+        ↓
+return to the prior local serving model only if needed to prove coherent reversibility
+```
+
+Do not manufacture capability use merely to make a receipt non-empty. The lived action should have a
+real bounded human/model purpose and let the capability path arise from that purpose.
+
+### Current Workgraph
 
 ```text
 A0  Local Artifacts + Local Sources convergence      COMPLETED
-A1  Model adaptation truth                           RUNNING
-A2  Selection + serving convergence                  WAITING_DEPENDENCIES
-A3  Imported-model adaptation recognizers            WAITING_DEPENDENCIES
-A4  Lived model-adaptation continuity proof          WAITING_DEPENDENCIES
+A1  Model adaptation truth                           COMPLETED
+A2  Selection + serving convergence                  COMPLETED
+A3  Imported-model adaptation recognizers            COMPLETED
+A4  Lived model-adaptation continuity proof          READY
 
 root [VexLife Model Adaptation]                       RUNNING
 ```
 
-### What is trustworthy on current main
+### Human execution pattern
 
-Current main already has the substantial human/product foundation:
-
-```text
-exact supported imported model
--> My Models
--> Select
--> explicit Use / Start / SwitchModel
--> exact local runtime qualification
--> serving model changes
--> same Conversation / Memory / artifact / Local Source owners remain
-```
-
-Current main also computes `VexLifeEffectiveModelCapabilities` for exact local model/runtime relationships.
-
-However, the current Models renderer still presents model status, resource/configuration, targeted/serving/switching and storage facts; it does not yet render the effective capability projection as the promised human-readable A1 view.
-
-Therefore:
+For future host-dependent A4 work, prefer the GitHub companion-PR pattern:
 
 ```text
-CAPABILITY TRUTH EXISTS
-!= HUMAN CAPABILITY VIEW COMPLETE
+durable exact runner/context in SDK companion PR
+-> one gh command fetches immutable files
+-> verify Git blob identities
+-> execute
+-> canonical RETURN
 ```
 
-### Cleared Model Adaptation source that is not yet current main
+Do not create a human-download execution ZIP merely because a fresh chat begins.
 
-The imported-model/native-tool adaptation progressed beyond recognition:
-
-```text
-#608  RECOGNIZED_HELD
-      recognition != qualification
-      text-control fallback remains safe
-
-#611  fail-soft native-tool qualification
-      optional qualification failure does not reject the whole model
-
-#612  one coherent realized relationship drives:
-      prompt semantics
-      capability offer
-      request carriage
-      cache eligibility
-      effective capability projection
-```
-
-#612 exact current cleared source:
-
-```text
-head 97861e49f74a18b9977698d2f4df96a0f4926338
-tree 3694b2caec63c6eb7d3fd83fed34517d82422c32
-SourceOwner A003 PASS
-Independent Assurance CLEAR
-```
-
-That source was consumed as the fixed base for downstream Partner work (#614), but #608/#611/#612 remain open Product PRs and their exact commits are not ancestors of current Product main. They are accepted evidence/proven source, not current-main runtime truth.
-
-### Why A1 remains RUNNING
-
-A1 still has two concrete closure predicates:
-
-1. reconcile the cleared Model Adaptation semantics onto the Product line that actually becomes accepted main, without replaying stale branch bytes over newer provider-neutral work;
-2. present the already-owned effective capability truth to the person in Models.
-
-Do not mark A1 complete from SourceOwner/Assurance alone.
-
-### Why A2 and A3 remain dependency-held
-
-A2's selector/switch behavior and A3's imported-model inspection are already substantially merged. They should not be rebuilt.
-
-They remain dependency-held because their full human meaning depends on A1's coherent adaptation/currentness contract:
-
-```text
-TARGET != SERVING
-RECOGNIZED != QUALIFIED
-QUALIFICATION != CAPABILITY EFFECT AUTHORITY
-MODEL SWITCH != CONVERSATION / MEMORY / ARTIFACT / SOURCE SWITCH
-```
-
-Once A1 closes on accepted Product source, re-evaluate A2/A3 from existing merged behavior and close only the genuinely satisfied predicates.
-
-### A4 is the trust gate Victor has not yet run
-
-The project is not terminal until one current Product build proves the actual human circuit:
-
-```text
-same existing Vex / Conversation / Memory
-+ admitted file or Local Source
--> use current serving model
--> Select another exact model
--> explicit Use / Start
--> exact target becomes serving
--> capability/adaptation presentation currentizes
--> ordinary next Send uses the newly serving model
--> capability/reach path behaves according to that model's qualified relationship
--> unsupported optional relationship remains HELD or uses the qualified fallback
--> Conversation / Memory / artifact / Local Source identities remain unchanged
--> switch back and remain coherent
-```
-
-Repository tests and historical lived fragments do not substitute for this whole current-build circuit.
-
-### Relationship to Multi-Vex / Dream sync
-
-Multi-Vex #543 and the Dream/Memory continuity work remain separate adjacent trajectories. It is not yet truthful to say they are the only unfinished circuitry.
-
-The current completion picture is:
-
-```text
-merged multi-model foundation                  TRUSTED
-cleared but unmerged Model Adaptation source   PRESERVED / NOT CURRENT MAIN
-human capability projection                    STILL OWED
-whole-app cross-model lived proof               STILL OWED
-Multi-Vex / Dream synchronization               SEPARATE PARALLEL FRONTIER
-```
-
-Support External API remains separate as well. Its open Partner work may consume Model Adaptation relationships, but it does not make this Project terminal by itself.
-
-<!-- [VXG RealForever][VEXWORK][VEXLIFE-MODEL-ADAPTATION][CURRENT-20261124-R2] -->
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-MODEL-ADAPTATION][A4-READY][CURRENT-20261124-R4] -->
 
 ## Current starting point
 

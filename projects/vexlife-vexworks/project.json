@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.vexworks",
   "label": "[VexLife Model Adaptation]",
-  "purpose": "Let VexLife adapt an exact model/provider relationship into the existing human work experience without rebinding Vex identity: preserve completed Local Artifacts + Local Sources continuity, recognize grounded model/provider facts, resolve only lawful representation/runtime adapter candidates, qualify optional relationships independently, converge one exact serving inference relationship, and project only capabilities truthful for the current model/provider/runtime relationship. Current Product main already contains the merged import/switch/capability foundations; the cleared #608/#611/#612 adaptation lineage remains unmerged and lived whole-app continuity proof remains owed. Partner/external inference remains owned by Support External API.",
+  "purpose": "Let VexLife adapt exact local/imported model relationships into the existing human work experience without rebinding Vex identity. A0 Local Artifacts + Local Sources, A1 truthful human capability projection, A2 selector/serving convergence, and A3 the bounded imported Qwen3 recognizer/adapter contract are now completed on Product main. The remaining foreground is A4: one lived whole relationship over the same Vex/Conversation/Memory plus admitted Artifact/Local Source/reach, including imported-model adaptation pressure. Partner/external inference remains separately owned by Support External API.",
   "rootWorkRefs": [
     "work.vexlife.vexworks.outcome"
   ],
@@ -41,7 +41,12 @@
     "github.pull.vexlife-prod.440",
     "github.commit.vexlife-prod.cda67ccde54cc79d7b5a14e04d6622c34b6d53d5",
     "github.pull.vexlife-prod.612",
-    "github.pull.vexlife-prod.614"
+    "github.pull.vexlife-prod.614",
+    "github.pull.vexlife-prod.630",
+    "github.commit.vexlife-prod.4f9cdf0253249d76b2c2457dcad3b6bb64968bd0",
+    "human.return.vexlife-prod.pr630.source-owner.a002.3a6d4ad9bafd981b08bc41d5f10bbef6ebc8e45eb77e7b262632726dbef4a2d6",
+    "human.return.vexlife-prod.pr630.assurance.a001.1439c0e3410158c7efafe77633004e9274185f26d077859af495fce4d28b52e1",
+    "human.return.vexlife-model-adaptation.a003.8485a1fbadf4f7725f9a3942beece421559d03bc19dd15629af878feb01c9b57"
   ],
   "formedAt": "2026-11-20T05:39:00.000Z"
 }
