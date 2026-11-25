@@ -43,6 +43,35 @@ Fresh Assurance corrected the earlier cancellation classification. The Product d
 
 The shared #310 harness remains a live consumer-facing asset and is preserved here. Historical #308/#309/#315 carriers remain provenance; do not restart their old implementation sequence merely because those PRs remain addressable.
 
+## Long-horizon Memory expansion — 2026-11-25
+
+The Project now carries the five-year/lifetime-scale successor explicitly:
+
+- [LONG-HORIZON-MEMORY-EXPANSION.md](LONG-HORIZON-MEMORY-EXPANSION.md)
+- VexWork #445
+
+Current source-grounded conclusion:
+
+~~~text
+canonical files / heads remain Memory + Conversation truth
+rebuildable local retrieval store becomes acceleration only
+index hit -> exact canonical source re-open/currentness verification
+no always-running database daemon required by default
+semantic similarity nominates candidates; it never creates accepted meaning
+physical shard movement cannot change object identity
+~~~
+
+This consumes the already-formed Vextreme-SDK Vex Memory, durable semantic-memory, Living Journal shard,
+and Lesson Resonance index contracts rather than inventing a second long-term Memory system.
+
+The missing Product work is now explicit: choose/prove the smallest derived-store adapter, remove lifetime
+linear scans from old-context location, add paraphrase candidate retrieval with exact source recovery, prove
+rebuild/tombstone/currentness behavior, and pressure it with a deterministic five-year-scale corpus before
+claiming long-horizon recall performance.
+
+This does not reopen the completed bounded ContextRevisit engine. It supplies the scale/index substrate that
+its measured scan evidence was intentionally waiting to earn.
+
 ## Full end-to-end successor handoff
 
 Fresh implementation instances should start here for the current unified outcome:
