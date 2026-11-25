@@ -1,0 +1,314 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.chrome-support",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Chrome support",
+      "purpose": "Deliver a truthful local-first VexLife realization for supported Chromebooks, beginning with a ChromeOS x86_64/Crostini baseline, the existing Heretic 4B Product model realized through Linux llama.cpp CPU, the VexLife JVM service behind Chrome, and an explicit real-Chromebook lived proof before support is claimed.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "docs/process/FORM-PROJECT.md",
+        "github.commit.vexlife-prod.7f3935aec46b2030ebbc887fa8ccbf6199c93d36",
+        "vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt",
+        "vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
+        "vexlife-prod:docs/foundation/HERETIC-WINDOWS-RUNTIME-REALIZATION.md",
+        "vexlife-prod:src/jvmMain/kotlin/vexlife/localasr/VexLifeLocalAsrProviderRealization.kt",
+        "vexlife-prod:docs/foundation/PRIVATE-SERVICE-IMAGE.md",
+        "https://github.com/ggml-org/llama.cpp/releases/tag/b10107",
+        "https://support.google.com/chromebook/answer/9145439",
+        "https://www.chromium.org/chromium-os/developer-library/reference/security/port-forwarding/"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.platform-envelope",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Ground the ChromeOS host envelope and first supported target",
+      "purpose": "Define from current ChromeOS/Crostini and VexLife source what the first support envelope actually means: ChromeOS identity versus Linux execution substrate, x86_64 first-target scope, memory/storage expectations, browser-to-local-service relationship, unsupported/fail-closed behavior, and which facts remain hardware-only.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "github.commit.vexlife-prod.7f3935aec46b2030ebbc887fa8ccbf6199c93d36",
+        "vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt",
+        "https://support.google.com/chromebook/answer/9145439",
+        "https://www.chromium.org/chromium-os/developer-library/reference/security/port-forwarding/"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.linux-guest-proof",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Prove the Linux runtime shape from a Mac-hosted guest",
+      "purpose": "Use an actual Linux x86_64 guest/container/VM on Victor's Mac to prove only the portable Linux portion: exact 4B GGUF custody, pinned llama.cpp Linux runtime, VexLife JVM/service composition and loopback qualification, while keeping ChromeOS lifecycle/performance claims explicitly unproven.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "github.commit.vexlife-prod.7f3935aec46b2030ebbc887fa8ccbf6199c93d36",
+        "vexlife-prod:docs/foundation/HERETIC-WINDOWS-RUNTIME-REALIZATION.md",
+        "https://github.com/ggml-org/llama.cpp/releases/tag/b10107"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.platform-target",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Add exact ChromeOS platform observation and target realization",
+      "purpose": "Extend the existing target vocabulary and JVM host-observation boundary so a real Crostini environment can positively establish ChromeOS rather than treating every Linux JVM as a Chromebook, preserving exact target resolution and no Mac/Windows fallback.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.chrome-support.platform-envelope"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
+        "vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.heretic-4b-runtime",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Realize Heretic 4B through Linux llama.cpp CPU",
+      "purpose": "Reuse the existing Heretic 4B Product identity while adding an exact ChromeOS/Linux realization backed by GGUF and a pinned Linux llama.cpp server, with realization-owned launch/resource configuration and the existing health/models/chat qualification contract rather than MLX assumptions.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.chrome-support.platform-target",
+        "work.vexlife.chrome-support.linux-guest-proof"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "vexlife-prod:src/commonMain/kotlin/vexlife/model/heretic/HereticRuntimeRealization.kt",
+        "vexlife-prod:docs/foundation/HERETIC-WINDOWS-RUNTIME-REALIZATION.md",
+        "https://github.com/ggml-org/llama.cpp/releases/tag/b10107"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.product-service",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Realize the VexLife Product service and lifetime in Crostini",
+      "purpose": "Create the Linux/Crostini equivalent of the platform service body: bundled Java runtime/service image where earned, exact Product Home/currentness, process ownership, start/reuse/retire/recovery semantics and sustained loopback service lifetime without copying macOS launchd or Windows process mechanics.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.chrome-support.platform-target"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "vexlife-prod:docs/foundation/PRIVATE-SERVICE-IMAGE.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.browser-loopback",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Prove Chrome to Crostini VexLife presentation and loopback reach",
+      "purpose": "Prove that ChromeOS Chrome can use the existing VexWeb/product presentation against the exact local VexLife service in Crostini through the supported localhost relationship, without turning the browser into Product semantic or runtime authority.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.chrome-support.product-service"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "https://www.chromium.org/chromium-os/developer-library/reference/security/port-forwarding/"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.local-voice-input",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Add the ChromeOS local VoiceInput / ASR realization",
+      "purpose": "Extend the existing target-to-Local-ASR realization seam with a truthful ChromeOS/Linux whisper.cpp provider path and microphone custody/permission behavior, preserving the current VoiceInput Family, editable Composer, separate Send, local-only audio and content-free chronology.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.chrome-support.platform-target"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "vexlife-prod:src/jvmMain/kotlin/vexlife/localasr/VexLifeLocalAsrProviderRealization.kt",
+        "https://support.google.com/chromebook/answer/9145439"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.setup-distribution",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Form the ChromeOS setup, distribution and update experience",
+      "purpose": "Give a non-technical Chromebook user one truthful VexLife entry path that handles Linux-environment prerequisites, resource fit, exact Product/runtime acquisition, Home continuity, startup and updates without exposing Crostini/Java/llama.cpp orchestration as a manual installation ritual.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.chrome-support.heretic-4b-runtime",
+        "work.vexlife.chrome-support.product-service",
+        "work.vexlife.chrome-support.browser-loopback"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md",
+        "https://support.google.com/chromebook/answer/9145439"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.chrome-support.real-chromebook-proof",
+      "parentWorkRefOrNull": "work.vexlife.chrome-support.outcome",
+      "label": "Prove the complete experience on a real Chromebook",
+      "purpose": "On representative real ChromeOS hardware, prove exact host detection, supported memory/storage envelope, sustained 4B inference, service lifetime, Chrome loopback presentation, sleep/restart behavior, setup/update flow and local VoiceInput before VexLife claims Chromebook support.",
+      "workClass": "TASK",
+      "state": "WAITING_RESOURCE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.chrome-support.heretic-4b-runtime",
+        "work.vexlife.chrome-support.product-service",
+        "work.vexlife.chrome-support.browser-loopback",
+        "work.vexlife.chrome-support.local-voice-input",
+        "work.vexlife.chrome-support.setup-distribution"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-chrome-support/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-21T06:52:00.000Z",
+      "updatedAt": "2026-11-21T06:52:00.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexlife.chrome-support",
+    "projects/vexlife-chrome-support/README.md",
+    "github.commit.vexlife-prod.7f3935aec46b2030ebbc887fa8ccbf6199c93d36"
+  ],
+  "formedAt": "2026-11-21T06:52:00.000Z"
+}
