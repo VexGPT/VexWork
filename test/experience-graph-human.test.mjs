@@ -13,13 +13,6 @@ function result() {
   return deriveHumanExperienceConvergence(graph, derivation, seed);
 }
 
-function candidateResult() {
-  const graph = readJson('../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/candidate-convergence-r2/experience-relationship-graph.json');
-  const derivation = readJson('../projects/vexlife-prod-end-to-end-tests/experience-graph/generated/builds/candidate-convergence-r2/routes.json');
-  const seed = readJson('../projects/vexlife-prod-end-to-end-tests/relationship-lattice.seed.json');
-  return deriveHumanExperienceConvergence(graph, derivation, seed);
-}
-
 test('structural route completeness does not overclaim end-to-end human proof', () => {
   const convergence = result();
   const vision = convergence.focusFamilies.find((row) => row.family === 'VexLifeVisionFamily');
@@ -49,7 +42,7 @@ test('human-semantic relationships supplement the extractor without becoming a s
 });
 
 test('Context Profile accepted-Send capture reuses the exact mechanically-derived source edge', () => {
-  const convergence = candidateResult();
+  const convergence = result();
   const capture = convergence.relationships.find(
     (row) => row.kind === 'CAPTURED_AT_SEND'
       && row.from === 'VexLifeContextProfileStore'
@@ -88,13 +81,10 @@ test('mechanical connectivity does not impersonate a curated semantic relationsh
   assert.deepEqual(convergence.relationships[0].graphPath, ['edge:1', 'edge:2']);
 });
 
-test('candidate Language Family is mechanically present in exact Product R2 topology but not human-E2E cleared', () => {
-  const oldMain = result();
-  const before = oldMain.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
-  assert.ok(before);
-  assert.equal(before.status, 'UNKNOWN');
+test('current-main Language Family is mechanically present but not human-E2E cleared without deterministic action proof', () => {
+  const convergence = result();
+  assert.equal(convergence.productSource.commit, '66752be53be83422fdf23a438e503c1b934edd0d');
 
-  const convergence = candidateResult();
   const languageFamily = convergence.focusFamilies.find((row) => row.family === 'VexLifeLanguageFamily');
   assert.ok(languageFamily);
   assert.equal(languageFamily.structural.CLEARED, 6);
@@ -109,13 +99,13 @@ test('candidate Language Family is mechanically present in exact Product R2 topo
 });
 
 test('Lens-declared Control subsets remove manifestation ambiguity without inventing deterministic execution proof', () => {
-  const convergence = candidateResult();
+  const convergence = result();
   const language = convergence.journeys.find((row) => row.journeyRef === 'journey.language.reply-screen-independence');
   assert.ok(language);
   assert.equal(
     language.missing.some((row) => row.predicate === 'AMBIGUOUS_MANIFESTATION_BINDING'),
     false,
-    'R2 must not widen reply/screen Controls back across both interactive elements',
+    'current Lens evidence for one Control must not become ambiguous when the same element ref is repeated',
   );
   const deterministic = language.missing.filter((row) => row.predicate === 'MISSING_DETERMINISTIC_TEST_ACTION');
   assert.ok(deterministic.length > 0, 'precise manifestation does not itself earn a browser/runtime action harness');
@@ -126,7 +116,7 @@ test('Lens-declared Control subsets remove manifestation ambiguity without inven
 });
 
 test('language routes stay scoped to the human journey they mean', () => {
-  const convergence = candidateResult();
+  const convergence = result();
 
   const replyHistory = convergence.journeys.find((row) => row.journeyRef === 'journey.language.reply-switch-history');
   assert.ok(replyHistory);

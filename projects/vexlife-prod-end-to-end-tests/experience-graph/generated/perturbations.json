@@ -1,10 +1,10 @@
 {
   "schemaVersion": "vexwork.experience-graph.perturbation/v1",
-  "graphFingerprint": "7c4f1615deb1a67192f758d66eccb8e87cb6279e50200737c944b4f35f0566c6",
+  "graphFingerprint": "59a110e3584c4f4287a4c6ded22bb26aa0951e424f793096ba4df9a95d0102b7",
   "counts": {
-    "REENTRY": 34,
-    "INTERRUPT": 21,
-    "SIBLING_CONTROL": 36,
+    "REENTRY": 45,
+    "INTERRUPT": 30,
+    "SIBLING_CONTROL": 37,
     "STALE_OBSERVATION": 4,
     "CAPTURE_RACE": 4,
     "TEARDOWN": 0,
@@ -13,9 +13,9 @@
   },
   "answers": {
     "EXPECTED_FROM_LAW": 33,
-    "ANSWERED_BY_EVIDENCE": 6,
-    "STALE_EVIDENCE": 0,
-    "UNKNOWN": 61
+    "ANSWERED_BY_EVIDENCE": 0,
+    "STALE_EVIDENCE": 6,
+    "UNKNOWN": 82
   },
   "notGenerated": {
     "TEARDOWN": "no owner-lifetime coordinate is present in the extracted graph",
@@ -34,7 +34,7 @@
       "answerState": "UNKNOWN",
       "expected": "DirectCompanionTurn.Intent.browserContext is a val of an immutable data class built once per accepted Send (structural capture); whether a later turn stage re-reads VexLifeProdServiceContract.SendRequest.browserContext directly is not yet in the graph",
       "proofClass": "B",
-      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L76"
+      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L93"
     },
     {
       "perturbationRef": "perturbation:CAPTURE_RACE:DirectCompanionTurn.Intent.contextProfile:VexLifeContextProfileStore",
@@ -48,7 +48,7 @@
       "answerState": "EXPECTED_FROM_LAW",
       "expected": "source capture law: \"Context Profile captured by the service when this Send is accepted. It stays exact for every provider stage in this turn; a later profile edit belongs to the next Send.\"",
       "proofClass": "B",
-      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L84"
+      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L101"
     },
     {
       "perturbationRef": "perturbation:CAPTURE_RACE:DirectCompanionTurn.Intent.contextProfile:VexLifeFoundationalField",
@@ -62,7 +62,7 @@
       "answerState": "EXPECTED_FROM_LAW",
       "expected": "source capture law: \"Context Profile captured by the service when this Send is accepted. It stays exact for every provider stage in this turn; a later profile edit belongs to the next Send.\"",
       "proofClass": "B",
-      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L84"
+      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L101"
     },
     {
       "perturbationRef": "perturbation:CAPTURE_RACE:DirectCompanionTurn.Intent.personContext:VexLifePersonSettingsStore",
@@ -76,7 +76,7 @@
       "answerState": "UNKNOWN",
       "expected": "DirectCompanionTurn.Intent.personContext is a val of an immutable data class built once per accepted Send (structural capture); whether a later turn stage re-reads VexLifePersonSettingsStore directly is not yet in the graph",
       "proofClass": "B",
-      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L79"
+      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L96"
     },
     {
       "perturbationRef": "perturbation:INTERRUPT:VexLifeContextProfileFamily:ProductDefault:concurrent:Import+SaveAs",
@@ -274,6 +274,123 @@
       "proofClass": "B"
     },
     {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:FollowingReplies+ChooseReplyLanguage:ChooseScreenLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.FollowingReplies",
+      "perturbing": "VexLifeLanguageFamily.ChooseScreenLanguage",
+      "question": "ChooseScreenLanguage while Effect.SaveChoices is in flight (Family at FollowingReplies)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> ScreenChosen + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:FollowingReplies+ChooseScreenLanguage:ChooseReplyLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.ChooseReplyLanguage",
+      "question": "ChooseReplyLanguage while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> ScreenChosen + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:FollowingReplies+ChooseScreenLanguage:FollowReplyLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.FollowReplyLanguage",
+      "question": "FollowReplyLanguage while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> FollowingReplies + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:ScreenChosen+ChooseReplyLanguage:ChooseScreenLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.ChooseScreenLanguage",
+      "question": "ChooseScreenLanguage while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> ScreenChosen + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:ScreenChosen+ChooseReplyLanguage:FollowReplyLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.FollowReplyLanguage",
+      "question": "FollowReplyLanguage while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> FollowingReplies + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:ScreenChosen+ChooseScreenLanguage:ChooseReplyLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.ChooseReplyLanguage",
+      "question": "ChooseReplyLanguage while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> ScreenChosen + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:ScreenChosen+ChooseScreenLanguage:FollowReplyLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.FollowReplyLanguage",
+      "question": "FollowReplyLanguage while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> FollowingReplies + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:ScreenChosen+FollowReplyLanguage:ChooseReplyLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.FollowingReplies",
+      "perturbing": "VexLifeLanguageFamily.ChooseReplyLanguage",
+      "question": "ChooseReplyLanguage while Effect.SaveChoices is in flight (Family at FollowingReplies)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> FollowingReplies + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:INTERRUPT:VexLifeLanguageFamily:ScreenChosen+FollowReplyLanguage:ChooseScreenLanguage",
+      "consideration": "INTERRUPT",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.FollowingReplies",
+      "perturbing": "VexLifeLanguageFamily.ChooseScreenLanguage",
+      "question": "ChooseScreenLanguage while Effect.SaveChoices is in flight (Family at FollowingReplies)",
+      "answerState": "UNKNOWN",
+      "expected": "act() ADMIT -> ScreenChosen + Effect.SaveChoices; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
+    },
+    {
       "perturbationRef": "perturbation:INTERRUPT:VexLifeMemoryReviewFamily:Pending:concurrent:Decline+Keep",
       "consideration": "INTERRUPT",
       "family": "VexLifeMemoryReviewFamily",
@@ -334,15 +451,15 @@
       "inFlightState": "VexLifeVoiceInputFamily.RequestingMicrophone",
       "perturbing": "VexLifeVoiceInputFamily.Stop",
       "question": "Stop while BeginLocalDictation is in flight (Family at RequestingMicrophone)",
-      "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "BEGIN CONTINUATION ABORTS — same realization path as READY + START: End clears desiredActive and bumps the session; Begin stops acquired tracks and returns (L1301).",
+      "answerState": "STALE_EVIDENCE",
+      "expected": "act() ADMIT -> Stopping + EndLocalDictation; what happens to the in-flight BeginLocalDictation is owned by its realization",
       "proofClass": "B",
       "evidence": {
         "method": "SOURCE_REVIEW",
         "sourceRefs": [
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1301"
         ],
-        "current": true,
+        "current": false,
         "note": "Restart from FAILED uses the same Begin realization."
       }
     },
@@ -355,8 +472,8 @@
       "inFlightState": "VexLifeVoiceInputFamily.RequestingMicrophone",
       "perturbing": "VexLifeVoiceInputFamily.Stop",
       "question": "Stop while BeginLocalDictation is in flight (Family at RequestingMicrophone)",
-      "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "BEGIN CONTINUATION ABORTS — Family law admits STOPPING + EndLocalDictation. End clears desiredActive and bumps the session; when getUserMedia later resolves, Begin stops the acquired tracks and returns (L1301), and every later await re-checks the fence.",
+      "answerState": "STALE_EVIDENCE",
+      "expected": "act() ADMIT -> Stopping + EndLocalDictation; what happens to the in-flight BeginLocalDictation is owned by its realization",
       "proofClass": "B",
       "evidence": {
         "method": "SOURCE_REVIEW",
@@ -364,7 +481,7 @@
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1192",
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1301"
         ],
-        "current": true,
+        "current": false,
         "note": "The audio-capture failure gap above is the one exception on this path."
       }
     },
@@ -379,6 +496,32 @@
       "question": "Control.EnsureAvailable again while Effect.EnsureProductOwnedRuntime is in flight (Family at State.StablePredecessorUnavailable)",
       "answerState": "UNKNOWN",
       "expected": "act() admits STAY + Effect.EnsureProductOwnedRuntime, Effect.ObserveCurrentProductOwnedRuntime; whether the realization fences a second Effect.EnsureProductOwnedRuntime is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeAttachmentDraftFamily:Draft+AddFiles",
+      "consideration": "REENTRY",
+      "family": "VexLifeAttachmentDraftFamily",
+      "baseRoute": "route:VexLifeAttachmentDraftFamily.Draft:AddFiles",
+      "activeEffect": "VexLifeAttachmentDraftFamily.Effect.RequestFiles",
+      "inFlightState": "VexLifeAttachmentDraftFamily.Draft",
+      "perturbing": "VexLifeAttachmentDraftFamily.AddFiles",
+      "question": "AddFiles again while Effect.RequestFiles is in flight (Family at Draft)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits STAY + Effect.RequestFiles; whether the realization fences a second Effect.RequestFiles is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeAttachmentDraftFamily:Empty+AddFiles",
+      "consideration": "REENTRY",
+      "family": "VexLifeAttachmentDraftFamily",
+      "baseRoute": "route:VexLifeAttachmentDraftFamily.Empty:AddFiles",
+      "activeEffect": "VexLifeAttachmentDraftFamily.Effect.RequestFiles",
+      "inFlightState": "VexLifeAttachmentDraftFamily.Empty",
+      "perturbing": "VexLifeAttachmentDraftFamily.AddFiles",
+      "question": "AddFiles again while Effect.RequestFiles is in flight (Family at Empty)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits STAY + Effect.RequestFiles; whether the realization fences a second Effect.RequestFiles is not stated by Family law",
       "proofClass": "B"
     },
     {
@@ -486,6 +629,32 @@
       "proofClass": "B"
     },
     {
+      "perturbationRef": "perturbation:REENTRY:VexLifeConversationTurnFamily:Active+Stop",
+      "consideration": "REENTRY",
+      "family": "VexLifeConversationTurnFamily",
+      "baseRoute": "route:VexLifeConversationTurnFamily.Active:Stop",
+      "activeEffect": "VexLifeConversationTurnFamily.RequestCancel",
+      "inFlightState": "VexLifeConversationTurnFamily.Active",
+      "perturbing": "VexLifeConversationTurnFamily.Stop",
+      "question": "Stop again while RequestCancel is in flight (Family at Active)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits STAY + RequestCancel; whether the realization fences a second RequestCancel is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeConversationTurnFamily:Ready+Send",
+      "consideration": "REENTRY",
+      "family": "VexLifeConversationTurnFamily",
+      "baseRoute": "route:VexLifeConversationTurnFamily.Ready:Send",
+      "activeEffect": "VexLifeConversationTurnFamily.BeginTurn",
+      "inFlightState": "VexLifeConversationTurnFamily.Ready",
+      "perturbing": "VexLifeConversationTurnFamily.Send",
+      "question": "Send again while BeginTurn is in flight (Family at Ready)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits STAY + BeginTurn; whether the realization fences a second BeginTurn is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
       "perturbationRef": "perturbation:REENTRY:VexLifeDiagnosticsFamily:Recording+ClearHistory",
       "consideration": "REENTRY",
       "family": "VexLifeDiagnosticsFamily",
@@ -535,6 +704,97 @@
       "question": "StopEnhanced again while Effect.EndEnhancedCapture is in flight (Family at RecordingEnhanced)",
       "answerState": "UNKNOWN",
       "expected": "act() admits STAY + Effect.EndEnhancedCapture; whether the realization fences a second Effect.EndEnhancedCapture is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeLanguageFamily:FollowingReplies+ChooseReplyLanguage",
+      "consideration": "REENTRY",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.FollowingReplies",
+      "perturbing": "VexLifeLanguageFamily.ChooseReplyLanguage",
+      "question": "ChooseReplyLanguage again while Effect.SaveChoices is in flight (Family at FollowingReplies)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits ADMIT + Effect.SaveChoices; whether the realization fences a second Effect.SaveChoices is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeLanguageFamily:FollowingReplies+ChooseScreenLanguage",
+      "consideration": "REENTRY",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.ChooseScreenLanguage",
+      "question": "ChooseScreenLanguage again while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits ADMIT + Effect.SaveChoices; whether the realization fences a second Effect.SaveChoices is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeLanguageFamily:ScreenChosen+ChooseReplyLanguage",
+      "consideration": "REENTRY",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.ChooseReplyLanguage",
+      "question": "ChooseReplyLanguage again while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits ADMIT + Effect.SaveChoices; whether the realization fences a second Effect.SaveChoices is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeLanguageFamily:ScreenChosen+ChooseScreenLanguage",
+      "consideration": "REENTRY",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.ScreenChosen",
+      "perturbing": "VexLifeLanguageFamily.ChooseScreenLanguage",
+      "question": "ChooseScreenLanguage again while Effect.SaveChoices is in flight (Family at ScreenChosen)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits ADMIT + Effect.SaveChoices; whether the realization fences a second Effect.SaveChoices is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeLanguageFamily:ScreenChosen+FollowReplyLanguage",
+      "consideration": "REENTRY",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.FollowingReplies",
+      "perturbing": "VexLifeLanguageFamily.FollowReplyLanguage",
+      "question": "FollowReplyLanguage again while Effect.SaveChoices is in flight (Family at FollowingReplies)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits STAY; whether the realization fences a second Effect.SaveChoices is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeLocalSourcesFamily:Empty+AddFolder",
+      "consideration": "REENTRY",
+      "family": "VexLifeLocalSourcesFamily",
+      "baseRoute": "route:VexLifeLocalSourcesFamily.Empty:AddFolder",
+      "activeEffect": "VexLifeLocalSourcesFamily.Effect.RequestFolderSelection",
+      "inFlightState": "VexLifeLocalSourcesFamily.Empty",
+      "perturbing": "VexLifeLocalSourcesFamily.AddFolder",
+      "question": "AddFolder again while Effect.RequestFolderSelection is in flight (Family at Empty)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits STAY + Effect.RequestFolderSelection; whether the realization fences a second Effect.RequestFolderSelection is not stated by Family law",
+      "proofClass": "B"
+    },
+    {
+      "perturbationRef": "perturbation:REENTRY:VexLifeLocalSourcesFamily:Granted+AddFolder",
+      "consideration": "REENTRY",
+      "family": "VexLifeLocalSourcesFamily",
+      "baseRoute": "route:VexLifeLocalSourcesFamily.Granted:AddFolder",
+      "activeEffect": "VexLifeLocalSourcesFamily.Effect.RequestFolderSelection",
+      "inFlightState": "VexLifeLocalSourcesFamily.Granted",
+      "perturbing": "VexLifeLocalSourcesFamily.AddFolder",
+      "question": "AddFolder again while Effect.RequestFolderSelection is in flight (Family at Granted)",
+      "answerState": "UNKNOWN",
+      "expected": "act() admits STAY + Effect.RequestFolderSelection; whether the realization fences a second Effect.RequestFolderSelection is not stated by Family law",
       "proofClass": "B"
     },
     {
@@ -822,7 +1082,20 @@
       "answerState": "UNKNOWN",
       "expected": "DirectCompanionTurn owns duplicate recovery; the graph does not yet carry its recovery law",
       "proofClass": "B",
-      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L74"
+      "evidenceRef": "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/companion/DirectCompanionTurn.kt:L83"
+    },
+    {
+      "perturbationRef": "perturbation:SIBLING_CONTROL:VexLifeLanguageFamily:FollowingReplies+ChooseReplyLanguage:FollowReplyLanguage",
+      "consideration": "SIBLING_CONTROL",
+      "family": "VexLifeLanguageFamily",
+      "baseRoute": "route:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage",
+      "activeEffect": "VexLifeLanguageFamily.Effect.SaveChoices",
+      "inFlightState": "VexLifeLanguageFamily.FollowingReplies",
+      "perturbing": "VexLifeLanguageFamily.FollowReplyLanguage",
+      "question": "FollowReplyLanguage while Effect.SaveChoices is in flight (Family at FollowingReplies)",
+      "answerState": "UNKNOWN",
+      "expected": "act() STAY; what happens to the in-flight Effect.SaveChoices is owned by its realization",
+      "proofClass": "B"
     },
     {
       "perturbationRef": "perturbation:SIBLING_CONTROL:VexLifeModelsFamily:Download:while:anyDownloadRunning",
@@ -1304,8 +1577,8 @@
       "lateSuccessor": "VexLifeVoiceInputFamily.Held",
       "newerState": "VexLifeVoiceInputFamily.Stopping",
       "question": "Stop admits Stopping; can a late observeCapability -> Held from the earlier BeginLocalDictation overwrite it?",
-      "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "FENCED UNLESS FORCED — observeVoiceInputCapability returns early while voiceInputSessionOwnsState() (REQUESTING_MICROPHONE / LISTENING / STOPPING, L679–L682). Only the End/teardown completion forces a refresh, which is the intended successor rather than a stale arrival.",
+      "answerState": "STALE_EVIDENCE",
+      "expected": "observeCapability does not read current State, so Family law cannot fence it; the realization owner must",
       "proofClass": "C",
       "realizationSites": [
         "VexLifeWebP1RuntimeArtifacts"
@@ -1315,7 +1588,7 @@
         "sourceRefs": [
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L679"
         ],
-        "current": true,
+        "current": false,
         "note": "Same fence as the READY variant."
       }
     },
@@ -1331,8 +1604,8 @@
       "lateSuccessor": "VexLifeVoiceInputFamily.Ready",
       "newerState": "VexLifeVoiceInputFamily.Stopping",
       "question": "Stop admits Stopping; can a late observeCapability -> Ready from the earlier BeginLocalDictation overwrite it?",
-      "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "FENCED UNLESS FORCED — observeVoiceInputCapability returns early while voiceInputSessionOwnsState() (L679–L682); the forced refresh comes only from End/teardown completion, which is the intended successor.",
+      "answerState": "STALE_EVIDENCE",
+      "expected": "observeCapability does not read current State, so Family law cannot fence it; the realization owner must",
       "proofClass": "C",
       "realizationSites": [
         "VexLifeWebP1RuntimeArtifacts"
@@ -1342,7 +1615,7 @@
         "sourceRefs": [
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L679"
         ],
-        "current": true,
+        "current": false,
         "note": "Same fence as the HELD variant."
       }
     },
@@ -1358,8 +1631,8 @@
       "lateSuccessor": "VexLifeVoiceInputFamily.Failed",
       "newerState": "VexLifeVoiceInputFamily.Stopping",
       "question": "Stop admits Stopping; can a late observeFailure -> Failed from the earlier BeginLocalDictation overwrite it?",
-      "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "PARTIALLY FENCED — the microphone failure branch (L1287) and the provider-prepare failure branch (L1314) return when `session !== dictation.session`. The audio-capture failure branch (catch around startVoiceCapture, L1328–L1341) has no session fence: if startVoiceCapture rejects after STOP, failVoiceInput -> settleVoiceInputFailure applies FAILED over the STOPPING / READY successor. Whether startVoiceCapture can reject inside that window is not proven from source.",
+      "answerState": "STALE_EVIDENCE",
+      "expected": "observeFailure does not read current State, so Family law cannot fence it; the realization owner must",
       "proofClass": "C",
       "realizationSites": [
         "VexLifeWebP1RuntimeArtifacts"
@@ -1372,7 +1645,7 @@
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1328",
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1014"
         ],
-        "current": true,
+        "current": false,
         "note": "Source-proven unfenced path, not a reproduced defect."
       }
     },
@@ -1388,8 +1661,8 @@
       "lateSuccessor": "VexLifeVoiceInputFamily.Listening",
       "newerState": "VexLifeVoiceInputFamily.Stopping",
       "question": "Stop admits Stopping; can a late observeRecognitionStarted -> Listening from the earlier BeginLocalDictation overwrite it?",
-      "answerState": "ANSWERED_BY_EVIDENCE",
-      "expected": "FENCED — STOP realizes End, which sets dictation.desiredActive = false and increments dictation.session (L1194–L1195). Begin re-checks `!dictation.desiredActive || session !== dictation.session` after every await and returns before applying recognitionStartedState (L1344 before L1352). A late recognition-started cannot move STOPPING/READY to LISTENING.",
+      "answerState": "STALE_EVIDENCE",
+      "expected": "observeRecognitionStarted does not read current State, so Family law cannot fence it; the realization owner must",
       "proofClass": "C",
       "realizationSites": [
         "VexLifeWebP1RuntimeArtifacts"
@@ -1401,7 +1674,7 @@
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1344",
           "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1RuntimeArtifacts.kt:L1352"
         ],
-        "current": true,
+        "current": false,
         "note": "Fence lives in generated browser JavaScript, not typed Family law; executing it needs a browser-runtime harness (proof class C) that this lane does not have."
       }
     }

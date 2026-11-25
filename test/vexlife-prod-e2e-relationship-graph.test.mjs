@@ -26,32 +26,32 @@ test('relationship lattice seed currentness is internally consistent', () => {
   const result = validateRelationshipLatticeSeed(seed);
   assert.deepEqual(result, { ok: true, errors: [] });
 
-  assert.equal(
-    seed.sourceBindings.vexlifeProdMain,
-    '152c323ee6c3d4a43243d0a9c9b6de2ce11f605b',
-  );
+  assert.equal(seed.sourceBindings.vexlifeProdMain, '66752be53be83422fdf23a438e503c1b934edd0d');
+  assert.equal(seed.sourceBindings.vexWorkMain, 'fdf97e65d93f5ab0a87997e60dca44e155322791');
+  assert.equal(seed.sourceBindings.vexLifeAndroidMain, 'd857a92371555472e0303b18eadf353da2a868d6');
   assert.equal(
     Object.prototype.hasOwnProperty.call(seed.sourceBindings, 'vexLifeProdMain'),
     false,
     'a differently-cased second Product-main field must not exist',
   );
-  assert.ok(
-    seed.sourceBindings.activeCandidates.some(
-      (candidate) => candidate.ref === 'github.pull.vexlife-prod.343',
-    ),
+  assert.deepEqual(seed.sourceBindings.activeCandidates, []);
+  assert.deepEqual(seed.currentness.activePressure, {});
+  assert.equal(seed.currentness.vexLifeProdMain, seed.sourceBindings.vexlifeProdMain);
+
+  const language = seed.coordinates.find((coordinate) => coordinate.coordinate === 'VexLifeLanguageFamily');
+  const person = seed.coordinates.find((coordinate) => coordinate.coordinate === 'VexLifePersonSettings');
+  assert.equal(language?.disposition, 'CURRENT_MAIN');
+  assert.equal(language?.sourceRef, undefined);
+  assert.equal(person?.disposition, 'CURRENT_MAIN');
+
+  const languageJourney = seed.journeySeeds.find(
+    (journey) => journey.journeyRef === 'journey.language.reply-screen-independence',
   );
-  assert.ok(
-    !seed.sourceBindings.activeCandidates.some(
-      (candidate) => candidate.ref === 'github.pull.vexlife-prod.251',
-    ),
-    'merged #251 must no longer remain active',
+  const windowsJourney = seed.journeySeeds.find(
+    (journey) => journey.journeyRef === 'journey.windows.entry-first-turn',
   );
-  assert.equal(seed.currentness.mergedPressure['251']?.state, 'MERGED');
-  assert.ok(
-    !seed.sourceBindings.activeCandidates.some(
-      (candidate) => ['github.pull.vexlife-prod.310', 'github.pull.vexlife-prod.331'].includes(candidate.ref),
-    ),
-  );
+  assert.equal(languageJourney?.disposition, 'CURRENT_MAIN');
+  assert.equal(windowsJourney?.disposition, 'HELD');
 
   const voice = seed.postMapPerturbationPolicy.sourceExamples.find(
     (example) => example.source === 'VexLifeVoiceInputFamily',
@@ -67,9 +67,10 @@ test('validator rejects stale, duplicate or contradictory currentness', () => {
     ref: 'github.pull.vexlife-prod.310',
     meaning: 'stale merged candidate',
   });
-  seed.sourceBindings.activeCandidates = seed.sourceBindings.activeCandidates.filter(
-    (candidate) => candidate.ref !== 'github.pull.vexlife-prod.343',
-  );
+  seed.currentness.activePressure['999'] = {
+    state: 'OPEN_DRAFT',
+    head: 'a'.repeat(40),
+  };
   const voice = seed.postMapPerturbationPolicy.sourceExamples.find(
     (example) => example.source === 'VexLifeVoiceInputFamily',
   );
@@ -81,7 +82,7 @@ test('validator rejects stale, duplicate or contradictory currentness', () => {
   assert.match(errors, /sourceBindings\.vexlifeProdMain/);
   assert.match(errors, /differently-cased vexLifeProdMain alias/);
   assert.match(errors, /github\.pull\.vexlife-prod\.310/);
-  assert.match(errors, /github\.pull\.vexlife-prod\.343/);
+  assert.match(errors, /github\.pull\.vexlife-prod\.999/);
   assert.match(errors, /VexLifeVoiceInputFamily/);
 });
 

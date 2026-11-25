@@ -1,20 +1,20 @@
 {
-  "current": true,
+  "current": false,
   "evidenceLawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
-  "lawFingerprint": "12804ec87fd88e3213de5eda4b22ba9136862243440ff33bb5bb0cb298f3caf2",
+  "lawFingerprint": "04ecb5b54b3d112b264111a50395d7a8fca1bb0fc86212018c367b657c81a9de",
   "cellCounts": {
     "PASS": 109,
     "PASS_PARTIAL": 0,
     "FAIL": 0,
     "FIXTURE_REJECTED": 21,
-    "NOT_RUN": 22
+    "NOT_RUN": 49
   },
   "caseCounts": {
     "PASS": 110,
     "PASS_PARTIAL": 0,
     "FAIL": 0,
     "FIXTURE_REJECTED": 21,
-    "NOT_RUN": 28
+    "NOT_RUN": 51
   },
   "cells": [
     {
@@ -45,6 +45,60 @@
       "detail": null
     },
     {
+      "family": "VexLifeAttachmentDraftFamily",
+      "state": "VexLifeAttachmentDraftFamily.Draft",
+      "control": "VexLifeAttachmentDraftFamily.AddFiles",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeAttachmentDraftFamily",
+      "state": "VexLifeAttachmentDraftFamily.Draft",
+      "control": "VexLifeAttachmentDraftFamily.CancelStage",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeAttachmentDraftFamily",
+      "state": "VexLifeAttachmentDraftFamily.Draft",
+      "control": "VexLifeAttachmentDraftFamily.Remove",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeAttachmentDraftFamily",
+      "state": "VexLifeAttachmentDraftFamily.Empty",
+      "control": "VexLifeAttachmentDraftFamily.AddFiles",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeAttachmentDraftFamily",
+      "state": "VexLifeAttachmentDraftFamily.Empty",
+      "control": "VexLifeAttachmentDraftFamily.CancelStage",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeAttachmentDraftFamily",
+      "state": "VexLifeAttachmentDraftFamily.Empty",
+      "control": "VexLifeAttachmentDraftFamily.Remove",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
       "family": "VexLifeContextProfileFamily",
       "state": "VexLifeContextProfileFamily.ProductDefault",
       "control": "VexLifeContextProfileFamily.Import",
@@ -135,6 +189,60 @@
       "detail": "no runnable fixtures"
     },
     {
+      "family": "VexLifeConversationTurnFamily",
+      "state": "VexLifeConversationTurnFamily.Active",
+      "control": "VexLifeConversationTurnFamily.Send",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeConversationTurnFamily",
+      "state": "VexLifeConversationTurnFamily.Active",
+      "control": "VexLifeConversationTurnFamily.Stop",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeConversationTurnFamily",
+      "state": "VexLifeConversationTurnFamily.Cancelling",
+      "control": "VexLifeConversationTurnFamily.Send",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeConversationTurnFamily",
+      "state": "VexLifeConversationTurnFamily.Cancelling",
+      "control": "VexLifeConversationTurnFamily.Stop",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeConversationTurnFamily",
+      "state": "VexLifeConversationTurnFamily.Ready",
+      "control": "VexLifeConversationTurnFamily.Send",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeConversationTurnFamily",
+      "state": "VexLifeConversationTurnFamily.Ready",
+      "control": "VexLifeConversationTurnFamily.Stop",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
       "family": "VexLifeDiagnosticsFamily",
       "state": "VexLifeDiagnosticsFamily.Recording",
       "control": "VexLifeDiagnosticsFamily.ClearHistory",
@@ -187,6 +295,141 @@
       "rows": 2,
       "executed": 2,
       "detail": null
+    },
+    {
+      "family": "VexLifeLanguageFamily",
+      "state": "VexLifeLanguageFamily.FollowingReplies",
+      "control": "VexLifeLanguageFamily.ChooseReplyLanguage",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLanguageFamily",
+      "state": "VexLifeLanguageFamily.FollowingReplies",
+      "control": "VexLifeLanguageFamily.ChooseScreenLanguage",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLanguageFamily",
+      "state": "VexLifeLanguageFamily.FollowingReplies",
+      "control": "VexLifeLanguageFamily.FollowReplyLanguage",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLanguageFamily",
+      "state": "VexLifeLanguageFamily.ScreenChosen",
+      "control": "VexLifeLanguageFamily.ChooseReplyLanguage",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLanguageFamily",
+      "state": "VexLifeLanguageFamily.ScreenChosen",
+      "control": "VexLifeLanguageFamily.ChooseScreenLanguage",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLanguageFamily",
+      "state": "VexLifeLanguageFamily.ScreenChosen",
+      "control": "VexLifeLanguageFamily.FollowReplyLanguage",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalAsrModelsFamily",
+      "state": "VexLifeLocalAsrModelsFamily.State",
+      "control": "VexLifeLocalAsrModelsFamily.Download",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalAsrModelsFamily",
+      "state": "VexLifeLocalAsrModelsFamily.State",
+      "control": "VexLifeLocalAsrModelsFamily.InstallProvider",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalAsrModelsFamily",
+      "state": "VexLifeLocalAsrModelsFamily.State",
+      "control": "VexLifeLocalAsrModelsFamily.Redownload",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalAsrModelsFamily",
+      "state": "VexLifeLocalAsrModelsFamily.State",
+      "control": "VexLifeLocalAsrModelsFamily.Remove",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalAsrModelsFamily",
+      "state": "VexLifeLocalAsrModelsFamily.State",
+      "control": "VexLifeLocalAsrModelsFamily.Use",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalSourcesFamily",
+      "state": "VexLifeLocalSourcesFamily.Empty",
+      "control": "VexLifeLocalSourcesFamily.AddFolder",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalSourcesFamily",
+      "state": "VexLifeLocalSourcesFamily.Empty",
+      "control": "VexLifeLocalSourcesFamily.Remove",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalSourcesFamily",
+      "state": "VexLifeLocalSourcesFamily.Granted",
+      "control": "VexLifeLocalSourcesFamily.AddFolder",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
+    },
+    {
+      "family": "VexLifeLocalSourcesFamily",
+      "state": "VexLifeLocalSourcesFamily.Granted",
+      "control": "VexLifeLocalSourcesFamily.Remove",
+      "status": "NOT_RUN",
+      "rows": 0,
+      "executed": 0,
+      "detail": "Family not planned"
     },
     {
       "family": "VexLifeMemoryReviewFamily",
@@ -1408,6 +1651,16 @@
       "detail": "no Family law cell (availability-only Family)"
     },
     {
+      "caseRef": "case:VexLifeAttachmentDraftFamily.Draft:AddFiles:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeAttachmentDraftFamily.Empty:AddFiles:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
       "caseRef": "case:VexLifeContextProfileFamily.ProductDefault:Import:0",
       "status": "NOT_RUN",
       "detail": "no runnable fixtures"
@@ -1448,6 +1701,16 @@
       "detail": "no runnable fixtures"
     },
     {
+      "caseRef": "case:VexLifeConversationTurnFamily.Active:Stop:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeConversationTurnFamily.Ready:Send:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
       "caseRef": "case:VexLifeDiagnosticsFamily.Recording:ClearHistory:0",
       "status": "PASS",
       "detail": "no Family law cell (availability-only Family)"
@@ -1468,24 +1731,69 @@
       "detail": "no Family law cell (availability-only Family)"
     },
     {
-      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlDownload:0",
+      "caseRef": "case:VexLifeLanguageFamily.FollowingReplies:ChooseReplyLanguage:1",
       "status": "NOT_RUN",
-      "detail": "no Family law cell (availability-only Family)"
+      "detail": "Family not planned"
     },
     {
-      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlRedownload:0",
+      "caseRef": "case:VexLifeLanguageFamily.FollowingReplies:ChooseScreenLanguage:0",
       "status": "NOT_RUN",
-      "detail": "no Family law cell (availability-only Family)"
+      "detail": "Family not planned"
     },
     {
-      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlRemove:0",
+      "caseRef": "case:VexLifeLanguageFamily.FollowingReplies:FollowReplyLanguage:0",
       "status": "NOT_RUN",
-      "detail": "no Family law cell (availability-only Family)"
+      "detail": "Family not planned"
     },
     {
-      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:ControlUse:0",
+      "caseRef": "case:VexLifeLanguageFamily.ScreenChosen:ChooseReplyLanguage:1",
       "status": "NOT_RUN",
-      "detail": "no Family law cell (availability-only Family)"
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLanguageFamily.ScreenChosen:ChooseScreenLanguage:1",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLanguageFamily.ScreenChosen:FollowReplyLanguage:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:Download:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:InstallProvider:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:Redownload:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:Remove:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLocalAsrModelsFamily.State:Use:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLocalSourcesFamily.Empty:AddFolder:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:VexLifeLocalSourcesFamily.Granted:AddFolder:0",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
     },
     {
       "caseRef": "case:VexLifeMemoryReviewFamily.Pending:Decline:0",
@@ -1718,6 +2026,26 @@
       "detail": "no Family law cell (availability-only Family)"
     },
     {
+      "caseRef": "case:reject:VexLifeAttachmentDraftFamily.Draft:CancelStage",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:reject:VexLifeAttachmentDraftFamily.Draft:Remove",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:reject:VexLifeAttachmentDraftFamily.Empty:CancelStage",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:reject:VexLifeAttachmentDraftFamily.Empty:Remove",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
       "caseRef": "case:reject:VexLifeContextProfileFamily.ProductDefault:RestoreProductDefault",
       "status": "NOT_RUN",
       "detail": "no runnable fixtures"
@@ -1728,6 +2056,26 @@
       "detail": "no runnable fixtures"
     },
     {
+      "caseRef": "case:reject:VexLifeConversationTurnFamily.Active:Send",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:reject:VexLifeConversationTurnFamily.Cancelling:Send",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:reject:VexLifeConversationTurnFamily.Cancelling:Stop",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:reject:VexLifeConversationTurnFamily.Ready:Stop",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
       "caseRef": "case:reject:VexLifeDiagnosticsFamily.Recording:StopEnhanced",
       "status": "PASS",
       "detail": "no Family law cell (availability-only Family)"
@@ -1736,6 +2084,16 @@
       "caseRef": "case:reject:VexLifeDiagnosticsFamily.RecordingEnhanced:StartEnhanced",
       "status": "PASS",
       "detail": "no Family law cell (availability-only Family)"
+    },
+    {
+      "caseRef": "case:reject:VexLifeLocalSourcesFamily.Empty:Remove",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
+    },
+    {
+      "caseRef": "case:reject:VexLifeLocalSourcesFamily.Granted:Remove",
+      "status": "NOT_RUN",
+      "detail": "Family not planned"
     },
     {
       "caseRef": "case:reject:VexLifeMemoryReviewFamily.Idle:Decline",
