@@ -24,6 +24,25 @@ Which branch is still untested or held?
 
 The primary unit is a **human relationship journey**, not a function, endpoint, file, or screen.
 
+
+## Terminal proving ground
+
+The Project now carries a shared A4/A5 completion target in
+[`TERMINAL-CONTINUITY-CAMPAIGN.md`](TERMINAL-CONTINUITY-CAMPAIGN.md).
+
+It does not add a new Product owner or lifecycle stage. It describes how the existing Experience
+Relationship Graph, Multi-Vex relationship profiles, current context/capability owners and
+VexArchitecture can compose a final **multi-cycle lived stress campaign**: long relationship
+continuity, source re-entry/currentization, failure/recovery, cross-owner journeys, and a
+ground-up builder scenario where Vex uses real bounded repository/directory capabilities to
+understand, build, test, correct, resume and complete a small project across context pressure and
+restart.
+
+Dream / Dream Sync / training-related cycles are capability-gated: they enter that campaign only
+after their own rightful source and acceptance contracts become real. The target is a durable
+proving ground that future lanes can build toward, not a script that forces unfinished capabilities
+into existence.
+
 ## Why this is its own VexWork Project
 
 VexLife-Prod is still evolving rapidly. Kotlin classes, stores, service routes, renderer structure and provider adapters may change while the intended experience remains stable.
