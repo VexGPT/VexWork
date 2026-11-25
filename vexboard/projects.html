@@ -34,6 +34,7 @@ code,.mono{font-family:var(--mono)}
 section{margin-top:28px}
 section>h2{margin:0 0 4px;font-size:15px;font-weight:600}
 section>.lede{margin:0 0 12px;color:var(--muted);font-size:13px;max-width:72ch}
+.browser-tool-note{margin:14px 0 0;padding:10px 12px;border:1px solid var(--rule);border-radius:10px;background:#fbfcfd;color:var(--muted);font-size:12.5px;max-width:78ch}.browser-tool-note b{color:var(--ink)}.browser-tool-note a{font-weight:600;text-decoration:none}.browser-tool-note a:hover{text-decoration:underline}
 
 /* The project with a lens */
 .project{background:var(--sheet);border:1px solid var(--rule);border-radius:16px;scroll-margin-top:16px}
@@ -135,7 +136,7 @@ footer code{font-size:12px}
 </style>
 </head>
 <body>
-<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><span class="here">Projects</span><span class="spacer"></span><a class="out" href="./components.html">Components</a><a class="out" href="./localization.html">Localization</a><a class="out" href="../">VexWork</a></header>
+<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><span class="here">Projects</span><span class="spacer"></span><a class="out" href="./components.html">Components</a><a class="out" href="./builder.html" title="Compose a UI Blueprint in this browser; no local shell or repository write runs when you open it.">Builder</a><a class="out" href="./localization.html">Localization</a><a class="out" href="../">VexWork</a></header>
 <main class="page" id="app"><div class="intro"><h1>Projects</h1><p>Loading…</p></div></main>
 <script>
 window.addEventListener('error',(event)=>{const app=document.getElementById('app');if(!app)return;app.innerHTML='<div class="intro"><h1>Projects could not load.</h1><p></p></div>';app.querySelector('p').textContent=event?.message||'A module failed to load.'});
@@ -331,7 +332,8 @@ async function boot() {
   const others = catalog.subjects.filter((subject) => !Catalog.defaultBuildFor(subject));
   app.replaceChildren(...[
     h('div', { class: 'intro' }, h('h1', {}, 'Projects'),
-      h('p', {}, 'Subjects VexBoard can project or relate. Open a Screen Lens at its Stable build, its Main build or any commit, follow related boards, and descend to VexWork for Project and lifecycle truth.')),
+      h('p', {}, 'Subjects VexBoard can project or relate. Open a Screen Lens at its Stable build, its Main build or any commit, follow related boards, and descend to VexWork for Project and lifecycle truth.'),
+      h('p', { class: 'browser-tool-note' }, h('b', {}, 'Builder is a browser-only VexBoard tool. '), 'Opening it loads the hosted UI and current source projections in this tab; it does not start a local shell/server or write to an app or repository. ', h('a', { href: './builder.html' }, 'Open Builder'), '. Import opens a file picker only after you click Import; Save Design downloads a UI Blueprint only after you click Save Design.')),
     withLens.map((subject, i) => leadProject(subject, lenses[i])),
     others.length ? h('div', { class: 'others' }, others.map(pendingProject)) : null,
     catalog.trials.length ? h('details', { id: 'trials', class: 'trials-section' },

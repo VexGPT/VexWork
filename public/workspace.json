@@ -30946,10 +30946,10 @@
         },
         {
           "workRef": "work.vex.component-library-architecture.gallery",
-          "label": "Build the Component Library / Gallery workspace",
-          "purpose": "Expose a projectable human Gallery over the proven component inventory with progressive disclosure for components, variants/states, target realizations, where-used, localization/accessibility bindings, source/proof and copyable construction briefs while remaining a read/projection surface rather than component source authority.",
+          "label": "Build the Component Library Gallery + Studio",
+          "purpose": "Create a human Gallery where source-grounded component specimens can be viewed in isolation, cycled through real source examples and inspected with their relationships; let a person combine those specimens in a Studio that preserves parent/order/source/presentation/behavior/portability relationships and exports/imports a deterministic platform-neutral Studio Blueprint without AI, while where-used/realizations/proof remain supporting evidence rather than component source authority.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vex.component-library-architecture.outcome",
@@ -30970,14 +30970,17 @@
             "projects/component-library-architecture/inventory/vexlife-android.main.components.json",
             "projects/component-library-architecture/component-architecture-catalog.json",
             "projects/component-library-architecture/KOTLIN-BLUEPRINT.md",
-            "github.pr.vexlife-prod.506"
+            "github.pr.vexlife-prod.506",
+            "src/shared/vexboard-component-studio.mjs",
+            "test/vexboard-component-studio.test.mjs",
+            "test/vexboard-component-workspace-ui.test.mjs"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-21T08:20:00.000Z",
-          "updatedAt": "2026-11-22T15:41:04.000Z",
+          "updatedAt": "2026-11-22T17:18:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vex.component-library-architecture.gallery.ready.a1-a3-complete-20261122",
@@ -30993,6 +30996,21 @@
                 "projects/component-library-architecture/component-architecture-catalog.json"
               ],
               "createdAt": "2026-11-22T15:41:04.000Z"
+            },
+            {
+              "transitionRef": "transition.vex.component-library-architecture.gallery.running.a5-workspace-20261122",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "A5 enters its human workspace implementation from the merged A1-A4 foundation: add Components / States / Variants / Products / Realizations / Where Used / Proof pivots over the existing inventories and architecture catalog, keep absent state/variant relationships explicit, and preserve the Gallery as read-only projection rather than component source authority.",
+              "actorRef": "actor.vexgpt.component-library",
+              "sourceRefs": [
+                "github.pull.vexwork.402",
+                "github.commit.vexwork.e3fd23dfff3bc98b4fca737c26e127fb21d1d800",
+                "vexboard/components.html",
+                "projects/component-library-architecture/README.md",
+                "test/vexboard-component-workspace-ui.test.mjs"
+              ],
+              "createdAt": "2026-11-22T16:58:00.000Z"
             }
           ]
         },
@@ -31333,14 +31351,13 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.vex.component-library-architecture.gallery"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
+            "work.vex.component-library-architecture.gallery",
             "work.vex.component-library-architecture.outcome"
           ]
         },

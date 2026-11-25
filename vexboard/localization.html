@@ -23,7 +23,7 @@ footer{margin-top:22px;color:var(--faint);font-size:12px;max-width:90ch}
 </style>
 </head>
 <body>
-<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><a class="nav" href="./projects.html">Projects</a><span class="spacer"></span><a class="nav" href="./components.html">Components</a><span class="here">Localization</span><a class="nav" href="../">VexWork</a></header>
+<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><a class="nav" href="./projects.html">Projects</a><span class="spacer"></span><a class="nav" href="./components.html">Components</a><a class="nav" href="./builder.html">Builder</a><span class="here">Localization</span><a class="nav" href="../">VexWork</a></header>
 <main class="page" id="app"><div class="intro"><div><h1>Localization</h1><p>Loading Product-owned localization inventories…</p></div></div></main>
 <script>
 window.addEventListener('error',(event)=>{const app=document.getElementById('app');if(!app)return;app.innerHTML='<div class="intro"><div><h1>Localization could not load.</h1><p></p></div></div>';app.querySelector('p').textContent=event?.message||'A module failed to load.'});

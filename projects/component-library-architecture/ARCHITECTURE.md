@@ -286,44 +286,305 @@ This is a stronger starting point than decompiling arbitrary UI because:
 
 A1 should reuse those sources rather than inventing another Android component registry.
 
-## 8. Gallery as a human workspace
+## 8. Gallery + Builder as a human workspace
 
-The Gallery should answer:
+The lived A5 correction is that a Gallery cannot center the occurrence index.
 
-> What do we already know how to build?
+The human question is:
 
-A compact default card might show:
+> What do we already know how to build, what is the thing like by itself, and what can I make with it?
 
-```text
-Action Button
-Portable · 4 realizations
-
-States
-default · disabled · pressed
-
-Used in
-Android 18
-Prod 7
-Stream 4
-
-[Open specimen] [Where used] [Realizations]
-```
-
-Expanded detail may show:
+The default relationship should be:
 
 ```text
-Meaning
-Slots / parameters
-States / variants
-Localization
-Accessibility
-Behavior / intent relationship
-Target realizations
-Source/proof
-Construction brief
+component source family
+-> one real source occurrence as an isolated specimen
+-> actual source examples / styles / conditions
+-> relationship inspector
+-> place into Studio
+-> deterministic composition blueprint
 ```
 
-Progressive disclosure should follow the same human-workflow lesson as Localization Architecture.
+Where-used, target realizations and proof remain evidence behind the selected specimen.
+
+### Isolated specimen
+
+A specimen is drawn from one current source occurrence and its projected relationships:
+
+```text
+kind
+label
+style / slot / layer / text role
+children
+intent / action / pathway
+visibility / presence / condition evidence
+localization bindings
+accessibility projection state
+```
+
+The specimen is a relationship projection, not native pixel parity.
+
+```text
+SOURCE-GROUNDED SPECIMEN
+!= SCREENSHOT
+!= TARGET-NATIVE ACCEPTANCE
+```
+
+Cycling examples means cycling actual source occurrences. The Gallery does not invent framework
+states merely because a control type could theoretically have them.
+
+### Studio
+
+The Studio treats component specimens like buildable furniture: a person can place an item at the
+composition root or inside a selected container, inspect the resulting structure, reorder it and
+remove it.
+
+The Studio composition is not stored as pixels. It is stored as relationships.
+
+```text
+vexboard.component-studio-blueprint/v1
+
+composition node
+  nodeRef
+  parentNodeRefOrNull
+  siblingOrder
+
+  exact source occurrence coordinate
+  presentation relationships
+  behavior relationships
+
+  portability disposition
+    PORTABLE_RELATIONSHIP_AVAILABLE
+    PORTABILITY_HELD
+    SOURCE_BOUND
+
+  accepted portable candidate refs
+  target realization refs
+```
+
+The artifact is deterministic and explicitly non-executing:
+
+```text
+aiRequired = false
+effects = false
+executionAuthority = NONE
+```
+
+This is the bridge from human composition to future target construction without making an AI
+reconstruct intent from screenshots, prose or historical source.
+
+A6 consumes the Studio Blueprint through target adapters. Therefore:
+
+```text
+A5 Studio Blueprint
+!= generated Compose / SwiftUI / Web source
+
+A6 target construction
+-> adapter
+-> target-native source / reference artifact
+-> target proof
+```
+
+### Builder — a VexArchitecture-shaped UI Blueprint surface
+
+Gallery and Builder answer different human questions:
+
+```text
+Gallery
+  "what building blocks exist, and what are they like?"
+
+Builder
+  "what UI do I mean to construct with them?"
+```
+
+The Builder keeps the visual experience in front while preserving ownership underneath:
+
+```text
+SOURCE / PRODUCT OWNERS
+  exact component occurrence + Product meaning
+        ↓ projected, not copied into a second semantic owner
+
+BUILDER AUTHORING
+  parent / sibling order
+  Flow or Constraint container relationship
+  parent-relative constraints
+  presentation preview profile
+  open integration ports
+        ↓
+
+UI BLUEPRINT
+  deterministic relationship artifact
+  effects = false
+  executionAuthority = NONE
+        ↓
+  ┌───────────────────────────────┐
+  │                               │
+  ▼                               ▼
+A6 deterministic adapter       AI integrator
+target-native realization      app-specific port binding
+  │                               │
+  └──────── rightful target/application architecture ────────┘
+```
+
+This applies the VexArchitecture rule that every owner answers one rightful question. The Builder
+does not invent target application State, Effect, Store, Family, provider truth, or execution
+custody. Its callback ports are intentionally **OPEN**. They preserve the visible interaction seam
+and any source intent evidence while leaving implementation to the target application's rightful
+semantic owner.
+
+The first full Builder interface is:
+
+```text
+┌────────────────────────────────────────────────────────────────────────────┐
+│ UI Builder      [Mobile ▾] [390 × 844]       Import        Save Design    │
+├────────────────┬─────────────────────────────────────┬─────────────────────┤
+│ COMPONENTS     │                                     │ SELECTED            │
+│                │           preview surface           │                     │
+│ Search...      │                                     │ source identity     │
+│                │    ┌───────────────────────────┐    │                     │
+│ Layout         │    │                           │    │ Layout              │
+│ ▸ Column       │    │  nested relational UI     │    │ Flow / Constraint   │
+│ ▸ Row          │    │                           │    │ width / height      │
+│ ▸ Stack        │    │  drag / drop here         │    │ parent constraints │
+│ ▸ Container    │    │                           │    │                     │
+│                │    └───────────────────────────┘    │ Integration         │
+│ Controls       │                                     │ callback.* = OPEN   │
+│ ▸ Button       │                                     │                     │
+│ ▸ Toggle       │                                     │ portability/source  │
+│ ▸ Field        │                                     │                     │
+│                │                                     │                     │
+├────────────────┴─────────────────────────────────────┴─────────────────────┤
+│ Structure: Root > Container > ...                    UI Blueprint         │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
+Flow and Constraint are composable rather than competing layout systems:
+
+```text
+Constraint container
+  Card
+    start/end -> parent
+    top       -> parent + 24
+
+Card body
+  Vertical Flow
+    Text
+    Field
+    Button
+```
+
+The durable meaning is relational. Preview pixels help the human judge the composition, but they do
+not become the canonical source of layout meaning.
+
+A lived Builder preview added a further presentation law:
+
+```text
+SOURCE-GROUNDED KIND
+-> visually distinguishable Builder expression
+
+BUT
+
+BUILDER VISUAL EXPRESSION
+!= portable semantic owner
+!= target-native parity proof
+```
+
+The Builder must not collapse Card, Column, Row, Stack, Dialog, Sheet, Region/Frame and Menu into one
+generic container rectangle. That makes relationship truth technically present but humanly
+indistinguishable. Conversely, giving those kinds distinct preview shells does not authorize the
+Builder to invent source children, Product State, target-native styling or business behavior.
+
+Technical node identity and layout-mode diagnostics remain available through selection/inspection;
+they are not the primary visual content of the composed interface.
+
+### Spatial composition and reusable definitions
+
+Direct manipulation is represented as parent-relative relationships rather than screenshot geometry:
+
+```text
+ROOT / Constraint parent
+  -> abstract 24 × 24 ratio surface
+
+child
+  columnStart
+  rowStart
+  columnSpan
+  rowSpan
+
+browser preview
+  ratio relationship -> current viewport pixels
+```
+
+This lets a node move/resize like a Lucid or Figma object while the Blueprint remains portable across
+Mobile / Windows / arbitrary Container previews. Flow children remain Flow-owned instead.
+
+The same non-collapsing rule applies to reuse:
+
+```text
+source occurrence
+  != reusable definition
+  != reusable instance
+  != target realization
+```
+
+A reusable definition owns only a Builder-authored UI relationship fragment. Its nodes retain their
+source coordinates; its callback ports remain OPEN. An instance keeps a stable `definitionRef`,
+`instanceRef` and per-template-node provenance while receiving instance-qualified integration
+ports and its own placement relationship.
+
+This enables higher-order components without claiming that the Builder invented Product semantics:
+
+```text
+Text + Toggle + Button
+  -> Settings Card definition
+  -> instance A
+  -> instance B
+
+same definition
+!= same callback binding
+!= same parent placement
+```
+
+The first A5 contract intentionally flattens nested reusable-instance provenance when a subtree is
+saved as a new definition. Recursive reusable-component dependency/cycle semantics would create a new
+maintained subsystem and are not required for the present human construction need.
+
+### Foreground / background depth
+
+Overlap creates one additional Builder-authored relationship: sibling-local depth.
+
+```text
+parent
+  child A depthOrder 0
+  child B depthOrder 1
+  child C depthOrder 2
+```
+
+The number is not global and does not describe Product/domain depth. It answers one UI construction
+question only:
+
+> among these siblings, which one is projected in front when their presentation overlaps?
+
+This keeps three meanings separate:
+
+```text
+source.presentation.layer
+  = source-observed Product presentation evidence
+
+authoring.layout.depthOrder
+  = Builder-authored sibling stacking relationship
+
+CSS z-index / target-native stacking primitive
+  = realization of that relationship on one target
+```
+
+A6 may map the same depth relationship to Compose `zIndex`, SwiftUI `zIndex`, CSS stacking or a
+future target-native equivalent where supported. The Builder must not treat the CSS number as the
+portable contract.
+
+Reusable definitions may preserve internal template depth. A reusable instance has a separate root
+depth relative to siblings in its placement parent, so two instances of the same definition can
+occupy different foreground/background positions without changing the definition.
 
 ## 9. Reverse where-used
 
@@ -484,30 +745,34 @@ No privileged admin exception.
 
 ## 15. Paired implementation slices
 
-Avoid building a library UI disconnected from the reusable contract.
+Avoid building a Library UI disconnected from the reusable relationship contract.
 
 ```text
 Slice 1
-Android component inventory
-+ first portable Gallery container identity
+source inventory
++ first isolated source-grounded specimen
 
 Slice 2
-component search / where-used
-+ projectable Gallery controls
+specimen example cycling / edge evidence
++ where-used / Screen Lens deep link
 
 Slice 3
-portable component candidate/detail
-+ component relationship projection
+portable relationship / realization / proof inspector
++ explicit source-bound / held states
 
 Slice 4
-target realization tabs
-+ currentness / proof mapping
+Studio composition tree
++ parent / order / containment preservation
 
 Slice 5
-construction brief / export
-+ deterministic target mapping where earned
+deterministic Studio Blueprint export / import
++ no-AI reconstruction contract
 
-Slice 6
+Slice 6 (A6)
+Studio Blueprint -> target adapter
++ target-native construction / proof
+
+Slice 7 (A7)
 self-use / self-projection / localization proof
 ```
 

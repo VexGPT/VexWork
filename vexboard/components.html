@@ -3,379 +3,405 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VexBoard Component Gallery</title>
-<meta name="description" content="Browse current reusable component source families, where-used occurrences, realization evidence, localization bindings, and the gaps still awaiting portable-component convergence.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>VexBoard Component Library</title>
+<meta name="description" content="Browse source-grounded component specimens, inspect their relationships, compose them in Studio, and export deterministic build blueprints without AI.">
 <style>
-:root{--paper:#f4f6f9;--sheet:#fff;--ink:#18213a;--muted:#5d677b;--faint:#8a93a6;--rule:#d8dde6;--rule-strong:#b9c1cf;--focus:#2f5bea;--soft:#eef2ff;--sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
-a{color:var(--focus)}button,input,select{font:inherit;color:inherit}:focus-visible{outline:2px solid var(--focus);outline-offset:2px}code,.mono{font-family:var(--mono)}
-.bar{display:flex;align-items:center;gap:12px;padding:10px max(18px,env(safe-area-inset-right,0px)) 10px max(18px,env(safe-area-inset-left,0px));background:var(--sheet);border-bottom:1px solid var(--rule)}
-.bar .brand{font-weight:600;font-size:15px;color:var(--ink);text-decoration:none}.bar .here{color:var(--muted);font-weight:500}.bar .spacer{flex:1}.bar a.nav{color:var(--muted);text-decoration:none;font-size:13px}.bar a.nav:hover{color:var(--ink);text-decoration:underline}
-.page{max-width:1240px;margin:0 auto;padding:28px max(18px,env(safe-area-inset-right,0px)) 64px max(18px,env(safe-area-inset-left,0px))}
-.intro{display:flex;gap:28px;align-items:flex-start;justify-content:space-between}.intro h1{margin:0;font-size:26px;font-weight:600;letter-spacing:-.015em}.intro p{margin:6px 0 0;color:var(--muted);max-width:74ch}.truth{font-size:12.5px;color:var(--muted);white-space:nowrap;padding-top:5px}.truth strong{color:var(--ink)}
-.boundary{margin-top:18px;padding:12px 14px;border:1px solid #c7d2fe;background:var(--soft);border-radius:12px;font-size:13px;color:#373f70}.boundary b{color:var(--ink)}
-.summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:18px}.metric{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}.metric b{display:block;font:600 20px/1.1 var(--mono)}.metric span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
-.source{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.source-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);font-size:12px}.source-chip .dot{width:7px;height:7px;border-radius:50%;background:#15803d}.source-chip code{font-size:11px;color:var(--muted)}
-.view-tabs{display:flex;gap:6px;margin-top:22px;padding:4px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);width:max-content}.view-tab{border:0;border-radius:7px;background:transparent;padding:7px 11px;color:var(--muted);font-weight:600;font-size:12.5px;cursor:pointer}.view-tab.on{background:var(--ink);color:#fff}.view-tab:hover:not(.on){background:#f5f6f8;color:var(--ink)}
-.workspace{margin-top:18px}.controls{display:grid;grid-template-columns:minmax(220px,1fr) auto auto auto;gap:8px}.controls input,.controls select{height:38px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet);padding:0 11px}.controls input:focus,.controls select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
-.match{margin:9px 0 0;color:var(--faint);font-size:12.5px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.family{width:100%;text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:15px;cursor:pointer}.family:hover{border-color:var(--rule-strong)}.family.on{border-color:var(--focus);box-shadow:0 0 0 2px color-mix(in srgb,var(--focus) 12%,transparent)}.family .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.family h2{margin:0;font-size:17px}.pill{display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;background:#fafbfc;font:10.5px var(--mono);color:var(--muted);white-space:nowrap}.family .counts{display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:11px;font-size:12px;color:var(--muted)}.family .counts b{color:var(--ink)}.family .sub{margin-top:10px;font-size:12px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.detail{margin-top:18px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px;overflow:hidden}.detail-head{padding:20px 22px;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.detail-head h2{margin:0;font-size:21px}.detail-head p{margin:5px 0 0;color:var(--muted);max-width:76ch}.facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.fact{padding:4px 8px;background:#f7f8fb;border-radius:7px;font-size:12px;color:var(--muted)}
-.table-wrap{overflow:auto}.table-wrap table{width:100%;border-collapse:collapse;min-width:980px}.table-wrap th{text-align:left;padding:9px 12px;background:#fafbfc;border-bottom:1px solid var(--rule);color:var(--faint);font-size:11.5px;font-weight:600;position:sticky;top:0}.table-wrap td{padding:10px 12px;border-bottom:1px solid #edf0f4;vertical-align:top;font-size:12.5px}.table-wrap tr:last-child td{border-bottom:0}.sub{display:block;margin-top:2px;color:var(--faint);font-size:11.5px}.value{max-width:34ch;overflow-wrap:anywhere}.open{display:inline-flex;align-items:center;justify-content:center;height:28px;padding:0 10px;border-radius:7px;background:var(--ink);color:#fff;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap}.open:hover{background:#0f1730}.empty{padding:28px;color:var(--muted)}
-footer{margin-top:28px;color:var(--faint);font-size:12.5px;max-width:90ch}
-@media(max-width:900px){.summary{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.intro{display:block}.truth{margin-top:8px}.controls{grid-template-columns:1fr 1fr}.controls input{grid-column:1/-1}}
-@media(max-width:560px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.controls input{grid-column:auto}.detail-head{display:block}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+:root{--paper:#f4f6f9;--sheet:#fff;--ink:#18213a;--muted:#667085;--faint:#98a2b3;--rule:#d9dee8;--rule2:#c4ccd8;--focus:#315bea;--soft:#eef2ff;--good:#16794b;--warn:#a15c00;--held:#9a3a63;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font:14px/1.45 var(--sans)}button,input,select{font:inherit;color:inherit}button{cursor:pointer}a{color:var(--focus)}code,.mono{font-family:var(--mono)}
+.bar{height:52px;display:flex;align-items:center;gap:14px;padding:0 20px;background:var(--sheet);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:20}.brand{font-weight:700;color:var(--ink);text-decoration:none}.bar .here{font-weight:600}.bar .spacer{flex:1}.bar .nav{color:var(--muted);text-decoration:none}.bar .nav:hover{color:var(--ink)}
+.page{max-width:1500px;margin:0 auto;padding:22px 20px 70px}.hero{display:flex;align-items:flex-start;gap:18px;justify-content:space-between}.hero h1{margin:0;font-size:26px;letter-spacing:-.02em}.hero p{margin:7px 0 0;color:var(--muted);max-width:84ch}.truth{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.badge{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border:1px solid var(--rule);border-radius:999px;background:#fff;color:var(--muted);font:11px var(--mono)}.badge.good{color:var(--good);border-color:#b8dfce;background:#f4fbf7}.badge.held{color:var(--held);border-color:#e7bfd2;background:#fff7fa}
+.mode-tabs,.evidence-tabs{display:flex;gap:6px;flex-wrap:wrap;padding:4px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet)}.mode-tabs{margin-top:18px;width:max-content}.tab{border:0;border-radius:7px;background:transparent;padding:8px 12px;font-weight:650;color:var(--muted)}.tab.on{background:var(--ink);color:#fff}.tab:hover:not(.on){background:#f4f6f9;color:var(--ink)}
+.shell{display:grid;grid-template-columns:280px minmax(0,1fr) 340px;gap:14px;margin-top:14px;align-items:start}.panel{background:var(--sheet);border:1px solid var(--rule);border-radius:14px;overflow:hidden}.panel-head{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--rule)}.panel-head h2{font-size:13px;margin:0}.panel-head .spacer{flex:1}.panel-body{padding:14px}.library{position:sticky;top:66px;max-height:calc(100vh - 88px);display:flex;flex-direction:column}.library .panel-body{overflow:auto}.search{width:100%;height:36px;border:1px solid var(--rule);border-radius:8px;padding:0 10px;background:#fff}.filters{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.filters select{min-width:0;height:34px;border:1px solid var(--rule);border-radius:8px;background:#fff;padding:0 7px}
+.family-list{display:flex;flex-direction:column;gap:7px;margin-top:10px}.family{width:100%;text-align:left;border:1px solid var(--rule);background:#fff;border-radius:10px;padding:10px}.family:hover{border-color:var(--rule2)}.family.on{border-color:var(--focus);box-shadow:0 0 0 2px #315bea16}.family .top{display:flex;gap:8px;align-items:flex-start}.family strong{font-size:13px}.family .product{margin-left:auto;color:var(--faint);font-size:10.5px}.family .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;color:var(--muted);font-size:11px}.family .ref{margin-top:5px;color:var(--faint);font:10px var(--mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stage{min-height:620px}.stage-top{padding:14px 16px;border-bottom:1px solid var(--rule);display:flex;gap:10px;align-items:flex-start}.stage-top h2{margin:0;font-size:18px}.stage-top p{margin:4px 0 0;color:var(--muted)}.stage-top .actions{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.btn{height:34px;border:1px solid var(--rule2);border-radius:8px;background:#fff;padding:0 11px;font-weight:650;font-size:12px}.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}.btn.soft{background:var(--soft);border-color:#cdd6ff;color:#293d86}.btn:disabled{opacity:.45;cursor:not-allowed}
+.example-bar{display:flex;gap:8px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--rule);background:#fafbfc}.example-bar label{font-size:12px;color:var(--muted)}.example-bar select{height:32px;min-width:260px;max-width:60%;border:1px solid var(--rule);border-radius:8px;background:#fff;padding:0 8px}.example-bar .counter{margin-left:auto;color:var(--faint);font:11px var(--mono)}
+.specimen-wrap{padding:24px;min-height:360px;display:grid;place-items:center;background:radial-gradient(circle at 50% 20%,#fff 0,#f5f7fb 58%,#eef1f6 100%)}.specimen-stage{width:min(620px,100%);min-height:230px;border:1px dashed #c6ceda;border-radius:18px;background:#ffffffd9;padding:28px;display:grid;place-items:center;position:relative}.specimen-note{position:absolute;left:10px;top:10px;color:var(--faint);font:10px var(--mono)}.specimen-tree{width:min(440px,100%);display:flex;flex-direction:column;gap:10px;align-items:stretch}.sp-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.sp-column{display:flex;flex-direction:column;gap:8px}.sp-card{padding:14px;border:1px solid #dce1e8;border-radius:14px;background:#fff}.sp-region,.sp-frame{padding:14px;border:1px dashed #b8c2d0;border-radius:14px;background:#fbfcfe}.sp-button{min-height:38px;padding:0 16px;border:1px solid #c7cfda;border-radius:10px;background:#fff;font-weight:650}.sp-button.primary{background:var(--ink);border-color:var(--ink);color:#fff}.sp-button.danger{background:#fff0ee;border-color:#efbdb7;color:#7a2318}.sp-button.secondary{background:#f0edff;border-color:#d7cffb;color:#443577}.sp-toggle{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 13px;border:1px solid #d8dee7;border-radius:12px;background:#fff}.sp-switch{width:38px;height:22px;border-radius:999px;background:#cfd5df;position:relative;flex:none}.sp-switch::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0003;transition:left .12s}.sp-toggle.on .sp-switch{background:var(--ink)}.sp-toggle.on .sp-switch::after{left:19px}.sp-field{height:40px;border:1px solid #cfd5df;border-radius:10px;padding:0 11px;background:#fff}.sp-text{margin:0;color:var(--muted)}.sp-title{font-weight:700;color:var(--ink)}.sp-image{height:110px;border-radius:12px;background:linear-gradient(135deg,#e8ecf4,#d7ddea);display:grid;place-items:center;color:var(--muted);font-weight:650}.sp-dialog,.sp-sheet{padding:16px;border:1px solid #d8dee7;border-radius:16px;background:#fff;box-shadow:0 18px 38px -22px #18213a88}.sp-sheet{border-bottom-left-radius:6px;border-bottom-right-radius:6px}.sp-seam{height:3px;background:#b9c2d0;border-radius:999px}.sp-handle{width:22px;height:44px;border:1px solid #c7cfda;border-radius:10px;background:#fff;display:grid;place-items:center}.sp-unknown{padding:12px;border:1px dashed #c7cfda;border-radius:10px;color:var(--muted);font:11px var(--mono)}
+.preview-toast{min-height:34px;padding:8px 16px;border-top:1px solid var(--rule);color:var(--muted);font-size:12px}.edge-strip{display:flex;gap:7px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--rule);background:#fafbfc}.edge{padding:4px 8px;border-radius:7px;background:#eef1f5;color:var(--muted);font-size:11px}.edge.absent{background:#fff7f1;color:#8a4d12}
+.inspector{position:sticky;top:66px;max-height:calc(100vh - 88px);display:flex;flex-direction:column}.inspector .panel-body{overflow:auto}.inspector h3{font-size:12px;margin:14px 0 5px}.inspector h3:first-child{margin-top:0}.inspector p{margin:4px 0;color:var(--muted)}.kv{display:grid;grid-template-columns:100px minmax(0,1fr);gap:5px 8px;font-size:12px}.kv .k{color:var(--faint)}.kv .v{min-width:0;overflow-wrap:anywhere}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{padding:3px 7px;border:1px solid var(--rule);border-radius:999px;background:#fafbfc;font-size:10.5px;color:var(--muted)}.chip.good{color:var(--good);border-color:#b8dfce}.chip.held{color:var(--held);border-color:#e7bfd2}.inspector-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.evidence{margin-top:14px}.evidence-tabs{margin-bottom:10px}.evidence-body{max-height:300px;overflow:auto;border:1px solid var(--rule);border-radius:10px}.evidence-row{padding:9px 10px;border-bottom:1px solid #edf0f4;font-size:11.5px}.evidence-row:last-child{border-bottom:0}.evidence-row strong{display:block}.evidence-row .sub{display:block;margin-top:2px;color:var(--faint);font:10.5px var(--mono);overflow-wrap:anywhere}
+.studio-shell{display:grid;grid-template-columns:280px minmax(0,1fr) 350px;gap:14px;margin-top:14px;align-items:start}.studio-canvas{min-height:660px}.studio-toolbar{display:flex;gap:8px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--rule);flex-wrap:wrap}.studio-toolbar input[type="text"]{height:34px;min-width:260px;border:1px solid var(--rule);border-radius:8px;padding:0 9px}.canvas{padding:22px;min-height:560px;background:linear-gradient(#f8f9fc 1px,transparent 1px),linear-gradient(90deg,#f8f9fc 1px,transparent 1px),#fff;background-size:24px 24px}.canvas-empty{height:460px;display:grid;place-items:center;text-align:center;color:var(--muted)}.canvas-empty strong{display:block;color:var(--ink);font-size:17px;margin-bottom:5px}.studio-tree{display:flex;flex-direction:column;gap:12px}.studio-node{border:1px solid var(--rule);border-radius:14px;background:#fff;padding:10px}.studio-node.on{border-color:var(--focus);box-shadow:0 0 0 2px #315bea14}.studio-node-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}.studio-node-head .spacer{flex:1}.studio-node-head button{border:0;background:#f1f3f6;border-radius:7px;padding:4px 7px;font-size:11px}.studio-children{margin:10px 0 0 18px;padding-left:12px;border-left:2px solid #e5e9ef;display:flex;flex-direction:column;gap:10px}.studio-node .specimen-tree{max-width:360px}.blueprint{font:10.5px/1.45 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;background:#111827;color:#dbe4f3;border-radius:10px;padding:10px;max-height:220px;overflow:auto}
+.hidden{display:none!important}
+@media(max-width:1100px){.shell,.studio-shell{grid-template-columns:240px minmax(0,1fr)}.inspector{grid-column:1/-1;position:static;max-height:none}.studio-shell>.inspector{grid-column:1/-1}}@media(max-width:760px){.shell,.studio-shell{grid-template-columns:1fr}.library{position:static;max-height:none}.hero{display:block}.truth{margin-top:10px}.example-bar{align-items:flex-start;flex-direction:column}.example-bar select{max-width:100%;width:100%}}
 </style>
 </head>
 <body>
-<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><a class="nav" href="./projects.html">Projects</a><span class="here">Components</span><span class="spacer"></span><a class="nav" href="./localization.html">Localization</a><a class="nav" href="../">VexWork</a></header>
-<main class="page" id="app"><div class="intro"><div><h1>Component Gallery</h1><p>Loading current component inventory…</p></div></div></main>
+<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><a class="nav" href="./projects.html">Projects</a><span class="here">Components</span><span class="spacer"></span><a class="nav" href="./builder.html">Builder</a><a class="nav" href="./localization.html">Localization</a><a class="nav" href="../">VexWork</a></header>
+<main class="page" id="app"><div class="hero"><div><h1>Component Library</h1><p>Loading current component source…</p></div></div></main>
+<input id="studio-import" class="hidden" type="file" accept="application/json,.json">
 <script type="module">
 import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
 import * as Components from '../src/shared/vexboard-component-inventory.mjs';
 import * as Architecture from '../src/shared/vexboard-component-architecture.mjs';
+import * as Studio from '../src/shared/vexboard-component-studio.mjs';
 
 const app=document.getElementById('app');
+const importInput=document.getElementById('studio-import');
 const CATALOG_URL='../projects/vexboard/lens/catalog.json';
 const INVENTORY_DIR='../projects/component-library-architecture/inventory/';
 const ARCHITECTURE_URL='../projects/component-library-architecture/component-architecture-catalog.json';
 const params=new URLSearchParams(location.search);
-const requestedView=params.get('view');
-const state={catalog:null,subject:null,inventory:null,inventories:new Map(),sourceSubject:params.get('source')??'vexlife-android',architecture:null,view:requestedView==='architecture'?'ARCHITECTURE':requestedView==='realizations'?'REALIZATIONS':'SOURCE',query:params.get('q')??'',kind:params.get('kind')??'',surface:params.get('surface')??'',selected:params.get('component')??null,architectureClass:params.get('class')??'',selectedArchitecture:params.get('architecture')??null,realizationPlatform:params.get('platform')??'',selectedRealization:params.get('realization')??null};
+const CONTAINER_KINDS=new Set(['COLUMN','ROW','STACK','CARD','MENU','SHEET','DIALOG','REGION','FRAME']);
+const state={
+ catalog:null,
+ architecture:null,
+ inventories:new Map(),
+ mode:params.get('studio')==='1'?'STUDIO':'GALLERY',
+ query:'',
+ product:'',
+ selectedKey:null,
+ occurrenceIndex:0,
+ evidence:'ABOUT',
+ previewMessage:'Preview interactions are local only; no Product effect runs here.',
+ studio:{label:'Untitled composition',nodes:[],selectedNodeRef:null,nextIndex:1},
+};
 
-function h(tag,attrs={},...children){const node=document.createElement(tag);for(const [key,value] of Object.entries(attrs||{})){if(value===null||value===undefined||value===false)continue;if(key==='class')node.className=value;else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);else if(key==='style')node.style.cssText=value;else node.setAttribute(key,value===true?'':String(value));}for(const child of children.flat(Infinity)){if(child===null||child===undefined||child===false)continue;node.append(child instanceof Node?child:document.createTextNode(String(child)));}return node;}
-async function fetchJson(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(url+' HTTP '+response.status);return response.json();}
+function h(tag,attrs,...children){
+ const node=document.createElement(tag);
+ for(const [key,value] of Object.entries(attrs||{})){
+  if(value===null||value===undefined||value===false)continue;
+  if(key==='class')node.className=value;
+  else if(key==='style')node.style.cssText=value;
+  else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);
+  else if(key==='value')node.value=value;
+  else node.setAttribute(key,value===true?'':String(value));
+ }
+ for(const child of children.flat(Infinity)){
+  if(child===null||child===undefined||child===false)continue;
+  node.append(child instanceof Node?child:document.createTextNode(String(child)));
+ }
+ return node;
+}
+async function fetchJson(url){
+ const response=await fetch(url,{cache:'no-store'});
+ if(!response.ok)throw new Error(url+' HTTP '+response.status);
+ return response.json();
+}
+const human=(value)=>String(value??'').toLowerCase().split(/[_-]/u).map((word)=>word?word[0].toUpperCase()+word.slice(1):word).join(' ');
 const short=(sha)=>String(sha??'').slice(0,7);
 const count=(value)=>Number(value??0).toLocaleString();
-const human=(value)=>String(value??'').toLowerCase().split(/[_-]/u).map((word)=>word?word[0].toUpperCase()+word.slice(1):word).join(' ');
-function syncUrl(){const next=new URL(location.href);next.search='';if(state.view==='ARCHITECTURE')next.searchParams.set('view','architecture');if(state.view==='REALIZATIONS')next.searchParams.set('view','realizations');if(state.query)next.searchParams.set('q',state.query);if(state.view==='SOURCE'){if(state.sourceSubject!=='vexlife-android')next.searchParams.set('source',state.sourceSubject);if(state.kind)next.searchParams.set('kind',state.kind);if(state.surface)next.searchParams.set('surface',state.surface);if(state.selected)next.searchParams.set('component',state.selected);}else if(state.view==='ARCHITECTURE'){if(state.architectureClass)next.searchParams.set('class',state.architectureClass);if(state.selectedArchitecture)next.searchParams.set('architecture',state.selectedArchitecture);}else{if(state.realizationPlatform)next.searchParams.set('platform',state.realizationPlatform);if(state.selectedRealization)next.searchParams.set('realization',state.selectedRealization);}history.replaceState(null,'',next);}
-function occurrenceRows(component){return Components.occurrencesForComponent(state.inventory,component.componentRef).filter((row)=>!state.surface||row.surfaceRef===state.surface);}
-function visibleFamilies(){
- let rows=state.query?Components.searchComponentInventory(state.inventory,state.query,{limit:500}):state.inventory.components;
- if(state.kind)rows=rows.filter((row)=>row.kind===state.kind);
- if(state.surface)rows=rows.filter((row)=>row.surfaceRefs.includes(state.surface));
+const slug=(value)=>String(value??'studio').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'studio';
+
+function inventoryEntries(){
+ return [...state.inventories.entries()].map(([key,inventory])=>({slug:key,inventory,subject:Catalog.subjectFor(state.catalog,key)})).filter((row)=>row.subject).sort((a,b)=>a.subject.label.localeCompare(b.subject.label));
+}
+function familyRows(){
+ const rows=[];
+ for(const entry of inventoryEntries()){
+  for(const component of entry.inventory.components){
+   const occurrences=Components.occurrencesForComponent(entry.inventory,component.componentRef);
+   rows.push({entry,component,occurrences,key:entry.slug+'|'+component.componentRef});
+  }
+ }
  return rows;
 }
-function lensHref(row){if(!row.screenRef)return null;return Catalog.lensHref(state.subject,{build:'main',screen:row.screenRef,element:row.elementRef});}
-function familyCard(component){
- const rows=Components.occurrencesForComponent(state.inventory,component.componentRef);
- const localized=rows.filter((row)=>row.localization.sourceStringRefs.length).length;
- const button=h('button',{type:'button',class:'family'+(state.selected===component.componentRef?' on':'')},
-  h('div',{class:'top'},h('h2',{},human(component.kind)),h('span',{class:'pill'},'OBSERVED')),
-  h('div',{class:'counts'},h('span',{},h('b',{},count(rows.length)),' occurrences'),h('span',{},h('b',{},count(component.screenRefs.length)),' screens'),h('span',{},h('b',{},count(component.realizerSymbols.length)),' realizers'),h('span',{},h('b',{},count(localized)),' localized')),
-  h('div',{class:'sub'},component.componentRef));
- button.onclick=()=>{state.selected=component.componentRef;syncUrl();render();requestAnimationFrame(()=>document.querySelector('.detail')?.scrollIntoView({block:'nearest'}));};
+function visibleFamilies(){
+ const needle=state.query.trim().toLowerCase();
+ return familyRows().filter((row)=>{
+  if(state.product&&row.entry.slug!==state.product)return false;
+  if(!needle)return true;
+  return [row.entry.subject.label,row.component.kind,row.component.componentRef,...row.component.styles,...row.component.textRoles,...row.occurrences.flatMap((o)=>[o.label,o.surfaceLabel,o.style,o.intent,o.sourcePath])].filter(Boolean).join('\n').toLowerCase().includes(needle);
+ });
+}
+function selectedFamily(){
+ const rows=familyRows();
+ if(!state.selectedKey||!rows.some((row)=>row.key===state.selectedKey))state.selectedKey=rows[0]?.key??null;
+ return rows.find((row)=>row.key===state.selectedKey)??null;
+}
+function selectedOccurrence(){
+ const family=selectedFamily();
+ if(!family)return null;
+ if(state.occurrenceIndex>=family.occurrences.length)state.occurrenceIndex=0;
+ return family.occurrences[state.occurrenceIndex]??null;
+}
+function occurrenceLabel(row,index){
+ return (index+1)+'. '+row.label+' · '+row.surfaceLabel+(row.style?' · '+row.style:'');
+}
+function componentCandidates(family){
+ return Architecture.candidatesForSourceFamily(state.architecture,family.component.componentRef);
+}
+function acceptedCandidates(family){
+ return componentCandidates(family).filter((row)=>row.state==='ACCEPTED_PORTABLE'&&row.formation?.state==='ACCEPTED');
+}
+function heldCandidates(family){
+ return componentCandidates(family).filter((row)=>row.state==='HELD'||row.formation?.state==='HELD');
+}
+function realizationRows(family){
+ const refs=new Set(acceptedCandidates(family).map((row)=>row.candidateRef));
+ return Architecture.targetRealizations(state.architecture).filter((row)=>refs.has(row.candidateRef));
+}
+function proofRows(family){
+ return realizationRows(family).flatMap((row)=>row.proofs.map((proof)=>({realization:row,proof})));
+}
+function lensHref(family,row){
+ if(!row?.screenRef)return null;
+ return Catalog.lensHref(family.entry.subject,{build:'main',screen:row.screenRef,element:row.elementRef});
+}
+function styleClass(row){
+ const value=String(row.style??'').toLowerCase();
+ if(value.includes('danger'))return 'danger';
+ if(value.includes('primary'))return 'primary';
+ if(value.includes('secondary'))return 'secondary';
+ return '';
+}
+function occurrenceMap(inventory){
+ return new Map(inventory.occurrences.map((row)=>[row.elementRef,row]));
+}
+function specimenElement(row,inventory,depth){
+ if(!row)return h('div',{class:'sp-unknown'},'No source specimen');
+ const map=occurrenceMap(inventory);
+ const children=row.childElementRefs.map((ref)=>map.get(ref)).filter(Boolean);
+ const kids=()=>children.slice(0,8).map((child)=>specimenElement(child,inventory,(depth??0)+1));
+ let node;
+ switch(row.kind){
+  case 'BUTTON':case 'FAB':case 'MENU_ITEM':{
+   node=h('button',{type:'button',class:'sp-button '+styleClass(row),onclick:()=>{state.previewMessage='Activated locally: '+row.label+' · no Product effect was run.';renderPreviewToast();}},row.label);
+   break;
+  }
+  case 'TOGGLE':{
+   node=h('button',{type:'button',class:'sp-toggle','aria-pressed':'false',onclick:(event)=>{const button=event.currentTarget;const on=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',on?'true':'false');button.classList.toggle('on',on);state.previewMessage='Toggled local specimen '+(on?'on':'off')+' · Product State was not changed.';renderPreviewToast();}},h('span',{},row.label),h('span',{class:'sp-switch','aria-hidden':'true'}));
+   break;
+  }
+  case 'FIELD':node=h('input',{class:'sp-field',placeholder:row.label,'aria-label':row.label});break;
+  case 'TEXT':node=h('p',{class:'sp-text '+(String(row.textRole??'').toUpperCase().includes('TITLE')?'sp-title':'')},row.label);break;
+  case 'IMAGE':node=h('div',{class:'sp-image'},row.label);break;
+  case 'CARD':node=h('div',{class:'sp-card'},kids().length?kids():h('span',{class:'sp-text'},row.label));break;
+  case 'ROW':case 'STACK':node=h('div',{class:'sp-row'},kids().length?kids():h('span',{class:'sp-text'},row.label));break;
+  case 'COLUMN':case 'MENU':node=h('div',{class:'sp-column'},kids().length?kids():h('span',{class:'sp-text'},row.label));break;
+  case 'REGION':case 'FRAME':node=h('div',{class:row.kind==='FRAME'?'sp-frame':'sp-region'},kids().length?kids():h('span',{class:'sp-text'},row.label));break;
+  case 'DIALOG':node=h('div',{class:'sp-dialog'},h('strong',{},row.label),kids());break;
+  case 'SHEET':node=h('div',{class:'sp-sheet'},h('strong',{},row.label),kids());break;
+  case 'SEAM':node=h('div',{class:'sp-seam',title:row.label});break;
+  case 'HANDLE':node=h('div',{class:'sp-handle',title:row.label},'↕');break;
+  default:node=h('div',{class:'sp-unknown'},row.kind+' · '+row.label);
+ }
+ node.dataset.kind=row.kind;
+ node.title=[row.elementRef,row.style,row.intent].filter(Boolean).join('\n');
+ return node;
+}
+function blueprintSpecimen(node){
+ const fake={
+  kind:node.source.kind,label:node.source.label,style:node.presentation.styleOrNull,textRole:node.presentation.textRoleOrNull,
+  childElementRefs:[],interactions:node.presentation.interactions,
+ };
+ return specimenElement(fake,{occurrences:[]},0);
+}
+function renderPreviewToast(){
+ const target=document.getElementById('preview-toast');
+ if(target)target.textContent=state.previewMessage;
+}
+function familyCard(row){
+ const button=h('button',{type:'button',class:'family'+(state.selectedKey===row.key?' on':''),onclick:()=>{state.selectedKey=row.key;state.occurrenceIndex=0;state.evidence='ABOUT';render();}},
+  h('div',{class:'top'},h('strong',{},human(row.component.kind)),h('span',{class:'product'},row.entry.subject.label)),
+  h('div',{class:'meta'},h('span',{},count(row.occurrences.length)+' examples'),h('span',{},count(row.component.styles.length)+' styles'),acceptedCandidates(row).length?h('span',{class:'badge good'},'portable relationship'):null),
+  h('div',{class:'ref'},row.component.componentRef)
+ );
  return button;
 }
-function tableFor(component){
- const rows=occurrenceRows(component);
- if(!rows.length)return h('div',{class:'empty'},'No occurrences match the current surface filter.');
- return h('div',{class:'table-wrap'},h('table',{},
-  h('thead',{},h('tr',{},['Where used','Element','Style / role','Localization','Realization','Source',''].map((label)=>h('th',{},label)))),
-  h('tbody',{},rows.map((row)=>{
-   const href=lensHref(row);
-   return h('tr',{},
-    h('td',{},h('b',{},row.surfaceLabel),h('span',{class:'sub mono'},row.surfaceRef)),
-    h('td',{class:'value'},h('span',{},row.label),h('span',{class:'sub mono'},row.elementRef),row.childElementRefs.length?h('span',{class:'sub'},count(row.childElementRefs.length)+' direct children'):null),
-    h('td',{},row.style?h('span',{class:'pill'},row.style):h('span',{class:'sub'},'default'),row.textRole?h('span',{class:'sub'},human(row.textRole)):null,row.intent?h('span',{class:'sub value'},row.intent):null),
-    h('td',{},row.localization.sourceStringRefs.length?h('b',{},count(row.localization.sourceStringRefs)+' string '+(row.localization.sourceStringRefs.length===1?'binding':'bindings')):h('span',{class:'sub'},row.localization.state.replaceAll('_',' ').toLowerCase()),row.localization.resourceRef?h('span',{class:'sub mono'},row.localization.resourceRef):null),
-    h('td',{},row.realization.realizedBy.length?row.realization.realizedBy.slice(0,3).map((value)=>h('span',{class:'sub mono'},value)):h('span',{class:'sub'},'No direct realizer projected'),row.realization.realizedBy.length>3?h('span',{class:'sub'},'+'+(row.realization.realizedBy.length-3)+' more'):null),
-    h('td',{class:'value'},row.sourcePath?h('code',{},row.sourcePath):h('span',{class:'sub'},'Surface source not projected')),
-    h('td',{},href?h('a',{class:'open',href},'Open in Lens'):h('span',{class:'sub'},'Chrome occurrence'))
-   );
-  }))
+function libraryPanel(){
+ const rows=visibleFamilies();
+ const search=h('input',{class:'search',type:'search',placeholder:'Find a component, style, intent, or screen',value:state.query,'aria-label':'Search component library',oninput:(event)=>{state.query=event.target.value;render();}});
+ const product=h('select',{'aria-label':'Filter Product',onchange:(event)=>{state.product=event.target.value;state.selectedKey=null;state.occurrenceIndex=0;render();}},
+  h('option',{value:'',selected:!state.product},'All Products'),
+  inventoryEntries().map((entry)=>h('option',{value:entry.slug,selected:state.product===entry.slug},entry.subject.label))
+ );
+ return h('aside',{class:'panel library'},h('div',{class:'panel-head'},h('h2',{},'Library'),h('span',{class:'spacer'}),h('span',{class:'badge'},count(rows.length))),h('div',{class:'panel-body'},search,h('div',{class:'filters'},product,h('select',{'aria-label':'Library meaning'},h('option',{},'Source-grounded'))),h('div',{class:'family-list'},rows.map(familyCard))));
+}
+function edgeEvidence(row){
+ const items=[];
+ if(row.visibleWhen)items.push(['visible when',row.visibleWhen]);
+ if(row.alwaysVisible)items.push(['always visible','source-authored']);
+ for(const ref of row.realization.presenceRefs)items.push(['presence',ref]);
+ for(const ref of row.realization.conditionRefs)items.push(['condition',ref]);
+ for(const value of row.interactions)items.push(['interaction',value]);
+ if(row.childElementRefs.length)items.push(['children',String(row.childElementRefs.length)]);
+ if(row.localization.sourceStringRefs.length)items.push(['localized',String(row.localization.sourceStringRefs.length)+' bindings']);
+ if(!items.length)items.push(['state','no explicit state/condition projected']);
+ items.push(['accessibility',human(row.accessibility.state)]);
+ return items;
+}
+function evidenceSection(family,row){
+ const tabs=['ABOUT','WHERE_USED','REALIZATIONS','PROOF','SOURCE'];
+ const tabBar=h('div',{class:'evidence-tabs'},tabs.map((key)=>h('button',{type:'button',class:'tab'+(state.evidence===key?' on':''),onclick:()=>{state.evidence=key;render();}},human(key))));
+ let body=[];
+ if(state.evidence==='ABOUT'){
+  body=[
+   h('div',{class:'evidence-row'},h('strong',{},'What it does'),h('span',{class:'sub'},[row.intent,row.actionKey,row.call,row.navigatesTo].filter(Boolean).join(' · ')||'No behavior relationship projected for this occurrence.')),
+   h('div',{class:'evidence-row'},h('strong',{},'Relationships'),h('span',{class:'sub'},[row.semanticRole,row.slot,row.layer,row.parentElementRef].filter(Boolean).join(' · ')||'No additional relationship metadata.')),
+   h('div',{class:'evidence-row'},h('strong',{},'Localization / accessibility'),h('span',{class:'sub'},row.localization.sourceStringRefs.length+' string refs · '+human(row.accessibility.state))),
+  ];
+ }else if(state.evidence==='WHERE_USED'){
+  body=family.occurrences.map((item)=>h('div',{class:'evidence-row'},h('strong',{},item.surfaceLabel+' · '+item.label),h('span',{class:'sub'},item.elementRef),h('span',{class:'sub'},item.sourcePath??'Source path not projected')));
+ }else if(state.evidence==='REALIZATIONS'){
+  const rows=realizationRows(family);
+  body=rows.length?rows.map((item)=>h('div',{class:'evidence-row'},h('strong',{},candidateName(item.candidateRef)+' → '+item.platformRef+' / '+item.framework),h('span',{class:'sub'},item.state+' · '+short(item.commit)),h('span',{class:'sub'},item.realizationRef))):[h('div',{class:'evidence-row'},'No accepted portable realization is attached to this source family yet.')];
+ }else if(state.evidence==='PROOF'){
+  const rows=proofRows(family);
+  body=rows.length?rows.map(({realization,proof})=>h('div',{class:'evidence-row'},h('strong',{},proof.proofRef+' · '+proof.state),h('span',{class:'sub'},realization.platformRef+' · '+short(realization.commit)),h('span',{class:'sub'},proof.note))):[h('div',{class:'evidence-row'},'No target proof is attached through an accepted portable relationship yet.')];
+ }else{
+  body=[
+   h('div',{class:'evidence-row'},h('strong',{},row.sourcePath??'Source path not projected'),h('span',{class:'sub'},row.elementRef)),
+   h('div',{class:'evidence-row'},h('strong',{},family.entry.inventory.sourceSnapshot.repositoryRef+' @ '+short(family.entry.inventory.sourceSnapshot.commit)),h('span',{class:'sub'},family.entry.inventory.sourceSnapshot.lensRef)),
+  ];
+ }
+ return h('section',{class:'evidence'},tabBar,h('div',{class:'evidence-body'},body));
+}
+function candidateName(ref){return state.architecture.candidates.find((row)=>row.candidateRef===ref)?.label??ref}
+function inspectorPanel(family,row){
+ const accepted=acceptedCandidates(family),held=heldCandidates(family),realizations=realizationRows(family);
+ const disposition=accepted.length?'Portable relationship available':held.length?'Portability held':'Source-bound';
+ const dispositionClass=accepted.length?'good':held.length?'held':'';
+ const href=lensHref(family,row);
+ return h('aside',{class:'panel inspector'},
+  h('div',{class:'panel-head'},h('h2',{},'Item information'),h('span',{class:'spacer'}),h('span',{class:'badge '+dispositionClass},disposition)),
+  h('div',{class:'panel-body'},
+   h('h3',{},'Identity'),h('div',{class:'kv'},h('span',{class:'k'},'Product'),h('span',{class:'v'},family.entry.subject.label),h('span',{class:'k'},'Family'),h('code',{class:'v'},family.component.componentRef),h('span',{class:'k'},'Element'),h('code',{class:'v'},row.elementRef),h('span',{class:'k'},'Source'),h('span',{class:'v'},row.sourcePath??'Not projected')),
+   h('h3',{},'Portable relationships'),accepted.length?h('div',{class:'chips'},accepted.map((item)=>h('span',{class:'chip good'},item.label))):h('p',{},held.length?'A related portable contract is held; this item stays source-grounded.':'No accepted portable relationship is attached to this source family yet.'),
+   held.length?h('div',{class:'chips'},held.map((item)=>h('span',{class:'chip held'},item.label+' · HELD'))):null,
+   h('h3',{},'Target reach'),h('p',{},realizations.length?realizations.length+' accepted relationship realization records can inform A6.':'No cross-target realization can be claimed from this family yet.'),
+   h('h3',{},'Edge / state evidence'),h('div',{class:'chips'},edgeEvidence(row).map(([kind,value])=>h('span',{class:'chip'},kind+': '+value))),
+   h('div',{class:'inspector-actions'},h('button',{class:'btn primary',onclick:()=>addSelectedToStudio(null)},'Place in Studio'),h('button',{class:'btn',disabled:!canPlaceInsideSelected(),onclick:()=>addSelectedToStudio(state.studio.selectedNodeRef)},'Place inside selected'),href?h('a',{class:'btn',href},'Open full Lens'):null),
+   evidenceSection(family,row)
+  )
+ );
+}
+function galleryStage(family,row){
+ const select=h('select',{'aria-label':'Source example',onchange:(event)=>{state.occurrenceIndex=Number(event.target.value);render();}},family.occurrences.map((item,index)=>h('option',{value:String(index),selected:index===state.occurrenceIndex},occurrenceLabel(item,index))));
+ return h('section',{class:'panel stage'},
+  h('div',{class:'stage-top'},h('div',{},h('h2',{},human(family.component.kind)),h('p',{},'One real source occurrence in isolation. Cycle examples to see actual source differences instead of an invented component taxonomy.')),h('div',{class:'actions'},h('button',{class:'btn soft',onclick:()=>{state.mode='STUDIO';render();}},'Open Studio'))),
+  h('div',{class:'example-bar'},h('label',{},'Source example'),select,h('span',{class:'counter'},(state.occurrenceIndex+1)+' / '+family.occurrences.length)),
+  h('div',{class:'specimen-wrap'},h('div',{class:'specimen-stage'},h('span',{class:'specimen-note'},'relationship specimen · not native pixel parity'),h('div',{class:'specimen-tree'},specimenElement(row,family.entry.inventory,0)))),
+  h('div',{id:'preview-toast',class:'preview-toast'},state.previewMessage),
+  h('div',{class:'edge-strip'},edgeEvidence(row).map(([kind,value])=>h('span',{class:'edge'+(String(value).includes('no explicit')?' absent':'')},kind+' · '+value)))
+ );
+}
+function renderGallery(){
+ const family=selectedFamily(),row=selectedOccurrence();
+ if(!family||!row){app.replaceChildren(hero(),modeTabs(),h('div',{class:'panel panel-body'},'No component inventories are available.'));return;}
+ app.replaceChildren(hero(),modeTabs(),h('div',{class:'shell'},libraryPanel(),galleryStage(family,row),inspectorPanel(family,row)));
+}
+function hero(){
+ return h('section',{class:'hero'},h('div',{},h('h1',{},'Component Library'),h('p',{},'Browse source-grounded specimens like tools in a building catalog. Inspect one in isolation, exercise local preview behavior, then move into Builder when you want to compose a full UI Blueprint.')),h('div',{class:'truth'},h('span',{class:'badge good'},'AI required: No'),h('span',{class:'badge'},'A5 Gallery + Builder'),h('span',{class:'badge'},'A6 generates target code'),h('a',{class:'btn soft',href:'./builder.html'},'Open Builder')));
+}
+function modeTabs(){
+ return h('div',{class:'mode-tabs','aria-label':'Component Library mode'},h('button',{class:'tab'+(state.mode==='GALLERY'?' on':''),onclick:()=>{state.mode='GALLERY';render();}},'Gallery'),h('button',{class:'tab'+(state.mode==='STUDIO'?' on':''),onclick:()=>{state.mode='STUDIO';render();}},'Studio'));
+}
+function siblingNodes(parentRef){
+ return state.studio.nodes.filter((node)=>node.parentNodeRefOrNull===parentRef).sort((a,b)=>a.siblingOrder-b.siblingOrder||a.nodeRef.localeCompare(b.nodeRef));
+}
+function canPlaceInsideSelected(){
+ const node=state.studio.nodes.find((item)=>item.nodeRef===state.studio.selectedNodeRef);
+ return Boolean(node&&CONTAINER_KINDS.has(node.source.kind));
+}
+function nextSiblingOrder(parentRef){return siblingNodes(parentRef).length}
+function addSelectedToStudio(parentRef){
+ const family=selectedFamily(),row=selectedOccurrence();
+ if(!family||!row)return;
+ if(parentRef&&!canPlaceInsideSelected()){state.previewMessage='Select a container-like Studio node before placing inside it.';render();return;}
+ const nodeRef='studio.node.'+state.studio.nextIndex++;
+ const node=Studio.studioNodeFromOccurrence({nodeRef,inventory:family.entry.inventory,occurrenceRef:row.occurrenceRef,architectureCatalog:state.architecture,parentNodeRefOrNull:parentRef,siblingOrder:nextSiblingOrder(parentRef)});
+ state.studio.nodes.push(node);
+ state.studio.selectedNodeRef=nodeRef;
+ state.mode='STUDIO';
+ render();
+}
+function normalizeSiblingOrders(parentRef){
+ const siblings=siblingNodes(parentRef);
+ state.studio.nodes=state.studio.nodes.map((node)=>{
+  const index=siblings.findIndex((item)=>item.nodeRef===node.nodeRef);
+  return index<0?node:{...node,siblingOrder:index};
+ });
+}
+function moveNode(direction){
+ const node=state.studio.nodes.find((item)=>item.nodeRef===state.studio.selectedNodeRef);if(!node)return;
+ const siblings=siblingNodes(node.parentNodeRefOrNull);
+ const index=siblings.findIndex((item)=>item.nodeRef===node.nodeRef);
+ const target=index+direction;
+ if(target<0||target>=siblings.length)return;
+ const other=siblings[target];
+ state.studio.nodes=state.studio.nodes.map((item)=>{
+  if(item.nodeRef===node.nodeRef)return {...item,siblingOrder:other.siblingOrder};
+  if(item.nodeRef===other.nodeRef)return {...item,siblingOrder:node.siblingOrder};
+  return item;
+ });
+}
+function descendants(ref){
+ const out=new Set([ref]);
+ let changed=true;
+ while(changed){changed=false;for(const node of state.studio.nodes){if(node.parentNodeRefOrNull&&out.has(node.parentNodeRefOrNull)&&!out.has(node.nodeRef)){out.add(node.nodeRef);changed=true;}}}
+ return out;
+}
+function removeSelectedNode(){
+ const ref=state.studio.selectedNodeRef;if(!ref)return;
+ const remove=descendants(ref);
+ const parent=state.studio.nodes.find((node)=>node.nodeRef===ref)?.parentNodeRefOrNull??null;
+ state.studio.nodes=state.studio.nodes.filter((node)=>!remove.has(node.nodeRef));
+ state.studio.selectedNodeRef=null;
+ normalizeSiblingOrders(parent);
+ render();
+}
+function studioNodeElement(node){
+ const children=siblingNodes(node.nodeRef);
+ const selected=state.studio.selectedNodeRef===node.nodeRef;
+ return h('div',{class:'studio-node'+(selected?' on':''),onclick:(event)=>{event.stopPropagation();state.studio.selectedNodeRef=node.nodeRef;render();}},
+  h('div',{class:'studio-node-head'},h('strong',{},human(node.source.kind)+' · '+node.source.label),h('span',{class:'badge'},node.portable.disposition.replaceAll('_',' ').toLowerCase()),h('span',{class:'spacer'}),h('button',{title:'Move up',onclick:(event)=>{event.stopPropagation();moveNode(-1);render();}},'↑'),h('button',{title:'Move down',onclick:(event)=>{event.stopPropagation();moveNode(1);render();}},'↓')),
+  h('div',{class:'specimen-tree'},blueprintSpecimen(node)),
+  children.length?h('div',{class:'studio-children'},children.map(studioNodeElement)):null
+ );
+}
+function studioBlueprint(){
+ return Studio.createStudioBlueprint({blueprintRef:'studio.blueprint.'+slug(state.studio.label),label:state.studio.label,nodes:state.studio.nodes});
+}
+function exportBlueprint(){
+ const blueprint=studioBlueprint();
+ const blob=new Blob([Studio.studioBlueprintBytes(blueprint)],{type:'application/json'});
+ const url=URL.createObjectURL(blob);
+ const link=document.createElement('a');link.href=url;link.download=slug(blueprint.label)+'.component-studio.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function importBlueprint(){importInput.value='';importInput.click()}
+importInput.addEventListener('change',async()=>{
+ const file=importInput.files?.[0];if(!file)return;
+ try{
+  const blueprint=Studio.normalizeStudioBlueprint(JSON.parse(await file.text()));
+  state.studio.label=blueprint.label;state.studio.nodes=blueprint.nodes.map((node)=>structuredClone(node));state.studio.selectedNodeRef=blueprint.rootNodeRefs[0]??null;
+  const ids=state.studio.nodes.map((node)=>Number(node.nodeRef.match(/(\d+)$/)?.[1]??0));state.studio.nextIndex=Math.max(0,...ids)+1;state.mode='STUDIO';render();
+ }catch(error){alert('Studio Blueprint could not be imported: '+error.message)}
+});
+function studioInspector(){
+ const blueprint=studioBlueprint();
+ const node=state.studio.nodes.find((item)=>item.nodeRef===state.studio.selectedNodeRef)??null;
+ return h('aside',{class:'panel inspector'},h('div',{class:'panel-head'},h('h2',{},'Blueprint'),h('span',{class:'spacer'}),h('span',{class:'badge good'},'AI required: No')),h('div',{class:'panel-body'},
+  h('h3',{},'Composition'),h('div',{class:'kv'},h('span',{class:'k'},'Nodes'),h('span',{class:'v'},blueprint.summary.nodeCount),h('span',{class:'k'},'Portable'),h('span',{class:'v'},blueprint.summary.portableRelationshipAvailableCount),h('span',{class:'k'},'Held'),h('span',{class:'v'},blueprint.summary.portabilityHeldCount),h('span',{class:'k'},'Source-bound'),h('span',{class:'v'},blueprint.summary.sourceBoundCount)),
+  node?h('div',{},h('h3',{},'Selected node'),h('div',{class:'kv'},h('span',{class:'k'},'Node'),h('code',{class:'v'},node.nodeRef),h('span',{class:'k'},'Source'),h('code',{class:'v'},node.source.occurrenceRef),h('span',{class:'k'},'Parent'),h('code',{class:'v'},node.parentNodeRefOrNull??'ROOT'),h('span',{class:'k'},'Order'),h('span',{class:'v'},node.siblingOrder),h('span',{class:'k'},'Portability'),h('span',{class:'v'},human(node.portable.disposition))),h('div',{class:'inspector-actions'},h('button',{class:'btn',onclick:removeSelectedNode},'Remove'),h('button',{class:'btn',disabled:!canPlaceInsideSelected(),onclick:()=>{state.mode='GALLERY';render();}},'Browse child to add'))):h('p',{},'Select a node on the canvas to inspect its source and placement relationships.'),
+  h('h3',{},'Deterministic export'),h('p',{},'Save is JSON, not generated target code. A6 consumes this relationship blueprint through target adapters.'),h('pre',{class:'blueprint'},Studio.studioBlueprintBytes(blueprint))
  ));
 }
-function detail(component){
- const rows=Components.occurrencesForComponent(state.inventory,component.componentRef);
- return h('section',{class:'detail'},
-  h('div',{class:'detail-head'},
-   h('div',{},h('h2',{},human(component.kind)),h('p',{},'Observed Product source family. This groups current Screen Lens element-kind occurrences for discovery and where-used; it is not yet an accepted cross-platform portable component.'),
-    h('div',{class:'facts'},h('span',{class:'fact'},component.meaningState.replaceAll('_',' ').toLowerCase()),h('span',{class:'fact'},'portability: '+component.portability.toLowerCase()),h('span',{class:'fact'},count(rows.length)+' occurrences'),h('span',{class:'fact'},count(component.styles.length)+' styles'),h('span',{class:'fact'},count(component.localizationSourceStringRefs.length)+' source-string links'),h('span',{class:'fact'},'accessibility: '+component.accessibilityState.toLowerCase().replaceAll('_',' ')))),
-   h('code',{class:'mono'},component.componentRef)),
-  tableFor(component));
+function renderStudio(){
+ const roots=siblingNodes(null);
+ const label=h('input',{type:'text',value:state.studio.label,'aria-label':'Studio blueprint name',oninput:(event)=>{state.studio.label=event.target.value||'Untitled composition';}});
+ app.replaceChildren(hero(),modeTabs(),h('div',{class:'studio-shell'},libraryPanel(),h('section',{class:'panel studio-canvas'},h('div',{class:'studio-toolbar'},label,h('button',{class:'btn primary',onclick:exportBlueprint},'Save blueprint'),h('button',{class:'btn',onclick:importBlueprint},'Import blueprint'),h('button',{class:'btn',onclick:()=>{state.studio.nodes=[];state.studio.selectedNodeRef=null;state.studio.nextIndex=1;render();}},'Clear'),h('span',{class:'badge'},'target code: A6')),h('div',{class:'canvas',onclick:()=>{state.studio.selectedNodeRef=null;render();}},roots.length?h('div',{class:'studio-tree'},roots.map(studioNodeElement)):h('div',{class:'canvas-empty'},h('div',{},h('strong',{},'Place something from the Library'),h('span',{},'Choose an item, inspect its specimen, then place it at the root or inside a selected container.'))))),studioInspector()));
 }
-function viewTabs(){
- const source=h('button',{type:'button',class:'view-tab'+(state.view==='SOURCE'?' on':'')},'Source families');
- const architecture=h('button',{type:'button',class:'view-tab'+(state.view==='ARCHITECTURE'?' on':'')},'Architecture');
- const realizations=h('button',{type:'button',class:'view-tab'+(state.view==='REALIZATIONS'?' on':'')},'Realizations');
- source.onclick=()=>{state.view='SOURCE';state.query='';syncUrl();render();};
- architecture.onclick=()=>{state.view='ARCHITECTURE';state.query='';syncUrl();render();};
- realizations.onclick=()=>{state.view='REALIZATIONS';state.query='';syncUrl();render();};
- return h('div',{class:'view-tabs','aria-label':'Component Library view'},source,architecture,realizations);
-}
-function visibleArchitecture(){
- let rows=state.query?Architecture.searchComponentArchitecture(state.architecture,state.query,{limit:500}):state.architecture.candidates;
- if(state.architectureClass)rows=rows.filter((row)=>row.class===state.architectureClass);
- return rows;
-}
-function architectureCard(candidate){
- const results=Architecture.targetPressuresForCandidate(state.architecture,candidate.candidateRef);
- const button=h('button',{type:'button',class:'family'+(state.selectedArchitecture===candidate.candidateRef?' on':'')},
-  h('div',{class:'top'},h('h2',{},candidate.label),h('span',{class:'pill'},candidate.formation?'A3 '+candidate.formation.state.replaceAll('_',' '):candidate.state.replaceAll('_',' '))),
-  h('div',{class:'counts'},h('span',{},h('b',{},candidate.class),' class'),h('span',{},h('b',{},count(candidate.sourceEvidence.length)),' source witnesses'),h('span',{},h('b',{},candidate.formation?human(candidate.formation.kind):'Evidence only'),' formation'),h('span',{},h('b',{},count(results.length)),' target results')),
-  h('div',{class:'sub'},candidate.candidateRef));
- button.onclick=()=>{state.selectedArchitecture=candidate.candidateRef;syncUrl();render();requestAnimationFrame(()=>document.querySelector('.detail')?.scrollIntoView({block:'nearest'}));};
- return button;
-}
-function listBlock(title,rows){
- return h('div',{style:'padding:0 22px 18px'},h('b',{},title),rows.length?h('ul',{style:'margin:8px 0 0;padding-left:20px;color:var(--muted)'},rows.map((row)=>h('li',{},row))):h('span',{class:'sub'},'None declared.'));
-}
-function formationBlock(candidate){
- const formation=candidate.formation;
- if(!formation)return h('div',{style:'padding:0 22px 18px'},h('b',{},'A3 formation'),h('span',{class:'sub'},'Not in the bounded A3 formation set yet. Evidence remains available without forcing a portable contract.'));
- return h('div',{style:'padding:0 22px 18px'},
-  h('div',{class:'top',style:'margin-bottom:10px'},h('b',{},'A3 formation'),h('span',{class:'pill'},formation.state)),
-  h('div',{class:'facts'},h('span',{class:'fact'},human(formation.kind)),h('span',{class:'fact'},count(formation.sourceOwnerRefs.length)+' source owners')),
-  h('p',{style:'color:var(--muted);margin:10px 0 14px'},formation.ownerRule),
-  listBlock('Portable fields',formation.portableFields),
-  listBlock('Explicit non-ownership',formation.nonOwnership),
-  listBlock('Target obligations',formation.targetObligations),
-  listBlock('Acceptance proof still required',formation.acceptanceProofs),
-  formation.note?h('div',{class:'boundary',style:'margin-top:10px'},h('b',{},'Formation note: '),formation.note):null
- );
-}
-function targetPressureBlock(candidate){
- const results=Architecture.targetPressuresForCandidate(state.architecture,candidate.candidateRef);
- if(!results.length)return h('div',{style:'padding:0 22px 18px'},h('b',{},'Target pressure results'),h('span',{class:'sub'},'No target experiment is formed for this candidate yet.'));
- const rows=results.flatMap((pressure)=>pressure.relationships.map((relation)=>({pressure,relation})));
- return h('div',{style:'padding:0 0 18px'},
-  h('div',{style:'padding:0 22px 10px'},h('b',{},'Target pressure results'),h('span',{class:'sub'},'Reference pressure is evidence, not portable acceptance or native proof.')),
-  h('div',{class:'table-wrap'},h('table',{},
-   h('thead',{},h('tr',{},['Target','Pressure state','Relationship','Disposition','Target mapping','Proof'].map((label)=>h('th',{},label)))),
-   h('tbody',{},rows.map(({pressure,relation})=>{
-    const passed=pressure.proofs.filter((proof)=>proof.state==='PASS').length;
-    const owed=pressure.proofs.filter((proof)=>proof.state==='OWED').length;
-    const held=pressure.proofs.filter((proof)=>proof.state==='HELD').length;
-    return h('tr',{},
-     h('td',{},h('b',{},pressure.platformRef),h('span',{class:'sub'},pressure.framework),h('span',{class:'sub mono'},short(pressure.commit))),
-     h('td',{},h('span',{class:'pill'},pressure.state.replaceAll('_',' ')),h('span',{class:'sub mono'},pressure.pressureRef)),
-     h('td',{class:'value'},h('code',{},relation.relationRef),h('span',{class:'sub'},relation.source)),
-     h('td',{},h('span',{class:'pill'},relation.disposition.replaceAll('_',' '))),
-     h('td',{class:'value'},relation.target),
-     h('td',{},h('b',{},passed+' pass'),owed?h('span',{class:'sub'},owed+' owed'):null,held?h('span',{class:'sub'},held+' held'):null)
-    );
-   }))
-  )),
-  h('div',{style:'padding:10px 22px 0'},results.map((pressure)=>h('div',{class:'source-chip'},pressure.repositoryRef,' · ',h('code',{},pressure.path))))
- );
-}
-function architectureDetail(candidate){
- const results=Architecture.targetPressuresForCandidate(state.architecture,candidate.candidateRef);
- return h('section',{class:'detail'},
-  h('div',{class:'detail-head'},
-   h('div',{},h('h2',{},candidate.label),h('p',{},candidate.question),
-    h('div',{class:'facts'},h('span',{class:'fact'},candidate.class.toLowerCase()),h('span',{class:'fact'},candidate.state.toLowerCase().replaceAll('_',' ')),h('span',{class:'fact'},count(candidate.sourceEvidence.length)+' witnesses'),h('span',{class:'fact'},count(results.length)+' target results'))),
-   h('code',{class:'mono'},candidate.candidateRef)),
-  listBlock('Observed candidate relationships',candidate.portableRelationships),
-  listBlock('Observed obligations',candidate.obligations),
-  listBlock('Candidate must not own',candidate.mustNotOwn),
-  formationBlock(candidate),
-  listBlock('Target pressure questions',candidate.targetPressure),
-  targetPressureBlock(candidate),
-  h('div',{class:'table-wrap'},h('table',{},
-   h('thead',{},h('tr',{},['Repository','Source','Symbols','Why it matters'].map((label)=>h('th',{},label)))),
-   h('tbody',{},candidate.sourceEvidence.map((row)=>h('tr',{},
-    h('td',{},h('code',{},row.repositoryRef),h('span',{class:'sub mono'},short(row.commit))),
-    h('td',{class:'value'},h('code',{},row.path)),
-    h('td',{},row.symbols.map((symbol)=>h('span',{class:'sub mono'},symbol))),
-    h('td',{class:'value'},row.why)
-   )))
-  )),
-  candidate.note?h('div',{class:'boundary',style:'margin:18px 22px'},h('b',{},'Working note: '),candidate.note):null
- );
-}
-function candidateLabel(candidateRef){
- return state.architecture.candidates.find((row)=>row.candidateRef===candidateRef)?.label??candidateRef;
-}
-function visibleRealizations(){
- let rows=Architecture.targetRealizations(state.architecture);
- if(state.query){
-  const needle=state.query.toLowerCase();
-  rows=rows.filter((row)=>[
-   row.realizationRef,row.candidateRef,candidateLabel(row.candidateRef),row.platformRef,row.framework,row.pressureState,
-   row.repositoryRef,row.commit,row.path,
-   ...row.relationships.flatMap((relation)=>[relation.relationRef,relation.disposition,relation.source,relation.target]),
-   ...row.proofs.flatMap((proof)=>[proof.proofRef,proof.state,proof.note]),
-   row.note
-  ].filter(Boolean).join('\n').toLowerCase().includes(needle));
- }
- if(state.realizationPlatform)rows=rows.filter((row)=>row.platformRef===state.realizationPlatform);
- return rows;
-}
-function realizationCard(realization){
- const mapped=realization.relationCounts.MAPPED??0;
- const held=(realization.relationCounts.HELD??0)+(realization.relationCounts.UNSUPPORTED??0);
- const passed=realization.proofCounts.PASS??0;
- const owed=(realization.proofCounts.OWED??0)+(realization.proofCounts.HELD??0);
- const button=h('button',{type:'button',class:'family'+(state.selectedRealization===realization.realizationRef?' on':'')},
-  h('div',{class:'top'},h('h2',{},candidateLabel(realization.candidateRef)),h('span',{class:'pill'},realization.pressureState.replaceAll('_',' '))),
-  h('div',{class:'counts'},h('span',{},h('b',{},realization.platformRef),' target'),h('span',{},h('b',{},mapped),' mapped'),h('span',{},h('b',{},held),' held/unsupported'),h('span',{},h('b',{},passed),' proof pass'),owed?h('span',{},h('b',{},owed),' proof debt'):null),
-  h('div',{class:'sub'},realization.framework+' · '+realization.realizationRef));
- button.onclick=()=>{state.selectedRealization=realization.realizationRef;syncUrl();render();requestAnimationFrame(()=>document.querySelector('.detail')?.scrollIntoView({block:'nearest'}));};
- return button;
-}
-function realizationDetail(realization){
- return h('section',{class:'detail'},
-  h('div',{class:'detail-head'},
-   h('div',{},h('h2',{},candidateLabel(realization.candidateRef)),h('p',{},'Derived A4 realization evidence for one accepted portable relationship. This preserves the exact target-pressure state; it does not promote reference compatibility or source formation into native acceptance.'),
-    h('div',{class:'facts'},h('span',{class:'fact'},realization.platformRef),h('span',{class:'fact'},realization.framework),h('span',{class:'fact'},human(realization.pressureState)),h('span',{class:'fact'},'source '+short(realization.commit)))),
-   h('code',{class:'mono'},realization.realizationRef)),
-  h('div',{style:'padding:16px 22px'},h('b',{},'Exact target source'),h('div',{class:'source',style:'margin-top:8px'},h('span',{class:'source-chip'},realization.repositoryRef),h('span',{class:'source-chip'},h('code',{},realization.path)),h('span',{class:'source-chip'},h('code',{},realization.commit)))),
-  h('div',{class:'table-wrap'},h('table',{},
-   h('thead',{},h('tr',{},['Relationship','Disposition','Source meaning','Target realization'].map((label)=>h('th',{},label)))),
-   h('tbody',{},realization.relationships.map((relation)=>h('tr',{},
-    h('td',{class:'value'},h('code',{},relation.relationRef)),
-    h('td',{},h('span',{class:'pill'},relation.disposition.replaceAll('_',' '))),
-    h('td',{class:'value'},relation.source),
-    h('td',{class:'value'},relation.target)
-   )))
-  )),
-  h('div',{class:'table-wrap'},h('table',{},
-   h('thead',{},h('tr',{},['Proof','State','What this proves / still owes'].map((label)=>h('th',{},label)))),
-   h('tbody',{},realization.proofs.map((proof)=>h('tr',{},
-    h('td',{class:'value'},h('code',{},proof.proofRef)),
-    h('td',{},h('span',{class:'pill'},proof.state.replaceAll('_',' '))),
-    h('td',{class:'value'},proof.note)
-   )))
-  )),
-  realization.note?h('div',{class:'boundary',style:'margin:18px 22px'},h('b',{},'Target note: '),realization.note):null
- );
-}
-function renderRealizations({focusSearch=false}={}){
- const all=Architecture.targetRealizations(state.architecture);
- const rows=visibleRealizations();
- const byRef=new Map(all.map((row)=>[row.realizationRef,row]));
- if(state.selectedRealization&&!byRef.has(state.selectedRealization))state.selectedRealization=null;
- const selected=byRef.get(state.selectedRealization)??rows[0]??null;
- if(selected&&state.selectedRealization!==selected.realizationRef)state.selectedRealization=selected.realizationRef;
- const platforms=[...new Set(all.map((row)=>row.platformRef))].sort();
- const search=h('input',{type:'search',value:state.query,placeholder:'Find target, framework, relationship, source coordinate, or proof','aria-label':'Search target realizations'});
- search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
- const platform=h('select',{'aria-label':'Target platform'},h('option',{value:'',selected:!state.realizationPlatform},'All target platforms'),platforms.map((value)=>h('option',{value,selected:state.realizationPlatform===value},value)));
- platform.onchange=()=>{state.realizationPlatform=platform.value;state.selectedRealization=null;syncUrl();render();};
- const status=h('select',{'aria-label':'Realization authority'},h('option',{value:''},'Derived evidence · not native acceptance'));
- status.disabled=true;
- const acceptedCount=state.architecture.candidates.filter((row)=>row.state==='ACCEPTED_PORTABLE').length;
- const mapped=all.reduce((sum,row)=>sum+(row.relationCounts.MAPPED??0),0);
- const held=all.reduce((sum,row)=>sum+(row.relationCounts.HELD??0)+(row.relationCounts.UNSUPPORTED??0),0);
- const passed=all.reduce((sum,row)=>sum+(row.proofCounts.PASS??0),0);
- const owed=all.reduce((sum,row)=>sum+(row.proofCounts.OWED??0)+(row.proofCounts.HELD??0),0);
- app.replaceChildren(
-  h('section',{},
-   h('div',{class:'intro'},h('div',{},h('h1',{},'Target Realizations'),h('p',{},'How accepted portable relationships currently map into concrete target frameworks. This view is derived from the existing target-pressure evidence; it does not create another registry or turn reference/source proof into native acceptance.')),h('div',{class:'truth'},'derived realization evidence · ',h('strong',{},count(all.length)))),
-   h('div',{class:'boundary'},h('b',{},'A4 boundary: '),'Portable relationship ≠ target acceptance. Each record keeps mapped, held, unsupported and platform-specific relationships plus exact proof debt. Native compile/lived proof remains owned by the target claim.'),
-   h('div',{class:'summary'},metric(acceptedCount,'accepted portable'),metric(all.length,'realization evidence'),metric(platforms.length,'target platforms'),metric(mapped,'mapped relations'),metric(held,'held / unsupported'),metric(owed,'owed / held proofs')),
-   viewTabs()),
-  h('section',{class:'workspace'},h('div',{class:'controls'},search,platform,status),h('p',{class:'match'},count(rows.length)+' of '+count(all.length)+' realization evidence records in this view · '+count(passed)+' current PASS proofs overall.'),h('div',{class:'grid'},rows.map(realizationCard)),selected?realizationDetail(selected):h('div',{class:'empty'},'No target realizations match this view.')),
-  h('footer',{},'Realizations are derived from accepted A3 relationships plus their existing target-pressure records. They remain evidence/proof maps, not target semantic authority and not a claim that every native implementation is accepted.'));
- if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
-}
-function renderSource({focusSearch=false}={}){
- const inventory=state.inventory;
- const families=visibleFamilies();
- if(state.selected&&!inventory.components.some((row)=>row.componentRef===state.selected))state.selected=null;
- const selected=inventory.components.find((row)=>row.componentRef===state.selected)??families[0]??null;
- if(selected&&state.selected!==selected.componentRef)state.selected=selected.componentRef;
- const kinds=[...inventory.components.map((row)=>row.kind)].sort();
- const surfaces=[...new Map(inventory.occurrences.map((row)=>[row.surfaceRef,row.surfaceLabel])).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
- const inventorySubjects=[...state.inventories.keys()]
-  .map((slug)=>Catalog.subjectFor(state.catalog,slug))
-  .filter(Boolean)
-  .sort((a,b)=>a.label.localeCompare(b.label));
- const search=h('input',{type:'search',value:state.query,placeholder:'Find component kind, Screen, element, style, source, or realizer','aria-label':'Search source families'});
- search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
- const product=h('select',{'aria-label':'Product inventory'},inventorySubjects.map((subject)=>h('option',{value:subject.slug,selected:state.sourceSubject===subject.slug},subject.label)));
- product.onchange=()=>{
-  state.sourceSubject=product.value;
-  state.subject=Catalog.subjectFor(state.catalog,state.sourceSubject);
-  state.inventory=state.inventories.get(state.sourceSubject);
-  state.query='';
-  state.kind='';
-  state.surface='';
-  state.selected=null;
-  syncUrl();
-  render();
- };
- const kind=h('select',{'aria-label':'Component kind'},h('option',{value:'',selected:!state.kind},'All component families'),kinds.map((value)=>h('option',{value,selected:state.kind===value},human(value))));
- kind.onchange=()=>{state.kind=kind.value;syncUrl();render();};
- const surface=h('select',{'aria-label':'Where-used surface'},h('option',{value:'',selected:!state.surface},'All Screens / surfaces'),surfaces.map(([ref,label])=>h('option',{value:ref,selected:state.surface===ref},label)));
- surface.onchange=()=>{state.surface=surface.value;syncUrl();render();};
- app.replaceChildren(
-  h('section',{},
-   h('div',{class:'intro'},h('div',{},h('h1',{},'Component Gallery'),h('p',{},'What Vex already knows how to build across current Product Screen Lens inventories. Source families remain Product evidence; same-looking controls do not become portable architecture merely because several Products use them.')),h('div',{class:'truth'},state.subject.label+' source · ',h('strong',{},short(inventory.sourceSnapshot.commit)))),
-   h('div',{class:'boundary'},h('b',{},'Source boundary: '),'Observed source family ≠ portable component. Product source stays unchanged; this view projects existing Screen Lens truth and joins Localization only where a current sidecar exists.'),
-   h('div',{class:'summary'},metric(inventory.summary.componentFamilyCount,'source families'),metric(inventory.summary.occurrenceCount,'UI occurrences'),metric(inventory.summary.screenCount,'Screens'),metric(inventory.summary.localizedOccurrenceCount,'localized occurrences'),metric(inventory.summary.realizedOccurrenceCount,'realization-linked'),metric(inventory.summary.accessibilityProjectedOccurrenceCount,'accessibility projected')),
-   h('div',{class:'source'},h('span',{class:'source-chip'},h('span',{class:'dot'}),state.subject.label,h('code',{},short(inventory.sourceSnapshot.commit))),h('span',{class:'source-chip'},'Screen Lens · ',h('code',{},inventory.sourceSnapshot.lensRef)),h('span',{class:'source-chip'},'Localization · ',inventory.sourceSnapshot.localizationInventoryRef?h('code',{},inventory.sourceSnapshot.localizationInventoryRef):h('span',{class:'sub'},'not connected'))),
-   viewTabs()),
-  h('section',{class:'workspace'},h('div',{class:'controls'},search,product,kind,surface),h('p',{class:'match'},count(families.length)+' of '+count(inventory.components.length)+' source families in this view.'),h('div',{class:'grid'},families.map(familyCard)),selected?detail(selected):h('div',{class:'empty'},'No component families match this view.')),
-  h('footer',{},'Source families answer “what exists and where is it used?” The Architecture candidates view asks the separate question: “which recurring relationships deserve a typed portable Kotlin Blueprint contract?”'));
- if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
-}
-function renderArchitecture({focusSearch=false}={}){
- const rows=visibleArchitecture();
- if(state.selectedArchitecture&&!state.architecture.candidates.some((row)=>row.candidateRef===state.selectedArchitecture))state.selectedArchitecture=null;
- const selected=state.architecture.candidates.find((row)=>row.candidateRef===state.selectedArchitecture)??rows[0]??null;
- if(selected&&state.selectedArchitecture!==selected.candidateRef)state.selectedArchitecture=selected.candidateRef;
- const classes=[...new Set(state.architecture.candidates.map((row)=>row.class))].sort();
- const search=h('input',{type:'search',value:state.query,placeholder:'Find architecture relationship, source witness, target pressure, or Kotlin/SwiftUI mapping','aria-label':'Search architecture candidates'});
- search.oninput=()=>{state.query=search.value;syncUrl();render({focusSearch:true});};
- const classSelect=h('select',{'aria-label':'Architecture class'},h('option',{value:'',selected:!state.architectureClass},'All architecture classes'),classes.map((value)=>h('option',{value,selected:state.architectureClass===value},human(value))));
- classSelect.onchange=()=>{state.architectureClass=classSelect.value;syncUrl();render();};
- const acceptedPortable=state.architecture.candidates.filter((row)=>row.state==='ACCEPTED_PORTABLE');
- const stateSelect=h('select',{'aria-label':'Architecture state'},h('option',{value:''},'Portable acceptance: '+count(acceptedPortable.length)+' accepted'));
- stateSelect.disabled=true;
- const evidenceCount=state.architecture.candidates.reduce((sum,row)=>sum+row.sourceEvidence.length,0);
- const familyLinks=new Set(state.architecture.candidates.flatMap((row)=>row.sourceFamilyRefs)).size;
- const targetResults=state.architecture.targetPressures.length;
- const formations=state.architecture.candidates.filter((row)=>row.formation).length;
- const targetRelations=state.architecture.targetPressures.flatMap((row)=>row.relationships);
- const mappedRelations=targetRelations.filter((row)=>row.disposition==='MAPPED').length;
- const heldRelations=targetRelations.filter((row)=>row.disposition==='HELD').length;
- app.replaceChildren(
-  h('section',{},
-   h('div',{class:'intro'},h('div',{},h('h1',{},'Component Architecture'),h('p',{},'Recurring presentation relationships influenced by real Product source, organized for a typed Kotlin Blueprint + platform-adapter compiler. Android teaches the questions; the portable contract must survive SwiftUI, web and desktop pressure before acceptance.')),h('div',{class:'truth'},'architecture candidates · ',h('strong',{},count(state.architecture.candidates.length)))),
-   h('div',{class:'boundary'},h('b',{},'Compiler boundary: '),'Kotlin Blueprint can be the strongly typed authoring form; Compose is one target adapter. Portable IR, generated native source, target Screen Lens and native proof remain separate witnesses.'),
-   h('div',{class:'summary'},metric(state.architecture.candidates.length,'architecture candidates'),metric(formations,'A3 formations'),metric(targetResults,'target experiments'),metric(mappedRelations,'mapped target relationships'),metric(heldRelations,'held target relationships'),metric(acceptedPortable.length,'accepted portable')),
-   h('div',{class:'source'},state.architecture.sourceSnapshots.map((row)=>h('span',{class:'source-chip'},h('span',{class:'dot'}),row.repositoryRef,h('code',{},short(row.commit))))),
-   viewTabs()),
-  h('section',{class:'workspace'},h('div',{class:'controls'},search,classSelect,stateSelect),h('p',{class:'match'},count(rows.length)+' of '+count(state.architecture.candidates.length)+' architecture candidates in this view.'),h('div',{class:'grid'},rows.map(architectureCard)),selected?architectureDetail(selected):h('div',{class:'empty'},'No architecture candidates match this view.')),
-  h('footer',{},acceptedPortable.length+' portable relationship'+(acceptedPortable.length===1?' is':'s are')+' accepted at A3. Target-pressure results remain separate evidence: native/framework proof and held target mechanics do not become portable acceptance merely because a relationship is accepted.'));
- if(focusSearch)requestAnimationFrame(()=>{const next=app.querySelector('input[type="search"]');if(next){next.focus();const cursor=next.value.length;next.setSelectionRange?.(cursor,cursor);}});
-}
-function render(options={}){if(state.view==='REALIZATIONS')return renderRealizations(options);return state.view==='ARCHITECTURE'?renderArchitecture(options):renderSource(options);}
-function metric(value,label){return h('div',{class:'metric'},h('b',{},count(value)),h('span',{},label));}
+function render(){state.mode==='STUDIO'?renderStudio():renderGallery()}
 async function boot(){
  state.catalog=Catalog.normalizeLensCatalog(await fetchJson(CATALOG_URL));
  state.architecture=Architecture.normalizeComponentArchitectureCatalog(await fetchJson(ARCHITECTURE_URL));
  const loaded=await Promise.all(state.catalog.subjects.map(async(subject)=>{
-  const main=Catalog.buildFor(subject,'main');
-  if(!main)return null;
+  const main=Catalog.buildFor(subject,'main');if(!main)return null;
   try{
    const inventory=Components.normalizeComponentInventory(await fetchJson(INVENTORY_DIR+subject.slug+'.main.components.json'));
-   if(inventory.subjectRef!==subject.subjectRef)throw new Error(subject.slug+' Component Inventory subject does not match Lens catalog.');
-   if(inventory.sourceSnapshot.commit!==main.commit)throw new Error(subject.slug+' Component Inventory is not current with catalog Main.');
+   if(inventory.subjectRef!==subject.subjectRef||inventory.sourceSnapshot.commit!==main.commit)throw new Error(subject.slug+' Component Inventory currentness mismatch');
    return [subject.slug,inventory];
-  }catch(error){
-   console.warn('Component inventory unavailable for '+subject.slug,error);
-   return null;
-  }
+  }catch(error){console.warn('Component inventory unavailable for '+subject.slug,error);return null;}
  }));
  state.inventories=new Map(loaded.filter(Boolean));
  if(!state.inventories.size)throw new Error('No current Component Inventories are available.');
- if(!state.inventories.has(state.sourceSubject)){
-  state.sourceSubject=state.inventories.has('vexlife-android')?'vexlife-android':state.inventories.keys().next().value;
- }
- state.subject=Catalog.subjectFor(state.catalog,state.sourceSubject);
- state.inventory=state.inventories.get(state.sourceSubject);
+ const requestedSource=params.get('source');
+ const requestedComponent=params.get('component');
+ if(requestedSource&&requestedComponent)state.selectedKey=requestedSource+'|'+requestedComponent;
+ if(!state.selectedKey)state.selectedKey=familyRows().find((row)=>row.component.kind==='BUTTON')?.key??familyRows()[0]?.key??null;
  render();
 }
-boot().catch((error)=>{app.innerHTML='<div class="intro"><div><h1>Component Gallery could not load.</h1><p></p></div></div>';app.querySelector('p').textContent=error?.message||String(error);});
+boot().catch((error)=>{app.replaceChildren(h('section',{class:'panel panel-body'},h('h2',{},'Component Library could not load'),h('p',{},error?.message||String(error))));});
 </script>
 </body>
 </html>
-<!-- [VXG RealForever][VEXWORK][VEXBOARD][COMPONENT-GALLERY][A1] -->
+<!-- [VXG RealForever][VEXWORK][COMPONENT-LIBRARY][A5-GALLERY-STUDIO] -->
