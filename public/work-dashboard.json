@@ -190,6 +190,23 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.physical-shard-adapter",
+        "label": "Potential — physical shard-manifest / partition adapter when measured pressure earns it",
+        "purpose": "If five-year proof shows filesystem-directory, append/validation, backup or recovery pressure that the derived index alone does not solve, implement the accepted SHARD_MANIFEST relationship so stable object identity survives relocation/split/compaction. Choose physical partitioning from measured owner behavior; DAY/CONTEXT/RELATIONSHIP/SEARCH shards remain logical many-to-many views and directory neatness alone does not justify migration.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod",
+          "repo.vextreme-sdk"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-25T17:24:36.000Z"
+      },
+      {
         "workRef": "work.vexlife.new-beginnings.fresh-instance",
         "label": "Later — start a fresh Conversation with fresh working context",
         "purpose": "Preserve a cheap reversible Start fresh feature that forms/selects a new canonical Conversation thread with no prior-thread Conversation tail resident by default, while keeping Home, person settings, accepted Memory/semantic continuity and bounded historical reach under their rightful owners. Measure responsiveness rather than attributing latency to thread length by assumption.",
@@ -610,7 +627,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 26
+    "parkingLotItemCount": 27
   },
   "effects": false,
   "executionAuthority": "NONE"
