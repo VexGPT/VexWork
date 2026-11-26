@@ -2,9 +2,9 @@
 
 [VXG RealForever]
 
-## Current disposition — form the reusable relationship now, implement later
+## Current disposition — released to successor for end-to-end completion
 
-This Project is deliberately PAUSED_AT_CHECKPOINT.
+Victor has now released this trajectory to a successor worker for end-to-end completion. A0 re-grounding is the next lawful edge.
 
 The human outcome is broader than alerts, Health, storage, or any one feature:
 
@@ -18,11 +18,12 @@ Health / CGM production claim  NONE
 notification effect claim      NONE
 cleanup / deletion authority   NONE
 
-Project WorkState              PAUSED_AT_CHECKPOINT
-Work disposition               PARKED
+Project WorkState              RUNNING
+A0 WorkState                   READY
+Work disposition               ACTIVE
 ~~~
 
-Formation is not implementation authority.
+Release of the trajectory is not blanket implementation authority. The successor must re-ground then-current repository ownership/admission before any Product mutation.
 
 ## Core shape
 
