@@ -168,8 +168,9 @@ A future implementation instance should read, in order:
 2. FOUNDATION-DESIGN.md;
 3. CURRENT-SOURCE-READING-20261126.md only as formation evidence;
 4. LESSONS.md;
-5. RESUME-GATE.md;
-6. then re-ground the then-current VexLife-Prod front door/culture/source implicated by A0.
+5. LONGEVITY-PROOF-MAP.md — map human lifetime complaints to existing proofs/gaps;
+6. RESUME-GATE.md;
+7. then re-ground the then-current VexLife-Prod front door/culture/source implicated by A0.
 
 Do not treat current Product PR heads or token constants in the snapshot as future branch bases.
 
