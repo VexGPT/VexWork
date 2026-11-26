@@ -2,11 +2,17 @@
 
 [VXG RealForever]
 
-## Parked means parked
+## Release received
 
-This Project source does not authorize Product/Android/Health implementation.
+Victor explicitly released this trajectory on 2026-11-26 by asking for a successor worker to carry it end to end.
 
-Resume implementation only when Victor explicitly releases this lane.
+~~~text
+TRAJECTORY RELEASED
+A0 READY
+!= BLANKET PRODUCT MUTATION AUTHORITY
+~~~
+
+The successor should act from A0 immediately, but must still establish the then-current repository/source/admission predicates before any Product/Android/Health mutation.
 
 ## A0 is re-ground, not code
 
