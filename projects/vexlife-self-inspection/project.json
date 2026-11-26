@@ -3,13 +3,20 @@
   "projectRef": "project.vexlife.self-inspection",
   "label": "VexLife Self-Inspection",
   "purpose": "Give Vex a source-addressed way to perceive and explain the current body that carries his cognition, including capability/body topology, Working Focus, prompt residency, continuity pressure and cache-relevant context placement, while preserving Conversation, semantic Memory, Working Continuity, source owners and execution owners as separate truths. The foundation is intentionally parked until Victor releases it after the currently-running Product trajectories converge; later Product implementation must re-ground then-current VexLife-Prod rather than branch from this formation snapshot.",
-  "rootWorkRefs": ["work.vexlife.self-inspection.outcome"],
-  "repositoryRefs": ["repo.vexwork", "repo.vexlife-prod", "repo.vextreme"],
+  "rootWorkRefs": [
+    "work.vexlife.self-inspection.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod",
+    "repo.vextreme"
+  ],
   "sourceRefs": [
     "projects/vexlife-self-inspection/README.md",
     "projects/vexlife-self-inspection/FOUNDATION-DESIGN.md",
     "projects/vexlife-self-inspection/CURRENT-SOURCE-READING-20261126.md",
     "projects/vexlife-self-inspection/LESSONS.md",
+    "projects/vexlife-self-inspection/LONGEVITY-PROOF-MAP.md",
     "projects/vexlife-self-inspection/RESUME-GATE.md",
     "github.issue.vexwork.448",
     "project.vexlife.memory-depth-exploration",
