@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.attention-convergence",
+  "label": "VexLife Attention Convergence",
+  "purpose": "Let Vex live with many independently-owned connections and bring only the smallest source-grounded truth into present cognition based on current human activity or an already source-owned attention requirement, while preserving displaced Working Focus and keeping domain meaning, prompt materialization, Self-Inspection, Memory, Conversation and effects with their rightful owners.",
+  "rootWorkRefs": [
+    "work.vexlife.attention-convergence.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod",
+    "repo.vexlife-android",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-attention-convergence/README.md",
+    "projects/vexlife-attention-convergence/FOUNDATION-DESIGN.md",
+    "projects/vexlife-attention-convergence/CURRENT-SOURCE-READING-20261126.md",
+    "projects/vexlife-attention-convergence/LESSONS.md",
+    "projects/vexlife-attention-convergence/RESUME-GATE.md",
+    "github.issue.vexwork.450",
+    "project.vexlife.self-inspection",
+    "project.vexlife.memory-depth-exploration",
+    "project.vex-cgm-labs",
+    "project.vex.security-assurance",
+    "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+    "human.intent.vexlife.attention-convergence.20261126"
+  ],
+  "formedAt": "2026-11-26T19:30:00.000Z"
+}

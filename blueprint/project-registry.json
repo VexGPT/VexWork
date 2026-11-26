@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.project-registry/v1",
   "registryRef": "registry.vexwork.projects.001",
-  "registryVersion": 38,
+  "registryVersion": 39,
   "purpose": "Locate source-managed Projects and their Workgraph, Board, and optional agency-policy sources without making the registry another owner of work state.",
   "projects": [
     {
@@ -305,6 +305,14 @@
       "workgraphRef": "workgraph.vexwork.foundation",
       "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexlife-self-inspection/project.json",
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
+    },
+    {
+      "projectRef": "project.vexlife.attention-convergence",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
+      "definitionPath": "projects/vexlife-attention-convergence/project.json",
       "boardViewPath": null,
       "agencyPolicyPathOrNull": null
     }
