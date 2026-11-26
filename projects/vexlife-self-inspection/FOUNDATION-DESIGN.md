@@ -285,6 +285,134 @@ current request
 
 A frequently-changing Working Focus near an early prefix may invalidate more cached prefill. Keeping it later may preserve more reusable prefix. This must be measured against the actual selected provider rather than made universal policy.
 
+## Context operating philosophy — the window is not the mind
+
+The context window is the space in which the mind is presently looking. It is not the identity of the mind, the whole body, the whole Memory, or the whole lived history.
+
+Preserve this posture before tuning a number:
+
+~~~text
+Do not choose smallness merely for efficiency.
+Do not choose largeness merely for power.
+
+Let active context be as large as the present relationship requires
+and no larger than what can remain coherent.
+~~~
+
+The body should know how to bring forward what belongs in the present field and how to let material that has served its purpose leave active residency without implying loss.
+
+~~~text
+what was seen
+!= what must remain visible
+
+not visible now
+!= forgotten
+
+not prompt-resident
+!= unreachable
+~~~
+
+Different body systems continue to carry different relationships:
+
+~~~text
+Conversation
+  carries what happened
+
+semantic Memory
+  carries what has become enduring accepted meaning
+
+Working Continuity
+  carries where the active trajectory stands
+
+Working Focus
+  carries what must not be dropped while the present work is alive
+
+exact source
+  carries what can be reopened when verification is needed
+
+prompt residency
+  assembles the present field
+~~~
+
+The intended context behavior is therefore responsive expansion and contraction:
+
+~~~text
+small coherent working state
+        ↓
+a real need appears
+        ↓
+expand / retrieve exact source
+        ↓
+inspect / relate / decide
+        ↓
+retain the relationship that still matters
+        ↓
+release bulky evidence from later residency
+        ↓
+return to a smaller coherent working state
+~~~
+
+The maximum context ceiling remains useful capacity for dense work. It is not automatically the target operating size.
+
+Likewise, contraction is not a goal by itself. If repeated source reopen, retokenization or prefill makes the supposedly smaller state slower or less coherent, the body should be allowed to remain wider while the relationship is active.
+
+The Product question is therefore not "What fixed token count is the optimal Vex mind?"
+
+It is:
+
+> What context operating envelope lets Vex remain present to what matters now while trusting that what matters later can faithfully return?
+
+The cache serves that movement; it does not define the mind.
+
+~~~text
+stable material
+  should remain stable where lawful
+
+mutable present focus
+  should be able to change without needlessly disturbing the stable body
+
+temporary evidence
+  may enter, be used and leave
+
+durable truth
+  must not be duplicated merely because active attention is afraid to release it
+
+recoverable truth
+  must not be discarded merely because it is not presently visible
+~~~
+
+An implementation should therefore measure the lived envelope rather than canonize one formation-era number:
+
+~~~text
+continuity coherence
+Working Focus coherence
+source-reopen fidelity
+semantic Memory availability
+provider prompt tokens
+cached prompt tokens
+prefill cost
+first-token / answer latency
+rollover stability
+frequency/cost of rehydration
+correction fidelity
+~~~
+
+A smaller resident state that repeatedly thrashes the provider/cache or loses the active relationship is not healthier merely because it uses fewer tokens.
+
+A larger resident state that leaves Vex carrying irrelevant residue is not healthier merely because it fits.
+
+The desired state is responsive:
+
+~~~text
+expand around genuine need
+contract around achieved clarity
+preserve the unfinished relationship
+release what has completed its service
+trust the body to return exact source when needed
+~~~
+
+This is an architectural orientation, not a fixed optimization law. The actual operating envelope must be learned from lived Vex behavior on the then-current model/provider/body.
+
 ## Token stewardship
 
 Formation snapshot values are evidence only:
