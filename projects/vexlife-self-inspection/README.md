@@ -70,6 +70,96 @@ Self-Inspection asks a different question:
 
 > Can Vex perceive this body, carry a small working surface through it, and explain how present cognition is being supported without creating another truth owner?
 
+## Established foundations this work consumes — do not regress
+
+This Project is not a replacement architecture. A fresh instance should preserve these already-earned relationships before proposing anything new.
+
+~~~text
+Vex Foundational Field
+  = Vex's enduring model-facing orientation / values / posture
+  != this Project's "foundation design"
+  this PR does not edit, redefine or add values to the Foundational Field
+
+VexArchitecture
+  = one rightful owner per question
+  = semantic/product meaning stays with its Family/source owner
+  = Execution owns active custody, not semantic truth
+  = outside truth reconciles through its rightful relationship
+  = Relay/convergence is earned only where independent truths create a relationship question
+  Self-Inspection must consume these laws, not create an ArchitectureManager
+
+Conversation
+  = canonical lived chronology
+  Self-Inspection may inspect/reference it; Working Focus may not replace it
+
+semantic Memory / Score / semantic authority
+  = accepted durable meaning
+  Working Focus may reference accepted Memory; it may not self-promote into Memory
+
+Working Continuity
+  = current active trajectory / reference-only checkpoint + rollover ownership
+  formation evidence suggests this is the likely owner neighborhood for Working Focus
+  that remains an A0 hypothesis to re-prove on then-current Product source
+
+Memory Depth
+  = deep/long-horizon source recovery, locator/index acceleration, revisit and scale
+  Self-Inspection consumes its landed body; it must not build a second Memory/retrieval truth owner
+
+Model Adaptation / VexLife VexWorks
+  = selected model/runtime may change without silently changing Vex, Conversation, Memory,
+    Artifact or Local Source identity
+  Self-Inspection describes the body across model changes rather than binding identity to one model
+
+Capability Atlas / Frame / Bridge
+  = current descriptive reach + bounded request/delegation to rightful effect owners
+  Self-Inspection should extend this read-side body if earned, not create parallel tool authority
+
+DirectPromptContext
+  = exact provider materialization / residency evidence
+  Self-Inspection does not become the prompt owner
+
+VexLifePromptPreparation / provider cache realization
+  = reusable provider-prefix preparation/currentness
+  context-residency work must measure and preserve this existing cache relationship rather than
+    inventing a second cache truth
+
+Vex Context
+  = human read-side projection of already-owned context/runtime evidence
+  a later body map may project here only after model-facing semantics are proven
+
+Security Assurance
+  = required bounded review where introspection changes secret/private/context/tool boundaries
+
+Multi-Vex / Partner relationships
+  = independently-owned participant relationships where earned
+  consume then-current landed relationships only where they materially affect this feature;
+    do not make Self-Inspection a universal participant manager
+~~~
+
+### Naming boundary: "foundation" is overloaded
+
+In this Project:
+
+~~~text
+FOUNDATION-DESIGN.md
+= implementation/architecture design posture for builders
+= hypotheses + boundaries + lessons + proof questions
+
+Vex Foundational Field
+= Vex's actual enduring Product/model-facing orientation and values
+~~~
+
+They are deliberately different.
+
+~~~text
+SELF-INSPECTION DESIGN FOUNDATION
+!= VEX FOUNDATIONAL FIELD
+!= NEW VEX VALUES
+!= MODEL-FACING BELIEF INSERTION
+~~~
+
+The mind/body/working-memory language in these docs is an explanatory architecture lens. It does not by itself create a new Product ontology, claim human-equivalent biology, or redefine the Foundational Field.
+
 ## Start here
 
 A future implementation instance should read, in order:
