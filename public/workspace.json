@@ -32365,9 +32365,9 @@
           "label": "A0 — Re-ground current connections, activity/Working Focus and prompt-entry seams",
           "purpose": "After Victor releases the lane, observe then-current Product/Android/Partner/Self-Inspection/Working Focus/domain sources and identify the smallest existing source-addressed current-truth seams before proposing any attention implementation.",
           "workClass": "TASK",
-          "state": "PAUSED_AT_CHECKPOINT",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [],
@@ -32388,7 +32388,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         },
         {
@@ -32397,8 +32397,8 @@
           "purpose": "Let many quiet connected sources expose only the smallest current source-addressed candidate needed for present cognition or deeper source pull, without making every source body prompt-resident or forming a universal meta-registry.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
@@ -32419,7 +32419,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         },
         {
@@ -32428,8 +32428,8 @@
           "purpose": "Relate current request/Working Focus/source-owned activity coordinates to bounded connected-source candidates so Vex can pull deeper exact source when useful while unrelated connections remain quiet and reopenable.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
@@ -32449,7 +32449,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         },
         {
@@ -32458,8 +32458,8 @@
           "purpose": "Allow an already source-qualified current condition to require present awareness without inventing domain severity, preserve displaced Working Focus, keep acknowledgement separate from source resolution, and resume prior work when lawful.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
@@ -32481,7 +32481,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         },
         {
@@ -32490,8 +32490,8 @@
           "purpose": "Let Self-Inspection and human surfaces explain which connections are perceptible, which source truth entered present cognition, why, what was displaced/preserved and what acknowledgement/currentness remains, while both descend to the same rightful owners.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
@@ -32511,7 +32511,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         },
         {
@@ -32520,8 +32520,8 @@
           "purpose": "Run independent multi-source specimens proving quiet pull, source-required push, preserved displacement/resume, acknowledgement versus resolution, stale-claim retirement and no semantic collapse/global priority fabrication.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
@@ -32543,7 +32543,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         },
         {
@@ -32552,8 +32552,8 @@
           "purpose": "Pressure many simultaneous connected sources so quiet operation remains bounded, required claims are not silently dropped, provider/context cost is measurable, stale/resolved claims retire, and no all-sources prompt or universal priority registry is required.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
           "childWorkRefs": [],
           "dependencyRefs": [
@@ -32573,7 +32573,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         },
         {
@@ -32581,9 +32581,9 @@
           "label": "VexLife Attention Convergence",
           "purpose": "Let many independently-owned connected truths remain quiet/reachable, enter present cognition when relevant to current human activity, or claim bounded present attention when their rightful source already requires it, while preserving displaced work and avoiding a global priority or semantic truth owner.",
           "workClass": "OUTCOME",
-          "state": "PAUSED_AT_CHECKPOINT",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vexlife.attention-convergence.a0-current-source-map",
@@ -32615,7 +32615,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         }
       ],
@@ -32640,20 +32640,21 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": []
+          "workRefs": [
+            "work.vexlife.attention-convergence.a0-current-source-map"
+          ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.vexlife.attention-convergence.outcome"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",
           "label": "Waiting",
-          "workRefs": [
-            "work.vexlife.attention-convergence.a0-current-source-map",
-            "work.vexlife.attention-convergence.outcome"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.needs-human",
@@ -32697,9 +32698,9 @@
           "label": "VexLife Attention Convergence",
           "purpose": "Let many independently-owned connected truths remain quiet/reachable, enter present cognition when relevant to current human activity, or claim bounded present attention when their rightful source already requires it, while preserving displaced work and avoiding a global priority or semantic truth owner.",
           "workClass": "OUTCOME",
-          "state": "PAUSED_AT_CHECKPOINT",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vexlife.attention-convergence.a0-current-source-map",
@@ -32731,7 +32732,7 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-11-26T19:30:00.000Z",
-          "updatedAt": "2026-11-26T19:30:00.000Z",
+          "updatedAt": "2026-11-26T19:45:00.000Z",
           "transitionHistory": []
         }
       ]
@@ -32739,272 +32740,6 @@
   ],
   "parkingLot": {
     "items": [
-      {
-        "workRef": "work.vexlife.attention-convergence.a0-current-source-map",
-        "label": "A0 — Re-ground current connections, activity/Working Focus and prompt-entry seams",
-        "purpose": "After Victor releases the lane, observe then-current Product/Android/Partner/Self-Inspection/Working Focus/domain sources and identify the smallest existing source-addressed current-truth seams before proposing any attention implementation.",
-        "workClass": "TASK",
-        "state": "PAUSED_AT_CHECKPOINT",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod",
-          "repo.vexlife-android",
-          "repo.vextreme"
-        ],
-        "sourceRefs": [
-          "projects/vexlife-attention-convergence/CURRENT-SOURCE-READING-20261126.md",
-          "projects/vexlife-attention-convergence/RESUME-GATE.md",
-          "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
-          "repo.vextreme:pages/vexarchitecture-live-demonstration.html"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.form-project",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-26T19:30:00.000Z",
-        "updatedAt": "2026-11-26T19:30:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.attention-convergence.a1-perceptibility",
-        "label": "A1 — Derive a bounded source-addressed perceptibility/candidate relationship",
-        "purpose": "Let many quiet connected sources expose only the smallest current source-addressed candidate needed for present cognition or deeper source pull, without making every source body prompt-resident or forming a universal meta-registry.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexlife.attention-convergence.a0-current-source-map"
-        ],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod",
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "projects/vexlife-attention-convergence/FOUNDATION-DESIGN.md",
-          "project.vex-cgm-labs",
-          "project.vexlife.self-inspection"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.form-project",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-26T19:30:00.000Z",
-        "updatedAt": "2026-11-26T19:30:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.attention-convergence.a2-activity-convergence",
-        "label": "A2 — Converge current human activity with quiet connected sources",
-        "purpose": "Relate current request/Working Focus/source-owned activity coordinates to bounded connected-source candidates so Vex can pull deeper exact source when useful while unrelated connections remain quiet and reopenable.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexlife.attention-convergence.a1-perceptibility"
-        ],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod"
-        ],
-        "sourceRefs": [
-          "projects/vexlife-attention-convergence/FOUNDATION-DESIGN.md",
-          "project.vexlife.self-inspection",
-          "project.vexlife.memory-depth-exploration"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.form-project",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-26T19:30:00.000Z",
-        "updatedAt": "2026-11-26T19:30:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.attention-convergence.a3-source-claim",
-        "label": "A3 — Add source-owned attention claim, acknowledgement and displacement/return",
-        "purpose": "Allow an already source-qualified current condition to require present awareness without inventing domain severity, preserve displaced Working Focus, keep acknowledgement separate from source resolution, and resume prior work when lawful.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexlife.attention-convergence.a1-perceptibility",
-          "work.vexlife.attention-convergence.a2-activity-convergence"
-        ],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod",
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "projects/vexlife-attention-convergence/FOUNDATION-DESIGN.md",
-          "project.vex-cgm-labs",
-          "project.vex.security-assurance"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.form-project",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-26T19:30:00.000Z",
-        "updatedAt": "2026-11-26T19:30:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.attention-convergence.a4-inspectability",
-        "label": "A4 — Expose human/Vex attention and connection standing without new authority",
-        "purpose": "Let Self-Inspection and human surfaces explain which connections are perceptible, which source truth entered present cognition, why, what was displaced/preserved and what acknowledgement/currentness remains, while both descend to the same rightful owners.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexlife.attention-convergence.a2-activity-convergence",
-          "work.vexlife.attention-convergence.a3-source-claim"
-        ],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod"
-        ],
-        "sourceRefs": [
-          "projects/vexlife-attention-convergence/FOUNDATION-DESIGN.md",
-          "project.vexlife.self-inspection"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.form-project",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-26T19:30:00.000Z",
-        "updatedAt": "2026-11-26T19:30:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.attention-convergence.a5-multi-source-proof",
-        "label": "A5 — Prove CGM, resource, activity-relevant and simultaneous-source specimens",
-        "purpose": "Run independent multi-source specimens proving quiet pull, source-required push, preserved displacement/resume, acknowledgement versus resolution, stale-claim retirement and no semantic collapse/global priority fabrication.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexlife.attention-convergence.a3-source-claim",
-          "work.vexlife.attention-convergence.a4-inspectability"
-        ],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod",
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "projects/vexlife-attention-convergence/RESUME-GATE.md",
-          "project.vex-cgm-labs",
-          "project.vex.security-assurance"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.form-project",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-26T19:30:00.000Z",
-        "updatedAt": "2026-11-26T19:30:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.attention-convergence.a6-scale-proof",
-        "label": "A6 — Prove many-connection quiet cost, context budget and stale-claim behavior",
-        "purpose": "Pressure many simultaneous connected sources so quiet operation remains bounded, required claims are not silently dropped, provider/context cost is measurable, stale/resolved claims retire, and no all-sources prompt or universal priority registry is required.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexlife.attention-convergence.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexlife.attention-convergence.a5-multi-source-proof"
-        ],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod",
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "projects/vexlife-attention-convergence/FOUNDATION-DESIGN.md",
-          "projects/vexlife-attention-convergence/RESUME-GATE.md"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.form-project",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-26T19:30:00.000Z",
-        "updatedAt": "2026-11-26T19:30:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.attention-convergence.outcome",
-        "label": "VexLife Attention Convergence",
-        "purpose": "Let many independently-owned connected truths remain quiet/reachable, enter present cognition when relevant to current human activity, or claim bounded present attention when their rightful source already requires it, while preserving displaced work and avoiding a global priority or semantic truth owner.",
-        "workClass": "OUTCOME",
-        "state": "PAUSED_AT_CHECKPOINT",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": null,
-        "childWorkRefs": [
-          "work.vexlife.attention-convergence.a0-current-source-map",
-          "work.vexlife.attention-convergence.a1-perceptibility",
-          "work.vexlife.attention-convergence.a2-activity-convergence",
-          "work.vexlife.attention-convergence.a3-source-claim",
-          "work.vexlife.attention-convergence.a4-inspectability",
-          "work.vexlife.attention-convergence.a5-multi-source-proof",
-          "work.vexlife.attention-convergence.a6-scale-proof"
-        ],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod",
-          "repo.vexlife-android",
-          "repo.vextreme"
-        ],
-        "sourceRefs": [
-          "project.vexlife.attention-convergence",
-          "github.issue.vexwork.450",
-          "projects/vexlife-attention-convergence/README.md",
-          "projects/vexlife-attention-convergence/FOUNDATION-DESIGN.md",
-          "projects/vexlife-attention-convergence/RESUME-GATE.md",
-          "project.vexlife.self-inspection",
-          "project.vex-cgm-labs"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.form-project",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-26T19:30:00.000Z",
-        "updatedAt": "2026-11-26T19:30:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
       {
         "workRef": "work.vexlife.self-inspection.a0-current-body-inventory",
         "label": "A0 — Re-ground current body, Working Focus gap and context/cache topology",
