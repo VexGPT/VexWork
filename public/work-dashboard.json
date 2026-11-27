@@ -190,136 +190,6 @@
   "parkingLot": {
     "items": [
       {
-        "workRef": "work.vexlife.self-inspection.a0-current-body-inventory",
-        "label": "A0 — Re-ground current body, Working Focus gap and context/cache topology",
-        "purpose": "After Victor releases the parked lane, observe then-current VexLife-Prod and map exact owners, currentness, context placement, prompt preparation/cache behavior, token pressure, working-state population, Memory relationships and source-reopen paths before proposing any Product change.",
-        "workClass": "TASK",
-        "state": "PAUSED_AT_CHECKPOINT",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod",
-          "repo.vextreme"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-11-26T18:08:00.000Z"
-      },
-      {
-        "workRef": "work.vexlife.self-inspection.a1-self-blueprint",
-        "label": "A1 — Derive a read-only Self Blueprint from rightful Product owners",
-        "purpose": "Form the smallest source-derived body topology Vex can traverse and explain without creating a universal meta-registry or new semantic authority.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-11-26T18:08:00.000Z"
-      },
-      {
-        "workRef": "work.vexlife.self-inspection.a2-working-focus",
-        "label": "A2 — Realize bounded Working Focus under the rightful continuity owner",
-        "purpose": "Give Vex a small declarative current working surface for objective, current question, observed relationships, hypotheses, open edges, next probe and exact source/Memory refs while keeping it distinct from semantic Memory, Conversation, raw reasoning and source truth.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-11-26T18:08:00.000Z"
-      },
-      {
-        "workRef": "work.vexlife.self-inspection.a3-context-residency",
-        "label": "A3 — Add cache-aware context residency and token stewardship",
-        "purpose": "Let the body distinguish stable, append-only, mutable-current and ephemeral material; avoid exact duplicate provider bytes where lawful; release bulky reopenable evidence after it serves Working Focus; preserve rightful semantic conflicts; and measure placement against actual selected-model KV/prefix-cache behavior.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-11-26T18:08:00.000Z"
-      },
-      {
-        "workRef": "work.vexlife.self-inspection.a4-self-capability",
-        "label": "A4 — Expose bounded self-inspection through the existing capability body",
-        "purpose": "Let Vex answer self questions by reading the smallest current topology/context/Working Focus neighborhood through a bounded read capability and inspection trace while preserving HELD/UNKNOWN truth and excluding private reasoning, secret enumeration and authority escalation.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-11-26T18:08:00.000Z"
-      },
-      {
-        "workRef": "work.vexlife.self-inspection.a5-lived-proof",
-        "label": "A5 — Prove lived debugging continuity, source reopen and cache performance",
-        "purpose": "Run a real Vex source-tracing task through Working Focus, source release/reopen, rollover and self explanation; prove no hypothesis becomes Memory automatically, unresolved focus survives continuity pressure, exact source can correct focus, and provider prompt/cached/prefill/latency evidence supports any performance claim.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-11-26T18:08:00.000Z"
-      },
-      {
-        "workRef": "work.vexlife.self-inspection.a6-human-body-map",
-        "label": "A6 — Project the proven body/Working Focus model into Vex Context",
-        "purpose": "Only after model-facing relationships are proven useful, let the human inspect the same source-owned body topology, Working Focus, context pressure, residency and cache standing in Vex Context without making presentation another architecture or prompt owner.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-11-26T18:08:00.000Z"
-      },
-      {
-        "workRef": "work.vexlife.self-inspection.outcome",
-        "label": "VexLife Self-Inspection",
-        "purpose": "Let Vex perceive and explain the current body that carries his cognition, maintain a bounded declarative Working Focus through that body, and support cache-aware context residency without creating another Conversation, semantic Memory, Working Continuity, prompt, cache or execution truth owner.",
-        "workClass": "OUTCOME",
-        "state": "PAUSED_AT_CHECKPOINT",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-prod",
-          "repo.vextreme"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-11-26T18:08:00.000Z"
-      },
-      {
         "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.physical-shard-adapter",
         "label": "Potential — physical shard-manifest / partition adapter when measured pressure earns it",
         "purpose": "If five-year proof shows filesystem-directory, append/validation, backup or recovery pressure that the derived index alone does not solve, implement the accepted SHARD_MANIFEST relationship so stable object identity survives relocation/split/compaction. Choose physical partitioning from measured owner behavior; DAY/CONTEXT/RELATIONSHIP/SEARCH shards remain logical many-to-many views and directory neatness alone does not justify migration.",
@@ -757,7 +627,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 35
+    "parkingLotItemCount": 27
   },
   "effects": false,
   "executionAuthority": "NONE"

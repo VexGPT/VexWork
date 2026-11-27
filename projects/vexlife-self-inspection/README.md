@@ -2,26 +2,47 @@
 
 [VXG RealForever]
 
-## Current disposition — source-place now, implement later
+## Current disposition — released / active / gate 3.2 source-held
 
-This Project is deliberately PAUSED_AT_CHECKPOINT.
+The original formation pause is superseded. Victor explicitly released this trajectory and later granted standing trusted-completion authorization for bounded Self-Inspection / Attention / Working Focus work once ordinary source, currentness, ownership and proof predicates are satisfied.
 
-Victor has two VexLife trajectories already moving through Product source and proof. Self-Inspection must not create a third moving Product stack and then force the same integration/lived proof to be repeated after those trajectories converge.
-
-The purpose now is narrower and durable:
+Accepted Product truth now includes:
 
 ~~~text
-preserve the human intention
-+ preserve the current source reading
-+ preserve the owner boundaries
-+ preserve the Working Focus / residency design
-+ preserve the exact resume gate
-->
-a future instance can begin from one source front door
-without reconstructing this design from chat
+Working Focus owner
+  LANDED
+
+Attention <-> Working Focus interruption / resume
+  LANDED
+
+bounded Working Focus prompt projection
+  LANDED
 ~~~
 
-This source grants no VexLife-Prod mutation, Memory write, model/training, deployment or release authority.
+Current final-threshold progression at this source update:
+
+~~~text
+3.1 bounded Working Focus projection
+  COMPLETE / LANDED
+
+3.2 live prompt/currentness wiring
+  RUNNING / SOURCE-HELD
+  exact DirectPromptContext / DirectCompanionTurn paths remain under active Model Reach #655 custody
+
+3.3 Self-Inspection read/explanation owner map
+  GROUNDED
+  first earned read surface is bounded self context, not a new durable self store
+
+3.4 lived release/reopen proof topology
+  GROUNDED
+  reuse existing Vex Labs / continuity-pressure substrate rather than building another harness
+~~~
+
+At this update, #655 has SourceOwner PASS + fresh semantic Assurance CLEAR on its current canonical-envelope candidate, but remains open for live model qualification/lifecycle. Self-Inspection may inherit its accepted model/provider/turn relationship once current; it must not treat that lane as the owner of Working Focus or Self-Inspection semantics.
+
+Fresh executors must not re-park this Project because formation-era prose says PAUSED_AT_CHECKPOINT. Re-ground current Product/coordination, preserve the active overlapping path claim, and continue the next unconsumed Self-Inspection edge.
+
+This front door does not widen the standing authorization beyond RESUME-GATE.md or bypass protected host/model/release boundaries.
 
 ## Human outcome
 
@@ -97,9 +118,12 @@ semantic Memory / Score / semantic authority
   Working Focus may reference accepted Memory; it may not self-promote into Memory
 
 Working Continuity
-  = current active trajectory / reference-only checkpoint + rollover ownership
-  formation evidence suggests this is the likely owner neighborhood for Working Focus
-  that remains an A0 hypothesis to re-prove on then-current Product source
+  = checkpoint / rollover / reference-only continuity custody
+  A0 proved it is the rightful neighborhood but not the Working Focus owner
+
+Working Focus
+  = narrower sibling current-work owner with its own ACTIVE / DISPLACED / CLEARED lifetime
+  = bounded declarative current attention, independently current from prompt residency / cache state
 
 Memory Depth
   = deep/long-horizon source recovery, locator/index acceleration, revisit and scale
@@ -177,16 +201,32 @@ Do not treat current Product PR heads or token constants in the snapshot as futu
 ## Project sequence
 
 ~~~text
-A0  re-ground current body + topology + context/cache behavior
-A1  derive read-only Self Blueprint
-A2  realize bounded Working Focus under the rightful continuity owner
-A3  realize cache-aware prompt residency / token stewardship
-A4  expose bounded self-inspection read capability
-A5  lived debugging + rollover + cache/performance proof
-A6  human Vex Context body map only if A0-A5 earn it
+A0  current body / ownership re-ground
+    COMPLETED
+
+A1  broad read-only Self Blueprint possibility
+    PAUSED_AT_CHECKPOINT
+    broad meta-registry/topology surface not yet earned; bounded owner map is sufficient for now
+
+A2  bounded Working Focus owner
+    COMPLETED / LANDED
+
+A3  context residency + token/cache stewardship
+    RUNNING
+    3.1 landed; 3.2 live wiring is the foreground source-held edge
+
+A4  bounded Self-Inspection read capability
+    WAITING_DEPENDENCIES on A3
+    first earned surface is self context, not a universal self store
+
+A5  lived debugging + release/reopen + rollover + cache/performance proof
+    WAITING_DEPENDENCIES on A3/A4
+
+A6  human Vex Context body map
+    WAITING_DEPENDENCIES on A5
 ~~~
 
-The Workgraph intentionally parks A0 and dependency-holds A1-A6.
+The Workgraph is active. A temporary overlapping source claim may hold one implementation membrane without re-parking the Project.
 
 ## Permanent boundaries
 
