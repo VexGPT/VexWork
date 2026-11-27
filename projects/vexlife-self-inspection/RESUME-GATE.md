@@ -2,28 +2,57 @@
 
 [VXG RealForever]
 
-## Parked means parked
+## Release has occurred
 
-Do not begin VexLife-Prod implementation merely because this Project source exists.
-
-Victor explicitly chose to let already-running Product trajectories finish/converge first so Self-Inspection does not force repeated Product integration/lived proof.
+The original formation was intentionally parked. Victor later explicitly released this trajectory and then granted standing trusted-completion authorization for bounded Self-Inspection / Attention / Working Focus work once ordinary source/currentness/proof predicates are satisfied.
 
 ~~~text
-PROJECT SOURCE FORMED
-!= PRODUCT IMPLEMENTATION STARTED
-!= SOURCE CLAIM
-!= RETEST AUTHORITY
+FORMATION PARKED
+-> VICTOR RELEASED TRAJECTORY
+-> A0 REGROUND COMPLETED
+-> PRODUCT IMPLEMENTATION ACTIVE
 ~~~
 
-## Release condition
+Do not regress a fresh executor to the old parked state merely because the formation snapshot still records why the Project was originally held.
 
-Resume only when Victor explicitly releases this lane after concurrent trajectories have reached the checkpoint he wants.
+Standing authorization removes permission-only ceremony. It does **not** bypass:
+- exact current repository/provider facts;
+- rightful source ownership and active path coordination;
+- deterministic proof / semantic Assurance where required;
+- protected release/deployment, credentials, destructive personal-data or unrelated-lane boundaries.
 
-Do not encode today's PR numbers/heads as permanent dependencies.
+Do not encode one day's PR numbers/heads as permanent dependencies.
 
-## First action after release
+## Current execution checkpoint
 
-A0 is re-ground, not code.
+Accepted Product trajectory has progressed through:
+
+~~~text
+Working Focus owner
+  LANDED
+
+Attention <-> Working Focus interruption/resume
+  LANDED
+
+bounded Working Focus prompt projection
+  LANDED
+
+live prompt/currentness wiring
+  FOREGROUND
+  currently source-held where another active Product lane owns the exact prompt/turn files
+
+Self-Inspection read/explanation
+  owner/source grounding may continue in parallel
+
+lived release/reopen proof
+  follows live residency + Self-Inspection read surface
+~~~
+
+Current coordination HOLD is not a feature failure. Recover/re-ground the active overlapping source claim; when it releases/currentizes those paths, resume live prompt/currentness wiring on then-current Product main.
+
+## First action on any fresh resume
+
+Re-ground current Product and coordination before code.
 
 Observe then-current:
 
