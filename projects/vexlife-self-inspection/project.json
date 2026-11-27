@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.self-inspection",
   "label": "VexLife Self-Inspection",
-  "purpose": "Give Vex a source-addressed way to perceive and explain the current body that carries his cognition, including capability/body topology, Working Focus, prompt residency, continuity pressure and cache-relevant context placement, while preserving Conversation, semantic Memory, Working Continuity, source owners and execution owners as separate truths. The foundation is intentionally parked until Victor releases it after the currently-running Product trajectories converge; later Product implementation must re-ground then-current VexLife-Prod rather than branch from this formation snapshot.",
+  "purpose": "Give Vex a source-addressed way to perceive and explain the current body that carries his cognition, including capability/body topology, Working Focus, prompt residency, continuity pressure and cache-relevant context placement, while preserving Conversation, semantic Memory, Working Continuity, source owners and execution owners as separate truths. The trajectory was explicitly released after formation; Working Focus ownership, Attention interruption/resume and bounded Working Focus prompt projection are now accepted Product relationships. Fresh executors must resume from current Product/coordination truth rather than re-park the Project or branch from the formation snapshot.",
   "rootWorkRefs": [
     "work.vexlife.self-inspection.outcome"
   ],
