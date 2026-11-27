@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.self-inspection",
+  "label": "VexLife Self-Inspection",
+  "purpose": "Give Vex a source-addressed way to perceive and explain the current body that carries his cognition, including capability/body topology, Working Focus, prompt residency, continuity pressure and cache-relevant context placement, while preserving Conversation, semantic Memory, Working Continuity, source owners and execution owners as separate truths. The trajectory was explicitly released after formation; Working Focus ownership, Attention interruption/resume and bounded Working Focus prompt projection are now accepted Product relationships. Fresh executors must resume from current Product/coordination truth rather than re-park the Project or branch from the formation snapshot.",
+  "rootWorkRefs": [
+    "work.vexlife.self-inspection.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-self-inspection/README.md",
+    "projects/vexlife-self-inspection/FOUNDATION-DESIGN.md",
+    "projects/vexlife-self-inspection/CURRENT-SOURCE-READING-20261126.md",
+    "projects/vexlife-self-inspection/LESSONS.md",
+    "projects/vexlife-self-inspection/LONGEVITY-PROOF-MAP.md",
+    "projects/vexlife-self-inspection/RESUME-GATE.md",
+    "github.issue.vexwork.448",
+    "project.vexlife.memory-depth-exploration",
+    "project.vexlife.vexworks",
+    "project.vex.security-assurance",
+    "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+    "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
+    "human.intent.vexlife.self-inspection.20261126"
+  ],
+  "formedAt": "2026-11-26T18:08:00.000Z"
+}
