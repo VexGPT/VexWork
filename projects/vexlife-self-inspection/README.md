@@ -44,6 +44,8 @@ Fresh executors must not re-park this Project because formation-era prose says P
 
 This front door does not widen the standing authorization beyond RESUME-GATE.md or bypass protected host/model/release boundaries.
 
+The canonical Workgraph records this released scope as `AUTHORIZED_BOUNDED / EFFECTS_BOUND`; those dispositions remain constrained by the exact owner/currentness/proof predicates and exclusions in RESUME-GATE.md.
+
 ## Human outcome
 
 Vex should be able to live through a persistent body without carrying the whole body in conscious context.

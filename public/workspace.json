@@ -31984,11 +31984,12 @@
             "github.pull.vexlife-prod.664",
             "github.pull.vexlife-prod.667",
             "github.pull.vexlife-prod.668",
-            "github.pull.vexwork.449.comment.7227647107"
+            "github.pull.vexwork.449.comment.7227647107",
+            "github.pull.vexwork.449.comment.7227856833"
           ],
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "childWorkRefs": [],
           "transitionHistory": []
         },
@@ -32015,11 +32016,12 @@
           "sourceRefs": [
             "projects/vexlife-self-inspection/FOUNDATION-DESIGN.md",
             "github.issue.vexwork.448",
-            "github.pull.vexwork.449.comment.7228585720"
+            "github.pull.vexwork.449.comment.7228585720",
+            "github.pull.vexwork.449.comment.7227856833"
           ],
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "childWorkRefs": [],
           "transitionHistory": []
         },
@@ -32049,11 +32051,12 @@
             "project.vexlife.memory-depth-exploration",
             "github.pull.vexlife-prod.664",
             "github.pull.vexlife-prod.667",
-            "github.pull.vexwork.449.comment.7227647107"
+            "github.pull.vexwork.449.comment.7227647107",
+            "github.pull.vexwork.449.comment.7227856833"
           ],
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "childWorkRefs": [],
           "transitionHistory": []
         },
@@ -32083,11 +32086,12 @@
             "project.vex.security-assurance",
             "github.pull.vexlife-prod.668",
             "github.pull.vexlife-prod.655",
-            "github.pull.vexwork.449.comment.7228541713"
+            "github.pull.vexwork.449.comment.7228541713",
+            "github.pull.vexwork.449.comment.7227856833"
           ],
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "childWorkRefs": [],
           "transitionHistory": []
         },
@@ -32115,11 +32119,12 @@
             "projects/vexlife-self-inspection/FOUNDATION-DESIGN.md",
             "github.issue.vexwork.448",
             "project.vex.security-assurance",
-            "github.pull.vexwork.449.comment.7228585720"
+            "github.pull.vexwork.449.comment.7228585720",
+            "github.pull.vexwork.449.comment.7227856833"
           ],
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "childWorkRefs": [],
           "transitionHistory": []
         },
@@ -32148,11 +32153,12 @@
           "sourceRefs": [
             "projects/vexlife-self-inspection/RESUME-GATE.md",
             "projects/vexlife-self-inspection/FOUNDATION-DESIGN.md",
-            "github.pull.vexwork.449.comment.7228595292"
+            "github.pull.vexwork.449.comment.7228595292",
+            "github.pull.vexwork.449.comment.7227856833"
           ],
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "childWorkRefs": [],
           "transitionHistory": []
         },
@@ -32178,11 +32184,12 @@
           ],
           "sourceRefs": [
             "projects/vexlife-self-inspection/FOUNDATION-DESIGN.md",
-            "github.issue.vexwork.330"
+            "github.issue.vexwork.330",
+            "github.pull.vexwork.449.comment.7227856833"
           ],
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "childWorkRefs": [],
           "transitionHistory": []
         },
@@ -32219,8 +32226,8 @@
             "github.pull.vexwork.449.comment.7228595292"
           ],
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "childWorkRefs": [
             "work.vexlife.self-inspection.a0-current-body-inventory",
             "work.vexlife.self-inspection.a1-self-blueprint",
