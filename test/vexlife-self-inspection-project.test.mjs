@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 const read = (relative) =>
-  JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8');
+  JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const readText = (relative) =>
   fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8');
 
