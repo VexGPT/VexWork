@@ -846,6 +846,44 @@
         "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "workDisposition": "PARKED",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-28T02:12:00.000Z",
+      "updatedAt": "2026-11-28T02:12:00.000Z",
+      "workRef": "work.vexlife.memory-depth-exploration.post-vexbody-completion-revisitation",
+      "parentWorkRefOrNull": "work.vexlife.memory-depth-exploration.outcome",
+      "label": "Post-VexBody completion revisitation — composability + lifetime recall follow-up",
+      "purpose": "After the current VexBody completion trajectory is terminal, re-ground the then-current Product and revisit only the relationships whose later evolution can change what Vex sees, how Vex retrieves old context, or how Vex decides what becomes durable Memory. Preserve the completed body rather than replaying it: add bounded historical interval recall and stable continuation/paging only if still missing; close the natural Consideration/Salience -> standing-policy -> semantic Memory loop without per-memory human babysitting; and classify regression proof by substrate-only, prompt-composition, model-visible contract, or cognitive-policy change so deterministic mechanics are not needlessly re-lived while model-facing semantics receive selected-model interpretation proof when they actually change.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.memory-depth-exploration",
+        "github.issue.vexwork.445",
+        "github.issue.vexwork.447",
+        "github.pull.vexwork.449",
+        "github.pull.vexlife-prod.673",
+        "projects/vexlife-memory-depth-exploration/POST-VEXBODY-COMPLETION-REVISITATION.md",
+        "repo.vexlife-prod:docs/foundation/CONTEXT-REVISITATION.md",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContextRevisit.kt",
+        "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/continuity/VexLifeContinuitySourceLocator.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/consideration/VexLifeConsiderationContract.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/memory/VexLifeMemoryReviewPolicy.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/continuity/VexLifeContextRevisitTest.kt",
+        "repo.vexlife-prod:src/jvmTest/kotlin/vexlife/companion/DirectCompanionTurnTest.kt",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work"
     }
   ],
   "transitions": [
@@ -1224,7 +1262,8 @@
     "github.issue.vexwork.445",
     "projects/vexlife-memory-depth-exploration/LONG-HORIZON-MEMORY-EXPANSION.md",
     "repo.vexlife-prod:src/commonMain/kotlin/vexlife/platform/VexLifePlatformRealization.kt",
-    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt"
+    "repo.vexlife-prod:src/jvmMain/kotlin/vexlife/platform/VexLifeJvmPlatformTarget.kt",
+    "projects/vexlife-memory-depth-exploration/POST-VEXBODY-COMPLETION-REVISITATION.md"
   ],
   "formedAt": "2026-11-17T04:28:55.000Z"
 }

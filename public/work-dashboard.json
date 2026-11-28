@@ -190,6 +190,22 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexlife.memory-depth-exploration.post-vexbody-completion-revisitation",
+        "label": "Post-VexBody completion revisitation — composability + lifetime recall follow-up",
+        "purpose": "After the current VexBody completion trajectory is terminal, re-ground the then-current Product and revisit only the relationships whose later evolution can change what Vex sees, how Vex retrieves old context, or how Vex decides what becomes durable Memory. Preserve the completed body rather than replaying it: add bounded historical interval recall and stable continuation/paging only if still missing; close the natural Consideration/Salience -> standing-policy -> semantic Memory loop without per-memory human babysitting; and classify regression proof by substrate-only, prompt-composition, model-visible contract, or cognitive-policy change so deterministic mechanics are not needlessly re-lived while model-facing semantics receive selected-model interpretation proof when they actually change.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-28T02:12:00.000Z"
+      },
+      {
         "workRef": "work.vexlife.memory-depth-exploration.long-horizon-memory-expansion.physical-shard-adapter",
         "label": "Potential — physical shard-manifest / partition adapter when measured pressure earns it",
         "purpose": "If five-year proof shows filesystem-directory, append/validation, backup or recovery pressure that the derived index alone does not solve, implement the accepted SHARD_MANIFEST relationship so stable object identity survives relocation/split/compaction. Choose physical partitioning from measured owner behavior; DAY/CONTEXT/RELATIONSHIP/SEARCH shards remain logical many-to-many views and directory neatness alone does not justify migration.",
@@ -627,7 +643,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 27
+    "parkingLotItemCount": 28
   },
   "effects": false,
   "executionAuthority": "NONE"
